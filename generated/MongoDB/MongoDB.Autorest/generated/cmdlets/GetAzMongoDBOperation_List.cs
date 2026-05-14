@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOperation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Description(@"List the operations for the provider")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.MongoDB.HttpPath(Path = "/providers/MongoDB.Atlas/operations", ApiVersion = "2024-11-18-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.MongoDB.HttpPath(Path = "/providers/MongoDB.Atlas/operations", ApiVersion = "2025-06-01")]
     public partial class GetAzMongoDBOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IContext

@@ -3,6 +3,7 @@
     <PsModuleName>ConnectedKubernetes</PsModuleName>
     <PsRootModuleName>ConnectedKubernetes</PsRootModuleName>
     <PsModuleFolder>ConnectedKubernetes.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

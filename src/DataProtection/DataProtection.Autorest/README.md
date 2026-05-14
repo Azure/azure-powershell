@@ -31,20 +31,192 @@ This file contains the configuration for generating My API from the OpenAPI spec
 
 ``` yaml
 # it's the same options as command line options, just drop the double-dash!
-commit: b88b86f58a98ee1569ae6e7cba6f84061e15166b
+commit: 263c810dfe74ca6c7283d88c8a42d6ad93e20660
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/dataprotection/resource-manager/Microsoft.DataProtection/stable/2025-01-01/dataprotection.json
+  - $(repo)/specification/dataprotection/resource-manager/Microsoft.DataProtection/DataProtection/stable/2026-03-01/dataprotection.json
 title: DataProtection
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   - from: swagger-document
+    where: $.paths..parameters[?(@.name=='backupInstanceName')]
+    transform: $["description"] = "The name of the backup instance."
+  - from: swagger-document
+    where: $.paths..parameters[?(@.name=='vaultName')]
+    transform: $["description"] = "The name of the backup vault."
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}"].put
+    transform: delete $["x-ms-long-running-operation-options"];
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}"].put
+    transform: delete $["x-ms-long-running-operation-options"];
+  - from: swagger-document
+    where: $.definitions.ResourceDeletionInfo.properties
+    transform: >
+      $["deleteActivityID"] = $["deleteActivityId"];
+      delete $["deleteActivityId"];
+  - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}"].delete
     transform: $["description"] = "Delete a backupInstances"
+  - from: swagger-document
+    where: $.definitions.BackupVault
+    transform: >
+      delete $.required;
+  # Fix breaking change: Rename Operation to ClientDiscoveryValueForSingleApi to maintain backward compatibility
+  - from: swagger-document
+    where: $.definitions
+    transform: >
+      if ($["Operation"]) {
+        $["ClientDiscoveryValueForSingleApi"] = $["Operation"];
+        delete $["Operation"];
+      }
+  # Fix breaking change: Update OperationListResult to use ClientDiscoveryValueForSingleApi
+  - from: swagger-document
+    where: $.definitions.OperationListResult.properties.value.items
+    transform: >
+      $["$ref"] = "#/definitions/ClientDiscoveryValueForSingleApi";
+  # Fix breaking change: Add ServiceSpecification properties to ClientDiscoveryValueForSingleApi (removed in common-types v5)
+  - from: swagger-document
+    where: $.definitions
+    transform: >
+      $["ClientDiscoveryForServiceSpecification"] = {
+        "type": "object",
+        "description": "Class to represent shoebox service specification in json client discovery.",
+        "properties": {
+          "logSpecifications": {
+            "type": "array",
+            "description": "List of log specifications of this operation.",
+            "items": {
+              "$ref": "#/definitions/ClientDiscoveryForLogSpecification"
+            }
+          }
+        }
+      };
+      $["ClientDiscoveryForLogSpecification"] = {
+        "type": "object",
+        "description": "Class to represent shoebox log specification in json client discovery.",
+        "properties": {
+          "blobDuration": {
+            "type": "string",
+            "description": "Blob duration of the log"
+          },
+          "displayName": {
+            "type": "string",
+            "description": "Localized display name"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the log"
+          }
+        }
+      };
+  - from: swagger-document
+    where: $.definitions.ClientDiscoveryValueForSingleApi.properties
+    transform: >
+      $["serviceSpecification"] = {
+        "$ref": "#/definitions/ClientDiscoveryForServiceSpecification",
+        "description": "Operation properties."
+      };
+  # Fix breaking change: Change Origin property from enum back to string
+  - from: swagger-document
+    where: $.definitions.ClientDiscoveryValueForSingleApi.properties.origin
+    transform: >
+      delete $["x-ms-enum"];
+      delete $["enum"];
+      $["type"] = "string";
+  # Fix breaking change: Add DppProxyResource definition (removed in new swagger)
+  - from: swagger-document
+    where: $.definitions
+    transform: >
+      $["DppProxyResource"] = {
+        "type": "object",
+        "x-ms-azure-resource": true,
+        "properties": {
+          "id": {
+            "description": "Proxy Resource Id represents the complete path to the resource.",
+            "readOnly": true,
+            "type": "string"
+          },
+          "name": {
+            "description": "Proxy Resource name associated with the resource.",
+            "readOnly": true,
+            "type": "string"
+          },
+          "type": {
+            "description": "Proxy Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...",
+            "readOnly": true,
+            "type": "string"
+          },
+          "tags": {
+            "$ref": "#/definitions/DppProxyResourceTags"
+          },
+          "systemData": {
+            "$ref": "#/definitions/SystemData"
+          }
+        }
+      };
+      $["DppProxyResourceTags"] = {
+        "type": "object",
+        "description": "Proxy Resource tags.",
+        "additionalProperties": {
+          "type": "string"
+        }
+      };
+      $["SystemData"] = {
+        "description": "Metadata pertaining to creation and last modification of the resource.",
+        "type": "object",
+        "readOnly": true,
+        "properties": {
+          "createdBy": {
+            "type": "string",
+            "description": "The identity that created the resource."
+          },
+          "createdByType": {
+            "type": "string",
+            "description": "The type of identity that created the resource.",
+            "enum": ["User", "Application", "ManagedIdentity", "Key"],
+            "x-ms-enum": {
+              "name": "createdByType",
+              "modelAsString": true
+            }
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The timestamp of resource creation (UTC)."
+          },
+          "lastModifiedBy": {
+            "type": "string",
+            "description": "The identity that last modified the resource."
+          },
+          "lastModifiedByType": {
+            "type": "string",
+            "description": "The type of identity that last modified the resource.",
+            "enum": ["User", "Application", "ManagedIdentity", "Key"],
+            "x-ms-enum": {
+              "name": "createdByType",
+              "modelAsString": true
+            }
+          },
+          "lastModifiedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The timestamp of resource last modification (UTC)"
+          }
+        }
+      };
+  # Fix breaking change: Revert BackupInstanceResource to old definition (inherit from DppProxyResource, remove explicit tags)
+  - from: swagger-document
+    where: $.definitions.BackupInstanceResource
+    transform: >
+      delete $.properties.tags;
+      delete $.type;
+      $.allOf = [{ "$ref": "#/definitions/DppProxyResource" }];
+  - from: swagger-document
+    where: $.definitions
+    transform: >
+      delete $["BackupInstanceResourceTags"];
   - where:
       parameter-name: XmsAuthorizationAuxiliary
     set:
@@ -104,6 +276,33 @@ directive:
       parameter-name: SecuritySettingEncryptionSetting
     set:
       parameter-name: EncryptionSetting
+  # Update ResourceGuardOperationRequest description across all request models to provide actionable guidance
+  # The operation-specific dpp request name varies by cmdlet:
+  #   Suspend-AzDataProtectionBackupInstanceBackup -> dppDisableSuspendBackupsRequests
+  #   Stop-AzDataProtectionBackupInstanceProtection -> dppDisableStopProtectionRequests
+  #   Update-AzDataProtectionBackupInstance -> dppModifyPolicy
+  #   Start-AzDataProtectionBackupInstanceRestore -> dppTriggerRestoreRequests
+  #   Update-AzDataProtectionBackupVault -> dppReduceImmutabilityStateRequests, dppReduceSoftDeleteSecurityRequests, dppModifyEncryptionSettingsRequests
+  - from: swagger-document
+    where: $.definitions.SuspendBackupRequest.properties.resourceGuardOperationRequests
+    transform: >
+      $.description = "Resource guard operation request in the format similar to <ResourceGuard-ARMID>/dppDisableSuspendBackupsRequests/default. Use this parameter when the operation is MUA protected.";
+  - from: swagger-document
+    where: $.definitions.StopProtectionRequest.properties.resourceGuardOperationRequests
+    transform: >
+      $.description = "Resource guard operation request in the format similar to <ResourceGuard-ARMID>/dppDisableStopProtectionRequests/default. Use this parameter when the operation is MUA protected.";
+  - from: swagger-document
+    where: $.definitions.BackupInstance.properties.resourceGuardOperationRequests
+    transform: >
+      $.description = "Resource guard operation request in the format similar to <ResourceGuard-ARMID>/dppModifyPolicy/default. Use this parameter when the operation is MUA protected.";
+  - from: swagger-document
+    where: $.definitions.AzureBackupRestoreRequest.properties.resourceGuardOperationRequests
+    transform: >
+      $.description = "Resource guard operation request in the format similar to <ResourceGuard-ARMID>/dppTriggerRestoreRequests/default. Use this parameter when the operation is MUA protected.";
+  - from: swagger-document
+    where: $.definitions.BackupVault.properties.resourceGuardOperationRequests
+    transform: >
+      $.description = "Resource guard operation request in the format similar to <ResourceGuard-ARMID>/<operation>/default. Use this parameter when the operation is MUA protected. Supported operations include dppReduceImmutabilityStateRequests, dppReduceSoftDeleteSecurityRequests, and dppModifyEncryptionSettingsRequests.";
   - where:
       verb: Get
       subject: BackupVaultResource.*
@@ -142,7 +341,7 @@ directive:
     hide: true
   - where:
       verb: Unlock
-      variant: ^UnlockViaIdentityExpanded$|^UnlockViaIdentity$|^Unlock$
+      variant: ^(Unlock)(?!.*?(Expanded|JsonFilePath|JsonString))|^UnlockViaIdentityExpanded$|^UnlockViaIdentity$
     remove: true
   - where:
       verb: Unlock
@@ -151,12 +350,16 @@ directive:
   - where:
       verb: New
       subject: ResourceGuardProxy$
-      variant: ^Create$|^UpdateExpanded$|^UpdateViaIdentityExpanded$
+      variant: ^(Create)(?!.*?(Expanded|JsonFilePath|JsonString))|^UpdateExpanded$|^UpdateViaIdentityExpanded$
     remove: true
   - where:
       subject: DppResourceGuardProxy$
     set: 
       subject: ResourceGuardMapping
+  - where:
+      verb: Unlock
+      subject: ^DppResourceGuardProxyDelete$
+    remove: true
   - where:
       parameter-name: ResourceGuardProxyName
     hide: true 
@@ -168,6 +371,20 @@ directive:
       subject: ResourceGuardMapping
       parameter-name: LastUpdatedTime|Description|ResourceGuardOperationDetail
     hide: true
+  - where:
+      verb: Update
+      subject: ^ResourceGuardMapping$
+    remove: true
+  - where:
+      verb: Get
+      subject: DeletedBackupVault
+      variant: ^GetViaIdentity$
+    hide: true
+  - where:
+      verb: Get
+      subject: DeletedBackupVault
+    set:
+      subject: SoftDeletedBackupVault
   - where:
       verb: Get
       subject: DeletedBackupInstance
@@ -208,7 +425,14 @@ directive:
       subject: BackupPolicy.*
     hide: true
   - where:
-      variant: ^CreateViaIdentity$|^Patch$|^PatchViaIdentity$|^Backup$|^BackupViaIdentity$|^TriggerViaIdentity|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      verb: Update
+      subject: ^BackupPolicy$
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity$|^PatchViaIdentity$|^BackupViaIdentity$|^TriggerViaIdentity|^CreateViaIdentityExpanded$|^UpdateViaIdentity$
+    remove: true
+  - where:
+      variant: ^(Patch|Backup|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
       verb: Get
@@ -270,17 +494,36 @@ directive:
       subject: BackupVault
     hide: true
   - where:
+      verb: New
+      subject: BackupVault
+      parameter-name: Parameter
+    set:
+      parameter-name: Parameter
+    clear-alias: true
+  - where:
+      verb: New
+      subject: BackupVault
+      variant: ^Create$
+      parameter-name: Parameter
+    required: false
+  - where:
+      verb: New
+      subject: BackupVault
+      variant: ^CreateExpanded$
+      parameter-name: StorageSetting
+    required: false
+  - where:
       verb: Update
       subject: BackupVault
       variant: ^UpdateExpanded$
     hide: true
   - where:
       verb: Invoke
-      variant: ^Post$|^PostViaIdentity$|^PostViaIdentityExpanded$
+      variant: ^(Post)(?!.*?(Expanded|JsonFilePath|JsonString))|^PostViaIdentity$|^PostViaIdentityExpanded$
     remove: true
   - where:
       verb: Find
-      variant: ^Find$|^FindViaIdentity$|^FindViaIdentityExpanded$
+      variant: ^(Find)(?!.*?(Expanded|JsonFilePath|JsonString))|^FindViaIdentity$|^FindViaIdentityExpanded$
     remove: true
   - where:
       verb: Get
@@ -304,6 +547,23 @@ directive:
       subject: ResourceGuardMapping$
     set:
       verb: Set
+  - where:
+      verb: Get
+      subject: SoftDeletedBackupInstance
+      parameter-name: BackupInstanceName
+    set:
+      parameter-description: The name of the deleted backup instance
+  - where:
+      verb: Undo
+      subject: BackupInstanceDeletion
+      parameter-name: BackupInstanceName
+    set:
+      parameter-description: The name of the deleted backup instance
+  - where:
+      verb: Update
+      subject: ^BackupInstance$
+      variant: ^UpdateViaIdentityBackupVaultExpanded$|^UpdateViaIdentityExpanded$
+    remove: true
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/findRestorableTimeRanges"].post
     transform: $["description"] = "Finds the valid recovery point in time ranges for the restore."
@@ -319,54 +579,64 @@ directive:
           "$ref": "#/definitions/OperationJobExtendedInfo"
         }
       }
-  - where:
-      verb: Test
-      subject: BackupInstance
-      variant: ^Validate2$|^ValidateExpanded2$|^ValidateViaIdentity2$|^ValidateViaIdentityExpanded2$
-    set:
-      subject: BackupInstanceRestore
-  - where:
-      verb: Test
-      subject: BackupInstance
-      variant: ^Validate$|^ValidateExpanded$|^ValidateViaIdentity$|^ValidateViaIdentityExpanded$
-    set:
-      subject: BackupInstanceReadiness
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/validateForModifyBackup"].post.parameters[?(@.name=="parameters")]
+    transform: $["name"] = "validateForModifyBackupRequest"
   - where:
       verb: Test
       subject: BackupInstance
       variant: ^Validate1$|^ValidateExpanded1$|^ValidateViaIdentity1$|^ValidateViaIdentityExpanded1$
     set:
-      subject: BackupInstanceUpdate
+      subject: BackupInstanceRestore
   - where:
       verb: Test
-      subject: BackupInstanceUpdate
-      variant: ^Validate1$|^ValidateViaIdentity1$|^ValidateViaIdentityExpanded1$
-    hide: true
-  - where:
-      verb: Test
+      subject: BackupInstance
+      variant: ^Validate2$|^ValidateExpanded2$|^ValidateViaIdentity2$|^ValidateViaIdentityExpanded2$
+    set:
       subject: BackupInstanceReadiness
+  - where:
+      verb: Test
+      subject: BackupInstance
+      variant: ^Validate$|^ValidateExpanded$|^ValidateViaIdentity$|^ValidateViaIdentityExpanded$
+    set:
+      subject: BackupInstanceUpdate
+  - where:
+      verb: Test
+      subject: BackupInstanceUpdate
       variant: ^Validate$|^ValidateViaIdentity$|^ValidateViaIdentityExpanded$
     hide: true
   - where:
       verb: Test
+      subject: BackupInstanceReadiness
+      variant: ^Validate2$|^ValidateViaIdentity2$|^ValidateViaIdentityExpanded2$
+    hide: true
+  - where:
+      verb: Test
       subject: BackupInstanceRestore
-      variant: ^Validate2$|^ValidateExpanded2$|^ValidateViaIdentity2$|^ValidateViaIdentityExpanded2$
+      variant: ^Validate1$|^ValidateExpanded1$|^ValidateViaIdentity1$|^ValidateViaIdentityExpanded1$
     hide: true
   - where:
       verb: Test
       subject: BackupInstanceCrossRegionRestore
     hide: true
   - where:
-      verb: Test
-      subject: BackupInstanceUpdate
-      parameter-name: Name
-    set: 
-      alias: 
-        - BackupInstanceName
-  - where:
       subject: FetchCrossRegionRestoreJob      
     set:
       subject: CrossRegionRestoreJob
+  - where:
+      verb: Update
+      subject: ^BackupInstance$
+      variant: ^UpdateExpanded$
+    hide: true
+  - where:
+      verb: Update
+      subject: ^BackupInstance$
+      parameter-name: Name
+    clear-alias: true
+  - where:
+      verb: Test
+      subject: ^BackupInstance$
+    remove: true
   - where:      
       subject: CrossRegionRestoreJob
       variant: ^Get.*
@@ -452,9 +722,11 @@ directive:
     - CrossRegionRestoreDetails
     - CrossRegionRestoreRequestObject
     - DeletionInfo
+    - EncryptionSettings
     - InnerError
     - ItemLevelRestoreTargetInfo
     - PolicyParameters
+    - ResourceDeletionInfo
     - RestoreFilesTargetInfo
     - RestoreTargetInfo
     - RestoreTargetInfoBase
@@ -464,22 +736,28 @@ directive:
     - UserFacingError    
     - ValidateRestoreRequestObject
     - ValidateCrossRegionRestoreRequestObject
-    - EncryptionSettings
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBaseBackupPolicy Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBaseBackupPolicy Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBaseBackupPolicy Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBaseBackupPolicy Property');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.ITriggerContext Trigger', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.ITriggerContext Trigger');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ITriggerContext Trigger', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ITriggerContext Trigger');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupParameters BackupParameter', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupParameters BackupParameter');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupParameters BackupParameter', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupParameters BackupParameter');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupRecoveryPoint Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupRecoveryPoint Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRecoveryPoint Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRecoveryPoint Property');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.INamespacedNameResource ResourceModifierReference', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.INamespacedNameResource ResourceModifierReference');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.INamespacedNameResource ResourceModifierReference', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.INamespacedNameResource ResourceModifierReference');
+
+  - where:
+      verb: Backup|Edit|Find|Get|Initialize|New|Set|Start|Stop|Suspend|Sync|Test|Update
+      subject: BackupInstance|BackupInstanceAdhoc|BackupInstanceBackup|BackupInstanceProtection|BackupInstanceReadiness|BackupInstanceRestore|BackupInstanceUpdate|BackupPolicy|BackupVault|Job|MSIPermission|Operation|OperationStatus|PolicyRetentionRuleClientObject|PolicyTagClientObject|PolicyTagCriteriaClientObject|PolicyTemplate|PolicyTriggerClientObject|ResourceGuard|ResourceGuardMapping|RestorableTimeRange|RestoreRequest|RetentionLifeCycleClientObject|SoftDeletedBackupInstance
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026.           *\\r\\n* At least one change applies to this cmdlet.                                                    *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
 ```
 
 ## Alternate settings

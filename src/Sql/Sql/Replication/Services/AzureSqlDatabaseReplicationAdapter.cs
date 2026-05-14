@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL Database</param>
-        /// <param name="subscriptionId">The subscription id of the Auzre SQL Database</param>
+        /// <param name="subscriptionId">The subscription id of the Azure SQL Database</param>
         /// <returns>The Azure SQL Database object</returns>
         internal AzureSqlDatabaseModel GetDatabase(string resourceGroupName, string serverName, string databaseName, string subscriptionId = null)
         {

@@ -3,6 +3,7 @@
     <PsModuleName>DiskPool</PsModuleName>
     <PsRootModuleName>DiskPool</PsRootModuleName>
     <PsModuleFolder>DiskPool.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.DiskPool</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

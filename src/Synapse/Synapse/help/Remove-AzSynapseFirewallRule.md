@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The firerwall rule name for the workspace.
+The firewall rule name for the workspace.
 
 ```yaml
 Type: System.String

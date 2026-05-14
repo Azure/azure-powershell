@@ -1,14 +1,20 @@
-﻿
+
 
 function Edit-AzDataProtectionPolicyRetentionRuleClientObject {
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupPolicy')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ModelCmdletAttribute()]
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupPolicy')]
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Adds or removes Retention Rule to existing Policy')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PreviewMessage("**********************************************************************************************`n
+    * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *`n
+    * At least one change applies to this cmdlet.                                           *`n
+    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486  *`n
+    ***************************************************************************************************")]
 
     param(
         [Parameter(ParameterSetName='AddRetention',Mandatory, HelpMessage='Backup Policy Object')]
         [Parameter(ParameterSetName='RemoveRetention',Mandatory, HelpMessage='Backup Policy Object')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupPolicy]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupPolicy]
         ${Policy},
 
         [Parameter(ParameterSetName='AddRetention',Mandatory, HelpMessage='Retention Rule Name')]
@@ -29,7 +35,7 @@ function Edit-AzDataProtectionPolicyRetentionRuleClientObject {
         ${OverwriteLifeCycle},
 
         [Parameter(ParameterSetName='AddRetention',Mandatory, HelpMessage='Life cycles associated with the retention rule.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.ISourceLifeCycle[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ISourceLifeCycle[]]
         ${LifeCycles}
     )
 
@@ -41,14 +47,15 @@ function Edit-AzDataProtectionPolicyRetentionRuleClientObject {
             {
                 throw  "Removing Default Retention Rule is not allowed. Please try again with different rule name."
             }
-            $filteredRules = $Policy.PolicyRule | Where-Object { $_.Name –ne $Name }
+            $filteredRules = $Policy.PolicyRule | Where-Object { $_.Name -ne $Name }
             $Policy.PolicyRule = $filteredRules
             return $Policy
         }
 
         if($parameterSetName -eq "AddRetention"){
             $retentionPolicyIndex = -1
-            Foreach($index in (0..$Policy.PolicyRule.Length)){
+            $policyRuleCount = @($Policy.PolicyRule).Count
+            Foreach($index in (0..($policyRuleCount - 1))){
                 if($Policy.PolicyRule[$index].Name -eq $Name){
                     $retentionPolicyIndex = $index
                 }
@@ -68,7 +75,7 @@ function Edit-AzDataProtectionPolicyRetentionRuleClientObject {
                     throw "Selected Retention Rule " + $Name  + " is not applicable for datasource type " + $DatasourceType
                 }
 
-                $newRetentionRule = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.AzureRetentionRule]::new()
+                $newRetentionRule = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.AzureRetentionRule]::new()
                 $newRetentionRule.ObjectType = "AzureRetentionRule"
                 $newRetentionRule.IsDefault = $IsDefault
                 $newRetentionRule.Name = $Name
@@ -92,7 +99,7 @@ function Edit-AzDataProtectionPolicyRetentionRuleClientObject {
                         throw $message
                     }
 
-                    $newRetentionRule = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.AzureRetentionRule]::new()
+                    $newRetentionRule = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.AzureRetentionRule]::new()
                     $newRetentionRule.ObjectType = "AzureRetentionRule"
                     $newRetentionRule.IsDefault = $IsDefault
                     $newRetentionRule.Name = $Name

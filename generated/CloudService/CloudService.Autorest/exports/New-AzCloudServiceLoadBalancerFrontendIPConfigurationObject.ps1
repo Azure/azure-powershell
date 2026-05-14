@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a in-memory object for LoadBalancerFrontendIPConfiguration
+Create an in-memory object for LoadBalancerFrontendIPConfiguration.
 .Description
-Create a in-memory object for LoadBalancerFrontendIPConfiguration
+Create an in-memory object for LoadBalancerFrontendIPConfiguration.
 .Example
 $publicIP = Get-AzPublicIpAddress -ResourceGroupName 'ContosoOrg' -Name 'ContosoPublicIP'
 $feIpConfig = New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject -Name 'ContosoFe' -PublicIPAddressId $publicIp.Id
@@ -31,18 +31,19 @@ $loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject -Name 'C
 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.LoadBalancerFrontendIPConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.LoadBalancerFrontendIPConfiguration
 .Link
-https://learn.microsoft.com/powershell/module/az.cloudservice/new-azcloudserviceloadbalancerfrontendipconfigurationobject
+https://learn.microsoft.com/powershell/module/Az.CloudService/new-azcloudserviceloadbalancerfrontendipconfigurationobject
 #>
 function New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.LoadBalancerFrontendIPConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.LoadBalancerFrontendIPConfiguration])]
 [CmdletBinding(DefaultParameterSetName='DefaultParameterSet', PositionalBinding=$false)]
 param(
-    [Parameter()]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
     [System.String]
-    # Name of FrontendIpConfigration.
+    # The name of the resource that is unique within the set of frontend IP configurations used by the load balancer.
+    # This name can be used to access the resource.
     ${Name},
 
     [Parameter(ParameterSetName='DefaultParameterSet')]
@@ -54,13 +55,13 @@ param(
     [Parameter(ParameterSetName='PrivateIP')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
     [System.String]
-    # Private IP Address
+    # The virtual network private IP address of the IP configuration.
     ${PrivateIPAddress},
 
     [Parameter(ParameterSetName='PrivateIP')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
     [System.String]
-    # Subnet ID
+    # Resource Id.
     ${SubnetId}
 )
 
@@ -71,6 +72,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -100,6 +104,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

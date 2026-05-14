@@ -53,7 +53,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         ContainerResultSegment ListContainersSegmented(string prefix, ContainerListingDetails detailsIncluded, int? maxResults, BlobContinuationToken continuationToken, BlobRequestOptions options, OperationContext operationContext);
 
         /// <summary>
-        /// Get container presssions
+        /// Get container permissions
         /// </summary>
         /// <param name="container">A cloudblobcontainer object</param>
         /// <param name="accessCondition">Access condition</param>
@@ -237,7 +237,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         string GetStorageAccountSASToken(SharedAccessAccountPolicy sharedAccessAccountPolicy);
 
         /// <summary>
-        /// Async get container presssions
+        /// Async get container permissions
         /// </summary>
         /// <param name="container">A cloudblobcontainer object</param>
         /// <param name="accessCondition">Access condition</param>

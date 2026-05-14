@@ -10,15 +10,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Get marketplace info mapped to the given monitor.</summary>
+    /// <summary>
+    /// Retrieves marketplace and organization information mapped to the given New Relic monitor resource
+    /// </summary>
     /// <remarks>
     /// [OpenAPI] Get=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/getBillingInfo"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzNewRelicBillingInfo_GetViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IBillingInfoResponse))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Description(@"Get marketplace info mapped to the given monitor.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Description(@"Retrieves marketplace and organization information mapped to the given New Relic monitor resource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/getBillingInfo", ApiVersion = "2024-01-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}/getBillingInfo", ApiVersion = "2025-05-01-preview")]
     public partial class GetAzNewRelicBillingInfo_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IContext

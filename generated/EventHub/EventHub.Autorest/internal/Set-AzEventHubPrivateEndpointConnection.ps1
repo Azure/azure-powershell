@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update PrivateEndpointConnections of service namespace.
+Update PrivateEndpointConnections of service namespace.
 .Description
-update PrivateEndpointConnections of service namespace.
+Update PrivateEndpointConnections of service namespace.
 .Example
 {{ Add code here }}
 .Example

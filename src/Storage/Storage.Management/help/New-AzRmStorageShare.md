@@ -99,7 +99,7 @@ myshare                                                                       20
 
 This command creates a Storage file share snapshot of an existing base file share.
 
-### Example 5: Create a Storage file share with EnabledProtocol proeprty as NFS, and RootSquash property as NoRootSquash
+### Example 5: Create a Storage file share with EnabledProtocol property as NFS, and RootSquash property as NoRootSquash
 <!-- Skip: Output cannot be splitted from code -->
 
 
@@ -118,7 +118,7 @@ $share.RootSquash
 NoRootSquash
 ```
 
-This command creates a Storage file share with EnabledProtocol proeprty as NFS, and RootSquash proeprty as NoRootSquash.
+This command creates a Storage file share with EnabledProtocol property as NFS, and RootSquash property as NoRootSquash.
 
 ### Example 6: Create a Storage file share with provisioned bandwidth and IOPS
 ```powershell

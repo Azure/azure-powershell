@@ -16,15 +16,13 @@
 
 <#
 .Synopsis
-Patch the properties of the provided cluster, or update the tags associated with the cluster.
-Properties and tag updates can be done independently.
+Update a new cluster or update the properties of the cluster if it exists.
 .Description
-Patch the properties of the provided cluster, or update the tags associated with the cluster.
-Properties and tag updates can be done independently.
+Update a new cluster or update the properties of the cluster if it exists.
 .Example
 $storageapplianceconfigurationdata = @()
 $baremetalmachineconfigurationdata = @()
-$computerackdefinition = @(@{IRackDefinition = "The list of rack definitions for the compute racks in a multi-rackcluster, or an empty list in a single-rack cluster."})
+$computerackdefinition = @(@{IRackDefinition = "The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster."})
 $tagHash = @{
     tag = "tag"
     tagUpdate = "tagUpdate"
@@ -32,11 +30,24 @@ $tagHash = @{
 $securePassword = ConvertTo-SecureString "password" -asplaintext -force
 
 Update-AzNetworkCloudCluster -ResourceGroupName resourceGroup -Name clusterName -SubscriptionId subscriptionId -AggregatorOrSingleRackDefinitionNetworkRackId rackId -AggregatorOrSingleRackDefinitionRackSerialNumber sr1234 -AggregatorOrSingleRackDefinitionRackSkuId rackSku -AggregatorOrSingleRackDefinitionAvailabilityZone availabilityzone -AggregatorOrSingleRackDefinitionBareMetalMachineConfiguration $baremetalmachineconfigurationdata -AggregatorOrSingleRackDefinitionRackLocation rackLocation -AggregatorOrSingleRackDefinitionStorageApplianceConfiguration $storageapplianceconfigurationdata -ClusterServicePrincipalApplicationId clusterServicePrincipalAppId -ClusterServicePrincipalId ClusterServicePrincipalId -ClusterServicePrincipalPassword $securePassword -ClusterServicePrincipalTenantId tenantId -ComputeRackDefinition $computerackdefinition -Tag $tagHash
+.Example
+$storageapplianceconfigurationdata = @()
+$baremetalmachineconfigurationdata = @()
+$computerackdefinition = @(@{IRackDefinition = "The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster."})
+$tagHash = @{
+    tag = "tag"
+    tagUpdate = "tagUpdate"
+}
+$securePassword = ConvertTo-SecureString "password" -asplaintext -force
+$userAssignedIdentityResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myManagedIdentity"
+
+
+Update-AzNetworkCloudCluster -ResourceGroupName resourceGroup -Name clusterName -AggregatorOrSingleRackDefinitionNetworkRackId rackId -AggregatorOrSingleRackDefinitionRackSerialNumber sr1234 -AggregatorOrSingleRackDefinitionRackSkuId rackSku -UserAssignedIdentity $userAssignedIdentityResourceId -SubscriptionId subscriptionId -AggregatorOrSingleRackDefinitionAvailabilityZone availabilityZone -AggregatorOrSingleRackDefinitionBareMetalMachineConfiguration $baremetalmachineconfigurationdata -AggregatorOrSingleRackDefinitionRackLocation rackLocation -AggregatorOrSingleRackDefinitionStorageApplianceConfiguration $storageapplianceconfigurationdata -AnalyticsOutputSettingsAssociatedIdentityType identityType -AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId userAssignedIdentityResourceId -AnalyticOutputSettingAnalyticsWorkspaceId analyticsWorkspaceId -CommandOutputSettingContainerUrl containerUrl -AssociatedIdentityType commandOutputSettingsIdentityType -AssociatedIdentityUserAssignedIdentityResourceId commandOutputSettingsUserAssignedIdentityResourceId -ClusterServicePrincipalApplicationId clusterServicePrincipalAppId -ClusterServicePrincipalId ClusterServicePrincipalId -ClusterServicePrincipalPassword $securePassword -ClusterServicePrincipalTenantId tenantId -ComputeRackDefinition $computerackdefinition -SecretArchiveKeyVaultId keyVaultId -SecretArchiveSettingVaultUri keyVaultUri -SecretArchiveSettingsAssociatedIdentityType identityType -SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId userAssignedIdentityResourceId -SecretArchiveUseKeyVault useKeyVault -UpdateStrategyThresholdType updateStrategyThresholdType -UpdateStrategyThresholdValue updateStrategyThresholdValue -UpdateStrategyType updateStrategyType -UpdateStrategyWaitTimeMinute updateStrategyWaitTimeMinutes -VulnerabilityScanningSettingContainerScan vulnerabilityScanningSettingContainerScan -ComputeDeploymentThresholdGrouping computeDeploymentThresholdGrouping -ComputeDeploymentThresholdType computeDeploymentThresholdType -ComputeDeploymentThresholdValue computeDeploymentThresholdValue -Tag $tagHash
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -59,12 +70,12 @@ AGGREGATORORSINGLERACKDEFINITIONSTORAGEAPPLIANCECONFIGURATION <IStorageAppliance
   SerialNumber <String>: The serial number of the appliance.
   [StorageApplianceName <String>]: The user-provided name for the storage appliance that will be created from this specification.
 
-COMPUTERACKDEFINITION <IRackDefinition[]>: The list of rack definitions for the compute racks in a multi-rackcluster, or an empty list in a single-rack cluster.
+COMPUTERACKDEFINITION <IRackDefinition[]>: The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster.
   NetworkRackId <String>: The resource ID of the network rack that matches this rack definition.
   RackSerialNumber <String>: The unique identifier for the rack within Network Cloud cluster. An alternate unique alphanumeric value other than a serial number may be provided if desired.
   RackSkuId <String>: The resource ID of the sku for the rack being added.
   [AvailabilityZone <String>]: The zone name used for this rack when created. Availability zones are used for workload placement.
-  [BareMetalMachineConfigurationData <IBareMetalMachineConfigurationData[]>]: The unordered list of bare metal machine configuration.
+  [BareMetalMachineConfigurationData <List<IBareMetalMachineConfigurationData>>]: The unordered list of bare metal machine configuration.
     BmcCredentialsPassword <SecureString>: The password of the administrator of the device used during initialization.
     BmcCredentialsUsername <String>: The username of the administrator of the device used during initialization.
     BmcMacAddress <String>: The MAC address of the BMC for this machine.
@@ -74,7 +85,7 @@ COMPUTERACKDEFINITION <IRackDefinition[]>: The list of rack definitions for the 
     [MachineDetail <String>]: The free-form additional information about the machine, e.g. an asset tag.
     [MachineName <String>]: The user-provided name for the bare metal machine created from this specification.         If not provided, the machine name will be generated programmatically.
   [RackLocation <String>]: The free-form description of the rack's location.
-  [StorageApplianceConfigurationData <IStorageApplianceConfigurationData[]>]: The list of storage appliance configuration data for this rack.
+  [StorageApplianceConfigurationData <List<IStorageApplianceConfigurationData>>]: The list of storage appliance configuration data for this rack.
     AdminCredentialsPassword <SecureString>: The password of the administrator of the device used during initialization.
     AdminCredentialsUsername <String>: The username of the administrator of the device used during initialization.
     RackSlot <Int64>: The slot that storage appliance is in the rack based on the BOM configuration.
@@ -108,7 +119,7 @@ INPUTOBJECT <INetworkCloudIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.networkcloud/update-aznetworkcloudcluster
 #>
 function Update-AzNetworkCloudCluster {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.ICluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICluster])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -137,8 +148,22 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkCloudIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Header')]
+    [System.String]
+    # The ETag of the transformation.
+    # Omit this value to always overwrite the current resource.
+    # Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+    ${IfMatch},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Header')]
+    [System.String]
+    # Set to '*' to allow a new record set to be created, but to prevent updating an existing resource.
+    # Other values will result in error from server as they are not supported.
+    ${IfNoneMatch},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
@@ -150,9 +175,8 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IBareMetalMachineConfigurationData[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineConfigurationData[]]
     # The unordered list of bare metal machine configuration.
-    # To construct, see NOTES section for AGGREGATORORSINGLERACKDEFINITIONBAREMETALMACHINECONFIGURATION properties and create a hash table.
     ${AggregatorOrSingleRackDefinitionBareMetalMachineConfiguration},
 
     [Parameter()]
@@ -183,23 +207,41 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IStorageApplianceConfigurationData[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IStorageApplianceConfigurationData[]]
     # The list of storage appliance configuration data for this rack.
-    # To construct, see NOTES section for AGGREGATORORSINGLERACKDEFINITIONSTORAGEAPPLIANCECONFIGURATION properties and create a hash table.
     ${AggregatorOrSingleRackDefinitionStorageApplianceConfiguration},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentitySelectorType])]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentitySelectorType]
+    [System.String]
+    # The resource ID of the analytics workspace that is to be used by the specified identity.
+    ${AnalyticOutputSettingAnalyticsWorkspaceId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("SystemAssignedIdentity", "UserAssignedIdentity")]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
     # The type of managed identity that is being selected.
-    ${AssociatedIdentityType},
+    ${AnalyticsOutputSettingsAssociatedIdentityType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The user assigned managed identity resource ID to use.
     # Mutually exclusive with a system assigned identity type.
+    ${AnalyticsOutputSettingsAssociatedIdentityUserAssignedIdentityResourceId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("SystemAssignedIdentity", "UserAssignedIdentity")]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # The type of associated identity for CommandOutputSettings.
+    ${AssociatedIdentityType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # The resource ID of the user assigned identity for CommandOutputSettings.
     ${AssociatedIdentityUserAssignedIdentityResourceId},
 
     [Parameter()]
@@ -239,16 +281,16 @@ param(
     ${CommandOutputSettingContainerUrl},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ValidationThresholdGrouping])]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("PerCluster", "PerRack")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ValidationThresholdGrouping]
+    [System.String]
     # Selection of how the type evaluation is applied to the cluster calculation.
     ${ComputeDeploymentThresholdGrouping},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ValidationThresholdType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("CountSuccess", "PercentSuccess")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ValidationThresholdType]
+    [System.String]
     # Selection of how the threshold should be evaluated.
     ${ComputeDeploymentThresholdType},
 
@@ -261,31 +303,20 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IRackDefinition[]]
-    # The list of rack definitions for the compute racks in a multi-rackcluster, or an empty list in a single-rack cluster.
-    # To construct, see NOTES section for COMPUTERACKDEFINITION properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IRackDefinition[]]
+    # The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster.
     ${ComputeRackDefinition},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentityType])]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ManagedServiceIdentityType]
-    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-    ${IdentityType},
+    [System.Nullable[System.Boolean]]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Audit", "Disabled", "OnDemand", "Passive", "RealTime")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api50.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The set of user assigned identities associated with the resource.
-    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    # The dictionary values can be empty objects ({}) in requests.
-    ${IdentityUserAssignedIdentity},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.RuntimeProtectionEnforcementLevel])]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.RuntimeProtectionEnforcementLevel]
+    [System.String]
     # The mode of operation for runtime protection.
     ${RuntimeProtectionConfigurationEnforcementLevel},
 
@@ -296,17 +327,37 @@ param(
     ${SecretArchiveKeyVaultId},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterSecretArchiveEnabled])]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterSecretArchiveEnabled]
+    [System.String]
+    # The URI for the key vault used as the secret archive.
+    ${SecretArchiveSettingVaultUri},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("SystemAssignedIdentity", "UserAssignedIdentity")]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # The type of managed identity that is being selected.
+    ${SecretArchiveSettingsAssociatedIdentityType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # The user assigned managed identity resource ID to use.
+    # Mutually exclusive with a system assigned identity type.
+    ${SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
     # The indicator if the specified key vault should be used to archive the secrets of the cluster.
     ${SecretArchiveUseKeyVault},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.Api20240701.IClusterPatchParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
-    # The Azure resource tags that will replace the existing ones.
+    # Resource tags.
     ${Tag},
 
     [Parameter()]
@@ -317,9 +368,9 @@ param(
     ${UpdateStrategyMaxUnavailable},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ValidationThresholdType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("CountSuccess", "PercentSuccess")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ValidationThresholdType]
+    [System.String]
     # Selection of how the threshold should be evaluated.
     ${UpdateStrategyThresholdType},
 
@@ -330,9 +381,9 @@ param(
     ${UpdateStrategyThresholdValue},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterUpdateStrategyType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Rack", "PauseAfterRack")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Support.ClusterUpdateStrategyType]
+    [System.String]
     # The mode of operation for runtime protection.
     ${UpdateStrategyType},
 
@@ -341,6 +392,21 @@ param(
     [System.Int64]
     # The time to wait between the increments of update defined by the strategy.
     ${UpdateStrategyWaitTimeMinute},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [System.String]
+    # The mode selection for container vulnerability scanning.
+    ${VulnerabilityScanningSettingContainerScan},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -410,6 +476,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -432,9 +507,7 @@ begin {
             UpdateExpanded = 'Az.NetworkCloud.private\Update-AzNetworkCloudCluster_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.NetworkCloud.private\Update-AzNetworkCloudCluster_UpdateViaIdentityExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -448,6 +521,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

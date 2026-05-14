@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Description(@"create a OrganizationResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/ArizeAi.ObservabilityEval/organizations/{organizationname}", ApiVersion = "2024-10-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/ArizeAi.ObservabilityEval/organizations/{organizationname}", ApiVersion = "2024-10-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.NotSuggestDefaultParameterSet]
     public partial class NewAzArizeAIOrganization_CreateViaJsonFilePath : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Runtime.IEventListener,

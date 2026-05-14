@@ -27,7 +27,7 @@ New-AzConnectedNetworkAzureStackEdgeObject -AzureStackEdgeId "/subscriptions/xxx
 ```
 
 ```output
-eviceType     ProvisioningState Status
+DeviceType     ProvisioningState Status
 ----------     ----------------- ------
 AzureStackEdge
 ```

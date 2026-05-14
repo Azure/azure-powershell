@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDeviceRegistryAssetEndpointProfile
 
 ## SYNOPSIS
-update a AssetEndpointProfile
+Update a AssetEndpointProfile
 
 ## SYNTAX
 
@@ -46,7 +46,7 @@ Update-AzDeviceRegistryAssetEndpointProfile -Name <String> -ResourceGroupName <S
 ```
 
 ## DESCRIPTION
-update a AssetEndpointProfile
+Update a AssetEndpointProfile
 
 ## EXAMPLES
 

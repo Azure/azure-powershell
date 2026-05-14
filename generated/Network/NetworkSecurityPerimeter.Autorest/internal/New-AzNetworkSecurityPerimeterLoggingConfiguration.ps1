@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create NSP logging configuration.
+Create NSP logging configuration.
 .Description
-create NSP logging configuration.
+Create NSP logging configuration.
 .Example
 New-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1 -EnabledLogCategory @('NspPublicOutboundPerimeterRulesAllowed')
 

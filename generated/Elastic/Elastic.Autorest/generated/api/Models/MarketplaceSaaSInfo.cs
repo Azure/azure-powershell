@@ -54,6 +54,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Inlined)]
         public string MarketplaceSubscriptionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoMarketplaceSubscriptionInternal)MarketplaceSubscription).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoMarketplaceSubscriptionInternal)MarketplaceSubscription).Id = value ?? null; }
 
+        /// <summary>Offer Id of the Marketplace offer,</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Inlined)]
+        public string MarketplaceSubscriptionOfferId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoMarketplaceSubscriptionInternal)MarketplaceSubscription).OfferId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoMarketplaceSubscriptionInternal)MarketplaceSubscription).OfferId = value ?? null; }
+
+        /// <summary>Publisher Id of the Marketplace offer.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Inlined)]
+        public string MarketplaceSubscriptionPublisherId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoMarketplaceSubscriptionInternal)MarketplaceSubscription).PublisherId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoMarketplaceSubscriptionInternal)MarketplaceSubscription).PublisherId = value ?? null; }
+
         /// <summary>Internal Acessors for MarketplaceSubscription</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoMarketplaceSubscription Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoInternal.MarketplaceSubscription { get => (this._marketplaceSubscription = this._marketplaceSubscription ?? new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.MarketplaceSaaSInfoMarketplaceSubscription()); set { {_marketplaceSubscription = value;} } }
 
@@ -131,6 +139,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string MarketplaceSubscriptionId { get; set; }
+        /// <summary>Offer Id of the Marketplace offer,</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Offer Id of the Marketplace offer,",
+        SerializedName = @"offerId",
+        PossibleTypes = new [] { typeof(string) })]
+        string MarketplaceSubscriptionOfferId { get; set; }
+        /// <summary>Publisher Id of the Marketplace offer.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Publisher Id of the Marketplace offer.",
+        SerializedName = @"publisherId",
+        PossibleTypes = new [] { typeof(string) })]
+        string MarketplaceSubscriptionPublisherId { get; set; }
         /// <summary>Flag specifying if the Marketplace status is subscribed or not.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
         Required = false,
@@ -162,6 +192,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMarketplaceSaaSInfoMarketplaceSubscription MarketplaceSubscription { get; set; }
         /// <summary>Marketplace Subscription Id. This is a GUID-formatted string.</summary>
         string MarketplaceSubscriptionId { get; set; }
+        /// <summary>Offer Id of the Marketplace offer,</summary>
+        string MarketplaceSubscriptionOfferId { get; set; }
+        /// <summary>Publisher Id of the Marketplace offer.</summary>
+        string MarketplaceSubscriptionPublisherId { get; set; }
         /// <summary>Flag specifying if the Marketplace status is subscribed or not.</summary>
         bool? Subscribed { get; set; }
 

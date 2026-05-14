@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Description(@"List OrganizationResource resources by subscription ID")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/ArizeAi.ObservabilityEval/organizations", ApiVersion = "2024-10-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/ArizeAi.ObservabilityEval/organizations", ApiVersion = "2024-10-01")]
     public partial class GetAzArizeAIOrganization_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Runtime.IContext

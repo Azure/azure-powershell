@@ -1,7 +1,7 @@
 ---
 external help file: Az.ConfidentialLedger-help.xml
 Module Name: Az.ConfidentialLedger
-online version: https://learn.microsoft.com/powershell/module/Az.ConfidentialLedger/new-AzConfidentialLedgerAADBasedSecurityPrincipalObject
+online version: https://learn.microsoft.com/powershell/module/Az.ConfidentialLedger/new-azconfidentialledgeraadbasedsecurityprincipalobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for AADBasedSecurityPrincipal.
 ## SYNTAX
 
 ```
-New-AzConfidentialLedgerAADBasedSecurityPrincipalObject [-LedgerRoleName <LedgerRoleName>]
- [-PrincipalId <String>] [-TenantId <String>] [<CommonParameters>]
+New-AzConfidentialLedgerAADBasedSecurityPrincipalObject [-LedgerRoleName <String>] [-PrincipalId <String>]
+ [-TenantId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,7 +44,7 @@ Creates an AadBasedSecurityPrincipalObject that may be used for `Az.Confidential
 LedgerRole associated with the Security Principal of Ledger.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Support.LedgerRoleName
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -92,7 +92,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.AadBasedSecurityPrincipal
+### Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.AadBasedSecurityPrincipal
 
 ## NOTES
 

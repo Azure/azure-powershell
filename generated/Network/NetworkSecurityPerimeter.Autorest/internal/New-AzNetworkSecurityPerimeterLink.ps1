@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create NSP link resource.
+Create NSP link resource.
 .Description
-create NSP link resource.
+Create NSP link resource.
 .Example
 $remotePerimeterId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-1/providers/Microsoft.Network/networkSecurityPerimeters/test-nsp-2"
 New-AzNetworkSecurityPerimeterLink -Name link-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName test-nsp-1 -AutoApprovedRemotePerimeterResourceId $remotePerimeterId  -LocalInboundProfile @('*') -RemoteInboundProfile @('*')

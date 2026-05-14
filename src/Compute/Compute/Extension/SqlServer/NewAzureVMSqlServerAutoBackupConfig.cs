@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.Compute
         }
 
         /// <summary>
-        /// Initialzies a new instance of the <see cref="NewAzureVMSqlServerAutoBackupConfigCommand"/> class.
+        /// Initializes a new instance of the <see cref="NewAzureVMSqlServerAutoBackupConfigCommand"/> class.
         /// </summary>
         public NewAzureVMSqlServerAutoBackupConfigCommand()
         {

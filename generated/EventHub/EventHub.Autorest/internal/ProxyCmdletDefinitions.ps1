@@ -1677,9 +1677,9 @@ end {
 
 <#
 .Synopsis
-create an ApplicationGroup for a Namespace.
+Create an ApplicationGroup for a Namespace.
 .Description
-create an ApplicationGroup for a Namespace.
+Create an ApplicationGroup for a Namespace.
 .Example
 $t1 = New-AzEventHubThrottlingPolicyConfig -Name t1 -MetricId IncomingMessages -RateLimitThreshold 10000
 $t2 = New-AzEventHubThrottlingPolicyConfig -Name t2 -MetricId OutgoingBytes -RateLimitThreshold 20000
@@ -1834,10 +1834,10 @@ end {
 
 <#
 .Synopsis
-create an AuthorizationRule for the specified Event Hub.
+Create an AuthorizationRule for the specified Event Hub.
 Creation/create of the AuthorizationRule will take a few seconds to take effect.
 .Description
-create an AuthorizationRule for the specified Event Hub.
+Create an AuthorizationRule for the specified Event Hub.
 Creation/create of the AuthorizationRule will take a few seconds to take effect.
 .Example
 New-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myAuthRule -Rights @('Manage', 'Send', 'Listen')
@@ -2096,9 +2096,9 @@ end {
 
 <#
 .Synopsis
-create an instance of an Event Hubs Cluster.
+Create an instance of an Event Hubs Cluster.
 .Description
-create an instance of an Event Hubs Cluster.
+Create an instance of an Event Hubs Cluster.
 .Example
 New-AzEventHubCluster -ResourceGroupName myResourceGroup -Name myEventHubsCluster -Location "eastasia" -SupportsScaling -Capacity 2
 .Example
@@ -2266,9 +2266,9 @@ end {
 
 <#
 .Synopsis
-create an Event Hubs consumer group as a nested resource within a Namespace.
+Create an Event Hubs consumer group as a nested resource within a Namespace.
 .Description
-create an Event Hubs consumer group as a nested resource within a Namespace.
+Create an Event Hubs consumer group as a nested resource within a Namespace.
 .Example
 New-AzEventHubConsumerGroup -Name myConsumerGroup -NamespaceName myNamespace -ResourceGroupName myResourceGroup -EventHubName myEventHub -UserMetadata "Test ConsumerGroup"
 
@@ -2418,9 +2418,9 @@ end {
 
 <#
 .Synopsis
-create a new Alias(Disaster Recovery configuration)
+Create a new Alias(Disaster Recovery configuration)
 .Description
-create a new Alias(Disaster Recovery configuration)
+Create a new Alias(Disaster Recovery configuration)
 .Example
 New-AzEventHubGeoDRConfiguration -Name myAlias -ResourceGroupName myResourceGroup -NamespaceName myPrimaryNamespace -PartnerNamespace /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/mySecondaryNamespace
 
@@ -2833,9 +2833,9 @@ end {
 
 <#
 .Synopsis
-create an AuthorizationRule for a Namespace.
+Create an AuthorizationRule for a Namespace.
 .Description
-create an AuthorizationRule for a Namespace.
+Create an AuthorizationRule for a Namespace.
 .Example
 {{ Add code here }}
 .Example
@@ -3282,11 +3282,11 @@ end {
 
 <#
 .Synopsis
-create a namespace.
+Create a namespace.
 Once created, this namespace's resource manifest is immutable.
 This operation is idempotent.
 .Description
-create a namespace.
+Create a namespace.
 Once created, this namespace's resource manifest is immutable.
 This operation is idempotent.
 .Example
@@ -3342,6 +3342,7 @@ PARAMETER <IEhNamespace>: Single Namespace item in List or Get Operation
     [(Any) <String>]: This indicates any property can be added to this object.
   [AlternateName <String>]: Alternate name specified when alias and namespace names are same.
   [ClusterArmId <String>]: Cluster ARM ID of the Namespace.
+  [ConfidentialComputeMode <String>]: Setting to Enable or Disable Confidential Compute
   [DisableLocalAuth <Boolean?>]: This property disables SAS authentication for the Event Hubs namespace.
   [EnableAutoInflate <Boolean?>]: Value that indicates whether AutoInflate is enabled for eventhub namespace.
   [GeoDataReplicationLocation <List<INamespaceReplicaLocation>>]: A list of regions where replicas of the namespace are maintained.
@@ -3425,6 +3426,13 @@ param(
     ${ClusterArmId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.String]
+    # Setting to Enable or Disable Confidential Compute
+    ${ConfidentialComputeMode},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # This property disables SAS authentication for the Event Hubs namespace.
@@ -3492,7 +3500,7 @@ param(
     ${MaximumThroughputUnit},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("1.0", "1.1", "1.2")]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("1.0", "1.1", "1.2", "1.3")]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
     [System.String]
     # The minimum TLS version for the cluster to support, e.g.
@@ -3686,9 +3694,9 @@ end {
 
 <#
 .Synopsis
-create NetworkRuleSet for a Namespace.
+Create NetworkRuleSet for a Namespace.
 .Description
-create NetworkRuleSet for a Namespace.
+Create NetworkRuleSet for a Namespace.
 .Example
 {{ Add code here }}
 .Example
@@ -3920,9 +3928,198 @@ end {
 
 <#
 .Synopsis
-create PrivateEndpointConnections of service namespace.
+Refreshes any information about the association.
 .Description
-create PrivateEndpointConnections of service namespace.
+Refreshes any information about the association.
+.Example
+{{ Add code here }}
+.Example
+{{ Add code here }}
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IEventHubIdentity>: Identity Parameter
+  [Alias <String>]: The Disaster Recovery configuration name
+  [ApplicationGroupName <String>]: The Application Group name 
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [ClusterName <String>]: The name of the Event Hubs Cluster.
+  [ConsumerGroupName <String>]: The consumer group name
+  [EventHubName <String>]: The Event Hub name
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The Namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: Name of the resource group within the azure subscription.
+  [SchemaGroupName <String>]: The Schema Group name 
+  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+NAMESPACEINPUTOBJECT <IEventHubIdentity>: Identity Parameter
+  [Alias <String>]: The Disaster Recovery configuration name
+  [ApplicationGroupName <String>]: The Application Group name 
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [ClusterName <String>]: The name of the Event Hubs Cluster.
+  [ConsumerGroupName <String>]: The consumer group name
+  [EventHubName <String>]: The Event Hub name
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The Namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [ResourceAssociationName <String>]: The ResourceAssociation Name
+  [ResourceGroupName <String>]: Name of the resource group within the azure subscription.
+  [SchemaGroupName <String>]: The Schema Group name 
+  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+.Link
+https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubnetworksecurityperimeterconfiguration
+#>
+function New-AzEventHubNetworkSecurityPerimeterConfiguration {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityNamespace', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity]
+    # Identity Parameter
+    ${NamespaceInputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityNamespace', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
+    [System.String]
+    # The ResourceAssociation Name
+    ${ResourceAssociationName},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            CreateViaIdentity = 'Az.EventHub.private\New-AzEventHubNetworkSecurityPerimeterConfiguration_CreateViaIdentity';
+            CreateViaIdentityNamespace = 'Az.EventHub.private\New-AzEventHubNetworkSecurityPerimeterConfiguration_CreateViaIdentityNamespace';
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Create PrivateEndpointConnections of service namespace.
+.Description
+Create PrivateEndpointConnections of service namespace.
 .Example
 {{ Add code here }}
 .Example
@@ -4171,9 +4368,9 @@ end {
 
 <#
 .Synopsis
-create an EventHub schema group.
+Create an EventHub schema group.
 .Description
-create an EventHub schema group.
+Create an EventHub schema group.
 .Example
 $schemaGroup = New-AzEventHubSchemaGroup -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name mySchemaGroup -SchemaCompatibility Backward -SchemaType Avro
 
@@ -4326,9 +4523,9 @@ end {
 
 <#
 .Synopsis
-create a new Event Hub as a nested resource within a Namespace.
+Create a new Event Hub as a nested resource within a Namespace.
 .Description
-create a new Event Hub as a nested resource within a Namespace.
+Create a new Event Hub as a nested resource within a Namespace.
 .Example
 New-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -RetentionTimeInHour 168 -PartitionCount 5 -CleanupPolicy Delete
 .Example
@@ -4946,9 +5143,9 @@ end {
 
 <#
 .Synopsis
-update an ApplicationGroup for a Namespace.
+Update an ApplicationGroup for a Namespace.
 .Description
-update an ApplicationGroup for a Namespace.
+Update an ApplicationGroup for a Namespace.
 .Example
 $t3 = New-AzEventHubThrottlingPolicyConfig -Name t3 -MetricId OutgoingMessages -RateLimitThreshold 12000
 $appGroup = Get-AzEventHubApplicationGroup -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myAppGroup
@@ -5142,10 +5339,10 @@ end {
 
 <#
 .Synopsis
-update an AuthorizationRule for the specified Event Hub.
+Update an AuthorizationRule for the specified Event Hub.
 Creation/update of the AuthorizationRule will take a few seconds to take effect.
 .Description
-update an AuthorizationRule for the specified Event Hub.
+Update an AuthorizationRule for the specified Event Hub.
 Creation/update of the AuthorizationRule will take a few seconds to take effect.
 .Example
 Set-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myAuthRule -Rights @('Manage', 'Send', 'Listen')
@@ -5321,9 +5518,9 @@ end {
 
 <#
 .Synopsis
-update an instance of an Event Hubs Cluster.
+Update an instance of an Event Hubs Cluster.
 .Description
-update an instance of an Event Hubs Cluster.
+Update an instance of an Event Hubs Cluster.
 .Example
 Set-AzEventHubCluster -ResourceGroupName myResourceGroup -Name myCluster -Capacity 3
 .Example
@@ -5517,9 +5714,9 @@ end {
 
 <#
 .Synopsis
-update an Event Hubs consumer group as a nested resource within a Namespace.
+Update an Event Hubs consumer group as a nested resource within a Namespace.
 .Description
-update an Event Hubs consumer group as a nested resource within a Namespace.
+Update an Event Hubs consumer group as a nested resource within a Namespace.
 .Example
 Set-AzEventHubConsumerGroup -ResourceGroupName myResourceGroup -NamespaceName myNamespace -EventHubName myEventHub -Name myConsumerGroup -UserMetadata "Example Metadata"
 .Example
@@ -5696,9 +5893,9 @@ end {
 
 <#
 .Synopsis
-update a new Alias(Disaster Recovery configuration)
+Update a new Alias(Disaster Recovery configuration)
 .Description
-update a new Alias(Disaster Recovery configuration)
+Update a new Alias(Disaster Recovery configuration)
 .Example
 {{ Add code here }}
 .Example
@@ -5871,9 +6068,9 @@ end {
 
 <#
 .Synopsis
-update an AuthorizationRule for a Namespace.
+Update an AuthorizationRule for a Namespace.
 .Description
-update an AuthorizationRule for a Namespace.
+Update an AuthorizationRule for a Namespace.
 .Example
 {{ Add code here }}
 .Example
@@ -6179,6 +6376,13 @@ param(
     ${ClusterArmId},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+    [System.String]
+    # Setting to Enable or Disable Confidential Compute
+    ${ConfidentialComputeMode},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # This property disables SAS authentication for the Event Hubs namespace.
@@ -6259,7 +6463,7 @@ param(
     ${MaximumThroughputUnit},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("1.0", "1.1", "1.2")]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("1.0", "1.1", "1.2", "1.3")]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
     [System.String]
     # The minimum TLS version for the cluster to support, e.g.
@@ -6439,9 +6643,9 @@ end {
 
 <#
 .Synopsis
-update NetworkRuleSet for a Namespace.
+Update NetworkRuleSet for a Namespace.
 .Description
-update NetworkRuleSet for a Namespace.
+Update NetworkRuleSet for a Namespace.
 .Example
 $ipRule1 = New-AzEventHubIPRuleConfig -IPMask 2.2.2.2 -Action Allow
 $ipRule2 = New-AzEventHubIPRuleConfig -IPMask 3.3.3.3 -Action Allow
@@ -6651,9 +6855,9 @@ end {
 
 <#
 .Synopsis
-update PrivateEndpointConnections of service namespace.
+Update PrivateEndpointConnections of service namespace.
 .Description
-update PrivateEndpointConnections of service namespace.
+Update PrivateEndpointConnections of service namespace.
 .Example
 {{ Add code here }}
 .Example
@@ -6843,9 +7047,9 @@ end {
 
 <#
 .Synopsis
-update an EventHub schema group.
+Update an EventHub schema group.
 .Description
-update an EventHub schema group.
+Update an EventHub schema group.
 .Example
 {{ Add code here }}
 .Example
@@ -7027,9 +7231,9 @@ end {
 
 <#
 .Synopsis
-update a new Event Hub as a nested resource within a Namespace.
+Update a new Event Hub as a nested resource within a Namespace.
 .Description
-update a new Event Hub as a nested resource within a Namespace.
+Update a new Event Hub as a nested resource within a Namespace.
 .Example
 Set-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer container -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId "/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount"
 .Example
@@ -7193,7 +7397,7 @@ param(
     [System.Int64]
     # The minimum time a message will remain ineligible for compaction in the log.
     # This value is used when cleanupPolicy is Compact or DeleteOrCompact.
-    ${RetentionDescriptionMinCompactionLagInMin},
+    ${RetentionDescriptionMinCompactionLagTimeInMinute},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]

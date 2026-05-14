@@ -111,7 +111,7 @@ New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central
           Zone               : {1, 2}
 ```
 
-This command creates Azure cache for Redis instance in mutliple zones.
+This command creates Azure cache for Redis instance in multiple zones.
 
 ### Example 4: Create a Virtual Network enable Cache
 
@@ -602,7 +602,7 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-Specifies one or more comma seperated user identities to be associated with the Azure Cache for Redis. The user identity references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
+Specifies one or more comma separated user identities to be associated with the Azure Cache for Redis. The user identity references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
 
 ```yaml
 Type: System.String[]

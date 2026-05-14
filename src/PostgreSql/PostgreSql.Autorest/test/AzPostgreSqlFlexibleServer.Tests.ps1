@@ -43,7 +43,7 @@ Describe 'AzPostgreSqlFlexibleServer' {
         # restart
         Restart-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName
      
-        # update - half paramaeters
+        # update - half parameters
         $UpdatedServer = Update-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName -MaintenanceWindow Mon:1:20
         $UpdatedServer.MaintenanceWindowCustomWindow | Should -Be 'Enabled'
         $UpdatedServer.MaintenanceWindowDayOfWeek | Should -Be 1

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create an identity in the specified subscription and resource group.
+Create an identity in the specified subscription and resource group.
 .Description
-create an identity in the specified subscription and resource group.
+Create an identity in the specified subscription and resource group.
 .Example
 New-AzUserAssignedIdentity -ResourceGroupName azure-rg-test -Name uai-pwsh01 -Location eastus
 
@@ -137,8 +137,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

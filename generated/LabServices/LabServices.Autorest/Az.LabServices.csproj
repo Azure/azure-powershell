@@ -2,9 +2,10 @@
   <PropertyGroup>
     <PsModuleName>LabServices</PsModuleName>
     <PsRootModuleName>LabServices</PsRootModuleName>
+    <PsModuleFolder>LabServices.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.LabServices</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
-
 </Project>

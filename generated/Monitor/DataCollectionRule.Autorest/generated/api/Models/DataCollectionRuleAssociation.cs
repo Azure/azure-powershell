@@ -55,10 +55,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleAssociationMetadata Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleAssociationInternal.Metadata { get => (this._metadata = this._metadata ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleAssociationMetadata()); set { {_metadata = value;} } }
 
         /// <summary>Internal Acessors for MetadataProvisionedBy</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleAssociationInternal.MetadataProvisionedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadataInternal)Metadata).ProvisionedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadataInternal)Metadata).ProvisionedBy = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleAssociationInternal.MetadataProvisionedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadataInternal)Metadata).ProvisionedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadataInternal)Metadata).ProvisionedBy = value ?? null; }
 
         /// <summary>Internal Acessors for MetadataProvisionedByResourceId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleAssociationInternal.MetadataProvisionedByResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadataInternal)Metadata).ProvisionedByResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadataInternal)Metadata).ProvisionedByResourceId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleAssociationInternal.MetadataProvisionedByResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadataInternal)Metadata).ProvisionedByResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMetadataInternal)Metadata).ProvisionedByResourceId = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleAssociationInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }

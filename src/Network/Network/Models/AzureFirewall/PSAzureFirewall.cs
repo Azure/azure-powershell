@@ -87,9 +87,19 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string EnableFatFlowLogging { get; set; }
 
+        public string EnableDnstapLogging { get; set; }
+
         public string EnableUDPLogOptimization { get; set; }
 
         public string RouteServerId { get; set; }
+
+        public PSExtendedLocation ExtendedLocation { get; set; }
+
+        [JsonIgnore]
+        public string ExtendedLocationText
+        {
+            get { return JsonConvert.SerializeObject(ExtendedLocation, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
 
         [JsonIgnore]
         public string IpConfigurationsText

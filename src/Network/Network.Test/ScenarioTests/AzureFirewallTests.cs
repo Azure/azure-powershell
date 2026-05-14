@@ -164,6 +164,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallCRUDEnableDnstapLogging()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallCRUDEnableDnstapLogging");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
         public void TestAzureFirewallVirtualHubPrivateIPAddress()
         {
             TestRunner.RunTestScript("Test-AzureFirewallVirtualHubPrivateIPAddress");
@@ -213,6 +221,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestInvokeAzureFirewallPacketCaptureOperation()
+        {
+            TestRunner.RunTestScript("Test-InvokeAzureFirewallPacketCaptureOperation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
         public void TestByopipAzureHubFirewall()
         {
             TestRunner.RunTestScript("Test-InvokeAzureByopipHubFirewall");
@@ -232,6 +248,22 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestAzureFirewallAutoscaleConfiguration()
         {
             TestRunner.RunTestScript("Test-AzureFirewallAutoscaleConfiguration");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallCRUDWithEdgeZone()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallCRUDWithEdgeZone");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallEdgeZoneZonesValidation()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallEdgeZoneZonesValidation");
         }
     }
 }

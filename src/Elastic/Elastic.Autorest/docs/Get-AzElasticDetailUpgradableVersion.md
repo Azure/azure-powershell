@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzElasticDetailUpgradableVersion
 
 ## SYNOPSIS
-List of upgradable versions for a given monitor resource.
+List all upgradable versions for your Elastic monitor resource, helping you plan and execute upgrades.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Get-AzElasticDetailUpgradableVersion -InputObject <IElasticIdentity> [-DefaultPr
 ```
 
 ## DESCRIPTION
-List of upgradable versions for a given monitor resource.
+List all upgradable versions for your Elastic monitor resource, helping you plan and execute upgrades.
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVMwareGlobalReachConnection
 
 ## SYNOPSIS
-update a GlobalReachConnection
+Update a GlobalReachConnection
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ Update-AzVMwareGlobalReachConnection -InputObject <IVMwareIdentity> [-Authorizat
 ```
 
 ## DESCRIPTION
-update a GlobalReachConnection
+Update a GlobalReachConnection
 
 ## EXAMPLES
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExpressRouteId
-The ID of the Private Cloud's ExpressRoute Circuit that is participating in theglobal reach connection
+The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection
 
 ```yaml
 Type: System.String

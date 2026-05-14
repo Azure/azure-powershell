@@ -45,13 +45,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models
         Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICatalogMsrp Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICatalogInternal.Msrp { get => (this._msrp = this._msrp ?? new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.CatalogMsrp()); set { {_msrp = value;} } }
 
         /// <summary>Internal Acessors for MsrpP1Y</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPrice Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICatalogInternal.MsrpP1Y { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICatalogMsrpInternal)Msrp).P1Y; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICatalogMsrpInternal)Msrp).P1Y = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPrice Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICatalogInternal.MsrpP1Y { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICatalogMsrpInternal)Msrp).P1Y; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICatalogMsrpInternal)Msrp).P1Y = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for MsrpP3Y</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPrice Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICatalogInternal.MsrpP3Y { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICatalogMsrpInternal)Msrp).P3Y; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICatalogMsrpInternal)Msrp).P3Y = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPrice Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICatalogInternal.MsrpP3Y { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICatalogMsrpInternal)Msrp).P3Y; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICatalogMsrpInternal)Msrp).P3Y = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for MsrpP5Y</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPrice Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICatalogInternal.MsrpP5Y { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICatalogMsrpInternal)Msrp).P5Y; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICatalogMsrpInternal)Msrp).P5Y = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPrice Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICatalogInternal.MsrpP5Y { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICatalogMsrpInternal)Msrp).P5Y; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICatalogMsrpInternal)Msrp).P5Y = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Name</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICatalogInternal.Name { get => this._name; set { {_name = value;} } }

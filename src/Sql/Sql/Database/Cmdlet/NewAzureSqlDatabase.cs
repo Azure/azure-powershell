@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Database.Services;
 using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -111,7 +112,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica. This property is only settable for Premium and Business Critical databases.")]
         [ValidateNotNullOrEmpty]
-        public DatabaseReadScale ReadScale { get; set; }
+        public Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale ReadScale { get; set; }
 
         /// <summary>
         /// Gets or sets the tags associated with the Azure Sql Database
@@ -343,7 +344,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             {
                 ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName);
             }
-            catch (CloudException ex)
+            catch (ErrorResponseException ex)
             {
                 if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
@@ -381,7 +382,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 MaxSizeBytes = MaxSizeBytes,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                 ElasticPoolName = ElasticPoolName,
-                ReadScale = this.IsParameterBound(p => p.ReadScale) ? ReadScale : (DatabaseReadScale?)null,
+                ReadScale = this.IsParameterBound(p => p.ReadScale) ? ReadScale : (Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale?)null,
                 ZoneRedundant = this.IsParameterBound(p => p.ZoneRedundant) ? ZoneRedundant.ToBool() : (bool?)null,
                 LicenseType = LicenseType, // note: default license type will be LicenseIncluded in SQL RP if not specified
                 AutoPauseDelayInMinutes = this.IsParameterBound(p => p.AutoPauseDelayInMinutes) ? AutoPauseDelayInMinutes : (int?)null,

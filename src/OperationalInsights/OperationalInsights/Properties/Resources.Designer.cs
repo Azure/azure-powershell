@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please atleast have one severity level to enable log collection..
+        ///   Looks up a localized string similar to Please at least have one severity level to enable log collection..
         /// </summary>
         internal static string DataSourceSyslogNoSeveritySelected {
             get {

@@ -35,12 +35,12 @@ $NicsToInclude += $Nic
 New-AzMigrateLocalServerReplication -MachineId "/subscriptions/xxx-xxx-xxx/resourceGroups/test-rg/providers/Microsoft.OffAzure/HyperVSites/testsrc7972site/machines/005-005-005" -TargetStoragePathId "/subscriptions/xxx-xxx-xxx/resourceGroups/hciclus-rg/providers/Microsoft.AzureStackHCI/storagecontainers/testStorageContainer1" -TargetResourceGroupId "/subscriptions//xxx-xxx-xxx/resourceGroups/target-rg"-TargetVMName "targetVM" -DiskToInclude $DisksToInclude -NicToInclude $NicsToInclude
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJobModel
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratelocalserverreplication
 #>
 function New-AzMigrateLocalServerReplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJobModel])]
 [CmdletBinding(DefaultParameterSetName='ByIdDefaultUser', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -58,7 +58,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # Specifies the target Resource Group Id where the migrated VM resources will reside.
+    # Specifies the target resource group ARM ID where the migrated VM resources will reside.
     ${TargetResourceGroupId},
 
     [Parameter(Mandatory)]
@@ -66,6 +66,18 @@ param(
     [System.String]
     # Specifies the name of the VM to be created.
     ${TargetVMName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the source appliance name for the AzLocal scenario.
+    ${SourceApplianceName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the target appliance name for the AzLocal scenario.
+    ${TargetApplianceName},
 
     [Parameter(ParameterSetName='ByIdDefaultUser', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -76,7 +88,7 @@ param(
     [Parameter(ParameterSetName='ByIdDefaultUser', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # Specifies the Operating System disk for the source server to be migrated.
+    # Specifies the operating system disk for the source server to be migrated.
     ${OSDiskID},
 
     [Parameter()]
@@ -113,13 +125,13 @@ param(
 
     [Parameter(ParameterSetName='ByIdPowerUser', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalDiskInput[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AzLocalDiskInput[]]
     # Specifies the disks on the source server to be included for replication.
     ${DiskToInclude},
 
     [Parameter(ParameterSetName='ByIdPowerUser', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalNicInput[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AzLocalNicInput[]]
     # Specifies the NICs on the source server to be included for replication.
     ${NicToInclude},
 
@@ -178,6 +190,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -200,9 +220,7 @@ begin {
             ByIdDefaultUser = 'Az.Migrate.custom\New-AzMigrateLocalServerReplication';
             ByIdPowerUser = 'Az.Migrate.custom\New-AzMigrateLocalServerReplication';
         }
-        if (('ByIdDefaultUser', 'ByIdPowerUser') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ByIdDefaultUser', 'ByIdPowerUser') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -216,6 +234,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

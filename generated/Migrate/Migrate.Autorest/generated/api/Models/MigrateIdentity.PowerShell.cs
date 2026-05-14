@@ -54,6 +54,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
+        /// <c>OverrideToString</c> will be called if it is implemented. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="stringResult">/// instance serialized to a string, normally it is a Json</param>
+        /// <param name="returnNow">/// set returnNow to true if you provide a customized OverrideToString function</param>
+
+        partial void OverrideToString(ref string stringResult, ref bool returnNow);
+
+        /// <summary>
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.MigrateIdentity"
         /// />.
         /// </summary>
@@ -211,6 +219,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             if (content.Contains("RecoveryPointName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).RecoveryPointName = (string) content.GetValueForProperty("RecoveryPointName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).RecoveryPointName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ReplicationProtectionClusterName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ReplicationProtectionClusterName = (string) content.GetValueForProperty("ReplicationProtectionClusterName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ReplicationProtectionClusterName, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).JobId = (string) content.GetValueForProperty("JobId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).JobId, global::System.Convert.ToString);
             }
             if (content.Contains("MappingName"))
             {
@@ -421,6 +437,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).RecoveryPointName = (string) content.GetValueForProperty("RecoveryPointName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).RecoveryPointName, global::System.Convert.ToString);
             }
+            if (content.Contains("ReplicationProtectionClusterName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ReplicationProtectionClusterName = (string) content.GetValueForProperty("ReplicationProtectionClusterName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).ReplicationProtectionClusterName, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).JobId = (string) content.GetValueForProperty("JobId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).JobId, global::System.Convert.ToString);
+            }
             if (content.Contains("MappingName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).MappingName = (string) content.GetValueForProperty("MappingName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentityInternal)this).MappingName, global::System.Convert.ToString);
@@ -508,6 +532,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SerializationMode.IncludeAll)?.ToString();
+
+        public override string ToString()
+        {
+            var returnNow = false;
+            var result = global::System.String.Empty;
+            OverrideToString(ref result, ref returnNow);
+            if (returnNow)
+            {
+                return result;
+            }
+            return ToJsonString();
+        }
     }
     [System.ComponentModel.TypeConverter(typeof(MigrateIdentityTypeConverter))]
     public partial interface IMigrateIdentity

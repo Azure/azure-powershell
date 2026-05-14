@@ -175,7 +175,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Group { get; set; }
 
-        private const string ownerCopyModeParameterDescription = "Only applicable to NFS Files. The value \"Override\" need to be specified together with parameter `-Owner` and `-Group`. If not specified, the desination file will have the default Owner and Group.";
+        private const string ownerCopyModeParameterDescription = "Only applicable to NFS Files. The value \"Override\" need to be specified together with parameter `-Owner` and `-Group`. If not specified, the destination file will have the default Owner and Group.";
         [Parameter(Mandatory = false, ParameterSetName = ShareNameParameterSet, HelpMessage = ownerCopyModeParameterDescription)]
         [Parameter(Mandatory = false, ParameterSetName = ShareParameterSet, HelpMessage = ownerCopyModeParameterDescription)]
         [Parameter(Mandatory = false, ParameterSetName = FileFilePathParameterSet, HelpMessage = ownerCopyModeParameterDescription)]
@@ -184,7 +184,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [PSArgumentCompleter("Source", "Override")]
         public string OwnerCopyMode { get; set; }
 
-        private const string fileModeCopyModeParameterDescription = "Only applicable to NFS Files. The value \"Override\" need to be specified together with parameter `-FileMode`. If not specified, the desination file will have the default File Mode.";
+        private const string fileModeCopyModeParameterDescription = "Only applicable to NFS Files. The value \"Override\" need to be specified together with parameter `-FileMode`. If not specified, the destination file will have the default File Mode.";
         [Parameter(Mandatory = false, ParameterSetName = ShareNameParameterSet, HelpMessage = fileModeCopyModeParameterDescription)]
         [Parameter(Mandatory = false, ParameterSetName = ShareParameterSet, HelpMessage = fileModeCopyModeParameterDescription)]
         [Parameter(Mandatory = false, ParameterSetName = FileFilePathParameterSet, HelpMessage = fileModeCopyModeParameterDescription)]
@@ -248,7 +248,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         {
             //If destChannel exits, reuse it.
             //If desContext exits, use it.
-            //If Channl object exists, use it.
+            //If Channel object exists, use it.
             //Otherwise, create a new channel.
             IStorageFileManagement destChannel = default(IStorageFileManagement);
 
@@ -419,7 +419,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             if (!sourceFile.CanGenerateSasUri && (sourceFile.Uri.Query != null && !sourceFile.Uri.Query.Contains("sig=")) && string.Compare(sourceFile.Uri.Host, destFile.Uri.Host, ignoreCase: true) != 0)
             {
-                WriteWarning("The source File cannot generate SAS Uri and might cause cross account file copy failures. Please use source File based on SharedKey or SAS creadencial to avoid the failure.");
+                WriteWarning("The source File cannot generate SAS Uri and might cause cross account file copy failures. Please use source File based on SharedKey or SAS credential to avoid the failure.");
             }
 
             ShareFileCopyOptions copyOptions = new ShareFileCopyOptions();

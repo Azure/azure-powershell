@@ -6,7 +6,7 @@ Get-AzKustoSandboxCustomImage -ClusterName "myCluster" -ResourceGroupName "myRes
 ```output
 Name
 ----
-myCluser/myImage
+myCluster/myImage
 ```
 
 The above command returns all Kusto sandbox custom images in cluster "myCluster" and resource group "myResourceGroup".
@@ -19,7 +19,7 @@ Get-AzKustoSandboxCustomImage -ClusterName "myCluster" -Name "myImage" -Resource
 ```output
 Name
 ----
-myCluser/myImage
+myCluster/myImage
 ```
 
 The above command returns a Kusto sandbox custom image named "myImage" in cluster "myCluster" and resource group "myResourceGroup".

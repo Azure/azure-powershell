@@ -652,7 +652,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         {
             if (inputAccountName != null)
             {
-                // remove zone patition from the input account name, like input "myaccountname.z10", the real account name is "myaccountname"
+                // remove zone partition from the input account name, like input "myaccountname.z10", the real account name is "myaccountname"
                 return inputAccountName.Split(new char[] { '.' })[0];
             }
             return null;

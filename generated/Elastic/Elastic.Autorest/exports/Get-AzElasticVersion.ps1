@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Get a list of available versions for a region.
+Retrieve a list of all available Elastic versions for a specified region, helping you choose the best version for your deployment.
 .Description
-Get a list of available versions for a region.
+Retrieve a list of all available Elastic versions for a specified region, helping you choose the best version for your deployment.
 .Example
 Get-AzElasticVersion -Region westus2
 

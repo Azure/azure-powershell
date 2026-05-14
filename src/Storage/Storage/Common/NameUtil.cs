@@ -270,7 +270,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         {
             string fileName = blobName;
 
-            //replace dirctionary
+            //replace dictionary
             Dictionary<string, string> replaceRules = new Dictionary<string, string>()
                 {
                     {"/", Path.DirectorySeparatorChar.ToString()}

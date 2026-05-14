@@ -73,7 +73,7 @@ VendorProvisioningState            : NotProvisioned
 ```
 
 Getting the information of a vendor network function with service key 1234-abcd-4321-dcba, vendor name myVendor, location centraluseuap and subscription.
-Service key can be obtained when getting details of network funcrtion or when creating a network function.
+Service key can be obtained when getting details of network function or when creating a network function.
 
 ### Example 2: Get-AzConnectedNetworkVendorFunction via Identity
 ```powershell

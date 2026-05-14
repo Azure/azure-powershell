@@ -37,7 +37,7 @@ This command creates a file share named ContosoShare06.
 New-AzStorageShare -Name "contososhare07" -Protocol Nfs -EnableSnapshotVirtualDirectoryAccess $true
 ```
 
-This command creates a file share named contososhare07 with NFS protocal, and EnableSnapshotVirtualDirectoryAccess as true.
+This command creates a file share named contososhare07 with NFS protocol, and EnableSnapshotVirtualDirectoryAccess as true.
 
 ## PARAMETERS
 

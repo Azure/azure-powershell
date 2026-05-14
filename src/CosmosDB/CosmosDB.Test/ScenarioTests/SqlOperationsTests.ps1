@@ -73,9 +73,9 @@ function Test-SqlOperationsCmdlets
       $cp1 = New-AzCosmosDBSqlCompositePath -Path "/abc" -Order Ascending
       $cp2 = New-AzCosmosDBSqlCompositePath -Path "/aberc" -Order Descending
       $CompositePaths = (($cp1, $cp2), ($cp2, $cp1))
-      $VectorIndex1 = New-AzCosmosDBSqlVectorIndex -Path "/vector1" -Type "flat"
-      $VectorIndex2 = New-AzCosmosDBSqlVectorIndex -Path "/vector2" -Type "quantizedFlat"
-      $VectorIndex3 = New-AzCosmosDBSqlVectorIndex -Path "/vector3" -Type "diskANN"
+      $VectorIndex1 = New-AzCosmosDBSqlVectorIndex -Path "/vector1" -Type "flat" 
+      $VectorIndex2 = New-AzCosmosDBSqlVectorIndex -Path "/vector2" -Type "quantizedFlat" -QuantizationByteSize 128 
+      $VectorIndex3 = New-AzCosmosDBSqlVectorIndex -Path "/vector3" -Type "diskANN" -QuantizationByteSize 128 -IndexingSearchListSize 50
 
       $IndexingPolicy = New-AzCosmosDBSqlIndexingPolicy -IncludedPath $IncludedPath -SpatialSpec $SpatialSpec -CompositePath $CompositePaths -ExcludedPath "/myPathToNotIndex/*" -Automatic 1 -IndexingMode Consistent -VectorIndex $VectorIndex1,$VectorIndex2,$VectorIndex3
 
@@ -489,13 +489,13 @@ function Test-SqlInAccountRestoreOperationsCmdlets
 #>
 function Test-SqlInAccountCoreFunctionalityNoTimestampBasedRestoreCmdletsV2
 {
-    $AccountName = "dbaccount49-sql-ntbr"
-    $rgName = "CosmosDBResourceGroup63"
-    $DatabaseName = "sqldbName6"
-    $ContainerName = "container1"
+    $AccountName = "dbaccount49-sql-ntbr-st"
+    $rgName = "CosmosDBResourceGroup63-st"
+    $DatabaseName = "sqldbName6-st"
+    $ContainerName = "container1-st"
     $location = "West US"
-    $DatabaseName2 = "dbName2"
-    $ContainerName2 = "container2"
+    $DatabaseName2 = "dbName2-st"
+    $ContainerName2 = "container2-st"
     $apiKind = "Sql"
     $PartitionKeyPathValue = "/foo/bar"
     $PartitionKeyKindValue = "Hash"
@@ -1066,7 +1066,7 @@ function Test-SqlOperationsCmdletsUsingInputObject
       $UpdatedDatabase2 =  Update-AzCosmosDBSqlDatabase -InputObject $UpdatedDatabase
       Assert-AreEqual $UpdatedDatabase2.Name $DatabaseName
 
-      # update container using inpu object
+      # update container using input object
       $UpdatedContainer2 = Update-AzCosmosDBSqlContainer -InputObject $UpdatedContainer
       Assert-AreEqual $UpdatedContainer2.Name $ContainerName
       Assert-AreEqual $UpdatedContainer2.Resource.IndexingPolicy.Automatic $IndexingPolicy.Automatic
@@ -1447,21 +1447,21 @@ function Test-SqlRoleCmdlets
       Assert-AreEqual $UpdatedRoleAssignment.PrincipalId $PrincipalId
       Assert-AreEqual $UpdatedRoleAssignment.Id $FullyQualifiedRoleAssignmentId
 
-      # update role assignmnent by parent object
+      # update role assignment by parent object
       $UpdatedRoleAssignment = Update-AzCosmosDBSqlRoleAssignment -Id $RoleAssignmentId -ParentObject $UpdatedRoleDefinition
       Assert-AreEqual $UpdatedRoleAssignment.RoleDefinitionId $FullyQualifiedRoleDefinitionId
       Assert-AreEqual $UpdatedRoleAssignment.Scope $Scope2
       Assert-AreEqual $UpdatedRoleAssignment.PrincipalId $PrincipalId
       Assert-AreEqual $UpdatedRoleAssignment.Id $FullyQualifiedRoleAssignmentId
 
-      # update role assignmnent by role definition id
+      # update role assignment by role definition id
       $UpdatedRoleAssignment = Update-AzCosmosDBSqlRoleAssignment -RoleDefinitionId $RoleDefinitionId -Id $FullyQualifiedRoleAssignmentId2 -AccountName $AccountName -ResourceGroupName $rgName
       Assert-AreEqual $UpdatedRoleAssignment.RoleDefinitionId $FullyQualifiedRoleDefinitionId
       Assert-AreEqual $UpdatedRoleAssignment.Scope $Scope2
       Assert-AreEqual $UpdatedRoleAssignment.PrincipalId $PrincipalId2
       Assert-AreEqual $UpdatedRoleAssignment.Id $FullyQualifiedRoleAssignmentId2
 
-      # update role assignmnent by input object
+      # update role assignment by input object
       $UpdatedRoleAssignment.RoleDefinitionId = $FullyQualifiedRoleDefinitionId2
 
       $UpdatedRoleAssignment = Update-AzCosmosDBSqlRoleAssignment -InputObject $UpdatedRoleAssignment

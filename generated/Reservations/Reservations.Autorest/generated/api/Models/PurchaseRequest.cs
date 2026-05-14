@@ -80,7 +80,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models
         public string Location { get => this._location; set => this._location = value; }
 
         /// <summary>Internal Acessors for AppliedScopeProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IAppliedScopeProperties Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestInternal.AppliedScopeProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestPropertiesInternal)Properties).AppliedScopeProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestPropertiesInternal)Properties).AppliedScopeProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IAppliedScopeProperties Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestInternal.AppliedScopeProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestPropertiesInternal)Properties).AppliedScopeProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestPropertiesInternal)Properties).AppliedScopeProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for InternalSkuName</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISkuName Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestInternal.InternalSkuName { get => (this._internalSkuName = this._internalSkuName ?? new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.SkuName()); set { {_internalSkuName = value;} } }
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models
         Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestProperties Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestInternal.Properties { get => (this._properties = this._properties ?? new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.PurchaseRequestProperties()); set { {_properties = value;} } }
 
         /// <summary>Internal Acessors for ReservedResourceProperties</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestPropertiesReservedResourceProperties Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestInternal.ReservedResourceProperties { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestPropertiesInternal)Properties).ReservedResourceProperties; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestPropertiesInternal)Properties).ReservedResourceProperties = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestPropertiesReservedResourceProperties Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestInternal.ReservedResourceProperties { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestPropertiesInternal)Properties).ReservedResourceProperties; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestPropertiesInternal)Properties).ReservedResourceProperties = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="Properties" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestProperties _properties;
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"The Azure region where the reserved resource lives.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]

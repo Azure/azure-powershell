@@ -113,6 +113,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)this).SummaryType = (string) content.GetValueForProperty("SummaryType",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)this).SummaryType, global::System.Convert.ToString);
             }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -133,6 +137,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models
             if (content.Contains("SummaryType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)this).SummaryType = (string) content.GetValueForProperty("SummaryType",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)this).SummaryType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.ISummaryResourcePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

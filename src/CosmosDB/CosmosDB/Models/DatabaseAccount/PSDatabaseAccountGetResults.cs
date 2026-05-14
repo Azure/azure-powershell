@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             EnableMultipleWriteLocations = databaseAccountGetResults.EnableMultipleWriteLocations;
             ConnectorOffer = databaseAccountGetResults.ConnectorOffer;
             DisableKeyBasedMetadataWriteAccess = databaseAccountGetResults.DisableKeyBasedMetadataWriteAccess;
+            DisableLocalAuth = databaseAccountGetResults.DisableLocalAuth;
             PublicNetworkAccess = databaseAccountGetResults.PublicNetworkAccess;
             KeyVaultKeyUri = databaseAccountGetResults.KeyVaultKeyUri;
             CustomerManagedKeyStatus = databaseAccountGetResults.CustomerManagedKeyStatus;
@@ -70,6 +71,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             EnablePartitionMerge = databaseAccountGetResults.EnablePartitionMerge;
             MinimalTlsVersion = databaseAccountGetResults.MinimalTlsVersion;
             EnablePerRegionPerPartitionAutoscale = databaseAccountGetResults.EnablePerRegionPerPartitionAutoscale;
+            EnablePriorityBasedExecution = databaseAccountGetResults.EnablePriorityBasedExecution;
+            DefaultPriorityLevel = databaseAccountGetResults.DefaultPriorityLevel;
         }
 
         //
@@ -171,6 +174,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         public bool? DisableKeyBasedMetadataWriteAccess { get; set; }
         //
         // Summary:
+        //     Gets or sets opt-out of local authentication and ensure only MSI and AAD can
+        //     be used exclusively for authentication.
+        public bool? DisableLocalAuth { get; set; }
+        //
+        // Summary:
         //     Gets or sets Whether or not public endpoint access is allowed for this server.
         //     Possible values include: 'Enabled', 'Disabled'
         public string PublicNetworkAccess { get; set; }
@@ -245,5 +253,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets flag to indicate whether Dynamic Scaling (Per Region Per Partition Autoscale) is enabled.
         public bool? EnablePerRegionPerPartitionAutoscale { get; set; }
+        //
+        // Summary:
+        //     Gets or sets flag to indicate whether Priority Based Execution is enabled.
+        public bool? EnablePriorityBasedExecution { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the DefaultPriorityLevel of the CosmosDB Account.
+        public string DefaultPriorityLevel { get; set; }
     }
 }

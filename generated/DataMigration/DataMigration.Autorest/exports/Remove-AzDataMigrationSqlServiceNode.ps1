@@ -25,7 +25,7 @@ Remove-AzDataMigrationSqlServiceNode -ResourceGroupName "MyResourceGroup" -SqlMi
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IDeleteNode
+Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IDeleteNode
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -47,7 +47,7 @@ INPUTOBJECT <IDataMigrationIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.datamigration/remove-azdatamigrationsqlservicenode
 #>
 function Remove-AzDataMigrationSqlServiceNode {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250315Preview.IDeleteNode])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IDeleteNode])]
 [CmdletBinding(DefaultParameterSetName='DeleteExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='DeleteExpanded', Mandatory)]

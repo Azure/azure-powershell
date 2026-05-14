@@ -203,7 +203,7 @@ This command creates a context for the account named myaccountname with a key fo
 New-AzStorageContext -Anonymous -BlobEndpoint "https://myaccountname.blob.core.windows.net/"
 ```
 
-This command creates a context for anonymous use for the account named myaccountname, with specified blob enpoint. 
+This command creates a context for anonymous use for the account named myaccountname, with specified blob endpoint. 
 
 ### Example 13: Create a context by using an SAS token with specified endpoints
 ```powershell

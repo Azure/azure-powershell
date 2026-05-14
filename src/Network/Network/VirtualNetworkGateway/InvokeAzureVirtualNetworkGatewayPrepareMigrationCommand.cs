@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true, 
-            HelpMessage = "Migration paramters to be passed to invoke prepare migration")]
+            HelpMessage = "Migration parameters to be passed to invoke prepare migration")]
         [ValidateNotNullOrEmpty]
         public PSVirtualNetworkGatewayMigrationParameters MigrationParameter { get; set; }
 

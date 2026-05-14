@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzFrontDoorCdnCustomDomain
 
 ## SYNOPSIS
-update an existing domain within a profile.
+Update an existing domain within a profile.
 
 ## SYNTAX
 
@@ -58,15 +58,15 @@ Update-AzFrontDoorCdnCustomDomain -InputObject <ICdnIdentity> [-AzureDnsZoneId <
 ```
 
 ## DESCRIPTION
-update an existing domain within a profile.
+Update an existing domain within a profile.
 
 ## EXAMPLES
 
 ### Example 1: Update an AzureFrontDoor customdomain under the profile
 ```powershell
 $secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
-$secretResource = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
-$updateTlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS10" -Secret $secretResource
+$secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
+$updateTlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS10" -Secret $secretResoure
 Update-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001 -TlsSetting $updateSetting
 ```
 
@@ -81,8 +81,8 @@ Update an AzureFrontDoor customdomain under the profile
 ### Example 2: Update an AzureFrontDoor customdomain under the profile via identity
 ```powershell
 $secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
-$secretResource = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
-$updateTlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS10" -Secret $secretResource
+$secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
+$updateTlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS10" -Secret $secretResoure
 Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001 | Update-AzFrontDoorCdnCustomDomain -TlsSetting $updateSetting
 ```
 
@@ -278,7 +278,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the Resource group within the Azure subscription.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -293,7 +294,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Azure Subscription ID.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

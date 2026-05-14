@@ -25,34 +25,40 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// Initializes a new instance of the PrivateEndpointConnection class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource Id for the resource.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">The name of the resource.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of the resource - e.g. &#34;Microsoft.SignalRService/SignalR&#34;
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="systemData">Metadata pertaining to creation and last modification of the resource.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
-        /// <param name="provisioningState">Provisioning state of the private endpoint connection
+        /// <param name="provisioningState">Provisioning state of the resource.
         /// Possible values include: &#39;Unknown&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;,
         /// &#39;Running&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Moving&#39;</param>
 
-        /// <param name="privateEndpoint">Private endpoint associated with the private endpoint connection
+        /// <param name="privateEndpoint">Private endpoint
         /// </param>
 
-        /// <param name="privateLinkServiceConnectionState">Connection state
+        /// <param name="groupIds">Group IDs
         /// </param>
-        public PrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string provisioningState = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState))
 
-        : base(id, name, type)
+        /// <param name="privateLinkServiceConnectionState">Connection state of the private endpoint connection
+        /// </param>
+        public PrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string provisioningState = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), System.Collections.Generic.IList<string> groupIds = default(System.Collections.Generic.IList<string>), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState))
+
+        : base(id, name, type, systemData)
         {
-            this.SystemData = systemData;
             this.ProvisioningState = provisioningState;
             this.PrivateEndpoint = privateEndpoint;
+            this.GroupIds = groupIds;
             this.PrivateLinkServiceConnectionState = privateLinkServiceConnectionState;
             CustomInit();
         }
@@ -64,26 +70,25 @@ namespace Microsoft.Azure.Management.SignalR.Models
 
 
         /// <summary>
-        /// Gets metadata pertaining to creation and last modification of the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData {get; private set; }
-
-        /// <summary>
-        /// Gets provisioning state of the private endpoint connection Possible values include: &#39;Unknown&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;Running&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Moving&#39;
+        /// Gets provisioning state of the resource. Possible values include: &#39;Unknown&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;Running&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Moving&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }
 
         /// <summary>
-        /// Gets or sets private endpoint associated with the private endpoint
-        /// connection
+        /// Gets or sets private endpoint
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.privateEndpoint")]
         public PrivateEndpoint PrivateEndpoint {get; set; }
 
         /// <summary>
-        /// Gets or sets connection state
+        /// Gets group IDs
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.groupIds")]
+        public System.Collections.Generic.IList<string> GroupIds {get; private set; }
+
+        /// <summary>
+        /// Gets or sets connection state of the private endpoint connection
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.privateLinkServiceConnectionState")]
         public PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState {get; set; }

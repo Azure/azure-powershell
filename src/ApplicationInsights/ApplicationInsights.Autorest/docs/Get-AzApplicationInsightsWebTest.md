@@ -55,7 +55,7 @@ Get-AzApplicationInsightsWebTest
 ```output
 Name                                 Location WebTestKind ResourceGroupName
 ----                                 -------- ----------- -----------------
-bsaic-portal-appinsights-portal01    westus2  ping        azpwsh-rg-test
+basic-portal-appinsights-portal01    westus2  ping        azpwsh-rg-test
 basic-portal02-appinsights-portal01  westus2  ping        azpwsh-rg-test
 basic-portal03-appinsights-portal01  westus2  ping        azpwsh-rg-test
 standard-portal-appinsights-portal01 westus2  standard    azpwsh-rg-test
@@ -72,7 +72,7 @@ Get-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test
 ```output
 Name                                 Location WebTestKind ResourceGroupName
 ----                                 -------- ----------- -----------------
-bsaic-portal-appinsights-portal01    westus2  ping        azpwsh-rg-test
+basic-portal-appinsights-portal01    westus2  ping        azpwsh-rg-test
 basic-portal02-appinsights-portal01  westus2  ping        azpwsh-rg-test
 basic-portal03-appinsights-portal01  westus2  ping        azpwsh-rg-test
 standard-portal-appinsights-portal01 westus2  standard    azpwsh-rg-test
@@ -89,7 +89,7 @@ Get-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -AppInsightsN
 ```output
 Name                                 Location WebTestKind ResourceGroupName   Enabled
 ----                                 -------- ----------- -----------------   -------
-bsaic-portal-appinsights-portal01    westus2  ping        azpwsh-rg-test      True
+basic-portal-appinsights-portal01    westus2  ping        azpwsh-rg-test      True
 basic-portal02-appinsights-portal01  westus2  ping        azpwsh-rg-test      True
 basic-portal03-appinsights-portal01  westus2  ping        azpwsh-rg-test      True
 standard-portal-appinsights-portal01 westus2  standard    azpwsh-rg-test      True
@@ -166,7 +166,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
@@ -235,7 +234,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IWebTest
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWebTest
 
 ## NOTES
 

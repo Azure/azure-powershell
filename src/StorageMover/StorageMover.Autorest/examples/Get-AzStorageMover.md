@@ -1,4 +1,4 @@
-### Example 1: Get all Storage movers in a subcription
+### Example 1: Get all Storage movers in a subscription
 ```powershell
  Get-AzStorageMover
 ```

@@ -15,23 +15,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUsersInternal
     {
 
-        /// <summary>Internal Acessors for NextLink</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUsersInternal.NextLink { get => this._nextLink; set { {_nextLink = value;} } }
-
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>
-        /// Request URL that can be used to query next page of local users. Returned when total number of requested local users exceeds
-        /// the maximum page size.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
-        public string NextLink { get => this._nextLink; }
+        public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUser> _value;
 
-        /// <summary>The list of local users associated with the storage account.</summary>
+        /// <summary>The LocalUser items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUser> Value { get => this._value; set => this._value = value; }
 
@@ -45,28 +39,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
     public partial interface ILocalUsers :
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IJsonSerializable
     {
-        /// <summary>
-        /// Request URL that can be used to query next page of local users. Returned when total number of requested local users exceeds
-        /// the maximum page size.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Request URL that can be used to query next page of local users. Returned when total number of requested local users exceeds the maximum page size.",
-        SerializedName = @"nextLink",
-        PossibleTypes = new [] { typeof(string) })]
-        string NextLink { get;  }
-        /// <summary>The list of local users associated with the storage account.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The list of local users associated with the storage account.",
+        Description = @"The link to the next page of items",
+        SerializedName = @"nextLink",
+        PossibleTypes = new [] { typeof(string) })]
+        string NextLink { get; set; }
+        /// <summary>The LocalUser items on this page</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The LocalUser items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUser) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUser> Value { get; set; }
@@ -76,12 +67,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
     internal partial interface ILocalUsersInternal
 
     {
-        /// <summary>
-        /// Request URL that can be used to query next page of local users. Returned when total number of requested local users exceeds
-        /// the maximum page size.
-        /// </summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>The list of local users associated with the storage account.</summary>
+        /// <summary>The LocalUser items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUser> Value { get; set; }
 
     }

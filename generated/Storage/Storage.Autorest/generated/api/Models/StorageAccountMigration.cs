@@ -13,8 +13,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
     /// </summary>
     public partial class StorageAccountMigration :
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigration,
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationInternal
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationInternal,
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IValidates
     {
+        /// <summary>
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IProxyResource" />
+        /// </summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IProxyResource __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ProxyResource();
 
         /// <summary>Backing field for <see cref="Detail" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationProperties _detail;
@@ -39,56 +44,121 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public string DetailTargetSkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationPropertiesInternal)Detail).TargetSkuName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationPropertiesInternal)Detail).TargetSkuName = value ; }
 
-        /// <summary>Backing field for <see cref="Id" /> property.</summary>
-        private string _id;
+        /// <summary>
+        /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Id; }
 
-        /// <summary>Migration Resource Id</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
-        public string Id { get => this._id; }
+        /// <summary>Internal Acessors for Id</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
+
+        /// <summary>Internal Acessors for Name</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Name = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemData</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataCreatedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataCreatedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedAt</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedBy</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy = value ?? null; }
+
+        /// <summary>Internal Acessors for SystemDataLastModifiedByType</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType = value ?? null; }
+
+        /// <summary>Internal Acessors for Type</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
 
         /// <summary>Internal Acessors for Detail</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationInternal.Detail { get => (this._detail = this._detail ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountMigrationProperties()); set { {_detail = value;} } }
 
         /// <summary>Internal Acessors for DetailMigrationFailedDetailedReason</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationInternal.DetailMigrationFailedDetailedReason { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationPropertiesInternal)Detail).MigrationFailedDetailedReason; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationPropertiesInternal)Detail).MigrationFailedDetailedReason = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationInternal.DetailMigrationFailedDetailedReason { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationPropertiesInternal)Detail).MigrationFailedDetailedReason; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationPropertiesInternal)Detail).MigrationFailedDetailedReason = value ?? null; }
 
         /// <summary>Internal Acessors for DetailMigrationFailedReason</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationInternal.DetailMigrationFailedReason { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationPropertiesInternal)Detail).MigrationFailedReason; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationPropertiesInternal)Detail).MigrationFailedReason = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationInternal.DetailMigrationFailedReason { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationPropertiesInternal)Detail).MigrationFailedReason; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationPropertiesInternal)Detail).MigrationFailedReason = value ?? null; }
 
         /// <summary>Internal Acessors for DetailMigrationStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationInternal.DetailMigrationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationPropertiesInternal)Detail).MigrationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationPropertiesInternal)Detail).MigrationStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationInternal.DetailMigrationStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationPropertiesInternal)Detail).MigrationStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationPropertiesInternal)Detail).MigrationStatus = value ?? null; }
 
-        /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationInternal.Id { get => this._id; set { {_id = value;} } }
-
-        /// <summary>Backing field for <see cref="Name" /> property.</summary>
-        private string _name;
-
-        /// <summary>current value is 'default' for customer initiated migration</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
-        public string Name { get => this._name; set => this._name = value; }
+        /// <summary>The name of the resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Name; }
 
         /// <summary>Gets the resource group name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => (new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Success ? new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Groups["resourceGroupName"].Value : null); }
 
-        /// <summary>Backing field for <see cref="Type" /> property.</summary>
-        private string _type;
+        /// <summary>
+        /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISystemData SystemData { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemData; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemData = value ?? null /* model class */; }
 
-        /// <summary>SrpAccountMigrationType in ARM contract which is 'accountMigrations'</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
-        public string Type { get => this._type; set => this._type = value; }
+        /// <summary>The timestamp of resource creation (UTC).</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataCreatedAt; }
+
+        /// <summary>The identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataCreatedBy; }
+
+        /// <summary>The type of identity that created the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        public string SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataCreatedByType; }
+
+        /// <summary>The timestamp of resource last modification (UTC)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedAt; }
+
+        /// <summary>The identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedBy; }
+
+        /// <summary>The type of identity that last modified the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        public string SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).SystemDataLastModifiedByType; }
+
+        /// <summary>
+        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__proxyResource).Type; }
 
         /// <summary>Creates an new <see cref="StorageAccountMigration" /> instance.</summary>
         public StorageAccountMigration()
         {
 
         }
+
+        /// <summary>Validates that this object meets the validation criteria.</summary>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive validation
+        /// events.</param>
+        /// <returns>
+        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener eventListener)
+        {
+            await eventListener.AssertNotNull(nameof(__proxyResource), __proxyResource);
+            await eventListener.AssertObjectIsValid(nameof(__proxyResource), __proxyResource);
+        }
     }
     /// The parameters or status associated with an ongoing or enqueued storage account migration in order to update its current
     /// SKU or region.
     public partial interface IStorageAccountMigration :
-        Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IJsonSerializable
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IJsonSerializable,
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IProxyResource
     {
         /// <summary>Reason for migration failure</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
@@ -136,45 +206,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Standard_LRS", "Standard_GRS", "Standard_RAGRS", "Standard_ZRS", "Premium_LRS", "Premium_ZRS", "Standard_GZRS", "Standard_RAGZRS", "StandardV2_LRS", "StandardV2_GRS", "StandardV2_ZRS", "StandardV2_GZRS", "PremiumV2_LRS", "PremiumV2_ZRS")]
         string DetailTargetSkuName { get; set; }
-        /// <summary>Migration Resource Id</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Migration Resource Id",
-        SerializedName = @"id",
-        PossibleTypes = new [] { typeof(string) })]
-        string Id { get;  }
-        /// <summary>current value is 'default' for customer initiated migration</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"current value is 'default' for customer initiated migration",
-        SerializedName = @"name",
-        PossibleTypes = new [] { typeof(string) })]
-        string Name { get; set; }
-        /// <summary>SrpAccountMigrationType in ARM contract which is 'accountMigrations'</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"SrpAccountMigrationType in ARM contract which is 'accountMigrations'",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(string) })]
-        string Type { get; set; }
 
     }
     /// The parameters or status associated with an ongoing or enqueued storage account migration in order to update its current
     /// SKU or region.
-    internal partial interface IStorageAccountMigrationInternal
-
+    internal partial interface IStorageAccountMigrationInternal :
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IProxyResourceInternal
     {
         /// <summary>The properties of a storage account’s ongoing or enqueued migration.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigrationProperties Detail { get; set; }
@@ -188,12 +225,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Target sku name for the account</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Standard_LRS", "Standard_GRS", "Standard_RAGRS", "Standard_ZRS", "Premium_LRS", "Premium_ZRS", "Standard_GZRS", "Standard_RAGZRS", "StandardV2_LRS", "StandardV2_GRS", "StandardV2_ZRS", "StandardV2_GZRS", "PremiumV2_LRS", "PremiumV2_ZRS")]
         string DetailTargetSkuName { get; set; }
-        /// <summary>Migration Resource Id</summary>
-        string Id { get; set; }
-        /// <summary>current value is 'default' for customer initiated migration</summary>
-        string Name { get; set; }
-        /// <summary>SrpAccountMigrationType in ARM contract which is 'accountMigrations'</summary>
-        string Type { get; set; }
 
     }
 }

@@ -3439,7 +3439,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/crptestps2768/providers/Microsoft.Compute/virtualMachineScaleSets/vmsscrptestps2768/virtualmachines/2/redeploy?api-version=2018-04-01",
+      "RequestUri": "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/crptestps2768/providers/Microsoft.Compute/virtualMachineScaleSets/vmsscrptestps2768/virtualMachines/2/redeploy?api-version=2018-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzljYmQ5MjAtYzAwYy00MjdjLTg1MmItOGFhZjM4YmFkYWViL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczI3NjgvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NjcnB0ZXN0cHMyNzY4L3ZpcnR1YWxtYWNoaW5lcy8yL3JlZGVwbG95P2FwaS12ZXJzaW9uPTIwMTgtMDQtMDE=",
       "RequestMethod": "POST",
       "RequestBody": "",
@@ -3978,7 +3978,7 @@
       "StatusCode": 409
     },
     {
-      "RequestUri": "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/crptestps2768/providers/Microsoft.Compute/virtualMachineScaleSets/vmsscrptestps2768/virtualmachines/2/performMaintenance?api-version=2018-04-01",
+      "RequestUri": "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/crptestps2768/providers/Microsoft.Compute/virtualMachineScaleSets/vmsscrptestps2768/virtualMachines/2/performMaintenance?api-version=2018-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzljYmQ5MjAtYzAwYy00MjdjLTg1MmItOGFhZjM4YmFkYWViL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczI3NjgvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lU2NhbGVTZXRzL3Ztc3NjcnB0ZXN0cHMyNzY4L3ZpcnR1YWxtYWNoaW5lcy8yL3BlcmZvcm1NYWludGVuYW5jZT9hcGktdmVyc2lvbj0yMDE4LTA0LTAx",
       "RequestMethod": "POST",
       "RequestBody": "",

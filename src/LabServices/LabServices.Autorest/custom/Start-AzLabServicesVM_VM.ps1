@@ -12,12 +12,27 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Action to start a lab virtual machine.
+.Description
+Action to start a lab virtual machine.
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
+.Outputs
+System.Boolean
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/start-azlabservicesvm
+#>
 function Start-AzLabServicesVM_VM {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachine]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine]
+        # The object of lab service virtual machine to start.
         ${VM},
   
         [Parameter()]

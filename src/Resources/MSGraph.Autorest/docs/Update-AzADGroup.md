@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzADGroup
 
 ## SYNOPSIS
-update entity in groups
+Update entity in groups
 
 ## SYNTAX
 
@@ -38,7 +38,7 @@ Update-AzADGroup -ObjectId <String> -JsonString <String> [-DefaultProfile <PSObj
 ```
 
 ## DESCRIPTION
-update entity in groups
+Update entity in groups
 
 ## EXAMPLES
 

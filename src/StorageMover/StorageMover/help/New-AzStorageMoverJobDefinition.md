@@ -8,28 +8,52 @@ schema: 2.0.0
 # New-AzStorageMoverJobDefinition
 
 ## SYNOPSIS
-Creates or updates a Job Definition resource, which contains configuration for a single unit of managed data transfer.
+Create a Job Definition resource, which contains configuration for a single unit of managed data transfer.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
 New-AzStorageMoverJobDefinition -Name <String> -ProjectName <String> -ResourceGroupName <String>
- -StorageMoverName <String> [-SubscriptionId <String>] -CopyMode <CopyMode> -SourceName <String>
- -TargetName <String> [-AgentName <String>] [-Description <String>] [-SourceSubpath <String>]
+ -StorageMoverName <String> [-SubscriptionId <String>] -CopyMode <String> -SourceName <String>
+ -TargetName <String> [-AgentName <String>] [-Description <String>] [-JobType <String>]
+ [-SourceSubpath <String>] [-TargetSubpath <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzStorageMoverJobDefinition -Name <String> -ProjectName <String> -ResourceGroupName <String>
+ -StorageMoverName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzStorageMoverJobDefinition -Name <String> -ProjectName <String> -ResourceGroupName <String>
+ -StorageMoverName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityStorageMoverExpanded
+```
+New-AzStorageMoverJobDefinition -Name <String> -ProjectName <String>
+ -StorageMoverInputObject <IStorageMoverIdentity> -CopyMode <String> -SourceName <String> -TargetName <String>
+ [-AgentName <String>] [-Description <String>] [-JobType <String>] [-SourceSubpath <String>]
  [-TargetSubpath <String>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
-### Create
+### CreateViaIdentityProjectExpanded
 ```
-New-AzStorageMoverJobDefinition -Name <String> -ProjectName <String> -ResourceGroupName <String>
- -StorageMoverName <String> [-SubscriptionId <String>] -JobDefinition <IJobDefinition>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzStorageMoverJobDefinition -Name <String> -ProjectInputObject <IStorageMoverIdentity> -CopyMode <String>
+ -SourceName <String> -TargetName <String> [-AgentName <String>] [-Description <String>] [-JobType <String>]
+ [-SourceSubpath <String>] [-TargetSubpath <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates a Job Definition resource, which contains configuration for a single unit of managed data transfer.
+Create a Job Definition resource, which contains configuration for a single unit of managed data transfer.
 
 ## EXAMPLES
 
@@ -74,7 +98,7 @@ Name of the Agent to assign for new Job Runs of this Job Definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityStorageMoverExpanded, CreateViaIdentityProjectExpanded
 Aliases:
 
 Required: False
@@ -88,8 +112,8 @@ Accept wildcard characters: False
 Strategy to use for copy.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.CopyMode
-Parameter Sets: CreateExpanded
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityStorageMoverExpanded, CreateViaIdentityProjectExpanded
 Aliases:
 
 Required: True
@@ -117,10 +141,12 @@ Accept wildcard characters: False
 
 ### -Description
 A description for the Job Definition.
+OnPremToCloud is for migrating data from on-premises to cloud.
+CloudToCloud is for migrating data between cloud to cloud.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityStorageMoverExpanded, CreateViaIdentityProjectExpanded
 Aliases:
 
 Required: False
@@ -130,19 +156,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JobDefinition
-The Job Definition resource.
-To construct, see NOTES section for JOBDEFINITION properties and create a hash table.
+### -JobType
+The type of the Job.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition
-Parameter Sets: Create
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityStorageMoverExpanded, CreateViaIdentityProjectExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -161,12 +216,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProjectInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
+Parameter Sets: CreateViaIdentityProjectExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ProjectName
 The name of the Project resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityStorageMoverExpanded
 Aliases:
 
 Required: True
@@ -182,7 +252,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -197,7 +267,7 @@ The name of the source Endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityStorageMoverExpanded, CreateViaIdentityProjectExpanded
 Aliases:
 
 Required: True
@@ -212,7 +282,7 @@ The subpath to use when reading from the source Endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityStorageMoverExpanded, CreateViaIdentityProjectExpanded
 Aliases:
 
 Required: False
@@ -222,12 +292,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -StorageMoverInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
+Parameter Sets: CreateViaIdentityStorageMoverExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -StorageMoverName
 The name of the Storage Mover resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -242,7 +327,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -257,7 +342,7 @@ The name of the target Endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityStorageMoverExpanded, CreateViaIdentityProjectExpanded
 Aliases:
 
 Required: True
@@ -272,7 +357,7 @@ The subpath to use when writing to the target Endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityStorageMoverExpanded, CreateViaIdentityProjectExpanded
 Aliases:
 
 Required: False
@@ -318,11 +403,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IJobDefinition
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinition
 
 ## NOTES
 

@@ -43,6 +43,20 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNodeTypeUpdate()
+        {
+            TestRunner.RunTestScript("Test-NodeTypeUpdate");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNodeTypeVmSizeChange()
+        {
+            TestRunner.RunTestScript("Test-NodeTypeVmSizeChange");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCertAndExtension()
         {
             TestRunner.RunTestScript("Test-CertAndExtension");
@@ -53,6 +67,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
         public void TestAddNetworkSecurityRule() 
         {
             TestRunner.RunTestScript("Test-AddNetworkSecurityRule");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMaintenanceWindowStatus()
+        {
+            TestRunner.RunTestScript("Test-MaintenanceWindowStatus");
         }
     }
 }

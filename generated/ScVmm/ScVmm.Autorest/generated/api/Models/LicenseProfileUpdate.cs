@@ -23,16 +23,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models
         public string EsuProfileAssignedLicense { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseProfileUpdatePropertiesInternal)Property).EsuProfileAssignedLicense; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseProfileUpdatePropertiesInternal)Property).EsuProfileAssignedLicense = value ?? null; }
 
         /// <summary>Internal Acessors for EsuProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IEsuProfileUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseProfileUpdateInternal.EsuProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseProfileUpdatePropertiesInternal)Property).EsuProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseProfileUpdatePropertiesInternal)Property).EsuProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IEsuProfileUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseProfileUpdateInternal.EsuProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseProfileUpdatePropertiesInternal)Property).EsuProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseProfileUpdatePropertiesInternal)Property).EsuProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ProductProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IProductProfileUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseProfileUpdateInternal.ProductProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseProfileUpdatePropertiesInternal)Property).ProductProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseProfileUpdatePropertiesInternal)Property).ProductProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.IProductProfileUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseProfileUpdateInternal.ProductProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseProfileUpdatePropertiesInternal)Property).ProductProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseProfileUpdatePropertiesInternal)Property).ProductProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseProfileUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseProfileUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.LicenseProfileUpdateProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for SoftwareAssurance</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseProfileUpdatePropertiesSoftwareAssurance Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseProfileUpdateInternal.SoftwareAssurance { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseProfileUpdatePropertiesInternal)Property).SoftwareAssurance; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseProfileUpdatePropertiesInternal)Property).SoftwareAssurance = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseProfileUpdatePropertiesSoftwareAssurance Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseProfileUpdateInternal.SoftwareAssurance { get => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseProfileUpdatePropertiesInternal)Property).SoftwareAssurance; set => ((Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Models.ILicenseProfileUpdatePropertiesInternal)Property).SoftwareAssurance = value ?? null /* model class */; }
 
         /// <summary>The list of product feature updates.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ScVmm.Origin(Microsoft.Azure.PowerShell.Cmdlets.ScVmm.PropertyOrigin.Inlined)]

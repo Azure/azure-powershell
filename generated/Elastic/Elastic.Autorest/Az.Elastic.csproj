@@ -3,6 +3,7 @@
     <PsModuleName>Elastic</PsModuleName>
     <PsRootModuleName>Elastic</PsRootModuleName>
     <PsModuleFolder>Elastic.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Elastic</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

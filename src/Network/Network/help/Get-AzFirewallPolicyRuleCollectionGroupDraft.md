@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.network/get-azf
 schema: 2.0.0
 ---
 
-# Get-AzFirewallPolicyRuleCollectionGroup
+# Get-AzFirewallPolicyRuleCollectionGroupDraft
 
 ## SYNOPSIS
 Gets an Azure Firewall Policy Rule Collection Group Draft.
@@ -14,20 +14,21 @@ Gets an Azure Firewall Policy Rule Collection Group Draft.
 
 ### GetByNameParameterSet (Default)
 ```
-Get-AzFirewallPolicyRuleCollectionGroup -Name <String> -ResourceGroupName <String>
- -AzureFirewallPolicyName <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName <String>
+ -ResourceGroupName <String> -AzureFirewallPolicyName <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### GetByInputObjectParameterSet
+### GetByParentInputObjectParameterSet
 ```
-Get-AzFirewallPolicyRuleCollectionGroup -Name <String> -AzureFirewallPolicy <PSAzureFirewallPolicy>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName <String>
+ -FirewallPolicyObject <PSAzureFirewallPolicy> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByResourceIdParameterSet
 ```
-Get-AzFirewallPolicyRuleCollectionGroup -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzFirewallPolicyRuleCollectionGroupDraft -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -56,27 +57,39 @@ Get-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyName fpName -Az
 
 ## PARAMETERS
 
-### -AzureFirewallPolicy
-Firewall Policy.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicy
-Parameter Sets: GetByInputObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -AzureFirewallPolicyName
 The Firewall policy name.
 
 ```yaml
 Type: System.String
 Parameter Sets: GetByNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: True
+```
+
+### -AzureFirewallPolicyRuleCollectionGroupName
+The name of the rule collection group.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: True
+```
+
+```yaml
+Type: System.String
+Parameter Sets: GetByParentInputObjectParameterSet
 Aliases:
 
 Required: True
@@ -101,31 +114,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The resource name.
+### -FirewallPolicyObject
+Firewall Policy.
 
 ```yaml
-Type: System.String
-Parameter Sets: GetByNameParameterSet
-Aliases: ResourceName
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicy
+Parameter Sets: GetByParentInputObjectParameterSet
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
-```
-
-```yaml
-Type: System.String
-Parameter Sets: GetByInputObjectParameterSet
-Aliases: ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName

@@ -371,7 +371,7 @@ Please provide a storage account with the same location as that of the vault.</v
     <value>Protection Cluster "{0}" is not associated with Protection Container "{1}"</value>
   </data>
   <data name="ProtectableItemNotFound" xml:space="preserve">
-    <value>Protectectable Item"{0}" is not associated with Protection Container "{1}"</value>
+    <value>Protectable Item"{0}" is not associated with Protection Container "{1}"</value>
   </data>
   <data name="ReplicationProtectedItemNotFound" xml:space="preserve">
     <value>Replication Protected Item"{0}" is not associated with Protection Container "{1}"</value>
@@ -389,7 +389,7 @@ Please provide a storage account with the same location as that of the vault.</v
     <value>This parameter set will be deprecated soon. Please use other suitable parameter set.</value>
   </data>
   <data name="InvalidNetworkMappingDetails" xml:space="preserve">
-    <value>Invalid netwok mapping details.</value>
+    <value>Invalid network mapping details.</value>
   </data>
   <data name="NetworkMappingNotFound" xml:space="preserve">
     <value>Network mapping details not found.</value>
@@ -445,7 +445,7 @@ Possible Causes: The resume job operation is not allowed on this Job.
 Recommended Action: To cleanup the resources created by Test failover run the Test failover cleanup operation on the test failed over Recovery plan/replicated machine.</value>
   </data>
   <data name="UnsupportedReplicationReprotectScenerio" xml:space="preserve">
-    <value>Unsupported Replication Reprotect Scenerio.</value>
+    <value>Unsupported Replication Reprotect Scenario.</value>
   </data>
   <data name="InvalidPrimaryStagingAzureStorageAccountIdDiskInput" xml:space="preserve">
     <value>Please pass a valid PrimaryStagingAzureStorageAccountId as input for disk URI "{0}".</value>

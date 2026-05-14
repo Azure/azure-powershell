@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 DateTime finalBackupTime = new DateTime(windowStartTime.Year, windowStartTime.Month, windowStartTime.Day, 23, 30, 00, 00, DateTimeKind.Utc);
                 TimeSpan diff = finalBackupTime - windowStartTime;
 
-                // If ScheduleWindowDuration is greator than (23:30 - ScheduleWindowStartTime) then throw exception  
+                // If ScheduleWindowDuration is greater than (23:30 - ScheduleWindowStartTime) then throw exception  
                 if (diff.TotalHours < policy.ScheduleWindowDuration)
                 {
                     throw new ArgumentException(String.Format(Resources.InvalidLastBackupTime));
@@ -706,7 +706,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 {
                     // (Interval < ScheduleWindowDuration)
                     // Interval can be { 4, 6, 8, 12 } only and schedule can be 4 to 23.
-                    // First calculate how many RPs will be created in the day. which will be schedule/Interval + 1. Only exception is when Interval == Schdule. there Number of RP in a day == 1.
+                    // First calculate how many RPs will be created in the day. which will be schedule/Interval + 1. Only exception is when Interval == Schedule. there Number of RP in a day == 1.
                     // eg schedule is 5 and interval is 4. then we will have 2 RP one at 00 and another at 04 hours.
                     // Once we have RP count then we can calculate RPO.
                     var hourlySchedule = schedulePolicyAFS.HourlySchedule;
@@ -1047,7 +1047,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     }).ToList();
             }
 
-            // filter move readness based on target tier
+            // filter move readiness based on target tier
             recoveryPointList = RecoveryPointConversions.CheckRPMoveReadiness(recoveryPointList, targetTier, isReadyForMove);
             
             //filter RPs based on tier

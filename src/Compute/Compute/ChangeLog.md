@@ -20,6 +20,92 @@
 
 -->
 ## Upcoming Release
+* Added `-InstantAccess` parameter to `New-AzRestorePointCollection` cmdlet to enable instant access snapshots for restore points on Premium SSD v2 and Ultra disks
+* Added `-InstantAccess` parameter to `Update-AzRestorePointCollection` cmdlet to enable or disable instant access on an existing restore point collection
+* Added `-InstantAccessDurationInMinutes` parameter to `New-AzRestorePoint` cmdlet to specify the duration (1-300 minutes) for which the instant access snapshot is retained
+## Version 11.5.0
+* Added `-Feature` parameter to `Update-AzGalleryImageDefinition` to allow updating existing gallery image features (such as DiskControllerTypes, SecurityType, IsAcceleratedNetwork, and IsHibernate). Each feature supports a `StartsAtVersion` property to specify the minimum gallery image version that supports the updated feature.
+* Added `-AllowUpdateImage` parameter to `Update-AzGalleryImageDefinition`. Must be set to true when using the `-Feature` parameter to update gallery image features.
+* Added managed identity support for Azure Compute Galleries
+    - `New-AzGallery`: Added `-EnableSystemAssignedIdentity` and `-UserAssignedIdentity` to assign managed identities at creation time
+    - `Update-AzGallery`: Added `-EnableSystemAssignedIdentity` and `-UserAssignedIdentity` to add managed identities to an existing gallery. `-UserAssignedIdentity` appends to existing identities
+    - `Update-AzGallery`: Added `-DisableSystemAssignedIdentity` to remove system-assigned managed identity
+    - `Update-AzGallery`: Added `-RemoveUserAssignedIdentity` accepting a list of identity resource IDs to remove specific user-assigned identities, or 'All' to remove all user-assigned identities
+    - `Get-AzGallery`: Now returns managed identity details in the `Identity` property
+* Compute ComputeRP related cmdlets will now use 2025-11-01 version of the ComputeRP API.
+
+## Version 11.4.0
+* Added `-DiskIOPSReadWrite` and `-DiskMBpsReadWrite` parameters to `Add-AzVMDataDisk` cmdlet
+* Added `-Tag` and `-Location` parameters to `New-AzSshKey` cmdlet
+* Added `-Tag` parameter to `Update-AzSshKey` cmdlet
+* Added support for Disk Availability Policy
+    - Added `-ActionOnDiskDelay` parameter to `New-AzDiskConfig` cmdlet to configure disk availability behavior
+    - Added `-ActionOnDiskDelay` parameter to `New-AzDiskUpdateConfig` cmdlet to update disk availability behavior
+
+## Version 11.3.0
+* Compute SDK generation updates:
+    - Generation now uses autorest.powershell, replacing deprecated track 1 SDK.
+    - Removed local swagger files and replaced references with remote swagger files.
+* Added new cmdlets for Availability Set to Virtual Machine Scale Set (VMSS) Flex migration (Public Preview)
+    - `Convert-AzAvailabilitySet`: Converts an Availability Set to a new Flexible Virtual Machine Scale Set without downtime
+    - `Test-AzAvailabilitySetMigration`: Validates that VMs in an Availability Set can be migrated to a VMSS
+    - `Start-AzAvailabilitySetMigration`: Starts migration of an Availability Set to an existing Flexible VMSS    
+    - `Stop-AzAvailabilitySetMigration`: Cancels a migration operation on an Availability Set
+    - `Move-AzVirtualMachineToVmss`: Migrates a VM from an Availability Set to a Flexible VMSS
+
+## Version 11.2.0
+* Added `-HighSpeedInterconnectPlacement` parameter to `New-AzVmssConfig` and `New-AzVmss` cmdlets.
+* Added new parameters `ZonePlacementPolicy`, `IncludeZone`, `ExcludeZone`, `MaxZoneCount`, `EnableMaxInstancePercentPerZone` and `MaxInstancePercentPerZoneValue` to `New-AzVmssConfig` cmdlet.
+* Added new parameters `ZonePlacementPolicy`, `IncludeZone` and `ExcludeZone` to `New-AzVmss` cmdlet.
+* Added new parameters `MaxZoneCount`, `EnableMaxInstancePercentPerZone` and `MaxInstancePercentPerZoneValue` to `Update-AzVmss` cmdlet.
+* Updated Azure.Core from 1.47.3 to 1.50.0
+
+## Version 11.1.0
+* Added `-ResiliencyView` parameter to `Get-AzVmssVM` cmdlet
+    - Retrieves the resilient VM deletion status for Virtual Machine Scale Set (VMSS) VMs
+    - Indicates whether automatic delete retries are in progress, failed, or not started
+    - Supports monitoring the real-time status of the Resilient Delete feature
+
+## Version 11.0.0
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+* Updated Azure.Core from 1.45.0 to 1.47.3
+* Added `-EnableAutomaticUpgrade` and `-TreatFailureAsDeploymentFailure` parameters (Bool) to `New-AzVmGalleryApplication` and `New-AzVmssGalleryApplication` cmdlets.
+* Added `-EnableAutomaticUpgrade` and `-TreatFailureAsDeploymentFailure` parameters (Switch) to `Add-AzVmGalleryApplication` and `Add-AzVmssGalleryApplication` cmdlets.
+
+## Version 10.5.0
+* Added `-Redeploy` switch parameter for `Update-AzHost` cmdlet to enable dedicated host redeployment.
+* Added `-SupportedSecurityOption` parameter to `New-AzDiskConfig` cmdlet.
+* ComputeRP related cmdlets will now use 2025-04-01 version of the ComputeRP API.
+* Added `-AddProxyAgentExtension` parameter (Switch) to `New-AzVmss` and `New-AzVM`
+* Added `-AddProxyAgentExtension` parameter (Bool) to `Set-AzVMProxyAgentSetting` and  `Set-AzVmssProxyAgentSetting`
+
+## Version 10.4.0
+* Added `-InstantAccessDurationMinutes` parameter to New-AzSnapshotConfig.
+* Added `SecureVMGuestStateSAS` parameter to `Grant-AzSnapshotAccess`.
+* Updated SDK to use 2025-04-01 version of the ComputeRP API for Compute related cmdlets.
+
+## Version 10.3.0
+* Fixed typo 'DeyAll' to 'DenyAll' in NetworkAccessPolicy description.
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+* Updated New-AzDiskConfig to include `SecurityMetadataUri` and `SecurityDataUri` parameters.
+* Updated Grant-AzDisk to return `SecurityMetadataAccessSAS` property.
+
+## Version 10.2.0
+* Compute DiskRP related cmdlets will now use 2025-01-02 version of the DiskRP API.
+* Upgraded SpotPlacementScore cmdlets to api version 2025-06-05
+
+## Version 10.1.0
+* Support for Metadata Security Protocol (MSP) support for Gallery
+    - Added new cmdlets `New-AzGalleryInVmAccessControlProfile`, `Get-AzGalleryInVmAccessControlProfile`, `Update-AzGalleryInVmAccessControlProfile`, and `Remove-AzGalleryInVmAccessControlProfile` to manage In-VM Access Control Profiles in Azure Compute Gallery.
+    - Added new cmdlets `New-AzGalleryInVmAccessControlProfileVersion`, `Get-AzGalleryInVmAccessControlProfileVersion`, `Update-AzGalleryInVmAccessControlProfileVersion`, and `Remove-AzGalleryInVmAccessControlProfileVersion` to manage In-VM Access Control Profile Versions in Azure Compute Gallery.
+    - Added new cmdlet `New0AzGalleryInVmAccessControlProfileVersionConfig` to create a local configuration object for In-VM Access Control Profile Version.
+    - Added new cmdlets `Add-AzGalleryInVmAccessControlProfileVersionRulesPrivilege` and `Remove-AzGalleryInVmAccessControlProfileVersionRulesPrivilege` to manage privileges in In-VM Access Control Profile Version.
+    - Added new cmdlets `Add-AzGalleryInVmAccessControlProfileVersionRulesRole` and `Remove-AzGalleryInVmAccessControlProfileVersionRulesRole` to manage roles in In-VM Access Control Profile Version.
+    - Added new cmdlets `Add-AzGalleryInVmAccessControlProfileVersionRulesIdentity` and `Remove-AzGalleryInVmAccessControlProfileVersionRulesIdentity` to manage identities in In-VM Access Control Profile Version.
+    - Added new cmdlets `Add-AzGalleryInVmAccessControlProfileVersionRulesRoleAssignment` and `Remove-AzGalleryInVmAccessControlProfileVersionRulesRoleAssignment` to manage role assignments in In-VM Access Control Profile Version.
+* Added `-EnableProxyAgent` parameter to `New-AzVM` and `New-AzVmss` simple parameter sets.
+* Added `-ProxyAgentKeyIncarnationId`parameter to `Update-AzVmssVM` cmdlet.
+* Added new cmdlets `Set-AzVmssProxyAgent` and `Set-AzVMProxyAgent` to set the proxy agent settings for VM and VMSS.`
 
 ## Version 10.0.1
 * Added breaking change message for `New-AzVM` and `New-AzVmss` cmdlets.
@@ -141,7 +227,7 @@
 * Added new parameter `-VirtualMachineScaleSetId` to `Update-AzVm` cmdlet.
 * Fixed `New-AzVmss` and `New-Azvm` to use `SharedGalleryImageId` parameter.
 * Reduced File Permissions from 0644 to 0600 for SSH Private Key File in `New-AzVm`.
-* Removed GuestAttestaion vm extension installation for Vmss and Vm creation cmdlets.
+* Removed GuestAttestation vm extension installation for Vmss and Vm creation cmdlets.
 
 
 ## Version 6.3.0
@@ -288,7 +374,7 @@
 * For `Add-AzVhd` upon upload failure using DirectUploadToManagedDisk parameter set, the SAS will be revoked and the created managed disk will be deleted.
 * An unresolved path can be passed in for '-LocalFilePath' for `Add-AzVhd`. The cmdlet with unresolve the path itself.
 * Added `-DataAccessAuthMode` parameter to Add-AzVhd DirectUploadToManagedDisk parameter set.
-* Added `-EnabldUltraSSD` parameter to New-AzHostGroup.
+* Added `-EnableUltraSSD` parameter to New-AzHostGroup.
 
 ## Version 4.27.0
 * Edited `New-AzVm` cmdlet internal logic to use the `PlatformFaultDomain` value in the `PSVirtualMachine` object passed to it in the new virtual machine.

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVMwareDatastore
 
 ## SYNOPSIS
-update a Datastore
+Update a Datastore
 
 ## SYNTAX
 
@@ -17,36 +17,38 @@ update a Datastore
 Update-AzVMwareDatastore -ClusterName <String> -Name <String> -PrivateCloudName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DiskPoolVolumeLunName <String>]
  [-DiskPoolVolumeMountOption <String>] [-DiskPoolVolumeTargetId <String>] [-ElasticSanVolumeTargetId <String>]
- [-NetAppVolumeId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-NetAppVolumeId <String>] [-PureStorageVolumeSizeGb <Int32>] [-PureStorageVolumeStoragePoolId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityClusterExpanded
 ```
 Update-AzVMwareDatastore -ClusterInputObject <IVMwareIdentity> -Name <String>
  [-DiskPoolVolumeLunName <String>] [-DiskPoolVolumeMountOption <String>] [-DiskPoolVolumeTargetId <String>]
- [-ElasticSanVolumeTargetId <String>] [-NetAppVolumeId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ElasticSanVolumeTargetId <String>] [-NetAppVolumeId <String>] [-PureStorageVolumeSizeGb <Int32>]
+ [-PureStorageVolumeStoragePoolId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzVMwareDatastore -InputObject <IVMwareIdentity> [-DiskPoolVolumeLunName <String>]
  [-DiskPoolVolumeMountOption <String>] [-DiskPoolVolumeTargetId <String>] [-ElasticSanVolumeTargetId <String>]
- [-NetAppVolumeId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-NetAppVolumeId <String>] [-PureStorageVolumeSizeGb <Int32>] [-PureStorageVolumeStoragePoolId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityPrivateCloudExpanded
 ```
 Update-AzVMwareDatastore -ClusterName <String> -Name <String> -PrivateCloudInputObject <IVMwareIdentity>
  [-DiskPoolVolumeLunName <String>] [-DiskPoolVolumeMountOption <String>] [-DiskPoolVolumeTargetId <String>]
- [-ElasticSanVolumeTargetId <String>] [-NetAppVolumeId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ElasticSanVolumeTargetId <String>] [-NetAppVolumeId <String>] [-PureStorageVolumeSizeGb <Int32>]
+ [-PureStorageVolumeStoragePoolId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-update a Datastore
+Update a Datastore
 
 ## EXAMPLES
 
@@ -270,6 +272,36 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PureStorageVolumeSizeGb
+Volume size to be used to create a Virtual Volumes (vVols) datastore
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PureStorageVolumeStoragePoolId
+Azure resource ID of the Pure Storage Pool
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

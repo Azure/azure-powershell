@@ -16,6 +16,16 @@ param (
     [string]$PowerShellPlatform
 )
 
+function Assert-ExitCodeSuccess {
+    param(
+        [string]$Operation = "Command"
+    )
+    if (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null)) {
+        Write-Error "$Operation failed with exit code $LASTEXITCODE"
+        exit $LASTEXITCODE
+    }
+}
+
 # Install PowerShell dependencies
 Write-Host -ForegroundColor Green "-------------------- Start installing PowerShell dependencies ... --------------------"
 Install-Module "platyPS", "PSScriptAnalyzer" -Repository PSGallery -Force -Confirm:$false -Scope CurrentUser
@@ -36,9 +46,11 @@ if ($PowerShellPlatform) {
 }
 $buildProjPath = Join-Path $RepoRoot 'build.proj'
 dotnet msbuild $buildProjPath /t:GenerateHelp "/p:Configuration=$Configuration"
+Assert-ExitCodeSuccess -Operation "Help generation"
 Write-Host -ForegroundColor DarkGreen "-------------------- End generating help ... --------------------`n`n`n`n`n"
 
 # Static Analysis
 Write-Host -ForegroundColor Green "-------------------- Start static analysis ... --------------------"
 dotnet msbuild $buildProjPath /t:StaticAnalysis "/p:Configuration=$Configuration"
+Assert-ExitCodeSuccess -Operation "Static analysis"
 Write-Host -ForegroundColor DarkGreen "-------------------- End static analysis ... --------------------`n`n`n`n`n"

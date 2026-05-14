@@ -88,7 +88,7 @@ Get-AzStorageBlobContent -Uri $blobUri -Destination "C:\test" -Force
 ```
 
 This example will download a blob content with Uri, the Uri can be a Uri with Sas token. 
-If the blob is on a managed disk account, and server requires a bearer token besides Sas Uri to download, the cmdlet will try to generate a bearer token with server returned audience and the login AAD user credentail, then download blob with both Sas Uri and bearer token.
+If the blob is on a managed disk account, and server requires a bearer token besides Sas Uri to download, the cmdlet will try to generate a bearer token with server returned audience and the login AAD user credential, then download blob with both Sas Uri and bearer token.
 
 ## PARAMETERS
 

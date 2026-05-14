@@ -45,17 +45,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -72,17 +78,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -391,17 +403,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -418,17 +436,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -445,17 +469,23 @@ SCRIPTPACKAGEINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -666,17 +696,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -693,17 +729,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -900,17 +942,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -927,17 +975,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -1130,17 +1184,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -1157,17 +1217,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -1360,17 +1426,23 @@ DHCPCONFIGURATIONINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -1387,17 +1459,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -1589,17 +1667,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -1616,17 +1700,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -1818,17 +1908,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -1845,17 +1941,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -2047,17 +2149,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -2074,17 +2182,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -2276,17 +2390,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -2303,17 +2423,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -2505,17 +2631,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -2532,17 +2664,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -2734,17 +2872,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -2761,17 +2905,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -2963,17 +3113,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -2990,17 +3146,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -3192,17 +3354,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -3219,17 +3387,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -3421,17 +3595,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -3609,17 +3789,23 @@ CLUSTERINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -3636,17 +3822,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -3663,17 +3855,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -3786,6 +3984,12 @@ param(
     # Run the command asynchronously
     ${NoWait},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Runtime')]
     [System.Uri]
@@ -3866,9 +4070,9 @@ end {
 
 <#
 .Synopsis
-create a Addon
+Create a Addon
 .Description
-create a Addon
+Create a Addon
 .Example
 $data = New-AzVMwareAddonVrPropertyObject -VrsCount 2
 New-AzVMwareAddon -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -Property $data
@@ -3894,17 +4098,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -3921,17 +4131,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -4112,9 +4328,9 @@ end {
 
 <#
 .Synopsis
-create a PrivateCloud
+Create a PrivateCloud
 .Description
-create a PrivateCloud
+Create a PrivateCloud
 .Example
 New-AzVMwarePrivateCloud -Name azps_test_cloud -ResourceGroupName azps_test_group -NetworkBlock 192.168.48.0/22 -Sku av36 -ManagementClusterSize 3 -Location australiaeast
 
@@ -4129,7 +4345,7 @@ IDENTITYSOURCE <IIdentitySource[]>: vCenter Single Sign On Identity Sources
   [Alias <String>]: The domain's NetBIOS name
   [BaseGroupDn <String>]: The base distinguished name for groups
   [BaseUserDn <String>]: The base distinguished name for users
-  [Domain <String>]: The domain's dns name
+  [Domain <String>]: The domain's DNS name
   [Name <String>]: The name of the identity source
   [Password <SecureString>]: The password of the Active Directory user with a minimum of read-only access to         Base DN for users and groups.
   [PrimaryServer <String>]: Primary server URL
@@ -4339,6 +4555,13 @@ param(
     ${VirtualNetworkId},
 
     [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.String[]]
+    # The availability zones.
+    ${Zone},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
@@ -4456,9 +4679,9 @@ end {
 
 <#
 .Synopsis
-create a ScriptExecution
+Create a ScriptExecution
 .Description
-create a ScriptExecution
+Create a ScriptExecution
 .Example
 {{ Add code here }}
 .Example
@@ -4489,17 +4712,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -4520,17 +4749,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -4755,9 +4990,9 @@ end {
 
 <#
 .Synopsis
-create a WorkloadNetworkDhcp
+Create a WorkloadNetworkDhcp
 .Description
-create a WorkloadNetworkDhcp
+Create a WorkloadNetworkDhcp
 .Example
 {{ Add code here }}
 .Example
@@ -4784,17 +5019,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -4811,17 +5052,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -5011,9 +5258,9 @@ end {
 
 <#
 .Synopsis
-create a WorkloadNetworkDnsService
+Create a WorkloadNetworkDnsService
 .Description
-create a WorkloadNetworkDnsService
+Create a WorkloadNetworkDnsService
 .Example
 {{ Add code here }}
 .Example
@@ -5040,17 +5287,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -5067,17 +5320,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -5286,9 +5545,9 @@ end {
 
 <#
 .Synopsis
-create a WorkloadNetworkDnsZone
+Create a WorkloadNetworkDnsZone
 .Description
-create a WorkloadNetworkDnsZone
+Create a WorkloadNetworkDnsZone
 .Example
 {{ Add code here }}
 .Example
@@ -5315,17 +5574,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -5342,17 +5607,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -5561,9 +5832,9 @@ end {
 
 <#
 .Synopsis
-create a WorkloadNetworkPortMirroring
+Create a WorkloadNetworkPortMirroring
 .Description
-create a WorkloadNetworkPortMirroring
+Create a WorkloadNetworkPortMirroring
 .Example
 {{ Add code here }}
 .Example
@@ -5590,17 +5861,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -5617,17 +5894,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -5829,9 +6112,9 @@ end {
 
 <#
 .Synopsis
-create a WorkloadNetworkPublicIP
+Create a WorkloadNetworkPublicIP
 .Description
-create a WorkloadNetworkPublicIP
+Create a WorkloadNetworkPublicIP
 .Example
 {{ Add code here }}
 .Example
@@ -5858,17 +6141,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -5885,17 +6174,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -6078,9 +6373,9 @@ end {
 
 <#
 .Synopsis
-create a WorkloadNetworkSegment
+Create a WorkloadNetworkSegment
 .Description
-create a WorkloadNetworkSegment
+Create a WorkloadNetworkSegment
 .Example
 {{ Add code here }}
 .Example
@@ -6107,17 +6402,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -6134,17 +6435,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -6346,9 +6653,9 @@ end {
 
 <#
 .Synopsis
-create a WorkloadNetworkVMGroup
+Create a WorkloadNetworkVMGroup
 .Description
-create a WorkloadNetworkVMGroup
+Create a WorkloadNetworkVMGroup
 .Example
 {{ Add code here }}
 .Example
@@ -6375,17 +6682,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -6402,17 +6715,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -6633,17 +6952,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -6660,17 +6985,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -6879,17 +7210,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -7082,17 +7419,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -7109,17 +7452,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -7326,17 +7675,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -7353,17 +7708,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -7569,17 +7930,23 @@ DNSSERVICEINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -7596,17 +7963,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -7812,17 +8185,23 @@ DNSZONEINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -7839,17 +8218,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -8055,17 +8440,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -8082,17 +8473,23 @@ PORTMIRRORINGPROFILEINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -8298,17 +8695,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -8325,17 +8728,23 @@ PUBLICIPINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -8541,17 +8950,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -8568,17 +8983,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -8784,17 +9205,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -8811,17 +9238,23 @@ VMGROUPINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -8998,9 +9431,9 @@ end {
 
 <#
 .Synopsis
-update a WorkloadNetworkDhcp
+Update a WorkloadNetworkDhcp
 .Description
-update a WorkloadNetworkDhcp
+Update a WorkloadNetworkDhcp
 .Example
 {{ Add code here }}
 .Example
@@ -9027,17 +9460,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -9054,17 +9493,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -9254,9 +9699,9 @@ end {
 
 <#
 .Synopsis
-update a WorkloadNetworkDnsService
+Update a WorkloadNetworkDnsService
 .Description
-update a WorkloadNetworkDnsService
+Update a WorkloadNetworkDnsService
 .Example
 {{ Add code here }}
 .Example
@@ -9283,17 +9728,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -9310,17 +9761,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -9529,9 +9986,9 @@ end {
 
 <#
 .Synopsis
-update a WorkloadNetworkDnsZone
+Update a WorkloadNetworkDnsZone
 .Description
-update a WorkloadNetworkDnsZone
+Update a WorkloadNetworkDnsZone
 .Example
 {{ Add code here }}
 .Example
@@ -9558,17 +10015,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -9585,17 +10048,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -9804,9 +10273,9 @@ end {
 
 <#
 .Synopsis
-update a WorkloadNetworkPortMirroring
+Update a WorkloadNetworkPortMirroring
 .Description
-update a WorkloadNetworkPortMirroring
+Update a WorkloadNetworkPortMirroring
 .Example
 {{ Add code here }}
 .Example
@@ -9833,17 +10302,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -9860,17 +10335,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -10072,9 +10553,9 @@ end {
 
 <#
 .Synopsis
-update a WorkloadNetworkSegment
+Update a WorkloadNetworkSegment
 .Description
-update a WorkloadNetworkSegment
+Update a WorkloadNetworkSegment
 .Example
 {{ Add code here }}
 .Example
@@ -10101,17 +10582,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -10128,17 +10615,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -10340,9 +10833,9 @@ end {
 
 <#
 .Synopsis
-update a WorkloadNetworkVMGroup
+Update a WorkloadNetworkVMGroup
 .Description
-update a WorkloadNetworkVMGroup
+Update a WorkloadNetworkVMGroup
 .Example
 {{ Add code here }}
 .Example
@@ -10369,17 +10862,23 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.
@@ -10396,17 +10895,23 @@ PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [GatewayId <String>]: The ID of the NSX Gateway
   [GlobalReachConnectionName <String>]: Name of the global reach connection
   [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site
+  [HostId <String>]: The host identifier.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: Name of the license.
   [Location <String>]: The name of the Azure region.
+  [MaintenanceName <String>]: Name of the maintenance
   [PlacementPolicyName <String>]: Name of the placement policy.
   [PortMirroringId <String>]: ID of the NSX port mirroring profile.
   [PrivateCloudName <String>]: Name of the private cloud
+  [ProvisionedNetworkName <String>]: Name of the cloud link.
   [PublicIPId <String>]: ID of the DNS zone.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScriptCmdletName <String>]: Name of the script cmdlet.
   [ScriptExecutionName <String>]: Name of the script cmdlet.
   [ScriptPackageName <String>]: Name of the script package.
   [SegmentId <String>]: The ID of the NSX Segment
+  [ServiceComponentName <String>]: A service component
+  [StoragePolicyName <String>]: Name of the storage policy.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VMGroupId <String>]: ID of the VM group.
   [VirtualMachineId <String>]: ID of the virtual machine.

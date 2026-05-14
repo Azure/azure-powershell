@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an instance of an Event Hubs Cluster.
+Update an instance of an Event Hubs Cluster.
 .Description
-update an instance of an Event Hubs Cluster.
+Update an instance of an Event Hubs Cluster.
 .Example
 Set-AzEventHubCluster -ResourceGroupName myResourceGroup -Name myCluster -Capacity 3
 .Example

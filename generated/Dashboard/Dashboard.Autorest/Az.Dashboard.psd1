@@ -1,7 +1,7 @@
 @{
   GUID = '8475f339-2250-485a-a9cc-aba350de72d2'
   RootModule = './Az.Dashboard.psm1'
-  ModuleVersion = '0.1.0'
+  ModuleVersion = '0.3.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Dashboard.private.dll'
   FormatsToProcess = './Az.Dashboard.format.ps1xml'
-  FunctionsToExport = 'Get-AzGrafana', 'New-AzGrafana', 'New-AzGrafanaMonitorWorkspaceIntegrationObject', 'Remove-AzGrafana', 'Update-AzGrafana'
+  FunctionsToExport = 'Get-AzGrafana', 'Get-AzGrafanaDashboard', 'Get-AzGrafanaIntegrationFabric', 'Invoke-AzGrafanaFetchGrafanaAvailablePlugin', 'New-AzGrafana', 'New-AzGrafanaIntegrationFabric', 'New-AzGrafanaManagedDashboard', 'New-AzGrafanaMonitorWorkspaceIntegrationObject', 'Remove-AzGrafana', 'Remove-AzGrafanaIntegrationFabric', 'Remove-AzGrafanaManagedDashboard', 'Test-AzGrafanaEnterpriseDetail', 'Update-AzGrafana', 'Update-AzGrafanaIntegrationFabric', 'Update-AzGrafanaManagedDashboard'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Dashboard'

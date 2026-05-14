@@ -17,7 +17,7 @@ virtualMachines {P1Y, P3Y, P5Y} Standard_B2s           {westus}
 virtualMachines {P1Y, P3Y, P5Y} Standard_B4ms          {westus}
 ```
 
-This command gets a catlog of reserved resource type skus with location
+This command gets a catalog of reserved resource type skus with location
 
 ### Example 2: Get the list of reserved resource type skus without location
 ```powershell
@@ -45,7 +45,7 @@ SuseLinux    {P1Y, P3Y, P5Y} sles_sap_priority_1-2_vcpu_vm
 SuseLinux    {P1Y, P3Y, P5Y} sles_sap_priority_3-4_vcpu_vm 
 ```
 
-This command gets a catlog of reserved resource type skus without location
+This command gets a catalog of reserved resource type skus without location
 
 ### Example 3: Get the list of eligible 3pp reserved resource type skus with publisher id, offer id, plan id
 ```powershell
@@ -68,4 +68,4 @@ VirtualMachineSoftware {P1Y, P3Y, P5Y} canonical.0001-com-ubuntu-pro-xenial.pro-
 VirtualMachineSoftware {P1Y, P3Y, P5Y} canonical.0001-com-ubuntu-pro-xenial.pro-16_04-lts.4core
 ```
 
-This command gets a catlog of eligible 3pp reserved resource type skus with publisher id, offer id, plan id
+This command gets a catalog of eligible 3pp reserved resource type skus with publisher id, offer id, plan id

@@ -18,8 +18,9 @@ New-AzServiceFabricManagedNodeType [-ResourceGroupName] <String> [-ClusterName] 
  [-ApplicationEndPort <Int32>] [-EphemeralStartPort <Int32>] [-EphemeralEndPort <Int32>] [-VmSize <String>]
  [-VmImagePublisher <String>] [-VmImageOffer <String>] [-VmImageSku <String>] [-VmImageVersion <String>]
  [-Capacity <Hashtable>] [-PlacementProperty <Hashtable>] [-VmUserAssignedIdentity <String[]>] [-IsStateless]
- [-MultiplePlacementGroup] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-MultiplePlacementGroup] [-ZoneBalance] [-EnableOverProvisioning]
+ [-Zone <System.Collections.Generic.List`1[System.String]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -185,6 +186,21 @@ Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSDiskType
 Parameter Sets: (All)
 Aliases: DataDiskType
 Accepted values: Standard_LRS, StandardSSD_LRS, Premium_LRS
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableOverProvisioning
+Specifies whether the node type should be overprovisioned. It is only allowed for stateless node types.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -414,10 +430,40 @@ Accept wildcard characters: False
 ```
 
 ### -VmUserAssignedIdentity
-The list of user assigend identities associated with the virtual machine scale set under the node type. Each entry will be an ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. Follow steps to create the identity and add the role assignment with Service Fabric Resource Provider beforehand here: https://learn.microsoft.com/en-us/azure/service-fabric/how-to-managed-identity-managed-cluster-virtual-machine-scale-sets
+The list of user assigned identities associated with the virtual machine scale set under the node type. Each entry will be an ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. Follow steps to create the identity and add the role assignment with Service Fabric Resource Provider beforehand here: https://learn.microsoft.com/en-us/azure/service-fabric/how-to-managed-identity-managed-cluster-virtual-machine-scale-sets
 
 ```yaml
 Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Zone
+Specifies the availability zones where the node type would span across. If the cluster is not spanning across availability zones, initiates az migration for the cluster.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ZoneBalance
+Setting this to true allows stateless node types to scale out without equal distribution across zones.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

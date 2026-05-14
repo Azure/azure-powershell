@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="protocol">The reference to the transport protocol used by the inbound NAT pool.
-        /// Possible values include: &#39;Udp&#39;, &#39;Tcp&#39;, &#39;All&#39;</param>
+        /// Possible values include: &#39;Udp&#39;, &#39;Tcp&#39;, &#39;All&#39;, &#39;Quic&#39;</param>
 
         /// <param name="frontendPortRangeStart">The first port number in the range of external ports that will be used to
         /// provide Inbound Nat to NICs associated with a load balancer. Acceptable
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets or sets the reference to the transport protocol used by the inbound
-        /// NAT pool. Possible values include: &#39;Udp&#39;, &#39;Tcp&#39;, &#39;All&#39;
+        /// NAT pool. Possible values include: &#39;Udp&#39;, &#39;Tcp&#39;, &#39;All&#39;, &#39;Quic&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "protocol")]
         public string Protocol {get; set; }

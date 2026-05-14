@@ -44,11 +44,11 @@ namespace Commands.StorageSync.Interop.Clients
         /// </summary>
         private static Guid IID_IUnknown = ManagementInteropConstants.IID_IUnknown;
         /// <summary>
-        /// the iid stbale version deep gc progress.
+        /// the iid stable version deep gc progress.
         /// </summary>
         private static Guid IID_IStableVersionDeepGcProgress = ManagementInteropConstants.IID_IStableVersionDeepGcProgress;
         /// <summary>
-        /// the iid stbale version deep gc progress.
+        /// the iid stable version deep gc progress.
         /// </summary>
         private static Guid IID_IScrubbingEngineConnectionPoint = ManagementInteropConstants.IID_IScrubbingEngineConnectionPoint;
 
@@ -860,7 +860,7 @@ namespace Commands.StorageSync.Interop.Clients
         }
 
         /// <summary>
-        /// Coes the set proxy blanket.
+        /// Does the set proxy blanket.
         /// </summary>
         /// <param name="proxy">The proxy.</param>
         /// <param name="dwAuthnSvc">The dw authn SVC.</param>
@@ -868,7 +868,7 @@ namespace Commands.StorageSync.Interop.Clients
         /// <param name="pServerPrincName">Name of the p server princ.</param>
         /// <param name="dwAuthnLevel">The dw authn level.</param>
         /// <param name="dwImpLevel">The dw imp level.</param>
-        /// <param name="dwCapababilities">The dw capababilities.</param>
+        /// <param name="dwCapababilities">The dw capabilities.</param>
         /// <param name="exception">if set to <c>true</c> [exception].</param>
         /// <returns>System.Int32.</returns>
         private static int CoSetProxyBlanket(IntPtr proxy,
@@ -892,7 +892,7 @@ namespace Commands.StorageSync.Interop.Clients
                 exception);
         }
         /// <summary>
-        /// Coes the set proxy blanket.
+        /// Does the set proxy blanket.
         /// </summary>
         /// <param name="proxy">The proxy.</param>
         /// <param name="dwAuthnSvc">The dw authn SVC.</param>
@@ -901,7 +901,7 @@ namespace Commands.StorageSync.Interop.Clients
         /// <param name="dwAuthnLevel">The dw authn level.</param>
         /// <param name="dwImpLevel">The dw imp level.</param>
         /// <param name="pAuthInfo">The p authentication information.</param>
-        /// <param name="dwCapababilities">The dw capababilities.</param>
+        /// <param name="dwCapababilities">The dw capabilities.</param>
         /// <param name="throwOnError">if set to <c>true</c> [throw on error].</param>
         /// <returns>System.Int32.</returns>
         /// <exception cref="COMException">CoSetProxyBlanket failed with HRESULT {hr:X}</exception>

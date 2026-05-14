@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create NSP logging configuration.
+Create NSP logging configuration.
 .Description
-create NSP logging configuration.
+Create NSP logging configuration.
 .Example
 New-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1 -EnabledLogCategory @('NspPublicOutboundPerimeterRulesAllowed')
 
@@ -226,8 +226,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

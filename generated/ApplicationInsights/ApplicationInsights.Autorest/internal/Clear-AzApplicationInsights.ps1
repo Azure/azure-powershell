@@ -31,18 +31,18 @@ You should run the query prior to using for a purge request to verify that the r
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IComponentPurgeBody
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IComponentPurgeBody
 .Outputs
-System.String
+Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IComponentPurgeResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 BODY <IComponentPurgeBody>: Describes the body of a purge request for an App Insights component
-  Filter <IComponentPurgeBodyFilters[]>: The set of columns and filters (queries) to run over them to purge the resulting data.
+  Filter <List<IComponentPurgeBodyFilters>>: The set of columns and filters (queries) to run over them to purge the resulting data.
     [Column <String>]: The column of the table over which the given query should run
     [Key <String>]: When filtering over custom dimensions, this key will be used as the name of the custom dimension.
     [Operator <String>]: A query operator to evaluate over the provided column and value(s). Supported operators are ==, =~, in, in~, >, >=, <, <=, between, and have the same behavior as they would in a KQL query.
@@ -65,18 +65,20 @@ INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the Application Insights component resource.
   [RevisionId <String>]: The id of the workbook's revision.
-  [StorageType <StorageType?>]: The type of the Application Insights component data source for the linked storage account.
+  [StorageType <String>]: The type of the Application Insights component data source for the linked storage account.
   [SubscriptionId <String>]: The ID of the target subscription.
   [WebTestName <String>]: The name of the Application Insights WebTest resource.
 .Link
 https://learn.microsoft.com/powershell/module/az.applicationinsights/clear-azapplicationinsights
 #>
 function Clear-AzApplicationInsights {
-[OutputType([System.String])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IComponentPurgeResponse])]
 [CmdletBinding(DefaultParameterSetName='PurgeViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Purge', Mandatory)]
     [Parameter(ParameterSetName='PurgeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PurgeViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='PurgeViaJsonString', Mandatory)]
     [Alias('ApplicationInsightsComponentName', 'ComponentName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Path')]
     [System.String]
@@ -85,6 +87,8 @@ param(
 
     [Parameter(ParameterSetName='Purge', Mandatory)]
     [Parameter(ParameterSetName='PurgeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PurgeViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='PurgeViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -93,6 +97,8 @@ param(
 
     [Parameter(ParameterSetName='Purge')]
     [Parameter(ParameterSetName='PurgeExpanded')]
+    [Parameter(ParameterSetName='PurgeViaJsonFilePath')]
+    [Parameter(ParameterSetName='PurgeViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -104,24 +110,21 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Purge', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='PurgeViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IComponentPurgeBody]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IComponentPurgeBody]
     # Describes the body of a purge request for an App Insights component
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
     [Parameter(ParameterSetName='PurgeExpanded', Mandatory)]
     [Parameter(ParameterSetName='PurgeViaIdentityExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IComponentPurgeBodyFilters[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IComponentPurgeBodyFilters[]]
     # The set of columns and filters (queries) to run over them to purge the resulting data.
-    # To construct, see NOTES section for FILTER properties and create a hash table.
     ${Filter},
 
     [Parameter(ParameterSetName='PurgeExpanded', Mandatory)]
@@ -130,6 +133,18 @@ param(
     [System.String]
     # Table from which to purge data.
     ${Table},
+
+    [Parameter(ParameterSetName='PurgeViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Purge operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='PurgeViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
+    [System.String]
+    # Json string supplied to the Purge operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -187,16 +202,19 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Purge = 'Az.ApplicationInsights.private\Clear-AzApplicationInsights_Purge';
             PurgeExpanded = 'Az.ApplicationInsights.private\Clear-AzApplicationInsights_PurgeExpanded';
             PurgeViaIdentity = 'Az.ApplicationInsights.private\Clear-AzApplicationInsights_PurgeViaIdentity';
             PurgeViaIdentityExpanded = 'Az.ApplicationInsights.private\Clear-AzApplicationInsights_PurgeViaIdentityExpanded';
+            PurgeViaJsonFilePath = 'Az.ApplicationInsights.private\Clear-AzApplicationInsights_PurgeViaJsonFilePath';
+            PurgeViaJsonString = 'Az.ApplicationInsights.private\Clear-AzApplicationInsights_PurgeViaJsonString';
         }
-        if (('Purge', 'PurgeExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Purge', 'PurgeExpanded', 'PurgeViaJsonFilePath', 'PurgeViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -205,6 +223,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

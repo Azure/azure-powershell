@@ -21,12 +21,13 @@ Create an in-memory object for AzureStorageDataSource.
 Create an in-memory object for AzureStorageDataSource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureStorageDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureStorageDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurestoragedatasourceobject
 #>
 function New-AzPurviewAzureStorageDataSourceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageDataSource')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureStorageDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -50,15 +51,11 @@ function New-AzPurviewAzureStorageDataSourceObject {
         $ResourceName,
         [Parameter()]
         [string]
-        $SubscriptionId,
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-        $Kind
+        $SubscriptionId
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageDataSource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureStorageDataSource]::New()
 
         if ($PSBoundParameters.ContainsKey('CollectionReferenceName')) {
             $Object.CollectionReferenceName = $CollectionReferenceName
@@ -80,9 +77,6 @@ function New-AzPurviewAzureStorageDataSourceObject {
         }
         if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
             $Object.SubscriptionId = $SubscriptionId
-        }
-        if ($PSBoundParameters.ContainsKey('Kind')) {
-            $Object.Kind = $Kind
         }
         return $Object
     }

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a new Alias(Disaster Recovery configuration)
+Update a new Alias(Disaster Recovery configuration)
 .Description
-update a new Alias(Disaster Recovery configuration)
+Update a new Alias(Disaster Recovery configuration)
 .Example
 {{ Add code here }}
 .Example

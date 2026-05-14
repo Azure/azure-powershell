@@ -27,7 +27,7 @@ Gets the details of the vault.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModel
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVaultModel
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -47,6 +47,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
   [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
   [JobName <String>]: Job ARM name.
   [Location <String>]: The name of the Azure region.
   [LogicalNetworkName <String>]: Logical network name.
@@ -71,6 +72,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [RecoveryPointName <String>]: The recovery point name.
   [ReplicatedProtectedItemName <String>]: Replication protected item name.
   [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the recovery services vault.
   [SiteName <String>]: Site name.
@@ -86,7 +88,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratevault
 #>
 function Get-AzMigrateVault {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IVaultModel])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVaultModel])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -117,7 +119,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='List1')]
@@ -182,6 +183,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.Migrate.private\Get-AzMigrateVault_Get';
@@ -189,9 +193,7 @@ begin {
             List = 'Az.Migrate.private\Get-AzMigrateVault_List';
             List1 = 'Az.Migrate.private\Get-AzMigrateVault_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -200,6 +202,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

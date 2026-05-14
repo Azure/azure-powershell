@@ -277,6 +277,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0}
+        ///
+        ///Run the cmdlet below to authenticate interactively; additional parameters may be added as needed.
+        ///
+        ///Connect-AzAccount -Tenant (Get-AzContext).Tenant.Id -ClaimsChallenge &quot;{1}&quot;.
+        /// </summary>
+        public static string ErrorMessageOfClaimsChallengeRequired {
+            get {
+                return ResourceManager.GetString("ErrorMessageOfClaimsChallengeRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Authentication failed against resource {0}. User interaction is required. This may be due to the conditional access policy settings such as multi-factor authentication (MFA). Please rerun &apos;Connect-AzAccount&apos; with additional parameter &apos;-AuthScope {0}&apos;..
         /// </summary>
         public static string ErrorMsgMsalInteractionRequiredWithResourceID {

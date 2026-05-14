@@ -3,6 +3,7 @@
     <PsModuleName>Datadog</PsModuleName>
     <PsRootModuleName>Datadog</PsRootModuleName>
     <PsModuleFolder>Datadog.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Datadog</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

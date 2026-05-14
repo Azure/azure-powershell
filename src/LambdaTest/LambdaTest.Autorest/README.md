@@ -28,7 +28,7 @@ For information on how to develop for `Az.LambdaTest`, see [how-to.md](how-to.md
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 30157c906ac8f2e9c1bbc696d2887c655beb68d5
+commit: be808dcd35e95d9f27b6e6478a8fa27662cc01b3
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md

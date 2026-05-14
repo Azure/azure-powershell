@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an ApplicationGroup for a Namespace.
+Update an ApplicationGroup for a Namespace.
 .Description
-update an ApplicationGroup for a Namespace.
+Update an ApplicationGroup for a Namespace.
 .Example
 $t3 = New-AzEventHubThrottlingPolicyConfig -Name t3 -MetricId OutgoingMessages -RateLimitThreshold 12000
 $appGroup = Get-AzEventHubApplicationGroup -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myAppGroup

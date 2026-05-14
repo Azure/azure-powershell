@@ -1,6 +1,6 @@
 ## EXAMPLES
 
-### Example 1: Create a container instance using image alphine with request cpu 1.0 and request memory 1.5Gb
+### Example 1: Create a container instance using image alpine with request cpu 1.0 and request memory 1.5Gb
 ```powershell
 New-AzContainerInstanceNoDefaultObject -Name "test-container" -Image alpine -RequestCpu 1 -RequestMemoryInGb 1.5
 ```
@@ -11,9 +11,9 @@ Name
 test-container
 ```
 
-Create a container instance using image alphine with request cpu 1.0 and request memory 1.5Gb
+Create a container instance using image alpine with request cpu 1.0 and request memory 1.5Gb
 
-### Example 2: Create a container instance using image alphine with limit cpu 2.0 and limit memory 2.5Gb
+### Example 2: Create a container instance using image alpine with limit cpu 2.0 and limit memory 2.5Gb
 ```powershell
 New-AzContainerInstanceNoDefaultObject -Image alpine -Name "test-container" -LimitCpu 2 -LimitMemoryInGb 2.5
 ```
@@ -24,7 +24,7 @@ Name
 test-container
 ```
 
-Create a container instance using image alphine with limit cpu 2.0 and limit memory 2.5Gb
+Create a container instance using image alpine with limit cpu 2.0 and limit memory 2.5Gb
 
 ### Example 3: Create a container group with a container instance
 ```powershell

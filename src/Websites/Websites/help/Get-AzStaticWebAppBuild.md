@@ -48,7 +48,7 @@ Kind Name    Type
 ```
 
 This command list all builds under a static web app.
-Automaticall create a new build in static web app When creating a new pull request for branch.
+Automatically create a new build in static web app When creating a new pull request for branch.
 
 ### Example 2: Get the details of a static site build
 ```powershell

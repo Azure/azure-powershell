@@ -76,13 +76,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("RemoteDisasterRecoveryConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).RemoteDisasterRecoveryConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDisasterRecoveryConfigurationDetails) content.GetValueForProperty("RemoteDisasterRecoveryConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).RemoteDisasterRecoveryConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DisasterRecoveryConfigurationDetailsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("LocalStandbyDb"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).LocalStandbyDb = (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseStandbySummary) content.GetValueForProperty("LocalStandbyDb",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).LocalStandbyDb, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.AutonomousDatabaseStandbySummaryTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("ScheduledOperation"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).ScheduledOperation = (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsType) content.GetValueForProperty("ScheduledOperation",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).ScheduledOperation, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ScheduledOperationsTypeTypeConverter.ConvertFrom);
             }
             if (content.Contains("ApexDetail"))
             {
@@ -180,6 +180,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).LocalDisasterRecoveryType = (string) content.GetValueForProperty("LocalDisasterRecoveryType",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).LocalDisasterRecoveryType, global::System.Convert.ToString);
             }
+            if (content.Contains("TimeDisasterRecoveryRoleChanged"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).TimeDisasterRecoveryRoleChanged = (global::System.DateTime?) content.GetValueForProperty("TimeDisasterRecoveryRoleChanged",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).TimeDisasterRecoveryRoleChanged, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             if (content.Contains("FailedDataRecoveryInSecond"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).FailedDataRecoveryInSecond = (int?) content.GetValueForProperty("FailedDataRecoveryInSecond",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).FailedDataRecoveryInSecond, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
@@ -211,6 +215,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (content.Contains("LifecycleState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).LifecycleState = (string) content.GetValueForProperty("LifecycleState",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).LifecycleState, global::System.Convert.ToString);
+            }
+            if (content.Contains("ScheduledOperationsList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).ScheduledOperationsList = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsType>) content.GetValueForProperty("ScheduledOperationsList",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).ScheduledOperationsList, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsType>(__y, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ScheduledOperationsTypeTypeConverter.ConvertFrom));
             }
             if (content.Contains("PrivateEndpointIP"))
             {
@@ -380,6 +388,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).LongTermBackupScheduleRetentionPeriodInDay = (int?) content.GetValueForProperty("LongTermBackupScheduleRetentionPeriodInDay",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).LongTermBackupScheduleRetentionPeriodInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
+            if (content.Contains("RemoteDisasterRecoveryConfigurationDisasterRecoveryType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).RemoteDisasterRecoveryConfigurationDisasterRecoveryType = (string) content.GetValueForProperty("RemoteDisasterRecoveryConfigurationDisasterRecoveryType",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).RemoteDisasterRecoveryConfigurationDisasterRecoveryType, global::System.Convert.ToString);
+            }
+            if (content.Contains("RemoteDisasterRecoveryConfigurationTimeSnapshotStandbyEnabledTill"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).RemoteDisasterRecoveryConfigurationTimeSnapshotStandbyEnabledTill = (global::System.DateTime?) content.GetValueForProperty("RemoteDisasterRecoveryConfigurationTimeSnapshotStandbyEnabledTill",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).RemoteDisasterRecoveryConfigurationTimeSnapshotStandbyEnabledTill, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("RemoteDisasterRecoveryConfigurationIsSnapshotStandby"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).RemoteDisasterRecoveryConfigurationIsSnapshotStandby = (bool?) content.GetValueForProperty("RemoteDisasterRecoveryConfigurationIsSnapshotStandby",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).RemoteDisasterRecoveryConfigurationIsSnapshotStandby, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("RemoteDisasterRecoveryConfigurationIsReplicateAutomaticBackup"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).RemoteDisasterRecoveryConfigurationIsReplicateAutomaticBackup = (bool?) content.GetValueForProperty("RemoteDisasterRecoveryConfigurationIsReplicateAutomaticBackup",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).RemoteDisasterRecoveryConfigurationIsReplicateAutomaticBackup, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             if (content.Contains("LocalStandbyDbLagTimeInSecond"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).LocalStandbyDbLagTimeInSecond = (int?) content.GetValueForProperty("LocalStandbyDbLagTimeInSecond",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).LocalStandbyDbLagTimeInSecond, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
@@ -399,22 +423,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (content.Contains("LocalStandbyDbTimeDisasterRecoveryRoleChanged"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).LocalStandbyDbTimeDisasterRecoveryRoleChanged = (string) content.GetValueForProperty("LocalStandbyDbTimeDisasterRecoveryRoleChanged",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).LocalStandbyDbTimeDisasterRecoveryRoleChanged, global::System.Convert.ToString);
-            }
-            if (content.Contains("ScheduledOperationDayOfWeek"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).ScheduledOperationDayOfWeek = (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDayOfWeek) content.GetValueForProperty("ScheduledOperationDayOfWeek",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).ScheduledOperationDayOfWeek, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DayOfWeekTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("ScheduledOperationScheduledStartTime"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).ScheduledOperationScheduledStartTime = (string) content.GetValueForProperty("ScheduledOperationScheduledStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).ScheduledOperationScheduledStartTime, global::System.Convert.ToString);
-            }
-            if (content.Contains("ScheduledOperationScheduledStopTime"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).ScheduledOperationScheduledStopTime = (string) content.GetValueForProperty("ScheduledOperationScheduledStopTime",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).ScheduledOperationScheduledStopTime, global::System.Convert.ToString);
-            }
-            if (content.Contains("DayOfWeekName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).DayOfWeekName = (string) content.GetValueForProperty("DayOfWeekName",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).DayOfWeekName, global::System.Convert.ToString);
             }
             if (content.Contains("ApexDetailApexVersion"))
             {
@@ -517,13 +525,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("RemoteDisasterRecoveryConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).RemoteDisasterRecoveryConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDisasterRecoveryConfigurationDetails) content.GetValueForProperty("RemoteDisasterRecoveryConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).RemoteDisasterRecoveryConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DisasterRecoveryConfigurationDetailsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("LocalStandbyDb"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).LocalStandbyDb = (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseStandbySummary) content.GetValueForProperty("LocalStandbyDb",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).LocalStandbyDb, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.AutonomousDatabaseStandbySummaryTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("ScheduledOperation"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).ScheduledOperation = (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsType) content.GetValueForProperty("ScheduledOperation",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).ScheduledOperation, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ScheduledOperationsTypeTypeConverter.ConvertFrom);
             }
             if (content.Contains("ApexDetail"))
             {
@@ -621,6 +629,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).LocalDisasterRecoveryType = (string) content.GetValueForProperty("LocalDisasterRecoveryType",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).LocalDisasterRecoveryType, global::System.Convert.ToString);
             }
+            if (content.Contains("TimeDisasterRecoveryRoleChanged"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).TimeDisasterRecoveryRoleChanged = (global::System.DateTime?) content.GetValueForProperty("TimeDisasterRecoveryRoleChanged",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).TimeDisasterRecoveryRoleChanged, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             if (content.Contains("FailedDataRecoveryInSecond"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).FailedDataRecoveryInSecond = (int?) content.GetValueForProperty("FailedDataRecoveryInSecond",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).FailedDataRecoveryInSecond, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
@@ -652,6 +664,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (content.Contains("LifecycleState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).LifecycleState = (string) content.GetValueForProperty("LifecycleState",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).LifecycleState, global::System.Convert.ToString);
+            }
+            if (content.Contains("ScheduledOperationsList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).ScheduledOperationsList = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsType>) content.GetValueForProperty("ScheduledOperationsList",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).ScheduledOperationsList, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IScheduledOperationsType>(__y, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ScheduledOperationsTypeTypeConverter.ConvertFrom));
             }
             if (content.Contains("PrivateEndpointIP"))
             {
@@ -821,6 +837,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).LongTermBackupScheduleRetentionPeriodInDay = (int?) content.GetValueForProperty("LongTermBackupScheduleRetentionPeriodInDay",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).LongTermBackupScheduleRetentionPeriodInDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
+            if (content.Contains("RemoteDisasterRecoveryConfigurationDisasterRecoveryType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).RemoteDisasterRecoveryConfigurationDisasterRecoveryType = (string) content.GetValueForProperty("RemoteDisasterRecoveryConfigurationDisasterRecoveryType",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).RemoteDisasterRecoveryConfigurationDisasterRecoveryType, global::System.Convert.ToString);
+            }
+            if (content.Contains("RemoteDisasterRecoveryConfigurationTimeSnapshotStandbyEnabledTill"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).RemoteDisasterRecoveryConfigurationTimeSnapshotStandbyEnabledTill = (global::System.DateTime?) content.GetValueForProperty("RemoteDisasterRecoveryConfigurationTimeSnapshotStandbyEnabledTill",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).RemoteDisasterRecoveryConfigurationTimeSnapshotStandbyEnabledTill, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("RemoteDisasterRecoveryConfigurationIsSnapshotStandby"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).RemoteDisasterRecoveryConfigurationIsSnapshotStandby = (bool?) content.GetValueForProperty("RemoteDisasterRecoveryConfigurationIsSnapshotStandby",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).RemoteDisasterRecoveryConfigurationIsSnapshotStandby, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("RemoteDisasterRecoveryConfigurationIsReplicateAutomaticBackup"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).RemoteDisasterRecoveryConfigurationIsReplicateAutomaticBackup = (bool?) content.GetValueForProperty("RemoteDisasterRecoveryConfigurationIsReplicateAutomaticBackup",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).RemoteDisasterRecoveryConfigurationIsReplicateAutomaticBackup, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             if (content.Contains("LocalStandbyDbLagTimeInSecond"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).LocalStandbyDbLagTimeInSecond = (int?) content.GetValueForProperty("LocalStandbyDbLagTimeInSecond",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).LocalStandbyDbLagTimeInSecond, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
@@ -840,22 +872,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models
             if (content.Contains("LocalStandbyDbTimeDisasterRecoveryRoleChanged"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).LocalStandbyDbTimeDisasterRecoveryRoleChanged = (string) content.GetValueForProperty("LocalStandbyDbTimeDisasterRecoveryRoleChanged",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).LocalStandbyDbTimeDisasterRecoveryRoleChanged, global::System.Convert.ToString);
-            }
-            if (content.Contains("ScheduledOperationDayOfWeek"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).ScheduledOperationDayOfWeek = (Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IDayOfWeek) content.GetValueForProperty("ScheduledOperationDayOfWeek",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).ScheduledOperationDayOfWeek, Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.DayOfWeekTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("ScheduledOperationScheduledStartTime"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).ScheduledOperationScheduledStartTime = (string) content.GetValueForProperty("ScheduledOperationScheduledStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).ScheduledOperationScheduledStartTime, global::System.Convert.ToString);
-            }
-            if (content.Contains("ScheduledOperationScheduledStopTime"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).ScheduledOperationScheduledStopTime = (string) content.GetValueForProperty("ScheduledOperationScheduledStopTime",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).ScheduledOperationScheduledStopTime, global::System.Convert.ToString);
-            }
-            if (content.Contains("DayOfWeekName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).DayOfWeekName = (string) content.GetValueForProperty("DayOfWeekName",((Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.IAutonomousDatabaseBasePropertiesInternal)this).DayOfWeekName, global::System.Convert.ToString);
             }
             if (content.Contains("ApexDetailApexVersion"))
             {

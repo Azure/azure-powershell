@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a data collection endpoint.
+Create a data collection endpoint.
 .Description
-create a data collection endpoint.
+Create a data collection endpoint.
 .Example
 New-AzDataCollectionEndpoint -Name myCollectionEndpoint -ResourceGroupName AMCS-TEST -Location eastus -NetworkAclsPublicNetworkAccess Enabled
 .Example
@@ -192,8 +192,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

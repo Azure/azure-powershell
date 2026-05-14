@@ -24,6 +24,18 @@ Stop-AzLabServicesVM -LabName <String> -Name <String> -ResourceGroupName <String
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### StopViaIdentity
+```
+Stop-AzLabServicesVM -InputObject <ILabServicesIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### StopViaIdentityLab
+```
+Stop-AzLabServicesVM -LabInputObject <ILabServicesIdentity> -Name <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### VM
 ```
 Stop-AzLabServicesVM -VM <VirtualMachine> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
@@ -75,6 +87,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+Parameter Sets: StopViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -LabInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+Parameter Sets: StopViaIdentityLab
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -LabName
 The name of the lab that uniquely identifies it within containing lab account.
 Used in resource URIs.
@@ -97,7 +139,7 @@ Used in resource URIs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Stop, StopViaIdentityLab
 Aliases: VirtualMachineName
 
 Required: True
@@ -127,7 +169,7 @@ Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Stop
+Parameter Sets: Stop, StopViaIdentity, StopViaIdentityLab
 Aliases:
 
 Required: False
@@ -154,7 +196,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-
+The resource Id of lab service virtual machine.
 
 ```yaml
 Type: System.String
@@ -173,7 +215,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ResourceId, Stop, VM
 Aliases:
 
 Required: False
@@ -184,10 +226,10 @@ Accept wildcard characters: False
 ```
 
 ### -VM
-To construct, see NOTES section for VM properties and create a hash table.
+The object of lab service virtual machine to stop.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachine
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine
 Parameter Sets: VM
 Aliases:
 
@@ -234,11 +276,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachine
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
 
 ### System.Boolean
 

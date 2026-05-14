@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Description(@"Check that subnets will be valid for AML file system check calls.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/checkAmlFSSubnets", ApiVersion = "2023-05-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.StorageCache/checkAmlFSSubnets", ApiVersion = "2025-07-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.NotSuggestDefaultParameterSet]
     public partial class TestAzStorageCacheAmlFileSystemSubnet_CheckViaJsonString : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener,
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 /
-                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
+                if (true == InvocationInformation?.BoundParameters?.ContainsKey("PassThru"))
                 {
                     WriteObject(true);
                 }

@@ -8,9 +8,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
         AzureDisk = 0,
         AzureBlob,
         AzureDatabaseForPostgreSQL,
+        AzureDataLakeStorage,
         AzureKubernetesService,
         AzureDatabaseForPGFlexServer,
-        AzureDatabaseForMySQL
+        AzureDatabaseForMySQL,
+        AzureCosmosDB
     }
 
     public enum StorageSettingType

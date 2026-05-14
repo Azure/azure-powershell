@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IOrganizationResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Description(@"Get a OrganizationResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.MongoDB.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/MongoDB.Atlas/organizations/{organizationName}", ApiVersion = "2024-11-18-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.MongoDB.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/MongoDB.Atlas/organizations/{organizationName}", ApiVersion = "2025-06-01")]
     public partial class GetAzMongoDBOrganization_Get : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.IContext

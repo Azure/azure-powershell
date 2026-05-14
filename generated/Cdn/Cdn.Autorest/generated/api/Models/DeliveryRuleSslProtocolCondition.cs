@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISslProtocolMatchConditionParameters Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleSslProtocolConditionInternal.Parameter { get => (this._parameter = this._parameter ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SslProtocolMatchConditionParameters()); set { {_parameter = value;} } }
 
         /// <summary>Internal Acessors for ParameterOperator</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleSslProtocolConditionInternal.ParameterOperator { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISslProtocolMatchConditionParametersInternal)Parameter).Operator; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISslProtocolMatchConditionParametersInternal)Parameter).Operator = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleSslProtocolConditionInternal.ParameterOperator { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISslProtocolMatchConditionParametersInternal)Parameter).Operator; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISslProtocolMatchConditionParametersInternal)Parameter).Operator = value ; }
 
         /// <summary>The name of the condition for the delivery rule.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Constant]

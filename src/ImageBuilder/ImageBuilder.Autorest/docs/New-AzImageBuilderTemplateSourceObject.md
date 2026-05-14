@@ -60,7 +60,7 @@ ExactVersion ImageVersionId
 
 This command creates a shared image source.
 
-### Example 3: Create a platfrom image source.
+### Example 3: Create a platform image source.
 ```powershell
 New-AzImageBuilderTemplateSourceObject -Publisher 'Canonical' -Offer 'UbuntuServer' -Sku '18.04-LTS' -Version 'latest'
 ```
@@ -71,7 +71,7 @@ ExactVersion Offer        Publisher Sku       Version
              UbuntuServer Canonical 18.04-LTS latest
 ```
 
-This command creates a platfrom image source.
+This command creates a platform image source.
 
 ## PARAMETERS
 

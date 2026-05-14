@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a data collection rule.
+Create a data collection rule.
 .Description
-create a data collection rule.
+Create a data collection rule.
 .Example
 New-AzDataCollectionRule -Name myCollectionRule1 -ResourceGroupName AMCS-TEST -JsonFilePath .\test\jsonfile\ruleTest1.json
 # Note: content of .\test\jsonfile\ruleTest1.json
@@ -482,8 +482,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

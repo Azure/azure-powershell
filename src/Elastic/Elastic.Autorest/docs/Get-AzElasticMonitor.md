@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzElasticMonitor
 
 ## SYNOPSIS
-Get the properties of a specific monitor resource.
+Get detailed properties of a specific Elastic monitor resource, helping you manage observability and performance.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ Get-AzElasticMonitor -ResourceGroupName <String> [-SubscriptionId <String[]>] [-
 ```
 
 ## DESCRIPTION
-Get the properties of a specific monitor resource.
+Get detailed properties of a specific Elastic monitor resource, helping you manage observability and performance.
 
 ## EXAMPLES
 

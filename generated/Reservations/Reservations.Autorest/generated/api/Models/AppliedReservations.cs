@@ -31,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models
         Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IAppliedReservationsProperties Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IAppliedReservationsInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.AppliedReservationsProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ReservationOrderId</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IAppliedReservationList Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IAppliedReservationsInternal.ReservationOrderId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IAppliedReservationsPropertiesInternal)Property).ReservationOrderId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IAppliedReservationsPropertiesInternal)Property).ReservationOrderId = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IAppliedReservationList Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IAppliedReservationsInternal.ReservationOrderId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IAppliedReservationsPropertiesInternal)Property).ReservationOrderId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IAppliedReservationsPropertiesInternal)Property).ReservationOrderId = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IAppliedReservationsInternal.Type { get => this._type; set { {_type = value;} } }

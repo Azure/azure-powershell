@@ -65,6 +65,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Owned)]
         public string IsPanoramaManaged { get => this._isPanoramaManaged; set => this._isPanoramaManaged = value; }
 
+        /// <summary>Backing field for <see cref="IsStrataCloudManaged" /> property.</summary>
+        private string _isStrataCloudManaged;
+
+        /// <summary>Strata Cloud Managed: Default is False. Default will be CloudSec managed</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Owned)]
+        public string IsStrataCloudManaged { get => this._isStrataCloudManaged; set => this._isStrataCloudManaged = value; }
+
         /// <summary>Backing field for <see cref="MarketplaceDetail" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMarketplaceDetails _marketplaceDetail;
 
@@ -98,37 +105,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMarketplaceDetails Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceUpdatePropertiesInternal.MarketplaceDetail { get => (this._marketplaceDetail = this._marketplaceDetail ?? new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.MarketplaceDetails()); set { {_marketplaceDetail = value;} } }
 
         /// <summary>Internal Acessors for MarketplaceDetailMarketplaceSubscriptionId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceUpdatePropertiesInternal.MarketplaceDetailMarketplaceSubscriptionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMarketplaceDetailsInternal)MarketplaceDetail).MarketplaceSubscriptionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMarketplaceDetailsInternal)MarketplaceDetail).MarketplaceSubscriptionId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceUpdatePropertiesInternal.MarketplaceDetailMarketplaceSubscriptionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMarketplaceDetailsInternal)MarketplaceDetail).MarketplaceSubscriptionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMarketplaceDetailsInternal)MarketplaceDetail).MarketplaceSubscriptionId = value ?? null; }
 
         /// <summary>Internal Acessors for PanoramaConfig</summary>
         Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfig Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceUpdatePropertiesInternal.PanoramaConfig { get => (this._panoramaConfig = this._panoramaConfig ?? new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PanoramaConfig()); set { {_panoramaConfig = value;} } }
 
         /// <summary>Internal Acessors for PanoramaConfigCgName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceUpdatePropertiesInternal.PanoramaConfigCgName { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfigInternal)PanoramaConfig).CgName; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfigInternal)PanoramaConfig).CgName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceUpdatePropertiesInternal.PanoramaConfigCgName { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfigInternal)PanoramaConfig).CgName; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfigInternal)PanoramaConfig).CgName = value ?? null; }
 
         /// <summary>Internal Acessors for PanoramaConfigDgName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceUpdatePropertiesInternal.PanoramaConfigDgName { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfigInternal)PanoramaConfig).DgName; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfigInternal)PanoramaConfig).DgName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceUpdatePropertiesInternal.PanoramaConfigDgName { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfigInternal)PanoramaConfig).DgName; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfigInternal)PanoramaConfig).DgName = value ?? null; }
 
         /// <summary>Internal Acessors for PanoramaConfigHostName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceUpdatePropertiesInternal.PanoramaConfigHostName { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfigInternal)PanoramaConfig).HostName; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfigInternal)PanoramaConfig).HostName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceUpdatePropertiesInternal.PanoramaConfigHostName { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfigInternal)PanoramaConfig).HostName; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfigInternal)PanoramaConfig).HostName = value ?? null; }
 
         /// <summary>Internal Acessors for PanoramaConfigPanoramaServer</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceUpdatePropertiesInternal.PanoramaConfigPanoramaServer { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfigInternal)PanoramaConfig).PanoramaServer; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfigInternal)PanoramaConfig).PanoramaServer = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceUpdatePropertiesInternal.PanoramaConfigPanoramaServer { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfigInternal)PanoramaConfig).PanoramaServer; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfigInternal)PanoramaConfig).PanoramaServer = value ?? null; }
 
         /// <summary>Internal Acessors for PanoramaConfigPanoramaServer2</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceUpdatePropertiesInternal.PanoramaConfigPanoramaServer2 { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfigInternal)PanoramaConfig).PanoramaServer2; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfigInternal)PanoramaConfig).PanoramaServer2 = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceUpdatePropertiesInternal.PanoramaConfigPanoramaServer2 { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfigInternal)PanoramaConfig).PanoramaServer2; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfigInternal)PanoramaConfig).PanoramaServer2 = value ?? null; }
 
         /// <summary>Internal Acessors for PanoramaConfigTplName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceUpdatePropertiesInternal.PanoramaConfigTplName { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfigInternal)PanoramaConfig).TplName; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfigInternal)PanoramaConfig).TplName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceUpdatePropertiesInternal.PanoramaConfigTplName { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfigInternal)PanoramaConfig).TplName; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfigInternal)PanoramaConfig).TplName = value ?? null; }
 
         /// <summary>Internal Acessors for PanoramaConfigVMAuthKey</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceUpdatePropertiesInternal.PanoramaConfigVMAuthKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfigInternal)PanoramaConfig).VMAuthKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfigInternal)PanoramaConfig).VMAuthKey = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceUpdatePropertiesInternal.PanoramaConfigVMAuthKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfigInternal)PanoramaConfig).VMAuthKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPanoramaConfigInternal)PanoramaConfig).VMAuthKey = value ?? null; }
 
         /// <summary>Internal Acessors for PlanData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPlanData Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceUpdatePropertiesInternal.PlanData { get => (this._planData = this._planData ?? new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.PlanData()); set { {_planData = value;} } }
 
         /// <summary>Internal Acessors for PlanDataEffectiveDate</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceUpdatePropertiesInternal.PlanDataEffectiveDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPlanDataInternal)PlanData).EffectiveDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPlanDataInternal)PlanData).EffectiveDate = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceUpdatePropertiesInternal.PlanDataEffectiveDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPlanDataInternal)PlanData).EffectiveDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPlanDataInternal)PlanData).EffectiveDate = value ?? default(global::System.DateTime); }
+
+        /// <summary>Internal Acessors for StrataCloudManagerConfig</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IStrataCloudManagerConfig Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResourceUpdatePropertiesInternal.StrataCloudManagerConfig { get => (this._strataCloudManagerConfig = this._strataCloudManagerConfig ?? new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.StrataCloudManagerConfig()); set { {_strataCloudManagerConfig = value;} } }
 
         /// <summary>Backing field for <see cref="NetworkProfile" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfile _networkProfile;
@@ -208,6 +218,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         /// <summary>different usage type like PAYG/COMMITTED</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Inlined)]
         public string PlanDataUsageType { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPlanDataInternal)PlanData).UsageType; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPlanDataInternal)PlanData).UsageType = value ?? null; }
+
+        /// <summary>Backing field for <see cref="StrataCloudManagerConfig" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IStrataCloudManagerConfig _strataCloudManagerConfig;
+
+        /// <summary>
+        /// Strata Cloud Manager Configuration, only applicable if Strata Cloud Manager is selected.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IStrataCloudManagerConfig StrataCloudManagerConfig { get => (this._strataCloudManagerConfig = this._strataCloudManagerConfig ?? new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.StrataCloudManagerConfig()); set => this._strataCloudManagerConfig = value; }
+
+        /// <summary>
+        /// Strata Cloud Manager name which is intended to manage the policy for this firewall.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Origin(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PropertyOrigin.Inlined)]
+        public string StratumCloudManagerConfigCloudManagerName { get => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IStrataCloudManagerConfigInternal)StrataCloudManagerConfig).CloudManagerName; set => ((Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IStrataCloudManagerConfigInternal)StrataCloudManagerConfig).CloudManagerName = value ?? null; }
 
         /// <summary>Creates an new <see cref="FirewallResourceUpdateProperties" /> instance.</summary>
         public FirewallResourceUpdateProperties()
@@ -310,6 +335,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("TRUE", "FALSE")]
         string IsPanoramaManaged { get; set; }
+        /// <summary>Strata Cloud Managed: Default is False. Default will be CloudSec managed</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Strata Cloud Managed: Default is False. Default will be CloudSec managed",
+        SerializedName = @"isStrataCloudManaged",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("TRUE", "FALSE")]
+        string IsStrataCloudManaged { get; set; }
         /// <summary>Marketplace Subscription Id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Info(
         Required = false,
@@ -514,6 +551,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("PAYG", "COMMITTED")]
         string PlanDataUsageType { get; set; }
+        /// <summary>
+        /// Strata Cloud Manager name which is intended to manage the policy for this firewall.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Strata Cloud Manager name which is intended to manage the policy for this firewall.",
+        SerializedName = @"cloudManagerName",
+        PossibleTypes = new [] { typeof(string) })]
+        string StratumCloudManagerConfigCloudManagerName { get; set; }
 
     }
     /// The updatable properties of the FirewallResource.
@@ -543,6 +593,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         /// <summary>Panorama Managed: Default is False. Default will be CloudSec managed</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("TRUE", "FALSE")]
         string IsPanoramaManaged { get; set; }
+        /// <summary>Strata Cloud Managed: Default is False. Default will be CloudSec managed</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("TRUE", "FALSE")]
+        string IsStrataCloudManaged { get; set; }
         /// <summary>Marketplace details</summary>
         Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IMarketplaceDetails MarketplaceDetail { get; set; }
         /// <summary>Marketplace Subscription Id</summary>
@@ -591,6 +644,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
         /// <summary>different usage type like PAYG/COMMITTED</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.PSArgumentCompleterAttribute("PAYG", "COMMITTED")]
         string PlanDataUsageType { get; set; }
+        /// <summary>
+        /// Strata Cloud Manager Configuration, only applicable if Strata Cloud Manager is selected.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IStrataCloudManagerConfig StrataCloudManagerConfig { get; set; }
+        /// <summary>
+        /// Strata Cloud Manager name which is intended to manage the policy for this firewall.
+        /// </summary>
+        string StratumCloudManagerConfigCloudManagerName { get; set; }
 
     }
 }

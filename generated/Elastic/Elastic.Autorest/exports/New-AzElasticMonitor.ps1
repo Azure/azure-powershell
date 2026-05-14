@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a monitor resource.
+Create a new Elastic monitor resource in your Azure subscription, enabling observability and monitoring of your Azure resources through Elastic.
 .Description
-create a monitor resource.
+Create a new Elastic monitor resource in your Azure subscription, enabling observability and monitoring of your Azure resources through Elastic.
 .Example
 New-AzElasticMonitor -ResourceGroupName azps-elastic-test -Name elastic-pwsh02 -Location "westus2" -Sku "ess-consumption-2024_Monthly" -UserInfoEmailAddress 'xxx@microsoft.com'
 
@@ -96,6 +96,19 @@ param(
     ${GenerateApiKey},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.PSArgumentCompleterAttribute("Hosted", "Serverless")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
+    [System.String]
+    # Hosting type of the monitor resource - either Hosted deployments OR Serverless Projects.
+    ${HostingType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
+    [System.String]
+    # The kind of the Elastic resource - observability, security, search etc.
+    ${Kind},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
     [System.String]
     # The location of the monitor resource
@@ -137,6 +150,20 @@ param(
     [System.String]
     # Term ID of the plan
     ${PlanDetailTermId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.PSArgumentCompleterAttribute("GeneralPurpose", "Vector", "TimeSeries", "NotApplicable")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
+    [System.String]
+    # Configuration type of the Elasticsearch project
+    ${ProjectDetailConfigurationType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.PSArgumentCompleterAttribute("Elasticsearch", "Observability", "Security", "NotApplicable")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
+    [System.String]
+    # Project type; ex: Elasticsearch / Observability / Security
+    ${ProjectDetailProjectType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]

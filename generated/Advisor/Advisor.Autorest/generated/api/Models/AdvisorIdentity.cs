@@ -13,11 +13,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models
     {
 
         /// <summary>Backing field for <see cref="ConfigurationName" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.ConfigurationName? _configurationName;
+        private string _configurationName;
 
         /// <summary>Advisor configuration name. Value must be 'default'</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Origin(Microsoft.Azure.PowerShell.Cmdlets.Advisor.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.ConfigurationName? ConfigurationName { get => this._configurationName; set => this._configurationName = value; }
+        public string ConfigurationName { get => this._configurationName; set => this._configurationName = value; }
 
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
@@ -85,14 +85,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Advisor configuration name. Value must be 'default'",
         SerializedName = @"configurationName",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.ConfigurationName) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.ConfigurationName? ConfigurationName { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Advisor.PSArgumentCompleterAttribute("default")]
+        string ConfigurationName { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -101,6 +108,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Name of metadata entity.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
@@ -111,6 +121,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The operation ID, which can be found from the Location field in the generate recommendation response header.",
         SerializedName = @"operationId",
         PossibleTypes = new [] { typeof(string) })]
@@ -119,6 +132,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The recommendation ID.",
         SerializedName = @"recommendationId",
         PossibleTypes = new [] { typeof(string) })]
@@ -127,6 +143,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Azure resource group.",
         SerializedName = @"resourceGroup",
         PossibleTypes = new [] { typeof(string) })]
@@ -137,6 +156,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies.",
         SerializedName = @"resourceUri",
         PossibleTypes = new [] { typeof(string) })]
@@ -145,6 +167,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The Azure subscription ID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -155,7 +180,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models
 
     {
         /// <summary>Advisor configuration name. Value must be 'default'</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.ConfigurationName? ConfigurationName { get; set; }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Advisor.PSArgumentCompleterAttribute("default")]
+        string ConfigurationName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>Name of metadata entity.</summary>

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzOracleDbSystemShape'))
 }
 
 Describe 'Get-AzOracleDbSystemShape' {
-    It 'List' {
+    It 'List'  {
         {
             $dbSystemShapeList = Get-AzOracleDbSystemShape -Location $env.location
             $dbSystemShapeList.Count | Should -BeGreaterThan 0

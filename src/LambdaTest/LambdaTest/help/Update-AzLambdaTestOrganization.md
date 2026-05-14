@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzLambdaTestOrganization
 
 ## SYNOPSIS
-update a OrganizationResource
+Update a OrganizationResource
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ Update-AzLambdaTestOrganization -InputObject <ILambdaTestIdentity> [-EnableSyste
 ```
 
 ## DESCRIPTION
-update a OrganizationResource
+Update a OrganizationResource
 
 ## EXAMPLES
 

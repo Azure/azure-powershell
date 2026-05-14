@@ -20,11 +20,13 @@ Retrieves the details of the replicating server status.
 .Description
 The Get-AzMigrateServerMigrationStatus cmdlet retrieves the replication status for the replicating server.
 .Example
-Get-AzMigrateServerMigrationStatus -ResourceGroupName cbtpvtrg -ProjectName migpvt
+Get-AzMigrateServerMigrationStatus -ProjectName "cbt-resync-gql" -ResourceGroupName "ankitbaluni-resync-rg"
 .Example
-Get-AzMigrateServerMigrationStatus -ProjectName "migpvt-ecyproj" -ResourceGroupName "cbtprivatestamprg" -MachineName "CVM-Win2019"
+Get-AzMigrateServerMigrationStatus -ProjectName "cbt-resync-gql" -ResourceGroupName "ankitbaluni-resync-rg" -MachineName "Rhel8-Vm"
 .Example
-Get-AzMigrateServerMigrationStatus -ProjectName "migpvt-ecyproj" -ResourceGroupName "cbtprivatestamprg" -ApplianceName "migpvt"
+Get-AzMigrateServerMigrationStatus -ProjectName "cbt-resync-gql" -ResourceGroupName "ankitbaluni-resync-rg" -ApplianceName "cbtresyncgql"
+.Example
+Get-AzMigrateServerMigrationStatus -ProjectName "cbt-resync-gql" -ResourceGroupName "ankitbaluni-resync-rg" -MachineName "Rhel8-Vm" -Expedite
 
 .Outputs
 System.Management.Automation.PSObject[]
@@ -38,15 +40,13 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # [Parameter(ParameterSetName = 'GetByPrioritiseServer', Mandatory)]
-    #  Specifies the Resource Group of the Azure Migrate Project in the current subscription.
+    # Specifies the Resource Group of the Azure Migrate Project in the current subscription.
     ${ResourceGroupName},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
-    # [Parameter(ParameterSetName = 'GetByPrioritiseServer', Mandatory)]
-    #  Specifies the Azure Migrate project  in the current subscription.
+    # Specifies the Azure Migrate project  in the current subscription.
     ${ProjectName},
 
     [Parameter()]
@@ -56,19 +56,25 @@ param(
     # Azure Subscription ID.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='GetByPrioritiseServer', Mandatory)]
+    [Parameter(ParameterSetName='GetHealthByMachineName', Mandatory)]
+    [Parameter(ParameterSetName='GetByMachineName', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.String]
+    # Specifies the display name of the replicating machine.
+    ${MachineName},
+
+    [Parameter(ParameterSetName='GetByPrioritiseServer', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+    [System.Management.Automation.SwitchParameter]
+    # Specifies whether to expedite the operation of a replicating server.
+    ${Expedite},
+
     [Parameter(ParameterSetName='GetByApplianceName', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [System.String]
     # Specifies the name of the appliance.
     ${ApplianceName},
-
-    [Parameter(ParameterSetName='GetHealthByMachineName', Mandatory)]
-    [Parameter(ParameterSetName='GetByMachineName', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-    [System.String]
-    # [Parameter(ParameterSetName = 'GetByPrioritiseServer', Mandatory)]
-    #  Specifies the display name of the replicating machine.
-    ${MachineName},
 
     [Parameter(ParameterSetName='GetHealthByMachineName', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -143,6 +149,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -163,13 +177,12 @@ begin {
 
         $mapping = @{
             ListByName = 'Az.Migrate.custom\Get-AzMigrateServerMigrationStatus';
+            GetByPrioritiseServer = 'Az.Migrate.custom\Get-AzMigrateServerMigrationStatus';
             GetByApplianceName = 'Az.Migrate.custom\Get-AzMigrateServerMigrationStatus';
             GetHealthByMachineName = 'Az.Migrate.custom\Get-AzMigrateServerMigrationStatus';
             GetByMachineName = 'Az.Migrate.custom\Get-AzMigrateServerMigrationStatus';
         }
-        if (('ListByName', 'GetByApplianceName', 'GetHealthByMachineName', 'GetByMachineName') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ListByName', 'GetByPrioritiseServer', 'GetByApplianceName', 'GetHealthByMachineName', 'GetByMachineName') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -183,6 +196,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

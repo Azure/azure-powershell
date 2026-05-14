@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an identity in the specified subscription and resource group.
+Update an identity in the specified subscription and resource group.
 .Description
-update an identity in the specified subscription and resource group.
+Update an identity in the specified subscription and resource group.
 .Example
 Update-AzUserAssignedIdentity -ResourceGroupName azure-rg-test -Name uai-pwsh01 -Tag @{'key01'='value01'; 'key02'='value02'}
 .Example
@@ -167,8 +167,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

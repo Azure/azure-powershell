@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SignalR.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Management.SignalR.Models;
 
 namespace Microsoft.Azure.Commands.SignalR.Models
 {
@@ -26,11 +26,14 @@ namespace Microsoft.Azure.Commands.SignalR.Models
 
         public IList<PSPrivateEndpointACL> PrivateEndpoints { get; set; }
 
+        public IList<PSIpRule> IPRules { get; set; }
+
         public PSSignalRNetworkAcls(SignalRNetworkACLs signalRNetworkAcls)
         {
             DefaultAction = signalRNetworkAcls.DefaultAction;
             PublicNetwork = new PSNetworkAcl(signalRNetworkAcls.PublicNetwork);
-            PrivateEndpoints = signalRNetworkAcls.PrivateEndpoints.Select(endpoint => new PSPrivateEndpointACL(endpoint)).ToList();
+            PrivateEndpoints = signalRNetworkAcls.PrivateEndpoints?.Select(endpoint => new PSPrivateEndpointACL(endpoint)).ToList() ?? new List<PSPrivateEndpointACL>();
+            IPRules = signalRNetworkAcls.IPRules?.Select(r => new PSIpRule(r)).ToList() ?? new List<PSIpRule>();
         }
     }
 }

@@ -3212,6 +3212,82 @@
       </ListControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSGatewayRouteSetsInformation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSGatewayRouteSetsInformation</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>LastComputedTime</Label>
+                <PropertyName>LastComputedTime</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>NextEligibleComputeTime</Label>
+                <PropertyName>NextEligibleComputeTime</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>RouteSetVersion</Label>
+                <PropertyName>RouteSetVersion</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>RouteSets</Label>
+                <PropertyName>RouteSetsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>CircuitsMetadataMap</Label>
+                <PropertyName>CircuitsMetadataMapText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSGatewayResiliencyInformation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSGatewayResiliencyInformation</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Overall Score</Label>
+                <PropertyName>OverallScore</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Score Change</Label>
+                <PropertyName>ScoreChange</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Last Computed Time</Label>
+                <PropertyName>LastComputedTime</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Components</Label>
+                <PropertyName>ComponentsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Circuit Metadata</Label>
+                <PropertyName>CircuitMetadataText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Primary Connection Ids</Label>
+                <PropertyName>PrimaryConnectionIdsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Secondary Connection Ids</Label>
+                <PropertyName>SecondaryConnectionIdsText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSRouteTable</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSRouteTable</TypeName>
@@ -5419,6 +5495,10 @@
 							  <Label>Tag</Label>
 							  <PropertyName>Tag</PropertyName>
 						  </ListItem>
+							<ListItem>
+								<Label>NvaInterfaceConfigurations</Label>
+								<PropertyName>NvaInterfaceConfigurations</PropertyName>
+							</ListItem>
 					  </ListItems>
 				  </ListEntry>
 			  </ListEntries>
@@ -7426,6 +7506,28 @@
               <ListItem>
                 <Label>AssociatedOutboundConnections</Label>
                 <PropertyName>AssociatedOutboundConnectionsText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.RadiusAuthServer</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.RadiusAuthServer</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>RadiusServerAddress</Label>
+                <PropertyName>RadiusServerAddress</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>RadiusServerSecret</Label>
+                <PropertyName>RadiusServerSecret</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

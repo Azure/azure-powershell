@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Delete a monitor resource.
+Delete an existing Elastic monitor resource from your Azure subscription, removing its observability and monitoring capabilities.
 .Description
-Delete a monitor resource.
+Delete an existing Elastic monitor resource from your Azure subscription, removing its observability and monitoring capabilities.
 .Example
 Remove-AzElasticMonitor -ResourceGroupName azure-elastic-test -Name elastic-pwsh02
 .Example
@@ -34,6 +34,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name

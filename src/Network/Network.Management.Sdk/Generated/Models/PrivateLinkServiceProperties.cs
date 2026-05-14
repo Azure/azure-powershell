@@ -33,6 +33,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="destinationIPAddress">The destination IP address of the private link service.
         /// </param>
 
+        /// <param name="accessMode">The access mode of the private link service.
+        /// Possible values include: &#39;Default&#39;, &#39;Restricted&#39;</param>
+
         /// <param name="networkInterfaces">An array of references to the network interfaces created for this private
         /// link service.
         /// </param>
@@ -58,12 +61,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="enableProxyProtocol">Whether the private link service is enabled for proxy protocol or not.
         /// </param>
-        public PrivateLinkServiceProperties(System.Collections.Generic.IList<FrontendIPConfiguration> loadBalancerFrontendIPConfigurations = default(System.Collections.Generic.IList<FrontendIPConfiguration>), System.Collections.Generic.IList<PrivateLinkServiceIpConfiguration> ipConfigurations = default(System.Collections.Generic.IList<PrivateLinkServiceIpConfiguration>), string destinationIPAddress = default(string), System.Collections.Generic.IList<NetworkInterface> networkInterfaces = default(System.Collections.Generic.IList<NetworkInterface>), string provisioningState = default(string), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), PrivateLinkServicePropertiesVisibility visibility = default(PrivateLinkServicePropertiesVisibility), PrivateLinkServicePropertiesAutoApproval autoApproval = default(PrivateLinkServicePropertiesAutoApproval), System.Collections.Generic.IList<string> fqdns = default(System.Collections.Generic.IList<string>), string alias = default(string), bool? enableProxyProtocol = default(bool?))
+        public PrivateLinkServiceProperties(System.Collections.Generic.IList<FrontendIPConfiguration> loadBalancerFrontendIPConfigurations = default(System.Collections.Generic.IList<FrontendIPConfiguration>), System.Collections.Generic.IList<PrivateLinkServiceIpConfiguration> ipConfigurations = default(System.Collections.Generic.IList<PrivateLinkServiceIpConfiguration>), string destinationIPAddress = default(string), string accessMode = default(string), System.Collections.Generic.IList<NetworkInterface> networkInterfaces = default(System.Collections.Generic.IList<NetworkInterface>), string provisioningState = default(string), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), PrivateLinkServicePropertiesVisibility visibility = default(PrivateLinkServicePropertiesVisibility), PrivateLinkServicePropertiesAutoApproval autoApproval = default(PrivateLinkServicePropertiesAutoApproval), System.Collections.Generic.IList<string> fqdns = default(System.Collections.Generic.IList<string>), string alias = default(string), bool? enableProxyProtocol = default(bool?))
 
         {
             this.LoadBalancerFrontendIPConfigurations = loadBalancerFrontendIPConfigurations;
             this.IPConfigurations = ipConfigurations;
             this.DestinationIPAddress = destinationIPAddress;
+            this.AccessMode = accessMode;
             this.NetworkInterfaces = networkInterfaces;
             this.ProvisioningState = provisioningState;
             this.PrivateEndpointConnections = privateEndpointConnections;
@@ -98,6 +102,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "destinationIPAddress")]
         public string DestinationIPAddress {get; set; }
+
+        /// <summary>
+        /// Gets or sets the access mode of the private link service. Possible values include: &#39;Default&#39;, &#39;Restricted&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "accessMode")]
+        public string AccessMode {get; set; }
 
         /// <summary>
         /// Gets an array of references to the network interfaces created for this

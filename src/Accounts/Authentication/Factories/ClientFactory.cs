@@ -384,7 +384,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         }
 
         /// <summary>
-        /// AddUserAgent is method from ClientFactory singleten. When user terminate cmdlet execution on Console, the module name in 
+        /// AddUserAgent is method from ClientFactory singleton. When user terminate cmdlet execution on Console, the module name in 
         /// useragent cannot be removed. It leads multiple module names in useragent if user execute cmdlet of another module after 
         /// previous terminated cmdlet. The solution here is to share the same key to all modules which name leads "Az.". It is not accurate
         /// but can cover the majority of cases.

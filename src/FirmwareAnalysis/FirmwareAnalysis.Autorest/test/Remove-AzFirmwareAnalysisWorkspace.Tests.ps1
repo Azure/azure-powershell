@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFirmwareAnalysisWork
 Describe 'Remove-AzFirmwareAnalysisWorkspace' {
     It 'Delete' {
         { 
-            $config = Remove-AzFirmwareAnalysisWorkspace -ResourceGroupName 'FirmwareAnalysisRG' -Name 'testworkspace1'
+            $config = Remove-AzFirmwareAnalysisWorkspace -ResourceGroupName $env.ResourceGroup -Name 'tobedeleted'
             $config.Count | Should -eq 0
         } | Should -Not -Throw
     }

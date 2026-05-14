@@ -108,6 +108,11 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
         public bool? UsePrivateLinkConnection { get; set; }
 
         /// <summary>
+        /// Gets or sets sync group authentication information.
+        /// </summary>
+        public DataSyncParticipantIdentity Identity { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlSyncMemberModel
         /// </summary>
         public AzureSqlSyncMemberModel()
@@ -120,7 +125,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
         /// </summary>
         /// <param name="resourceGroup">Resource group name</param>
         /// <param name="serverName">Server name</param>
-        /// <param name="databaseName">Databse name</param>
+        /// <param name="databaseName">Database name</param>
         /// <param name="syncGroupName">The name of the sync group</param>
         /// <param name="syncMember">sync member object</param>
         public AzureSqlSyncMemberModel(string resourceGroup, string serverName, string databaseName, string syncGroupName, SyncMember syncMember)
@@ -141,6 +146,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
             SyncState = syncMember.SyncState;
             UsePrivateLinkConnection = syncMember.UsePrivateLinkConnection;
             SyncMemberAzureDatabaseResourceId = syncMember.SyncMemberAzureDatabaseResourceId;
+            Identity = syncMember.Identity;
         }
     }
 }

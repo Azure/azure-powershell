@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models
         Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICalculateRefundRequestProperties Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICalculateRefundRequestInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.CalculateRefundRequestProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for ReservationToReturn</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationToReturn Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICalculateRefundRequestInternal.ReservationToReturn { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICalculateRefundRequestPropertiesInternal)Property).ReservationToReturn; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICalculateRefundRequestPropertiesInternal)Property).ReservationToReturn = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationToReturn Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICalculateRefundRequestInternal.ReservationToReturn { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICalculateRefundRequestPropertiesInternal)Property).ReservationToReturn; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICalculateRefundRequestPropertiesInternal)Property).ReservationToReturn = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICalculateRefundRequestProperties _property;

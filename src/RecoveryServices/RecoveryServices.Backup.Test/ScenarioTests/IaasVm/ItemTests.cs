@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             );
         }
 
-        [Fact]
+        [Fact(Skip = "sub is depricated because of recent cleanup activities. sgholap to fix this.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureCrossZonalRestoreToNoZone()
@@ -337,6 +337,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
                 $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
                 "Test-AzurePERestore"
+            );
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureVM)]
+        public void TestAzureRestoreWithCVMOsDiskEncryptionSetId()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
+                "Test-AzureRestoreWithCVMOsDiskEncryptionSetId"
+            );
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureVM)]
+        public void TestAzureVMRedoProtection()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_IaasVmcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_IaasVmtestModule.AsAbsoluteLocation()}",
+                "Test-AzureVMRedoProtection"
             );
         }
     }

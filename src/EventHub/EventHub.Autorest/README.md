@@ -28,7 +28,7 @@ For information on how to develop for `Az.EventHub`, see [how-to.md](how-to.md).
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-commit: 91288ed6ade4e8cef4b052891b51bbdbf69090fb
+commit: 7977092320778f47c240371124748e6967793459
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -36,7 +36,7 @@ input-file:
 # You need to specify your swagger files here.
   - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2024-05-01-preview/AvailableClusterRegions-preview.json
   - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2024-05-01-preview/Clusters-preview.json
-  - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2024-05-01-preview/namespaces.json
+  - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2025-05-01-preview/namespaces.json
   - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2024-05-01-preview/networkrulessets-preview.json
   - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2024-05-01-preview/AuthorizationRules.json
   - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2024-05-01-preview/CheckNameAvailability.json
@@ -260,10 +260,10 @@ directive:
     set:
       property-name: Description
 
-# Remove NSP calls
   - where:
+      verb: New
       subject: NetworkSecurityPerimeterConfiguration
-    remove: true
+    hide: true
 
 # Hide New-AzEventHubNetworkRuleSet 
   - where:
@@ -407,14 +407,19 @@ directive:
   - where:
       verb: New
       subject: EventHub
-      parameter-name: RetentionDescriptionMinCompactionLagInMin
+      parameter-name: RetentionDescriptionMinCompactionLagTimeInMinute
     set:
       parameter-name: MinCompactionLagInMin
   - where:
       model-name: EventHub
-      property-name: RetentionDescriptionMinCompactionLagInMin
+      property-name: RetentionDescriptionMinCompactionLagTimeInMinute
     set:
       property-name: MinCompactionLagInMin
+
+  - where:
+      subject: NetworkSecurityPerimeterConfigurationResourceAssociationName
+    set:
+      subject: NetworkSecurityPerimeterConfigurationsForAssociation
 
 # Cluster
   - where:

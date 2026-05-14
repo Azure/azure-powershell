@@ -32,8 +32,10 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2025-04-15/afdx.json
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2025-04-15/cdn.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2025-06-01/afdx.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2025-06-01/cdn.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/preview/2024-07-22-preview/edgeaction.json
+
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 
@@ -42,7 +44,7 @@ module-version: 0.1.0
 # Normally, title is the service name
 title: Cdn
 subject-prefix: $(service-name)
-commit: 0cdef1ef00cf9020967dc099a67366d5a2c51d29
+commit: 9b87e611b5016ed5c8d0eea2ee4578be782e7feb
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
@@ -69,7 +71,7 @@ directive:
     - ResponseBasedOriginErrorDetectionParameters
     # Both CDN and AFDX
     - HealthProbeParameters
-  # Generate memory object as parameter of the cmelet.
+  # Generate memory object as parameter of the cmdlet.
   - model-cmdlet:
     - model-name: ResourceReference
       cmdlet-name: New-AzCdnResourceReferenceObject
@@ -224,7 +226,7 @@ directive:
       cmdlet-name: New-AzCdnLoadParametersObject
     - model-name: MigrationEndpointMapping
       cmdlet-name: New-AzCdnMigrationEndpointMappingObject
-    # AFDX profile LogScrubbing, need to rename the memory ojects, not sure how to rename a memory object currently.
+    # AFDX profile LogScrubbing, need to rename the memory objects, not sure how to rename a memory object currently.
     - model-name: ProfileLogScrubbing
       cmdlet-name: New-AzFrontDoorCdnProfileLogScrubbingObject
     - model-name: ProfileScrubbingRules
@@ -278,7 +280,7 @@ directive:
   - where:
       verb: Set
     remove: true
-  # Remove some cmdlets' ViaIdentity which are inconvinient to call
+  # Remove some cmdlets' ViaIdentity which are inconvenient to call
   - where:
       variant: ^CheckViaIdentity$|^CheckViaIdentityExpanded$
       subject: ^NameAvailability$|^EndpointNameAvailability$
@@ -344,6 +346,12 @@ directive:
     hide: true
   - where:
       subject: KeyGroupUpdate
+    hide: true
+    
+  # Hide New-AzFrontDoorCdnRoute to customize
+  - where:
+      subject: Route 
+      verb: New
     hide: true
 
   # Rename
@@ -461,7 +469,7 @@ directive:
           "default": {
             "description": "CDN error response describing why the operation failed.",
             "schema": {
-              "$ref": "../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+              "$ref": "../../../../../common-types/resource-management/v6/types.json#/definitions/ErrorResponse"
             }
           }
       }
@@ -487,4 +495,60 @@ directive:
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}"].delete
     transform: >-
       $["x-ms-long-running-operation-options"] = {"final-state-via": "azure-async-operation"}
+
+  - where:
+      subjectPrefix: Cdn
+      subject: Profile
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities
+        change-description: 	The type of property 'IdentityUserAssignedIdentity' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities' to 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities'.
+        deprecated-by-version: 5.3.0
+        deprecated-by-azversion: 14.4.0
+        change-effective-date: 2025/11/01
+  - where:
+      subjectPrefix: FrontDoorCdn
+      subject: Profile
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities
+        change-description: 	The type of property 'IdentityUserAssignedIdentity' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities' to 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities'.
+        deprecated-by-version: 5.3.0
+        deprecated-by-azversion: 14.4.0
+        change-effective-date: 2025/11/01
+  - where:
+      subjectPrefix: FrontDoorCdn
+      subject: ProfileSku
+    set:
+      breaking-change:
+        deprecated-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities
+        replacement-cmdlet-output-type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities
+        change-description: 	The type of property 'IdentityUserAssignedIdentity' of type 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile' has changed from 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUserAssignedIdentities' to 'Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IManagedServiceIdentityUserAssignedIdentities'.
+        deprecated-by-version: 5.3.0
+        deprecated-by-azversion: 14.4.0
+        change-effective-date: 2025/11/01
+
+  # Breaking change: all EdgeAction cmdlets are being removed.
+  # The EdgeAction preview API (2024-07-22-preview) is being retired and will
+  # no longer be exposed by this module.
+  # Affected cmdlets (matched via subjectPrefix: Cdn + subject starting with EdgeAction):
+  #   Add-AzCdnEdgeActionAttachment, Deploy-AzCdnEdgeActionVersionCode,
+  #   Get-AzCdnEdgeAction, Get-AzCdnEdgeActionExecutionFilter,
+  #   Get-AzCdnEdgeActionVersion, Get-AzCdnEdgeActionVersionCode,
+  #   New-AzCdnEdgeAction, New-AzCdnEdgeActionExecutionFilter,
+  #   New-AzCdnEdgeActionVersion, Remove-AzCdnEdgeAction,
+  #   Remove-AzCdnEdgeActionAttachment, Remove-AzCdnEdgeActionExecutionFilter,
+  #   Remove-AzCdnEdgeActionVersion, Update-AzCdnEdgeAction,
+  #   Update-AzCdnEdgeActionExecutionFilter, Update-AzCdnEdgeActionVersion
+  - where:
+      subjectPrefix: Cdn
+      subject: ^EdgeAction.*$
+    set:
+      breaking-change:
+        change-description: All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired.
+        deprecated-by-version: 5.4.0
+        deprecated-by-azversion: 14.5.0
+        change-effective-date: 2026/05/15
 ```

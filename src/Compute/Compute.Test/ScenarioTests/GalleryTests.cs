@@ -85,5 +85,68 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("TestGen-BlockDeletionBeforeEndOfLife");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestInVMAccessControlProfileVersion()
+        {
+            TestRunner.RunTestScript("Test-InVMAccessControlProfileVersion");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGalleryImageDefinitionUpdateFeature()
+        {
+            TestRunner.RunTestScript("Test-GalleryImageDefinitionUpdateFeature");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGalleryWithSystemAssignedIdentity()
+        {
+            TestRunner.RunTestScript("Test-GalleryWithSystemAssignedIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGalleryWithUserAssignedIdentity()
+        {
+            TestRunner.RunTestScript("Test-GalleryWithUserAssignedIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGalleryWithSystemAndUserAssignedIdentity()
+        {
+            TestRunner.RunTestScript("Test-GalleryWithSystemAndUserAssignedIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateGalleryWithSystemAssignedIdentity()
+        {
+            TestRunner.RunTestScript("Test-UpdateGalleryWithSystemAssignedIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateGalleryWithUserAssignedIdentity()
+        {
+            TestRunner.RunTestScript("Test-UpdateGalleryWithUserAssignedIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateGalleryWithSystemAndUserAssignedIdentity()
+        {
+            TestRunner.RunTestScript("Test-UpdateGalleryWithSystemAndUserAssignedIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDisableGalleryIdentities()
+        {
+            TestRunner.RunTestScript("Test-DisableGalleryIdentities");
+        }
     }
 }

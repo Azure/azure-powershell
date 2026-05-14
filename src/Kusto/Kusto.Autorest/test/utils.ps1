@@ -32,18 +32,18 @@ function Start-TestSleep {
 
 $env = @{}
 function setupEnv() {
-    # If you want to record a single test do the following for exmple pwsh test-module.ps1 --Record --TestName Update-AzKustoDataConnection
+    # If you want to record a single test do the following for example pwsh test-module.ps1 --Record --TestName Update-AzKustoDataConnection
     # 1. comment cleanupEnv- you don't want clean up of the resource group
     # 2. run Record and create the resources
     # 3. comment all content of setupEnv, you want to reuse the resources from previous session instead of creating again
     # 4. add the following line $env = Get-Content .\test\env.json | ConvertFrom-Json, to load the $env
-    # 5. Run the recording of a specific test for exmple pwsh test-module.ps1 --Record --TestName Update-AzKustoDataConnection
+    # 5. Run the recording of a specific test for example pwsh test-module.ps1 --Record --TestName Update-AzKustoDataConnection
 
     $env = Get-Content .\test\env.json | ConvertFrom-Json
 
 #    $env.subscriptionId = "e8257c73-24c5-4791-94dc-8b7901c90dbf" # Kusto_Dev_Kusto_Ilay_04_Test
 #    $env.location = 'East US'
-#    Write-Host "Setting up and connection to subcription " $env.SubscriptionId -ForegroundColor Green
+#    Write-Host "Setting up and connection to subscription " $env.SubscriptionId -ForegroundColor Green
 #    Connect-AzAccount -Subscription $env.SubscriptionId
 #    $env.Tenant = (Get-AzContext).Tenant.Id
 #
@@ -72,8 +72,8 @@ function setupEnv() {
 #    Write-Host "Start to create test resource group" $resourceGroupName -ForegroundColor Green
 #    New-AzResourceGroup -Name $resourceGroupName -Location $env.location
 #
-#    # Prepare arm template paramters
-#    Write-Host "Preparing parameters for ARM template deploymet" -ForegroundColor Green
+#    # Prepare arm template parameters
+#    Write-Host "Preparing parameters for ARM template deployment" -ForegroundColor Green
 #    $params = Get-Content .\test\deployment-templates\all-resources\parameters.json | ConvertFrom-Json
 #
 #    Update-Parameter -propertyName "kustoApiVersion" -propertyValue "2024-04-13" -params $params

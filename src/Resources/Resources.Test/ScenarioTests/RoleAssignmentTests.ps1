@@ -918,10 +918,41 @@ function Test-CreateRAWhenIdNotExist
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
     $PrincipalId ="6d764d35-6b3b-49ea-83f8-5c223b56eac5"
     $Scope = '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f'
-    $ExpectedError = 'Exception calling "ExecuteCmdlet" with "0" argument(s): "Operation returned an invalid status code ''BadRequest''"'
+    $ExpectedError = "PrincipalNotFound: Principal $($PrincipalId.Replace('-','')) does not exist in the directory"
 
     #When
     $function = { New-AzRoleAssignmentWithId -ObjectId $PrincipalId -Scope $Scope -RoleDefinitionId $RoleDefinitionId -RoleAssignmentId 0f7b6fb6-a5f4-4046-83eb-dfd93c5e4b72 }
 
-    Assert-Throws $function $ExpectedError
+    Assert-ThrowsContains $function $ExpectedError
+}
+
+<#
+.SYNOPSIS
+Validates that Get-AzRoleAssignment can filter client-side the role assignments by ObjectId in different GUID formats.
+#>
+function Test-RAGuidFormatHandling
+{
+    $subscription = $(Get-AzContext).Subscription
+    $scope = '/subscriptions/'+ $subscription[0].Id
+    $principalId = "35e5fdfa-e80b-49b9-abf3-4c9a54f6b7a3"
+    
+    $expected = @(Get-AzRoleAssignment -ObjectId $principalId -Scope $scope -AtScope)
+    $expectedIds = $expected | Select-Object -ExpandProperty RoleAssignmentId | Sort-Object
+
+    # when non-Guid result should be empty
+    $res = @(Get-AzRoleAssignment -ObjectId "abc" -Scope $scope -AtScope)
+    Assert-AreEqual ($res.Count) 0
+
+    $guid = [guid]::Parse($principalId)
+    $formats = @('N', 'D', 'B', 'P', 'X')
+    foreach ($format in $formats) {
+        $principalIdFormat = $guid.ToString($format)
+        $actual = @(Get-AzRoleAssignment -ObjectId $principalIdFormat -Scope $scope -AtScope)
+        Assert-AreEqual $expected.Count $actual.Count
+        
+        if ($actual) {
+            $actualIds = $actual | Select-Object -ExpandProperty RoleAssignmentId | Sort-Object
+            Assert-AreEqual (@($expectedIds) -join ',') (@($actualIds) -join ',')
+        }
+    }
 }

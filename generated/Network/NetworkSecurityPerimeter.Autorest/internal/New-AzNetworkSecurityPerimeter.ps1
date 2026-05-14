@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a Network Security Perimeter.
+Create a Network Security Perimeter.
 .Description
-create a Network Security Perimeter.
+Create a Network Security Perimeter.
 .Example
 New-AzNetworkSecurityPerimeter -Name nsp-test-1 -ResourceGroupName rg-test-1 -Location eastus2euap
 

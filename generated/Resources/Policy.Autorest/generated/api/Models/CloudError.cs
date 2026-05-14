@@ -40,22 +40,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)Error).Message; }
 
         /// <summary>Internal Acessors for AdditionalInfo</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudErrorInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)Error).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)Error).AdditionalInfo = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudErrorInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)Error).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)Error).AdditionalInfo = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudErrorInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)Error).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudErrorInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)Error).Code = value ?? null; }
 
         /// <summary>Internal Acessors for Detail</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse> Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudErrorInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)Error).Detail = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse> Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudErrorInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)Error).Detail = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Error</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudErrorInternal.Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ErrorResponse()); set { {_error = value;} } }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudErrorInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)Error).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudErrorInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)Error).Message = value ?? null; }
 
         /// <summary>Internal Acessors for Target</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudErrorInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)Error).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)Error).Target = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudErrorInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)Error).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponseInternal)Error).Target = value ?? null; }
 
         /// <summary>The error target.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Inlined)]

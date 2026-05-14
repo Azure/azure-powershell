@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzElasticOpenAi
 
 ## SYNOPSIS
-Get OpenAI integration rule for a given monitor resource.
+Get detailed information about OpenAI integration rules for a given Elastic monitor resource.
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ Get-AzElasticOpenAi -IntegrationName <String> -MonitorInputObject <IElasticIdent
 ```
 
 ## DESCRIPTION
-Get OpenAI integration rule for a given monitor resource.
+Get detailed information about OpenAI integration rules for a given Elastic monitor resource.
 
 ## EXAMPLES
 

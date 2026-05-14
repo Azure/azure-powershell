@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.WebApps.Validations
 
             if (!ipAddresses.All(a => this.IsValidCIDR(a)))
             {
-                throw new ValidationMetadataException("One or more ip addresses are invalid. Ip adresses must be in valid CIDR format. E.g. 192.168.0.0/24 (IPv4) or 2002::1234:abcd:ffff:c0a8:101/64 (IPv6). For single ip addresses, use /32 (IPv4) or /128 (IPv6)");
+                throw new ValidationMetadataException("One or more ip addresses are invalid. Ip addresses must be in valid CIDR format. E.g. 192.168.0.0/24 (IPv4) or 2002::1234:abcd:ffff:c0a8:101/64 (IPv6). For single ip addresses, use /32 (IPv4) or /128 (IPv6)");
             }            
         }
 

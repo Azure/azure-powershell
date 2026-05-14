@@ -47,49 +47,6 @@
           ]
         }
       ]
-    },
-    {
-      "name": "Start-AzWorkloadsSapCentralInstance",
-      "description": "Starts the SAP Central Services Instance.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}/start",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.workloads/start-azworkloadssapcentralinstance"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-Name <String>",
-              "-ResourceGroupName <String>",
-              "-SapVirtualInstanceName <String>",
-              "[-SubscriptionId <String>]"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Starts the SAP Central Services Instance.",
-          "parameters": [
-            {
-              "name": "-Name",
-              "value": "[Path.centralInstanceName]"
-            },
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-SapVirtualInstanceName",
-              "value": "[Path.sapVirtualInstanceName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            }
-          ]
-        }
-      ]
     }
   ]
 }

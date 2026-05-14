@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a network profile.
+Create a network profile.
 .Description
-create a network profile.
+Create a network profile.
 .Example
 New-AzNetworkSecurityPerimeterProfile -Name profile-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName nsp-test-1
 

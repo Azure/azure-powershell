@@ -11,16 +11,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
     using System;
 
     /// <summary>
-    /// List of all active deployments that are associated with the marketplace subscription linked to the given monitor.
+    /// List all active deployments associated with the marketplace subscription linked to the given Elastic monitor resource.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] List=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/listConnectedPartnerResources"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzElasticConnectedPartnerResource_List", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IConnectedPartnerResourcesListFormat))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"List of all active deployments that are associated with the marketplace subscription linked to the given monitor.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"List all active deployments associated with the marketplace subscription linked to the given Elastic monitor resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/listConnectedPartnerResources", ApiVersion = "2024-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/listConnectedPartnerResources", ApiVersion = "2025-06-01")]
     public partial class GetAzElasticConnectedPartnerResource_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IContext

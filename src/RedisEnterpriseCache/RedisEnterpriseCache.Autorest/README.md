@@ -32,24 +32,34 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: f11631f1c1057d8363f9e3f9597c73b90f8924c8
+commit: a39b73b1c7d12a633805a3b2ed3177a8bfddd9e2
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - $(repo)/specification/redisenterprise/resource-manager/Microsoft.Cache/preview/2025-05-01-preview/redisenterprise.json
+  - $(repo)/specification/redisenterprise/resource-manager/Microsoft.Cache/RedisEnterprise/stable/2025-07-01/redisenterprise.json
 
 module-version: 1.0.0
 title: RedisEnterpriseCache
 subject-prefix: 'RedisEnterpriseCache'
 
-# This will remove the 'RedisEnterprise' prefix from the subject of every cmdlet
-# beginning with 'RedisEnterprise', because we have already set the subject-prefix above
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
+  - from: swagger-document
+    where: $.definitions.AccessPolicyAssignment
+    transform: $['required'] = ['properties']
+  - from: swagger-document
+    where: $.definitions.AccessPolicyAssignmentProperties.properties.user
+    transform: $['required'] = ['objectId']
+  - from: swagger-document
+    where: $.definitions.ForceLinkParameters.properties.geoReplication
+    transform: $['required'] = ['linkedDatabases','groupNickname']
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/accessPolicyAssignments/{accessPolicyAssignmentName}"].put
+    transform: $['operationId'] = 'AccessPolicyAssignment_CreateOrUpdate'
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/accessPolicyAssignments/{accessPolicyAssignmentName}"].put
+    transform: $['description'] = 'Creates or updates a particular access policy assignment for a database'
   # This will remove the 'RedisEnterprise' prefix from the subject of every cmdlet
   # beginning with 'RedisEnterprise', because we have already set the subject-prefix above
   - where:
@@ -80,11 +90,6 @@ directive:
       alias:
         - Get-AzRedisEnterpriseCacheDatabaseKey
         - Get-AzRedisEnterpriseCacheAccessKey
-  - where:
-      verb: New
-      subject: AccessPolicyAssignmentUpdate
-    set:
-      subject: AccessPolicyAssignment
   - where:
       verb: Import|Export
       subject: (^Database)(.*)
@@ -208,15 +213,24 @@ directive:
       subject: Key
       variant: ^Regenerate$|ViaIdentity
     remove: true
+
+  # Remove unexpanded variant
   - where:
-      verb: New
-      subject: ^$|Database
-      variant: ^Create$|ViaIdentity
+      verb: Invoke
+      variant: ^(Flush|Force)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
-      verb: Update
       subject: ^$|Database
-      variant: ^Update$|ViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  - where:
+      subject: AccessPolicyAssignment
+      variant: ^(Create)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
+  # Remove because cannot update
+  - where:
+      verb: Set|Update
+      subject: AccessPolicyAssignment
     remove: true
 
   # Hide cmdlets
@@ -244,17 +258,6 @@ directive:
     set:
       default:
         script: '"default"'
-
-  - from: swagger-document
-    where: $.definitions.AccessPolicyAssignment
-    transform: $['required'] = ['properties']
-  - from: swagger-document
-    where: $.definitions.AccessPolicyAssignmentProperties.properties.user
-    transform: $['required'] = ['objectId']
-  - from: swagger-document
-    where: $.definitions.ForceLinkParameters.properties.geoReplication
-    transform: $['required'] = ['linkedDatabases','groupNickname']
-
   # DatabaseName parameter to have value 'default'
   - where:
       verb: Invoke
@@ -264,11 +267,38 @@ directive:
     set:
       default:
         script: '"default"'
+
+  # add breaking change warning message
+  - where:
+      verb: New|Update
+      subject: RedisEnterpriseCache
+    set:
+      preview-announcement:
+        preview-message: This cmdlet will undergo a breaking change in a future release. A new required property publicNetworkAccess will be added and AccessKeysAuthentication default value will be updated to Disabled
+        estimated-ga-date:  2025/11/19
+
   # Fix bugs in generated code from namespace conflict
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/Origin\(System.Convert.ToString\(/g, 'Origin(global::System.Convert.ToString(');
+  # - from: source-file-csharp
+  #   where: $
+  #   transform: $ = $.replace(/Origin\(System.Convert.ToString\(/g, 'Origin(global::System.Convert.ToString(');
   - from: source-file-csharp
     where: $
     transform: $ = $.replace(/Module.Instance.SetProxyConfiguration\(/g, 'Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Module.Instance.SetProxyConfiguration(');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/Forcibly reforce an existing database/g, 'Forcibly recreates an existing database');
+
+  # Breaking change
+  - where:
+      verb: Get
+      subject: OperationStatus
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
+  - where:
+      verb: Update
+      subject: ^$
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
 ```

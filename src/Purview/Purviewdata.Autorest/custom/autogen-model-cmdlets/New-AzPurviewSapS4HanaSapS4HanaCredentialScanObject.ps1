@@ -21,12 +21,13 @@ Create an in-memory object for SapS4HanaSapS4HanaCredentialScan.
 Create an in-memory object for SapS4HanaSapS4HanaCredentialScan.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapS4HanaSapS4HanaCredentialScan
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SapS4HanaSapS4HanaCredentialScan
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewSapS4HanaSapS4HanaCredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewsaps4hanasaps4hanacredentialscanobject
 #>
 function New-AzPurviewSapS4HanaSapS4HanaCredentialScanObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapS4HanaSapS4HanaCredentialScan')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SapS4HanaSapS4HanaCredentialScan')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -46,8 +47,8 @@ function New-AzPurviewSapS4HanaSapS4HanaCredentialScanObject {
         [string]
         $CredentialReferenceName,
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("AccountKey", "ServicePrincipal", "BasicAuth", "SqlAuth", "AmazonARN")]
+        [string]
         $CredentialType,
         [Parameter()]
         [string]
@@ -62,20 +63,16 @@ function New-AzPurviewSapS4HanaSapS4HanaCredentialScanObject {
         [string]
         $ScanRulesetName,
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.PSArgumentCompleterAttribute("Custom", "System")]
+        [string]
         $ScanRulesetType,
         [Parameter()]
         [int]
-        $Worker,
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType]
-        $Kind
+        $Worker
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapS4HanaSapS4HanaCredentialScan]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SapS4HanaSapS4HanaCredentialScan]::New()
 
         if ($PSBoundParameters.ContainsKey('ClientId')) {
             $Object.ClientId = $ClientId
@@ -112,9 +109,6 @@ function New-AzPurviewSapS4HanaSapS4HanaCredentialScanObject {
         }
         if ($PSBoundParameters.ContainsKey('Worker')) {
             $Object.Worker = $Worker
-        }
-        if ($PSBoundParameters.ContainsKey('Kind')) {
-            $Object.Kind = $Kind
         }
         return $Object
     }

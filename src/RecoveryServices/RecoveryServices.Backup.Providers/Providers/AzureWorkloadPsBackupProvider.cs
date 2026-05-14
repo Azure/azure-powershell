@@ -652,7 +652,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     
                     if (triggerRestoreRequest.Properties.GetType().Equals("AzureWorkloadSQLPointInTimeRestoreRequest"))
                     {
-                        Logger.Instance.WriteWarning("Rehyrate restore isn't supported for AzureWorkloadSQLPointInTimeRestore ");                        
+                        Logger.Instance.WriteWarning("Rehydrate restore isn't supported for AzureWorkloadSQLPointInTimeRestore ");                        
                     }
                     else
                     {
@@ -991,13 +991,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             List<ProtectableContainerResource> unregisteredVmContainers =
                     GetUnRegisteredVmContainers(vaultName, vaultResourceGroupName);
+
+            Logger.Instance.WriteDebug("containerName: "+ containerName + ",  vmResourceGroupName: " + vmResourceGroupName
+                + ", unregisteredVMContainers.Count: " + unregisteredVmContainers?.Count);
+
             ProtectableContainerResource unregisteredVmContainer = unregisteredVmContainers.Find(
                 vmContainer => {
                     string[] containerNameSplit = vmContainer.Name.Split(';');
                     int containerNameSplitLen = containerNameSplit.Length;
-                    bool vmNameMatch = string.Compare(containerNameSplit[containerNameSplitLen - 1], containerName, true) == 0;
+                    bool vmNameMatch = string.Compare(containerNameSplit[containerNameSplitLen - 1], containerName.Split(';').Last(), true) == 0;
                     bool rgNameMatch = string.Compare(containerNameSplit[containerNameSplitLen - 2], vmResourceGroupName, true) == 0;
-                
+
+                    Logger.Instance.WriteDebug("Unregistered Container Name: " + vmContainer.Name + ", vmNameMatch: " + vmNameMatch + ", rgNameMatch: " + rgNameMatch);
+
                     return vmNameMatch && rgNameMatch;
                 });
 

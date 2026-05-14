@@ -39,22 +39,13 @@ title: ScheduledQueryRule
 module-version: 0.1.0
 subject-prefix: ScheduledQueryRule
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule
-nested-object-to-string: true
-
-# If there are post APIs for some kinds of actions in the RP, you may need to 
-# uncomment following line to support viaIdentity for these post APIs
-# identity-correction-for-post: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentityExpanded$
     remove: true
   - where:
       verb: Set
@@ -84,11 +75,7 @@ directive:
         "format": "int64",
         "description": "Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest. Relevant and required only for rules of the kind LogAlert."
       }
-  # Rename 'Equals'
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace('public static Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Support.ConditionOperator Equals = @"Equals";', 'public static Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Support.ConditionOperator Equal = @"Equals";');
   - model-cmdlet:
-    - Condition
-    - Dimension
+    - model-name: Condition
+    - model-name: Dimension
 ```

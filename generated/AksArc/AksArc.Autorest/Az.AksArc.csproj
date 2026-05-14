@@ -3,6 +3,7 @@
     <PsModuleName>AksArc</PsModuleName>
     <PsRootModuleName>AksArc</PsRootModuleName>
     <PsModuleFolder>AksArc.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.AksArc</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

@@ -80,7 +80,7 @@ directive:
   - from: swagger-document
     where: $..produces
     transform: $ = $.filter( each => each === 'application/json');
-    reason: this spec adds produces application/xml and text/json erronously.
+    reason: this spec adds produces application/xml and text/json erroneously.
   # Fix the case mismatch between swagger and RP
   - from: swagger-document
     where: $
@@ -151,4 +151,47 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnection Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDataConnection Property');
+  # Breaking change preview messages for Az v16.0.0 migration to autorest v4
+  - where:
+      verb: Add
+      subject: ^ClusterCalloutPolicy$|^ClusterLanguageExtension$|^DatabasePrincipal$
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
+  - where:
+      verb: Get
+      subject: ^AttachedDatabaseConfiguration$|^Cluster$|^ClusterCalloutPolicy$|^ClusterFollowerDatabase$|^ClusterFollowerDatabaseGet$|^ClusterLanguageExtension$|^ClusterOutboundNetworkDependencyEndpoint$|^ClusterPrincipalAssignment$|^ClusterSku$|^Database$|^DatabasePrincipal$|^DatabasePrincipalAssignment$|^DataConnection$|^ManagedPrivateEndpoint$|^OperationsResult$|^PrivateEndpointConnection$|^PrivateLinkResource$|^SandboxCustomImage$|^Script$|^Sku$
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
+  - where:   
+      verb: Invoke
+      subject: ^DetachClusterFollowerDatabase$|^InviteDatabaseFollower$
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
+  - where:
+      verb: New
+      subject: ^AttachedDatabaseConfiguration$|^Cluster$|^ClusterPrincipalAssignment$|^DatabasePrincipalAssignment$|^ManagedPrivateEndpoint$|^PrivateEndpointConnection$|^SandboxCustomImage$|^Script$
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
+  - where:
+      verb: Remove
+      subject: ^ClusterLanguageExtension$|^DatabasePrincipal$
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
+  - where:
+      verb: Test
+      subject: ^AttachedDatabaseConfigurationNameAvailability$|^ClusterNameAvailability$|^ClusterPrincipalAssignmentNameAvailability$|^DatabaseNameAvailability$|^DatabasePrincipalAssignmentNameAvailability$|^DataConnectionNameAvailability$|^ManagedPrivateEndpointNameAvailability$|^SandboxCustomImageNameAvailability$|^ScriptNameAvailability$
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
+  - where:
+      verb: Update
+      subject: ^Cluster$|^ManagedPrivateEndpoint$|^SandboxCustomImage$|^Script$
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *\\r\\n* At least one change applies to this cmdlet.                                                     *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
 ```

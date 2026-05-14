@@ -96,6 +96,13 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
+    [System.Int32]
+    # The timeout in seconds for query execution.
+    # Valid range is 1-31536000 seconds.
+    ${Timeout},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
     [System.String]
     # Administrator username for the server.
     # Once set, it cannot be changed.

@@ -3,6 +3,7 @@
     <PsModuleName>GuestConfiguration</PsModuleName>
     <PsRootModuleName>GuestConfiguration</PsRootModuleName>
     <PsModuleFolder>GuestConfiguration.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

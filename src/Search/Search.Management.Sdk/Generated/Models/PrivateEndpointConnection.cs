@@ -8,8 +8,8 @@ namespace Microsoft.Azure.Management.Search.Models
     using System.Linq;
 
     /// <summary>
-    /// Describes an existing Private Endpoint connection to the Azure Cognitive
-    /// Search service.
+    /// Describes an existing private endpoint connection to the Azure AI Search
+    /// service.
     /// </summary>
     public partial class PrivateEndpointConnection : Resource
     {
@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.Search.Models
         /// Initializes a new instance of the PrivateEndpointConnection class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource ID for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
         /// <param name="name">The name of the resource
@@ -36,12 +36,16 @@ namespace Microsoft.Azure.Management.Search.Models
         /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="properties">Describes the properties of an existing Private Endpoint connection to the
-        /// Azure Cognitive Search service.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
-        public PrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), PrivateEndpointConnectionProperties properties = default(PrivateEndpointConnectionProperties))
 
-        : base(id, name, type)
+        /// <param name="properties">Describes the properties of an existing private endpoint connection to the
+        /// Azure AI Search service.
+        /// </param>
+        public PrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), PrivateEndpointConnectionProperties properties = default(PrivateEndpointConnectionProperties))
+
+        : base(id, name, type, systemData)
         {
             this.Properties = properties;
             CustomInit();
@@ -54,8 +58,8 @@ namespace Microsoft.Azure.Management.Search.Models
 
 
         /// <summary>
-        /// Gets or sets describes the properties of an existing Private Endpoint
-        /// connection to the Azure Cognitive Search service.
+        /// Gets or sets describes the properties of an existing private endpoint
+        /// connection to the Azure AI Search service.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
         public PrivateEndpointConnectionProperties Properties {get; set; }

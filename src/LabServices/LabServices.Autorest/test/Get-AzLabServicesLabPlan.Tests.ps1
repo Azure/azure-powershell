@@ -22,14 +22,14 @@ Describe 'Get-AzLabServicesLabPlan' {
     }
 
     It 'Get' {
-        Get-AzLabServicesLabPlan -Name $ENV:LabPlanName -ResourceGroupName $ENV:ResourceGroupName | Select-Object -Property Name | Should -Be "@{Name=$($ENV:LabPlanName)}"
+        Get-AzLabServicesLabPlan -Name $env.LabPlanName -ResourceGroupName $env.ResourceGroupName | Select-Object -Property Name | Should -Be "@{Name=$($env.LabPlanName)}"
     }
 
     It 'List by Resource Group' {
-        Get-AzLabServicesLabPlan -ResourceGroupName $ENV:ResourceGroupName | Should -Not -BeNullOrEmpty
+        Get-AzLabServicesLabPlan -ResourceGroupName $env.ResourceGroupName | Should -Not -BeNullOrEmpty
     }
 
-    It 'Get ResourceId' -skip {        
-        Get-AzLabServicesLabPlan -ResourceId "/subscriptions/$($ENV:SubscriptionId)/resourceGroups/$($ENV:ResourceGroupName)/providers/Microsoft.LabServices/labPlans/$($ENV:LabPlanName)" | Should -Not -BeNullOrEmpty
+    It 'Get ResourceId' {        
+        Get-AzLabServicesLabPlan -ResourceId "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.LabServices/labPlans/$($env.LabPlanName)" | Should -Not -BeNullOrEmpty
     }
 }

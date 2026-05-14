@@ -103,14 +103,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
                 return container;
             }
             AddIf( null != this._managedOutboundIPProfile ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode) this._managedOutboundIPProfile.ToJson(null,serializationMode) : null, "managedOutboundIPProfile" ,container.Add );
-            if (null != this._effectiveOutboundIP)
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SerializationMode.IncludeRead))
             {
-                var __w = new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.XNodeArray();
-                foreach( var __x in this._effectiveOutboundIP )
+                if (null != this._effectiveOutboundIP)
                 {
-                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.XNodeArray();
+                    foreach( var __x in this._effectiveOutboundIP )
+                    {
+                        AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                    }
+                    container.Add("effectiveOutboundIPs",__w);
                 }
-                container.Add("effectiveOutboundIPs",__w);
             }
             AddIf( null != this._idleTimeoutInMinute ? (Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Json.JsonNumber((int)this._idleTimeoutInMinute) : null, "idleTimeoutInMinutes" ,container.Add );
             AfterToJson(ref container);

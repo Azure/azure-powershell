@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a data collection endpoint.
+Update a data collection endpoint.
 .Description
-update a data collection endpoint.
+Update a data collection endpoint.
 .Example
 Update-AzDataCollectionEndpoint -Name myCollectionEndpoint -ResourceGroupName AMCS-TEST -Tag @{"123"="abc"}
 
@@ -184,8 +184,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

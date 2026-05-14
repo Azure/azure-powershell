@@ -45,7 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
         [TestMethod]
         public void CreateAzureTableStoredAccessPolicyWithInvalidNameTest()
         {
-            //policy name lenght longer than 64
+            //policy name length longer than 64
             string policyName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
             string tableName = "sampleTable";
             AssertThrows<ArgumentException>(() => command.CreateAzureTableStoredAccessPolicy(command.Channel, tableName, policyName, null, null, null),

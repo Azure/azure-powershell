@@ -16,28 +16,28 @@ Test out the connection to the database server
 ```
 Test-AzPostgreSqlFlexibleServerConnect -Name <String> -ResourceGroupName <String>
  -AdministratorLoginPassword <SecureString> [-DatabaseName <String>] [-AdministratorUserName <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Timeout <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### TestAndQuery
 ```
 Test-AzPostgreSqlFlexibleServerConnect -Name <String> -QueryText <String> -ResourceGroupName <String>
  -AdministratorLoginPassword <SecureString> [-DatabaseName <String>] [-AdministratorUserName <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Timeout <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### TestViaIdentity
 ```
 Test-AzPostgreSqlFlexibleServerConnect -AdministratorLoginPassword <SecureString>
  -InputObject <IPostgreSqlIdentity> [-DatabaseName <String>] [-AdministratorUserName <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Timeout <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### TestViaIdentityAndQuery
 ```
 Test-AzPostgreSqlFlexibleServerConnect -QueryText <String> -AdministratorLoginPassword <SecureString>
  -InputObject <IPostgreSqlIdentity> [-DatabaseName <String>] [-AdministratorUserName <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Timeout <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -220,6 +220,22 @@ Parameter Sets: Test, TestAndQuery
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Timeout
+The timeout in seconds for query execution.
+Valid range is 1-31536000 seconds.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

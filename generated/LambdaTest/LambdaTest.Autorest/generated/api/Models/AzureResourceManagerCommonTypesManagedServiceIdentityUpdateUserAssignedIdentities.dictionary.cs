@@ -8,23 +8,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models
     using static Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Runtime.Extensions;
 
     public partial class AzureResourceManagerCommonTypesManagedServiceIdentityUpdateUserAssignedIdentities :
-        Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IComponents19Kgb1NSchemasAzureResourcemanagerCommontypesManagedserviceidentityupdatePropertiesUserassignedidentitiesAdditionalproperties>
+        Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IUserAssignedIdentity>
     {
-        protected global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IComponents19Kgb1NSchemasAzureResourcemanagerCommontypesManagedserviceidentityupdatePropertiesUserassignedidentitiesAdditionalproperties> __additionalProperties = new global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IComponents19Kgb1NSchemasAzureResourcemanagerCommontypesManagedserviceidentityupdatePropertiesUserassignedidentitiesAdditionalproperties>();
+        protected global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IUserAssignedIdentity> __additionalProperties = new global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IUserAssignedIdentity>();
 
-        global::System.Collections.Generic.IDictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IComponents19Kgb1NSchemasAzureResourcemanagerCommontypesManagedserviceidentityupdatePropertiesUserassignedidentitiesAdditionalproperties> Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IComponents19Kgb1NSchemasAzureResourcemanagerCommontypesManagedserviceidentityupdatePropertiesUserassignedidentitiesAdditionalproperties>.AdditionalProperties { get => __additionalProperties; }
+        global::System.Collections.Generic.IDictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IUserAssignedIdentity> Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IUserAssignedIdentity>.AdditionalProperties { get => __additionalProperties; }
 
-        int Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IComponents19Kgb1NSchemasAzureResourcemanagerCommontypesManagedserviceidentityupdatePropertiesUserassignedidentitiesAdditionalproperties>.Count { get => __additionalProperties.Count; }
+        int Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IUserAssignedIdentity>.Count { get => __additionalProperties.Count; }
 
-        global::System.Collections.Generic.IEnumerable<global::System.String> Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IComponents19Kgb1NSchemasAzureResourcemanagerCommontypesManagedserviceidentityupdatePropertiesUserassignedidentitiesAdditionalproperties>.Keys { get => __additionalProperties.Keys; }
+        global::System.Collections.Generic.IEnumerable<global::System.String> Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IUserAssignedIdentity>.Keys { get => __additionalProperties.Keys; }
 
-        global::System.Collections.Generic.IEnumerable<Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IComponents19Kgb1NSchemasAzureResourcemanagerCommontypesManagedserviceidentityupdatePropertiesUserassignedidentitiesAdditionalproperties> Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IComponents19Kgb1NSchemasAzureResourcemanagerCommontypesManagedserviceidentityupdatePropertiesUserassignedidentitiesAdditionalproperties>.Values { get => __additionalProperties.Values; }
+        global::System.Collections.Generic.IEnumerable<Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IUserAssignedIdentity> Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IUserAssignedIdentity>.Values { get => __additionalProperties.Values; }
 
-        public Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IComponents19Kgb1NSchemasAzureResourcemanagerCommontypesManagedserviceidentityupdatePropertiesUserassignedidentitiesAdditionalproperties this[global::System.String index] { get => __additionalProperties[index]; set => __additionalProperties[index] = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IUserAssignedIdentity this[global::System.String index] { get => __additionalProperties[index]; set => __additionalProperties[index] = value; }
 
         /// <param name="key"></param>
         /// <param name="value"></param>
-        public void Add(global::System.String key, Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IComponents19Kgb1NSchemasAzureResourcemanagerCommontypesManagedserviceidentityupdatePropertiesUserassignedidentitiesAdditionalproperties value) => __additionalProperties.Add( key, value);
+        public void Add(global::System.String key, Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IUserAssignedIdentity value) => __additionalProperties.Add( key, value);
 
         public void Clear() => __additionalProperties.Clear();
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models
                 {
                     if ((null != property.Key && null != property.Value))
                     {
-                        this.__additionalProperties.Add(property.Key.ToString(), global::System.Management.Automation.LanguagePrimitives.ConvertTo<Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IComponents19Kgb1NSchemasAzureResourcemanagerCommontypesManagedserviceidentityupdatePropertiesUserassignedidentitiesAdditionalproperties>( property.Value));
+                        this.__additionalProperties.Add(property.Key.ToString(), global::System.Management.Automation.LanguagePrimitives.ConvertTo<Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IUserAssignedIdentity>( property.Value));
                     }
                 }
             }
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models
                 {
                     if ((null != property.Key && null != property.Value))
                     {
-                        this.__additionalProperties.Add(property.Key.ToString(), global::System.Management.Automation.LanguagePrimitives.ConvertTo<Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IComponents19Kgb1NSchemasAzureResourcemanagerCommontypesManagedserviceidentityupdatePropertiesUserassignedidentitiesAdditionalproperties>( property.Value));
+                        this.__additionalProperties.Add(property.Key.ToString(), global::System.Management.Automation.LanguagePrimitives.ConvertTo<Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IUserAssignedIdentity>( property.Value));
                     }
                 }
             }
@@ -66,10 +66,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models
 
         /// <param name="key"></param>
         /// <param name="value"></param>
-        public bool TryGetValue(global::System.String key, out Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IComponents19Kgb1NSchemasAzureResourcemanagerCommontypesManagedserviceidentityupdatePropertiesUserassignedidentitiesAdditionalproperties value) => __additionalProperties.TryGetValue( key, out value);
+        public bool TryGetValue(global::System.String key, out Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IUserAssignedIdentity value) => __additionalProperties.TryGetValue( key, out value);
 
         /// <param name="source"></param>
 
-        public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IComponents19Kgb1NSchemasAzureResourcemanagerCommontypesManagedserviceidentityupdatePropertiesUserassignedidentitiesAdditionalproperties>(Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.AzureResourceManagerCommonTypesManagedServiceIdentityUpdateUserAssignedIdentities source) => source.__additionalProperties;
+        public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IUserAssignedIdentity>(Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.AzureResourceManagerCommonTypesManagedServiceIdentityUpdateUserAssignedIdentities source) => source.__additionalProperties;
     }
 }

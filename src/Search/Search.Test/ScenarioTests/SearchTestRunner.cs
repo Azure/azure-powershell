@@ -36,7 +36,8 @@ namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
                 {
                     helper.RMProfileModule,
                     helper.GetRMModulePath("Az.Search.psd1"),
-                    helper.GetRMModulePath("Az.Storage.psd1")
+                    helper.GetRMModulePath("Az.Storage.psd1"),
+                    helper.GetRMModulePath("Az.Network.psd1")
                 })
                 .WithNewRecordMatcherArguments(
                     userAgentsToIgnore: new Dictionary<string, string>(),
@@ -46,7 +47,8 @@ namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
                         { "Microsoft.Features", null },
                         { "Microsoft.Authorization", null },
                         { "Providers.Test", null },
-                        { "Microsoft.Storage", null }
+                        { "Microsoft.Storage", null },
+                        { "Microsoft.Network", null }
                     }
                 )
                 .Build();

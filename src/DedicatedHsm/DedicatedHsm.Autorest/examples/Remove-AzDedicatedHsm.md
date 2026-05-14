@@ -3,7 +3,7 @@
 Remove-AzDedicatedHsm -Name hsm-7t2xaf -ResourceGroupName lucas-manual-test
 ```
 
-This commnad removes a hardware security module(HSM) by name.
+This command removes a hardware security module(HSM) by name.
 
 ### Example 2: Remove a Dedicated HSM  by object
 ```powershell
@@ -11,5 +11,5 @@ $hsm = Get-AzDedicatedHsm -Name hsm-7t2xaf -ResourceGroupName dedicatedhsm-rg-n3
 Remove-AzDedicatedHsm -InputObject  $hsm
 ```
 
-This commnad removes a Dedicated HSM by object.
+This command removes a Dedicated HSM by object.
 

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Description(@"Delete a OrganizationResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/ArizeAi.ObservabilityEval/organizations/{organizationname}", ApiVersion = "2024-10-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/ArizeAi.ObservabilityEval/organizations/{organizationname}", ApiVersion = "2024-10-01")]
     public partial class RemoveAzArizeAIOrganization_DeleteViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Runtime.IContext

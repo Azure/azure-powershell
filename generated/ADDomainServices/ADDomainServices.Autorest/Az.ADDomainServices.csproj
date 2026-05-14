@@ -3,6 +3,7 @@
     <PsModuleName>ADDomainServices</PsModuleName>
     <PsRootModuleName>ADDomainServices</PsRootModuleName>
     <PsModuleFolder>ADDomainServices.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

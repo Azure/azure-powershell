@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-create an AuthorizationRule for the specified Event Hub.
+Create an AuthorizationRule for the specified Event Hub.
 Creation/create of the AuthorizationRule will take a few seconds to take effect.
 .Description
-create an AuthorizationRule for the specified Event Hub.
+Create an AuthorizationRule for the specified Event Hub.
 Creation/create of the AuthorizationRule will take a few seconds to take effect.
 .Example
 New-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myAuthRule -Rights @('Manage', 'Send', 'Listen')

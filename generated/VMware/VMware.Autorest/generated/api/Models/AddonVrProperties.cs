@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         public string AddonType { get => "VR"; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonPropertiesInternal)__addonProperties).AddonType = "VR"; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonPropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonPropertiesInternal)__addonProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonPropertiesInternal)__addonProperties).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonPropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonPropertiesInternal)__addonProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonPropertiesInternal)__addonProperties).ProvisioningState = value ?? null; }
 
         /// <summary>The state of the addon provisioning</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]

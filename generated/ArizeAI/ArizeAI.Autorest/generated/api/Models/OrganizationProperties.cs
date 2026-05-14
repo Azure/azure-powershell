@@ -32,10 +32,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models
         Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.ILiftrBaseMarketplaceDetails Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal.Marketplace { get => (this._marketplace = this._marketplace ?? new Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.LiftrBaseMarketplaceDetails()); set { {_marketplace = value;} } }
 
         /// <summary>Internal Acessors for MarketplaceOfferDetail</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.ILiftrBaseOfferDetails Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal.MarketplaceOfferDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.ILiftrBaseMarketplaceDetailsInternal)Marketplace).OfferDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.ILiftrBaseMarketplaceDetailsInternal)Marketplace).OfferDetail = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.ILiftrBaseOfferDetails Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal.MarketplaceOfferDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.ILiftrBaseMarketplaceDetailsInternal)Marketplace).OfferDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.ILiftrBaseMarketplaceDetailsInternal)Marketplace).OfferDetail = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for MarketplaceSubscriptionStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal.MarketplaceSubscriptionStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.ILiftrBaseMarketplaceDetailsInternal)Marketplace).SubscriptionStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.ILiftrBaseMarketplaceDetailsInternal)Marketplace).SubscriptionStatus = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal.MarketplaceSubscriptionStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.ILiftrBaseMarketplaceDetailsInternal)Marketplace).SubscriptionStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.ILiftrBaseMarketplaceDetailsInternal)Marketplace).SubscriptionStatus = value ?? null; }
 
         /// <summary>Internal Acessors for PartnerProperty</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IPartnerProperties Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IOrganizationPropertiesInternal.PartnerProperty { get => (this._partnerProperty = this._partnerProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.PartnerProperties()); set { {_partnerProperty = value;} } }
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models
 
         /// <summary>Description of the Organization's purpose</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Origin(Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.PropertyOrigin.Inlined)]
-        public string PartnerPropertyDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IPartnerPropertiesInternal)PartnerProperty).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IPartnerPropertiesInternal)PartnerProperty).Description = value ?? null; }
+        public string PartnerPropertyDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IPartnerPropertiesInternal)PartnerProperty).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models.IPartnerPropertiesInternal)PartnerProperty).Description = value ; }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Models
         string OfferDetailTermUnit { get; set; }
         /// <summary>Description of the Organization's purpose</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ArizeAI.Runtime.Info(
-        Required = false,
+        Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,

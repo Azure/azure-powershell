@@ -118,7 +118,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added new optiona parameter -SkuModel to New-AzDataBoxJob cmdlet.
+        ReleaseNotes = '* Added new optional parameter -SkuModel to New-AzDataBoxJob cmdlet.
     - This parameter is required only at the time of order creation for the new 120TB and 525TB SKUs.
 * All cmdlets will now use 2025-02-01 DataBoxRP API calls.'
 

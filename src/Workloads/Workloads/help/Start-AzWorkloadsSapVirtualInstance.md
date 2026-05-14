@@ -19,6 +19,20 @@ Start-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> [
  [-Confirm] [<CommonParameters>]
 ```
 
+### StartViaJsonString
+```
+Start-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### StartViaJsonFilePath
+```
+Start-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### Start
 ```
 Start-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
@@ -139,10 +153,9 @@ Accept wildcard characters: False
 
 ### -Body
 Start SAP instance(s) request body.
-To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.IStartRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.IStartRequest
 Parameter Sets: Start, StartViaIdentity
 Aliases:
 
@@ -171,7 +184,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
@@ -185,12 +197,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Start operation
+
+```yaml
+Type: System.String
+Parameter Sets: StartViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Start operation
+
+```yaml
+Type: System.String
+Parameter Sets: StartViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the Virtual Instances for SAP solutions resource
 
 ```yaml
 Type: System.String
-Parameter Sets: StartExpanded, Start
+Parameter Sets: StartExpanded, StartViaJsonString, StartViaJsonFilePath, Start
 Aliases: SapVirtualInstanceName
 
 Required: True
@@ -221,7 +263,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: StartExpanded, Start
+Parameter Sets: StartExpanded, StartViaJsonString, StartViaJsonFilePath, Start
 Aliases:
 
 Required: True
@@ -252,7 +294,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: StartExpanded, Start
+Parameter Sets: StartExpanded, StartViaJsonString, StartViaJsonFilePath, Start
 Aliases:
 
 Required: False
@@ -298,13 +340,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.IStartRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.IStartRequest
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.IOperationStatusResult
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.IOperationStatusResult
 
 ## NOTES
 

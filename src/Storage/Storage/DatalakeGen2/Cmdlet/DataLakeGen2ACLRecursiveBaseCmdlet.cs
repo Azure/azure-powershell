@@ -53,7 +53,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public PSPathAccessControlEntry[] Acl { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "Set this parameter to ignore failures and continue proceeing with the operation on other sub-entities of the directory. Default the operation will terminate quickly on encountering failures.")]
+            HelpMessage = "Set this parameter to ignore failures and continue processing with the operation on other sub-entities of the directory. Default the operation will terminate quickly on encountering failures.")]
         public SwitchParameter ContinueOnFailure { get; set; }
 
         [Parameter(Mandatory = false,
@@ -187,7 +187,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
 
         /// <summary>
-        /// Set/Update/Remove ACL recusive async function
+        /// Set/Update/Remove ACL recursive async function
         /// </summary>
         protected abstract Task OperationAclResusive(long taskId);
 

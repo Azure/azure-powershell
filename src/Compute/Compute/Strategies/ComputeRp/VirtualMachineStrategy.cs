@@ -84,7 +84,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string zonePlacementPolicy = null,
             string[] includeZone = null,
             string[] excludeZone = null,
-            bool? alignRegionalDisksToVMZone = null
+            bool? alignRegionalDisksToVMZone = null,
+            bool? enableProxyAgent = null,
+            bool? addProxyAgentExtension = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -157,13 +159,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         Priority = priority,
                         EvictionPolicy = evictionPolicy,
                         BillingProfile = (maxPrice == null) ? null : new BillingProfile(maxPrice),
-                        SecurityProfile = (encryptionAtHostPresent == true || enableVtpm != null || enableSecureBoot != null || securityType != null)
-                        ? new SecurityProfile
+                        SecurityProfile = new SecurityProfile
                         {
                             EncryptionAtHost = encryptionAtHostPresent,
                             UefiSettings = (enableVtpm != null || enableSecureBoot != null) ? new UefiSettings(enableSecureBoot, enableVtpm) : null,
                             SecurityType = securityType,
-                        } : null,
+                            ProxyAgentSettings = (enableProxyAgent != null || addProxyAgentExtension != null) ? new ProxyAgentSettings(enabled: enableProxyAgent, addProxyAgentExtension: addProxyAgentExtension): null,
+                        },
                         CapacityReservation = string.IsNullOrEmpty(capacityReservationGroupId) ? null : new CapacityReservationProfile
                         {
                             CapacityReservationGroup = new SubResource(capacityReservationGroupId)

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update a federated identity credential under the specified user assigned identity.
+Update a federated identity credential under the specified user assigned identity.
 .Description
-update a federated identity credential under the specified user assigned identity.
+Update a federated identity credential under the specified user assigned identity.
 .Example
 Update-AzFederatedIdentityCredential -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 `
     -Name fic-pwsh01 -Issuer "https://kubernetes-oauth-upd.azure.com" -Subject "system:serviceaccount-upd:ns:svcaccount"
@@ -187,8 +187,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

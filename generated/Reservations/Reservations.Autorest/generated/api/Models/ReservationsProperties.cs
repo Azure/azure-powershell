@@ -185,10 +185,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models
         Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsPropertiesUtilization Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsPropertiesInternal.Utilization { get => (this._utilization = this._utilization ?? new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ReservationsPropertiesUtilization()); set { {_utilization = value;} } }
 
         /// <summary>Internal Acessors for UtilizationAggregate</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationUtilizationAggregates> Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsPropertiesInternal.UtilizationAggregate { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsPropertiesUtilizationInternal)Utilization).Aggregate; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsPropertiesUtilizationInternal)Utilization).Aggregate = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationUtilizationAggregates> Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsPropertiesInternal.UtilizationAggregate { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsPropertiesUtilizationInternal)Utilization).Aggregate; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsPropertiesUtilizationInternal)Utilization).Aggregate = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for UtilizationTrend</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsPropertiesInternal.UtilizationTrend { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsPropertiesUtilizationInternal)Utilization).Trend; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsPropertiesUtilizationInternal)Utilization).Trend = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsPropertiesInternal.UtilizationTrend { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsPropertiesUtilizationInternal)Utilization).Trend; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsPropertiesUtilizationInternal)Utilization).Trend = value ?? null; }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;

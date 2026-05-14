@@ -21,16 +21,16 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// Initializes a new instance of the SyncGroupsGetHeaders class.
         /// </summary>
 
-        /// <param name="xmsRequestId">
-        /// </param>
-
         /// <param name="xmsCorrelationRequestId">
         /// </param>
-        public SyncGroupsGetHeaders(string xmsRequestId = default(string), string xmsCorrelationRequestId = default(string))
+
+        /// <param name="xmsRequestId">
+        /// </param>
+        public SyncGroupsGetHeaders(string xmsCorrelationRequestId = default(string), string xmsRequestId = default(string))
 
         {
-            this.XMSRequestId = xmsRequestId;
             this.XMSCorrelationRequestId = xmsCorrelationRequestId;
+            this.XMSRequestId = xmsRequestId;
             CustomInit();
         }
 
@@ -43,13 +43,13 @@ namespace Microsoft.Azure.Management.StorageSync.Models
         /// <summary>
         /// Gets or sets
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "x-ms-request-id")]
-        public string XMSRequestId {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "x-ms-correlation-request-id")]
+        public string XMSCorrelationRequestId {get; set; }
 
         /// <summary>
         /// Gets or sets
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "x-ms-correlation-request-id")]
-        public string XMSCorrelationRequestId {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "x-ms-request-id")]
+        public string XMSRequestId {get; set; }
     }
 }

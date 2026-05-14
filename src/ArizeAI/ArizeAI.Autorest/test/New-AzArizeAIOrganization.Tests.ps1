@@ -18,7 +18,7 @@ Describe 'New-AzArizeAIOrganization' {
     It 'CreateExpanded' {
         {    
             try {
-                New-AzArizeAIOrganization -Name $env.NewResourceName -Location $env.Location -ResourceGroupName $env.ResourceGroupName -SubscriptionId $env.SubscriptionId -MarketplaceSubscriptionId $env.MarketplaceSubscriptionId -OfferDetailOfferId $env.OfferDetailOfferId -OfferDetailPlanId $env.OfferDetailPlanId -OfferDetailPlanName $env.OfferDetailPlanName -OfferDetailPublisherId $env.OfferDetailPublisherId -OfferDetailTermId $env.OfferDetailTermId -OfferDetailTermUnit $env.OfferDetailTermUnit -UserEmailAddress $env.UserEmailAddress -UserFirstName $env.UserFirstName -UserLastName $env.UserLastName -UserUpn $env.UserUpn
+                New-AzArizeAIOrganization -Name $env.NewResourceName -Location $env.Location -ResourceGroupName $env.ResourceGroupName -SubscriptionId $env.SubscriptionId -MarketplaceSubscriptionId $env.MarketplaceSubscriptionId -OfferDetailOfferId $env.OfferDetailOfferId -OfferDetailPlanId $env.OfferDetailPlanId -OfferDetailPlanName $env.OfferDetailPlanName -OfferDetailPublisherId $env.OfferDetailPublisherId -OfferDetailTermId $env.OfferDetailTermId -PartnerPropertyDescription $env.PartnerPropertyDescription -OfferDetailTermUnit $env.OfferDetailTermUnit -UserEmailAddress $env.UserEmailAddress -UserFirstName $env.UserFirstName -UserLastName $env.UserLastName -UserUpn $env.UserUpn
             }
             catch {
                 # Handle "Status: OK" and "NotFound (404)" as valid responses

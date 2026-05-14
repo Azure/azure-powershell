@@ -31,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.PowerShell
     {
         public string ModuleName { get; }
 
-        public string RootModuleName {get => @"";}
+        public string RootModuleName {get => @"Az.DevCenter";}
         public string CmdletName { get; }
         public string CmdletVerb { get; }
         public string CmdletNoun { get; }

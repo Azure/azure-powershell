@@ -87,7 +87,7 @@ $c.DenyEncryptionScopeOverride
 True
 ```
 
-This command creates a storage container with a defalt encryptionScope, and blocks override of encryption scope from the container default.
+This command creates a storage container with a default encryptionScope, and blocks override of encryption scope from the container default.
 Then show the related container properties.
 
 ### Example 4: Create an Azure storage container with RootSquash
@@ -95,7 +95,7 @@ Then show the related container properties.
 
 
 ```
-$container = New-AzRmStorageContainer -ResourceGroupName "myersourcegroup" -AccountName "mystorageaccount" -Name "mycontainer" -RootSquash AllSquash
+$container = New-AzRmStorageContainer -ResourceGroupName "myrsourcegroup" -AccountName "mystorageaccount" -Name "mycontainer" -RootSquash AllSquash
 
 $container.EnableNfsV3AllSquash
 True

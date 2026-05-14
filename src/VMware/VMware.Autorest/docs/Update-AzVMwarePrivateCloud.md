@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVMwarePrivateCloud
 
 ## SYNOPSIS
-update a PrivateCloud
+Update a PrivateCloud
 
 ## SYNTAX
 
@@ -21,8 +21,8 @@ Update-AzVMwarePrivateCloud -Name <String> -ResourceGroupName <String> [-Subscri
  [-KeyVaultPropertyKeyVersion <String>] [-ManagementClusterHost <String[]>] [-ManagementClusterSize <Int32>]
  [-ManagementClusterVsanDatastoreName <String>] [-NetworkBlock <String>] [-NsxtPassword <SecureString>]
  [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
- [-Tag <Hashtable>] [-VcenterPassword <SecureString>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-VcenterPassword <SecureString>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -34,12 +34,12 @@ Update-AzVMwarePrivateCloud -InputObject <IVMwareIdentity> [-DnsZoneType <String
  [-ManagementClusterHost <String[]>] [-ManagementClusterSize <Int32>]
  [-ManagementClusterVsanDatastoreName <String>] [-NetworkBlock <String>] [-NsxtPassword <SecureString>]
  [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
- [-Tag <Hashtable>] [-VcenterPassword <SecureString>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-VcenterPassword <SecureString>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-update a PrivateCloud
+Update a PrivateCloud
 
 ## EXAMPLES
 
@@ -492,6 +492,21 @@ Optionally, set the vCenter admin password when the private cloud is created
 
 ```yaml
 Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Zone
+The availability zones.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

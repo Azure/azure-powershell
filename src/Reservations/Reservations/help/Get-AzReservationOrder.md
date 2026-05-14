@@ -49,7 +49,7 @@ ReservationOrderId                   DisplayName                                
 ```
 
 Get the list of reservation orders in the current tenant.
-Some data might be trucated due to the width of powershell view, appending this to the end of the command to show the truncated data: | ft -Wrap
+Some data might be truncated due to the width of powershell view, appending this to the end of the command to show the truncated data: | ft -Wrap
 
 ### Example 2: Get the reservation order in the current tenant, given reservation order Id
 ```powershell
@@ -63,7 +63,7 @@ ReservationOrderId                   DisplayName            Term State     Quant
 ```
 
 Get the reservation order in the current tenant, given reservation order Id.
-Some data might be trucated due to the width of powershell view, appending this to the end of the command to show the truncated data: | ft -Wrap
+Some data might be truncated due to the width of powershell view, appending this to the end of the command to show the truncated data: | ft -Wrap
 
 ## PARAMETERS
 

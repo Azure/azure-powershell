@@ -23,6 +23,7 @@ using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
@@ -76,8 +77,11 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.EnableLocalUser = storageAccount.IsLocalUserEnabled;
             this.AllowedCopyScope = storageAccount.AllowedCopyScope;
             this.DnsEndpointType= storageAccount.DnsEndpointType;
+            this.Zone = storageAccount.Zones is null ? null : storageAccount.Zones.ToArray();
+            this.ZonePlacementPolicy = storageAccount.Placement is null ? null : storageAccount.Placement.ZonePlacementPolicy;
+            this.GeoPriorityReplicationStatus = storageAccount.GeoPriorityReplicationStatus is null ? null : new PSGeoPriorityReplicationStatus(storageAccount.GeoPriorityReplicationStatus);
         }
-        public bool? AllowCrossTenantReplication { get; set; }
+        public bool? AllowCrossTenantReplication { get; set; }          
 
         public PSKeyCreationTime KeyCreationTime { get; set; }
         public KeyPolicy KeyPolicy { get; }
@@ -170,6 +174,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSImmutableStorageAccount ImmutableStorageWithVersioning { get; set; }
         public PSStorageAccountSkuConversionStatus StorageAccountSkuConversionStatus { get; set; }
         public string DnsEndpointType { get; set; }
+        public string[] Zone { get; set; }
+        public string ZonePlacementPolicy { get; set; }
+        public PSGeoPriorityReplicationStatus GeoPriorityReplicationStatus { get; set; }
 
 
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client, IAzureContext DefaultContext)
@@ -357,5 +364,24 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 this.EndTime = status.EndTime;
             }
         }
+    }
+
+    /// <summary>
+    /// wrapper class for GeoPriorityReplicationStatus
+    /// </summary>
+    public class PSGeoPriorityReplicationStatus
+    {
+        public PSGeoPriorityReplicationStatus()
+        { }
+
+        public PSGeoPriorityReplicationStatus(GeoPriorityReplicationStatus geoPriorityReplicationStatus)
+        {
+            if (geoPriorityReplicationStatus != null)
+            {
+                this.IsBlobEnabled = geoPriorityReplicationStatus.IsBlobEnabled;
+            }
+        }
+
+        public bool? IsBlobEnabled { get; set; }
     }
 }

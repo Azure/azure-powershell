@@ -13,10 +13,25 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class RoutingRuleNextHopType
     {
+        /// <summary>
+        /// Forward traffic to the Internet.
+        /// </summary>
         public const string Internet = "Internet";
+        /// <summary>
+        /// No next hop will be used.
+        /// </summary>
         public const string NoNextHop = "NoNextHop";
+        /// <summary>
+        /// Forward traffic to a specified virtual appliance IP address.
+        /// </summary>
         public const string VirtualAppliance = "VirtualAppliance";
+        /// <summary>
+        /// Forward traffic to the virtual network gateway.
+        /// </summary>
         public const string VirtualNetworkGateway = "VirtualNetworkGateway";
+        /// <summary>
+        /// Keep traffic within the local virtual network
+        /// </summary>
         public const string VnetLocal = "VnetLocal";
     }
 }

@@ -182,7 +182,7 @@ $new_pool_packages = @($workspace_packages | Where-Object {$_.name -in $library_
 Update-AzSynapseSparkPool -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoSparkPool -PackageAction Set -Package $new_pool_packages
 ```
 
-The first command retrieves the packages available in the workspace. The second command group retrieves the spark pool to get the packages currently linked to this pool and removes all versions of the package starting with `new_package-` from the retrieved list. The new version of the package is then added to this list. In the third group of commands the package list, containing only package names, is tranformed into a list of workspace packages by filtering the list of available workspace_packages accordingly and is then linked to the spark pool.
+The first command retrieves the packages available in the workspace. The second command group retrieves the spark pool to get the packages currently linked to this pool and removes all versions of the package starting with `new_package-` from the retrieved list. The new version of the package is then added to this list. In the third group of commands the package list, containing only package names, is transformed into a list of workspace packages by filtering the list of available workspace_packages accordingly and is then linked to the spark pool.
 
 ### Example 15
 ```powershell

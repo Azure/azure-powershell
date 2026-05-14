@@ -245,5 +245,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-CreateRAWithObjectType");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RAGuidFormatHandling()
+        {
+            TestRunner.RunTestScript("Test-RAGuidFormatHandling");
+        }
     }
 }

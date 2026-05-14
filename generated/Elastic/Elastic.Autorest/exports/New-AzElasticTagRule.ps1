@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a tag rule set for a given monitor resource.
+Create a tag rule set for a given Elastic monitor resource, enabling fine-grained control over observability based on resource tags.
 .Description
-create a tag rule set for a given monitor resource.
+Create a tag rule set for a given Elastic monitor resource, enabling fine-grained control over observability based on resource tags.
 .Example
 New-AzElasticTagRule -ResourceGroupName azps-elastic-test -MonitorName elastic-pwsh02 -LogRuleSendActivityLog
 
@@ -37,6 +37,7 @@ LOGRULEFILTERINGTAG <IFilteringTag[]>: List of filtering tags to be used for cap
   [Value <String>]: The value of the tag.
 
 MONITORINPUTOBJECT <IElasticIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name

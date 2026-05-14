@@ -73,25 +73,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionService Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionServicesInternal.Blob { get => (this._blob = this._blob ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EncryptionService()); set { {_blob = value;} } }
 
         /// <summary>Internal Acessors for BlobLastEnabledTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionServicesInternal.BlobLastEnabledTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionServiceInternal)Blob).LastEnabledTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionServiceInternal)Blob).LastEnabledTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionServicesInternal.BlobLastEnabledTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionServiceInternal)Blob).LastEnabledTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionServiceInternal)Blob).LastEnabledTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for File</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionService Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionServicesInternal.File { get => (this._file = this._file ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EncryptionService()); set { {_file = value;} } }
 
         /// <summary>Internal Acessors for FileLastEnabledTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionServicesInternal.FileLastEnabledTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionServiceInternal)File).LastEnabledTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionServiceInternal)File).LastEnabledTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionServicesInternal.FileLastEnabledTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionServiceInternal)File).LastEnabledTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionServiceInternal)File).LastEnabledTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Queue</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionService Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionServicesInternal.Queue { get => (this._queue = this._queue ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EncryptionService()); set { {_queue = value;} } }
 
         /// <summary>Internal Acessors for QueueLastEnabledTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionServicesInternal.QueueLastEnabledTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionServiceInternal)Queue).LastEnabledTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionServiceInternal)Queue).LastEnabledTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionServicesInternal.QueueLastEnabledTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionServiceInternal)Queue).LastEnabledTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionServiceInternal)Queue).LastEnabledTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Internal Acessors for Table</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionService Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionServicesInternal.Table { get => (this._table = this._table ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EncryptionService()); set { {_table = value;} } }
 
         /// <summary>Internal Acessors for TableLastEnabledTime</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionServicesInternal.TableLastEnabledTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionServiceInternal)Table).LastEnabledTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionServiceInternal)Table).LastEnabledTime = value; }
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionServicesInternal.TableLastEnabledTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionServiceInternal)Table).LastEnabledTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionServiceInternal)Table).LastEnabledTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Backing field for <see cref="Queue" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IEncryptionService _queue;

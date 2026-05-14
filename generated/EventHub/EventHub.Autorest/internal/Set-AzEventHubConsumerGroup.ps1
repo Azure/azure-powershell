@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-update an Event Hubs consumer group as a nested resource within a Namespace.
+Update an Event Hubs consumer group as a nested resource within a Namespace.
 .Description
-update an Event Hubs consumer group as a nested resource within a Namespace.
+Update an Event Hubs consumer group as a nested resource within a Namespace.
 .Example
 Set-AzEventHubConsumerGroup -ResourceGroupName myResourceGroup -NamespaceName myNamespace -EventHubName myEventHub -Name myConsumerGroup -UserMetadata "Example Metadata"
 .Example

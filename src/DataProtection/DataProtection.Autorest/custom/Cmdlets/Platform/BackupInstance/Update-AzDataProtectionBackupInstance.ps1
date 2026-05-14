@@ -1,54 +1,55 @@
-﻿
+
 
 function Update-AzDataProtectionBackupInstance
 {
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstanceResource')]
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Updates a given backup instance')]
 
     param(
-        [Parameter(Mandatory=$false, HelpMessage='Subscription Id of the vault')]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory=$false, HelpMessage='Subscription Id of the vault')]
         [System.String]
         ${SubscriptionId},
 
-        [Parameter(Mandatory, HelpMessage='Resource Group of the backup vault')]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory, HelpMessage='Resource Group of the backup vault')]
         [System.String]
         ${ResourceGroupName},
 
-        [Parameter(Mandatory, HelpMessage='Name of the backup vault')]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory, HelpMessage='Name of the backup vault')]
         [System.String]
         ${VaultName},
 
-        [Parameter(Mandatory, HelpMessage='Unique Name of protected backup instance')]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory, HelpMessage='Unique Name of protected backup instance')]
+        [Alias('BackupInstanceName')]
         [System.String]
-        ${BackupInstanceName},
+        ${Name},
 
-        [Parameter(Mandatory=$false, HelpMessage='Id of the Policy to be associated with the backup instance')]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory=$false, HelpMessage='Id of the Policy to be associated with the backup instance')]
         [System.String]
         ${PolicyId},
 
-        [Parameter(Mandatory=$false, HelpMessage='Use system assigned identity')]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory=$false, HelpMessage='Use system assigned identity')]
         [System.Nullable[System.Boolean]]
         ${UseSystemAssignedIdentity},
 
-        [Parameter(Mandatory=$false, HelpMessage='User assigned identity ARM Id')]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory=$false, HelpMessage='User assigned identity ARM Id')]
         [Alias('AssignUserIdentity')]
         [System.String]
         ${UserAssignedIdentityArmId},
 
-        [Parameter(Mandatory=$false, HelpMessage='List of containers to be backed up inside the VaultStore. Use this parameter for DatasourceType AzureBlob.')]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory=$false, HelpMessage='List of containers to be backed up inside the VaultStore. Use this parameter for DatasourceType AzureBlob and AzureDataLakeStorage.')]
         [System.String[]]
         ${VaultedBackupContainer},
         
-        [Parameter(Mandatory=$false, HelpMessage='Resource guard operation request in the format similar to <ResourceGuard-ARMID>/dppModifyPolicy/default. Use this parameter when the operation is MUA protected.')]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory=$false, HelpMessage='Resource guard operation request in the format similar to <ResourceGuard-ARMID>/dppModifyPolicy/default. Use this parameter when the operation is MUA protected.')]
         [System.String[]]
         ${ResourceGuardOperationRequest},
 
-        [Parameter(Mandatory=$false, HelpMessage='Parameter deprecate. Please use SecureToken instead.')]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory=$false, HelpMessage='Parameter deprecate. Please use SecureToken instead.')]
         [System.String]
         ${Token},
 
-        [Parameter(Mandatory=$false, HelpMessage='Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch authorization token for different tenant.')]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory=$false, HelpMessage='Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch authorization token for different tenant.')]
         [System.Security.SecureString]
         ${SecureToken},
 
@@ -125,7 +126,7 @@ function Update-AzDataProtectionBackupInstance
                 throw "UserAssignedIdentityArmId cannot be provided without UseSystemAssignedIdentity and UseSystemAssignedIdentity must be false when UserAssignedIdentityArmId is provided."
             }
             
-            $instance.Property.IdentityDetail = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IdentityDetails]::new()
+            $instance.Property.IdentityDetail = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IdentityDetails]::new()
             $instance.Property.IdentityDetail.UseSystemAssignedIdentity = $UseSystemAssignedIdentity            
 
             if ($hasUserAssignedIdentityArmId) {
@@ -135,7 +136,7 @@ function Update-AzDataProtectionBackupInstance
         
         if($hasVaultedBackupContainer){
 
-            if($DatasourceType -ne "AzureBlob"){
+            if($DatasourceType -ne "AzureBlob" -and $DatasourceType -ne "AzureDataLakeStorage"){
                 $err = "Parameter VaultedBackupContainer isn't supported for given Datasource"
                 throw $err
             }
@@ -143,18 +144,24 @@ function Update-AzDataProtectionBackupInstance
             # exclude containers which start with $ except $web, $root
             $unsupportedContainers = $VaultedBackupContainer | Where-Object { $_ -like '$*' -and $_ -ne "`$root" -and $_ -ne "`$web"}
             if($unsupportedContainers.Count -gt 0){
-                $message = "Following containers are not allowed for configure protection with AzureBlob - $unsupportedContainers. Please remove them and try again."
+                $message = "Following containers are not allowed for configure protection with AzureBlob and AzureDataLakeStorage - $unsupportedContainers. Please remove them and try again."
                 throw $message
             }
                         
             $datasourceParam = $instance.Property.PolicyInfo.PolicyParameter.BackupDatasourceParametersList
             
-            if($datasourceParam -ne $null -and $datasourceParam[0].ObjectType -eq "BlobBackupDatasourceParameters"){
+            if($datasourceParam -ne $null -and $datasourceParam[0].ObjectType -eq "BlobBackupDatasourceParameters" -or $datasourceParam[0].ObjectType -eq "AdlsBlobBackupDatasourceParameters"){
                 $instance.Property.PolicyInfo.PolicyParameter.BackupDatasourceParametersList[0].ContainersList = $VaultedBackupContainer
             }
             elseif($datasourceParam -eq $null){
-                $backupConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.BlobBackupDatasourceParameters]::new()
-                $backupConfiguration.ObjectType = "BlobBackupDatasourceParameters"
+                if ($DatasourceType -eq "AzureBlob"){
+                    $backupConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.BlobBackupDatasourceParameters]::new()
+                    $backupConfiguration.ObjectType = "BlobBackupDatasourceParameters"
+                }
+                elseif ($DatasourceType -eq "AzureDataLakeStorage"){
+                    $backupConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.AdlsBlobBackupDatasourceParameters]::new()
+                    $backupConfiguration.ObjectType = "AdlsBlobBackupDatasourceParameters"
+                }
                 $backupConfiguration.ContainersList = $VaultedBackupContainer
 
                 $instance.Property.PolicyInfo.PolicyParameter.BackupDatasourceParametersList += @($backupConfiguration)
@@ -195,7 +202,7 @@ function Update-AzDataProtectionBackupInstance
             $instance.Property.DataSourceSetInfo =$null      
         }
 
-        $null = $PSBoundParameters.Remove("BackupInstanceName")
+        $null = $PSBoundParameters.Remove("Name")
         $null = $PSBoundParameters.Add("Name", $instance.Name)
         $null = $PSBoundParameters.Add("Parameter", $instance)
         Az.DataProtection.Internal\New-AzDataProtectionBackupInstance @PSBoundParameters

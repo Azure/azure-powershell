@@ -57,19 +57,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfo Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumePropertiesInternal.StorageTarget { get => (this._storageTarget = this._storageTarget ?? new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IscsiTargetInfo()); set { {_storageTarget = value;} } }
 
         /// <summary>Internal Acessors for StorageTargetIqn</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumePropertiesInternal.StorageTargetIqn { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfoInternal)StorageTarget).TargetIqn; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfoInternal)StorageTarget).TargetIqn = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumePropertiesInternal.StorageTargetIqn { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfoInternal)StorageTarget).TargetIqn; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfoInternal)StorageTarget).TargetIqn = value ?? null; }
 
         /// <summary>Internal Acessors for StorageTargetPortalHostname</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumePropertiesInternal.StorageTargetPortalHostname { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfoInternal)StorageTarget).TargetPortalHostname; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfoInternal)StorageTarget).TargetPortalHostname = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumePropertiesInternal.StorageTargetPortalHostname { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfoInternal)StorageTarget).TargetPortalHostname; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfoInternal)StorageTarget).TargetPortalHostname = value ?? null; }
 
         /// <summary>Internal Acessors for StorageTargetPortalPort</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumePropertiesInternal.StorageTargetPortalPort { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfoInternal)StorageTarget).TargetPortalPort; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfoInternal)StorageTarget).TargetPortalPort = value; }
+        int? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumePropertiesInternal.StorageTargetPortalPort { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfoInternal)StorageTarget).TargetPortalPort; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfoInternal)StorageTarget).TargetPortalPort = value ?? default(int); }
 
         /// <summary>Internal Acessors for StorageTargetProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumePropertiesInternal.StorageTargetProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfoInternal)StorageTarget).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfoInternal)StorageTarget).ProvisioningState = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumePropertiesInternal.StorageTargetProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfoInternal)StorageTarget).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfoInternal)StorageTarget).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for StorageTargetStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumePropertiesInternal.StorageTargetStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfoInternal)StorageTarget).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfoInternal)StorageTarget).Status = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumePropertiesInternal.StorageTargetStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfoInternal)StorageTarget).Status; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIscsiTargetInfoInternal)StorageTarget).Status = value ?? null; }
 
         /// <summary>Internal Acessors for VolumeId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumePropertiesInternal.VolumeId { get => this._volumeId; set { {_volumeId = value;} } }
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Description = @"State of the operation on the resource.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring")]
         string ProvisioningState { get;  }
         /// <summary>Volume size.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         Description = @"State of the operation on the resource.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring")]
         string StorageTargetProvisioningState { get;  }
         /// <summary>Operational status of the iSCSI Target.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// </summary>
         string ManagedByResourceId { get; set; }
         /// <summary>State of the operation on the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring")]
         string ProvisioningState { get; set; }
         /// <summary>Volume size.</summary>
         long SizeGiB { get; set; }
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         /// <summary>iSCSI Target Portal Port</summary>
         int? StorageTargetPortalPort { get; set; }
         /// <summary>State of the operation on the resource.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Succeeded", "Failed", "Canceled", "Pending", "Creating", "Updating", "Deleting", "Deleted", "Restoring")]
         string StorageTargetProvisioningState { get; set; }
         /// <summary>Operational status of the iSCSI Target.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Invalid", "Unknown", "Healthy", "Unhealthy", "Updating", "Running", "Stopped", "Stopped (deallocated)")]

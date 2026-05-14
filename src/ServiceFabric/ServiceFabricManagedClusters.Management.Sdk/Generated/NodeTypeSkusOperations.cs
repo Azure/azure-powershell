@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
     /// <summary>
     /// NodeTypeSkusOperations operations.
     /// </summary>
-    internal partial class NodeTypeSkusOperations : Microsoft.Rest.IServiceOperations<ServiceFabricManagementClient>, INodeTypeSkusOperations
+    internal partial class NodeTypeSkusOperations : Microsoft.Rest.IServiceOperations<ServiceFabricManagedClustersManagementClient>, INodeTypeSkusOperations
     {
         /// <summary>
         /// Initializes a new instance of the NodeTypeSkusOperations class.
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal NodeTypeSkusOperations (ServiceFabricManagementClient client)
+        internal NodeTypeSkusOperations (ServiceFabricManagedClustersManagementClient client)
         {
             if (client == null) 
             {
@@ -34,15 +34,15 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Gets a reference to the ServiceFabricManagementClient
+        /// Gets a reference to the ServiceFabricManagedClustersManagementClient
         /// </summary>
-        public ServiceFabricManagementClient Client { get; private set; }
+        public ServiceFabricManagedClustersManagementClient Client { get; private set; }
 
         /// <summary>
         /// Get a Service Fabric node type supported SKUs.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster resource.
@@ -77,16 +77,37 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 
 
  
+            if (this.Client.ApiVersion == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
+            }
+
             if (this.Client.SubscriptionId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-
+            if (this.Client.SubscriptionId != null)
+            {
+                if (this.Client.SubscriptionId.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
+            }
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
             }
-
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
             if (clusterName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "clusterName");
@@ -95,11 +116,6 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             if (nodeTypeName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "nodeTypeName");
-            }
-
-            if (this.Client.ApiVersion == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
             // Tracing
@@ -191,11 +207,11 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 
             if ((int)_statusCode != 200)
             {
-                var ex = new ErrorModelException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorModel _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorModel>(_responseContent, this.Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;
@@ -368,11 +384,11 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
 
             if ((int)_statusCode != 200)
             {
-                var ex = new ErrorModelException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ErrorModel _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorModel>(_responseContent, this.Client.DeserializationSettings);
+                    ErrorResponse _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ErrorResponse>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex.Body = _errorBody;

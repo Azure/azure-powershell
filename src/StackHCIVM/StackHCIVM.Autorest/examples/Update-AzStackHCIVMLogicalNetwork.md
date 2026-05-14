@@ -9,4 +9,4 @@ Name            ResourceGroupName
 testLnet      test-rg
 ```
 
-This command updates an exisiting logical network in the specified resource group.
+This command updates an existing logical network in the specified resource group.

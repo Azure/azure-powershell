@@ -31,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PowerShell
     {
         public string ModuleName { get; }
 
-        public string RootModuleName {get => @"";}
+        public string RootModuleName { get => @""; }
         public string CmdletName { get; }
         public string CmdletVerb { get; }
         public string CmdletNoun { get; }
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PowerShell
         public PsHelpInfo HelpInfo { get; }
         public bool IsGenerated { get; }
         public bool IsInternal { get; }
-
+        public bool IsModelCmdlet { get; }
         public string OutputFolder { get; }
         public string FileName { get; }
         public string FilePath { get; }
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PowerShell
             HelpInfo = Variants.Select(v => v.HelpInfo).FirstOrDefault() ?? new PsHelpInfo();
             IsGenerated = Variants.All(v => v.Attributes.OfType<GeneratedAttribute>().Any());
             IsInternal = isInternal;
-
+            IsModelCmdlet = Variants.All(v => v.IsModelCmdlet);
             OutputFolder = outputFolder;
             FileName = $"{CmdletName}{(isTest ? ".Tests" : String.Empty)}.ps1";
             FilePath = Path.Combine(OutputFolder, FileName);
@@ -101,12 +101,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PowerShell
             if (String.IsNullOrEmpty(defaultParameterSet))
             {
                 var variantParamCountGroups = Variants
+                    .Where(v => !v.IsNotSuggestDefaultParameterSet)
                     .Select(v => (
                         variant: v.VariantName,
                         paramCount: v.CmdletOnlyParameters.Count(p => p.IsMandatory),
                         isSimple: v.CmdletOnlyParameters.Where(p => p.IsMandatory).All(p => p.ParameterType.IsPsSimple())))
                     .GroupBy(vpc => vpc.isSimple)
                     .ToArray();
+                if (variantParamCountGroups.Length == 0)
+                {
+                    variantParamCountGroups = Variants
+                        .Select(v => (
+                            variant: v.VariantName,
+                            paramCount: v.CmdletOnlyParameters.Count(p => p.IsMandatory),
+                            isSimple: v.CmdletOnlyParameters.Where(p => p.IsMandatory).All(p => p.ParameterType.IsPsSimple())))
+                        .GroupBy(vpc => vpc.isSimple)
+                        .ToArray();
+                }
                 var variantParameterCounts = (variantParamCountGroups.Any(g => g.Key) ? variantParamCountGroups.Where(g => g.Key) : variantParamCountGroups).SelectMany(g => g).ToArray();
                 var smallestParameterCount = variantParameterCounts.Min(vpc => vpc.paramCount);
                 defaultParameterSet = variantParameterCounts.First(vpc => vpc.paramCount == smallestParameterCount).variant;
@@ -134,7 +145,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PowerShell
         public Parameter[] Parameters { get; }
         public Parameter[] CmdletOnlyParameters { get; }
         public bool IsInternal { get; }
+        public bool IsModelCmdlet { get; }
         public bool IsDoNotExport { get; }
+        public bool IsNotSuggestDefaultParameterSet { get; }
         public string[] Profiles { get; }
 
         public Variant(string cmdletName, string variantName, CommandInfo info, CommandMetadata metadata, bool hasParameterSets = false, PsHelpInfo helpInfo = null)
@@ -155,6 +168,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PowerShell
             Parameters = this.ToParameters().OrderBy(p => p.OrderCategory).ThenByDescending(p => p.IsMandatory).ToArray();
             IsInternal = Attributes.OfType<InternalExportAttribute>().Any();
             IsDoNotExport = Attributes.OfType<DoNotExportAttribute>().Any();
+            IsModelCmdlet = Attributes.OfType<ModelCmdletAttribute>().Any();
+            IsNotSuggestDefaultParameterSet = Attributes.OfType<NotSuggestDefaultParameterSetAttribute>().Any();
             CmdletOnlyParameters = Parameters.Where(p => !p.Categories.Any(c => c == ParameterCategory.Azure || c == ParameterCategory.Runtime)).ToArray();
             Profiles = Attributes.OfType<ProfileAttribute>().SelectMany(pa => pa.Profiles).ToArray();
         }
@@ -210,6 +225,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PowerShell
             HasValidateNotNull = Parameters.SelectMany(p => p.Attributes.OfType<ValidateNotNullAttribute>()).Any();
             HasAllowEmptyArray = Parameters.SelectMany(p => p.Attributes.OfType<AllowEmptyCollectionAttribute>()).Any();
             CompleterInfo = Parameters.Select(p => p.CompleterInfoAttribute).FirstOrDefault()?.ToCompleterInfo()
+                            ?? Parameters.Select(p => p.PSArgumentCompleterAttribute).FirstOrDefault()?.ToPSArgumentCompleterInfo()
                             ?? Parameters.Select(p => p.ArgumentCompleterAttribute).FirstOrDefault()?.ToCompleterInfo();
             DefaultInfo = Parameters.Select(p => p.DefaultInfoAttribute).FirstOrDefault()?.ToDefaultInfo(this)
                             ?? Parameters.Select(p => p.DefaultValueAttribute).FirstOrDefault(dv => dv != null)?.ToDefaultInfo(this);
@@ -244,7 +260,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PowerShell
         public ParameterMetadata Metadata { get; }
         public PsParameterHelpInfo HelpInfo { get; }
         public Type ParameterType { get; }
-
         public Attribute[] Attributes { get; }
         public ParameterCategory[] Categories { get; }
         public ParameterCategory OrderCategory { get; }
@@ -254,6 +269,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PowerShell
         public bool SupportsWildcards { get; }
         public CompleterInfoAttribute CompleterInfoAttribute { get; }
         public ArgumentCompleterAttribute ArgumentCompleterAttribute { get; }
+        public PSArgumentCompleterAttribute PSArgumentCompleterAttribute { get; }
 
         public bool ValueFromPipeline { get; }
         public bool ValueFromPipelineByPropertyName { get; }
@@ -286,7 +302,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PowerShell
             }
             SupportsWildcards = Attributes.OfType<SupportsWildcardsAttribute>().Any();
             CompleterInfoAttribute = Attributes.OfType<CompleterInfoAttribute>().FirstOrDefault();
-            ArgumentCompleterAttribute = Attributes.OfType<ArgumentCompleterAttribute>().FirstOrDefault();
+            PSArgumentCompleterAttribute = Attributes.OfType<PSArgumentCompleterAttribute>().FirstOrDefault();
+            ArgumentCompleterAttribute = Attributes.OfType<ArgumentCompleterAttribute>().FirstOrDefault(attr => !attr.GetType().Equals(typeof(PSArgumentCompleterAttribute)));
 
             ValueFromPipeline = ParameterAttribute.ValueFromPipeline;
             ValueFromPipelineByPropertyName = ParameterAttribute.ValueFromPipelineByPropertyName;
@@ -295,10 +312,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PowerShell
             IsMandatory = ParameterAttribute.Mandatory;
 
             var complexParameterName = ParameterName.ToUpperInvariant();
-            var complexMessage = $"{Environment.NewLine}To construct, see NOTES section for {complexParameterName} properties and create a hash table.";
+            var complexMessage = $"{Environment.NewLine}";
             var description = ParameterAttribute.HelpMessage.NullIfEmpty() ?? HelpInfo.Description.NullIfEmpty() ?? InfoAttribute?.Description.NullIfEmpty() ?? String.Empty;
             // Remove the complex type message as it will be reinserted if this is a complex type
-            description = description.NormalizeNewLines().Replace(complexMessage, String.Empty).Replace(complexMessage.ToPsSingleLine(), String.Empty);
+            description = description.NormalizeNewLines();
             // Make an InfoAttribute for processing only if one isn't provided
             InfoAttribute = Attributes.OfType<InfoAttribute>().FirstOrDefault() ?? new InfoAttribute { PossibleTypes = new[] { ParameterType.Unwrap() }, Required = IsMandatory };
             // Set the description if the InfoAttribute does not have one since they are exported without a description
@@ -318,7 +335,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PowerShell
         public bool Required { get; }
         public bool ReadOnly { get; }
         public string Description { get; }
-        
+
         public ComplexInterfaceInfo[] NestedInfos { get; }
         public bool IsComplexInterface { get; }
 
@@ -335,7 +352,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PowerShell
             var unwrappedType = Type.Unwrap();
             var hasBeenSeen = seenTypes?.Contains(unwrappedType) ?? false;
             (seenTypes ?? (seenTypes = new List<Type>())).Add(unwrappedType);
-            NestedInfos = hasBeenSeen ? new ComplexInterfaceInfo[]{} :
+            NestedInfos = hasBeenSeen ? new ComplexInterfaceInfo[] { } :
                 unwrappedType.GetInterfaces()
                 .Concat(InfoAttribute.PossibleTypes)
                 .SelectMany(pt => pt.GetProperties()
@@ -366,6 +383,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PowerShell
 
         public string OnlineVersion { get; }
         public string[] RelatedLinks { get; }
+        public string[] ExternalUrls { get; }
 
         private const string HelpLinkPrefix = @"https://learn.microsoft.com/powershell/module/";
 
@@ -374,6 +392,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PowerShell
             var helpInfo = variantGroup.HelpInfo;
             Description = variantGroup.Variants.SelectMany(v => v.Attributes).OfType<DescriptionAttribute>().FirstOrDefault()?.Description.NullIfEmpty()
                           ?? helpInfo.Description.EmptyIfNull();
+            Description = PsHelpInfo.CapitalizeFirstLetter(Description);
             // If there is no Synopsis, PowerShell may put in the Syntax string as the Synopsis. This seems unintended, so we remove the Synopsis in this situation.
             var synopsis = helpInfo.Synopsis.EmptyIfNull().Trim().StartsWith(variantGroup.CmdletName) ? String.Empty : helpInfo.Synopsis;
             Synopsis = synopsis.NullIfEmpty() ?? Description;
@@ -391,6 +410,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PowerShell
             var moduleName = variantGroup.RootModuleName == "" ? variantGroup.ModuleName.ToLowerInvariant() : variantGroup.RootModuleName.ToLowerInvariant();
             OnlineVersion = helpInfo.OnlineVersion?.Uri.NullIfEmpty() ?? $@"{HelpLinkPrefix}{moduleName}/{variantGroup.CmdletName.ToLowerInvariant()}";
             RelatedLinks = helpInfo.RelatedLinks.Select(rl => rl.Text).ToArray();
+
+            // Get external urls from attribute
+            ExternalUrls = variantGroup.Variants.SelectMany(v => v.Attributes).OfType<ExternalDocsAttribute>()?.Select(e => e.Url)?.Distinct()?.ToArray();
         }
     }
 
@@ -420,11 +442,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PowerShell
         }
     }
 
+    internal class PSArgumentCompleterInfo : CompleterInfo
+    {
+        public string[] ResourceTypes { get; }
+
+        public PSArgumentCompleterInfo(PSArgumentCompleterAttribute completerAttribute) : base(completerAttribute)
+        {
+            ResourceTypes = completerAttribute.ResourceTypes;
+        }
+    }
+
     internal class DefaultInfo
     {
         public string Name { get; }
         public string Description { get; }
         public string Script { get; }
+        public string SetCondition { get; }
         public ParameterGroup ParameterGroup { get; }
 
         public DefaultInfo(DefaultInfoAttribute infoAttribute, ParameterGroup parameterGroup)
@@ -432,6 +465,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PowerShell
             Name = infoAttribute.Name;
             Description = infoAttribute.Description;
             Script = infoAttribute.Script;
+            SetCondition = infoAttribute.SetCondition;
             ParameterGroup = parameterGroup;
         }
 
@@ -479,7 +513,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PowerShell
                 parameterHelp = parameterHelp.Where(ph => (!ph.ParameterSetNames.Any() || ph.ParameterSetNames.Any(psn => psn == variant.VariantName || psn == AllParameterSets)) && ph.Name != "IncludeTotalCount");
             }
             var result = parameters.Select(p => new Parameter(variant.VariantName, p.Key, p.Value, parameterHelp.FirstOrDefault(ph => ph.Name == p.Key)));
-            if (variant.SupportsPaging) {
+            if (variant.SupportsPaging)
+            {
                 // If supportsPaging is set, we will need to add First and Skip parameters since they are treated as common parameters which as not contained on Metadata>parameters
                 variant.Info.Parameters["First"].Attributes.OfType<ParameterAttribute>().FirstOrDefault(pa => pa.ParameterSetName == variant.VariantName || pa.ParameterSetName == AllParameterSets).HelpMessage = "Gets only the first 'n' objects.";
                 variant.Info.Parameters["Skip"].Attributes.OfType<ParameterAttribute>().FirstOrDefault(pa => pa.ParameterSetName == variant.VariantName || pa.ParameterSetName == AllParameterSets).HelpMessage = "Ignores the first 'n' objects and then gets the remaining objects.";
@@ -507,7 +542,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PowerShell
 
         public static CompleterInfo ToCompleterInfo(this CompleterInfoAttribute infoAttribute) => new CompleterInfo(infoAttribute);
         public static CompleterInfo ToCompleterInfo(this ArgumentCompleterAttribute completerAttribute) => new CompleterInfo(completerAttribute);
-
+        public static PSArgumentCompleterInfo ToPSArgumentCompleterInfo(this PSArgumentCompleterAttribute completerAttribute) => new PSArgumentCompleterInfo(completerAttribute);
         public static DefaultInfo ToDefaultInfo(this DefaultInfoAttribute infoAttribute, ParameterGroup parameterGroup) => new DefaultInfo(infoAttribute, parameterGroup);
         public static DefaultInfo ToDefaultInfo(this PSDefaultValueAttribute defaultValueAttribute, ParameterGroup parameterGroup) => new DefaultInfo(defaultValueAttribute, parameterGroup);
     }

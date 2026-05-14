@@ -108,6 +108,22 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Authentication type for this VPN connection: PSK or Certificate")]
+        [ValidateSet(
+            MNM.ConnectionAuthenticationType.PSK,
+            MNM.ConnectionAuthenticationType.Certificate,
+            IgnoreCase = true)]
+        public string AuthenticationType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Certificate authentication configuration for this VPN connection")]
+        public PSCertificateAuthentication CertificateAuthentication { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -137,6 +153,16 @@ namespace Microsoft.Azure.Commands.Network
                     if (!String.IsNullOrEmpty(this.ConnectionMode))
                     {
                         this.VirtualNetworkGatewayConnection.ConnectionMode = this.ConnectionMode;
+                    }
+
+                    if (!String.IsNullOrEmpty(this.AuthenticationType))
+                    {
+                        this.VirtualNetworkGatewayConnection.AuthenticationType = this.AuthenticationType;
+                    }
+
+                    if (this.CertificateAuthentication != null)
+                    {
+                        this.VirtualNetworkGatewayConnection.CertificateAuthentication = this.CertificateAuthentication;
                     }
 
                     if (this.UsePolicyBasedTrafficSelectors.HasValue)

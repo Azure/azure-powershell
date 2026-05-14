@@ -47,7 +47,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>Backing field for <see cref="MoRefId" /> property.</summary>
         private string _moRefId;
 
-        /// <summary>Virtual machine managed object reference id</summary>
+        /// <summary>vCenter managed object reference ID of the virtual machine</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
         public string MoRefId { get => this._moRefId; }
 
@@ -99,14 +99,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         SerializedName = @"folderPath",
         PossibleTypes = new [] { typeof(string) })]
         string FolderPath { get;  }
-        /// <summary>Virtual machine managed object reference id</summary>
+        /// <summary>vCenter managed object reference ID of the virtual machine</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Virtual machine managed object reference id",
+        Description = @"vCenter managed object reference ID of the virtual machine",
         SerializedName = @"moRefId",
         PossibleTypes = new [] { typeof(string) })]
         string MoRefId { get;  }
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// Path to virtual machine's folder starting from datacenter virtual machine folder
         /// </summary>
         string FolderPath { get; set; }
-        /// <summary>Virtual machine managed object reference id</summary>
+        /// <summary>vCenter managed object reference ID of the virtual machine</summary>
         string MoRefId { get; set; }
         /// <summary>The provisioning state of the resource.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled")]

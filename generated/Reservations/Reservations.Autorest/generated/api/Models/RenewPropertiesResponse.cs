@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models
         public string DisplayName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestInternal)PurchaseProperty).DisplayName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestInternal)PurchaseProperty).DisplayName = value ?? null; }
 
         /// <summary>Internal Acessors for AppliedScopeProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IAppliedScopeProperties Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRenewPropertiesResponseInternal.AppliedScopeProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestInternal)PurchaseProperty).AppliedScopeProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestInternal)PurchaseProperty).AppliedScopeProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IAppliedScopeProperties Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRenewPropertiesResponseInternal.AppliedScopeProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestInternal)PurchaseProperty).AppliedScopeProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestInternal)PurchaseProperty).AppliedScopeProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for BillingCurrencyTotal</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRenewPropertiesResponseBillingCurrencyTotal Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRenewPropertiesResponseInternal.BillingCurrencyTotal { get => (this._billingCurrencyTotal = this._billingCurrencyTotal ?? new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.RenewPropertiesResponseBillingCurrencyTotal()); set { {_billingCurrencyTotal = value;} } }
@@ -89,13 +89,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models
         Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequest Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRenewPropertiesResponseInternal.PurchaseProperty { get => (this._purchaseProperty = this._purchaseProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.PurchaseRequest()); set { {_purchaseProperty = value;} } }
 
         /// <summary>Internal Acessors for PurchasePropertyProperties</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestProperties Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRenewPropertiesResponseInternal.PurchasePropertyProperties { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestInternal)PurchaseProperty).Properties; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestInternal)PurchaseProperty).Properties = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestProperties Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRenewPropertiesResponseInternal.PurchasePropertyProperties { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestInternal)PurchaseProperty).Properties; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestInternal)PurchaseProperty).Properties = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for PurchasePropertySku</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISkuName Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRenewPropertiesResponseInternal.PurchasePropertySku { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestInternal)PurchaseProperty).InternalSkuName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestInternal)PurchaseProperty).InternalSkuName = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISkuName Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRenewPropertiesResponseInternal.PurchasePropertySku { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestInternal)PurchaseProperty).InternalSkuName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestInternal)PurchaseProperty).InternalSkuName = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ReservedResourceProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestPropertiesReservedResourceProperties Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRenewPropertiesResponseInternal.ReservedResourceProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestInternal)PurchaseProperty).ReservedResourceProperties; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestInternal)PurchaseProperty).ReservedResourceProperties = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestPropertiesReservedResourceProperties Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRenewPropertiesResponseInternal.ReservedResourceProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestInternal)PurchaseProperty).ReservedResourceProperties; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequestInternal)PurchaseProperty).ReservedResourceProperties = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="PricingCurrencyTotal" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRenewPropertiesResponsePricingCurrencyTotal _pricingCurrencyTotal;
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"The Azure region where the reserved resource lives.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]

@@ -19,6 +19,20 @@ Update-AzLabServicesUser [-SubscriptionId <String>] [-AdditionalUsageQuota <Time
  [<CommonParameters>]
 ```
 
+### UpdateViaJsonString
+```
+Update-AzLabServicesUser -LabName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzLabServicesUser -LabName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### UpdateExpanded
 ```
 Update-AzLabServicesUser -LabName <String> -Name <String> -ResourceGroupName <String>
@@ -31,6 +45,20 @@ Update-AzLabServicesUser -LabName <String> -Name <String> -ResourceGroupName <St
 Update-AzLabServicesUser -Name <String> [-SubscriptionId <String>] -Lab <Lab>
  [-AdditionalUsageQuota <TimeSpan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityLabExpanded
+```
+Update-AzLabServicesUser -Name <String> -LabInputObject <ILabServicesIdentity>
+ [-AdditionalUsageQuota <TimeSpan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzLabServicesUser -InputObject <ILabServicesIdentity> [-AdditionalUsageQuota <TimeSpan>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,7 +86,7 @@ The amount of usage quota time the user gets in addition to the lab usage quota.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: (All)
+Parameter Sets: ResourceId, UpdateExpanded, Lab, UpdateViaIdentityLabExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -99,12 +127,71 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Lab
-To construct, see NOTES section for LAB properties and create a hash table.
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Lab
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
 Parameter Sets: Lab
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -LabInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+Parameter Sets: UpdateViaIdentityLabExpanded
 Aliases:
 
 Required: True
@@ -120,7 +207,7 @@ Used in resource URIs.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateViaJsonString, UpdateViaJsonFilePath, UpdateExpanded
 Aliases:
 
 Required: True
@@ -136,7 +223,7 @@ Used in resource URIs.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Lab
+Parameter Sets: UpdateViaJsonString, UpdateViaJsonFilePath, UpdateExpanded, Lab, UpdateViaIdentityLabExpanded
 Aliases: UserName
 
 Required: True
@@ -167,7 +254,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateViaJsonString, UpdateViaJsonFilePath, UpdateExpanded
 Aliases:
 
 Required: True
@@ -178,6 +265,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
+The resource ID of lab service user to update.
 
 ```yaml
 Type: System.String
@@ -196,7 +284,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ResourceId, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateExpanded, Lab
 Aliases:
 
 Required: False
@@ -242,11 +330,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser
 
 ## NOTES
 

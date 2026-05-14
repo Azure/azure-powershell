@@ -87,6 +87,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Owned)]
         public bool? GenerateApiKey { get => this._generateApiKey; set => this._generateApiKey = value; }
 
+        /// <summary>Backing field for <see cref="HostingType" /> property.</summary>
+        private string _hostingType;
+
+        /// <summary>
+        /// Hosting type of the monitor resource - either Hosted deployments OR Serverless Projects.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Owned)]
+        public string HostingType { get => this._hostingType; set => this._hostingType = value; }
+
         /// <summary>Backing field for <see cref="LiftrResourceCategory" /> property.</summary>
         private string _liftrResourceCategory;
 
@@ -101,43 +110,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         public int? LiftrResourcePreference { get => this._liftrResourcePreference; }
 
         /// <summary>Internal Acessors for ElasticCloudDeploymentAzureSubscriptionId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.ElasticCloudDeploymentAzureSubscriptionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeploymentAzureSubscriptionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeploymentAzureSubscriptionId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.ElasticCloudDeploymentAzureSubscriptionId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeploymentAzureSubscriptionId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeploymentAzureSubscriptionId = value ?? null; }
 
         /// <summary>Internal Acessors for ElasticCloudDeploymentElasticsearchRegion</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.ElasticCloudDeploymentElasticsearchRegion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeploymentElasticsearchRegion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeploymentElasticsearchRegion = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.ElasticCloudDeploymentElasticsearchRegion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeploymentElasticsearchRegion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeploymentElasticsearchRegion = value ?? null; }
 
         /// <summary>Internal Acessors for ElasticCloudDeploymentElasticsearchServiceUrl</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.ElasticCloudDeploymentElasticsearchServiceUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeploymentElasticsearchServiceUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeploymentElasticsearchServiceUrl = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.ElasticCloudDeploymentElasticsearchServiceUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeploymentElasticsearchServiceUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeploymentElasticsearchServiceUrl = value ?? null; }
 
         /// <summary>Internal Acessors for ElasticCloudDeploymentId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.ElasticCloudDeploymentId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeploymentId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeploymentId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.ElasticCloudDeploymentId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeploymentId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeploymentId = value ?? null; }
 
         /// <summary>Internal Acessors for ElasticCloudDeploymentKibanaServiceUrl</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.ElasticCloudDeploymentKibanaServiceUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeploymentKibanaServiceUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeploymentKibanaServiceUrl = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.ElasticCloudDeploymentKibanaServiceUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeploymentKibanaServiceUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeploymentKibanaServiceUrl = value ?? null; }
 
         /// <summary>Internal Acessors for ElasticCloudDeploymentKibanaSsoUrl</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.ElasticCloudDeploymentKibanaSsoUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeploymentKibanaSsoUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeploymentKibanaSsoUrl = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.ElasticCloudDeploymentKibanaSsoUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeploymentKibanaSsoUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeploymentKibanaSsoUrl = value ?? null; }
 
         /// <summary>Internal Acessors for ElasticCloudDeploymentName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.ElasticCloudDeploymentName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeploymentName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeploymentName = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.ElasticCloudDeploymentName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeploymentName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeploymentName = value ?? null; }
 
         /// <summary>Internal Acessors for ElasticCloudUserElasticCloudSsoDefaultUrl</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.ElasticCloudUserElasticCloudSsoDefaultUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudUserElasticCloudSsoDefaultUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudUserElasticCloudSsoDefaultUrl = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.ElasticCloudUserElasticCloudSsoDefaultUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudUserElasticCloudSsoDefaultUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudUserElasticCloudSsoDefaultUrl = value ?? null; }
 
         /// <summary>Internal Acessors for ElasticCloudUserEmailAddress</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.ElasticCloudUserEmailAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudUserEmailAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudUserEmailAddress = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.ElasticCloudUserEmailAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudUserEmailAddress; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudUserEmailAddress = value ?? null; }
 
         /// <summary>Internal Acessors for ElasticCloudUserId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.ElasticCloudUserId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudUserId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudUserId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.ElasticCloudUserId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudUserId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudUserId = value ?? null; }
 
         /// <summary>Internal Acessors for ElasticProperty</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticProperties Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.ElasticProperty { get => (this._elasticProperty = this._elasticProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ElasticProperties()); set { {_elasticProperty = value;} } }
 
         /// <summary>Internal Acessors for ElasticPropertyElasticCloudDeployment</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticCloudDeployment Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.ElasticPropertyElasticCloudDeployment { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeployment; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeployment = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticCloudDeployment Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.ElasticPropertyElasticCloudDeployment { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeployment; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudDeployment = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ElasticPropertyElasticCloudUser</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticCloudUser Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.ElasticPropertyElasticCloudUser { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudUser; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudUser = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticCloudUser Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.ElasticPropertyElasticCloudUser { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudUser; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticPropertiesInternal)ElasticProperty).ElasticCloudUser = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for LiftrResourceCategory</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.LiftrResourceCategory { get => this._liftrResourceCategory; set { {_liftrResourceCategory = value;} } }
@@ -148,6 +157,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         /// <summary>Internal Acessors for PlanDetail</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IPlanDetails Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.PlanDetail { get => (this._planDetail = this._planDetail ?? new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.PlanDetails()); set { {_planDetail = value;} } }
 
+        /// <summary>Internal Acessors for ProjectDetail</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IProjectDetails Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.ProjectDetail { get => (this._projectDetail = this._projectDetail ?? new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ProjectDetails()); set { {_projectDetail = value;} } }
+
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
 
@@ -155,7 +167,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUserInfo Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.UserInfo { get => (this._userInfo = this._userInfo ?? new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.UserInfo()); set { {_userInfo = value;} } }
 
         /// <summary>Internal Acessors for UserInfoCompanyInfo</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ICompanyInfo Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.UserInfoCompanyInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUserInfoInternal)UserInfo).CompanyInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUserInfoInternal)UserInfo).CompanyInfo = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ICompanyInfo Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitorPropertiesInternal.UserInfoCompanyInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUserInfoInternal)UserInfo).CompanyInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUserInfoInternal)UserInfo).CompanyInfo = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="MonitoringStatus" /> property.</summary>
         private string _monitoringStatus;
@@ -190,6 +202,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         /// <summary>Term ID of the plan</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Inlined)]
         public string PlanDetailTermId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IPlanDetailsInternal)PlanDetail).TermId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IPlanDetailsInternal)PlanDetail).TermId = value ?? null; }
+
+        /// <summary>Backing field for <see cref="ProjectDetail" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IProjectDetails _projectDetail;
+
+        /// <summary>Project details of the monitor resource IF it belongs to Serverless offer kind.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IProjectDetails ProjectDetail { get => (this._projectDetail = this._projectDetail ?? new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.ProjectDetails()); set => this._projectDetail = value; }
+
+        /// <summary>Configuration type of the Elasticsearch project</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Inlined)]
+        public string ProjectDetailConfigurationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IProjectDetailsInternal)ProjectDetail).ConfigurationType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IProjectDetailsInternal)ProjectDetail).ConfigurationType = value ?? null; }
+
+        /// <summary>Project type; ex: Elasticsearch / Observability / Security</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Origin(Microsoft.Azure.PowerShell.Cmdlets.Elastic.PropertyOrigin.Inlined)]
+        public string ProjectDetailProjectType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IProjectDetailsInternal)ProjectDetail).ProjectType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IProjectDetailsInternal)ProjectDetail).ProjectType = value ?? null; }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;
@@ -442,6 +469,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         SerializedName = @"generateApiKey",
         PossibleTypes = new [] { typeof(bool) })]
         bool? GenerateApiKey { get; set; }
+        /// <summary>
+        /// Hosting type of the monitor resource - either Hosted deployments OR Serverless Projects.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Hosting type of the monitor resource - either Hosted deployments OR Serverless Projects.",
+        SerializedName = @"hostingType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.PSArgumentCompleterAttribute("Hosted", "Serverless")]
+        string HostingType { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
         Required = false,
@@ -532,6 +573,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         SerializedName = @"termID",
         PossibleTypes = new [] { typeof(string) })]
         string PlanDetailTermId { get; set; }
+        /// <summary>Configuration type of the Elasticsearch project</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Configuration type of the Elasticsearch project",
+        SerializedName = @"configurationType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.PSArgumentCompleterAttribute("GeneralPurpose", "Vector", "TimeSeries", "NotApplicable")]
+        string ProjectDetailConfigurationType { get; set; }
+        /// <summary>Project type; ex: Elasticsearch / Observability / Security</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Project type; ex: Elasticsearch / Observability / Security",
+        SerializedName = @"projectType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.PSArgumentCompleterAttribute("Elasticsearch", "Observability", "Security", "NotApplicable")]
+        string ProjectDetailProjectType { get; set; }
         /// <summary>Provisioning state of the monitor resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
         Required = false,
@@ -687,6 +752,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticCloudUser ElasticPropertyElasticCloudUser { get; set; }
         /// <summary>Flag to determine if User API Key has to be generated and shared.</summary>
         bool? GenerateApiKey { get; set; }
+        /// <summary>
+        /// Hosting type of the monitor resource - either Hosted deployments OR Serverless Projects.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.PSArgumentCompleterAttribute("Hosted", "Serverless")]
+        string HostingType { get; set; }
 
         [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.PSArgumentCompleterAttribute("Unknown", "MonitorLogs")]
         string LiftrResourceCategory { get; set; }
@@ -707,6 +777,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
         string PlanDetailPublisherId { get; set; }
         /// <summary>Term ID of the plan</summary>
         string PlanDetailTermId { get; set; }
+        /// <summary>Project details of the monitor resource IF it belongs to Serverless offer kind.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IProjectDetails ProjectDetail { get; set; }
+        /// <summary>Configuration type of the Elasticsearch project</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.PSArgumentCompleterAttribute("GeneralPurpose", "Vector", "TimeSeries", "NotApplicable")]
+        string ProjectDetailConfigurationType { get; set; }
+        /// <summary>Project type; ex: Elasticsearch / Observability / Security</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.PSArgumentCompleterAttribute("Elasticsearch", "Observability", "Security", "NotApplicable")]
+        string ProjectDetailProjectType { get; set; }
         /// <summary>Provisioning state of the monitor resource.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.PSArgumentCompleterAttribute("Accepted", "Creating", "Updating", "Deleting", "Succeeded", "Failed", "Canceled", "Deleted", "NotSpecified")]
         string ProvisioningState { get; set; }

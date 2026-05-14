@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwareGlobalReachConnection
 
 ## SYNOPSIS
-create a GlobalReachConnection
+Create a GlobalReachConnection
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ New-AzVMwareGlobalReachConnection -Name <String> -PrivateCloudInputObject <IVMwa
 ```
 
 ## DESCRIPTION
-create a GlobalReachConnection
+Create a GlobalReachConnection
 
 ## EXAMPLES
 

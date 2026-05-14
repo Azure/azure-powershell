@@ -12,22 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Net.Http;
-using System.Collections.Generic;
+using Azure.Identity;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Common.Utilities;
 using Microsoft.Azure.Commands.Profile.Models;
-using System.Globalization;
-using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Profile.Properties;
-using Azure.Identity;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common
 {
@@ -200,14 +201,13 @@ namespace Microsoft.Azure.Commands.Common
             {
                 var response = await next(request, cancelToken, cancelAction, signal);
 
-                if (response.MatchClaimsChallengePattern())
+                if (response.MatchClaimsChallengePattern(out var claimsChallenge))
                 {
                     //get token again with claims challenge
                     if (accessToken is IClaimsChallengeProcessor processor)
                     {
                         try
                         {
-                            var claimsChallenge = ClaimsChallengeUtilities.GetClaimsChallenge(response);
                             if (!string.IsNullOrEmpty(claimsChallenge))
                             {
                                 await processor.OnClaimsChallenageAsync(newRequest, claimsChallenge, cancelToken).ConfigureAwait(false);
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Commands.Common
                         }
                         catch (AuthenticationFailedException e)
                         {
-                            throw e.WithAdditionalMessage(response?.GetWwwAuthenticateMessage());
+                            throw new AzPSAuthenticationFailedException(ClaimsChallengeUtilities.FormatClaimsChallengeErrorMessage(claimsChallenge, await response?.Content?.ReadAsStringAsync()), null, e);
                         }
                     }
                 }

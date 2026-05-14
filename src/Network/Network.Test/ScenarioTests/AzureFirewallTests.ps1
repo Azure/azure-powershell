@@ -1923,6 +1923,50 @@ function Test-AzureFirewallCRUDEnableFatFlowLogging {
 }
 <#
 .SYNOPSIS
+Tests AzureFirewall EnableDnstapLogging
+#>
+function Test-AzureFirewallCRUDEnableDnstapLogging {
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus"
+
+    $vnetName = Get-ResourceName
+    $subnetName = "AzureFirewallSubnet"
+    $publicIpName = Get-ResourceName
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        # Create public ip
+        $publicip = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgname -location $location -AllocationMethod Static -Sku Standard
+
+        # Create AzureFirewall
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -EnableDnstapLogging
+
+        # Verify
+        $azFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
+        Assert-AreEqual true $azFirewall.EnableDnstapLogging
+
+        # Reset the EnableDnstapLogging flag
+        $azFirewall.EnableDnstapLogging = $false
+        Set-AzFirewall -AzureFirewall $azFirewall
+        $azfw = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
+        
+        Assert-AreEqual false $azfw.EnableDnstapLogging
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+<#
+.SYNOPSIS
 Tests AzureFirewall with Multip IPs on Virtual Hub
 #>
 function Test-AzureFirewallVirtualHubPrivateIPAddress {
@@ -2175,7 +2219,7 @@ function Test-InvokeAzureFirewallPacketCapture {
         $filter2 = New-AzFirewallPacketCaptureRule -Source "10.0.0.5" -Destination "172.20.10.2" -DestinationPort "80","443"
     
         # Create the firewall packet capture parameters
-        $Params =  New-AzFirewallPacketCaptureParameter  -DurationInSeconds 30 -NumberOfPackets 500 -SASUrl $sasurl -Filename "AzFwPowershellPacketCapture" -Flag "Syn","Ack" -Protocol "Any" -Filter $Filter1, $Filter2
+        $Params =  New-AzFirewallPacketCaptureParameter  -DurationInSeconds 30 -NumberOfPackets 500 -SASUrl $sasurl -Filename "AzFwPowershellPacketCapture" -Flag "Syn","Ack" -Protocol "Any" -Filter $Filter1, $Filter2 -Operation "Start"
 
         # Invoke a firewall packet capture
         $response = Invoke-AzFirewallPacketCapture -AzureFirewall $azureFirewall -Parameter $Params
@@ -2187,6 +2231,83 @@ function Test-InvokeAzureFirewallPacketCapture {
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests Invoke-AzureFirewallPacketCaptureOperation
+#>
+function Test-InvokeAzureFirewallPacketCaptureOperation {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus"
+
+    $vnetName = Get-ResourceName
+    $subnetName = "AzureFirewallSubnet"
+	$mgmtSubnetName = "AzureFirewallManagementSubnet"
+    $publicIp1Name = Get-ResourceName
+    $mgmtPublicIpName = Get-ResourceName
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $mgmtSubnet = New-AzVirtualNetworkSubnetConfig -Name $mgmtSubnetName -AddressPrefix 10.0.100.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet,$mgmtSubnet
+        
+        # Get full subnet details
+        $subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $subnetName
+        $mgmtSubnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name $mgmtSubnetName
+
+        # Create public ips
+        $tag = New-AzPublicIpTag -IpTagType "FirstPartyUsage" -Tag "/NonProd"
+        $publicip1 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIp1Name -location $location -AllocationMethod Static -Sku Standard -IpTag $tag
+        $mgmtPublicIp = New-AzPublicIpAddress -ResourceGroupName $rgname -name $mgmtPublicIpName -location $location -AllocationMethod Static -Sku Standard -IpTag $tag
+
+        # Create AzureFirewall with a management IP
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip1 -ManagementPublicIpAddress $mgmtPublicIp
+
+        # Get AzureFirewall
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
+
+        $sasurl = "https://powershellpacketcapture.blob.core.windows.net/testcapture?sp=wDummyURL"
+
+        # Create a filter rules
+        $filter1 = New-AzFirewallPacketCaptureRule -Source "10.0.0.2","192.123.12.1" -Destination "172.32.1.2" -DestinationPort "80","443"
+        $filter2 = New-AzFirewallPacketCaptureRule -Source "10.0.0.5" -Destination "172.20.10.2" -DestinationPort "80","443"
+    
+        # Create the firewall packet capture parameters
+        $Params =  New-AzFirewallPacketCaptureParameter  -DurationInSeconds 1200 -NumberOfPackets 20000 -SASUrl $sasurl -Filename "AzFwPowershellPacketCapture" -Flag "Syn","Ack" -Protocol "Any" -Filter $Filter1, $Filter2 -Operation "Start"
+        Start-Sleep -Seconds 120
+
+        # Invoke a firewall packet capture
+        $response = Invoke-AzFirewallPacketCaptureOperation -AzureFirewall $azureFirewall -Parameter $Params 
+        Assert-NotNull $response
+        Assert-AreEqual "AzureFirewallPacketCaptureStartSucceeded" $response.StatusCode
+        Assert-AreEqual "Packet Capture Started" $response.Message
+
+        $Params = New-AzFirewallPacketCaptureParameter -Operation "Status" 
+        $response = Invoke-AzFirewallPacketCaptureOperation -AzureFirewall $azureFirewall -Parameter $Params
+        Assert-NotNull $response
+        Assert-AreEqual "AzureFirewallPacketCaptureInProgress" $response.StatusCode
+        Assert-AreEqual "Packet capture in progress. Please wait till it is finished or stop the current capture before starting another." $response.Message
+
+        $Params = New-AzFirewallPacketCaptureParameter -Operation "Stop"
+        $response = Invoke-AzFirewallPacketCaptureOperation -AzureFirewall $azureFirewall -Parameter $Params  
+        Assert-NotNull $response
+        Assert-AreEqual "AzureFirewallPacketCaptureStopSucceeded" $response.StatusCode 
+        Assert-AreEqual "Packet capture stopped successfully. Ready to start a new packet capture." $response.Message
+
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
 
 <#
 .SYNOPSIS
@@ -2369,6 +2490,149 @@ function Test-AzureFirewallAutoscaleConfiguration {
         # Verify
         $getAzureFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
         Assert-Null $getAzureFirewall.AutoscaleConfiguration
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests AzureFirewall CRUD with EdgeZone.
+#>
+function Test-AzureFirewallCRUDWithEdgeZone {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
+
+    $vnetName = Get-ResourceName
+    $subnetName = "AzureFirewallSubnet"
+    $publicIpName = Get-ResourceName
+    $edgeZone = "microsoftrrezm1"
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+
+        # Create the Virtual Network with EdgeZone
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet -EdgeZone $edgeZone
+
+        # Create public ip with EdgeZone
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard -EdgeZone $edgeZone
+
+        # Create AzureFirewall with EdgeZone (should have no zones)
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip -EdgeZone $edgeZone
+
+        # Get AzureFirewall
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
+
+        # Verification
+        Assert-AreEqual $rgName $getAzureFirewall.ResourceGroupName
+        Assert-AreEqual $azureFirewallName $getAzureFirewall.Name
+        Assert-NotNull $getAzureFirewall.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewall.Location
+        Assert-NotNull $getAzureFirewall.Etag
+        Assert-AreEqual "Alert" $getAzureFirewall.ThreatIntelMode
+        Assert-AreEqual 1 @($getAzureFirewall.IpConfigurations).Count
+        Assert-NotNull $getAzureFirewall.IpConfigurations[0].Subnet.Id
+        Assert-NotNull $getAzureFirewall.IpConfigurations[0].PublicIpAddress.Id
+        Assert-NotNull $getAzureFirewall.IpConfigurations[0].PrivateIpAddress
+        Assert-AreEqual 0 @($getAzureFirewall.ApplicationRuleCollections).Count
+        Assert-AreEqual 0 @($getAzureFirewall.NatRuleCollections).Count
+        Assert-AreEqual 0 @($getAzureFirewall.NetworkRuleCollections).Count
+
+        # Verify EdgeZone specific behavior
+        Assert-NotNull $getAzureFirewall.ExtendedLocation
+        Assert-AreEqual $edgeZone $getAzureFirewall.ExtendedLocation.Name
+        Assert-AreEqual "EdgeZone" $getAzureFirewall.ExtendedLocation.Type
+        # Verify that zones are null when EdgeZone is specified
+        Assert-Null $getAzureFirewall.Zones
+
+        # Update the firewall to test modification
+        $azureFirewall.ThreatIntelMode = "Deny"
+        Set-AzFirewall -AzureFirewall $azureFirewall
+
+        # Verify the update
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
+        Assert-AreEqual "Deny" $getAzureFirewall.ThreatIntelMode
+        # Verify EdgeZone properties are preserved
+        Assert-NotNull $getAzureFirewall.ExtendedLocation
+        Assert-AreEqual $edgeZone $getAzureFirewall.ExtendedLocation.Name
+        Assert-Null $getAzureFirewall.Zones
+
+        # Delete AzureFirewall
+        $delete = Remove-AzFirewall -ResourceGroupName $rgname -name $azureFirewallName -PassThru -Force
+        Assert-AreEqual true $delete
+
+        $list = Get-AzFirewall -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    catch [Microsoft.Azure.Commands.Network.Common.NetworkCloudException]
+    {
+        Assert-True { $_.Exception.Message -match 'Resource type .* does not support edge zone .* in location .* The supported edge zones are .*' }
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests EdgeZone and Zones validation - zones should be null when EdgeZone is specified.
+#>
+function Test-AzureFirewallEdgeZoneZonesValidation {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
+
+    $vnetName = Get-ResourceName
+    $subnetName = "AzureFirewallSubnet"
+    $publicIpName = Get-ResourceName
+    $edgeZone = "microsoftrrezm1"
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
+
+        # Create the Virtual Network with EdgeZone
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet -EdgeZone $edgeZone
+
+        # Create public ip with EdgeZone
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard -EdgeZone $edgeZone
+
+        # Test 1: Attempt to create firewall with both EdgeZone and Zone parameters (should fail with client-side validation)
+        Assert-ThrowsLike { New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip -EdgeZone $edgeZone -Zone 1,2,3 } "*Zones cannot be specified when EdgeZone is provided*"
+
+        # Test 2: Create firewall with only EdgeZone (should succeed) and then validate Set-AzFirewall rejects zones
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip -EdgeZone $edgeZone
+
+        # Get AzureFirewall
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
+
+        # Verify EdgeZone is set and Zones is null
+        Assert-NotNull $getAzureFirewall.ExtendedLocation
+        Assert-AreEqual $edgeZone $getAzureFirewall.ExtendedLocation.Name
+        Assert-AreEqual "EdgeZone" $getAzureFirewall.ExtendedLocation.Type
+        Assert-Null $getAzureFirewall.Zones
+
+        # Test 3: Try to add zones using Set-AzFirewall on an EdgeZone firewall (should fail with client-side validation)
+        $getAzureFirewall.Zones = @("1", "2", "3")
+        Assert-ThrowsLike { Set-AzFirewall -AzureFirewall $getAzureFirewall } "*Zones cannot be specified when EdgeZone is provided*"
+
+        # Clean up firewall
+        Remove-AzFirewall -ResourceGroupName $rgname -name $azureFirewallName -Force
+    }
+    catch [Microsoft.Azure.Commands.Network.Common.NetworkCloudException]
+    {
+        Assert-True { $_.Exception.Message -match 'Resource type .* does not support edge zone .* in location .* The supported edge zones are .*' }
     }
     finally {
         # Cleanup

@@ -156,7 +156,7 @@ function New-AzStackHCIVMVirtualMachine {
       [Parameter()]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.Management.Automation.SwitchParameter]
-      # Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine creation process. VM Agent is provsioned by default. Please pass -ProvisionVMAgent:$false to disable. 
+      # Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine creation process. VM Agent is provisioned by default. Please pass -ProvisionVMAgent:$false to disable. 
       ${ProvisionVMAgent},
 
       [Parameter()]
@@ -226,6 +226,7 @@ function New-AzStackHCIVMVirtualMachine {
       ${OSDiskResourceGroup},
 
       [Parameter()]
+      [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ParameterBreakingChangeAttribute("AdminPassword", "16.0.0", "2.0.0", "May 2026", OldParamaterType="String", NewParameterType="SecureString")]
       [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
       [System.String]
       # AdminPassword - admin password

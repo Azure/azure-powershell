@@ -3,6 +3,7 @@
     <PsModuleName>Purview</PsModuleName>
     <PsRootModuleName>Purview</PsRootModuleName>
     <PsModuleFolder>Purview.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Purview</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

@@ -16,11 +16,11 @@
 
 <#
 .Synopsis
-create ElasticSan.
+Create ElasticSan.
 .Description
-create ElasticSan.
+Create ElasticSan.
 .Example
-New-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 1 -ExtendedCapacitySizeTib 6 -Location eastus -SkuName 'Premium_LRS' -Tag @{tag1="value1";tag2="value2"}
+New-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 1 -ExtendedCapacitySizeTib 6 -Location eastus -SkuName 'Premium_LRS' -AvailabilityZone 1 -Tag @{tag1="value1";tag2="value2"} -AutoScalePolicyEnforcement Enabled -CapacityUnitScaleUpLimitTiB 30 -IncreaseCapacityUnitByTiB 2 -UnusedSizeTiB 6
 .Example
 New-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -Location eastus -SkuName 'Premium_LRS' -Tag @{tag1="value1";tag2="value2"}
 
@@ -102,11 +102,30 @@ param(
     ${SkuName},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("None", "Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.String]
+    # Enable or Disable scale up setting on Elastic San Appliance.
+    ${AutoScalePolicyEnforcement},
+
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.String[]]
     # Logical zone for Elastic San resource; example: ["1"].
     ${AvailabilityZone},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
+    # Maximum scale up size on Elastic San appliance in TiB.
+    ${CapacityUnitScaleUpLimitTiB},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
+    # Unit to increase Capacity Unit on Elastic San appliance in TiB.
+    ${IncreaseCapacityUnitByTiB},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("Enabled", "Disabled")]
@@ -129,6 +148,12 @@ param(
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [System.Int64]
+    # Unused size on Elastic San appliance in TiB.
+    ${UnusedSizeTiB},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

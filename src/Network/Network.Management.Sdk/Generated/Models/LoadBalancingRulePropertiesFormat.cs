@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="protocol">The reference to the transport protocol used by the load balancing rule.
-        /// Possible values include: &#39;Udp&#39;, &#39;Tcp&#39;, &#39;All&#39;</param>
+        /// Possible values include: &#39;Udp&#39;, &#39;Tcp&#39;, &#39;All&#39;, &#39;Quic&#39;</param>
 
         /// <param name="loadDistribution">The load distribution policy for this rule.
         /// Possible values include: &#39;Default&#39;, &#39;SourceIP&#39;, &#39;SourceIPProtocol&#39;</param>
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets or sets the reference to the transport protocol used by the load
-        /// balancing rule. Possible values include: &#39;Udp&#39;, &#39;Tcp&#39;, &#39;All&#39;
+        /// balancing rule. Possible values include: &#39;Udp&#39;, &#39;Tcp&#39;, &#39;All&#39;, &#39;Quic&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "protocol")]
         public string Protocol {get; set; }

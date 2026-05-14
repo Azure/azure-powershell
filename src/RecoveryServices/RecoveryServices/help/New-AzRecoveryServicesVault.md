@@ -32,7 +32,7 @@ New-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "rg" -Location 
 
 Create recovery service vault in resource group and given location.
 
-### Example 2: reate recovery service vault with ImmutabilityState, PublicNetworkAccess options
+### Example 2: Create recovery service vault with ImmutabilityState, PublicNetworkAccess options
 ```powershell
 $tag= @{"tag1"="value1";"tag2"="value2"}
 New-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resourceGroupName" -Location "westus" -Tag $tag -ImmutabilityState "Unlocked" -PublicNetworkAccess "Disabled"
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisableAzureMonitorAlertsForJobFailure
-Boolean paramter to specify whether built-in Azure Monitor alerts should be received for every job failure.
+Boolean parameter to specify whether built-in Azure Monitor alerts should be received for every job failure.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisableClassicAlerts
-Boolean paramter to specify whether backup alerts from the classic solution should be disabled or enabled.
+Boolean parameter to specify whether backup alerts from the classic solution should be disabled or enabled.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]

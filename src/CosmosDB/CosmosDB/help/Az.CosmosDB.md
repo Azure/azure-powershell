@@ -12,10 +12,10 @@ The topics in this section document the Azure PowerShell cmdlets for Azure Cosmo
 
 ## Az.CosmosDB Cmdlets
 ### [Get-AzCosmosDBAccount](Get-AzCosmosDBAccount.md)
-Get Cosmos DB Account.
+Get CosmosDB Account.
 
 ### [Get-AzCosmosDBAccountKey](Get-AzCosmosDBAccountKey.md)
-Get Keys{"ConnectionKeys", "PrimaryReadOnly" or "Keys"} for the given Cosmos DB Account. 
+Get Keys{"ConnectionKeys", "PrimaryReadOnly" or "Keys"} for the given CosmosDB Account. 
 
 ### [Get-AzCosmosDBCassandraKeyspace](Get-AzCosmosDBCassandraKeyspace.md)
 Gets a CosmosDB Cassandra Keyspace.
@@ -93,6 +93,9 @@ Gets the CosmosDB MongoDB User Definition.
 ### [Get-AzCosmosDBRestorableDatabaseAccount](Get-AzCosmosDBRestorableDatabaseAccount.md)
 Gets the restorable database account object
 
+### [Get-AzCosmosDBService](Get-AzCosmosDBService.md)
+Gets the CosmosDB Service
+
 ### [Get-AzCosmosDBSqlContainer](Get-AzCosmosDBSqlContainer.md)
 Gets the CosmosDB Sql Container.
 
@@ -148,7 +151,7 @@ Lists all the restorable Azure Cosmos DB Tables available for a specific databas
 Gets the CosmosDB Table Role Assignment.
 
 ### [Get-AzCosmosDBTableRoleDefinition](Get-AzCosmosDBTableRoleDefinition.md)
-Gets the CosmosDB Table Role Definition.
+Gets the CosmosDB Role Definition.
 
 ### [Get-AzCosmosDBTableThroughput](Get-AzCosmosDBTableThroughput.md)
 Gets the throughput of a CosmosDB Table.
@@ -158,9 +161,6 @@ Gets a Azure Managed Instances for Apache Cassandra cluster.
 
 ### [Get-AzManagedCassandraDatacenter](Get-AzManagedCassandraDatacenter.md)
 Gets a Azure Managed Instances for Apache Cassandra data center.
-
-### [Get-AzCosmosDBService](Get-AzCosmosDBService.md)
-Gets the Cosmos DB Service
 
 ### [Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration](Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration.md)
 Use this to migrate autoscale throughput to manual throughput and vice versa.
@@ -190,10 +190,10 @@ Use this to migrate autoscale throughput to manual throughput and vice versa.
 Use this to migrate autoscale throughput to manual throughput and vice versa.
 
 ### [New-AzCosmosDBAccount](New-AzCosmosDBAccount.md)
-Create a new Cosmos DB Account.
+Create a new CosmosDB Account.
 
 ### [New-AzCosmosDBAccountKey](New-AzCosmosDBAccountKey.md)
-Regenerate a given Cosmos DB Account Key.
+Regenerate a given CosmosDB Account Key.
 
 ### [New-AzCosmosDBCassandraClusterKey](New-AzCosmosDBCassandraClusterKey.md)
 Creates a new CosmosDB Cassandra Cluster Key.
@@ -279,6 +279,9 @@ Creates a new CosmosDB MongoDB User Definition.
 ### [New-AzCosmosDBPermission](New-AzCosmosDBPermission.md)
 Creates a new CosmosDB Permission object to be used to create or update a Role Definition.
 
+### [New-AzCosmosDBService](New-AzCosmosDBService.md)
+Creates a new CosmosDB Service.
+
 ### [New-AzCosmosDBSqlCompositePath](New-AzCosmosDBSqlCompositePath.md)
 Creates a new object of type PSCompositePath. It can be passed as a parameter value for Set-AzCosmosDBSqlContainer.
 
@@ -299,9 +302,6 @@ Creates a new object of type PSIndexes. It can be passed as a parameter value fo
 
 ### [New-AzCosmosDBSqlIndexingPolicy](New-AzCosmosDBSqlIndexingPolicy.md)
 Creates a new CosmosDB Sql IndexingPolicy object.
-
-### [New-AzCosmosDBSqlVectorEmbeddingPolicy](New-AzCosmosDBSqlVectorEmbeddingPolicy.md)
-Creates a new CosmosDB Sql VectorEmbeddingPolicy object.
 
 ### [New-AzCosmosDBSqlRoleAssignment](New-AzCosmosDBSqlRoleAssignment.md)
 Creates a new CosmosDB Sql Role Assignment.
@@ -327,6 +327,15 @@ Creates a new CosmosDB SqlUniqueKeyPolicy object.
 ### [New-AzCosmosDBSqlUserDefinedFunction](New-AzCosmosDBSqlUserDefinedFunction.md)
 Creates a new CosmosDB Sql UserDefinedFunction.
 
+### [New-AzCosmosDBSqlVectorEmbedding](New-AzCosmosDBSqlVectorEmbedding.md)
+Creates a new CosmosDB Sql VectorEmbedding object.
+
+### [New-AzCosmosDBSqlVectorEmbeddingPolicy](New-AzCosmosDBSqlVectorEmbeddingPolicy.md)
+Creates a new CosmosDB Sql VectorEmbeddingPolicy object.
+
+### [New-AzCosmosDBSqlVectorIndex](New-AzCosmosDBSqlVectorIndex.md)
+Creates a new CosmosDB Sql VectorIndex object. 
+
 ### [New-AzCosmosDBTable](New-AzCosmosDBTable.md)
 Creates a new CosmosDB Table.
 
@@ -347,9 +356,6 @@ Creates a new Azure Managed Instances for Apache Cassandra cluster.
 
 ### [New-AzManagedCassandraDatacenter](New-AzManagedCassandraDatacenter.md)
 Create a new Azure Managed Instances for Apache Cassandra data center.
-
-### [New-AzCosmosDBService](New-AzCosmosDBService.md)
-Creates a new Cosmos DB Service
 
 ### [Remove-AzCosmosDBAccount](Remove-AzCosmosDBAccount.md)
 Remove a Cosmos DB Account.
@@ -372,11 +378,14 @@ Deletes a CosmosDB MongoDB Collection.
 ### [Remove-AzCosmosDBMongoDBDatabase](Remove-AzCosmosDBMongoDBDatabase.md)
 Deletes a CosmosDB MongoDB Database.
 
-### [Remove-AzCosmosDBMongoDBDatabase](Remove-AzCosmosDBMongoDBDatabase.md)
-Deletes a CosmosDB MongoDB Database.
+### [Remove-AzCosmosDBMongoDBRoleDefinition](Remove-AzCosmosDBMongoDBRoleDefinition.md)
+This cmdlet removes a MongoDB role definition from a specified Cosmos DB account.
 
 ### [Remove-AzCosmosDBMongoDBUserDefinition](Remove-AzCosmosDBMongoDBUserDefinition.md)
 Deletes an existing CosmosDB MongoDB User Definition.
+
+### [Remove-AzCosmosDBService](Remove-AzCosmosDBService.md)
+Deletes the CosmosDB Service.
 
 ### [Remove-AzCosmosDBSqlContainer](Remove-AzCosmosDBSqlContainer.md)
 Deletes the CosmosDB Sql Container.
@@ -414,14 +423,32 @@ Deletes a Azure Managed Instances for Apache Cassandra cluster.
 ### [Remove-AzManagedCassandraDatacenter](Remove-AzManagedCassandraDatacenter.md)
 Deletes a Azure Managed Instances for Apache Cassandra data center.
 
-### [Remove-AzCosmosDBService](Remove-AzCosmosDBService.md)
-Deletes a Cosmos DB Service
-
 ### [Restore-AzCosmosDBAccount](Restore-AzCosmosDBAccount.md)
 Restores an existing CosmosDB account (live or deleted) to a given timestamp to a new account
 
+### [Restore-AzCosmosDBGremlinDatabase](Restore-AzCosmosDBGremlinDatabase.md)
+Restore a deleted gremlin database to a given timestamp in the same account
+
+### [Restore-AzCosmosDBGremlinGraph](Restore-AzCosmosDBGremlinGraph.md)
+Restore a deleted gremlin graph in a database to a given timestamp in the same account
+
+### [Restore-AzCosmosDBMongoDBCollection](Restore-AzCosmosDBMongoDBCollection.md)
+Restore a deleted mongodb collection in a database to a given timestamp in the same account
+
+### [Restore-AzCosmosDBMongoDBDatabase](Restore-AzCosmosDBMongoDBDatabase.md)
+Restore a deleted mongodb database to a given timestamp in the same account
+
+### [Restore-AzCosmosDBSqlContainer](Restore-AzCosmosDBSqlContainer.md)
+Restore a deleted sql container in a database to a given timestamp in the same account
+
+### [Restore-AzCosmosDBSqlDatabase](Restore-AzCosmosDBSqlDatabase.md)
+Restore a deleted sql database to a given timestamp in the same account
+
+### [Restore-AzCosmosDBTable](Restore-AzCosmosDBTable.md)
+Restore a deleted table to a given timestamp in the same account
+
 ### [Update-AzCosmosDBAccount](Update-AzCosmosDBAccount.md)
-Update a CosmosDB account attributes.
+Update a Cosmos DB Account attributes.
 
 ### [Update-AzCosmosDBAccountFailoverPriority](Update-AzCosmosDBAccountFailoverPriority.md)
 Update Failover Region Priority of a Cosmos DB Account.
@@ -468,11 +495,11 @@ Updates the CosmosDB MongoDB Database. Performs a client side patch operation by
 ### [Update-AzCosmosDBMongoDBDatabaseThroughput](Update-AzCosmosDBMongoDBDatabaseThroughput.md)
 Updates the throughput value of a CosmosDB MongoDB Database.
 
-### [New-AzCosmosDBMongoDBRoleDefinition](New-AzCosmosDBMongoDBRoleDefinition.md)
-Update an existing CosmosDB MongoDB Role Definition.
+### [Update-AzCosmosDBMongoDBRoleDefinition](Update-AzCosmosDBMongoDBRoleDefinition.md)
+This cmdlet updates an existing MongoDB role definition in a specified Cosmos DB account.
 
-### [New-AzCosmosDBMongoDBUserDefinition](New-AzCosmosDBMongoDBUserDefinition.md)
-Update an existing CosmosDB MongoDB User Definition.
+### [Update-AzCosmosDBMongoDBUserDefinition](Update-AzCosmosDBMongoDBUserDefinition.md)
+This cmdlet updates an existing MongoDB user definition in a specified Cosmos DB account.
 
 ### [Update-AzCosmosDBSqlContainer](Update-AzCosmosDBSqlContainer.md)
 Updates the CosmosDB Sql Container. Performs a client side patch operation by reading the existing Container.
@@ -519,23 +546,3 @@ Update an existing Azure Managed Instances for Apache Cassandra cluster.
 ### [Update-AzManagedCassandraDatacenter](Update-AzManagedCassandraDatacenter.md)
 Update an existing Azure Managed Instances for Apache Cassandra data center.
 
-### [Restore-AzCosmosDBSqlDatabase](Restore-AzCosmosDBSqlDatabase)
-Restore a deleted sql database to a given timestamp in the same account
-
-### [Restore-AzCosmosDBSqlContainer](Restore-AzCosmosDBSqlContainer)
-Restore a deleted sql container in a database to a given timestamp in the same account
-
-### [Restore-AzCosmosDBMongoDBDatabase](Restore-AzCosmosDBMongoDBDatabase)
-Restore a deleted mongodb database to a given timestamp in the same account
-
-### [Restore-AzCosmosDBMongoDBCollection](Restore-AzCosmosDBMongoDBCollection)
-Restore a deleted mongodb collection in a database to a given timestamp in the same account
-
-### [Restore-AzCosmosDBGremlinDatabase](Restore-AzCosmosDBGremlinDatabase.md)
-Restore a deleted gremlin database to a given timestamp in the same account
-
-### [Restore-AzCosmosDBGremlinGraph](Restore-AzCosmosDBGremlinGraph.md)
-Restore a deleted gremlin graph in a database to a given timestamp in the same account
-
-### [Restore-AzCosmosDBTable](Restore-AzCosmosDBTable.md)
-Restore a deleted table to a given timestamp in the same account

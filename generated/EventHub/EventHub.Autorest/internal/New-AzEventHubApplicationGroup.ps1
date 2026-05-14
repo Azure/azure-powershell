@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create an ApplicationGroup for a Namespace.
+Create an ApplicationGroup for a Namespace.
 .Description
-create an ApplicationGroup for a Namespace.
+Create an ApplicationGroup for a Namespace.
 .Example
 $t1 = New-AzEventHubThrottlingPolicyConfig -Name t1 -MetricId IncomingMessages -RateLimitThreshold 10000
 $t2 = New-AzEventHubThrottlingPolicyConfig -Name t2 -MetricId OutgoingBytes -RateLimitThreshold 20000

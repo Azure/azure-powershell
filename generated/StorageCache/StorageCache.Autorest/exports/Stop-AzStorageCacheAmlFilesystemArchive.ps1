@@ -33,7 +33,10 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IStorageCacheIdentity>: Identity Parameter
   [AmlFilesystemName <String>]: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoExportJobName <String>]: Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+  [AutoImportJobName <String>]: Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [Id <String>]: Resource identity path
+  [ImportJobName <String>]: Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link

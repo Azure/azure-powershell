@@ -20,7 +20,7 @@ Get-AzDataLakeGen2ChildItem [-FileSystem] <String> [[-Path] <String>] [-FetchPro
 ```
 
 ## DESCRIPTION
-The **Get-AzDataLakeGen2ChildItem** cmdlet lists sub directorys and files in a directory or Filesystem in an Azure storage account.
+The **Get-AzDataLakeGen2ChildItem** cmdlet lists sub directories and files in a directory or Filesystem in an Azure storage account.
 This cmdlet only works if Hierarchical Namespace is enabled for the Storage account. This kind of account can be created by run "New-AzStorageAccount" cmdlet with "-EnableHierarchicalNamespace $true".
 
 ## EXAMPLES
@@ -76,7 +76,7 @@ Echo "Total $Total items in Filesystem $FileSystemName"
 ```
 
 This example uses the *MaxCount* and *ContinuationToken* parameters to list items recursively from a Filesystem in multiple batches.
-A small *MaxCount* can limit the items acount returned from single requst, may help on operation times out error, and limit the memory usage of Powershell.
+A small *MaxCount* can limit the number of items returned from a single request, may help prevent operation timeout errors, and reduce the memory usage of PowerShell.
 The first four commands assign values to variables to use in the example.
 The fifth command specifies a **Do-While** statement that uses the **Get-AzDataLakeGen2ChildItem** cmdlet to list items.
 The statement includes the continuation token stored in the $Token variable.
@@ -191,7 +191,7 @@ Accept wildcard characters: False
 ```
 
 ### -OutputUserPrincipalName
-If speicify this parameter, the user identity values returned in the owner and group fields of each list entry will be transformed from Microsoft Entra Object IDs to User Principal Names. If not speicify this parameter, the values will be returned as Microsoft Entra Object IDs. Note that group and application Object IDs are not translated because they do not have unique friendly names.
+If specify this parameter, the user identity values returned in the owner and group fields of each list entry will be transformed from Microsoft Entra Object IDs to User Principal Names. If not specify this parameter, the values will be returned as Microsoft Entra Object IDs. Note that group and application Object IDs are not translated because they do not have unique friendly names.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

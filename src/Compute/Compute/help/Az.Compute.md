@@ -11,6 +11,18 @@ Locale: en-US
 This topic displays the help topics for the Azure Compute Cmdlets.
 
 ## Az.Compute Cmdlets
+### [Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity](Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity.md)
+Adds a Rules Identity to a PSGalleryInVmAccessControlProfileVersion object.
+
+### [Add-AzGalleryInVMAccessControlProfileVersionRulesPrivilege](Add-AzGalleryInVMAccessControlProfileVersionRulesPrivilege.md)
+Adds a Rules Privilege to a PSGalleryInVmAccessControlProfileVersion object.
+
+### [Add-AzGalleryInVMAccessControlProfileVersionRulesRole](Add-AzGalleryInVMAccessControlProfileVersionRulesRole.md)
+Adds a Rules Role to a PSGalleryInVmAccessControlProfileVersion object.
+
+### [Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment](Add-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment.md)
+Adds a Rules Role Assignment to a PSGalleryInVmAccessControlProfileVersion object.
+
 ### [Add-AzImageDataDisk](Add-AzImageDataDisk.md)
 Adds a data disk to an image object.
 
@@ -59,6 +71,9 @@ Adding Run Command to VMSS instances
 ### [Add-AzVmssSecret](Add-AzVmssSecret.md)
 Adds a secret to a VMSS.
 
+### [Add-AzVmssSkuProfileVMSize](Add-AzVmssSkuProfileVMSize.md)
+Add a VM size into VMSS Sku Profile for VMSS Instance Mix.
+
 ### [Add-AzVmssSshPublicKey](Add-AzVmssSshPublicKey.md)
 Adds SSH public keys to the VMSS.
 
@@ -67,6 +82,9 @@ Adds a data disk to a Vmss VM.
 
 ### [Add-AzVmssWinRMListener](Add-AzVmssWinRMListener.md)
 Adds a WinRM listener to the VMSS.
+
+### [Convert-AzAvailabilitySet](Convert-AzAvailabilitySet.md)
+Converts an Availability Set to a Flexible Virtual Machine Scale Set.
 
 ### [ConvertTo-AzVMManagedDisk](ConvertTo-AzVMManagedDisk.md)
 Converts a virtual machine with blob-based disks to a virtual machine with managed disks.
@@ -121,6 +139,12 @@ Get or list gallery image definitions.
 
 ### [Get-AzGalleryImageVersion](Get-AzGalleryImageVersion.md)
 Get or list gallery image versions.
+
+### [Get-AzGalleryInVMAccessControlProfile](Get-AzGalleryInVMAccessControlProfile.md)
+Gets the specified gallery inVMAccessControlProfile or a list of gallery inVMAccessControlProfiles from the specified gallery.
+
+### [Get-AzGalleryInVMAccessControlProfileVersion](Get-AzGalleryInVMAccessControlProfileVersion.md)
+Gets the specified version of a gallery inVMAccessControlProfile or a list of versions from the specified gallery inVMAccessControlProfile.
 
 ### [Get-AzHost](Get-AzHost.md)
 Get or list hosts.
@@ -248,9 +272,6 @@ Grants an access to a disk.
 ### [Grant-AzSnapshotAccess](Grant-AzSnapshotAccess.md)
 Grants an access to a snapshot.
 
-### [Invoke-AzSpotPlacementRecommender](Invoke-AzSpotPlacementRecommender.md)
-Generates placement scores for Spot VM skus.
-
 ### [Invoke-AzSpotPlacementScore](Invoke-AzSpotPlacementScore.md)
 Generates placement scores for Spot VM skus.
 
@@ -268,6 +289,9 @@ Run a command on the VM.
 
 ### [Invoke-AzVmssVMRunCommand](Invoke-AzVmssVMRunCommand.md)
 Run command on the Virtual Machine Scale Set VM.
+
+### [Move-AzVirtualMachineToVmss](Move-AzVirtualMachineToVmss.md)
+Migrates a virtual machine from an Availability Set to a Flexible Virtual Machine Scale Set.
 
 ### [New-AzAvailabilitySet](New-AzAvailabilitySet.md)
 Creates an Azure availability set.
@@ -313,6 +337,15 @@ Create a gallery image definition.
 
 ### [New-AzGalleryImageVersion](New-AzGalleryImageVersion.md)
 Create a gallery image version.
+
+### [New-AzGalleryInVMAccessControlProfile](New-AzGalleryInVMAccessControlProfile.md)
+Creates a new gallery inVMAccessControlProfile.
+
+### [New-AzGalleryInVMAccessControlProfileVersion](New-AzGalleryInVMAccessControlProfileVersion.md)
+Creates a new version of a gallery inVMAccessControlProfile.
+
+### [New-AzGalleryInVMAccessControlProfileVersionConfig](New-AzGalleryInVMAccessControlProfileVersionConfig.md)
+Creates a local PSGalleryInVmAccessControlProfileVersion object.
 
 ### [New-AzHost](New-AzHost.md)
 Creates a  host.
@@ -422,6 +455,24 @@ Delete a gallery image definition.
 ### [Remove-AzGalleryImageVersion](Remove-AzGalleryImageVersion.md)
 Delete a gallery image version.
 
+### [Remove-AzGalleryInVMAccessControlProfile](Remove-AzGalleryInVMAccessControlProfile.md)
+Removes a gallery inVMAccessControlProfile.
+
+### [Remove-AzGalleryInVMAccessControlProfileVersion](Remove-AzGalleryInVMAccessControlProfileVersion.md)
+Removes a specific version of a gallery inVMAccessControlProfile.
+
+### [Remove-AzGalleryInVMAccessControlProfileVersionRulesIdentity](Remove-AzGalleryInVMAccessControlProfileVersionRulesIdentity.md)
+Removes a Rules Identity from a PSGalleryInVmAccessControlProfileVersion object.
+
+### [Remove-AzGalleryInVMAccessControlProfileVersionRulesPrivilege](Remove-AzGalleryInVMAccessControlProfileVersionRulesPrivilege.md)
+Removes a Rules Privilege from a PSGalleryInVmAccessControlProfileVersion object.
+
+### [Remove-AzGalleryInVMAccessControlProfileVersionRulesRole](Remove-AzGalleryInVMAccessControlProfileVersionRulesRole.md)
+Removes a Rules Role from a PSGalleryInVmAccessControlProfileVersion object.
+
+### [Remove-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment](Remove-AzGalleryInVMAccessControlProfileVersionRulesRoleAssignment.md)
+Removes a Rules Role Assignment from a PSGalleryInVmAccessControlProfileVersion object.
+
 ### [Remove-AzHost](Remove-AzHost.md)
 Removes a host.
 
@@ -517,6 +568,9 @@ Removes a network interface configuration from a VMSS.
 
 ### [Remove-AzVmssRunCommand](Remove-AzVmssRunCommand.md)
 Remove VMSS RunCommand
+
+### [Remove-AzVmssSkuProfileVMSize](Remove-AzVmssSkuProfileVMSize.md)
+Remove a VM size from VMSS Sku Profile for VMSS Instance Mix.
 
 ### [Remove-AzVmssVMDataDisk](Remove-AzVmssVMDataDisk.md)
 Removes a data disk from a virtual machine scale set VM
@@ -635,8 +689,11 @@ Sets the operating system disk properties on a virtual machine.
 ### [Set-AzVMPlan](Set-AzVMPlan.md)
 Sets the Marketplace plan information on a virtual machine.
 
+### [Set-AzVMProxyAgentSetting](Set-AzVMProxyAgentSetting.md)
+Sets the Proxy Agent settings properties for a PSVirtualMachine object.
+
 ### [Set-AzVMRunCommand](Set-AzVMRunCommand.md)
-The operation to create or update the run command.
+The operation to update the run command.
 
 ### [Set-AzVMSecurityProfile](Set-AzVMSecurityProfile.md)
 Sets the SecurityType enum for Virtual Machines.
@@ -662,6 +719,9 @@ Sets the orchestration service state for the VMSS.
 ### [Set-AzVmssOsProfile](Set-AzVmssOsProfile.md)
 Sets the VMSS operating system profile properties.
 
+### [Set-AzVmssProxyAgentSetting](Set-AzVmssProxyAgentSetting.md)
+Sets the Proxy Agent settings properties for a PSVirtualMachineScaleSet object.
+
 ### [Set-AzVmssRollingUpgradePolicy](Set-AzVmssRollingUpgradePolicy.md)
 Sets the VMSS rolling upgrade policy properties.
 
@@ -678,10 +738,13 @@ Modifies UEFI properties of gen 2 virtual machines that are part of virtual mach
 Modifies the state of a VMSS instance.
 
 ### [Set-AzVmssVMRunCommand](Set-AzVmssVMRunCommand.md)
-The operation to create or update the VMSS VM run command.
+The operation to update the VMSS VM run command.
 
 ### [Set-AzVMUefi](Set-AzVMUefi.md)
 Modifies UEFI properties of a gen 2 virtual machine
+
+### [Start-AzAvailabilitySetMigration](Start-AzAvailabilitySetMigration.md)
+Starts the migration operation on an Availability Set to a Flexible Virtual Machine Scale Set.
 
 ### [Start-AzVM](Start-AzVM.md)
 Starts an Azure virtual machine.
@@ -695,6 +758,9 @@ This cmdlet starts a rolling upgrade for all extensions on the given Virtual Mac
 ### [Start-AzVmssRollingOSUpgrade](Start-AzVmssRollingOSUpgrade.md)
 Starts a rolling upgrade to move all virtual machine scale set instances to the latest available Platform Image OS version.
 
+### [Stop-AzAvailabilitySetMigration](Stop-AzAvailabilitySetMigration.md)
+Cancels the migration operation on an Availability Set.
+
 ### [Stop-AzVM](Stop-AzVM.md)
 Stops an Azure virtual machine.
 
@@ -703,6 +769,9 @@ Stops the VMSS or a set of virtual machines within the VMSS.
 
 ### [Stop-AzVmssRollingUpgrade](Stop-AzVmssRollingUpgrade.md)
 Cancels the current virtual machine scale set rolling upgrade.
+
+### [Test-AzAvailabilitySetMigration](Test-AzAvailabilitySetMigration.md)
+Validates that the Virtual Machines in an Availability Set can be migrated to the specified Virtual Machine Scale Set.
 
 ### [Test-AzVMAEMExtension](Test-AzVMAEMExtension.md)
 Checks the configuration of the AEM extension.
@@ -736,6 +805,12 @@ Update a gallery image definition.
 
 ### [Update-AzGalleryImageVersion](Update-AzGalleryImageVersion.md)
 Update a gallery image version.
+
+### [Update-AzGalleryInVMAccessControlProfile](Update-AzGalleryInVMAccessControlProfile.md)
+Updates a gallery inVMAccessControlProfile.
+
+### [Update-AzGalleryInVMAccessControlProfileVersion](Update-AzGalleryInVMAccessControlProfileVersion.md)
+Updates a specific version of a gallery inVMAccessControlProfile.
 
 ### [Update-AzHost](Update-AzHost.md)
 Updates the Dedicated Host.

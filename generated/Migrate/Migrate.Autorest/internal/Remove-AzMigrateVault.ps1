@@ -47,6 +47,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [HostName <String>]: Host ARM name.
   [Id <String>]: Resource identity path
   [IntentObjectName <String>]: Replication protection intent name.
+  [JobId <String>]: job id to track.
   [JobName <String>]: Job ARM name.
   [Location <String>]: The name of the Azure region.
   [LogicalNetworkName <String>]: Logical network name.
@@ -71,6 +72,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [RecoveryPointName <String>]: The recovery point name.
   [ReplicatedProtectedItemName <String>]: Replication protected item name.
   [ReplicationExtensionName <String>]: The replication extension name.
+  [ReplicationProtectionClusterName <String>]: Replication protection cluster name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceName <String>]: The name of the recovery services vault.
   [SiteName <String>]: Site name.
@@ -114,7 +116,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -191,14 +192,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Delete = 'Az.Migrate.private\Remove-AzMigrateVault_Delete';
             DeleteViaIdentity = 'Az.Migrate.private\Remove-AzMigrateVault_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -207,6 +209,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

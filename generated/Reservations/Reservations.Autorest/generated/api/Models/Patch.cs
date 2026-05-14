@@ -54,7 +54,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models
         public string InstanceFlexibility { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPatchPropertiesInternal)Property).InstanceFlexibility; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPatchPropertiesInternal)Property).InstanceFlexibility = value ?? null; }
 
         /// <summary>Internal Acessors for AppliedScopeProperty</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IAppliedScopeProperties Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPatchInternal.AppliedScopeProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPatchPropertiesInternal)Property).AppliedScopeProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPatchPropertiesInternal)Property).AppliedScopeProperty = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IAppliedScopeProperties Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPatchInternal.AppliedScopeProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPatchPropertiesInternal)Property).AppliedScopeProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPatchPropertiesInternal)Property).AppliedScopeProperty = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPatchProperties Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPatchInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.PatchProperties()); set { {_property = value;} } }

@@ -13,6 +13,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.ISyslogReceiverInternal
     {
 
+        /// <summary>Backing field for <see cref="AllowSkipPriHeader" /> property.</summary>
+        private bool? _allowSkipPriHeader;
+
+        /// <summary>
+        /// Configure the receiver to allow parsing of messages without the PRI header. Default false.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Owned)]
+        public bool? AllowSkipPriHeader { get => this._allowSkipPriHeader; set => this._allowSkipPriHeader = value; }
+
+        /// <summary>Backing field for <see cref="AllowedFormat" /> property.</summary>
+        private System.Collections.Generic.List<string> _allowedFormat;
+
+        /// <summary>List of allowed message formats for syslog/CEF ingestion. Default 'all'.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> AllowedFormat { get => this._allowedFormat; set => this._allowedFormat = value; }
+
         /// <summary>Backing field for <see cref="Endpoint" /> property.</summary>
         private string _endpoint;
 
@@ -20,12 +36,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Owned)]
         public string Endpoint { get => this._endpoint; set => this._endpoint = value; }
 
-        /// <summary>Backing field for <see cref="Protocol" /> property.</summary>
-        private string _protocol;
+        /// <summary>Backing field for <see cref="TransportProtocol" /> property.</summary>
+        private string _transportProtocol;
 
-        /// <summary>Protocol to parse syslog messages. Default rfc3164</summary>
+        /// <summary>Transport protocol. Default tcp.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PropertyOrigin.Owned)]
-        public string Protocol { get => this._protocol; set => this._protocol = value; }
+        public string TransportProtocol { get => this._transportProtocol; set => this._transportProtocol = value; }
 
         /// <summary>Creates an new <see cref="SyslogReceiver" /> instance.</summary>
         public SyslogReceiver()
@@ -37,6 +53,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
     public partial interface ISyslogReceiver :
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.IJsonSerializable
     {
+        /// <summary>
+        /// Configure the receiver to allow parsing of messages without the PRI header. Default false.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Configure the receiver to allow parsing of messages without the PRI header. Default false.",
+        SerializedName = @"allowSkipPriHeader",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? AllowSkipPriHeader { get; set; }
+        /// <summary>List of allowed message formats for syslog/CEF ingestion. Default 'all'.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of allowed message formats for syslog/CEF ingestion. Default 'all'.",
+        SerializedName = @"allowedFormats",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PSArgumentCompleterAttribute("all", "syslogRfc3164", "syslogRfc5424", "cefRfc3164", "cefRfc5424", "rawCef")]
+        System.Collections.Generic.List<string> AllowedFormat { get; set; }
         /// <summary>Syslog receiver endpoint definition. Example: 0.0.0.0:<port>.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
         Required = true,
@@ -48,29 +89,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
         SerializedName = @"endpoint",
         PossibleTypes = new [] { typeof(string) })]
         string Endpoint { get; set; }
-        /// <summary>Protocol to parse syslog messages. Default rfc3164</summary>
+        /// <summary>Transport protocol. Default tcp.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Protocol to parse syslog messages. Default rfc3164",
-        SerializedName = @"protocol",
+        Description = @"Transport protocol. Default tcp.",
+        SerializedName = @"transportProtocol",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PSArgumentCompleterAttribute("rfc3164", "rfc5424")]
-        string Protocol { get; set; }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PSArgumentCompleterAttribute("tcp", "udp")]
+        string TransportProtocol { get; set; }
 
     }
     /// Base receiver using TCP as transport protocol.
     internal partial interface ISyslogReceiverInternal
 
     {
+        /// <summary>
+        /// Configure the receiver to allow parsing of messages without the PRI header. Default false.
+        /// </summary>
+        bool? AllowSkipPriHeader { get; set; }
+        /// <summary>List of allowed message formats for syslog/CEF ingestion. Default 'all'.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PSArgumentCompleterAttribute("all", "syslogRfc3164", "syslogRfc5424", "cefRfc3164", "cefRfc5424", "rawCef")]
+        System.Collections.Generic.List<string> AllowedFormat { get; set; }
         /// <summary>Syslog receiver endpoint definition. Example: 0.0.0.0:<port>.</summary>
         string Endpoint { get; set; }
-        /// <summary>Protocol to parse syslog messages. Default rfc3164</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PSArgumentCompleterAttribute("rfc3164", "rfc5424")]
-        string Protocol { get; set; }
+        /// <summary>Transport protocol. Default tcp.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.PSArgumentCompleterAttribute("tcp", "udp")]
+        string TransportProtocol { get; set; }
 
     }
 }

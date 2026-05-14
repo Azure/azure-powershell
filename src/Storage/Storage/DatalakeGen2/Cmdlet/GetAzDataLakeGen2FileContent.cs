@@ -213,7 +213,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 throw new ArgumentException(String.Format(Resources.InvalidFileName, fileName));
             }
 
-            //there is no need to check the read/write permission on the specified file path, the datamovement libraray will do that
+            //there is no need to check the read/write permission on the specified file path, the data movement library will do that
 
             return filePath;
         }

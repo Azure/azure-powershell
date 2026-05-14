@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a OrganizationResource
+Create a OrganizationResource
 .Description
-create a OrganizationResource
+Create a OrganizationResource
 .Example
 New-AzLambdaTestOrganization -Name "test-cli-instance-3" -Location "Central US EUAP" -ResourceGroupName "abdul-test" -PartnerPropertyLicensesSubscribed 3 -SubscriptionId "fc35d936-3b89-41f8-8110-a24b56826c37" -MarketplaceSubscriptionId  "fc35d936-3b89-41f8-8110-a24b56826c37" -OfferDetailOfferId "lambdatest_liftr_testing" -OfferDetailPlanId "testing" -OfferDetailPlanName "testing_liftr" -OfferDetailTermUnit "P1Y" -OfferDetailPublisherId "lambdatestinc1584019832435" -OfferDetailTermId "o73usof6rkyy"  -SingleSignOnPropertyEnterpriseAppId "0b9873df-1629-4036-9360-5f2f65c0a0d3" -SingleSignOnPropertyAadDomain @("MicrosoftCustomerLed.onmicrosoft.com") -SingleSignOnPropertyType "Saml" -Tag @{"TestName" = "TestValue"} -UserEmailAddress "aggarwalsw@microsoft.com" -UserFirstName "" -UserLastName "" -UserUpn "aggarwalsw@microsoft.com"
 .Example

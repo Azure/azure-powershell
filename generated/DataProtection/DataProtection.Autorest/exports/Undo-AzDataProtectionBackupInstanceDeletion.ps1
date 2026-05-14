@@ -32,15 +32,33 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+BACKUPVAULTINPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
+  [BackupInstanceName <String>]: The name of the backup instance.
+  [BackupPolicyName <String>]: 
+  [DeletedVaultName <String>]: The name of the DeletedBackupVaultResource
+  [Id <String>]: Resource identity path
+  [JobId <String>]: The Job ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: 
+  [RecoveryPointId <String>]: 
+  [RequestName <String>]: The name of the DppBaseResource
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceGuardProxyName <String>]: name of the resource guard proxy
+  [ResourceGuardsName <String>]: The name of ResourceGuard
+  [ResourceId <String>]: ARM path of the resource to be protected using Microsoft.DataProtection
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [VaultName <String>]: The name of the backup vault.
+
 INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   [BackupInstanceName <String>]: The name of the backup instance.
   [BackupPolicyName <String>]: 
+  [DeletedVaultName <String>]: The name of the DeletedBackupVaultResource
   [Id <String>]: Resource identity path
   [JobId <String>]: The Job ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
-  [Location <String>]: The location in which uniqueness will be verified.
+  [Location <String>]: The name of the Azure region.
   [OperationId <String>]: 
   [RecoveryPointId <String>]: 
-  [RequestName <String>]: 
+  [RequestName <String>]: The name of the DppBaseResource
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceGuardProxyName <String>]: name of the resource guard proxy
   [ResourceGuardsName <String>]: The name of ResourceGuard
@@ -55,6 +73,7 @@ function Undo-AzDataProtectionBackupInstanceDeletion {
 [CmdletBinding(DefaultParameterSetName='Undelete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Undelete', Mandatory)]
+    [Parameter(ParameterSetName='UndeleteViaIdentityBackupVault', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
     [System.String]
     # The name of the deleted backup instance
@@ -85,8 +104,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='UndeleteViaIdentityBackupVault', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity]
+    # Identity Parameter
+    ${BackupVaultInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -162,6 +186,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -183,10 +215,9 @@ begin {
         $mapping = @{
             Undelete = 'Az.DataProtection.private\Undo-AzDataProtectionBackupInstanceDeletion_Undelete';
             UndeleteViaIdentity = 'Az.DataProtection.private\Undo-AzDataProtectionBackupInstanceDeletion_UndeleteViaIdentity';
+            UndeleteViaIdentityBackupVault = 'Az.DataProtection.private\Undo-AzDataProtectionBackupInstanceDeletion_UndeleteViaIdentityBackupVault';
         }
-        if (('Undelete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Undelete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -200,6 +231,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

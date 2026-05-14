@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public long MaxSizeBytes { get; set; }
 
         /// <summary>
-        /// Gets or sets the status of the databse
+        /// Gets or sets the status of the database
         /// </summary>
         public string Status { get; set; }
 

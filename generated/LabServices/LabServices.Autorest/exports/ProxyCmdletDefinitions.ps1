@@ -23,14 +23,32 @@ Retrieves the properties of a Lab Plan.
 Get-AzLabServicesLabPlan
 
 .Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Inputs
 System.String
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabPlan
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabPlan
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/get-azlabserviceslabplan
 #>
 function Get-AzLabServicesLabPlan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabPlan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabPlan])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -50,12 +68,22 @@ param(
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='List1')]
+    [Parameter(ParameterSetName='ListByLabPlanName')]
+    [Parameter(ParameterSetName='ResourceId')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${InputObject},
 
     [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Query')]
@@ -66,6 +94,7 @@ param(
     [Parameter(ParameterSetName='ResourceId', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
+    # The resource Id of lab service lab plan.
     ${ResourceId},
 
     [Parameter()]
@@ -124,6 +153,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -144,14 +182,13 @@ begin {
 
         $mapping = @{
             Get = 'Az.LabServices.private\Get-AzLabServicesLabPlan_Get';
+            GetViaIdentity = 'Az.LabServices.private\Get-AzLabServicesLabPlan_GetViaIdentity';
             List = 'Az.LabServices.private\Get-AzLabServicesLabPlan_List';
             List1 = 'Az.LabServices.private\Get-AzLabServicesLabPlan_List1';
             ListByLabPlanName = 'Az.LabServices.custom\Get-AzLabServicesLabPlan_ListByLabPlanName';
             ResourceId = 'Az.LabServices.custom\Get-AzLabServicesLabPlan_ResourceId';
         }
-        if (('Get', 'List', 'List1', 'ListByLabPlanName', 'ResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1', 'ListByLabPlanName', 'ResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -165,6 +202,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -221,29 +261,42 @@ Get-AzLabServicesPlanImage -LabPlanName "Plan Name"  -ResourceGroupName "Group N
 Get-AzLabServicesPlanImage -LabPlanName "Plan Name" -ResourceGroupName "Group Name" -DisplayName 'Ubuntu Server 20.04 LTS'
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan
 .Inputs
 System.String
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IImage
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IImage
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-LABPLAN <LabPlan>: 
-  Location <String>: The geo-location where the resource lives
-  [AllowedRegion <String[]>]: The allowed regions for the lab creator to use when creating labs using this lab plan.
+INPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+
+LABPLAN <LabPlan>: The object of lab service lab plan to get images for.
+  [AllowedRegion <List<String>>]: The allowed regions for the lab creator to use when creating labs using this lab plan.
   [DefaultAutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
   [DefaultAutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
   [DefaultAutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-  [DefaultAutoShutdownProfileShutdownOnDisconnect <EnableState?>]: Whether shutdown on disconnect is enabled
-  [DefaultAutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode?>]: Whether a VM will get shutdown when it has idled for a period of time.
-  [DefaultAutoShutdownProfileShutdownWhenNotConnected <EnableState?>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  [DefaultConnectionProfileClientRdpAccess <ConnectionType?>]: The enabled access level for Client Access over RDP.
-  [DefaultConnectionProfileClientSshAccess <ConnectionType?>]: The enabled access level for Client Access over SSH.
-  [DefaultConnectionProfileWebRdpAccess <ConnectionType?>]: The enabled access level for Web Access over RDP.
-  [DefaultConnectionProfileWebSshAccess <ConnectionType?>]: The enabled access level for Web Access over SSH.
+  [DefaultAutoShutdownProfileShutdownOnDisconnect <String>]: Whether shutdown on disconnect is enabled
+  [DefaultAutoShutdownProfileShutdownOnIdle <String>]: Whether a VM will get shutdown when it has idled for a period of time.
+  [DefaultAutoShutdownProfileShutdownWhenNotConnected <String>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
+  [DefaultConnectionProfileClientRdpAccess <String>]: The enabled access level for Client Access over RDP.
+  [DefaultConnectionProfileClientSshAccess <String>]: The enabled access level for Client Access over SSH.
+  [DefaultConnectionProfileWebRdpAccess <String>]: The enabled access level for Web Access over RDP.
+  [DefaultConnectionProfileWebSshAccess <String>]: The enabled access level for Web Access over SSH.
   [DefaultNetworkProfileSubnetId <String>]: The external subnet resource id
   [LinkedLmsInstance <String>]: Base Url of the lms instance this lab plan can link lab rosters against.
   [SharedGalleryId <String>]: Resource ID of the Shared Image Gallery attached to this lab plan. When saving a lab template virtual machine image it will be persisted in this gallery. Shared images from the gallery can be made available to use when creating new labs.
@@ -251,19 +304,26 @@ LABPLAN <LabPlan>:
   [SupportInfoInstruction <String>]: Support instructions.
   [SupportInfoPhone <String>]: Support contact phone number.
   [SupportInfoUrl <String>]: Support web address.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
+
+LABPLANINPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicesplanimage
 #>
 function Get-AzLabServicesPlanImage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IImage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IImage])]
 [CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -276,6 +336,7 @@ param(
     ${LabPlanName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityLabPlan', Mandatory)]
     [Parameter(ParameterSetName='LabPlan')]
     [Alias('ImageName')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
@@ -292,16 +353,33 @@ param(
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='LabPlan')]
+    [Parameter(ParameterSetName='ListByDisplayName')]
+    [Parameter(ParameterSetName='ResourceId')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityLabPlan', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${LabPlanInputObject},
+
     [Parameter(ParameterSetName='ListByDisplayName', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
+    # The image display name.
     ${DisplayName},
 
     [Parameter(ParameterSetName='List')]
@@ -312,13 +390,14 @@ param(
 
     [Parameter(ParameterSetName='LabPlan', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan]
-    # To construct, see NOTES section for LABPLAN properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan]
+    # The object of lab service lab plan to get images for.
     ${LabPlan},
 
     [Parameter(ParameterSetName='ResourceId', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
+    # The resource Id of lab service lab plan.
     ${ResourceId},
 
     [Parameter()]
@@ -377,6 +456,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -397,14 +485,14 @@ begin {
 
         $mapping = @{
             Get = 'Az.LabServices.private\Get-AzLabServicesPlanImage_Get';
+            GetViaIdentity = 'Az.LabServices.private\Get-AzLabServicesPlanImage_GetViaIdentity';
+            GetViaIdentityLabPlan = 'Az.LabServices.private\Get-AzLabServicesPlanImage_GetViaIdentityLabPlan';
             List = 'Az.LabServices.private\Get-AzLabServicesPlanImage_List';
             LabPlan = 'Az.LabServices.custom\Get-AzLabServicesPlanImage_LabPlan';
             ListByDisplayName = 'Az.LabServices.custom\Get-AzLabServicesPlanImage_ListByDisplayName';
             ResourceId = 'Az.LabServices.custom\Get-AzLabServicesPlanImage_ResourceId';
         }
-        if (('Get', 'List', 'LabPlan', 'ListByDisplayName', 'ResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'LabPlan', 'ListByDisplayName', 'ResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -418,6 +506,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -470,29 +561,42 @@ Returns the properties of a lab Schedule.
 Get-AzLabServicesSchedule -ResourceGroupName "group name" -LabName "lab name"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ISchedule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-LAB <Lab>: 
-  Location <String>: The geo-location where the resource lives
-  [AdditionalCapabilityInstallGpuDriver <EnableState?>]: Flag to pre-install dedicated GPU drivers.
-  [AdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
+INPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+
+LAB <Lab>: The object of lab service lab.
+  [AdditionalCapabilityInstallGpuDriver <String>]: Flag to pre-install dedicated GPU drivers.
+  [AdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
   [AdminUserUsername <String>]: The username to use when signing in to lab VMs.
   [AutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
   [AutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
   [AutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-  [AutoShutdownProfileShutdownOnDisconnect <EnableState?>]: Whether shutdown on disconnect is enabled
-  [AutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode?>]: Whether a VM will get shutdown when it has idled for a period of time.
-  [AutoShutdownProfileShutdownWhenNotConnected <EnableState?>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  [ConnectionProfileClientRdpAccess <ConnectionType?>]: The enabled access level for Client Access over RDP.
-  [ConnectionProfileClientSshAccess <ConnectionType?>]: The enabled access level for Client Access over SSH.
-  [ConnectionProfileWebRdpAccess <ConnectionType?>]: The enabled access level for Web Access over RDP.
-  [ConnectionProfileWebSshAccess <ConnectionType?>]: The enabled access level for Web Access over SSH.
+  [AutoShutdownProfileShutdownOnDisconnect <String>]: Whether shutdown on disconnect is enabled
+  [AutoShutdownProfileShutdownOnIdle <String>]: Whether a VM will get shutdown when it has idled for a period of time.
+  [AutoShutdownProfileShutdownWhenNotConnected <String>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
+  [ConnectionProfileClientRdpAccess <String>]: The enabled access level for Client Access over RDP.
+  [ConnectionProfileClientSshAccess <String>]: The enabled access level for Client Access over SSH.
+  [ConnectionProfileWebRdpAccess <String>]: The enabled access level for Web Access over RDP.
+  [ConnectionProfileWebSshAccess <String>]: The enabled access level for Web Access over SSH.
   [Description <String>]: The description of the lab.
   [ImageReferenceId <String>]: Image resource ID
   [ImageReferenceOffer <String>]: The image offer if applicable.
@@ -502,7 +606,7 @@ LAB <Lab>:
   [NetworkProfileLoadBalancerId <String>]: The external load balancer resource id
   [NetworkProfilePublicIPId <String>]: The external public IP resource id
   [NetworkProfileSubnetId <String>]: The external subnet resource id
-  [NonAdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
+  [NonAdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
   [NonAdminUserUsername <String>]: The username to use when signing in to lab VMs.
   [PlanId <String>]: The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
   [RosterProfileActiveDirectoryGroupId <String>]: The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.
@@ -510,30 +614,37 @@ LAB <Lab>:
   [RosterProfileLtiClientId <String>]: The unique id of the azure lab services tool in the lms.
   [RosterProfileLtiContextId <String>]: The unique context identifier for the lab in the lms.
   [RosterProfileLtiRosterEndpoint <String>]: The uri of the names and roles service endpoint on the lms for the class attached to this lab.
-  [SecurityProfileOpenAccess <EnableState?>]: Whether any user or only specified users can register to a lab.
+  [SecurityProfileOpenAccess <String>]: Whether any user or only specified users can register to a lab.
   [SkuCapacity <Int32?>]: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
   [SkuFamily <String>]: If the service has different generations of hardware, for the same SKU, then that can be captured here.
   [SkuName <String>]: The name of the SKU. Ex - P3. It is typically a letter+number code
   [SkuSize <String>]: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
-  [SkuTier <SkuTier?>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [SkuTier <String>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
   [Title <String>]: The title of the lab.
-  [VirtualMachineProfileCreateOption <CreateOption?>]: Indicates what lab virtual machines are created from.
+  [VirtualMachineProfileCreateOption <String>]: Indicates what lab virtual machines are created from.
   [VirtualMachineProfileUsageQuota <TimeSpan?>]: The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
-  [VirtualMachineProfileUseSharedPassword <EnableState?>]: Enabling this option will use the same password for all user VMs.
+  [VirtualMachineProfileUseSharedPassword <String>]: Enabling this option will use the same password for all user VMs.
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
+
+LABINPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicesschedule
 #>
 function Get-AzLabServicesSchedule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule])]
-[CmdletBinding(DefaultParameterSetName='LabObject', PositionalBinding=$false)]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ISchedule])]
+[CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
@@ -544,6 +655,7 @@ param(
     ${LabName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityLab', Mandatory)]
     [Parameter(ParameterSetName='Lab')]
     [Alias('ScheduleName')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
@@ -560,12 +672,27 @@ param(
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='Lab')]
+    [Parameter(ParameterSetName='ResourceId')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityLab', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${LabInputObject},
 
     [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Query')]
@@ -575,13 +702,14 @@ param(
 
     [Parameter(ParameterSetName='Lab', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab]
-    # To construct, see NOTES section for LAB properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
+    # The object of lab service lab.
     ${Lab},
 
-    [Parameter(ParameterSetName='LabObject', Mandatory)]
+    [Parameter(ParameterSetName='ResourceId', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
+    # The resource Id of lab service schedule.
     ${ResourceId},
 
     [Parameter()]
@@ -640,6 +768,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -660,13 +797,13 @@ begin {
 
         $mapping = @{
             Get = 'Az.LabServices.private\Get-AzLabServicesSchedule_Get';
+            GetViaIdentity = 'Az.LabServices.private\Get-AzLabServicesSchedule_GetViaIdentity';
+            GetViaIdentityLab = 'Az.LabServices.private\Get-AzLabServicesSchedule_GetViaIdentityLab';
             List = 'Az.LabServices.private\Get-AzLabServicesSchedule_List';
             Lab = 'Az.LabServices.custom\Get-AzLabServicesSchedule_Lab';
-            LabObject = 'Az.LabServices.custom\Get-AzLabServicesSchedule_LabObject';
+            ResourceId = 'Az.LabServices.custom\Get-AzLabServicesSchedule_ResourceId';
         }
-        if (('Get', 'List', 'Lab', 'LabObject') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'Lab', 'ResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -680,6 +817,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -734,29 +874,42 @@ Get-AzLabServicesUser -LabName "Lab Name" -ResourceGroupName "Group Name"
 Get-AzLabServicesUser -LabName "Lab Name" -ResourceGroupName "Group Name" -Name "testuser"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-LAB <Lab>: 
-  Location <String>: The geo-location where the resource lives
-  [AdditionalCapabilityInstallGpuDriver <EnableState?>]: Flag to pre-install dedicated GPU drivers.
-  [AdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
+INPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+
+LAB <Lab>: The object of lab service lab.
+  [AdditionalCapabilityInstallGpuDriver <String>]: Flag to pre-install dedicated GPU drivers.
+  [AdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
   [AdminUserUsername <String>]: The username to use when signing in to lab VMs.
   [AutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
   [AutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
   [AutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-  [AutoShutdownProfileShutdownOnDisconnect <EnableState?>]: Whether shutdown on disconnect is enabled
-  [AutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode?>]: Whether a VM will get shutdown when it has idled for a period of time.
-  [AutoShutdownProfileShutdownWhenNotConnected <EnableState?>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  [ConnectionProfileClientRdpAccess <ConnectionType?>]: The enabled access level for Client Access over RDP.
-  [ConnectionProfileClientSshAccess <ConnectionType?>]: The enabled access level for Client Access over SSH.
-  [ConnectionProfileWebRdpAccess <ConnectionType?>]: The enabled access level for Web Access over RDP.
-  [ConnectionProfileWebSshAccess <ConnectionType?>]: The enabled access level for Web Access over SSH.
+  [AutoShutdownProfileShutdownOnDisconnect <String>]: Whether shutdown on disconnect is enabled
+  [AutoShutdownProfileShutdownOnIdle <String>]: Whether a VM will get shutdown when it has idled for a period of time.
+  [AutoShutdownProfileShutdownWhenNotConnected <String>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
+  [ConnectionProfileClientRdpAccess <String>]: The enabled access level for Client Access over RDP.
+  [ConnectionProfileClientSshAccess <String>]: The enabled access level for Client Access over SSH.
+  [ConnectionProfileWebRdpAccess <String>]: The enabled access level for Web Access over RDP.
+  [ConnectionProfileWebSshAccess <String>]: The enabled access level for Web Access over SSH.
   [Description <String>]: The description of the lab.
   [ImageReferenceId <String>]: Image resource ID
   [ImageReferenceOffer <String>]: The image offer if applicable.
@@ -766,7 +919,7 @@ LAB <Lab>:
   [NetworkProfileLoadBalancerId <String>]: The external load balancer resource id
   [NetworkProfilePublicIPId <String>]: The external public IP resource id
   [NetworkProfileSubnetId <String>]: The external subnet resource id
-  [NonAdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
+  [NonAdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
   [NonAdminUserUsername <String>]: The username to use when signing in to lab VMs.
   [PlanId <String>]: The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
   [RosterProfileActiveDirectoryGroupId <String>]: The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.
@@ -774,29 +927,36 @@ LAB <Lab>:
   [RosterProfileLtiClientId <String>]: The unique id of the azure lab services tool in the lms.
   [RosterProfileLtiContextId <String>]: The unique context identifier for the lab in the lms.
   [RosterProfileLtiRosterEndpoint <String>]: The uri of the names and roles service endpoint on the lms for the class attached to this lab.
-  [SecurityProfileOpenAccess <EnableState?>]: Whether any user or only specified users can register to a lab.
+  [SecurityProfileOpenAccess <String>]: Whether any user or only specified users can register to a lab.
   [SkuCapacity <Int32?>]: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
   [SkuFamily <String>]: If the service has different generations of hardware, for the same SKU, then that can be captured here.
   [SkuName <String>]: The name of the SKU. Ex - P3. It is typically a letter+number code
   [SkuSize <String>]: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
-  [SkuTier <SkuTier?>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [SkuTier <String>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
   [Title <String>]: The title of the lab.
-  [VirtualMachineProfileCreateOption <CreateOption?>]: Indicates what lab virtual machines are created from.
+  [VirtualMachineProfileCreateOption <String>]: Indicates what lab virtual machines are created from.
   [VirtualMachineProfileUsageQuota <TimeSpan?>]: The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
-  [VirtualMachineProfileUseSharedPassword <EnableState?>]: Enabling this option will use the same password for all user VMs.
+  [VirtualMachineProfileUseSharedPassword <String>]: Enabling this option will use the same password for all user VMs.
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
+
+LABINPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicesuser
 #>
 function Get-AzLabServicesUser {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser])]
 [CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -808,6 +968,7 @@ param(
     ${LabName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityLab', Mandatory)]
     [Parameter(ParameterSetName='Lab')]
     [Alias('UserName')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
@@ -824,12 +985,27 @@ param(
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='Lab')]
+    [Parameter(ParameterSetName='ResourceId')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityLab', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${LabInputObject},
 
     [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Query')]
@@ -839,13 +1015,14 @@ param(
 
     [Parameter(ParameterSetName='Lab', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab]
-    # To construct, see NOTES section for LAB properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
+    # The object of lab service lab.
     ${Lab},
 
     [Parameter(ParameterSetName='ResourceId', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
+    # The resource Id of lab service user.
     ${ResourceId},
 
     [Parameter()]
@@ -904,6 +1081,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -924,13 +1110,13 @@ begin {
 
         $mapping = @{
             Get = 'Az.LabServices.private\Get-AzLabServicesUser_Get';
+            GetViaIdentity = 'Az.LabServices.private\Get-AzLabServicesUser_GetViaIdentity';
+            GetViaIdentityLab = 'Az.LabServices.private\Get-AzLabServicesUser_GetViaIdentityLab';
             List = 'Az.LabServices.private\Get-AzLabServicesUser_List';
             Lab = 'Az.LabServices.custom\Get-AzLabServicesUser_Lab';
             ResourceId = 'Az.LabServices.custom\Get-AzLabServicesUser_ResourceId';
         }
-        if (('Get', 'List', 'Lab', 'ResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'Lab', 'ResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -944,6 +1130,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -998,29 +1187,42 @@ Get-AzLabServicesVM -LabName "Lab Name" -ResourceGroupName "Group Name"
 Get-AzLabServicesVM -LabName "Lab Name" -ResourceGroupName "Group Name" -Name 2
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-LAB <Lab>: 
-  Location <String>: The geo-location where the resource lives
-  [AdditionalCapabilityInstallGpuDriver <EnableState?>]: Flag to pre-install dedicated GPU drivers.
-  [AdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
+INPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+
+LAB <Lab>: The object of lab service lab.
+  [AdditionalCapabilityInstallGpuDriver <String>]: Flag to pre-install dedicated GPU drivers.
+  [AdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
   [AdminUserUsername <String>]: The username to use when signing in to lab VMs.
   [AutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
   [AutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
   [AutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-  [AutoShutdownProfileShutdownOnDisconnect <EnableState?>]: Whether shutdown on disconnect is enabled
-  [AutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode?>]: Whether a VM will get shutdown when it has idled for a period of time.
-  [AutoShutdownProfileShutdownWhenNotConnected <EnableState?>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  [ConnectionProfileClientRdpAccess <ConnectionType?>]: The enabled access level for Client Access over RDP.
-  [ConnectionProfileClientSshAccess <ConnectionType?>]: The enabled access level for Client Access over SSH.
-  [ConnectionProfileWebRdpAccess <ConnectionType?>]: The enabled access level for Web Access over RDP.
-  [ConnectionProfileWebSshAccess <ConnectionType?>]: The enabled access level for Web Access over SSH.
+  [AutoShutdownProfileShutdownOnDisconnect <String>]: Whether shutdown on disconnect is enabled
+  [AutoShutdownProfileShutdownOnIdle <String>]: Whether a VM will get shutdown when it has idled for a period of time.
+  [AutoShutdownProfileShutdownWhenNotConnected <String>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
+  [ConnectionProfileClientRdpAccess <String>]: The enabled access level for Client Access over RDP.
+  [ConnectionProfileClientSshAccess <String>]: The enabled access level for Client Access over SSH.
+  [ConnectionProfileWebRdpAccess <String>]: The enabled access level for Web Access over RDP.
+  [ConnectionProfileWebSshAccess <String>]: The enabled access level for Web Access over SSH.
   [Description <String>]: The description of the lab.
   [ImageReferenceId <String>]: Image resource ID
   [ImageReferenceOffer <String>]: The image offer if applicable.
@@ -1030,7 +1232,7 @@ LAB <Lab>:
   [NetworkProfileLoadBalancerId <String>]: The external load balancer resource id
   [NetworkProfilePublicIPId <String>]: The external public IP resource id
   [NetworkProfileSubnetId <String>]: The external subnet resource id
-  [NonAdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
+  [NonAdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
   [NonAdminUserUsername <String>]: The username to use when signing in to lab VMs.
   [PlanId <String>]: The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
   [RosterProfileActiveDirectoryGroupId <String>]: The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.
@@ -1038,29 +1240,36 @@ LAB <Lab>:
   [RosterProfileLtiClientId <String>]: The unique id of the azure lab services tool in the lms.
   [RosterProfileLtiContextId <String>]: The unique context identifier for the lab in the lms.
   [RosterProfileLtiRosterEndpoint <String>]: The uri of the names and roles service endpoint on the lms for the class attached to this lab.
-  [SecurityProfileOpenAccess <EnableState?>]: Whether any user or only specified users can register to a lab.
+  [SecurityProfileOpenAccess <String>]: Whether any user or only specified users can register to a lab.
   [SkuCapacity <Int32?>]: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
   [SkuFamily <String>]: If the service has different generations of hardware, for the same SKU, then that can be captured here.
   [SkuName <String>]: The name of the SKU. Ex - P3. It is typically a letter+number code
   [SkuSize <String>]: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
-  [SkuTier <SkuTier?>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [SkuTier <String>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
   [Title <String>]: The title of the lab.
-  [VirtualMachineProfileCreateOption <CreateOption?>]: Indicates what lab virtual machines are created from.
+  [VirtualMachineProfileCreateOption <String>]: Indicates what lab virtual machines are created from.
   [VirtualMachineProfileUsageQuota <TimeSpan?>]: The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
-  [VirtualMachineProfileUseSharedPassword <EnableState?>]: Enabling this option will use the same password for all user VMs.
+  [VirtualMachineProfileUseSharedPassword <String>]: Enabling this option will use the same password for all user VMs.
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
+
+LABINPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicesvm
 #>
 function Get-AzLabServicesVM {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1072,6 +1281,7 @@ param(
     ${LabName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityLab', Mandatory)]
     [Parameter(ParameterSetName='Lab')]
     [Alias('VirtualMachineName')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
@@ -1088,12 +1298,26 @@ param(
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='Lab')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityLab', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${LabInputObject},
 
     [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Query')]
@@ -1103,8 +1327,8 @@ param(
 
     [Parameter(ParameterSetName='Lab', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab]
-    # To construct, see NOTES section for LAB properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
+    # The object of lab service lab.
     ${Lab},
 
     [Parameter()]
@@ -1163,6 +1387,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1183,12 +1416,12 @@ begin {
 
         $mapping = @{
             Get = 'Az.LabServices.private\Get-AzLabServicesVM_Get';
+            GetViaIdentity = 'Az.LabServices.private\Get-AzLabServicesVM_GetViaIdentity';
+            GetViaIdentityLab = 'Az.LabServices.private\Get-AzLabServicesVM_GetViaIdentityLab';
             List = 'Az.LabServices.private\Get-AzLabServicesVM_List';
             Lab = 'Az.LabServices.custom\Get-AzLabServicesVM_Lab';
         }
-        if (('Get', 'List', 'Lab') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'Lab') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1202,6 +1435,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1247,9 +1483,9 @@ end {
 
 <#
 .Synopsis
-Operation to create or update a Lab Plan resource.
+Operation to create a Lab Plan resource.
 .Description
-Operation to create or update a Lab Plan resource.
+Operation to create a Lab Plan resource.
 .Example
 New-AzLabServicesLabPlan `
 	-LabPlanName "testplan" `
@@ -1269,12 +1505,12 @@ New-AzLabServicesLabPlan `
 	-DefaultConnectionProfileWebSshAccess None
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabPlan
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabPlan
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/new-azlabserviceslabplan
 #>
 function New-AzLabServicesLabPlan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabPlan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabPlan])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1299,99 +1535,99 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String[]]
     # The allowed regions for the lab creator to use when creating labs using this lab plan.
     ${AllowedRegion},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.TimeSpan]
     # The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
     ${DefaultAutoShutdownProfileDisconnectDelay},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.TimeSpan]
     # The amount of time a VM will idle before it is shutdown if this behavior is enabled.
     ${DefaultAutoShutdownProfileIdleDelay},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.TimeSpan]
     # The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
     ${DefaultAutoShutdownProfileNoConnectDelay},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState]
+    [System.String]
     # Whether shutdown on disconnect is enabled
     ${DefaultAutoShutdownProfileShutdownOnDisconnect},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ShutdownOnIdleMode])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("None", "UserAbsence", "LowUsage")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ShutdownOnIdleMode]
+    [System.String]
     # Whether a VM will get shutdown when it has idled for a period of time.
     ${DefaultAutoShutdownProfileShutdownOnIdle},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState]
+    [System.String]
     # Whether a VM will get shutdown when it hasn't been connected to after a period of time.
     ${DefaultAutoShutdownProfileShutdownWhenNotConnected},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Public", "Private", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType]
+    [System.String]
     # The enabled access level for Client Access over RDP.
     ${DefaultConnectionProfileClientRdpAccess},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Public", "Private", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType]
+    [System.String]
     # The enabled access level for Client Access over SSH.
     ${DefaultConnectionProfileClientSshAccess},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Public", "Private", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType]
+    [System.String]
     # The enabled access level for Web Access over RDP.
     ${DefaultConnectionProfileWebRdpAccess},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Public", "Private", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType]
+    [System.String]
     # The enabled access level for Web Access over SSH.
     ${DefaultConnectionProfileWebSshAccess},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The external subnet resource id
     ${DefaultNetworkProfileSubnetId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # Base Url of the lms instance this lab plan can link lab rosters against.
     ${LinkedLmsInstance},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # Resource ID of the Shared Image Gallery attached to this lab plan.
@@ -1399,36 +1635,48 @@ param(
     # Shared images from the gallery can be made available to use when creating new labs.
     ${SharedGalleryId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # Support contact email address.
     ${SupportInfoEmail},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # Support instructions.
     ${SupportInfoInstruction},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # Support contact phone number.
     ${SupportInfoPhone},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # Support web address.
     ${SupportInfoUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1498,6 +1746,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1518,10 +1775,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.LabServices.private\New-AzLabServicesLabPlan_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.LabServices.private\New-AzLabServicesLabPlan_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.LabServices.private\New-AzLabServicesLabPlan_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1535,5813 +1792,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
         }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Operation to create or update a lab schedule.
-.Description
-Operation to create or update a lab schedule.
-.Example
-New-AzLabServicesSchedule `
-            -ResourceGroupName "Group Name" `
-            -LabName "Lab Name" `
-            -Name "Schedule Name" `
-            -StartAt "$((Get-Date).AddHours(5))" `
-            -StopAt "$((Get-Date).AddHours(6))" `
-            -RecurrencePatternFrequency 'Weekly' `
-            -RecurrencePatternInterval 1 `
-            -RecurrencePatternWeekDay @($((Get-Date).DayOfWeek)) `
-            -RecurrencePatternExpirationDate $((Get-Date).AddDays(20)) `
-            -TimeZoneId 'America/Los_Angeles'
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-LAB <Lab>: 
-  Location <String>: The geo-location where the resource lives
-  [AdditionalCapabilityInstallGpuDriver <EnableState?>]: Flag to pre-install dedicated GPU drivers.
-  [AdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
-  [AdminUserUsername <String>]: The username to use when signing in to lab VMs.
-  [AutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
-  [AutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
-  [AutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-  [AutoShutdownProfileShutdownOnDisconnect <EnableState?>]: Whether shutdown on disconnect is enabled
-  [AutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode?>]: Whether a VM will get shutdown when it has idled for a period of time.
-  [AutoShutdownProfileShutdownWhenNotConnected <EnableState?>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  [ConnectionProfileClientRdpAccess <ConnectionType?>]: The enabled access level for Client Access over RDP.
-  [ConnectionProfileClientSshAccess <ConnectionType?>]: The enabled access level for Client Access over SSH.
-  [ConnectionProfileWebRdpAccess <ConnectionType?>]: The enabled access level for Web Access over RDP.
-  [ConnectionProfileWebSshAccess <ConnectionType?>]: The enabled access level for Web Access over SSH.
-  [Description <String>]: The description of the lab.
-  [ImageReferenceId <String>]: Image resource ID
-  [ImageReferenceOffer <String>]: The image offer if applicable.
-  [ImageReferencePublisher <String>]: The image publisher
-  [ImageReferenceSku <String>]: The image SKU
-  [ImageReferenceVersion <String>]: The image version specified on creation.
-  [NetworkProfileLoadBalancerId <String>]: The external load balancer resource id
-  [NetworkProfilePublicIPId <String>]: The external public IP resource id
-  [NetworkProfileSubnetId <String>]: The external subnet resource id
-  [NonAdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
-  [NonAdminUserUsername <String>]: The username to use when signing in to lab VMs.
-  [PlanId <String>]: The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
-  [RosterProfileActiveDirectoryGroupId <String>]: The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.
-  [RosterProfileLmsInstance <String>]: The base URI identifying the lms instance.
-  [RosterProfileLtiClientId <String>]: The unique id of the azure lab services tool in the lms.
-  [RosterProfileLtiContextId <String>]: The unique context identifier for the lab in the lms.
-  [RosterProfileLtiRosterEndpoint <String>]: The uri of the names and roles service endpoint on the lms for the class attached to this lab.
-  [SecurityProfileOpenAccess <EnableState?>]: Whether any user or only specified users can register to a lab.
-  [SkuCapacity <Int32?>]: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-  [SkuFamily <String>]: If the service has different generations of hardware, for the same SKU, then that can be captured here.
-  [SkuName <String>]: The name of the SKU. Ex - P3. It is typically a letter+number code
-  [SkuSize <String>]: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
-  [SkuTier <SkuTier?>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [Title <String>]: The title of the lab.
-  [VirtualMachineProfileCreateOption <CreateOption?>]: Indicates what lab virtual machines are created from.
-  [VirtualMachineProfileUsageQuota <TimeSpan?>]: The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
-  [VirtualMachineProfileUseSharedPassword <EnableState?>]: Enabling this option will use the same password for all user VMs.
-  [Tag <ITrackedResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
-.Link
-https://learn.microsoft.com/powershell/module/az.labservices/new-azlabservicesschedule
-#>
-function New-AzLabServicesSchedule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Alias('ScheduleName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the schedule that uniquely identifies it within containing lab.
-    # Used in resource URIs.
-    ${Name},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the lab that uniquely identifies it within containing lab account.
-    # Used in resource URIs.
-    ${LabName},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='Lab', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab]
-    # To construct, see NOTES section for LAB properties and create a hash table.
-    ${Lab},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # Notes for this schedule.
-    ${Note},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.DateTime]
-    # When the recurrence will expire.
-    # This date is inclusive.
-    ${RecurrencePatternExpirationDate},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.RecurrenceFrequency])]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.RecurrenceFrequency]
-    # The frequency of the recurrence.
-    ${RecurrencePatternFrequency},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.Int32]
-    # The interval to invoke the schedule on.
-    # For example, interval = 2 and RecurrenceFrequency.Daily will run every 2 days.
-    # When no interval is supplied, an interval of 1 is used.
-    ${RecurrencePatternInterval},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.WeekDay])]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.WeekDay[]]
-    # The week days the schedule runs.
-    # Used for when the Frequency is set to Weekly.
-    ${RecurrencePatternWeekDay},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.DateTime]
-    # When lab user virtual machines will be started.
-    # Timestamp offsets will be ignored and timeZoneId is used instead.
-    ${StartAt},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.DateTime]
-    # When lab user virtual machines will be stopped.
-    # Timestamp offsets will be ignored and timeZoneId is used instead.
-    ${StopAt},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # The IANA timezone id for the schedule.
-    ${TimeZoneId},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            CreateExpanded = 'Az.LabServices.private\New-AzLabServicesSchedule_CreateExpanded';
-            Lab = 'Az.LabServices.custom\New-AzLabServicesSchedule_Lab';
-        }
-        if (('CreateExpanded', 'Lab') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Operation to create or update a lab user.
-.Description
-Operation to create or update a lab user.
-.Example
-New-AzLabServicesUser -LabName "Lab Name" -ResourceGroupName "Group Name" -Name "User Name" -Email "User@contoso.com"
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-LAB <Lab>: 
-  Location <String>: The geo-location where the resource lives
-  [AdditionalCapabilityInstallGpuDriver <EnableState?>]: Flag to pre-install dedicated GPU drivers.
-  [AdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
-  [AdminUserUsername <String>]: The username to use when signing in to lab VMs.
-  [AutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
-  [AutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
-  [AutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-  [AutoShutdownProfileShutdownOnDisconnect <EnableState?>]: Whether shutdown on disconnect is enabled
-  [AutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode?>]: Whether a VM will get shutdown when it has idled for a period of time.
-  [AutoShutdownProfileShutdownWhenNotConnected <EnableState?>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  [ConnectionProfileClientRdpAccess <ConnectionType?>]: The enabled access level for Client Access over RDP.
-  [ConnectionProfileClientSshAccess <ConnectionType?>]: The enabled access level for Client Access over SSH.
-  [ConnectionProfileWebRdpAccess <ConnectionType?>]: The enabled access level for Web Access over RDP.
-  [ConnectionProfileWebSshAccess <ConnectionType?>]: The enabled access level for Web Access over SSH.
-  [Description <String>]: The description of the lab.
-  [ImageReferenceId <String>]: Image resource ID
-  [ImageReferenceOffer <String>]: The image offer if applicable.
-  [ImageReferencePublisher <String>]: The image publisher
-  [ImageReferenceSku <String>]: The image SKU
-  [ImageReferenceVersion <String>]: The image version specified on creation.
-  [NetworkProfileLoadBalancerId <String>]: The external load balancer resource id
-  [NetworkProfilePublicIPId <String>]: The external public IP resource id
-  [NetworkProfileSubnetId <String>]: The external subnet resource id
-  [NonAdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
-  [NonAdminUserUsername <String>]: The username to use when signing in to lab VMs.
-  [PlanId <String>]: The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
-  [RosterProfileActiveDirectoryGroupId <String>]: The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.
-  [RosterProfileLmsInstance <String>]: The base URI identifying the lms instance.
-  [RosterProfileLtiClientId <String>]: The unique id of the azure lab services tool in the lms.
-  [RosterProfileLtiContextId <String>]: The unique context identifier for the lab in the lms.
-  [RosterProfileLtiRosterEndpoint <String>]: The uri of the names and roles service endpoint on the lms for the class attached to this lab.
-  [SecurityProfileOpenAccess <EnableState?>]: Whether any user or only specified users can register to a lab.
-  [SkuCapacity <Int32?>]: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-  [SkuFamily <String>]: If the service has different generations of hardware, for the same SKU, then that can be captured here.
-  [SkuName <String>]: The name of the SKU. Ex - P3. It is typically a letter+number code
-  [SkuSize <String>]: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
-  [SkuTier <SkuTier?>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [Title <String>]: The title of the lab.
-  [VirtualMachineProfileCreateOption <CreateOption?>]: Indicates what lab virtual machines are created from.
-  [VirtualMachineProfileUsageQuota <TimeSpan?>]: The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
-  [VirtualMachineProfileUseSharedPassword <EnableState?>]: Enabling this option will use the same password for all user VMs.
-  [Tag <ITrackedResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
-.Link
-https://learn.microsoft.com/powershell/module/az.labservices/new-azlabservicesuser
-#>
-function New-AzLabServicesUser {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Alias('UserName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the user that uniquely identifies it within containing lab.
-    # Used in resource URIs.
-    ${Name},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the lab that uniquely identifies it within containing lab account.
-    # Used in resource URIs.
-    ${LabName},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='Lab', Mandatory, ValueFromPipelineByPropertyName)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab]
-    # To construct, see NOTES section for LAB properties and create a hash table.
-    ${Lab},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # Email address of the user.
-    ${Email},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.TimeSpan]
-    # The amount of usage quota time the user gets in addition to the lab usage quota.
-    ${AdditionalUsageQuota},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            CreateExpanded = 'Az.LabServices.private\New-AzLabServicesUser_CreateExpanded';
-            Lab = 'Az.LabServices.custom\New-AzLabServicesUser_Lab';
-        }
-        if (('CreateExpanded', 'Lab') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Publish or re-publish a lab.
-This will create or update all lab resources, such as virtual machines.
-.Description
-Publish or re-publish a lab.
-This will create or update all lab resources, such as virtual machines.
-.Example
-Publish-AzLabServicesLab -Name "Lab Name" -ResourceGroupName "Group Name"
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-LAB <Lab>: 
-  Location <String>: The geo-location where the resource lives
-  [AdditionalCapabilityInstallGpuDriver <EnableState?>]: Flag to pre-install dedicated GPU drivers.
-  [AdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
-  [AdminUserUsername <String>]: The username to use when signing in to lab VMs.
-  [AutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
-  [AutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
-  [AutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-  [AutoShutdownProfileShutdownOnDisconnect <EnableState?>]: Whether shutdown on disconnect is enabled
-  [AutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode?>]: Whether a VM will get shutdown when it has idled for a period of time.
-  [AutoShutdownProfileShutdownWhenNotConnected <EnableState?>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  [ConnectionProfileClientRdpAccess <ConnectionType?>]: The enabled access level for Client Access over RDP.
-  [ConnectionProfileClientSshAccess <ConnectionType?>]: The enabled access level for Client Access over SSH.
-  [ConnectionProfileWebRdpAccess <ConnectionType?>]: The enabled access level for Web Access over RDP.
-  [ConnectionProfileWebSshAccess <ConnectionType?>]: The enabled access level for Web Access over SSH.
-  [Description <String>]: The description of the lab.
-  [ImageReferenceId <String>]: Image resource ID
-  [ImageReferenceOffer <String>]: The image offer if applicable.
-  [ImageReferencePublisher <String>]: The image publisher
-  [ImageReferenceSku <String>]: The image SKU
-  [ImageReferenceVersion <String>]: The image version specified on creation.
-  [NetworkProfileLoadBalancerId <String>]: The external load balancer resource id
-  [NetworkProfilePublicIPId <String>]: The external public IP resource id
-  [NetworkProfileSubnetId <String>]: The external subnet resource id
-  [NonAdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
-  [NonAdminUserUsername <String>]: The username to use when signing in to lab VMs.
-  [PlanId <String>]: The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
-  [RosterProfileActiveDirectoryGroupId <String>]: The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.
-  [RosterProfileLmsInstance <String>]: The base URI identifying the lms instance.
-  [RosterProfileLtiClientId <String>]: The unique id of the azure lab services tool in the lms.
-  [RosterProfileLtiContextId <String>]: The unique context identifier for the lab in the lms.
-  [RosterProfileLtiRosterEndpoint <String>]: The uri of the names and roles service endpoint on the lms for the class attached to this lab.
-  [SecurityProfileOpenAccess <EnableState?>]: Whether any user or only specified users can register to a lab.
-  [SkuCapacity <Int32?>]: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-  [SkuFamily <String>]: If the service has different generations of hardware, for the same SKU, then that can be captured here.
-  [SkuName <String>]: The name of the SKU. Ex - P3. It is typically a letter+number code
-  [SkuSize <String>]: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
-  [SkuTier <SkuTier?>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [Title <String>]: The title of the lab.
-  [VirtualMachineProfileCreateOption <CreateOption?>]: Indicates what lab virtual machines are created from.
-  [VirtualMachineProfileUsageQuota <TimeSpan?>]: The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
-  [VirtualMachineProfileUseSharedPassword <EnableState?>]: Enabling this option will use the same password for all user VMs.
-  [Tag <ITrackedResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
-.Link
-https://learn.microsoft.com/powershell/module/az.labservices/publish-azlabserviceslab
-#>
-function Publish-AzLabServicesLab {
-[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]
-[CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Publish', Mandatory)]
-    [Alias('LabName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the lab that uniquely identifies it within containing lab account.
-    # Used in resource URIs.
-    ${Name},
-
-    [Parameter(ParameterSetName='Publish', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='Lab', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab]
-    # To construct, see NOTES section for LAB properties and create a hash table.
-    ${Lab},
-
-    [Parameter(ParameterSetName='Lab')]
-    [Parameter(ParameterSetName='ResourceId')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.Object]
-    ${AdditionalUsageQuota},
-
-    [Parameter(ParameterSetName='ResourceId', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    ${ResourceId},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(ParameterSetName='Publish')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Publish = 'Az.LabServices.private\Publish-AzLabServicesLab_Publish';
-            Lab = 'Az.LabServices.custom\Publish-AzLabServicesLab_Lab';
-            ResourceId = 'Az.LabServices.custom\Publish-AzLabServicesLab_ResourceId';
-        }
-        if (('Publish', 'Lab', 'ResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Operation to delete a Lab Plan resource.
-Deleting a lab plan does not delete labs associated with a lab plan, nor does it delete shared images added to a gallery via the lab plan permission container.
-.Description
-Operation to delete a Lab Plan resource.
-Deleting a lab plan does not delete labs associated with a lab plan, nor does it delete shared images added to a gallery via the lab plan permission container.
-.Example
-Remove-AzLabServicesLabPlan -ResourceGroupName "Group Name" -Name "Lab Plan Name"
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-LABPLAN <LabPlan>: 
-  Location <String>: The geo-location where the resource lives
-  [AllowedRegion <String[]>]: The allowed regions for the lab creator to use when creating labs using this lab plan.
-  [DefaultAutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
-  [DefaultAutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
-  [DefaultAutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-  [DefaultAutoShutdownProfileShutdownOnDisconnect <EnableState?>]: Whether shutdown on disconnect is enabled
-  [DefaultAutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode?>]: Whether a VM will get shutdown when it has idled for a period of time.
-  [DefaultAutoShutdownProfileShutdownWhenNotConnected <EnableState?>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  [DefaultConnectionProfileClientRdpAccess <ConnectionType?>]: The enabled access level for Client Access over RDP.
-  [DefaultConnectionProfileClientSshAccess <ConnectionType?>]: The enabled access level for Client Access over SSH.
-  [DefaultConnectionProfileWebRdpAccess <ConnectionType?>]: The enabled access level for Web Access over RDP.
-  [DefaultConnectionProfileWebSshAccess <ConnectionType?>]: The enabled access level for Web Access over SSH.
-  [DefaultNetworkProfileSubnetId <String>]: The external subnet resource id
-  [LinkedLmsInstance <String>]: Base Url of the lms instance this lab plan can link lab rosters against.
-  [SharedGalleryId <String>]: Resource ID of the Shared Image Gallery attached to this lab plan. When saving a lab template virtual machine image it will be persisted in this gallery. Shared images from the gallery can be made available to use when creating new labs.
-  [SupportInfoEmail <String>]: Support contact email address.
-  [SupportInfoInstruction <String>]: Support instructions.
-  [SupportInfoPhone <String>]: Support contact phone number.
-  [SupportInfoUrl <String>]: Support web address.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [Tag <ITrackedResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
-.Link
-https://learn.microsoft.com/powershell/module/az.labservices/remove-azlabserviceslabplan
-#>
-function Remove-AzLabServicesLabPlan {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('LabPlanName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the lab plan that uniquely identifies it within containing resource group.
-    # Used in resource URIs and in UI.
-    ${Name},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='LabPlan', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan]
-    # To construct, see NOTES section for LABPLAN properties and create a hash table.
-    ${LabPlan},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Delete = 'Az.LabServices.private\Remove-AzLabServicesLabPlan_Delete';
-            LabPlan = 'Az.LabServices.custom\Remove-AzLabServicesLabPlan_LabPlan';
-        }
-        if (('Delete', 'LabPlan') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Operation to delete a lab resource.
-.Description
-Operation to delete a lab resource.
-.Example
-Remove-AzLabServicesLab -ResourceGroupName "Group Name" -Name "Lab Name"
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-LAB <Lab>: 
-  Location <String>: The geo-location where the resource lives
-  [AdditionalCapabilityInstallGpuDriver <EnableState?>]: Flag to pre-install dedicated GPU drivers.
-  [AdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
-  [AdminUserUsername <String>]: The username to use when signing in to lab VMs.
-  [AutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
-  [AutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
-  [AutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-  [AutoShutdownProfileShutdownOnDisconnect <EnableState?>]: Whether shutdown on disconnect is enabled
-  [AutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode?>]: Whether a VM will get shutdown when it has idled for a period of time.
-  [AutoShutdownProfileShutdownWhenNotConnected <EnableState?>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  [ConnectionProfileClientRdpAccess <ConnectionType?>]: The enabled access level for Client Access over RDP.
-  [ConnectionProfileClientSshAccess <ConnectionType?>]: The enabled access level for Client Access over SSH.
-  [ConnectionProfileWebRdpAccess <ConnectionType?>]: The enabled access level for Web Access over RDP.
-  [ConnectionProfileWebSshAccess <ConnectionType?>]: The enabled access level for Web Access over SSH.
-  [Description <String>]: The description of the lab.
-  [ImageReferenceId <String>]: Image resource ID
-  [ImageReferenceOffer <String>]: The image offer if applicable.
-  [ImageReferencePublisher <String>]: The image publisher
-  [ImageReferenceSku <String>]: The image SKU
-  [ImageReferenceVersion <String>]: The image version specified on creation.
-  [NetworkProfileLoadBalancerId <String>]: The external load balancer resource id
-  [NetworkProfilePublicIPId <String>]: The external public IP resource id
-  [NetworkProfileSubnetId <String>]: The external subnet resource id
-  [NonAdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
-  [NonAdminUserUsername <String>]: The username to use when signing in to lab VMs.
-  [PlanId <String>]: The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
-  [RosterProfileActiveDirectoryGroupId <String>]: The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.
-  [RosterProfileLmsInstance <String>]: The base URI identifying the lms instance.
-  [RosterProfileLtiClientId <String>]: The unique id of the azure lab services tool in the lms.
-  [RosterProfileLtiContextId <String>]: The unique context identifier for the lab in the lms.
-  [RosterProfileLtiRosterEndpoint <String>]: The uri of the names and roles service endpoint on the lms for the class attached to this lab.
-  [SecurityProfileOpenAccess <EnableState?>]: Whether any user or only specified users can register to a lab.
-  [SkuCapacity <Int32?>]: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-  [SkuFamily <String>]: If the service has different generations of hardware, for the same SKU, then that can be captured here.
-  [SkuName <String>]: The name of the SKU. Ex - P3. It is typically a letter+number code
-  [SkuSize <String>]: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
-  [SkuTier <SkuTier?>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [Title <String>]: The title of the lab.
-  [VirtualMachineProfileCreateOption <CreateOption?>]: Indicates what lab virtual machines are created from.
-  [VirtualMachineProfileUsageQuota <TimeSpan?>]: The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
-  [VirtualMachineProfileUseSharedPassword <EnableState?>]: Enabling this option will use the same password for all user VMs.
-  [Tag <ITrackedResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
-
-LABPLAN <LabPlan>: 
-  Location <String>: The geo-location where the resource lives
-  [AllowedRegion <String[]>]: The allowed regions for the lab creator to use when creating labs using this lab plan.
-  [DefaultAutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
-  [DefaultAutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
-  [DefaultAutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-  [DefaultAutoShutdownProfileShutdownOnDisconnect <EnableState?>]: Whether shutdown on disconnect is enabled
-  [DefaultAutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode?>]: Whether a VM will get shutdown when it has idled for a period of time.
-  [DefaultAutoShutdownProfileShutdownWhenNotConnected <EnableState?>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  [DefaultConnectionProfileClientRdpAccess <ConnectionType?>]: The enabled access level for Client Access over RDP.
-  [DefaultConnectionProfileClientSshAccess <ConnectionType?>]: The enabled access level for Client Access over SSH.
-  [DefaultConnectionProfileWebRdpAccess <ConnectionType?>]: The enabled access level for Web Access over RDP.
-  [DefaultConnectionProfileWebSshAccess <ConnectionType?>]: The enabled access level for Web Access over SSH.
-  [DefaultNetworkProfileSubnetId <String>]: The external subnet resource id
-  [LinkedLmsInstance <String>]: Base Url of the lms instance this lab plan can link lab rosters against.
-  [SharedGalleryId <String>]: Resource ID of the Shared Image Gallery attached to this lab plan. When saving a lab template virtual machine image it will be persisted in this gallery. Shared images from the gallery can be made available to use when creating new labs.
-  [SupportInfoEmail <String>]: Support contact email address.
-  [SupportInfoInstruction <String>]: Support instructions.
-  [SupportInfoPhone <String>]: Support contact phone number.
-  [SupportInfoUrl <String>]: Support web address.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [Tag <ITrackedResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
-.Link
-https://learn.microsoft.com/powershell/module/az.labservices/remove-azlabserviceslab
-#>
-function Remove-AzLabServicesLab {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Parameter(ParameterSetName='LabPlan', Mandatory)]
-    [Alias('LabName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the lab that uniquely identifies it within containing lab account.
-    # Used in resource URIs.
-    ${Name},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='Lab', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab]
-    # To construct, see NOTES section for LAB properties and create a hash table.
-    ${Lab},
-
-    [Parameter(ParameterSetName='LabPlan', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan]
-    # To construct, see NOTES section for LABPLAN properties and create a hash table.
-    ${LabPlan},
-
-    [Parameter(ParameterSetName='ResourceId', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    ${ResourceId},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Delete = 'Az.LabServices.private\Remove-AzLabServicesLab_Delete';
-            Lab = 'Az.LabServices.custom\Remove-AzLabServicesLab_Lab';
-            LabPlan = 'Az.LabServices.custom\Remove-AzLabServicesLab_LabPlan';
-            ResourceId = 'Az.LabServices.custom\Remove-AzLabServicesLab_ResourceId';
-        }
-        if (('Delete', 'Lab', 'LabPlan', 'ResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Operation to delete a schedule resource.
-.Description
-Operation to delete a schedule resource.
-.Example
-Remove-AzLabServicesSchedule -ResourceGroupName "Group Name" -LabName "Lab Name" -Name "Schedule Name"
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Schedule
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-SCHEDULE <Schedule>: 
-  [Note <String>]: Notes for this schedule.
-  [RecurrencePatternExpirationDate <DateTime?>]: When the recurrence will expire. This date is inclusive.
-  [RecurrencePatternFrequency <RecurrenceFrequency?>]: The frequency of the recurrence.
-  [RecurrencePatternInterval <Int32?>]: The interval to invoke the schedule on. For example, interval = 2 and RecurrenceFrequency.Daily will run every 2 days. When no interval is supplied, an interval of 1 is used.
-  [RecurrencePatternWeekDay <WeekDay[]>]: The week days the schedule runs. Used for when the Frequency is set to Weekly.
-  [StartAt <DateTime?>]: When lab user virtual machines will be started. Timestamp offsets will be ignored and timeZoneId is used instead.
-  [StopAt <DateTime?>]: When lab user virtual machines will be stopped. Timestamp offsets will be ignored and timeZoneId is used instead.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [TimeZoneId <String>]: The IANA timezone id for the schedule.
-.Link
-https://learn.microsoft.com/powershell/module/az.labservices/remove-azlabservicesschedule
-#>
-function Remove-AzLabServicesSchedule {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the lab that uniquely identifies it within containing lab account.
-    # Used in resource URIs.
-    ${LabName},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('ScheduleName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the schedule that uniquely identifies it within containing lab.
-    # Used in resource URIs.
-    ${Name},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='Schedule', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Schedule]
-    # To construct, see NOTES section for SCHEDULE properties and create a hash table.
-    ${Schedule},
-
-    [Parameter(ParameterSetName='ResourceId', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    ${ResourceId},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Delete = 'Az.LabServices.private\Remove-AzLabServicesSchedule_Delete';
-            ResourceId = 'Az.LabServices.custom\Remove-AzLabServicesSchedule_ResourceId';
-            Schedule = 'Az.LabServices.custom\Remove-AzLabServicesSchedule_Schedule';
-        }
-        if (('Delete', 'ResourceId', 'Schedule') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Operation to delete a user resource.
-.Description
-Operation to delete a user resource.
-.Example
-Remove-AzLabServicesUser -ResourceGroupName "Group Name" -LabName "Lab Name" -Name "User Name"
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-LAB <Lab>: 
-  Location <String>: The geo-location where the resource lives
-  [AdditionalCapabilityInstallGpuDriver <EnableState?>]: Flag to pre-install dedicated GPU drivers.
-  [AdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
-  [AdminUserUsername <String>]: The username to use when signing in to lab VMs.
-  [AutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
-  [AutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
-  [AutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-  [AutoShutdownProfileShutdownOnDisconnect <EnableState?>]: Whether shutdown on disconnect is enabled
-  [AutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode?>]: Whether a VM will get shutdown when it has idled for a period of time.
-  [AutoShutdownProfileShutdownWhenNotConnected <EnableState?>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  [ConnectionProfileClientRdpAccess <ConnectionType?>]: The enabled access level for Client Access over RDP.
-  [ConnectionProfileClientSshAccess <ConnectionType?>]: The enabled access level for Client Access over SSH.
-  [ConnectionProfileWebRdpAccess <ConnectionType?>]: The enabled access level for Web Access over RDP.
-  [ConnectionProfileWebSshAccess <ConnectionType?>]: The enabled access level for Web Access over SSH.
-  [Description <String>]: The description of the lab.
-  [ImageReferenceId <String>]: Image resource ID
-  [ImageReferenceOffer <String>]: The image offer if applicable.
-  [ImageReferencePublisher <String>]: The image publisher
-  [ImageReferenceSku <String>]: The image SKU
-  [ImageReferenceVersion <String>]: The image version specified on creation.
-  [NetworkProfileLoadBalancerId <String>]: The external load balancer resource id
-  [NetworkProfilePublicIPId <String>]: The external public IP resource id
-  [NetworkProfileSubnetId <String>]: The external subnet resource id
-  [NonAdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
-  [NonAdminUserUsername <String>]: The username to use when signing in to lab VMs.
-  [PlanId <String>]: The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
-  [RosterProfileActiveDirectoryGroupId <String>]: The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.
-  [RosterProfileLmsInstance <String>]: The base URI identifying the lms instance.
-  [RosterProfileLtiClientId <String>]: The unique id of the azure lab services tool in the lms.
-  [RosterProfileLtiContextId <String>]: The unique context identifier for the lab in the lms.
-  [RosterProfileLtiRosterEndpoint <String>]: The uri of the names and roles service endpoint on the lms for the class attached to this lab.
-  [SecurityProfileOpenAccess <EnableState?>]: Whether any user or only specified users can register to a lab.
-  [SkuCapacity <Int32?>]: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-  [SkuFamily <String>]: If the service has different generations of hardware, for the same SKU, then that can be captured here.
-  [SkuName <String>]: The name of the SKU. Ex - P3. It is typically a letter+number code
-  [SkuSize <String>]: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
-  [SkuTier <SkuTier?>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [Title <String>]: The title of the lab.
-  [VirtualMachineProfileCreateOption <CreateOption?>]: Indicates what lab virtual machines are created from.
-  [VirtualMachineProfileUsageQuota <TimeSpan?>]: The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
-  [VirtualMachineProfileUseSharedPassword <EnableState?>]: Enabling this option will use the same password for all user VMs.
-  [Tag <ITrackedResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
-
-USER <User>: 
-  Email <String>: Email address of the user.
-  [AdditionalUsageQuota <TimeSpan?>]: The amount of usage quota time the user gets in addition to the lab usage quota.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-.Link
-https://learn.microsoft.com/powershell/module/az.labservices/remove-azlabservicesuser
-#>
-function Remove-AzLabServicesUser {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the lab that uniquely identifies it within containing lab account.
-    # Used in resource URIs.
-    ${LabName},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Parameter(ParameterSetName='Lab', Mandatory)]
-    [Alias('UserName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the user that uniquely identifies it within containing lab.
-    # Used in resource URIs.
-    ${Name},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='Lab', Mandatory, ValueFromPipelineByPropertyName)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab]
-    # To construct, see NOTES section for LAB properties and create a hash table.
-    ${Lab},
-
-    [Parameter(ParameterSetName='User', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User]
-    # To construct, see NOTES section for USER properties and create a hash table.
-    ${User},
-
-    [Parameter(ParameterSetName='ResourceId', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    ${ResourceId},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Delete = 'Az.LabServices.private\Remove-AzLabServicesUser_Delete';
-            Lab = 'Az.LabServices.custom\Remove-AzLabServicesUser_Lab';
-            ResourceId = 'Az.LabServices.custom\Remove-AzLabServicesUser_ResourceId';
-            User = 'Az.LabServices.custom\Remove-AzLabServicesUser_User';
-        }
-        if (('Delete', 'Lab', 'ResourceId', 'User') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Saves an image from a lab VM to the attached shared image gallery.
-.Description
-Saves an image from a lab VM to the attached shared image gallery.
-.Example
-Save-AzLabServicesLabPlanImage -ResourceGroupName "Group Name" -LabPlanName "Lab Plan Name" -Name "New Image Name" -LabVirtualMachineId "/subscriptions/<subscription Id>/resourceGroups/<group name>/providers/Microsoft.LabServices/labs/labName/virtualMachines/<vm name>"
-
-.Outputs
-System.Boolean
-.Link
-https://learn.microsoft.com/powershell/module/az.labservices/save-azlabserviceslabplanimage
-#>
-function Save-AzLabServicesLabPlanImage {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='SaveExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the lab plan that uniquely identifies it within containing resource group.
-    # Used in resource URIs and in UI.
-    ${LabPlanName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # The ID of the lab virtual machine you want to save an image from.
-    ${LabVirtualMachineId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # The name for the image we create.
-    ${Name},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            SaveExpanded = 'Az.LabServices.private\Save-AzLabServicesLabPlanImage_SaveExpanded';
-        }
-        if (('SaveExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Operation to invite a user to a lab.
-.Description
-Operation to invite a user to a lab.
-.Example
-Send-AzLabServicesUserInvite -ResourceGroupName "Group Name" -LabName "Lab Name" -UserName "User Name" -Text "Welcome to the lab."
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-USER <User>: 
-  Email <String>: Email address of the user.
-  [AdditionalUsageQuota <TimeSpan?>]: The amount of usage quota time the user gets in addition to the lab usage quota.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-.Link
-https://learn.microsoft.com/powershell/module/az.labservices/send-azlabservicesuserinvite
-#>
-function Send-AzLabServicesUserInvite {
-[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
-[CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='InviteExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the lab that uniquely identifies it within containing lab account.
-    # Used in resource URIs.
-    ${LabName},
-
-    [Parameter(ParameterSetName='InviteExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='InviteExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the user that uniquely identifies it within containing lab.
-    # Used in resource URIs.
-    ${UserName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # Custom text for the invite email.
-    ${Text},
-
-    [Parameter(ParameterSetName='ResourceId', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    ${ResourceId},
-
-    [Parameter(ParameterSetName='Users', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User]
-    # To construct, see NOTES section for USER properties and create a hash table.
-    ${User},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(ParameterSetName='InviteExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            InviteExpanded = 'Az.LabServices.private\Send-AzLabServicesUserInvite_InviteExpanded';
-            ResourceId = 'Az.LabServices.custom\Send-AzLabServicesUserInvite_ResourceId';
-            Users = 'Az.LabServices.custom\Send-AzLabServicesUserInvite_Users';
-        }
-        if (('InviteExpanded', 'ResourceId', 'Users') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Action to redeploy a lab virtual machine to a different compute node.
-For troubleshooting connectivity.
-.Description
-Action to redeploy a lab virtual machine to a different compute node.
-For troubleshooting connectivity.
-.Example
-Start-AzLabServicesVMRedeployment -LabName "Lab Name" -ResourceGroupName "Group Name" -VirtualMachineName 1
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
-.Outputs
-System.Boolean
-.Link
-https://learn.microsoft.com/powershell/module/az.labservices/start-azlabservicesvmredeployment
-#>
-function Start-AzLabServicesVMRedeployment {
-[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
-[CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Redeploy', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the lab that uniquely identifies it within containing lab account.
-    # Used in resource URIs.
-    ${LabName},
-
-    [Parameter(ParameterSetName='Redeploy', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='Redeploy', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The ID of the virtual machine that uniquely identifies it within the containing lab.
-    # Used in resource URIs.
-    ${VirtualMachineName},
-
-    [Parameter(ParameterSetName='ResourceId', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    ${ResourceId},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Redeploy = 'Az.LabServices.private\Start-AzLabServicesVMRedeployment_Redeploy';
-            ResourceId = 'Az.LabServices.custom\Start-AzLabServicesVMRedeployment_ResourceId';
-        }
-        if (('Redeploy', 'ResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Action to start a lab virtual machine.
-.Description
-Action to start a lab virtual machine.
-.Example
-Start-AzLabServicesVM -ResourceGroupName "Group Name" -LabName "Lab Name" -Name 0
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachine
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-VM <VirtualMachine>: 
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-.Link
-https://learn.microsoft.com/powershell/module/az.labservices/start-azlabservicesvm
-#>
-function Start-AzLabServicesVM {
-[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
-[CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Start', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the lab that uniquely identifies it within containing lab account.
-    # Used in resource URIs.
-    ${LabName},
-
-    [Parameter(ParameterSetName='Start', Mandatory)]
-    [Alias('VirtualMachineName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The ID of the virtual machine that uniquely identifies it within the containing lab.
-    # Used in resource URIs.
-    ${Name},
-
-    [Parameter(ParameterSetName='Start', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='ResourceId', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    ${ResourceId},
-
-    [Parameter(ParameterSetName='VM', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachine]
-    # To construct, see NOTES section for VM properties and create a hash table.
-    ${VM},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(ParameterSetName='Start')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Start = 'Az.LabServices.private\Start-AzLabServicesVM_Start';
-            ResourceId = 'Az.LabServices.custom\Start-AzLabServicesVM_ResourceId';
-            VM = 'Az.LabServices.custom\Start-AzLabServicesVM_VM';
-        }
-        if (('Start', 'ResourceId', 'VM') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Action to stop a lab virtual machine.
-.Description
-Action to stop a lab virtual machine.
-.Example
-Stop-AzLabServicesVM -ResourceGroupName "Group Name" -LabName "Lab Name" -Name 0
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachine
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-VM <VirtualMachine>: 
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-.Link
-https://learn.microsoft.com/powershell/module/az.labservices/stop-azlabservicesvm
-#>
-function Stop-AzLabServicesVM {
-[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
-[CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Stop', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the lab that uniquely identifies it within containing lab account.
-    # Used in resource URIs.
-    ${LabName},
-
-    [Parameter(ParameterSetName='Stop', Mandatory)]
-    [Alias('VirtualMachineName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The ID of the virtual machine that uniquely identifies it within the containing lab.
-    # Used in resource URIs.
-    ${Name},
-
-    [Parameter(ParameterSetName='Stop', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='ResourceId', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    ${ResourceId},
-
-    [Parameter(ParameterSetName='VM', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachine]
-    # To construct, see NOTES section for VM properties and create a hash table.
-    ${VM},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(ParameterSetName='Stop')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Stop = 'Az.LabServices.private\Stop-AzLabServicesVM_Stop';
-            ResourceId = 'Az.LabServices.custom\Stop-AzLabServicesVM_ResourceId';
-            VM = 'Az.LabServices.custom\Stop-AzLabServicesVM_VM';
-        }
-        if (('Stop', 'ResourceId', 'VM') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Action used to manually kick off an AAD group sync job.
-.Description
-Action used to manually kick off an AAD group sync job.
-.Example
-Sync-AzLabServicesLabUser -ResourceGroupName "Group Name" -LabName "Lab Name"
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-LAB <Lab>: 
-  Location <String>: The geo-location where the resource lives
-  [AdditionalCapabilityInstallGpuDriver <EnableState?>]: Flag to pre-install dedicated GPU drivers.
-  [AdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
-  [AdminUserUsername <String>]: The username to use when signing in to lab VMs.
-  [AutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
-  [AutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
-  [AutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-  [AutoShutdownProfileShutdownOnDisconnect <EnableState?>]: Whether shutdown on disconnect is enabled
-  [AutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode?>]: Whether a VM will get shutdown when it has idled for a period of time.
-  [AutoShutdownProfileShutdownWhenNotConnected <EnableState?>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  [ConnectionProfileClientRdpAccess <ConnectionType?>]: The enabled access level for Client Access over RDP.
-  [ConnectionProfileClientSshAccess <ConnectionType?>]: The enabled access level for Client Access over SSH.
-  [ConnectionProfileWebRdpAccess <ConnectionType?>]: The enabled access level for Web Access over RDP.
-  [ConnectionProfileWebSshAccess <ConnectionType?>]: The enabled access level for Web Access over SSH.
-  [Description <String>]: The description of the lab.
-  [ImageReferenceId <String>]: Image resource ID
-  [ImageReferenceOffer <String>]: The image offer if applicable.
-  [ImageReferencePublisher <String>]: The image publisher
-  [ImageReferenceSku <String>]: The image SKU
-  [ImageReferenceVersion <String>]: The image version specified on creation.
-  [NetworkProfileLoadBalancerId <String>]: The external load balancer resource id
-  [NetworkProfilePublicIPId <String>]: The external public IP resource id
-  [NetworkProfileSubnetId <String>]: The external subnet resource id
-  [NonAdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
-  [NonAdminUserUsername <String>]: The username to use when signing in to lab VMs.
-  [PlanId <String>]: The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
-  [RosterProfileActiveDirectoryGroupId <String>]: The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.
-  [RosterProfileLmsInstance <String>]: The base URI identifying the lms instance.
-  [RosterProfileLtiClientId <String>]: The unique id of the azure lab services tool in the lms.
-  [RosterProfileLtiContextId <String>]: The unique context identifier for the lab in the lms.
-  [RosterProfileLtiRosterEndpoint <String>]: The uri of the names and roles service endpoint on the lms for the class attached to this lab.
-  [SecurityProfileOpenAccess <EnableState?>]: Whether any user or only specified users can register to a lab.
-  [SkuCapacity <Int32?>]: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-  [SkuFamily <String>]: If the service has different generations of hardware, for the same SKU, then that can be captured here.
-  [SkuName <String>]: The name of the SKU. Ex - P3. It is typically a letter+number code
-  [SkuSize <String>]: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
-  [SkuTier <SkuTier?>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [Title <String>]: The title of the lab.
-  [VirtualMachineProfileCreateOption <CreateOption?>]: Indicates what lab virtual machines are created from.
-  [VirtualMachineProfileUsageQuota <TimeSpan?>]: The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
-  [VirtualMachineProfileUseSharedPassword <EnableState?>]: Enabling this option will use the same password for all user VMs.
-  [Tag <ITrackedResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
-.Link
-https://learn.microsoft.com/powershell/module/az.labservices/sync-azlabserviceslabuser
-#>
-function Sync-AzLabServicesLabUser {
-[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser])]
-[CmdletBinding(DefaultParameterSetName='Sync', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Sync', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the lab that uniquely identifies it within containing lab account.
-    # Used in resource URIs.
-    ${LabName},
-
-    [Parameter(ParameterSetName='Sync', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='Lab', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab]
-    # To construct, see NOTES section for LAB properties and create a hash table.
-    ${Lab},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(ParameterSetName='Sync')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Sync = 'Az.LabServices.private\Sync-AzLabServicesLabUser_Sync';
-            Lab = 'Az.LabServices.custom\Sync-AzLabServicesLabUser_Lab';
-        }
-        if (('Sync', 'Lab') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Operation to update a Lab Plan resource.
-.Description
-Operation to update a Lab Plan resource.
-.Example
-Update-AzLabServicesLabPlan -ResourceGroupName "Group Name" -Name "LabPlan Name" -DefaultAutoShutdownProfileShutdownOnDisconnect 'Enabled' -DefaultAutoShutdownProfileDisconnectDelay "00:17:00"
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabPlan
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-LABPLAN <LabPlan>: 
-  Location <String>: The geo-location where the resource lives
-  [AllowedRegion <String[]>]: The allowed regions for the lab creator to use when creating labs using this lab plan.
-  [DefaultAutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
-  [DefaultAutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
-  [DefaultAutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-  [DefaultAutoShutdownProfileShutdownOnDisconnect <EnableState?>]: Whether shutdown on disconnect is enabled
-  [DefaultAutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode?>]: Whether a VM will get shutdown when it has idled for a period of time.
-  [DefaultAutoShutdownProfileShutdownWhenNotConnected <EnableState?>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  [DefaultConnectionProfileClientRdpAccess <ConnectionType?>]: The enabled access level for Client Access over RDP.
-  [DefaultConnectionProfileClientSshAccess <ConnectionType?>]: The enabled access level for Client Access over SSH.
-  [DefaultConnectionProfileWebRdpAccess <ConnectionType?>]: The enabled access level for Web Access over RDP.
-  [DefaultConnectionProfileWebSshAccess <ConnectionType?>]: The enabled access level for Web Access over SSH.
-  [DefaultNetworkProfileSubnetId <String>]: The external subnet resource id
-  [LinkedLmsInstance <String>]: Base Url of the lms instance this lab plan can link lab rosters against.
-  [SharedGalleryId <String>]: Resource ID of the Shared Image Gallery attached to this lab plan. When saving a lab template virtual machine image it will be persisted in this gallery. Shared images from the gallery can be made available to use when creating new labs.
-  [SupportInfoEmail <String>]: Support contact email address.
-  [SupportInfoInstruction <String>]: Support instructions.
-  [SupportInfoPhone <String>]: Support contact phone number.
-  [SupportInfoUrl <String>]: Support web address.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [Tag <ITrackedResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
-.Link
-https://learn.microsoft.com/powershell/module/az.labservices/update-azlabserviceslabplan
-#>
-function Update-AzLabServicesLabPlan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabPlan])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Alias('LabPlanName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the lab plan that uniquely identifies it within containing resource group.
-    # Used in resource URIs and in UI.
-    ${Name},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='LabPlan', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan]
-    # To construct, see NOTES section for LABPLAN properties and create a hash table.
-    ${LabPlan},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String[]]
-    # The allowed regions for the lab creator to use when creating labs using this lab plan.
-    ${AllowedRegion},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.TimeSpan]
-    # The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
-    ${DefaultAutoShutdownProfileDisconnectDelay},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.TimeSpan]
-    # The amount of time a VM will idle before it is shutdown if this behavior is enabled.
-    ${DefaultAutoShutdownProfileIdleDelay},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.TimeSpan]
-    # The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-    ${DefaultAutoShutdownProfileNoConnectDelay},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState])]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState]
-    # Whether shutdown on disconnect is enabled
-    ${DefaultAutoShutdownProfileShutdownOnDisconnect},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ShutdownOnIdleMode])]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ShutdownOnIdleMode]
-    # Whether a VM will get shutdown when it has idled for a period of time.
-    ${DefaultAutoShutdownProfileShutdownOnIdle},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState])]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState]
-    # Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-    ${DefaultAutoShutdownProfileShutdownWhenNotConnected},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType]
-    # The enabled access level for Client Access over RDP.
-    ${DefaultConnectionProfileClientRdpAccess},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType]
-    # The enabled access level for Client Access over SSH.
-    ${DefaultConnectionProfileClientSshAccess},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType]
-    # The enabled access level for Web Access over RDP.
-    ${DefaultConnectionProfileWebRdpAccess},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType]
-    # The enabled access level for Web Access over SSH.
-    ${DefaultConnectionProfileWebSshAccess},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # The external subnet resource id
-    ${DefaultNetworkProfileSubnetId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # Base Url of the lms instance this lab plan can link lab rosters against.
-    ${LinkedLmsInstance},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # Resource ID of the Shared Image Gallery attached to this lab plan.
-    # When saving a lab template virtual machine image it will be persisted in this gallery.
-    # Shared images from the gallery can be made available to use when creating new labs.
-    ${SharedGalleryId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # Support contact email address.
-    ${SupportInfoEmail},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # Support instructions.
-    ${SupportInfoInstruction},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # Support contact phone number.
-    ${SupportInfoPhone},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # Support web address.
-    ${SupportInfoUrl},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String[]]
-    # Resource tags.
-    ${Tag},
-
-    [Parameter(ParameterSetName='LabPlan')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType]
-    ${DefaultConnectionProfileClientRdpAccessEnabled},
-
-    [Parameter(ParameterSetName='LabPlan')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType]
-    ${DefaultConnectionProfileClientSshAccessEnabled},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            UpdateExpanded = 'Az.LabServices.private\Update-AzLabServicesLabPlan_UpdateExpanded';
-            LabPlan = 'Az.LabServices.custom\Update-AzLabServicesLabPlan_LabPlan';
-        }
-        if (('UpdateExpanded', 'LabPlan') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Updates an image resource.
-.Description
-Updates an image resource.
-.Example
-Update-AzLabServicesPlanImage -ResourceGroupName "Group Name" -LabPlanName "LabPlan Name" -Name "Image Name" -EnabledState "Enabled"
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IImage
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-LABPLAN <LabPlan>: 
-  Location <String>: The geo-location where the resource lives
-  [AllowedRegion <String[]>]: The allowed regions for the lab creator to use when creating labs using this lab plan.
-  [DefaultAutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
-  [DefaultAutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
-  [DefaultAutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-  [DefaultAutoShutdownProfileShutdownOnDisconnect <EnableState?>]: Whether shutdown on disconnect is enabled
-  [DefaultAutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode?>]: Whether a VM will get shutdown when it has idled for a period of time.
-  [DefaultAutoShutdownProfileShutdownWhenNotConnected <EnableState?>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  [DefaultConnectionProfileClientRdpAccess <ConnectionType?>]: The enabled access level for Client Access over RDP.
-  [DefaultConnectionProfileClientSshAccess <ConnectionType?>]: The enabled access level for Client Access over SSH.
-  [DefaultConnectionProfileWebRdpAccess <ConnectionType?>]: The enabled access level for Web Access over RDP.
-  [DefaultConnectionProfileWebSshAccess <ConnectionType?>]: The enabled access level for Web Access over SSH.
-  [DefaultNetworkProfileSubnetId <String>]: The external subnet resource id
-  [LinkedLmsInstance <String>]: Base Url of the lms instance this lab plan can link lab rosters against.
-  [SharedGalleryId <String>]: Resource ID of the Shared Image Gallery attached to this lab plan. When saving a lab template virtual machine image it will be persisted in this gallery. Shared images from the gallery can be made available to use when creating new labs.
-  [SupportInfoEmail <String>]: Support contact email address.
-  [SupportInfoInstruction <String>]: Support instructions.
-  [SupportInfoPhone <String>]: Support contact phone number.
-  [SupportInfoUrl <String>]: Support web address.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [Tag <ITrackedResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
-.Link
-https://learn.microsoft.com/powershell/module/az.labservices/update-azlabservicesplanimage
-#>
-function Update-AzLabServicesPlanImage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IImage])]
-[CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the lab plan that uniquely identifies it within containing resource group.
-    # Used in resource URIs and in UI.
-    ${LabPlanName},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='LabPlan', Mandatory)]
-    [Alias('ImageName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The image name.
-    ${Name},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='LabPlan', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan]
-    # To construct, see NOTES section for LABPLAN properties and create a hash table.
-    ${LabPlan},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState])]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState]
-    # Is the image enabled
-    ${EnabledState},
-
-    [Parameter(ParameterSetName='ResourceId', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    ${ResourceId},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials},
-
-    [Parameter(ParameterSetName='ResourceId')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    ${AsJob},
-
-    [Parameter(ParameterSetName='ResourceId')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    ${NoWait}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            UpdateExpanded = 'Az.LabServices.private\Update-AzLabServicesPlanImage_UpdateExpanded';
-            LabPlan = 'Az.LabServices.custom\Update-AzLabServicesPlanImage_LabPlan';
-            ResourceId = 'Az.LabServices.custom\Update-AzLabServicesPlanImage_ResourceId';
-        }
-        if (('UpdateExpanded', 'LabPlan', 'ResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Operation to update a lab schedule.
-.Description
-Operation to update a lab schedule.
-.Example
-Update-AzLabServicesSchedule -ResourceGroupName "Group Name" -LabName "Lab Name" -Name "Schedule Name" -Note "Update note."
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-LAB <Lab>: 
-  Location <String>: The geo-location where the resource lives
-  [AdditionalCapabilityInstallGpuDriver <EnableState?>]: Flag to pre-install dedicated GPU drivers.
-  [AdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
-  [AdminUserUsername <String>]: The username to use when signing in to lab VMs.
-  [AutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
-  [AutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
-  [AutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-  [AutoShutdownProfileShutdownOnDisconnect <EnableState?>]: Whether shutdown on disconnect is enabled
-  [AutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode?>]: Whether a VM will get shutdown when it has idled for a period of time.
-  [AutoShutdownProfileShutdownWhenNotConnected <EnableState?>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  [ConnectionProfileClientRdpAccess <ConnectionType?>]: The enabled access level for Client Access over RDP.
-  [ConnectionProfileClientSshAccess <ConnectionType?>]: The enabled access level for Client Access over SSH.
-  [ConnectionProfileWebRdpAccess <ConnectionType?>]: The enabled access level for Web Access over RDP.
-  [ConnectionProfileWebSshAccess <ConnectionType?>]: The enabled access level for Web Access over SSH.
-  [Description <String>]: The description of the lab.
-  [ImageReferenceId <String>]: Image resource ID
-  [ImageReferenceOffer <String>]: The image offer if applicable.
-  [ImageReferencePublisher <String>]: The image publisher
-  [ImageReferenceSku <String>]: The image SKU
-  [ImageReferenceVersion <String>]: The image version specified on creation.
-  [NetworkProfileLoadBalancerId <String>]: The external load balancer resource id
-  [NetworkProfilePublicIPId <String>]: The external public IP resource id
-  [NetworkProfileSubnetId <String>]: The external subnet resource id
-  [NonAdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
-  [NonAdminUserUsername <String>]: The username to use when signing in to lab VMs.
-  [PlanId <String>]: The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
-  [RosterProfileActiveDirectoryGroupId <String>]: The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.
-  [RosterProfileLmsInstance <String>]: The base URI identifying the lms instance.
-  [RosterProfileLtiClientId <String>]: The unique id of the azure lab services tool in the lms.
-  [RosterProfileLtiContextId <String>]: The unique context identifier for the lab in the lms.
-  [RosterProfileLtiRosterEndpoint <String>]: The uri of the names and roles service endpoint on the lms for the class attached to this lab.
-  [SecurityProfileOpenAccess <EnableState?>]: Whether any user or only specified users can register to a lab.
-  [SkuCapacity <Int32?>]: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-  [SkuFamily <String>]: If the service has different generations of hardware, for the same SKU, then that can be captured here.
-  [SkuName <String>]: The name of the SKU. Ex - P3. It is typically a letter+number code
-  [SkuSize <String>]: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
-  [SkuTier <SkuTier?>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [Title <String>]: The title of the lab.
-  [VirtualMachineProfileCreateOption <CreateOption?>]: Indicates what lab virtual machines are created from.
-  [VirtualMachineProfileUsageQuota <TimeSpan?>]: The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
-  [VirtualMachineProfileUseSharedPassword <EnableState?>]: Enabling this option will use the same password for all user VMs.
-  [Tag <ITrackedResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
-.Link
-https://learn.microsoft.com/powershell/module/az.labservices/update-azlabservicesschedule
-#>
-function Update-AzLabServicesSchedule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule])]
-[CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the lab that uniquely identifies it within containing lab account.
-    # Used in resource URIs.
-    ${LabName},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='Lab', Mandatory)]
-    [Alias('ScheduleName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the schedule that uniquely identifies it within containing lab.
-    # Used in resource URIs.
-    ${Name},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='Lab', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab]
-    # To construct, see NOTES section for LAB properties and create a hash table.
-    ${Lab},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # Notes for this schedule.
-    ${Note},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.DateTime]
-    # When the recurrence will expire.
-    # This date is inclusive.
-    ${RecurrencePatternExpirationDate},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.RecurrenceFrequency])]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.RecurrenceFrequency]
-    # The frequency of the recurrence.
-    ${RecurrencePatternFrequency},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.Int32]
-    # The interval to invoke the schedule on.
-    # For example, interval = 2 and RecurrenceFrequency.Daily will run every 2 days.
-    # When no interval is supplied, an interval of 1 is used.
-    ${RecurrencePatternInterval},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.WeekDay])]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.WeekDay[]]
-    # The week days the schedule runs.
-    # Used for when the Frequency is set to Weekly.
-    ${RecurrencePatternWeekDay},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.DateTime]
-    # When lab user virtual machines will be started.
-    # Timestamp offsets will be ignored and timeZoneId is used instead.
-    ${StartAt},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.DateTime]
-    # When lab user virtual machines will be stopped.
-    # Timestamp offsets will be ignored and timeZoneId is used instead.
-    ${StopAt},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # The IANA timezone id for the schedule.
-    ${TimeZoneId},
-
-    [Parameter(ParameterSetName='ResourceId', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    ${ResourceId},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            UpdateExpanded = 'Az.LabServices.private\Update-AzLabServicesSchedule_UpdateExpanded';
-            Lab = 'Az.LabServices.custom\Update-AzLabServicesSchedule_Lab';
-            ResourceId = 'Az.LabServices.custom\Update-AzLabServicesSchedule_ResourceId';
-        }
-        if (('UpdateExpanded', 'Lab', 'ResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Operation to update a lab user.
-.Description
-Operation to update a lab user.
-.Example
-Update-AzLabServicesUser -ResourceGroupName "Group Name" -LabName "Lab Name" -Name "User Name" -AdditionalUsageQuota $(New-TimeSpan -Hours 2)
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-LAB <Lab>: 
-  Location <String>: The geo-location where the resource lives
-  [AdditionalCapabilityInstallGpuDriver <EnableState?>]: Flag to pre-install dedicated GPU drivers.
-  [AdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
-  [AdminUserUsername <String>]: The username to use when signing in to lab VMs.
-  [AutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
-  [AutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
-  [AutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-  [AutoShutdownProfileShutdownOnDisconnect <EnableState?>]: Whether shutdown on disconnect is enabled
-  [AutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode?>]: Whether a VM will get shutdown when it has idled for a period of time.
-  [AutoShutdownProfileShutdownWhenNotConnected <EnableState?>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  [ConnectionProfileClientRdpAccess <ConnectionType?>]: The enabled access level for Client Access over RDP.
-  [ConnectionProfileClientSshAccess <ConnectionType?>]: The enabled access level for Client Access over SSH.
-  [ConnectionProfileWebRdpAccess <ConnectionType?>]: The enabled access level for Web Access over RDP.
-  [ConnectionProfileWebSshAccess <ConnectionType?>]: The enabled access level for Web Access over SSH.
-  [Description <String>]: The description of the lab.
-  [ImageReferenceId <String>]: Image resource ID
-  [ImageReferenceOffer <String>]: The image offer if applicable.
-  [ImageReferencePublisher <String>]: The image publisher
-  [ImageReferenceSku <String>]: The image SKU
-  [ImageReferenceVersion <String>]: The image version specified on creation.
-  [NetworkProfileLoadBalancerId <String>]: The external load balancer resource id
-  [NetworkProfilePublicIPId <String>]: The external public IP resource id
-  [NetworkProfileSubnetId <String>]: The external subnet resource id
-  [NonAdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
-  [NonAdminUserUsername <String>]: The username to use when signing in to lab VMs.
-  [PlanId <String>]: The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
-  [RosterProfileActiveDirectoryGroupId <String>]: The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.
-  [RosterProfileLmsInstance <String>]: The base URI identifying the lms instance.
-  [RosterProfileLtiClientId <String>]: The unique id of the azure lab services tool in the lms.
-  [RosterProfileLtiContextId <String>]: The unique context identifier for the lab in the lms.
-  [RosterProfileLtiRosterEndpoint <String>]: The uri of the names and roles service endpoint on the lms for the class attached to this lab.
-  [SecurityProfileOpenAccess <EnableState?>]: Whether any user or only specified users can register to a lab.
-  [SkuCapacity <Int32?>]: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-  [SkuFamily <String>]: If the service has different generations of hardware, for the same SKU, then that can be captured here.
-  [SkuName <String>]: The name of the SKU. Ex - P3. It is typically a letter+number code
-  [SkuSize <String>]: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
-  [SkuTier <SkuTier?>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [Title <String>]: The title of the lab.
-  [VirtualMachineProfileCreateOption <CreateOption?>]: Indicates what lab virtual machines are created from.
-  [VirtualMachineProfileUsageQuota <TimeSpan?>]: The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
-  [VirtualMachineProfileUseSharedPassword <EnableState?>]: Enabling this option will use the same password for all user VMs.
-  [Tag <ITrackedResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
-.Link
-https://learn.microsoft.com/powershell/module/az.labservices/update-azlabservicesuser
-#>
-function Update-AzLabServicesUser {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser])]
-[CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the lab that uniquely identifies it within containing lab account.
-    # Used in resource URIs.
-    ${LabName},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='Lab', Mandatory)]
-    [Alias('UserName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the user that uniquely identifies it within containing lab.
-    # Used in resource URIs.
-    ${Name},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='Lab', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab]
-    # To construct, see NOTES section for LAB properties and create a hash table.
-    ${Lab},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.TimeSpan]
-    # The amount of usage quota time the user gets in addition to the lab usage quota.
-    ${AdditionalUsageQuota},
-
-    [Parameter(ParameterSetName='ResourceId', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    ${ResourceId},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            UpdateExpanded = 'Az.LabServices.private\Update-AzLabServicesUser_UpdateExpanded';
-            Lab = 'Az.LabServices.custom\Update-AzLabServicesUser_Lab';
-            ResourceId = 'Az.LabServices.custom\Update-AzLabServicesUser_ResourceId';
-        }
-        if (('UpdateExpanded', 'Lab', 'ResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Re-image a lab virtual machine.
-The virtual machine will be deleted and recreated using the latest published snapshot of the reference environment of the lab.
-.Description
-Re-image a lab virtual machine.
-The virtual machine will be deleted and recreated using the latest published snapshot of the reference environment of the lab.
-.Example
-Update-AzLabServicesVMReimage -ResourceGroupName "Group Name" -LabName "Lab Name" -Name 0
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachine
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-VM <VirtualMachine>: 
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-.Link
-https://learn.microsoft.com/powershell/module/az.labservices/update-azlabservicesvmreimage
-#>
-function Update-AzLabServicesVMReimage {
-[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
-[CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Reimage', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the lab that uniquely identifies it within containing lab account.
-    # Used in resource URIs.
-    ${LabName},
-
-    [Parameter(ParameterSetName='Reimage', Mandatory)]
-    [Alias('VirtualMachineName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The ID of the virtual machine that uniquely identifies it within the containing lab.
-    # Used in resource URIs.
-    ${Name},
-
-    [Parameter(ParameterSetName='Reimage', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='ResourceId', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    ${ResourceId},
-
-    [Parameter(ParameterSetName='VM', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachine]
-    # To construct, see NOTES section for VM properties and create a hash table.
-    ${VM},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(ParameterSetName='Reimage')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Reimage = 'Az.LabServices.private\Update-AzLabServicesVMReimage_Reimage';
-            ResourceId = 'Az.LabServices.custom\Update-AzLabServicesVMReimage_ResourceId';
-            VM = 'Az.LabServices.custom\Update-AzLabServicesVMReimage_VM';
-        }
-        if (('Reimage', 'ResourceId', 'VM') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-API to add additional user quota.
-.Description
-API to add additional user quota.
-.Example
-Add-AzLabServicesUserQuota -ResourceGroupName "group name" -LabName "lab name" -Email 'student@contoso.com' -UsageQuotaToAddToExisting $(New-TimeSpan -Hours 4)
-.Example
-$user = Get-AzLabServicesUser -ResourceGroupName "group name" -LabName "lab name" -UserName 'ContosoUser12345'
-$user | Add-AzLabServicesUserQuota -UsageQuotaToAddToExisting $(New-TimeSpan -Hours 5)
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-USER <User>: 
-  Email <String>: Email address of the user.
-  [AdditionalUsageQuota <TimeSpan?>]: The amount of usage quota time the user gets in addition to the lab usage quota.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-.Link
-https://learn.microsoft.com/powershell/module/az.labservices/add-azlabservicesuserquota
-#>
-function Add-AzLabServicesUserQuota {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser])]
-[CmdletBinding(DefaultParameterSetName='User', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Email', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Email', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    ${LabName},
-
-    [Parameter(ParameterSetName='Email', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the user that uniqely identifies it within containing lab.
-    # Used in resource URIs.
-    ${Email},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.TimeSpan]
-    # The amount of usage quota time the user gets in addition to the current user quota.
-    ${UsageQuotaToAddToExisting},
-
-    [Parameter(ParameterSetName='User', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User]
-    # To construct, see NOTES section for USER properties and create a hash table.
-    ${User},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Email = 'Az.LabServices.custom\Add-AzLabServicesUserQuota_Email';
-            User = 'Az.LabServices.custom\Add-AzLabServicesUserQuota_User';
-        }
-        if (('Email', 'User') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-API to return the lab for a specific VM.
-.Description
-API to return the lab for a specific VM.
-.Example
-Get-AzLabServicesLabForVM -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<GroupName>/providers/Microsoft.LabServices/labs/<labName>/virtualMachines/<VMName>'
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
-.Link
-https://learn.microsoft.com/powershell/module/az.labservices/get-azlabserviceslabforvm
-#>
-function Get-AzLabServicesLabForVM {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]
-[CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    ${ResourceId},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            __AllParameterSets = 'Az.LabServices.custom\Get-AzLabServicesLabForVM';
-        }
-        if (('__AllParameterSets') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-API to get labs.
-.Description
-API to get labs.
-.Example
-Get-AzLabServicesLab
-.Example
-Get-AzLabServicesLab -ResourceGroupName 'yourgroupname' -Name 'yourlabname'
-.Example
-$plan = Get-AzLabServicesLabPlan -LabPlanName 'lab plan name'
-$plan | Get-AzLabServicesLab -Name 'lab name'
-.Example
-Get-AzLabServicesLab -ResourceGroupName 'group name' -Name '*lab name'
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-LABPLAN <LabPlan>: 
-  Location <String>: The geo-location where the resource lives
-  [AllowedRegion <String[]>]: The allowed regions for the lab creator to use when creating labs using this lab plan.
-  [DefaultAutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
-  [DefaultAutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
-  [DefaultAutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-  [DefaultAutoShutdownProfileShutdownOnDisconnect <EnableState?>]: Whether shutdown on disconnect is enabled
-  [DefaultAutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode?>]: Whether a VM will get shutdown when it has idled for a period of time.
-  [DefaultAutoShutdownProfileShutdownWhenNotConnected <EnableState?>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  [DefaultConnectionProfileClientRdpAccess <ConnectionType?>]: The enabled access level for Client Access over RDP.
-  [DefaultConnectionProfileClientSshAccess <ConnectionType?>]: The enabled access level for Client Access over SSH.
-  [DefaultConnectionProfileWebRdpAccess <ConnectionType?>]: The enabled access level for Web Access over RDP.
-  [DefaultConnectionProfileWebSshAccess <ConnectionType?>]: The enabled access level for Web Access over SSH.
-  [DefaultNetworkProfileSubnetId <String>]: The external subnet resource id
-  [LinkedLmsInstance <String>]: Base Url of the lms instance this lab plan can link lab rosters against.
-  [SharedGalleryId <String>]: Resource ID of the Shared Image Gallery attached to this lab plan. When saving a lab template virtual machine image it will be persisted in this gallery. Shared images from the gallery can be made available to use when creating new labs.
-  [SupportInfoEmail <String>]: Support contact email address.
-  [SupportInfoInstruction <String>]: Support instructions.
-  [SupportInfoPhone <String>]: Support contact phone number.
-  [SupportInfoUrl <String>]: Support web address.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [Tag <ITrackedResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
-.Link
-https://learn.microsoft.com/powershell/module/az.labservices/get-azlabserviceslab
-#>
-function Get-AzLabServicesLab {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]
-[CmdletBinding(DefaultParameterSetName='ListBySubscription', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='LabPlan')]
-    [Parameter(ParameterSetName='ListByLabName', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    ${Name},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='LabPlan', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan]
-    # To construct, see NOTES section for LABPLAN properties and create a hash table.
-    ${LabPlan},
-
-    [Parameter(ParameterSetName='ListByLabName')]
-    [Parameter(ParameterSetName='ListByResourceGroup', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='ResourceId', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    ${ResourceId},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            LabPlan = 'Az.LabServices.custom\Get-AzLabServicesLab_LabPlan';
-            ListByLabName = 'Az.LabServices.custom\Get-AzLabServicesLab_ListByLabName';
-            ListByResourceGroup = 'Az.LabServices.custom\Get-AzLabServicesLab_ListByResourceGroup';
-            ListBySubscription = 'Az.LabServices.custom\Get-AzLabServicesLab_ListBySubscription';
-            ResourceId = 'Az.LabServices.custom\Get-AzLabServicesLab_ResourceId';
-        }
-        if (('LabPlan', 'ListByLabName', 'ListByResourceGroup', 'ListBySubscription', 'ResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-API to get the template vm for the lab.
-.Description
-API to get the template vm for the lab.
-.Example
-Get-AzLabServicesTemplateVM -ResourceGroupName "group name" -LabName "lab name"
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-LAB <Lab>: 
-  Location <String>: The geo-location where the resource lives
-  [AdditionalCapabilityInstallGpuDriver <EnableState?>]: Flag to pre-install dedicated GPU drivers.
-  [AdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
-  [AdminUserUsername <String>]: The username to use when signing in to lab VMs.
-  [AutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
-  [AutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
-  [AutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-  [AutoShutdownProfileShutdownOnDisconnect <EnableState?>]: Whether shutdown on disconnect is enabled
-  [AutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode?>]: Whether a VM will get shutdown when it has idled for a period of time.
-  [AutoShutdownProfileShutdownWhenNotConnected <EnableState?>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  [ConnectionProfileClientRdpAccess <ConnectionType?>]: The enabled access level for Client Access over RDP.
-  [ConnectionProfileClientSshAccess <ConnectionType?>]: The enabled access level for Client Access over SSH.
-  [ConnectionProfileWebRdpAccess <ConnectionType?>]: The enabled access level for Web Access over RDP.
-  [ConnectionProfileWebSshAccess <ConnectionType?>]: The enabled access level for Web Access over SSH.
-  [Description <String>]: The description of the lab.
-  [ImageReferenceId <String>]: Image resource ID
-  [ImageReferenceOffer <String>]: The image offer if applicable.
-  [ImageReferencePublisher <String>]: The image publisher
-  [ImageReferenceSku <String>]: The image SKU
-  [ImageReferenceVersion <String>]: The image version specified on creation.
-  [NetworkProfileLoadBalancerId <String>]: The external load balancer resource id
-  [NetworkProfilePublicIPId <String>]: The external public IP resource id
-  [NetworkProfileSubnetId <String>]: The external subnet resource id
-  [NonAdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
-  [NonAdminUserUsername <String>]: The username to use when signing in to lab VMs.
-  [PlanId <String>]: The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
-  [RosterProfileActiveDirectoryGroupId <String>]: The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.
-  [RosterProfileLmsInstance <String>]: The base URI identifying the lms instance.
-  [RosterProfileLtiClientId <String>]: The unique id of the azure lab services tool in the lms.
-  [RosterProfileLtiContextId <String>]: The unique context identifier for the lab in the lms.
-  [RosterProfileLtiRosterEndpoint <String>]: The uri of the names and roles service endpoint on the lms for the class attached to this lab.
-  [SecurityProfileOpenAccess <EnableState?>]: Whether any user or only specified users can register to a lab.
-  [SkuCapacity <Int32?>]: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-  [SkuFamily <String>]: If the service has different generations of hardware, for the same SKU, then that can be captured here.
-  [SkuName <String>]: The name of the SKU. Ex - P3. It is typically a letter+number code
-  [SkuSize <String>]: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
-  [SkuTier <SkuTier?>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [Title <String>]: The title of the lab.
-  [VirtualMachineProfileCreateOption <CreateOption?>]: Indicates what lab virtual machines are created from.
-  [VirtualMachineProfileUsageQuota <TimeSpan?>]: The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
-  [VirtualMachineProfileUseSharedPassword <EnableState?>]: Enabling this option will use the same password for all user VMs.
-  [Tag <ITrackedResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
-.Link
-https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicestemplatevm
-#>
-function Get-AzLabServicesTemplateVM {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
-[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
-param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    ${LabName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='Lab', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab]
-    # To construct, see NOTES section for LAB properties and create a hash table.
-    ${Lab},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Get = 'Az.LabServices.custom\Get-AzLabServicesTemplateVM_Get';
-            Lab = 'Az.LabServices.custom\Get-AzLabServicesTemplateVM_Lab';
-        }
-        if (('Get', 'Lab') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-API to get the assigned vm for the user.
-.Description
-API to get the assigned vm for the user.
-.Example
-Get-AzLabServicesUserVM -ResourceGroupName "Group Name" -LabName "Lab Name" -Email 'user@contoso.com'
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-LAB <Lab>: 
-  Location <String>: The geo-location where the resource lives
-  [AdditionalCapabilityInstallGpuDriver <EnableState?>]: Flag to pre-install dedicated GPU drivers.
-  [AdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
-  [AdminUserUsername <String>]: The username to use when signing in to lab VMs.
-  [AutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
-  [AutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
-  [AutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-  [AutoShutdownProfileShutdownOnDisconnect <EnableState?>]: Whether shutdown on disconnect is enabled
-  [AutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode?>]: Whether a VM will get shutdown when it has idled for a period of time.
-  [AutoShutdownProfileShutdownWhenNotConnected <EnableState?>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  [ConnectionProfileClientRdpAccess <ConnectionType?>]: The enabled access level for Client Access over RDP.
-  [ConnectionProfileClientSshAccess <ConnectionType?>]: The enabled access level for Client Access over SSH.
-  [ConnectionProfileWebRdpAccess <ConnectionType?>]: The enabled access level for Web Access over RDP.
-  [ConnectionProfileWebSshAccess <ConnectionType?>]: The enabled access level for Web Access over SSH.
-  [Description <String>]: The description of the lab.
-  [ImageReferenceId <String>]: Image resource ID
-  [ImageReferenceOffer <String>]: The image offer if applicable.
-  [ImageReferencePublisher <String>]: The image publisher
-  [ImageReferenceSku <String>]: The image SKU
-  [ImageReferenceVersion <String>]: The image version specified on creation.
-  [NetworkProfileLoadBalancerId <String>]: The external load balancer resource id
-  [NetworkProfilePublicIPId <String>]: The external public IP resource id
-  [NetworkProfileSubnetId <String>]: The external subnet resource id
-  [NonAdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
-  [NonAdminUserUsername <String>]: The username to use when signing in to lab VMs.
-  [PlanId <String>]: The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
-  [RosterProfileActiveDirectoryGroupId <String>]: The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.
-  [RosterProfileLmsInstance <String>]: The base URI identifying the lms instance.
-  [RosterProfileLtiClientId <String>]: The unique id of the azure lab services tool in the lms.
-  [RosterProfileLtiContextId <String>]: The unique context identifier for the lab in the lms.
-  [RosterProfileLtiRosterEndpoint <String>]: The uri of the names and roles service endpoint on the lms for the class attached to this lab.
-  [SecurityProfileOpenAccess <EnableState?>]: Whether any user or only specified users can register to a lab.
-  [SkuCapacity <Int32?>]: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-  [SkuFamily <String>]: If the service has different generations of hardware, for the same SKU, then that can be captured here.
-  [SkuName <String>]: The name of the SKU. Ex - P3. It is typically a letter+number code
-  [SkuSize <String>]: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
-  [SkuTier <SkuTier?>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [Title <String>]: The title of the lab.
-  [VirtualMachineProfileCreateOption <CreateOption?>]: Indicates what lab virtual machines are created from.
-  [VirtualMachineProfileUsageQuota <TimeSpan?>]: The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
-  [VirtualMachineProfileUseSharedPassword <EnableState?>]: Enabling this option will use the same password for all user VMs.
-  [Tag <ITrackedResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
-
-USER <User>: 
-  Email <String>: Email address of the user.
-  [AdditionalUsageQuota <TimeSpan?>]: The amount of usage quota time the user gets in addition to the lab usage quota.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-.Link
-https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicesuservm
-#>
-function Get-AzLabServicesUserVM {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
-[CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false)]
-param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    ${LabName},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='Lab', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    ${Email},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='Lab', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab]
-    # To construct, see NOTES section for LAB properties and create a hash table.
-    ${Lab},
-
-    [Parameter(ParameterSetName='ResourceId', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    ${ResourceId},
-
-    [Parameter(ParameterSetName='User', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User]
-    # To construct, see NOTES section for USER properties and create a hash table.
-    ${User},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Get = 'Az.LabServices.custom\Get-AzLabServicesUserVM_Get';
-            Lab = 'Az.LabServices.custom\Get-AzLabServicesUserVM_Lab';
-            ResourceId = 'Az.LabServices.custom\Get-AzLabServicesUserVM_ResourceId';
-            User = 'Az.LabServices.custom\Get-AzLabServicesUserVM_User';
-        }
-        if (('Get', 'Lab', 'ResourceId', 'User') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -7418,13 +1871,13 @@ New-AzLabServicesLab `
         -VirtualMachineProfileUseSharedPassword Enabled
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/new-azlabserviceslab
 #>
 function New-AzLabServicesLab {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]
-[CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Alias('LabName')]
@@ -7448,136 +1901,136 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState]
+    [System.String]
     # Flag to pre-install dedicated GPU drivers.
     ${AdditionalCapabilityInstallGpuDriver},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.Security.SecureString]
     # The password for the user.
     # This is required for the TemplateVM createOption.
     ${AdminUserPassword},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The username to use when signing in to lab VMs.
     ${AdminUserUsername},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.TimeSpan]
     # The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
     ${AutoShutdownProfileDisconnectDelay},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.TimeSpan]
     # The amount of time a VM will idle before it is shutdown if this behavior is enabled.
     ${AutoShutdownProfileIdleDelay},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.TimeSpan]
     # The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
     ${AutoShutdownProfileNoConnectDelay},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState]
+    [System.String]
     # Whether shutdown on disconnect is enabled
     ${AutoShutdownProfileShutdownOnDisconnect},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ShutdownOnIdleMode])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("None", "UserAbsence", "LowUsage")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ShutdownOnIdleMode]
+    [System.String]
     # Whether a VM will get shutdown when it has idled for a period of time.
     ${AutoShutdownProfileShutdownOnIdle},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState]
+    [System.String]
     # Whether a VM will get shutdown when it hasn't been connected to after a period of time.
     ${AutoShutdownProfileShutdownWhenNotConnected},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Public", "Private", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType]
+    [System.String]
     # The enabled access level for Client Access over RDP.
     ${ConnectionProfileClientRdpAccess},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Public", "Private", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType]
+    [System.String]
     # The enabled access level for Client Access over SSH.
     ${ConnectionProfileClientSshAccess},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Public", "Private", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType]
+    [System.String]
     # The enabled access level for Web Access over RDP.
     ${ConnectionProfileWebRdpAccess},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Public", "Private", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType]
+    [System.String]
     # The enabled access level for Web Access over SSH.
     ${ConnectionProfileWebSshAccess},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The description of the lab.
     ${Description},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # Image resource ID
     ${ImageReferenceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The image offer if applicable.
     ${ImageReferenceOffer},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The image publisher
     ${ImageReferencePublisher},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The image SKU
     ${ImageReferenceSku},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The image version specified on creation.
     ${ImageReferenceVersion},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The ID of the lab plan.
@@ -7585,89 +2038,89 @@ param(
     # Setting a labPlanId on an existing lab provides organization..
     ${LabPlanId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The external load balancer resource id
     ${NetworkProfileLoadBalancerId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The external public IP resource id
     ${NetworkProfilePublicIPId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The external subnet resource id
     ${NetworkProfileSubnetId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.Security.SecureString]
     # The password for the user.
     # This is required for the TemplateVM createOption.
     ${NonAdminUserPassword},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The username to use when signing in to lab VMs.
     ${NonAdminUserUsername},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The AAD group ID which this lab roster is populated from.
     # Having this set enables AAD sync mode.
     ${RosterProfileActiveDirectoryGroupId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The base URI identifying the lms instance.
     ${RosterProfileLmsInstance},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The unique id of the azure lab services tool in the lms.
     ${RosterProfileLtiClientId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The unique context identifier for the lab in the lms.
     ${RosterProfileLtiContextId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The uri of the names and roles service endpoint on the lms for the class attached to this lab.
     ${RosterProfileLtiRosterEndpoint},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState]
+    [System.String]
     # Whether any user or only specified users can register to a lab.
     ${SecurityProfileOpenAccess},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.Int32]
     # If the SKU supports scale out/in then the capacity integer should be included.
     # If scale out/in is not possible for the resource this may be omitted.
     ${SkuCapacity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # If the service has different generations of hardware, for the same SKU, then that can be captured here.
     ${SkuFamily},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The name of the SKU.
@@ -7675,60 +2128,73 @@ param(
     # It is typically a letter+number code
     ${SkuName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The SKU size.
     # When the name field is the combination of tier and some other value, this would be the standalone code.
     ${SkuSize},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.SkuTier])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Free", "Basic", "Standard", "Premium")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.SkuTier]
+    [System.String]
     # This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
     ${SkuTier},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The title of the lab.
     ${Title},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.CreateOption])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Image", "TemplateVM")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.CreateOption]
+    [System.String]
     # Indicates what lab virtual machines are created from.
     ${VirtualMachineProfileCreateOption},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.TimeSpan]
     # The initial quota alloted to each lab user.
     # Must be a time span between 0 and 9999 hours.
     ${VirtualMachineProfileUsageQuota},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState]
+    [System.String]
     # Enabling this option will use the same password for all user VMs.
     ${VirtualMachineProfileUseSharedPassword},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -7737,11 +2203,384 @@ param(
     # Run the command as a job
     ${AsJob},
 
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command asynchronously
     ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            CreateExpanded = 'Az.LabServices.private\New-AzLabServicesLab_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.LabServices.private\New-AzLabServicesLab_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.LabServices.private\New-AzLabServicesLab_CreateViaJsonString';
+        }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Operation to create a lab schedule.
+.Description
+Operation to create a lab schedule.
+.Example
+New-AzLabServicesSchedule `
+            -ResourceGroupName "Group Name" `
+            -LabName "Lab Name" `
+            -Name "Schedule Name" `
+            -StartAt "$((Get-Date).AddHours(5))" `
+            -StopAt "$((Get-Date).AddHours(6))" `
+            -RecurrencePatternFrequency 'Weekly' `
+            -RecurrencePatternInterval 1 `
+            -RecurrencePatternWeekDay @($((Get-Date).DayOfWeek)) `
+            -RecurrencePatternExpirationDate $((Get-Date).AddDays(20)) `
+            -TimeZoneId 'America/Los_Angeles'
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ISchedule
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+LAB <Lab>: The object of lab service lab.
+  [AdditionalCapabilityInstallGpuDriver <String>]: Flag to pre-install dedicated GPU drivers.
+  [AdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
+  [AdminUserUsername <String>]: The username to use when signing in to lab VMs.
+  [AutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
+  [AutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
+  [AutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
+  [AutoShutdownProfileShutdownOnDisconnect <String>]: Whether shutdown on disconnect is enabled
+  [AutoShutdownProfileShutdownOnIdle <String>]: Whether a VM will get shutdown when it has idled for a period of time.
+  [AutoShutdownProfileShutdownWhenNotConnected <String>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
+  [ConnectionProfileClientRdpAccess <String>]: The enabled access level for Client Access over RDP.
+  [ConnectionProfileClientSshAccess <String>]: The enabled access level for Client Access over SSH.
+  [ConnectionProfileWebRdpAccess <String>]: The enabled access level for Web Access over RDP.
+  [ConnectionProfileWebSshAccess <String>]: The enabled access level for Web Access over SSH.
+  [Description <String>]: The description of the lab.
+  [ImageReferenceId <String>]: Image resource ID
+  [ImageReferenceOffer <String>]: The image offer if applicable.
+  [ImageReferencePublisher <String>]: The image publisher
+  [ImageReferenceSku <String>]: The image SKU
+  [ImageReferenceVersion <String>]: The image version specified on creation.
+  [NetworkProfileLoadBalancerId <String>]: The external load balancer resource id
+  [NetworkProfilePublicIPId <String>]: The external public IP resource id
+  [NetworkProfileSubnetId <String>]: The external subnet resource id
+  [NonAdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
+  [NonAdminUserUsername <String>]: The username to use when signing in to lab VMs.
+  [PlanId <String>]: The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
+  [RosterProfileActiveDirectoryGroupId <String>]: The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.
+  [RosterProfileLmsInstance <String>]: The base URI identifying the lms instance.
+  [RosterProfileLtiClientId <String>]: The unique id of the azure lab services tool in the lms.
+  [RosterProfileLtiContextId <String>]: The unique context identifier for the lab in the lms.
+  [RosterProfileLtiRosterEndpoint <String>]: The uri of the names and roles service endpoint on the lms for the class attached to this lab.
+  [SecurityProfileOpenAccess <String>]: Whether any user or only specified users can register to a lab.
+  [SkuCapacity <Int32?>]: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+  [SkuFamily <String>]: If the service has different generations of hardware, for the same SKU, then that can be captured here.
+  [SkuName <String>]: The name of the SKU. Ex - P3. It is typically a letter+number code
+  [SkuSize <String>]: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+  [SkuTier <String>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+  [Title <String>]: The title of the lab.
+  [VirtualMachineProfileCreateOption <String>]: Indicates what lab virtual machines are created from.
+  [VirtualMachineProfileUsageQuota <TimeSpan?>]: The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
+  [VirtualMachineProfileUseSharedPassword <String>]: Enabling this option will use the same password for all user VMs.
+  [Location <String>]: The geo-location where the resource lives
+  [Tag <ITrackedResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+
+LABINPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/new-azlabservicesschedule
+#>
+function New-AzLabServicesSchedule {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ISchedule])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('ScheduleName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the schedule that uniquely identifies it within containing lab.
+    # Used in resource URIs.
+    ${Name},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the lab that uniquely identifies it within containing lab account.
+    # Used in resource URIs.
+    ${LabName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
+    [Parameter(ParameterSetName='Lab')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityLabExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${LabInputObject},
+
+    [Parameter(ParameterSetName='Lab', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
+    # The object of lab service lab.
+    ${Lab},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='Lab')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Notes for this schedule.
+    ${Note},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='Lab')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.DateTime]
+    # When the recurrence will expire.
+    # This date is inclusive.
+    ${RecurrencePatternExpirationDate},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='Lab')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Daily", "Weekly")]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The frequency of the recurrence.
+    ${RecurrencePatternFrequency},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='Lab')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.Int32]
+    # The interval to invoke the schedule on.
+    # For example, interval = 2 and RecurrenceFrequency.Daily will run every 2 days.
+    # When no interval is supplied, an interval of 1 is used.
+    ${RecurrencePatternInterval},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='Lab')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String[]]
+    # The week days the schedule runs.
+    # Used for when the Frequency is set to Weekly.
+    ${RecurrencePatternWeekDay},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='Lab')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.DateTime]
+    # When lab user virtual machines will be started.
+    # Timestamp offsets will be ignored and timeZoneId is used instead.
+    ${StartAt},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='Lab')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.DateTime]
+    # When lab user virtual machines will be stopped.
+    # Timestamp offsets will be ignored and timeZoneId is used instead.
+    ${StopAt},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='Lab')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The IANA timezone id for the schedule.
+    ${TimeZoneId},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
@@ -7790,6 +2629,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -7809,11 +2657,13 @@ begin {
         }
 
         $mapping = @{
-            __AllParameterSets = 'Az.LabServices.custom\New-AzLabServicesLab';
+            CreateExpanded = 'Az.LabServices.private\New-AzLabServicesSchedule_CreateExpanded';
+            CreateViaIdentityLabExpanded = 'Az.LabServices.private\New-AzLabServicesSchedule_CreateViaIdentityLabExpanded';
+            CreateViaJsonFilePath = 'Az.LabServices.private\New-AzLabServicesSchedule_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.LabServices.private\New-AzLabServicesSchedule_CreateViaJsonString';
+            Lab = 'Az.LabServices.custom\New-AzLabServicesSchedule_Lab';
         }
-        if (('__AllParameterSets') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString', 'Lab') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -7827,6 +2677,1827 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Operation to create a lab user.
+.Description
+Operation to create a lab user.
+.Example
+New-AzLabServicesUser -LabName "Lab Name" -ResourceGroupName "Group Name" -Name "User Name" -Email "User@contoso.com"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+LAB <Lab>: The object of lab service lab to create user in.
+  [AdditionalCapabilityInstallGpuDriver <String>]: Flag to pre-install dedicated GPU drivers.
+  [AdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
+  [AdminUserUsername <String>]: The username to use when signing in to lab VMs.
+  [AutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
+  [AutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
+  [AutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
+  [AutoShutdownProfileShutdownOnDisconnect <String>]: Whether shutdown on disconnect is enabled
+  [AutoShutdownProfileShutdownOnIdle <String>]: Whether a VM will get shutdown when it has idled for a period of time.
+  [AutoShutdownProfileShutdownWhenNotConnected <String>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
+  [ConnectionProfileClientRdpAccess <String>]: The enabled access level for Client Access over RDP.
+  [ConnectionProfileClientSshAccess <String>]: The enabled access level for Client Access over SSH.
+  [ConnectionProfileWebRdpAccess <String>]: The enabled access level for Web Access over RDP.
+  [ConnectionProfileWebSshAccess <String>]: The enabled access level for Web Access over SSH.
+  [Description <String>]: The description of the lab.
+  [ImageReferenceId <String>]: Image resource ID
+  [ImageReferenceOffer <String>]: The image offer if applicable.
+  [ImageReferencePublisher <String>]: The image publisher
+  [ImageReferenceSku <String>]: The image SKU
+  [ImageReferenceVersion <String>]: The image version specified on creation.
+  [NetworkProfileLoadBalancerId <String>]: The external load balancer resource id
+  [NetworkProfilePublicIPId <String>]: The external public IP resource id
+  [NetworkProfileSubnetId <String>]: The external subnet resource id
+  [NonAdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
+  [NonAdminUserUsername <String>]: The username to use when signing in to lab VMs.
+  [PlanId <String>]: The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
+  [RosterProfileActiveDirectoryGroupId <String>]: The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.
+  [RosterProfileLmsInstance <String>]: The base URI identifying the lms instance.
+  [RosterProfileLtiClientId <String>]: The unique id of the azure lab services tool in the lms.
+  [RosterProfileLtiContextId <String>]: The unique context identifier for the lab in the lms.
+  [RosterProfileLtiRosterEndpoint <String>]: The uri of the names and roles service endpoint on the lms for the class attached to this lab.
+  [SecurityProfileOpenAccess <String>]: Whether any user or only specified users can register to a lab.
+  [SkuCapacity <Int32?>]: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+  [SkuFamily <String>]: If the service has different generations of hardware, for the same SKU, then that can be captured here.
+  [SkuName <String>]: The name of the SKU. Ex - P3. It is typically a letter+number code
+  [SkuSize <String>]: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+  [SkuTier <String>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+  [Title <String>]: The title of the lab.
+  [VirtualMachineProfileCreateOption <String>]: Indicates what lab virtual machines are created from.
+  [VirtualMachineProfileUsageQuota <TimeSpan?>]: The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
+  [VirtualMachineProfileUseSharedPassword <String>]: Enabling this option will use the same password for all user VMs.
+  [Location <String>]: The geo-location where the resource lives
+  [Tag <ITrackedResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+
+LABINPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/new-azlabservicesuser
+#>
+function New-AzLabServicesUser {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser])]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('UserName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the user that uniquely identifies it within containing lab.
+    # Used in resource URIs.
+    ${Name},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the lab that uniquely identifies it within containing lab account.
+    # Used in resource URIs.
+    ${LabName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
+    [Parameter(ParameterSetName='Lab')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityLabExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${LabInputObject},
+
+    [Parameter(ParameterSetName='Lab', Mandatory, ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
+    # The object of lab service lab to create user in.
+    ${Lab},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityLabExpanded', Mandatory)]
+    [Parameter(ParameterSetName='Lab', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Email address of the user.
+    ${Email},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='Lab')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.TimeSpan]
+    # The amount of usage quota time the user gets in addition to the lab usage quota.
+    ${AdditionalUsageQuota},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            CreateExpanded = 'Az.LabServices.private\New-AzLabServicesUser_CreateExpanded';
+            CreateViaIdentityLabExpanded = 'Az.LabServices.private\New-AzLabServicesUser_CreateViaIdentityLabExpanded';
+            CreateViaJsonFilePath = 'Az.LabServices.private\New-AzLabServicesUser_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.LabServices.private\New-AzLabServicesUser_CreateViaJsonString';
+            Lab = 'Az.LabServices.custom\New-AzLabServicesUser_Lab';
+        }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString', 'Lab') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Publish or re-publish a lab.
+This will create or update all lab resources, such as virtual machines.
+.Description
+Publish or re-publish a lab.
+This will create or update all lab resources, such as virtual machines.
+.Example
+Publish-AzLabServicesLab -Name "Lab Name" -ResourceGroupName "Group Name"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+
+LAB <Lab>: The object of lab service lab to publish.
+  [AdditionalCapabilityInstallGpuDriver <String>]: Flag to pre-install dedicated GPU drivers.
+  [AdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
+  [AdminUserUsername <String>]: The username to use when signing in to lab VMs.
+  [AutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
+  [AutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
+  [AutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
+  [AutoShutdownProfileShutdownOnDisconnect <String>]: Whether shutdown on disconnect is enabled
+  [AutoShutdownProfileShutdownOnIdle <String>]: Whether a VM will get shutdown when it has idled for a period of time.
+  [AutoShutdownProfileShutdownWhenNotConnected <String>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
+  [ConnectionProfileClientRdpAccess <String>]: The enabled access level for Client Access over RDP.
+  [ConnectionProfileClientSshAccess <String>]: The enabled access level for Client Access over SSH.
+  [ConnectionProfileWebRdpAccess <String>]: The enabled access level for Web Access over RDP.
+  [ConnectionProfileWebSshAccess <String>]: The enabled access level for Web Access over SSH.
+  [Description <String>]: The description of the lab.
+  [ImageReferenceId <String>]: Image resource ID
+  [ImageReferenceOffer <String>]: The image offer if applicable.
+  [ImageReferencePublisher <String>]: The image publisher
+  [ImageReferenceSku <String>]: The image SKU
+  [ImageReferenceVersion <String>]: The image version specified on creation.
+  [NetworkProfileLoadBalancerId <String>]: The external load balancer resource id
+  [NetworkProfilePublicIPId <String>]: The external public IP resource id
+  [NetworkProfileSubnetId <String>]: The external subnet resource id
+  [NonAdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
+  [NonAdminUserUsername <String>]: The username to use when signing in to lab VMs.
+  [PlanId <String>]: The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
+  [RosterProfileActiveDirectoryGroupId <String>]: The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.
+  [RosterProfileLmsInstance <String>]: The base URI identifying the lms instance.
+  [RosterProfileLtiClientId <String>]: The unique id of the azure lab services tool in the lms.
+  [RosterProfileLtiContextId <String>]: The unique context identifier for the lab in the lms.
+  [RosterProfileLtiRosterEndpoint <String>]: The uri of the names and roles service endpoint on the lms for the class attached to this lab.
+  [SecurityProfileOpenAccess <String>]: Whether any user or only specified users can register to a lab.
+  [SkuCapacity <Int32?>]: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+  [SkuFamily <String>]: If the service has different generations of hardware, for the same SKU, then that can be captured here.
+  [SkuName <String>]: The name of the SKU. Ex - P3. It is typically a letter+number code
+  [SkuSize <String>]: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+  [SkuTier <String>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+  [Title <String>]: The title of the lab.
+  [VirtualMachineProfileCreateOption <String>]: Indicates what lab virtual machines are created from.
+  [VirtualMachineProfileUsageQuota <TimeSpan?>]: The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
+  [VirtualMachineProfileUseSharedPassword <String>]: Enabling this option will use the same password for all user VMs.
+  [Location <String>]: The geo-location where the resource lives
+  [Tag <ITrackedResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/publish-azlabserviceslab
+#>
+function Publish-AzLabServicesLab {
+[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab])]
+[CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Publish', Mandatory)]
+    [Alias('LabName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the lab that uniquely identifies it within containing lab account.
+    # Used in resource URIs.
+    ${Name},
+
+    [Parameter(ParameterSetName='Publish', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Publish')]
+    [Parameter(ParameterSetName='Lab')]
+    [Parameter(ParameterSetName='ResourceId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='PublishViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Lab', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
+    # The object of lab service lab to publish.
+    ${Lab},
+
+    [Parameter(ParameterSetName='ResourceId', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The resource Id of lab service lab.
+    ${ResourceId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(ParameterSetName='Publish')]
+    [Parameter(ParameterSetName='PublishViaIdentity')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Publish = 'Az.LabServices.private\Publish-AzLabServicesLab_Publish';
+            PublishViaIdentity = 'Az.LabServices.private\Publish-AzLabServicesLab_PublishViaIdentity';
+            Lab = 'Az.LabServices.custom\Publish-AzLabServicesLab_Lab';
+            ResourceId = 'Az.LabServices.custom\Publish-AzLabServicesLab_ResourceId';
+        }
+        if (('Publish', 'Lab', 'ResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Operation to delete a Lab Plan resource.
+Deleting a lab plan does not delete labs associated with a lab plan, nor does it delete shared images added to a gallery via the lab plan permission container.
+.Description
+Operation to delete a Lab Plan resource.
+Deleting a lab plan does not delete labs associated with a lab plan, nor does it delete shared images added to a gallery via the lab plan permission container.
+.Example
+Remove-AzLabServicesLabPlan -ResourceGroupName "Group Name" -Name "Lab Plan Name"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+
+LABPLAN <LabPlan>: The object of lab service lab plan to remove.
+  [AllowedRegion <List<String>>]: The allowed regions for the lab creator to use when creating labs using this lab plan.
+  [DefaultAutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
+  [DefaultAutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
+  [DefaultAutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
+  [DefaultAutoShutdownProfileShutdownOnDisconnect <String>]: Whether shutdown on disconnect is enabled
+  [DefaultAutoShutdownProfileShutdownOnIdle <String>]: Whether a VM will get shutdown when it has idled for a period of time.
+  [DefaultAutoShutdownProfileShutdownWhenNotConnected <String>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
+  [DefaultConnectionProfileClientRdpAccess <String>]: The enabled access level for Client Access over RDP.
+  [DefaultConnectionProfileClientSshAccess <String>]: The enabled access level for Client Access over SSH.
+  [DefaultConnectionProfileWebRdpAccess <String>]: The enabled access level for Web Access over RDP.
+  [DefaultConnectionProfileWebSshAccess <String>]: The enabled access level for Web Access over SSH.
+  [DefaultNetworkProfileSubnetId <String>]: The external subnet resource id
+  [LinkedLmsInstance <String>]: Base Url of the lms instance this lab plan can link lab rosters against.
+  [SharedGalleryId <String>]: Resource ID of the Shared Image Gallery attached to this lab plan. When saving a lab template virtual machine image it will be persisted in this gallery. Shared images from the gallery can be made available to use when creating new labs.
+  [SupportInfoEmail <String>]: Support contact email address.
+  [SupportInfoInstruction <String>]: Support instructions.
+  [SupportInfoPhone <String>]: Support contact phone number.
+  [SupportInfoUrl <String>]: Support web address.
+  [Location <String>]: The geo-location where the resource lives
+  [Tag <ITrackedResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/remove-azlabserviceslabplan
+#>
+function Remove-AzLabServicesLabPlan {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Alias('LabPlanName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the lab plan that uniquely identifies it within containing resource group.
+    # Used in resource URIs and in UI.
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Parameter(ParameterSetName='LabPlan')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='LabPlan', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan]
+    # The object of lab service lab plan to remove.
+    ${LabPlan},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Delete = 'Az.LabServices.private\Remove-AzLabServicesLabPlan_Delete';
+            DeleteViaIdentity = 'Az.LabServices.private\Remove-AzLabServicesLabPlan_DeleteViaIdentity';
+            LabPlan = 'Az.LabServices.custom\Remove-AzLabServicesLabPlan_LabPlan';
+        }
+        if (('Delete', 'LabPlan') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Operation to delete a lab resource.
+.Description
+Operation to delete a lab resource.
+.Example
+Remove-AzLabServicesLab -ResourceGroupName "Group Name" -Name "Lab Name"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+
+LAB <Lab>: The object of lab service lab to remove lab.
+  [AdditionalCapabilityInstallGpuDriver <String>]: Flag to pre-install dedicated GPU drivers.
+  [AdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
+  [AdminUserUsername <String>]: The username to use when signing in to lab VMs.
+  [AutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
+  [AutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
+  [AutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
+  [AutoShutdownProfileShutdownOnDisconnect <String>]: Whether shutdown on disconnect is enabled
+  [AutoShutdownProfileShutdownOnIdle <String>]: Whether a VM will get shutdown when it has idled for a period of time.
+  [AutoShutdownProfileShutdownWhenNotConnected <String>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
+  [ConnectionProfileClientRdpAccess <String>]: The enabled access level for Client Access over RDP.
+  [ConnectionProfileClientSshAccess <String>]: The enabled access level for Client Access over SSH.
+  [ConnectionProfileWebRdpAccess <String>]: The enabled access level for Web Access over RDP.
+  [ConnectionProfileWebSshAccess <String>]: The enabled access level for Web Access over SSH.
+  [Description <String>]: The description of the lab.
+  [ImageReferenceId <String>]: Image resource ID
+  [ImageReferenceOffer <String>]: The image offer if applicable.
+  [ImageReferencePublisher <String>]: The image publisher
+  [ImageReferenceSku <String>]: The image SKU
+  [ImageReferenceVersion <String>]: The image version specified on creation.
+  [NetworkProfileLoadBalancerId <String>]: The external load balancer resource id
+  [NetworkProfilePublicIPId <String>]: The external public IP resource id
+  [NetworkProfileSubnetId <String>]: The external subnet resource id
+  [NonAdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
+  [NonAdminUserUsername <String>]: The username to use when signing in to lab VMs.
+  [PlanId <String>]: The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
+  [RosterProfileActiveDirectoryGroupId <String>]: The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.
+  [RosterProfileLmsInstance <String>]: The base URI identifying the lms instance.
+  [RosterProfileLtiClientId <String>]: The unique id of the azure lab services tool in the lms.
+  [RosterProfileLtiContextId <String>]: The unique context identifier for the lab in the lms.
+  [RosterProfileLtiRosterEndpoint <String>]: The uri of the names and roles service endpoint on the lms for the class attached to this lab.
+  [SecurityProfileOpenAccess <String>]: Whether any user or only specified users can register to a lab.
+  [SkuCapacity <Int32?>]: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+  [SkuFamily <String>]: If the service has different generations of hardware, for the same SKU, then that can be captured here.
+  [SkuName <String>]: The name of the SKU. Ex - P3. It is typically a letter+number code
+  [SkuSize <String>]: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+  [SkuTier <String>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+  [Title <String>]: The title of the lab.
+  [VirtualMachineProfileCreateOption <String>]: Indicates what lab virtual machines are created from.
+  [VirtualMachineProfileUsageQuota <TimeSpan?>]: The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
+  [VirtualMachineProfileUseSharedPassword <String>]: Enabling this option will use the same password for all user VMs.
+  [Location <String>]: The geo-location where the resource lives
+  [Tag <ITrackedResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+
+LABPLAN <LabPlan>: 
+  [AllowedRegion <List<String>>]: The allowed regions for the lab creator to use when creating labs using this lab plan.
+  [DefaultAutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
+  [DefaultAutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
+  [DefaultAutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
+  [DefaultAutoShutdownProfileShutdownOnDisconnect <String>]: Whether shutdown on disconnect is enabled
+  [DefaultAutoShutdownProfileShutdownOnIdle <String>]: Whether a VM will get shutdown when it has idled for a period of time.
+  [DefaultAutoShutdownProfileShutdownWhenNotConnected <String>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
+  [DefaultConnectionProfileClientRdpAccess <String>]: The enabled access level for Client Access over RDP.
+  [DefaultConnectionProfileClientSshAccess <String>]: The enabled access level for Client Access over SSH.
+  [DefaultConnectionProfileWebRdpAccess <String>]: The enabled access level for Web Access over RDP.
+  [DefaultConnectionProfileWebSshAccess <String>]: The enabled access level for Web Access over SSH.
+  [DefaultNetworkProfileSubnetId <String>]: The external subnet resource id
+  [LinkedLmsInstance <String>]: Base Url of the lms instance this lab plan can link lab rosters against.
+  [SharedGalleryId <String>]: Resource ID of the Shared Image Gallery attached to this lab plan. When saving a lab template virtual machine image it will be persisted in this gallery. Shared images from the gallery can be made available to use when creating new labs.
+  [SupportInfoEmail <String>]: Support contact email address.
+  [SupportInfoInstruction <String>]: Support instructions.
+  [SupportInfoPhone <String>]: Support contact phone number.
+  [SupportInfoUrl <String>]: Support web address.
+  [Location <String>]: The geo-location where the resource lives
+  [Tag <ITrackedResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/remove-azlabserviceslab
+#>
+function Remove-AzLabServicesLab {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='LabPlan', Mandatory)]
+    [Alias('LabName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the lab that uniquely identifies it within containing lab account.
+    # Used in resource URIs.
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Parameter(ParameterSetName='Lab')]
+    [Parameter(ParameterSetName='LabPlan')]
+    [Parameter(ParameterSetName='ResourceId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Lab', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
+    # The object of lab service lab to remove lab.
+    ${Lab},
+
+    [Parameter(ParameterSetName='LabPlan', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan]
+    # 
+    ${LabPlan},
+
+    [Parameter(ParameterSetName='ResourceId', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The resource Id of lab service lab.
+    ${ResourceId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Delete = 'Az.LabServices.private\Remove-AzLabServicesLab_Delete';
+            DeleteViaIdentity = 'Az.LabServices.private\Remove-AzLabServicesLab_DeleteViaIdentity';
+            Lab = 'Az.LabServices.custom\Remove-AzLabServicesLab_Lab';
+            LabPlan = 'Az.LabServices.custom\Remove-AzLabServicesLab_LabPlan';
+            ResourceId = 'Az.LabServices.custom\Remove-AzLabServicesLab_ResourceId';
+        }
+        if (('Delete', 'Lab', 'LabPlan', 'ResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Operation to delete a schedule resource.
+.Description
+Operation to delete a schedule resource.
+.Example
+Remove-AzLabServicesSchedule -ResourceGroupName "Group Name" -LabName "Lab Name" -Name "Schedule Name"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Schedule
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+
+LABINPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+
+SCHEDULE <Schedule>: The object of lab service schedule to remove.
+  [Note <String>]: Notes for this schedule.
+  [RecurrencePatternExpirationDate <DateTime?>]: When the recurrence will expire. This date is inclusive.
+  [RecurrencePatternFrequency <String>]: The frequency of the recurrence.
+  [RecurrencePatternInterval <Int32?>]: The interval to invoke the schedule on. For example, interval = 2 and RecurrenceFrequency.Daily will run every 2 days. When no interval is supplied, an interval of 1 is used.
+  [RecurrencePatternWeekDay <List<String>>]: The week days the schedule runs. Used for when the Frequency is set to Weekly.
+  [StartAt <DateTime?>]: When lab user virtual machines will be started. Timestamp offsets will be ignored and timeZoneId is used instead.
+  [StopAt <DateTime?>]: When lab user virtual machines will be stopped. Timestamp offsets will be ignored and timeZoneId is used instead.
+  [TimeZoneId <String>]: The IANA timezone id for the schedule.
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/remove-azlabservicesschedule
+#>
+function Remove-AzLabServicesSchedule {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the lab that uniquely identifies it within containing lab account.
+    # Used in resource URIs.
+    ${LabName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityLab', Mandatory)]
+    [Alias('ScheduleName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the schedule that uniquely identifies it within containing lab.
+    # Used in resource URIs.
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Parameter(ParameterSetName='ResourceId')]
+    [Parameter(ParameterSetName='Schedule')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityLab', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${LabInputObject},
+
+    [Parameter(ParameterSetName='Schedule', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Schedule]
+    # The object of lab service schedule to remove.
+    ${Schedule},
+
+    [Parameter(ParameterSetName='ResourceId', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The resource Id of lab service schedule.
+    ${ResourceId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Delete = 'Az.LabServices.private\Remove-AzLabServicesSchedule_Delete';
+            DeleteViaIdentity = 'Az.LabServices.private\Remove-AzLabServicesSchedule_DeleteViaIdentity';
+            DeleteViaIdentityLab = 'Az.LabServices.private\Remove-AzLabServicesSchedule_DeleteViaIdentityLab';
+            ResourceId = 'Az.LabServices.custom\Remove-AzLabServicesSchedule_ResourceId';
+            Schedule = 'Az.LabServices.custom\Remove-AzLabServicesSchedule_Schedule';
+        }
+        if (('Delete', 'ResourceId', 'Schedule') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Operation to delete a user resource.
+.Description
+Operation to delete a user resource.
+.Example
+Remove-AzLabServicesUser -ResourceGroupName "Group Name" -LabName "Lab Name" -Name "User Name"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+
+LAB <Lab>: The object of lab service lab to remove user from.
+  [AdditionalCapabilityInstallGpuDriver <String>]: Flag to pre-install dedicated GPU drivers.
+  [AdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
+  [AdminUserUsername <String>]: The username to use when signing in to lab VMs.
+  [AutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
+  [AutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
+  [AutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
+  [AutoShutdownProfileShutdownOnDisconnect <String>]: Whether shutdown on disconnect is enabled
+  [AutoShutdownProfileShutdownOnIdle <String>]: Whether a VM will get shutdown when it has idled for a period of time.
+  [AutoShutdownProfileShutdownWhenNotConnected <String>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
+  [ConnectionProfileClientRdpAccess <String>]: The enabled access level for Client Access over RDP.
+  [ConnectionProfileClientSshAccess <String>]: The enabled access level for Client Access over SSH.
+  [ConnectionProfileWebRdpAccess <String>]: The enabled access level for Web Access over RDP.
+  [ConnectionProfileWebSshAccess <String>]: The enabled access level for Web Access over SSH.
+  [Description <String>]: The description of the lab.
+  [ImageReferenceId <String>]: Image resource ID
+  [ImageReferenceOffer <String>]: The image offer if applicable.
+  [ImageReferencePublisher <String>]: The image publisher
+  [ImageReferenceSku <String>]: The image SKU
+  [ImageReferenceVersion <String>]: The image version specified on creation.
+  [NetworkProfileLoadBalancerId <String>]: The external load balancer resource id
+  [NetworkProfilePublicIPId <String>]: The external public IP resource id
+  [NetworkProfileSubnetId <String>]: The external subnet resource id
+  [NonAdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
+  [NonAdminUserUsername <String>]: The username to use when signing in to lab VMs.
+  [PlanId <String>]: The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
+  [RosterProfileActiveDirectoryGroupId <String>]: The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.
+  [RosterProfileLmsInstance <String>]: The base URI identifying the lms instance.
+  [RosterProfileLtiClientId <String>]: The unique id of the azure lab services tool in the lms.
+  [RosterProfileLtiContextId <String>]: The unique context identifier for the lab in the lms.
+  [RosterProfileLtiRosterEndpoint <String>]: The uri of the names and roles service endpoint on the lms for the class attached to this lab.
+  [SecurityProfileOpenAccess <String>]: Whether any user or only specified users can register to a lab.
+  [SkuCapacity <Int32?>]: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+  [SkuFamily <String>]: If the service has different generations of hardware, for the same SKU, then that can be captured here.
+  [SkuName <String>]: The name of the SKU. Ex - P3. It is typically a letter+number code
+  [SkuSize <String>]: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+  [SkuTier <String>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+  [Title <String>]: The title of the lab.
+  [VirtualMachineProfileCreateOption <String>]: Indicates what lab virtual machines are created from.
+  [VirtualMachineProfileUsageQuota <TimeSpan?>]: The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
+  [VirtualMachineProfileUseSharedPassword <String>]: Enabling this option will use the same password for all user VMs.
+  [Location <String>]: The geo-location where the resource lives
+  [Tag <ITrackedResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+
+LABINPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+
+USER <User>: The object of lab service user to remove.
+  [AdditionalUsageQuota <TimeSpan?>]: The amount of usage quota time the user gets in addition to the lab usage quota.
+  [Email <String>]: Email address of the user.
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/remove-azlabservicesuser
+#>
+function Remove-AzLabServicesUser {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the lab that uniquely identifies it within containing lab account.
+    # Used in resource URIs.
+    ${LabName},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityLab', Mandatory)]
+    [Parameter(ParameterSetName='Lab', Mandatory)]
+    [Alias('UserName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the user that uniquely identifies it within containing lab.
+    # Used in resource URIs.
+    ${Name},
+
+    [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Delete')]
+    [Parameter(ParameterSetName='Lab')]
+    [Parameter(ParameterSetName='ResourceId')]
+    [Parameter(ParameterSetName='User')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityLab', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${LabInputObject},
+
+    [Parameter(ParameterSetName='Lab', Mandatory, ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
+    # The object of lab service lab to remove user from.
+    ${Lab},
+
+    [Parameter(ParameterSetName='User', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User]
+    # The object of lab service user to remove.
+    ${User},
+
+    [Parameter(ParameterSetName='ResourceId', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The resource Id of lab service user.
+    ${ResourceId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Delete = 'Az.LabServices.private\Remove-AzLabServicesUser_Delete';
+            DeleteViaIdentity = 'Az.LabServices.private\Remove-AzLabServicesUser_DeleteViaIdentity';
+            DeleteViaIdentityLab = 'Az.LabServices.private\Remove-AzLabServicesUser_DeleteViaIdentityLab';
+            Lab = 'Az.LabServices.custom\Remove-AzLabServicesUser_Lab';
+            ResourceId = 'Az.LabServices.custom\Remove-AzLabServicesUser_ResourceId';
+            User = 'Az.LabServices.custom\Remove-AzLabServicesUser_User';
+        }
+        if (('Delete', 'Lab', 'ResourceId', 'User') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -7879,9 +4550,11 @@ Resets a lab virtual machine password.
 Reset-AzLabServicesVMPassword -ResourceGroupName "Group Name" -LabName "Lab Name" -VirtualMachineName 0 -Password "New Password"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachine
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
 .Outputs
 System.Boolean
 .Notes
@@ -7889,69 +4562,129 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-VM <VirtualMachine>: 
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+INPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+
+LABINPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/reset-azlabservicesvmpassword
 #>
 function Reset-AzLabServicesVMPassword {
-[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
+[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
 [CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Reset', Mandatory)]
+    [Parameter(ParameterSetName='ResetExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ResetViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ResetViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
     # The name of the lab that uniquely identifies it within containing lab account.
     # Used in resource URIs.
     ${LabName},
 
-    [Parameter(ParameterSetName='Reset', Mandatory)]
+    [Parameter(ParameterSetName='ResetExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ResetViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ResetViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Reset', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The ID of the virtual machine that uniquely identifies it within the containing lab.
-    # Used in resource URIs.
-    ${VirtualMachineName},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='ResetExpanded')]
+    [Parameter(ParameterSetName='ResetViaJsonFilePath')]
+    [Parameter(ParameterSetName='ResetViaJsonString')]
+    [Parameter(ParameterSetName='ResourceId')]
+    [Parameter(ParameterSetName='VM')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='ResetExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ResetViaIdentityLabExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ResetViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ResetViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The ID of the virtual machine that uniquely identifies it within the containing lab.
+    # Used in resource URIs.
+    ${VirtualMachineName},
+
+    [Parameter(ParameterSetName='ResetViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='ResetViaIdentityLabExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${LabInputObject},
+
+    [Parameter(ParameterSetName='ResetExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ResetViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ResetViaIdentityLabExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ResourceId', Mandatory)]
+    [Parameter(ParameterSetName='VM', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.Security.SecureString]
     # The password
     ${Password},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='ResetExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ResetViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ResetViaIdentityLabExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ResourceId')]
+    [Parameter(ParameterSetName='VM')]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
     # The user whose password is being reset
     ${Username},
 
+    [Parameter(ParameterSetName='ResetViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Reset operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ResetViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Json string supplied to the Reset operation
+    ${JsonString},
+
     [Parameter(ParameterSetName='ResourceId', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.String]
+    # The resource Id of lab service virtual machine.
     ${ResourceId},
 
     [Parameter(ParameterSetName='VM', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachine]
-    # To construct, see NOTES section for VM properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine]
+    # The object of lab service virtual machine.
     ${VM},
 
     [Parameter()]
@@ -7959,14 +4692,9 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
@@ -7974,11 +4702,3343 @@ param(
     # Run the command as a job
     ${AsJob},
 
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command asynchronously
     ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            ResetExpanded = 'Az.LabServices.private\Reset-AzLabServicesVMPassword_ResetExpanded';
+            ResetViaIdentityExpanded = 'Az.LabServices.private\Reset-AzLabServicesVMPassword_ResetViaIdentityExpanded';
+            ResetViaIdentityLabExpanded = 'Az.LabServices.private\Reset-AzLabServicesVMPassword_ResetViaIdentityLabExpanded';
+            ResetViaJsonFilePath = 'Az.LabServices.private\Reset-AzLabServicesVMPassword_ResetViaJsonFilePath';
+            ResetViaJsonString = 'Az.LabServices.private\Reset-AzLabServicesVMPassword_ResetViaJsonString';
+            ResourceId = 'Az.LabServices.custom\Reset-AzLabServicesVMPassword_ResourceId';
+            VM = 'Az.LabServices.custom\Reset-AzLabServicesVMPassword_VM';
+        }
+        if (('ResetExpanded', 'ResetViaJsonFilePath', 'ResetViaJsonString', 'ResourceId', 'VM') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Saves an image from a lab VM to the attached shared image gallery.
+.Description
+Saves an image from a lab VM to the attached shared image gallery.
+.Example
+Save-AzLabServicesLabPlanImage -ResourceGroupName "Group Name" -LabPlanName "Lab Plan Name" -Name "New Image Name" -LabVirtualMachineId "/subscriptions/<subscription Id>/resourceGroups/<group name>/providers/Microsoft.LabServices/labs/labName/virtualMachines/<vm name>"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/save-azlabserviceslabplanimage
+#>
+function Save-AzLabServicesLabPlanImage {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='SaveExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='SaveExpanded', Mandatory)]
+    [Parameter(ParameterSetName='SaveViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='SaveViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the lab plan that uniquely identifies it within containing resource group.
+    # Used in resource URIs and in UI.
+    ${LabPlanName},
+
+    [Parameter(ParameterSetName='SaveExpanded', Mandatory)]
+    [Parameter(ParameterSetName='SaveViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='SaveViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='SaveExpanded')]
+    [Parameter(ParameterSetName='SaveViaJsonFilePath')]
+    [Parameter(ParameterSetName='SaveViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='SaveViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='SaveExpanded')]
+    [Parameter(ParameterSetName='SaveViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The ID of the lab virtual machine you want to save an image from.
+    ${LabVirtualMachineId},
+
+    [Parameter(ParameterSetName='SaveExpanded')]
+    [Parameter(ParameterSetName='SaveViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The name for the image we create.
+    ${Name},
+
+    [Parameter(ParameterSetName='SaveViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Save operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='SaveViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Json string supplied to the Save operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            SaveExpanded = 'Az.LabServices.private\Save-AzLabServicesLabPlanImage_SaveExpanded';
+            SaveViaIdentityExpanded = 'Az.LabServices.private\Save-AzLabServicesLabPlanImage_SaveViaIdentityExpanded';
+            SaveViaJsonFilePath = 'Az.LabServices.private\Save-AzLabServicesLabPlanImage_SaveViaJsonFilePath';
+            SaveViaJsonString = 'Az.LabServices.private\Save-AzLabServicesLabPlanImage_SaveViaJsonString';
+        }
+        if (('SaveExpanded', 'SaveViaJsonFilePath', 'SaveViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Operation to invite a user to a lab.
+.Description
+Operation to invite a user to a lab.
+.Example
+Send-AzLabServicesUserInvite -ResourceGroupName "Group Name" -LabName "Lab Name" -UserName "User Name" -Text "Welcome to the lab."
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+
+LABINPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+
+USER <User>: The object of lab service user to invite.
+  [AdditionalUsageQuota <TimeSpan?>]: The amount of usage quota time the user gets in addition to the lab usage quota.
+  [Email <String>]: Email address of the user.
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/send-azlabservicesuserinvite
+#>
+function Send-AzLabServicesUserInvite {
+[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
+[CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='InviteExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InviteViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='InviteViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the lab that uniquely identifies it within containing lab account.
+    # Used in resource URIs.
+    ${LabName},
+
+    [Parameter(ParameterSetName='InviteExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InviteViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='InviteViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='InviteExpanded')]
+    [Parameter(ParameterSetName='InviteViaJsonFilePath')]
+    [Parameter(ParameterSetName='InviteViaJsonString')]
+    [Parameter(ParameterSetName='ResourceId')]
+    [Parameter(ParameterSetName='Users')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='InviteExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InviteViaIdentityLabExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InviteViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='InviteViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the user that uniquely identifies it within containing lab.
+    # Used in resource URIs.
+    ${UserName},
+
+    [Parameter(ParameterSetName='InviteViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='InviteViaIdentityLabExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${LabInputObject},
+
+    [Parameter(ParameterSetName='InviteExpanded')]
+    [Parameter(ParameterSetName='InviteViaIdentityExpanded')]
+    [Parameter(ParameterSetName='InviteViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='ResourceId')]
+    [Parameter(ParameterSetName='Users')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Custom text for the invite email.
+    ${Text},
+
+    [Parameter(ParameterSetName='InviteViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Invite operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='InviteViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Json string supplied to the Invite operation
+    ${JsonString},
+
+    [Parameter(ParameterSetName='ResourceId', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The resource Id of lab service user.
+    ${ResourceId},
+
+    [Parameter(ParameterSetName='Users', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User]
+    # The object of lab service user to invite.
+    ${User},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(ParameterSetName='InviteExpanded')]
+    [Parameter(ParameterSetName='InviteViaIdentityExpanded')]
+    [Parameter(ParameterSetName='InviteViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='InviteViaJsonFilePath')]
+    [Parameter(ParameterSetName='InviteViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            InviteExpanded = 'Az.LabServices.private\Send-AzLabServicesUserInvite_InviteExpanded';
+            InviteViaIdentityExpanded = 'Az.LabServices.private\Send-AzLabServicesUserInvite_InviteViaIdentityExpanded';
+            InviteViaIdentityLabExpanded = 'Az.LabServices.private\Send-AzLabServicesUserInvite_InviteViaIdentityLabExpanded';
+            InviteViaJsonFilePath = 'Az.LabServices.private\Send-AzLabServicesUserInvite_InviteViaJsonFilePath';
+            InviteViaJsonString = 'Az.LabServices.private\Send-AzLabServicesUserInvite_InviteViaJsonString';
+            ResourceId = 'Az.LabServices.custom\Send-AzLabServicesUserInvite_ResourceId';
+            Users = 'Az.LabServices.custom\Send-AzLabServicesUserInvite_Users';
+        }
+        if (('InviteExpanded', 'InviteViaJsonFilePath', 'InviteViaJsonString', 'ResourceId', 'Users') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Action to redeploy a lab virtual machine to a different compute node.
+For troubleshooting connectivity.
+.Description
+Action to redeploy a lab virtual machine to a different compute node.
+For troubleshooting connectivity.
+.Example
+Start-AzLabServicesVMRedeployment -LabName "Lab Name" -ResourceGroupName "Group Name" -VirtualMachineName 1
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+
+LABINPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/start-azlabservicesvmredeployment
+#>
+function Start-AzLabServicesVMRedeployment {
+[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
+[CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Redeploy', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the lab that uniquely identifies it within containing lab account.
+    # Used in resource URIs.
+    ${LabName},
+
+    [Parameter(ParameterSetName='Redeploy', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Redeploy')]
+    [Parameter(ParameterSetName='ResourceId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Redeploy', Mandatory)]
+    [Parameter(ParameterSetName='RedeployViaIdentityLab', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The ID of the virtual machine that uniquely identifies it within the containing lab.
+    # Used in resource URIs.
+    ${VirtualMachineName},
+
+    [Parameter(ParameterSetName='RedeployViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='RedeployViaIdentityLab', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${LabInputObject},
+
+    [Parameter(ParameterSetName='ResourceId', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The resource Id of lab service virtual machine.
+    ${ResourceId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Redeploy = 'Az.LabServices.private\Start-AzLabServicesVMRedeployment_Redeploy';
+            RedeployViaIdentity = 'Az.LabServices.private\Start-AzLabServicesVMRedeployment_RedeployViaIdentity';
+            RedeployViaIdentityLab = 'Az.LabServices.private\Start-AzLabServicesVMRedeployment_RedeployViaIdentityLab';
+            ResourceId = 'Az.LabServices.custom\Start-AzLabServicesVMRedeployment_ResourceId';
+        }
+        if (('Redeploy', 'ResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Action to start a lab virtual machine.
+.Description
+Action to start a lab virtual machine.
+.Example
+Start-AzLabServicesVM -ResourceGroupName "Group Name" -LabName "Lab Name" -Name 0
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+
+LABINPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/start-azlabservicesvm
+#>
+function Start-AzLabServicesVM {
+[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
+[CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Start', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the lab that uniquely identifies it within containing lab account.
+    # Used in resource URIs.
+    ${LabName},
+
+    [Parameter(ParameterSetName='Start', Mandatory)]
+    [Parameter(ParameterSetName='StartViaIdentityLab', Mandatory)]
+    [Alias('VirtualMachineName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The ID of the virtual machine that uniquely identifies it within the containing lab.
+    # Used in resource URIs.
+    ${Name},
+
+    [Parameter(ParameterSetName='Start', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Start')]
+    [Parameter(ParameterSetName='ResourceId')]
+    [Parameter(ParameterSetName='VM')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='StartViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='StartViaIdentityLab', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${LabInputObject},
+
+    [Parameter(ParameterSetName='ResourceId', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The resource Id of lab service virtual machine.
+    ${ResourceId},
+
+    [Parameter(ParameterSetName='VM', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine]
+    # The object of lab service virtual machine to start.
+    ${VM},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(ParameterSetName='Start')]
+    [Parameter(ParameterSetName='StartViaIdentity')]
+    [Parameter(ParameterSetName='StartViaIdentityLab')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Start = 'Az.LabServices.private\Start-AzLabServicesVM_Start';
+            StartViaIdentity = 'Az.LabServices.private\Start-AzLabServicesVM_StartViaIdentity';
+            StartViaIdentityLab = 'Az.LabServices.private\Start-AzLabServicesVM_StartViaIdentityLab';
+            ResourceId = 'Az.LabServices.custom\Start-AzLabServicesVM_ResourceId';
+            VM = 'Az.LabServices.custom\Start-AzLabServicesVM_VM';
+        }
+        if (('Start', 'ResourceId', 'VM') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Action to stop a lab virtual machine.
+.Description
+Action to stop a lab virtual machine.
+.Example
+Stop-AzLabServicesVM -ResourceGroupName "Group Name" -LabName "Lab Name" -Name 0
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+
+LABINPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/stop-azlabservicesvm
+#>
+function Stop-AzLabServicesVM {
+[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
+[CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Stop', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the lab that uniquely identifies it within containing lab account.
+    # Used in resource URIs.
+    ${LabName},
+
+    [Parameter(ParameterSetName='Stop', Mandatory)]
+    [Parameter(ParameterSetName='StopViaIdentityLab', Mandatory)]
+    [Alias('VirtualMachineName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The ID of the virtual machine that uniquely identifies it within the containing lab.
+    # Used in resource URIs.
+    ${Name},
+
+    [Parameter(ParameterSetName='Stop', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Stop')]
+    [Parameter(ParameterSetName='ResourceId')]
+    [Parameter(ParameterSetName='VM')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='StopViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='StopViaIdentityLab', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${LabInputObject},
+
+    [Parameter(ParameterSetName='ResourceId', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The resource Id of lab service virtual machine.
+    ${ResourceId},
+
+    [Parameter(ParameterSetName='VM', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine]
+    # The object of lab service virtual machine to stop.
+    ${VM},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(ParameterSetName='Stop')]
+    [Parameter(ParameterSetName='StopViaIdentity')]
+    [Parameter(ParameterSetName='StopViaIdentityLab')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Stop = 'Az.LabServices.private\Stop-AzLabServicesVM_Stop';
+            StopViaIdentity = 'Az.LabServices.private\Stop-AzLabServicesVM_StopViaIdentity';
+            StopViaIdentityLab = 'Az.LabServices.private\Stop-AzLabServicesVM_StopViaIdentityLab';
+            ResourceId = 'Az.LabServices.custom\Stop-AzLabServicesVM_ResourceId';
+            VM = 'Az.LabServices.custom\Stop-AzLabServicesVM_VM';
+        }
+        if (('Stop', 'ResourceId', 'VM') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Action used to manually kick off an AAD group sync job.
+.Description
+Action used to manually kick off an AAD group sync job.
+.Example
+Sync-AzLabServicesLabUser -ResourceGroupName "Group Name" -LabName "Lab Name"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+
+LAB <Lab>: The object of lab service lab to synchronize users in.
+  [AdditionalCapabilityInstallGpuDriver <String>]: Flag to pre-install dedicated GPU drivers.
+  [AdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
+  [AdminUserUsername <String>]: The username to use when signing in to lab VMs.
+  [AutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
+  [AutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
+  [AutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
+  [AutoShutdownProfileShutdownOnDisconnect <String>]: Whether shutdown on disconnect is enabled
+  [AutoShutdownProfileShutdownOnIdle <String>]: Whether a VM will get shutdown when it has idled for a period of time.
+  [AutoShutdownProfileShutdownWhenNotConnected <String>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
+  [ConnectionProfileClientRdpAccess <String>]: The enabled access level for Client Access over RDP.
+  [ConnectionProfileClientSshAccess <String>]: The enabled access level for Client Access over SSH.
+  [ConnectionProfileWebRdpAccess <String>]: The enabled access level for Web Access over RDP.
+  [ConnectionProfileWebSshAccess <String>]: The enabled access level for Web Access over SSH.
+  [Description <String>]: The description of the lab.
+  [ImageReferenceId <String>]: Image resource ID
+  [ImageReferenceOffer <String>]: The image offer if applicable.
+  [ImageReferencePublisher <String>]: The image publisher
+  [ImageReferenceSku <String>]: The image SKU
+  [ImageReferenceVersion <String>]: The image version specified on creation.
+  [NetworkProfileLoadBalancerId <String>]: The external load balancer resource id
+  [NetworkProfilePublicIPId <String>]: The external public IP resource id
+  [NetworkProfileSubnetId <String>]: The external subnet resource id
+  [NonAdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
+  [NonAdminUserUsername <String>]: The username to use when signing in to lab VMs.
+  [PlanId <String>]: The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
+  [RosterProfileActiveDirectoryGroupId <String>]: The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.
+  [RosterProfileLmsInstance <String>]: The base URI identifying the lms instance.
+  [RosterProfileLtiClientId <String>]: The unique id of the azure lab services tool in the lms.
+  [RosterProfileLtiContextId <String>]: The unique context identifier for the lab in the lms.
+  [RosterProfileLtiRosterEndpoint <String>]: The uri of the names and roles service endpoint on the lms for the class attached to this lab.
+  [SecurityProfileOpenAccess <String>]: Whether any user or only specified users can register to a lab.
+  [SkuCapacity <Int32?>]: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+  [SkuFamily <String>]: If the service has different generations of hardware, for the same SKU, then that can be captured here.
+  [SkuName <String>]: The name of the SKU. Ex - P3. It is typically a letter+number code
+  [SkuSize <String>]: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+  [SkuTier <String>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+  [Title <String>]: The title of the lab.
+  [VirtualMachineProfileCreateOption <String>]: Indicates what lab virtual machines are created from.
+  [VirtualMachineProfileUsageQuota <TimeSpan?>]: The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
+  [VirtualMachineProfileUseSharedPassword <String>]: Enabling this option will use the same password for all user VMs.
+  [Location <String>]: The geo-location where the resource lives
+  [Tag <ITrackedResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/sync-azlabserviceslabuser
+#>
+function Sync-AzLabServicesLabUser {
+[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser])]
+[CmdletBinding(DefaultParameterSetName='Sync', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Sync', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the lab that uniquely identifies it within containing lab account.
+    # Used in resource URIs.
+    ${LabName},
+
+    [Parameter(ParameterSetName='Sync', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Sync')]
+    [Parameter(ParameterSetName='Lab')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='SyncViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='Lab', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
+    # The object of lab service lab to synchronize users in.
+    ${Lab},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(ParameterSetName='Sync')]
+    [Parameter(ParameterSetName='SyncViaIdentity')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Sync = 'Az.LabServices.private\Sync-AzLabServicesLabUser_Sync';
+            SyncViaIdentity = 'Az.LabServices.private\Sync-AzLabServicesLabUser_SyncViaIdentity';
+            Lab = 'Az.LabServices.custom\Sync-AzLabServicesLabUser_Lab';
+        }
+        if (('Sync', 'Lab') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Operation to update a Lab Plan resource.
+.Description
+Operation to update a Lab Plan resource.
+.Example
+Update-AzLabServicesLabPlan -ResourceGroupName "Group Name" -Name "LabPlan Name" -DefaultAutoShutdownProfileShutdownOnDisconnect 'Enabled' -DefaultAutoShutdownProfileDisconnectDelay "00:17:00"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabPlan
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+
+LABPLAN <LabPlan>: 
+  [AllowedRegion <List<String>>]: The allowed regions for the lab creator to use when creating labs using this lab plan.
+  [DefaultAutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
+  [DefaultAutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
+  [DefaultAutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
+  [DefaultAutoShutdownProfileShutdownOnDisconnect <String>]: Whether shutdown on disconnect is enabled
+  [DefaultAutoShutdownProfileShutdownOnIdle <String>]: Whether a VM will get shutdown when it has idled for a period of time.
+  [DefaultAutoShutdownProfileShutdownWhenNotConnected <String>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
+  [DefaultConnectionProfileClientRdpAccess <String>]: The enabled access level for Client Access over RDP.
+  [DefaultConnectionProfileClientSshAccess <String>]: The enabled access level for Client Access over SSH.
+  [DefaultConnectionProfileWebRdpAccess <String>]: The enabled access level for Web Access over RDP.
+  [DefaultConnectionProfileWebSshAccess <String>]: The enabled access level for Web Access over SSH.
+  [DefaultNetworkProfileSubnetId <String>]: The external subnet resource id
+  [LinkedLmsInstance <String>]: Base Url of the lms instance this lab plan can link lab rosters against.
+  [SharedGalleryId <String>]: Resource ID of the Shared Image Gallery attached to this lab plan. When saving a lab template virtual machine image it will be persisted in this gallery. Shared images from the gallery can be made available to use when creating new labs.
+  [SupportInfoEmail <String>]: Support contact email address.
+  [SupportInfoInstruction <String>]: Support instructions.
+  [SupportInfoPhone <String>]: Support contact phone number.
+  [SupportInfoUrl <String>]: Support web address.
+  [Location <String>]: The geo-location where the resource lives
+  [Tag <ITrackedResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/update-azlabserviceslabplan
+#>
+function Update-AzLabServicesLabPlan {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabPlan])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Alias('LabPlanName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the lab plan that uniquely identifies it within containing resource group.
+    # Used in resource URIs and in UI.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
+    [Parameter(ParameterSetName='LabPlan')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='LabPlan', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan]
+    # 
+    ${LabPlan},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='LabPlan')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String[]]
+    # The allowed regions for the lab creator to use when creating labs using this lab plan.
+    ${AllowedRegion},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='LabPlan')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.TimeSpan]
+    # The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
+    ${DefaultAutoShutdownProfileDisconnectDelay},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='LabPlan')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.TimeSpan]
+    # The amount of time a VM will idle before it is shutdown if this behavior is enabled.
+    ${DefaultAutoShutdownProfileIdleDelay},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='LabPlan')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.TimeSpan]
+    # The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
+    ${DefaultAutoShutdownProfileNoConnectDelay},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='LabPlan')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Whether shutdown on disconnect is enabled
+    ${DefaultAutoShutdownProfileShutdownOnDisconnect},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='LabPlan')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("None", "UserAbsence", "LowUsage")]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Whether a VM will get shutdown when it has idled for a period of time.
+    ${DefaultAutoShutdownProfileShutdownOnIdle},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='LabPlan')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Whether a VM will get shutdown when it hasn't been connected to after a period of time.
+    ${DefaultAutoShutdownProfileShutdownWhenNotConnected},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Public", "Private", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The enabled access level for Client Access over RDP.
+    ${DefaultConnectionProfileClientRdpAccess},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Public", "Private", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The enabled access level for Client Access over SSH.
+    ${DefaultConnectionProfileClientSshAccess},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Public", "Private", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The enabled access level for Web Access over RDP.
+    ${DefaultConnectionProfileWebRdpAccess},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Public", "Private", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The enabled access level for Web Access over SSH.
+    ${DefaultConnectionProfileWebSshAccess},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='LabPlan')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The external subnet resource id
+    ${DefaultNetworkProfileSubnetId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='LabPlan')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Base Url of the lms instance this lab plan can link lab rosters against.
+    ${LinkedLmsInstance},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='LabPlan')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Resource ID of the Shared Image Gallery attached to this lab plan.
+    # When saving a lab template virtual machine image it will be persisted in this gallery.
+    # Shared images from the gallery can be made available to use when creating new labs.
+    ${SharedGalleryId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='LabPlan')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Support contact email address.
+    ${SupportInfoEmail},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='LabPlan')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Support instructions.
+    ${SupportInfoInstruction},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='LabPlan')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Support contact phone number.
+    ${SupportInfoPhone},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='LabPlan')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Support web address.
+    ${SupportInfoUrl},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='LabPlan')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String[]]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter(ParameterSetName='LabPlan')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Public", "Private", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    ${DefaultConnectionProfileClientRdpAccessEnabled},
+
+    [Parameter(ParameterSetName='LabPlan')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Public", "Private", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    ${DefaultConnectionProfileClientSshAccessEnabled},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.LabServices.private\Update-AzLabServicesLabPlan_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.LabServices.private\Update-AzLabServicesLabPlan_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.LabServices.private\Update-AzLabServicesLabPlan_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.LabServices.private\Update-AzLabServicesLabPlan_UpdateViaJsonString';
+            LabPlan = 'Az.LabServices.custom\Update-AzLabServicesLabPlan_LabPlan';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString', 'LabPlan') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Operation to update a lab resource.
+.Description
+Operation to update a lab resource.
+.Example
+Update-AzLabServicesLab -ResourceGroupName "Group Name" -Name "Lab Name" -AutoShutdownProfileShutdownOnDisconnect Enabled -AutoShutdownProfileDisconnectDelay "00:25:00"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/update-azlabserviceslab
+#>
+function Update-AzLabServicesLab {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Alias('LabName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the lab that uniquely identifies it within containing lab account.
+    # Used in resource URIs.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.Security.SecureString]
+    # The password for the user.
+    # This is required for the TemplateVM createOption.
+    ${AdminUserPassword},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The username to use when signing in to lab VMs.
+    ${AdminUserUsername},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.TimeSpan]
+    # The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
+    ${AutoShutdownProfileDisconnectDelay},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.TimeSpan]
+    # The amount of time a VM will idle before it is shutdown if this behavior is enabled.
+    ${AutoShutdownProfileIdleDelay},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.TimeSpan]
+    # The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
+    ${AutoShutdownProfileNoConnectDelay},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Whether shutdown on disconnect is enabled
+    ${AutoShutdownProfileShutdownOnDisconnect},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("None", "UserAbsence", "LowUsage")]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Whether a VM will get shutdown when it has idled for a period of time.
+    ${AutoShutdownProfileShutdownOnIdle},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Whether a VM will get shutdown when it hasn't been connected to after a period of time.
+    ${AutoShutdownProfileShutdownWhenNotConnected},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Public", "Private", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The enabled access level for Client Access over RDP.
+    ${ConnectionProfileClientRdpAccess},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Public", "Private", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The enabled access level for Client Access over SSH.
+    ${ConnectionProfileClientSshAccess},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Public", "Private", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The enabled access level for Web Access over RDP.
+    ${ConnectionProfileWebRdpAccess},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Public", "Private", "None")]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The enabled access level for Web Access over SSH.
+    ${ConnectionProfileWebSshAccess},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The description of the lab.
+    ${Description},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Image resource ID
+    ${ImageReferenceId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The image offer if applicable.
+    ${ImageReferenceOffer},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The image publisher
+    ${ImageReferencePublisher},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The image SKU
+    ${ImageReferenceSku},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The image version specified on creation.
+    ${ImageReferenceVersion},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The ID of the lab plan.
+    # Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com.
+    # Setting a labPlanId on an existing lab provides organization..
+    ${LabPlanId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.Security.SecureString]
+    # The password for the user.
+    # This is required for the TemplateVM createOption.
+    ${NonAdminUserPassword},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The username to use when signing in to lab VMs.
+    ${NonAdminUserUsername},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The AAD group ID which this lab roster is populated from.
+    # Having this set enables AAD sync mode.
+    ${RosterProfileActiveDirectoryGroupId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The base URI identifying the lms instance.
+    ${RosterProfileLmsInstance},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The unique id of the azure lab services tool in the lms.
+    ${RosterProfileLtiClientId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The unique context identifier for the lab in the lms.
+    ${RosterProfileLtiContextId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The uri of the names and roles service endpoint on the lms for the class attached to this lab.
+    ${RosterProfileLtiRosterEndpoint},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Whether any user or only specified users can register to a lab.
+    ${SecurityProfileOpenAccess},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String[]]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The title of the lab.
+    ${Title},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.TimeSpan]
+    # The initial quota alloted to each lab user.
+    # Must be a time span between 0 and 9999 hours.
+    ${VirtualMachineProfileUsageQuota},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.LabServices.private\Update-AzLabServicesLab_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.LabServices.private\Update-AzLabServicesLab_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.LabServices.private\Update-AzLabServicesLab_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.LabServices.private\Update-AzLabServicesLab_UpdateViaJsonString';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update an image resource.
+.Description
+Update an image resource.
+.Example
+Update-AzLabServicesPlanImage -ResourceGroupName "Group Name" -LabPlanName "LabPlan Name" -Name "Image Name" -EnabledState "Enabled"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IImage
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+
+LABPLAN <LabPlan>: The object of lab service lab plan.
+  [AllowedRegion <List<String>>]: The allowed regions for the lab creator to use when creating labs using this lab plan.
+  [DefaultAutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
+  [DefaultAutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
+  [DefaultAutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
+  [DefaultAutoShutdownProfileShutdownOnDisconnect <String>]: Whether shutdown on disconnect is enabled
+  [DefaultAutoShutdownProfileShutdownOnIdle <String>]: Whether a VM will get shutdown when it has idled for a period of time.
+  [DefaultAutoShutdownProfileShutdownWhenNotConnected <String>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
+  [DefaultConnectionProfileClientRdpAccess <String>]: The enabled access level for Client Access over RDP.
+  [DefaultConnectionProfileClientSshAccess <String>]: The enabled access level for Client Access over SSH.
+  [DefaultConnectionProfileWebRdpAccess <String>]: The enabled access level for Web Access over RDP.
+  [DefaultConnectionProfileWebSshAccess <String>]: The enabled access level for Web Access over SSH.
+  [DefaultNetworkProfileSubnetId <String>]: The external subnet resource id
+  [LinkedLmsInstance <String>]: Base Url of the lms instance this lab plan can link lab rosters against.
+  [SharedGalleryId <String>]: Resource ID of the Shared Image Gallery attached to this lab plan. When saving a lab template virtual machine image it will be persisted in this gallery. Shared images from the gallery can be made available to use when creating new labs.
+  [SupportInfoEmail <String>]: Support contact email address.
+  [SupportInfoInstruction <String>]: Support instructions.
+  [SupportInfoPhone <String>]: Support contact phone number.
+  [SupportInfoUrl <String>]: Support web address.
+  [Location <String>]: The geo-location where the resource lives
+  [Tag <ITrackedResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+
+LABPLANINPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/update-azlabservicesplanimage
+#>
+function Update-AzLabServicesPlanImage {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IImage])]
+[CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the lab plan that uniquely identifies it within containing resource group.
+    # Used in resource URIs and in UI.
+    ${LabPlanName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityLabPlanExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='LabPlan', Mandatory)]
+    [Alias('ImageName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The image name.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
+    [Parameter(ParameterSetName='LabPlan')]
+    [Parameter(ParameterSetName='ResourceId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityLabPlanExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${LabPlanInputObject},
+
+    [Parameter(ParameterSetName='LabPlan', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan]
+    # The object of lab service lab plan.
+    ${LabPlan},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityLabPlanExpanded')]
+    [Parameter(ParameterSetName='LabPlan', Mandatory)]
+    [Parameter(ParameterSetName='ResourceId', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Is the image enabled
+    ${EnabledState},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter(ParameterSetName='ResourceId', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The resource ID of lan service lab plan image to update.
+    ${ResourceId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials},
+
+    [Parameter(ParameterSetName='ResourceId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(ParameterSetName='ResourceId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.LabServices.private\Update-AzLabServicesPlanImage_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.LabServices.private\Update-AzLabServicesPlanImage_UpdateViaIdentityExpanded';
+            UpdateViaIdentityLabPlanExpanded = 'Az.LabServices.private\Update-AzLabServicesPlanImage_UpdateViaIdentityLabPlanExpanded';
+            UpdateViaJsonFilePath = 'Az.LabServices.private\Update-AzLabServicesPlanImage_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.LabServices.private\Update-AzLabServicesPlanImage_UpdateViaJsonString';
+            LabPlan = 'Az.LabServices.custom\Update-AzLabServicesPlanImage_LabPlan';
+            ResourceId = 'Az.LabServices.custom\Update-AzLabServicesPlanImage_ResourceId';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString', 'LabPlan', 'ResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Operation to update a lab schedule.
+.Description
+Operation to update a lab schedule.
+.Example
+Update-AzLabServicesSchedule -ResourceGroupName "Group Name" -LabName "Lab Name" -Name "Schedule Name" -Note "Update note."
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ISchedule
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+
+LAB <Lab>: The object of lab service lab.
+  [AdditionalCapabilityInstallGpuDriver <String>]: Flag to pre-install dedicated GPU drivers.
+  [AdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
+  [AdminUserUsername <String>]: The username to use when signing in to lab VMs.
+  [AutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
+  [AutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
+  [AutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
+  [AutoShutdownProfileShutdownOnDisconnect <String>]: Whether shutdown on disconnect is enabled
+  [AutoShutdownProfileShutdownOnIdle <String>]: Whether a VM will get shutdown when it has idled for a period of time.
+  [AutoShutdownProfileShutdownWhenNotConnected <String>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
+  [ConnectionProfileClientRdpAccess <String>]: The enabled access level for Client Access over RDP.
+  [ConnectionProfileClientSshAccess <String>]: The enabled access level for Client Access over SSH.
+  [ConnectionProfileWebRdpAccess <String>]: The enabled access level for Web Access over RDP.
+  [ConnectionProfileWebSshAccess <String>]: The enabled access level for Web Access over SSH.
+  [Description <String>]: The description of the lab.
+  [ImageReferenceId <String>]: Image resource ID
+  [ImageReferenceOffer <String>]: The image offer if applicable.
+  [ImageReferencePublisher <String>]: The image publisher
+  [ImageReferenceSku <String>]: The image SKU
+  [ImageReferenceVersion <String>]: The image version specified on creation.
+  [NetworkProfileLoadBalancerId <String>]: The external load balancer resource id
+  [NetworkProfilePublicIPId <String>]: The external public IP resource id
+  [NetworkProfileSubnetId <String>]: The external subnet resource id
+  [NonAdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
+  [NonAdminUserUsername <String>]: The username to use when signing in to lab VMs.
+  [PlanId <String>]: The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
+  [RosterProfileActiveDirectoryGroupId <String>]: The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.
+  [RosterProfileLmsInstance <String>]: The base URI identifying the lms instance.
+  [RosterProfileLtiClientId <String>]: The unique id of the azure lab services tool in the lms.
+  [RosterProfileLtiContextId <String>]: The unique context identifier for the lab in the lms.
+  [RosterProfileLtiRosterEndpoint <String>]: The uri of the names and roles service endpoint on the lms for the class attached to this lab.
+  [SecurityProfileOpenAccess <String>]: Whether any user or only specified users can register to a lab.
+  [SkuCapacity <Int32?>]: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+  [SkuFamily <String>]: If the service has different generations of hardware, for the same SKU, then that can be captured here.
+  [SkuName <String>]: The name of the SKU. Ex - P3. It is typically a letter+number code
+  [SkuSize <String>]: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+  [SkuTier <String>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+  [Title <String>]: The title of the lab.
+  [VirtualMachineProfileCreateOption <String>]: Indicates what lab virtual machines are created from.
+  [VirtualMachineProfileUsageQuota <TimeSpan?>]: The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
+  [VirtualMachineProfileUseSharedPassword <String>]: Enabling this option will use the same password for all user VMs.
+  [Location <String>]: The geo-location where the resource lives
+  [Tag <ITrackedResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+
+LABINPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/update-azlabservicesschedule
+#>
+function Update-AzLabServicesSchedule {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ISchedule])]
+[CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the lab that uniquely identifies it within containing lab account.
+    # Used in resource URIs.
+    ${LabName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityLabExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='Lab', Mandatory)]
+    [Alias('ScheduleName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the schedule that uniquely identifies it within containing lab.
+    # Used in resource URIs.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
+    [Parameter(ParameterSetName='Lab')]
+    [Parameter(ParameterSetName='ResourceId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityLabExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${LabInputObject},
+
+    [Parameter(ParameterSetName='Lab', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
+    # The object of lab service lab.
+    ${Lab},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='Lab')]
+    [Parameter(ParameterSetName='ResourceId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Notes for this schedule.
+    ${Note},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='Lab')]
+    [Parameter(ParameterSetName='ResourceId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.DateTime]
+    # When the recurrence will expire.
+    # This date is inclusive.
+    ${RecurrencePatternExpirationDate},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='Lab')]
+    [Parameter(ParameterSetName='ResourceId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Daily", "Weekly")]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The frequency of the recurrence.
+    ${RecurrencePatternFrequency},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='Lab')]
+    [Parameter(ParameterSetName='ResourceId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.Int32]
+    # The interval to invoke the schedule on.
+    # For example, interval = 2 and RecurrenceFrequency.Daily will run every 2 days.
+    # When no interval is supplied, an interval of 1 is used.
+    ${RecurrencePatternInterval},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='Lab')]
+    [Parameter(ParameterSetName='ResourceId')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.PSArgumentCompleterAttribute("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String[]]
+    # The week days the schedule runs.
+    # Used for when the Frequency is set to Weekly.
+    ${RecurrencePatternWeekDay},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='Lab')]
+    [Parameter(ParameterSetName='ResourceId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.DateTime]
+    # When lab user virtual machines will be started.
+    # Timestamp offsets will be ignored and timeZoneId is used instead.
+    ${StartAt},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='Lab')]
+    [Parameter(ParameterSetName='ResourceId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.DateTime]
+    # When lab user virtual machines will be stopped.
+    # Timestamp offsets will be ignored and timeZoneId is used instead.
+    ${StopAt},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='Lab')]
+    [Parameter(ParameterSetName='ResourceId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The IANA timezone id for the schedule.
+    ${TimeZoneId},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter(ParameterSetName='ResourceId', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The resource ID of lab service schedule to update.
+    ${ResourceId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
@@ -8027,6 +8087,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -8046,13 +8115,15 @@ begin {
         }
 
         $mapping = @{
-            Reset = 'Az.LabServices.custom\Reset-AzLabServicesVMPassword_Reset';
-            ResourceId = 'Az.LabServices.custom\Reset-AzLabServicesVMPassword_ResourceId';
-            VM = 'Az.LabServices.custom\Reset-AzLabServicesVMPassword_VM';
+            UpdateExpanded = 'Az.LabServices.private\Update-AzLabServicesSchedule_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.LabServices.private\Update-AzLabServicesSchedule_UpdateViaIdentityExpanded';
+            UpdateViaIdentityLabExpanded = 'Az.LabServices.private\Update-AzLabServicesSchedule_UpdateViaIdentityLabExpanded';
+            UpdateViaJsonFilePath = 'Az.LabServices.private\Update-AzLabServicesSchedule_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.LabServices.private\Update-AzLabServicesSchedule_UpdateViaJsonString';
+            Lab = 'Az.LabServices.custom\Update-AzLabServicesSchedule_Lab';
+            ResourceId = 'Az.LabServices.custom\Update-AzLabServicesSchedule_ResourceId';
         }
-        if (('Reset', 'ResourceId', 'VM') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString', 'Lab', 'ResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -8066,6 +8137,1770 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Operation to update a lab user.
+.Description
+Operation to update a lab user.
+.Example
+Update-AzLabServicesUser -ResourceGroupName "Group Name" -LabName "Lab Name" -Name "User Name" -AdditionalUsageQuota $(New-TimeSpan -Hours 2)
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+
+LAB <Lab>: 
+  [AdditionalCapabilityInstallGpuDriver <String>]: Flag to pre-install dedicated GPU drivers.
+  [AdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
+  [AdminUserUsername <String>]: The username to use when signing in to lab VMs.
+  [AutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
+  [AutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
+  [AutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
+  [AutoShutdownProfileShutdownOnDisconnect <String>]: Whether shutdown on disconnect is enabled
+  [AutoShutdownProfileShutdownOnIdle <String>]: Whether a VM will get shutdown when it has idled for a period of time.
+  [AutoShutdownProfileShutdownWhenNotConnected <String>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
+  [ConnectionProfileClientRdpAccess <String>]: The enabled access level for Client Access over RDP.
+  [ConnectionProfileClientSshAccess <String>]: The enabled access level for Client Access over SSH.
+  [ConnectionProfileWebRdpAccess <String>]: The enabled access level for Web Access over RDP.
+  [ConnectionProfileWebSshAccess <String>]: The enabled access level for Web Access over SSH.
+  [Description <String>]: The description of the lab.
+  [ImageReferenceId <String>]: Image resource ID
+  [ImageReferenceOffer <String>]: The image offer if applicable.
+  [ImageReferencePublisher <String>]: The image publisher
+  [ImageReferenceSku <String>]: The image SKU
+  [ImageReferenceVersion <String>]: The image version specified on creation.
+  [NetworkProfileLoadBalancerId <String>]: The external load balancer resource id
+  [NetworkProfilePublicIPId <String>]: The external public IP resource id
+  [NetworkProfileSubnetId <String>]: The external subnet resource id
+  [NonAdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
+  [NonAdminUserUsername <String>]: The username to use when signing in to lab VMs.
+  [PlanId <String>]: The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
+  [RosterProfileActiveDirectoryGroupId <String>]: The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.
+  [RosterProfileLmsInstance <String>]: The base URI identifying the lms instance.
+  [RosterProfileLtiClientId <String>]: The unique id of the azure lab services tool in the lms.
+  [RosterProfileLtiContextId <String>]: The unique context identifier for the lab in the lms.
+  [RosterProfileLtiRosterEndpoint <String>]: The uri of the names and roles service endpoint on the lms for the class attached to this lab.
+  [SecurityProfileOpenAccess <String>]: Whether any user or only specified users can register to a lab.
+  [SkuCapacity <Int32?>]: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+  [SkuFamily <String>]: If the service has different generations of hardware, for the same SKU, then that can be captured here.
+  [SkuName <String>]: The name of the SKU. Ex - P3. It is typically a letter+number code
+  [SkuSize <String>]: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+  [SkuTier <String>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+  [Title <String>]: The title of the lab.
+  [VirtualMachineProfileCreateOption <String>]: Indicates what lab virtual machines are created from.
+  [VirtualMachineProfileUsageQuota <TimeSpan?>]: The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
+  [VirtualMachineProfileUseSharedPassword <String>]: Enabling this option will use the same password for all user VMs.
+  [Location <String>]: The geo-location where the resource lives
+  [Tag <ITrackedResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+
+LABINPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/update-azlabservicesuser
+#>
+function Update-AzLabServicesUser {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser])]
+[CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the lab that uniquely identifies it within containing lab account.
+    # Used in resource URIs.
+    ${LabName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityLabExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='Lab', Mandatory)]
+    [Alias('UserName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the user that uniquely identifies it within containing lab.
+    # Used in resource URIs.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
+    [Parameter(ParameterSetName='Lab')]
+    [Parameter(ParameterSetName='ResourceId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityLabExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${LabInputObject},
+
+    [Parameter(ParameterSetName='Lab', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
+    # 
+    ${Lab},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityLabExpanded')]
+    [Parameter(ParameterSetName='Lab')]
+    [Parameter(ParameterSetName='ResourceId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.TimeSpan]
+    # The amount of usage quota time the user gets in addition to the lab usage quota.
+    ${AdditionalUsageQuota},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter(ParameterSetName='ResourceId', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The resource ID of lab service user to update.
+    ${ResourceId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.LabServices.private\Update-AzLabServicesUser_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.LabServices.private\Update-AzLabServicesUser_UpdateViaIdentityExpanded';
+            UpdateViaIdentityLabExpanded = 'Az.LabServices.private\Update-AzLabServicesUser_UpdateViaIdentityLabExpanded';
+            UpdateViaJsonFilePath = 'Az.LabServices.private\Update-AzLabServicesUser_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.LabServices.private\Update-AzLabServicesUser_UpdateViaJsonString';
+            Lab = 'Az.LabServices.custom\Update-AzLabServicesUser_Lab';
+            ResourceId = 'Az.LabServices.custom\Update-AzLabServicesUser_ResourceId';
+        }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString', 'Lab', 'ResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Re-image a lab virtual machine.
+The virtual machine will be deleted and recreated using the latest published snapshot of the reference environment of the lab.
+.Description
+Re-image a lab virtual machine.
+The virtual machine will be deleted and recreated using the latest published snapshot of the reference environment of the lab.
+.Example
+Update-AzLabServicesVMReimage -ResourceGroupName "Group Name" -LabName "Lab Name" -Name 0
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
+.Outputs
+System.Boolean
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+
+LABINPUTOBJECT <ILabServicesIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ImageName <String>]: The image name.
+  [LabName <String>]: The name of the lab that uniquely identifies it within containing lab account. Used in resource URIs.
+  [LabPlanName <String>]: The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
+  [OperationResultId <String>]: The operation result ID / name.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScheduleName <String>]: The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [UserName <String>]: The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
+  [VirtualMachineName <String>]: The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs.
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/update-azlabservicesvmreimage
+#>
+function Update-AzLabServicesVMReimage {
+[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
+[CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Reimage', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the lab that uniquely identifies it within containing lab account.
+    # Used in resource URIs.
+    ${LabName},
+
+    [Parameter(ParameterSetName='Reimage', Mandatory)]
+    [Parameter(ParameterSetName='ReimageViaIdentityLab', Mandatory)]
+    [Alias('VirtualMachineName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The ID of the virtual machine that uniquely identifies it within the containing lab.
+    # Used in resource URIs.
+    ${Name},
+
+    [Parameter(ParameterSetName='Reimage', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Reimage')]
+    [Parameter(ParameterSetName='ResourceId')]
+    [Parameter(ParameterSetName='VM')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='ReimageViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='ReimageViaIdentityLab', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity]
+    # Identity Parameter
+    ${LabInputObject},
+
+    [Parameter(ParameterSetName='ResourceId', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The resource ID of lab service virtual machine.
+    ${ResourceId},
+
+    [Parameter(ParameterSetName='VM', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine]
+    # The object of lab service virtual machine.
+    ${VM},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(ParameterSetName='Reimage')]
+    [Parameter(ParameterSetName='ReimageViaIdentity')]
+    [Parameter(ParameterSetName='ReimageViaIdentityLab')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Reimage = 'Az.LabServices.private\Update-AzLabServicesVMReimage_Reimage';
+            ReimageViaIdentity = 'Az.LabServices.private\Update-AzLabServicesVMReimage_ReimageViaIdentity';
+            ReimageViaIdentityLab = 'Az.LabServices.private\Update-AzLabServicesVMReimage_ReimageViaIdentityLab';
+            ResourceId = 'Az.LabServices.custom\Update-AzLabServicesVMReimage_ResourceId';
+            VM = 'Az.LabServices.custom\Update-AzLabServicesVMReimage_VM';
+        }
+        if (('Reimage', 'ResourceId', 'VM') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+API to add additional user quota.
+.Description
+API to add additional user quota.
+.Example
+Add-AzLabServicesUserQuota -ResourceGroupName "group name" -LabName "lab name" -Email 'student@contoso.com' -UsageQuotaToAddToExisting $(New-TimeSpan -Hours 4)
+.Example
+$user = Get-AzLabServicesUser -ResourceGroupName "group name" -LabName "lab name" -UserName 'ContosoUser12345'
+$user | Add-AzLabServicesUserQuota -UsageQuotaToAddToExisting $(New-TimeSpan -Hours 5)
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+USER <User>: The object of lab service user.
+  [AdditionalUsageQuota <TimeSpan?>]: The amount of usage quota time the user gets in addition to the lab usage quota.
+  [Email <String>]: Email address of the user.
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/add-azlabservicesuserquota
+#>
+function Add-AzLabServicesUserQuota {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser])]
+[CmdletBinding(DefaultParameterSetName='User', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='Email', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Email', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the lab service lab.
+    ${LabName},
+
+    [Parameter(ParameterSetName='Email', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # Email address of the user.
+    ${Email},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.TimeSpan]
+    # The amount of usage quota time the user gets in addition to the current user quota.
+    ${UsageQuotaToAddToExisting},
+
+    [Parameter(ParameterSetName='User', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User]
+    # The object of lab service user.
+    ${User},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Email = 'Az.LabServices.custom\Add-AzLabServicesUserQuota_Email';
+            User = 'Az.LabServices.custom\Add-AzLabServicesUserQuota_User';
+        }
+        if (('Email', 'User') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+API to return the lab for a specific VM.
+.Description
+API to return the lab for a specific VM.
+.Example
+Get-AzLabServicesLabForVM -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<GroupName>/providers/Microsoft.LabServices/labs/<labName>/virtualMachines/<VMName>'
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/get-azlabserviceslabforvm
+#>
+function Get-AzLabServicesLabForVM {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab])]
+[CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The resource Id of lab service VM.
+    ${ResourceId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            __AllParameterSets = 'Az.LabServices.custom\Get-AzLabServicesLabForVM';
+        }
+        if (('__AllParameterSets') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+API to get labs.
+.Description
+API to get labs.
+.Example
+Get-AzLabServicesLab
+.Example
+Get-AzLabServicesLab -ResourceGroupName 'yourgroupname' -Name 'yourlabname'
+.Example
+$plan = Get-AzLabServicesLabPlan -LabPlanName 'lab plan name'
+$plan | Get-AzLabServicesLab -Name 'lab name'
+.Example
+Get-AzLabServicesLab -ResourceGroupName 'group name' -Name '*lab name'
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+LABPLAN <LabPlan>: The object of lab service lab plan.
+  [AllowedRegion <List<String>>]: The allowed regions for the lab creator to use when creating labs using this lab plan.
+  [DefaultAutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
+  [DefaultAutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
+  [DefaultAutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
+  [DefaultAutoShutdownProfileShutdownOnDisconnect <String>]: Whether shutdown on disconnect is enabled
+  [DefaultAutoShutdownProfileShutdownOnIdle <String>]: Whether a VM will get shutdown when it has idled for a period of time.
+  [DefaultAutoShutdownProfileShutdownWhenNotConnected <String>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
+  [DefaultConnectionProfileClientRdpAccess <String>]: The enabled access level for Client Access over RDP.
+  [DefaultConnectionProfileClientSshAccess <String>]: The enabled access level for Client Access over SSH.
+  [DefaultConnectionProfileWebRdpAccess <String>]: The enabled access level for Web Access over RDP.
+  [DefaultConnectionProfileWebSshAccess <String>]: The enabled access level for Web Access over SSH.
+  [DefaultNetworkProfileSubnetId <String>]: The external subnet resource id
+  [LinkedLmsInstance <String>]: Base Url of the lms instance this lab plan can link lab rosters against.
+  [SharedGalleryId <String>]: Resource ID of the Shared Image Gallery attached to this lab plan. When saving a lab template virtual machine image it will be persisted in this gallery. Shared images from the gallery can be made available to use when creating new labs.
+  [SupportInfoEmail <String>]: Support contact email address.
+  [SupportInfoInstruction <String>]: Support instructions.
+  [SupportInfoPhone <String>]: Support contact phone number.
+  [SupportInfoUrl <String>]: Support web address.
+  [Location <String>]: The geo-location where the resource lives
+  [Tag <ITrackedResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/get-azlabserviceslab
+#>
+function Get-AzLabServicesLab {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab])]
+[CmdletBinding(DefaultParameterSetName='ListBySubscription', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='LabPlan')]
+    [Parameter(ParameterSetName='ListByLabName', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the user that uniquely identifies it within containing lab.
+    # Used in resource URIs.
+    ${Name},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='LabPlan', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan]
+    # The object of lab service lab plan.
+    ${LabPlan},
+
+    [Parameter(ParameterSetName='ListByLabName')]
+    [Parameter(ParameterSetName='ListByResourceGroup', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='ResourceId', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The resource Id of lab service lab.
+    ${ResourceId},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            LabPlan = 'Az.LabServices.custom\Get-AzLabServicesLab_LabPlan';
+            ListByLabName = 'Az.LabServices.custom\Get-AzLabServicesLab_ListByLabName';
+            ListByResourceGroup = 'Az.LabServices.custom\Get-AzLabServicesLab_ListByResourceGroup';
+            ListBySubscription = 'Az.LabServices.custom\Get-AzLabServicesLab_ListBySubscription';
+            ResourceId = 'Az.LabServices.custom\Get-AzLabServicesLab_ResourceId';
+        }
+        if (('LabPlan', 'ListByLabName', 'ListByResourceGroup', 'ListBySubscription', 'ResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+API to get the template vm for the lab.
+.Description
+API to get the template vm for the lab.
+.Example
+Get-AzLabServicesTemplateVM -ResourceGroupName "group name" -LabName "lab name"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+LAB <Lab>: The object of lab service lab.
+  [AdditionalCapabilityInstallGpuDriver <String>]: Flag to pre-install dedicated GPU drivers.
+  [AdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
+  [AdminUserUsername <String>]: The username to use when signing in to lab VMs.
+  [AutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
+  [AutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
+  [AutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
+  [AutoShutdownProfileShutdownOnDisconnect <String>]: Whether shutdown on disconnect is enabled
+  [AutoShutdownProfileShutdownOnIdle <String>]: Whether a VM will get shutdown when it has idled for a period of time.
+  [AutoShutdownProfileShutdownWhenNotConnected <String>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
+  [ConnectionProfileClientRdpAccess <String>]: The enabled access level for Client Access over RDP.
+  [ConnectionProfileClientSshAccess <String>]: The enabled access level for Client Access over SSH.
+  [ConnectionProfileWebRdpAccess <String>]: The enabled access level for Web Access over RDP.
+  [ConnectionProfileWebSshAccess <String>]: The enabled access level for Web Access over SSH.
+  [Description <String>]: The description of the lab.
+  [ImageReferenceId <String>]: Image resource ID
+  [ImageReferenceOffer <String>]: The image offer if applicable.
+  [ImageReferencePublisher <String>]: The image publisher
+  [ImageReferenceSku <String>]: The image SKU
+  [ImageReferenceVersion <String>]: The image version specified on creation.
+  [NetworkProfileLoadBalancerId <String>]: The external load balancer resource id
+  [NetworkProfilePublicIPId <String>]: The external public IP resource id
+  [NetworkProfileSubnetId <String>]: The external subnet resource id
+  [NonAdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
+  [NonAdminUserUsername <String>]: The username to use when signing in to lab VMs.
+  [PlanId <String>]: The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
+  [RosterProfileActiveDirectoryGroupId <String>]: The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.
+  [RosterProfileLmsInstance <String>]: The base URI identifying the lms instance.
+  [RosterProfileLtiClientId <String>]: The unique id of the azure lab services tool in the lms.
+  [RosterProfileLtiContextId <String>]: The unique context identifier for the lab in the lms.
+  [RosterProfileLtiRosterEndpoint <String>]: The uri of the names and roles service endpoint on the lms for the class attached to this lab.
+  [SecurityProfileOpenAccess <String>]: Whether any user or only specified users can register to a lab.
+  [SkuCapacity <Int32?>]: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+  [SkuFamily <String>]: If the service has different generations of hardware, for the same SKU, then that can be captured here.
+  [SkuName <String>]: The name of the SKU. Ex - P3. It is typically a letter+number code
+  [SkuSize <String>]: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+  [SkuTier <String>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+  [Title <String>]: The title of the lab.
+  [VirtualMachineProfileCreateOption <String>]: Indicates what lab virtual machines are created from.
+  [VirtualMachineProfileUsageQuota <TimeSpan?>]: The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
+  [VirtualMachineProfileUseSharedPassword <String>]: Enabling this option will use the same password for all user VMs.
+  [Location <String>]: The geo-location where the resource lives
+  [Tag <ITrackedResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicestemplatevm
+#>
+function Get-AzLabServicesTemplateVM {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of lab service lab.
+    ${LabName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Lab', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
+    # The object of lab service lab.
+    ${Lab},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.LabServices.custom\Get-AzLabServicesTemplateVM_Get';
+            Lab = 'Az.LabServices.custom\Get-AzLabServicesTemplateVM_Lab';
+        }
+        if (('Get', 'Lab') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+API to get the assigned vm for the user.
+.Description
+API to get the assigned vm for the user.
+.Example
+Get-AzLabServicesUserVM -ResourceGroupName "Group Name" -LabName "Lab Name" -Email 'user@contoso.com'
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+LAB <Lab>: The object of lab service lab.
+  [AdditionalCapabilityInstallGpuDriver <String>]: Flag to pre-install dedicated GPU drivers.
+  [AdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
+  [AdminUserUsername <String>]: The username to use when signing in to lab VMs.
+  [AutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
+  [AutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
+  [AutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
+  [AutoShutdownProfileShutdownOnDisconnect <String>]: Whether shutdown on disconnect is enabled
+  [AutoShutdownProfileShutdownOnIdle <String>]: Whether a VM will get shutdown when it has idled for a period of time.
+  [AutoShutdownProfileShutdownWhenNotConnected <String>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
+  [ConnectionProfileClientRdpAccess <String>]: The enabled access level for Client Access over RDP.
+  [ConnectionProfileClientSshAccess <String>]: The enabled access level for Client Access over SSH.
+  [ConnectionProfileWebRdpAccess <String>]: The enabled access level for Web Access over RDP.
+  [ConnectionProfileWebSshAccess <String>]: The enabled access level for Web Access over SSH.
+  [Description <String>]: The description of the lab.
+  [ImageReferenceId <String>]: Image resource ID
+  [ImageReferenceOffer <String>]: The image offer if applicable.
+  [ImageReferencePublisher <String>]: The image publisher
+  [ImageReferenceSku <String>]: The image SKU
+  [ImageReferenceVersion <String>]: The image version specified on creation.
+  [NetworkProfileLoadBalancerId <String>]: The external load balancer resource id
+  [NetworkProfilePublicIPId <String>]: The external public IP resource id
+  [NetworkProfileSubnetId <String>]: The external subnet resource id
+  [NonAdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
+  [NonAdminUserUsername <String>]: The username to use when signing in to lab VMs.
+  [PlanId <String>]: The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
+  [RosterProfileActiveDirectoryGroupId <String>]: The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.
+  [RosterProfileLmsInstance <String>]: The base URI identifying the lms instance.
+  [RosterProfileLtiClientId <String>]: The unique id of the azure lab services tool in the lms.
+  [RosterProfileLtiContextId <String>]: The unique context identifier for the lab in the lms.
+  [RosterProfileLtiRosterEndpoint <String>]: The uri of the names and roles service endpoint on the lms for the class attached to this lab.
+  [SecurityProfileOpenAccess <String>]: Whether any user or only specified users can register to a lab.
+  [SkuCapacity <Int32?>]: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+  [SkuFamily <String>]: If the service has different generations of hardware, for the same SKU, then that can be captured here.
+  [SkuName <String>]: The name of the SKU. Ex - P3. It is typically a letter+number code
+  [SkuSize <String>]: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+  [SkuTier <String>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+  [Title <String>]: The title of the lab.
+  [VirtualMachineProfileCreateOption <String>]: Indicates what lab virtual machines are created from.
+  [VirtualMachineProfileUsageQuota <TimeSpan?>]: The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
+  [VirtualMachineProfileUseSharedPassword <String>]: Enabling this option will use the same password for all user VMs.
+  [Location <String>]: The geo-location where the resource lives
+  [Tag <ITrackedResourceTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
+
+USER <User>: The object of lab service user.
+  [AdditionalUsageQuota <TimeSpan?>]: The amount of usage quota time the user gets in addition to the lab usage quota.
+  [Email <String>]: Email address of the user.
+.Link
+https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicesuservm
+#>
+function Get-AzLabServicesUserVM {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
+[CmdletBinding(DefaultParameterSetName='ResourceId', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # The name of lab service lab.
+    ${LabName},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='Lab', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [System.String]
+    # Email address of the user.
+    ${Email},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Lab', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
+    # The object of lab service lab.
+    ${Lab},
+
+    [Parameter(ParameterSetName='ResourceId', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [System.String]
+    # The resource Id of lab service user.
+    ${ResourceId},
+
+    [Parameter(ParameterSetName='User', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User]
+    # The object of lab service user.
+    ${User},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            Get = 'Az.LabServices.custom\Get-AzLabServicesUserVM_Get';
+            Lab = 'Az.LabServices.custom\Get-AzLabServicesUserVM_Lab';
+            ResourceId = 'Az.LabServices.custom\Get-AzLabServicesUserVM_ResourceId';
+            User = 'Az.LabServices.custom\Get-AzLabServicesUserVM_User';
+        }
+        if (('Get', 'Lab', 'ResourceId', 'User') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -8118,45 +9953,41 @@ API to start the assigned vm for the user.
 Start-AzLabServicesUserVM -ResourceGroupName "Group Name" -LabName "Lab Name" -Email "user@contoso.com"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-USER <User>: 
-  Email <String>: Email address of the user.
+USER <User>: The object of lab service user that can use virtual machines.
   [AdditionalUsageQuota <TimeSpan?>]: The amount of usage quota time the user gets in addition to the lab usage quota.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [Email <String>]: Email address of the user.
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/start-azlabservicesuservm
 #>
 function Start-AzLabServicesUserVM {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
 [CmdletBinding(DefaultParameterSetName='Start', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Start', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Start', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
+    # The name of lab service lab.
     ${LabName},
 
     [Parameter(ParameterSetName='Start', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
-    # The name of the user that uniqely identifies it within containing lab.
-    # Used in resource URIs.
+    # Email address of the user that can use virtual machines.
     ${Email},
 
     [Parameter()]
@@ -8168,8 +9999,8 @@ param(
 
     [Parameter(ParameterSetName='User', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User]
-    # To construct, see NOTES section for USER properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User]
+    # The object of lab service user that can use virtual machines.
     ${User},
 
     [Parameter()]
@@ -8239,6 +10070,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -8261,9 +10101,7 @@ begin {
             Start = 'Az.LabServices.custom\Start-AzLabServicesUserVM_Start';
             User = 'Az.LabServices.custom\Start-AzLabServicesUserVM_User';
         }
-        if (('Start', 'User') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Start', 'User') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -8277,6 +10115,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -8329,45 +10170,41 @@ API to stop the assigned vm for the user.
 Stop-AzLabServicesUserVM -ResourceGroupName "Group Name" -LabName "Lab Name" -Email "user@contoso.com"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-USER <User>: 
-  Email <String>: Email address of the user.
+USER <User>: The object of lab service user to stop.
   [AdditionalUsageQuota <TimeSpan?>]: The amount of usage quota time the user gets in addition to the lab usage quota.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [Email <String>]: Email address of the user.
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/stop-azlabservicesuservm
 #>
 function Stop-AzLabServicesUserVM {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
 [CmdletBinding(DefaultParameterSetName='Stop', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Stop', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Stop', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
+    # The name of lab service lab.
     ${LabName},
 
     [Parameter(ParameterSetName='Stop', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
-    # The name of the user that uniqely identifies it within containing lab.
-    # Used in resource URIs.
+    # Email address of the user.
     ${Email},
 
     [Parameter()]
@@ -8379,8 +10216,8 @@ param(
 
     [Parameter(ParameterSetName='User', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User]
-    # To construct, see NOTES section for USER properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User]
+    # The object of lab service user to stop.
     ${User},
 
     [Parameter()]
@@ -8450,6 +10287,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -8472,9 +10318,7 @@ begin {
             Stop = 'Az.LabServices.custom\Stop-AzLabServicesUserVM_Stop';
             User = 'Az.LabServices.custom\Stop-AzLabServicesUserVM_User';
         }
-        if (('Stop', 'User') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Stop', 'User') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -8488,443 +10332,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
         }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Operation to update a lab resource.
-.Description
-Operation to update a lab resource.
-.Example
-Update-AzLabServicesLab -ResourceGroupName "Group Name" -Name "Lab Name" -AutoShutdownProfileShutdownOnDisconnect Enabled -AutoShutdownProfileDisconnectDelay "00:25:00"
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
-.Link
-https://learn.microsoft.com/powershell/module/az.labservices/update-azlabserviceslab
-#>
-function Update-AzLabServicesLab {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]
-[CmdletBinding(DefaultParameterSetName='Update', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Alias('LabName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the lab that uniquely identifies it within containing lab account.
-    # Used in resource URIs.
-    ${Name},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState])]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState]
-    # Flag to pre-install dedicated GPU drivers.
-    ${AdditionalCapabilityInstallGpuDriver},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.Security.SecureString]
-    # The password for the user.
-    # This is required for the TemplateVM createOption.
-    ${AdminUserPassword},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # The username to use when signing in to lab VMs.
-    ${AdminUserUsername},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.TimeSpan]
-    # The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
-    ${AutoShutdownProfileDisconnectDelay},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.TimeSpan]
-    # The amount of time a VM will idle before it is shutdown if this behavior is enabled.
-    ${AutoShutdownProfileIdleDelay},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.TimeSpan]
-    # The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-    ${AutoShutdownProfileNoConnectDelay},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState])]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState]
-    # Whether shutdown on disconnect is enabled
-    ${AutoShutdownProfileShutdownOnDisconnect},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ShutdownOnIdleMode])]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ShutdownOnIdleMode]
-    # Whether a VM will get shutdown when it has idled for a period of time.
-    ${AutoShutdownProfileShutdownOnIdle},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState])]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState]
-    # Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-    ${AutoShutdownProfileShutdownWhenNotConnected},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType]
-    # The enabled access level for Client Access over RDP.
-    ${ConnectionProfileClientRdpAccess},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType]
-    # The enabled access level for Client Access over SSH.
-    ${ConnectionProfileClientSshAccess},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType]
-    # The enabled access level for Web Access over RDP.
-    ${ConnectionProfileWebRdpAccess},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType]
-    # The enabled access level for Web Access over SSH.
-    ${ConnectionProfileWebSshAccess},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # The description of the lab.
-    ${Description},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # Image resource ID
-    ${ImageReferenceId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # The image offer if applicable.
-    ${ImageReferenceOffer},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # The image publisher
-    ${ImageReferencePublisher},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # The image SKU
-    ${ImageReferenceSku},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # The image version specified on creation.
-    ${ImageReferenceVersion},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # The ID of the lab plan.
-    # Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com.
-    # Setting a labPlanId on an existing lab provides organization..
-    ${LabPlanId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.Security.SecureString]
-    # The password for the user.
-    # This is required for the TemplateVM createOption.
-    ${NonAdminUserPassword},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # The username to use when signing in to lab VMs.
-    ${NonAdminUserUsername},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # The AAD group ID which this lab roster is populated from.
-    # Having this set enables AAD sync mode.
-    ${RosterProfileActiveDirectoryGroupId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # The base URI identifying the lms instance.
-    ${RosterProfileLmsInstance},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # The unique id of the azure lab services tool in the lms.
-    ${RosterProfileLtiClientId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # The unique context identifier for the lab in the lms.
-    ${RosterProfileLtiContextId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # The uri of the names and roles service endpoint on the lms for the class attached to this lab.
-    ${RosterProfileLtiRosterEndpoint},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState])]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState]
-    # Whether any user or only specified users can register to a lab.
-    ${SecurityProfileOpenAccess},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.Int32]
-    # If the SKU supports scale out/in then the capacity integer should be included.
-    # If scale out/in is not possible for the resource this may be omitted.
-    ${SkuCapacity},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # If the service has different generations of hardware, for the same SKU, then that can be captured here.
-    ${SkuFamily},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # The name of the SKU.
-    # Ex - P3.
-    # It is typically a letter+number code
-    ${SkuName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # The SKU size.
-    # When the name field is the combination of tier and some other value, this would be the standalone code.
-    ${SkuSize},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.SkuTier])]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.SkuTier]
-    # This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-    ${SkuTier},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String[]]
-    # Resource tags.
-    ${Tag},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.String]
-    # The title of the lab.
-    ${Title},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.CreateOption])]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.CreateOption]
-    # Indicates what lab virtual machines are created from.
-    ${VirtualMachineProfileCreateOption},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [System.TimeSpan]
-    # The initial quota alloted to each lab user.
-    # Must be a time span between 0 and 9999 hours.
-    ${VirtualMachineProfileUsageQuota},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState])]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState]
-    # Enabling this option will use the same password for all user VMs.
-    ${VirtualMachineProfileUseSharedPassword},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Update = 'Az.LabServices.custom\Update-AzLabServicesLab_Update';
-        }
-        if (('Update') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -8977,29 +10387,28 @@ API to update the lab quota.
 Update-AzLabServicesQuota -ResourceGroupName "Group Name" -LabName "Lab Name" -LabQuota $(New-TimeSpan -Hours 3)
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-LAB <Lab>: 
-  Location <String>: The geo-location where the resource lives
-  [AdditionalCapabilityInstallGpuDriver <EnableState?>]: Flag to pre-install dedicated GPU drivers.
-  [AdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
+LAB <Lab>: The object of lab service lab.
+  [AdditionalCapabilityInstallGpuDriver <String>]: Flag to pre-install dedicated GPU drivers.
+  [AdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
   [AdminUserUsername <String>]: The username to use when signing in to lab VMs.
   [AutoShutdownProfileDisconnectDelay <TimeSpan?>]: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
   [AutoShutdownProfileIdleDelay <TimeSpan?>]: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
   [AutoShutdownProfileNoConnectDelay <TimeSpan?>]: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-  [AutoShutdownProfileShutdownOnDisconnect <EnableState?>]: Whether shutdown on disconnect is enabled
-  [AutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode?>]: Whether a VM will get shutdown when it has idled for a period of time.
-  [AutoShutdownProfileShutdownWhenNotConnected <EnableState?>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  [ConnectionProfileClientRdpAccess <ConnectionType?>]: The enabled access level for Client Access over RDP.
-  [ConnectionProfileClientSshAccess <ConnectionType?>]: The enabled access level for Client Access over SSH.
-  [ConnectionProfileWebRdpAccess <ConnectionType?>]: The enabled access level for Web Access over RDP.
-  [ConnectionProfileWebSshAccess <ConnectionType?>]: The enabled access level for Web Access over SSH.
+  [AutoShutdownProfileShutdownOnDisconnect <String>]: Whether shutdown on disconnect is enabled
+  [AutoShutdownProfileShutdownOnIdle <String>]: Whether a VM will get shutdown when it has idled for a period of time.
+  [AutoShutdownProfileShutdownWhenNotConnected <String>]: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
+  [ConnectionProfileClientRdpAccess <String>]: The enabled access level for Client Access over RDP.
+  [ConnectionProfileClientSshAccess <String>]: The enabled access level for Client Access over SSH.
+  [ConnectionProfileWebRdpAccess <String>]: The enabled access level for Web Access over RDP.
+  [ConnectionProfileWebSshAccess <String>]: The enabled access level for Web Access over SSH.
   [Description <String>]: The description of the lab.
   [ImageReferenceId <String>]: Image resource ID
   [ImageReferenceOffer <String>]: The image offer if applicable.
@@ -9009,7 +10418,7 @@ LAB <Lab>:
   [NetworkProfileLoadBalancerId <String>]: The external load balancer resource id
   [NetworkProfilePublicIPId <String>]: The external public IP resource id
   [NetworkProfileSubnetId <String>]: The external subnet resource id
-  [NonAdminUserPassword <String>]: The password for the user. This is required for the TemplateVM createOption.
+  [NonAdminUserPassword <SecureString>]: The password for the user. This is required for the TemplateVM createOption.
   [NonAdminUserUsername <String>]: The username to use when signing in to lab VMs.
   [PlanId <String>]: The ID of the lab plan. Used during resource creation to provide defaults and acts as a permission container when creating a lab via labs.azure.com. Setting a labPlanId on an existing lab provides organization..
   [RosterProfileActiveDirectoryGroupId <String>]: The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.
@@ -9017,35 +10426,30 @@ LAB <Lab>:
   [RosterProfileLtiClientId <String>]: The unique id of the azure lab services tool in the lms.
   [RosterProfileLtiContextId <String>]: The unique context identifier for the lab in the lms.
   [RosterProfileLtiRosterEndpoint <String>]: The uri of the names and roles service endpoint on the lms for the class attached to this lab.
-  [SecurityProfileOpenAccess <EnableState?>]: Whether any user or only specified users can register to a lab.
+  [SecurityProfileOpenAccess <String>]: Whether any user or only specified users can register to a lab.
   [SkuCapacity <Int32?>]: If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
   [SkuFamily <String>]: If the service has different generations of hardware, for the same SKU, then that can be captured here.
   [SkuName <String>]: The name of the SKU. Ex - P3. It is typically a letter+number code
   [SkuSize <String>]: The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
-  [SkuTier <SkuTier?>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [SkuTier <String>]: This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
   [Title <String>]: The title of the lab.
-  [VirtualMachineProfileCreateOption <CreateOption?>]: Indicates what lab virtual machines are created from.
+  [VirtualMachineProfileCreateOption <String>]: Indicates what lab virtual machines are created from.
   [VirtualMachineProfileUsageQuota <TimeSpan?>]: The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
-  [VirtualMachineProfileUseSharedPassword <EnableState?>]: Enabling this option will use the same password for all user VMs.
+  [VirtualMachineProfileUseSharedPassword <String>]: Enabling this option will use the same password for all user VMs.
+  [Location <String>]: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/update-azlabservicesquota
 #>
 function Update-AzLabServicesQuota {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab])]
 [CmdletBinding(DefaultParameterSetName='Lab', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Lab', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab]
-    # To construct, see NOTES section for LAB properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab]
+    # The object of lab service lab.
     ${Lab},
 
     [Parameter()]
@@ -9065,11 +10469,14 @@ param(
     [Parameter(ParameterSetName='Set', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     [System.String]
+    # The name of lab service lab.
     ${LabName},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
     [System.TimeSpan]
+    # The initial quota alloted to each lab user.
+    # Must be a time span between 0 and 9999 hours.
     ${LabQuota},
 
     [Parameter()]
@@ -9139,6 +10546,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -9161,9 +10577,7 @@ begin {
             Lab = 'Az.LabServices.custom\Update-AzLabServicesQuota_Lab';
             Set = 'Az.LabServices.custom\Update-AzLabServicesQuota_Set';
         }
-        if (('Lab', 'Set') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Lab', 'Set') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -9177,6 +10591,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

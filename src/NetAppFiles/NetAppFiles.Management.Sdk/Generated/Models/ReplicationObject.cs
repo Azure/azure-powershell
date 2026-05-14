@@ -47,7 +47,25 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="destinationReplications">A list of destination replications
         /// </param>
-        public ReplicationObject(string replicationId = default(string), string endpointType = default(string), string replicationSchedule = default(string), string remoteVolumeResourceId = default(string), RemotePath remotePath = default(RemotePath), string remoteVolumeRegion = default(string), System.Collections.Generic.IList<DestinationReplication> destinationReplications = default(System.Collections.Generic.IList<DestinationReplication>))
+
+        /// <param name="externalReplicationSetupStatus">Property that only applies to external replications. Provides a
+        /// machine-readable value for the status of the external replication setup.
+        /// Possible values include: &#39;ClusterPeerRequired&#39;, &#39;ClusterPeerPending&#39;,
+        /// &#39;VServerPeerRequired&#39;, &#39;ReplicationCreateRequired&#39;, &#39;NoActionRequired&#39;</param>
+
+        /// <param name="externalReplicationSetupInfo">Contains human-readable instructions on what the next step is to finish the
+        /// external replication setup.
+        /// </param>
+
+        /// <param name="mirrorState">The mirror state property describes the current status of data replication
+        /// for a replication. It provides insight into whether the data is actively
+        /// being mirrored, if the replication process has been paused, or if it has
+        /// yet to be initialized.
+        /// Possible values include: &#39;Uninitialized&#39;, &#39;Mirrored&#39;, &#39;Broken&#39;</param>
+
+        /// <param name="relationshipStatus">The status of the Volume Replication
+        /// Possible values include: &#39;Idle&#39;, &#39;Transferring&#39;</param>
+        public ReplicationObject(string replicationId = default(string), string endpointType = default(string), string replicationSchedule = default(string), string remoteVolumeResourceId = default(string), RemotePath remotePath = default(RemotePath), string remoteVolumeRegion = default(string), System.Collections.Generic.IList<DestinationReplication> destinationReplications = default(System.Collections.Generic.IList<DestinationReplication>), string externalReplicationSetupStatus = default(string), string externalReplicationSetupInfo = default(string), string mirrorState = default(string), string relationshipStatus = default(string))
 
         {
             this.ReplicationId = replicationId;
@@ -57,6 +75,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
             this.RemotePath = remotePath;
             this.RemoteVolumeRegion = remoteVolumeRegion;
             this.DestinationReplications = destinationReplications;
+            this.ExternalReplicationSetupStatus = externalReplicationSetupStatus;
+            this.ExternalReplicationSetupInfo = externalReplicationSetupInfo;
+            this.MirrorState = mirrorState;
+            this.RelationshipStatus = relationshipStatus;
             CustomInit();
         }
 
@@ -73,11 +95,11 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public string ReplicationId {get; private set; }
 
         /// <summary>
-        /// Gets or sets indicates whether the local volume is the source or
-        /// destination for the Volume Replication Possible values include: &#39;src&#39;, &#39;dst&#39;
+        /// Gets indicates whether the local volume is the source or destination for
+        /// the Volume Replication Possible values include: &#39;src&#39;, &#39;dst&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "endpointType")]
-        public string EndpointType {get; set; }
+        public string EndpointType {get; private set; }
 
         /// <summary>
         /// Gets or sets schedule Possible values include: &#39;_10minutely&#39;, &#39;hourly&#39;, &#39;daily&#39;
@@ -110,6 +132,35 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "destinationReplications")]
         public System.Collections.Generic.IList<DestinationReplication> DestinationReplications {get; private set; }
+
+        /// <summary>
+        /// Gets property that only applies to external replications. Provides a
+        /// machine-readable value for the status of the external replication setup. Possible values include: &#39;ClusterPeerRequired&#39;, &#39;ClusterPeerPending&#39;, &#39;VServerPeerRequired&#39;, &#39;ReplicationCreateRequired&#39;, &#39;NoActionRequired&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "externalReplicationSetupStatus")]
+        public string ExternalReplicationSetupStatus {get; private set; }
+
+        /// <summary>
+        /// Gets contains human-readable instructions on what the next step is to
+        /// finish the external replication setup.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "externalReplicationSetupInfo")]
+        public string ExternalReplicationSetupInfo {get; private set; }
+
+        /// <summary>
+        /// Gets the mirror state property describes the current status of data
+        /// replication for a replication. It provides insight into whether the data is
+        /// actively being mirrored, if the replication process has been paused, or if
+        /// it has yet to be initialized. Possible values include: &#39;Uninitialized&#39;, &#39;Mirrored&#39;, &#39;Broken&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "mirrorState")]
+        public string MirrorState {get; private set; }
+
+        /// <summary>
+        /// Gets the status of the Volume Replication Possible values include: &#39;Idle&#39;, &#39;Transferring&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "relationshipStatus")]
+        public string RelationshipStatus {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -126,6 +177,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
             {
                 this.RemotePath.Validate();
             }
+
+
+
+
 
 
         }

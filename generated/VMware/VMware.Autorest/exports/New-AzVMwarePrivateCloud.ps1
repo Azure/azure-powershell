@@ -35,7 +35,7 @@ IDENTITYSOURCE <IIdentitySource[]>: vCenter Single Sign On Identity Sources To c
   [Alias <String>]: The domain's NetBIOS name
   [BaseGroupDn <String>]: The base distinguished name for groups
   [BaseUserDn <String>]: The base distinguished name for users
-  [Domain <String>]: The domain's dns name
+  [Domain <String>]: The domain's DNS name
   [Name <String>]: The name of the identity source
   [Password <SecureString>]: The password of the Active Directory user with a minimum of read-only access to         Base DN for users and groups.
   [PrimaryServer <String>]: Primary server URL
@@ -278,8 +278,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

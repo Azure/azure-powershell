@@ -104,10 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models
             }
             AddIf( null != this._internalSkuName ? (Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Json.JsonNode) this._internalSkuName.ToJson(null,serializationMode) : null, "sku" ,container.Add );
             AddIf( null != this._properties ? (Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Json.JsonNode) this._properties.ToJson(null,serializationMode) : null, "properties" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.SerializationMode.IncludeCreate))
-            {
-                AddIf( null != (((object)this._location)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Json.JsonString(this._location.ToString()) : null, "location" ,container.Add );
-            }
+            AddIf( null != (((object)this._location)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Json.JsonString(this._location.ToString()) : null, "location" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

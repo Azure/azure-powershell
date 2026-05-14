@@ -20,8 +20,8 @@ Remove-AzAksArcNodepool -ClusterName <String> -Name <String> -ResourceGroupName 
 
 ### DeleteViaIdentity
 ```
-Remove-AzAksArcNodepool -ClusterName <String> -InputObject <IAksArcIdentity> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzAksArcNodepool -InputObject <IAksArcIdentity> [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,7 +58,7 @@ The name of the Kubernetes cluster on which get is called.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -134,7 +134,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -149,10 +149,10 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False

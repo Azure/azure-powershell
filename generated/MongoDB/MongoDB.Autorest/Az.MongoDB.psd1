@@ -1,7 +1,7 @@
 @{
   GUID = '9391b75f-d056-4cf6-adee-e3b40204ec22'
   RootModule = './Az.MongoDB.psm1'
-  ModuleVersion = '0.1.0'
+  ModuleVersion = '1.0.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'

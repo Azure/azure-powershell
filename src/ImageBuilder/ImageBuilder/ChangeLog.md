@@ -33,7 +33,7 @@
 * Introduced secrets detection feature to safeguard sensitive data.
 
 ## Version 0.4.0
-*  Upgraded API verision from 2022-02-14 to 2022-07-01.
+*  Upgraded API version from 2022-02-14 to 2022-07-01.
    - Added a cmdlet named `Get-AzImageBuilderTrigger`.
    - Added a cmdlet named `New-AzImageBuilderTemplateDistributeVersionerLatestObject` to create an in-memory object for DistributeVersionerLatest.
    - Added a cmdlet named `New-AzImageBuilderTemplateDistributeVersionerSourceObject` to create an in-memory object for DistributeVersionerSource.
@@ -42,7 +42,7 @@
    - Added a cmdlet named `Remove-AzImageBuilderTrigger`.
 
 ## Version 0.3.0
-*  Upgraded API verision from 2020-02-14 to 2022-02-14.
+*  Upgraded API version from 2020-02-14 to 2022-02-14.
     - Supported parameter `replicationRegions` in JSON file for `New-AzImageBuilderTemplate`. [#18924]
     - Added parameter `VMProfileUserAssignedIdentity` in `New-AzImageBuilderTemplate`. [#17273]
     - Added a cmdlet named `New-AzImageBuilderTemplateValidatorObject` to create an in-memory object for ImageTemplateValidator.

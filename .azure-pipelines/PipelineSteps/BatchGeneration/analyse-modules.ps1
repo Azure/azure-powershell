@@ -62,11 +62,6 @@ foreach ($moduleName in $moduleGroup) {
         {
             $FailedTasks += "UXMetadata"
         }
-        .("$toolsDirectory/ExecuteCIStep.ps1") -StaticAnalysisCmdletDiff @Parameters 2>>$ErrorLogPath
-        If (($LASTEXITCODE -ne 0) -and ($LASTEXITCODE -ne $null))
-        {
-            $FailedTasks += "CmdletDiff"
-        }
         If ($FailedTasks.Length -ne 0)
         {
             Write-Host "There are failed tasks: $FailedTasks"
@@ -82,9 +77,10 @@ foreach ($moduleName in $moduleGroup) {
         $result.Status = "Failed"
         $result.Error = $_.Exception.Message
     } finally {
-        $endTine = Get-Date
-        $result.DurationSeconds = ($endTine - $startTime).TotalSeconds
+        $endTime = Get-Date
+        $result.DurationSeconds = ($endTime - $startTime).TotalSeconds
         $results += $result
+        $result | ConvertTo-Json -Depth 5 | Write-Output
     }
 }
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzSearchPrivateEndpointConnection
 
 ## SYNOPSIS
-Update the private endpoint connection to the Azure Cognitive Search service.
+Update the private endpoint connection to the Azure AI Search service.
 
 ## SYNTAX
 
@@ -16,31 +16,34 @@ Update the private endpoint connection to the Azure Cognitive Search service.
 ```
 Set-AzSearchPrivateEndpointConnection [-ResourceGroupName] <String> [-ServiceName] <String> [-Name] <String>
  -Status <PSPrivateLinkServiceConnectionStatus> [-Description <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ParentObjectParameterSet
 ```
 Set-AzSearchPrivateEndpointConnection [-ParentObject] <PSSearchService> [-Name] <String>
  -Status <PSPrivateLinkServiceConnectionStatus> [-Description <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Set-AzSearchPrivateEndpointConnection [-ResourceId] <String> -Status <PSPrivateLinkServiceConnectionStatus>
- [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Description <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Set-AzSearchPrivateEndpointConnection -Status <PSPrivateLinkServiceConnectionStatus> [-Description <String>]
- [-InputObject] <PSPrivateEndpointConnection> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-InputObject] <PSPrivateEndpointConnection> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzSearchPrivateEndpointConnection** updates the private endpoint connection to the Azure Cognitive Search service.
+The **Set-AzSearchPrivateEndpointConnection** updates the private endpoint connection to the Azure AI Search service.
 
 ## EXAMPLES
 
@@ -64,7 +67,7 @@ Set-AzSearchPrivateEndpointConnection -ResourceGroupName arjagann -ServiceName a
 }
 ```
 
-This example updates a private endpoint connection's status of the Azure Cognitive Search service to be "Rejected".
+This example updates a private endpoint connection's status of the Azure AI Search service to be "Rejected".
 
 ## PARAMETERS
 
@@ -114,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Azure Cognitive Search Service private endpoint connection name
+Azure AI Search Service private endpoint connection name
 
 ```yaml
 Type: System.String
@@ -129,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -ParentObject
-Azure Cognitive Search Service Input Object.
+Azure AI Search Service Input Object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
@@ -174,7 +177,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceName
-Azure Cognitive Search Service name.
+Azure AI Search Service name.
 
 ```yaml
 Type: System.String

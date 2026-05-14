@@ -1,5 +1,5 @@
-FROM mcr.microsoft.com/powershell:azurelinux-3.0
-RUN tdnf update -y && tdnf upgrade -y && tdnf clean all
+FROM mcr.microsoft.com/dotnet/sdk:9.0-azurelinux3.0
+RUN tdnf update -y && tdnf upgrade -y && tdnf install -y tar gzip && tdnf clean all
 
 ARG REPOSITORY=PSGallery
 ARG MODULE=Az

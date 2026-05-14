@@ -51,7 +51,7 @@ Copy-AzRecoveryServicesVault -SourceVault $sourceVault -TargetVault $targetVault
 
 The first two cmdlets fetch Recovery Services Vault - vault1 and vault2 respectively.
 The second command triggers a partial data move from vault1 to vault2 with only those items which failed in previous move operations.
-$sourceVault and $targetVault can also belong to different subscription within same tanent, can be fetched by setting different subscription contexts.
+$sourceVault and $targetVault can also belong to different subscription within same tenant, can be fetched by setting different subscription contexts.
 
 ## PARAMETERS
 

@@ -1,10 +1,15 @@
-﻿
+
 
 function Suspend-AzDataProtectionBackupInstanceBackup
 {   
 	[OutputType('System.Boolean')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('This operation will stop backup for a backup instance and retains the backup data as per the policy except latest Recovery point, which will be retained forever')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PreviewMessage("**********************************************************************************************`n
+    * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *`n
+    * At least one change applies to this cmdlet.                                           *`n
+    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486  *`n
+    ***************************************************************************************************")]
 
     param(        
         [Parameter(ParameterSetName="Suspend", Mandatory=$false, HelpMessage='Subscription Id of the backup vault')]
@@ -98,7 +103,7 @@ function Suspend-AzDataProtectionBackupInstanceBackup
     {
         $parameterSetName = $PsCmdlet.ParameterSetName
         if($parameterSetName -eq "SuspendViaIdentity"){
-            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.SuspendBackupRequest]::new()
+            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.SuspendBackupRequest]::new()
 
             $hasResourceGuardOperationRequest = $PSBoundParameters.Remove("ResourceGuardOperationRequest")
             if($hasResourceGuardOperationRequest){

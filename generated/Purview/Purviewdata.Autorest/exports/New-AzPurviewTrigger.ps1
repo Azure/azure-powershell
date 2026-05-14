@@ -16,17 +16,17 @@
 
 <#
 .Synopsis
-Creates an instance of a trigger
+Create an instance of a trigger
 .Description
-Creates an instance of a trigger
+Create an instance of a trigger
 .Example
-$obj = New-AzPurviewTriggerObject -RecurrenceEndTime '7/20/2022 12:00:00 AM' -RecurrenceStartTime '2/17/2022 1:32:00 PM' -Interval 1 -RecurrenceFrequency 'Month' -ScanLevel 'Full' -ScheduleHour $(9) -ScheduleMinute $(0) -ScheduleMonthDay $(10)
+$obj = New-AzPurviewTriggerObject -RecurrenceEndTime '7/20/2022 12:00:00 AM' -RecurrenceStartTime '2/17/2022 1:32:00 PM' -Interval 1 -RecurrenceFrequency 'Month' -ScanLevel 'Full' -RecurrenceScheduleHour $(9) -RecurrenceScheduleMinute $(0) -RecurrenceScheduleMonthDay $(10)
 New-AzPurviewTrigger -Endpoint https://parv-brs-2.purview.azure.com/ -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan-6HK' -Body $obj
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -36,27 +36,27 @@ BODY <ITrigger>: .
   [IncrementalScanStartTime <DateTime?>]: 
   [Interval <Int32?>]: 
   [RecurrenceEndTime <DateTime?>]: 
-  [RecurrenceFrequency <TriggerFrequency?>]: 
+  [RecurrenceFrequency <String>]: 
   [RecurrenceInterval <String>]: 
-  [RecurrenceStartTime <DateTime?>]: 
-  [RecurrenceTimeZone <String>]: 
-  [ScanLevel <ScanLevelType?>]: 
-  [ScheduleAdditionalProperty <IRecurrenceScheduleAdditionalProperties>]: Dictionary of <any>
+  [RecurrenceScheduleAdditionalProperty <IRecurrenceScheduleAdditionalProperties>]: Dictionary of <any>
     [(Any) <Object>]: This indicates any property can be added to this object.
-  [ScheduleHour <Int32[]>]: 
-  [ScheduleMinute <Int32[]>]: 
-  [ScheduleMonthDay <Int32[]>]: 
-  [ScheduleMonthlyOccurrence <IRecurrenceScheduleOccurrence[]>]: 
+  [RecurrenceScheduleHour <List<Int32>>]: 
+  [RecurrenceScheduleMinute <List<Int32>>]: 
+  [RecurrenceScheduleMonthDay <List<Int32>>]: 
+  [RecurrenceScheduleMonthlyOccurrence <List<IRecurrenceScheduleOccurrence>>]: 
     [AdditionalProperty <IRecurrenceScheduleOccurrenceAdditionalProperties>]: Dictionary of <any>
       [(Any) <Object>]: This indicates any property can be added to this object.
-    [Day <DayOfWeek?>]: 
+    [Day <String>]: 
     [Occurrence <Int32?>]: 
-  [ScheduleWeekDay <DaysOfWeek[]>]: 
+  [RecurrenceScheduleWeekDay <List<String>>]: 
+  [RecurrenceStartTime <DateTime?>]: 
+  [RecurrenceTimeZone <String>]: 
+  [ScanLevel <String>]: 
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewtrigger
 #>
 function New-AzPurviewTrigger {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger])]
 [CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -78,12 +78,23 @@ param(
     # .
     ${ScanName},
 
-    [Parameter(Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger]
     # .
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -141,6 +152,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -161,6 +181,8 @@ begin {
 
         $mapping = @{
             Create = 'Az.Purviewdata.private\New-AzPurviewTrigger_Create';
+            CreateViaJsonFilePath = 'Az.Purviewdata.private\New-AzPurviewTrigger_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Purviewdata.private\New-AzPurviewTrigger_CreateViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -169,6 +191,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

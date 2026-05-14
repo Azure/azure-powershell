@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// Get a Service Fabric node type supported SKUs.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster resource.

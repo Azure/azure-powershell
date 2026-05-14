@@ -11,16 +11,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
     using System;
 
     /// <summary>
-    /// Fetch User API Key from internal database, if it was generated and stored while creating the Elasticsearch Organization.
+    /// Fetch the User API Key from the internal database, if it was generated and stored during the creation of the Elasticsearch
+    /// Organization.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] GetApiKey=>POST:"/subscriptions/{subscriptionId}/providers/Microsoft.Elastic/getOrganizationApiKey"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzElasticOrganizationApiKey_GetViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IUserApiKeyResponse))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"Fetch User API Key from internal database, if it was generated and stored while creating the Elasticsearch Organization.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"Fetch the User API Key from the internal database, if it was generated and stored during the creation of the Elasticsearch Organization.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Elastic/getOrganizationApiKey", ApiVersion = "2024-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Elastic/getOrganizationApiKey", ApiVersion = "2025-06-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.NotSuggestDefaultParameterSet]
     public partial class GetAzElasticOrganizationApiKey_GetViaJsonFilePath : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener,

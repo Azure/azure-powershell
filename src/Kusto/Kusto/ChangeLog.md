@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+## Version 2.4.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 
 ## Version 2.4.0
 * Upgraded nuget package to signed package.
@@ -70,7 +74,7 @@
 
 ## Version 0.1.1
 * Capacity is a new and optional parameter for Create and Update Cluster.
-* ETag of Database is depricated.
+* ETag of Database is deprecated.
 * Cluster has new Properties: Uri, DataIngestionUri and Capacity.
 
 ## Version 0.1.0

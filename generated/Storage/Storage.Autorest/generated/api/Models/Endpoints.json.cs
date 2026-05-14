@@ -69,6 +69,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             {_microsoftEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("microsoftEndpoints"), out var __jsonMicrosoftEndpoints) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountMicrosoftEndpoints.FromJson(__jsonMicrosoftEndpoints) : _microsoftEndpoint;}
             {_internetEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("internetEndpoints"), out var __jsonInternetEndpoints) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountInternetEndpoints.FromJson(__jsonInternetEndpoints) : _internetEndpoint;}
+            {_ipv6Endpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("ipv6Endpoints"), out var __jsonIpv6Endpoints) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountIpv6Endpoints.FromJson(__jsonIpv6Endpoints) : _ipv6Endpoint;}
             {_blob = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("blob"), out var __jsonBlob) ? (string)__jsonBlob : (string)_blob;}
             {_queue = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("queue"), out var __jsonQueue) ? (string)__jsonQueue : (string)_queue;}
             {_table = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("table"), out var __jsonTable) ? (string)__jsonTable : (string)_table;}
@@ -109,6 +110,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             }
             AddIf( null != this._microsoftEndpoint ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._microsoftEndpoint.ToJson(null,serializationMode) : null, "microsoftEndpoints" ,container.Add );
             AddIf( null != this._internetEndpoint ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._internetEndpoint.ToJson(null,serializationMode) : null, "internetEndpoints" ,container.Add );
+            AddIf( null != this._ipv6Endpoint ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) this._ipv6Endpoint.ToJson(null,serializationMode) : null, "ipv6Endpoints" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._blob)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString(this._blob.ToString()) : null, "blob" ,container.Add );

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventHubConsumerGroup
 
 ## SYNOPSIS
-create an Event Hubs consumer group as a nested resource within a Namespace.
+Create an Event Hubs consumer group as a nested resource within a Namespace.
 
 ## SYNTAX
 
@@ -44,7 +44,7 @@ New-AzEventHubConsumerGroup -EventHubName <String> -Name <String> -NamespaceInpu
 ```
 
 ## DESCRIPTION
-create an Event Hubs consumer group as a nested resource within a Namespace.
+Create an Event Hubs consumer group as a nested resource within a Namespace.
 
 ## EXAMPLES
 

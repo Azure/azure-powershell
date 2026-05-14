@@ -20,6 +20,7 @@ Update the Continuous Export configuration for this export id.
 .Description
 Update the Continuous Export configuration for this export id.
 .Example
+$context = "*****"
 $sastoken = New-AzStorageContainerSASToken -Name testcontainer -Context $context -ExpiryTime (Get-Date).AddYears(50) -Permission w
 $sasuri = "https://teststorageaccount.blob.core.windows.net/testcontainer" + $sastoken
 Set-AzApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test" `
@@ -27,9 +28,9 @@ Set-AzApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "
 -StorageSASUri $sasuri -DestinationType Blob
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentExportRequest
+Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponentExportRequest
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentExportConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponentExportConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -49,7 +50,7 @@ EXPORTPROPERTY <IApplicationInsightsComponentExportRequest>: An Application Insi
 https://learn.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsightscontinuousexport
 #>
 function Set-AzApplicationInsightsContinuousExport {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentExportConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponentExportConfiguration])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -82,9 +83,8 @@ param(
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentExportRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponentExportRequest]
     # An Application Insights component Continuous Export configuration request definition.
-    # To construct, see NOTES section for EXPORTPROPERTY properties and create a hash table.
     ${ExportProperty},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -144,6 +144,18 @@ param(
     # It must grant write permission.
     ${StorageSASUri},
 
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -200,14 +212,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Update = 'Az.ApplicationInsights.private\Set-AzApplicationInsightsContinuousExport_Update';
             UpdateExpanded = 'Az.ApplicationInsights.private\Set-AzApplicationInsightsContinuousExport_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.ApplicationInsights.private\Set-AzApplicationInsightsContinuousExport_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.ApplicationInsights.private\Set-AzApplicationInsightsContinuousExport_UpdateViaJsonString';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -216,6 +231,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

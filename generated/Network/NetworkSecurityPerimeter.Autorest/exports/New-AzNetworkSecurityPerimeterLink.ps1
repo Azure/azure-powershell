@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create NSP link resource.
+Create NSP link resource.
 .Description
-create NSP link resource.
+Create NSP link resource.
 .Example
 $remotePerimeterId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-1/providers/Microsoft.Network/networkSecurityPerimeters/test-nsp-2"
 New-AzNetworkSecurityPerimeterLink -Name link-test-1 -ResourceGroupName rg-test-1 -SecurityPerimeterName test-nsp-1 -AutoApprovedRemotePerimeterResourceId $remotePerimeterId  -LocalInboundProfile @('*') -RemoteInboundProfile @('*')
@@ -250,8 +250,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

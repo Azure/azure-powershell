@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string Container = "Container where the item resides";
             public const string RemoveProtectionOption = "If this option is used, all the recovery points for this item will also be deleted and restoring will not be possible.";
             public const string SuspendBackupOption = "If this option is used, all the recovery points for this item will expire as per the retention policy.";
-            public const string ExpiryDate = "Retention period for the recovery points created by this backup operaiton";
+            public const string ExpiryDate = "Retention period for the recovery points created by this backup operation";
             public const string ForceOption = "Force disables backup protection (prevents confirmation dialog). This parameter is optional.";
             public const string ForceSuspend = "Force suspends backup.";
             public const string ExpiryDateTimeUTC = "Specifies an expiry time for the Recovery point as a DateTime object, " + 
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string RestoreDiskList = "Specify which disks to recover of the backed up VM";
             public const string RestoreAsUnmanagedDisks = "Use this switch to specify to restore as unmanaged disks";
             public const string TargetZone = "Target zone to restore the disks";
-            public const string EdgeZone = "Switch parameter to indicate edge zone VM restore. This parameter can't be used in cross region and corss subscription restore scenario";
+            public const string EdgeZone = "Switch parameter to indicate edge zone VM restore. This parameter can't be used in cross region and cross subscription restore scenario";
             public const string RestoreAsManagedDisk = "Use this switch to specify to restore as managed disks.";
             public const string UseSystemAssignedIdentity = "Use this switch to trigger MSI based restore with SystemAssigned Identity";
             public const string UserAssignedIdentityId = "UserAssigned Identity Id to trigger MSI based restore with UserAssigned Identity";            
@@ -240,6 +240,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 " used to encrypt newly created disks.";
             public const string UseSystemAssignedIdentity = "Boolean flag to indicate if SystemAssigned Identity will be used for CMK encryption";
             public const string UserAssignedIdentity = "ARM Id of UserAssigned Identity to be used for CMK encryption. Provide this parameter if UseSystemAssignedIdentity is $false";
+            public const string CVMOsDiskEncryptionSetId = "Specify the Disk Encryption Set ID to use for OS disk encryption during restore of a Confidential VM. This is applicable only for Confidential VMs with managed disks. Please ensure that Disk Encryption Set has access to the Key vault.";
         }
 
         internal static class ResourceGuard

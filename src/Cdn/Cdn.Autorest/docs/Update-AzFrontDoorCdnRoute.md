@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzFrontDoorCdnRoute
 
 ## SYNOPSIS
-update an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
+Update an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 
 ## SYNTAX
 
@@ -86,7 +86,7 @@ Update-AzFrontDoorCdnRoute -EndpointName <String> -Name <String> -ProfileName <S
 ```
 
 ## DESCRIPTION
-update an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
+Update an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 
 ## EXAMPLES
 
@@ -486,7 +486,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the Resource group within the Azure subscription.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -531,7 +532,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Azure Subscription ID.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

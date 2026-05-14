@@ -49,7 +49,7 @@ Accept wildcard characters: False
 ```
 
 ### -AssignIdentity
-Generate and assign a new Storage Sync Service Identity for this storage sync service for use with accessing storage account and file share. If specify this paramter without "-IdentityType", will use system assigned identity.
+Generate and assign a new Storage Sync Service Identity for this storage sync service for use with accessing storage account and file share. If specify this parameter without "-IdentityType", will use system assigned identity.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

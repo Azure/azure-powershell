@@ -3,6 +3,7 @@
     <PsModuleName>HanaOnAzure</PsModuleName>
     <PsRootModuleName>HanaOnAzure</PsRootModuleName>
     <PsModuleFolder>HanaOnAzure.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

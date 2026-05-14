@@ -18,12 +18,6 @@ Get-AzStandbyContainerGroupPoolStatus -Name <String> -ResourceGroupName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
-```
-Get-AzStandbyContainerGroupPoolStatus -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### GetViaIdentity
 ```
 Get-AzStandbyContainerGroupPoolStatus -InputObject <IStandbyPoolIdentity> [-DefaultProfile <PSObject>]
@@ -33,6 +27,12 @@ Get-AzStandbyContainerGroupPoolStatus -InputObject <IStandbyPoolIdentity> [-Defa
 ### GetViaIdentityStandbyContainerGroupPool
 ```
 Get-AzStandbyContainerGroupPoolStatus -StandbyContainerGroupPoolInputObject <IStandbyPoolIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzStandbyContainerGroupPoolStatus -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -197,3 +197,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

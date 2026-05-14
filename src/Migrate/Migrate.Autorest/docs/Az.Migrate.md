@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Migrate
-Module Guid: ac145a87-2ada-4b6f-9d19-a70ac116949d
+Module Guid: 4b20d86a-512c-4f5f-bc7f-0fdfe64d8e0c
 Download Help Link: https://learn.microsoft.com/powershell/module/az.migrate
 Help Version: 1.0.0.0
 Locale: en-US

@@ -18,7 +18,7 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Wrapps around the DiagnosticSettings
+    /// Wraps around the DiagnosticSettings
     /// </summary>
     public class PSServiceDiagnosticSettings : DiagnosticSettingsResource
     {

@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         public ServiceFabricManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Get a Service Fabric service resource created or in the process of being created in the Service Fabric application resource.
+        /// Get a Service Fabric service resource created or in the process of being
+        /// created in the Service Fabric application resource.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -51,7 +52,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -279,7 +281,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         /// <param name='parameters'>
         /// The service resource.
@@ -310,7 +313,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         /// <param name='parameters'>
         /// The service resource for patch operations.
@@ -341,7 +345,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -357,7 +362,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         }
 
         /// <summary>
-        /// Gets all service resources created or in the process of being created in the Service Fabric application resource.
+        /// Gets all service resources created or in the process of being created in
+        /// the Service Fabric application resource.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -587,7 +593,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         /// <param name='parameters'>
         /// The service resource.
@@ -830,7 +837,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         /// <param name='parameters'>
         /// The service resource for patch operations.
@@ -1072,7 +1080,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         /// The name of the application resource.
         /// </param>
         /// <param name='serviceName'>
-        /// The name of the service resource in the format of {applicationName}~{serviceName}.
+        /// The name of the service resource in the format of
+        /// {applicationName}~{serviceName}.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1267,7 +1276,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
 
         }
         /// <summary>
-        /// Gets all service resources created or in the process of being created in the Service Fabric application resource.
+        /// Gets all service resources created or in the process of being created in
+        /// the Service Fabric application resource.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespace))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Description(@"update a namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}", ApiVersion = "2024-05-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}", ApiVersion = "2025-05-01-preview")]
     public partial class SetAzEventHubNamespace_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IContext
@@ -43,17 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
         /// <summary>Single Namespace item in List or Get Operation</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespace _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.EhNamespace();
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
 
         /// <summary>Alternate name specified when alias and namespace names are same.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Alternate name specified when alias and namespace names are same.")]
@@ -92,6 +83,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         SerializedName = @"clusterArmId",
         PossibleTypes = new [] { typeof(string) })]
         public string ClusterArmId { get => _parametersBody.ClusterArmId ?? null; set => _parametersBody.ClusterArmId = value; }
+
+        /// <summary>Setting to Enable or Disable Confidential Compute</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Setting to Enable or Disable Confidential Compute")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Setting to Enable or Disable Confidential Compute",
+        SerializedName = @"mode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        public string ConfidentialComputeMode { get => _parametersBody.ConfidentialComputeMode ?? null; set => _parametersBody.ConfidentialComputeMode = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -282,7 +285,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         Description = @"The minimum TLS version for the cluster to support, e.g. '1.2'",
         SerializedName = @"minimumTlsVersion",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("1.0", "1.1", "1.2")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.PSArgumentCompleterAttribute("1.0", "1.1", "1.2", "1.3")]
         public string MinimumTlsVersion { get => _parametersBody.MinimumTlsVersion ?? null; set => _parametersBody.MinimumTlsVersion = value; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
@@ -523,11 +526,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.EventHub.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -843,24 +841,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespace
                 var result = (await response);
-                if (null != result)
-                {
-                    if (0 == _responseSize)
-                    {
-                        _firstResponse = result;
-                        _responseSize = 1;
-                    }
-                    else
-                    {
-                        if (1 ==_responseSize)
-                        {
-                            // Flush buffer
-                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
-                        }
-                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
-                        _responseSize = 2;
-                    }
-                }
+                WriteObject(result, false);
             }
         }
     }

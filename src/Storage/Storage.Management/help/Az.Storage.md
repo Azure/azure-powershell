@@ -155,11 +155,17 @@ Gets service properties for Azure Storage File services.
 ### [Get-AzStorageFileServiceUsage](Get-AzStorageFileServiceUsage.md)
 Gets the usage of file service in storage account including account limits, file share limits and constants used in recommendations and bursting formula.
 
+### [Get-AzStorageFileSymbolicLink](Get-AzStorageFileSymbolicLink.md)
+Gets the properties of a symbolic link. Only works in NFS file share.
+
 ### [Get-AzStorageLocalUser](Get-AzStorageLocalUser.md)
 Gets a specified local user or lists all local users in a storage account.
 
 ### [Get-AzStorageLocalUserKey](Get-AzStorageLocalUserKey.md)
 Lists SSH authorized keys and shared key of a specified local user.
+
+### [Get-AzStorageNetworkSecurityPerimeterConfiguration](Get-AzStorageNetworkSecurityPerimeterConfiguration.md)
+Gets effective NetworkSecurityPerimeterConfiguration for association
 
 ### [Get-AzStorageObjectReplicationPolicy](Get-AzStorageObjectReplicationPolicy.md)
 Gets or lists object replication policy of a Storage account.
@@ -185,11 +191,20 @@ Gets a list of file shares.
 ### [Get-AzStorageShareStoredAccessPolicy](Get-AzStorageShareStoredAccessPolicy.md)
 Gets stored access policies for a Storage share.
 
+### [Get-AzStorageSku](Get-AzStorageSku.md)
+Lists the available SKUs supported by Microsoft.Storage for given subscription.
+
 ### [Get-AzStorageTable](Get-AzStorageTable.md)
 Lists the storage tables.
 
 ### [Get-AzStorageTableStoredAccessPolicy](Get-AzStorageTableStoredAccessPolicy.md)
 Gets the stored access policy or policies for an Azure storage table.
+
+### [Get-AzStorageTaskAssignment](Get-AzStorageTaskAssignment.md)
+Get the storage task assignment properties
+
+### [Get-AzStorageTaskAssignmentInstancesReport](Get-AzStorageTaskAssignmentInstancesReport.md)
+Fetch the report summary of a single storage task assignment's instances
 
 ### [Get-AzStorageUsage](Get-AzStorageUsage.md)
 Gets the Storage resource usage of the current subscription.
@@ -202,6 +217,9 @@ Invokes failover of a Storage account.
 
 ### [Invoke-AzStorageAccountHierarchicalNamespaceUpgrade](Invoke-AzStorageAccountHierarchicalNamespaceUpgrade.md)
 Validates if a storage account can be upgraded to enable HierarchicalNamespace, or upgrades a Storage account to enabled HierarchicalNamespace.
+
+### [Invoke-AzStorageReconcileNetworkSecurityPerimeterConfiguration](Invoke-AzStorageReconcileNetworkSecurityPerimeterConfiguration.md)
+Refreshes any information about the association.
 
 ### [Lock-AzRmStorageContainerImmutabilityPolicy](Lock-AzRmStorageContainerImmutabilityPolicy.md)
 Locks ImmutabilityPolicy of a Storage blob containers
@@ -275,6 +293,9 @@ Creates a hard link to a file in same share. Only works in NFS file share.
 ### [New-AzStorageFileSASToken](New-AzStorageFileSASToken.md)
 Generates a shared access signature token for a Storage file.
 
+### [New-AzStorageFileSymbolicLink](New-AzStorageFileSymbolicLink.md)
+Creates a symbolic link to a specified file. Only works in NFS file share.
+
 ### [New-AzStorageLocalUserPermissionScope](New-AzStorageLocalUserPermissionScope.md)
 Creates a permission scope object, which can be used in Set-AzStorageLocalUser.
 
@@ -313,6 +334,11 @@ Generates an SAS token for an Azure Storage table.
 
 ### [New-AzStorageTableStoredAccessPolicy](New-AzStorageTableStoredAccessPolicy.md)
 Creates a stored access policy for an Azure storage table.
+
+### [New-AzStorageTaskAssignment](New-AzStorageTaskAssignment.md)
+Asynchronously create a new storage task assignment sub-resource with the specified parameters.
+If a storage task assignment is already created and a subsequent create request is issued with different properties, the storage task assignment properties will be updated.
+If a storage task assignment is already created and a subsequent create request is issued with the exact same set of properties, the request will succeed.
 
 ### [Remove-AzDataLakeGen2AclRecursive](Remove-AzDataLakeGen2AclRecursive.md)
 Remove ACL recursively on the specified path. 
@@ -388,6 +414,9 @@ Removes a storage table.
 
 ### [Remove-AzStorageTableStoredAccessPolicy](Remove-AzStorageTableStoredAccessPolicy.md)
 Removes a stored access policy from an Azure storage table.
+
+### [Remove-AzStorageTaskAssignment](Remove-AzStorageTaskAssignment.md)
+Delete the storage task assignment sub-resource
 
 ### [Rename-AzStorageDirectory](Rename-AzStorageDirectory.md)
 Renames a directory.
@@ -528,4 +557,7 @@ Modifies the service properties for the Azure Storage File service.
 
 ### [Update-AzStorageServiceProperty](Update-AzStorageServiceProperty.md)
 Modifies the properties for the Azure Storage service.
+
+### [Update-AzStorageTaskAssignment](Update-AzStorageTaskAssignment.md)
+Update storage task assignment properties
 

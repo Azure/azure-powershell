@@ -28,7 +28,7 @@ For information on how to develop for `Az.FirmwareAnalysis`, see [how-to.md](how
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: ef348fed285ae01b78cf6afd394ad2c4c8b6da7e
+commit: 04b87408ba3b8afed159b3d3059bd1594c7f2dd3
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -39,23 +39,13 @@ require:
 # - (this-folder)/relative-path-to-your-local-readme.md
 
 input-file:
-  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/firmwares.json
-  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/workspaces.json
-  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/binaryHardeningResults.json
-  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/sbomComponents.json
-  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/cves.json
-  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/cryptoCertificates.json  
-  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/cryptoKeys.json
-  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/passwordHashes.json
-  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/summaries.json  
-  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/common.json  
-  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/operations.json 
+  - $(repo)/specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2025-08-02/iotfirmwaredefense.json
 
 try-require: 
   - /swagger/fist/resource-manager/readme.powershell.md
 
 # For new RP, the version is 0.1.0
-module-version: 0.1.0
+module-version: 0.2.0
 # Normally, title is the service name
 title: FirmwareAnalysis
 subject-prefix: $(service-name)

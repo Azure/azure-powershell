@@ -13,13 +13,14 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
     public static partial class ManagedAzResiliencyStatusOperationsExtensions
     {
         /// <summary>
-        /// Action to get Az Resiliency Status of all the Base resources constituting Service Fabric Managed Clusters.
+        /// Action to get Az Resiliency Status of all the Base resources constituting
+        /// Service Fabric Managed Clusters.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster resource.
@@ -30,13 +31,14 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Action to get Az Resiliency Status of all the Base resources constituting Service Fabric Managed Clusters.
+        /// Action to get Az Resiliency Status of all the Base resources constituting
+        /// Service Fabric Managed Clusters.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='clusterName'>
         /// The name of the cluster resource.

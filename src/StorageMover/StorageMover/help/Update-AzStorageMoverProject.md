@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzStorageMoverProject
 
 ## SYNOPSIS
-Updates properties for a Project resource.
+Update properties for a Project resource.
 Properties not specified in the request body will be unchanged.
 
 ## SYNTAX
@@ -20,11 +20,25 @@ Update-AzStorageMoverProject -Name <String> -ResourceGroupName <String> -Storage
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Update
+### UpdateViaJsonString
 ```
 Update-AzStorageMoverProject -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
- [-SubscriptionId <String>] -Project <IProjectUpdateParameters> [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzStorageMoverProject -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityStorageMoverExpanded
+```
+Update-AzStorageMoverProject -Name <String> -StorageMoverInputObject <IStorageMoverIdentity>
+ [-Description <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -33,14 +47,8 @@ Update-AzStorageMoverProject -InputObject <IStorageMoverIdentity> [-Description 
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaIdentity
-```
-Update-AzStorageMoverProject -InputObject <IStorageMoverIdentity> -Project <IProjectUpdateParameters>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Updates properties for a Project resource.
+Update properties for a Project resource.
 Properties not specified in the request body will be unchanged.
 
 ## EXAMPLES
@@ -89,7 +97,7 @@ A description for the Project.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityStorageMoverExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -101,11 +109,10 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -115,12 +122,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the Project resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityStorageMoverExpanded
 Aliases: ProjectName
 
 Required: True
@@ -130,29 +167,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Project
-The Project resource.
-To construct, see NOTES section for PROJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProjectUpdateParameters
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -162,12 +183,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -StorageMoverInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
+Parameter Sets: UpdateViaIdentityStorageMoverExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -StorageMoverName
 The name of the Storage Mover resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -182,7 +218,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -228,13 +264,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProjectUpdateParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IProject
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IProject
 
 ## NOTES
 

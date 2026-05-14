@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
     public abstract class AzureSqlElasticJobTargetGroupCmdletBase<TInputObject> : AzureSqlElasticJobsCmdletBase<TInputObject, IEnumerable<AzureSqlElasticJobTargetGroupModel>, AzureSqlElasticJobAdapter>
     {
         /// <summary>
-        /// Intializes the model adapter
+        /// Initializes the model adapter
         /// </summary>
         /// <returns>The Azure SQL Database Agent adapter</returns>
         protected override AzureSqlElasticJobAdapter InitModelAdapter()

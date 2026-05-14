@@ -539,20 +539,59 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 return null;
             }
 
-            ErrorResponse error = null;
-            var innerException = HandleError(ex.InnerException);
-            if (ex is CloudException)
+            ErrorResponse error;
+            if (ex is CloudException cloudEx)
             {
-                var cloudEx = ex as CloudException;
-                error = new ErrorResponse(cloudEx.Body?.Code, cloudEx.Body?.Message, cloudEx.Body?.Target, innerException);
+                // Map ARM API error details from the CloudException body, preserving the full nested error hierarchy.
+                // Using ex.InnerException when ARM details are present would traverse the .NET exception chain rather than
+                // the ARM error details, causing nested ARM errors (e.g. MultipleErrorsOccurred sub-errors) to be silently dropped.
+                // Fall back to ex.InnerException only when the ARM body carries no details (e.g. when Body itself is null).
+                var details = cloudEx.Body?.Details?
+                    .Select(ConvertCloudErrorToErrorResponse)
+                    .ToList();
+                var nestedDetails = details?.Count > 0
+                    ? details
+                    : HandleError(ex.InnerException);
+                var message = string.IsNullOrEmpty(cloudEx.Body?.Message)
+                    ? cloudEx.Message
+                    : cloudEx.Body.Message;
+
+                error = new ErrorResponse(
+                    cloudEx.Body?.Code,
+                    message,
+                    cloudEx.Body?.Target,
+                    nestedDetails);
             }
             else
             {
+                var innerException = HandleError(ex.InnerException);
                 error = new ErrorResponse(null, ex.Message, null, innerException);
             }
 
             return new List<ErrorResponse> { error };
+        }
 
+        /// <summary>
+        /// Recursively converts an ARM <see cref="CloudError"/> to an <see cref="ErrorResponse"/>,
+        /// preserving all nested error details.
+        /// </summary>
+        private static ErrorResponse ConvertCloudErrorToErrorResponse(CloudError cloudError)
+        {
+            if (cloudError == null)
+            {
+                return null;
+            }
+
+            var subDetails = cloudError.Details?
+                .Select(ConvertCloudErrorToErrorResponse)
+                .Where(d => d != null)
+                .ToList();
+
+            return new ErrorResponse(
+                cloudError.Code,
+                cloudError.Message,
+                cloudError.Target,
+                subDetails?.Count > 0 ? subDetails : null);
         }
 
         private IPage<DeploymentOperation> ListDeploymentOperations(PSDeploymentCmdletParameters parameters)
@@ -875,14 +914,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// <param name="tag">The resource group tag.</param>
         /// <param name="detailed">Whether the  return is detailed or not.</param>
         /// <param name="location">The resource group location.</param>
+        /// <param name="expand">The expand parameter for optional response properties.</param>
         /// <returns>The filtered resource groups</returns>
-        public virtual List<PSResourceGroup> FilterResourceGroups(string name, Hashtable tag, bool detailed, string location = null)
+        public virtual List<PSResourceGroup> FilterResourceGroups(string name, Hashtable tag, bool detailed, string location = null, bool expand = false)
         {
             List<PSResourceGroup> result = new List<PSResourceGroup>();
+            var resourceGroupFilter = new ODataQuery<ResourceGroupFilterWithExpand>();
 
-            ODataQuery<ResourceGroupFilter> resourceGroupFilter = null;
-
-            if (tag != null && tag.Count >= 1)
+            if (tag?.Count >= 1)
             {
                 PSTagValuePair tagValuePair = TagsConversionHelper.Create(tag);
                 if (tagValuePair == null || tag.Count > 1)
@@ -891,8 +930,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 }
 
                 resourceGroupFilter = string.IsNullOrEmpty(tagValuePair.Value)
-                    ? new ODataQuery<ResourceGroupFilter>(rgFilter => rgFilter.TagName == tagValuePair.Name)
-                    : new ODataQuery<ResourceGroupFilter>(rgFilter => rgFilter.TagName == tagValuePair.Name && rgFilter.TagValue == tagValuePair.Value);
+                    ? new ODataQuery<ResourceGroupFilterWithExpand>(rgFilter => rgFilter.TagName == tagValuePair.Name)
+                    : new ODataQuery<ResourceGroupFilterWithExpand>(rgFilter => rgFilter.TagName == tagValuePair.Name && rgFilter.TagValue == tagValuePair.Value);
+            }
+
+            if (expand) {
+                resourceGroupFilter.Expand = "createdTime,changedTime";
             }
 
             if (string.IsNullOrEmpty(name) || WildcardPattern.ContainsWildcardCharacters(name))
@@ -924,7 +967,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             {
                 try
                 {
-                    PSResourceGroup resourceGroup = ResourceManagementClient.ResourceGroups.Get(name).ToPSResourceGroup();
+                    PSResourceGroup resourceGroup = expand 
+                        ? ResourceManagementClient.ResourceGroups.Get(name, expand: "createdTime,changedTime").ToPSResourceGroup()
+                        : ResourceManagementClient.ResourceGroups.Get(name).ToPSResourceGroup();
+                    
                     if (string.IsNullOrEmpty(location) || resourceGroup.Location.EqualsAsLocation(location))
                     {
                         result.Add(resourceGroup);

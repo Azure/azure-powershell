@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
             string protectedItemUri = HelperUtils.GetProtectedItemUri(uriDict, rp.Id);
             string recoveryPointId = rp.RecoveryPointId;
-            //validtion block
+            //validation block
             if (!triggerRestoreRequest.Properties.GetType().IsSubclassOf(typeof(AzureWorkloadRestoreRequest)))
             {
                 if (storageAccountLocation != vaultLocation && rp.BackupManagementType != Models.BackupManagementType.AzureStorage)

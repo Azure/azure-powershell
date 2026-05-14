@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Initializes a new instance of the <see cref="ASRVaultSettings" /> class
         /// </summary>
-        /// <param name="asrVaultCreds">Vault credentails</param>
+        /// <param name="asrVaultCreds">Vault credentials</param>
         public ASRVaultSettings(
             ASRVaultCreds asrVaultCreds)
         {
@@ -3516,7 +3516,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public DateTime? DriverVersionExpiryDate { get; set; }
 
         /// <summary>
-        ///     Gets or sets the time of the last heartbeat recieved from the agent.
+        ///     Gets or sets the time of the last heartbeat received from the agent.
         /// </summary>
         public DateTime? LastHeartbeatUtc { get; set; }
 
@@ -3670,7 +3670,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public DateTime? DriverVersionExpiryDate { get; set; }
 
         /// <summary>
-        ///     Gets or sets the time of the last heartbeat recieved from the agent.
+        ///     Gets or sets the time of the last heartbeat received from the agent.
         /// </summary>
         public DateTime? LastHeartbeatUtc { get; set; }
 

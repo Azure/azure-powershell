@@ -85,7 +85,7 @@
     - `Get-AzOperationalInsightsSearchResult` (alias `Get-AzOperationalInsightsSearchResults`)
     - `Get-AzOperationalInsightsLinkTarget` (alias `Get-AzOperationalInsightsLinkTargets`)
 * Added parameters for `Set-AzOperationalInsightsWorkspace` and `New-AzOperationalInsightsWorkspace`
-* Created cmdlets for Linked Stoarge Account
+* Created cmdlets for Linked Storage Account
 * Created cmdlets for Clusters and Linked Service
 
 ## Version 1.3.4

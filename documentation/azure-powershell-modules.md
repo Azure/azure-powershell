@@ -93,7 +93,6 @@
 | Guest Configuration            | `Az.GuestConfiguration`         | [![GuestConfiguration]][GuestConfigurationGallery]                 | [Changelog][GuestConfigurationChangeLog]         |
 | SAP HANA on Azure              | `Az.HanaOnAzure`                | [![HanaOnAzure]][HanaOnAzureGallery]                               | [Changelog][HanaOnAzureChangeLog]                |
 | HDInsight                      | `Az.HDInsight`                  | [![HDInsight]][HDInsightGallery]                                   | [Changelog][HDInsightChangeLog]                  |
-| HdInsightOnAks                 | `Az.HdInsightOnAks`             | [![HdInsightOnAks]][HdInsightOnAksGallery]                         | [Changelog][HdInsightOnAksChangeLog]             |
 | HealthBot                      | `Az.HealthBot`                  | [![HealthBot]][HealthBotGallery]                                   | [Changelog][HealthBotChangeLog]                  |
 | HealthDataAIServices           | `Az.HealthDataAIServices`       | [![HealthDataAIServices]][HealthDataAIServicesGallery]             | [Changelog][HealthDataAIServicesChangeLog]       |
 | API for FHIR                   | `Az.HealthcareApis`             | [![HealthcareApis]][HealthcareApisGallery]                         | [Changelog][HealthcareApisChangeLog]             |
@@ -127,7 +126,6 @@
 | Monitor                        | `Az.Monitor`                    | [![Monitor]][MonitorGallery]                                       | [Changelog][MonitorChangeLog]                    |
 | Monitoring Solutions           | `Az.MonitoringSolutions`        | [![MonitoringSolutions]][MonitoringSolutionsGallery]               | [Changelog][MonitoringSolutionsChangeLog]        |
 | Database for MySQL             | `Az.MySql`                      | [![MySql]][MySqlGallery]                                           | [Changelog][MySqlChangeLog]                      |
-| Neon Postgres                  | `Az.NeonPostgres`               | [![NeonPostgres]][NeonPostgresGallery]                             | [Changelog][NeonPostgresChangeLog]               |
 | NetApp Files                   | `Az.NetAppFiles`                | [![NetAppFiles]][NetAppFilesGallery]                               | [Changelog][NetAppFilesChangeLog]                |
 | Network                        | `Az.Network`                    | [![Network]][NetworkGallery]                                       | [Changelog][NetworkChangeLog]                    |
 | NetworkAnalytics               | `Az.NetworkAnalytics`           | [![NetworkAnalytics]][NetworkAnalyticsGallery]                     | [Changelog][NetworkAnalyticsChangeLog]           |
@@ -279,7 +277,6 @@
 [GuestConfiguration]:         https://img.shields.io/powershellgallery/v/Az.GuestConfiguration.svg?style=flat-square&label=Az.GuestConfiguration
 [HanaOnAzure]:                https://img.shields.io/powershellgallery/v/Az.HanaOnAzure.svg?style=flat-square&label=Az.HanaOnAzure
 [HDInsight]:                  https://img.shields.io/powershellgallery/v/Az.HDInsight.svg?style=flat-square&label=Az.HDInsight
-[HdInsightOnAks]:             https://img.shields.io/powershellgallery/v/Az.HdInsightOnAks.svg?style=flat-square&label=Az.HdInsightOnAks
 [HealthBot]:                  https://img.shields.io/powershellgallery/v/Az.HealthBot.svg?style=flat-square&label=Az.HealthBot
 [HealthcareApis]:             https://img.shields.io/powershellgallery/v/Az.HealthcareApis.svg?style=flat-square&label=Az.HealthcareApis
 [HealthDataAIServices]:       https://img.shields.io/powershellgallery/v/Az.HealthDataAIServices.svg?style=flat-square&label=Az.HealthDataAIServices
@@ -313,7 +310,6 @@
 [Monitor]:                    https://img.shields.io/powershellgallery/v/Az.Monitor.svg?style=flat-square&label=Az.Monitor
 [MonitoringSolutions]:        https://img.shields.io/powershellgallery/v/Az.MonitoringSolutions.svg?style=flat-square&label=Az.MonitoringSolutions
 [MySql]:                      https://img.shields.io/powershellgallery/v/Az.MySql.svg?style=flat-square&label=Az.MySql
-[NeonPostgres]:               https://img.shields.io/powershellgallery/v/Az.NeonPostgres.svg?style=flat-square&label=Az.NeonPostgres                
 [NetAppFiles]:                https://img.shields.io/powershellgallery/v/Az.NetAppFiles.svg?style=flat-square&label=Az.NetAppFiles
 [Network]:                    https://img.shields.io/powershellgallery/v/Az.Network.svg?style=flat-square&label=Az.Network
 [NetworkAnalytics]:           https://img.shields.io/powershellgallery/v/Az.NetworkAnalytics.svg?style=flat-square&label=Az.NetworkAnalytics
@@ -461,7 +457,6 @@
 [GuestConfigurationGallery]:         https://www.powershellgallery.com/packages/Az.GuestConfiguration/
 [HanaOnAzureGallery]:                https://www.powershellgallery.com/packages/Az.HanaOnAzure/
 [HDInsightGallery]:                  https://www.powershellgallery.com/packages/Az.HDInsight/
-[HdInsightOnAksGallery]:             https://www.powershellgallery.com/packages/Az.HdInsightOnAks/
 [HealthBotGallery]:                  https://www.powershellgallery.com/packages/Az.HealthBot/
 [HealthcareApisGallery]:             https://www.powershellgallery.com/packages/Az.HealthcareApis/
 [HealthDataAIServicesGallery]:       https://www.powershellgallery.com/packages/Az.HealthDataAIServices/
@@ -495,7 +490,6 @@
 [MonitorGallery]:                    https://www.powershellgallery.com/packages/Az.Monitor/
 [MonitoringSolutionsGallery]:        https://www.powershellgallery.com/packages/Az.MonitoringSolutions/
 [MySqlGallery]:                      https://www.powershellgallery.com/packages/Az.MySql/
-[NeonPostgresGallery]:               https://www.powershellgallery.com/packages/Az.NeonPostgres/
 [NetAppFilesGallery]:                https://www.powershellgallery.com/packages/Az.NetAppFiles/
 [NetworkGallery]:                    https://www.powershellgallery.com/packages/Az.Network/
 [NetworkAnalyticsGallery]:           https://www.powershellgallery.com/packages/Az.NetworkAnalytics/
@@ -641,7 +635,6 @@
 [GuestConfigurationChangeLog]:         ../src/GuestConfiguration/GuestConfiguration/ChangeLog.md
 [HanaOnAzureChangeLog]:                ../src/HanaOnAzure/HanaOnAzure/ChangeLog.md
 [HDInsightChangeLog]:                  ../src/HDInsight/HDInsight/ChangeLog.md
-[HdInsightOnAksChangeLog]:             ../src/HdInsightOnAks/HdInsightOnAks/ChangeLog.md
 [HealthBotChangeLog]:                  ../src/HealthBot/HealthBot/ChangeLog.md
 [HealthcareApisChangeLog]:             ../src/HealthcareApis/HealthcareApis/ChangeLog.md
 [HealthDataAIServicesChangeLog]:       ../src/HealthDataAIServices/HealthDataAIServices/ChangeLog.md
@@ -675,7 +668,6 @@
 [MonitorChangeLog]:                    ../src/Monitor/Monitor/ChangeLog.md
 [MonitoringSolutionsChangeLog]:        ../src/MonitoringSolutions/MonitoringSolutions/ChangeLog.md
 [MySqlChangeLog]:                      ../src/MySql/MySql/ChangeLog.md
-[NeonPostgresChangeLog]:               ../src/NeonPostgres/NeonPostgres/ChangeLog.md
 [NetAppFilesChangeLog]:                ../src/NetAppFiles/NetAppFiles/ChangeLog.md
 [NetworkChangeLog]:                    ../src/Network/Network/ChangeLog.md
 [NetworkAnalyticsChangeLog]:           ../src/NetworkAnalytics/NetworkAnalytics/ChangeLog.md

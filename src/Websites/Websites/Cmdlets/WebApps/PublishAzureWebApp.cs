@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Configurable timeout in millseconds to wait for deployment operation to complete. The default timeout is 100000 milliseconds")]
+        [Parameter(Mandatory = false, HelpMessage = "Configurable timeout in milliseconds to wait for deployment operation to complete. The default timeout is 100000 milliseconds")]
         [ValidateRange(100000, 3600000)]
         public double Timeout { get; set; }
 
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     }
 
                     // Checking the response of the post request. If the post request fails with 502 or 503 HTTP status 
-                    // then deployments/latest endpoint may give false postive result.  
+                    // then deployments/latest endpoint may give false positive result.  
                     if (r.StatusCode != HttpStatusCode.OK && r.StatusCode != HttpStatusCode.Accepted)
                     {
                         var rec = new ErrorRecord(new Exception("Deployment failed with status code " + r.StatusCode), string.Empty, ErrorCategory.InvalidResult, null);

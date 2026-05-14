@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Extensions;
 
-    /// <summary>The resource model definition for an Azure Organization</summary>
+    /// <summary>The type used for update operations of the OrganizationResource.</summary>
     public partial class OrganizationResourceUpdate
     {
 
@@ -77,9 +77,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
             {
                 return;
             }
-            __azureResourceManagerCommonTypesTrackedResourceUpdate = new Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.AzureResourceManagerCommonTypesTrackedResourceUpdate(json);
-            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.OrganizationPropertiesUpdate.FromJson(__jsonProperties) : _property;}
             {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.AzureResourceManagerCommonTypesManagedServiceIdentityUpdate.FromJson(__jsonIdentity) : _identity;}
+            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.OrganizationResourceUpdateProperties.FromJson(__jsonProperties) : _property;}
+            {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.OrganizationResourceUpdateTags.FromJson(__jsonTags) : _tag;}
             AfterFromJson(json);
         }
 
@@ -102,9 +102,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models
             {
                 return container;
             }
-            __azureResourceManagerCommonTypesTrackedResourceUpdate?.ToJson(container, serializationMode);
-            AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
             AddIf( null != this._identity ? (Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonNode) this._identity.ToJson(null,serializationMode) : null, "identity" ,container.Add );
+            AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
+            AddIf( null != this._tag ? (Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Runtime.Json.JsonNode) this._tag.ToJson(null,serializationMode) : null, "tags" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

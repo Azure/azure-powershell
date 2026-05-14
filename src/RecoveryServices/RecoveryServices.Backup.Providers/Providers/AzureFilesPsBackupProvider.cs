@@ -642,7 +642,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 Logger.Instance.WriteDebug("Storage account was already registered");
             }
 
-            //get unregistered storage account, trigger dicovery if not found.
+            //get unregistered storage account, trigger discovery if not found.
             bool isBreak = false;
             bool isRefreshed = false; // have we triggered discovery yet
             while (!isRegistered && !isBreak )
@@ -1061,7 +1061,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             PolicyBase policy = ProviderData.ContainsKey(ItemParams.Policy) ?
                 (PolicyBase)ProviderData[ItemParams.Policy] : null;
 
-            ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
+            ItemBase itemBase = ProviderData.ContainsKey(ItemParams.Item) ? (ItemBase)ProviderData[ItemParams.Item] : null;
 
             AzureFileShareItem item = (AzureFileShareItem)ProviderData[ItemParams.Item];
 

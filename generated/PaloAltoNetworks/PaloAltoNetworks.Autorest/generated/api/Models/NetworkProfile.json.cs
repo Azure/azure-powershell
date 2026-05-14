@@ -84,6 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
             {_enableEgressNat = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString>("enableEgressNat"), out var __jsonEnableEgressNat) ? (string)__jsonEnableEgressNat : (string)_enableEgressNat;}
             {_egressNatIP = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonArray>("egressNatIp"), out var __jsonEgressNatIP) ? If( __jsonEgressNatIP as Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddress>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddress) (Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPAddress.FromJson(__p) )) ))() : null : _egressNatIP;}
             {_trustedRange = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonArray>("trustedRanges"), out var __jsonTrustedRanges) ? If( __jsonTrustedRanges as Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(string) (__k is Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString __j ? (string)(__j.ToString()) : null)) ))() : null : _trustedRange;}
+            {_privateSourceNatRulesDestination = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonArray>("privateSourceNatRulesDestination"), out var __jsonPrivateSourceNatRulesDestination) ? If( __jsonPrivateSourceNatRulesDestination as Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__g, (__f)=>(string) (__f is Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString __e ? (string)(__e.ToString()) : null)) ))() : null : _privateSourceNatRulesDestination;}
             AfterFromJson(json);
         }
 
@@ -136,6 +137,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models
                     AddIf(null != (((object)__n)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString(__n.ToString()) : null ,__m.Add);
                 }
                 container.Add("trustedRanges",__m);
+            }
+            if (null != this._privateSourceNatRulesDestination)
+            {
+                var __h = new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.XNodeArray();
+                foreach( var __i in this._privateSourceNatRulesDestination )
+                {
+                    AddIf(null != (((object)__i)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Runtime.Json.JsonString(__i.ToString()) : null ,__h.Add);
+                }
+                container.Add("privateSourceNatRulesDestination",__h);
             }
             AfterToJson(ref container);
             return container;

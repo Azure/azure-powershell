@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Description(@"update an AML file system instance.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}", ApiVersion = "2023-05-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}", ApiVersion = "2025-07-01")]
     public partial class UpdateAzStorageCacheAmlFileSystem_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.IContext
@@ -42,15 +42,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Cmdlets
 
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
-
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -198,6 +189,55 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
+        /// <summary>
+        /// Squash mode of the AML file system. 'All': User and Group IDs on files will be squashed to the provided values for all
+        /// users on non-trusted systems. 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the
+        /// root user on non-trusted systems. 'None': No squashing of User and Group IDs is performed for any users on any systems.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Squash mode of the AML file system. 'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems. 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems. 'None': No squashing of User and Group IDs is performed for any users on any systems.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Squash mode of the AML file system. 'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems. 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems. 'None': No squashing of User and Group IDs is performed for any users on any systems.",
+        SerializedName = @"mode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PSArgumentCompleterAttribute("None", "RootOnly", "All")]
+        public string RootSquashSettingMode { get => _amlFilesystemBody.RootSquashSettingMode ?? null; set => _amlFilesystemBody.RootSquashSettingMode = value; }
+
+        /// <summary>Semicolon separated NID IP Address list(s) to be added to the TrustedSystems.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Semicolon separated NID IP Address list(s) to be added to the TrustedSystems.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Semicolon separated NID IP Address list(s) to be added to the TrustedSystems.",
+        SerializedName = @"noSquashNidLists",
+        PossibleTypes = new [] { typeof(string) })]
+        public string RootSquashSettingNoSquashNidList { get => _amlFilesystemBody.RootSquashSettingNoSquashNidList ?? null; set => _amlFilesystemBody.RootSquashSettingNoSquashNidList = value; }
+
+        /// <summary>Group ID to squash to.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Group ID to squash to.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Group ID to squash to.",
+        SerializedName = @"squashGID",
+        PossibleTypes = new [] { typeof(long) })]
+        public long RootSquashSettingSquashGid { get => _amlFilesystemBody.RootSquashSettingSquashGid ?? default(long); set => _amlFilesystemBody.RootSquashSettingSquashGid = value; }
+
+        /// <summary>User ID to squash to.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "User ID to squash to.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"User ID to squash to.",
+        SerializedName = @"squashUID",
+        PossibleTypes = new [] { typeof(long) })]
+        public long RootSquashSettingSquashUid { get => _amlFilesystemBody.RootSquashSettingSquashUid ?? default(long); set => _amlFilesystemBody.RootSquashSettingSquashUid = value; }
+
         /// <summary>Resource Id.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource Id.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Category(global::Microsoft.Azure.PowerShell.Cmdlets.StorageCache.ParameterCategory.Body)]
@@ -309,11 +349,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -629,24 +664,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IAmlFilesystem
                 var result = (await response);
-                if (null != result)
-                {
-                    if (0 == _responseSize)
-                    {
-                        _firstResponse = result;
-                        _responseSize = 1;
-                    }
-                    else
-                    {
-                        if (1 ==_responseSize)
-                        {
-                            // Flush buffer
-                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
-                        }
-                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
-                        _responseSize = 2;
-                    }
-                }
+                WriteObject(result, false);
             }
         }
     }

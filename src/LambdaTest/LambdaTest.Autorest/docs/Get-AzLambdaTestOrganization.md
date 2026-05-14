@@ -60,7 +60,7 @@ East US 2 EUAP liftr-lambdatest-org9  3/17/2025 10:00:39 AM  jawt@microsoft.com 
 East US 2 EUAP liftr-lambdatest-org-1                                                                    4/10/2025 2:33:10 PM     jawt@microsoft.com       User                         jawt-rg
 ```
 
-This command will get all organization details for all resources in a resoure group in a given subscription.
+This command will get all organization details for all resources in a resource group in a given subscription.
 
 ### Example 2: Get a specific Organization in a Resource Group
 ```powershell

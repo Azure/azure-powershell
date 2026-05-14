@@ -44,23 +44,24 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
-    $env.ResourceGroupName = 'QM_clitest_qumulo2_eastus'
-    $env.ResourceName = 'test-cli-instance-4'
-    $env.NewResourceName = 'test-arize-instance-test-1'
+    $env.ResourceGroupName = 'yashika-rg-arize'
+    $env.ResourceName = 'test4'
+    $env.NewResourceName = 'test6'
     $env.Location = "East US"
-    $env.SubscriptionId = "fc35d936-3b89-41f8-8110-a24b56826c37"
-    $env.MarketplaceSubscriptionId = "fc35d936-3b89-41f8-8110-a24b56826c37"
+    $env.SubscriptionId = "61641157-140c-4b97-b365-30ff76d9f82e"
+    $env.MarketplaceSubscriptionId = "61641157-140c-4b97-b365-30ff76d9f82e"
     $env.OfferDetailOfferId = "arize-liftr-0"
     $env.OfferDetailPlanId = "liftr-test-0"
     $env.OfferDetailPlanName = "Liftr Test 0"
     $env.OfferDetailPublisherId = "arizeai1657829589668"
     $env.OfferDetailTermId = "gmz7xq9ge3py"
     $env.OfferDetailTermUnit = "P1M"
-    $env.UserEmailAddress = "aggarwalsw@microsoft.com"
+    $env.PartnerPropertyDescription = "testing"
+    $env.UserEmailAddress = "yashikajain@microsoft.com"
     $env.UserFirstName = "" 
     $env.UserLastName = ""
-    $env.UserUpn = "aggarwalsw@microsoft.com"
-    $env.DeleteResourceName = "test-cli-instance-test-1"
+    $env.UserUpn = "yashikajain@microsoft.com"
+    $env.DeleteResourceName = "test1"
     
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

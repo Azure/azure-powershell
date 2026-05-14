@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create or update a backup instance in a backup vault
+Create a backup instance in a backup vault
 .Description
-Create or update a backup instance in a backup vault
+Create a backup instance in a backup vault
 .Example
 $sub = "xxxx-xxx-xx"
 $DiskId = "/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Compute/disks/{diskname}"
@@ -55,7 +55,7 @@ $operationId = $operationResponse.Target.Split("/")[-1].Split("?")[0]
 While((Get-AzDataProtectionOperationStatus -OperationId $operationId -Location $vault.Location -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Status -eq "Inprogress"){
     Start-Sleep -Seconds 10
 }
-$backupnstanceCreate = New-AzDataProtectionBackupInstance -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -BackupInstance $backupInstanceClientObject
+$backupinstanceCreate = New-AzDataProtectionBackupInstance -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -BackupInstance $backupInstanceClientObject
 .Example
 $vault = Get-AzDataProtectionBackupVault -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName"
 $pol = Get-AzDataProtectionBackupPolicy -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -ResourceGroupName "resourceGroupName" | Where-Object { $_.DatasourceType  -match "mysql" }
@@ -67,16 +67,43 @@ $operationId = $operationResponse.Target.Split("/")[-1].Split("?")[0]
 While((Get-AzDataProtectionOperationStatus -OperationId $operationId -Location $vault.Location -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Status -eq "Inprogress"){
     Start-Sleep -Seconds 10
 }
-$backupnstanceCreate = New-AzDataProtectionBackupInstance -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -BackupInstance $backupInstanceClientObject
+$backupinstanceCreate = New-AzDataProtectionBackupInstance -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -BackupInstance $backupInstanceClientObject
+.Example
+$vault = Get-AzDataProtectionBackupVault -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName"
+$pol = Get-AzDataProtectionBackupPolicy -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -ResourceGroupName "resourceGroupName" | Where-Object { $_.DatasourceType -match "documentdb" }
+$cosmosDbAccountId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/source-cosmos-account"
+$backupInstanceClientObject = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureCosmosDB -DatasourceLocation $vault.Location -PolicyId $pol[0].Id -DatasourceId $cosmosDbAccountId
+Set-AzDataProtectionMSIPermission -VaultResourceGroup "resourceGroupName" -VaultName "vaultName" -BackupInstance $backupInstanceClientObject -PermissionsScope ResourceGroup
+$biCreate = New-AzDataProtectionBackupInstance -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -BackupInstance $backupInstanceClientObject
+$biCreate
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstanceResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstanceResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BACKUPVAULTINPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
+  [BackupInstanceName <String>]: The name of the backup instance.
+  [BackupPolicyName <String>]: 
+  [DeletedVaultName <String>]: The name of the DeletedBackupVaultResource
+  [Id <String>]: Resource identity path
+  [JobId <String>]: The Job ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: 
+  [RecoveryPointId <String>]: 
+  [RequestName <String>]: The name of the DppBaseResource
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceGuardProxyName <String>]: name of the resource guard proxy
+  [ResourceGuardsName <String>]: The name of ResourceGuard
+  [ResourceId <String>]: ARM path of the resource to be protected using Microsoft.DataProtection
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [VaultName <String>]: The name of the backup vault.
 
 PARAMETER <IBackupInstanceResource>: BackupInstance Resource
   [Tag <IDppProxyResourceTags>]: Proxy Resource tags.
@@ -94,10 +121,10 @@ PARAMETER <IBackupInstanceResource>: BackupInstance Resource
     PolicyInfo <IPolicyInfo>: Gets or sets the policy information.
       PolicyId <String>: 
       [PolicyParameter <IPolicyParameters>]: Policy parameters for the backup instance
-        [BackupDatasourceParametersList <IBackupDatasourceParameters[]>]: Gets or sets the Backup Data Source Parameters
+        [BackupDatasourceParametersList <List<IBackupDatasourceParameters>>]: Gets or sets the Backup Data Source Parameters
           ObjectType <String>: Type of the specific object - used for deserializing
-        [DataStoreParametersList <IDataStoreParameters[]>]: Gets or sets the DataStore Parameters
-          DataStoreType <DataStoreTypes>: type of datastore; Operational/Vault/Archive
+        [DataStoreParametersList <List<IDataStoreParameters>>]: Gets or sets the DataStore Parameters
+          DataStoreType <String>: type of datastore; Operational/Vault/Archive
           ObjectType <String>: Type of the specific object - used for deserializing
     [DataSourceSetInfo <IDatasourceSet>]: Gets or sets the data source set information.
       ResourceId <String>: Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
@@ -113,8 +140,8 @@ PARAMETER <IBackupInstanceResource>: BackupInstance Resource
     [IdentityDetail <IIdentityDetails>]: Contains information of the Identity Details for the BI.         If it is null, default will be considered as System Assigned.
       [UseSystemAssignedIdentity <Boolean?>]: Specifies if the BI is protected by System Identity.
       [UserAssignedIdentityArmUrl <String>]: ARM URL for User Assigned Identity.
-    [ResourceGuardOperationRequest <String[]>]: ResourceGuardOperationRequests on which LAC check will be performed
-    [ValidationType <ValidationType?>]: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
+    [ResourceGuardOperationRequest <List<String>>]: Resource guard operation request in the format similar to <ResourceGuard-ARMID>/dppModifyPolicy/default. Use this parameter when the operation is MUA protected.
+    [ValidationType <String>]: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
 
 PROPERTY <IBackupInstance>: BackupInstanceResource properties
   DataSourceInfo <IDatasource>: Gets or sets the data source information.
@@ -129,10 +156,10 @@ PROPERTY <IBackupInstance>: BackupInstanceResource properties
   PolicyInfo <IPolicyInfo>: Gets or sets the policy information.
     PolicyId <String>: 
     [PolicyParameter <IPolicyParameters>]: Policy parameters for the backup instance
-      [BackupDatasourceParametersList <IBackupDatasourceParameters[]>]: Gets or sets the Backup Data Source Parameters
+      [BackupDatasourceParametersList <List<IBackupDatasourceParameters>>]: Gets or sets the Backup Data Source Parameters
         ObjectType <String>: Type of the specific object - used for deserializing
-      [DataStoreParametersList <IDataStoreParameters[]>]: Gets or sets the DataStore Parameters
-        DataStoreType <DataStoreTypes>: type of datastore; Operational/Vault/Archive
+      [DataStoreParametersList <List<IDataStoreParameters>>]: Gets or sets the DataStore Parameters
+        DataStoreType <String>: type of datastore; Operational/Vault/Archive
         ObjectType <String>: Type of the specific object - used for deserializing
   [DataSourceSetInfo <IDatasourceSet>]: Gets or sets the data source set information.
     ResourceId <String>: Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
@@ -148,13 +175,13 @@ PROPERTY <IBackupInstance>: BackupInstanceResource properties
   [IdentityDetail <IIdentityDetails>]: Contains information of the Identity Details for the BI.         If it is null, default will be considered as System Assigned.
     [UseSystemAssignedIdentity <Boolean?>]: Specifies if the BI is protected by System Identity.
     [UserAssignedIdentityArmUrl <String>]: ARM URL for User Assigned Identity.
-  [ResourceGuardOperationRequest <String[]>]: ResourceGuardOperationRequests on which LAC check will be performed
-  [ValidationType <ValidationType?>]: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
+  [ResourceGuardOperationRequest <List<String>>]: Resource guard operation request in the format similar to <ResourceGuard-ARMID>/dppModifyPolicy/default. Use this parameter when the operation is MUA protected.
+  [ValidationType <String>]: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
 .Link
 https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupinstance
 #>
 function New-AzDataProtectionBackupInstance {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstanceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -164,26 +191,42 @@ param(
     # The name of the backup instance.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Create', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
-    [System.String]
-    # The name of the backup vault.
-    ${VaultName},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='Create')]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     # The value must be an UUID.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Create', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
+    [System.String]
+    # The name of the backup vault.
+    ${VaultName},
+
+    [Parameter(ParameterSetName='CreateViaIdentityBackupVault', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityBackupVaultExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity]
+    # Identity Parameter
+    ${BackupVaultInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Header')]
@@ -193,25 +236,38 @@ param(
     ${Token},
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityBackupVault', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstanceResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource]
     # BackupInstance Resource
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityBackupVaultExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IBackupInstance]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstance]
     # BackupInstanceResource properties
-    # To construct, see NOTES section for PROPERTY properties and create a hash table.
     ${Property},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityBackupVaultExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IDppProxyResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDppProxyResourceTags]))]
     [System.Collections.Hashtable]
     # Proxy Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -281,14 +337,19 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Create = 'Az.DataProtection.private\New-AzDataProtectionBackupInstance_Create';
             CreateExpanded = 'Az.DataProtection.private\New-AzDataProtectionBackupInstance_CreateExpanded';
+            CreateViaIdentityBackupVault = 'Az.DataProtection.private\New-AzDataProtectionBackupInstance_CreateViaIdentityBackupVault';
+            CreateViaIdentityBackupVaultExpanded = 'Az.DataProtection.private\New-AzDataProtectionBackupInstance_CreateViaIdentityBackupVaultExpanded';
+            CreateViaJsonFilePath = 'Az.DataProtection.private\New-AzDataProtectionBackupInstance_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.DataProtection.private\New-AzDataProtectionBackupInstance_CreateViaJsonString';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -297,6 +358,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

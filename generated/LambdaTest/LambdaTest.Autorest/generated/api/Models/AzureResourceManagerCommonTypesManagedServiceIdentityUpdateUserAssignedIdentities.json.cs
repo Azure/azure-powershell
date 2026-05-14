@@ -67,7 +67,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models
             {
                 return;
             }
-            Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IComponents19Kgb1NSchemasAzureResourcemanagerCommontypesManagedserviceidentityupdatePropertiesUserassignedidentitiesAdditionalproperties>)this).AdditionalProperties, (j) => Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.Components19Kgb1NSchemasAzureResourcemanagerCommontypesManagedserviceidentityupdatePropertiesUserassignedidentitiesAdditionalproperties.FromJson(j) ,exclusions );
+            Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IUserAssignedIdentity>)this).AdditionalProperties, (j) => Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.UserAssignedIdentity.FromJson(j) ,exclusions );
             AfterFromJson(json);
         }
 
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models
             {
                 return container;
             }
-            Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Runtime.JsonSerializable.ToJson( ((Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IComponents19Kgb1NSchemasAzureResourcemanagerCommontypesManagedserviceidentityupdatePropertiesUserassignedidentitiesAdditionalproperties>)this).AdditionalProperties, container);
+            Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Runtime.JsonSerializable.ToJson( ((Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.LambdaTest.Models.IUserAssignedIdentity>)this).AdditionalProperties, container);
             AfterToJson(ref container);
             return container;
         }

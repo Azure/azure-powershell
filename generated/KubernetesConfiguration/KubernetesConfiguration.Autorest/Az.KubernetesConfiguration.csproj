@@ -3,6 +3,7 @@
     <PsModuleName>KubernetesConfiguration</PsModuleName>
     <PsRootModuleName>KubernetesConfiguration</PsRootModuleName>
     <PsModuleFolder>KubernetesConfiguration.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

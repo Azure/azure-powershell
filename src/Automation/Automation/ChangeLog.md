@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.11.2
+* Fixed runbook_type: `PowerShell72` [#24779][#23967]
+
 ## Version 1.11.1
 * Fixed Bug: Start-AzAutomationRunbook throws object reference error when the automation account is not available in the subscription 
 
@@ -55,7 +58,7 @@
 * Added logic of returning error if insufficient user permissions are there for `GetAgentRegistrationInfo`
 
 ## Version 1.7.3
-* `New-AzAutomationSchedule` allows defnining StartTime with offsets.
+* `New-AzAutomationSchedule` allows defining StartTime with offsets.
 *  Fixed bug: updated 'Set-AzAutomationModule' to use PUT call while updating modules with specific versions   [#12552]
 
 ## Version 1.7.2
@@ -147,7 +150,7 @@
     * Reboot Setting
 
 ## Version 1.1.2
-* Fixed issue when retreiving certain monthly schedules in several Azure Automation cmdlets
+* Fixed issue when retrieving certain monthly schedules in several Azure Automation cmdlets
 * Fix Get-AzAutomationDscNode returning just top 20 nodes. Now it returns all nodes
 
 ## Version 1.1.1

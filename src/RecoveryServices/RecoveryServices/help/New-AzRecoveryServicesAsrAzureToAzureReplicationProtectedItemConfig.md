@@ -193,7 +193,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryBootDiagStorageAccountId
-{{ Fill RecoveryBootDiagStorageAccountId Description }}
+Specifies the storage account for boot diagnostics for recovery azure VM.
 
 ```yaml
 Type: System.String
@@ -253,7 +253,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryVirtualMachineScaleSetId
-Specifies the reccovery virtual machine scale set id.
+Specifies the recovery virtual machine scale set id.
 
 ```yaml
 Type: System.String

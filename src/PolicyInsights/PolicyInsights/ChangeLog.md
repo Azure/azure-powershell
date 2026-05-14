@@ -18,6 +18,35 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* The output type of `Get-AzPolicyAttestation`, `New-AzPolicyAttestation`, and `Set-AzPolicyAttestation` will change from `PSAttestation` to `Attestation`
+    - The `SystemData` property will be deprecated and replaced with flattened properties: `SystemDataCreatedAt`, `SystemDataCreatedBy`, `SystemDataCreatedByType`, `SystemDataLastModifiedAt`, `SystemDataLastModifiedBy`, `SystemDataLastModifiedByType`
+    - A new `ResourceGroupName` property will be added
+* The output type of `Get-AzPolicyEvent` will change
+    - The `ResourceTags` and `ManagementGroupIds` properties will be deprecated and replaced with `ResourceTag` and `ManagementGroupId`
+    - New properties will be added: `ComplianceState`, `Component`, `EffectiveParameter`, `OdataContext`, `OdataId`, `Keys`, `Values`, `Count`, `AdditionalProperties`
+* The output type of `Get-AzPolicyState` will change
+    - The `ResourceTags` and `ManagementGroupIds` properties will be deprecated and replaced with `ResourceTag` and `ManagementGroupId`
+    - A new `ResourceGroupName` property will be added
+* The output type of `Get-AzPolicyStateSummary` will change
+    - The `PolicyAssignments` and `Results` properties will be deprecated and replaced with flattened properties including `PolicyAssignment`, `ResultCompliantResource`, `ResultNonCompliantPolicy`, `ResultNonCompliantResource`, and others
+    - New properties will be added: `OdataId`, `OdataContext`
+* The output type of `Get-AzPolicyMetadata` will change from `PSPolicyMetadata` to `PolicyMetadata`
+    - A new `ResourceGroupName` property will be added
+* The output type of `Get-AzPolicyRemediation` and `Start-AzPolicyRemediation` will change from `PSRemediation` to `Remediation`
+    - The `Filters`, `DeploymentSummary`, `FailureThreshold`, and `ParallelDeployments` properties will be deprecated and replaced with flattened properties including `FilterLocation`, `FilterResourceId`, `DeploymentStatusFailedDeployment`, `DeploymentStatusSuccessfulDeployment`, `DeploymentStatusTotalDeployment`, `FailureThresholdPercentage`, `ParallelDeployment`
+    - New properties will be added: `ResourceGroupName`, `SystemDataCreatedAt`, `SystemDataCreatedBy`, `SystemDataCreatedByType`, `SystemDataLastModifiedAt`, `SystemDataLastModifiedBy`, `SystemDataLastModifiedByType`
+* `Start-AzPolicyRemediation` will now return when the Remediation reaches a terminal state unless you use the new `NoWait` parameter
+* The output type of `Stop-AzPolicyRemediation` will change from `bool` to `Remediation`
+    - `Stop-AzPolicyRemediation` will now have a `NoWait` switch parameter as well as returning the Remediation object instead of just a boolean
+
+## Version 1.7.4
+* Added Breaking Change notifications to many of the cmdlets in Az.PolicyInsights.
+
+## Version 1.7.3
+* Updated Azure.Core from 1.47.3 to 1.50.0
+
+## Version 1.7.2
+* Updated Azure.Core from 1.45.0 to 1.47.3
 
 ## Version 1.7.1
 * Removed "Microsoft.Azure.Management.PolicyInsights" Version "1.0.0" PackageReference
@@ -45,7 +74,7 @@
 * Added support for policy attestations.
 
 ## Version 1.5.1
-* Updated parameter documentation for Get-AzPolicyState 
+* Updated parameter documentation for Get-AzPolicyState
 
 ## Version 1.5.0
 * Added support for new remediation properties allowing the remediation of more resources with better control over the remediation rate and error handling

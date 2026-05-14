@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create an instance of an Event Hubs Cluster.
+Create an instance of an Event Hubs Cluster.
 .Description
-create an instance of an Event Hubs Cluster.
+Create an instance of an Event Hubs Cluster.
 .Example
 New-AzEventHubCluster -ResourceGroupName myResourceGroup -Name myEventHubsCluster -Location "eastasia" -SupportsScaling -Capacity 2
 .Example
@@ -154,8 +154,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

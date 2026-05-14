@@ -3,6 +3,7 @@
     <PsModuleName>VoiceServices</PsModuleName>
     <PsRootModuleName>VoiceServices</PsRootModuleName>
     <PsModuleFolder>VoiceServices.Autorest</PsModuleFolder>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.VoiceServices</RootNamespace>
   </PropertyGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.autorest.props" />

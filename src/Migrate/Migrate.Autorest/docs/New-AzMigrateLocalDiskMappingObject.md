@@ -14,7 +14,7 @@ Creates a new disk mapping
 
 ```
 New-AzMigrateLocalDiskMappingObject -DiskID <String> -Format <String> -IsDynamic <String> -IsOSDisk <String>
- -Size <Int64> [-PhysicalSectorSize <Int64>] [-TargetStoragePathId <String>] [<CommonParameters>]
+ -Size <Int64> [-PhysicalSectorSize <Int64>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,6 +57,7 @@ Accept wildcard characters: False
 
 ### -Format
 Specifies the disk format.
+'VHD' or 'VHDX' for Hyper-V Generation 1; 'VHDX' for Hyper-V Generation 2.
 
 ```yaml
 Type: System.String
@@ -130,21 +131,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetStoragePathId
-Specifies the storage path ARM ID where the disk will be stored.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -152,7 +138,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalDiskInput
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AzLocalDiskInput
 
 ## NOTES
 

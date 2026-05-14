@@ -37,6 +37,5 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             TestRunner.RunTestScript("Test-UpdateVaultWithNetworkRule");
         }
 
-
     }
 }

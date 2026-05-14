@@ -16,11 +16,26 @@ To aid the user to prerequisite the operation the client can call operation with
 
 ## SYNTAX
 
+### PrepareExpanded (Default)
 ```
 Invoke-AzResourceMoverPrepare -MoveCollectionName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -MoveResource <String[]> [-MoveResourceInputType <MoveResourceInputType>]
- [-ValidateOnly] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] -MoveResource <String[]> [-MoveResourceInputType <String>] [-ValidateOnly]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### PrepareViaJsonFilePath
+```
+Invoke-AzResourceMoverPrepare -MoveCollectionName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### PrepareViaJsonString
+```
+Invoke-AzResourceMoverPrepare -MoveCollectionName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,13 +47,13 @@ To aid the user to prerequisite the operation the client can call operation with
 
 ## EXAMPLES
 
-### Example 1: Validate the dependecies before prepare of the resources. Get the required dependent resources that also need to be prepared.
+### Example 1: Validate the dependencies before prepare of the resources. Get the required dependent resources that also need to be prepared.
 ```powershell
 $resp = Invoke-AzResourceMoverPrepare -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemovm') -ValidateOnly
 ```
 
 ```output
-AdditionalInfo : {Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.OperationErrorAdditionalInfo}
+AdditionalInfo : {Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.OperationErrorAdditionalInfo}
 Code           : MoveCollectionMissingRequiredDependentResources
 Detail         : {}
 EndTime        : 2/9/2021 9:04:15 AM
@@ -65,7 +80,7 @@ SourceId
 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm/providers/microsoft.network/networksecuritygroups/psdemovm-nsg
 ```
 
-Validate the dependecies before prepare of the resources.
+Validate the dependencies before prepare of the resources.
 Get the required dependent resources that also need to be prepared.
 
 ### Example 2: Initiate prepare for the set of resources in the Move Collection using "MoveResource Name" as input.
@@ -143,6 +158,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Prepare operation
+
+```yaml
+Type: System.String
+Parameter Sets: PrepareViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Prepare operation
+
+```yaml
+Type: System.String
+Parameter Sets: PrepareViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MoveCollectionName
 The Move Collection Name.
 
@@ -163,7 +208,7 @@ Gets or sets the list of resource Id's, by default it accepts move resource id's
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: PrepareExpanded
 Aliases:
 
 Required: True
@@ -177,8 +222,8 @@ Accept wildcard characters: False
 Defines the move resource input type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: PrepareExpanded
 Aliases:
 
 Required: False
@@ -238,7 +283,7 @@ Gets or sets a value indicating whether the operation needs to only run pre-requ
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: PrepareExpanded
 Aliases:
 
 Required: False
@@ -286,7 +331,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IOperationStatus
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IOperationStatus
 
 ## NOTES
 

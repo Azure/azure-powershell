@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DataMigration
-Module Guid: 5b85d9ae-d85d-4da6-9dde-d80f726fa7f9
+Module Guid: 896e3fc9-6d5a-4964-aa07-5febb86eb489
 Download Help Link: https://learn.microsoft.com/powershell/module/az.datamigration
 Help Version: 1.0.0.0
 Locale: en-US
@@ -47,6 +47,9 @@ Initiate cutover for in-progress online database migration to SQL Managed Instan
 ### [Invoke-AzDataMigrationCutoverToSqlVM](Invoke-AzDataMigrationCutoverToSqlVM.md)
 Initiate cutover for in-progress online database migration to SQL VM.
 
+### [Invoke-AzDataMigrationRetryToSqlDb](Invoke-AzDataMigrationRetryToSqlDb.md)
+Retry on going migration for the database.
+
 ### [New-AzDataMigrationLoginsMigration](New-AzDataMigrationLoginsMigration.md)
 Migrate logins from the source Sql Servers to the target Azure Sql Servers.
 
@@ -84,6 +87,12 @@ Delete the integration runtime node.
 
 ### [Remove-AzDataMigrationToSqlDb](Remove-AzDataMigrationToSqlDb.md)
 Remove the specified database migration for a given SQL Db.
+
+### [Remove-AzDataMigrationToSqlManagedInstance](Remove-AzDataMigrationToSqlManagedInstance.md)
+Delete Database Migration resource.
+
+### [Remove-AzDataMigrationToSqlVM](Remove-AzDataMigrationToSqlVM.md)
+Delete Database Migration resource.
 
 ### [Stop-AzDataMigrationToSqlDb](Stop-AzDataMigrationToSqlDb.md)
 Stop in-progress database migration to SQL Db.

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAdlsGen1DataSourceObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewadlsgen1datasourceobject
 schema: 2.0.0
 ---
 
@@ -13,9 +13,9 @@ Create an in-memory object for AdlsGen1DataSource.
 ## SYNTAX
 
 ```
-New-AzPurviewAdlsGen1DataSourceObject -Kind <DataSourceType> [-CollectionReferenceName <String>]
- [-CollectionType <String>] [-Endpoint <String>] [-Location <String>] [-ResourceGroup <String>]
- [-ResourceName <String>] [-SubscriptionId <String>] [<CommonParameters>]
+New-AzPurviewAdlsGen1DataSourceObject [-CollectionReferenceName <String>] [-CollectionType <String>]
+ [-Endpoint <String>] [-Location <String>] [-ResourceGroup <String>] [-ResourceName <String>]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ Create an in-memory object for AdlsGen1DataSource.
 
 ### Example 1: Create AdlsGen1 data source object
 ```powershell
-New-AzPurviewAdlsGen1DataSourceObject -Kind 'AdlsGen1' -CollectionReferenceName parv-brs-2 -CollectionType 'CollectionReference' -Endpoint 'adl://adlsgen1datascan02ause.azuredatalakestore.net'
+New-AzPurviewAdlsGen1DataSourceObject -CollectionReferenceName parv-brs-2 -CollectionType 'CollectionReference' -Endpoint 'adl://adlsgen1datascan02ause.azuredatalakestore.net'
 ```
 
 ```output
@@ -88,21 +88,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Kind
-
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -176,7 +161,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1DataSource
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen1DataSource
 
 ## NOTES
 

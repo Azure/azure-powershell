@@ -26,7 +26,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// <summary>Backing field for <see cref="Enabled" /> property.</summary>
         private bool? _enabled;
 
-        /// <summary>Specifies whether to enable Windows gMSA in the managed cluster.</summary>
+        /// <summary>
+        /// Whether to enable Windows gMSA. Specifies whether to enable Windows gMSA in the managed cluster.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public bool? Enabled { get => this._enabled; set => this._enabled = value; }
 
@@ -64,14 +66,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         SerializedName = @"dnsServer",
         PossibleTypes = new [] { typeof(string) })]
         string DnsServer { get; set; }
-        /// <summary>Specifies whether to enable Windows gMSA in the managed cluster.</summary>
+        /// <summary>
+        /// Whether to enable Windows gMSA. Specifies whether to enable Windows gMSA in the managed cluster.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Specifies whether to enable Windows gMSA in the managed cluster.",
+        Description = @"Whether to enable Windows gMSA. Specifies whether to enable Windows gMSA in the managed cluster.",
         SerializedName = @"enabled",
         PossibleTypes = new [] { typeof(bool) })]
         bool? Enabled { get; set; }
@@ -100,7 +104,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// which is used to create the managed cluster.
         /// </summary>
         string DnsServer { get; set; }
-        /// <summary>Specifies whether to enable Windows gMSA in the managed cluster.</summary>
+        /// <summary>
+        /// Whether to enable Windows gMSA. Specifies whether to enable Windows gMSA in the managed cluster.
+        /// </summary>
         bool? Enabled { get; set; }
         /// <summary>
         /// Specifies the root domain name for Windows gMSA. <br><br> Set it to empty if you have configured the DNS server in the

@@ -215,7 +215,7 @@ Accept wildcard characters: False
 ```
 
 ### -PullIdentity
-AAD identity used for pull based deployments. 'system' will use the app's system assigned identy. An user assigned identity can be used by providing the client ID. Only available for Windows WebApps. Support for Linux WebApps coming soon.
+AAD identity used for pull based deployments. 'system' will use the app's system assigned identity. An user assigned identity can be used by providing the client ID. Only available for Windows WebApps. Support for Linux WebApps coming soon.
 
 ```yaml
 Type: System.String

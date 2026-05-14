@@ -106,15 +106,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Secret file path does not exist on the server..
-        /// </summary>
-        internal static string AgentMI_MissingSecretFilePathOnServerError {
-            get {
-                return ResourceManager.GetString("AgentMI_MissingSecretFilePathOnServerError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to No system-assigned Managed Identity was found for this resource..
         /// </summary>
         internal static string AgentMI_MissingSystemAssignedIdentityError {
@@ -156,6 +147,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         internal static string AgentMI_MissingWWWAuthenticateValueError {
             get {
                 return ResourceManager.GetString("AgentMI_MissingWWWAuthenticateValueError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GetEnvironmentVariable failed to find &apos;ProgramData&apos;.
+        /// </summary>
+        internal static string AgentMI_ProgramDataNotFoundError {
+            get {
+                return ResourceManager.GetString("AgentMI_ProgramDataNotFoundError", resourceCulture);
             }
         }
         
@@ -264,6 +264,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         internal static string MissingAfsAgentInstallerPathErrorMessage {
             get {
                 return ResourceManager.GetString("MissingAfsAgentInstallerPathErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The given azure context do not have tenant id..
+        /// </summary>
+        internal static string MissingAzureContextTenantId {
+            get {
+                return ResourceManager.GetString("MissingAzureContextTenantId", resourceCulture);
             }
         }
         
@@ -556,7 +565,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Succesfully retrieved secondary certificate with thumbprint: {0} from store with HResult: {1}.
+        ///   Looks up a localized string similar to Successfully retrieved secondary certificate with thumbprint: {0} from store with HResult: {1}.
         /// </summary>
         internal static string ResetCertificateMessageFormat3 {
             get {

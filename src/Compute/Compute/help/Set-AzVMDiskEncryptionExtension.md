@@ -16,12 +16,12 @@ Enables encryption on a running IaaS virtual machine in Azure.
 ### SinglePassParameterSet (Default)
 ```
 Set-AzVMDiskEncryptionExtension [-ResourceGroupName] <String> [-VMName] <String>
- [-DiskEncryptionKeyVaultUrl] <String> [-DiskEncryptionKeyVaultId] <String> [-EncryptionIdentity <String>]
- [[-KeyEncryptionKeyUrl] <String>] [[-KeyEncryptionKeyVaultId] <String>] [[-KeyEncryptionAlgorithm] <String>]
+ [-DiskEncryptionKeyVaultUrl] <String> [-DiskEncryptionKeyVaultId] <String> [[-KeyEncryptionKeyUrl] <String>]
+ [[-KeyEncryptionKeyVaultId] <String>] [-EncryptionIdentity <String>] [[-KeyEncryptionAlgorithm] <String>]
  [[-VolumeType] <String>] [[-SequenceVersion] <String>] [[-TypeHandlerVersion] <String>] [[-Name] <String>]
  [[-Passphrase] <String>] [-Force] [-DisableAutoUpgradeMinorVersion] [-SkipVmBackup] [-ExtensionType <String>]
- [-ExtensionPublisherName <String>] [-EncryptFormatAll] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ExtensionPublisherName <String>] [-EncryptFormatAll] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AADClientSecretParameterSet
@@ -385,6 +385,8 @@ Accept wildcard characters: False
 
 ### -EncryptionIdentity
 Resource ID of the managed identity with access to keyvault for ADE operations.
+
+
 ```yaml
 Type: System.String
 Parameter Sets: SinglePassParameterSet

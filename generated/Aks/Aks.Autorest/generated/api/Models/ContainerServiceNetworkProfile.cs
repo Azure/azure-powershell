@@ -13,6 +13,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal
     {
 
+        /// <summary>Backing field for <see cref="AdvancedNetworking" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAdvancedNetworking _advancedNetworking;
+
+        /// <summary>
+        /// Advanced Networking profile for enabling observability and security feature suite on a cluster. For more information see
+        /// aka.ms/aksadvancednetworking.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAdvancedNetworking AdvancedNetworking { get => (this._advancedNetworking = this._advancedNetworking ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AdvancedNetworking()); set => this._advancedNetworking = value; }
+
+        /// <summary>
+        /// Indicates the enablement of Advanced Networking functionalities of observability and security on AKS clusters. When this
+        /// is set to true, all observability and security features will be set to enabled unless explicitly disabled. If not specified,
+        /// the default is false.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public bool? AdvancedNetworkingEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAdvancedNetworkingInternal)AdvancedNetworking).Enabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAdvancedNetworkingInternal)AdvancedNetworking).Enabled = value ?? default(bool); }
+
         /// <summary>Backing field for <see cref="DnsServiceIP" /> property.</summary>
         private string _dnsServiceIP;
 
@@ -23,22 +41,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string DnsServiceIP { get => this._dnsServiceIP; set => this._dnsServiceIP = value; }
 
-        /// <summary>Backing field for <see cref="DockerBridgeCidr" /> property.</summary>
-        private string _dockerBridgeCidr;
-
-        /// <summary>
-        /// A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes
-        /// service address range.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
-        public string DockerBridgeCidr { get => this._dockerBridgeCidr; set => this._dockerBridgeCidr = value; }
-
         /// <summary>Backing field for <see cref="IPFamily" /> property.</summary>
         private System.Collections.Generic.List<string> _iPFamily;
 
         /// <summary>
-        /// IP families are used to determine single-stack or dual-stack clusters. For single-stack, the expected value is IPv4. For
-        /// dual-stack, the expected values are IPv4 and IPv6.
+        /// The IP families used to specify IP versions available to the cluster. IP families are used to determine single-stack or
+        /// dual-stack clusters. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> IPFamily { get => this._iPFamily; set => this._iPFamily = value; }
@@ -57,9 +65,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public int? LoadBalancerProfileAllocatedOutboundPort { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)LoadBalancerProfile).AllocatedOutboundPort; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)LoadBalancerProfile).AllocatedOutboundPort = value ?? default(int); }
 
+        /// <summary>The type of the managed inbound Load Balancer BackendPool.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public string LoadBalancerProfileBackendPoolType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)LoadBalancerProfile).BackendPoolType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)LoadBalancerProfile).BackendPoolType = value ?? null; }
+
         /// <summary>The effective outbound IP resources of the cluster load balancer.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference> LoadBalancerProfileEffectiveOutboundIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)LoadBalancerProfile).EffectiveOutboundIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)LoadBalancerProfile).EffectiveOutboundIP = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference> LoadBalancerProfileEffectiveOutboundIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)LoadBalancerProfile).EffectiveOutboundIP; }
 
         /// <summary>Enable multiple standard load balancers per AKS cluster or not.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
@@ -76,8 +88,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         private string _loadBalancerSku;
 
         /// <summary>
-        /// The default is 'standard'. See [Azure Load Balancer SKUs](https://docs.microsoft.com/azure/load-balancer/skus) for more
-        /// information about the differences between load balancer SKUs.
+        /// The load balancer sku for the managed cluster. The default is 'standard'. See [Azure Load Balancer SKUs](https://docs.microsoft.com/azure/load-balancer/skus)
+        /// for more information about the differences between load balancer SKUs.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string LoadBalancerSku { get => this._loadBalancerSku; set => this._loadBalancerSku = value; }
@@ -103,23 +115,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public int? ManagedOutboundIPProfileCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNatGatewayProfileInternal)NatGatewayProfile).ManagedOutboundIPProfileCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNatGatewayProfileInternal)NatGatewayProfile).ManagedOutboundIPProfileCount = value ?? default(int); }
 
+        /// <summary>Internal Acessors for AdvancedNetworking</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAdvancedNetworking Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal.AdvancedNetworking { get => (this._advancedNetworking = this._advancedNetworking ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.AdvancedNetworking()); set { {_advancedNetworking = value;} } }
+
+        /// <summary>Internal Acessors for AdvancedNetworkingObservability</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAdvancedNetworkingObservability Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal.AdvancedNetworkingObservability { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAdvancedNetworkingInternal)AdvancedNetworking).Observability; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAdvancedNetworkingInternal)AdvancedNetworking).Observability = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for AdvancedNetworkingSecurity</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAdvancedNetworkingSecurity Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal.AdvancedNetworkingSecurity { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAdvancedNetworkingInternal)AdvancedNetworking).Security; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAdvancedNetworkingInternal)AdvancedNetworking).Security = value ?? null /* model class */; }
+
         /// <summary>Internal Acessors for LoadBalancerProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal.LoadBalancerProfile { get => (this._loadBalancerProfile = this._loadBalancerProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterLoadBalancerProfile()); set { {_loadBalancerProfile = value;} } }
 
+        /// <summary>Internal Acessors for LoadBalancerProfileEffectiveOutboundIP</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference> Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal.LoadBalancerProfileEffectiveOutboundIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)LoadBalancerProfile).EffectiveOutboundIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)LoadBalancerProfile).EffectiveOutboundIP = value ?? null /* arrayOf */; }
+
         /// <summary>Internal Acessors for LoadBalancerProfileManagedOutboundIP</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileManagedOutboundIPs Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal.LoadBalancerProfileManagedOutboundIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)LoadBalancerProfile).ManagedOutboundIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)LoadBalancerProfile).ManagedOutboundIP = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileManagedOutboundIPs Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal.LoadBalancerProfileManagedOutboundIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)LoadBalancerProfile).ManagedOutboundIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)LoadBalancerProfile).ManagedOutboundIP = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for LoadBalancerProfileOutboundIP</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileOutboundIPs Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal.LoadBalancerProfileOutboundIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)LoadBalancerProfile).OutboundIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)LoadBalancerProfile).OutboundIP = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileOutboundIPs Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal.LoadBalancerProfileOutboundIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)LoadBalancerProfile).OutboundIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)LoadBalancerProfile).OutboundIP = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for LoadBalancerProfileOutboundIPPrefix</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileOutboundIPPrefixes Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal.LoadBalancerProfileOutboundIPPrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)LoadBalancerProfile).OutboundIPPrefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)LoadBalancerProfile).OutboundIPPrefix = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileOutboundIPPrefixes Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal.LoadBalancerProfileOutboundIPPrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)LoadBalancerProfile).OutboundIPPrefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)LoadBalancerProfile).OutboundIPPrefix = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for NatGatewayProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNatGatewayProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal.NatGatewayProfile { get => (this._natGatewayProfile = this._natGatewayProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterNatGatewayProfile()); set { {_natGatewayProfile = value;} } }
 
+        /// <summary>Internal Acessors for NatGatewayProfileEffectiveOutboundIP</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference> Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal.NatGatewayProfileEffectiveOutboundIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNatGatewayProfileInternal)NatGatewayProfile).EffectiveOutboundIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNatGatewayProfileInternal)NatGatewayProfile).EffectiveOutboundIP = value ?? null /* arrayOf */; }
+
         /// <summary>Internal Acessors for NatGatewayProfileManagedOutboundIPProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterManagedOutboundIPProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal.NatGatewayProfileManagedOutboundIPProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNatGatewayProfileInternal)NatGatewayProfile).ManagedOutboundIPProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNatGatewayProfileInternal)NatGatewayProfile).ManagedOutboundIPProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterManagedOutboundIPProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal.NatGatewayProfileManagedOutboundIPProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNatGatewayProfileInternal)NatGatewayProfile).ManagedOutboundIPProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNatGatewayProfileInternal)NatGatewayProfile).ManagedOutboundIPProfile = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for StaticEgressGatewayProfile</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStaticEgressGatewayProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfileInternal.StaticEgressGatewayProfile { get => (this._staticEgressGatewayProfile = this._staticEgressGatewayProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterStaticEgressGatewayProfile()); set { {_staticEgressGatewayProfile = value;} } }
 
         /// <summary>Backing field for <see cref="NatGatewayProfile" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNatGatewayProfile _natGatewayProfile;
@@ -130,7 +160,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
 
         /// <summary>The effective outbound IP resources of the cluster NAT gateway.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference> NatGatewayProfileEffectiveOutboundIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNatGatewayProfileInternal)NatGatewayProfile).EffectiveOutboundIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNatGatewayProfileInternal)NatGatewayProfile).EffectiveOutboundIP = value ?? null /* arrayOf */; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference> NatGatewayProfileEffectiveOutboundIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNatGatewayProfileInternal)NatGatewayProfile).EffectiveOutboundIP; }
 
         /// <summary>
         /// Desired outbound flow idle timeout in minutes. Allowed values are in the range of 4 to 120 (inclusive). The default value
@@ -149,7 +179,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// <summary>Backing field for <see cref="NetworkMode" /> property.</summary>
         private string _networkMode;
 
-        /// <summary>This cannot be specified if networkPlugin is anything other than 'azure'.</summary>
+        /// <summary>
+        /// The network mode Azure CNI is configured with. This cannot be specified if networkPlugin is anything other than 'azure'.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string NetworkMode { get => this._networkMode; set => this._networkMode = value; }
 
@@ -174,6 +206,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string NetworkPolicy { get => this._networkPolicy; set => this._networkPolicy = value; }
 
+        /// <summary>
+        /// Indicates the enablement of Advanced Networking observability functionalities on clusters.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public bool? ObservabilityEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAdvancedNetworkingInternal)AdvancedNetworking).ObservabilityEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAdvancedNetworkingInternal)AdvancedNetworking).ObservabilityEnabled = value ?? default(bool); }
+
         /// <summary>A list of public IP prefix resources.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference> OutboundIPPrefixPublicIpprefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)LoadBalancerProfile).OutboundIPPrefixPublicIpprefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileInternal)LoadBalancerProfile).OutboundIPPrefixPublicIpprefix = value ?? null /* arrayOf */; }
@@ -186,7 +224,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         private string _outboundType;
 
         /// <summary>
-        /// This can only be set at cluster creation time and cannot be changed later. For more information see [egress outbound type](https://docs.microsoft.com/azure/aks/egress-outboundtype).
+        /// The outbound (egress) routing method. This can only be set at cluster creation time and cannot be changed later. For more
+        /// information see [egress outbound type](https://docs.microsoft.com/azure/aks/egress-outboundtype).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string OutboundType { get => this._outboundType; set => this._outboundType = value; }
@@ -202,11 +241,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         private System.Collections.Generic.List<string> _podCidrs;
 
         /// <summary>
-        /// One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for
-        /// dual-stack networking.
+        /// The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs,
+        /// one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> PodCidrs { get => this._podCidrs; set => this._podCidrs = value; }
+
+        /// <summary>
+        /// Enable advanced network policies. This allows users to configure Layer 7 network policies (FQDN, HTTP, Kafka). Policies
+        /// themselves must be configured via the Cilium Network Policy resources, see https://docs.cilium.io/en/latest/security/policy/index.html.
+        /// This can be enabled only on cilium-based clusters. If not specified, the default value is FQDN if security.enabled is
+        /// set to true.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public string SecurityAdvancedNetworkPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAdvancedNetworkingInternal)AdvancedNetworking).SecurityAdvancedNetworkPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAdvancedNetworkingInternal)AdvancedNetworking).SecurityAdvancedNetworkPolicy = value ?? null; }
+
+        /// <summary>
+        /// This feature allows user to configure network policy based on DNS (FQDN) names. It can be enabled only on cilium based
+        /// clusters. If not specified, the default is false.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public bool? SecurityEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAdvancedNetworkingInternal)AdvancedNetworking).SecurityEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAdvancedNetworkingInternal)AdvancedNetworking).SecurityEnabled = value ?? default(bool); }
 
         /// <summary>Backing field for <see cref="ServiceCidr" /> property.</summary>
         private string _serviceCidr;
@@ -221,11 +276,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         private System.Collections.Generic.List<string> _serviceCidrs;
 
         /// <summary>
-        /// One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for
-        /// dual-stack networking. They must not overlap with any Subnet IP ranges.
+        /// The CIDR notation IP ranges from which to assign service cluster IPs. One IPv4 CIDR is expected for single-stack networking.
+        /// Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. They must not overlap with any Subnet
+        /// IP ranges.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<string> ServiceCidrs { get => this._serviceCidrs; set => this._serviceCidrs = value; }
+
+        /// <summary>Backing field for <see cref="StaticEgressGatewayProfile" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStaticEgressGatewayProfile _staticEgressGatewayProfile;
+
+        /// <summary>
+        /// The profile for Static Egress Gateway addon. For more details about Static Egress Gateway, see https://aka.ms/aks/static-egress-gateway.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStaticEgressGatewayProfile StaticEgressGatewayProfile { get => (this._staticEgressGatewayProfile = this._staticEgressGatewayProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterStaticEgressGatewayProfile()); set => this._staticEgressGatewayProfile = value; }
+
+        /// <summary>
+        /// Enable Static Egress Gateway addon. Indicates if Static Egress Gateway addon is enabled or not.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public bool? StaticEgressGatewayProfileEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStaticEgressGatewayProfileInternal)StaticEgressGatewayProfile).Enabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStaticEgressGatewayProfileInternal)StaticEgressGatewayProfile).Enabled = value ?? default(bool); }
 
         /// <summary>Creates an new <see cref="ContainerServiceNetworkProfile" /> instance.</summary>
         public ContainerServiceNetworkProfile()
@@ -237,6 +308,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
     public partial interface IContainerServiceNetworkProfile :
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IJsonSerializable
     {
+        /// <summary>
+        /// Indicates the enablement of Advanced Networking functionalities of observability and security on AKS clusters. When this
+        /// is set to true, all observability and security features will be set to enabled unless explicitly disabled. If not specified,
+        /// the default is false.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates the enablement of Advanced Networking functionalities of observability and security on AKS clusters. When this is set to true, all observability and security features will be set to enabled unless explicitly disabled. If not specified, the default is false.",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? AdvancedNetworkingEnabled { get; set; }
         /// <summary>
         /// An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified
         /// in serviceCidr.
@@ -252,8 +338,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         PossibleTypes = new [] { typeof(string) })]
         string DnsServiceIP { get; set; }
         /// <summary>
-        /// A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes
-        /// service address range.
+        /// The IP families used to specify IP versions available to the cluster. IP families are used to determine single-stack or
+        /// dual-stack clusters. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -261,21 +347,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes service address range.",
-        SerializedName = @"dockerBridgeCidr",
-        PossibleTypes = new [] { typeof(string) })]
-        string DockerBridgeCidr { get; set; }
-        /// <summary>
-        /// IP families are used to determine single-stack or dual-stack clusters. For single-stack, the expected value is IPv4. For
-        /// dual-stack, the expected values are IPv4 and IPv6.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"IP families are used to determine single-stack or dual-stack clusters. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6.",
+        Description = @"The IP families used to specify IP versions available to the cluster. IP families are used to determine single-stack or dual-stack clusters. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6.",
         SerializedName = @"ipFamilies",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("IPv4", "IPv6")]
@@ -294,17 +366,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         SerializedName = @"allocatedOutboundPorts",
         PossibleTypes = new [] { typeof(int) })]
         int? LoadBalancerProfileAllocatedOutboundPort { get; set; }
-        /// <summary>The effective outbound IP resources of the cluster load balancer.</summary>
+        /// <summary>The type of the managed inbound Load Balancer BackendPool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
+        Description = @"The type of the managed inbound Load Balancer BackendPool.",
+        SerializedName = @"backendPoolType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("NodeIPConfiguration", "NodeIP")]
+        string LoadBalancerProfileBackendPoolType { get; set; }
+        /// <summary>The effective outbound IP resources of the cluster load balancer.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
         Description = @"The effective outbound IP resources of the cluster load balancer.",
         SerializedName = @"effectiveOutboundIPs",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference> LoadBalancerProfileEffectiveOutboundIP { get; set; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference> LoadBalancerProfileEffectiveOutboundIP { get;  }
         /// <summary>Enable multiple standard load balancers per AKS cluster or not.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -331,8 +415,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         PossibleTypes = new [] { typeof(int) })]
         int? LoadBalancerProfileIdleTimeoutInMinute { get; set; }
         /// <summary>
-        /// The default is 'standard'. See [Azure Load Balancer SKUs](https://docs.microsoft.com/azure/load-balancer/skus) for more
-        /// information about the differences between load balancer SKUs.
+        /// The load balancer sku for the managed cluster. The default is 'standard'. See [Azure Load Balancer SKUs](https://docs.microsoft.com/azure/load-balancer/skus)
+        /// for more information about the differences between load balancer SKUs.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -340,7 +424,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is 'standard'. See [Azure Load Balancer SKUs](https://docs.microsoft.com/azure/load-balancer/skus) for more information about the differences between load balancer SKUs.",
+        Description = @"The load balancer sku for the managed cluster. The default is 'standard'. See [Azure Load Balancer SKUs](https://docs.microsoft.com/azure/load-balancer/skus) for more information about the differences between load balancer SKUs.",
         SerializedName = @"loadBalancerSku",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("standard", "basic")]
@@ -390,14 +474,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// <summary>The effective outbound IP resources of the cluster NAT gateway.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
-        ReadOnly = false,
+        ReadOnly = true,
         Read = true,
-        Create = true,
-        Update = true,
+        Create = false,
+        Update = false,
         Description = @"The effective outbound IP resources of the cluster NAT gateway.",
         SerializedName = @"effectiveOutboundIPs",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference> NatGatewayProfileEffectiveOutboundIP { get; set; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference> NatGatewayProfileEffectiveOutboundIP { get;  }
         /// <summary>
         /// Desired outbound flow idle timeout in minutes. Allowed values are in the range of 4 to 120 (inclusive). The default value
         /// is 4 minutes.
@@ -424,14 +508,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("azure", "cilium")]
         string NetworkDataplane { get; set; }
-        /// <summary>This cannot be specified if networkPlugin is anything other than 'azure'.</summary>
+        /// <summary>
+        /// The network mode Azure CNI is configured with. This cannot be specified if networkPlugin is anything other than 'azure'.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"This cannot be specified if networkPlugin is anything other than 'azure'.",
+        Description = @"The network mode Azure CNI is configured with. This cannot be specified if networkPlugin is anything other than 'azure'.",
         SerializedName = @"networkMode",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("transparent", "bridge")]
@@ -470,8 +556,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Description = @"Network policy used for building the Kubernetes network.",
         SerializedName = @"networkPolicy",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("calico", "azure", "cilium")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("none", "calico", "azure", "cilium")]
         string NetworkPolicy { get; set; }
+        /// <summary>
+        /// Indicates the enablement of Advanced Networking observability functionalities on clusters.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates the enablement of Advanced Networking observability functionalities on clusters.",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? ObservabilityEnabled { get; set; }
         /// <summary>A list of public IP prefix resources.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -495,7 +594,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference> OutboundIPPublicIP { get; set; }
         /// <summary>
-        /// This can only be set at cluster creation time and cannot be changed later. For more information see [egress outbound type](https://docs.microsoft.com/azure/aks/egress-outboundtype).
+        /// The outbound (egress) routing method. This can only be set at cluster creation time and cannot be changed later. For more
+        /// information see [egress outbound type](https://docs.microsoft.com/azure/aks/egress-outboundtype).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -503,10 +603,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"This can only be set at cluster creation time and cannot be changed later. For more information see [egress outbound type](https://docs.microsoft.com/azure/aks/egress-outboundtype).",
+        Description = @"The outbound (egress) routing method. This can only be set at cluster creation time and cannot be changed later. For more information see [egress outbound type](https://docs.microsoft.com/azure/aks/egress-outboundtype).",
         SerializedName = @"outboundType",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("loadBalancer", "userDefinedRouting", "managedNATGateway", "userAssignedNATGateway")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("loadBalancer", "userDefinedRouting", "managedNATGateway", "userAssignedNATGateway", "none")]
         string OutboundType { get; set; }
         /// <summary>A CIDR notation IP range from which to assign pod IPs when kubenet is used.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
@@ -520,8 +620,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         PossibleTypes = new [] { typeof(string) })]
         string PodCidr { get; set; }
         /// <summary>
-        /// One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for
-        /// dual-stack networking.
+        /// The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs,
+        /// one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -529,10 +629,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.",
+        Description = @"The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.",
         SerializedName = @"podCidrs",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> PodCidrs { get; set; }
+        /// <summary>
+        /// Enable advanced network policies. This allows users to configure Layer 7 network policies (FQDN, HTTP, Kafka). Policies
+        /// themselves must be configured via the Cilium Network Policy resources, see https://docs.cilium.io/en/latest/security/policy/index.html.
+        /// This can be enabled only on cilium-based clusters. If not specified, the default value is FQDN if security.enabled is
+        /// set to true.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Enable advanced network policies. This allows users to configure Layer 7 network policies (FQDN, HTTP, Kafka). Policies themselves must be configured via the Cilium Network Policy resources, see https://docs.cilium.io/en/latest/security/policy/index.html. This can be enabled only on cilium-based clusters. If not specified, the default value is FQDN if security.enabled is set to true.",
+        SerializedName = @"advancedNetworkPolicies",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("L7", "FQDN", "None")]
+        string SecurityAdvancedNetworkPolicy { get; set; }
+        /// <summary>
+        /// This feature allows user to configure network policy based on DNS (FQDN) names. It can be enabled only on cilium based
+        /// clusters. If not specified, the default is false.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"This feature allows user to configure network policy based on DNS (FQDN) names. It can be enabled only on cilium based clusters. If not specified, the default is false.",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? SecurityEnabled { get; set; }
         /// <summary>
         /// A CIDR notation IP range from which to assign service cluster IPs. It must not overlap with any Subnet IP ranges.
         /// </summary>
@@ -547,8 +678,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         PossibleTypes = new [] { typeof(string) })]
         string ServiceCidr { get; set; }
         /// <summary>
-        /// One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for
-        /// dual-stack networking. They must not overlap with any Subnet IP ranges.
+        /// The CIDR notation IP ranges from which to assign service cluster IPs. One IPv4 CIDR is expected for single-stack networking.
+        /// Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. They must not overlap with any Subnet
+        /// IP ranges.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -556,10 +688,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. They must not overlap with any Subnet IP ranges.",
+        Description = @"The CIDR notation IP ranges from which to assign service cluster IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. They must not overlap with any Subnet IP ranges.",
         SerializedName = @"serviceCidrs",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> ServiceCidrs { get; set; }
+        /// <summary>
+        /// Enable Static Egress Gateway addon. Indicates if Static Egress Gateway addon is enabled or not.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Enable Static Egress Gateway addon. Indicates if Static Egress Gateway addon is enabled or not.",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? StaticEgressGatewayProfileEnabled { get; set; }
 
     }
     /// Profile of network configuration.
@@ -567,18 +712,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
 
     {
         /// <summary>
+        /// Advanced Networking profile for enabling observability and security feature suite on a cluster. For more information see
+        /// aka.ms/aksadvancednetworking.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAdvancedNetworking AdvancedNetworking { get; set; }
+        /// <summary>
+        /// Indicates the enablement of Advanced Networking functionalities of observability and security on AKS clusters. When this
+        /// is set to true, all observability and security features will be set to enabled unless explicitly disabled. If not specified,
+        /// the default is false.
+        /// </summary>
+        bool? AdvancedNetworkingEnabled { get; set; }
+        /// <summary>
+        /// Observability profile to enable advanced network metrics and flow logs with historical contexts.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAdvancedNetworkingObservability AdvancedNetworkingObservability { get; set; }
+        /// <summary>Security profile to enable security features on cilium based cluster.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAdvancedNetworkingSecurity AdvancedNetworkingSecurity { get; set; }
+        /// <summary>
         /// An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified
         /// in serviceCidr.
         /// </summary>
         string DnsServiceIP { get; set; }
         /// <summary>
-        /// A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes
-        /// service address range.
-        /// </summary>
-        string DockerBridgeCidr { get; set; }
-        /// <summary>
-        /// IP families are used to determine single-stack or dual-stack clusters. For single-stack, the expected value is IPv4. For
-        /// dual-stack, the expected values are IPv4 and IPv6.
+        /// The IP families used to specify IP versions available to the cluster. IP families are used to determine single-stack or
+        /// dual-stack clusters. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6.
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("IPv4", "IPv6")]
         System.Collections.Generic.List<string> IPFamily { get; set; }
@@ -589,6 +746,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// value is 0 which results in Azure dynamically allocating ports.
         /// </summary>
         int? LoadBalancerProfileAllocatedOutboundPort { get; set; }
+        /// <summary>The type of the managed inbound Load Balancer BackendPool.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("NodeIPConfiguration", "NodeIP")]
+        string LoadBalancerProfileBackendPoolType { get; set; }
         /// <summary>The effective outbound IP resources of the cluster load balancer.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference> LoadBalancerProfileEffectiveOutboundIP { get; set; }
         /// <summary>Enable multiple standard load balancers per AKS cluster or not.</summary>
@@ -605,8 +765,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// <summary>Desired outbound IP Prefix resources for the cluster load balancer.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterLoadBalancerProfileOutboundIPPrefixes LoadBalancerProfileOutboundIPPrefix { get; set; }
         /// <summary>
-        /// The default is 'standard'. See [Azure Load Balancer SKUs](https://docs.microsoft.com/azure/load-balancer/skus) for more
-        /// information about the differences between load balancer SKUs.
+        /// The load balancer sku for the managed cluster. The default is 'standard'. See [Azure Load Balancer SKUs](https://docs.microsoft.com/azure/load-balancer/skus)
+        /// for more information about the differences between load balancer SKUs.
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("standard", "basic")]
         string LoadBalancerSku { get; set; }
@@ -639,7 +799,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// <summary>Network dataplane used in the Kubernetes cluster.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("azure", "cilium")]
         string NetworkDataplane { get; set; }
-        /// <summary>This cannot be specified if networkPlugin is anything other than 'azure'.</summary>
+        /// <summary>
+        /// The network mode Azure CNI is configured with. This cannot be specified if networkPlugin is anything other than 'azure'.
+        /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("transparent", "bridge")]
         string NetworkMode { get; set; }
         /// <summary>Network plugin used for building the Kubernetes network.</summary>
@@ -649,33 +811,60 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("overlay")]
         string NetworkPluginMode { get; set; }
         /// <summary>Network policy used for building the Kubernetes network.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("calico", "azure", "cilium")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("none", "calico", "azure", "cilium")]
         string NetworkPolicy { get; set; }
+        /// <summary>
+        /// Indicates the enablement of Advanced Networking observability functionalities on clusters.
+        /// </summary>
+        bool? ObservabilityEnabled { get; set; }
         /// <summary>A list of public IP prefix resources.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference> OutboundIPPrefixPublicIpprefix { get; set; }
         /// <summary>A list of public IP resources.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IResourceReference> OutboundIPPublicIP { get; set; }
         /// <summary>
-        /// This can only be set at cluster creation time and cannot be changed later. For more information see [egress outbound type](https://docs.microsoft.com/azure/aks/egress-outboundtype).
+        /// The outbound (egress) routing method. This can only be set at cluster creation time and cannot be changed later. For more
+        /// information see [egress outbound type](https://docs.microsoft.com/azure/aks/egress-outboundtype).
         /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("loadBalancer", "userDefinedRouting", "managedNATGateway", "userAssignedNATGateway")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("loadBalancer", "userDefinedRouting", "managedNATGateway", "userAssignedNATGateway", "none")]
         string OutboundType { get; set; }
         /// <summary>A CIDR notation IP range from which to assign pod IPs when kubenet is used.</summary>
         string PodCidr { get; set; }
         /// <summary>
-        /// One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for
-        /// dual-stack networking.
+        /// The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs,
+        /// one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
         /// </summary>
         System.Collections.Generic.List<string> PodCidrs { get; set; }
+        /// <summary>
+        /// Enable advanced network policies. This allows users to configure Layer 7 network policies (FQDN, HTTP, Kafka). Policies
+        /// themselves must be configured via the Cilium Network Policy resources, see https://docs.cilium.io/en/latest/security/policy/index.html.
+        /// This can be enabled only on cilium-based clusters. If not specified, the default value is FQDN if security.enabled is
+        /// set to true.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("L7", "FQDN", "None")]
+        string SecurityAdvancedNetworkPolicy { get; set; }
+        /// <summary>
+        /// This feature allows user to configure network policy based on DNS (FQDN) names. It can be enabled only on cilium based
+        /// clusters. If not specified, the default is false.
+        /// </summary>
+        bool? SecurityEnabled { get; set; }
         /// <summary>
         /// A CIDR notation IP range from which to assign service cluster IPs. It must not overlap with any Subnet IP ranges.
         /// </summary>
         string ServiceCidr { get; set; }
         /// <summary>
-        /// One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for
-        /// dual-stack networking. They must not overlap with any Subnet IP ranges.
+        /// The CIDR notation IP ranges from which to assign service cluster IPs. One IPv4 CIDR is expected for single-stack networking.
+        /// Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. They must not overlap with any Subnet
+        /// IP ranges.
         /// </summary>
         System.Collections.Generic.List<string> ServiceCidrs { get; set; }
+        /// <summary>
+        /// The profile for Static Egress Gateway addon. For more details about Static Egress Gateway, see https://aka.ms/aks/static-egress-gateway.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStaticEgressGatewayProfile StaticEgressGatewayProfile { get; set; }
+        /// <summary>
+        /// Enable Static Egress Gateway addon. Indicates if Static Egress Gateway addon is enabled or not.
+        /// </summary>
+        bool? StaticEgressGatewayProfileEnabled { get; set; }
 
     }
 }

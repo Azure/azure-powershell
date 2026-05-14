@@ -13,8 +13,9 @@ Creates a new CosmosDB Sql VectorEmbedding object.
 ## SYNTAX
 
 ```
-New-AzCosmosDBSqlVectorEmbedding [-Path <String>] [-DataType <String>] [-DistanceFunction <String>] [-Dimensions  <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzCosmosDBSqlVectorEmbedding -Path <String> -DataType <String> -DistanceFunction <String>
+ -Dimensions <Int32> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,6 +36,21 @@ Path DataType DistanceFunction Dimensions
 
 ## PARAMETERS
 
+### -DataType
+Indicates the data type of vector.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -50,25 +66,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Path
-The path to the vector field in the document.
+### -Dimensions
+The number of dimensions in the vector.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-### -DataType
-Indicates the data type of vector.
-
-```yaml
-Type: System.String
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -94,15 +96,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Dimensions
-The number of dimensions in the vector.
+### -Path
+The path to the vector field in the document.
 
 ```yaml
-Type: System.Int32
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

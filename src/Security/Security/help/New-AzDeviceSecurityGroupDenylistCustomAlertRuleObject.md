@@ -19,7 +19,7 @@ New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject -Enabled <Boolean> -Type 
 ```
 
 ## DESCRIPTION
-The New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject cmdlet creates a new list of denyed custom alert rules for device security group in IoT security solution.
+The New-AzDeviceSecurityGroupDenylistCustomAlertRuleObject cmdlet creates a new list of denied custom alert rules for device security group in IoT security solution.
 
 ## EXAMPLES
 
@@ -37,7 +37,7 @@ ValueType: "String"
 DenylistValues: []
 ```
 
-Create new deny list custom alert rule with rull type "SomeRuleType" and status set to desable
+Create new deny list custom alert rule with rule type "SomeRuleType" and status set to disable
 
 ## PARAMETERS
 

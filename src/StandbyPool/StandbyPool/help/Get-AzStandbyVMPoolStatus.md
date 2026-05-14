@@ -18,20 +18,21 @@ Get-AzStandbyVMPoolStatus -Name <String> -ResourceGroupName <String> [-Subscript
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
-```
-Get-AzStandbyVMPoolStatus -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### GetViaIdentity
 ```
-Get-AzStandbyVMPoolStatus -InputObject <IStandbyPoolIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStandbyVMPoolStatus -InputObject <IStandbyPoolIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentityStandbyVirtualMachinePool
 ```
 Get-AzStandbyVMPoolStatus -StandbyVirtualMachinePoolInputObject <IStandbyPoolIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzStandbyVMPoolStatus -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -215,3 +216,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

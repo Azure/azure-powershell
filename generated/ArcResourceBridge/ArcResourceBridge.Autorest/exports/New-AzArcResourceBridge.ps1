@@ -16,19 +16,19 @@
 
 <#
 .Synopsis
-Creates or updates an Appliance in the specified Subscription and Resource Group.
+Create an Appliance in the specified Subscription and Resource Group.
 .Description
-Creates or updates an Appliance in the specified Subscription and Resource Group.
+Create an Appliance in the specified Subscription and Resource Group.
 .Example
-New-AzArcResourceBridge -Name azps-resource-bridge -ResourceGroupName azps_test_group -Location eastus -IdentityType 'SystemAssigned' -Distro 'AKSEdge' -InfrastructureConfigProvider 'VMware' -Tag @{"123"="abc"}
+New-AzArcResourceBridge -Name azps-resource-bridge -ResourceGroupName azps_test_group -Location eastus -EnableSystemAssignedIdentity -Distro 'AKSEdge' -InfrastructureConfigProvider 'VMware' -Tag @{"123"="abc"}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IAppliance
+Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IAppliance
 .Link
 https://learn.microsoft.com/powershell/module/az.arcresourcebridge/new-azarcresourcebridge
 #>
 function New-AzArcResourceBridge {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api20221027.IAppliance])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.IAppliance])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -51,53 +51,64 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Distro])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.PSArgumentCompleterAttribute("AKSEdge")]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Distro]
+    [System.String]
     # Represents a supported Fabric/Infra.
     # (AKSEdge etc...).
     ${Distro},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.ResourceIdentityType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.ResourceIdentityType]
-    # The identity type.
-    ${IdentityType},
+    [System.Management.Automation.SwitchParameter]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Provider])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.PSArgumentCompleterAttribute("VMWare", "HCI", "SCVMM", "KubeVirt", "OpenStack")]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Support.Provider]
+    [System.String]
     # Information about the connected appliance.
     ${InfrastructureConfigProvider},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Body')]
     [System.String]
     # Certificates pair used to download MSI certificate from HIS.
     # Can only be set once.
     ${PublicKey},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Body')]
     [System.String]
     # Version of the Appliance
     ${Version},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -167,6 +178,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -187,10 +207,10 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.ArcResourceBridge.private\New-AzArcResourceBridge_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.ArcResourceBridge.private\New-AzArcResourceBridge_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ArcResourceBridge.private\New-AzArcResourceBridge_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ArcResourceBridge.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -204,6 +224,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

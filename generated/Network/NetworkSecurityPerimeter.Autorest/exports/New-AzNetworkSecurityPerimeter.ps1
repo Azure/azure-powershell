@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a Network Security Perimeter.
+Create a Network Security Perimeter.
 .Description
-create a Network Security Perimeter.
+Create a Network Security Perimeter.
 .Example
 New-AzNetworkSecurityPerimeter -Name nsp-test-1 -ResourceGroupName rg-test-1 -Location eastus2euap
 
@@ -189,8 +189,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

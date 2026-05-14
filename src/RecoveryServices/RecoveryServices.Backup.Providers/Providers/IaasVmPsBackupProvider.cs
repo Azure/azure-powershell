@@ -74,17 +74,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
             string azureVMName = (string)ProviderData[ItemParams.ItemName];
-            string azureVMCloudServiceName = (string)ProviderData[ItemParams.AzureVMCloudServiceName];
+            string azureVMCloudServiceName = ProviderData.ContainsKey(ItemParams.AzureVMCloudServiceName) ? (string)ProviderData[ItemParams.AzureVMCloudServiceName] : null;
             string azureVMResourceGroupName = (string)ProviderData[ItemParams.AzureVMResourceGroupName];
             string parameterSetName = (string)ProviderData[ItemParams.ParameterSetName];
-            string[] inclusionDisksList = (string[])ProviderData[ItemParams.InclusionDisksList];
-            string[] exclusionDisksList = (string[])ProviderData[ItemParams.ExclusionDisksList];
-            SwitchParameter resetDiskExclusionSetting = (SwitchParameter)ProviderData[ItemParams.ResetExclusionSettings];
-            bool excludeAllDataDisks = (bool)ProviderData[ItemParams.ExcludeAllDataDisks];
+            string[] inclusionDisksList = ProviderData.ContainsKey(ItemParams.InclusionDisksList) ? (string[])ProviderData[ItemParams.InclusionDisksList] : null;
+            string[] exclusionDisksList = ProviderData.ContainsKey(ItemParams.ExclusionDisksList) ? (string[])ProviderData[ItemParams.ExclusionDisksList] : null;
+            SwitchParameter resetDiskExclusionSetting = ProviderData.ContainsKey(ItemParams.ResetExclusionSettings) ? (SwitchParameter)ProviderData[ItemParams.ResetExclusionSettings] : new SwitchParameter(false);
+            bool excludeAllDataDisks = ProviderData.ContainsKey(ItemParams.ExcludeAllDataDisks) ? (bool)ProviderData[ItemParams.ExcludeAllDataDisks] : false;
             PolicyBase policy = (PolicyBase)ProviderData[ItemParams.Policy];
-            ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
-            AzureVmItem item = (AzureVmItem)ProviderData[ItemParams.Item];
-
+            ItemBase itemBase = ProviderData.ContainsKey(ItemParams.Item) ? (ItemBase)ProviderData[ItemParams.Item] : null;
+            AzureVmItem item = ProviderData.ContainsKey(ItemParams.Item) ? (AzureVmItem)ProviderData[ItemParams.Item] : null;
+            
             string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
             bool isMUAOperation = ProviderData.ContainsKey(ResourceGuardParams.IsMUAOperation) ? (bool)ProviderData[ResourceGuardParams.IsMUAOperation] : false;
 
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
-            bool deleteBackupData = (bool)ProviderData[ItemParams.DeleteBackupData];
+            bool deleteBackupData = ProviderData.ContainsKey(ItemParams.DeleteBackupData) ? (bool)ProviderData[ItemParams.DeleteBackupData] : false;
 
             ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
 
@@ -518,6 +518,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(rp.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
+            string cVMOsDiskEncryptionSetId = ProviderData.ContainsKey(RestoreVMBackupItemParams.CVMOsDiskEncryptionSetId) ?
+                ProviderData[RestoreVMBackupItemParams.CVMOsDiskEncryptionSetId].ToString() : null;
 
             if (targetSubscriptionId == null || targetSubscriptionId == "") targetSubscriptionId = ServiceClientAdapter.SubscriptionId;
 
@@ -645,6 +647,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 {
                     restoreRequest.TargetDiskNetworkAccessSettings.TargetDiskAccessId = targetDiskAccessId;
                 }                
+            }
+
+            if (!string.IsNullOrWhiteSpace(cVMOsDiskEncryptionSetId))
+            {
+                restoreRequest.SecuredVMDetails = new SecuredVMDetails(cVMOsDiskEncryptionSetId);
             }
 
             if (restoreType == "OriginalLocation") // replace existing
@@ -1391,7 +1398,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 CmdletModel.SimpleSchedulePolicyV2 defaultSchedule = new CmdletModel.SimpleSchedulePolicyV2();
                 
-                //Default is daily scedule at 10:30 AM local time
+                //Default is daily schedule at 10:30 AM local time
                 defaultSchedule.ScheduleRunFrequency = scheduleRunFrequency;
                 DateTime scheduleTime = AzureWorkloadProviderHelper.GenerateRandomScheduleTime();
 
@@ -1429,7 +1436,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 CmdletModel.SimpleSchedulePolicy defaultSchedule = new CmdletModel.SimpleSchedulePolicy();
                 
-                //Default is daily scedule at 10:30 AM local time
+                //Default is daily schedule at 10:30 AM local time
                 defaultSchedule.ScheduleRunFrequency = scheduleRunFrequency;
 
                 if (scheduleRunFrequency == CmdletModel.ScheduleRunType.Daily || scheduleRunFrequency == CmdletModel.ScheduleRunType.Weekly)
@@ -2007,7 +2014,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             Regex rgx = new Regex(pattern);
             content = rgx.Replace(content, replacement);
 
-            // ecode back to Base 64 format
+            // decode back to Base 64 format
             contentBytes = Encoding.UTF8.GetBytes(content);
             content = Convert.ToBase64String(contentBytes);
 

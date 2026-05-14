@@ -20,7 +20,7 @@ Obtains details of a cached recommendation.
 .Description
 Obtains details of a cached recommendation.
 .Example
- Get-AzAdvisorRecommendation -ResourceGroupName lnxtest -Category HighAvailability
+Get-AzAdvisorRecommendation -ResourceGroupName lnxtest -Category HighAvailability
 .Example
 Get-AzAdvisorRecommendation -filter "Category eq 'HighAvailability' and ResourceGroup eq 'lnxtest'"
 .Example
@@ -29,14 +29,14 @@ Get-AzAdvisorRecommendation -Id 42963553-61de-5334-2d2e-47f3a0099d41 -ResourceUr
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase
+Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IResourceRecommendationBase
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
-  [ConfigurationName <ConfigurationName?>]: Advisor configuration name. Value must be 'default'
+  [ConfigurationName <String>]: Advisor configuration name. Value must be 'default'
   [Id <String>]: Resource identity path
   [Name <String>]: Name of metadata entity.
   [OperationId <String>]: The operation ID, which can be found from the Location field in the generate recommendation response header.
@@ -48,7 +48,7 @@ INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.advisor/get-azadvisorrecommendation
 #>
 function Get-AzAdvisorRecommendation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IResourceRecommendationBase])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IResourceRecommendationBase])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -68,7 +68,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='List')]
@@ -155,15 +154,16 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.Advisor.private\Get-AzAdvisorRecommendation_Get';
             GetViaIdentity = 'Az.Advisor.private\Get-AzAdvisorRecommendation_GetViaIdentity';
             List = 'Az.Advisor.private\Get-AzAdvisorRecommendation_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -172,6 +172,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFirmwareAnalysisPasswor
 Describe 'Get-AzFirmwareAnalysisPasswordHash' {
     It 'List' {
         { 
-            $config = Get-AzFirmwareAnalysisPasswordHash -FirmwareId '7795b9a8-97bb-ba4b-b21a-8dc6ae2dabb9' -ResourceGroupName 'FirmwareAnalysisRG' -WorkspaceName 'default'
+            $config = Get-AzFirmwareAnalysisPasswordHash -FirmwareId $env.FirmwareId -ResourceGroupName $env.ResourceGroup -WorkspaceName $env.WorkspaceName
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
     }

@@ -8,31 +8,57 @@ schema: 2.0.0
 # Update-AzLabServicesPlanImage
 
 ## SYNOPSIS
-Updates an image resource.
+Update an image resource.
 
 ## SYNTAX
 
 ### ResourceId (Default)
 ```
-Update-AzLabServicesPlanImage -EnabledState <EnableState> -ResourceId <String> [-SubscriptionId <String>]
+Update-AzLabServicesPlanImage -EnabledState <String> -ResourceId <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
 ```
 
 ### LabPlan
 ```
-Update-AzLabServicesPlanImage -LabPlan <LabPlan> -Name <String> -EnabledState <EnableState>
+Update-AzLabServicesPlanImage -LabPlan <LabPlan> -Name <String> -EnabledState <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
 Update-AzLabServicesPlanImage -LabPlanName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-EnabledState <EnableState>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] [-EnabledState <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzLabServicesPlanImage -InputObject <ILabServicesIdentity> [-EnabledState <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityLabPlanExpanded
+```
+Update-AzLabServicesPlanImage -LabPlanInputObject <ILabServicesIdentity> -Name <String>
+ [-EnabledState <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzLabServicesPlanImage -LabPlanName <String> -Name <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzLabServicesPlanImage -LabPlanName <String> -Name <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates an image resource.
+Update an image resource.
 
 ## EXAMPLES
 
@@ -52,7 +78,7 @@ This example enables the image for use in labs.
 ## PARAMETERS
 
 ### -AsJob
-
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -86,8 +112,53 @@ Accept wildcard characters: False
 Is the image enabled
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: LabPlan, ResourceId, UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityLabPlanExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -98,11 +169,26 @@ Accept wildcard characters: False
 ```
 
 ### -LabPlan
-To construct, see NOTES section for LABPLAN properties and create a hash table.
+The object of lab service lab plan.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan
 Parameter Sets: LabPlan
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -LabPlanInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+Parameter Sets: UpdateViaIdentityLabPlanExpanded
 Aliases:
 
 Required: True
@@ -118,7 +204,7 @@ Used in resource URIs and in UI.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -133,7 +219,7 @@ The image name.
 
 ```yaml
 Type: System.String
-Parameter Sets: LabPlan, UpdateExpanded
+Parameter Sets: LabPlan, UpdateExpanded, UpdateViaIdentityLabPlanExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: ImageName
 
 Required: True
@@ -144,7 +230,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -164,7 +250,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -175,7 +261,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-
+The resource ID of lan service lab plan image to update.
 
 ```yaml
 Type: System.String
@@ -194,7 +280,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: LabPlan, ResourceId, UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -240,11 +326,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabServicesIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IImage
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IImage
 
 ## NOTES
 

@@ -23,8 +23,6 @@ Forcibly removes the link to the specified database resource.
 Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ResourceGroupName "MyGroup" -ClusterName "MyCache3" -Id @("databaseId")
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceUnlinkParameters
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
 .Outputs
 System.Boolean
@@ -44,8 +42,16 @@ INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 
-PARAMETER <IForceUnlinkParameters>: Parameters for a Redis Enterprise Active Geo Replication Force Unlink operation.
-  Id <String[]>: The resource IDs of the database resources to be unlinked.
+REDISENTERPRISEINPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
+  [AccessPolicyAssignmentName <String>]: The name of the Redis Enterprise database access policy assignment.
+  [ClusterName <String>]: The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
+  [DatabaseName <String>]: The name of the Redis Enterprise database.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/invoke-azredisenterprisecacheforcedatabaseunlink
 #>
@@ -53,8 +59,9 @@ function Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='ForceExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Force', Mandatory)]
     [Parameter(ParameterSetName='ForceExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ForceViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ForceViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [System.String]
     # The name of the Redis Enterprise cluster.
@@ -63,45 +70,56 @@ param(
     # There can be no leading nor trailing nor consecutive hyphens
     ${ClusterName},
 
-    [Parameter(ParameterSetName='Force', Mandatory)]
     [Parameter(ParameterSetName='ForceExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ForceViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ForceViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Force')]
     [Parameter(ParameterSetName='ForceExpanded')]
+    [Parameter(ParameterSetName='ForceViaJsonFilePath')]
+    [Parameter(ParameterSetName='ForceViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='ForceViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ForceViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(ParameterSetName='Force', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='ForceViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IForceUnlinkParameters]
-    # Parameters for a Redis Enterprise Active Geo Replication Force Unlink operation.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
-    ${Parameter},
+    [Parameter(ParameterSetName='ForceViaIdentityRedisEnterpriseExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity]
+    # Identity Parameter
+    ${RedisEnterpriseInputObject},
 
     [Parameter(ParameterSetName='ForceExpanded', Mandatory)]
     [Parameter(ParameterSetName='ForceViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ForceViaIdentityRedisEnterpriseExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
     [System.String[]]
     # The resource IDs of the database resources to be unlinked.
     ${Id},
+
+    [Parameter(ParameterSetName='ForceViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Force operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ForceViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+    [System.String]
+    # Json string supplied to the Force operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -177,6 +195,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -196,22 +222,21 @@ begin {
         }
 
         $mapping = @{
-            Force = 'Az.RedisEnterpriseCache.private\Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink_Force';
             ForceExpanded = 'Az.RedisEnterpriseCache.private\Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink_ForceExpanded';
-            ForceViaIdentity = 'Az.RedisEnterpriseCache.private\Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink_ForceViaIdentity';
             ForceViaIdentityExpanded = 'Az.RedisEnterpriseCache.private\Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink_ForceViaIdentityExpanded';
+            ForceViaIdentityRedisEnterpriseExpanded = 'Az.RedisEnterpriseCache.private\Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink_ForceViaIdentityRedisEnterpriseExpanded';
+            ForceViaJsonFilePath = 'Az.RedisEnterpriseCache.private\Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink_ForceViaJsonFilePath';
+            ForceViaJsonString = 'Az.RedisEnterpriseCache.private\Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink_ForceViaJsonString';
         }
-        if (('Force', 'ForceExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('DatabaseName')) {
-            $PSBoundParameters['DatabaseName'] = "default"
-        }
-        if (('Force', 'ForceExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ForceExpanded', 'ForceViaJsonFilePath', 'ForceViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
+        }
+        if (('ForceExpanded', 'ForceViaIdentityRedisEnterpriseExpanded', 'ForceViaJsonFilePath', 'ForceViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('DatabaseName') ) {
+            $PSBoundParameters['DatabaseName'] = "default"
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -220,6 +245,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

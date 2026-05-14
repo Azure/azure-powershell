@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Common
         /// <summary>
         /// Pipeline delegate to add a unique id header to an outgoing request
         /// </summary>
-        /// <param name="request">The outgpoing request</param>
+        /// <param name="request">The outgoing request</param>
         /// <param name="token">The cancellation token</param>
         /// <param name="cancel">Additional cancellation action if the operation is cancelled</param>
         /// <param name="signal">Signal delegate for logging events</param>

@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         }
 
         /// <summary>
-        /// Gets polcy name from the provided dictionary of key value pairs.
+        /// Gets policy name from the provided dictionary of key value pairs.
         /// </summary>
         /// <param name="keyValuePairDict">Dictionary of UriEnum as key and value as value of corresponding URI enum</param>
         /// <param name="id">ID of the resource</param>

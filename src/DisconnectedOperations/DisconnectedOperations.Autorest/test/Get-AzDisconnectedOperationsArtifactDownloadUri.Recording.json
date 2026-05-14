@@ -1,0 +1,50 @@
+{
+  "Get-AzDisconnectedOperationsArtifactDownloadUri+[NoContext]+List+$POST+https://management.azure.com/subscriptions/dc4ac3fc-8889-44d6-a8f8-a8fa229c659e/resourceGroups/winfield-demo-rg-2/providers/Microsoft.Edge/disconnectedOperations/winfield-ps-test/images/default/artifacts/thirdpartynotices/listDownloadUri?api-version=2026-03-15+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/dc4ac3fc-8889-44d6-a8f8-a8fa229c659e/resourceGroups/winfield-demo-rg-2/providers/Microsoft.Edge/disconnectedOperations/winfield-ps-test/images/default/artifacts/thirdpartynotices/listDownloadUri?api-version=2026-03-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "6e3f2a81-f832-4816-a76a-8244a7125ae2" ],
+        "CommandName": [ "Get-AzDisconnectedOperationsArtifactDownloadUri" ],
+        "FullCommandName": [ "Get-AzDisconnectedOperationsArtifactDownloadUri_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.4.0", "PSVersion/v7.4.11", "Az.DisconnectedOperations/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "Set-Cookie": [ "ASLBSA=0003f1f3afbf6c7aa404c8a2eb9668995ddb889d08fee39dbdbf7497009281a11ce6; Path=/; Secure; HttpOnly;", "ASLBSACORS=0003f1f3afbf6c7aa404c8a2eb9668995ddb889d08fee39dbdbf7497009281a11ce6; SameSite=none; Path=/; Secure; HttpOnly;" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=a2330d2c-ed16-4601-a8ce-6c9d0d999bf4/westus3/becf5c92-ee0c-4e48-9dcd-140840235753" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-azure-ref": [ "20260303T152451Z-15db5d65464qpfgchC1BN1cxp0000000151g00000000h2q2" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "e06479e1-1155-4736-a385-37f93ac6127a" ],
+        "x-ms-correlation-request-id": [ "f9de5e5f-7aff-4f4b-995e-511786a2caa9" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-routing-request-id": [ "WESTUS3:20260303T152452Z:f9de5e5f-7aff-4f4b-995e-511786a2caa9" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-MSEdge-Ref": [ "Ref A: D6658B6CD40D4528A6BE28D4F85BE6B5 Ref B: MAA201060513053 Ref C: 2026-03-03T15:24:50Z" ],
+        "Date": [ "Tue, 03 Mar 2026 15:24:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "753" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"provisioningState\":null,\"artifactOrder\":7,\"title\":\"ThirdPartyNotices.txt\",\"description\":\"Third party notices.\",\"size\":20,\"downloadLink\":\"https://www.microsoft.com/en-in/\",\"linkExpiry\":\"2026-03-04T15:24:52.7874882+00:00\"}",
+      "isContentBase64": false
+    }
+  }
+}

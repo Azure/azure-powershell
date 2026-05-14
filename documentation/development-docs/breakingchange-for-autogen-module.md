@@ -9,8 +9,6 @@ Breaking changes and preview messages for auto gen cmdlets are added through dir
 
 ## Case 1 — Module is deprecated
 
- 
-
 ```yaml
 - where:
     verb: (.*)
@@ -112,13 +110,27 @@ Breaking changes and preview messages for auto gen cmdlets are added through dir
       estimated-ga-date: 2023-09-30
 ```
 
+## Case 8 — Breaking change for a cmdlet(No parameter specified; only apply description at the cmdlet level)
+
+```yaml
+- where:
+    verb: Remove
+    subject: VNetPeering
+  set:
+    breaking-change:
+      deprecated-by-version: 5.0.0
+      deprecated-by-azversion: 20.0.0
+      change-effective-date: 2022/05/30
+      change-description: Breaking change message applies at the cmdlet level
+```
+
 # For customized cmdlets
 
 To add breaking changes or preview messages for a customized cmdlets, you will need to add related attributes in code directly. And following are some common cases.
 
-You must provide expected breaking change az version and moudle verision otherwise it won't compile. The first version is expected az version while the second one is expected moudle verision.
+You must provide expected breaking change az version and module version otherwise it won't compile. The first version is expected az version while the second one is expected module version.
 
-**Note: these examples are based on the Az.Databricks module. Please double check the namesapce. You will most likely need to replace "Databricks" with your module's name.**
+**Note: these examples are based on the Az.Databricks module. Please double check the namespace. You will most likely need to replace "Databricks" with your module's name.**
 
 ## Case 1 — Generic Breaking change for a cmdlet
 

@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Internal code generation updated. No user-facing changes in this release.
+
+## Version 1.0.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
+## Version 1.0.0
+* General availability for module Az.StorageAction
 
 ## Version 0.1.2
 * Fixed module name in module metadata

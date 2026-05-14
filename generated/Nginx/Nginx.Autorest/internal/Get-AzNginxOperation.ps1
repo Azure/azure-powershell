@@ -25,12 +25,12 @@ List all operations provided by Nginx.NginxPlus for the 2024-01-01-preview api v
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IOperationResult
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.IOperationResult
 .Link
 https://learn.microsoft.com/powershell/module/az.nginx/get-aznginxoperation
 #>
 function Get-AzNginxOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IOperationResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.IOperationResult])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -89,12 +89,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Nginx.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.Nginx.private\Get-AzNginxOperation_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

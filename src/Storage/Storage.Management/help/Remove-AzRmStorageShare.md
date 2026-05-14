@@ -55,7 +55,7 @@ Remove-AzRmStorageShare -InputObject <PSShare> [-Force] [-Include <String>] [-Pa
 ```
 
 ## DESCRIPTION
-The **New-AzRmStorageShare** cmdlet removes a Storage file share.
+The **Remove-AzRmStorageShare** cmdlet removes a Storage file share.
 
 ## EXAMPLES
 

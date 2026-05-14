@@ -32,16 +32,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models
         public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IErrorDetailsInternal)Error).Message; }
 
         /// <summary>Internal Acessors for Code</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IErrorResponseInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IErrorDetailsInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IErrorDetailsInternal)Error).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IErrorResponseInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IErrorDetailsInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IErrorDetailsInternal)Error).Code = value ?? null; }
 
         /// <summary>Internal Acessors for Error</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IErrorDetails Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IErrorResponseInternal.Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ErrorDetails()); set { {_error = value;} } }
 
         /// <summary>Internal Acessors for Message</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IErrorResponseInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IErrorDetailsInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IErrorDetailsInternal)Error).Message = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IErrorResponseInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IErrorDetailsInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IErrorDetailsInternal)Error).Message = value ?? null; }
 
         /// <summary>Internal Acessors for Target</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IErrorResponseInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IErrorDetailsInternal)Error).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IErrorDetailsInternal)Error).Target = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IErrorResponseInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IErrorDetailsInternal)Error).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IErrorDetailsInternal)Error).Target = value ?? null; }
 
         /// <summary>The target of the particular error.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Origin(Microsoft.Azure.PowerShell.Cmdlets.Reservations.PropertyOrigin.Inlined)]

@@ -27,11 +27,11 @@ For information on how to develop for `Az.DataMigration`, see [how-to.md](how-to
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: ff761e7c771e6e57442ade02e86a063ec9e7276c
+commit: 258d7a23333e3149bb54c95011806ff365a98e38
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file: 
-  - $(repo)/specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2025-03-15-preview/sqlmigration.json
+  - $(repo)/specification/datamigration/resource-manager/Microsoft.DataMigration/stable/2025-06-30/sqlmigration.json
 
 title: DataMigration
 module-version: 0.1.0

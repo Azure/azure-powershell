@@ -21,12 +21,13 @@ Create an in-memory object for AzureSubscriptionDataSource.
 Create an in-memory object for AzureSubscriptionDataSource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSubscriptionDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSubscriptionDataSource
 .Link
-https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSubscriptionDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazuresubscriptiondatasourceobject
 #>
 function New-AzPurviewAzureSubscriptionDataSourceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSubscriptionDataSource')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSubscriptionDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -38,15 +39,11 @@ function New-AzPurviewAzureSubscriptionDataSourceObject {
         $CollectionType,
         [Parameter()]
         [string]
-        $SubscriptionId,
-        [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
-        $Kind
+        $SubscriptionId
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSubscriptionDataSource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSubscriptionDataSource]::New()
 
         if ($PSBoundParameters.ContainsKey('CollectionReferenceName')) {
             $Object.CollectionReferenceName = $CollectionReferenceName
@@ -56,9 +53,6 @@ function New-AzPurviewAzureSubscriptionDataSourceObject {
         }
         if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
             $Object.SubscriptionId = $SubscriptionId
-        }
-        if ($PSBoundParameters.ContainsKey('Kind')) {
-            $Object.Kind = $Kind
         }
         return $Object
     }

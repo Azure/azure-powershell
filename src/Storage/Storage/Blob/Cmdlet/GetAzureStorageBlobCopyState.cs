@@ -34,7 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private const string BlobPipelineParameterSet = "BlobPipeline";
 
         /// <summary>
-        /// container pipeline paremeter set name
+        /// container pipeline parameter set name
         /// </summary>
         private const string ContainerPipelineParmeterSet = "ContainerPipeline";
 
@@ -83,7 +83,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public override string TagCondition { get; set; }
 
         /// <summary>
-        /// CloudBlob objects which need to mointor until copy complete
+        /// CloudBlob objects which need to monitor until copy complete
         /// </summary>
         private ConcurrentQueue<Tuple<long, CloudBlob>> jobList = new ConcurrentQueue<Tuple<long, CloudBlob>>();
         private ConcurrentDictionary<long, bool> TaskStatus = new ConcurrentDictionary<long, bool>();
@@ -126,7 +126,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 case BlobPipelineParameterSet:
                     if (CloudBlob is InvalidCloudBlob)
                     {
-                        throw new InvalidOperationException("This cmdlet is not supportted on a blob version.");
+                        throw new InvalidOperationException("This cmdlet is not supported on a blob version.");
                     }
                     blob = GetCloudBlobObject(CloudBlob);
                     break;

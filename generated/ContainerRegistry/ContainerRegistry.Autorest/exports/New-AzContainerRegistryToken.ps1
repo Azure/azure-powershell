@@ -16,14 +16,16 @@
 
 <#
 .Synopsis
-Creates a token for a container registry with the specified parameters.
+Create a token for a container registry with the specified parameters.
 .Description
-Creates a token for a container registry with the specified parameters.
+Create a token for a container registry with the specified parameters.
 .Example
 New-AzContainerRegistryToken -Name token2 -RegistryName lnxcr -ResourceGroupName lnxtest -ScopeMapId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lnxtest/providers/Microsoft.ContainerRegistry/registries/lnxcr/scopeMaps/newmap
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IToken
+Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IToken
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -32,18 +34,40 @@ To create the parameters described below, construct a hash table containing the 
 CREDENTIALSCERTIFICATE <ITokenCertificate[]>: .
   [EncodedPemCertificate <String>]: Base 64 encoded string of the public certificate1 in PEM format that will be used for authenticating the token.
   [Expiry <DateTime?>]: The expiry datetime of the certificate.
-  [Name <TokenCertificateName?>]: 
+  [Name <String>]: 
   [Thumbprint <String>]: The thumbprint of the certificate.
 
 CREDENTIALSPASSWORD <ITokenPassword[]>: .
   [CreationTime <DateTime?>]: The creation datetime of the password.
   [Expiry <DateTime?>]: The expiry datetime of the password.
-  [Name <TokenPasswordName?>]: The password name "password1" or "password2"
+  [Name <String>]: The password name "password1" or "password2"
+
+REGISTRYINPUTOBJECT <IContainerRegistryIdentity>: Identity Parameter
+  [AgentPoolName <String>]: The name of the agent pool.
+  [CacheRuleName <String>]: The name of the cache rule.
+  [ConnectedRegistryName <String>]: The name of the connected registry.
+  [CredentialSetName <String>]: The name of the credential set.
+  [ExportPipelineName <String>]: The name of the export pipeline.
+  [GroupName <String>]: The name of the private link resource.
+  [Id <String>]: Resource identity path
+  [ImportPipelineName <String>]: The name of the import pipeline.
+  [PipelineRunName <String>]: The name of the pipeline run.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [RegistryName <String>]: The name of the container registry.
+  [ReplicationName <String>]: The name of the replication.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RunId <String>]: The run ID.
+  [ScopeMapName <String>]: The name of the scope map.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [TaskName <String>]: The name of the container registry task.
+  [TaskRunName <String>]: The name of the task run.
+  [TokenName <String>]: The name of the token.
+  [WebhookName <String>]: The name of the webhook.
 .Link
 https://learn.microsoft.com/powershell/module/az.containerregistry/new-azcontainerregistrytoken
 #>
 function New-AzContainerRegistryToken {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IToken])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IToken])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -53,20 +77,26 @@ param(
     # The name of the token.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the container registry.
     ${RegistryName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -74,34 +104,54 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.IContainerRegistryIdentity]
+    # Identity Parameter
+    ${RegistryInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.ITokenCertificate[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITokenCertificate[]]
     # .
-    # To construct, see NOTES section for CREDENTIALSCERTIFICATE properties and create a hash table.
     ${CredentialsCertificate},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.ITokenPassword[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.ITokenPassword[]]
     # .
-    # To construct, see NOTES section for CREDENTIALSPASSWORD properties and create a hash table.
     ${CredentialsPassword},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
     [System.String]
     # The resource ID of the scope map to which the token will be associated with.
     ${ScopeMapId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TokenStatus])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityRegistryExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.PSArgumentCompleterAttribute("enabled", "disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.TokenStatus]
+    [System.String]
     # The status of the token example enabled or disabled.
     ${Status},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -171,6 +221,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -191,10 +250,11 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryToken_CreateExpanded';
+            CreateViaIdentityRegistryExpanded = 'Az.ContainerRegistry.private\New-AzContainerRegistryToken_CreateViaIdentityRegistryExpanded';
+            CreateViaJsonFilePath = 'Az.ContainerRegistry.private\New-AzContainerRegistryToken_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.ContainerRegistry.private\New-AzContainerRegistryToken_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -208,6 +268,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

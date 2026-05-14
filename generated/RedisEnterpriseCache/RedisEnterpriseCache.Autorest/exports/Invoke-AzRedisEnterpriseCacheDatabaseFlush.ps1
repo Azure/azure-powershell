@@ -23,8 +23,6 @@ Flushes all the keys in this database and also from its linked databases.
 Invoke-AzRedisEnterpriseCacheDatabaseFlush -ClusterName "MyCache" -ResourceGroupName "MyResourceGroup" -Id @("Mydatabase1") , @("MyLinkedDatabase1")
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IFlushParameters
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
 .Outputs
 System.Boolean
@@ -44,8 +42,16 @@ INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 
-PARAMETER <IFlushParameters>: Parameters for a Redis Enterprise active geo-replication flush operation
-  [Id <String[]>]: The identifiers of all the other database resources in the georeplication group to be flushed.
+REDISENTERPRISEINPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
+  [AccessPolicyAssignmentName <String>]: The name of the Redis Enterprise database access policy assignment.
+  [ClusterName <String>]: The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
+  [DatabaseName <String>]: The name of the Redis Enterprise database.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of Azure region.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/invoke-azredisenterprisecachedatabaseflush
 #>
@@ -53,8 +59,9 @@ function Invoke-AzRedisEnterpriseCacheDatabaseFlush {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='FlushExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Flush', Mandatory)]
     [Parameter(ParameterSetName='FlushExpanded', Mandatory)]
+    [Parameter(ParameterSetName='FlushViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='FlushViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [System.String]
     # The name of the Redis Enterprise cluster.
@@ -63,45 +70,56 @@ param(
     # There can be no leading nor trailing nor consecutive hyphens
     ${ClusterName},
 
-    [Parameter(ParameterSetName='Flush', Mandatory)]
     [Parameter(ParameterSetName='FlushExpanded', Mandatory)]
+    [Parameter(ParameterSetName='FlushViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='FlushViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Flush')]
     [Parameter(ParameterSetName='FlushExpanded')]
+    [Parameter(ParameterSetName='FlushViaJsonFilePath')]
+    [Parameter(ParameterSetName='FlushViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='FlushViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='FlushViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(ParameterSetName='Flush', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='FlushViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20250501Preview.IFlushParameters]
-    # Parameters for a Redis Enterprise active geo-replication flush operation
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
-    ${Parameter},
+    [Parameter(ParameterSetName='FlushViaIdentityRedisEnterpriseExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity]
+    # Identity Parameter
+    ${RedisEnterpriseInputObject},
 
     [Parameter(ParameterSetName='FlushExpanded')]
     [Parameter(ParameterSetName='FlushViaIdentityExpanded')]
+    [Parameter(ParameterSetName='FlushViaIdentityRedisEnterpriseExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
     [System.String[]]
     # The identifiers of all the other database resources in the georeplication group to be flushed.
     ${Id},
+
+    [Parameter(ParameterSetName='FlushViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Flush operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='FlushViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+    [System.String]
+    # Json string supplied to the Flush operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -177,6 +195,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -196,22 +222,21 @@ begin {
         }
 
         $mapping = @{
-            Flush = 'Az.RedisEnterpriseCache.private\Invoke-AzRedisEnterpriseCacheDatabaseFlush_Flush';
             FlushExpanded = 'Az.RedisEnterpriseCache.private\Invoke-AzRedisEnterpriseCacheDatabaseFlush_FlushExpanded';
-            FlushViaIdentity = 'Az.RedisEnterpriseCache.private\Invoke-AzRedisEnterpriseCacheDatabaseFlush_FlushViaIdentity';
             FlushViaIdentityExpanded = 'Az.RedisEnterpriseCache.private\Invoke-AzRedisEnterpriseCacheDatabaseFlush_FlushViaIdentityExpanded';
+            FlushViaIdentityRedisEnterpriseExpanded = 'Az.RedisEnterpriseCache.private\Invoke-AzRedisEnterpriseCacheDatabaseFlush_FlushViaIdentityRedisEnterpriseExpanded';
+            FlushViaJsonFilePath = 'Az.RedisEnterpriseCache.private\Invoke-AzRedisEnterpriseCacheDatabaseFlush_FlushViaJsonFilePath';
+            FlushViaJsonString = 'Az.RedisEnterpriseCache.private\Invoke-AzRedisEnterpriseCacheDatabaseFlush_FlushViaJsonString';
         }
-        if (('Flush', 'FlushExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name')) {
-            $PSBoundParameters['Name'] = "default"
-        }
-        if (('Flush', 'FlushExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('FlushExpanded', 'FlushViaJsonFilePath', 'FlushViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
+        }
+        if (('FlushExpanded', 'FlushViaIdentityRedisEnterpriseExpanded', 'FlushViaJsonFilePath', 'FlushViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Name') ) {
+            $PSBoundParameters['Name'] = "default"
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -220,6 +245,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

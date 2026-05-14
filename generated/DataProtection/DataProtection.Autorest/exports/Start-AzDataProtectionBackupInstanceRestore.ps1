@@ -152,11 +152,28 @@ $validateRestore = Test-AzDataProtectionBackupInstanceRestore -SubscriptionId $s
 
 $restoreJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName  -VaultName $vaultName -BackupInstanceName $instance.BackupInstanceName -Parameter $aksALRRestoreRequest
 
+.Example
+$subId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+$resourceGroupName = "resourceGroupName"
+$vaultName = "vaultName"
+$targetCosmosAccountId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/targetRG/providers/Microsoft.DocumentDB/databaseAccounts/target-cosmos-account"
+
+$vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
+$instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match "source-cosmos-account" }
+$rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.Name
+
+$cosmosRestoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCosmosDB -SourceDataStore VaultStore -RestoreLocation $vault.Location -RestoreType AlternateLocation -RecoveryPoint $rp[0].Property.RecoveryPointId -TargetResourceId $targetCosmosAccountId
+
+Set-AzDataProtectionMSIPermission -VaultResourceGroup $resourceGroupName -VaultName $vaultName -PermissionsScope "ResourceGroup" -RestoreRequest $cosmosRestoreRequest
+
+$validateRestore = Test-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -RestoreRequest $cosmosRestoreRequest -Name $instance.BackupInstanceName
+
+$restoreJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.BackupInstanceName -Parameter $cosmosRestoreRequest
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupRestoreRequest
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRestoreRequest
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IOperationJobExtendedInfo
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -167,10 +184,10 @@ PARAMETER <IAzureBackupRestoreRequest>: Restore request object to be initialized
   RestoreTargetInfo <IRestoreTargetInfoBase>: Gets or sets the restore target information.
     ObjectType <String>: Type of Datasource object, used to initialize the right inherited type
     [RestoreLocation <String>]: Target Restore region
-  SourceDataStoreType <SourceDataStoreType>: Gets or sets the type of the source data store.
+  SourceDataStoreType <String>: Gets or sets the type of the source data store.
   [IdentityDetailUseSystemAssignedIdentity <Boolean?>]: Specifies if the BI is protected by System Identity.
   [IdentityDetailUserAssignedIdentityArmUrl <String>]: ARM URL for User Assigned Identity.
-  [ResourceGuardOperationRequest <String[]>]: ResourceGuardOperationRequests on which LAC check will be performed
+  [ResourceGuardOperationRequest <List<String>>]: Resource guard operation request in the format similar to <ResourceGuard-ARMID>/dppTriggerRestoreRequests/default. Use this parameter when the operation is MUA protected.
   [SourceResourceId <String>]: Fully qualified Azure Resource Manager ID of the datasource which is being recovered.
 
 RESTORETARGETINFO <IRestoreTargetInfoBase>: Gets or sets the restore target information
@@ -180,7 +197,7 @@ RESTORETARGETINFO <IRestoreTargetInfoBase>: Gets or sets the restore target info
 https://learn.microsoft.com/powershell/module/az.dataprotection/start-azdataprotectionbackupinstancerestore
 #>
 function Start-AzDataProtectionBackupInstanceRestore {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IOperationJobExtendedInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo])]
 [CmdletBinding(DefaultParameterSetName='Trigger', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -203,9 +220,8 @@ param(
 
     [Parameter(ParameterSetName='Trigger', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IAzureBackupRestoreRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRestoreRequest]
     # Restore request object to be initialized using Initialize-AzDataProtectionRestoreRequest cmdlet
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter()]
@@ -301,14 +317,13 @@ param(
 
     [Parameter(ParameterSetName='TriggerExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202501.IRestoreTargetInfoBase]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IRestoreTargetInfoBase]
     # Gets or sets the restore target information
-    # To construct, see NOTES section for RESTORETARGETINFO properties and create a hash table.
     ${RestoreTargetInfo},
 
     [Parameter(ParameterSetName='TriggerExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SourceDataStoreType]
+    [System.String]
     # Type of the source data store
     ${SourceDataStoreType},
 
@@ -338,6 +353,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -367,6 +385,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

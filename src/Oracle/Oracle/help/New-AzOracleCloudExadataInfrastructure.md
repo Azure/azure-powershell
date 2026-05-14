@@ -16,14 +16,14 @@ Create a CloudExadataInfrastructure
 ```
 New-AzOracleCloudExadataInfrastructure -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -Location <String> -Zone <String[]> [-ComputeCount <Int32>] [-CustomerContact <ICustomerContact[]>]
- [-DisplayName <String>] [-MaintenanceWindowCustomActionTimeoutInMin <Int32>]
+ [-DatabaseServerType <String>] [-DisplayName <String>] [-MaintenanceWindowCustomActionTimeoutInMin <Int32>]
  [-MaintenanceWindowDaysOfWeek <IDayOfWeek[]>] [-MaintenanceWindowHoursOfDay <Int32[]>]
  [-MaintenanceWindowIsCustomActionTimeoutEnabled] [-MaintenanceWindowIsMonthlyPatchingEnabled]
  [-MaintenanceWindowLeadTimeInWeek <Int32>] [-MaintenanceWindowMonth <IMonth[]>]
  [-MaintenanceWindowPatchingMode <String>] [-MaintenanceWindowPreference <String>]
- [-MaintenanceWindowWeeksOfMonth <Int32[]>] [-Shape <String>] [-StorageCount <Int32>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-MaintenanceWindowWeeksOfMonth <Int32[]>] [-Shape <String>] [-StorageCount <Int32>]
+ [-StorageServerType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -119,6 +119,21 @@ Up to 10 email addresses can be added to the customer contacts for a cloud Exada
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Oracle.Models.ICustomerContact[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DatabaseServerType
+The database server model type of the cloud Exadata infrastructure resource.
+
+```yaml
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -430,6 +445,21 @@ The number of storage servers for the cloud Exadata infrastructure.
 
 ```yaml
 Type: System.Int32
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageServerType
+The storage server model type of the cloud Exadata infrastructure resource.
+
+```yaml
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 

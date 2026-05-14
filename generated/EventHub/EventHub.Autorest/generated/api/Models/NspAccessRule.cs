@@ -34,22 +34,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models
         public string Id { get => this._id; set => this._id = value; }
 
         /// <summary>Internal Acessors for AddressPrefix</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRuleInternal.AddressPrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRulePropertiesInternal)Property).AddressPrefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRulePropertiesInternal)Property).AddressPrefix = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRuleInternal.AddressPrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRulePropertiesInternal)Property).AddressPrefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRulePropertiesInternal)Property).AddressPrefix = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Direction</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRuleInternal.Direction { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRulePropertiesInternal)Property).Direction; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRulePropertiesInternal)Property).Direction = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRuleInternal.Direction { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRulePropertiesInternal)Property).Direction; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRulePropertiesInternal)Property).Direction = value ?? null; }
 
         /// <summary>Internal Acessors for FullyQualifiedDomainName</summary>
-        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRuleInternal.FullyQualifiedDomainName { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRulePropertiesInternal)Property).FullyQualifiedDomainName; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRulePropertiesInternal)Property).FullyQualifiedDomainName = value; }
+        System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRuleInternal.FullyQualifiedDomainName { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRulePropertiesInternal)Property).FullyQualifiedDomainName; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRulePropertiesInternal)Property).FullyQualifiedDomainName = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for NetworkSecurityPerimeter</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeter> Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRuleInternal.NetworkSecurityPerimeter { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRulePropertiesInternal)Property).NetworkSecurityPerimeter; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRulePropertiesInternal)Property).NetworkSecurityPerimeter = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INetworkSecurityPerimeter> Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRuleInternal.NetworkSecurityPerimeter { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRulePropertiesInternal)Property).NetworkSecurityPerimeter; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRulePropertiesInternal)Property).NetworkSecurityPerimeter = value ?? null /* arrayOf */; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRuleProperties Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRuleInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.NspAccessRuleProperties()); set { {_property = value;} } }
 
         /// <summary>Internal Acessors for Subscription</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRulePropertiesSubscriptionsItem> Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRuleInternal.Subscription { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRulePropertiesInternal)Property).Subscription; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRulePropertiesInternal)Property).Subscription = value; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRulePropertiesSubscriptionsItem> Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRuleInternal.Subscription { get => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRulePropertiesInternal)Property).Subscription; set => ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INspAccessRulePropertiesInternal)Property).Subscription = value ?? null /* arrayOf */; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;

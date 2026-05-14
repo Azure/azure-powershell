@@ -17,8 +17,8 @@ Describe 'New-AzNetworkCloudL3Network' {
     It 'Create' {
         { New-AzNetworkCloudL3Network -ResourceGroupName $global:config.AzNetworkCloudL3Network.resourceGroup `
                 -Name $global:config.AzNetworkCloudL3Network.l3networkName -Location  $global:config.common.location `
-                -ExtendedLocationName $global:config.common.extendedLocation `
-                -ExtendedLocationType $global:config.common.customLocationType `
+                -ExtendedLocationName $global:config.AzNetworkCloudL3Network.extendedLocation `
+                -ExtendedLocationType $global:config.AzNetworkCloudL3Network.customLocationType `
                 -Vlan  $global:config.AzNetworkCloudL3Network.vlan  `
                 -L3IsolationDomainId  $global:config.AzNetworkCloudL3Network.l3IsolationDomainId `
                 -Ipv4ConnectedPrefix  $global:config.AzNetworkCloudL3Network.ipv4Prefix `

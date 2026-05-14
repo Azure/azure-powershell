@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Description(@"create a monitor resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}", ApiVersion = "2021-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}", ApiVersion = "2025-06-11")]
     public partial class NewAzDatadogMonitor_CreateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.IContext
@@ -32,6 +32,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Cmdlets
         /// <summary>A unique id generatd for the this cmdlet when ProcessRecord() is called.</summary>
         private string __processRecordId;
 
+        /// <summary>
+        /// Concrete tracked resource types can be created by aliasing this type using a specific property type.
+        /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResource _body = new Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.DatadogMonitorResource();
 
         /// <summary>
@@ -41,15 +44,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Cmdlets
 
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
-
-        /// <summary>A buffer to record first returned object in response.</summary>
-        private object _firstResponse = null;
-
-        /// <summary>
-        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
-        /// Two means multiple returned objects in response.
-        /// </summary>
-        private int _responseSize = 0;
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -107,13 +101,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
-        /// <summary>.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
+        /// <summary>The geo-location where the resource lives</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The geo-location where the resource lives")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @".",
+        Description = @"The geo-location where the resource lives",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         public string Location { get => _body.Location ?? null; set => _body.Location = value; }
@@ -154,8 +148,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Cmdlets
         ReadOnly = false,
         Description = @"Api key associated to the Datadog organization.",
         SerializedName = @"apiKey",
-        PossibleTypes = new [] { typeof(string) })]
-        public string OrganizationApiKey { get => _body.DatadogOrganizationPropertyApiKey ?? null; set => _body.DatadogOrganizationPropertyApiKey = value; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        public System.Security.SecureString OrganizationApiKey { get => _body.DatadogOrganizationPropertyApiKey ?? null; set => _body.DatadogOrganizationPropertyApiKey = value; }
 
         /// <summary>Application key associated to the Datadog organization.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Application key associated to the Datadog organization.")]
@@ -165,8 +159,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Cmdlets
         ReadOnly = false,
         Description = @"Application key associated to the Datadog organization.",
         SerializedName = @"applicationKey",
-        PossibleTypes = new [] { typeof(string) })]
-        public string OrganizationApplicationKey { get => _body.DatadogOrganizationPropertyApplicationKey ?? null; set => _body.DatadogOrganizationPropertyApplicationKey = value; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        public System.Security.SecureString OrganizationApplicationKey { get => _body.DatadogOrganizationPropertyApplicationKey ?? null; set => _body.DatadogOrganizationPropertyApplicationKey = value; }
+
+        /// <summary>
+        /// The configuration which describes the state of cloud security posture management. This collects configuration information
+        /// for all resources in a subscription and track conformance to industry benchmarks.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The configuration which describes the state of cloud security posture management. This collects configuration information for all resources in a subscription and track conformance to industry benchmarks.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The configuration which describes the state of cloud security posture management. This collects configuration information for all resources in a subscription and track conformance to industry benchmarks.",
+        SerializedName = @"cspm",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter OrganizationCspm { get => _body.DatadogOrganizationPropertyCspm ?? default(global::System.Management.Automation.SwitchParameter); set => _body.DatadogOrganizationPropertyCspm = value; }
 
         /// <summary>The Id of the Enterprise App used for Single sign on.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Id of the Enterprise App used for Single sign on.")]
@@ -179,16 +187,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string OrganizationEnterpriseAppId { get => _body.DatadogOrganizationPropertyEnterpriseAppId ?? null; set => _body.DatadogOrganizationPropertyEnterpriseAppId = value; }
 
-        /// <summary>The auth code used to linking to an existing datadog organization.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The auth code used to linking to an existing datadog organization.")]
+        /// <summary>Id of the Datadog organization.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Id of the Datadog organization.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The auth code used to linking to an existing datadog organization.",
-        SerializedName = @"linkingAuthCode",
+        Description = @"Id of the Datadog organization.",
+        SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
-        public string OrganizationLinkingAuthCode { get => _body.DatadogOrganizationPropertyLinkingAuthCode ?? null; set => _body.DatadogOrganizationPropertyLinkingAuthCode = value; }
+        public string OrganizationId { get => _body.DatadogOrganizationPropertyId ?? null; set => _body.DatadogOrganizationPropertyId = value; }
+
+        /// <summary>The auth code used to linking to an existing Datadog organization.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The auth code used to linking to an existing Datadog organization.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The auth code used to linking to an existing Datadog organization.",
+        SerializedName = @"linkingAuthCode",
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        public System.Security.SecureString OrganizationLinkingAuthCode { get => _body.DatadogOrganizationPropertyLinkingAuthCode ?? null; set => _body.DatadogOrganizationPropertyLinkingAuthCode = value; }
 
         /// <summary>
         /// The client_id from an existing in exchange for an auth token to link organization.
@@ -200,19 +219,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Cmdlets
         ReadOnly = false,
         Description = @"The client_id from an existing in exchange for an auth token to link organization.",
         SerializedName = @"linkingClientId",
-        PossibleTypes = new [] { typeof(string) })]
-        public string OrganizationLinkingClientId { get => _body.DatadogOrganizationPropertyLinkingClientId ?? null; set => _body.DatadogOrganizationPropertyLinkingClientId = value; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        public System.Security.SecureString OrganizationLinkingClientId { get => _body.DatadogOrganizationPropertyLinkingClientId ?? null; set => _body.DatadogOrganizationPropertyLinkingClientId = value; }
 
-        /// <summary>The redirect uri for linking.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The redirect uri for linking.")]
+        /// <summary>Name of the Datadog organization.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of the Datadog organization.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The redirect uri for linking.",
+        Description = @"Name of the Datadog organization.",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        public string OrganizationName { get => _body.DatadogOrganizationPropertyName ?? null; set => _body.DatadogOrganizationPropertyName = value; }
+
+        /// <summary>The redirect URI for linking.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The redirect URI for linking.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The redirect URI for linking.",
         SerializedName = @"redirectUri",
         PossibleTypes = new [] { typeof(string) })]
         public string OrganizationRedirectUri { get => _body.DatadogOrganizationPropertyRedirectUri ?? null; set => _body.DatadogOrganizationPropertyRedirectUri = value; }
+
+        /// <summary>
+        /// The configuration which describes the state of resource collection. This collects configuration information for all resources
+        /// in a subscription.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The configuration which describes the state of resource collection. This collects configuration information for all resources in a subscription.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The configuration which describes the state of resource collection. This collects configuration information for all resources in a subscription.",
+        SerializedName = @"resourceCollection",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter OrganizationResourceCollection { get => _body.DatadogOrganizationPropertyResourceCollection ?? default(global::System.Management.Automation.SwitchParameter); set => _body.DatadogOrganizationPropertyResourceCollection = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.HttpPipeline" /> that the remote call will use.
@@ -235,28 +279,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
-        /// <summary>Name of the SKU.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of the SKU.")]
+        /// <summary>
+        /// Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Name of the SKU.",
+        Description = @"Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         public string SkuName { get => _body.SkuName ?? null; set => _body.SkuName = value; }
 
-        /// <summary>Dictionary of <string></summary>
+        /// <summary>Resource tags.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Dictionary of <string>")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource tags.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Datadog.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Dictionary of <string>",
+        Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResourceTags Tag { get => _body.Tag ?? null /* object */; set => _body.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ITrackedResourceTags Tag { get => _body.Tag ?? null /* object */; set => _body.Tag = value; }
 
         /// <summary>Email of the user used by Datadog for contacting them if needed</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Email of the user used by Datadog for contacting them if needed")]
@@ -357,11 +403,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            if (1 ==_responseSize)
-            {
-                // Flush buffer
-                WriteObject(_firstResponse);
-            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Datadog.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -697,24 +738,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Cmdlets
                 // onOk - response for 200 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.IDatadogMonitorResource
                 var result = (await response);
-                if (null != result)
-                {
-                    if (0 == _responseSize)
-                    {
-                        _firstResponse = result;
-                        _responseSize = 1;
-                    }
-                    else
-                    {
-                        if (1 ==_responseSize)
-                        {
-                            // Flush buffer
-                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
-                        }
-                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
-                        _responseSize = 2;
-                    }
-                }
+                WriteObject(result, false);
             }
         }
     }

@@ -39,27 +39,21 @@ $authRule.Rights += 'Send'
 Set-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -WcfRelay wcf-01 -Name authRule-01 -InputObject $authRule | Format-List
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IAuthorizationRule>: Single item in a List or Get AuthorizationRule operation
-  [Rights <AccessRights[]>]: The rights associated with the rule.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+INPUTOBJECT <IAuthorizationRule>: Single item in a List or Get AuthorizationRule operation To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+  [Rights <List<String>>]: The rights associated with the rule.
 .Link
 https://learn.microsoft.com/powershell/module/az.relay/set-azrelayauthorizationrule
 #>
 function Set-AzRelayAuthorizationRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -107,9 +101,9 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded1')]
     [Parameter(ParameterSetName='UpdateExpanded2')]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.AccessRights])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.PSArgumentCompleterAttribute("Manage", "Send", "Listen")]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.AccessRights[]]
+    [System.String[]]
     # The rights associated with the rule.
     ${Rights},
 
@@ -117,7 +111,7 @@ param(
     [Parameter(ParameterSetName='Update2', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Relay.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule]
+    [Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IAuthorizationRule]
     # Single item in a List or Get AuthorizationRule operation
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
@@ -178,6 +172,15 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+            exit
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -204,9 +207,7 @@ begin {
             Update2 = 'Az.Relay.custom\Set-AzRelayAuthorizationRule';
             Update = 'Az.Relay.custom\Set-AzRelayAuthorizationRule';
         }
-        if (('UpdateExpanded', 'UpdateExpanded1', 'Update1', 'UpdateExpanded2', 'Update2', 'Update') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Relay.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateExpanded1', 'Update1', 'UpdateExpanded2', 'Update2', 'Update') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -220,6 +221,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

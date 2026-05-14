@@ -23,11 +23,11 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"1d009706-0000-3400-0000-64ba0a0b0000\"" ],
-        "Location": [ "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.StorageMover/locations/EASTUS2EUAP/operationStatuses/9263da72-c878-4586-8b69-ec27ed588d1b*CD8DD8889960C83D88C9B30058A155C5BC87E6AE5EA5560421B07D0FEA94D4EA?api-version=2024-07-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.StorageMover/locations/EASTUS2EUAP/operationStatuses/9263da72-c878-4586-8b69-ec27ed588d1b*CD8DD8889960C83D88C9B30058A155C5BC87E6AE5EA5560421B07D0FEA94D4EA?api-version=2025-07-01" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14995" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "mise-correlation-id": [ "6d1e62a2-fcf1-4390-b510-24d42852ffe7" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.StorageMover/locations/EASTUS2EUAP/operationStatuses/9263da72-c878-4586-8b69-ec27ed588d1b*CD8DD8889960C83D88C9B30058A155C5BC87E6AE5EA5560421B07D0FEA94D4EA?api-version=2024-07-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.StorageMover/locations/EASTUS2EUAP/operationStatuses/9263da72-c878-4586-8b69-ec27ed588d1b*CD8DD8889960C83D88C9B30058A155C5BC87E6AE5EA5560421B07D0FEA94D4EA?api-version=2025-07-01" ],
         "x-ms-request-id": [ "9263da72-c878-4586-8b69-ec27ed588d1b" ],
         "x-ms-correlation-request-id": [ "01f2bd3c-2ca5-4187-8f87-fd568aeaf6ee" ],
         "x-ms-routing-request-id": [ "EASTUS2EUAP:20230721T043107Z:01f2bd3c-2ca5-4187-8f87-fd568aeaf6ee" ],
@@ -44,10 +44,10 @@
       "isContentBase64": false
     }
   },
-  "Unregister-AzStorageMoverAgent+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent12?api-version=2024-07-01+2": {
+  "Unregister-AzStorageMoverAgent+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent12?api-version=2025-07-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent12?api-version=2024-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/teststoragemover/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/agents/testagent12?api-version=2025-07-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
