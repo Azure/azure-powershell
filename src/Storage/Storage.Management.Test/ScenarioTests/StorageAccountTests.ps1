@@ -97,7 +97,7 @@ function Test-StorageAccount
         Assert-NotNull  $stokey1[0].Value
         Assert-NotNull  $stokey2[0].Value
         Assert-AreEqual $stokey2[1].Value $stokey1[1].Value;
-        # The key are all hide in recording file to same value, so the not equal check will fail in playback mode 
+        # Keys are masked and may have identical values in the recording file, so the not equal check may fail in playback mode
         # Assert-AreNotEqual $stokey1[0].Value $stokey2[0].Value;
 
         New-AzStorageAccountKey -ResourceGroupName $rgname -Name $stoname -KeyName key2;
@@ -107,7 +107,7 @@ function Test-StorageAccount
         Assert-NotNull  $stokey2[0].Value
         Assert-NotNull  $stokey3[0].Value
         Assert-AreEqual $stokey3[0].Value $stokey2[0].Value;
-        # The key are all hide in recording file to same value, so the not equal check will fail in playback mode 
+        # Keys are masked and may have identical values in the recording file, so the not equal check may fail in playback mode
         #Assert-AreNotEqual $stokey2[1].Value $stokey3[1].Value;
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
