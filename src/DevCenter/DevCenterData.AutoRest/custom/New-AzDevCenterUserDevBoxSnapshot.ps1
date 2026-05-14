@@ -27,7 +27,7 @@ Captures a manual snapshot of the Dev Box.\nUpon completion, a snapshotId will b
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IOperationStatus
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -56,7 +56,7 @@ INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteruserdevboxsnapshot
 #>
 function New-AzDevCenterUserDevBoxSnapshot {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20250401Preview.IOperationStatus])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IOperationStatus])]
     [CmdletBinding(DefaultParameterSetName = 'Capture', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'Capture', Mandatory)]
