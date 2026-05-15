@@ -61,25 +61,6 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "The resource ID for the sync member database, used if UsePrivateLinkConnection is set to true.")]
         public string SyncMemberAzureDatabaseResourceId { get; set; }
 
-        ///<summary>
-        /// Gets or sets the Database Authentication type of the sync member database
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The database authentication type of the member database. If not specified, defaults to 'SqlAuthentication' (username/password).")]
-        [ValidateSet("password", "userAssigned", IgnoreCase = true)]
-        public string MemberDatabaseAuthenticationType { get; set; }
-
-        /// <summary>
-        /// Gets or sets the identity ID of the sync member database in case of user assigned identity authentication
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The resource ID of the UAMI (User Assigned Managed Identity) to use for member database authentication.")]
-        public string ResourceId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource ID of the User Assigned Managed Identity (UAMI) to remove from member database authentication.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The resource ID of the User Assigned Managed Identity (UAMI) to remove from member database authentication.")]
-        public string RemoveIdentityResourceId { get; set; }
-
         /// <summary>
         /// Get the entities from the service
         /// </summary>
@@ -112,51 +93,15 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
                 newModel.SyncMemberAzureDatabaseResourceId = this.SyncMemberAzureDatabaseResourceId;
             }
 
-            if (!MyInvocation.BoundParameters.ContainsKey(nameof(MemberDatabaseAuthenticationType)) ||
-                this.MemberDatabaseAuthenticationType.Equals("password", StringComparison.OrdinalIgnoreCase))
+            if (MyInvocation.BoundParameters.ContainsKey("MemberDatabaseCredential"))
             {
-                if (MyInvocation.BoundParameters.ContainsKey("MemberDatabaseCredential"))
-                {
-                    newModel.MemberDatabaseUserName = this.MemberDatabaseCredential.UserName;
-                    newModel.MemberDatabasePassword = this.MemberDatabaseCredential.Password;
-                }
-                else
-                {
-                    newModel.MemberDatabaseUserName = null;
-                    newModel.MemberDatabasePassword = null;
-                }
-
-                newModel.Identity = new DataSyncParticipantIdentity
-                {
-                    Type = "None"
-                };
-            }
-            else if (this.MemberDatabaseAuthenticationType.Equals("userAssigned", StringComparison.OrdinalIgnoreCase))
-            {
-                if ((!MyInvocation.BoundParameters.ContainsKey(nameof(ResourceId)) ||
-                                    string.IsNullOrEmpty(this.ResourceId)) &&
-                                    ((!MyInvocation.BoundParameters.ContainsKey(nameof(RemoveIdentityResourceId))) ||
-                                    (string.IsNullOrEmpty(this.RemoveIdentityResourceId))))
-                {
-                    newModel.MemberDatabaseUserName = null;
-                    newModel.MemberDatabasePassword = null;
-                    newModel.Identity = new DataSyncParticipantIdentity
-                    {
-                        Type = "UserAssigned"
-                    };
-                }
-                else
-                {
-                    newModel.MemberDatabaseUserName = null;
-                    newModel.MemberDatabasePassword = null;
-                    newModel.Identity = AzureSqlSyncIdentityHelper.CreateUserAssignedIdentity(this.ResourceId, this.RemoveIdentityResourceId);
-                }
+                newModel.MemberDatabaseUserName = this.MemberDatabaseCredential.UserName;
+                newModel.MemberDatabasePassword = this.MemberDatabaseCredential.Password;
             }
             else
             {
-                throw new PSArgumentException(
-                        Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidDatabaseAuthenticationType,
-                        nameof(MemberDatabaseAuthenticationType));
+                newModel.MemberDatabaseUserName = null;
+                newModel.MemberDatabasePassword = null;
             }
 
             return model;
