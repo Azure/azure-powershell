@@ -19,13 +19,19 @@
 --->
 
 ## Upcoming Release
+* Updated `UserAssignedIdentityId` parameter type from string to string[] in Azure Firewall Policy to input multiple UAMIs
+
+## Version 7.27.0
+* Added support to associate a DDoS custom policy with a Load Balancer frontend IP configuration.
+    - Added the `-DdosCustomPolicyId` parameter to `New-AzLoadBalancerFrontendIpConfig`, `Add-AzLoadBalancerFrontendIpConfig`, and `Set-AzLoadBalancerFrontendIpConfig`.
+    - Added the `-RemoveDdosCustomPolicy` switch to `Set-AzLoadBalancerFrontendIpConfig`.
 
 ## Version 7.26.0
 * Onboarded `Microsoft.KubernetesConfiguration/privateLinkScopes` to Private Link Common Cmdlets
 * Added EdgeZone (Extended Location) parameter support for Azure Firewall
     - Added `-EdgeZone` parameter to `New-AzFirewall` cmdlet
     - When `-EdgeZone` is specified, availability zones are not supported for Azure Firewall resources
-
+    
 ## Version 7.25.1
 * Onboarded `Microsoft.DataReplication/replicationVaults` to Private Link Common Cmdlets
 * Onboarded `Microsoft.DurableTask/schedulers` to Private Link Common Cmdlets

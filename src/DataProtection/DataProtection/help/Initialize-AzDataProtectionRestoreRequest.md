@@ -222,10 +222,9 @@ The restore request object is then used to trigger the restore operation.
 
 ### -BackupInstance
 Backup Instance object to trigger original location restore.
-To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BackupInstanceResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.BackupInstanceResource
 Parameter Sets: OriginalLocationFullRecovery, OriginalLocationILR
 Aliases:
 
@@ -258,7 +257,7 @@ Datasource Type
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureDisk, AzureBlob, AzureDatabaseForPostgreSQL, AzureDataLakeStorage, AzureKubernetesService, AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL
+Accepted values: AzureDisk, AzureBlob, AzureDatabaseForPostgreSQL, AzureDataLakeStorage, AzureKubernetesService, AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL, AzureCosmosDB
 
 Required: True
 Position: Named
@@ -589,7 +588,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IAzureBackupRestoreRequest
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRestoreRequest
 
 ## NOTES
 

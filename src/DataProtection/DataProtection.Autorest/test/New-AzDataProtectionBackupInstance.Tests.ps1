@@ -58,6 +58,12 @@ Describe 'New-AzDataProtectionBackupInstance' {
         $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where-Object { $_.Name -match $clusterName -and $_.Property.FriendlyName -eq $friendlyName }
         $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | Where-Object {$_.Name -eq $policyName}
 
+        # create policy if it doesn't exist
+        # if($policy -eq $null){
+        #     $pol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureKubernetesService
+        #     $policy = New-AzDataProtectionBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $policyName -Policy $pol -SubscriptionId $sub
+        # }
+
         # remove permissions
         #
         # if($backupInstance -ne $null){

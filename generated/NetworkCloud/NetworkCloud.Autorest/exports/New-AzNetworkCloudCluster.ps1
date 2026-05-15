@@ -57,7 +57,7 @@ AGGREGATORORSINGLERACKDEFINITIONBAREMETALMACHINECONFIGURATION <IBareMetalMachine
   RackSlot <Int64>: The slot the physical machine is in the rack based on the BOM configuration.
   SerialNumber <String>: The serial number of the machine. Hardware suppliers may use an alternate value. For example, service tag.
   [MachineDetail <String>]: The free-form additional information about the machine, e.g. an asset tag.
-  [MachineName <String>]: The user-provided name for the bare metal machine created from this specification.         If not provided, the machine name will be generated programmatically.
+  [MachineName <String>]: The user-provided name for the bare metal machine created from this specification. If not provided, the machine name will be generated programmatically.
 
 AGGREGATORORSINGLERACKDEFINITIONSTORAGEAPPLIANCECONFIGURATION <IStorageApplianceConfigurationData[]>: The list of storage appliance configuration data for this rack.
   AdminCredentialsPassword <SecureString>: The password of the administrator of the device used during initialization.
@@ -65,6 +65,12 @@ AGGREGATORORSINGLERACKDEFINITIONSTORAGEAPPLIANCECONFIGURATION <IStorageAppliance
   RackSlot <Int64>: The slot that storage appliance is in the rack based on the BOM configuration.
   SerialNumber <String>: The serial number of the appliance.
   [StorageApplianceName <String>]: The user-provided name for the storage appliance that will be created from this specification.
+
+COMMANDOUTPUTSETTINGOVERRIDE <ICommandOutputOverride[]>: The list of optional overrides allowing for association of storage containers and identities to specific types of command output. If a type is not overridden, the default identity and storage container will be utilized.
+  [AssociatedIdentityType <String>]: The type of managed identity that is being selected.
+  [AssociatedIdentityUserAssignedIdentityResourceId <String>]: The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
+  [CommandOutputType <String>]: The type of command output for the override.
+  [ContainerUrl <String>]: The URL of the storage account container that is to be used by the specified identities.
 
 COMPUTERACKDEFINITION <IRackDefinition[]>: The list of rack definitions for the compute racks in a multi-rack cluster, or an empty list in a single-rack cluster.
   NetworkRackId <String>: The resource ID of the network rack that matches this rack definition.
@@ -79,7 +85,7 @@ COMPUTERACKDEFINITION <IRackDefinition[]>: The list of rack definitions for the 
     RackSlot <Int64>: The slot the physical machine is in the rack based on the BOM configuration.
     SerialNumber <String>: The serial number of the machine. Hardware suppliers may use an alternate value. For example, service tag.
     [MachineDetail <String>]: The free-form additional information about the machine, e.g. an asset tag.
-    [MachineName <String>]: The user-provided name for the bare metal machine created from this specification.         If not provided, the machine name will be generated programmatically.
+    [MachineName <String>]: The user-provided name for the bare metal machine created from this specification. If not provided, the machine name will be generated programmatically.
   [RackLocation <String>]: The free-form description of the rack's location.
   [StorageApplianceConfigurationData <List<IStorageApplianceConfigurationData>>]: The list of storage appliance configuration data for this rack.
     AdminCredentialsPassword <SecureString>: The password of the administrator of the device used during initialization.
@@ -291,6 +297,14 @@ param(
     ${CommandOutputSettingContainerUrl},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride[]]
+    # The list of optional overrides allowing for association of storage containers and identities to specific types of command output.
+    # If a type is not overridden, the default identity and storage container will be utilized.
+    ${CommandOutputSettingOverride},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("PerCluster", "PerRack")]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
@@ -387,7 +401,8 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.Int64]
-    # The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.Limited by the maximum number of machines in the increment.
+    # The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.
+    # Limited by the maximum number of machines in the increment.
     # Defaults to the whole increment size.
     ${UpdateStrategyMaxUnavailable},
 
@@ -518,8 +533,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

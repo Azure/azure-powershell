@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Description(@"Unlocks a key-value.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.HttpPath(Path = "/locks/{key}", ApiVersion = "1.0")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.HttpPath(Path = "/locks/{key}", ApiVersion = "2024-09-01")]
     public partial class RemoveAzAppConfigurationLock_DeleteViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IContext
@@ -59,6 +59,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.AppConfigurationdata Client => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Module.Instance.ClientAPI;
+
+        /// <summary>Backing field for <see cref="ClientRequestId" /> property.</summary>
+        private string _clientRequestId;
+
+        /// <summary>An opaque, globally-unique, client-generated string identifier for the request.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "An opaque, globally-unique, client-generated string identifier for the request.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"An opaque, globally-unique, client-generated string identifier for the request.",
+        SerializedName = @"x-ms-client-request-id",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Header)]
+        public string ClientRequestId { get => this._clientRequestId; set => this._clientRequestId = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -103,13 +117,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
         private string _ifMatch;
 
         /// <summary>
-        /// Used to perform an operation only if the targeted resource's etag matches the value provided.
+        /// Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Used to perform an operation only if the targeted resource's etag matches the value provided.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Used to perform an operation only if the targeted resource's etag matches the\nvalue provided.")]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Used to perform an operation only if the targeted resource's etag matches the value provided.",
+        Description = @"Used to perform an operation only if the targeted resource's etag matches the
+        value provided.",
         SerializedName = @"If-Match",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Header)]
@@ -119,13 +135,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
         private string _ifNoneMatch;
 
         /// <summary>
-        /// Used to perform an operation only if the targeted resource's etag does not match the value provided.
+        /// Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Used to perform an operation only if the targeted resource's etag does not match the value provided.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Used to perform an operation only if the targeted resource's etag does not\nmatch the value provided.")]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Used to perform an operation only if the targeted resource's etag does not match the value provided.",
+        Description = @"Used to perform an operation only if the targeted resource's etag does not
+        match the value provided.",
         SerializedName = @"If-None-Match",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Header)]
@@ -410,7 +428,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.DeleteLockViaIdentity(InputObject.Id, this.InvocationInformation.BoundParameters.ContainsKey("SyncToken") ? SyncToken : null, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("Label") ? Label : null, Endpoint, onOk, onDefault, this, Pipeline);
+                        await this.Client.DeleteLockViaIdentity(InputObject.Id, this.InvocationInformation.BoundParameters.ContainsKey("SyncToken") ? SyncToken : null, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("ClientRequestId") ? ClientRequestId : null, this.InvocationInformation.BoundParameters.ContainsKey("Label") ? Label : null, Endpoint, onOk, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -419,13 +437,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.Key"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.DeleteLock(InputObject.Key ?? null, this.InvocationInformation.BoundParameters.ContainsKey("SyncToken") ? SyncToken : null, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("Label") ? Label : null, Endpoint, onOk, onDefault, this, Pipeline);
+                        await this.Client.DeleteLock(InputObject.Key ?? null, this.InvocationInformation.BoundParameters.ContainsKey("SyncToken") ? SyncToken : null, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("ClientRequestId") ? ClientRequestId : null, this.InvocationInformation.BoundParameters.ContainsKey("Label") ? Label : null, Endpoint, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Endpoint=Endpoint,Label=this.InvocationInformation.BoundParameters.ContainsKey("Label") ? Label : null,SyncToken=this.InvocationInformation.BoundParameters.ContainsKey("SyncToken") ? SyncToken : null,IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null,IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Endpoint=Endpoint,Label=this.InvocationInformation.BoundParameters.ContainsKey("Label") ? Label : null,SyncToken=this.InvocationInformation.BoundParameters.ContainsKey("SyncToken") ? SyncToken : null,IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null,IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null,ClientRequestId=this.InvocationInformation.BoundParameters.ContainsKey("ClientRequestId") ? ClientRequestId : null})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -515,7 +533,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
                 {
                     return ;
                 }
-                // onOk - response for 200 / application/vnd.microsoft.appconfig.kv+json/application/json/application/problem+json
+                // onOk - response for 200 / application/vnd.microsoft.appconfig.kv+json/application/problem+json/application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue
                 var result = (await response);
                 if (null != result)

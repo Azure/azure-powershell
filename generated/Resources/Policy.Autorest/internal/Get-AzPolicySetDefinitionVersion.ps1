@@ -152,6 +152,20 @@ param(
     # Identity Parameter
     ${PolicySetDefinition1InputObject},
 
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='Get1')]
+    [Parameter(ParameterSetName='GetViaIdentity')]
+    [Parameter(ParameterSetName='GetViaIdentity1')]
+    [Parameter(ParameterSetName='GetViaIdentityPolicySetDefinition')]
+    [Parameter(ParameterSetName='GetViaIdentityPolicySetDefinition1')]
+    [Parameter(ParameterSetName='List2')]
+    [Parameter(ParameterSetName='List3')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
+    [System.String]
+    # Comma-separated list of additional properties to be included in the response.
+    # Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
+    ${Expand},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]

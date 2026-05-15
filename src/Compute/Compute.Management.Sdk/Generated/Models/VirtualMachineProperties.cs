@@ -162,7 +162,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="timeCreated">Specifies the time at which the Virtual Machine resource was created.
         /// Minimum api-version: 2021-11-01.
         /// </param>
-        public VirtualMachineProperties(HardwareProfile hardwareProfile = default(HardwareProfile), ScheduledEventsPolicy scheduledEventsPolicy = default(ScheduledEventsPolicy), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), NetworkProfile networkProfile = default(NetworkProfile), SecurityProfile securityProfile = default(SecurityProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), SubResource availabilitySet = default(SubResource), SubResource virtualMachineScaleSet = default(SubResource), SubResource proximityPlacementGroup = default(SubResource), string priority = default(string), string evictionPolicy = default(string), BillingProfile billingProfile = default(BillingProfile), SubResource host = default(SubResource), SubResource hostGroup = default(SubResource), string provisioningState = default(string), VirtualMachineInstanceView instanceView = default(VirtualMachineInstanceView), string licenseType = default(string), string vmId = default(string), string extensionsTimeBudget = default(string), int? platformFaultDomain = default(int?), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile), string userData = default(string), CapacityReservationProfile capacityReservation = default(CapacityReservationProfile), ApplicationProfile applicationProfile = default(ApplicationProfile), System.DateTime? timeCreated = default(System.DateTime?))
+
+        /// <param name="resiliencyProfile">Resiliency profile for the virtual machine.
+        /// </param>
+        public VirtualMachineProperties(HardwareProfile hardwareProfile = default(HardwareProfile), ScheduledEventsPolicy scheduledEventsPolicy = default(ScheduledEventsPolicy), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), NetworkProfile networkProfile = default(NetworkProfile), SecurityProfile securityProfile = default(SecurityProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), SubResource availabilitySet = default(SubResource), SubResource virtualMachineScaleSet = default(SubResource), SubResource proximityPlacementGroup = default(SubResource), string priority = default(string), string evictionPolicy = default(string), BillingProfile billingProfile = default(BillingProfile), SubResource host = default(SubResource), SubResource hostGroup = default(SubResource), string provisioningState = default(string), VirtualMachineInstanceView instanceView = default(VirtualMachineInstanceView), string licenseType = default(string), string vmId = default(string), string extensionsTimeBudget = default(string), int? platformFaultDomain = default(int?), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile), string userData = default(string), CapacityReservationProfile capacityReservation = default(CapacityReservationProfile), ApplicationProfile applicationProfile = default(ApplicationProfile), System.DateTime? timeCreated = default(System.DateTime?), ResiliencyProfile resiliencyProfile = default(ResiliencyProfile))
 
         {
             this.HardwareProfile = hardwareProfile;
@@ -192,6 +195,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.CapacityReservation = capacityReservation;
             this.ApplicationProfile = applicationProfile;
             this.TimeCreated = timeCreated;
+            this.ResiliencyProfile = resiliencyProfile;
             CustomInit();
         }
 
@@ -424,6 +428,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "timeCreated")]
         public System.DateTime? TimeCreated {get; private set; }
+
+        /// <summary>
+        /// Gets or sets resiliency profile for the virtual machine.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "resiliencyProfile")]
+        public ResiliencyProfile ResiliencyProfile {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -438,6 +448,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             {
                 this.StorageProfile.Validate();
             }
+
 
 
 

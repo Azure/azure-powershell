@@ -31,12 +31,12 @@ New-AzNetworkCloudCluster -Name <String> -ResourceGroupName <String>
  [-AssociatedIdentityUserAssignedIdentityResourceId <String>] [-ClusterLocation <String>]
  [-ClusterServicePrincipalApplicationId <String>] [-ClusterServicePrincipalId <String>]
  [-ClusterServicePrincipalPassword <SecureString>] [-ClusterServicePrincipalTenantId <String>]
- [-CommandOutputSettingContainerUrl <String>] [-ComputeDeploymentThresholdGrouping <String>]
- [-ComputeDeploymentThresholdType <String>] [-ComputeDeploymentThresholdValue <Int64>]
- [-ComputeRackDefinition <IRackDefinition[]>] [-EnableSystemAssignedIdentity]
- [-ManagedResourceGroupConfigurationLocation <String>] [-ManagedResourceGroupConfigurationName <String>]
- [-RuntimeProtectionConfigurationEnforcementLevel <String>] [-SecretArchiveKeyVaultId <String>]
- [-SecretArchiveSettingsAssociatedIdentityType <String>]
+ [-CommandOutputSettingContainerUrl <String>] [-CommandOutputSettingOverride <ICommandOutputOverride[]>]
+ [-ComputeDeploymentThresholdGrouping <String>] [-ComputeDeploymentThresholdType <String>]
+ [-ComputeDeploymentThresholdValue <Int64>] [-ComputeRackDefinition <IRackDefinition[]>]
+ [-EnableSystemAssignedIdentity] [-ManagedResourceGroupConfigurationLocation <String>]
+ [-ManagedResourceGroupConfigurationName <String>] [-RuntimeProtectionConfigurationEnforcementLevel <String>]
+ [-SecretArchiveKeyVaultId <String>] [-SecretArchiveSettingsAssociatedIdentityType <String>]
  [-SecretArchiveSettingsAssociatedIdentityUserAssignedIdentityResourceId <String>]
  [-SecretArchiveSettingVaultUri <String>] [-SecretArchiveUseKeyVault <String>] [-Tag <Hashtable>]
  [-UpdateStrategyMaxUnavailable <Int64>] [-UpdateStrategyThresholdType <String>]
@@ -435,6 +435,22 @@ The URL of the storage account container that is to be used by the specified ide
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CommandOutputSettingOverride
+The list of optional overrides allowing for association of storage containers and identities to specific types of command output.
+If a type is not overridden, the default identity and storage container will be utilized.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -860,7 +876,8 @@ Accept wildcard characters: False
 ```
 
 ### -UpdateStrategyMaxUnavailable
-The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.Limited by the maximum number of machines in the increment.
+The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.
+Limited by the maximum number of machines in the increment.
 Defaults to the whole increment size.
 
 ```yaml

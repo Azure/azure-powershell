@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzWvdScalingPlanPersonalSchedule
 
 ## SYNOPSIS
-create a ScalingPlanPersonalSchedule.
+Create a ScalingPlanPersonalSchedule.
 
 ## SYNTAX
 
@@ -45,7 +45,7 @@ New-AzWvdScalingPlanPersonalSchedule -ResourceGroupName <String> -ScalingPlanNam
 ```
 
 ## DESCRIPTION
-create a ScalingPlanPersonalSchedule.
+Create a ScalingPlanPersonalSchedule.
 
 ## EXAMPLES
 
