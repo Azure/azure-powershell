@@ -13,6 +13,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPropertiesInternal
     {
 
+        /// <summary>Backing field for <see cref="ActionState" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IActionState> _actionState;
+
+        /// <summary>
+        /// The current state of any in progress or completed actions. The most recent known instance of each action type is shown.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IActionState> ActionState { get => this._actionState; }
+
         /// <summary>Backing field for <see cref="AggregatorOrSingleRackDefinition" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IRackDefinition _aggregatorOrSingleRackDefinition;
 
@@ -205,7 +214,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IServicePrincipalInformation _clusterServicePrincipal;
 
         /// <summary>
-        /// The service principal to be used by the cluster during Arc Appliance installation.
+        /// Field Deprecated: Use managed identity to provide cluster privileges. The service principal to be used by the cluster
+        /// during Arc Appliance installation.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IServicePrincipalInformation ClusterServicePrincipal { get => (this._clusterServicePrincipal = this._clusterServicePrincipal ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ServicePrincipalInformation()); set => this._clusterServicePrincipal = value; }
@@ -256,6 +266,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
         public string CommandOutputSettingContainerUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputSettingsInternal)CommandOutputSetting).ContainerUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputSettingsInternal)CommandOutputSetting).ContainerUrl = value ?? null; }
+
+        /// <summary>
+        /// The list of optional overrides allowing for association of storage containers and identities to specific types of command
+        /// output. If a type is not overridden, the default identity and storage container will be utilized.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride> CommandOutputSettingOverride { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputSettingsInternal)CommandOutputSetting).Override; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputSettingsInternal)CommandOutputSetting).Override = value ?? null /* arrayOf */; }
 
         /// <summary>The type of managed identity that is being selected.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
@@ -355,6 +372,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// <summary>The count of Manual Action Taken (MAT) events that have not been validated.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
         public long? ManualActionCount { get => this._manualActionCount; }
+
+        /// <summary>Internal Acessors for ActionState</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IActionState> Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPropertiesInternal.ActionState { get => this._actionState; set { {_actionState = value;} } }
 
         /// <summary>Internal Acessors for AggregatorOrSingleRackDefinition</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IRackDefinition Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterPropertiesInternal.AggregatorOrSingleRackDefinition { get => (this._aggregatorOrSingleRackDefinition = this._aggregatorOrSingleRackDefinition ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.RackDefinition()); set { {_aggregatorOrSingleRackDefinition = value;} } }
@@ -553,8 +573,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         internal Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterUpdateStrategy UpdateStrategy { get => (this._updateStrategy = this._updateStrategy ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ClusterUpdateStrategy()); set => this._updateStrategy = value; }
 
         /// <summary>
-        /// The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.
-        /// Limited by the maximum number of machines in the increment. Defaults to the whole increment size.
+        /// The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack. Limited by
+        /// the maximum number of machines in the increment. Defaults to the whole increment size.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
         public long? UpdateStrategyMaxUnavailable { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterUpdateStrategyInternal)UpdateStrategy).MaxUnavailable; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterUpdateStrategyInternal)UpdateStrategy).MaxUnavailable = value ?? default(long); }
@@ -603,6 +623,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
     public partial interface IClusterProperties :
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IJsonSerializable
     {
+        /// <summary>
+        /// The current state of any in progress or completed actions. The most recent known instance of each action type is shown.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The current state of any in progress or completed actions. The most recent known instance of each action type is shown.",
+        SerializedName = @"actionStates",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IActionState) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IActionState> ActionState { get;  }
         /// <summary>
         /// The zone name used for this rack when created. Availability zones are used for workload placement.
         /// </summary>
@@ -1004,6 +1037,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         SerializedName = @"containerUrl",
         PossibleTypes = new [] { typeof(string) })]
         string CommandOutputSettingContainerUrl { get; set; }
+        /// <summary>
+        /// The list of optional overrides allowing for association of storage containers and identities to specific types of command
+        /// output. If a type is not overridden, the default identity and storage container will be utilized.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The list of optional overrides allowing for association of storage containers and identities to specific types of command output. If a type is not overridden, the default identity and storage container will be utilized.",
+        SerializedName = @"overrides",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride> CommandOutputSettingOverride { get; set; }
         /// <summary>The type of managed identity that is being selected.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -1267,8 +1314,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         PossibleTypes = new [] { typeof(string) })]
         string SupportExpiryDate { get;  }
         /// <summary>
-        /// The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.
-        /// Limited by the maximum number of machines in the increment. Defaults to the whole increment size.
+        /// The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack. Limited by
+        /// the maximum number of machines in the increment. Defaults to the whole increment size.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -1276,8 +1323,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.
-        Limited by the maximum number of machines in the increment. Defaults to the whole increment size.",
+        Description = @"The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack. Limited by the maximum number of machines in the increment. Defaults to the whole increment size.",
         SerializedName = @"maxUnavailable",
         PossibleTypes = new [] { typeof(long) })]
         long? UpdateStrategyMaxUnavailable { get; set; }
@@ -1356,6 +1402,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
     internal partial interface IClusterPropertiesInternal
 
     {
+        /// <summary>
+        /// The current state of any in progress or completed actions. The most recent known instance of each action type is shown.
+        /// </summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IActionState> ActionState { get; set; }
         /// <summary>
         /// The rack definition that is intended to reflect only a single rack in a single rack cluster, or an aggregator rack in
         /// a multi-rack cluster.
@@ -1463,7 +1513,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// </summary>
         string ClusterManagerId { get; set; }
         /// <summary>
-        /// The service principal to be used by the cluster during Arc Appliance installation.
+        /// Field Deprecated: Use managed identity to provide cluster privileges. The service principal to be used by the cluster
+        /// during Arc Appliance installation.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IServicePrincipalInformation ClusterServicePrincipal { get; set; }
         /// <summary>The application ID, also known as client ID, of the service principal.</summary>
@@ -1494,6 +1545,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// The URL of the storage account container that is to be used by the specified identities.
         /// </summary>
         string CommandOutputSettingContainerUrl { get; set; }
+        /// <summary>
+        /// The list of optional overrides allowing for association of storage containers and identities to specific types of command
+        /// output. If a type is not overridden, the default identity and storage container will be utilized.
+        /// </summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ICommandOutputOverride> CommandOutputSettingOverride { get; set; }
         /// <summary>The type of managed identity that is being selected.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("SystemAssignedIdentity", "UserAssignedIdentity")]
         string CommandOutputSettingsAssociatedIdentityType { get; set; }
@@ -1586,8 +1642,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// <summary>The strategy for updating the cluster.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterUpdateStrategy UpdateStrategy { get; set; }
         /// <summary>
-        /// The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.
-        /// Limited by the maximum number of machines in the increment. Defaults to the whole increment size.
+        /// The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack. Limited by
+        /// the maximum number of machines in the increment. Defaults to the whole increment size.
         /// </summary>
         long? UpdateStrategyMaxUnavailable { get; set; }
         /// <summary>Selection of how the threshold should be evaluated.</summary>

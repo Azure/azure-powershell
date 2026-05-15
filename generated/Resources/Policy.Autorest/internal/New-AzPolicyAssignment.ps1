@@ -77,26 +77,6 @@ $Policy = Get-AzPolicyDefinition -Name 'VirtualMachinePolicy'
 $Selector = @{Kind = "resourceLocation"; In = @("eastus", "eastus2")}
 $Override = @(@{Kind = "policyEffect"; Value = 'Disabled'; Selector = @($Selector)})
 New-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -PolicyDefinition $Policy -Override $Override
-.Example
-$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
-$Policy = Get-AzPolicyDefinition -BuiltIn | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations'}
-$Locations = Get-AzLocation | Where-Object displayname -like '*east*'
-$AllowedLocations = @{'listOfAllowedLocations'=($Locations.location)}
-New-AzPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -PolicyParameterObject $AllowedLocations
-.Example
-'{
-    "listOfAllowedLocations":  {
-      "value": [
-        "westus",
-        "westeurope",
-        "japanwest"
-      ]
-    }
-}' > .\AllowedLocations.json
-
-$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
-$Policy = Get-AzPolicyDefinition -BuiltIn | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations'}
-New-AzPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -PolicyParameter .\AllowedLocations.json
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment
@@ -153,6 +133,15 @@ param(
     ${Id},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("NotSpecified", "System", "SystemHidden", "Custom")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [System.String]
+    # The type of policy assignment.
+    # Possible values are NotSpecified, System, SystemHidden, and Custom.
+    # Immutable.
+    ${AssignmentType},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The version of the policy definition to use.
@@ -177,11 +166,11 @@ param(
     ${EnableSystemAssignedIdentity},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Default", "DoNotEnforce")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Default", "DoNotEnforce", "Enroll")]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The policy assignment enforcement mode.
-    # Possible values are Default and DoNotEnforce.
+    # Possible values are Default, DoNotEnforce, and Enroll
     ${EnforcementMode},
 
     [Parameter()]

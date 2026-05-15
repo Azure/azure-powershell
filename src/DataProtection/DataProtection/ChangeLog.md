@@ -20,6 +20,9 @@
 ## Upcoming Release
 * [Breaking] AzureBlob: OperationalStore retention lifecycle must now use the retention rule name `Default_OperationalStore`. Using `-Name Default` with an OperationalStore lifecycle is no longer accepted. `Edit-AzDataProtectionPolicyRetentionRuleClientObject` validates against duplicate retention-rule names and rejects OperationalStore lifecycles on any rule other than `Default_OperationalStore` for AzureBlob only.
 * Added new optional parameter to rename restore containers for Blob and ADLS (Azure Data Lake Storage) backup in `Initialize-AzDataProtectionRestoreRequest.ps1`
+* Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+* Added support for Azure Cosmos DB protection scenarios
+    - Users can now configure protection, backup, and restore for Azure Cosmos DB workloads
 
 ## Version 2.10.1
 * Fixed non-ASCII U+2013 characters failed module import in WindowsPowerShell

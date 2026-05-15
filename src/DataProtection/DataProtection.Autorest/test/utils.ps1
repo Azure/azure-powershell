@@ -305,6 +305,17 @@ function setupEnv() {
         TargetContainerURI = "https://hiaga1psa.blob.core.windows.net/powershellpgflexrestore"
     }
 
+    $CosmosDBVariables = @{
+        SubscriptionId = "97cda027-4279-4cde-b4ff-19afa0021d87"
+        ResourceGroupName = "cosmos-bugbash-PSrg-3"
+        VaultName = "testvault"
+        NewPolicyName = "pstest-cosmosdb-policy"
+        PolicyName = "pstest-simple-cosmosdb"
+        SourceCosmosDBAccountName = "cosmosbugbash-ps3-src"
+        TargetCosmosDBAccountName = "cosmosbugbash-ps3-tgt"
+        Location = "eastus2euap"
+    }
+
     $CmkEncryptionVariables = @{
         SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
         ResourceGroupName = "dataprotectionpstest-rg"
@@ -344,6 +355,7 @@ function setupEnv() {
     $env.add("TestMUA", $MUAVariables) | Out-Null
     $env.add("TestPGFlex", $PGFlexVariables) | Out-Null
     $env.add("TestMySQL", $MySQLVariables) | Out-Null
+    $env.add("TestCosmosDB", $CosmosDBVariables) | Out-Null
     $env.add("TestPGFlexRestore", $PGFlexRestoreVariables) | Out-Null
     $env.add("TestMySQLRestore", $MySQLRestoreVariables) | Out-Null
     $env.add("TestCmkEncryption", $CmkEncryptionVariables) | Out-Null
