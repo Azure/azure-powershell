@@ -312,7 +312,17 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = InputObjectImportParameterSet)]
         [Parameter(Mandatory = false,
             ParameterSetName = ResourceIdImportParameterSet)]
-        [PSArgumentCompleter("RSA", "EC", "oct")]
+        [PSArgumentCompleter(
+            // RSA (Vault + HSM) — Encrypt/Decrypt/Wrap/Unwrap
+            "RSA1_5", "RSA-OAEP", "RSA-OAEP-256",
+            // AES-GCM (HSM) — Encrypt/Decrypt
+            "A128GCM", "A192GCM", "A256GCM",
+            // AES-CBC (HSM) — Encrypt/Decrypt
+            "A128CBC", "A192CBC", "A256CBC",
+            "A128CBCPAD", "A192CBCPAD", "A256CBCPAD",
+            // AES Key Wrap (HSM) — Wrap/Unwrap
+            "A128KW", "A192KW", "A256KW",
+            "CKM_AES_KEY_WRAP", "CKM_AES_KEY_WRAP_PAD")]
         public string KeyType { get; set; }
 
         [Parameter(Mandatory = false,

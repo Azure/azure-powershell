@@ -47,12 +47,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.Key
             HelpMessage = "Algorithm identifier")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter(
-            // RSA (asymmetric)
-            "RSA-OAEP", "RSA-OAEP-256", "RSA1_5",
-            // AES (symmetric, supported on Managed HSM)
+            // RSA (Vault + HSM) — Encrypt/Decrypt/Wrap/Unwrap
+            "RSA1_5", "RSA-OAEP", "RSA-OAEP-256",
+            // AES Encrypt/Decrypt (HSM)
             "A128CBC", "A128CBCPAD", "A128GCM",
             "A192CBC", "A192CBCPAD", "A192GCM",
-            "A256CBC", "A256CBCPAD", "A256GCM")]
+            "A256CBC", "A256CBCPAD", "A256GCM",
+            // AES Key Wrap/Unwrap (HSM)
+            "A128KW", "A192KW", "A256KW",
+            "CKM_AES_KEY_WRAP", "CKM_AES_KEY_WRAP_PAD")]
         [Alias("EncryptionAlgorithm", "WrapAlgorithm")]
         public string Algorithm { get; set; }
 
