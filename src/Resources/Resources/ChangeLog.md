@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed `Set-AzRoleAssignment` unable to delete conditions from a role assignment
 * Updated Policy.Autorest api-version to 2025-03-01
     - Introduced support for `-Expand` query parameter in `Get-AzPolicyAssignment` and `Get-AzPolicySetDefinition`
     - Removed the -BackwardCompatible parameter from all Policy cmdlets, including Get/Update/New/Remove‑PolicyAssignment, PolicyDefinition, PolicySetDefinition, and PolicyExemption.
