@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Update-AzStorageCacheAutoExportJob'))
+if(($null -eq $TestName) -or ($TestName -contains 'Update-AzStorageCacheExpansionJob'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzStorageCacheAutoExportJob.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzStorageCacheExpansionJob.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,19 +14,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzStorageCacheAutoExpo
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzStorageCacheAutoExportJob' {
-    BeforeAll {
-        New-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleUpdateJob' -ResourceGroupName 'acctest43511' -Location 'Canada Central' -AutoExportPrefix @('/')
-        Start-Sleep 30
-    }
-
-    AfterAll {
-        Remove-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleUpdateJob' -ResourceGroupName 'acctest43511' -Confirm:$false
-    }
-
+Describe 'Update-AzStorageCacheExpansionJob' {
     It 'UpdateExpanded' {
         {
-            Update-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleUpdateJob' -ResourceGroupName 'acctest43511' -Tag @{"testKey" = "testValue"}
+            Update-AzStorageCacheExpansionJob -AmlFilesystemName 'acctest43511' -Name 'sampleCreateExpanded' -ResourceGroupName 'acctest43511' -Tag @{"testKey" = "testValue"}
         } | Should -Not -Throw
     }
 
@@ -38,7 +29,7 @@ Describe 'Update-AzStorageCacheAutoExportJob' {
                 }
             } | ConvertTo-Json -Depth 3
 
-            Update-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleUpdateJob' -ResourceGroupName 'acctest43511' -JsonString $json
+            Update-AzStorageCacheExpansionJob -AmlFilesystemName 'acctest43511' -Name 'sampleCreateExpanded' -ResourceGroupName 'acctest43511' -JsonString $json
         } | Should -Not -Throw
     }
 
@@ -54,7 +45,7 @@ Describe 'Update-AzStorageCacheAutoExportJob' {
             $json | Out-File -FilePath $tempFile.FullName -Encoding UTF8
 
             try {
-                Update-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleUpdateJob' -ResourceGroupName 'acctest43511' -JsonFilePath $tempFile.FullName
+                Update-AzStorageCacheExpansionJob -AmlFilesystemName 'acctest43511' -Name 'sampleCreateExpanded' -ResourceGroupName 'acctest43511' -JsonFilePath $tempFile.FullName
             } finally {
                 Remove-Item $tempFile.FullName -Force -ErrorAction SilentlyContinue
             }
@@ -68,7 +59,7 @@ Describe 'Update-AzStorageCacheAutoExportJob' {
             $identity.ResourceGroupName = "acctest43511"
             $identity.SubscriptionId = "0a715a3b-8a16-43ba-a6bb-1e38ad050791"
 
-            Update-AzStorageCacheAutoExportJob -Name sampleUpdateJob -AmlFilesystemInputObject $identity -Tag @{"amlKey" = "amlValue"}
+            Update-AzStorageCacheExpansionJob -Name sampleCreateExpanded -AmlFilesystemInputObject $identity -Tag @{"amlKey" = "amlValue"}
         } | Should -Not -Throw
     }
 
@@ -78,9 +69,9 @@ Describe 'Update-AzStorageCacheAutoExportJob' {
             $identity.AmlFilesystemName = "acctest43511"
             $identity.ResourceGroupName = "acctest43511"
             $identity.SubscriptionId = "0a715a3b-8a16-43ba-a6bb-1e38ad050791"
-            $identity.AutoExportJobName = "sampleUpdateJob"
+            $identity.ExpansionJobName = "sampleCreateExpanded"
 
-            Update-AzStorageCacheAutoExportJob -InputObject $identity -Tag @{"idKey" = "idValue"}
+            Update-AzStorageCacheExpansionJob -InputObject $identity -Tag @{"idKey" = "idValue"}
         } | Should -Not -Throw
     }
 }
