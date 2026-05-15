@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed registration info command failures under Azure Policy constraints
-    - Updated implementation to use the Update command path, resolving execution failures for `New-AzWvdRegistrationInfo` and `Update-AzWvdRegistrationInfo` in environments where specific Azure Policies are configured.
+    - Updated implementation to use the Update command path, resolving execution failures for `New-AzWvdRegistrationInfo` and `Remove-AzWvdRegistrationInfo` in environments where specific Azure Policies are configured.
 
 ## Version 5.4.7
 * Added preannouncement for breaking changes in Az.DesktopVirtualization 6.0.0
