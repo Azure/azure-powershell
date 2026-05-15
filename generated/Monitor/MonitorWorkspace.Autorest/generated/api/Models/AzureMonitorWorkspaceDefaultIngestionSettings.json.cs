@@ -66,7 +66,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
             {
                 return;
             }
-            __ingestionSettings = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IngestionSettings(json);
+            {_ingestionEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonObject>("ingestionEndpoints"), out var __jsonIngestionEndpoints) ? Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IngestionEndpoints.FromJson(__jsonIngestionEndpoints) : _ingestionEndpoint;}
+            {_dataCollectionRuleResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonString>("dataCollectionRuleResourceId"), out var __jsonDataCollectionRuleResourceId) ? (string)__jsonDataCollectionRuleResourceId : (string)_dataCollectionRuleResourceId;}
+            {_dataCollectionEndpointResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonString>("dataCollectionEndpointResourceId"), out var __jsonDataCollectionEndpointResourceId) ? (string)__jsonDataCollectionEndpointResourceId : (string)_dataCollectionEndpointResourceId;}
+            {_dataCollectionRuleImmutableId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonString>("dataCollectionRuleImmutableId"), out var __jsonDataCollectionRuleImmutableId) ? (string)__jsonDataCollectionRuleImmutableId : (string)_dataCollectionRuleImmutableId;}
             AfterFromJson(json);
         }
 
@@ -103,7 +106,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
             {
                 return container;
             }
-            __ingestionSettings?.ToJson(container, serializationMode);
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._ingestionEndpoint ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonNode) this._ingestionEndpoint.ToJson(null,serializationMode) : null, "ingestionEndpoints" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._dataCollectionRuleResourceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonString(this._dataCollectionRuleResourceId.ToString()) : null, "dataCollectionRuleResourceId" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._dataCollectionEndpointResourceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonString(this._dataCollectionEndpointResourceId.ToString()) : null, "dataCollectionEndpointResourceId" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._dataCollectionRuleImmutableId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonString(this._dataCollectionRuleImmutableId.ToString()) : null, "dataCollectionRuleImmutableId" ,container.Add );
+            }
             AfterToJson(ref container);
             return container;
         }

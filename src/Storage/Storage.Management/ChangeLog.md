@@ -21,6 +21,16 @@
 * Supported Storage task assignment TriggerType new value MockRun
     - `New-AzStorageTaskAssignment`
     - `Update-AzStorageTaskAssignment`
+* Added support for Smart access tier
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Added support for AllowedCopyScope value 'All'
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Added support for static website configuration in blob service properties
+    - `Update-AzStorageBlobServiceProperty`
+* Added support for tags replication in object replication policy
+    - `Set-AzStorageObjectReplicationPolicy`
 
 ## Version 9.6.1
 * Removed breaking change warnings for TLS 1.0 and TLS 1.1 deprecation

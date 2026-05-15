@@ -1,5 +1,6 @@
-function Edit-AzDataProtectionPolicyTriggerClientObject{
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupPolicy')]
+﻿function Edit-AzDataProtectionPolicyTriggerClientObject{
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ModelCmdletAttribute()]
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupPolicy')]
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Updates Backup schedule of an existing backup policy.')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PreviewMessage("**********************************************************************************************`n
@@ -11,7 +12,7 @@ function Edit-AzDataProtectionPolicyTriggerClientObject{
     param (
         [Parameter(ParameterSetName='ModifyBackupSchedule', Mandatory, HelpMessage='Backup Policy object.')]
         [Parameter(ParameterSetName='RemoveBackupSchedule', Mandatory, HelpMessage='Backup Policy object.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupPolicy]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupPolicy]
         ${Policy},
 
         [Parameter(ParameterSetName='ModifyBackupSchedule', Mandatory, HelpMessage='Schedule to be associated to backup policy.')]
@@ -37,13 +38,14 @@ function Edit-AzDataProtectionPolicyTriggerClientObject{
             ValidateBackupSchedule -DatasourceType $clientDatasourceType -Schedule $Schedule
 
             $backupRuleIndex = -1
-            foreach($index in (0..$Policy.PolicyRule.Length)){
+            $policyRuleCount = @($Policy.PolicyRule).Count
+            foreach($index in (0..($policyRuleCount - 1))){
                 if($Policy.PolicyRule[$index].ObjectType -eq "AzureBackupRule"){
                     $backupRuleIndex = $index
                 }
             }
 
-            if($index -ne -1) # $backupRuleIndex -ne -1
+            if($backupRuleIndex -ne -1)
             {
                 # TODO : can add a optional parameter TimeZone
                 # set Local TimeZone for policy Schedule
@@ -54,6 +56,8 @@ function Edit-AzDataProtectionPolicyTriggerClientObject{
                 $Policy.PolicyRule[$backupRuleIndex].Name = GetBackupFrequenceFromTimeInterval -RepeatingTimeInterval $Schedule
                 return $Policy
             }
+
+            return $Policy
         }
     }
 }

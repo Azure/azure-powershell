@@ -19,6 +19,15 @@
 -->
 
 ## Upcoming Release
+* Updated MonitorWorkspace module to API version 2025-10-03
+    - Added `New-AzMonitorWorkspaceIssue`, `Get-AzMonitorWorkspaceIssue`, `Update-AzMonitorWorkspaceIssue`, `Remove-AzMonitorWorkspaceIssue` cmdlets for managing workspace issues
+    - Added `Add-AzMonitorWorkspaceIssueAlert`, `Get-AzMonitorWorkspaceIssueAlert`, `Update-AzMonitorWorkspaceIssueAlert` cmdlets for managing issue alerts
+    - Added `Add-AzMonitorWorkspaceIssueResource`, `Get-AzMonitorWorkspaceIssueResource`, `Update-AzMonitorWorkspaceIssueResource` cmdlets for managing issue resources
+    - Added `Add-AzMonitorWorkspaceIssueInvestigationResult`, `Invoke-AzMonitorWorkspaceFetchIssueInvestigationResult` cmdlets for issue investigation results
+    - Added `Invoke-AzMonitorWorkspaceFetchIssueBackgroundVisualization`, `Set-AzMonitorWorkspaceIssueBackgroundVisualization` cmdlets for issue background visualization
+    - Added `New-AzMonitorWorkspaceMetricsContainer`, `Get-AzMonitorWorkspaceMetricsContainer`, `Set-AzMonitorWorkspaceMetricsContainer`, `Update-AzMonitorWorkspaceMetricsContainer` cmdlets for managing metrics containers
+    - Added `Set-AzMonitorWorkspace` cmdlet for creating or updating a workspace
+    - Added `-MetricEnableAccessUsingResourcePermission` parameter to `New-AzMonitorWorkspace`, `Update-AzMonitorWorkspace`, and `Set-AzMonitorWorkspace`
 * Upgraded Azure Monitor Pipelines API version from 2024-10-01-preview to GA version 2026-04-01
     - Added 'DistributionMaxInstancesPerHost' parameter to control maximum instances per compute unit
     - Added 'ExecutionPlacementConstraint' parameter to guide where pipeline group instances should run
