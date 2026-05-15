@@ -55,7 +55,8 @@ Get key list in an App Configuration store with wildcard
 ## PARAMETERS
 
 ### -AcceptDatetime
-Requests the server to respond with the state of the resource at the specified time.
+Requests the server to respond with the state of the resource at the specified
+time.
 
 ```yaml
 Type: System.String
@@ -70,7 +71,8 @@ Accept wildcard characters: False
 ```
 
 ### -After
-Instructs the server to return elements that appear after the element referred to by the specified token.
+Instructs the server to return elements that appear after the element referred
+to by the specified token.
 
 ```yaml
 Type: System.String

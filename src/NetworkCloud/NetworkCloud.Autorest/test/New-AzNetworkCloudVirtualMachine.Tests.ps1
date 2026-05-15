@@ -31,7 +31,11 @@ Describe 'New-AzNetworkCloudVirtualMachine' {
                 KeyData = $global:config.AzNetworkCloudVirtualMachine.sshPublicKey
             }
 
-            $securePassword = ConvertTo-SecureString $global:config.AzNetworkCloudVirtualMachine.registryPassword -AsPlainText -Force
+            $securePassword = New-Object System.Security.SecureString
+            $global:config.AzNetworkCloudVirtualMachine.registryPassword.ToCharArray() | ForEach-Object {
+                $securePassword.AppendChar($_)
+            }
+            $securePassword.MakeReadOnly()
             New-AzNetworkCloudVirtualMachine -Name $global:config.AzNetworkCloudVirtualMachine.vmName `
                 -ResourceGroupName $global:config.AzNetworkCloudVirtualMachine.vmResourceGroup `
                 -AdminUsername $global:config.AzNetworkCloudVirtualMachine.adminUsername `

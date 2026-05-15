@@ -54,6 +54,16 @@ function setupEnv() {
 
     $env.Add("location", "eastus")
 
+    $replicaTestStoreName = "az" + (RandomString -allChars $false -len 4)
+    $env.Add("replicaTestStoreName", $replicaTestStoreName)
+    $env.Add("replicaName", "eastus2replica")
+
+    $newReplicaStoreName = "az" + (RandomString -allChars $false -len 4)
+    $env.Add("newReplicaStoreName", $newReplicaStoreName)
+
+    $removeReplicaStoreName = "az" + (RandomString -allChars $false -len 4)
+    $env.Add("removeReplicaStoreName", $removeReplicaStoreName)
+
     write-host "start to create test group"
     $resourceGroup = "azpstestgroup-" + $str1
     $env.Add("resourceGroup", $resourceGroup)
@@ -69,5 +79,33 @@ function setupEnv() {
 function cleanupEnv() {
     # Clean resources you create for testing
     Remove-AzResourceGroup -Name $env.resourceGroup
+
+    # Sanitize recording files and env.json so they can be committed without PII
+    $subscriptionId = $env.SubscriptionId
+    $tenantId = $env.Tenant
+    $testDir = $PSScriptRoot
+
+    # Sanitize all recording JSON files
+    Get-ChildItem -Path $testDir -Filter '*.Recording.json' | ForEach-Object {
+        $content = Get-Content $_.FullName -Raw
+        $sanitized = $content -replace [regex]::Escape($subscriptionId), '00000000-0000-0000-0000-000000000000' `
+                              -replace [regex]::Escape($tenantId), '00000000-0000-0000-0000-000000000000' `
+                              -replace '(?<=Secret=)[^\\"]+', 'SANITIZED' `
+                              -replace '(?<=\\"connectionString\\":\\")(Endpoint=https://[^"\\]+)(?=\\")', 'Endpoint=https://sanitized.azconfig.io;Id=XXXX;Secret=SANITIZED' `
+                              -replace '(?<=\\"value\\":\\")[A-Za-z0-9+/]{20,}=*(?=\\")', 'SANITIZED' `
+                              -replace '[a-zA-Z0-9._%+-]+@microsoft\.com', 'testuser@microsoft.com'
+        if ($content -ne $sanitized) {
+            Set-Content $_.FullName $sanitized -NoNewline
+        }
+    }
+
+    # Sanitize env.json
+    $envFile = Join-Path $testDir 'env.json'
+    if (Test-Path $envFile) {
+        $envContent = Get-Content $envFile -Raw | ConvertFrom-Json
+        $envContent.SubscriptionId = '00000000-0000-0000-0000-000000000000'
+        $envContent.Tenant = '00000000-0000-0000-0000-000000000000'
+        Set-Content $envFile -Value (ConvertTo-Json $envContent)
+    }
 }
 
