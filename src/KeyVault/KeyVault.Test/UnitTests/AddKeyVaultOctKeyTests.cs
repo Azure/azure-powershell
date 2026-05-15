@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [InlineData(128)]
         [InlineData(256)]
-        public void OctKeyOnManagedHsmIsCreatedAsOctHsm(int size)
+        public void OctKeyOnManagedHsmRoutesToCreateManagedHsmKeyWithSize(int size)
         {
             PSKeyVaultKeyAttributes captured = null;
             int? capturedSize = null;
@@ -147,6 +147,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
 
             track2DataClientMock.VerifyAll();
             Assert.NotNull(captured);
+            // On the MHSM path the cmdlet does not rewrite kty: it forwards the
+            // user-supplied "oct" unchanged. Track2HsmClient is what unconditionally
+            // sets hardwareProtected=true when calling the SDK.
+            Assert.Equal(JsonWebKeyType.Octet, captured.KeyType);
             Assert.Equal(size, capturedSize);
 
             // Vault create must not be invoked on the HSM path.

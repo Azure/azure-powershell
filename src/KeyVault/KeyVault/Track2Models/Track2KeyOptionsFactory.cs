@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
     ///   - keeps the option-building free of any SDK I/O so it can be unit
     ///     tested without an Azure endpoint or a mocked <c>KeyClient</c>,
     ///   - lets each client pass its own <c>hardwareProtected</c> flag (vault
-    ///     uses <c>isHsm = (kty == RsaHsm || EcHsm)</c>; MHSM is always true).
+    ///     derives it from the key type; MHSM always passes <c>true</c>).
     ///
     /// The actual SDK call and the <c>PSKeyVaultKey</c> wrapping (with the
     /// per-client output <c>isHsm</c> flag) stay in each client's dispatcher.

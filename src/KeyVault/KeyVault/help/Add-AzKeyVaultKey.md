@@ -801,7 +801,7 @@ Accept wildcard characters: False
 ```
 
 ### -Size
-RSA key size, in bits. If not specified, the service will provide a safe default.
+The key size, in bits. For RSA keys, valid values depend on the vault/HSM (for example 2048, 3072, or 4096). For AES (oct/oct-HSM) keys, valid values are 128, 192, or 256. If not specified, the service will provide a safe default.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
