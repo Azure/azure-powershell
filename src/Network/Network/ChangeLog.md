@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Updated Virtual Network and Virtual Network Appliance cmdlets to use new properties.
+    - `New-AzVirtualNetwork`: Added `-SummarizedGatewayPrefix` parameter to specify summarized gateway prefixes advertised for the virtual network, and exposed `SummarizedGatewayPrefixes` on the returned object.
+    - `New-AzVirtualNetworkAppliance`: Added `-PrivateIPAddressVersion` parameter (IPv4, DualStack) to support dual-stack Virtual Network Appliances, and exposed `PrivateIPAddressVersion` on the returned object.
+    - `New-AzVirtualNetworkAppliance`: Bugfix to change the `-Bandwidth` parameter type from `string` to `double` values.
 * Added new cmdlets for DDoS Custom Policy management
     - `New-AzDdosCustomPolicy`: Create a new DDoS custom policy with detection rules
     - `New-AzDdosCustomPolicy` requires at least one detection rule at creation time
