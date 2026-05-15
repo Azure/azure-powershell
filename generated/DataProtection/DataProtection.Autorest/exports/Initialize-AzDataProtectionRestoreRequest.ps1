@@ -73,7 +73,7 @@ $rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId $subId -ResourceGroupNam
 $aksALRRestoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureKubernetesService -SourceDataStore VaultStore -RestoreLocation $location -RestoreType AlternateLocation -RecoveryPoint $rp[0].Property.RecoveryPointId -RestoreConfiguration $aksRestoreCriteria -TargetResourceId $targetAKSClusterARMId
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IAzureBackupRestoreRequest
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRestoreRequest
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -93,10 +93,10 @@ BACKUPINSTANCE <BackupInstanceResource>: Backup Instance object to trigger origi
     PolicyInfo <IPolicyInfo>: Gets or sets the policy information.
       PolicyId <String>: 
       [PolicyParameter <IPolicyParameters>]: Policy parameters for the backup instance
-        [BackupDatasourceParametersList <IBackupDatasourceParameters[]>]: Gets or sets the Backup Data Source Parameters
+        [BackupDatasourceParametersList <List<IBackupDatasourceParameters>>]: Gets or sets the Backup Data Source Parameters
           ObjectType <String>: Type of the specific object - used for deserializing
-        [DataStoreParametersList <IDataStoreParameters[]>]: Gets or sets the DataStore Parameters
-          DataStoreType <DataStoreTypes>: type of datastore; Operational/Vault/Archive
+        [DataStoreParametersList <List<IDataStoreParameters>>]: Gets or sets the DataStore Parameters
+          DataStoreType <String>: type of datastore; Operational/Vault/Archive
           ObjectType <String>: Type of the specific object - used for deserializing
     [DataSourceSetInfo <IDatasourceSet>]: Gets or sets the data source set information.
       ResourceId <String>: Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
@@ -112,15 +112,15 @@ BACKUPINSTANCE <BackupInstanceResource>: Backup Instance object to trigger origi
     [IdentityDetail <IIdentityDetails>]: Contains information of the Identity Details for the BI.         If it is null, default will be considered as System Assigned.
       [UseSystemAssignedIdentity <Boolean?>]: Specifies if the BI is protected by System Identity.
       [UserAssignedIdentityArmUrl <String>]: ARM URL for User Assigned Identity.
-    [ResourceGuardOperationRequest <String[]>]: ResourceGuardOperationRequests on which LAC check will be performed
-    [ValidationType <ValidationType?>]: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
+    [ResourceGuardOperationRequest <List<String>>]: Resource guard operation request in the format similar to <ResourceGuard-ARMID>/dppModifyPolicy/default. Use this parameter when the operation is MUA protected.
+    [ValidationType <String>]: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
   [Tag <IDppProxyResourceTags>]: Proxy Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
 https://learn.microsoft.com/powershell/module/az.dataprotection/initialize-azdataprotectionrestorerequest
 #>
 function Initialize-AzDataProtectionRestoreRequest {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IAzureBackupRestoreRequest])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRestoreRequest])]
 [CmdletBinding(DefaultParameterSetName='AlternateLocationFullRecovery', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -275,9 +275,8 @@ param(
     [Parameter(ParameterSetName='OriginalLocationILR', Mandatory)]
     [Parameter(ParameterSetName='OriginalLocationFullRecovery', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BackupInstanceResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.BackupInstanceResource]
     # Backup Instance object to trigger original location restore.
-    # To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
     ${BackupInstance},
 
     [Parameter(ParameterSetName='OriginalLocationILR')]
@@ -304,6 +303,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -336,6 +338,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
