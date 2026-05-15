@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Extensions;
 
-    public partial class UserAssignedIdentities :
+    public partial class ManagedServiceIdentityUserAssignedIdentities :
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IUserAssignedIdentity>
     {
         protected global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IUserAssignedIdentity> __additionalProperties = new global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IUserAssignedIdentity>();
@@ -70,6 +70,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
 
         /// <param name="source"></param>
 
-        public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IUserAssignedIdentity>(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.UserAssignedIdentities source) => source.__additionalProperties;
+        public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IUserAssignedIdentity>(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ManagedServiceIdentityUserAssignedIdentities source) => source.__additionalProperties;
     }
 }
