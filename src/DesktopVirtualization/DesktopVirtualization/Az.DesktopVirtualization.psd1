@@ -156,7 +156,7 @@ PrivateData = @{
     - Parameter ''Tag'' will be removed from the Update cmdlet of Application and Desktop.'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
