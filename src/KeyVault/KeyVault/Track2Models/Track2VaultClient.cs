@@ -7,7 +7,6 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Security;
 
@@ -15,8 +14,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 {
     internal class Track2VaultClient
     {
-        private Track2TokenCredential _credential;
-        private VaultUriHelper _vaultUriHelper;
+        private readonly Track2TokenCredential _credential;
+        private readonly VaultUriHelper _vaultUriHelper;
 
         // After a track 2 client is created, the vault / hsm uri associated to it cannot be changed
         // however azure powershell may deal with multiple vaults / hsms
@@ -42,55 +41,31 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
         private PSKeyVaultKey CreateKey(KeyClient client, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size, string curveName)
         {
-            CreateKeyOptions options;
-            bool isHsm = keyAttributes.KeyType == KeyType.RsaHsm || keyAttributes.KeyType == KeyType.EcHsm;
+            bool isHsm = keyAttributes.KeyType == KeyType.RsaHsm || keyAttributes.KeyType == KeyType.EcHsm || keyAttributes.KeyType == KeyType.OctHsm;
 
             if (keyAttributes.KeyType == KeyType.Rsa || keyAttributes.KeyType == KeyType.RsaHsm)
             {
-                options = new CreateRsaKeyOptions(keyName, isHsm) { KeySize = size };
+                var options = Track2KeyOptionsFactory.BuildRsaKeyOptions(keyName, isHsm, keyAttributes, size);
+                return new PSKeyVaultKey(client.CreateRsaKey(options).Value, _vaultUriHelper, false);
             }
-            else if (keyAttributes.KeyType == KeyType.Ec || keyAttributes.KeyType == KeyType.EcHsm)
+            if (keyAttributes.KeyType == KeyType.Ec || keyAttributes.KeyType == KeyType.EcHsm)
             {
-                options = new CreateEcKeyOptions(keyName, isHsm) { CurveName = string.IsNullOrEmpty(curveName) ? (KeyCurveName?)null : new KeyCurveName(curveName) };
+                var options = Track2KeyOptionsFactory.BuildEcKeyOptions(keyName, isHsm, keyAttributes, curveName);
+                return new PSKeyVaultKey(client.CreateEcKey(options).Value, _vaultUriHelper, false);
             }
-            else
+            if (keyAttributes.KeyType == KeyType.Oct || keyAttributes.KeyType == KeyType.OctHsm)
             {
-                // oct (AES) is only supported by managed HSM
-                throw new NotSupportedException($"{keyAttributes.KeyType} is not supported");
-            }
-            options.NotBefore = keyAttributes.NotBefore;
-            options.ExpiresOn = keyAttributes.Expires;
-            options.Enabled = keyAttributes.Enabled;
-            options.Exportable = keyAttributes.Exportable;
-            options.ReleasePolicy = keyAttributes.ReleasePolicy?.ToKeyReleasePolicy(); ;
-
-            if (keyAttributes.KeyOps != null)
-            {
-                foreach (var keyOp in keyAttributes.KeyOps)
-                {
-                    options.KeyOperations.Add(new KeyOperation(keyOp));
-                }
-            }
-            if (keyAttributes.Tags != null)
-            {
-                foreach (DictionaryEntry entry in keyAttributes.Tags)
-                {
-                    options.Tags.Add(entry.Key.ToString(), entry.Value.ToString());
-                }
+                // Honor the requested -Destination by deriving hardwareProtected from the
+                // resolved KeyType (Oct = software, OctHsm = HSM-backed). Software 'oct'
+                // is not supported on AKV vaults today; in that case the service will
+                // return the authoritative error rather than us silently promoting the
+                // request to an HSM-backed create.
+                bool isOctHsm = keyAttributes.KeyType == KeyType.OctHsm;
+                var options = Track2KeyOptionsFactory.BuildOctKeyOptions(keyName, isOctHsm, keyAttributes, size);
+                return new PSKeyVaultKey(client.CreateOctKey(options).Value, _vaultUriHelper, false);
             }
 
-            if (keyAttributes.KeyType == KeyType.Rsa || keyAttributes.KeyType == KeyType.RsaHsm)
-            {
-                return new PSKeyVaultKey(client.CreateRsaKey(options as CreateRsaKeyOptions).Value, _vaultUriHelper, false);
-            }
-            else if (keyAttributes.KeyType == KeyType.Ec || keyAttributes.KeyType == KeyType.EcHsm)
-            {
-                return new PSKeyVaultKey(client.CreateEcKey(options as CreateEcKeyOptions).Value, _vaultUriHelper, false);
-            }
-            else
-            {
-                throw new NotSupportedException($"{keyAttributes.KeyType} is not supported");
-            }
+            throw new NotSupportedException($"{keyAttributes.KeyType} is not supported");
         }
 
         internal PSKeyOperationResult Decrypt(string vaultName, string keyName, string version, byte[] value, string encryptAlgorithm)

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for creating AES (Advanced Encryption Standard, `oct`) HSM (hardware security module) keys in Azure Key Vault Premium via `Add-AzKeyVaultKey -KeyType oct -Destination HSM` (resulting `KeyType` is `oct-HSM`).
 * Fixed `New-AzKeyVault` `RequestDisallowedByPolicy` error by explicitly setting `enableSoftDelete` in the request body to satisfy Azure Policy checks
 
 ## Version 6.4.3
