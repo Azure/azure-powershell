@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Revert "the support for UAMI authentication in Data Sync cmdlets"
+* Reverted "the support for UAMI authentication in Data Sync cmdlets"
 
 ## Version 6.5.0
 * Added support for User Assigned Managed Identity (UAMI) authentication in Data Sync cmdlets (`New-AzSqlSyncGroup`, `Update-AzSqlSyncGroup`, `New-AzSqlSyncMember`, `Update-AzSqlSyncMember`)
