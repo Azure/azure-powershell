@@ -10,16 +10,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Returns the specific Azure Monitor workspace</summary>
+    /// <summary>Returns the specified Azure Monitor Workspace</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzMonitorWorkspace_GetViaIdentity")]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceResource", "15.0.0", "7.0.0", "2025/11/03", DeprecatedOutputProperties = new string[] {"PrivateEndpointConnection","ProvisioningState"}, NewOutputProperties = new string[] {"PrivateEndpointConnection","ProvisioningState" } , ChangeDescription = "The types of the properties PrivateEndpointConnection and ProvisioningState will be changed from single object or fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Description(@"Returns the specific Azure Monitor workspace")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Description(@"Returns the specified Azure Monitor Workspace")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}", ApiVersion = "2023-04-03")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}", ApiVersion = "2025-10-03")]
     public partial class GetAzMonitorWorkspace_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.IContext

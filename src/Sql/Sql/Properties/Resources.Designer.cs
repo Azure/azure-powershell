@@ -412,15 +412,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DatabaseCredentials (username/password) must be provided when DatabaseAuthenticationType is &apos;password&apos;..
-        /// </summary>
-        internal static string DatabaseCredentialRequired {
-            get {
-                return ResourceManager.GetString("DatabaseCredentialRequired", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Auditing cannot be enabled . Upgrade to Basic, Standard or Premium Service Tier to enable auditing on your database(s).
         /// </summary>
         internal static string DatabaseNotInServiceTierForAuditingPolicy {
@@ -682,15 +673,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to IdentityId must be provided when DatabaseAuthenticationType is &apos;userAssigned&apos;..
-        /// </summary>
-        internal static string IdentityIdRequired {
-            get {
-                return ResourceManager.GetString("IdentityIdRequired", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Invalid BlobStorageSasUri parameter value. The value should be in format of https://mystorage.blob.core.windows.net/vulnerability-assessment?st=XXXXXX.&quot;.
         /// </summary>
         internal static string InvalidBlobStorageSasUri {
@@ -779,24 +761,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string InvalidSoftDeleteRetentionDaysRange {
             get {
                 return ResourceManager.GetString("InvalidSoftDeleteRetentionDaysRange", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Invalid DatabaseAuthenticationType. Supported authentication types are &apos;userAssigned&apos; and &apos;password&apos;.
-        /// </summary>
-        internal static string InvalidDatabaseAuthenticationType {
-            get {
-                return ResourceManager.GetString("InvalidDatabaseAuthenticationType", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The parameter &apos;{0}&apos; cannot be specified when using &apos;{1}&apos; authentication..
-        /// </summary>
-        internal static string InvalidParameterForAuthenticationType {
-            get {
-                return ResourceManager.GetString("InvalidParameterForAuthenticationType", resourceCulture);
             }
         }
         
@@ -1499,15 +1463,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string ResourceGroupMismatchForRestore {
             get {
                 return ResourceManager.GetString("ResourceGroupMismatchForRestore", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ResourceID of UAMI must be provided when DatabaseAuthenticationType is &apos;userAssigned&apos;..
-        /// </summary>
-        internal static string ResourceIdRequired {
-            get {
-                return ResourceManager.GetString("ResourceIdRequired", resourceCulture);
             }
         }
         

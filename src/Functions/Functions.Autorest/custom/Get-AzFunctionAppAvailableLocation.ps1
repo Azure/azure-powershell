@@ -1,5 +1,5 @@
 function Get-AzFunctionAppAvailableLocation {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IGeoRegion])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IGeoRegion])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Gets the location where a function app for the given os and plan type is available.')]
     [CmdletBinding()]
     param(

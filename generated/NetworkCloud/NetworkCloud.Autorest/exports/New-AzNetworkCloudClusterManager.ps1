@@ -95,7 +95,6 @@ param(
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String[]]
-    # Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a future version.
     # The Azure availability zones within the region that will be used to support the cluster manager resource.
     ${AvailabilityZone},
 
@@ -137,7 +136,6 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
-    # Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a future version.
     # The size of the Azure virtual machines to use for hosting the cluster manager resource.
     ${VMSize},
 
@@ -227,8 +225,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
