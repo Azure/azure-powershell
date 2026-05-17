@@ -74,8 +74,7 @@ Describe 'AdlsBlobHardeningScenario' -Tag 'LiveOnly' {
         $startTime = Get-Date
         while($instance.Property.CurrentProtectionState -ne "ProtectionConfigured"){
             if ((Get-Date) - $startTime -gt (New-TimeSpan -Minutes 10)) {
-                Write-Error "Timeout waiting for ProtectionConfigured state."
-                break
+                throw "Timeout waiting for ProtectionConfigured state for backup instance $($instance.Name)."
             }
             Write-Host "Current Protection State: $($instance.Property.CurrentProtectionState)"
             Start-TestSleep -Seconds 10
@@ -94,7 +93,6 @@ Describe 'AdlsBlobHardeningScenario' -Tag 'LiveOnly' {
         $jobid -ne $null | Should be $true
 
         $jobstatus = "InProgress"
-        $startTime = Get-Date
         while($jobstatus -eq "InProgress")
         {
             Start-TestSleep -Seconds 30

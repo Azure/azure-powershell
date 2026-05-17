@@ -300,6 +300,11 @@ function Initialize-AzDataProtectionRestoreRequest
             $restoreRequest.RestoreTargetInfo.ObjectType = "itemLevelRestoreTargetInfo"
 
             $restoreCriteriaList = @()
+
+            # Validate -RenameTo against the manifest before branching on datasource type so unsupported workloads fail fast.
+            if($PSBoundParameters.ContainsKey("RenameTo") -and ($manifest.renameContainersEnabled -ne $true)){
+                throw "DatasourceType $DatasourceType does not support renaming containers"
+            }
             
             # can generalise this condition to manifest level if needed
             if($DatasourceType -ne "AzureKubernetesService"){ # TODO: remove Datasource dependency
@@ -329,9 +334,6 @@ function Initialize-AzDataProtectionRestoreRequest
                                 throw "value for RenameTo must be a string for each container"
                             }
                             $restoreCriteria.RenameTo = $renameToValue
-                        } 
-                        elseif( ($manifest.renameContainersEnabled -ne $true) -and ($hasRenameTo)){
-                            throw "DatasourceType $DatasourceType does not support renaming containers"
                         }
 
                         # adding a criteria for each container given

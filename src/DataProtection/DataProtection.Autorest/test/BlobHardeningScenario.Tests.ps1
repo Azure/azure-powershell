@@ -58,7 +58,11 @@ Describe 'BlobHardeningScenario' -Tag 'LiveOnly'{
 
         $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAccountName }
 
+        $startTime = Get-Date
         while($instance.Property.CurrentProtectionState -ne "ProtectionConfigured"){
+            if ((Get-Date) - $startTime -gt (New-TimeSpan -Minutes 10)) {
+                throw "Timeout waiting for ProtectionConfigured state for backup instance $($instance.Name)."
+            }
             Start-TestSleep -Seconds 10
             $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAccountName }
         }

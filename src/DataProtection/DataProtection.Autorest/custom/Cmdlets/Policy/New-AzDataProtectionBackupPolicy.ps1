@@ -98,7 +98,7 @@ function New-AzDataProtectionBackupPolicy
             {
                 foreach($criteria in $rule.Trigger.TaggingCriterion)
                 {
-                    if($criteria.TagInfoTagName -ne "Default")
+                    if(($criteria.TagInfoTagName -ne "Default") -and ($mappedDefaultNames -notcontains $criteria.TagInfoTagName))
                     {
                         $tagNames += $criteria.TagInfoTagName
                     }

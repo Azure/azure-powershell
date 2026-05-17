@@ -99,6 +99,12 @@ function GetBackupFrequenceFromTimeInterval
 
 function ValidateRetentionRuleMatchesMappedStore
 {
+	# Enforces the manifest-driven mapping between SourceDataStoreType and the
+	# reserved "default" retention-rule name (e.g., for AzureBlob:
+	#   OperationalStore -> Default_OperationalStore, VaultStore -> Default).
+	# Throws when -Name targets a reserved default but the supplied -LifeCycles
+	# carry the wrong SourceDataStoreType for that name. Returns the list of
+	# mapped default rule names so the caller can reuse it for downstream checks.
 	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
 	param(
 		[Parameter(Mandatory=$true)]
@@ -107,6 +113,7 @@ function ValidateRetentionRuleMatchesMappedStore
 		$Name,
 
 		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
 		$DefaultRetentionMapping,
 
 		[Parameter(Mandatory=$true)]
@@ -142,6 +149,11 @@ function ValidateRetentionRuleMatchesMappedStore
 
 function ValidateExclusiveSourceStoreAssignment
 {
+	# Ensures exclusive source stores (e.g. OperationalStore for AzureBlob) are
+	# only used on their mapped default rule (e.g. Default_OperationalStore).
+	# Any lifecycle with an exclusive store is rejected on non-default rules
+	# (e.g. Weekly, Monthly, Yearly) — only the mapped default from
+	# defaultRetentionRuleNames in the manifest may carry that store.
 	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
 	param(
 		[Parameter(Mandatory=$true)]
@@ -150,9 +162,11 @@ function ValidateExclusiveSourceStoreAssignment
 		$Name,
 
 		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
 		$Manifest,
 
 		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
 		$DefaultRetentionMapping,
 
 		[Parameter(Mandatory=$true)]

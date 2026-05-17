@@ -423,9 +423,65 @@ Describe 'New-AzDataProtectionBackupPolicy' {
         $operationalVaultedPolicy = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId -Name $operationalVaultedPolicyName
 
         # Verify 
-        $operationalVaultedPolicy.Name | Should be $operationalVaultedPolicyName        
-        $operationalVaultedPolicy.Property.PolicyRule[-1].Lifecycle[0].SourceDataStoreType | Should be "VaultStore"
-        $operationalVaultedPolicy.Property.PolicyRule.Lifecycle.SourceDataStoreType -contains "OperationalStore" | Should be $true
+        $operationalVaultedPolicy.Name | Should be $operationalVaultedPolicyName
+        $operationalVaultedPolicy.Property.DatasourceType.ToLower().Equals("microsoft.storage/storageaccounts/blobservices") | Should be $true
+
+        # Verify all retention rules exist
+        ($operationalVaultedPolicy.Property.PolicyRule | Where-Object { $_.Name -eq "Default" }) -ne $null | Should be $true
+        ($operationalVaultedPolicy.Property.PolicyRule | Where-Object { $_.Name -eq "Default_OperationalStore" }) -ne $null | Should be $true
+        ($operationalVaultedPolicy.Property.PolicyRule | Where-Object { $_.Name -eq "Weekly" }) -ne $null | Should be $true
+        ($operationalVaultedPolicy.Property.PolicyRule | Where-Object { $_.Name -eq "Monthly" }) -ne $null | Should be $true
+        ($operationalVaultedPolicy.Property.PolicyRule | Where-Object { $_.Name -eq "Yearly" }) -ne $null | Should be $true
+
+        # Verify Default retention (VaultStore, P7D from template)
+        $defaultRule = $operationalVaultedPolicy.Property.PolicyRule | Where-Object { $_.Name -eq "Default" }
+        $defaultRule.Lifecycle[0].SourceDataStoreType | Should be "VaultStore"
+        $defaultRule.Lifecycle[0].DeleteAfterDuration | Should be "P7D"
+
+        # Verify Default_OperationalStore retention (OperationalStore, P30D)
+        $defaultOpRule = $operationalVaultedPolicy.Property.PolicyRule | Where-Object { $_.Name -eq "Default_OperationalStore" }
+        $defaultOpRule.Lifecycle[0].SourceDataStoreType | Should be "OperationalStore"
+        $defaultOpRule.Lifecycle[0].DeleteAfterDuration | Should be "P30D"
+
+        # Verify Weekly retention (VaultStore, P7W)
+        $weeklyRule = $operationalVaultedPolicy.Property.PolicyRule | Where-Object { $_.Name -eq "Weekly" }
+        $weeklyRule.Lifecycle[0].SourceDataStoreType | Should be "VaultStore"
+        $weeklyRule.Lifecycle[0].DeleteAfterDuration | Should be "P7W"
+
+        # Verify Monthly retention (VaultStore, P5M)
+        $monthlyRule = $operationalVaultedPolicy.Property.PolicyRule | Where-Object { $_.Name -eq "Monthly" }
+        $monthlyRule.Lifecycle[0].SourceDataStoreType | Should be "VaultStore"
+        $monthlyRule.Lifecycle[0].DeleteAfterDuration | Should be "P5M"
+
+        # Verify Yearly retention (VaultStore, P1Y)
+        $yearlyRule = $operationalVaultedPolicy.Property.PolicyRule | Where-Object { $_.Name -eq "Yearly" }
+        $yearlyRule.Lifecycle[0].SourceDataStoreType | Should be "VaultStore"
+        $yearlyRule.Lifecycle[0].DeleteAfterDuration | Should be "P1Y"
+
+        # Verify backup rule schedule and timezone
+        $backupRule = $operationalVaultedPolicy.Property.PolicyRule | Where-Object { $_.ObjectType -eq "AzureBackupRule" }
+        $backupRule.Trigger.ScheduleTimeZone | Should be "W. Europe Standard Time"
+        $backupRule.Trigger.ScheduleRepeatingTimeInterval[0] | Should -Match "P1W"
+
+        # Verify tag criteria: Default tag exists
+        $defaultTag = $backupRule.Trigger.TaggingCriterion | Where-Object { $_.TagInfoTagName -eq "Default" }
+        $defaultTag | Should -Not -BeNullOrEmpty
+        $defaultTag.IsDefault | Should be $true
+
+        # Verify tag criteria: Weekly (FirstOfWeek)
+        $weeklyTagResult = $backupRule.Trigger.TaggingCriterion | Where-Object { $_.TagInfoTagName -eq "Weekly" }
+        $weeklyTagResult | Should -Not -BeNullOrEmpty
+        $weeklyTagResult.IsDefault | Should be $false
+
+        # Verify tag criteria: Monthly (FirstOfMonth)
+        $monthlyTagResult = $backupRule.Trigger.TaggingCriterion | Where-Object { $_.TagInfoTagName -eq "Monthly" }
+        $monthlyTagResult | Should -Not -BeNullOrEmpty
+        $monthlyTagResult.IsDefault | Should be $false
+
+        # Verify tag criteria: Yearly (FirstOfYear)
+        $yearlyTagResult = $backupRule.Trigger.TaggingCriterion | Where-Object { $_.TagInfoTagName -eq "Yearly" }
+        $yearlyTagResult | Should -Not -BeNullOrEmpty
+        $yearlyTagResult.IsDefault | Should be $false
         
         #Remove policy
         Remove-AzDataProtectionBackupPolicy -Name $operationalVaultedPolicyName -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName
