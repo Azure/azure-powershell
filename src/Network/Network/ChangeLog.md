@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Added `Move-AzVirtualNetworkIpConfiguration` cmdlet to move secondary private IP configurations between network interfaces within a virtual network
+    - Supports moving one or more IP configurations in a single operation
+    - The operation is long-running (asynchronous) and supports the `-AsJob` parameter
 * Removed validations to allow newly added AuxiliarySkus in New-AzNetworkInterface command without needing to add them in ValidateSet.
 * Added new cmdlets for DDoS Custom Policy management
     - `New-AzDdosCustomPolicy`: Create a new DDoS custom policy with detection rules
