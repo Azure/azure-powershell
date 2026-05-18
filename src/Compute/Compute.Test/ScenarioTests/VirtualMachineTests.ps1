@@ -8262,23 +8262,23 @@ function Test-VMStorageFaultDomainAlignment
         $osDisk = $vmStatus.Disks | Where-Object { $_.Name -eq $OSDiskName };
         Assert-NotNull $osDisk;
         Assert-NotNull $osDisk.StorageAlignmentStatus;
-        Assert-True ($validAlignmentStatuses -contains $osDisk.StorageAlignmentStatus);
+        Assert-True { $validAlignmentStatuses -contains $osDisk.StorageAlignmentStatus };
 
         # Data disk alignment statuses from instance view
         $dataDisk0 = $vmStatus.Disks | Where-Object { $_.Name -eq 'datadisk0' };
         Assert-NotNull $dataDisk0;
         Assert-NotNull $dataDisk0.StorageAlignmentStatus;
-        Assert-True ($validAlignmentStatuses -contains $dataDisk0.StorageAlignmentStatus);
+        Assert-True { $validAlignmentStatuses -contains $dataDisk0.StorageAlignmentStatus };
 
         $dataDisk1 = $vmStatus.Disks | Where-Object { $_.Name -eq 'datadisk1' };
         Assert-NotNull $dataDisk1;
         Assert-NotNull $dataDisk1.StorageAlignmentStatus;
-        Assert-True ($validAlignmentStatuses -contains $dataDisk1.StorageAlignmentStatus);
+        Assert-True { $validAlignmentStatuses -contains $dataDisk1.StorageAlignmentStatus };
 
         $dataDisk2 = $vmStatus.Disks | Where-Object { $_.Name -eq 'datadisk2' };
         Assert-NotNull $dataDisk2;
         Assert-NotNull $dataDisk2.StorageAlignmentStatus;
-        Assert-True ($validAlignmentStatuses -contains $dataDisk2.StorageAlignmentStatus);
+        Assert-True { $validAlignmentStatuses -contains $dataDisk2.StorageAlignmentStatus };
     }
     finally
     {
