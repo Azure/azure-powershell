@@ -1,5 +1,5 @@
 ---
-external help file: Az.StackHCIVM-help.xml
+external help file:
 Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmlogicalnetwork
 schema: 2.0.0
@@ -14,14 +14,14 @@ The operation to delete a logical network.
 
 ### ByResourceId (Default)
 ```
-Remove-AzStackHCIVMLogicalNetwork -ResourceId <String> [-Force] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzStackHCIVMLogicalNetwork -ResourceId <String> [-Force] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Delete
 ```
 Remove-AzStackHCIVMLogicalNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Force] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -172,3 +172,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

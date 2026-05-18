@@ -1,5 +1,5 @@
 ---
-external help file: Az.StackHCIVM-help.xml
+external help file:
 Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmnetworkinterface
 schema: 2.0.0
@@ -14,35 +14,32 @@ The operation to update a network interface.
 
 ### ByResourceId (Default)
 ```
-Update-AzStackHCIVMNetworkInterface [-ResourceId <String>] [-Tag <Hashtable>] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzStackHCIVMNetworkInterface -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzStackHCIVMNetworkInterface -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzStackHCIVMNetworkInterface [-ResourceId <String>] [-Tag <Hashtable>] [-NoWait] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
 Update-AzStackHCIVMNetworkInterface -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzStackHCIVMNetworkInterface -InputObject <IStackHcivmIdentity> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzStackHCIVMNetworkInterface -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzStackHCIVMNetworkInterface -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -71,7 +68,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateViaJsonString, UpdateViaJsonFilePath, UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -87,7 +84,7 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: UpdateViaJsonString, UpdateViaJsonFilePath, UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
@@ -147,7 +144,7 @@ Name of the network interface
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonString, UpdateViaJsonFilePath, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: NetworkInterfaceName
 
 Required: True
@@ -178,7 +175,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonString, UpdateViaJsonFilePath, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -208,7 +205,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonString, UpdateViaJsonFilePath, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -278,3 +275,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

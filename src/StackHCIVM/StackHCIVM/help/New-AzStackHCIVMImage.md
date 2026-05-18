@@ -1,5 +1,5 @@
 ---
-external help file: Az.StackHCIVM-help.xml
+external help file:
 Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmimage
 schema: 2.0.0
@@ -15,29 +15,28 @@ Please note some properties can be set only during  image creation.
 
 ### MarketplaceURN (Default)
 ```
-New-AzStackHCIVMImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- -CustomLocationId <String> -OSType <Object> -URN <String> [-CloudInitDataSource <String>]
- [-StoragePathName <String>] [-StoragePathResourceGroup <String>] [-StoragePathId <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzStackHCIVMImage -Name <String> -ResourceGroupName <String> -CustomLocationId <String> -Location <String>
+ -OSType <Object> -URN <String> [-SubscriptionId <String>] [-CloudInitDataSource <String>]
+ [-StoragePathId <String>] [-StoragePathName <String>] [-StoragePathResourceGroup <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GalleryImage
 ```
-New-AzStackHCIVMImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- -CustomLocationId <String> -OSType <Object> [-CloudInitDataSource <String>] [-StoragePathName <String>]
- [-StoragePathResourceGroup <String>] [-StoragePathId <String>] [-Tag <Hashtable>] -ImagePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzStackHCIVMImage -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
+ -ImagePath <SecureString> -Location <String> -OSType <Object> [-SubscriptionId <String>]
+ [-CloudInitDataSource <String>] [-StoragePathId <String>] [-StoragePathName <String>]
+ [-StoragePathResourceGroup <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Marketplace
 ```
-New-AzStackHCIVMImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- -CustomLocationId <String> -OSType <Object> [-CloudInitDataSource <String>] [-StoragePathName <String>]
- [-StoragePathResourceGroup <String>] [-StoragePathId <String>] [-Tag <Hashtable>] -Offer <String>
- -Publisher <String> -Sku <String> -Version <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzStackHCIVMImage -Name <String> -ResourceGroupName <String> -CustomLocationId <String> -Location <String>
+ -Offer <String> -OSType <Object> -Publisher <String> -Sku <String> -Version <String>
+ [-SubscriptionId <String>] [-CloudInitDataSource <String>] [-StoragePathId <String>]
+ [-StoragePathName <String>] [-StoragePathResourceGroup <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,9 +45,9 @@ Please note some properties can be set only during image creation.
 
 ## EXAMPLES
 
-### Example 1: Create a  Gallery Image
+### Example 1: Create a  Gallery Image 
 ```powershell
-New-AzStackHCIVMImage -Name "testImage" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -ImagePath "C:\ClusterStorage\Volume1\Ubunut.vhdx" -OSType "Linux" -Location "eastus"
+New-AzStackHCIVMImage -Name "testImage" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -ImagePath "C:\ClusterStorage\Volume1\Ubunut.vhdx" -OSType "Linux" -Location "eastus" 
 ```
 
 ```output
@@ -59,7 +58,7 @@ testImage       test-rg
 
 This command creates a gallery image from a local path.
 
-### Example 2:  Create a Marketplace Gallery Image
+### Example 2:  Create a Marketplace Gallery Image 
 ```powershell
 New-AzStackHCIVMImage -Name "testMarketplaceImage" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus" -Offer "windowsserver" -Publisher "MicrosoftWindowsServer" -Sku "2022-Datacenter" -Version "latest" -OSType "Windows"
 ```
@@ -72,7 +71,7 @@ testMarketplaceImage       test-rg
 
 This command creates a marketplace gallery image using the specified offer , publisher, sku and version.
 
-### Example 3: {Create a  Marketplace Gallery Image From URN
+### Example 3: {Create a  Marketplace Gallery Image From URN 
 ```powershell
 New-AzStackHCIVMImage -Name "testMarketplaceImageURN" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus" -URN  "microsoftwindowsserver:windowsserver:2022-datacenter:latest" -OSType "Windows"
 ```
@@ -148,12 +147,12 @@ Accept wildcard characters: False
 ```
 
 ### -ImagePath
-Local path of image that the image should be created from.
-
+Local path of image that the image should be created from (as SecureString).
 This parameter is required for non marketplace images.
+Use: ConvertTo-SecureString -String "path\to\image.vhdx" -AsPlainText -Force
 
 ```yaml
-Type: System.String
+Type: System.Security.SecureString
 Parameter Sets: GalleryImage
 Aliases:
 
@@ -181,7 +180,7 @@ Accept wildcard characters: False
 
 ### -Name
 Name of the Image
-The name must start and end with an alphanumeric character and must contain all alphanumeric characters or '-', '.', or '_'.
+The name must start and end with an alphanumeric character and must contain all alphanumeric characters or ‘-‘, ‘.’, or ‘_’.
 The max length can be 80 characters and the minimum length is 1 character.
 
 ```yaml
@@ -438,3 +437,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

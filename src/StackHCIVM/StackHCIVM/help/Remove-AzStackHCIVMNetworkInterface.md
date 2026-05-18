@@ -1,5 +1,5 @@
 ---
-external help file: Az.StackHCIVM-help.xml
+external help file:
 Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmnetworkinterface
 schema: 2.0.0
@@ -15,13 +15,13 @@ The operation to delete a network interface.
 ### ByResourceId (Default)
 ```
 Remove-AzStackHCIVMNetworkInterface -ResourceId <String> [-SubscriptionId <String>] [-Force] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Remove-AzStackHCIVMNetworkInterface [-SubscriptionId <String>] -Name <String> -ResourceGroupName <String>
- [-Force] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzStackHCIVMNetworkInterface -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-Force] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -174,3 +174,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

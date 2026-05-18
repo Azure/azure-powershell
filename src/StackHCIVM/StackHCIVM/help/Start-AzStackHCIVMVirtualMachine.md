@@ -1,5 +1,5 @@
 ---
-external help file: Az.StackHCIVM-help.xml
+external help file:
 Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/start-azstackhcivmvirtualmachine
 schema: 2.0.0
@@ -15,14 +15,13 @@ The operation to start a virtual machine instance.
 ### ByResourceId (Default)
 ```
 Start-AzStackHCIVMVirtualMachine -ResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Start-AzStackHCIVMVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,9 +29,10 @@ The operation to start a virtual machine instance.
 
 ## EXAMPLES
 
-### Example 1: Start Virtual Machine
+### Example 1: Start Virtual Machine 
 ```powershell
 Start-AzStackHCIVMVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
+
 ```
 
 This command starts the virtual machine in the specified resource group.
@@ -138,7 +138,7 @@ Type: System.String
 Parameter Sets: ByName
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
@@ -188,3 +188,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

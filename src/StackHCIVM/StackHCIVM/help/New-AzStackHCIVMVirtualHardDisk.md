@@ -1,5 +1,5 @@
 ---
-external help file: Az.StackHCIVM-help.xml
+external help file:
 Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmvirtualharddisk
 schema: 2.0.0
@@ -14,12 +14,11 @@ Please note some properties can be set only during virtual hard disk creation.
 ## SYNTAX
 
 ```
-New-AzStackHCIVMVirtualHardDisk -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> -CustomLocationId <String> [-BlockSizeByte <Int32>] [-StoragePathId <String>]
- [-StoragePathName <String>] [-StoragePathResourceGroup <String>] [-DiskFileFormat <Object>] [-SizeGb <Int64>]
- [-Dynamic] [-HyperVGeneration <Object>] [-LogicalSectorByte <Int32>] [-PhysicalSectorByte <Int32>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzStackHCIVMVirtualHardDisk -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
+ -Location <String> [-SubscriptionId <String>] [-BlockSizeByte <Int32>] [-DiskFileFormat <Object>] [-Dynamic]
+ [-HyperVGeneration <Object>] [-LogicalSectorByte <Int32>] [-PhysicalSectorByte <Int32>] [-SizeGb <Int64>]
+ [-StoragePathId <String>] [-StoragePathName <String>] [-StoragePathResourceGroup <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -181,7 +180,7 @@ Accept wildcard characters: False
 ### -Name
 Name of the virtual hard disk.
 
-Must contain all alphanumeric characters or '-' or '_'.
+Must contain all alphanumeric characters or ‘-’ or ‘_’.
 Max length is 80 characters, and min length is 1 character.
 
 ```yaml
@@ -376,3 +375,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

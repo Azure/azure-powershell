@@ -1,5 +1,5 @@
 ---
-external help file: Az.StackHCIVM-help.xml
+external help file:
 Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmvirtualmachinenetworkinterface
 schema: 2.0.0
@@ -15,15 +15,14 @@ The operation to delete a network interface from a virtual machine.
 ### ByResourceId (Default)
 ```
 Remove-AzStackHCIVMVirtualMachineNetworkInterface -ResourceId <String> [-NicId <String[]>]
- [-NicName <String[]>] [-NicResourceGroup <String>] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-NicName <String[]>] [-NicResourceGroup <String>] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Remove-AzStackHCIVMVirtualMachineNetworkInterface -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-NicId <String[]>] [-NicName <String[]>] [-NicResourceGroup <String>] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,6 +33,7 @@ The operation to delete a network interface from a  virtual machine.
 ### Example 1: Removes a Network Interface from a  Virtual Machine
 ```powershell
 Remove-AzStackHCIVMVirtualMachineNetworkInterface  -Name "testVm" -ResourceGroupName "test-rg"  -NicName 'testNic'
+
 ```
 
 ```output
@@ -210,3 +210,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

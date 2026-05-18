@@ -1,5 +1,5 @@
 ---
-external help file: Az.StackHCIVM-help.xml
+external help file:
 Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmvirtualmachine
 schema: 2.0.0
@@ -14,16 +14,16 @@ The operation to delete a virtual machine.
 
 ### ByResourceId (Default)
 ```
-Remove-AzStackHCIVMVirtualMachine [-SubscriptionId <String>] [-InputObject <IStackHcivmIdentity>]
- -ResourceId <String> [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzStackHCIVMVirtualMachine -ResourceId <String> [-InputObject <IStackHcivmIdentity>]
+ [-SubscriptionId <String>] [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Remove-AzStackHCIVMVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-InputObject <IStackHcivmIdentity>] [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzStackHCIVMVirtualMachine -Name <String> -ResourceGroupName <String>
+ [-InputObject <IStackHcivmIdentity>] [-SubscriptionId <String>] [-Force] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,9 +31,10 @@ The operation to delete a virtual machine.
 
 ## EXAMPLES
 
-### Example 1: Remove a Virtual Machine
+### Example 1: Remove a Virtual Machine 
 ```powershell
 Remove-AzStackHCIVMVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
+
 ```
 
 This command removes the virtual machine from the specified resource group.
@@ -222,3 +223,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

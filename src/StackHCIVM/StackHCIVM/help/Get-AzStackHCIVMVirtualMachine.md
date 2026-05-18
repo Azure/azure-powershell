@@ -1,5 +1,5 @@
 ---
-external help file: Az.StackHCIVM-help.xml
+external help file:
 Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmvirtualmachine
 schema: 2.0.0
@@ -14,28 +14,26 @@ Gets a virtual machine
 
 ### BySubscription (Default)
 ```
-Get-AzStackHCIVMVirtualMachine [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzStackHCIVMVirtualMachine [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Get-AzStackHCIVMVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByResourceGroup
 ```
 Get-AzStackHCIVMVirtualMachine -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzStackHCIVMVirtualMachine -ResourceId <String> [-DefaultProfile <PSObject>] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzStackHCIVMVirtualMachine -ResourceId <String> [-DefaultProfile <PSObject>] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +41,7 @@ Gets a virtual machine
 
 ## EXAMPLES
 
-### Example 2: Get a Virtual Machine.
+### Example 2: Get a Virtual Machine. 
 ```powershell
 Get-AzStackHCIVMVirtualMachine -Name "testVm" -ResourceGroupName "test-rg"
 ```
@@ -152,7 +150,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: BySubscription, ByName, ByResourceGroup
+Parameter Sets: ByName, ByResourceGroup, BySubscription
 Aliases:
 
 Required: False
@@ -207,3 +205,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

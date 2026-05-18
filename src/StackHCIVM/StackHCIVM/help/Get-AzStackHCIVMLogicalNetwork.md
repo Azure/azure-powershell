@@ -1,5 +1,5 @@
 ---
-external help file: Az.StackHCIVM-help.xml
+external help file:
 Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmlogicalnetwork
 schema: 2.0.0
@@ -14,7 +14,12 @@ Gets a logical network
 
 ### List1 (Default)
 ```
-Get-AzStackHCIVMLogicalNetwork [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzStackHCIVMLogicalNetwork [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Get-AzStackHCIVMLogicalNetwork [-ResourceId <String>] [-DefaultProfile <PSObject>] [-NoWait]
  [<CommonParameters>]
 ```
 
@@ -30,12 +35,6 @@ Get-AzStackHCIVMLogicalNetwork -ResourceGroupName <String> [-SubscriptionId <Str
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ByResourceId
-```
-Get-AzStackHCIVMLogicalNetwork [-ResourceId <String>] [-DefaultProfile <PSObject>] [-NoWait]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Gets a logical network
 
@@ -43,7 +42,7 @@ Gets a logical network
 
 ### Example 1:  Get a Logical Network
 ```powershell
-Get-AzStackHCIVMLogicalNetwork -Name 'testLnet' -ResourceGroupName 'test-rg'
+Get-AzStackHCIVMLogicalNetwork -Name 'testLnet' -ResourceGroupName 'test-rg' 
 ```
 
 ```output
@@ -54,7 +53,7 @@ testLnet       test-rg
 
 This command gets a specific logical network in the specified resource group.
 
-### Example 2: List all Logical Networks in a Resource Group
+### Example 2: List all Logical Networks in a Resource Group  
 ```powershell
 Get-AzStackHCIVMLogicalNetwork -ResourceGroupName 'test-rg'
 ```
@@ -151,7 +150,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List1, Get, List
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
@@ -173,3 +172,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

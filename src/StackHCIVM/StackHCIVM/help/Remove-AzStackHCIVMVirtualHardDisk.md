@@ -1,5 +1,5 @@
 ---
-external help file: Az.StackHCIVM-help.xml
+external help file:
 Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmvirtualharddisk
 schema: 2.0.0
@@ -14,14 +14,14 @@ The operation to delete a virtual hard disk.
 
 ### ByResourceId (Default)
 ```
-Remove-AzStackHCIVMVirtualHardDisk [-SubscriptionId <String>] -ResourceId <String> [-Force] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzStackHCIVMVirtualHardDisk -ResourceId <String> [-SubscriptionId <String>] [-Force] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Remove-AzStackHCIVMVirtualHardDisk -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Force] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +32,7 @@ The operation to delete a virtual hard disk.
 ### Example 1: Remove a Virtual Hard Disk
 ```powershell
 Remove-AzStackHCIVMVirtualHardDisk  -Name "testVhd" -ResourceGroupName "test-rg"
+
 ```
 
 This command removes the virtual hard disk from the specified resource group.
@@ -172,3 +173,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

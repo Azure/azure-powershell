@@ -1,5 +1,5 @@
 ---
-external help file: Az.StackHCIVM-help.xml
+external help file:
 Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmstoragepath
 schema: 2.0.0
@@ -14,9 +14,9 @@ Please note some properties can be set only during storage container creation.
 ## SYNTAX
 
 ```
-New-AzStackHCIVMStoragePath -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> -Path <String> [-CustomLocationId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzStackHCIVMStoragePath -Name <String> -ResourceGroupName <String> -Location <String> -Path <String>
+ [-SubscriptionId <String>] [-CustomLocationId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ Please note some properties can be set only during storage container creation.
 
 ## EXAMPLES
 
-### Example 1: Create a Storage Path
+### Example 1: Create a Storage Path 
 ```powershell
 New-AzStackHCIVMStoragePath  -Name "testStoragePath" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"-Location "eastus" -Path "C:\ClusterStorage\Volume1\testpath"
 ```
@@ -234,3 +234,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

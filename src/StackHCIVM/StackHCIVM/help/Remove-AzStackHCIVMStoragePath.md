@@ -1,5 +1,5 @@
 ---
-external help file: Az.StackHCIVM-help.xml
+external help file:
 Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmstoragepath
 schema: 2.0.0
@@ -14,16 +14,16 @@ The operation to delete a storage container.
 
 ### ByResourceId (Default)
 ```
-Remove-AzStackHCIVMStoragePath [-SubscriptionId <String>] [-InputObject <IStackHcivmIdentity>]
- -ResourceId <String> [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzStackHCIVMStoragePath -ResourceId <String> [-InputObject <IStackHcivmIdentity>]
+ [-SubscriptionId <String>] [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Remove-AzStackHCIVMStoragePath -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-InputObject <IStackHcivmIdentity>] [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzStackHCIVMStoragePath -Name <String> -ResourceGroupName <String> [-InputObject <IStackHcivmIdentity>]
+ [-SubscriptionId <String>] [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +33,8 @@ The operation to delete a storage container.
 
 ### Example 1: Remove a Storage Path
 ```powershell
-Remove-AzStackHCIVMStoragePath  -Name "testStoragePath" -ResourceGroupName "test-rg"
+ Remove-AzStackHCIVMStoragePath  -Name "testStoragePath" -ResourceGroupName "test-rg"
+
 ```
 
 This command removes the storage path from the specified resource group.
@@ -237,3 +238,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

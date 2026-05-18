@@ -1,5 +1,5 @@
 ---
-external help file: Az.StackHCIVM-help.xml
+external help file:
 Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmnetworkinterface
 schema: 2.0.0
@@ -14,11 +14,11 @@ Please note some properties can be set only during network interface creation.
 ## SYNTAX
 
 ```
-New-AzStackHCIVMNetworkInterface -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> -CustomLocationId <String> [-DnsServer <String[]>] [-IpAddress <String>]
- [-MacAddress <String>] [-SubnetId <String>] [-SubnetName <String>] [-SubnetResourceGroup <String>]
- [-IpConfiguration <Hashtable[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzStackHCIVMNetworkInterface -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
+ -Location <String> [-SubscriptionId <String>] [-DnsServer <String[]>] [-IpAddress <String>]
+ [-IpConfiguration <Hashtable[]>] [-MacAddress <String>] [-SubnetId <String>] [-SubnetName <String>]
+ [-SubnetResourceGroup <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,7 +29,7 @@ Please note some properties can be set only during network interface creation.
 
 ### Example 1: Create a Network Interface
 ```powershell
-New-AzStackHCIVMNetworkInterface  -Name "testNic" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -Location "eastus" -SubnetName "testLnet"
+New-AzStackHCIVMNetworkInterface  -Name "testNic" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -Location "eastus" -SubnetName "testLnet" 
 ```
 
 ```output
@@ -326,3 +326,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -1,5 +1,5 @@
 ---
-external help file: Az.StackHCIVM-help.xml
+external help file:
 Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/add-azstackhcivmvirtualmachinedatadisk
 schema: 2.0.0
@@ -14,16 +14,16 @@ The operation to add a data disk to a virtual machine.
 
 ### ByResourceId (Default)
 ```
-Add-AzStackHCIVMVirtualMachineDataDisk -ResourceId <String> [-DataDiskId <String[]>] [-DataDiskName <String[]>]
- [-DataDiskResourceGroup <String>] [-NoWait] [-WhatIf] [-Confirm]
+Add-AzStackHCIVMVirtualMachineDataDisk -ResourceId <String> [-DataDiskId <String[]>]
+ [-DataDiskName <String[]>] [-DataDiskResourceGroup <String>] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Add-AzStackHCIVMVirtualMachineDataDisk -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DataDiskId <String[]>] [-DataDiskName <String[]>] [-DataDiskResourceGroup <String>] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DataDiskId <String[]>] [-DataDiskName <String[]>] [-DataDiskResourceGroup <String>] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +33,8 @@ The operation to add a data disk to a virtual machine.
 
 ### Example 1: Add a Data Disk to a Virtual Machine
 ```powershell
-Add-AzStackHCIVMVirtualMachineDataDisk  -Name 'testVm' -ResourceGroupName 'test-rg'  -DataDiskName 'testVhd'
+ Add-AzStackHCIVMVirtualMachineDataDisk  -Name 'testVm' -ResourceGroupName 'test-rg'  -DataDiskName 'testVhd'
+
 ```
 
 ```output
@@ -210,3 +211,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

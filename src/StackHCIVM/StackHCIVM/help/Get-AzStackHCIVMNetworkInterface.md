@@ -1,5 +1,5 @@
 ---
-external help file: Az.StackHCIVM-help.xml
+external help file:
 Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmnetworkinterface
 schema: 2.0.0
@@ -18,6 +18,12 @@ Get-AzStackHCIVMNetworkInterface [-SubscriptionId <String[]>] [-DefaultProfile <
  [<CommonParameters>]
 ```
 
+### ByResourceId
+```
+Get-AzStackHCIVMNetworkInterface [-ResourceId <String>] [-DefaultProfile <PSObject>] [-NoWait]
+ [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzStackHCIVMNetworkInterface -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
@@ -30,12 +36,6 @@ Get-AzStackHCIVMNetworkInterface -ResourceGroupName <String> [-SubscriptionId <S
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ByResourceId
-```
-Get-AzStackHCIVMNetworkInterface [-ResourceId <String>] [-DefaultProfile <PSObject>] [-NoWait]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Gets a network interface
 
@@ -43,7 +43,7 @@ Gets a network interface
 
 ### Example 1:  Get a Network Interface
 ```powershell
-Get-AzStackHCIVMNetworkInterface -Name 'testNic' -ResourceGroupName 'test-rg'
+Get-AzStackHCIVMNetworkInterface -Name 'testNic' -ResourceGroupName 'test-rg' 
 ```
 
 ```output
@@ -54,7 +54,7 @@ testNic       test-rg
 
 This command gets a specific network interface in the specified resource group.
 
-### Example 2: List all Logical Networks in a Resource Group
+### Example 2: List all Logical Networks in a Resource Group  
 ```powershell
 Get-AzStackHCIVMNetworkInterface -ResourceGroupName 'test-rg'
 ```
@@ -151,7 +151,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List1, Get, List
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
@@ -173,3 +173,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

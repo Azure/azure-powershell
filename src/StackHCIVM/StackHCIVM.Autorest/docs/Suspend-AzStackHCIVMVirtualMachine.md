@@ -1,41 +1,55 @@
 ---
 external help file:
 Module Name: Az.StackHCIVM
-online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/stop-azstackhcivmvirtualmachine
+online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/Suspend-AzStackHCIVMVirtualMachine
 schema: 2.0.0
 ---
 
-# Stop-AzStackHCIVMVirtualMachine
+# Suspend-AzStackHCIVMVirtualMachine
 
 ## SYNOPSIS
-The operation to stop a virtual machine instance.
+The operation to Suspend a virtual machine instance.
 
 ## SYNTAX
 
 ### ByResourceId (Default)
 ```
-Stop-AzStackHCIVMVirtualMachine -ResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Suspend-AzStackHCIVMVirtualMachine -ResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Stop-AzStackHCIVMVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Suspend-AzStackHCIVMVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to stop a virtual machine instance.
+The operation to Suspend a virtual machine instance.
 
 ## EXAMPLES
 
-### Example 1: Stop Virtual Machine 
+### Example 1: {{ Add title here }}
 ```powershell
-Stop-AzStackHCIVMVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
-
+{{ Add code here }}
 ```
 
-This command stops the virtual machine in the specified resource group.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -180,8 +194,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHCIVMIdentity
 
 ## OUTPUTS
 
