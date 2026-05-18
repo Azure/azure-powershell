@@ -20,7 +20,7 @@ Describe 'New-AzStorageMoverConnection' {
         $description = 'test connection description'
         $connection = New-AzStorageMoverConnection -Name $connectionName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -PrivateLinkServiceId $env.PrivateLinkServiceId -Description $description
         $connection.Name | Should -Be $connectionName
-        $connection.Property.PrivateLinkServiceId | Should -Be $env.PrivateLinkServiceId
+        $connection.PrivateLinkServiceId | Should -Be $env.PrivateLinkServiceId
         Remove-AzStorageMoverConnection -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -Name $connectionName
     }
 
