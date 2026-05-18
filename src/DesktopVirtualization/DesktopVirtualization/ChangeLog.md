@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.4.8
 * Fixed registration info command failures under Azure Policy constraints
     - Updated implementation to use the Update command path, resolving execution failures for `New-AzWvdRegistrationInfo` and `Remove-AzWvdRegistrationInfo` in environments where specific Azure Policies are configured.
 
