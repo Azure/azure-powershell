@@ -132,6 +132,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).AutoImportJobName = (string) content.GetValueForProperty("AutoImportJobName",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).AutoImportJobName, global::System.Convert.ToString);
             }
+            if (content.Contains("ExpansionJobName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).ExpansionJobName = (string) content.GetValueForProperty("ExpansionJobName",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).ExpansionJobName, global::System.Convert.ToString);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -176,6 +180,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             if (content.Contains("AutoImportJobName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).AutoImportJobName = (string) content.GetValueForProperty("AutoImportJobName",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).AutoImportJobName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExpansionJobName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).ExpansionJobName = (string) content.GetValueForProperty("ExpansionJobName",((Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.IStorageCacheIdentityInternal)this).ExpansionJobName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
