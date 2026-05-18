@@ -182,7 +182,7 @@ PrivateData = @{
         ReleaseNotes = '* Added upcoming breaking change warning messages to ''Get-AzKeyVaultKey'' and ''Get-AzKeyVaultSecret'' for filtering certificate-backed keys and secrets.'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
