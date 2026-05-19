@@ -11,6 +11,7 @@ $constants["RuntimeToFormattedName"] = @{
     'python' = 'Python'
     'java' = 'Java'
     'powershell' = 'PowerShell'
+    'unknown' = 'Unknown'
 }
 $constants["RuntimeToDefaultOSType"] = @{
     'DotNet'= 'Windows'
@@ -2166,6 +2167,10 @@ function GetRuntimeName
     $settingHashTable = GetDictionary -SettingsDictionary $AppSettingsDictionary
 
     $name = $settingHashTable['FUNCTIONS_WORKER_RUNTIME']
+
+    if ([string]::IsNullOrWhiteSpace($name)){
+        $name = "unknown"
+    }
 
     if ($RuntimeToFormattedName.ContainsKey($name))
     {
