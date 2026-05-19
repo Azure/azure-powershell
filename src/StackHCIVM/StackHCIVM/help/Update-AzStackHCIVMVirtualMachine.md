@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StackHCIVM-help.xml
 Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmvirtualmachine
 schema: 2.0.0
@@ -16,14 +16,15 @@ The operation to update a virtual machine instance.
 ```
 Update-AzStackHCIVMVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ProvisionVMAgent] [-ProvisionVMConfigAgent] [-VmMemoryInMB <Int64>] [-VmProcessor <Int32>]
- [-VmSize <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-VmSize <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Update-AzStackHCIVMVirtualMachine -ResourceId <String> [-ProvisionVMAgent] [-ProvisionVMConfigAgent]
  [-VmMemoryInMB <Int64>] [-VmProcessor <Int32>] [-VmSize <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +32,7 @@ The operation to update a virtual machine instance.
 
 ## EXAMPLES
 
-### Example 1: Update the Size of the Virtual Machine. 
+### Example 1: Update the Size of the Virtual Machine.
 ```powershell
 Update-AzStackHCIVMVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg" -VmMemoryInMB "4"
 ```
@@ -175,7 +176,7 @@ Type: System.String
 Parameter Sets: ByName
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
@@ -270,4 +271,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

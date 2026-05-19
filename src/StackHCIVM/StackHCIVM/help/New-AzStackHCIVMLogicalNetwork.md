@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StackHCIVM-help.xml
 Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmlogicalnetwork
 schema: 2.0.0
@@ -14,12 +14,12 @@ Please note some properties can be set only during logical network creation.
 ## SYNTAX
 
 ```
-New-AzStackHCIVMLogicalNetwork -Name <String> -ResourceGroupName <String> -CustomLocationId <String>
- -Location <String> [-SubscriptionId <String>] [-AddressPrefix <String[]>] [-DnsServer <String[]>]
- [-IpAllocationMethod <String>] [-IpPool <Hashtable[]>] [-IpPoolEnd <String>] [-IpPoolStart <String>]
- [-IpPoolType <String>] [-Route <Hashtable[]>] [-Subnet <Hashtable[]>] [-SubnetName <String>]
- [-Tag <Hashtable>] [-Vlan <Int32>] [-VMSwitchName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzStackHCIVMLogicalNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> -CustomLocationId <String> [-DnsServer <String[]>] [-Tag <Hashtable>]
+ [-VMSwitchName <String>] [-AddressPrefix <String[]>] [-IpAllocationMethod <String>] [-IpPoolEnd <String>]
+ [-IpPoolStart <String>] [-IpPoolType <String>] [-IpPool <Hashtable[]>] [-Route <Hashtable[]>]
+ [-SubnetName <String>] [-Subnet <Hashtable[]>] [-Vlan <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +28,7 @@ Please note some properties can be set only during logical network creation.
 
 ## EXAMPLES
 
-### Example 1: Create a Logical Network 
+### Example 1: Create a Logical Network
 ```powershell
 New-AzStackHCIVMLogicalNetwork  -Name "testLnet" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus" -VmSwitchName "testswitch"
 ```
@@ -403,4 +403,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

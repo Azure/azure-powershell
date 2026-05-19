@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StackHCIVM-help.xml
 Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmvirtualmachinedatadisk
 schema: 2.0.0
@@ -15,15 +15,15 @@ The operation to delete a data disk from a virtual machine.
 ### ByResourceId (Default)
 ```
 Remove-AzStackHCIVMVirtualMachineDataDisk -ResourceId <String> [-DataDiskId <String[]>]
- [-DataDiskName <String[]>] [-DataDiskResourceGroup <String>] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-DataDiskName <String[]>] [-DataDiskResourceGroup <String>] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Remove-AzStackHCIVMVirtualMachineDataDisk -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DataDiskId <String[]>] [-DataDiskName <String[]>]
- [-DataDiskResourceGroup <String>] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzStackHCIVMVirtualMachineDataDisk -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DataDiskId <String[]>] [-DataDiskName <String[]>] [-DataDiskResourceGroup <String>] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,7 +34,6 @@ The operation to delete a data disk from a  virtual machine.
 ### Example 1: Removes a Data Disk from a Virtual Machine
 ```powershell
 Remove-AzStackHCIVMVirtualMachineDataDisk  -Name "testVm" -ResourceGroupName "test-rg"  -DataDiskName "testVhd"
-
 ```
 
 ```output
@@ -211,4 +210,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

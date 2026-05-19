@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StackHCIVM-help.xml
 Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmimage
 schema: 2.0.0
@@ -14,24 +14,25 @@ Gets a gallery image
 
 ### BySubscription (Default)
 ```
-Get-AzStackHCIVMImage [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-NoWait] [<CommonParameters>]
+Get-AzStackHCIVMImage [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-NoWait]
+ [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzStackHCIVMImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzStackHCIVMImage [-SubscriptionId <String[]>] -Name <String> -ResourceGroupName <String>
  [-DefaultProfile <PSObject>] [-NoWait] [<CommonParameters>]
 ```
 
 ### ByResourceGroup
 ```
-Get-AzStackHCIVMImage -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzStackHCIVMImage [-SubscriptionId <String[]>] -ResourceGroupName <String> [-DefaultProfile <PSObject>]
  [-NoWait] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzStackHCIVMImage -ResourceId <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-NoWait]
+Get-AzStackHCIVMImage [-SubscriptionId <String[]>] -ResourceId <String> [-DefaultProfile <PSObject>] [-NoWait]
  [<CommonParameters>]
 ```
 
@@ -40,9 +41,9 @@ Gets a gallery image
 
 ## EXAMPLES
 
-### Example 1:  Get an Image 
+### Example 1:  Get an Image
 ```powershell
-Get-AzStackHCIVMImage -Name "testimage" -ResourceGroupName "test-rg" 
+Get-AzStackHCIVMImage -Name "testimage" -ResourceGroupName "test-rg"
 ```
 
 ```output
@@ -53,7 +54,7 @@ testImage       test-rg
 
 This command gets a specific image in the specified resource group.
 
-### Example 2: List all Images in a Resource Group  
+### Example 2: List all Images in a Resource Group
 ```powershell
 Get-AzStackHCIVMImage -ResourceGroupName 'test-rg'
 ```
@@ -173,4 +174,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

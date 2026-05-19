@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StackHCIVM-help.xml
 Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmstoragepath
 schema: 2.0.0
@@ -14,12 +14,8 @@ Gets a storage container
 
 ### List1 (Default)
 ```
-Get-AzStackHCIVMStoragePath [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ByResourceId
-```
-Get-AzStackHCIVMStoragePath [-ResourceId <String>] [-DefaultProfile <PSObject>] [-NoWait] [<CommonParameters>]
+Get-AzStackHCIVMStoragePath [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -32,6 +28,12 @@ Get-AzStackHCIVMStoragePath -Name <String> -ResourceGroupName <String> [-Subscri
 ```
 Get-AzStackHCIVMStoragePath -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Get-AzStackHCIVMStoragePath [-ResourceId <String>] [-DefaultProfile <PSObject>] [-NoWait]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -149,7 +151,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List1, Get, List
 Aliases:
 
 Required: False
@@ -171,4 +173,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

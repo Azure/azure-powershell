@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StackHCIVM-help.xml
 Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmimage
 schema: 2.0.0
@@ -14,19 +14,20 @@ The operation to update an image.
 
 ### GalleryImage (Default)
 ```
-Update-AzStackHCIVMImage [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzStackHCIVMImage [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Update-AzStackHCIVMImage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Update-AzStackHCIVMImage -ResourceId <String> [-SubscriptionId <String>] [-Tag <Hashtable>] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzStackHCIVMImage [-SubscriptionId <String>] -ResourceId <String> [-Tag <Hashtable>] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -186,4 +187,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

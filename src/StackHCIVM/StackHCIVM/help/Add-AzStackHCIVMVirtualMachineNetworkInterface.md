@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StackHCIVM-help.xml
 Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/add-azstackhcivmvirtualmachinenetworkinterface
 schema: 2.0.0
@@ -15,14 +15,15 @@ The operation to add a network interface to a virtual machine.
 ### ByResourceId (Default)
 ```
 Add-AzStackHCIVMVirtualMachineNetworkInterface -ResourceId <String> [-NicId <String[]>] [-NicName <String[]>]
- [-NicResourceGroup <String>] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NicResourceGroup <String>] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Add-AzStackHCIVMVirtualMachineNetworkInterface -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-NicId <String[]>] [-NicName <String[]>] [-NicResourceGroup <String>] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +34,6 @@ The operation to add a network interface to a virtual machine.
 ### Example 1: Add a Network Interface to a Virtual Machine
 ```powershell
 Add-AzStackHCIVMVirtualMachineNetworkInterface  -Name 'testVm' -ResourceGroupName 'test-rg'  -NicName 'testNic'
-
 ```
 
 ```output
@@ -210,4 +210,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

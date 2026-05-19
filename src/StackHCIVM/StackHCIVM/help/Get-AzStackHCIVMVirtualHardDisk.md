@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StackHCIVM-help.xml
 Module Name: Az.StackHCIVM
 online version: https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmvirtualharddisk
 schema: 2.0.0
@@ -14,12 +14,7 @@ Gets a virtual hard disk
 
 ### List1 (Default)
 ```
-Get-AzStackHCIVMVirtualHardDisk [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ByResourceId
-```
-Get-AzStackHCIVMVirtualHardDisk [-ResourceId <String>] [-DefaultProfile <PSObject>] [-NoWait]
+Get-AzStackHCIVMVirtualHardDisk [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -33,6 +28,12 @@ Get-AzStackHCIVMVirtualHardDisk -Name <String> -ResourceGroupName <String> [-Sub
 ```
 Get-AzStackHCIVMVirtualHardDisk -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Get-AzStackHCIVMVirtualHardDisk [-ResourceId <String>] [-DefaultProfile <PSObject>] [-NoWait]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -150,7 +151,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List1, Get, List
 Aliases:
 
 Required: False
@@ -172,4 +173,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
