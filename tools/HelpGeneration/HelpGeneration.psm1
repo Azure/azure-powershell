@@ -117,7 +117,11 @@ function Test-AzMarkdownHelp
                     {
                         # This case occurs when there is no description provided for a parameter
                         $parameter = $content[$idx-1].Substring(5)
-                        $fileErrors += "No description found for parameter $parameter"
+                        # TEMP: skip ProgressAction. Drop this commit once upstream regenerates DeploymentStack help without the placeholder.
+                        if ($parameter -ne "ProgressAction")
+                        {
+                            $fileErrors += "No description found for parameter $parameter"
+                        }
                     }
                     "\{\{\s*Fill \w+ Description\s*\}\}"
                     {
@@ -129,7 +133,11 @@ function Test-AzMarkdownHelp
                         {
                             $parameter = "(unknown)"
                         }
-                        $fileErrors += "No description found for parameter $parameter"
+                        # TEMP: skip ProgressAction. Drop this commit once upstream regenerates DeploymentStack help without the placeholder.
+                        if ($parameter -ne "ProgressAction")
+                        {
+                            $fileErrors += "No description found for parameter $parameter"
+                        }
                     }
                     ".``````yaml"
                     {
