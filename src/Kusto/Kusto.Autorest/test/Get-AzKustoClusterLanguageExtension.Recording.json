@@ -1,13 +1,13 @@
 {
-  "[NoDescription]+[NoContext]+List+$POST+https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-sloc4i/providers/Microsoft.Kusto/Clusters/pssdksloc4i/listLanguageExtensions?api-version=2024-04-13+1": {
+  "[NoDescription]+[NoContext]+List+$POST+https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-m49a13/providers/Microsoft.Kusto/Clusters/pssdkm49a13/listLanguageExtensions?api-version=2024-04-13+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-sloc4i/providers/Microsoft.Kusto/Clusters/pssdksloc4i/listLanguageExtensions?api-version=2024-04-13",
+      "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-m49a13/providers/Microsoft.Kusto/Clusters/pssdkm49a13/listLanguageExtensions?api-version=2024-04-13",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "121" ],
-        "x-ms-client-request-id": [ "32a72f83-0b5d-456b-906b-55d6ae2615ec" ],
+        "x-ms-unique-id": [ "126" ],
+        "x-ms-client-request-id": [ "762d77c0-baa2-4fcb-a6fc-aab5e25f56dc" ],
         "CommandName": [ "Get-AzKustoClusterLanguageExtension" ],
         "FullCommandName": [ "Get-AzKustoClusterLanguageExtension_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,17 +22,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "c3a37f60-3c90-4211-a4a8-7345e48113bb" ],
-        "x-ms-operation-identifier": [ "tenantId=544a7a2e-697f-487c-b2b0-a13df7f346b6,objectId=de9050dc-ffd4-444c-b113-b94ad83e7559/eastus/bdb04416-76a6-4d50-bcec-a513c48eae7c" ],
+        "x-ms-request-id": [ "64becabe-52f5-423b-a989-52f492b67a52" ],
+        "x-ms-operation-identifier": [ "tenantId=544a7a2e-697f-487c-b2b0-a13df7f346b6,objectId=de9050dc-ffd4-444c-b113-b94ad83e7559/eastus/6a81e84a-abd9-4e75-a6aa-cd94d625d440" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-correlation-request-id": [ "cce17100-2f6a-4ea3-badf-9b70e9602127" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260507T010218Z:cce17100-2f6a-4ea3-badf-9b70e9602127" ],
+        "x-ms-correlation-request-id": [ "5213c4d2-d367-4401-a5a1-6f0f1dc03b1d" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260518T082833Z:5213c4d2-d367-4401-a5a1-6f0f1dc03b1d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C211ECF9AD494B15BA374C243FC8FD51 Ref B: SG2AA1070305023 Ref C: 2026-05-07T01:02:18Z" ],
-        "Date": [ "Thu, 07 May 2026 01:02:18 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: DA1A775929A04EE889A47B7B828F9127 Ref B: SG2AA1070306052 Ref C: 2026-05-18T08:28:32Z" ],
+        "Date": [ "Mon, 18 May 2026 08:28:33 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "76" ],

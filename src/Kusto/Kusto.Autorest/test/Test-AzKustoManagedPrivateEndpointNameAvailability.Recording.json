@@ -1,8 +1,8 @@
 {
-  "[NoDescription]+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-sloc4i/providers/Microsoft.Kusto/Clusters/pssdksloc4i/managedPrivateEndpointsCheckNameAvailability?api-version=2024-04-13+1": {
+  "[NoDescription]+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-m49a13/providers/Microsoft.Kusto/Clusters/pssdkm49a13/managedPrivateEndpointsCheckNameAvailability?api-version=2024-04-13+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-sloc4i/providers/Microsoft.Kusto/Clusters/pssdksloc4i/managedPrivateEndpointsCheckNameAvailability?api-version=2024-04-13",
+      "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-m49a13/providers/Microsoft.Kusto/Clusters/pssdkm49a13/managedPrivateEndpointsCheckNameAvailability?api-version=2024-04-13",
       "Content": "{\r\n  \"name\": \"test-name-avilability\",\r\n  \"type\": \"Microsoft.Kusto/Clusters/managedPrivateEndpoints\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,17 +17,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "57d86c3e-02b9-4b43-817e-a67994a7d65d" ],
-        "x-ms-operation-identifier": [ "tenantId=544a7a2e-697f-487c-b2b0-a13df7f346b6,objectId=de9050dc-ffd4-444c-b113-b94ad83e7559/eastus/973a9410-6961-4192-9ea7-b88349fb76c2" ],
+        "x-ms-request-id": [ "79864c9e-69be-4b5a-b798-dc407daebb98" ],
+        "x-ms-operation-identifier": [ "tenantId=544a7a2e-697f-487c-b2b0-a13df7f346b6,objectId=de9050dc-ffd4-444c-b113-b94ad83e7559/eastus/b1630c87-1cf5-4e63-a330-7df5693d8e8c" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-correlation-request-id": [ "c856d39d-dfdd-4b9a-a59f-c37593193349" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260507T034524Z:c856d39d-dfdd-4b9a-a59f-c37593193349" ],
+        "x-ms-correlation-request-id": [ "384844be-0ee0-445b-acdf-7c7c7cead611" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260518T111702Z:384844be-0ee0-445b-acdf-7c7c7cead611" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D7EBCDDC1B684C86AFDFC495BD443334 Ref B: SG2AA1070306034 Ref C: 2026-05-07T03:45:23Z" ],
-        "Date": [ "Thu, 07 May 2026 03:45:23 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 2D04F24B9F3B4CA78CD07917270B8E77 Ref B: SG2AA1040517052 Ref C: 2026-05-18T11:17:02Z" ],
+        "Date": [ "Mon, 18 May 2026 11:17:02 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "66" ],
@@ -38,15 +38,15 @@
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+CheckViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-sloc4i/providers/Microsoft.Kusto/Clusters/pssdksloc4i?api-version=2024-04-13+1": {
+  "[NoDescription]+[NoContext]+CheckViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-m49a13/providers/Microsoft.Kusto/Clusters/pssdkm49a13?api-version=2024-04-13+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-sloc4i/providers/Microsoft.Kusto/Clusters/pssdksloc4i?api-version=2024-04-13",
+      "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-m49a13/providers/Microsoft.Kusto/Clusters/pssdkm49a13?api-version=2024-04-13",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "712" ],
-        "x-ms-client-request-id": [ "457d1e2c-903a-4d04-858e-363eb71d5508" ],
+        "x-ms-unique-id": [ "726" ],
+        "x-ms-client-request-id": [ "553ed7cc-3769-4618-ba8b-a051468c8f39" ],
         "CommandName": [ "Get-AzKustoCluster" ],
         "FullCommandName": [ "Get-AzKustoCluster_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -61,30 +61,30 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"2026-05-07T02:32:34.9838576Z\"" ],
-        "x-ms-request-id": [ "3efd32b0-6053-4f67-89d8-f499e0bec637" ],
+        "ETag": [ "\"2026-05-18T10:02:22.5655820Z\"" ],
+        "x-ms-request-id": [ "9a4bbbad-a013-4867-a44d-b783063a25c3" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-correlation-request-id": [ "9d4c3ebe-35cc-44bd-a455-4049b840fa3c" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260507T034524Z:9d4c3ebe-35cc-44bd-a455-4049b840fa3c" ],
+        "x-ms-correlation-request-id": [ "10816088-5765-46bc-9f00-f9bee1ab6a1d" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260518T111702Z:10816088-5765-46bc-9f00-f9bee1ab6a1d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 4685C2540773431B94E44C419AC52CF7 Ref B: SG2AA1070306034 Ref C: 2026-05-07T03:45:24Z" ],
-        "Date": [ "Thu, 07 May 2026 03:45:24 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 7D17CA81FE84444D9688255507E7D1C5 Ref B: SG2AA1040517052 Ref C: 2026-05-18T11:17:02Z" ],
+        "Date": [ "Mon, 18 May 2026 11:17:02 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "2123" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-sloc4i/providers/Microsoft.Kusto/Clusters/pssdksloc4i\",\"name\":\"pssdksloc4i\",\"type\":\"Microsoft.Kusto/Clusters\",\"etag\":\"\\\"2026-05-07T02:32:34.9838576Z\\\"\",\"location\":\"East US\",\"sku\":{\"name\":\"Standard_E2ads_v5\",\"tier\":\"Standard\",\"capacity\":2},\"tags\":{},\"properties\":{\"state\":\"Running\",\"stateReason\":\"\",\"uri\":\"https://pssdksloc4i.eastus.kusto.windows.net\",\"dataIngestionUri\":\"https://ingest-pssdksloc4i.eastus.kusto.windows.net\",\"trustedExternalTenants\":[{\"value\":\"*\"}],\"virtualNetworkConfiguration\":null,\"optimizedAutoscale\":null,\"enableDiskEncryption\":false,\"enableStreamingIngest\":false,\"keyVaultProperties\":null,\"languageExtensions\":{\"value\":[]},\"enablePurge\":null,\"enableDoubleEncryption\":false,\"engineType\":\"V3\",\"acceptedAudiences\":[],\"restrictOutboundNetworkAccess\":\"Disabled\",\"allowedFqdnList\":[],\"calloutPolicies\":[{\"calloutUriRegex\":\".*\",\"calloutType\":\"sql\",\"outboundAccess\":\"Deny\",\"calloutId\":\".*_sql\"},{\"calloutUriRegex\":\".*\",\"calloutType\":\"cosmosdb\",\"outboundAccess\":\"Allow\",\"calloutId\":\".*_cosmosdb\"},{\"calloutUriRegex\":\".*\",\"calloutType\":\"postgresql\",\"outboundAccess\":\"Deny\",\"calloutId\":\".*_postgresql\"},{\"calloutUriRegex\":\".*\",\"calloutType\":\"sandbox_artifacts\",\"outboundAccess\":\"Allow\",\"calloutId\":\".*_sandbox_artifacts\"},{\"calloutUriRegex\":\".*\",\"calloutType\":\"genevametrics\",\"outboundAccess\":\"Deny\",\"calloutId\":\".*_genevametrics\"}],\"publicNetworkAccess\":\"Enabled\",\"allowedIpRangeList\":[],\"enableAutoStop\":true,\"publicIPType\":\"IPv4\",\"virtualClusterGraduationProperties\":null,\"privateEndpointConnections\":[],\"migrationCluster\":null,\"zoneStatus\":\"NonZonal\",\"provisioningState\":\"Succeeded\"},\"identity\":{\"principalId\":\"b4692e4c-0209-4bbd-a87a-fe7ccb5d259e\",\"tenantId\":\"544a7a2e-697f-487c-b2b0-a13df7f346b6\",\"type\":\"SystemAssigned, UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourcegroups/PWSH-SDK-sloc4i/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uaMisloc4i\":{\"principalId\":\"c3933a16-496c-4fe7-94d1-a6a44f5cc256\",\"clientId\":\"870b3a53-f27e-4a9d-882d-2de9f70907d8\"}}}}",
+      "Content": "{\"id\":\"/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-m49a13/providers/Microsoft.Kusto/Clusters/pssdkm49a13\",\"name\":\"pssdkm49a13\",\"type\":\"Microsoft.Kusto/Clusters\",\"etag\":\"\\\"2026-05-18T10:02:22.5655820Z\\\"\",\"location\":\"East US\",\"sku\":{\"name\":\"Standard_E2ads_v5\",\"tier\":\"Standard\",\"capacity\":2},\"tags\":{},\"properties\":{\"state\":\"Running\",\"stateReason\":\"\",\"uri\":\"https://pssdkm49a13.eastus.kusto.windows.net\",\"dataIngestionUri\":\"https://ingest-pssdkm49a13.eastus.kusto.windows.net\",\"trustedExternalTenants\":[{\"value\":\"*\"}],\"virtualNetworkConfiguration\":null,\"optimizedAutoscale\":null,\"enableDiskEncryption\":false,\"enableStreamingIngest\":false,\"keyVaultProperties\":null,\"languageExtensions\":{\"value\":[]},\"enablePurge\":null,\"enableDoubleEncryption\":false,\"engineType\":\"V3\",\"acceptedAudiences\":[],\"restrictOutboundNetworkAccess\":\"Disabled\",\"allowedFqdnList\":[],\"calloutPolicies\":[{\"calloutUriRegex\":\".*\",\"calloutType\":\"sql\",\"outboundAccess\":\"Deny\",\"calloutId\":\".*_sql\"},{\"calloutUriRegex\":\".*\",\"calloutType\":\"cosmosdb\",\"outboundAccess\":\"Allow\",\"calloutId\":\".*_cosmosdb\"},{\"calloutUriRegex\":\".*\",\"calloutType\":\"postgresql\",\"outboundAccess\":\"Deny\",\"calloutId\":\".*_postgresql\"},{\"calloutUriRegex\":\".*\",\"calloutType\":\"sandbox_artifacts\",\"outboundAccess\":\"Allow\",\"calloutId\":\".*_sandbox_artifacts\"},{\"calloutUriRegex\":\".*\",\"calloutType\":\"genevametrics\",\"outboundAccess\":\"Deny\",\"calloutId\":\".*_genevametrics\"}],\"publicNetworkAccess\":\"Enabled\",\"allowedIpRangeList\":[],\"enableAutoStop\":true,\"publicIPType\":\"IPv4\",\"virtualClusterGraduationProperties\":null,\"privateEndpointConnections\":[],\"migrationCluster\":null,\"zoneStatus\":\"NonZonal\",\"provisioningState\":\"Succeeded\"},\"identity\":{\"principalId\":\"a4a59940-9766-4acc-a4d5-472731024c18\",\"tenantId\":\"544a7a2e-697f-487c-b2b0-a13df7f346b6\",\"type\":\"SystemAssigned, UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourcegroups/PWSH-SDK-m49a13/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uaMim49a13\":{\"principalId\":\"ecd2ad6a-38d1-4756-81ad-2023d7098fd0\",\"clientId\":\"679ce7a5-71ae-4d38-be8e-9c612d316b45\"}}}}",
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+CheckViaIdentityExpanded+$POST+https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-sloc4i/providers/Microsoft.Kusto/Clusters/pssdksloc4i/managedPrivateEndpointsCheckNameAvailability?api-version=2024-04-13+2": {
+  "[NoDescription]+[NoContext]+CheckViaIdentityExpanded+$POST+https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-m49a13/providers/Microsoft.Kusto/Clusters/pssdkm49a13/managedPrivateEndpointsCheckNameAvailability?api-version=2024-04-13+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-sloc4i/providers/Microsoft.Kusto/Clusters/pssdksloc4i/managedPrivateEndpointsCheckNameAvailability?api-version=2024-04-13",
+      "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-m49a13/providers/Microsoft.Kusto/Clusters/pssdkm49a13/managedPrivateEndpointsCheckNameAvailability?api-version=2024-04-13",
       "Content": "{\r\n  \"name\": \"test-name-avilability\",\r\n  \"type\": \"Microsoft.Kusto/Clusters/managedPrivateEndpoints\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -99,17 +99,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "81440862-e181-43bd-97d5-6b62d97bbde9" ],
-        "x-ms-operation-identifier": [ "tenantId=544a7a2e-697f-487c-b2b0-a13df7f346b6,objectId=de9050dc-ffd4-444c-b113-b94ad83e7559/eastus/108d6409-5b45-4a7b-92f7-7f8a4f55dfd2" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "198" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2998" ],
-        "x-ms-correlation-request-id": [ "925976af-a97f-4e04-9cbd-baf98c855360" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260507T034525Z:925976af-a97f-4e04-9cbd-baf98c855360" ],
+        "x-ms-request-id": [ "bc9d14fb-bd31-451b-bf2e-8e69ccceb646" ],
+        "x-ms-operation-identifier": [ "tenantId=544a7a2e-697f-487c-b2b0-a13df7f346b6,objectId=de9050dc-ffd4-444c-b113-b94ad83e7559/eastus/297928a9-6ba9-45c3-b343-23eb935997e5" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "5cee0fda-d290-4d40-947c-55fd345e0ef8" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260518T111703Z:5cee0fda-d290-4d40-947c-55fd345e0ef8" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 2223F07E33E048FB879AFF43DC088332 Ref B: SG2AA1070306034 Ref C: 2026-05-07T03:45:24Z" ],
-        "Date": [ "Thu, 07 May 2026 03:45:24 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3D8FBB22D454443496C6D5878AD3474D Ref B: SG2AA1040517052 Ref C: 2026-05-18T11:17:03Z" ],
+        "Date": [ "Mon, 18 May 2026 11:17:03 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "66" ],

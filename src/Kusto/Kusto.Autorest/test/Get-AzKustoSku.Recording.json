@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "236" ],
-        "x-ms-client-request-id": [ "4f7f51f9-4699-4f49-ab8a-c90d4007b941" ],
+        "x-ms-unique-id": [ "244" ],
+        "x-ms-client-request-id": [ "a010f213-d513-470c-a279-9d04cdf80981" ],
         "CommandName": [ "Get-AzKustoSku" ],
         "FullCommandName": [ "Get-AzKustoSku_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,16 +22,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "4ec71bdb-66cd-4ad5-b291-f1223490723b" ],
-        "x-ms-operation-identifier": [ "tenantId=544a7a2e-697f-487c-b2b0-a13df7f346b6,objectId=de9050dc-ffd4-444c-b113-b94ad83e7559/southeastasia/92f620c8-3d47-4784-8a3a-8a6cb0a06585" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
-        "x-ms-correlation-request-id": [ "c1b3c02a-7e51-4657-b418-084b8c8c821b" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20260507T012637Z:c1b3c02a-7e51-4657-b418-084b8c8c821b" ],
+        "x-ms-request-id": [ "216a88c2-e9c9-484a-87d1-6520d70509dc" ],
+        "x-ms-operation-identifier": [ "tenantId=544a7a2e-697f-487c-b2b0-a13df7f346b6,objectId=de9050dc-ffd4-444c-b113-b94ad83e7559/southeastasia/02613c47-ff26-4498-bba3-d83b177d5981" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1100" ],
+        "x-ms-correlation-request-id": [ "ee5cf6b2-2d60-40a7-ba01-5a560b50bac2" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20260518T085539Z:ee5cf6b2-2d60-40a7-ba01-5a560b50bac2" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 4DF85F4FF3BC4AFF972807AFF8262192 Ref B: SG2AA1070305023 Ref C: 2026-05-07T01:26:36Z" ],
-        "Date": [ "Thu, 07 May 2026 01:26:36 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 29C6542DEE1A4CD1BB4160A682FF93DC Ref B: SG2AA1070303062 Ref C: 2026-05-18T08:55:09Z" ],
+        "Date": [ "Mon, 18 May 2026 08:55:39 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "7066" ],

@@ -6,7 +6,7 @@
       "value": "2024-04-13"
     },
     "userAssignedManagedIdentityName": {
-      "value": "uaMisloc4i"
+      "value": "uaMim49a13"
     },
     "kustoSkuName": {
       "value": "Standard_E2ads_v5"
@@ -21,13 +21,13 @@
       "value": "Standard"
     },
     "kustoClusterName": {
-      "value": "pssdksloc4i"
+      "value": "pssdkm49a13"
     },
     "kustoFollowerClusterName": {
-      "value": "pssdkfollowsloc4i"
+      "value": "pssdkfollowm49a13"
     },
     "kustoMigrationClusterName": {
-      "value": "pssdkmigrsloc4i"
+      "value": "pssdkmigrm49a13"
     },
     "kustoDatabaseName": {
       "value": "TestDb"
@@ -42,19 +42,19 @@
       "value": "TestTable"
     },
     "principalAppId": {
-      "value": "609982ee-9c2e-4d6d-ad0b-f54bbe0d394b"
+      "value": "39a5c21e-1115-4b5f-8f9e-7a31ac813fd6"
     },
     "eventHubNameSpaceName": {
-      "value": "EHNamespacesloc4i"
+      "value": "EHNamespacem49a13"
     },
     "eventHubName": {
-      "value": "ehsloc4i"
+      "value": "ehm49a13"
     },
     "iotHubName": {
-      "value": "iotsloc4i"
+      "value": "iotm49a13"
     },
     "cosmosDbAccountName": {
-      "value": "cosmossloc4i"
+      "value": "cosmosm49a13"
     },
     "cosmosDbDatabaseName": {
       "value": "cosmostestdb"
@@ -63,22 +63,22 @@
       "value": "cosmostestcontainer"
     },
     "storageAccountName": {
-      "value": "sasloc4i"
+      "value": "sam49a13"
     },
     "virtualNetworkName": {
-      "value": "vnetsloc4i"
+      "value": "vnetm49a13"
     },
     "subnetName": {
-      "value": "subnetsloc4i"
+      "value": "subnetm49a13"
     },
     "privateEndpointName": {
-      "value": "pesloc4i"
+      "value": "pem49a13"
     },
     "keyVaultName": {
-      "value": "kvPwshsloc4i"
+      "value": "kvPwshm49a13"
     },
     "keyName": {
-      "value": "byoksloc4i"
+      "value": "byokm49a13"
     }
   }
 }

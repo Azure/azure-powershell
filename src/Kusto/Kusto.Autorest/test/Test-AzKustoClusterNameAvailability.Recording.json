@@ -3,7 +3,7 @@
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/providers/Microsoft.Kusto/locations/East%20US/checkNameAvailability?api-version=2024-04-13",
-      "Content": "{\r\n  \"name\": \"pssdksloc4i\",\r\n  \"type\": \"Microsoft.Kusto/clusters\"\r\n}",
+      "Content": "{\r\n  \"name\": \"pssdkm49a13\",\r\n  \"type\": \"Microsoft.Kusto/clusters\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -17,24 +17,24 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "900a7182-9513-4912-8c03-fd90aff4c2cd" ],
-        "x-ms-operation-identifier": [ "tenantId=544a7a2e-697f-487c-b2b0-a13df7f346b6,objectId=de9050dc-ffd4-444c-b113-b94ad83e7559/southeastasia/89f2abd9-7fa1-4dca-8d36-1239ce586742" ],
+        "x-ms-request-id": [ "c66c5b7b-bb23-49f1-9373-6f5c9cc15e0b" ],
+        "x-ms-operation-identifier": [ "tenantId=544a7a2e-697f-487c-b2b0-a13df7f346b6,objectId=de9050dc-ffd4-444c-b113-b94ad83e7559/southeastasia/94f8ebe9-46da-480a-8dc1-a22a9c309130" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-correlation-request-id": [ "da8bc6a4-d771-405c-9af4-a8d96a695d1d" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20260507T034406Z:da8bc6a4-d771-405c-9af4-a8d96a695d1d" ],
+        "x-ms-correlation-request-id": [ "212d3700-7df3-42da-abad-dc972786b8f0" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20260518T111545Z:212d3700-7df3-42da-abad-dc972786b8f0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5B5E1F2EDF064EACA5BB4996A698CBFA Ref B: SG2AA1070306034 Ref C: 2026-05-07T03:44:05Z" ],
-        "Date": [ "Thu, 07 May 2026 03:44:06 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 73B08589B2284151AEE492692CE6B5CA Ref B: SG2AA1040517052 Ref C: 2026-05-18T11:15:44Z" ],
+        "Date": [ "Mon, 18 May 2026 11:15:44 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "142" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"pssdksloc4i\",\"nameAvailable\":false,\"message\":\"Name \u0027pssdksloc4i\u0027 with type Engine is already taken. Please specify a different name\"}",
+      "Content": "{\"name\":\"pssdkm49a13\",\"nameAvailable\":false,\"message\":\"Name \u0027pssdkm49a13\u0027 with type Engine is already taken. Please specify a different name\"}",
       "isContentBase64": false
     }
   }

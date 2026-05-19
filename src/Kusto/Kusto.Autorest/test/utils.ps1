@@ -41,11 +41,9 @@ function setupEnv() {
 
     $env = Get-Content .\test\env.json | ConvertFrom-Json -AsHashtable
 
-  #  $env.subscriptionId = "0c302431-1ad0-4187-87c9-d4cebcf7edc2" # Kusto_Dev_Kusto_Ilay_04_Test
-  #  $env.location = 'East US'
-  #  Write-Host "Setting up and connection to subscription " $env.subscriptionId -ForegroundColor Green
-  #  Connect-AzAccount -Subscription $env.subscriptionId
-  #  $env.Tenant = (Get-AzContext).Tenant.Id
+    Write-Host "Setting up and connection to subscription " $env.subscriptionId -ForegroundColor Green
+    Connect-AzAccount -Subscription $env.subscriptionId
+    $env.Tenant = (Get-AzContext).Tenant.Id
 
   #  # Generate some random strings for use in the tests.
   #  $rstr1 = RandomString -allChars $false -len 6

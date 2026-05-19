@@ -1,13 +1,13 @@
 {
-  "[NoDescription]+[NoContext]+RemoveExpanded+$POST+https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-sloc4i/providers/Microsoft.Kusto/Clusters/pssdksloc4i/Databases/TestDb/listPrincipals?api-version=2024-04-13+1": {
+  "[NoDescription]+[NoContext]+RemoveExpanded+$POST+https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-m49a13/providers/Microsoft.Kusto/Clusters/pssdkm49a13/Databases/TestDb/listPrincipals?api-version=2024-04-13+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-sloc4i/providers/Microsoft.Kusto/Clusters/pssdksloc4i/Databases/TestDb/listPrincipals?api-version=2024-04-13",
+      "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-m49a13/providers/Microsoft.Kusto/Clusters/pssdkm49a13/Databases/TestDb/listPrincipals?api-version=2024-04-13",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "505" ],
-        "x-ms-client-request-id": [ "f21bd038-9417-4c52-96fc-85076ab2849e" ],
+        "x-ms-unique-id": [ "515" ],
+        "x-ms-client-request-id": [ "329c27f5-546c-463f-bde8-a3f05a042fc7" ],
         "CommandName": [ "Get-AzKustoDatabasePrincipal" ],
         "FullCommandName": [ "Get-AzKustoDatabasePrincipal_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,31 +22,31 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "b02acea3-bf68-4c7f-92f7-07d570e1c68e" ],
-        "x-ms-operation-identifier": [ "tenantId=544a7a2e-697f-487c-b2b0-a13df7f346b6,objectId=de9050dc-ffd4-444c-b113-b94ad83e7559/eastus/a76415f4-9e56-4c50-948c-37b84e77af4c" ],
+        "x-ms-request-id": [ "5a511fd4-2c0d-4afc-ae33-27a93a0ab972" ],
+        "x-ms-operation-identifier": [ "tenantId=544a7a2e-697f-487c-b2b0-a13df7f346b6,objectId=de9050dc-ffd4-444c-b113-b94ad83e7559/eastus/9fd1b4e1-880f-4648-9da2-e7cda29cd6b6" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-correlation-request-id": [ "5a28514e-f521-4ddc-9788-001a2cb5cf48" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260507T023517Z:5a28514e-f521-4ddc-9788-001a2cb5cf48" ],
+        "x-ms-correlation-request-id": [ "f607f0f2-a097-41f2-bd97-7f4eecd765bd" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260518T100502Z:f607f0f2-a097-41f2-bd97-7f4eecd765bd" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F68543656236432E955F20EBF4CED357 Ref B: SG2AA1070306034 Ref C: 2026-05-07T02:35:16Z" ],
-        "Date": [ "Thu, 07 May 2026 02:35:16 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 56C420D1FCF04ADD9B07A7E161B066EF Ref B: SG2AA1040517052 Ref C: 2026-05-18T10:05:01Z" ],
+        "Date": [ "Mon, 18 May 2026 10:05:02 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "859" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"name\":\"Jia Seng Law (Centific Technologies Inc) (v-jiasenglaw_microsoft.com#EXT#@azclitools20260430.onmicrosoft.com)\",\"role\":\"Admin\",\"type\":\"User\",\"fqn\":\"aaduser=de9050dc-ffd4-444c-b113-b94ad83e7559;544a7a2e-697f-487c-b2b0-a13df7f346b6\",\"email\":\"v-jiasenglaw@microsoft.com\",\"appId\":\"\",\"tenantName\":\"Azure Client Tools 2026-04-30\"},{\"name\":\"KustoTestPrincipal-sloc4i\",\"role\":\"Admin\",\"type\":\"App\",\"fqn\":\"aadapp=609982ee-9c2e-4d6d-ad0b-f54bbe0d394b;544a7a2e-697f-487c-b2b0-a13df7f346b6\",\"email\":\"\",\"appId\":\"609982ee-9c2e-4d6d-ad0b-f54bbe0d394b\",\"tenantName\":\"Azure Client Tools 2026-04-30\"},{\"name\":\"KustoTestPrincipal-sloc4i\",\"role\":\"Viewer\",\"type\":\"App\",\"fqn\":\"aadapp=609982ee-9c2e-4d6d-ad0b-f54bbe0d394b;544a7a2e-697f-487c-b2b0-a13df7f346b6\",\"email\":\"\",\"appId\":\"609982ee-9c2e-4d6d-ad0b-f54bbe0d394b\",\"tenantName\":\"Azure Client Tools 2026-04-30\"}]}",
+      "Content": "{\"value\":[{\"name\":\"Jia Seng Law (Centific Technologies Inc) (v-jiasenglaw_microsoft.com#EXT#@azclitools20260430.onmicrosoft.com)\",\"role\":\"Admin\",\"type\":\"User\",\"fqn\":\"aaduser=de9050dc-ffd4-444c-b113-b94ad83e7559;544a7a2e-697f-487c-b2b0-a13df7f346b6\",\"email\":\"v-jiasenglaw@microsoft.com\",\"appId\":\"\",\"tenantName\":\"Azure Client Tools 2026-04-30\"},{\"name\":\"KustoTestPrincipal-m49a13\",\"role\":\"Admin\",\"type\":\"App\",\"fqn\":\"aadapp=39a5c21e-1115-4b5f-8f9e-7a31ac813fd6;544a7a2e-697f-487c-b2b0-a13df7f346b6\",\"email\":\"\",\"appId\":\"39a5c21e-1115-4b5f-8f9e-7a31ac813fd6\",\"tenantName\":\"Azure Client Tools 2026-04-30\"},{\"name\":\"KustoTestPrincipal-m49a13\",\"role\":\"Viewer\",\"type\":\"App\",\"fqn\":\"aadapp=39a5c21e-1115-4b5f-8f9e-7a31ac813fd6;544a7a2e-697f-487c-b2b0-a13df7f346b6\",\"email\":\"\",\"appId\":\"39a5c21e-1115-4b5f-8f9e-7a31ac813fd6\",\"tenantName\":\"Azure Client Tools 2026-04-30\"}]}",
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+RemoveExpanded+$POST+https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-sloc4i/providers/Microsoft.Kusto/Clusters/pssdksloc4i/Databases/TestDb/removePrincipals?api-version=2024-04-13+2": {
+  "[NoDescription]+[NoContext]+RemoveExpanded+$POST+https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-m49a13/providers/Microsoft.Kusto/Clusters/pssdkm49a13/Databases/TestDb/removePrincipals?api-version=2024-04-13+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-sloc4i/providers/Microsoft.Kusto/Clusters/pssdksloc4i/Databases/TestDb/removePrincipals?api-version=2024-04-13",
+      "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-m49a13/providers/Microsoft.Kusto/Clusters/pssdkm49a13/Databases/TestDb/removePrincipals?api-version=2024-04-13",
       "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"role\": \"Admin\",\r\n      \"name\": \"Jia Seng Law (Centific Technologies Inc) (v-jiasenglaw_microsoft.com#EXT#@azclitools20260430.onmicrosoft.com)\",\r\n      \"type\": \"User\",\r\n      \"email\": \"v-jiasenglaw@microsoft.com\",\r\n      \"appId\": \"\"\r\n    }\r\n  ]\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -61,31 +61,31 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "30df0d32-1ce1-4916-a480-da432f825b32" ],
-        "x-ms-operation-identifier": [ "tenantId=544a7a2e-697f-487c-b2b0-a13df7f346b6,objectId=de9050dc-ffd4-444c-b113-b94ad83e7559/eastus/e4bb7b2d-cefa-4ece-9eb0-b0aa5388d440" ],
+        "x-ms-request-id": [ "316e2c6d-5d1f-4d5b-a051-3f534c1c03a1" ],
+        "x-ms-operation-identifier": [ "tenantId=544a7a2e-697f-487c-b2b0-a13df7f346b6,objectId=de9050dc-ffd4-444c-b113-b94ad83e7559/eastus/aebb92f8-488d-4204-a624-5dd9debfe54a" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-correlation-request-id": [ "c2e97b89-d1f8-4b92-8e2f-33e47cd4143f" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260507T023518Z:c2e97b89-d1f8-4b92-8e2f-33e47cd4143f" ],
+        "x-ms-correlation-request-id": [ "824c3f6a-3853-44ba-8a81-0881b79cecea" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260518T100504Z:824c3f6a-3853-44ba-8a81-0881b79cecea" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 8093521EE73B4155906F39BAE505C5AF Ref B: SG2AA1070306034 Ref C: 2026-05-07T02:35:17Z" ],
-        "Date": [ "Thu, 07 May 2026 02:35:18 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 7943467E5A184813AFE4F1D8FAB51175 Ref B: SG2AA1040517052 Ref C: 2026-05-18T10:05:02Z" ],
+        "Date": [ "Mon, 18 May 2026 10:05:03 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "526" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"name\":\"KustoTestPrincipal-sloc4i\",\"role\":\"Admin\",\"type\":\"App\",\"fqn\":\"aadapp=609982ee-9c2e-4d6d-ad0b-f54bbe0d394b;544a7a2e-697f-487c-b2b0-a13df7f346b6\",\"email\":\"\",\"appId\":\"609982ee-9c2e-4d6d-ad0b-f54bbe0d394b\",\"tenantName\":\"Azure Client Tools 2026-04-30\"},{\"name\":\"KustoTestPrincipal-sloc4i\",\"role\":\"Viewer\",\"type\":\"App\",\"fqn\":\"aadapp=609982ee-9c2e-4d6d-ad0b-f54bbe0d394b;544a7a2e-697f-487c-b2b0-a13df7f346b6\",\"email\":\"\",\"appId\":\"609982ee-9c2e-4d6d-ad0b-f54bbe0d394b\",\"tenantName\":\"Azure Client Tools 2026-04-30\"}]}",
+      "Content": "{\"value\":[{\"name\":\"KustoTestPrincipal-m49a13\",\"role\":\"Admin\",\"type\":\"App\",\"fqn\":\"aadapp=39a5c21e-1115-4b5f-8f9e-7a31ac813fd6;544a7a2e-697f-487c-b2b0-a13df7f346b6\",\"email\":\"\",\"appId\":\"39a5c21e-1115-4b5f-8f9e-7a31ac813fd6\",\"tenantName\":\"Azure Client Tools 2026-04-30\"},{\"name\":\"KustoTestPrincipal-m49a13\",\"role\":\"Viewer\",\"type\":\"App\",\"fqn\":\"aadapp=39a5c21e-1115-4b5f-8f9e-7a31ac813fd6;544a7a2e-697f-487c-b2b0-a13df7f346b6\",\"email\":\"\",\"appId\":\"39a5c21e-1115-4b5f-8f9e-7a31ac813fd6\",\"tenantName\":\"Azure Client Tools 2026-04-30\"}]}",
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+RemoveExpanded+$POST+https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-sloc4i/providers/Microsoft.Kusto/Clusters/pssdksloc4i/Databases/TestDb/addPrincipals?api-version=2024-04-13+3": {
+  "[NoDescription]+[NoContext]+RemoveExpanded+$POST+https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-m49a13/providers/Microsoft.Kusto/Clusters/pssdkm49a13/Databases/TestDb/addPrincipals?api-version=2024-04-13+3": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-sloc4i/providers/Microsoft.Kusto/Clusters/pssdksloc4i/Databases/TestDb/addPrincipals?api-version=2024-04-13",
+      "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-m49a13/providers/Microsoft.Kusto/Clusters/pssdkm49a13/Databases/TestDb/addPrincipals?api-version=2024-04-13",
       "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"role\": \"Admin\",\r\n      \"name\": \"Jia Seng Law (Centific Technologies Inc) (v-jiasenglaw_microsoft.com#EXT#@azclitools20260430.onmicrosoft.com)\",\r\n      \"type\": \"User\",\r\n      \"email\": \"v-jiasenglaw@microsoft.com\",\r\n      \"appId\": \"\"\r\n    }\r\n  ]\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -100,24 +100,24 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "d89d8457-33d6-49bc-9440-8e05a26b9e8a" ],
-        "x-ms-operation-identifier": [ "tenantId=544a7a2e-697f-487c-b2b0-a13df7f346b6,objectId=de9050dc-ffd4-444c-b113-b94ad83e7559/eastus/4bce0a1b-12cb-42f7-97ef-e33edb46ecfa" ],
+        "x-ms-request-id": [ "4ad3647f-4ca6-41cc-ad48-4f21f63dabe7" ],
+        "x-ms-operation-identifier": [ "tenantId=544a7a2e-697f-487c-b2b0-a13df7f346b6,objectId=de9050dc-ffd4-444c-b113-b94ad83e7559/eastus/d14f3119-847a-4214-b398-62801ac71de7" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-correlation-request-id": [ "8a832c38-e108-475b-a1a5-6ef38943feba" ],
-        "x-ms-routing-request-id": [ "EASTUS:20260507T023519Z:8a832c38-e108-475b-a1a5-6ef38943feba" ],
+        "x-ms-correlation-request-id": [ "138c3907-2788-45de-af10-a1eec9dcf5d0" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260518T100505Z:138c3907-2788-45de-af10-a1eec9dcf5d0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 21D55FC499874F52AD6FB15027822F6F Ref B: SG2AA1070306034 Ref C: 2026-05-07T02:35:19Z" ],
-        "Date": [ "Thu, 07 May 2026 02:35:19 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: CD8508031DDE4CED8C34D095832D28BE Ref B: SG2AA1040517052 Ref C: 2026-05-18T10:05:04Z" ],
+        "Date": [ "Mon, 18 May 2026 10:05:04 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "859" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"name\":\"KustoTestPrincipal-sloc4i\",\"role\":\"Admin\",\"type\":\"App\",\"fqn\":\"aadapp=609982ee-9c2e-4d6d-ad0b-f54bbe0d394b;544a7a2e-697f-487c-b2b0-a13df7f346b6\",\"email\":\"\",\"appId\":\"609982ee-9c2e-4d6d-ad0b-f54bbe0d394b\",\"tenantName\":\"Azure Client Tools 2026-04-30\"},{\"name\":\"KustoTestPrincipal-sloc4i\",\"role\":\"Viewer\",\"type\":\"App\",\"fqn\":\"aadapp=609982ee-9c2e-4d6d-ad0b-f54bbe0d394b;544a7a2e-697f-487c-b2b0-a13df7f346b6\",\"email\":\"\",\"appId\":\"609982ee-9c2e-4d6d-ad0b-f54bbe0d394b\",\"tenantName\":\"Azure Client Tools 2026-04-30\"},{\"name\":\"Jia Seng Law (Centific Technologies Inc) (v-jiasenglaw_microsoft.com#EXT#@azclitools20260430.onmicrosoft.com)\",\"role\":\"Admin\",\"type\":\"User\",\"fqn\":\"aaduser=de9050dc-ffd4-444c-b113-b94ad83e7559;544a7a2e-697f-487c-b2b0-a13df7f346b6\",\"email\":\"v-jiasenglaw@microsoft.com\",\"appId\":\"\",\"tenantName\":\"Azure Client Tools 2026-04-30\"}]}",
+      "Content": "{\"value\":[{\"name\":\"KustoTestPrincipal-m49a13\",\"role\":\"Admin\",\"type\":\"App\",\"fqn\":\"aadapp=39a5c21e-1115-4b5f-8f9e-7a31ac813fd6;544a7a2e-697f-487c-b2b0-a13df7f346b6\",\"email\":\"\",\"appId\":\"39a5c21e-1115-4b5f-8f9e-7a31ac813fd6\",\"tenantName\":\"Azure Client Tools 2026-04-30\"},{\"name\":\"KustoTestPrincipal-m49a13\",\"role\":\"Viewer\",\"type\":\"App\",\"fqn\":\"aadapp=39a5c21e-1115-4b5f-8f9e-7a31ac813fd6;544a7a2e-697f-487c-b2b0-a13df7f346b6\",\"email\":\"\",\"appId\":\"39a5c21e-1115-4b5f-8f9e-7a31ac813fd6\",\"tenantName\":\"Azure Client Tools 2026-04-30\"},{\"name\":\"Jia Seng Law (Centific Technologies Inc) (v-jiasenglaw_microsoft.com#EXT#@azclitools20260430.onmicrosoft.com)\",\"role\":\"Admin\",\"type\":\"User\",\"fqn\":\"aaduser=de9050dc-ffd4-444c-b113-b94ad83e7559;544a7a2e-697f-487c-b2b0-a13df7f346b6\",\"email\":\"v-jiasenglaw@microsoft.com\",\"appId\":\"\",\"tenantName\":\"Azure Client Tools 2026-04-30\"}]}",
       "isContentBase64": false
     }
   }

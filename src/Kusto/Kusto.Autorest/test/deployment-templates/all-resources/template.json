@@ -188,17 +188,8 @@
                     "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', toLower(parameters('userAssignedManagedIdentityName')))]": {}
                 }
             },
-            "properties": {
-                "keyVaultProperties": {
-                    "keyName": "[parameters('keyName')]",
-                    "keyVaultUri": "[reference(resourceId('Microsoft.KeyVault/vaults', parameters('keyVaultName')), '2022-11-01').vaultUri]",
-                    "keyVersion": "[last(split(reference(resourceId('Microsoft.KeyVault/vaults/keys', parameters('keyVaultName'), parameters('keyName')), '2022-11-01').keyUriWithVersion, '/'))]",
-                    "userIdentity": "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', toLower(parameters('userAssignedManagedIdentityName')))]"
-                }
-            },
             "dependsOn": [
-                "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', toLower(parameters('userAssignedManagedIdentityName')))]",
-                "[resourceId('Microsoft.KeyVault/vaults/keys', parameters('keyVaultName'), parameters('keyName'))]"
+                "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', toLower(parameters('userAssignedManagedIdentityName')))]"
             ]
         },
         {
