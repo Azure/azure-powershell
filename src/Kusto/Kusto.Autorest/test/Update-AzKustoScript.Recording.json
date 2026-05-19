@@ -255,7 +255,7 @@
     "Request": {
       "Method": "PATCH",
       "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-m49a13/providers/Microsoft.Kusto/Clusters/pssdkm49a13/Databases/testdatabasesc0ktr/scripts/testScript2?api-version=2024-04-13",
-      "Content": "{\"properties\":{\"scriptLevel\":\"Database\",\"scriptUrlSasToken\":\"sv=2025-07-05\u0026se=2026-05-18T13%3A23%3A13Z\u0026sr=b\u0026sp=r\u0026sig=otXUVu8pB4axx17LSnsKXyiSZYjj5TtC22Cvw%2BIUCdk%3D\",\"forceUpdateTag\":\"tag2\",\"principalPermissionsAction\":\"RemovePermissionOnScriptCompletion\",\"continueOnErrors\":true,\"scriptUrl\":\"https://sam49a13.blob.core.windows.net/scripts/update-script.kql\"}}",
+      "Content": "{\"properties\":{\"scriptLevel\":\"Database\",\"scriptUrlSasToken\":\"REDACTED\",\"forceUpdateTag\":\"tag2\",\"principalPermissionsAction\":\"RemovePermissionOnScriptCompletion\",\"continueOnErrors\":true,\"scriptUrl\":\"https://sam49a13.blob.core.windows.net/scripts/update-script.kql\"}}",
       "isContentBase64": false,
       "Headers": {
       },
