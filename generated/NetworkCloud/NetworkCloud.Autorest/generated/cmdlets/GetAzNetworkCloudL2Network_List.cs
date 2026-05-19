@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IL2Network))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Description(@"Get a list of layer 2 (L2) networks in the provided subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/l2Networks", ApiVersion = "2025-02-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/l2Networks", ApiVersion = "2025-09-01")]
     public partial class GetAzNetworkCloudL2Network_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IContext
@@ -123,6 +123,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
+        /// <summary>Backing field for <see cref="SkipToken" /> property.</summary>
+        private string _skipToken;
+
+        /// <summary>
+        /// The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging
+        /// through large result sets.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The opaque token that the server returns to indicate where to continue listing resources from. This is used for paging through large result sets.",
+        SerializedName = @"$skipToken",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Query)]
+        public string SkipToken { get => this._skipToken; set => this._skipToken = value; }
+
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string[] _subscriptionId;
 
@@ -141,6 +158,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
         SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Path)]
         public string[] SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
+
+        /// <summary>Backing field for <see cref="Top" /> property.</summary>
+        private int _top;
+
+        /// <summary>
+        /// The maximum number of resources to return from the operation. Example: '$top=10'.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The maximum number of resources to return from the operation. Example: '$top=10'.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The maximum number of resources to return from the operation. Example: '$top=10'.",
+        SerializedName = @"$top",
+        PossibleTypes = new [] { typeof(int) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.ParameterCategory.Query)]
+        public int Top { get => this._top; set => this._top = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -358,13 +391,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Cmdlets
                     foreach( var SubscriptionId in this.SubscriptionId )
                     {
                         await ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.L2NetworksListBySubscription(SubscriptionId, onOk, onDefault, this, Pipeline);
+                        await this.Client.L2NetworksListBySubscription(SubscriptionId, this.InvocationInformation.BoundParameters.ContainsKey("Top") ? Top : default(int?), this.InvocationInformation.BoundParameters.ContainsKey("SkipToken") ? SkipToken : null, onOk, onDefault, this, Pipeline);
                         await ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,Top=this.InvocationInformation.BoundParameters.ContainsKey("Top") ? Top : default(int?),SkipToken=this.InvocationInformation.BoundParameters.ContainsKey("SkipToken") ? SkipToken : null})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });

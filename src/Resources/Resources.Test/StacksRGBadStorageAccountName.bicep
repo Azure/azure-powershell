@@ -4,11 +4,14 @@ param location string = resourceGroup().location
 param name string
 var storageSku = 'Standard_LRS'
 
-resource stg 'Microsoft.Storage/storageAccounts@2018-11-01' = {
+resource stg 'Microsoft.Storage/storageAccounts@2023-01-01' = {
   name: name
   location: location
-  kind: 'Storage'
+  kind: 'StorageV2'
   sku: {
     name: storageSku
+  }
+  properties: {
+    allowSharedKeyAccess: false
   }
 }

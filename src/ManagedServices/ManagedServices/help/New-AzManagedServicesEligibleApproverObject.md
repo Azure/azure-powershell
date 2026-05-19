@@ -1,7 +1,7 @@
 ---
 external help file: Az.ManagedServices-help.xml
 Module Name: Az.ManagedServices
-online version: https://learn.microsoft.com/powershell/module/Az.ManagedServices/new-AzManagedServicesEligibleApproverObject
+online version: https://learn.microsoft.com/powershell/module/Az.ManagedServices/new-azmanagedserviceseligibleapproverobject
 schema: 2.0.0
 ---
 
@@ -74,7 +74,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.EligibleApprover
+### Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.EligibleApprover
 
 ## NOTES
 

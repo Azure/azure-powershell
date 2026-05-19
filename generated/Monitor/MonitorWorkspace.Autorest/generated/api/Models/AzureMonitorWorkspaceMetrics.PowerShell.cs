@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.PowerShell;
 
-    /// <summary>Information about metrics for the Azure Monitor workspace</summary>
+    /// <summary>Properties related to the metrics container in the Azure Monitor Workspace</summary>
     [System.ComponentModel.TypeConverter(typeof(AzureMonitorWorkspaceMetricsTypeConverter))]
     public partial class AzureMonitorWorkspaceMetrics
     {
@@ -78,11 +78,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
             // actually deserialize
             if (content.Contains("PrometheusQueryEndpoint"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetricsInternal)this).PrometheusQueryEndpoint = (string) content.GetValueForProperty("PrometheusQueryEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetricsInternal)this).PrometheusQueryEndpoint, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetricsInternal)this).PrometheusQueryEndpoint = (string) content.GetValueForProperty("PrometheusQueryEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetricsInternal)this).PrometheusQueryEndpoint, global::System.Convert.ToString);
             }
             if (content.Contains("InternalId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetricsInternal)this).InternalId = (string) content.GetValueForProperty("InternalId",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetricsInternal)this).InternalId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetricsInternal)this).InternalId = (string) content.GetValueForProperty("InternalId",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetricsInternal)this).InternalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnableAccessUsingResourcePermission"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetricsInternal)this).EnableAccessUsingResourcePermission = (bool?) content.GetValueForProperty("EnableAccessUsingResourcePermission",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetricsInternal)this).EnableAccessUsingResourcePermission, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -103,11 +107,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
             // actually deserialize
             if (content.Contains("PrometheusQueryEndpoint"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetricsInternal)this).PrometheusQueryEndpoint = (string) content.GetValueForProperty("PrometheusQueryEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetricsInternal)this).PrometheusQueryEndpoint, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetricsInternal)this).PrometheusQueryEndpoint = (string) content.GetValueForProperty("PrometheusQueryEndpoint",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetricsInternal)this).PrometheusQueryEndpoint, global::System.Convert.ToString);
             }
             if (content.Contains("InternalId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetricsInternal)this).InternalId = (string) content.GetValueForProperty("InternalId",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetricsInternal)this).InternalId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetricsInternal)this).InternalId = (string) content.GetValueForProperty("InternalId",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetricsInternal)this).InternalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnableAccessUsingResourcePermission"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetricsInternal)this).EnableAccessUsingResourcePermission = (bool?) content.GetValueForProperty("EnableAccessUsingResourcePermission",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetricsInternal)this).EnableAccessUsingResourcePermission, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializePSObject(content);
         }
@@ -164,7 +172,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
             return ToJsonString();
         }
     }
-    /// Information about metrics for the Azure Monitor workspace
+    /// Properties related to the metrics container in the Azure Monitor Workspace
     [System.ComponentModel.TypeConverter(typeof(AzureMonitorWorkspaceMetricsTypeConverter))]
     public partial interface IAzureMonitorWorkspaceMetrics
 

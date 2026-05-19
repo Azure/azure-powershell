@@ -72,6 +72,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             {_hsm = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonObject>("hsm"), out var __jsonHsm) ? Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.AmlFilesystemPropertiesHsm.FromJson(__jsonHsm) : _hsm;}
             {_rootSquashSetting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonObject>("rootSquashSettings"), out var __jsonRootSquashSettings) ? Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models.AmlFilesystemRootSquashSettings.FromJson(__jsonRootSquashSettings) : _rootSquashSetting;}
             {_storageCapacityTiB = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNumber>("storageCapacityTiB"), out var __jsonStorageCapacityTiB) ? (float?)__jsonStorageCapacityTiB : _storageCapacityTiB;}
+            {_currentStorageCapacityTiB = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNumber>("currentStorageCapacityTiB"), out var __jsonCurrentStorageCapacityTiB) ? (float?)__jsonCurrentStorageCapacityTiB : _currentStorageCapacityTiB;}
+            {_clusterUuid = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("clusterUuid"), out var __jsonClusterUuid) ? (string)__jsonClusterUuid : (string)_clusterUuid;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             {_filesystemSubnet = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString>("filesystemSubnet"), out var __jsonFilesystemSubnet) ? (string)__jsonFilesystemSubnet : (string)_filesystemSubnet;}
             {_throughputProvisionedMBps = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNumber>("throughputProvisionedMBps"), out var __jsonThroughputProvisionedMBps) ? (int?)__jsonThroughputProvisionedMBps : _throughputProvisionedMBps;}
@@ -124,6 +126,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeCreate))
             {
                 AddIf( null != this._storageCapacityTiB ? (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNumber((float)this._storageCapacityTiB) : null, "storageCapacityTiB" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._currentStorageCapacityTiB ? (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNumber((float)this._currentStorageCapacityTiB) : null, "currentStorageCapacityTiB" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._clusterUuid)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Json.JsonString(this._clusterUuid.ToString()) : null, "clusterUuid" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.SerializationMode.IncludeRead))
             {

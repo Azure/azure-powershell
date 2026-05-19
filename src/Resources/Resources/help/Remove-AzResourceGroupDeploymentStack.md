@@ -15,23 +15,27 @@ Removes a Resource Group scoped Deployment Stack.
 ### RemoveByNameAndResourceGroupName (Default)
 ```
 Remove-AzResourceGroupDeploymentStack [-Name] <String> [-ResourceGroupName] <String>
- -ActionOnUnmanage <PSActionOnUnmanage> [-PassThru] [-Force] [-BypassStackOutOfSyncError] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -ActionOnUnmanage <PSActionOnUnmanage> [-PassThru] [-Force] [-BypassStackOutOfSyncError]
+ [-ResourcesWithoutDeleteSupport <PSResourcesWithoutDeleteSupport>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### RemoveByResourceId
 ```
 Remove-AzResourceGroupDeploymentStack -ResourceId <String> -ActionOnUnmanage <PSActionOnUnmanage> [-PassThru]
- [-Force] [-BypassStackOutOfSyncError] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-BypassStackOutOfSyncError] [-ResourcesWithoutDeleteSupport <PSResourcesWithoutDeleteSupport>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RemoveByStackObject
 ```
-Remove-AzResourceGroupDeploymentStack [-InputObjet] <PSDeploymentStack> -ActionOnUnmanage <PSActionOnUnmanage>
- [-PassThru] [-Force] [-BypassStackOutOfSyncError] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzResourceGroupDeploymentStack [-InputObject] <PSDeploymentStack> -ActionOnUnmanage <PSActionOnUnmanage>
+ [-PassThru] [-Force] [-BypassStackOutOfSyncError]
+ [-ResourcesWithoutDeleteSupport <PSResourcesWithoutDeleteSupport>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,7 +56,7 @@ Deletes a resource group scoped deployment stack named 'MyRGStack' in resource g
 Action to take on resources that become unmanaged on deletion or update of the deployment stack. Possible values include: 'detachAll' (do not delete any unmanaged resources), 'deleteResources' (delete all unmanaged resources that are not RGs or MGs), and 'deleteAll' (delete every unmanaged resource).
 
 ```yaml
-Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStacks.PSActionOnUnmanage
+Type: PSActionOnUnmanage
 Parameter Sets: (All)
 Aliases:
 Accepted values: DetachAll, DeleteResources, DeleteAll
@@ -68,7 +72,7 @@ Accept wildcard characters: False
 Bypass errors for the stack being out of sync when running the operation. If the stack is out of sync and this parameter is not set, the operation will fail. Only include this parameter if instructed to do so on a failed stack operation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -83,7 +87,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -98,7 +102,7 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -109,13 +113,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObjet
+### -InputObject
 The stack PS object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeploymentStack
+Type: PSDeploymentStack
 Parameter Sets: RemoveByStackObject
-Aliases:
+Aliases: InputObjet
 
 Required: True
 Position: 0
@@ -128,7 +132,7 @@ Accept wildcard characters: False
 The name of the deploymentStack to delete
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: RemoveByNameAndResourceGroupName
 Aliases: StackName
 
@@ -143,7 +147,7 @@ Accept wildcard characters: False
 If set, a boolean will be returned with value dependent on cmdlet success.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -158,9 +162,24 @@ Accept wildcard characters: False
 When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -173,7 +192,7 @@ Accept wildcard characters: False
 The name of the Resource Group with the stack to delete
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: RemoveByNameAndResourceGroupName
 Aliases:
 
@@ -188,7 +207,7 @@ Accept wildcard characters: False
 ResourceId of the stack to delete
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: RemoveByResourceId
 Aliases: Id
 
@@ -199,11 +218,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResourcesWithoutDeleteSupport
+The action to take on resources that do not support deletion when they are removed from the deployment stack. Possible values include: 'Fail' (default) and 'Detach'.
+
+```yaml
+Type: PSResourcesWithoutDeleteSupport
+Parameter Sets: (All)
+Aliases:
+Accepted values: Fail, Detach
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -219,7 +254,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

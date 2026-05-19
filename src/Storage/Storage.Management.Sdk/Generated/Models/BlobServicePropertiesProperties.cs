@@ -38,6 +38,9 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="deleteRetentionPolicy">The blob service properties for blob soft delete.
         /// </param>
 
+        /// <param name="staticWebsite">The static website properties for blob storage.
+        /// </param>
+
         /// <param name="isVersioningEnabled">Versioning is enabled if set to true.
         /// </param>
 
@@ -56,12 +59,13 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="lastAccessTimeTrackingPolicy">The blob service property to configure last access time based tracking
         /// policy.
         /// </param>
-        public BlobServicePropertiesProperties(CorsRules cors = default(CorsRules), string defaultServiceVersion = default(string), DeleteRetentionPolicy deleteRetentionPolicy = default(DeleteRetentionPolicy), bool? isVersioningEnabled = default(bool?), bool? automaticSnapshotPolicyEnabled = default(bool?), ChangeFeed changeFeed = default(ChangeFeed), RestorePolicyProperties restorePolicy = default(RestorePolicyProperties), DeleteRetentionPolicy containerDeleteRetentionPolicy = default(DeleteRetentionPolicy), LastAccessTimeTrackingPolicy lastAccessTimeTrackingPolicy = default(LastAccessTimeTrackingPolicy))
+        public BlobServicePropertiesProperties(CorsRules cors = default(CorsRules), string defaultServiceVersion = default(string), DeleteRetentionPolicy deleteRetentionPolicy = default(DeleteRetentionPolicy), StaticWebsite staticWebsite = default(StaticWebsite), bool? isVersioningEnabled = default(bool?), bool? automaticSnapshotPolicyEnabled = default(bool?), ChangeFeed changeFeed = default(ChangeFeed), RestorePolicyProperties restorePolicy = default(RestorePolicyProperties), DeleteRetentionPolicy containerDeleteRetentionPolicy = default(DeleteRetentionPolicy), LastAccessTimeTrackingPolicy lastAccessTimeTrackingPolicy = default(LastAccessTimeTrackingPolicy))
 
         {
             this.Cors = cors;
             this.DefaultServiceVersion = defaultServiceVersion;
             this.DeleteRetentionPolicy = deleteRetentionPolicy;
+            this.StaticWebsite = staticWebsite;
             this.IsVersioningEnabled = isVersioningEnabled;
             this.AutomaticSnapshotPolicyEnabled = automaticSnapshotPolicyEnabled;
             this.ChangeFeed = changeFeed;
@@ -100,6 +104,12 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "deleteRetentionPolicy")]
         public DeleteRetentionPolicy DeleteRetentionPolicy {get; set; }
+
+        /// <summary>
+        /// Gets or sets the static website properties for blob storage.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "staticWebsite")]
+        public StaticWebsite StaticWebsite {get; set; }
 
         /// <summary>
         /// Gets or sets versioning is enabled if set to true.
@@ -150,6 +160,10 @@ namespace Microsoft.Azure.Management.Storage.Models
             if (this.DeleteRetentionPolicy != null)
             {
                 this.DeleteRetentionPolicy.Validate();
+            }
+            if (this.StaticWebsite != null)
+            {
+                this.StaticWebsite.Validate();
             }
             if (this.ChangeFeed != null)
             {

@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Smart access tier and AllowedCopyScope 'All' support in `New/Set-AzStorageAccount`
+* Added static website configuration in `Update-AzStorageBlobServiceProperty`
+* Added tags replication in `Set-AzStorageObjectReplicationPolicy`
 
 ## Version 9.6.1
 * Removed breaking change warnings for TLS 1.0 and TLS 1.1 deprecation

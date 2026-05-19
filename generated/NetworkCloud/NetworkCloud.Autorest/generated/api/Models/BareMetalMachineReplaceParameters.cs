@@ -58,12 +58,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// <summary>Internal Acessors for BmcCredentials</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IAdministrativeCredentials Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IBareMetalMachineReplaceParametersInternal.BmcCredentials { get => (this._bmcCredentials = this._bmcCredentials ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.AdministrativeCredentials()); set { {_bmcCredentials = value;} } }
 
+        /// <summary>Backing field for <see cref="SafeguardMode" /> property.</summary>
+        private string _safeguardMode;
+
+        /// <summary>
+        /// The safeguard mode to use for the replace action, where None indicates to bypass safeguards and All indicates to utilize
+        /// all safeguards.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
+        public string SafeguardMode { get => this._safeguardMode; set => this._safeguardMode = value; }
+
         /// <summary>Backing field for <see cref="SerialNumber" /> property.</summary>
         private string _serialNumber;
 
         /// <summary>The serial number of the bare metal machine.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
         public string SerialNumber { get => this._serialNumber; set => this._serialNumber = value; }
+
+        /// <summary>Backing field for <see cref="StoragePolicy" /> property.</summary>
+        private string _storagePolicy;
+
+        /// <summary>
+        /// The indicator of whether to bypass clearing storage while replacing a bare metal machine.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
+        public string StoragePolicy { get => this._storagePolicy; set => this._storagePolicy = value; }
 
         /// <summary>Creates an new <see cref="BareMetalMachineReplaceParameters" /> instance.</summary>
         public BareMetalMachineReplaceParameters()
@@ -130,6 +149,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         SerializedName = @"machineName",
         PossibleTypes = new [] { typeof(string) })]
         string MachineName { get; set; }
+        /// <summary>
+        /// The safeguard mode to use for the replace action, where None indicates to bypass safeguards and All indicates to utilize
+        /// all safeguards.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The safeguard mode to use for the replace action, where None indicates to bypass safeguards and All indicates to utilize all safeguards.",
+        SerializedName = @"safeguardMode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("All", "None")]
+        string SafeguardMode { get; set; }
         /// <summary>The serial number of the bare metal machine.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -141,6 +175,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         SerializedName = @"serialNumber",
         PossibleTypes = new [] { typeof(string) })]
         string SerialNumber { get; set; }
+        /// <summary>
+        /// The indicator of whether to bypass clearing storage while replacing a bare metal machine.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The indicator of whether to bypass clearing storage while replacing a bare metal machine.",
+        SerializedName = @"storagePolicy",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Preserve", "DiscardAll")]
+        string StoragePolicy { get; set; }
 
     }
     /// BareMetalMachineReplaceParameters represents the body of the request to physically swap a bare metal machine for another.
@@ -163,8 +211,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         string BootMacAddress { get; set; }
         /// <summary>The OS-level hostname assigned to this machine.</summary>
         string MachineName { get; set; }
+        /// <summary>
+        /// The safeguard mode to use for the replace action, where None indicates to bypass safeguards and All indicates to utilize
+        /// all safeguards.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("All", "None")]
+        string SafeguardMode { get; set; }
         /// <summary>The serial number of the bare metal machine.</summary>
         string SerialNumber { get; set; }
+        /// <summary>
+        /// The indicator of whether to bypass clearing storage while replacing a bare metal machine.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Preserve", "DiscardAll")]
+        string StoragePolicy { get; set; }
 
     }
 }
