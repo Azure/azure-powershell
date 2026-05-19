@@ -63,7 +63,7 @@ Retrieves the actions from the first permission entry of a role definition.
 
 ### Example 4: Get all permissions including conditions
 ```powershell
-$roleDef = Get-AzRoleDefinition -Name "Storage Blob Data Reader"
+$roleDef = Get-AzRoleDefinition -Name "Key Vault Data Access Administrator"
 foreach ($permission in $roleDef.Permissions) {
     Write-Host "Actions: $($permission.Actions -join ', ')"
     Write-Host "DataActions: $($permission.DataActions -join ', ')"
@@ -74,7 +74,7 @@ foreach ($permission in $roleDef.Permissions) {
 }
 ```
 
-Iterates through all permission entries and displays actions and any ABAC conditions.
+Iterates through all permission entries and displays actions and any ABAC conditions. `Key Vault Data Access Administrator` is a built-in role that carries a real ABAC condition on one of its permission entries, so the `if ($permission.Condition)` branch actually fires.
 
 ## PARAMETERS
 

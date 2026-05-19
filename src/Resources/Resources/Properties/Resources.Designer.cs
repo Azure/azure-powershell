@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Custom role definitions created or updated with this cmdlet must have exactly one permission entry in Permissions.
+        ///   Looks up a localized string similar to The Azure RBAC service does not currently accept role definitions with more than one permission entry. Provide a single entry in &apos;Permissions&apos; when calling New-AzRoleDefinition or Set-AzRoleDefinition.
         /// </summary>
         internal static string RoleDefinitionMultiplePermissionsNotAllowed {
             get {

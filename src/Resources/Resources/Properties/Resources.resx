@@ -325,7 +325,7 @@
     <value>Invalid value for Permissions</value>
   </data>
   <data name="RoleDefinitionMultiplePermissionsNotAllowed" xml:space="preserve">
-    <value>Custom role definitions created or updated with this cmdlet must have exactly one permission entry in Permissions.</value>
+    <value>The Azure RBAC service does not currently accept role definitions with more than one permission entry. Provide a single entry in 'Permissions' when calling New-AzRoleDefinition or Set-AzRoleDefinition.</value>
   </data>
   <data name="InvalidAssignableScopes" xml:space="preserve">
     <value>Invalid value for AssignableScopes</value>

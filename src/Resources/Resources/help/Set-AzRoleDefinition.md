@@ -42,6 +42,9 @@ The role definition for the updated custom role MUST contain:
 
 Each permission object in the Permissions array can contain Actions, NotActions, DataActions, NotDataActions, and optionally Condition and ConditionVersion for Attribute-Based Access Control (ABAC) conditions.
 
+> [!IMPORTANT]
+> The shape of `PSRoleDefinition` and of the `-InputFile` JSON has changed. Both `-Role` (PSRoleDefinition) and `-InputFile` (JSON) now use a `Permissions` array of permission objects instead of flattened top-level `Actions`, `NotActions`, `DataActions`, and `NotDataActions` properties. Scripts that pipe `Get-AzRoleDefinition` into `Set-AzRoleDefinition -Role` must read and modify actions and conditions through `$role.Permissions[n]` rather than directly on the role object. JSON files used with `-InputFile` must likewise nest permissions under a `Permissions` array.
+
 > [!NOTE]
 > The Azure RBAC API currently supports only a single element in the Permissions array when updating custom roles. While the data model supports multiple permission entries, update operations must use exactly one permission object.
 
