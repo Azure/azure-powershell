@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+* Updated deployment stack cmdlets to use the `2025-07-01` deployment stacks service version.
+* Added `-ResourcesWithoutDeleteSupport` to deployment stack `New-`, `Set-`, `Test-`, and `Remove-` cmdlets at subscription, resource group, and management group scopes. This parameter controls whether resources that do not support deletion cause the operation to fail or are detached from the stack. Possible values: `Fail` (default) and `Detach`.
+* Added `-ValidationLevel` to deployment stack `New-`, `Set-`, and `Test-` cmdlets at subscription, resource group, and management group scopes. This parameter controls how deployment stack validation is performed. Possible values: `Provider` (default), `Template`, and `ProviderNoRbac` (provider validation without Role-Based Access Control checks).
+* Deployment stack command output now includes the resource deletion support behavior and validation level for the stack.
 * Fixed `Set-AzRoleAssignment` unable to delete conditions from a role assignment
 * Updated Policy.Autorest api-version to 2025-03-01
     - Introduced support for `-Expand` query parameter in `Get-AzPolicyAssignment` and `Get-AzPolicySetDefinition`
@@ -27,10 +31,6 @@
     - Added support for ExternalEvaluationEnforcementSettings to `New-AzPolicyDefinition` and `Update-AzPolicyDefinition`, including: `-ExternalEvaluationEnforcementSettingMissingTokenAction`, `-ExternalEvaluationEnforcementSettingResultLifespan`, `-ExternalEvaluationEnforcementSettingRoleDefinitionId`, `-EndpointSettingKind`, and `-EndpointSettingDetail` parameters
     - `-Version` parameter in `Get-AzPolicyDefinition` and `Get-AzPolicySetDefinition` can now be used in `ManagementGroupName`, `SubscriptionId`, and `Id` parameter sets
     - Added support for `-Version` parameter in Update/New/Remove-PolicyDefinition, and PolicySetDefinition where the Update and Remove commands target old versions.
-* Updated deployment stack cmdlets to use the `2025-07-01` deployment stacks service version.
-* Added `-ResourcesWithoutDeleteSupport` to deployment stack `New-`, `Set-`, `Test-`, and `Remove-` cmdlets at subscription, resource group, and management group scopes. This parameter controls whether resources that do not support deletion cause the operation to fail or are detached from the stack. Possible values: `Fail` (default) and `Detach`.
-* Added `-ValidationLevel` to deployment stack `New-`, `Set-`, and `Test-` cmdlets at subscription, resource group, and management group scopes. This parameter controls how deployment stack validation is performed. Possible values: `Provider` (default), `Template`, and `ProviderNoRbac` (provider validation without Role-Based Access Control checks).
-* Deployment stack command output now includes the resource deletion support behavior and validation level for the stack.
 
 ## Version 9.1.0
 * Made `Remove-AzDenyAssignment` honor `-Confirm:$false` and idempotent when no matching deny assignment exists. The redundant `-Force` switch was removed (the cmdlet relies on the standard `SupportsShouldProcess`/`ConfirmImpact` pattern).
