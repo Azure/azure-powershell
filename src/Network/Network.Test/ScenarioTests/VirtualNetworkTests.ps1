@@ -58,6 +58,7 @@ function Test-VirtualNetworkCRUD
         Assert-True { $expected.PSObject.Properties.Name -contains "SummarizedGatewayPrefixes" }
         
         # List virtual Network
+        $list = Get-AzVirtualNetwork -ResourceGroupName $rgname
         Assert-AreEqual 1 @($list).Count
         Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName    
         Assert-AreEqual $list[0].Name $actual.Name    
