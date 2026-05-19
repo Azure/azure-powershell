@@ -13,19 +13,59 @@ namespace Microsoft.Azure.Management.Network
     public static partial class VirtualNetworkGatewayNatRulesOperationsExtensions
     {
         /// <summary>
+        /// Retrieves all nat rules for a particular virtual network gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<VirtualNetworkGatewayNatRule> ListByVirtualNetworkGateway(this IVirtualNetworkGatewayNatRulesOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
+        {
+                return ((IVirtualNetworkGatewayNatRulesOperations)operations).ListByVirtualNetworkGatewayAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves all nat rules for a particular virtual network gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VirtualNetworkGatewayNatRule>> ListByVirtualNetworkGatewayAsync(this IVirtualNetworkGatewayNatRulesOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByVirtualNetworkGatewayWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Retrieves the details of a nat rule.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the Virtual Network Gateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkGatewayName'>
-        /// The name of the gateway.
+        /// The name of the virtual network gateway.
         /// </param>
         /// <param name='natRuleName'>
-        /// The name of the nat rule.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static VirtualNetworkGatewayNatRule Get(this IVirtualNetworkGatewayNatRulesOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string natRuleName)
         {
@@ -39,13 +79,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the Virtual Network Gateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkGatewayName'>
-        /// The name of the gateway.
+        /// The name of the virtual network gateway.
         /// </param>
         /// <param name='natRuleName'>
-        /// The name of the nat rule.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -65,13 +106,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the Virtual Network Gateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkGatewayName'>
-        /// The name of the gateway.
+        /// The name of the virtual network gateway.
         /// </param>
         /// <param name='natRuleName'>
-        /// The name of the nat rule.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static VirtualNetworkGatewayNatRule CreateOrUpdate(this IVirtualNetworkGatewayNatRulesOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string natRuleName, VirtualNetworkGatewayNatRule natRuleParameters)
         {
@@ -86,13 +128,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the Virtual Network Gateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkGatewayName'>
-        /// The name of the gateway.
+        /// The name of the virtual network gateway.
         /// </param>
         /// <param name='natRuleName'>
-        /// The name of the nat rule.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -111,17 +154,18 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the Virtual Network Gateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkGatewayName'>
-        /// The name of the gateway.
+        /// The name of the virtual network gateway.
         /// </param>
         /// <param name='natRuleName'>
-        /// The name of the nat rule.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
-        public static void Delete(this IVirtualNetworkGatewayNatRulesOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string natRuleName)
+        public static VirtualNetworkGatewayNatRulesDeleteHeaders Delete(this IVirtualNetworkGatewayNatRulesOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string natRuleName)
         {
-                ((IVirtualNetworkGatewayNatRulesOperations)operations).DeleteAsync(resourceGroupName, virtualNetworkGatewayName, natRuleName).GetAwaiter().GetResult();
+                return ((IVirtualNetworkGatewayNatRulesOperations)operations).DeleteAsync(resourceGroupName, virtualNetworkGatewayName, natRuleName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -131,58 +175,23 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the Virtual Network Gateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkGatewayName'>
-        /// The name of the gateway.
+        /// The name of the virtual network gateway.
         /// </param>
         /// <param name='natRuleName'>
-        /// The name of the nat rule.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IVirtualNetworkGatewayNatRulesOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string natRuleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VirtualNetworkGatewayNatRulesDeleteHeaders> DeleteAsync(this IVirtualNetworkGatewayNatRulesOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string natRuleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, natRuleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Retrieves all nat rules for a particular virtual network gateway.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the virtual network gateway.
-        /// </param>
-        /// <param name='virtualNetworkGatewayName'>
-        /// The name of the gateway.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<VirtualNetworkGatewayNatRule> ListByVirtualNetworkGateway(this IVirtualNetworkGatewayNatRulesOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
-        {
-                return ((IVirtualNetworkGatewayNatRulesOperations)operations).ListByVirtualNetworkGatewayAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieves all nat rules for a particular virtual network gateway.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the virtual network gateway.
-        /// </param>
-        /// <param name='virtualNetworkGatewayName'>
-        /// The name of the gateway.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VirtualNetworkGatewayNatRule>> ListByVirtualNetworkGatewayAsync(this IVirtualNetworkGatewayNatRulesOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByVirtualNetworkGatewayWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, natRuleName, null, cancellationToken).ConfigureAwait(false))
             {
-                return _result.Body;
+                return _result.Headers;
             }
         }
         /// <summary>
@@ -193,13 +202,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the Virtual Network Gateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkGatewayName'>
-        /// The name of the gateway.
+        /// The name of the virtual network gateway.
         /// </param>
         /// <param name='natRuleName'>
-        /// The name of the nat rule.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static VirtualNetworkGatewayNatRule BeginCreateOrUpdate(this IVirtualNetworkGatewayNatRulesOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string natRuleName, VirtualNetworkGatewayNatRule natRuleParameters)
         {
@@ -214,13 +224,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the Virtual Network Gateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkGatewayName'>
-        /// The name of the gateway.
+        /// The name of the virtual network gateway.
         /// </param>
         /// <param name='natRuleName'>
-        /// The name of the nat rule.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -239,17 +250,18 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the Virtual Network Gateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkGatewayName'>
-        /// The name of the gateway.
+        /// The name of the virtual network gateway.
         /// </param>
         /// <param name='natRuleName'>
-        /// The name of the nat rule.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
-        public static void BeginDelete(this IVirtualNetworkGatewayNatRulesOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string natRuleName)
+        public static VirtualNetworkGatewayNatRulesDeleteHeaders BeginDelete(this IVirtualNetworkGatewayNatRulesOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string natRuleName)
         {
-                ((IVirtualNetworkGatewayNatRulesOperations)operations).BeginDeleteAsync(resourceGroupName, virtualNetworkGatewayName, natRuleName).GetAwaiter().GetResult();
+                return ((IVirtualNetworkGatewayNatRulesOperations)operations).BeginDeleteAsync(resourceGroupName, virtualNetworkGatewayName, natRuleName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -259,20 +271,24 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the Virtual Network Gateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkGatewayName'>
-        /// The name of the gateway.
+        /// The name of the virtual network gateway.
         /// </param>
         /// <param name='natRuleName'>
-        /// The name of the nat rule.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVirtualNetworkGatewayNatRulesOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string natRuleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VirtualNetworkGatewayNatRulesDeleteHeaders> BeginDeleteAsync(this IVirtualNetworkGatewayNatRulesOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string natRuleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, natRuleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, natRuleName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Retrieves all nat rules for a particular virtual network gateway.

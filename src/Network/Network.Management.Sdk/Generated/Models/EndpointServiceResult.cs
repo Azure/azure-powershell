@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// <summary>
     /// Endpoint service.
     /// </summary>
-    public partial class EndpointServiceResult : SubResource
+    public partial class EndpointServiceResult : CommonSubResource
     {
         /// <summary>
         /// Initializes a new instance of the EndpointServiceResult class.

@@ -13,194 +13,6 @@ namespace Microsoft.Azure.Management.Network
     public static partial class VirtualHubsOperationsExtensions
     {
         /// <summary>
-        /// Retrieves the details of a VirtualHub.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
-        /// </param>
-        public static VirtualHub Get(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName)
-        {
-                return ((IVirtualHubsOperations)operations).GetAsync(resourceGroupName, virtualHubName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieves the details of a VirtualHub.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<VirtualHub> GetAsync(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, virtualHubName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Creates a VirtualHub resource if it doesn&#39;t exist else updates the existing
-        /// VirtualHub.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
-        /// </param>
-        public static VirtualHub CreateOrUpdate(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName, VirtualHub virtualHubParameters)
-        {
-                return ((IVirtualHubsOperations)operations).CreateOrUpdateAsync(resourceGroupName, virtualHubName, virtualHubParameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates a VirtualHub resource if it doesn&#39;t exist else updates the existing
-        /// VirtualHub.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<VirtualHub> CreateOrUpdateAsync(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName, VirtualHub virtualHubParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualHubName, virtualHubParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Updates VirtualHub tags.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
-        /// </param>
-        public static VirtualHub UpdateTags(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName, TagsObject virtualHubParameters)
-        {
-                return ((IVirtualHubsOperations)operations).UpdateTagsAsync(resourceGroupName, virtualHubName, virtualHubParameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Updates VirtualHub tags.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<VirtualHub> UpdateTagsAsync(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName, TagsObject virtualHubParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, virtualHubName, virtualHubParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Deletes a VirtualHub.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
-        /// </param>
-        public static void Delete(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName)
-        {
-                ((IVirtualHubsOperations)operations).DeleteAsync(resourceGroupName, virtualHubName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes a VirtualHub.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
-        /// </param>
-        /// <param name='virtualHubName'>
-        /// The name of the VirtualHub.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Lists all the VirtualHubs in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<VirtualHub> ListByResourceGroup(this IVirtualHubsOperations operations, string resourceGroupName)
-        {
-                return ((IVirtualHubsOperations)operations).ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Lists all the VirtualHubs in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VirtualHub>> ListByResourceGroupAsync(this IVirtualHubsOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Lists all the VirtualHubs in a subscription.
         /// </summary>
         /// <param name='operations'>
@@ -228,6 +40,197 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Lists all the VirtualHubs in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<VirtualHub> ListByResourceGroup(this IVirtualHubsOperations operations, string resourceGroupName)
+        {
+                return ((IVirtualHubsOperations)operations).ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all the VirtualHubs in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VirtualHub>> ListByResourceGroupAsync(this IVirtualHubsOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the details of a VirtualHub.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the VirtualHub.
+        /// </param>
+        public static VirtualHub Get(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName)
+        {
+                return ((IVirtualHubsOperations)operations).GetAsync(resourceGroupName, virtualHubName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the details of a VirtualHub.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the VirtualHub.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VirtualHub> GetAsync(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, virtualHubName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates a VirtualHub resource if it doesn&#39;t exist else updates the existing
+        /// VirtualHub.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the VirtualHub.
+        /// </param>
+        public static VirtualHub CreateOrUpdate(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName, VirtualHub virtualHubParameters)
+        {
+                return ((IVirtualHubsOperations)operations).CreateOrUpdateAsync(resourceGroupName, virtualHubName, virtualHubParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates a VirtualHub resource if it doesn&#39;t exist else updates the existing
+        /// VirtualHub.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the VirtualHub.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VirtualHub> CreateOrUpdateAsync(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName, VirtualHub virtualHubParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualHubName, virtualHubParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Updates VirtualHub tags.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the VirtualHub.
+        /// </param>
+        public static VirtualHub UpdateTags(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName, TagsObject virtualHubParameters)
+        {
+                return ((IVirtualHubsOperations)operations).UpdateTagsAsync(resourceGroupName, virtualHubName, virtualHubParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates VirtualHub tags.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the VirtualHub.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VirtualHub> UpdateTagsAsync(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName, TagsObject virtualHubParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, virtualHubName, virtualHubParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes a VirtualHub.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the VirtualHub.
+        /// </param>
+        public static VirtualHubsDeleteHeaders Delete(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName)
+        {
+                return ((IVirtualHubsOperations)operations).DeleteAsync(resourceGroupName, virtualHubName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes a VirtualHub.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualHubName'>
+        /// The name of the VirtualHub.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VirtualHubsDeleteHeaders> DeleteAsync(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
         /// Gets the effective routes configured for the Virtual Hub resource or the
         /// specified resource .
         /// </summary>
@@ -235,7 +238,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -253,7 +256,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -276,7 +279,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -294,7 +297,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -317,7 +320,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -335,7 +338,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -358,7 +361,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -376,7 +379,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -398,14 +401,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
-        public static void BeginDelete(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName)
+        public static VirtualHubsDeleteHeaders BeginDelete(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName)
         {
-                ((IVirtualHubsOperations)operations).BeginDeleteAsync(resourceGroupName, virtualHubName).GetAwaiter().GetResult();
+                return ((IVirtualHubsOperations)operations).BeginDeleteAsync(resourceGroupName, virtualHubName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -415,7 +418,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -423,9 +426,12 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VirtualHubsDeleteHeaders> BeginDeleteAsync(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Gets the effective routes configured for the Virtual Hub resource or the
@@ -435,7 +441,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -453,7 +459,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -476,7 +482,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -494,7 +500,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -517,7 +523,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -535,7 +541,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -546,39 +552,6 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<EffectiveRouteMapRouteList> BeginGetOutboundRoutesAsync(this IVirtualHubsOperations operations, string resourceGroupName, string virtualHubName, GetOutboundRoutesParameters getOutboundRoutesParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginGetOutboundRoutesWithHttpMessagesAsync(resourceGroupName, virtualHubName, getOutboundRoutesParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Lists all the VirtualHubs in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<VirtualHub> ListByResourceGroupNext(this IVirtualHubsOperations operations, string nextPageLink)
-        {
-                return ((IVirtualHubsOperations)operations).ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Lists all the VirtualHubs in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VirtualHub>> ListByResourceGroupNextAsync(this IVirtualHubsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -612,6 +585,39 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VirtualHub>> ListNextAsync(this IVirtualHubsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists all the VirtualHubs in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<VirtualHub> ListByResourceGroupNext(this IVirtualHubsOperations operations, string nextPageLink)
+        {
+                return ((IVirtualHubsOperations)operations).ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all the VirtualHubs in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VirtualHub>> ListByResourceGroupNextAsync(this IVirtualHubsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

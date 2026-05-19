@@ -13,54 +13,51 @@ namespace Microsoft.Azure.Management.Network
     public static partial class ExpressRouteCircuitConnectionsOperationsExtensions
     {
         /// <summary>
-        /// Deletes the specified Express Route Circuit Connection from the specified
+        /// Gets all global reach connections associated with a private peering in an
         /// express route circuit.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='circuitName'>
-        /// The name of the express route circuit.
+        /// The name of express route circuit.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
         /// </param>
-        /// <param name='connectionName'>
-        /// The name of the express route circuit connection.
-        /// </param>
-        public static void Delete(this IExpressRouteCircuitConnectionsOperations operations, string resourceGroupName, string circuitName, string peeringName, string connectionName)
+        public static Microsoft.Rest.Azure.IPage<ExpressRouteCircuitConnection> List(this IExpressRouteCircuitConnectionsOperations operations, string resourceGroupName, string circuitName, string peeringName)
         {
-                ((IExpressRouteCircuitConnectionsOperations)operations).DeleteAsync(resourceGroupName, circuitName, peeringName, connectionName).GetAwaiter().GetResult();
+                return ((IExpressRouteCircuitConnectionsOperations)operations).ListAsync(resourceGroupName, circuitName, peeringName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Deletes the specified Express Route Circuit Connection from the specified
+        /// Gets all global reach connections associated with a private peering in an
         /// express route circuit.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='circuitName'>
-        /// The name of the express route circuit.
+        /// The name of express route circuit.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the express route circuit connection.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IExpressRouteCircuitConnectionsOperations operations, string resourceGroupName, string circuitName, string peeringName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ExpressRouteCircuitConnection>> ListAsync(this IExpressRouteCircuitConnectionsOperations operations, string resourceGroupName, string circuitName, string peeringName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, circuitName, peeringName, connectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, circuitName, peeringName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
         /// Gets the specified Express Route Circuit Connection from the specified
@@ -70,10 +67,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='circuitName'>
-        /// The name of the express route circuit.
+        /// The name of express route circuit.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
@@ -94,10 +91,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='circuitName'>
-        /// The name of the express route circuit.
+        /// The name of express route circuit.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
@@ -123,10 +120,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='circuitName'>
-        /// The name of the express route circuit.
+        /// The name of express route circuit.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
@@ -147,10 +144,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='circuitName'>
-        /// The name of the express route circuit.
+        /// The name of express route circuit.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
@@ -169,101 +166,57 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Gets all global reach connections associated with a private peering in an
+        /// Deletes the specified Express Route Circuit Connection from the specified
         /// express route circuit.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='circuitName'>
-        /// The name of the circuit.
+        /// The name of express route circuit.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<ExpressRouteCircuitConnection> List(this IExpressRouteCircuitConnectionsOperations operations, string resourceGroupName, string circuitName, string peeringName)
+        /// <param name='connectionName'>
+        /// The name of the express route circuit connection.
+        /// </param>
+        public static ExpressRouteCircuitConnectionsDeleteHeaders Delete(this IExpressRouteCircuitConnectionsOperations operations, string resourceGroupName, string circuitName, string peeringName, string connectionName)
         {
-                return ((IExpressRouteCircuitConnectionsOperations)operations).ListAsync(resourceGroupName, circuitName, peeringName).GetAwaiter().GetResult();
+                return ((IExpressRouteCircuitConnectionsOperations)operations).DeleteAsync(resourceGroupName, circuitName, peeringName, connectionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Gets all global reach connections associated with a private peering in an
+        /// Deletes the specified Express Route Circuit Connection from the specified
         /// express route circuit.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='circuitName'>
-        /// The name of the circuit.
+        /// The name of express route circuit.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
+        /// </param>
+        /// <param name='connectionName'>
+        /// The name of the express route circuit connection.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ExpressRouteCircuitConnection>> ListAsync(this IExpressRouteCircuitConnectionsOperations operations, string resourceGroupName, string circuitName, string peeringName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ExpressRouteCircuitConnectionsDeleteHeaders> DeleteAsync(this IExpressRouteCircuitConnectionsOperations operations, string resourceGroupName, string circuitName, string peeringName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, circuitName, peeringName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, circuitName, peeringName, connectionName, null, cancellationToken).ConfigureAwait(false))
             {
-                return _result.Body;
+                return _result.Headers;
             }
-        }
-        /// <summary>
-        /// Deletes the specified Express Route Circuit Connection from the specified
-        /// express route circuit.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='circuitName'>
-        /// The name of the express route circuit.
-        /// </param>
-        /// <param name='peeringName'>
-        /// The name of the peering.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the express route circuit connection.
-        /// </param>
-        public static void BeginDelete(this IExpressRouteCircuitConnectionsOperations operations, string resourceGroupName, string circuitName, string peeringName, string connectionName)
-        {
-                ((IExpressRouteCircuitConnectionsOperations)operations).BeginDeleteAsync(resourceGroupName, circuitName, peeringName, connectionName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes the specified Express Route Circuit Connection from the specified
-        /// express route circuit.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='circuitName'>
-        /// The name of the express route circuit.
-        /// </param>
-        /// <param name='peeringName'>
-        /// The name of the peering.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the express route circuit connection.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IExpressRouteCircuitConnectionsOperations operations, string resourceGroupName, string circuitName, string peeringName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, circuitName, peeringName, connectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Creates or updates a Express Route Circuit Connection in the specified
@@ -273,10 +226,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='circuitName'>
-        /// The name of the express route circuit.
+        /// The name of express route circuit.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
@@ -297,10 +250,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='circuitName'>
-        /// The name of the express route circuit.
+        /// The name of express route circuit.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
@@ -316,6 +269,59 @@ namespace Microsoft.Azure.Management.Network
             using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, circuitName, peeringName, connectionName, expressRouteCircuitConnectionParameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes the specified Express Route Circuit Connection from the specified
+        /// express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='peeringName'>
+        /// The name of the peering.
+        /// </param>
+        /// <param name='connectionName'>
+        /// The name of the express route circuit connection.
+        /// </param>
+        public static ExpressRouteCircuitConnectionsDeleteHeaders BeginDelete(this IExpressRouteCircuitConnectionsOperations operations, string resourceGroupName, string circuitName, string peeringName, string connectionName)
+        {
+                return ((IExpressRouteCircuitConnectionsOperations)operations).BeginDeleteAsync(resourceGroupName, circuitName, peeringName, connectionName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified Express Route Circuit Connection from the specified
+        /// express route circuit.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='peeringName'>
+        /// The name of the peering.
+        /// </param>
+        /// <param name='connectionName'>
+        /// The name of the express route circuit connection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ExpressRouteCircuitConnectionsDeleteHeaders> BeginDeleteAsync(this IExpressRouteCircuitConnectionsOperations operations, string resourceGroupName, string circuitName, string peeringName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, circuitName, peeringName, connectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
             }
         }
         /// <summary>

@@ -13,162 +13,6 @@ namespace Microsoft.Azure.Management.Network
     public static partial class VirtualNetworkAppliancesOperationsExtensions
     {
         /// <summary>
-        /// Deletes the specified virtual network appliance.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='virtualNetworkApplianceName'>
-        /// The name of the virtual network appliance.
-        /// </param>
-        public static VirtualNetworkAppliancesDeleteHeaders Delete(this IVirtualNetworkAppliancesOperations operations, string resourceGroupName, string virtualNetworkApplianceName)
-        {
-                return ((IVirtualNetworkAppliancesOperations)operations).DeleteAsync(resourceGroupName, virtualNetworkApplianceName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes the specified virtual network appliance.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='virtualNetworkApplianceName'>
-        /// The name of the virtual network appliance.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkAppliancesDeleteHeaders> DeleteAsync(this IVirtualNetworkAppliancesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkApplianceName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
-            }
-        }
-        /// <summary>
-        /// Gets information about the specified virtual network appliance.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='virtualNetworkApplianceName'>
-        /// The name of the virtual network appliance.
-        /// </param>
-        public static VirtualNetworkAppliance Get(this IVirtualNetworkAppliancesOperations operations, string resourceGroupName, string virtualNetworkApplianceName)
-        {
-                return ((IVirtualNetworkAppliancesOperations)operations).GetAsync(resourceGroupName, virtualNetworkApplianceName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets information about the specified virtual network appliance.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='virtualNetworkApplianceName'>
-        /// The name of the virtual network appliance.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkAppliance> GetAsync(this IVirtualNetworkAppliancesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, virtualNetworkApplianceName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Creates or updates a virtual network appliance.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='virtualNetworkApplianceName'>
-        /// The name of the virtual network appliance.
-        /// </param>
-        public static VirtualNetworkAppliance CreateOrUpdate(this IVirtualNetworkAppliancesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, VirtualNetworkAppliance parameters)
-        {
-                return ((IVirtualNetworkAppliancesOperations)operations).CreateOrUpdateAsync(resourceGroupName, virtualNetworkApplianceName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates a virtual network appliance.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='virtualNetworkApplianceName'>
-        /// The name of the virtual network appliance.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkAppliance> CreateOrUpdateAsync(this IVirtualNetworkAppliancesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, VirtualNetworkAppliance parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualNetworkApplianceName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Updates a virtual network appliance tags.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='virtualNetworkApplianceName'>
-        /// The name of the virtual network appliance.
-        /// </param>
-        public static VirtualNetworkAppliance UpdateTags(this IVirtualNetworkAppliancesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, TagsObject parameters)
-        {
-                return ((IVirtualNetworkAppliancesOperations)operations).UpdateTagsAsync(resourceGroupName, virtualNetworkApplianceName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Updates a virtual network appliance tags.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='virtualNetworkApplianceName'>
-        /// The name of the virtual network appliance.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkAppliance> UpdateTagsAsync(this IVirtualNetworkAppliancesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, virtualNetworkApplianceName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Gets all virtual network appliances in a subscription.
         /// </summary>
         /// <param name='operations'>
@@ -202,7 +46,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<VirtualNetworkAppliance> List(this IVirtualNetworkAppliancesOperations operations, string resourceGroupName)
         {
@@ -216,7 +60,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -229,20 +73,137 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Gets information about the specified virtual network appliance.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualNetworkApplianceName'>
+        /// The name of the virtual network appliance.
+        /// </param>
+        public static VirtualNetworkAppliance Get(this IVirtualNetworkAppliancesOperations operations, string resourceGroupName, string virtualNetworkApplianceName)
+        {
+                return ((IVirtualNetworkAppliancesOperations)operations).GetAsync(resourceGroupName, virtualNetworkApplianceName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets information about the specified virtual network appliance.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualNetworkApplianceName'>
+        /// The name of the virtual network appliance.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VirtualNetworkAppliance> GetAsync(this IVirtualNetworkAppliancesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, virtualNetworkApplianceName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates a virtual network appliance.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualNetworkApplianceName'>
+        /// The name of the virtual network appliance.
+        /// </param>
+        public static VirtualNetworkAppliance CreateOrUpdate(this IVirtualNetworkAppliancesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, VirtualNetworkAppliance parameters)
+        {
+                return ((IVirtualNetworkAppliancesOperations)operations).CreateOrUpdateAsync(resourceGroupName, virtualNetworkApplianceName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates a virtual network appliance.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualNetworkApplianceName'>
+        /// The name of the virtual network appliance.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VirtualNetworkAppliance> CreateOrUpdateAsync(this IVirtualNetworkAppliancesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, VirtualNetworkAppliance parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualNetworkApplianceName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Updates a virtual network appliance tags.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualNetworkApplianceName'>
+        /// The name of the virtual network appliance.
+        /// </param>
+        public static VirtualNetworkAppliance UpdateTags(this IVirtualNetworkAppliancesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, TagsObject parameters)
+        {
+                return ((IVirtualNetworkAppliancesOperations)operations).UpdateTagsAsync(resourceGroupName, virtualNetworkApplianceName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates a virtual network appliance tags.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualNetworkApplianceName'>
+        /// The name of the virtual network appliance.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VirtualNetworkAppliance> UpdateTagsAsync(this IVirtualNetworkAppliancesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, virtualNetworkApplianceName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Deletes the specified virtual network appliance.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkApplianceName'>
         /// The name of the virtual network appliance.
         /// </param>
-        public static VirtualNetworkAppliancesDeleteHeaders BeginDelete(this IVirtualNetworkAppliancesOperations operations, string resourceGroupName, string virtualNetworkApplianceName)
+        public static VirtualNetworkAppliancesDeleteHeaders Delete(this IVirtualNetworkAppliancesOperations operations, string resourceGroupName, string virtualNetworkApplianceName)
         {
-                return ((IVirtualNetworkAppliancesOperations)operations).BeginDeleteAsync(resourceGroupName, virtualNetworkApplianceName).GetAwaiter().GetResult();
+                return ((IVirtualNetworkAppliancesOperations)operations).DeleteAsync(resourceGroupName, virtualNetworkApplianceName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -252,7 +213,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkApplianceName'>
         /// The name of the virtual network appliance.
@@ -260,9 +221,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkAppliancesDeleteHeaders> BeginDeleteAsync(this IVirtualNetworkAppliancesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VirtualNetworkAppliancesDeleteHeaders> DeleteAsync(this IVirtualNetworkAppliancesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkApplianceName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkApplianceName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
             }
@@ -274,7 +235,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkApplianceName'>
         /// The name of the virtual network appliance.
@@ -291,7 +252,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkApplianceName'>
         /// The name of the virtual network appliance.
@@ -304,6 +265,45 @@ namespace Microsoft.Azure.Management.Network
             using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualNetworkApplianceName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes the specified virtual network appliance.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualNetworkApplianceName'>
+        /// The name of the virtual network appliance.
+        /// </param>
+        public static VirtualNetworkAppliancesDeleteHeaders BeginDelete(this IVirtualNetworkAppliancesOperations operations, string resourceGroupName, string virtualNetworkApplianceName)
+        {
+                return ((IVirtualNetworkAppliancesOperations)operations).BeginDeleteAsync(resourceGroupName, virtualNetworkApplianceName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the specified virtual network appliance.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualNetworkApplianceName'>
+        /// The name of the virtual network appliance.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VirtualNetworkAppliancesDeleteHeaders> BeginDeleteAsync(this IVirtualNetworkAppliancesOperations operations, string resourceGroupName, string virtualNetworkApplianceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkApplianceName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
             }
         }
         /// <summary>

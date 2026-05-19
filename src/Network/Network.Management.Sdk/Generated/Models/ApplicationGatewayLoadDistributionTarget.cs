@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Load Distribution Target of an application gateway.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationGatewayLoadDistributionTarget : SubResource
+    public partial class ApplicationGatewayLoadDistributionTarget : CommonSubResource
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationGatewayLoadDistributionTarget class.
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="backendAddressPool">Backend address pool resource of the application gateway.
         /// </param>
-        public ApplicationGatewayLoadDistributionTarget(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), int? weightPerServer = default(int?), SubResource backendAddressPool = default(SubResource))
+        public ApplicationGatewayLoadDistributionTarget(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), int? weightPerServer = default(int?), CommonSubResource backendAddressPool = default(CommonSubResource))
 
         : base(id)
         {
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets backend address pool resource of the application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.backendAddressPool")]
-        public SubResource BackendAddressPool {get; set; }
+        public CommonSubResource BackendAddressPool {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

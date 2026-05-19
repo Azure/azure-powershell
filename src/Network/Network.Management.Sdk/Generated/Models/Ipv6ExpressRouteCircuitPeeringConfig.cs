@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="state">The state of peering.
         /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
-        public Ipv6ExpressRouteCircuitPeeringConfig(string primaryPeerAddressPrefix = default(string), string secondaryPeerAddressPrefix = default(string), ExpressRouteCircuitPeeringConfig microsoftPeeringConfig = default(ExpressRouteCircuitPeeringConfig), SubResource routeFilter = default(SubResource), string state = default(string))
+        public Ipv6ExpressRouteCircuitPeeringConfig(string primaryPeerAddressPrefix = default(string), string secondaryPeerAddressPrefix = default(string), ExpressRouteCircuitPeeringConfig microsoftPeeringConfig = default(ExpressRouteCircuitPeeringConfig), CommonSubResource routeFilter = default(CommonSubResource), string state = default(string))
 
         {
             this.PrimaryPeerAddressPrefix = primaryPeerAddressPrefix;
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the reference to the RouteFilter resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "routeFilter")]
-        public SubResource RouteFilter {get; set; }
+        public CommonSubResource RouteFilter {get; set; }
 
         /// <summary>
         /// Gets or sets the state of peering. Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;

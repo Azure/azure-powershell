@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// VirtualHubRouteTableV2 Resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class VirtualHubRouteTableV2 : SubResource
+    public partial class VirtualHubRouteTableV2 : CommonSubResource
     {
         /// <summary>
         /// Initializes a new instance of the VirtualHubRouteTableV2 class.

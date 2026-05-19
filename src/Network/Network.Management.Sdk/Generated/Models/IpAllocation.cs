@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// IpAllocation resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class IpAllocation : Resource
+    public partial class IpAllocation : CommonResource
     {
         /// <summary>
         /// Initializes a new instance of the IpAllocation class.
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="allocationTags">IpAllocation tags.
         /// </param>
-        public IpAllocation(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), SubResource subnet = default(SubResource), SubResource virtualNetwork = default(SubResource), string propertiesType = default(string), string prefix = default(string), int? prefixLength = default(int?), string prefixType = default(string), string ipamAllocationId = default(string), System.Collections.Generic.IDictionary<string, string> allocationTags = default(System.Collections.Generic.IDictionary<string, string>))
+        public IpAllocation(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), CommonSubResource subnet = default(CommonSubResource), CommonSubResource virtualNetwork = default(CommonSubResource), string propertiesType = default(string), string prefix = default(string), int? prefixLength = default(int?), string prefixType = default(string), string ipamAllocationId = default(string), System.Collections.Generic.IDictionary<string, string> allocationTags = default(System.Collections.Generic.IDictionary<string, string>))
 
         : base(id, name, type, location, tags)
         {
@@ -99,14 +99,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets the Subnet that using the prefix of this IpAllocation resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.subnet")]
-        public SubResource Subnet {get; private set; }
+        public CommonSubResource Subnet {get; private set; }
 
         /// <summary>
         /// Gets the VirtualNetwork that using the prefix of this IpAllocation
         /// resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.virtualNetwork")]
-        public SubResource VirtualNetwork {get; private set; }
+        public CommonSubResource VirtualNetwork {get; private set; }
 
         /// <summary>
         /// Gets or sets the type for the IpAllocation. Possible values include: &#39;Undefined&#39;, &#39;Hypernet&#39;

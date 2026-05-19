@@ -14,19 +14,16 @@ namespace Microsoft.Azure.Management.Network
     public partial interface IRouteFilterRulesOperations
     {
         /// <summary>
-        /// Deletes the specified rule from a route filter.
+        /// Gets all RouteFilterRules in a route filter.
         /// </summary>
         /// <remarks>
-        /// Deletes the specified rule from a route filter.
+        /// Gets all RouteFilterRules in a route filter.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='routeFilterName'>
         /// The name of the route filter.
-        /// </param>
-        /// <param name='ruleName'>
-        /// The name of the rule.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -37,7 +34,10 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<RouteFilterRulesDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string routeFilterName, string ruleName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RouteFilterRule>>> ListByRouteFilterWithHttpMessagesAsync(string resourceGroupName, string routeFilterName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the specified rule from a route filter.
@@ -46,13 +46,13 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the specified rule from a route filter.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='routeFilterName'>
         /// The name of the route filter.
         /// </param>
         /// <param name='ruleName'>
-        /// The name of the rule.
+        /// The name of the route filter rule.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Network
         /// Creates or updates a route in the specified route filter.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='routeFilterName'>
         /// The name of the route filter.
@@ -98,19 +98,51 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RouteFilterRule>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string routeFilterName, string ruleName, RouteFilterRule routeFilterRuleParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RouteFilterRule,RouteFilterRulesCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string routeFilterName, string ruleName, RouteFilterRule routeFilterRuleParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets all RouteFilterRules in a route filter.
+        /// Deletes the specified rule from a route filter.
         /// </summary>
         /// <remarks>
-        /// Gets all RouteFilterRules in a route filter.
+        /// Deletes the specified rule from a route filter.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='routeFilterName'>
         /// The name of the route filter.
+        /// </param>
+        /// <param name='ruleName'>
+        /// The name of the route filter rule.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<RouteFilterRulesDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string routeFilterName, string ruleName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Creates or updates a route in the specified route filter.
+        /// </summary>
+        /// <remarks>
+        /// Creates or updates a route in the specified route filter.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='routeFilterName'>
+        /// The name of the route filter.
+        /// </param>
+        /// <param name='ruleName'>
+        /// The name of the route filter rule.
+        /// </param>
+        /// <param name='routeFilterRuleParameters'>
+        /// Parameters supplied to the create or update route filter rule operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -124,7 +156,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RouteFilterRule>>> ListByRouteFilterWithHttpMessagesAsync(string resourceGroupName, string routeFilterName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RouteFilterRule,RouteFilterRulesCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string routeFilterName, string ruleName, RouteFilterRule routeFilterRuleParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes the specified rule from a route filter.
@@ -133,13 +165,13 @@ namespace Microsoft.Azure.Management.Network
         /// Deletes the specified rule from a route filter.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='routeFilterName'>
         /// The name of the route filter.
         /// </param>
         /// <param name='ruleName'>
-        /// The name of the rule.
+        /// The name of the route filter rule.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -151,38 +183,6 @@ namespace Microsoft.Azure.Management.Network
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<RouteFilterRulesDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string routeFilterName, string ruleName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Creates or updates a route in the specified route filter.
-        /// </summary>
-        /// <remarks>
-        /// Creates or updates a route in the specified route filter.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='routeFilterName'>
-        /// The name of the route filter.
-        /// </param>
-        /// <param name='ruleName'>
-        /// The name of the route filter rule.
-        /// </param>
-        /// <param name='routeFilterRuleParameters'>
-        /// Parameters supplied to the create or update route filter rule operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<RouteFilterRule>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string routeFilterName, string ruleName, RouteFilterRule routeFilterRuleParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets all RouteFilterRules in a route filter.

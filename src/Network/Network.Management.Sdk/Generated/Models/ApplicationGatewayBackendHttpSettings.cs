@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Backend address pool settings of an application gateway.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationGatewayBackendHttpSettings : SubResource
+    public partial class ApplicationGatewayBackendHttpSettings : CommonSubResource
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationGatewayBackendHttpSettings class.
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// backend. By default, the application gateway uses the incoming request’s
         /// host header as the SNI. Default value is null.
         /// </param>
-        public ApplicationGatewayBackendHttpSettings(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), int? port = default(int?), string protocol = default(string), string cookieBasedAffinity = default(string), int? requestTimeout = default(int?), SubResource probe = default(SubResource), System.Collections.Generic.IList<SubResource> authenticationCertificates = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> trustedRootCertificates = default(System.Collections.Generic.IList<SubResource>), ApplicationGatewayConnectionDraining connectionDraining = default(ApplicationGatewayConnectionDraining), string hostName = default(string), bool? pickHostNameFromBackendAddress = default(bool?), string affinityCookieName = default(string), bool? probeEnabled = default(bool?), string path = default(string), bool? dedicatedBackendConnection = default(bool?), bool? validateCertChainAndExpiry = default(bool?), bool? validateSni = default(bool?), string sniName = default(string))
+        public ApplicationGatewayBackendHttpSettings(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), int? port = default(int?), string protocol = default(string), string cookieBasedAffinity = default(string), int? requestTimeout = default(int?), CommonSubResource probe = default(CommonSubResource), System.Collections.Generic.IList<CommonSubResource> authenticationCertificates = default(System.Collections.Generic.IList<CommonSubResource>), System.Collections.Generic.IList<CommonSubResource> trustedRootCertificates = default(System.Collections.Generic.IList<CommonSubResource>), ApplicationGatewayConnectionDraining connectionDraining = default(ApplicationGatewayConnectionDraining), string hostName = default(string), bool? pickHostNameFromBackendAddress = default(bool?), string affinityCookieName = default(string), bool? probeEnabled = default(bool?), string path = default(string), bool? dedicatedBackendConnection = default(bool?), bool? validateCertChainAndExpiry = default(bool?), bool? validateSni = default(bool?), string sniName = default(string))
 
         : base(id)
         {
@@ -192,21 +192,21 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets probe resource of an application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.probe")]
-        public SubResource Probe {get; set; }
+        public CommonSubResource Probe {get; set; }
 
         /// <summary>
         /// Gets or sets array of references to application gateway authentication
         /// certificates.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.authenticationCertificates")]
-        public System.Collections.Generic.IList<SubResource> AuthenticationCertificates {get; set; }
+        public System.Collections.Generic.IList<CommonSubResource> AuthenticationCertificates {get; set; }
 
         /// <summary>
         /// Gets or sets array of references to application gateway trusted root
         /// certificates.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.trustedRootCertificates")]
-        public System.Collections.Generic.IList<SubResource> TrustedRootCertificates {get; set; }
+        public System.Collections.Generic.IList<CommonSubResource> TrustedRootCertificates {get; set; }
 
         /// <summary>
         /// Gets or sets connection draining of the backend http settings resource.

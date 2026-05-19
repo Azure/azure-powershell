@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Backend address pool settings of an application gateway.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationGatewayBackendSettings : SubResource
+    public partial class ApplicationGatewayBackendSettings : CommonSubResource
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationGatewayBackendSettings class.
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="enableL4ClientIPPreservation">Whether to send Proxy Protocol header to backend servers over TCP or TLS
         /// protocols. Default value is false.
         /// </param>
-        public ApplicationGatewayBackendSettings(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), int? port = default(int?), string protocol = default(string), int? timeout = default(int?), SubResource probe = default(SubResource), System.Collections.Generic.IList<SubResource> trustedRootCertificates = default(System.Collections.Generic.IList<SubResource>), string hostName = default(string), bool? pickHostNameFromBackendAddress = default(bool?), bool? enableL4ClientIPPreservation = default(bool?))
+        public ApplicationGatewayBackendSettings(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), int? port = default(int?), string protocol = default(string), int? timeout = default(int?), CommonSubResource probe = default(CommonSubResource), System.Collections.Generic.IList<CommonSubResource> trustedRootCertificates = default(System.Collections.Generic.IList<CommonSubResource>), string hostName = default(string), bool? pickHostNameFromBackendAddress = default(bool?), bool? enableL4ClientIPPreservation = default(bool?))
 
         : base(id)
         {
@@ -143,14 +143,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets probe resource of an application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.probe")]
-        public SubResource Probe {get; set; }
+        public CommonSubResource Probe {get; set; }
 
         /// <summary>
         /// Gets or sets array of references to application gateway trusted root
         /// certificates.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.trustedRootCertificates")]
-        public System.Collections.Generic.IList<SubResource> TrustedRootCertificates {get; set; }
+        public System.Collections.Generic.IList<CommonSubResource> TrustedRootCertificates {get; set; }
 
         /// <summary>
         /// Gets or sets server name indication to be sent to the backend servers for

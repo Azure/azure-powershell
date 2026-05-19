@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -82,19 +82,64 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Gets the specific Pool resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='poolName'>
+        /// Pool resource name.
+        /// </param>
+        public static IpamPool Get(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName)
+        {
+                return ((IIpamPoolsOperations)operations).GetAsync(resourceGroupName, networkManagerName, poolName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the specific Pool resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='poolName'>
+        /// Pool resource name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<IpamPool> GetAsync(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Creates/Updates the Pool resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='poolName'>
-        /// IP Address Manager Pool resource name.
+        /// Pool resource name.
         /// </param>
         /// <param name='ifMatch'>
         /// The entity state (ETag) version of the pool to update. This value can be
@@ -112,13 +157,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='poolName'>
-        /// IP Address Manager Pool resource name.
+        /// Pool resource name.
         /// </param>
         /// <param name='ifMatch'>
         /// The entity state (ETag) version of the pool to update. This value can be
@@ -141,13 +186,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='poolName'>
-        /// IP Address Manager Pool resource name.
+        /// Pool resource name.
         /// </param>
         /// <param name='ifMatch'>
         /// The entity state (ETag) version of the pool to update. This value can be
@@ -165,13 +210,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='poolName'>
-        /// IP Address Manager Pool resource name.
+        /// Pool resource name.
         /// </param>
         /// <param name='ifMatch'>
         /// The entity state (ETag) version of the pool to update. This value can be
@@ -188,58 +233,13 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Gets the specific Pool resource.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='poolName'>
-        /// Pool resource name.
-        /// </param>
-        public static IpamPool Get(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName)
-        {
-                return ((IIpamPoolsOperations)operations).GetAsync(resourceGroupName, networkManagerName, poolName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the specific Pool resource.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='poolName'>
-        /// Pool resource name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<IpamPool> GetAsync(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Delete the Pool resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -382,13 +382,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='poolName'>
-        /// IP Address Manager Pool resource name.
+        /// Pool resource name.
         /// </param>
         /// <param name='ifMatch'>
         /// The entity state (ETag) version of the pool to update. This value can be
@@ -406,13 +406,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='poolName'>
-        /// IP Address Manager Pool resource name.
+        /// Pool resource name.
         /// </param>
         /// <param name='ifMatch'>
         /// The entity state (ETag) version of the pool to update. This value can be
@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -459,7 +459,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Custom IP prefix resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class CustomIpPrefix : Resource
+    public partial class CustomIpPrefix : CommonResource
     {
         /// <summary>
         /// Initializes a new instance of the CustomIpPrefix class.
@@ -46,8 +46,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
         /// </param>
 
-        /// <param name="zones">A list of availability zones denoting the IP allocated for the resource
-        /// needs to come from.
+        /// <param name="zones">A list of availability zones denoting where the resource needs to come
+        /// from.
         /// </param>
 
         /// <param name="commissionedState">The commissioned state of the Custom IP Prefix.
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="failedReason">The reason why resource is in failed state.
         /// </param>
-        public CustomIpPrefix(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string etag = default(string), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), string commissionedState = default(string), string geo = default(string), string provisioningState = default(string), string asn = default(string), string cidr = default(string), string signedMessage = default(string), string authorizationMessage = default(string), SubResource customIPPrefixParent = default(SubResource), System.Collections.Generic.IList<SubResource> childCustomIPPrefixes = default(System.Collections.Generic.IList<SubResource>), bool? expressRouteAdvertise = default(bool?), bool? noInternetAdvertise = default(bool?), string prefixType = default(string), System.Collections.Generic.IList<SubResource> publicIPPrefixes = default(System.Collections.Generic.IList<SubResource>), string resourceGuid = default(string), string failedReason = default(string))
+        public CustomIpPrefix(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), CommonExtendedLocation extendedLocation = default(CommonExtendedLocation), string etag = default(string), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), string commissionedState = default(string), string geo = default(string), string provisioningState = default(string), string asn = default(string), string cidr = default(string), string signedMessage = default(string), string authorizationMessage = default(string), CommonSubResource customIPPrefixParent = default(CommonSubResource), System.Collections.Generic.IList<CommonSubResource> childCustomIPPrefixes = default(System.Collections.Generic.IList<CommonSubResource>), bool? expressRouteAdvertise = default(bool?), bool? noInternetAdvertise = default(bool?), string prefixType = default(string), System.Collections.Generic.IList<CommonSubResource> publicIPPrefixes = default(System.Collections.Generic.IList<CommonSubResource>), string resourceGuid = default(string), string failedReason = default(string))
 
         : base(id, name, type, location, tags)
         {
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the extended location of the custom IP prefix.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "extendedLocation")]
-        public ExtendedLocation ExtendedLocation {get; set; }
+        public CommonExtendedLocation ExtendedLocation {get; set; }
 
         /// <summary>
         /// Gets a unique read-only string that changes whenever the resource is
@@ -144,8 +144,8 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Etag {get; private set; }
 
         /// <summary>
-        /// Gets or sets a list of availability zones denoting the IP allocated for the
-        /// resource needs to come from.
+        /// Gets or sets a list of availability zones denoting where the resource needs
+        /// to come from.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "zones")]
         public System.Collections.Generic.IList<string> Zones {get; set; }
@@ -197,13 +197,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the Parent CustomIpPrefix for IPv6 /64 CustomIpPrefix.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.customIpPrefixParent")]
-        public SubResource CustomIPPrefixParent {get; set; }
+        public CommonSubResource CustomIPPrefixParent {get; set; }
 
         /// <summary>
         /// Gets the list of all Children for IPv6 /48 CustomIpPrefix.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.childCustomIpPrefixes")]
-        public System.Collections.Generic.IList<SubResource> ChildCustomIPPrefixes {get; private set; }
+        public System.Collections.Generic.IList<CommonSubResource> ChildCustomIPPrefixes {get; private set; }
 
         /// <summary>
         /// Gets or sets whether to do express route advertise.
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets the list of all referenced PublicIpPrefixes.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicIpPrefixes")]
-        public System.Collections.Generic.IList<SubResource> PublicIPPrefixes {get; private set; }
+        public System.Collections.Generic.IList<CommonSubResource> PublicIPPrefixes {get; private set; }
 
         /// <summary>
         /// Gets the resource GUID property of the custom IP prefix resource.

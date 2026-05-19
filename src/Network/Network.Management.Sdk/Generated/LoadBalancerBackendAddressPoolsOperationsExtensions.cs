@@ -19,12 +19,12 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<BackendAddressPool> List(this ILoadBalancerBackendAddressPoolsOperations operations, string resourceGroupName, string loadBalancerName)
+        public static Microsoft.Rest.Azure.IPage<CommonBackendAddressPool> List(this ILoadBalancerBackendAddressPoolsOperations operations, string resourceGroupName, string loadBalancerName)
         {
                 return ((ILoadBalancerBackendAddressPoolsOperations)operations).ListAsync(resourceGroupName, loadBalancerName).GetAwaiter().GetResult();
         }
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<BackendAddressPool>> ListAsync(this ILoadBalancerBackendAddressPoolsOperations operations, string resourceGroupName, string loadBalancerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonBackendAddressPool>> ListAsync(this ILoadBalancerBackendAddressPoolsOperations operations, string resourceGroupName, string loadBalancerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, loadBalancerName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='backendAddressPoolName'>
         /// The name of the backend address pool.
         /// </param>
-        public static BackendAddressPool Get(this ILoadBalancerBackendAddressPoolsOperations operations, string resourceGroupName, string loadBalancerName, string backendAddressPoolName)
+        public static CommonBackendAddressPool Get(this ILoadBalancerBackendAddressPoolsOperations operations, string resourceGroupName, string loadBalancerName, string backendAddressPoolName)
         {
                 return ((ILoadBalancerBackendAddressPoolsOperations)operations).GetAsync(resourceGroupName, loadBalancerName, backendAddressPoolName).GetAwaiter().GetResult();
         }
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<BackendAddressPool> GetAsync(this ILoadBalancerBackendAddressPoolsOperations operations, string resourceGroupName, string loadBalancerName, string backendAddressPoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<CommonBackendAddressPool> GetAsync(this ILoadBalancerBackendAddressPoolsOperations operations, string resourceGroupName, string loadBalancerName, string backendAddressPoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, loadBalancerName, backendAddressPoolName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='backendAddressPoolName'>
         /// The name of the backend address pool.
         /// </param>
-        public static BackendAddressPool CreateOrUpdate(this ILoadBalancerBackendAddressPoolsOperations operations, string resourceGroupName, string loadBalancerName, string backendAddressPoolName, BackendAddressPool parameters)
+        public static CommonBackendAddressPool CreateOrUpdate(this ILoadBalancerBackendAddressPoolsOperations operations, string resourceGroupName, string loadBalancerName, string backendAddressPoolName, CommonBackendAddressPool parameters)
         {
                 return ((ILoadBalancerBackendAddressPoolsOperations)operations).CreateOrUpdateAsync(resourceGroupName, loadBalancerName, backendAddressPoolName, parameters).GetAwaiter().GetResult();
         }
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<BackendAddressPool> CreateOrUpdateAsync(this ILoadBalancerBackendAddressPoolsOperations operations, string resourceGroupName, string loadBalancerName, string backendAddressPoolName, BackendAddressPool parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<CommonBackendAddressPool> CreateOrUpdateAsync(this ILoadBalancerBackendAddressPoolsOperations operations, string resourceGroupName, string loadBalancerName, string backendAddressPoolName, CommonBackendAddressPool parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, loadBalancerName, backendAddressPoolName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -156,9 +156,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='backendAddressPoolName'>
         /// The name of the backend address pool.
         /// </param>
-        public static void Delete(this ILoadBalancerBackendAddressPoolsOperations operations, string resourceGroupName, string loadBalancerName, string backendAddressPoolName)
+        public static LoadBalancerBackendAddressPoolsDeleteHeaders Delete(this ILoadBalancerBackendAddressPoolsOperations operations, string resourceGroupName, string loadBalancerName, string backendAddressPoolName)
         {
-                ((ILoadBalancerBackendAddressPoolsOperations)operations).DeleteAsync(resourceGroupName, loadBalancerName, backendAddressPoolName).GetAwaiter().GetResult();
+                return ((ILoadBalancerBackendAddressPoolsOperations)operations).DeleteAsync(resourceGroupName, loadBalancerName, backendAddressPoolName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -179,9 +179,12 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this ILoadBalancerBackendAddressPoolsOperations operations, string resourceGroupName, string loadBalancerName, string backendAddressPoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<LoadBalancerBackendAddressPoolsDeleteHeaders> DeleteAsync(this ILoadBalancerBackendAddressPoolsOperations operations, string resourceGroupName, string loadBalancerName, string backendAddressPoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, loadBalancerName, backendAddressPoolName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, loadBalancerName, backendAddressPoolName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Creates or updates a load balancer backend address pool.
@@ -190,7 +193,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -198,7 +201,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='backendAddressPoolName'>
         /// The name of the backend address pool.
         /// </param>
-        public static BackendAddressPool BeginCreateOrUpdate(this ILoadBalancerBackendAddressPoolsOperations operations, string resourceGroupName, string loadBalancerName, string backendAddressPoolName, BackendAddressPool parameters)
+        public static CommonBackendAddressPool BeginCreateOrUpdate(this ILoadBalancerBackendAddressPoolsOperations operations, string resourceGroupName, string loadBalancerName, string backendAddressPoolName, CommonBackendAddressPool parameters)
         {
                 return ((ILoadBalancerBackendAddressPoolsOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, loadBalancerName, backendAddressPoolName, parameters).GetAwaiter().GetResult();
         }
@@ -210,7 +213,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -221,7 +224,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<BackendAddressPool> BeginCreateOrUpdateAsync(this ILoadBalancerBackendAddressPoolsOperations operations, string resourceGroupName, string loadBalancerName, string backendAddressPoolName, BackendAddressPool parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<CommonBackendAddressPool> BeginCreateOrUpdateAsync(this ILoadBalancerBackendAddressPoolsOperations operations, string resourceGroupName, string loadBalancerName, string backendAddressPoolName, CommonBackendAddressPool parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, loadBalancerName, backendAddressPoolName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -235,7 +238,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -243,9 +246,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='backendAddressPoolName'>
         /// The name of the backend address pool.
         /// </param>
-        public static void BeginDelete(this ILoadBalancerBackendAddressPoolsOperations operations, string resourceGroupName, string loadBalancerName, string backendAddressPoolName)
+        public static LoadBalancerBackendAddressPoolsDeleteHeaders BeginDelete(this ILoadBalancerBackendAddressPoolsOperations operations, string resourceGroupName, string loadBalancerName, string backendAddressPoolName)
         {
-                ((ILoadBalancerBackendAddressPoolsOperations)operations).BeginDeleteAsync(resourceGroupName, loadBalancerName, backendAddressPoolName).GetAwaiter().GetResult();
+                return ((ILoadBalancerBackendAddressPoolsOperations)operations).BeginDeleteAsync(resourceGroupName, loadBalancerName, backendAddressPoolName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -255,7 +258,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -266,9 +269,12 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this ILoadBalancerBackendAddressPoolsOperations operations, string resourceGroupName, string loadBalancerName, string backendAddressPoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<LoadBalancerBackendAddressPoolsDeleteHeaders> BeginDeleteAsync(this ILoadBalancerBackendAddressPoolsOperations operations, string resourceGroupName, string loadBalancerName, string backendAddressPoolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, loadBalancerName, backendAddressPoolName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, loadBalancerName, backendAddressPoolName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Gets all the load balancer backed address pools.
@@ -279,7 +285,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<BackendAddressPool> ListNext(this ILoadBalancerBackendAddressPoolsOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<CommonBackendAddressPool> ListNext(this ILoadBalancerBackendAddressPoolsOperations operations, string nextPageLink)
         {
                 return ((ILoadBalancerBackendAddressPoolsOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -296,7 +302,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<BackendAddressPool>> ListNextAsync(this ILoadBalancerBackendAddressPoolsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonBackendAddressPool>> ListNextAsync(this ILoadBalancerBackendAddressPoolsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {

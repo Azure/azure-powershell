@@ -14,19 +14,16 @@ namespace Microsoft.Azure.Management.Network
     public partial interface IExpressRoutePortAuthorizationsOperations
     {
         /// <summary>
-        /// Deletes the specified authorization from the specified express route port.
+        /// Gets all authorizations in an express route port.
         /// </summary>
         /// <remarks>
-        /// Deletes the specified authorization from the specified express route port.
+        /// Gets all authorizations in an express route port.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRoutePortName'>
         /// The name of the express route port.
-        /// </param>
-        /// <param name='authorizationName'>
-        /// The name of the authorization.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -37,7 +34,10 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ExpressRoutePortAuthorizationsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, string authorizationName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ExpressRoutePortAuthorization>>> ListWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the specified authorization from the specified express route port.
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the specified authorization from the specified express route port.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRoutePortName'>
         /// The name of the express route port.
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Network
         /// Creates or updates an authorization in the specified express route port.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRoutePortName'>
         /// The name of the express route port.
@@ -99,19 +99,52 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRoutePortAuthorization>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, string authorizationName, ExpressRoutePortAuthorization authorizationParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRoutePortAuthorization,ExpressRoutePortAuthorizationsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, string authorizationName, ExpressRoutePortAuthorization authorizationParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets all authorizations in an express route port.
+        /// Deletes the specified authorization from the specified express route port.
         /// </summary>
         /// <remarks>
-        /// Gets all authorizations in an express route port.
+        /// Deletes the specified authorization from the specified express route port.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRoutePortName'>
         /// The name of the express route port.
+        /// </param>
+        /// <param name='authorizationName'>
+        /// The name of the authorization.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ExpressRoutePortAuthorizationsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, string authorizationName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Creates or updates an authorization in the specified express route port.
+        /// </summary>
+        /// <remarks>
+        /// Creates or updates an authorization in the specified express route port.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='expressRoutePortName'>
+        /// The name of the express route port.
+        /// </param>
+        /// <param name='authorizationName'>
+        /// The name of the authorization.
+        /// </param>
+        /// <param name='authorizationParameters'>
+        /// Parameters supplied to the create or update express route port
+        /// authorization operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -125,7 +158,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ExpressRoutePortAuthorization>>> ListWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRoutePortAuthorization,ExpressRoutePortAuthorizationsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, string authorizationName, ExpressRoutePortAuthorization authorizationParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes the specified authorization from the specified express route port.
@@ -134,7 +167,7 @@ namespace Microsoft.Azure.Management.Network
         /// Deletes the specified authorization from the specified express route port.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='expressRoutePortName'>
         /// The name of the express route port.
@@ -152,39 +185,6 @@ namespace Microsoft.Azure.Management.Network
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ExpressRoutePortAuthorizationsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, string authorizationName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Creates or updates an authorization in the specified express route port.
-        /// </summary>
-        /// <remarks>
-        /// Creates or updates an authorization in the specified express route port.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='expressRoutePortName'>
-        /// The name of the express route port.
-        /// </param>
-        /// <param name='authorizationName'>
-        /// The name of the authorization.
-        /// </param>
-        /// <param name='authorizationParameters'>
-        /// Parameters supplied to the create or update express route port
-        /// authorization operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRoutePortAuthorization>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, string authorizationName, ExpressRoutePortAuthorization authorizationParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets all authorizations in an express route port.

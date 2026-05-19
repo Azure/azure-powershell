@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="format">Parameters that define the flow log format.
         /// </param>
-        public FlowLogInformation(string targetResourceId, string storageId, bool enabled, TrafficAnalyticsProperties flowAnalyticsConfiguration = default(TrafficAnalyticsProperties), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string enabledFilteringCriteria = default(string), string recordTypes = default(string), RetentionPolicyParameters retentionPolicy = default(RetentionPolicyParameters), FlowLogFormatParameters format = default(FlowLogFormatParameters))
+        public FlowLogInformation(string targetResourceId, string storageId, bool enabled, CommonTrafficAnalyticsProperties flowAnalyticsConfiguration = default(CommonTrafficAnalyticsProperties), CommonManagedServiceIdentity identity = default(CommonManagedServiceIdentity), string enabledFilteringCriteria = default(string), string recordTypes = default(string), CommonRetentionPolicyParameters retentionPolicy = default(CommonRetentionPolicyParameters), CommonFlowLogFormatParameters format = default(CommonFlowLogFormatParameters))
 
         {
             this.TargetResourceId = targetResourceId;
@@ -92,13 +92,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets parameters that define the configuration of traffic analytics.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "flowAnalyticsConfiguration")]
-        public TrafficAnalyticsProperties FlowAnalyticsConfiguration {get; set; }
+        public CommonTrafficAnalyticsProperties FlowAnalyticsConfiguration {get; set; }
 
         /// <summary>
         /// Gets or sets flowLog resource Managed Identity
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
-        public ManagedServiceIdentity Identity {get; set; }
+        public CommonManagedServiceIdentity Identity {get; set; }
 
         /// <summary>
         /// Gets or sets iD of the storage account which is used to store the flow log.
@@ -136,13 +136,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets parameters that define the retention policy for flow log.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.retentionPolicy")]
-        public RetentionPolicyParameters RetentionPolicy {get; set; }
+        public CommonRetentionPolicyParameters RetentionPolicy {get; set; }
 
         /// <summary>
         /// Gets or sets parameters that define the flow log format.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.format")]
-        public FlowLogFormatParameters Format {get; set; }
+        public CommonFlowLogFormatParameters Format {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

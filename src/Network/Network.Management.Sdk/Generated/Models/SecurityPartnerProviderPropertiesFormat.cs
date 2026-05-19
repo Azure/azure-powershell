@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="virtualHub">The virtualHub to which the Security Partner Provider belongs.
         /// </param>
-        public SecurityPartnerProviderPropertiesFormat(string provisioningState = default(string), string securityProviderName = default(string), string connectionStatus = default(string), SubResource virtualHub = default(SubResource))
+        public SecurityPartnerProviderPropertiesFormat(string provisioningState = default(string), string securityProviderName = default(string), string connectionStatus = default(string), CommonSubResource virtualHub = default(CommonSubResource))
 
         {
             this.ProvisioningState = provisioningState;
@@ -75,6 +75,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the virtualHub to which the Security Partner Provider belongs.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "virtualHub")]
-        public SubResource VirtualHub {get; set; }
+        public CommonSubResource VirtualHub {get; set; }
     }
 }

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="effectiveSecurityRules">Collection of effective security rules.
         /// </param>
-        public SecurityRuleAssociations(NetworkInterfaceAssociation networkInterfaceAssociation = default(NetworkInterfaceAssociation), SubnetAssociation subnetAssociation = default(SubnetAssociation), System.Collections.Generic.IList<SecurityRule> defaultSecurityRules = default(System.Collections.Generic.IList<SecurityRule>), System.Collections.Generic.IList<EffectiveNetworkSecurityRule> effectiveSecurityRules = default(System.Collections.Generic.IList<EffectiveNetworkSecurityRule>))
+        public SecurityRuleAssociations(NetworkInterfaceAssociation networkInterfaceAssociation = default(NetworkInterfaceAssociation), SubnetAssociation subnetAssociation = default(SubnetAssociation), System.Collections.Generic.IList<CommonSecurityRule> defaultSecurityRules = default(System.Collections.Generic.IList<CommonSecurityRule>), System.Collections.Generic.IList<EffectiveNetworkSecurityRule> effectiveSecurityRules = default(System.Collections.Generic.IList<EffectiveNetworkSecurityRule>))
 
         {
             this.NetworkInterfaceAssociation = networkInterfaceAssociation;
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// group.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "defaultSecurityRules")]
-        public System.Collections.Generic.IList<SecurityRule> DefaultSecurityRules {get; set; }
+        public System.Collections.Generic.IList<CommonSecurityRule> DefaultSecurityRules {get; set; }
 
         /// <summary>
         /// Gets or sets collection of effective security rules.

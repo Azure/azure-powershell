@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// VpnServerConfigurationPolicyGroup Resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class VpnServerConfigurationPolicyGroup : SubResource
+    public partial class VpnServerConfigurationPolicyGroup : CommonSubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the VpnServerConfigurationPolicyGroup class.
@@ -28,14 +28,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
-        /// </param>
-
-        /// <param name="name">The name of the resource that is unique within a resource group. This name
-        /// can be used to access the resource.
+        /// <param name="name">Name of the resource.
         /// </param>
 
         /// <param name="type">Resource type.
+        /// </param>
+
+        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the VpnServerConfigurationPolicyGroup resource.
@@ -53,13 +52,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="p2SConnectionConfigurations">List of references to P2SConnectionConfigurations.
         /// </param>
-        public VpnServerConfigurationPolicyGroup(string id = default(string), string etag = default(string), string name = default(string), string type = default(string), string provisioningState = default(string), bool? isDefault = default(bool?), int? priority = default(int?), System.Collections.Generic.IList<VpnServerConfigurationPolicyGroupMember> policyMembers = default(System.Collections.Generic.IList<VpnServerConfigurationPolicyGroupMember>), System.Collections.Generic.IList<SubResource> p2SConnectionConfigurations = default(System.Collections.Generic.IList<SubResource>))
+        public VpnServerConfigurationPolicyGroup(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), bool? isDefault = default(bool?), int? priority = default(int?), System.Collections.Generic.IList<VpnServerConfigurationPolicyGroupMember> policyMembers = default(System.Collections.Generic.IList<VpnServerConfigurationPolicyGroupMember>), System.Collections.Generic.IList<CommonSubResource> p2SConnectionConfigurations = default(System.Collections.Generic.IList<CommonSubResource>))
 
-        : base(id)
+        : base(id, name, type)
         {
             this.Etag = etag;
-            this.Name = name;
-            this.Type = type;
             this.ProvisioningState = provisioningState;
             this.IsDefault = isDefault;
             this.Priority = priority;
@@ -80,19 +77,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; private set; }
-
-        /// <summary>
-        /// Gets or sets the name of the resource that is unique within a resource
-        /// group. This name can be used to access the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
-
-        /// <summary>
-        /// Gets resource type.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets the provisioning state of the VpnServerConfigurationPolicyGroup
@@ -124,6 +108,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets list of references to P2SConnectionConfigurations.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.p2SConnectionConfigurations")]
-        public System.Collections.Generic.IList<SubResource> P2SConnectionConfigurations {get; private set; }
+        public System.Collections.Generic.IList<CommonSubResource> P2SConnectionConfigurations {get; private set; }
     }
 }

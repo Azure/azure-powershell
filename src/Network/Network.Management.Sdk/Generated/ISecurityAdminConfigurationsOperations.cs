@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Network
         /// manager, in a paginated format.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Network
         /// Retrieves a network manager security admin configuration.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.Network
         /// Creates or updates a network manager security admin configuration.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.Network
         /// Deletes a network manager security admin configuration.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Management.Network
         /// Deletes a network manager security admin configuration.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.

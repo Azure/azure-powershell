@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Probe of the application gateway.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationGatewayProbe : SubResource
+    public partial class ApplicationGatewayProbe : CommonSubResource
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationGatewayProbe class.

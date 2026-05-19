@@ -14,19 +14,16 @@ namespace Microsoft.Azure.Management.Network
     public partial interface IVirtualRouterPeeringsOperations
     {
         /// <summary>
-        /// Deletes the specified peering from a Virtual Router.
+        /// Lists all Virtual Router Peerings in a Virtual Router resource.
         /// </summary>
         /// <remarks>
-        /// Deletes the specified peering from a Virtual Router.
+        /// Lists all Virtual Router Peerings in a Virtual Router resource.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualRouterName'>
         /// The name of the Virtual Router.
-        /// </param>
-        /// <param name='peeringName'>
-        /// The name of the peering.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -37,7 +34,10 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string virtualRouterName, string peeringName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<VirtualRouterPeering>>> ListWithHttpMessagesAsync(string resourceGroupName, string virtualRouterName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the specified Virtual Router Peering.
@@ -46,13 +46,14 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the specified Virtual Router Peering.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualRouterName'>
         /// The name of the Virtual Router.
         /// </param>
         /// <param name='peeringName'>
-        /// The name of the Virtual Router Peering.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -75,13 +76,14 @@ namespace Microsoft.Azure.Management.Network
         /// Creates or updates the specified Virtual Router Peering.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualRouterName'>
         /// The name of the Virtual Router.
         /// </param>
         /// <param name='peeringName'>
-        /// The name of the Virtual Router Peering.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='parameters'>
         /// Parameters supplied to the create or update Virtual Router Peering
@@ -99,19 +101,23 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VirtualRouterPeering>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string virtualRouterName, string peeringName, VirtualRouterPeering parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VirtualRouterPeering,VirtualRouterPeeringsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string virtualRouterName, string peeringName, VirtualRouterPeering parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists all Virtual Router Peerings in a Virtual Router resource.
+        /// Deletes the specified peering from a Virtual Router.
         /// </summary>
         /// <remarks>
-        /// Lists all Virtual Router Peerings in a Virtual Router resource.
+        /// Deletes the specified peering from a Virtual Router.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualRouterName'>
         /// The name of the Virtual Router.
+        /// </param>
+        /// <param name='peeringName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -122,36 +128,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<VirtualRouterPeering>>> ListWithHttpMessagesAsync(string resourceGroupName, string virtualRouterName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Deletes the specified peering from a Virtual Router.
-        /// </summary>
-        /// <remarks>
-        /// Deletes the specified peering from a Virtual Router.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='virtualRouterName'>
-        /// The name of the Virtual Router.
-        /// </param>
-        /// <param name='peeringName'>
-        /// The name of the peering.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string virtualRouterName, string peeringName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VirtualRouterPeeringsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string virtualRouterName, string peeringName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Creates or updates the specified Virtual Router Peering.
@@ -160,13 +137,14 @@ namespace Microsoft.Azure.Management.Network
         /// Creates or updates the specified Virtual Router Peering.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualRouterName'>
         /// The name of the Virtual Router.
         /// </param>
         /// <param name='peeringName'>
-        /// The name of the Virtual Router Peering.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='parameters'>
         /// Parameters supplied to the create or update Virtual Router Peering
@@ -184,7 +162,34 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VirtualRouterPeering>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string virtualRouterName, string peeringName, VirtualRouterPeering parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VirtualRouterPeering,VirtualRouterPeeringsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string virtualRouterName, string peeringName, VirtualRouterPeering parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deletes the specified peering from a Virtual Router.
+        /// </summary>
+        /// <remarks>
+        /// Deletes the specified peering from a Virtual Router.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualRouterName'>
+        /// The name of the Virtual Router.
+        /// </param>
+        /// <param name='peeringName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VirtualRouterPeeringsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string virtualRouterName, string peeringName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists all Virtual Router Peerings in a Virtual Router resource.

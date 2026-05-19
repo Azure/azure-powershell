@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="ipAddress">IP address set in load balancer backend address.
         /// </param>
-        public QueryInboundNatRulePortMappingRequest(SubResource ipConfiguration = default(SubResource), string ipAddress = default(string))
+        public QueryInboundNatRulePortMappingRequest(CommonSubResource ipConfiguration = default(CommonSubResource), string ipAddress = default(string))
 
         {
             this.IPConfiguration = ipConfiguration;
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// address.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ipConfiguration")]
-        public SubResource IPConfiguration {get; set; }
+        public CommonSubResource IPConfiguration {get; set; }
 
         /// <summary>
         /// Gets or sets iP address set in load balancer backend address.

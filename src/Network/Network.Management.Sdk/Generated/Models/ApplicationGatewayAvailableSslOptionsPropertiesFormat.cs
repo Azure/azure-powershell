@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="availableProtocols">List of available Ssl protocols.
         /// </param>
-        public ApplicationGatewayAvailableSslOptionsPropertiesFormat(System.Collections.Generic.IList<SubResource> predefinedPolicies = default(System.Collections.Generic.IList<SubResource>), string defaultPolicy = default(string), System.Collections.Generic.IList<string> availableCipherSuites = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> availableProtocols = default(System.Collections.Generic.IList<string>))
+        public ApplicationGatewayAvailableSslOptionsPropertiesFormat(System.Collections.Generic.IList<CommonSubResource> predefinedPolicies = default(System.Collections.Generic.IList<CommonSubResource>), string defaultPolicy = default(string), System.Collections.Generic.IList<string> availableCipherSuites = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> availableProtocols = default(System.Collections.Generic.IList<string>))
 
         {
             this.PredefinedPolicies = predefinedPolicies;
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets list of available Ssl predefined policy.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "predefinedPolicies")]
-        public System.Collections.Generic.IList<SubResource> PredefinedPolicies {get; set; }
+        public System.Collections.Generic.IList<CommonSubResource> PredefinedPolicies {get; set; }
 
         /// <summary>
         /// Gets or sets name of the Ssl predefined policy applied by default to

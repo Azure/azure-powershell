@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Rule Collection Group resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class FirewallPolicyRuleCollectionGroupDraft : SubResource
+    public partial class FirewallPolicyRuleCollectionGroupDraft : CommonSubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the FirewallPolicyRuleCollectionGroupDraft class.
@@ -28,11 +28,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="name">The name of the resource that is unique within a resource group. This name
-        /// can be used to access the resource.
+        /// <param name="name">Name of the resource.
         /// </param>
 
-        /// <param name="type">Rule Group type.
+        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="size">A read-only string that represents the size of the
@@ -46,10 +45,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
         public FirewallPolicyRuleCollectionGroupDraft(string id = default(string), string name = default(string), string type = default(string), string size = default(string), int? priority = default(int?), System.Collections.Generic.IList<FirewallPolicyRuleCollection> ruleCollections = default(System.Collections.Generic.IList<FirewallPolicyRuleCollection>))
 
-        : base(id)
+        : base(id, name, type)
         {
-            this.Name = name;
-            this.Type = type;
             this.Size = size;
             this.Priority = priority;
             this.RuleCollections = ruleCollections;
@@ -61,19 +58,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets or sets the name of the resource that is unique within a resource
-        /// group. This name can be used to access the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
-
-        /// <summary>
-        /// Gets rule Group type.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets a read-only string that represents the size of the
@@ -102,8 +86,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </exception>
         public virtual void Validate()
         {
-
-
 
             if (this.Priority != null)
             {

@@ -14,19 +14,16 @@ namespace Microsoft.Azure.Management.Network
     public partial interface IFirewallPolicyRuleCollectionGroupsOperations
     {
         /// <summary>
-        /// Deletes the specified FirewallPolicyRuleCollectionGroup.
+        /// Lists all FirewallPolicyRuleCollectionGroups in a FirewallPolicy resource.
         /// </summary>
         /// <remarks>
-        /// Deletes the specified FirewallPolicyRuleCollectionGroup.
+        /// Lists all FirewallPolicyRuleCollectionGroups in a FirewallPolicy resource.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
-        /// </param>
-        /// <param name='ruleCollectionGroupName'>
-        /// The name of the FirewallPolicyRuleCollectionGroup.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -37,7 +34,10 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<FirewallPolicyRuleCollectionGroup>>> ListWithHttpMessagesAsync(string resourceGroupName, string firewallPolicyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the specified FirewallPolicyRuleCollectionGroup.
@@ -46,13 +46,14 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the specified FirewallPolicyRuleCollectionGroup.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
         /// </param>
         /// <param name='ruleCollectionGroupName'>
-        /// The name of the FirewallPolicyRuleCollectionGroup.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -75,13 +76,14 @@ namespace Microsoft.Azure.Management.Network
         /// Creates or updates the specified FirewallPolicyRuleCollectionGroup.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
         /// </param>
         /// <param name='ruleCollectionGroupName'>
-        /// The name of the FirewallPolicyRuleCollectionGroup.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='parameters'>
         /// Parameters supplied to the create or update
@@ -99,19 +101,23 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FirewallPolicyRuleCollectionGroup>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName, FirewallPolicyRuleCollectionGroup parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FirewallPolicyRuleCollectionGroup,FirewallPolicyRuleCollectionGroupsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName, FirewallPolicyRuleCollectionGroup parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Lists all FirewallPolicyRuleCollectionGroups in a FirewallPolicy resource.
+        /// Deletes the specified FirewallPolicyRuleCollectionGroup.
         /// </summary>
         /// <remarks>
-        /// Lists all FirewallPolicyRuleCollectionGroups in a FirewallPolicy resource.
+        /// Deletes the specified FirewallPolicyRuleCollectionGroup.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
+        /// </param>
+        /// <param name='ruleCollectionGroupName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -122,36 +128,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<FirewallPolicyRuleCollectionGroup>>> ListWithHttpMessagesAsync(string resourceGroupName, string firewallPolicyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Deletes the specified FirewallPolicyRuleCollectionGroup.
-        /// </summary>
-        /// <remarks>
-        /// Deletes the specified FirewallPolicyRuleCollectionGroup.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='firewallPolicyName'>
-        /// The name of the Firewall Policy.
-        /// </param>
-        /// <param name='ruleCollectionGroupName'>
-        /// The name of the FirewallPolicyRuleCollectionGroup.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<FirewallPolicyRuleCollectionGroupsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Creates or updates the specified FirewallPolicyRuleCollectionGroup.
@@ -160,13 +137,14 @@ namespace Microsoft.Azure.Management.Network
         /// Creates or updates the specified FirewallPolicyRuleCollectionGroup.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
         /// </param>
         /// <param name='ruleCollectionGroupName'>
-        /// The name of the FirewallPolicyRuleCollectionGroup.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='parameters'>
         /// Parameters supplied to the create or update
@@ -184,7 +162,34 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FirewallPolicyRuleCollectionGroup>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName, FirewallPolicyRuleCollectionGroup parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<FirewallPolicyRuleCollectionGroup,FirewallPolicyRuleCollectionGroupsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName, FirewallPolicyRuleCollectionGroup parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deletes the specified FirewallPolicyRuleCollectionGroup.
+        /// </summary>
+        /// <remarks>
+        /// Deletes the specified FirewallPolicyRuleCollectionGroup.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='firewallPolicyName'>
+        /// The name of the Firewall Policy.
+        /// </param>
+        /// <param name='ruleCollectionGroupName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<FirewallPolicyRuleCollectionGroupsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string firewallPolicyName, string ruleCollectionGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists all FirewallPolicyRuleCollectionGroups in a FirewallPolicy resource.

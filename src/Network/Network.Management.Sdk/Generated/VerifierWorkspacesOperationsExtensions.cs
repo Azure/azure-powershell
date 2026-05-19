@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
@@ -88,13 +88,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         public static VerifierWorkspace Get(this IVerifierWorkspacesOperations operations, string resourceGroupName, string networkManagerName, string workspaceName)
         {
@@ -108,13 +108,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -133,13 +133,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='ifMatch'>
         /// The entity state (ETag) version of the pool to update. This value can be
@@ -157,13 +157,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='ifMatch'>
         /// The entity state (ETag) version of the pool to update. This value can be
@@ -186,13 +186,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='ifMatch'>
         /// The entity state (ETag) version of the pool to update. This value can be
@@ -210,13 +210,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='ifMatch'>
         /// The entity state (ETag) version of the pool to update. This value can be
@@ -239,13 +239,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='ifMatch'>
         /// The entity state (ETag) version of the pool to update. This value can be
@@ -263,13 +263,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='ifMatch'>
         /// The entity state (ETag) version of the pool to update. This value can be
@@ -292,13 +292,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='ifMatch'>
         /// The entity state (ETag) version of the pool to update. This value can be
@@ -316,13 +316,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='ifMatch'>
         /// The entity state (ETag) version of the pool to update. This value can be

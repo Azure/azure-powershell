@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class EffectiveRouteSource
     {
+        /// <summary>
+        /// Unknown
+        /// </summary>
         public const string Unknown = "Unknown";
+        /// <summary>
+        /// User
+        /// </summary>
         public const string User = "User";
+        /// <summary>
+        /// VirtualNetworkGateway
+        /// </summary>
         public const string VirtualNetworkGateway = "VirtualNetworkGateway";
+        /// <summary>
+        /// Default
+        /// </summary>
         public const string Default = "Default";
     }
 }

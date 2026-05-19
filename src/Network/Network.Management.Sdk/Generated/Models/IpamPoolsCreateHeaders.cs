@@ -23,10 +23,14 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="azureAsyncOperation">
         /// </param>
-        public IpamPoolsCreateHeaders(string azureAsyncOperation = default(string))
+
+        /// <param name="retryAfter">
+        /// </param>
+        public IpamPoolsCreateHeaders(string azureAsyncOperation = default(string), int? retryAfter = default(int?))
 
         {
             this.AzureAsyncOperation = azureAsyncOperation;
+            this.RetryAfter = retryAfter;
             CustomInit();
         }
 
@@ -41,5 +45,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "Azure-AsyncOperation")]
         public string AzureAsyncOperation {get; set; }
+
+        /// <summary>
+        /// Gets or sets
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Retry-After")]
+        public int? RetryAfter {get; set; }
     }
 }

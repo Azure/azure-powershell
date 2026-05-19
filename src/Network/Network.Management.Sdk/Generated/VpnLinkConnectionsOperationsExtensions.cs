@@ -13,13 +13,14 @@ namespace Microsoft.Azure.Management.Network
     public static partial class VpnLinkConnectionsOperationsExtensions
     {
         /// <summary>
-        /// Resets the VpnLink connection specified.
+        /// Retrieves all vpn site link connections for a particular virtual wan vpn
+        /// gateway vpn connection.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
@@ -27,25 +28,73 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='connectionName'>
         /// The name of the vpn connection.
         /// </param>
-        /// <param name='linkConnectionName'>
-        /// The name of the vpn link connection.
-        /// </param>
-        public static void ResetConnection(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName)
+        public static Microsoft.Rest.Azure.IPage<VpnSiteLinkConnection> ListByVpnConnection(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName)
         {
-                ((IVpnLinkConnectionsOperations)operations).ResetConnectionAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName).GetAwaiter().GetResult();
+                return ((IVpnLinkConnectionsOperations)operations).ListByVpnConnectionAsync(resourceGroupName, gatewayName, connectionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Resets the VpnLink connection specified.
+        /// Retrieves all vpn site link connections for a particular virtual wan vpn
+        /// gateway vpn connection.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
         /// The name of the gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// The name of the vpn connection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VpnSiteLinkConnection>> ListByVpnConnectionAsync(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByVpnConnectionWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists IKE Security Associations for Vpn Site Link Connection in the
+        /// specified resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the vpn gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// The name of the vpn connection.
+        /// </param>
+        /// <param name='linkConnectionName'>
+        /// The name of the vpn link connection.
+        /// </param>
+        public static string GetIkeSas(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName)
+        {
+                return ((IVpnLinkConnectionsOperations)operations).GetIkeSasAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists IKE Security Associations for Vpn Site Link Connection in the
+        /// specified resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='connectionName'>
         /// The name of the vpn connection.
@@ -56,9 +105,63 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task ResetConnectionAsync(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<string> GetIkeSasAsync(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.ResetConnectionWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.GetIkeSasWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Resets the VpnLink connection specified.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the vpn gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// The name of the vpn connection.
+        /// </param>
+        /// <param name='linkConnectionName'>
+        /// The name of the vpn link connection.
+        /// </param>
+        public static VpnLinkConnectionsResetConnectionHeaders ResetConnection(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName)
+        {
+                return ((IVpnLinkConnectionsOperations)operations).ResetConnectionAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Resets the VpnLink connection specified.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the vpn gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// The name of the vpn connection.
+        /// </param>
+        /// <param name='linkConnectionName'>
+        /// The name of the vpn link connection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VpnLinkConnectionsResetConnectionHeaders> ResetConnectionAsync(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ResetConnectionWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Lists all shared keys of VpnLink connection specified.
@@ -67,10 +170,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='connectionName'>
         /// The name of the vpn connection.
@@ -90,10 +193,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='connectionName'>
         /// The name of the vpn connection.
@@ -118,10 +221,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='connectionName'>
         /// The name of the vpn connection.
@@ -141,10 +244,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='connectionName'>
         /// The name of the vpn connection.
@@ -171,13 +274,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the connection.
+        /// The name of the vpn connection.
         /// </param>
         /// <param name='linkConnectionName'>
         /// The name of the vpn link connection.
@@ -196,13 +299,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the connection.
+        /// The name of the vpn connection.
         /// </param>
         /// <param name='linkConnectionName'>
         /// The name of the vpn link connection.
@@ -224,10 +327,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='connectionName'>
         /// The name of the vpn connection.
@@ -247,10 +350,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='connectionName'>
         /// The name of the vpn connection.
@@ -276,213 +379,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the vpn connection.
-        /// </param>
-        /// <param name='linkConnectionName'>
-        /// The name of the vpn link connection.
-        /// </param>
-        public static string GetIkeSas(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName)
-        {
-                return ((IVpnLinkConnectionsOperations)operations).GetIkeSasAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Lists IKE Security Associations for Vpn Site Link Connection in the
-        /// specified resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='gatewayName'>
-        /// The name of the gateway.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the vpn connection.
-        /// </param>
-        /// <param name='linkConnectionName'>
-        /// The name of the vpn link connection.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<string> GetIkeSasAsync(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetIkeSasWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Retrieves all vpn site link connections for a particular virtual wan vpn
-        /// gateway vpn connection.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the vpn gateway.
-        /// </param>
-        /// <param name='gatewayName'>
-        /// The name of the gateway.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the vpn connection.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<VpnSiteLinkConnection> ListByVpnConnection(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName)
-        {
-                return ((IVpnLinkConnectionsOperations)operations).ListByVpnConnectionAsync(resourceGroupName, gatewayName, connectionName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieves all vpn site link connections for a particular virtual wan vpn
-        /// gateway vpn connection.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the vpn gateway.
-        /// </param>
-        /// <param name='gatewayName'>
-        /// The name of the gateway.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the vpn connection.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VpnSiteLinkConnection>> ListByVpnConnectionAsync(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByVpnConnectionWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Resets the VpnLink connection specified.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='gatewayName'>
-        /// The name of the gateway.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the vpn connection.
-        /// </param>
-        /// <param name='linkConnectionName'>
-        /// The name of the vpn link connection.
-        /// </param>
-        public static void BeginResetConnection(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName)
-        {
-                ((IVpnLinkConnectionsOperations)operations).BeginResetConnectionAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Resets the VpnLink connection specified.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='gatewayName'>
-        /// The name of the gateway.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the vpn connection.
-        /// </param>
-        /// <param name='linkConnectionName'>
-        /// The name of the vpn link connection.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task BeginResetConnectionAsync(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.BeginResetConnectionWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Sets or auto generates the shared key based on the user input. If users
-        /// give a shared key value, it does the set operation. If key length is given,
-        /// the operation creates a random key of the pre-defined length.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
-        /// </param>
-        /// <param name='gatewayName'>
-        /// The name of the gateway.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the connection.
-        /// </param>
-        /// <param name='linkConnectionName'>
-        /// The name of the vpn link connection.
-        /// </param>
-        public static ConnectionSharedKeyResult BeginSetOrInitDefaultSharedKey(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, ConnectionSharedKeyResult connectionSharedKeyParameters)
-        {
-                return ((IVpnLinkConnectionsOperations)operations).BeginSetOrInitDefaultSharedKeyAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName, connectionSharedKeyParameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Sets or auto generates the shared key based on the user input. If users
-        /// give a shared key value, it does the set operation. If key length is given,
-        /// the operation creates a random key of the pre-defined length.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
-        /// </param>
-        /// <param name='gatewayName'>
-        /// The name of the gateway.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the connection.
-        /// </param>
-        /// <param name='linkConnectionName'>
-        /// The name of the vpn link connection.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ConnectionSharedKeyResult> BeginSetOrInitDefaultSharedKeyAsync(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, ConnectionSharedKeyResult connectionSharedKeyParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginSetOrInitDefaultSharedKeyWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName, connectionSharedKeyParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Lists IKE Security Associations for Vpn Site Link Connection in the
-        /// specified resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='connectionName'>
         /// The name of the vpn connection.
@@ -503,10 +403,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='connectionName'>
         /// The name of the vpn connection.
@@ -525,34 +425,107 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Lists all shared keys of VpnLink connection specified.
+        /// Resets the VpnLink connection specified.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<ConnectionSharedKeyResult> GetAllSharedKeysNext(this IVpnLinkConnectionsOperations operations, string nextPageLink)
+        /// <param name='gatewayName'>
+        /// The name of the vpn gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// The name of the vpn connection.
+        /// </param>
+        /// <param name='linkConnectionName'>
+        /// The name of the vpn link connection.
+        /// </param>
+        public static VpnLinkConnectionsResetConnectionHeaders BeginResetConnection(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName)
         {
-                return ((IVpnLinkConnectionsOperations)operations).GetAllSharedKeysNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return ((IVpnLinkConnectionsOperations)operations).BeginResetConnectionAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Lists all shared keys of VpnLink connection specified.
+        /// Resets the VpnLink connection specified.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the vpn gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// The name of the vpn connection.
+        /// </param>
+        /// <param name='linkConnectionName'>
+        /// The name of the vpn link connection.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ConnectionSharedKeyResult>> GetAllSharedKeysNextAsync(this IVpnLinkConnectionsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VpnLinkConnectionsResetConnectionHeaders> BeginResetConnectionAsync(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetAllSharedKeysNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginResetConnectionWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Sets or auto generates the shared key based on the user input. If users
+        /// give a shared key value, it does the set operation. If key length is given,
+        /// the operation creates a random key of the pre-defined length.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the vpn gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// The name of the vpn connection.
+        /// </param>
+        /// <param name='linkConnectionName'>
+        /// The name of the vpn link connection.
+        /// </param>
+        public static ConnectionSharedKeyResult BeginSetOrInitDefaultSharedKey(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, ConnectionSharedKeyResult connectionSharedKeyParameters)
+        {
+                return ((IVpnLinkConnectionsOperations)operations).BeginSetOrInitDefaultSharedKeyAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName, connectionSharedKeyParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Sets or auto generates the shared key based on the user input. If users
+        /// give a shared key value, it does the set operation. If key length is given,
+        /// the operation creates a random key of the pre-defined length.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the vpn gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// The name of the vpn connection.
+        /// </param>
+        /// <param name='linkConnectionName'>
+        /// The name of the vpn link connection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ConnectionSharedKeyResult> BeginSetOrInitDefaultSharedKeyAsync(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, ConnectionSharedKeyResult connectionSharedKeyParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginSetOrInitDefaultSharedKeyWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName, connectionSharedKeyParameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -588,6 +561,39 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VpnSiteLinkConnection>> ListByVpnConnectionNextAsync(this IVpnLinkConnectionsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByVpnConnectionNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists all shared keys of VpnLink connection specified.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ConnectionSharedKeyResult> GetAllSharedKeysNext(this IVpnLinkConnectionsOperations operations, string nextPageLink)
+        {
+                return ((IVpnLinkConnectionsOperations)operations).GetAllSharedKeysNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all shared keys of VpnLink connection specified.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ConnectionSharedKeyResult>> GetAllSharedKeysNextAsync(this IVpnLinkConnectionsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetAllSharedKeysNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

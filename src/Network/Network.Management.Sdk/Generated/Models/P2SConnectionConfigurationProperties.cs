@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the P2SConnectionConfiguration resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public P2SConnectionConfigurationProperties(AddressSpace vpnClientAddressPool = default(AddressSpace), RoutingConfiguration routingConfiguration = default(RoutingConfiguration), bool? enableInternetSecurity = default(bool?), System.Collections.Generic.IList<SubResource> configurationPolicyGroupAssociations = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<VpnServerConfigurationPolicyGroup> previousConfigurationPolicyGroupAssociations = default(System.Collections.Generic.IList<VpnServerConfigurationPolicyGroup>), string provisioningState = default(string))
+        public P2SConnectionConfigurationProperties(CommonAddressSpace vpnClientAddressPool = default(CommonAddressSpace), RoutingConfiguration routingConfiguration = default(RoutingConfiguration), bool? enableInternetSecurity = default(bool?), System.Collections.Generic.IList<CommonSubResource> configurationPolicyGroupAssociations = default(System.Collections.Generic.IList<CommonSubResource>), System.Collections.Generic.IList<VpnServerConfigurationPolicyGroup> previousConfigurationPolicyGroupAssociations = default(System.Collections.Generic.IList<VpnServerConfigurationPolicyGroup>), string provisioningState = default(string))
 
         {
             this.VpnClientAddressPool = vpnClientAddressPool;
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Address space for P2S VpnClient.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vpnClientAddressPool")]
-        public AddressSpace VpnClientAddressPool {get; set; }
+        public CommonAddressSpace VpnClientAddressPool {get; set; }
 
         /// <summary>
         /// Gets or sets the Routing Configuration indicating the associated and
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// P2SConnectionConfiguration is attached to.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "configurationPolicyGroupAssociations")]
-        public System.Collections.Generic.IList<SubResource> ConfigurationPolicyGroupAssociations {get; set; }
+        public System.Collections.Generic.IList<CommonSubResource> ConfigurationPolicyGroupAssociations {get; set; }
 
         /// <summary>
         /// Gets list of previous Configuration Policy Groups that this

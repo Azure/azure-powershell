@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Route Filter Rule Resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class PatchRouteFilterRule : SubResource
+    public partial class PatchRouteFilterRule : CommonSubResource
     {
         /// <summary>
         /// Initializes a new instance of the PatchRouteFilterRule class.

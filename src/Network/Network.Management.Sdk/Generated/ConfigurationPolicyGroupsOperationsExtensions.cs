@@ -13,6 +13,98 @@ namespace Microsoft.Azure.Management.Network
     public static partial class ConfigurationPolicyGroupsOperationsExtensions
     {
         /// <summary>
+        /// Lists all the configurationPolicyGroups in a resource group for a
+        /// vpnServerConfiguration.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vpnServerConfigurationName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<VpnServerConfigurationPolicyGroup> ListByVpnServerConfiguration(this IConfigurationPolicyGroupsOperations operations, string resourceGroupName, string vpnServerConfigurationName)
+        {
+                return ((IConfigurationPolicyGroupsOperations)operations).ListByVpnServerConfigurationAsync(resourceGroupName, vpnServerConfigurationName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all the configurationPolicyGroups in a resource group for a
+        /// vpnServerConfiguration.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vpnServerConfigurationName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VpnServerConfigurationPolicyGroup>> ListByVpnServerConfigurationAsync(this IConfigurationPolicyGroupsOperations operations, string resourceGroupName, string vpnServerConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByVpnServerConfigurationWithHttpMessagesAsync(resourceGroupName, vpnServerConfigurationName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the details of a ConfigurationPolicyGroup.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vpnServerConfigurationName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        /// <param name='configurationPolicyGroupName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        public static VpnServerConfigurationPolicyGroup Get(this IConfigurationPolicyGroupsOperations operations, string resourceGroupName, string vpnServerConfigurationName, string configurationPolicyGroupName)
+        {
+                return ((IConfigurationPolicyGroupsOperations)operations).GetAsync(resourceGroupName, vpnServerConfigurationName, configurationPolicyGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the details of a ConfigurationPolicyGroup.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vpnServerConfigurationName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        /// <param name='configurationPolicyGroupName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VpnServerConfigurationPolicyGroup> GetAsync(this IConfigurationPolicyGroupsOperations operations, string resourceGroupName, string vpnServerConfigurationName, string configurationPolicyGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vpnServerConfigurationName, configurationPolicyGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Creates a ConfigurationPolicyGroup if it doesn&#39;t exist else updates the
         /// existing one.
         /// </summary>
@@ -20,13 +112,15 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the ConfigurationPolicyGroup.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vpnServerConfigurationName'>
-        /// The name of the VpnServerConfiguration.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='configurationPolicyGroupName'>
-        /// The name of the ConfigurationPolicyGroup.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static VpnServerConfigurationPolicyGroup CreateOrUpdate(this IConfigurationPolicyGroupsOperations operations, string resourceGroupName, string vpnServerConfigurationName, string configurationPolicyGroupName, VpnServerConfigurationPolicyGroup vpnServerConfigurationPolicyGroupParameters)
         {
@@ -41,13 +135,15 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the ConfigurationPolicyGroup.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vpnServerConfigurationName'>
-        /// The name of the VpnServerConfiguration.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='configurationPolicyGroupName'>
-        /// The name of the ConfigurationPolicyGroup.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -66,17 +162,19 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the ConfigurationPolicyGroup.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vpnServerConfigurationName'>
-        /// The name of the VpnServerConfiguration.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='configurationPolicyGroupName'>
-        /// The name of the ConfigurationPolicyGroup.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
-        public static void Delete(this IConfigurationPolicyGroupsOperations operations, string resourceGroupName, string vpnServerConfigurationName, string configurationPolicyGroupName)
+        public static ConfigurationPolicyGroupsDeleteHeaders Delete(this IConfigurationPolicyGroupsOperations operations, string resourceGroupName, string vpnServerConfigurationName, string configurationPolicyGroupName)
         {
-                ((IConfigurationPolicyGroupsOperations)operations).DeleteAsync(resourceGroupName, vpnServerConfigurationName, configurationPolicyGroupName).GetAwaiter().GetResult();
+                return ((IConfigurationPolicyGroupsOperations)operations).DeleteAsync(resourceGroupName, vpnServerConfigurationName, configurationPolicyGroupName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -86,105 +184,24 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the ConfigurationPolicyGroup.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vpnServerConfigurationName'>
-        /// The name of the VpnServerConfiguration.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='configurationPolicyGroupName'>
-        /// The name of the ConfigurationPolicyGroup.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IConfigurationPolicyGroupsOperations operations, string resourceGroupName, string vpnServerConfigurationName, string configurationPolicyGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ConfigurationPolicyGroupsDeleteHeaders> DeleteAsync(this IConfigurationPolicyGroupsOperations operations, string resourceGroupName, string vpnServerConfigurationName, string configurationPolicyGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, vpnServerConfigurationName, configurationPolicyGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Retrieves the details of a ConfigurationPolicyGroup.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnServerConfiguration.
-        /// </param>
-        /// <param name='vpnServerConfigurationName'>
-        /// The name of the VpnServerConfiguration.
-        /// </param>
-        /// <param name='configurationPolicyGroupName'>
-        /// The name of the ConfigurationPolicyGroup being retrieved.
-        /// </param>
-        public static VpnServerConfigurationPolicyGroup Get(this IConfigurationPolicyGroupsOperations operations, string resourceGroupName, string vpnServerConfigurationName, string configurationPolicyGroupName)
-        {
-                return ((IConfigurationPolicyGroupsOperations)operations).GetAsync(resourceGroupName, vpnServerConfigurationName, configurationPolicyGroupName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieves the details of a ConfigurationPolicyGroup.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnServerConfiguration.
-        /// </param>
-        /// <param name='vpnServerConfigurationName'>
-        /// The name of the VpnServerConfiguration.
-        /// </param>
-        /// <param name='configurationPolicyGroupName'>
-        /// The name of the ConfigurationPolicyGroup being retrieved.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<VpnServerConfigurationPolicyGroup> GetAsync(this IConfigurationPolicyGroupsOperations operations, string resourceGroupName, string vpnServerConfigurationName, string configurationPolicyGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vpnServerConfigurationName, configurationPolicyGroupName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, vpnServerConfigurationName, configurationPolicyGroupName, null, cancellationToken).ConfigureAwait(false))
             {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Lists all the configurationPolicyGroups in a resource group for a
-        /// vpnServerConfiguration.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnServerConfiguration.
-        /// </param>
-        /// <param name='vpnServerConfigurationName'>
-        /// The name of the VpnServerConfiguration.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<VpnServerConfigurationPolicyGroup> ListByVpnServerConfiguration(this IConfigurationPolicyGroupsOperations operations, string resourceGroupName, string vpnServerConfigurationName)
-        {
-                return ((IConfigurationPolicyGroupsOperations)operations).ListByVpnServerConfigurationAsync(resourceGroupName, vpnServerConfigurationName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Lists all the configurationPolicyGroups in a resource group for a
-        /// vpnServerConfiguration.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnServerConfiguration.
-        /// </param>
-        /// <param name='vpnServerConfigurationName'>
-        /// The name of the VpnServerConfiguration.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VpnServerConfigurationPolicyGroup>> ListByVpnServerConfigurationAsync(this IConfigurationPolicyGroupsOperations operations, string resourceGroupName, string vpnServerConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByVpnServerConfigurationWithHttpMessagesAsync(resourceGroupName, vpnServerConfigurationName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
+                return _result.Headers;
             }
         }
         /// <summary>
@@ -195,13 +212,15 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the ConfigurationPolicyGroup.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vpnServerConfigurationName'>
-        /// The name of the VpnServerConfiguration.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='configurationPolicyGroupName'>
-        /// The name of the ConfigurationPolicyGroup.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         public static VpnServerConfigurationPolicyGroup BeginCreateOrUpdate(this IConfigurationPolicyGroupsOperations operations, string resourceGroupName, string vpnServerConfigurationName, string configurationPolicyGroupName, VpnServerConfigurationPolicyGroup vpnServerConfigurationPolicyGroupParameters)
         {
@@ -216,13 +235,15 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the ConfigurationPolicyGroup.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vpnServerConfigurationName'>
-        /// The name of the VpnServerConfiguration.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='configurationPolicyGroupName'>
-        /// The name of the ConfigurationPolicyGroup.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -241,17 +262,19 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the ConfigurationPolicyGroup.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vpnServerConfigurationName'>
-        /// The name of the VpnServerConfiguration.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='configurationPolicyGroupName'>
-        /// The name of the ConfigurationPolicyGroup.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
-        public static void BeginDelete(this IConfigurationPolicyGroupsOperations operations, string resourceGroupName, string vpnServerConfigurationName, string configurationPolicyGroupName)
+        public static ConfigurationPolicyGroupsDeleteHeaders BeginDelete(this IConfigurationPolicyGroupsOperations operations, string resourceGroupName, string vpnServerConfigurationName, string configurationPolicyGroupName)
         {
-                ((IConfigurationPolicyGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, vpnServerConfigurationName, configurationPolicyGroupName).GetAwaiter().GetResult();
+                return ((IConfigurationPolicyGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, vpnServerConfigurationName, configurationPolicyGroupName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -261,20 +284,25 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the ConfigurationPolicyGroup.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vpnServerConfigurationName'>
-        /// The name of the VpnServerConfiguration.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='configurationPolicyGroupName'>
-        /// The name of the ConfigurationPolicyGroup.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IConfigurationPolicyGroupsOperations operations, string resourceGroupName, string vpnServerConfigurationName, string configurationPolicyGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ConfigurationPolicyGroupsDeleteHeaders> BeginDeleteAsync(this IConfigurationPolicyGroupsOperations operations, string resourceGroupName, string vpnServerConfigurationName, string configurationPolicyGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, vpnServerConfigurationName, configurationPolicyGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, vpnServerConfigurationName, configurationPolicyGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Lists all the configurationPolicyGroups in a resource group for a

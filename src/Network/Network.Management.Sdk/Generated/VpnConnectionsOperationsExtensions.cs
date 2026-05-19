@@ -13,16 +13,55 @@ namespace Microsoft.Azure.Management.Network
     public static partial class VpnConnectionsOperationsExtensions
     {
         /// <summary>
+        /// Retrieves all vpn connections for a particular virtual wan vpn gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<VpnConnection> ListByVpnGateway(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName)
+        {
+                return ((IVpnConnectionsOperations)operations).ListByVpnGatewayAsync(resourceGroupName, gatewayName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves all vpn connections for a particular virtual wan vpn gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VpnConnection>> ListByVpnGatewayAsync(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByVpnGatewayWithHttpMessagesAsync(resourceGroupName, gatewayName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Retrieves the details of a vpn connection.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='connectionName'>
         /// The name of the vpn connection.
@@ -39,10 +78,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='connectionName'>
         /// The name of the vpn connection.
@@ -65,13 +104,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the connection.
+        /// The name of the vpn connection.
         /// </param>
         public static VpnConnection CreateOrUpdate(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, VpnConnection vpnConnectionParameters)
         {
@@ -86,13 +125,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the connection.
+        /// The name of the vpn connection.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -111,17 +150,17 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the connection.
+        /// The name of the vpn connection.
         /// </param>
-        public static void Delete(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName)
+        public static VpnConnectionsDeleteHeaders Delete(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName)
         {
-                ((IVpnConnectionsOperations)operations).DeleteAsync(resourceGroupName, gatewayName, connectionName).GetAwaiter().GetResult();
+                return ((IVpnConnectionsOperations)operations).DeleteAsync(resourceGroupName, gatewayName, connectionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -131,20 +170,23 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the connection.
+        /// The name of the vpn connection.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VpnConnectionsDeleteHeaders> DeleteAsync(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Starts packet capture on Vpn connection in the specified resource group.
@@ -153,10 +195,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='vpnConnectionName'>
         /// The name of the vpn connection.
@@ -173,10 +215,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='vpnConnectionName'>
         /// The name of the vpn connection.
@@ -198,10 +240,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='vpnConnectionName'>
         /// The name of the vpn connection.
@@ -218,10 +260,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='vpnConnectionName'>
         /// The name of the vpn connection.
@@ -237,45 +279,6 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Retrieves all vpn connections for a particular virtual wan vpn gateway.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
-        /// </param>
-        /// <param name='gatewayName'>
-        /// The name of the gateway.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<VpnConnection> ListByVpnGateway(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName)
-        {
-                return ((IVpnConnectionsOperations)operations).ListByVpnGatewayAsync(resourceGroupName, gatewayName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieves all vpn connections for a particular virtual wan vpn gateway.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
-        /// </param>
-        /// <param name='gatewayName'>
-        /// The name of the gateway.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VpnConnection>> ListByVpnGatewayAsync(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByVpnGatewayWithHttpMessagesAsync(resourceGroupName, gatewayName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Creates a vpn connection to a scalable vpn gateway if it doesn&#39;t exist else
         /// updates the existing connection.
         /// </summary>
@@ -283,13 +286,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the connection.
+        /// The name of the vpn connection.
         /// </param>
         public static VpnConnection BeginCreateOrUpdate(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, VpnConnection vpnConnectionParameters)
         {
@@ -304,13 +307,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the connection.
+        /// The name of the vpn connection.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -329,17 +332,17 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the connection.
+        /// The name of the vpn connection.
         /// </param>
-        public static void BeginDelete(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName)
+        public static VpnConnectionsDeleteHeaders BeginDelete(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName)
         {
-                ((IVpnConnectionsOperations)operations).BeginDeleteAsync(resourceGroupName, gatewayName, connectionName).GetAwaiter().GetResult();
+                return ((IVpnConnectionsOperations)operations).BeginDeleteAsync(resourceGroupName, gatewayName, connectionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -349,20 +352,23 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnGateway.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the connection.
+        /// The name of the vpn connection.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VpnConnectionsDeleteHeaders> BeginDeleteAsync(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Starts packet capture on Vpn connection in the specified resource group.
@@ -371,10 +377,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='vpnConnectionName'>
         /// The name of the vpn connection.
@@ -391,10 +397,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='vpnConnectionName'>
         /// The name of the vpn connection.
@@ -416,10 +422,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='vpnConnectionName'>
         /// The name of the vpn connection.
@@ -436,10 +442,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='gatewayName'>
-        /// The name of the gateway.
+        /// The name of the vpn gateway.
         /// </param>
         /// <param name='vpnConnectionName'>
         /// The name of the vpn connection.

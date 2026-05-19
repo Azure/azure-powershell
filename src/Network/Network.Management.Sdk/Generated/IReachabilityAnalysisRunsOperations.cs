@@ -20,13 +20,13 @@ namespace Microsoft.Azure.Management.Network
         /// Gets list of Reachability Analysis Runs.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='skipToken'>
         /// Optional skip token.
@@ -64,13 +64,13 @@ namespace Microsoft.Azure.Management.Network
         /// Gets Reachability Analysis Run.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='reachabilityAnalysisRunName'>
         /// Reachability Analysis Run name.
@@ -96,13 +96,13 @@ namespace Microsoft.Azure.Management.Network
         /// Creates Reachability Analysis Runs.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='reachabilityAnalysisRunName'>
         /// Reachability Analysis Run name.
@@ -131,13 +131,13 @@ namespace Microsoft.Azure.Management.Network
         /// Deletes Reachability Analysis Run.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='reachabilityAnalysisRunName'>
         /// Reachability Analysis Run name.
@@ -160,13 +160,13 @@ namespace Microsoft.Azure.Management.Network
         /// Deletes Reachability Analysis Run.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
         /// </param>
         /// <param name='workspaceName'>
-        /// Workspace name.
+        /// The name of the resource
         /// </param>
         /// <param name='reachabilityAnalysisRunName'>
         /// Reachability Analysis Run name.

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Private dns zone group resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class PrivateDnsZoneGroup : SubResource
+    public partial class PrivateDnsZoneGroup : CommonSubResource
     {
         /// <summary>
         /// Initializes a new instance of the PrivateDnsZoneGroup class.

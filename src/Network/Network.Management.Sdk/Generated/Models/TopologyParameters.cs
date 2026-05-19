@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="targetSubnet">The reference to the Subnet resource.
         /// </param>
-        public TopologyParameters(string targetResourceGroupName = default(string), SubResource targetVirtualNetwork = default(SubResource), SubResource targetSubnet = default(SubResource))
+        public TopologyParameters(string targetResourceGroupName = default(string), CommonSubResource targetVirtualNetwork = default(CommonSubResource), CommonSubResource targetSubnet = default(CommonSubResource))
 
         {
             this.TargetResourceGroupName = targetResourceGroupName;
@@ -57,12 +57,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the reference to the Virtual Network resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "targetVirtualNetwork")]
-        public SubResource TargetVirtualNetwork {get; set; }
+        public CommonSubResource TargetVirtualNetwork {get; set; }
 
         /// <summary>
         /// Gets or sets the reference to the Subnet resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "targetSubnet")]
-        public SubResource TargetSubnet {get; set; }
+        public CommonSubResource TargetSubnet {get; set; }
     }
 }

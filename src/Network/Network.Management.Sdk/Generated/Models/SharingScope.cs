@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class SharingScope
     {
+        /// <summary>
+        /// Tenant
+        /// </summary>
         public const string Tenant = "Tenant";
+        /// <summary>
+        /// DelegatedServices
+        /// </summary>
         public const string DelegatedServices = "DelegatedServices";
     }
 }

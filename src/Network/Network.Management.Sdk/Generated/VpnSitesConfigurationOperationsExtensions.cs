@@ -20,15 +20,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN for which configuration of all vpn-sites is
-        /// needed.
+        /// The name of the VirtualWAN.
         /// </param>
-        public static void Download(this IVpnSitesConfigurationOperations operations, string resourceGroupName, string virtualWANName, GetVpnSitesConfigurationRequest request)
+        public static VpnSitesConfigurationDownloadHeaders Download(this IVpnSitesConfigurationOperations operations, string resourceGroupName, string virtualWANName, GetVpnSitesConfigurationRequest request)
         {
-                ((IVpnSitesConfigurationOperations)operations).DownloadAsync(resourceGroupName, virtualWANName, request).GetAwaiter().GetResult();
+                return ((IVpnSitesConfigurationOperations)operations).DownloadAsync(resourceGroupName, virtualWANName, request).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -39,18 +38,20 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN for which configuration of all vpn-sites is
-        /// needed.
+        /// The name of the VirtualWAN.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DownloadAsync(this IVpnSitesConfigurationOperations operations, string resourceGroupName, string virtualWANName, GetVpnSitesConfigurationRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VpnSitesConfigurationDownloadHeaders> DownloadAsync(this IVpnSitesConfigurationOperations operations, string resourceGroupName, string virtualWANName, GetVpnSitesConfigurationRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DownloadWithHttpMessagesAsync(resourceGroupName, virtualWANName, request, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DownloadWithHttpMessagesAsync(resourceGroupName, virtualWANName, request, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Gives the sas-url to download the configurations for vpn-sites in a
@@ -60,15 +61,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN for which configuration of all vpn-sites is
-        /// needed.
+        /// The name of the VirtualWAN.
         /// </param>
-        public static void BeginDownload(this IVpnSitesConfigurationOperations operations, string resourceGroupName, string virtualWANName, GetVpnSitesConfigurationRequest request)
+        public static VpnSitesConfigurationDownloadHeaders BeginDownload(this IVpnSitesConfigurationOperations operations, string resourceGroupName, string virtualWANName, GetVpnSitesConfigurationRequest request)
         {
-                ((IVpnSitesConfigurationOperations)operations).BeginDownloadAsync(resourceGroupName, virtualWANName, request).GetAwaiter().GetResult();
+                return ((IVpnSitesConfigurationOperations)operations).BeginDownloadAsync(resourceGroupName, virtualWANName, request).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -79,18 +79,20 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN for which configuration of all vpn-sites is
-        /// needed.
+        /// The name of the VirtualWAN.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDownloadAsync(this IVpnSitesConfigurationOperations operations, string resourceGroupName, string virtualWANName, GetVpnSitesConfigurationRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VpnSitesConfigurationDownloadHeaders> BeginDownloadAsync(this IVpnSitesConfigurationOperations operations, string resourceGroupName, string virtualWANName, GetVpnSitesConfigurationRequest request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDownloadWithHttpMessagesAsync(resourceGroupName, virtualWANName, request, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDownloadWithHttpMessagesAsync(resourceGroupName, virtualWANName, request, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
     }
 }

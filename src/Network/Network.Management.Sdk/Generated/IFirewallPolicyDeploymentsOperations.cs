@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network
         /// Deploys the firewall policy draft and child rule collection group drafts.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Network
         /// Deploys the firewall policy draft and child rule collection group drafts.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.

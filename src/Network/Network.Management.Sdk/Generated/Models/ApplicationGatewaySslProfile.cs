@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// SSL profile of an application gateway.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationGatewaySslProfile : SubResource
+    public partial class ApplicationGatewaySslProfile : CommonSubResource
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationGatewaySslProfile class.
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="clientAuthConfiguration">Client authentication configuration of the application gateway resource.
         /// </param>
-        public ApplicationGatewaySslProfile(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), System.Collections.Generic.IList<SubResource> trustedClientCertificates = default(System.Collections.Generic.IList<SubResource>), ApplicationGatewaySslPolicy sslPolicy = default(ApplicationGatewaySslPolicy), ApplicationGatewayClientAuthConfiguration clientAuthConfiguration = default(ApplicationGatewayClientAuthConfiguration))
+        public ApplicationGatewaySslProfile(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), System.Collections.Generic.IList<CommonSubResource> trustedClientCertificates = default(System.Collections.Generic.IList<CommonSubResource>), ApplicationGatewaySslPolicy sslPolicy = default(ApplicationGatewaySslPolicy), ApplicationGatewayClientAuthConfiguration clientAuthConfiguration = default(ApplicationGatewayClientAuthConfiguration))
 
         : base(id)
         {
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// certificates.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.trustedClientCertificates")]
-        public System.Collections.Generic.IList<SubResource> TrustedClientCertificates {get; set; }
+        public System.Collections.Generic.IList<CommonSubResource> TrustedClientCertificates {get; set; }
 
         /// <summary>
         /// Gets or sets sSL policy of the application gateway resource.

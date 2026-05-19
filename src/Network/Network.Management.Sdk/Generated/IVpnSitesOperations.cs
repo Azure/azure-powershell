@@ -14,13 +14,56 @@ namespace Microsoft.Azure.Management.Network
     public partial interface IVpnSitesOperations
     {
         /// <summary>
+        /// Lists all the VpnSites in a subscription.
+        /// </summary>
+        /// <remarks>
+        /// Lists all the VpnSites in a subscription.
+        /// </remarks>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<VpnSite>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Lists all the vpnSites in a resource group.
+        /// </summary>
+        /// <remarks>
+        /// Lists all the vpnSites in a resource group.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<VpnSite>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Retrieves the details of a VPN site.
         /// </summary>
         /// <remarks>
         /// Retrieves the details of a VPN site.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnSite.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vpnSiteName'>
         /// The name of the VpnSite being retrieved.
@@ -48,10 +91,10 @@ namespace Microsoft.Azure.Management.Network
         /// VpnSite.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnSite.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vpnSiteName'>
-        /// The name of the VpnSite being created or updated.
+        /// The name of the VpnSite being retrieved.
         /// </param>
         /// <param name='vpnSiteParameters'>
         /// Parameters supplied to create or update VpnSite.
@@ -68,7 +111,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VpnSite>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vpnSiteName, VpnSite vpnSiteParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VpnSite,VpnSitesCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vpnSiteName, VpnSite vpnSiteParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Updates VpnSite tags.
@@ -77,10 +120,10 @@ namespace Microsoft.Azure.Management.Network
         /// Updates VpnSite tags.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnSite.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vpnSiteName'>
-        /// The name of the VpnSite being updated.
+        /// The name of the VpnSite being retrieved.
         /// </param>
         /// <param name='vpnSiteParameters'>
         /// Parameters supplied to update VpnSite tags.
@@ -106,10 +149,10 @@ namespace Microsoft.Azure.Management.Network
         /// Deletes a VpnSite.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnSite.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vpnSiteName'>
-        /// The name of the VpnSite being deleted.
+        /// The name of the VpnSite being retrieved.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -120,50 +163,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string vpnSiteName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Lists all the vpnSites in a resource group.
-        /// </summary>
-        /// <remarks>
-        /// Lists all the vpnSites in a resource group.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnSite.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<VpnSite>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Lists all the VpnSites in a subscription.
-        /// </summary>
-        /// <remarks>
-        /// Lists all the VpnSites in a subscription.
-        /// </remarks>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<VpnSite>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VpnSitesDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string vpnSiteName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Creates a VpnSite resource if it doesn&#39;t exist else updates the existing
@@ -174,10 +174,10 @@ namespace Microsoft.Azure.Management.Network
         /// VpnSite.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnSite.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vpnSiteName'>
-        /// The name of the VpnSite being created or updated.
+        /// The name of the VpnSite being retrieved.
         /// </param>
         /// <param name='vpnSiteParameters'>
         /// Parameters supplied to create or update VpnSite.
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VpnSite>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vpnSiteName, VpnSite vpnSiteParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<VpnSite,VpnSitesCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vpnSiteName, VpnSite vpnSiteParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes a VpnSite.
@@ -203,10 +203,10 @@ namespace Microsoft.Azure.Management.Network
         /// Deletes a VpnSite.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnSite.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vpnSiteName'>
-        /// The name of the VpnSite being deleted.
+        /// The name of the VpnSite being retrieved.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -217,30 +217,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string vpnSiteName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Lists all the vpnSites in a resource group.
-        /// </summary>
-        /// <remarks>
-        /// Lists all the vpnSites in a resource group.
-        /// </remarks>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<VpnSite>>> ListByResourceGroupNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VpnSitesDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string vpnSiteName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists all the VpnSites in a subscription.
@@ -264,6 +241,29 @@ namespace Microsoft.Azure.Management.Network
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<VpnSite>>> ListNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Lists all the vpnSites in a resource group.
+        /// </summary>
+        /// <remarks>
+        /// Lists all the vpnSites in a resource group.
+        /// </remarks>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<VpnSite>>> ListByResourceGroupNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

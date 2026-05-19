@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="allocationTags">IpAllocation tags.
         /// </param>
-        public IpAllocationPropertiesFormat(SubResource subnet = default(SubResource), SubResource virtualNetwork = default(SubResource), string type = default(string), string prefix = default(string), int? prefixLength = default(int?), string prefixType = default(string), string ipamAllocationId = default(string), System.Collections.Generic.IDictionary<string, string> allocationTags = default(System.Collections.Generic.IDictionary<string, string>))
+        public IpAllocationPropertiesFormat(CommonSubResource subnet = default(CommonSubResource), CommonSubResource virtualNetwork = default(CommonSubResource), string type = default(string), string prefix = default(string), int? prefixLength = default(int?), string prefixType = default(string), string ipamAllocationId = default(string), System.Collections.Generic.IDictionary<string, string> allocationTags = default(System.Collections.Generic.IDictionary<string, string>))
 
         {
             this.Subnet = subnet;
@@ -71,14 +71,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets the Subnet that using the prefix of this IpAllocation resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "subnet")]
-        public SubResource Subnet {get; private set; }
+        public CommonSubResource Subnet {get; private set; }
 
         /// <summary>
         /// Gets the VirtualNetwork that using the prefix of this IpAllocation
         /// resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "virtualNetwork")]
-        public SubResource VirtualNetwork {get; private set; }
+        public CommonSubResource VirtualNetwork {get; private set; }
 
         /// <summary>
         /// Gets or sets the type for the IpAllocation. Possible values include: &#39;Undefined&#39;, &#39;Hypernet&#39;

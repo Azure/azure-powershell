@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the IP configuration resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public HubIPConfigurationPropertiesFormat(string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), Subnet subnet = default(Subnet), PublicIPAddress publicIPAddress = default(PublicIPAddress), string provisioningState = default(string))
+        public HubIPConfigurationPropertiesFormat(string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), CommonSubnet subnet = default(CommonSubnet), CommonPublicIPAddress publicIPAddress = default(CommonPublicIPAddress), string provisioningState = default(string))
 
         {
             this.PrivateIPAddress = privateIPAddress;
@@ -72,13 +72,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the reference to the subnet resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "subnet")]
-        public Subnet Subnet {get; set; }
+        public CommonSubnet Subnet {get; set; }
 
         /// <summary>
         /// Gets or sets the reference to the public IP resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "publicIPAddress")]
-        public PublicIPAddress PublicIPAddress {get; set; }
+        public CommonPublicIPAddress PublicIPAddress {get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the IP configuration resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;

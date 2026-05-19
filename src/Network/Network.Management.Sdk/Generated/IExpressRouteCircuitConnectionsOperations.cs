@@ -14,24 +14,21 @@ namespace Microsoft.Azure.Management.Network
     public partial interface IExpressRouteCircuitConnectionsOperations
     {
         /// <summary>
-        /// Deletes the specified Express Route Circuit Connection from the specified
+        /// Gets all global reach connections associated with a private peering in an
         /// express route circuit.
         /// </summary>
         /// <remarks>
-        /// Deletes the specified Express Route Circuit Connection from the specified
+        /// Gets all global reach connections associated with a private peering in an
         /// express route circuit.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='circuitName'>
-        /// The name of the express route circuit.
+        /// The name of express route circuit.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the express route circuit connection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -42,7 +39,10 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string circuitName, string peeringName, string connectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ExpressRouteCircuitConnection>>> ListWithHttpMessagesAsync(string resourceGroupName, string circuitName, string peeringName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets the specified Express Route Circuit Connection from the specified
@@ -53,10 +53,10 @@ namespace Microsoft.Azure.Management.Network
         /// express route circuit.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='circuitName'>
-        /// The name of the express route circuit.
+        /// The name of express route circuit.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
@@ -87,10 +87,10 @@ namespace Microsoft.Azure.Management.Network
         /// express route circuits.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='circuitName'>
-        /// The name of the express route circuit.
+        /// The name of express route circuit.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
@@ -114,38 +114,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCircuitConnection>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string circuitName, string peeringName, string connectionName, ExpressRouteCircuitConnection expressRouteCircuitConnectionParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Gets all global reach connections associated with a private peering in an
-        /// express route circuit.
-        /// </summary>
-        /// <remarks>
-        /// Gets all global reach connections associated with a private peering in an
-        /// express route circuit.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='circuitName'>
-        /// The name of the circuit.
-        /// </param>
-        /// <param name='peeringName'>
-        /// The name of the peering.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ExpressRouteCircuitConnection>>> ListWithHttpMessagesAsync(string resourceGroupName, string circuitName, string peeringName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCircuitConnection,ExpressRouteCircuitConnectionsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string circuitName, string peeringName, string connectionName, ExpressRouteCircuitConnection expressRouteCircuitConnectionParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes the specified Express Route Circuit Connection from the specified
@@ -156,10 +125,10 @@ namespace Microsoft.Azure.Management.Network
         /// express route circuit.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='circuitName'>
-        /// The name of the express route circuit.
+        /// The name of express route circuit.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
@@ -176,7 +145,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string circuitName, string peeringName, string connectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ExpressRouteCircuitConnectionsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string circuitName, string peeringName, string connectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Creates or updates a Express Route Circuit Connection in the specified
@@ -187,10 +156,10 @@ namespace Microsoft.Azure.Management.Network
         /// express route circuits.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='circuitName'>
-        /// The name of the express route circuit.
+        /// The name of express route circuit.
         /// </param>
         /// <param name='peeringName'>
         /// The name of the peering.
@@ -214,7 +183,38 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCircuitConnection>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string circuitName, string peeringName, string connectionName, ExpressRouteCircuitConnection expressRouteCircuitConnectionParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ExpressRouteCircuitConnection,ExpressRouteCircuitConnectionsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string circuitName, string peeringName, string connectionName, ExpressRouteCircuitConnection expressRouteCircuitConnectionParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deletes the specified Express Route Circuit Connection from the specified
+        /// express route circuit.
+        /// </summary>
+        /// <remarks>
+        /// Deletes the specified Express Route Circuit Connection from the specified
+        /// express route circuit.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='circuitName'>
+        /// The name of express route circuit.
+        /// </param>
+        /// <param name='peeringName'>
+        /// The name of the peering.
+        /// </param>
+        /// <param name='connectionName'>
+        /// The name of the express route circuit connection.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ExpressRouteCircuitConnectionsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string circuitName, string peeringName, string connectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets all global reach connections associated with a private peering in an

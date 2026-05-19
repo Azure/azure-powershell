@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHubBgpConnection.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -119,9 +119,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='connectionName'>
         /// The name of the connection.
         /// </param>
-        public static void Delete(this IVirtualHubBgpConnectionOperations operations, string resourceGroupName, string virtualHubName, string connectionName)
+        public static VirtualHubBgpConnectionDeleteHeaders Delete(this IVirtualHubBgpConnectionOperations operations, string resourceGroupName, string virtualHubName, string connectionName)
         {
-                ((IVirtualHubBgpConnectionOperations)operations).DeleteAsync(resourceGroupName, virtualHubName, connectionName).GetAwaiter().GetResult();
+                return ((IVirtualHubBgpConnectionOperations)operations).DeleteAsync(resourceGroupName, virtualHubName, connectionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHubBgpConnection.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -142,9 +142,12 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IVirtualHubBgpConnectionOperations operations, string resourceGroupName, string virtualHubName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VirtualHubBgpConnectionDeleteHeaders> DeleteAsync(this IVirtualHubBgpConnectionOperations operations, string resourceGroupName, string virtualHubName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, connectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, connectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Creates a VirtualHubBgpConnection resource if it doesn&#39;t exist else updates
@@ -154,7 +157,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -175,7 +178,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -200,7 +203,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHubBgpConnection.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -208,9 +211,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='connectionName'>
         /// The name of the connection.
         /// </param>
-        public static void BeginDelete(this IVirtualHubBgpConnectionOperations operations, string resourceGroupName, string virtualHubName, string connectionName)
+        public static VirtualHubBgpConnectionDeleteHeaders BeginDelete(this IVirtualHubBgpConnectionOperations operations, string resourceGroupName, string virtualHubName, string connectionName)
         {
-                ((IVirtualHubBgpConnectionOperations)operations).BeginDeleteAsync(resourceGroupName, virtualHubName, connectionName).GetAwaiter().GetResult();
+                return ((IVirtualHubBgpConnectionOperations)operations).BeginDeleteAsync(resourceGroupName, virtualHubName, connectionName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -220,7 +223,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHubBgpConnection.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -231,9 +234,12 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVirtualHubBgpConnectionOperations operations, string resourceGroupName, string virtualHubName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VirtualHubBgpConnectionDeleteHeaders> BeginDeleteAsync(this IVirtualHubBgpConnectionOperations operations, string resourceGroupName, string virtualHubName, string connectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, connectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualHubName, connectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
     }
 }
