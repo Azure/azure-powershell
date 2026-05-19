@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.0
+* Removed cmdlet 'Get-AzQuotaGroupQuotaSubscriptionRequest'
+    - This cmdlet is no longer supported and has been removed from the module
+* API Version Upgrade: Migrated from 2023-02-01 to 2025-09-01 stable
+
 ## Version 0.1.3
 * Upgraded nuget package to signed package.
 

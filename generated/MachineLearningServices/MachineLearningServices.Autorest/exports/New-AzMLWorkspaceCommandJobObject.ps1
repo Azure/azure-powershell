@@ -20,7 +20,7 @@ Create an in-memory object for CommandJob.
 .Description
 Create an in-memory object for CommandJob.
 .Example
-# You can use following commands to create job input or job oupt as vaule pass to JobInput or JobOutput parameter of the  New-AzMLWorkspaceCommandJobObject
+# You can use following commands to create job input or job output as value pass to JobInput or JobOutput parameter of the  New-AzMLWorkspaceCommandJobObject
 
 # New-AzMLWorkspaceCustomModelJobInputObject
 # New-AzMLWorkspaceCustomModelJobOutputObject
@@ -43,7 +43,7 @@ New-AzMLWorkspaceCommandJobObject -Command "echo `"hello world`"" `
 -DisplayName 'commandjob01' -ExperimentName 'commandjobexperiment'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.CommandJob
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.CommandJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -54,6 +54,9 @@ JOBINPUT <ICommandJobInputs>: Mapping of input data bindings used in the job.
 
 JOBOUTPUT <ICommandJobOutputs>: Mapping of output data bindings used in the job.
   [(Any) <IJobOutput>]: This indicates any property can be added to this object.
+
+NOTIFICATIONSETTINGWEBHOOK <INotificationSettingWebhooks>: Send webhook callback to a service. Key is a user-provided name for the webhook.
+  [(Any) <IWebhook>]: This indicates any property can be added to this object.
 
 PROPERTY <IResourceBaseProperties>: The asset property dictionary.
   [(Any) <String>]: This indicates any property can be added to this object.
@@ -67,10 +70,10 @@ SERVICEPROPERTY <IJobServiceProperties>: Additional properties to set on the end
 TAG <IResourceBaseTags>: Tag dictionary. Tags can be added, removed, and updated.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceCommandJobObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-azmlworkspacecommandjobobject
 #>
 function New-AzMLWorkspaceCommandJobObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.CommandJob])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.CommandJob])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -81,12 +84,6 @@ param(
     # "python train.py".
     ${Command},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [System.String]
-    # [Required] The ARM resource ID of the Environment specification for the job.
-    ${EnvironmentId},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
     [System.String]
@@ -94,11 +91,17 @@ param(
     ${CodeId},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.DistributionType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("PyTorch", "TensorFlow", "Mpi")]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.DistributionType]
+    [System.String]
     # [Required] Specifies the type of distribution framework.
     ${DistributionType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # [Required] The ARM resource ID of the Environment specification for the job.
+    ${EnvironmentId},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
@@ -108,9 +111,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ICommandJobInputs]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ICommandJobInputs]
     # Mapping of input data bindings used in the job.
-    # To construct, see NOTES section for JOBINPUT properties and create a hash table.
     ${JobInput},
 
     [Parameter()]
@@ -122,10 +124,24 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ICommandJobOutputs]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ICommandJobOutputs]
     # Mapping of output data bindings used in the job.
-    # To construct, see NOTES section for JOBOUTPUT properties and create a hash table.
     ${JobOutput},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("Null", "Spot", "Basic", "Standard", "Premium")]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Controls the compute job tier.
+    ${QueueSettingJobTier},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Extra arguments to pass to the Docker run command.
+    # This would override any parameters that have already been set by the system, or in this section.
+    # This parameter is only supported for Azure ML compute types.
+    ${ResourceDockerArg},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
@@ -141,10 +157,22 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceConfigurationProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IResourceConfigurationProperties]
     # Additional properties bag.
-    # To construct, see NOTES section for RESOURCEPROPERTY properties and create a hash table.
     ${ResourceProperty},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # Size of the docker container's shared memory block.
+    # This should be in the format of (number)(unit) where number as to be greater than 0 and the unit can be one of b(bytes), k(kilobytes), m(megabytes), or g(gigabytes).
+    ${ResourceShmSize},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String]
+    # ARM resource ID of the component resource.
+    ${ComponentId},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
@@ -166,9 +194,9 @@ param(
     ${ExperimentName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.IdentityConfigurationType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("Managed", "AMLToken", "UserIdentity")]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.IdentityConfigurationType]
+    [System.String]
     # [Required] Specifies the type of identity framework.
     ${IdentityType},
 
@@ -177,6 +205,26 @@ param(
     [System.Boolean]
     # Is the asset archived?.
     ${IsArchived},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String[]]
+    # This is the email recipient list which has a limitation of 499 characters in total concat with comma separator.
+    ${NotificationSettingEmail},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PSArgumentCompleterAttribute("JobCompleted", "JobFailed", "JobCancelled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [System.String[]]
+    # Send email notification to user on specified notification type.
+    ${NotificationSettingEmailOn},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.INotificationSettingWebhooks]
+    # Send webhook callback to a service.
+    # Key is a user-provided name for the webhook.
+    ${NotificationSettingWebhook},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
@@ -192,9 +240,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobServiceProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IJobServiceProperties]
     # Additional properties to set on the endpoint.
-    # To construct, see NOTES section for SERVICEPROPERTY properties and create a hash table.
     ${ServiceProperty},
 
     [Parameter()]
@@ -211,17 +258,15 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IResourceBaseProperties]
     # The asset property dictionary.
-    # To construct, see NOTES section for PROPERTY properties and create a hash table.
     ${Property},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IResourceBaseTags]
     # Tag dictionary.
     # Tags can be added, removed, and updated.
-    # To construct, see NOTES section for TAG properties and create a hash table.
     ${Tag}
 )
 
@@ -232,6 +277,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -260,6 +308,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -12,18 +12,24 @@ A long-running resource action.
 
 ## SYNTAX
 
-### Get (Default)
+### GetCustom (Default)
+```
+Get-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
+```
+
+### Get
 ```
 Get-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### GetAndSave
+### GetAndSaveCustom
 ```
 Get-AzEdgeActionVersionCode -EdgeActionName <String> -ResourceGroupName <String> -Version <String>
- -OutputPath <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -OutputPath <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -124,7 +130,7 @@ The name of the Edge Action
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetAndSave
+Parameter Sets: Get, GetAndSaveCustom, GetCustom
 Aliases:
 
 Required: True
@@ -169,7 +175,7 @@ Output directory to save the decoded version code as a zip file.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetAndSave
+Parameter Sets: GetAndSaveCustom
 Aliases:
 
 Required: True
@@ -185,7 +191,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetAndSave
+Parameter Sets: Get, GetAndSaveCustom, GetCustom
 Aliases:
 
 Required: True
@@ -201,7 +207,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, GetAndSave
+Parameter Sets: Get, GetAndSaveCustom, GetCustom
 Aliases:
 
 Required: False
@@ -216,7 +222,7 @@ The name of the Edge Action version
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetAndSave, GetViaIdentityEdgeAction
+Parameter Sets: Get, GetAndSaveCustom, GetCustom, GetViaIdentityEdgeAction
 Aliases:
 
 Required: True

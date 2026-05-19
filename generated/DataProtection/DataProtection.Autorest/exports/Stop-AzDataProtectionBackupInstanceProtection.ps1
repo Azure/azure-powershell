@@ -24,6 +24,8 @@ Stop-AzDataProtectionBackupInstanceProtection -ResourceGroupName "rgName" -Subsc
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IStopProtectionRequest
 .Outputs
 System.Boolean
 .Notes
@@ -31,21 +33,42 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
+BACKUPVAULTINPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   [BackupInstanceName <String>]: The name of the backup instance.
   [BackupPolicyName <String>]: 
+  [DeletedVaultName <String>]: The name of the DeletedBackupVaultResource
   [Id <String>]: Resource identity path
   [JobId <String>]: The Job ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
-  [Location <String>]: The location in which uniqueness will be verified.
+  [Location <String>]: The name of the Azure region.
   [OperationId <String>]: 
   [RecoveryPointId <String>]: 
-  [RequestName <String>]: 
+  [RequestName <String>]: The name of the DppBaseResource
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceGuardProxyName <String>]: name of the resource guard proxy
   [ResourceGuardsName <String>]: The name of ResourceGuard
   [ResourceId <String>]: ARM path of the resource to be protected using Microsoft.DataProtection
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VaultName <String>]: The name of the backup vault.
+
+INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+  [BackupInstanceName <String>]: The name of the backup instance.
+  [BackupPolicyName <String>]: 
+  [DeletedVaultName <String>]: The name of the DeletedBackupVaultResource
+  [Id <String>]: Resource identity path
+  [JobId <String>]: The Job ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  [Location <String>]: The name of the Azure region.
+  [OperationId <String>]: 
+  [RecoveryPointId <String>]: 
+  [RequestName <String>]: The name of the DppBaseResource
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceGuardProxyName <String>]: name of the resource guard proxy
+  [ResourceGuardsName <String>]: The name of ResourceGuard
+  [ResourceId <String>]: ARM path of the resource to be protected using Microsoft.DataProtection
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [VaultName <String>]: The name of the backup vault.
+
+PARAMETER <IStopProtectionRequest>: Request body of Stop protection when MUA is Enabled
+  [ResourceGuardOperationRequest <List<String>>]: Resource guard operation request in the format similar to <ResourceGuard-ARMID>/dppDisableStopProtectionRequests/default. Use this parameter when the operation is MUA protected.
 .Link
 https://learn.microsoft.com/powershell/module/az.dataprotection/stop-azdataprotectionbackupinstanceprotection
 #>
@@ -53,85 +76,97 @@ function Stop-AzDataProtectionBackupInstanceProtection {
 [OutputType([System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='Stop', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
+    [Parameter(ParameterSetName='StopViaIdentityBackupVault', Mandatory)]
+    [Parameter(ParameterSetName='StopViaIdentityBackupVaultExpanded', Mandatory)]
+    [Parameter(ParameterSetName='StopViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='StopViaJsonString', Mandatory)]
     [Parameter(ParameterSetName='Stop', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
     [System.String]
-    # The name of the resource group where the backup vault is present
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Stop', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [System.String]
-    # The name of the backup instance
+    # The name of the backup instance.
     ${BackupInstanceName},
 
-    [Parameter(ParameterSetName='Stop', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [System.String]
-    # The name of the backup vault
-    ${VaultName},
+    [Parameter(ParameterSetName='StopViaIdentityBackupVault', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='StopViaIdentityBackupVaultExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity]
+    # Identity Parameter
+    ${BackupVaultInputObject},
 
-    [Parameter(ParameterSetName='Stop')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Parameter(ParameterSetName='StopViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='StopViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='Stop', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
     [System.String]
-    # Subscription Id of the backup vault
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='StopViaJsonFilePath')]
+    [Parameter(ParameterSetName='StopViaJsonString')]
+    [Parameter(ParameterSetName='Stop')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [System.String[]]
-    # Resource guard operation request in the format similar to <ResourceGuard-ARMID>/dppDisableStopProtectionRequests/default.
-    # Use this parameter when the operation is MUA protected.
-    ${ResourceGuardOperationRequest},
+    [Parameter(ParameterSetName='StopViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='StopViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='Stop', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Path')]
+    [System.String]
+    # The name of the backup vault.
+    ${VaultName},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Header')]
     [System.String]
     # Parameter deprecate.
     # Please use SecureToken instead.
     ${Token},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='StopViaIdentityBackupVault', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [System.Security.SecureString]
-    # Parameter to authorize operations protected by cross tenant resource guard.
-    # Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch authorization token for different tenant.
-    ${SecureToken},
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IStopProtectionRequest]
+    # Request body of Stop protection when MUA is Enabled
+    ${Parameter},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SendAsyncStep[]]
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SendAsyncStep[]]
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [System.Uri]
-    ${Proxy},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Run the command as a job
     ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
@@ -146,21 +181,58 @@ param(
     ${PassThru},
 
     [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials},
+
+    [Parameter(ParameterSetName='StopViaIdentityBackupVaultExpanded')]
+    [Parameter(ParameterSetName='Stop')]
+    [Parameter(ParameterSetName='StopViaIdentity')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String[]]
+    # Resource guard operation request in the format similar to <ResourceGuard-ARMID>/dppDisableStopProtectionRequests/default.
+    # Use this parameter when the operation is MUA protected.
+    ${ResourceGuardOperationRequest},
+
+    [Parameter(ParameterSetName='StopViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Stop operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='StopViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Json string supplied to the Stop operation
+    ${JsonString},
+
+    [Parameter(ParameterSetName='Stop')]
+    [Parameter(ParameterSetName='StopViaIdentity')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.Security.SecureString]
+    # Parameter to authorize operations protected by cross tenant resource guard.
+    # Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch authorization token for different tenant.
+    ${SecureToken},
 
     [Parameter(ParameterSetName='StopViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    # Identity Parameter To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject}
 )
 
@@ -171,6 +243,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -190,8 +270,19 @@ begin {
         }
 
         $mapping = @{
+            StopViaIdentityBackupVault = 'Az.DataProtection.private\Stop-AzDataProtectionBackupInstanceProtection_StopViaIdentityBackupVault';
+            StopViaIdentityBackupVaultExpanded = 'Az.DataProtection.private\Stop-AzDataProtectionBackupInstanceProtection_StopViaIdentityBackupVaultExpanded';
+            StopViaJsonFilePath = 'Az.DataProtection.private\Stop-AzDataProtectionBackupInstanceProtection_StopViaJsonFilePath';
+            StopViaJsonString = 'Az.DataProtection.private\Stop-AzDataProtectionBackupInstanceProtection_StopViaJsonString';
             Stop = 'Az.DataProtection.custom\Stop-AzDataProtectionBackupInstanceProtection';
             StopViaIdentity = 'Az.DataProtection.custom\Stop-AzDataProtectionBackupInstanceProtection';
+        }
+        if (('StopViaJsonFilePath', 'StopViaJsonString', 'Stop') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -200,6 +291,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

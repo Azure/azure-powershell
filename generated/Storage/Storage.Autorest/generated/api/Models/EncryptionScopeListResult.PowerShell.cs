@@ -7,9 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.PowerShell;
 
-    /// <summary>
-    /// List of encryption scopes requested, and if paging is required, a URL to the next page of encryption scopes.
-    /// </summary>
+    /// <summary>The response of a EncryptionScope list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(EncryptionScopeListResultTypeConverter))]
     public partial class EncryptionScopeListResult
     {
@@ -164,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             return ToJsonString();
         }
     }
-    /// List of encryption scopes requested, and if paging is required, a URL to the next page of encryption scopes.
+    /// The response of a EncryptionScope list operation.
     [System.ComponentModel.TypeConverter(typeof(EncryptionScopeListResultTypeConverter))]
     public partial interface IEncryptionScopeListResult
 

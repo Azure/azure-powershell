@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Improved usability and consistency (possible breaking changes). See [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+
+## Version 1.3.0
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 
 ## Version 1.2.0
 * Upgraded nuget package to signed package.

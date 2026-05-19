@@ -19,7 +19,20 @@
 -->
 
 ## Upcoming Release
+* Added soft delete support for Azure File share backup items (`Undo-AzRecoveryServicesBackupItemDeletion` and `Get-AzRecoveryServicesBackupItem -DeleteState SoftDeleted`)
+
+## Version 7.11.2
+* Added Cross region restore support for upcoming regions Southeast Asia 3
+
+
+## Version 7.11.1
+* Added Cross region restore support for upcoming regions IndiaSouthCentral
+
+
+## Version 7.11.0
 * Added Cross region restore support for Bleu cloud regions
+* Added Availability Zone support in Update Protection
+* Added Platform Fault Domain support in Enable, Update, and Switch Protection workflows
 
 ## Version 7.10.0
 * Added Cross region restore support for new region - northeastus5.

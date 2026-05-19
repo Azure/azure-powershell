@@ -19,10 +19,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentity __identity = new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Identity();
 
         /// <summary>Internal Acessors for PrincipalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal.PrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal)__identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal)__identity).PrincipalId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal.PrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal)__identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal)__identity).PrincipalId = value ?? null; }
 
         /// <summary>Internal Acessors for TenantId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal.TenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal)__identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal)__identity).TenantId = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal.TenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal)__identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal)__identity).TenantId = value ?? null; }
 
         /// <summary>The principal ID of resource identity. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inherited)]

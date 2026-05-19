@@ -9,6 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
 
     /// <summary>
     /// Low-level API implementation for the AppConfigurationdata service.
+    /// Azure App Configuration REST API
     /// </summary>
     public partial class AppConfigurationdata
     {
@@ -16,12 +17,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>Requests the headers and status of the given resource.</summary>
         /// <param name="key">The key of the key-value to retrieve.</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
-        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not match the value provided.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="label">The label of the key-value to retrieve.</param>
         /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="tags">A filter used to query by tags. Syntax reference:
+        /// https://aka.ms/azconfig/docs/keyvaluefiltering</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -30,9 +37,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CheckKeyValue(string key, string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, string label, System.Collections.Generic.List<string> Select, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckKeyValueOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CheckKeyValue(string key, string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> tags, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckKeyValueOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -41,11 +48,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         "/kv/"
                         + global::System.Uri.EscapeDataString(key)
                         + "?"
-                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
+                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
+                        + "&"
                         + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != tags  && tags.Count > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -72,6 +81,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 {
                     request.Headers.Add("If-None-Match",ifNoneMatch);
                 }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
@@ -82,12 +95,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>Requests the headers and status of the given resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
-        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not match the value provided.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="label">The label of the key-value to retrieve.</param>
         /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="tags">A filter used to query by tags. Syntax reference:
+        /// https://aka.ms/azconfig/docs/keyvaluefiltering</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -96,9 +115,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CheckKeyValueViaIdentity(global::System.String viaIdentity, string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, string label, System.Collections.Generic.List<string> Select, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckKeyValueOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CheckKeyValueViaIdentity(global::System.String viaIdentity, string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> tags, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckKeyValueOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -117,11 +136,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         "/kv/"
                         + key
                         + "?"
-                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
+                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
+                        + "&"
                         + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != tags  && tags.Count > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -148,6 +169,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 {
                     request.Headers.Add("If-None-Match",ifNoneMatch);
                 }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
@@ -165,7 +190,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CheckKeyValue_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckKeyValueOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CheckKeyValue_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckKeyValueOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -184,13 +209,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\bernardpan\.autorest\@autorest_powershell@4.0.743\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onOk(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.754\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response);
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -210,38 +235,48 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// events back.
         /// </summary>
         /// <param name="key">The key of the key-value to retrieve.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="label">The label of the key-value to retrieve.</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
-        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not match the value provided.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
         /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
+        /// <param name="tags">A filter used to query by tags. Syntax reference:
+        /// https://aka.ms/azconfig/docs/keyvaluefiltering</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CheckKeyValue_Validate(string key, string endpoint, string label, string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, System.Collections.Generic.List<string> Select, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task CheckKeyValue_Validate(string key, string endpoint, string label, string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> tags, string xMSClientRequestId, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(key),key);
                 await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertRegEx(nameof(endpoint),endpoint,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(label),label);
                 await eventListener.AssertNotNull(nameof(syncToken),syncToken);
                 await eventListener.AssertNotNull(nameof(acceptDatetime),acceptDatetime);
                 await eventListener.AssertNotNull(nameof(ifMatch),ifMatch);
                 await eventListener.AssertNotNull(nameof(ifNoneMatch),ifNoneMatch);
+                await eventListener.AssertRegEx(nameof(xMSClientRequestId),xMSClientRequestId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
             }
         }
 
         /// <summary>Requests the headers and status of the given resource.</summary>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="name">A filter for the name of the returned keys.</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -250,9 +285,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CheckKeys(string syncToken, string acceptDatetime, string name, string after, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckKeysOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CheckKeys(string syncToken, string acceptDatetime, string xMSClientRequestId, string name, string after, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckKeysOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -260,9 +295,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/keys"
                         + "?"
-                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
                         + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -283,6 +318,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 {
                     request.Headers.Add("Accept-Datetime",acceptDatetime);
                 }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
@@ -293,11 +332,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>Requests the headers and status of the given resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="name">A filter for the name of the returned keys.</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -306,9 +347,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CheckKeysViaIdentity(global::System.String viaIdentity, string syncToken, string acceptDatetime, string name, string after, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckKeysOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CheckKeysViaIdentity(global::System.String viaIdentity, string syncToken, string acceptDatetime, string xMSClientRequestId, string name, string after, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckKeysOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -325,9 +366,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/keys"
                         + "?"
-                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
                         + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -347,6 +388,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 if (null != acceptDatetime)
                 {
                     request.Headers.Add("Accept-Datetime",acceptDatetime);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
                 }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -365,7 +410,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CheckKeys_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckKeysOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CheckKeys_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckKeysOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -384,13 +429,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\bernardpan\.autorest\@autorest_powershell@4.0.743\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onOk(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.754\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response);
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -409,36 +454,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// Validation method for <see cref="CheckKeys" /> method. Call this like the actual call, but you will get validation events
         /// back.
         /// </summary>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="name">A filter for the name of the returned keys.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CheckKeys_Validate(string endpoint, string name, string syncToken, string after, string acceptDatetime, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task CheckKeys_Validate(string endpoint, string name, string after, string syncToken, string acceptDatetime, string xMSClientRequestId, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertRegEx(nameof(endpoint),endpoint,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(name),name);
-                await eventListener.AssertNotNull(nameof(syncToken),syncToken);
                 await eventListener.AssertNotNull(nameof(after),after);
+                await eventListener.AssertNotNull(nameof(syncToken),syncToken);
                 await eventListener.AssertNotNull(nameof(acceptDatetime),acceptDatetime);
+                await eventListener.AssertRegEx(nameof(xMSClientRequestId),xMSClientRequestId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
             }
         }
 
         /// <summary>Requests the headers and status of the given resource.</summary>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="name">A filter for the name of the returned labels.</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
         /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -447,9 +498,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CheckLabels(string syncToken, string acceptDatetime, string name, string after, System.Collections.Generic.List<string> Select, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckLabelsOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CheckLabels(string syncToken, string acceptDatetime, string xMSClientRequestId, string name, string after, System.Collections.Generic.List<string> Select, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckLabelsOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -457,9 +508,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/labels"
                         + "?"
-                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
                         + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
@@ -482,6 +533,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 {
                     request.Headers.Add("Accept-Datetime",acceptDatetime);
                 }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
@@ -492,12 +547,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>Requests the headers and status of the given resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="name">A filter for the name of the returned labels.</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
         /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -506,9 +563,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CheckLabelsViaIdentity(global::System.String viaIdentity, string syncToken, string acceptDatetime, string name, string after, System.Collections.Generic.List<string> Select, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckLabelsOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CheckLabelsViaIdentity(global::System.String viaIdentity, string syncToken, string acceptDatetime, string xMSClientRequestId, string name, string after, System.Collections.Generic.List<string> Select, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckLabelsOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -525,9 +582,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/labels"
                         + "?"
-                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
                         + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
@@ -549,6 +606,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 if (null != acceptDatetime)
                 {
                     request.Headers.Add("Accept-Datetime",acceptDatetime);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
                 }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -567,7 +628,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CheckLabels_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckLabelsOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CheckLabels_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckLabelsOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -586,13 +647,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\bernardpan\.autorest\@autorest_powershell@4.0.743\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onOk(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.754\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response);
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -611,38 +672,48 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// Validation method for <see cref="CheckLabels" /> method. Call this like the actual call, but you will get validation events
         /// back.
         /// </summary>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="name">A filter for the name of the returned labels.</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
         /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CheckLabels_Validate(string endpoint, string name, string syncToken, string after, string acceptDatetime, System.Collections.Generic.List<string> Select, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task CheckLabels_Validate(string endpoint, string name, string syncToken, string after, string acceptDatetime, System.Collections.Generic.List<string> Select, string xMSClientRequestId, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertRegEx(nameof(endpoint),endpoint,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(name),name);
                 await eventListener.AssertNotNull(nameof(syncToken),syncToken);
                 await eventListener.AssertNotNull(nameof(after),after);
                 await eventListener.AssertNotNull(nameof(acceptDatetime),acceptDatetime);
+                await eventListener.AssertRegEx(nameof(xMSClientRequestId),xMSClientRequestId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
             }
         }
 
         /// <summary>Requests the headers and status of the given resource.</summary>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
-        /// <param name="key">A filter used to match keys.</param>
-        /// <param name="label">A filter used to match labels</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="key">A filter used to match keys. Syntax reference:
+        /// https://aka.ms/azconfig/docs/restapirevisions</param>
+        /// <param name="label">A filter used to match labels. Syntax reference:
+        /// https://aka.ms/azconfig/docs/restapirevisions</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
         /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="tags">A filter used to query by tags. Syntax reference:
+        /// https://aka.ms/azconfig/docs/restapirevisions</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -651,9 +722,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CheckRevisions(string syncToken, string acceptDatetime, string key, string label, string after, System.Collections.Generic.List<string> Select, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckRevisionsOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CheckRevisions(string syncToken, string acceptDatetime, string xMSClientRequestId, string key, string label, string after, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> tags, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckRevisionsOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -661,15 +732,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/revisions"
                         + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
                         + (string.IsNullOrEmpty(key) ? global::System.String.Empty : "key=" + global::System.Uri.EscapeDataString(key))
                         + "&"
                         + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
                         + "&"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
                         + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != tags  && tags.Count > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -688,6 +761,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 {
                     request.Headers.Add("Accept-Datetime",acceptDatetime);
                 }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
@@ -698,13 +775,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>Requests the headers and status of the given resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
-        /// <param name="key">A filter used to match keys.</param>
-        /// <param name="label">A filter used to match labels</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="key">A filter used to match keys. Syntax reference:
+        /// https://aka.ms/azconfig/docs/restapirevisions</param>
+        /// <param name="label">A filter used to match labels. Syntax reference:
+        /// https://aka.ms/azconfig/docs/restapirevisions</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
         /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="tags">A filter used to query by tags. Syntax reference:
+        /// https://aka.ms/azconfig/docs/restapirevisions</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -713,9 +796,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CheckRevisionsViaIdentity(global::System.String viaIdentity, string syncToken, string acceptDatetime, string key, string label, string after, System.Collections.Generic.List<string> Select, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckRevisionsOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CheckRevisionsViaIdentity(global::System.String viaIdentity, string syncToken, string acceptDatetime, string xMSClientRequestId, string key, string label, string after, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> tags, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckRevisionsOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -732,15 +815,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/revisions"
                         + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
                         + (string.IsNullOrEmpty(key) ? global::System.String.Empty : "key=" + global::System.Uri.EscapeDataString(key))
                         + "&"
                         + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
                         + "&"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
                         + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != tags  && tags.Count > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -758,6 +843,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 if (null != acceptDatetime)
                 {
                     request.Headers.Add("Accept-Datetime",acceptDatetime);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
                 }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -776,7 +865,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CheckRevisions_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckRevisionsOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CheckRevisions_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckRevisionsOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -795,13 +884,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\bernardpan\.autorest\@autorest_powershell@4.0.743\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onOk(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.754\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response);
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -820,37 +909,1086 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// Validation method for <see cref="CheckRevisions" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
-        /// <param name="key">A filter used to match keys.</param>
-        /// <param name="label">A filter used to match labels</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="key">A filter used to match keys. Syntax reference:
+        /// https://aka.ms/azconfig/docs/restapirevisions</param>
+        /// <param name="label">A filter used to match labels. Syntax reference:
+        /// https://aka.ms/azconfig/docs/restapirevisions</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
         /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
+        /// <param name="tags">A filter used to query by tags. Syntax reference:
+        /// https://aka.ms/azconfig/docs/restapirevisions</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CheckRevisions_Validate(string endpoint, string key, string label, string syncToken, string after, string acceptDatetime, System.Collections.Generic.List<string> Select, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task CheckRevisions_Validate(string endpoint, string key, string label, string syncToken, string after, string acceptDatetime, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> tags, string xMSClientRequestId, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertRegEx(nameof(endpoint),endpoint,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(key),key);
                 await eventListener.AssertNotNull(nameof(label),label);
                 await eventListener.AssertNotNull(nameof(syncToken),syncToken);
                 await eventListener.AssertNotNull(nameof(after),after);
                 await eventListener.AssertNotNull(nameof(acceptDatetime),acceptDatetime);
+                await eventListener.AssertRegEx(nameof(xMSClientRequestId),xMSClientRequestId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+            }
+        }
+
+        /// <summary>Requests the headers and status of the given resource.</summary>
+        /// <param name="name">The name of the key-value snapshot to check.</param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task CheckSnapshot(string name, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckSnapshotOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/snapshots/"
+                        + global::System.Uri.EscapeDataString(name)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Head, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // add headers parameters
+                if (null != syncToken)
+                {
+                    request.Headers.Add("Sync-Token",syncToken);
+                }
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+                if (null != ifNoneMatch)
+                {
+                    request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.CheckSnapshot_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Requests the headers and status of the given resource.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task CheckSnapshotViaIdentity(global::System.String viaIdentity, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckSnapshotOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/snapshots/(?<name>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/snapshots/{name}'");
+                }
+
+                // replace URI parameters with values from identity
+                var name = _match.Groups["name"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/snapshots/"
+                        + name
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Head, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // add headers parameters
+                if (null != syncToken)
+                {
+                    request.Headers.Add("Sync-Token",syncToken);
+                }
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+                if (null != ifNoneMatch)
+                {
+                    request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.CheckSnapshot_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "CheckSnapshot" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task CheckSnapshot_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckSnapshotOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.754\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="CheckSnapshot" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="name">The name of the key-value snapshot to check.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task CheckSnapshot_Validate(string name, string endpoint, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(name),name);
+                await eventListener.AssertMaximumLength(nameof(name),name,256);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertRegEx(nameof(endpoint),endpoint,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(syncToken),syncToken);
+                await eventListener.AssertNotNull(nameof(ifMatch),ifMatch);
+                await eventListener.AssertNotNull(nameof(ifNoneMatch),ifNoneMatch);
+                await eventListener.AssertRegEx(nameof(xMSClientRequestId),xMSClientRequestId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+            }
+        }
+
+        /// <summary>Requests the headers and status of the given resource.</summary>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task CheckSnapshots(string syncToken, string xMSClientRequestId, string after, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckSnapshotsOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/snapshots"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Head, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // add headers parameters
+                if (null != syncToken)
+                {
+                    request.Headers.Add("Sync-Token",syncToken);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.CheckSnapshots_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Requests the headers and status of the given resource.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task CheckSnapshotsViaIdentity(global::System.String viaIdentity, string syncToken, string xMSClientRequestId, string after, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckSnapshotsOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/snapshots$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/snapshots'");
+                }
+
+                // replace URI parameters with values from identity
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/snapshots"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Head, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // add headers parameters
+                if (null != syncToken)
+                {
+                    request.Headers.Add("Sync-Token",syncToken);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.CheckSnapshots_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "CheckSnapshots" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task CheckSnapshots_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckSnapshotsOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.754\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="CheckSnapshots" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task CheckSnapshots_Validate(string endpoint, string syncToken, string after, string xMSClientRequestId, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertRegEx(nameof(endpoint),endpoint,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(syncToken),syncToken);
+                await eventListener.AssertNotNull(nameof(after),after);
+                await eventListener.AssertRegEx(nameof(xMSClientRequestId),xMSClientRequestId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+            }
+        }
+
+        /// <summary>create a key-value snapshot.</summary>
+        /// <param name="name">The name of the key-value snapshot to create.</param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="body">The key-value snapshot to create.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task CreateSnapshot(string name, string syncToken, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/snapshots/"
+                        + global::System.Uri.EscapeDataString(name)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // add headers parameters
+                if (null != syncToken)
+                {
+                    request.Headers.Add("Sync-Token",syncToken);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.CreateSnapshot_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>create a key-value snapshot.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="body">The key-value snapshot to create.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task CreateSnapshotViaIdentity(global::System.String viaIdentity, string syncToken, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/snapshots/(?<name>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/snapshots/{name}'");
+                }
+
+                // replace URI parameters with values from identity
+                var name = _match.Groups["name"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/snapshots/"
+                        + name
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // add headers parameters
+                if (null != syncToken)
+                {
+                    request.Headers.Add("Sync-Token",syncToken);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.CreateSnapshot_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>create a key-value snapshot.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="body">The key-value snapshot to create.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot> CreateSnapshotViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot body, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/snapshots/(?<name>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/snapshots/{name}'");
+                }
+
+                // replace URI parameters with values from identity
+                var name = _match.Groups["name"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/snapshots/"
+                        + name
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != syncToken)
+                {
+                    request.Headers.Add("Sync-Token",syncToken);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.CreateSnapshotWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>create a key-value snapshot.</summary>
+        /// <param name="name">The name of the key-value snapshot to create.</param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="jsonString">Json string supplied to the CreateSnapshot operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task CreateSnapshotViaJsonString(string name, string syncToken, string endpoint, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/snapshots/"
+                        + global::System.Uri.EscapeDataString(name)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // add headers parameters
+                if (null != syncToken)
+                {
+                    request.Headers.Add("Sync-Token",syncToken);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.CreateSnapshot_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>create a key-value snapshot.</summary>
+        /// <param name="name">The name of the key-value snapshot to create.</param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="jsonString">Json string supplied to the CreateSnapshot operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot> CreateSnapshotViaJsonStringWithResult(string name, string syncToken, string endpoint, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/snapshots/"
+                        + global::System.Uri.EscapeDataString(name)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != syncToken)
+                {
+                    request.Headers.Add("Sync-Token",syncToken);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.CreateSnapshotWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>create a key-value snapshot.</summary>
+        /// <param name="name">The name of the key-value snapshot to create.</param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="body">The key-value snapshot to create.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot> CreateSnapshotWithResult(string name, string syncToken, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot body, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/snapshots/"
+                        + global::System.Uri.EscapeDataString(name)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != syncToken)
+                {
+                    request.Headers.Add("Sync-Token",syncToken);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.CreateSnapshotWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "CreateSnapshotWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot> CreateSnapshotWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    // declared final-state-via: default
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_originalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            break;
+                        }
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.Snapshot.FromJson(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers));
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            // Unrecognized Response. Create an error record based on what we have.
+                            var ex = new Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>(_response, await _result);
+                            throw ex;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "CreateSnapshot" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task CreateSnapshot_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // declared final-state-via: default
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_originalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            break;
+                        }
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.Snapshot.FromJson(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="CreateSnapshot" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="name">The name of the key-value snapshot to create.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="body">The key-value snapshot to create.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task CreateSnapshot_Validate(string name, string endpoint, string syncToken, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot body, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(name),name);
+                await eventListener.AssertMaximumLength(nameof(name),name,256);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertRegEx(nameof(endpoint),endpoint,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(syncToken),syncToken);
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
 
         /// <summary>Deletes a key-value.</summary>
         /// <param name="key">The key of the key-value to delete.</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="label">The label of the key-value to delete.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -860,9 +1998,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DeleteKeyValue(string key, string syncToken, string ifMatch, string label, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IDeleteKeyValueNoContentResponseHeaders>, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DeleteKeyValue(string key, string syncToken, string ifMatch, string xMSClientRequestId, string label, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IDeleteKeyValueNoContentResponseHeaders>, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -871,9 +2009,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         "/kv/"
                         + global::System.Uri.EscapeDataString(key)
                         + "?"
-                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -892,6 +2030,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 {
                     request.Headers.Add("If-Match",ifMatch);
                 }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
@@ -902,9 +2044,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>Deletes a key-value.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="label">The label of the key-value to delete.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -914,9 +2058,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DeleteKeyValueViaIdentity(global::System.String viaIdentity, string syncToken, string ifMatch, string label, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IDeleteKeyValueNoContentResponseHeaders>, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DeleteKeyValueViaIdentity(global::System.String viaIdentity, string syncToken, string ifMatch, string xMSClientRequestId, string label, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IDeleteKeyValueNoContentResponseHeaders>, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -935,9 +2079,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         "/kv/"
                         + key
                         + "?"
-                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -956,6 +2100,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 {
                     request.Headers.Add("If-Match",ifMatch);
                 }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
@@ -966,18 +2114,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>Deletes a key-value.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="label">The label of the key-value to delete.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> DeleteKeyValueViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string ifMatch, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> DeleteKeyValueViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string ifMatch, string xMSClientRequestId, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -996,9 +2146,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         "/kv/"
                         + key
                         + "?"
-                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -1016,6 +2166,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 if (null != ifMatch)
                 {
                     request.Headers.Add("If-Match",ifMatch);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
                 }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -1027,18 +2181,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>Deletes a key-value.</summary>
         /// <param name="key">The key of the key-value to delete.</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="label">The label of the key-value to delete.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> DeleteKeyValueWithResult(string key, string syncToken, string ifMatch, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> DeleteKeyValueWithResult(string key, string syncToken, string ifMatch, string xMSClientRequestId, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1047,9 +2203,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         "/kv/"
                         + global::System.Uri.EscapeDataString(key)
                         + "?"
-                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -1067,6 +2223,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 if (null != ifMatch)
                 {
                     request.Headers.Add("If-Match",ifMatch);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
                 }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -1167,7 +2327,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         case global::System.Net.HttpStatusCode.NoContent:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onNoContent(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\bernardpan\.autorest\@autorest_powershell@4.0.743\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onNoContent(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.754\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -1193,33 +2353,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// events back.
         /// </summary>
         /// <param name="key">The key of the key-value to delete.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="label">The label of the key-value to delete.</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DeleteKeyValue_Validate(string key, string endpoint, string label, string syncToken, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DeleteKeyValue_Validate(string key, string endpoint, string label, string syncToken, string ifMatch, string xMSClientRequestId, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(key),key);
                 await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertRegEx(nameof(endpoint),endpoint,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(label),label);
                 await eventListener.AssertNotNull(nameof(syncToken),syncToken);
                 await eventListener.AssertNotNull(nameof(ifMatch),ifMatch);
+                await eventListener.AssertRegEx(nameof(xMSClientRequestId),xMSClientRequestId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
             }
         }
 
         /// <summary>Unlocks a key-value.</summary>
         /// <param name="key">The key of the key-value to unlock.</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
-        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not match the value provided.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="label">The label, if any, of the key-value to unlock.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -1228,9 +2395,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DeleteLock(string key, string syncToken, string ifMatch, string ifNoneMatch, string label, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DeleteLock(string key, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1239,9 +2406,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         "/locks/"
                         + global::System.Uri.EscapeDataString(key)
                         + "?"
-                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -1264,6 +2431,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 {
                     request.Headers.Add("If-None-Match",ifNoneMatch);
                 }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
@@ -1274,10 +2445,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>Unlocks a key-value.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
-        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not match the value provided.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="label">The label, if any, of the key-value to unlock.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -1286,9 +2460,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DeleteLockViaIdentity(global::System.String viaIdentity, string syncToken, string ifMatch, string ifNoneMatch, string label, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DeleteLockViaIdentity(global::System.String viaIdentity, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1307,9 +2481,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         "/locks/"
                         + key
                         + "?"
-                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -1332,6 +2506,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 {
                     request.Headers.Add("If-None-Match",ifNoneMatch);
                 }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
@@ -1342,19 +2520,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>Unlocks a key-value.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
-        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not match the value provided.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="label">The label, if any, of the key-value to unlock.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> DeleteLockViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string ifMatch, string ifNoneMatch, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> DeleteLockViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1373,9 +2554,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         "/locks/"
                         + key
                         + "?"
-                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -1397,6 +2578,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 if (null != ifNoneMatch)
                 {
                     request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
                 }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -1408,19 +2593,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>Unlocks a key-value.</summary>
         /// <param name="key">The key of the key-value to unlock.</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
-        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not match the value provided.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="label">The label, if any, of the key-value to unlock.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> DeleteLockWithResult(string key, string syncToken, string ifMatch, string ifNoneMatch, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> DeleteLockWithResult(string key, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1429,9 +2617,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         "/locks/"
                         + global::System.Uri.EscapeDataString(key)
                         + "?"
-                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -1453,6 +2641,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 if (null != ifNoneMatch)
                 {
                     request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
                 }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -1567,37 +2759,48 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// back.
         /// </summary>
         /// <param name="key">The key of the key-value to unlock.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="label">The label, if any, of the key-value to unlock.</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
-        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not match the value provided.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DeleteLock_Validate(string key, string endpoint, string label, string syncToken, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DeleteLock_Validate(string key, string endpoint, string label, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(key),key);
                 await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertRegEx(nameof(endpoint),endpoint,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(label),label);
                 await eventListener.AssertNotNull(nameof(syncToken),syncToken);
                 await eventListener.AssertNotNull(nameof(ifMatch),ifMatch);
                 await eventListener.AssertNotNull(nameof(ifNoneMatch),ifNoneMatch);
+                await eventListener.AssertRegEx(nameof(xMSClientRequestId),xMSClientRequestId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
             }
         }
 
         /// <summary>Gets a single key-value.</summary>
-        /// <param name="key">The key of the key-value to retrieve.</param>
+        /// <param name="key">The key of the key-value.</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
-        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not match the value provided.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="label">The label of the key-value to retrieve.</param>
         /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="tags">A filter used to query by tags. Syntax reference:
+        /// https://aka.ms/azconfig/docs/keyvaluefiltering</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -1606,9 +2809,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GetKeyValue(string key, string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, string label, System.Collections.Generic.List<string> Select, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GetKeyValue(string key, string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> tags, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1617,11 +2820,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         "/kv/"
                         + global::System.Uri.EscapeDataString(key)
                         + "?"
-                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
+                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
+                        + "&"
                         + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != tags  && tags.Count > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -1648,6 +2853,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 {
                     request.Headers.Add("If-None-Match",ifNoneMatch);
                 }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
@@ -1658,12 +2867,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>Gets a single key-value.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
-        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not match the value provided.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="label">The label of the key-value to retrieve.</param>
         /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="tags">A filter used to query by tags. Syntax reference:
+        /// https://aka.ms/azconfig/docs/keyvaluefiltering</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -1672,9 +2887,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GetKeyValueViaIdentity(global::System.String viaIdentity, string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, string label, System.Collections.Generic.List<string> Select, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GetKeyValueViaIdentity(global::System.String viaIdentity, string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> tags, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1693,11 +2908,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         "/kv/"
                         + key
                         + "?"
-                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
+                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
+                        + "&"
                         + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != tags  && tags.Count > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -1724,6 +2941,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 {
                     request.Headers.Add("If-None-Match",ifNoneMatch);
                 }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
@@ -1734,21 +2955,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>Gets a single key-value.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
-        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not match the value provided.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="label">The label of the key-value to retrieve.</param>
         /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="tags">A filter used to query by tags. Syntax reference:
+        /// https://aka.ms/azconfig/docs/keyvaluefiltering</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> GetKeyValueViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, string label, System.Collections.Generic.List<string> Select, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> GetKeyValueViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> tags, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1767,11 +2994,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         "/kv/"
                         + key
                         + "?"
-                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
+                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
+                        + "&"
                         + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != tags  && tags.Count > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -1797,6 +3026,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 if (null != ifNoneMatch)
                 {
                     request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
                 }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -1806,23 +3039,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         }
 
         /// <summary>Gets a single key-value.</summary>
-        /// <param name="key">The key of the key-value to retrieve.</param>
+        /// <param name="key">The key of the key-value.</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
-        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not match the value provided.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="label">The label of the key-value to retrieve.</param>
         /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="tags">A filter used to query by tags. Syntax reference:
+        /// https://aka.ms/azconfig/docs/keyvaluefiltering</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> GetKeyValueWithResult(string key, string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, string label, System.Collections.Generic.List<string> Select, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> GetKeyValueWithResult(string key, string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> tags, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1831,11 +3070,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         "/kv/"
                         + global::System.Uri.EscapeDataString(key)
                         + "?"
-                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
+                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
+                        + "&"
                         + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != tags  && tags.Count > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -1861,6 +3102,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 if (null != ifNoneMatch)
                 {
                     request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
                 }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -1974,41 +3219,60 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// Validation method for <see cref="GetKeyValue" /> method. Call this like the actual call, but you will get validation events
         /// back.
         /// </summary>
-        /// <param name="key">The key of the key-value to retrieve.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="key">The key of the key-value.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="label">The label of the key-value to retrieve.</param>
-        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
-        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not match the value provided.</param>
         /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="tags">A filter used to query by tags. Syntax reference:
+        /// https://aka.ms/azconfig/docs/keyvaluefiltering</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GetKeyValue_Validate(string key, string endpoint, string label, string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, System.Collections.Generic.List<string> Select, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task GetKeyValue_Validate(string key, string endpoint, string label, System.Collections.Generic.List<string> Select, string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, string xMSClientRequestId, System.Collections.Generic.List<string> tags, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(key),key);
                 await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertRegEx(nameof(endpoint),endpoint,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(label),label);
                 await eventListener.AssertNotNull(nameof(syncToken),syncToken);
                 await eventListener.AssertNotNull(nameof(acceptDatetime),acceptDatetime);
                 await eventListener.AssertNotNull(nameof(ifMatch),ifMatch);
                 await eventListener.AssertNotNull(nameof(ifNoneMatch),ifNoneMatch);
+                await eventListener.AssertRegEx(nameof(xMSClientRequestId),xMSClientRequestId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
             }
         }
 
         /// <summary>Gets a list of key-values.</summary>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
-        /// <param name="key">A filter used to match keys.</param>
-        /// <param name="label">A filter used to match labels</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="key">A filter used to match keys. Syntax reference:
+        /// https://aka.ms/azconfig/docs/keyvaluefiltering</param>
+        /// <param name="label">A filter used to match labels. Syntax reference:
+        /// https://aka.ms/azconfig/docs/keyvaluefiltering</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
         /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="snapshot">A filter used get key-values for a snapshot. The value should be the name of
+        /// the snapshot. Not valid when used with 'key' and 'label' filters.</param>
+        /// <param name="tags">A filter used to query by tags. Syntax reference:
+        /// https://aka.ms/azconfig/docs/keyvaluefiltering</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -2017,9 +3281,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GetKeyValues(string syncToken, string acceptDatetime, string key, string label, string after, System.Collections.Generic.List<string> Select, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GetKeyValues(string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, string key, string label, string after, System.Collections.Generic.List<string> Select, string snapshot, System.Collections.Generic.List<string> tags, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2027,15 +3291,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/kv"
                         + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
                         + (string.IsNullOrEmpty(key) ? global::System.String.Empty : "key=" + global::System.Uri.EscapeDataString(key))
                         + "&"
                         + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
                         + "&"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
                         + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (string.IsNullOrEmpty(snapshot) ? global::System.String.Empty : "snapshot=" + global::System.Uri.EscapeDataString(snapshot))
+                        + "&"
+                        + (null != tags  && tags.Count > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -2054,6 +3322,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 {
                     request.Headers.Add("Accept-Datetime",acceptDatetime);
                 }
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+                if (null != ifNoneMatch)
+                {
+                    request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
@@ -2064,13 +3340,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>Gets a list of key-values.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
-        /// <param name="key">A filter used to match keys.</param>
-        /// <param name="label">A filter used to match labels</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="key">A filter used to match keys. Syntax reference:
+        /// https://aka.ms/azconfig/docs/keyvaluefiltering</param>
+        /// <param name="label">A filter used to match labels. Syntax reference:
+        /// https://aka.ms/azconfig/docs/keyvaluefiltering</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
         /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="snapshot">A filter used get key-values for a snapshot. The value should be the name of
+        /// the snapshot. Not valid when used with 'key' and 'label' filters.</param>
+        /// <param name="tags">A filter used to query by tags. Syntax reference:
+        /// https://aka.ms/azconfig/docs/keyvaluefiltering</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -2079,9 +3366,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GetKeyValuesViaIdentity(global::System.String viaIdentity, string syncToken, string acceptDatetime, string key, string label, string after, System.Collections.Generic.List<string> Select, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GetKeyValuesViaIdentity(global::System.String viaIdentity, string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, string key, string label, string after, System.Collections.Generic.List<string> Select, string snapshot, System.Collections.Generic.List<string> tags, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2098,15 +3385,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/kv"
                         + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
                         + (string.IsNullOrEmpty(key) ? global::System.String.Empty : "key=" + global::System.Uri.EscapeDataString(key))
                         + "&"
                         + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
                         + "&"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
                         + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (string.IsNullOrEmpty(snapshot) ? global::System.String.Empty : "snapshot=" + global::System.Uri.EscapeDataString(snapshot))
+                        + "&"
+                        + (null != tags  && tags.Count > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -2125,6 +3416,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 {
                     request.Headers.Add("Accept-Datetime",acceptDatetime);
                 }
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+                if (null != ifNoneMatch)
+                {
+                    request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
@@ -2135,22 +3434,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>Gets a list of key-values.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
-        /// <param name="key">A filter used to match keys.</param>
-        /// <param name="label">A filter used to match labels</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="key">A filter used to match keys. Syntax reference:
+        /// https://aka.ms/azconfig/docs/keyvaluefiltering</param>
+        /// <param name="label">A filter used to match labels. Syntax reference:
+        /// https://aka.ms/azconfig/docs/keyvaluefiltering</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
         /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="snapshot">A filter used get key-values for a snapshot. The value should be the name of
+        /// the snapshot. Not valid when used with 'key' and 'label' filters.</param>
+        /// <param name="tags">A filter used to query by tags. Syntax reference:
+        /// https://aka.ms/azconfig/docs/keyvaluefiltering</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult> GetKeyValuesViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string acceptDatetime, string key, string label, string after, System.Collections.Generic.List<string> Select, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult> GetKeyValuesViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, string key, string label, string after, System.Collections.Generic.List<string> Select, string snapshot, System.Collections.Generic.List<string> tags, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2167,15 +3477,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/kv"
                         + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
                         + (string.IsNullOrEmpty(key) ? global::System.String.Empty : "key=" + global::System.Uri.EscapeDataString(key))
                         + "&"
                         + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
                         + "&"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
                         + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (string.IsNullOrEmpty(snapshot) ? global::System.String.Empty : "snapshot=" + global::System.Uri.EscapeDataString(snapshot))
+                        + "&"
+                        + (null != tags  && tags.Count > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -2193,6 +3507,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 if (null != acceptDatetime)
                 {
                     request.Headers.Add("Accept-Datetime",acceptDatetime);
+                }
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+                if (null != ifNoneMatch)
+                {
+                    request.Headers.Add("If-None-Match",ifNoneMatch);
                 }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -2203,22 +3525,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
 
         /// <summary>Gets a list of key-values.</summary>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
-        /// <param name="key">A filter used to match keys.</param>
-        /// <param name="label">A filter used to match labels</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="key">A filter used to match keys. Syntax reference:
+        /// https://aka.ms/azconfig/docs/keyvaluefiltering</param>
+        /// <param name="label">A filter used to match labels. Syntax reference:
+        /// https://aka.ms/azconfig/docs/keyvaluefiltering</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
         /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="snapshot">A filter used get key-values for a snapshot. The value should be the name of
+        /// the snapshot. Not valid when used with 'key' and 'label' filters.</param>
+        /// <param name="tags">A filter used to query by tags. Syntax reference:
+        /// https://aka.ms/azconfig/docs/keyvaluefiltering</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult> GetKeyValuesWithResult(string syncToken, string acceptDatetime, string key, string label, string after, System.Collections.Generic.List<string> Select, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult> GetKeyValuesWithResult(string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, string key, string label, string after, System.Collections.Generic.List<string> Select, string snapshot, System.Collections.Generic.List<string> tags, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2226,15 +3559,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/kv"
                         + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
                         + (string.IsNullOrEmpty(key) ? global::System.String.Empty : "key=" + global::System.Uri.EscapeDataString(key))
                         + "&"
                         + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
                         + "&"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
                         + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (string.IsNullOrEmpty(snapshot) ? global::System.String.Empty : "snapshot=" + global::System.Uri.EscapeDataString(snapshot))
+                        + "&"
+                        + (null != tags  && tags.Count > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -2252,6 +3589,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 if (null != acceptDatetime)
                 {
                     request.Headers.Add("Accept-Datetime",acceptDatetime);
+                }
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+                if (null != ifNoneMatch)
+                {
+                    request.Headers.Add("If-None-Match",ifNoneMatch);
                 }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -2365,38 +3710,54 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// Validation method for <see cref="GetKeyValues" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
-        /// <param name="key">A filter used to match keys.</param>
-        /// <param name="label">A filter used to match labels</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="key">A filter used to match keys. Syntax reference:
+        /// https://aka.ms/azconfig/docs/keyvaluefiltering</param>
+        /// <param name="label">A filter used to match labels. Syntax reference:
+        /// https://aka.ms/azconfig/docs/keyvaluefiltering</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
         /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
+        /// <param name="snapshot">A filter used get key-values for a snapshot. The value should be the name of
+        /// the snapshot. Not valid when used with 'key' and 'label' filters.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="tags">A filter used to query by tags. Syntax reference:
+        /// https://aka.ms/azconfig/docs/keyvaluefiltering</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GetKeyValues_Validate(string endpoint, string key, string label, string syncToken, string after, string acceptDatetime, System.Collections.Generic.List<string> Select, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task GetKeyValues_Validate(string endpoint, string key, string label, string syncToken, string after, string acceptDatetime, System.Collections.Generic.List<string> Select, string snapshot, string ifMatch, string ifNoneMatch, System.Collections.Generic.List<string> tags, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertRegEx(nameof(endpoint),endpoint,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(key),key);
                 await eventListener.AssertNotNull(nameof(label),label);
                 await eventListener.AssertNotNull(nameof(syncToken),syncToken);
                 await eventListener.AssertNotNull(nameof(after),after);
                 await eventListener.AssertNotNull(nameof(acceptDatetime),acceptDatetime);
+                await eventListener.AssertNotNull(nameof(snapshot),snapshot);
+                await eventListener.AssertNotNull(nameof(ifMatch),ifMatch);
+                await eventListener.AssertNotNull(nameof(ifNoneMatch),ifNoneMatch);
             }
         }
 
         /// <summary>Gets a list of keys.</summary>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
         /// <param name="name">A filter for the name of the returned keys.</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -2407,7 +3768,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task GetKeys(string syncToken, string acceptDatetime, string name, string after, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2415,9 +3776,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/keys"
                         + "?"
-                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
                         + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -2448,11 +3809,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>Gets a list of keys.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
         /// <param name="name">A filter for the name of the returned keys.</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -2463,7 +3825,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task GetKeysViaIdentity(global::System.String viaIdentity, string syncToken, string acceptDatetime, string name, string after, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2480,9 +3842,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/keys"
                         + "?"
-                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
                         + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -2513,11 +3875,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>Gets a list of keys.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
         /// <param name="name">A filter for the name of the returned keys.</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
@@ -2526,7 +3889,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyListResult> GetKeysViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string acceptDatetime, string name, string after, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2543,9 +3906,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/keys"
                         + "?"
-                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
                         + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -2575,11 +3938,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
 
         /// <summary>Gets a list of keys.</summary>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
         /// <param name="name">A filter for the name of the returned keys.</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
@@ -2588,7 +3952,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyListResult> GetKeysWithResult(string syncToken, string acceptDatetime, string name, string after, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2596,9 +3960,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/keys"
                         + "?"
-                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
                         + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -2731,36 +4095,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// Validation method for <see cref="GetKeys" /> method. Call this like the actual call, but you will get validation events
         /// back.
         /// </summary>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="name">A filter for the name of the returned keys.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GetKeys_Validate(string endpoint, string name, string syncToken, string after, string acceptDatetime, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task GetKeys_Validate(string endpoint, string name, string after, string syncToken, string acceptDatetime, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertRegEx(nameof(endpoint),endpoint,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(name),name);
-                await eventListener.AssertNotNull(nameof(syncToken),syncToken);
                 await eventListener.AssertNotNull(nameof(after),after);
+                await eventListener.AssertNotNull(nameof(syncToken),syncToken);
                 await eventListener.AssertNotNull(nameof(acceptDatetime),acceptDatetime);
             }
         }
 
         /// <summary>Gets a list of labels.</summary>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="name">A filter for the name of the returned labels.</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
         /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -2769,9 +4137,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GetLabels(string syncToken, string acceptDatetime, string name, string after, System.Collections.Generic.List<string> Select, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ILabelListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GetLabels(string syncToken, string acceptDatetime, string xMSClientRequestId, string name, string after, System.Collections.Generic.List<string> Select, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ILabelListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2779,9 +4147,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/labels"
                         + "?"
-                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
                         + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
@@ -2804,6 +4172,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 {
                     request.Headers.Add("Accept-Datetime",acceptDatetime);
                 }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
@@ -2814,12 +4186,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>Gets a list of labels.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="name">A filter for the name of the returned labels.</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
         /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -2828,9 +4202,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GetLabelsViaIdentity(global::System.String viaIdentity, string syncToken, string acceptDatetime, string name, string after, System.Collections.Generic.List<string> Select, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ILabelListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GetLabelsViaIdentity(global::System.String viaIdentity, string syncToken, string acceptDatetime, string xMSClientRequestId, string name, string after, System.Collections.Generic.List<string> Select, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ILabelListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2847,9 +4221,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/labels"
                         + "?"
-                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
                         + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
@@ -2872,6 +4246,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 {
                     request.Headers.Add("Accept-Datetime",acceptDatetime);
                 }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
@@ -2882,21 +4260,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>Gets a list of labels.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="name">A filter for the name of the returned labels.</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
         /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ILabelListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ILabelListResult> GetLabelsViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string acceptDatetime, string name, string after, System.Collections.Generic.List<string> Select, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ILabelListResult> GetLabelsViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string acceptDatetime, string xMSClientRequestId, string name, string after, System.Collections.Generic.List<string> Select, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2913,9 +4293,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/labels"
                         + "?"
-                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
                         + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
@@ -2937,6 +4317,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 if (null != acceptDatetime)
                 {
                     request.Headers.Add("Accept-Datetime",acceptDatetime);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
                 }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -2947,21 +4331,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
 
         /// <summary>Gets a list of labels.</summary>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="name">A filter for the name of the returned labels.</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
         /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ILabelListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ILabelListResult> GetLabelsWithResult(string syncToken, string acceptDatetime, string name, string after, System.Collections.Generic.List<string> Select, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ILabelListResult> GetLabelsWithResult(string syncToken, string acceptDatetime, string xMSClientRequestId, string name, string after, System.Collections.Generic.List<string> Select, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2969,9 +4355,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/labels"
                         + "?"
-                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
                         + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
@@ -2993,6 +4379,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 if (null != acceptDatetime)
                 {
                     request.Headers.Add("Accept-Datetime",acceptDatetime);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
                 }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -3106,38 +4496,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// Validation method for <see cref="GetLabels" /> method. Call this like the actual call, but you will get validation events
         /// back.
         /// </summary>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="name">A filter for the name of the returned labels.</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
         /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GetLabels_Validate(string endpoint, string name, string syncToken, string after, string acceptDatetime, System.Collections.Generic.List<string> Select, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task GetLabels_Validate(string endpoint, string name, string syncToken, string after, string acceptDatetime, System.Collections.Generic.List<string> Select, string xMSClientRequestId, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertRegEx(nameof(endpoint),endpoint,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(name),name);
                 await eventListener.AssertNotNull(nameof(syncToken),syncToken);
                 await eventListener.AssertNotNull(nameof(after),after);
                 await eventListener.AssertNotNull(nameof(acceptDatetime),acceptDatetime);
+                await eventListener.AssertRegEx(nameof(xMSClientRequestId),xMSClientRequestId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
             }
         }
 
-        /// <summary>Gets a list of key-value revisions.</summary>
-        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
-        /// <param name="key">A filter used to match keys.</param>
-        /// <param name="label">A filter used to match labels</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
-        /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <summary>Gets the state of a long running operation.</summary>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="snapshot">Snapshot identifier for the long running operation.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -3146,9 +4535,343 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GetRevisions(string syncToken, string acceptDatetime, string key, string label, string after, System.Collections.Generic.List<string> Select, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GetOperationDetails(string xMSClientRequestId, string snapshot, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IOperationDetails>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/operations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + "snapshot=" + global::System.Uri.EscapeDataString(snapshot)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // add headers parameters
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.GetOperationDetails_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets the state of a long running operation.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="snapshot">Snapshot identifier for the long running operation.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task GetOperationDetailsViaIdentity(global::System.String viaIdentity, string xMSClientRequestId, string snapshot, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IOperationDetails>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/operations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/operations'");
+                }
+
+                // replace URI parameters with values from identity
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/operations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + "snapshot=" + global::System.Uri.EscapeDataString(snapshot)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // add headers parameters
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.GetOperationDetails_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets the state of a long running operation.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="snapshot">Snapshot identifier for the long running operation.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IOperationDetails>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IOperationDetails> GetOperationDetailsViaIdentityWithResult(global::System.String viaIdentity, string xMSClientRequestId, string snapshot, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/operations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/operations'");
+                }
+
+                // replace URI parameters with values from identity
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/operations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + "snapshot=" + global::System.Uri.EscapeDataString(snapshot)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.GetOperationDetailsWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets the state of a long running operation.</summary>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="snapshot">Snapshot identifier for the long running operation.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IOperationDetails>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IOperationDetails> GetOperationDetailsWithResult(string xMSClientRequestId, string snapshot, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/operations"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + "snapshot=" + global::System.Uri.EscapeDataString(snapshot)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.GetOperationDetailsWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "GetOperationDetailsWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IOperationDetails>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IOperationDetails> GetOperationDetailsWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.OperationDetails.FromJson(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            // Unrecognized Response. Create an error record based on what we have.
+                            var ex = new Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>(_response, await _result);
+                            throw ex;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "GetOperationDetails" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task GetOperationDetails_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IOperationDetails>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.OperationDetails.FromJson(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="GetOperationDetails" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="snapshot">Snapshot identifier for the long running operation.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task GetOperationDetails_Validate(string endpoint, string snapshot, string xMSClientRequestId, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertRegEx(nameof(endpoint),endpoint,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(snapshot),snapshot);
+                await eventListener.AssertRegEx(nameof(xMSClientRequestId),xMSClientRequestId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+            }
+        }
+
+        /// <summary>Gets a list of key-value revisions.</summary>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="key">A filter used to match keys. Syntax reference:
+        /// https://aka.ms/azconfig/docs/restapirevisions</param>
+        /// <param name="label">A filter used to match labels. Syntax reference:
+        /// https://aka.ms/azconfig/docs/restapirevisions</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
+        /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
+        /// <param name="tags">A filter used to query by tags. Syntax reference:
+        /// https://aka.ms/azconfig/docs/restapirevisions</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task GetRevisions(string syncToken, string acceptDatetime, string xMSClientRequestId, string key, string label, string after, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> tags, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3156,15 +4879,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/revisions"
                         + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
                         + (string.IsNullOrEmpty(key) ? global::System.String.Empty : "key=" + global::System.Uri.EscapeDataString(key))
                         + "&"
                         + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
                         + "&"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
                         + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != tags  && tags.Count > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -3183,6 +4908,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 {
                     request.Headers.Add("Accept-Datetime",acceptDatetime);
                 }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
@@ -3193,13 +4922,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>Gets a list of key-value revisions.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
-        /// <param name="key">A filter used to match keys.</param>
-        /// <param name="label">A filter used to match labels</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="key">A filter used to match keys. Syntax reference:
+        /// https://aka.ms/azconfig/docs/restapirevisions</param>
+        /// <param name="label">A filter used to match labels. Syntax reference:
+        /// https://aka.ms/azconfig/docs/restapirevisions</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
         /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="tags">A filter used to query by tags. Syntax reference:
+        /// https://aka.ms/azconfig/docs/restapirevisions</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -3208,9 +4943,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GetRevisionsViaIdentity(global::System.String viaIdentity, string syncToken, string acceptDatetime, string key, string label, string after, System.Collections.Generic.List<string> Select, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GetRevisionsViaIdentity(global::System.String viaIdentity, string syncToken, string acceptDatetime, string xMSClientRequestId, string key, string label, string after, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> tags, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3227,15 +4962,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/revisions"
                         + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
                         + (string.IsNullOrEmpty(key) ? global::System.String.Empty : "key=" + global::System.Uri.EscapeDataString(key))
                         + "&"
                         + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
                         + "&"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
                         + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != tags  && tags.Count > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -3254,6 +4991,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 {
                     request.Headers.Add("Accept-Datetime",acceptDatetime);
                 }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
@@ -3264,22 +5005,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>Gets a list of key-value revisions.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
-        /// <param name="key">A filter used to match keys.</param>
-        /// <param name="label">A filter used to match labels</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="key">A filter used to match keys. Syntax reference:
+        /// https://aka.ms/azconfig/docs/restapirevisions</param>
+        /// <param name="label">A filter used to match labels. Syntax reference:
+        /// https://aka.ms/azconfig/docs/restapirevisions</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
         /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="tags">A filter used to query by tags. Syntax reference:
+        /// https://aka.ms/azconfig/docs/restapirevisions</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult> GetRevisionsViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string acceptDatetime, string key, string label, string after, System.Collections.Generic.List<string> Select, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult> GetRevisionsViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string acceptDatetime, string xMSClientRequestId, string key, string label, string after, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> tags, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3296,15 +5043,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/revisions"
                         + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
                         + (string.IsNullOrEmpty(key) ? global::System.String.Empty : "key=" + global::System.Uri.EscapeDataString(key))
                         + "&"
                         + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
                         + "&"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
                         + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != tags  && tags.Count > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -3322,6 +5071,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 if (null != acceptDatetime)
                 {
                     request.Headers.Add("Accept-Datetime",acceptDatetime);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
                 }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -3332,22 +5085,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
 
         /// <summary>Gets a list of key-value revisions.</summary>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
-        /// <param name="key">A filter used to match keys.</param>
-        /// <param name="label">A filter used to match labels</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="key">A filter used to match keys. Syntax reference:
+        /// https://aka.ms/azconfig/docs/restapirevisions</param>
+        /// <param name="label">A filter used to match labels. Syntax reference:
+        /// https://aka.ms/azconfig/docs/restapirevisions</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
         /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="tags">A filter used to query by tags. Syntax reference:
+        /// https://aka.ms/azconfig/docs/restapirevisions</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult> GetRevisionsWithResult(string syncToken, string acceptDatetime, string key, string label, string after, System.Collections.Generic.List<string> Select, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult> GetRevisionsWithResult(string syncToken, string acceptDatetime, string xMSClientRequestId, string key, string label, string after, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> tags, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3355,15 +5114,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
                         "/revisions"
                         + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
                         + (string.IsNullOrEmpty(key) ? global::System.String.Empty : "key=" + global::System.Uri.EscapeDataString(key))
                         + "&"
                         + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
                         + "&"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        + "&"
                         + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
                         + "&"
                         + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != tags  && tags.Count > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -3381,6 +5142,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 if (null != acceptDatetime)
                 {
                     request.Headers.Add("Accept-Datetime",acceptDatetime);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
                 }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -3494,38 +5259,825 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// Validation method for <see cref="GetRevisions" /> method. Call this like the actual call, but you will get validation
         /// events back.
         /// </summary>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
-        /// <param name="key">A filter used to match keys.</param>
-        /// <param name="label">A filter used to match labels</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="key">A filter used to match keys. Syntax reference:
+        /// https://aka.ms/azconfig/docs/restapirevisions</param>
+        /// <param name="label">A filter used to match labels. Syntax reference:
+        /// https://aka.ms/azconfig/docs/restapirevisions</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="after">Instructs the server to return elements that appear after the element referred to by the specified
-        /// token.</param>
-        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified time.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
+        /// <param name="acceptDatetime">Requests the server to respond with the state of the resource at the specified
+        /// time.</param>
         /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
+        /// <param name="tags">A filter used to query by tags. Syntax reference:
+        /// https://aka.ms/azconfig/docs/restapirevisions</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GetRevisions_Validate(string endpoint, string key, string label, string syncToken, string after, string acceptDatetime, System.Collections.Generic.List<string> Select, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task GetRevisions_Validate(string endpoint, string key, string label, string syncToken, string after, string acceptDatetime, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> tags, string xMSClientRequestId, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertRegEx(nameof(endpoint),endpoint,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(key),key);
                 await eventListener.AssertNotNull(nameof(label),label);
                 await eventListener.AssertNotNull(nameof(syncToken),syncToken);
                 await eventListener.AssertNotNull(nameof(after),after);
                 await eventListener.AssertNotNull(nameof(acceptDatetime),acceptDatetime);
+                await eventListener.AssertRegEx(nameof(xMSClientRequestId),xMSClientRequestId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+            }
+        }
+
+        /// <summary>Gets a single key-value snapshot.</summary>
+        /// <param name="name">The name of the snapshot.</param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task GetSnapshot(string name, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, System.Collections.Generic.List<string> Select, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/snapshots/"
+                        + global::System.Uri.EscapeDataString(name)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // add headers parameters
+                if (null != syncToken)
+                {
+                    request.Headers.Add("Sync-Token",syncToken);
+                }
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+                if (null != ifNoneMatch)
+                {
+                    request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.GetSnapshot_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets a single key-value snapshot.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task GetSnapshotViaIdentity(global::System.String viaIdentity, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, System.Collections.Generic.List<string> Select, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/snapshots/(?<name>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/snapshots/{name}'");
+                }
+
+                // replace URI parameters with values from identity
+                var name = _match.Groups["name"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/snapshots/"
+                        + name
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // add headers parameters
+                if (null != syncToken)
+                {
+                    request.Headers.Add("Sync-Token",syncToken);
+                }
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+                if (null != ifNoneMatch)
+                {
+                    request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.GetSnapshot_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets a single key-value snapshot.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot> GetSnapshotViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, System.Collections.Generic.List<string> Select, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/snapshots/(?<name>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/snapshots/{name}'");
+                }
+
+                // replace URI parameters with values from identity
+                var name = _match.Groups["name"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/snapshots/"
+                        + name
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != syncToken)
+                {
+                    request.Headers.Add("Sync-Token",syncToken);
+                }
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+                if (null != ifNoneMatch)
+                {
+                    request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.GetSnapshotWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets a single key-value snapshot.</summary>
+        /// <param name="name">The name of the snapshot.</param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot> GetSnapshotWithResult(string name, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, System.Collections.Generic.List<string> Select, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/snapshots/"
+                        + global::System.Uri.EscapeDataString(name)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != syncToken)
+                {
+                    request.Headers.Add("Sync-Token",syncToken);
+                }
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+                if (null != ifNoneMatch)
+                {
+                    request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.GetSnapshotWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "GetSnapshotWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot> GetSnapshotWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.Snapshot.FromJson(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers));
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            // Unrecognized Response. Create an error record based on what we have.
+                            var ex = new Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>(_response, await _result);
+                            throw ex;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "GetSnapshot" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task GetSnapshot_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.Snapshot.FromJson(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="GetSnapshot" /> method. Call this like the actual call, but you will get validation events
+        /// back.
+        /// </summary>
+        /// <param name="name">The name of the snapshot.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task GetSnapshot_Validate(string name, string endpoint, System.Collections.Generic.List<string> Select, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(name),name);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertRegEx(nameof(endpoint),endpoint,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(syncToken),syncToken);
+                await eventListener.AssertNotNull(nameof(ifMatch),ifMatch);
+                await eventListener.AssertNotNull(nameof(ifNoneMatch),ifNoneMatch);
+                await eventListener.AssertRegEx(nameof(xMSClientRequestId),xMSClientRequestId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+            }
+        }
+
+        /// <summary>Gets a list of key-value snapshots.</summary>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="name">A filter for the name of the returned snapshots.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
+        /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
+        /// <param name="status">Used to filter returned snapshots by their status property.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task GetSnapshots(string syncToken, string name, string after, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> status, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/snapshots"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
+                        + "&"
+                        + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
+                        + "&"
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != status  && status.Count > 0 ? "status=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(status, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // add headers parameters
+                if (null != syncToken)
+                {
+                    request.Headers.Add("Sync-Token",syncToken);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.GetSnapshots_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets a list of key-value snapshots.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="name">A filter for the name of the returned snapshots.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
+        /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
+        /// <param name="status">Used to filter returned snapshots by their status property.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task GetSnapshotsViaIdentity(global::System.String viaIdentity, string syncToken, string name, string after, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> status, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/snapshots$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/snapshots'");
+                }
+
+                // replace URI parameters with values from identity
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/snapshots"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
+                        + "&"
+                        + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
+                        + "&"
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != status  && status.Count > 0 ? "status=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(status, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // add headers parameters
+                if (null != syncToken)
+                {
+                    request.Headers.Add("Sync-Token",syncToken);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.GetSnapshots_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets a list of key-value snapshots.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="name">A filter for the name of the returned snapshots.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
+        /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
+        /// <param name="status">Used to filter returned snapshots by their status property.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotListResult> GetSnapshotsViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string name, string after, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> status, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/snapshots$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/snapshots'");
+                }
+
+                // replace URI parameters with values from identity
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/snapshots"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
+                        + "&"
+                        + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
+                        + "&"
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != status  && status.Count > 0 ? "status=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(status, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != syncToken)
+                {
+                    request.Headers.Add("Sync-Token",syncToken);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.GetSnapshotsWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Gets a list of key-value snapshots.</summary>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="name">A filter for the name of the returned snapshots.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
+        /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
+        /// <param name="status">Used to filter returned snapshots by their status property.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotListResult> GetSnapshotsWithResult(string syncToken, string name, string after, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> status, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/snapshots"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(name) ? global::System.String.Empty : "name=" + global::System.Uri.EscapeDataString(name))
+                        + "&"
+                        + (string.IsNullOrEmpty(after) ? global::System.String.Empty : "After=" + global::System.Uri.EscapeDataString(after))
+                        + "&"
+                        + (null != Select  && Select.Count > 0 ? "$Select=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(Select, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        + "&"
+                        + (null != status  && status.Count > 0 ? "status=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(status, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != syncToken)
+                {
+                    request.Headers.Add("Sync-Token",syncToken);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.GetSnapshotsWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "GetSnapshotsWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotListResult> GetSnapshotsWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.SnapshotListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers));
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            // Unrecognized Response. Create an error record based on what we have.
+                            var ex = new Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>(_response, await _result);
+                            throw ex;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "GetSnapshots" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task GetSnapshots_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.SnapshotListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="GetSnapshots" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="name">A filter for the name of the returned snapshots.</param>
+        /// <param name="after">Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.</param>
+        /// <param name="Select">Used to select what fields are present in the returned resource(s).</param>
+        /// <param name="status">Used to filter returned snapshots by their status property.</param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task GetSnapshots_Validate(string endpoint, string name, string after, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> status, string syncToken, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertRegEx(nameof(endpoint),endpoint,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(name),name);
+                await eventListener.AssertNotNull(nameof(after),after);
+                await eventListener.AssertNotNull(nameof(syncToken),syncToken);
             }
         }
 
         /// <summary>put a key-value.</summary>
         /// <param name="key">The key of the key-value to create.</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
-        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not match the value provided.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="label">The label of the key-value to create.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="body">The key-value to create.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3536,9 +6088,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PutKeyValue(string key, string syncToken, string ifMatch, string ifNoneMatch, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task PutKeyValue(string key, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3547,9 +6099,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         "/kv/"
                         + global::System.Uri.EscapeDataString(key)
                         + "?"
-                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -3572,6 +6124,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 {
                     request.Headers.Add("If-None-Match",ifNoneMatch);
                 }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
@@ -3586,10 +6142,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>put a key-value.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
-        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not match the value provided.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="label">The label of the key-value to create.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="body">The key-value to create.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3600,9 +6159,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PutKeyValueViaIdentity(global::System.String viaIdentity, string syncToken, string ifMatch, string ifNoneMatch, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task PutKeyValueViaIdentity(global::System.String viaIdentity, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3621,9 +6180,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         "/kv/"
                         + key
                         + "?"
-                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -3646,6 +6205,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 {
                     request.Headers.Add("If-None-Match",ifNoneMatch);
                 }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
@@ -3660,10 +6223,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>put a key-value.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
-        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not match the value provided.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="label">The label of the key-value to create.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="body">The key-value to create.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -3672,9 +6238,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> PutKeyValueViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string ifMatch, string ifNoneMatch, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue body, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> PutKeyValueViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue body, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3693,9 +6259,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         "/kv/"
                         + key
                         + "?"
-                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -3718,6 +6284,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 {
                     request.Headers.Add("If-None-Match",ifNoneMatch);
                 }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
                 // set body content
@@ -3732,10 +6302,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>put a key-value.</summary>
         /// <param name="key">The key of the key-value to create.</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
-        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not match the value provided.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="label">The label of the key-value to create.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="jsonString">Json string supplied to the PutKeyValue operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -3745,9 +6318,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PutKeyValueViaJsonString(string key, string syncToken, string ifMatch, string ifNoneMatch, string label, string endpoint, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PutKeyValueViaJsonString(string key, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, string endpoint, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3756,9 +6329,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         "/kv/"
                         + global::System.Uri.EscapeDataString(key)
                         + "?"
-                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -3781,6 +6354,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 {
                     request.Headers.Add("If-None-Match",ifNoneMatch);
                 }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
@@ -3795,10 +6372,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>put a key-value.</summary>
         /// <param name="key">The key of the key-value to create.</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
-        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not match the value provided.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="label">The label of the key-value to create.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="jsonString">Json string supplied to the PutKeyValue operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -3806,9 +6386,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> PutKeyValueViaJsonStringWithResult(string key, string syncToken, string ifMatch, string ifNoneMatch, string label, string endpoint, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> PutKeyValueViaJsonStringWithResult(string key, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, string endpoint, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3817,9 +6397,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         "/kv/"
                         + global::System.Uri.EscapeDataString(key)
                         + "?"
-                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -3841,6 +6421,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 if (null != ifNoneMatch)
                 {
                     request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
                 }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -3856,10 +6440,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>put a key-value.</summary>
         /// <param name="key">The key of the key-value to create.</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
-        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not match the value provided.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="label">The label of the key-value to create.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="body">The key-value to create.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -3868,9 +6455,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> PutKeyValueWithResult(string key, string syncToken, string ifMatch, string ifNoneMatch, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue body, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> PutKeyValueWithResult(string key, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue body, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3879,9 +6466,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         "/kv/"
                         + global::System.Uri.EscapeDataString(key)
                         + "?"
-                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -3903,6 +6490,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 if (null != ifNoneMatch)
                 {
                     request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
                 }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -4021,26 +6612,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// back.
         /// </summary>
         /// <param name="key">The key of the key-value to create.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="label">The label of the key-value to create.</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
-        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not match the value provided.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="body">The key-value to create.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PutKeyValue_Validate(string key, string endpoint, string label, string syncToken, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue body, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task PutKeyValue_Validate(string key, string endpoint, string label, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue body, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(key),key);
                 await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertRegEx(nameof(endpoint),endpoint,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(label),label);
                 await eventListener.AssertNotNull(nameof(syncToken),syncToken);
                 await eventListener.AssertNotNull(nameof(ifMatch),ifMatch);
                 await eventListener.AssertNotNull(nameof(ifNoneMatch),ifNoneMatch);
+                await eventListener.AssertRegEx(nameof(xMSClientRequestId),xMSClientRequestId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(body), body);
                 await eventListener.AssertObjectIsValid(nameof(body), body);
             }
@@ -4049,10 +6645,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>Locks a key-value.</summary>
         /// <param name="key">The key of the key-value to lock.</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
-        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not match the value provided.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="label">The label, if any, of the key-value to lock.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -4061,9 +6660,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PutLock(string key, string syncToken, string ifMatch, string ifNoneMatch, string label, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PutLock(string key, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4072,9 +6671,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         "/locks/"
                         + global::System.Uri.EscapeDataString(key)
                         + "?"
-                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -4097,6 +6696,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 {
                     request.Headers.Add("If-None-Match",ifNoneMatch);
                 }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
@@ -4107,10 +6710,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>Locks a key-value.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
-        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not match the value provided.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="label">The label, if any, of the key-value to lock.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -4119,9 +6725,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task PutLockViaIdentity(global::System.String viaIdentity, string syncToken, string ifMatch, string ifNoneMatch, string label, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task PutLockViaIdentity(global::System.String viaIdentity, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4140,9 +6746,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         "/locks/"
                         + key
                         + "?"
-                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -4165,6 +6771,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 {
                     request.Headers.Add("If-None-Match",ifNoneMatch);
                 }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
@@ -4175,19 +6785,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>Locks a key-value.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
-        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not match the value provided.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="label">The label, if any, of the key-value to lock.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> PutLockViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string ifMatch, string ifNoneMatch, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> PutLockViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4206,9 +6819,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         "/locks/"
                         + key
                         + "?"
-                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -4230,6 +6843,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 if (null != ifNoneMatch)
                 {
                     request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
                 }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -4241,19 +6858,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// <summary>Locks a key-value.</summary>
         /// <param name="key">The key of the key-value to lock.</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
-        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not match the value provided.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="label">The label, if any, of the key-value to lock.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>"
         /// /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> PutLockWithResult(string key, string syncToken, string ifMatch, string ifNoneMatch, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> PutLockWithResult(string key, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"1.0";
+            var apiVersion = @"2024-09-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4262,9 +6882,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                         "/locks/"
                         + global::System.Uri.EscapeDataString(key)
                         + "?"
-                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
-                        + "&"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + (string.IsNullOrEmpty(label) ? global::System.String.Empty : "label=" + global::System.Uri.EscapeDataString(label))
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -4286,6 +6906,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
                 if (null != ifNoneMatch)
                 {
                     request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
                 }
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -4400,25 +7024,585 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// back.
         /// </summary>
         /// <param name="key">The key of the key-value to lock.</param>
-        /// <param name="endpoint">The endpoint of the App Configuration instance to send requests to.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
         /// <param name="label">The label, if any, of the key-value to lock.</param>
         /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
-        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the value provided.</param>
-        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not match the value provided.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task PutLock_Validate(string key, string endpoint, string label, string syncToken, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task PutLock_Validate(string key, string endpoint, string label, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
                 await eventListener.AssertNotNull(nameof(key),key);
                 await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertRegEx(nameof(endpoint),endpoint,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
                 await eventListener.AssertNotNull(nameof(label),label);
                 await eventListener.AssertNotNull(nameof(syncToken),syncToken);
                 await eventListener.AssertNotNull(nameof(ifMatch),ifMatch);
                 await eventListener.AssertNotNull(nameof(ifNoneMatch),ifNoneMatch);
+                await eventListener.AssertRegEx(nameof(xMSClientRequestId),xMSClientRequestId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+            }
+        }
+
+        /// <summary>update the state of a key-value snapshot.</summary>
+        /// <param name="name">The name of the key-value snapshot to update.</param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="body">The parameters used to update the snapshot.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task UpdateSnapshot(string name, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/snapshots/"
+                        + global::System.Uri.EscapeDataString(name)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // add headers parameters
+                if (null != syncToken)
+                {
+                    request.Headers.Add("Sync-Token",syncToken);
+                }
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+                if (null != ifNoneMatch)
+                {
+                    request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.UpdateSnapshot_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update the state of a key-value snapshot.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="body">The parameters used to update the snapshot.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task UpdateSnapshotViaIdentity(global::System.String viaIdentity, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/snapshots/(?<name>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/snapshots/{name}'");
+                }
+
+                // replace URI parameters with values from identity
+                var name = _match.Groups["name"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/snapshots/"
+                        + name
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // add headers parameters
+                if (null != syncToken)
+                {
+                    request.Headers.Add("Sync-Token",syncToken);
+                }
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+                if (null != ifNoneMatch)
+                {
+                    request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.UpdateSnapshot_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update the state of a key-value snapshot.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="body">The parameters used to update the snapshot.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot> UpdateSnapshotViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/snapshots/(?<name>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/snapshots/{name}'");
+                }
+
+                // replace URI parameters with values from identity
+                var name = _match.Groups["name"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/snapshots/"
+                        + name
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != syncToken)
+                {
+                    request.Headers.Add("Sync-Token",syncToken);
+                }
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+                if (null != ifNoneMatch)
+                {
+                    request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.UpdateSnapshotWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update the state of a key-value snapshot.</summary>
+        /// <param name="name">The name of the key-value snapshot to update.</param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="jsonString">Json string supplied to the UpdateSnapshot operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task UpdateSnapshotViaJsonString(string name, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string endpoint, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/snapshots/"
+                        + global::System.Uri.EscapeDataString(name)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // add headers parameters
+                if (null != syncToken)
+                {
+                    request.Headers.Add("Sync-Token",syncToken);
+                }
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+                if (null != ifNoneMatch)
+                {
+                    request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.UpdateSnapshot_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>update the state of a key-value snapshot.</summary>
+        /// <param name="name">The name of the key-value snapshot to update.</param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="jsonString">Json string supplied to the UpdateSnapshot operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot> UpdateSnapshotViaJsonStringWithResult(string name, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string endpoint, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/snapshots/"
+                        + global::System.Uri.EscapeDataString(name)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != syncToken)
+                {
+                    request.Headers.Add("Sync-Token",syncToken);
+                }
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+                if (null != ifNoneMatch)
+                {
+                    request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.UpdateSnapshotWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>update the state of a key-value snapshot.</summary>
+        /// <param name="name">The name of the key-value snapshot to update.</param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="body">The parameters used to update the snapshot.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot> UpdateSnapshotWithResult(string name, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-09-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/snapshots/"
+                        + global::System.Uri.EscapeDataString(name)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"{endpoint}{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Method.Patch, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // add headers parameters
+                if (null != syncToken)
+                {
+                    request.Headers.Add("Sync-Token",syncToken);
+                }
+                if (null != ifMatch)
+                {
+                    request.Headers.Add("If-Match",ifMatch);
+                }
+                if (null != ifNoneMatch)
+                {
+                    request.Headers.Add("If-None-Match",ifNoneMatch);
+                }
+                if (null != xMSClientRequestId)
+                {
+                    request.Headers.Add("x-ms-client-request-id",xMSClientRequestId);
+                }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.UpdateSnapshotWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "UpdateSnapshotWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot> UpdateSnapshotWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.Snapshot.FromJson(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers));
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            // Unrecognized Response. Create an error record based on what we have.
+                            var ex = new Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>(_response, await _result);
+                            throw ex;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "UpdateSnapshot" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task UpdateSnapshot_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.Snapshot.FromJson(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.Error.FromJson(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="UpdateSnapshot" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="name">The name of the key-value snapshot to update.</param>
+        /// <param name="endpoint">endpoint - server parameter</param>
+        /// <param name="syncToken">Used to guarantee real-time consistency between requests.</param>
+        /// <param name="ifMatch">Used to perform an operation only if the targeted resource's etag matches the
+        /// value provided.</param>
+        /// <param name="ifNoneMatch">Used to perform an operation only if the targeted resource's etag does not
+        /// match the value provided.</param>
+        /// <param name="xMSClientRequestId">An opaque, globally-unique, client-generated string identifier for the request.</param>
+        /// <param name="body">The parameters used to update the snapshot.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task UpdateSnapshot_Validate(string name, string endpoint, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(name),name);
+                await eventListener.AssertMaximumLength(nameof(name),name,256);
+                await eventListener.AssertNotNull(nameof(endpoint),endpoint);
+                await eventListener.AssertRegEx(nameof(endpoint),endpoint,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(syncToken),syncToken);
+                await eventListener.AssertNotNull(nameof(ifMatch),ifMatch);
+                await eventListener.AssertNotNull(nameof(ifNoneMatch),ifNoneMatch);
+                await eventListener.AssertRegEx(nameof(xMSClientRequestId),xMSClientRequestId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
             }
         }
     }

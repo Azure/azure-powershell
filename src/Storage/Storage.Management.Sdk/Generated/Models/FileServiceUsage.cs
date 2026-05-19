@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Storage.Models
     /// <summary>
     /// The usage of file service in storage account.
     /// </summary>
-    public partial class FileServiceUsage : Resource
+    public partial class FileServiceUsage : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the FileServiceUsage class.
@@ -24,8 +24,8 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// Initializes a new instance of the FileServiceUsage class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource ID for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
         /// <param name="name">The name of the resource
@@ -35,12 +35,16 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
+        /// </param>
+
         /// <param name="properties">File service usage in storage account including account limits, file share
         /// limits and constants used in recommendations and bursting formula.
         /// </param>
-        public FileServiceUsage(string id = default(string), string name = default(string), string type = default(string), FileServiceUsageProperties properties = default(FileServiceUsageProperties))
+        public FileServiceUsage(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), FileServiceUsageProperties properties = default(FileServiceUsageProperties))
 
-        : base(id, name, type)
+        : base(id, name, type, systemData)
         {
             this.Properties = properties;
             CustomInit();
@@ -53,10 +57,11 @@ namespace Microsoft.Azure.Management.Storage.Models
 
 
         /// <summary>
-        /// Gets file service usage in storage account including account limits, file
-        /// share limits and constants used in recommendations and bursting formula.
+        /// Gets or sets file service usage in storage account including account
+        /// limits, file share limits and constants used in recommendations and
+        /// bursting formula.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
-        public FileServiceUsageProperties Properties {get; private set; }
+        public FileServiceUsageProperties Properties {get; set; }
     }
 }

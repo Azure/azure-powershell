@@ -2217,3 +2217,491 @@ $ReprotectJob = Update-AzRecoveryServicesAsrProtectionDirection -AzureToAzure -R
 [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
 WaitForJobCompletion -JobId $ReprotectJob.Name
 }
+
+<#
+.SYNOPSIS
+    Test enable protection with platform fault domain in input.
+#>
+function Test-A2AEnableProtectionWithPlatformFaultDomain {
+    param([string] $seed = '1001')
+
+    # Primary Variables
+    $primaryPolicyName = getPrimaryPolicy
+    $primaryContainerMappingName = getPrimaryContainerMapping
+    $primaryContainerName = getPrimaryContainer
+    $primaryRgName = getPrimaryResourceGroupName
+    $primaryLocation = getLocationWus2
+    $primaryNetMapping = getPrimaryNetworkMapping
+    $primaryFabricName = getPrimaryFabric
+    $vmName = getAzureVmName
+    $StorageAccountName = getCacheStorageAccountName
+
+    # Recovery Variables
+    $recoveryPolicyName = getRecoveryPolicy
+    $recoveryContainerMappingName = getRecoveryContainerMapping
+    $recoveryContainerName = getRecoveryContainer
+    $recoveryRgName = getRecoveryResourceGroupName
+    $vaultName = getVaultName
+    $vaultLocation = getLocationCcy
+    $recoveryLocation = getLocationEcy
+    $recoveryFabricName = getRecoveryFabric
+    $RecoveryReplicaDiskAccountType = "Premium_LRS"
+    $RecoveryTargetDiskAccountType = "Premium_LRS"
+    $recoveryNetworkName = getRecoveryNetworkName
+    $recoveryStorageAccountName = getRecoveryCacheStorageAccountName
+    $recoveryNetworkMappingName = getRecoveryNetworkMapping
+
+    # Common Variables
+    $VMSize = "Standard_B2ms"
+    $PlatformFaultDomain = 0
+    $stnd = "Standard"
+    $VMLocalAdminUser = "adminUser"
+    $PasswordString = $(Get-RandomSuffix 12)
+    $password = $PasswordString|ConvertTo-SecureString -AsPlainText -Force
+    $credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
+    $deleteByDate = (Get-Date).AddMonths(3).ToString("MM-yyyy")
+    $tags = @{
+        "DeleteBy" = $deleteByDate
+        "Owner"    = "abageria"
+        "Purpose"  = "Testing"
+    }
+
+    # Create Primary resources
+    New-AzResourceGroup -Name $primaryRgName -Location $primaryLocation -Force
+    Start-Sleep -Seconds 20
+    $storageAccount = New-AzStorageAccount -ResourceGroupName $primaryRgName -Location $primaryLocation -Name $StorageAccountName -Type 'Standard_LRS'
+    $logStg = $storageAccount.Id
+    $PriIndex = $logStg.IndexOf("/providers/")
+    $priRg = $logStg.Substring(0, $PriIndex)
+
+    # Create recovery side resources
+    # $RecoveryAzureNetworkId = createRecoveryNetworkIdForced -location $recoveryLocation -force
+    $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
+    $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $recoveryRgName -Location $recoveryLocation -Name $recoveryNetworkName -AddressPrefix 10.0.0.0/16 -Subnet $frontendSubnet -Force
+    $RecoveryAzureNetworkId = $virtualNetwork.Id
+    $index = $RecoveryAzureNetworkId.IndexOf("/providers/")
+    $recRg = $RecoveryAzureNetworkId.Substring(0, $index)
+
+    $vmssConfig = New-AzVmssConfig -Location $recoveryLocation -UpgradePolicyMode "Manual" -OrchestrationMode "Flexible" -PlatformFaultDomainCount 2
+    if ($vmssConfig.Tags -eq $null) {
+        $vmssConfig.Tags = New-Object 'System.Collections.Generic.Dictionary[String,String]'
+    }
+
+    # Add your tags
+    $vmssConfig.Tags.Add("DeleteBy", $deleteByDate)
+    $vmssConfig.Tags.Add("Owner", "abageria")
+    $vmssConfig.Tags.Add("Purpose", "Testing")
+    $recVmss = New-AzVmss -resourcegroupname $recoveryRgName -vmscalesetname 'vmss-asr' -virtualmachinescaleset $vmssConfig
+
+
+    $tags = @{
+        "DeleteBy" = $deleteByDate
+        "Owner"    = "abageria"
+        "Purpose"  = "Testing"
+    }
+
+    # Create Vm Storage and Network
+    $vmConfig = New-AzVMConfig -VMName $vmName -VMSize $VMSize
+    $vmConfig = Set-AzVMSecurityProfile -VM $vmConfig -SecurityType TrustedLaunch
+    $vmConfig = Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName -Credential $credential -ProvisionVMAgent -EnableAutoUpdate
+    $vmConfig = Set-AzVMSourceImage -VM $vmConfig `
+        -PublisherName "MicrosoftWindowsServer" `
+        -Offer "WindowsServer" `
+        -Skus "2022-datacenter-g2" `
+        -Version "latest" | Set-AzVMBootDiagnostic -disable
+
+    # Create mandatory NIC
+    $primaryVnet = New-AzVirtualNetwork -Name "$vmName-vnet" -ResourceGroupName $primaryRgName -Location $primaryLocation -AddressPrefix "10.10.0.0/16" -Subnet @(New-AzVirtualNetworkSubnetConfig -Name "$vmName-subnet" -AddressPrefix "10.10.1.0/24")
+    $nic = New-AzNetworkInterface -Name "$vmName-nic" -ResourceGroupName $primaryRgName -Location $primaryLocation -SubnetId $primaryVnet.Subnets[0].Id
+    $vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
+
+    $v2VmId = New-AzVM -ResourceGroupName $primaryRgName -Location $primaryLocation -VM $vmConfig -Tag $tags;
+    $vm = Get-AzVM -ResourceGroupName $primaryRgName -Name $vmName
+    $vhdid = $vm.StorageProfile.OSDisk.ManagedDisk.Id
+    $index = $vm.Id.IndexOf("/providers/")
+    $Rg = $vm.Id.Substring(0, $index)
+    $PrimaryAzureNetworkId = $primaryVnet.Id
+    Start-Sleep -Seconds 20
+
+    # Create primary VM Scale Set
+    $primaryVmssConfig = New-AzVmssConfig -Location $primaryLocation -UpgradePolicyMode "Manual" -OrchestrationMode "Flexible" -PlatformFaultDomainCount 2
+    if ($primaryVmssConfig.Tags -eq $null) {
+        $primaryVmssConfig.Tags = New-Object 'System.Collections.Generic.Dictionary[String,String]'
+    }
+
+    # Add your tags
+    $primaryVmssConfig.Tags.Add("DeleteBy", $deleteByDate)
+    $primaryVmssConfig.Tags.Add("Owner", "abageria")
+    $primaryVmssConfig.Tags.Add("Purpose", "Testing")
+    $primaryVmss = New-AzVmss -resourcegroupname $primaryRgName -vmscalesetname 'vmss-pri-asr' -virtualmachinescaleset $primaryVmssConfig
+    $primaryVmss = Get-AzVmss -ResourceGroupName $primaryRgName -VMScaleSetName 'vmss-pri-asr'
+
+    # Create the new vault
+    $vault = Get-AzRecoveryServicesVault -ResourceGroupName $recoveryRgName -Name $vaultName -ErrorAction Stop
+    Set-ASRVaultContext -Vault $vault
+
+    # Fabric Creation
+    $fabJob = New-AzRecoveryServicesAsrFabric -Azure -Name $primaryFabricName -Location $primaryLocation
+    WaitForJobCompletion -JobId $fabJob.Name
+    $fab = Get-AzRecoveryServicesAsrFabric -Name $primaryFabricName
+    Assert-true { $fab.name -eq $primaryFabricName }
+    Assert-AreEqual $fab.FabricSpecificDetails.Location $primaryLocation
+
+    $fabJob = New-AzRecoveryServicesAsrFabric -Azure -Name $recoveryFabricName -Location $recoveryLocation
+    WaitForJobCompletion -JobId $fabJob.Name
+    $fab = Get-AzRecoveryServicesAsrFabric -Name $recoveryFabricName
+    Assert-true { $fab.name -eq $recoveryFabricName }
+    Assert-AreEqual $fab.FabricSpecificDetails.Location $recoveryLocation
+    $pf = get-asrFabric -Name $primaryFabricName
+    $rf = get-asrFabric -Name $recoveryFabricName
+
+    # Container creation
+    $job = New-AzRecoveryServicesAsrProtectionContainer -Name $primaryContainerName -Fabric $pf
+    WaitForJobCompletion -JobId $Job.Name
+    $pc = Get-asrProtectionContainer -name $primaryContainerName -Fabric $pf
+    Assert-NotNull($pc)
+    $job = New-AzRecoveryServicesAsrProtectionContainer -Name $recoveryContainerName -Fabric $rf
+    WaitForJobCompletion -JobId $Job.Name
+    $rc = Get-asrProtectionContainer -name $recoveryContainerName -Fabric $rf
+    Assert-NotNull($rc)
+
+    # Create policy and mapping
+    $job = New-AzRecoveryServicesAsrPolicy -Name $recoveryPolicyName -RecoveryPointRetentionInHours 12 -AzureToAzure
+    WaitForJobCompletion -JobId $job.Name
+    $policy = Get-AzRecoveryServicesAsrPolicy -Name $recoveryPolicyName
+    $job = New-AzRecoveryServicesAsrProtectionContainerMapping -Name $recoveryContainerMappingName -Policy $policy -PrimaryProtectionContainer $pc -RecoveryProtectionContainer $rc
+    WaitForJobCompletion -JobId $job.Name
+    $mapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Name $recoveryContainerMappingName -ProtectionContainer $pc
+
+    # Network mapping
+    $job = New-AzRecoveryServicesAsrNetworkMapping -AzureToAzure -Name $primaryNetMapping -PrimaryFabric $pf -PrimaryAzureNetworkId $PrimaryAzureNetworkId -RecoveryFabric $rf -RecoveryAzureNetworkId $RecoveryAzureNetworkId
+    WaitForJobCompletion -JobId $job.Name
+
+    # Enable Replication with Platform Fault Domain
+    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $logStg `
+        -DiskId $vhdid -RecoveryResourceGroupId $recRg -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType `
+        -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
+
+    $enableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $vm.Id -Name $vmName `
+        -ProtectionContainerMapping $mapping -RecoveryResourceGroupId $recRg `
+        -AzureToAzureDiskReplicationConfiguration $v -RecoveryAzureNetworkId $RecoveryAzureNetworkId `
+        -RecoveryAzureSubnetName "frontendSubnet" -RecoveryVirtualMachineScaleSetId $recVmss.Id -PlatformFaultDomain $PlatformFaultDomain
+
+    WaitForJobCompletion -JobId $enableDRjob.Name
+    WaitForIRCompletion -affectedObjectId $enableDRjob.TargetObjectId
+
+    # Validate platform fault domain is set
+    $pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -FriendlyName $vmName
+    Assert-NotNull($pe)
+    Assert-NotNull($pe.ProviderSpecificDetails.PlatformFaultDomain)
+    Assert-AreEqual $pe.ProviderSpecificDetails.PlatformFaultDomain $PlatformFaultDomain
+    Write-Host "Enable replication successful..."
+
+    # Update Platform fault domain using update protected item cmdlet
+    Write-Host "Updating Platform Fault Domain using Update cmdlet..."
+    $newPlatformFaultDomain = 1
+    $updateJob = Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject $pe -PlatformFaultDomain $newPlatformFaultDomain
+    WaitForJobCompletion -JobId $updateJob.Name
+
+    # Validate updated properties
+    $pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -FriendlyName $vmName
+    Assert-NotNull($pe)
+    Assert-AreEqual $pe.ProviderSpecificDetails.PlatformFaultDomain $newPlatformFaultDomain
+    Write-Host "Platform Fault Domain updated successfully."
+
+    # Triger failover
+    Write-Host "Initiating Failover..."
+    $failoverJob = Start-AzRecoveryServicesAsrUnPlannedFailoverJob -ReplicationProtectedItem $pe -Direction PrimaryToRecovery -PerformSourceSideAction
+    WaitForJobCompletion -JobId $failoverJob.Name
+    Write-Host "Failover completed successfully."
+
+    # Commit failover
+    Write-Host "Committing Failover..."
+    $commitJob = Start-AzRecoveryServicesAsrCommitFailoverJob -ReplicationProtectedItem $pe
+    WaitForJobCompletion -JobId $commitJob.Name
+    Write-Host "Failover committed successfully."
+
+    # Get recovery vm and verify
+    $recvm = get-azVm -ResourceGroupName $recoveryRgName -Name $vmName
+    # Assert-NotNull($recvm.Id)
+
+    # Wait for stable state before reprotect
+    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(600 * 1000)
+
+    # Prepare disk configuration for reprotect
+    $recStorageAccount = New-AzStorageAccount -ResourceGroupName $recoveryRgName -Location $recoveryLocation -Name $recoveryStorageAccountName -Type 'Standard_LRS'
+    $recLogStg = $recStorageAccount.Id
+    $vhdid = $recvm.StorageProfile.OSDisk.ManagedDisk.Id
+    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $recLogStg `
+        -DiskId $vhdid -RecoveryResourceGroupId $priRg -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType `
+        -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
+
+    # Reverse Container mapping
+    $reverseContainerMappingJob = New-AzRecoveryServicesAsrProtectionContainerMapping -Name $recoveryContainerMappingName -Policy $policy -PrimaryProtectionContainer $rc -RecoveryProtectionContainer $pc
+    WaitForJobCompletion -JobId $reverseContainerMappingJob.Name
+    $revMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Name $recoveryContainerMappingName -ProtectionContainer $rc
+
+    # Reverse network mapping
+    $job = New-AzRecoveryServicesAsrNetworkMapping -AzureToAzure -Name $recoveryNetworkMappingName -PrimaryFabric $rf -PrimaryAzureNetworkId $RecoveryAzureNetworkId -RecoveryFabric $pf -RecoveryAzureNetworkId $PrimaryAzureNetworkId
+    WaitForJobCompletion -JobId $job.Name
+
+    # Reprotect the VM
+    $primaryRg = Get-AzResourceGroup -Name $primaryRgName
+    $reprotectPlatformFaultDomain = 0
+    Write-Host "Initiating Reprotection..."
+
+    $reprotectJob = Update-AzRecoveryServicesAsrProtectionDirection -AzureToAzure -ProtectionContainerMapping $revMapping -RecoveryResourceGroupId $priRg -ReplicationProtectedItem $pe -AzureToAzureDiskReplicationConfiguration $v -PlatformFaultDomain $reprotectPlatformFaultDomain -RecoveryVirtualMachineScaleSetId $primaryVmss.Id
+
+    WaitForJobCompletion -JobId $ReprotectJob.Name
+    Write-Host "Reprotection completed successfully."
+
+    # Validate that Platform Fault Domain is retained after reprotection
+    $pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $rc -FriendlyName $vmName
+    Assert-NotNull($pe)
+    Assert-AreEqual $pe.ProviderSpecificDetails.PlatformFaultDomain $reprotectPlatformFaultDomain
+    Write-Host "Platform Fault Domain retained successfully after reprotection."
+}
+
+<#
+.SYNOPSIS
+    Test enable protection with Recovery Availability Zone in input.
+#>
+function Test-A2AUpdateProtectionWithZone {
+    param([string] $seed = '1111')
+
+    # Primary Variables
+    $primaryContainerName = getPrimaryContainer
+    $primaryRgName = getPrimaryResourceGroupName
+    $primaryLocation = getLocationWus2
+    $primaryNetMapping = getPrimaryNetworkMapping
+    $primaryFabricName = getPrimaryFabric
+    $vmName = getAzureVmName
+    $StorageAccountName = getCacheStorageAccountName
+
+    # Recovery Variables
+    $recoveryPolicyName = getRecoveryPolicy
+    $recoveryContainerMappingName = getRecoveryContainerMapping
+    $recoveryContainerName = getRecoveryContainer
+    $recoveryRgName = getRecoveryResourceGroupName
+    $vaultName = getVaultName
+    $vaultLocation = getLocationCcy
+    $recoveryLocation = getLocationEcy
+    $recoveryFabricName = getRecoveryFabric
+    $RecoveryReplicaDiskAccountType = "Premium_LRS"
+    $RecoveryTargetDiskAccountType = "Premium_LRS"
+    $recoveryNetworkName = getRecoveryNetworkName
+    $recoveryStorageAccountName = getRecoveryCacheStorageAccountName
+    $recoveryNetworkMappingName = getRecoveryNetworkMapping
+
+    # Common Variables
+    $VMSize = "Standard_B2ms"
+    $VMLocalAdminUser = "adminUser"
+    $PasswordString = $(Get-RandomSuffix 12)
+    $password = $PasswordString|ConvertTo-SecureString -AsPlainText -Force
+    $credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
+    $deleteByDate = (Get-Date).AddMonths(3).ToString("MM-yyyy")
+    $tags = @{
+        "DeleteBy" = $deleteByDate
+        "Owner"    = "abageria"
+        "Purpose"  = "Testing"
+    }
+
+    # Create Primary resources
+    New-AzResourceGroup -Name $primaryRgName -Location $primaryLocation -Force
+    Start-Sleep -Seconds 20
+    $storageAccount = New-AzStorageAccount -ResourceGroupName $primaryRgName -Location $primaryLocation -Name $StorageAccountName -Type 'Standard_LRS'
+    $logStg = $storageAccount.Id
+    $PriIndex = $logStg.IndexOf("/providers/")
+    $priRg = $logStg.Substring(0, $PriIndex)
+
+    # Create recovery side resources
+    # $RecoveryAzureNetworkId = createRecoveryNetworkIdForced -location $recoveryLocation -force
+    $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
+    $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $recoveryRgName -Location $recoveryLocation -Name $recoveryNetworkName -AddressPrefix 10.0.0.0/16 -Subnet $frontendSubnet -Force
+    $RecoveryAzureNetworkId = $virtualNetwork.Id
+    $index = $RecoveryAzureNetworkId.IndexOf("/providers/")
+    $recRg = $RecoveryAzureNetworkId.Substring(0, $index)
+
+    # Regional Vmss for Enable Protection without Zone
+    $recoveryRegionalVmssConfig = New-AzVmssConfig -Location $recoveryLocation -UpgradePolicyMode "Manual" -OrchestrationMode "Flexible"
+    if ($recoveryRegionalVmssConfig.Tags -eq $null) {
+        $recoveryRegionalVmssConfig.Tags = New-Object 'System.Collections.Generic.Dictionary[String,String]'
+    }
+
+    # Add your tags
+    $recoveryRegionalVmssConfig.Tags.Add("DeleteBy", $deleteByDate)
+    $recoveryRegionalVmssConfig.Tags.Add("Owner", "abageria")
+    $recoveryRegionalVmssConfig.Tags.Add("Purpose", "Testing")
+    $recoveryRegionalVmss = New-AzVmss -resourcegroupname $recoveryRgName -vmscalesetname 'vmss-regional-asr' -virtualmachinescaleset $recoveryRegionalVmssConfig
+
+    # Zonal Vmss for Update Protection Test
+    $recoveryZonalVmssConfig = New-AzVmssConfig -Location $recoveryLocation -UpgradePolicyMode "Manual" -OrchestrationMode "Flexible" -Zone "1", "2", "3"
+    if ($recoveryZonalVmssConfig.Tags -eq $null) {
+        $recoveryZonalVmssConfig.Tags = New-Object 'System.Collections.Generic.Dictionary[String,String]'
+    }
+
+    # Add your tags
+    $recoveryZonalVmssConfig.Tags.Add("DeleteBy", $deleteByDate)
+    $recoveryZonalVmssConfig.Tags.Add("Owner", "abageria")
+    $recoveryZonalVmssConfig.Tags.Add("Purpose", "Testing")
+    $recoveryZonalVmss = New-AzVmss -resourcegroupname $recoveryRgName -vmscalesetname 'vmss-zonal-asr' -virtualmachinescaleset $recoveryZonalVmssConfig
+
+    # Create Vm Storage and Network
+    $vmConfig = New-AzVMConfig -VMName $vmName -VMSize $VMSize -Zone "1"
+    $vmConfig = Set-AzVMSecurityProfile -VM $vmConfig -SecurityType TrustedLaunch
+    $vmConfig = Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName -Credential $credential -ProvisionVMAgent -EnableAutoUpdate
+    $vmConfig = Set-AzVMSourceImage -VM $vmConfig `
+        -PublisherName "MicrosoftWindowsServer" `
+        -Offer "WindowsServer" `
+        -Skus "2022-datacenter-g2" `
+        -Version "latest" | Set-AzVMBootDiagnostic -disable
+
+    # Create mandatory NIC
+    $primaryVnet = New-AzVirtualNetwork -Name "$vmName-vnet" -ResourceGroupName $primaryRgName -Location $primaryLocation -AddressPrefix "10.10.0.0/16" -Subnet @(New-AzVirtualNetworkSubnetConfig -Name "$vmName-subnet" -AddressPrefix "10.10.1.0/24")
+    $nic = New-AzNetworkInterface -Name "$vmName-nic" -ResourceGroupName $primaryRgName -Location $primaryLocation -SubnetId $primaryVnet.Subnets[0].Id
+    $vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
+
+    $v2VmId = New-AzVM -ResourceGroupName $primaryRgName -Location $primaryLocation -VM $vmConfig -Tag $tags;
+    $vm = Get-AzVM -ResourceGroupName $primaryRgName -Name $vmName
+    $vhdid = $vm.StorageProfile.OSDisk.ManagedDisk.Id
+    $index = $vm.Id.IndexOf("/providers/")
+    $Rg = $vm.Id.Substring(0, $index)
+    $PrimaryAzureNetworkId = $primaryVnet.Id
+    Start-Sleep -Seconds 20
+
+    # Create primary VM Scale Set
+    $primaryVmssConfig = New-AzVmssConfig -Location $primaryLocation -UpgradePolicyMode "Manual" -OrchestrationMode "Flexible" -Zone "1", "2", "3"
+    if ($primaryVmssConfig.Tags -eq $null) {
+        $primaryVmssConfig.Tags = New-Object 'System.Collections.Generic.Dictionary[String,String]'
+    }
+
+    # Add your tags
+    $primaryVmssConfig.Tags.Add("DeleteBy", $deleteByDate)
+    $primaryVmssConfig.Tags.Add("Owner", "abageria")
+    $primaryVmssConfig.Tags.Add("Purpose", "Testing")
+    $primaryVmss = New-AzVmss -resourcegroupname $primaryRgName -vmscalesetname 'vmss-pri-asr' -virtualmachinescaleset $primaryVmssConfig
+    $primaryVmss = Get-AzVmss -ResourceGroupName $primaryRgName -VMScaleSetName 'vmss-pri-asr'
+
+    # Create the new vault
+    $vault = Get-AzRecoveryServicesVault -ResourceGroupName $recoveryRgName -Name $vaultName -ErrorAction Stop
+    Set-ASRVaultContext -Vault $vault
+
+    # Fabric Creation
+    $fabJob = New-AzRecoveryServicesAsrFabric -Azure -Name $primaryFabricName -Location $primaryLocation
+    WaitForJobCompletion -JobId $fabJob.Name
+    $fab = Get-AzRecoveryServicesAsrFabric -Name $primaryFabricName
+    Assert-true { $fab.name -eq $primaryFabricName }
+    Assert-AreEqual $fab.FabricSpecificDetails.Location $primaryLocation
+
+    $fabJob = New-AzRecoveryServicesAsrFabric -Azure -Name $recoveryFabricName -Location $recoveryLocation
+    WaitForJobCompletion -JobId $fabJob.Name
+    $fab = Get-AzRecoveryServicesAsrFabric -Name $recoveryFabricName
+    Assert-true { $fab.name -eq $recoveryFabricName }
+    Assert-AreEqual $fab.FabricSpecificDetails.Location $recoveryLocation
+    $pf = get-asrFabric -Name $primaryFabricName
+    $rf = get-asrFabric -Name $recoveryFabricName
+
+    # Container creation
+    $job = New-AzRecoveryServicesAsrProtectionContainer -Name $primaryContainerName -Fabric $pf
+    WaitForJobCompletion -JobId $Job.Name
+    $pc = Get-asrProtectionContainer -name $primaryContainerName -Fabric $pf
+    Assert-NotNull($pc)
+    $job = New-AzRecoveryServicesAsrProtectionContainer -Name $recoveryContainerName -Fabric $rf
+    WaitForJobCompletion -JobId $Job.Name
+    $rc = Get-asrProtectionContainer -name $recoveryContainerName -Fabric $rf
+    Assert-NotNull($rc)
+
+    # Create policy and mapping
+    $job = New-AzRecoveryServicesAsrPolicy -Name $recoveryPolicyName -RecoveryPointRetentionInHours 12 -AzureToAzure
+    WaitForJobCompletion -JobId $job.Name
+    $policy = Get-AzRecoveryServicesAsrPolicy -Name $recoveryPolicyName
+    $job = New-AzRecoveryServicesAsrProtectionContainerMapping -Name $recoveryContainerMappingName -Policy $policy -PrimaryProtectionContainer $pc -RecoveryProtectionContainer $rc
+    WaitForJobCompletion -JobId $job.Name
+    $mapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Name $recoveryContainerMappingName -ProtectionContainer $pc
+
+    # Network mapping
+    $job = New-AzRecoveryServicesAsrNetworkMapping -AzureToAzure -Name $primaryNetMapping -PrimaryFabric $pf -PrimaryAzureNetworkId $PrimaryAzureNetworkId -RecoveryFabric $rf -RecoveryAzureNetworkId $RecoveryAzureNetworkId
+    WaitForJobCompletion -JobId $job.Name
+
+    # Enable Replication without AvZone
+    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $logStg `
+        -DiskId $vhdid -RecoveryResourceGroupId $recRg -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType `
+        -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
+
+    $enableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $vm.Id -Name $vmName `
+        -ProtectionContainerMapping $mapping -RecoveryResourceGroupId $recRg `
+        -AzureToAzureDiskReplicationConfiguration $v -RecoveryAzureNetworkId $RecoveryAzureNetworkId `
+        -RecoveryAzureSubnetName "frontendSubnet" -RecoveryVirtualMachineScaleSetId $recoveryRegionalVmss.Id
+
+    WaitForJobCompletion -JobId $enableDRjob.Name
+    WaitForIRCompletion -affectedObjectId $enableDRjob.TargetObjectId
+
+    # Validate AvZone is not set and vmss is correct
+    $pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -FriendlyName $vmName
+    Assert-NotNull($pe)
+    Assert-Null($pe.ProviderSpecificDetails.RecoveryAvailabilityZone)
+    Assert-NotNull($pe.ProviderSpecificDetails.RecoveryVirtualMachineScaleSetId)
+    Assert-AreEqual $pe.ProviderSpecificDetails.RecoveryVirtualMachineScaleSetId $recoveryRegionalVmss.Id
+    Write-Host "Enable replication successful..."
+
+    # Update AvZone using update protected item cmdlet
+    Write-Host "Updating Recovery Availability Zone using Update cmdlet..."
+    $newRecoveryAvailabilityZone = "1"
+    $updateJob = Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject $pe -RecoveryAvailabilityZone $newRecoveryAvailabilityZone -RecoveryVirtualMachineScaleSetId $recoveryZonalVmss.Id
+    WaitForJobCompletion -JobId $updateJob.Name
+
+    # Validate updated properties
+    $pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -FriendlyName $vmName
+    Assert-NotNull($pe)
+    Assert-AreEqual $pe.ProviderSpecificDetails.RecoveryAvailabilityZone $newRecoveryAvailabilityZone
+    Assert-NotNull($pe.ProviderSpecificDetails.RecoveryVirtualMachineScaleSetId)
+    Assert-AreEqual $pe.ProviderSpecificDetails.RecoveryVirtualMachineScaleSetId $recoveryZonalVmss.Id
+    Write-Host "Recovery Availability Zone updated successfully."
+
+    # Triger failover
+    Write-Host "Initiating Failover..."
+    $failoverJob = Start-AzRecoveryServicesAsrUnPlannedFailoverJob -ReplicationProtectedItem $pe -Direction PrimaryToRecovery -PerformSourceSideAction
+    WaitForJobCompletion -JobId $failoverJob.Name
+    Write-Host "Failover completed successfully."
+
+    # Commit failover
+    Write-Host "Committing Failover..."
+    $commitJob = Start-AzRecoveryServicesAsrCommitFailoverJob -ReplicationProtectedItem $pe
+    WaitForJobCompletion -JobId $commitJob.Name
+    Write-Host "Failover committed successfully."
+
+    # Get recovery vm and verify
+    $recvm = get-azVm -ResourceGroupName $recoveryRgName -Name $vmName
+    Assert-NotNull($recvm.Id)
+
+    # Wait for stable state before reprotect
+    # [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(600 * 1000)
+    Start-Sleep -Seconds 600
+
+    # Prepare disk configuration for reprotect
+    $recStorageAccount = New-AzStorageAccount -ResourceGroupName $recoveryRgName -Location $recoveryLocation -Name $recoveryStorageAccountName -Type 'Standard_LRS'
+    $recLogStg = $recStorageAccount.Id
+    $vhdid = $recvm.StorageProfile.OSDisk.ManagedDisk.Id
+    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $recLogStg `
+        -DiskId $vhdid -RecoveryResourceGroupId $priRg -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType `
+        -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
+
+    # Reverse Container mapping
+    $reverseContainerMappingJob = New-AzRecoveryServicesAsrProtectionContainerMapping -Name $recoveryContainerMappingName -Policy $policy -PrimaryProtectionContainer $rc -RecoveryProtectionContainer $pc
+    WaitForJobCompletion -JobId $reverseContainerMappingJob.Name
+    $revMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Name $recoveryContainerMappingName -ProtectionContainer $rc
+
+    # Reverse network mapping
+    $job = New-AzRecoveryServicesAsrNetworkMapping -AzureToAzure -Name $recoveryNetworkMappingName -PrimaryFabric $rf -PrimaryAzureNetworkId $RecoveryAzureNetworkId -RecoveryFabric $pf -RecoveryAzureNetworkId $PrimaryAzureNetworkId
+    WaitForJobCompletion -JobId $job.Name
+
+    # Reprotect the VM
+    $primaryRg = Get-AzResourceGroup -Name $primaryRgName
+    $reprotectRecoveryAvailabilityZone = "1"
+    Write-Host "Initiating Reprotection..."
+
+    $reprotectJob = Update-AzRecoveryServicesAsrProtectionDirection -AzureToAzure -ProtectionContainerMapping $revMapping -RecoveryResourceGroupId $priRg -ReplicationProtectedItem $pe -AzureToAzureDiskReplicationConfiguration $v -RecoveryAvailabilityZone $reprotectRecoveryAvailabilityZone -RecoveryVirtualMachineScaleSetId $primaryVmss.Id
+
+    WaitForJobCompletion -JobId $ReprotectJob.Name
+    Write-Host "Reprotection completed successfully."
+}

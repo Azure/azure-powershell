@@ -27,7 +27,7 @@ Get-AzDatabricksVNetPeering -WorkspaceName azps-databricks-workspace-t1 -Resourc
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IVirtualNetworkPeering
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -42,14 +42,25 @@ INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [WorkspaceName <String>]: The name of the workspace.
+
+WORKSPACEINPUTOBJECT <IDatabricksIdentity>: Identity Parameter
+  [ConnectorName <String>]: The name of the Azure Databricks Access Connector.
+  [GroupId <String>]: The name of the private link resource
+  [Id <String>]: Resource identity path
+  [PeeringName <String>]: The name of the workspace vNet peering.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [WorkspaceName <String>]: The name of the workspace.
 .Link
 https://learn.microsoft.com/powershell/module/az.databricks/get-azdatabricksvnetpeering
 #>
 function Get-AzDatabricksVNetPeering {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IVirtualNetworkPeering])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IVirtualNetworkPeering])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityWorkspace', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Path')]
     [System.String]
     # The name of the workspace vNet peering.
@@ -83,8 +94,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityWorkspace', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity]
+    # Identity Parameter
+    ${WorkspaceInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -117,6 +133,7 @@ param(
 
     [Parameter(ParameterSetName='Get')]
     [Parameter(ParameterSetName='GetViaIdentity')]
+    [Parameter(ParameterSetName='GetViaIdentityWorkspace')]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Returns true when the command succeeds
@@ -149,6 +166,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -170,11 +195,10 @@ begin {
         $mapping = @{
             Get = 'Az.Databricks.private\Get-AzDatabricksVNetPeering_Get';
             GetViaIdentity = 'Az.Databricks.private\Get-AzDatabricksVNetPeering_GetViaIdentity';
+            GetViaIdentityWorkspace = 'Az.Databricks.private\Get-AzDatabricksVNetPeering_GetViaIdentityWorkspace';
             List = 'Az.Databricks.private\Get-AzDatabricksVNetPeering_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -188,6 +212,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
