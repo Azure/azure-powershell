@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded API version to 2025-12-01
+    - Added support for Connection resources, enabling private endpoint connectivity management for storage movers
+    - Added new S3 with HMAC (Hash-based Message Authentication Code) endpoint type for S3-compatible data sources (e.g., AWS, MinIO, and other providers)
+    - Added data integrity validation, schedule information, and job run warning capabilities
 
 ## Version 2.0.0
 * Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).

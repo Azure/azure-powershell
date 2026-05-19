@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/backup-azdataprotectionbackupinstanceadhoc
 schema: 2.0.0
@@ -15,16 +15,38 @@ Trigger adhoc backup
 ### BackupExpanded (Default)
 ```
 Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName <String> -ResourceGroupName <String>
- -VaultName <String> -BackupRuleOptionRuleName <String> [-SubscriptionId <String>]
- [-TriggerOptionRetentionTagOverride <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -VaultName <String> -BackupRuleOptionRuleName <String>
+ [-TriggerOptionRetentionTagOverride <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### BackupViaJsonString
+```
+Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -VaultName <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### BackupViaJsonFilePath
+```
+Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -VaultName <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### BackupViaIdentityBackupVaultExpanded
+```
+Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName <String>
+ -BackupVaultInputObject <IDataProtectionIdentity> -BackupRuleOptionRuleName <String>
+ [-TriggerOptionRetentionTagOverride <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BackupViaIdentityExpanded
 ```
 Backup-AzDataProtectionBackupInstanceAdhoc -InputObject <IDataProtectionIdentity>
  -BackupRuleOptionRuleName <String> [-TriggerOptionRetentionTagOverride <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,7 +102,7 @@ The name of the backup instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: BackupExpanded
+Parameter Sets: BackupExpanded, BackupViaJsonString, BackupViaJsonFilePath, BackupViaIdentityBackupVaultExpanded
 Aliases:
 
 Required: True
@@ -95,13 +117,28 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: BackupExpanded, BackupViaIdentityBackupVaultExpanded, BackupViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackupVaultInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
+Parameter Sets: BackupViaIdentityBackupVaultExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -123,7 +160,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
@@ -134,6 +170,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Backup operation
+
+```yaml
+Type: System.String
+Parameter Sets: BackupViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Backup operation
+
+```yaml
+Type: System.String
+Parameter Sets: BackupViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -158,7 +224,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: BackupExpanded
+Parameter Sets: BackupExpanded, BackupViaJsonString, BackupViaJsonFilePath
 Aliases:
 
 Required: True
@@ -174,7 +240,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: BackupExpanded
+Parameter Sets: BackupExpanded, BackupViaJsonString, BackupViaJsonFilePath
 Aliases:
 
 Required: False
@@ -189,7 +255,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: BackupExpanded, BackupViaIdentityBackupVaultExpanded, BackupViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -204,7 +270,7 @@ The name of the backup vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: BackupExpanded
+Parameter Sets: BackupExpanded, BackupViaJsonString, BackupViaJsonFilePath
 Aliases:
 
 Required: True
@@ -254,9 +320,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IOperationJobExtendedInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo
 
 ## NOTES
 
 ## RELATED LINKS
-
