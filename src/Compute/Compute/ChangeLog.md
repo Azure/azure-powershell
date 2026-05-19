@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Fixed `Set-AzVMRunCommand` and `Set-AzVmssVMRunCommand` to skip blank lines when processing local script files via `-ScriptLocalPath`, preventing invalid `;;` syntax errors in shell scripts.
 * Added `-Feature` parameter to `Update-AzGalleryImageDefinition` cmdlet to allow updating existing gallery image features (such as DiskControllerTypes, SecurityType, IsAcceleratedNetwork, and IsHibernate). Each feature supports a `StartsAtVersion` property to specify the minimum gallery image version that supports the updated feature.
 * Added `-AllowUpdateImage` parameter to `Update-AzGalleryImageDefinition` cmdlet. Must be set to true when using the `-Feature` parameter to update gallery image features.
 
