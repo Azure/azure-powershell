@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzKustoDatabase
 
 ## SYNOPSIS
-Create a database.
+Create or update a database.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ New-AzKustoDatabase -ClusterName <String> -Name <String> -ResourceGroupName <Str
 ```
 
 ## DESCRIPTION
-Create a database.
+Create or update a database.
 
 ## EXAMPLES
 

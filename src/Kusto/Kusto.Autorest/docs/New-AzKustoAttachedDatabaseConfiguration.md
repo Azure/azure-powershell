@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzKustoAttachedDatabaseConfiguration
 
 ## SYNOPSIS
-Create an attached database configuration.
+Create or update an attached database configuration.
 
 ## SYNTAX
 
@@ -57,7 +57,7 @@ New-AzKustoAttachedDatabaseConfiguration -ClusterName <String> -Name <String> -R
 ```
 
 ## DESCRIPTION
-Create an attached database configuration.
+Create or update an attached database configuration.
 
 ## EXAMPLES
 

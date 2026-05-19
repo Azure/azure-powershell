@@ -99,22 +99,22 @@ Diagnoses network connectivity status for external resources on which the servic
 Generates an invitation token that allows attaching a follower database to this database.
 
 ### [New-AzKustoAttachedDatabaseConfiguration](New-AzKustoAttachedDatabaseConfiguration.md)
-Create an attached database configuration.
+Create or update an attached database configuration.
 
 ### [New-AzKustoCluster](New-AzKustoCluster.md)
-Create a Kusto cluster.
+Create or update a Kusto cluster.
 
 ### [New-AzKustoClusterPrincipalAssignment](New-AzKustoClusterPrincipalAssignment.md)
 Create a Kusto cluster principalAssignment.
 
 ### [New-AzKustoDatabase](New-AzKustoDatabase.md)
-Create a database.
+Create or update a database.
 
 ### [New-AzKustoDatabasePrincipalAssignment](New-AzKustoDatabasePrincipalAssignment.md)
 Create a Kusto cluster database principalAssignment.
 
 ### [New-AzKustoDataConnection](New-AzKustoDataConnection.md)
-Create a data connection.
+Create or update a data connection.
 
 ### [New-AzKustoManagedPrivateEndpoint](New-AzKustoManagedPrivateEndpoint.md)
 Create a managed private endpoint.
@@ -123,7 +123,7 @@ Create a managed private endpoint.
 Approve or reject a private endpoint connection with a given name.
 
 ### [New-AzKustoSandboxCustomImage](New-AzKustoSandboxCustomImage.md)
-Create a sandbox custom image.
+Create or update a sandbox custom image.
 
 ### [New-AzKustoScript](New-AzKustoScript.md)
 Create a Kusto database script.

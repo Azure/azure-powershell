@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzKustoDataConnection
 
 ## SYNOPSIS
-Create a data connection.
+Create or update a data connection.
 
 ## SYNTAX
 
@@ -67,7 +67,7 @@ New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <St
 ```
 
 ## DESCRIPTION
-Create a data connection.
+Create or update a data connection.
 
 ## EXAMPLES
 

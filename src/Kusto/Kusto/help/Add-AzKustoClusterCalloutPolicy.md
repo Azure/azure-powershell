@@ -47,12 +47,12 @@ Adds a list of callout policies for engine services.
 
 ### Example 1: Adding two callout policies to a cluster
 ```powershell
-$kustoCalloutPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICalloutPolicy]@{
+$kustoCalloutPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.ICalloutPolicy]@{
     calloutType = "kusto"
     outboundAccess = "Allow"
     calloutUriRegex = "*"
 }
-$sqlCalloutPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICalloutPolicy]@{
+$sqlCalloutPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.ICalloutPolicy]@{
     calloutType = "sql"
     outboundAccess = "Deny"
     calloutUriRegex = "*"

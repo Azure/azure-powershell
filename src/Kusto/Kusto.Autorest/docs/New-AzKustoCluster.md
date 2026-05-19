@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzKustoCluster
 
 ## SYNOPSIS
-Create a Kusto cluster.
+Create or update a Kusto cluster.
 
 ## SYNTAX
 
@@ -47,7 +47,7 @@ New-AzKustoCluster -Name <String> -ResourceGroupName <String> -JsonString <Strin
 ```
 
 ## DESCRIPTION
-Create a Kusto cluster.
+Create or update a Kusto cluster.
 
 ## EXAMPLES
 

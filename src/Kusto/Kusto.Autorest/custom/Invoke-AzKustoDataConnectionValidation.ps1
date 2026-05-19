@@ -20,9 +20,13 @@ Checks that the data connection parameters are valid.
 .Description
 Checks that the data connection parameters are valid.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+$dataConnectionProperties = New-Object -Type Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.EventHubDataConnection -Property @{Location=$location; Kind=$kind; EventHubResourceId=$eventHubResourceId; DataFormat=$dataFormat; ConsumerGroup='Default'; Compression= "None"; TableName = $tableName; MappingRuleName = $tableMappingName}
+$dataConnectionValidation = New-Object -Type Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.DataConnectionValidation -Property @{DataConnectionName=$dataConnectionName; Property=$dataConnectionProperties}
+Invoke-AzKustoDataConnectionValidation -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -Parameter $dataConnectionValidation
+
+ErrorMessage
+------------
+event hub resource id and consumer group tuple provided are already used
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDataConnectionValidation

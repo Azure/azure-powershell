@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzKustoSandboxCustomImage
 
 ## SYNOPSIS
-Create a sandbox custom image.
+Create or update a sandbox custom image.
 
 ## SYNTAX
 
@@ -56,7 +56,7 @@ New-AzKustoSandboxCustomImage -ClusterName <String> -Name <String> -ResourceGrou
 ```
 
 ## DESCRIPTION
-Create a sandbox custom image.
+Create or update a sandbox custom image.
 
 ## EXAMPLES
 

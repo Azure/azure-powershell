@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a database.
+Create or update a database.
 .Description
-Create a database.
+Create or update a database.
 .Example
 New-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase -Kind ReadWrite -Location 'East US'
 
