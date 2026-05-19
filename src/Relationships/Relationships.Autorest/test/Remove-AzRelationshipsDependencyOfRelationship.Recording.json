@@ -1,0 +1,182 @@
+{
+  "Remove-AzRelationshipsDependencyOfRelationship+[NoContext]+Delete+$DELETE+https://management.azure.com//subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreldelodg1kq?api-version=2023-09-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com//subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreldelodg1kq?api-version=2023-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "62" ],
+        "x-ms-client-request-id": [ "6dd4758c-24a9-48e5-af0f-9ab606cd714d" ],
+        "CommandName": [ "Remove-AzRelationshipsDependencyOfRelationship" ],
+        "FullCommandName": [ "Remove-AzRelationshipsDependencyOfRelationship_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.6.1", "Az.Relationships/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Id": [ "14eff8f5-ba4d-4042-b66e-f95c6cdb8ce1" ],
+        "x-ba-restapi": [ "3.2026.0404.1" ],
+        "x-ms-request-id": [ "westus2:14eff8f5-ba4d-4042-b66e-f95c6cdb8ce1" ],
+        "mise-correlation-id": [ "06a18fbc-edb4-4efe-88e5-74d9a1eebf23" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2c4638e2-9343-4565-be89-cbdad9762f57/westus2/7cae4949-cffd-4ce5-8dea-398974800a4f" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "4c52f8f8-923e-4df5-9cc3-b466a342bbf0" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260427T142411Z:4c52f8f8-923e-4df5-9cc3-b466a342bbf0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B6D33DBCAB284E9CA529D6933CC02C1B Ref B: BN1AA2051012017 Ref C: 2026-04-27T14:24:11Z" ],
+        "Date": [ "Mon, 27 Apr 2026 14:24:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzRelationshipsDependencyOfRelationship+[NoContext]+Delete+$GET+https://management.azure.com//subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreldelodg1kq?api-version=2023-09-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreldelodg1kq?api-version=2023-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "63" ],
+        "x-ms-client-request-id": [ "1d093bac-7475-4263-b590-93f16b6c8ca3" ],
+        "CommandName": [ "Get-AzRelationshipsDependencyOfRelationship" ],
+        "FullCommandName": [ "Get-AzRelationshipsDependencyOfRelationship_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.6.1", "Az.Relationships/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2c4638e2-9343-4565-be89-cbdad9762f57/westus2/f394592c-1646-4409-8f66-1c0e8df848c2" ],
+        "Request-Id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-request-id": [ "d3170103-2096-4b9c-8aef-cd900cd17e33" ],
+        "x-ms-correlation-request-id": [ "d3170103-2096-4b9c-8aef-cd900cd17e33" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260427T142412Z:d3170103-2096-4b9c-8aef-cd900cd17e33" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AB0836935CD246E8BFC9E8348F57D96B Ref B: BN1AA2051012017 Ref C: 2026-04-27T14:24:11Z" ],
+        "Date": [ "Mon, 27 Apr 2026 14:24:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "42" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"NotFound\",\"message\":\"\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzRelationshipsDependencyOfRelationship+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com//subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreldiodg1kq?api-version=2023-09-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com//subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreldiodg1kq?api-version=2023-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "64" ],
+        "x-ms-client-request-id": [ "0365377c-4a2f-4cef-9e1d-eb61fddd0434" ],
+        "CommandName": [ "Remove-AzRelationshipsDependencyOfRelationship" ],
+        "FullCommandName": [ "Remove-AzRelationshipsDependencyOfRelationship_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.6.1", "Az.Relationships/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Id": [ "8f1dd426-8973-4c00-8588-e795b265ca87" ],
+        "x-ba-restapi": [ "3.2026.0404.1" ],
+        "x-ms-request-id": [ "westus2:8f1dd426-8973-4c00-8588-e795b265ca87" ],
+        "mise-correlation-id": [ "2c6f1b7a-3e21-4d43-9886-bc3473e66876" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2c4638e2-9343-4565-be89-cbdad9762f57/westus2/37bfa73c-7978-4bf6-a779-1c33c8a5c117" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "4ba26067-a0a2-4a11-bc7e-0ed7ca89db77" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260427T142413Z:4ba26067-a0a2-4a11-bc7e-0ed7ca89db77" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A1D065A8D1F14C97B5426615EA5CE652 Ref B: BN1AA2051012017 Ref C: 2026-04-27T14:24:12Z" ],
+        "Date": [ "Mon, 27 Apr 2026 14:24:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzRelationshipsDependencyOfRelationship+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com//subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreldiodg1kq?api-version=2023-09-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreldiodg1kq?api-version=2023-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "65" ],
+        "x-ms-client-request-id": [ "edb552ab-5b5e-4930-ada2-f1e56390ab2e" ],
+        "CommandName": [ "Get-AzRelationshipsDependencyOfRelationship" ],
+        "FullCommandName": [ "Get-AzRelationshipsDependencyOfRelationship_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.6.1", "Az.Relationships/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2c4638e2-9343-4565-be89-cbdad9762f57/westus2/8f3e156b-9c1d-4f8c-8878-50ff3bdb110d" ],
+        "Request-Id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1098" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16498" ],
+        "x-ms-request-id": [ "6cb20b01-0c0b-4a94-8511-851f304eb26e" ],
+        "x-ms-correlation-request-id": [ "6cb20b01-0c0b-4a94-8511-851f304eb26e" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260427T142413Z:6cb20b01-0c0b-4a94-8511-851f304eb26e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 308C4AFF2A6E469ABDCEA92F2896C1BA Ref B: BN1AA2051012017 Ref C: 2026-04-27T14:24:13Z" ],
+        "Date": [ "Mon, 27 Apr 2026 14:24:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "42" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"NotFound\",\"message\":\"\"}}",
+      "isContentBase64": false
+    }
+  }
+}

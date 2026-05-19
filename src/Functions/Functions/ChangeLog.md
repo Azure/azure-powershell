@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Migrated Az.Functions from AutoRest PowerShell v3 to v4. See breaking changes [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+    - Replaced `-IdentityType`/`-IdentityID` with `-EnableSystemAssignedIdentity`/`-UserAssignedIdentity`
+    - Enabled combining SystemAssigned and UserAssigned identities
+* Fixed error messages to reference `-EnableSystemAssignedIdentity` instead of removed `-IdentityType`
+* Added SKU validation in `Update-AzFunctionApp` for Flex Consumption and Container App plans
+* Fixed cloud portability using dynamic `StorageEndpointSuffix` [#29034]
+* Fixed `Update-AzFunctionApp` identity fallback to preserve combined identity type
 
 ## Version 4.3.2
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229

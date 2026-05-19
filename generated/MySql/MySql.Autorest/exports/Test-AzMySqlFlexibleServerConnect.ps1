@@ -41,7 +41,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IMySqlIdentity>: The server to connect.
-  [AdvancedThreatProtectionName <AdvancedThreatProtectionName?>]: The name of the Advanced Threat Protection state.
+  [AdvancedThreatProtectionName <String>]: The name of the Advanced Threat Protection state.
   [BackupName <String>]: The name of the backup.
   [ConfigurationName <String>]: The name of the server configuration.
   [DatabaseName <String>]: The name of the database.
@@ -49,10 +49,8 @@ INPUTOBJECT <IMySqlIdentity>: The server to connect.
   [Id <String>]: Resource identity path
   [LocationName <String>]: The name of the location.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SecurityAlertPolicyName <SecurityAlertPolicyName?>]: The name of the security alert policy.
   [ServerName <String>]: The name of the server.
   [SubscriptionId <String>]: The ID of the target subscription.
-  [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
 https://learn.microsoft.com/powershell/module/az.mysql/test-azmysqlflexibleserverconnect
 #>
@@ -115,7 +113,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity]
     # The server to connect.
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -168,6 +165,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -199,6 +204,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

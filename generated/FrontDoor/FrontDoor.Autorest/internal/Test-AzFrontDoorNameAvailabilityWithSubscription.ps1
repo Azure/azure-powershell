@@ -47,8 +47,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The subscription credentials which uniquely identify the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Check', Mandatory, ValueFromPipeline)]

@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added soft delete support for Azure File share backup items (`Undo-AzRecoveryServicesBackupItemDeletion` and `Get-AzRecoveryServicesBackupItem -DeleteState SoftDeleted`)
 
 ## Version 7.11.2
 * Added Cross region restore support for upcoming regions Southeast Asia 3

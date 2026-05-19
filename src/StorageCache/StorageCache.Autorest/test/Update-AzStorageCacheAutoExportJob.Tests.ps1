@@ -14,10 +14,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzStorageCacheAutoExpo
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-New-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleUpdateJob' -ResourceGroupName 'acctest43511' -Location 'Canada Central' -AutoExportPrefix @('/path1')
-Start-Sleep 30
-
 Describe 'Update-AzStorageCacheAutoExportJob' {
+    BeforeAll {
+        New-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleUpdateJob' -ResourceGroupName 'acctest43511' -Location 'Canada Central' -AutoExportPrefix @('/')
+        Start-Sleep 30
+    }
+
+    AfterAll {
+        Remove-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleUpdateJob' -ResourceGroupName 'acctest43511' -Confirm:$false
+    }
+
     It 'UpdateExpanded' {
         {
             Update-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleUpdateJob' -ResourceGroupName 'acctest43511' -Tag @{"testKey" = "testValue"}
@@ -31,7 +37,7 @@ Describe 'Update-AzStorageCacheAutoExportJob' {
                     "jsonKey" = "jsonValue"
                 }
             } | ConvertTo-Json -Depth 3
-            
+
             Update-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleUpdateJob' -ResourceGroupName 'acctest43511' -JsonString $json
         } | Should -Not -Throw
     }
@@ -43,10 +49,10 @@ Describe 'Update-AzStorageCacheAutoExportJob' {
                     "fileKey" = "fileValue"
                 }
             } | ConvertTo-Json -Depth 3
-            
+
             $tempFile = New-TemporaryFile
             $json | Out-File -FilePath $tempFile.FullName -Encoding UTF8
-            
+
             try {
                 Update-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleUpdateJob' -ResourceGroupName 'acctest43511' -JsonFilePath $tempFile.FullName
             } finally {
@@ -78,5 +84,3 @@ Describe 'Update-AzStorageCacheAutoExportJob' {
         } | Should -Not -Throw
     }
 }
-
-Remove-AzStorageCacheAutoExportJob -AmlFilesystemName 'acctest43511' -Name 'sampleUpdateJob' -ResourceGroupName 'acctest43511' -Confirm:$false
