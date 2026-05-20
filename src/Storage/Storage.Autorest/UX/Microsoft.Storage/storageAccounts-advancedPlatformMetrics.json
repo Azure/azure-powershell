@@ -1,23 +1,22 @@
 {
-  "resourceType": "storageAccounts/storageTaskAssignments",
+  "resourceType": "storageAccounts/advancedPlatformMetrics",
   "apiVersion": "2026-04-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.storage"
   },
   "commands": [
     {
-      "name": "Get-AzStorageTaskAssignment",
-      "description": "Get the storage task assignment properties",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
+      "name": "Get-AzStorageAdvancedPlatformMetric",
+      "description": "Get the advanced platform metrics rule for the storage account by rule type.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/advancedPlatformMetrics/{advancedPlatformMetricsRuleType}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.storage/get-azstoragetaskassignment"
+          "url": "https://learn.microsoft.com/powershell/module/az.storage/get-azstorageadvancedplatformmetric"
         },
         "parameterSets": [
           {
             "parameters": [
               "-AccountName <String>",
-              "-Name <String>",
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String[]>]"
             ]
@@ -26,15 +25,11 @@
       },
       "examples": [
         {
-          "description": "Get the storage task assignment properties",
+          "description": "Get the advanced platform metrics rule for the storage account by rule type.",
           "parameters": [
             {
               "name": "-AccountName",
               "value": "[Path.accountName]"
-            },
-            {
-              "name": "-Name",
-              "value": "[Path.storageTaskAssignmentName]"
             },
             {
               "name": "-ResourceGroupName",
@@ -49,18 +44,17 @@
       ]
     },
     {
-      "name": "Remove-AzStorageTaskAssignment",
-      "description": "Delete the storage task assignment sub-resource",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
+      "name": "Remove-AzStorageAdvancedPlatformMetric",
+      "description": "Delete the advanced platform metrics rule for the storage account by rule type.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/advancedPlatformMetrics/{advancedPlatformMetricsRuleType}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.storage/remove-azstoragetaskassignment"
+          "url": "https://learn.microsoft.com/powershell/module/az.storage/remove-azstorageadvancedplatformmetric"
         },
         "parameterSets": [
           {
             "parameters": [
               "-AccountName <String>",
-              "-Name <String>",
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String>]"
             ]
@@ -69,15 +63,11 @@
       },
       "examples": [
         {
-          "description": "Delete the storage task assignment sub-resource",
+          "description": "Delete the advanced platform metrics rule for the storage account by rule type.",
           "parameters": [
             {
               "name": "-AccountName",
               "value": "[Path.accountName]"
-            },
-            {
-              "name": "-Name",
-              "value": "[Path.storageTaskAssignmentName]"
             },
             {
               "name": "-ResourceGroupName",

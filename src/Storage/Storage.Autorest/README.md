@@ -28,12 +28,12 @@ For information on how to develop for `Az.Storage`, see [how-to.md](how-to.md).
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-commit: ec3df311a63c6e653824b4018bb1a39d483bf9fc
+commit: e67a053fe77b756382f0333ca22019a4b3470385
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2025-06-01/openapi.json
+  - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2026-04-01/openapi.json
   # - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2025-01-01/storage.json
   # - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2025-01-01/file.json
   # - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2025-01-01/storageTaskAssignments.json
@@ -120,8 +120,20 @@ directive:
     set:
       property-name: StorageAccountLimitMaxProvisionedIops
   - where:
-      subject: .*Blob.*|.*Table.*|.*Queue.*|^StorageAccount$|^StorageAccountKey$|^StorageAccountProperty$|^StorageAccountSas$|^StorageAccountServiceSas$|BlobInventoryPolicy$|^DeletedAccount$|^EncryptionScope$|^LocalUser$|^LocalUserKey$|^ManagementPolicy$|^ObjectReplicationPolicy$|^Usage$|^LocalUserPassword$|^AccountUserDelegationKey$|^AbortStorageAccountHierarchicalNamespaceMigration$|^HierarchicalStorageAccountNamespaceMigration$|^StorageAccountBlobRange$|^StorageAccountUserDelegationKey$|^StorageAccountNameAvailability$|^FileShare$|^FileServiceProperty$|^FileService$
+      subject: .*Blob.*|.*Table.*|.*Queue.*|^Connector.*|^DataShare$|^StorageAccount$|^StorageAccountKey$|^StorageAccountProperty$|^StorageAccountSas$|^StorageAccountServiceSas$|BlobInventoryPolicy$|^DeletedAccount$|^EncryptionScope$|^LocalUser$|^LocalUserKey$|^ManagementPolicy$|^ObjectReplicationPolicy$|^Usage$|^LocalUserPassword$|^AccountUserDelegationKey$|^AbortStorageAccountHierarchicalNamespaceMigration$|^HierarchicalStorageAccountNamespaceMigration$|^StorageAccountBlobRange$|^StorageAccountUserDelegationKey$|^StorageAccountNameAvailability$|^FileShare$|^FileServiceProperty$|^FileService$
+    remove: true  
+  - where:
+      verb: Stop
+      subject: StorageTaskAssignment
     remove: true
+  - where:
+      verb: New
+      subject: AdvancedPlatformMetric
+    remove: true 
+  - where:
+      verb: Update
+      subject: AdvancedPlatformMetric
+    remove: true 
   - where:
       parameter-name: ParameterEndBy
     set:

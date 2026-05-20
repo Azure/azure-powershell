@@ -101,6 +101,9 @@ Checks the availability of a Storage account name.
 ### [Get-AzStorageAccountNetworkRuleSet](Get-AzStorageAccountNetworkRuleSet.md)
 Get the NetWorkRule property of a Storage account
 
+### [Get-AzStorageAdvancedPlatformMetric](Get-AzStorageAdvancedPlatformMetric.md)
+Get the advanced platform metrics rule for the storage account by rule type.
+
 ### [Get-AzStorageBlob](Get-AzStorageBlob.md)
 Lists blobs in a container.
 
@@ -367,6 +370,9 @@ Removes the management policy of an Azure Storage account.
 ### [Remove-AzStorageAccountNetworkRule](Remove-AzStorageAccountNetworkRule.md)
 Remove IpRules or VirtualNetworkRules from the NetWorkRule property of a Storage account
 
+### [Remove-AzStorageAdvancedPlatformMetric](Remove-AzStorageAdvancedPlatformMetric.md)
+Delete the advanced platform metrics rule for the storage account by rule type.
+
 ### [Remove-AzStorageBlob](Remove-AzStorageBlob.md)
 Removes the specified storage blob.
 
@@ -456,6 +462,9 @@ Modifies a Storage account.
 
 ### [Set-AzStorageAccountManagementPolicy](Set-AzStorageAccountManagementPolicy.md)
 Creates or modifies the management policy of an Azure Storage account.
+
+### [Set-AzStorageAdvancedPlatformMetric](Set-AzStorageAdvancedPlatformMetric.md)
+Update the advanced platform metrics rule for the storage account.
 
 ### [Set-AzStorageBlobContent](Set-AzStorageBlobContent.md)
 Uploads a local file to an Azure Storage blob.
