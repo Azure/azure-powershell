@@ -91,7 +91,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
         Create = true,
         Update = true,
         Description = @"Resource ID.",
-        SerializedName = @"ResourceGroupName",
+        SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string BackendPoolId { get; set; }
         /// <summary>The caching configuration associated with this rule.</summary>

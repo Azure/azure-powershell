@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Description(@" This operation create a policy assignment with the given scope and name. Policy assignments apply to all resources contained within their scope. For example, when you assign a policy at resource group scope, that policy applies to all resources in the group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.HttpPath(Path = "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}", ApiVersion = "2023-04-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.HttpPath(Path = "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}", ApiVersion = "2025-03-01")]
     public partial class NewAzPolicyAssignment_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IContext
@@ -56,6 +56,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         /// Two means multiple returned objects in response.
         /// </summary>
         private int _responseSize = 0;
+
+        /// <summary>
+        /// The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Policy.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.",
+        SerializedName = @"assignmentType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("NotSpecified", "System", "SystemHidden", "Custom")]
+        public string AssignmentType { get => _parametersBody.AssignmentType ?? null; set => _parametersBody.AssignmentType = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -116,17 +130,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         public global::System.Management.Automation.SwitchParameter EnableSystemAssignedIdentity { set => _parametersBody.IdentityType = value.IsPresent ? "SystemAssigned": null ; }
 
         /// <summary>
-        /// The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
+        /// The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Policy.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.",
+        Description = @"The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll",
         SerializedName = @"enforcementMode",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Default", "DoNotEnforce")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Default", "DoNotEnforce", "Enroll")]
         public string EnforcementMode { get => _parametersBody.EnforcementMode ?? null; set => _parametersBody.EnforcementMode = value; }
 
         /// <summary>Accessor for extensibleParameters.</summary>
@@ -338,12 +352,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -665,12 +679,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -687,7 +701,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ICloudError>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }

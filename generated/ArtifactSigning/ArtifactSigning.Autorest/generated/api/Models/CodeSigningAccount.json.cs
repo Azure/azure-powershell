@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.Extensions;
 
-    /// <summary>Trusted signing account resource.</summary>
+    /// <summary>Artifact signing account resource.</summary>
     public partial class CodeSigningAccount
     {
 

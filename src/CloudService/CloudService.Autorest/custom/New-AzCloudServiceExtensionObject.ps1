@@ -20,8 +20,9 @@ Create a in-memory object for Extension
 Create a in-memory object for Extension
 #>
 function New-AzCloudServiceExtensionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.Extension')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.Extension", "15.0.0", "9.0.0", "2025/11/03", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Extension", DeprecatedOutputProperties = ("RolesAppliedTo System.String[]"), NewOutputProperties = ("RolesAppliedTo System.Collections.Generic.List`1[System.String]"))]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Extension')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.OutputBreakingChangeAttribute("Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Extension", "16.0.0", "9.0.0", "May 2026", ReplacementCmdletOutputType = "Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Extension", DeprecatedOutputProperties = ("RolesAppliedTo System.String[]"), NewOutputProperties = ("RolesAppliedTo System.Collections.Generic.List`1[System.String]"))]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -52,7 +53,7 @@ function New-AzCloudServiceExtensionObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.Extension]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Extension]::New()
 
         $Object.AutoUpgradeMinorVersion = $AutoUpgradeMinorVersion
         $Object.Name = $Name

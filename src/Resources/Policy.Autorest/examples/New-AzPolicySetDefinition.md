@@ -43,10 +43,10 @@ This command creates a policy set definition named VMPolicySetDefinition with me
    }
 ]
 
-New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -PolicyDefinition C:\VMPolicySet.json -Parameter '{ "buTagValue": { "type": "string" } }'
+New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -PolicyDefinition C:\VMPolicyWithParametersSet.json -Parameter '{ "buTagValue": { "type": "string" } }'
 ```
 
-This command creates a parameterized policy set definition named VMPolicySetDefinition that contains the policy definitions specified in C:\VMPolicy.json. Example content of the VMPolicy.json is provided above.
+This command creates a parameterized policy set definition named VMPolicySetDefinition that contains the policy definitions specified in C:\VMPolicyWithParametersSet.json. Example content of the VMPolicyWithParametersSet.json is provided above.
 
 ### Example 3: Create a policy set definition with policy definition groups
 
@@ -67,3 +67,10 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition $groups
 ```
 
 This command creates a policy set definition named VMPolicySetDefinition with grouping of policy definitions specified in C:\VMPolicy.json. Example content of the VMPolicy.json is provided above.
+
+### Example 4: Create a policy set definition with version
+```powershell
+New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -PolicyDefinition C:\VMPolicySet.json -Version '2.0.0'
+```
+
+This command creates a policy set definition named VMPolicySetDefinition with incremented version 2.0.0 and contains the policy definitions specified in C:\VMPolicy.json. Example content of the VMPolicy.json is provided above.

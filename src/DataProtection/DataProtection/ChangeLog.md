@@ -18,6 +18,22 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Changed `Edit-AzDataProtectionPolicyRetentionRuleClientObject` to require `-Name Default_OperationalStore` for OperationalStore lifecycles
+* Added `-RenameTo` to `Initialize-AzDataProtectionRestoreRequest` for alternate-location restore
+* Improved usability and consistency (possible breaking changes). See [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+* Added Azure Cosmos DB protection support (configure, backup, restore)
+
+## Version 2.10.1
+* Fixed non-ASCII U+2013 characters failed module import in WindowsPowerShell
+
+## Version 2.10.0
+* Added auto-protection support for Blob and ADLS (Azure Data Lake Storage) backup in `New-AzDataProtectionBackupConfigurationClientObject`
+    - Added `-AutoProtection` switch parameter to enable auto-protection
+    - Added `-AutoProtectionExclusionRule` parameter to specify exclusion rules for auto-protection
+* Updated API version from 2025-09-01 to 2026-03-01
+
+## Version 2.9.1
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 
 ## Version 2.9.0
 * Added support for Data Protection Platform vault soft delete feature

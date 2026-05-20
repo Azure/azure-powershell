@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Lists trusted signing accounts within a subscription.</summary>
+    /// <summary>Lists artifact signing accounts within a subscription.</summary>
     /// <remarks>
     /// [OpenAPI] ListBySubscription=>GET:"/subscriptions/{subscriptionId}/providers/Microsoft.CodeSigning/codeSigningAccounts"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzArtifactSigningAccount_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ICodeSigningAccount))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Description(@"Lists trusted signing accounts within a subscription.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Description(@"Lists artifact signing accounts within a subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.CodeSigning/codeSigningAccounts", ApiVersion = "2025-10-13")]
     public partial class GetAzArtifactSigningAccount_List : global::System.Management.Automation.PSCmdlet,
