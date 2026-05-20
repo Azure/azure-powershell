@@ -59,25 +59,7 @@ directive:
     transform: return "StartAccountMigration"
   - from: swagger-document
     where: $.definitions.StorageTaskAssignment  
-    transform: >-
-      return {
-        "type": "object",
-        "description": "The storage task assignment.",
-        "properties": {
-            "properties": {
-                "$ref": "#/definitions/StorageTaskAssignmentProperties",
-                "description": "Properties of the storage task assignment."
-            }
-        },
-        "required": [
-        "properties"
-        ],
-        "allOf": [
-            {
-                "$ref": "../../../../../common-types/resource-management/v5/types.json#/definitions/ProxyResource"
-            }
-        ]
-      }
+    transform: $['required'] = ["properties"]
   - remove-operation: StorageAccounts_Update
   - remove-operation: FileShares_Lease
   - where:

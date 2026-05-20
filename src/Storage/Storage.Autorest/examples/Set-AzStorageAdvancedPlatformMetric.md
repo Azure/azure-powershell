@@ -1,6 +1,6 @@
 ### Example 1: Enable advanced platform metrics for all containers
 ```powershell
-Set-AzStorageAdvancedPlatformMetric -AccountName mystorageaccount -ResourceGroupName myresourcegroup -Enabled -RuleConfigFilterType AllContainersFilter -Enabled
+Set-AzStorageAdvancedPlatformMetric -AccountName mystorageaccount -ResourceGroupName myresourcegroup -RuleConfigFilterType AllContainersFilter -Enabled
 ```
 
 ```output
