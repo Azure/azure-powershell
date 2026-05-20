@@ -7,70 +7,72 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Extensions;
 
-    /// <summary>Result of the request to list operations.</summary>
-    public partial class ResourceProviderOperationList :
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperationList,
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperationListInternal
+    /// <summary>
+    /// A list of REST API operations supported by an Azure Resource Provider. It contains an URL link to get the next set of
+    /// results.
+    /// </summary>
+    public partial class ResourceProviderOperationListResult :
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperationListResult,
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperationListResultInternal
     {
-
-        /// <summary>Internal Acessors for NextLink</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperationListInternal.NextLink { get => this._nextLink; set { {_nextLink = value;} } }
 
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>Link to the next page of results.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
-        public string NextLink { get => this._nextLink; }
+        public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperation> _value;
 
-        /// <summary>List of operations supported by this resource provider.</summary>
+        /// <summary>The ResourceProviderOperation items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperation> Value { get => this._value; set => this._value = value; }
 
-        /// <summary>Creates an new <see cref="ResourceProviderOperationList" /> instance.</summary>
-        public ResourceProviderOperationList()
+        /// <summary>Creates an new <see cref="ResourceProviderOperationListResult" /> instance.</summary>
+        public ResourceProviderOperationListResult()
         {
 
         }
     }
-    /// Result of the request to list operations.
-    public partial interface IResourceProviderOperationList :
+    /// A list of REST API operations supported by an Azure Resource Provider. It contains an URL link to get the next set of
+    /// results.
+    public partial interface IResourceProviderOperationListResult :
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IJsonSerializable
     {
-        /// <summary>Link to the next page of results.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Link to the next page of results.",
-        SerializedName = @"nextLink",
-        PossibleTypes = new [] { typeof(string) })]
-        string NextLink { get;  }
-        /// <summary>List of operations supported by this resource provider.</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"List of operations supported by this resource provider.",
+        Description = @"The link to the next page of items",
+        SerializedName = @"nextLink",
+        PossibleTypes = new [] { typeof(string) })]
+        string NextLink { get; set; }
+        /// <summary>The ResourceProviderOperation items on this page</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The ResourceProviderOperation items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperation) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperation> Value { get; set; }
 
     }
-    /// Result of the request to list operations.
-    internal partial interface IResourceProviderOperationListInternal
+    /// A list of REST API operations supported by an Azure Resource Provider. It contains an URL link to get the next set of
+    /// results.
+    internal partial interface IResourceProviderOperationListResultInternal
 
     {
-        /// <summary>Link to the next page of results.</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>List of operations supported by this resource provider.</summary>
+        /// <summary>The ResourceProviderOperation items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperation> Value { get; set; }
 
     }

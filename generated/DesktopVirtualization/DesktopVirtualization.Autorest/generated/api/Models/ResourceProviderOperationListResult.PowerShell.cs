@@ -7,9 +7,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PowerShell;
 
-    /// <summary>tags to be updated</summary>
-    [System.ComponentModel.TypeConverter(typeof(DesktopPatchTagsTypeConverter))]
-    public partial class DesktopPatchTags
+    /// <summary>
+    /// A list of REST API operations supported by an Azure Resource Provider. It contains an URL link to get the next set of
+    /// results.
+    /// </summary>
+    [System.ComponentModel.TypeConverter(typeof(ResourceProviderOperationListResultTypeConverter))]
+    public partial class ResourceProviderOperationListResult
     {
 
         /// <summary>
@@ -63,37 +66,48 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.DesktopPatchTags"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ResourceProviderOperationListResult"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopPatchTags" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperationListResult"
+        /// />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopPatchTags DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperationListResult DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
-            return new DesktopPatchTags(content);
+            return new ResourceProviderOperationListResult(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.DesktopPatchTags"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ResourceProviderOperationListResult"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopPatchTags" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperationListResult"
+        /// />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopPatchTags DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperationListResult DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
-            return new DesktopPatchTags(content);
+            return new ResourceProviderOperationListResult(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.DesktopPatchTags"
+        /// Creates a new instance of <see cref="ResourceProviderOperationListResult" />, deserializing the content from a json string.
+        /// </summary>
+        /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
+        /// <returns>
+        /// an instance of the <see cref="ResourceProviderOperationListResult" /> model class.
+        /// </returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperationListResult FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode.Parse(jsonText));
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ResourceProviderOperationListResult"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal DesktopPatchTags(global::System.Collections.IDictionary content)
+        internal ResourceProviderOperationListResult(global::System.Collections.IDictionary content)
         {
             bool returnNow = false;
             BeforeDeserializeDictionary(content, ref returnNow);
@@ -102,17 +116,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
                 return;
             }
             // actually deserialize
-            // this type is a dictionary; copy elements from source to here.
-            CopyFrom(content);
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperationListResultInternal)this).Value = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperation>) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperationListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperation>(__y, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ResourceProviderOperationTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperationListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperationListResultInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.DesktopPatchTags"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ResourceProviderOperationListResult"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal DesktopPatchTags(global::System.Management.Automation.PSObject content)
+        internal ResourceProviderOperationListResult(global::System.Management.Automation.PSObject content)
         {
             bool returnNow = false;
             BeforeDeserializePSObject(content, ref returnNow);
@@ -121,17 +141,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
                 return;
             }
             // actually deserialize
-            // this type is a dictionary; copy elements from source to here.
-            CopyFrom(content);
+            if (content.Contains("Value"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperationListResultInternal)this).Value = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperation>) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperationListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperation>(__y, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ResourceProviderOperationTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("NextLink"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperationListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperationListResultInternal)this).NextLink, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
-
-        /// <summary>
-        /// Creates a new instance of <see cref="DesktopPatchTags" />, deserializing the content from a json string.
-        /// </summary>
-        /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="DesktopPatchTags" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopPatchTags FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
 
@@ -150,9 +169,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             return ToJsonString();
         }
     }
-    /// tags to be updated
-    [System.ComponentModel.TypeConverter(typeof(DesktopPatchTagsTypeConverter))]
-    public partial interface IDesktopPatchTags
+    /// A list of REST API operations supported by an Azure Resource Provider. It contains an URL link to get the next set of
+    /// results.
+    [System.ComponentModel.TypeConverter(typeof(ResourceProviderOperationListResultTypeConverter))]
+    public partial interface IResourceProviderOperationListResult
 
     {
 
