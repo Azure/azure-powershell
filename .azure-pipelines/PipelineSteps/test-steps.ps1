@@ -35,27 +35,29 @@ dotnet msbuild $buildProjPath /t:Test "/p:Configuration=$Configuration;TestFrame
 Write-Host -ForegroundColor DarkGreen "-------------------- End testing ... --------------------`n`n`n`n`n"
 
 # Test AutoGen Modules With PowerShell Core
-Write-Host -ForegroundColor Green "-------------------- Start testing AutoGen modules with PowerShell Core ... --------------------"
-$executeCIStepScriptPath = Join-Path $RepoRoot "tools" "ExecuteCIStep.ps1"
-$currentPath = $PWD
-$debugFolderPath = Join-Path $RepoRoot "artifacts" "Debug"
-Set-Location $debugFolderPath
+if ($PowerShellPlatform -ieq 'PowerShell Core') {
+    Write-Host -ForegroundColor Green "-------------------- Start testing AutoGen modules with PowerShell Core ... --------------------"
+    $executeCIStepScriptPath = Join-Path $RepoRoot "tools" "ExecuteCIStep.ps1"
+    $currentPath = $PWD
+    $debugFolderPath = Join-Path $RepoRoot "artifacts" "Debug"
+    Set-Location $debugFolderPath
 
-Install-Module -Name Pester -Repository PSGallery -RequiredVersion 4.10.1 -Force
-if ($IsWindows) { $sp = ";" } else { $sp = ":" }
-$env:PSModulePath = $env:PSModulePath + $sp + (pwd).Path
-Get-ChildItem -File -Recurse test-module.ps1 | ForEach-Object {
-Write-Host $_.Directory.FullName
-$repoArtifact = Join-Path $RepoRoot 'artifacts'
-& $executeCIStepScriptPath -TestAutorest -AutorestDirectory $_.Directory.FullName -RepoArtifacts $repoArtifact
+    Install-Module -Name Pester -Repository PSGallery -RequiredVersion 4.10.1 -Force
+    if ($IsWindows) { $sp = ";" } else { $sp = ":" }
+    $env:PSModulePath = $env:PSModulePath + $sp + (pwd).Path
+    Get-ChildItem -File -Recurse test-module.ps1 | ForEach-Object {
+    Write-Host $_.Directory.FullName
+    $repoArtifact = Join-Path $RepoRoot 'artifacts'
+    & $executeCIStepScriptPath -TestAutorest -AutorestDirectory $_.Directory.FullName -RepoArtifacts $repoArtifact
+    }
+
+    $ErrorActionPreference = $preference
+    Set-Location $currentPath
+    Write-Host -ForegroundColor DarkGreen "-------------------- End testing AutoGen modules with PowerShell Core ... --------------------`n`n`n`n`n"
 }
 
-$ErrorActionPreference = $preference
-Set-Location $currentPath
-Write-Host -ForegroundColor DarkGreen "-------------------- End testing AutoGen modules with PowerShell Core ... --------------------`n`n`n`n`n"
-
 # Test AutoGen Modules With Windows PowerShell 5.1
-if ($IsWindows) {
+if ($IsWindows -and $PowerShellPlatform -ieq 'Windows PowerShell') {
     Write-Host -ForegroundColor Green "-------------------- Start testing AutoGen modules with Windows PowerShell 5.1 ... --------------------"
     $executeCIStepScriptPath = Join-Path $RepoRoot "tools" "ExecuteCIStep.ps1"
     $currentPath = $PWD

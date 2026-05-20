@@ -45,7 +45,7 @@ steps:
     }
   workingDirectory: 'artifacts/Debug'
   displayName: 'Test for AutoGen Modules With PowerShell Core'
-  condition: and(succeeded(), eq('${{ parameters.testTarget }}', 'Test'))
+  condition: and(succeeded(), eq('${{ parameters.testTarget }}', 'Test'), eq('${{ parameters.powerShellPlatform }}', 'PowerShell Core'))
   continueOnError: true
   env:
     PowerShellPlatform: ${{ parameters.powerShellPlatform }}
@@ -65,7 +65,7 @@ steps:
     }
   workingDirectory: 'artifacts/Debug'
   displayName: 'Test for AutoGen Modules With Windows PowerShell 5.1'
-  condition: and(succeeded(), eq(variables['Agent.OS'], 'Windows_NT'), eq('${{ parameters.testTarget }}', 'Test'))
+  condition: and(succeeded(), eq(variables['Agent.OS'], 'Windows_NT'), eq('${{ parameters.testTarget }}', 'Test'), eq('${{ parameters.powerShellPlatform }}', 'Windows PowerShell'))
   env:
     PowerShellPlatform: Windows PowerShell
 
