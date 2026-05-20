@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzWvdApplication
 
 ## SYNOPSIS
-update an application.
+Update an application.
 
 ## SYNTAX
 
@@ -18,8 +18,8 @@ Update-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <S
  [-SubscriptionId <String>] [-ApplicationType <String>] [-CommandLineArgument <String>]
  [-CommandLineSetting <String>] [-Description <String>] [-FilePath <String>] [-FriendlyName <String>]
  [-IconIndex <Int32>] [-IconPath <String>] [-MsixPackageApplicationId <String>]
- [-MsixPackageFamilyName <String>] [-ShowInPortal] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-MsixPackageFamilyName <String>] [-ShowInPortal] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityApplicationGroup
@@ -34,7 +34,7 @@ Update-AzWvdApplication -ApplicationGroupInputObject <IDesktopVirtualizationIden
  [-ApplicationType <String>] [-CommandLineArgument <String>] [-CommandLineSetting <String>]
  [-Description <String>] [-FilePath <String>] [-FriendlyName <String>] [-IconIndex <Int32>]
  [-IconPath <String>] [-MsixPackageApplicationId <String>] [-MsixPackageFamilyName <String>] [-ShowInPortal]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -42,8 +42,8 @@ Update-AzWvdApplication -ApplicationGroupInputObject <IDesktopVirtualizationIden
 Update-AzWvdApplication -InputObject <IDesktopVirtualizationIdentity> [-ApplicationType <String>]
  [-CommandLineArgument <String>] [-CommandLineSetting <String>] [-Description <String>] [-FilePath <String>]
  [-FriendlyName <String>] [-IconIndex <Int32>] [-IconPath <String>] [-MsixPackageApplicationId <String>]
- [-MsixPackageFamilyName <String>] [-ShowInPortal] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-MsixPackageFamilyName <String>] [-ShowInPortal] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -59,7 +59,7 @@ Update-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <S
 ```
 
 ## DESCRIPTION
-update an application.
+Update an application.
 
 ## EXAMPLES
 
@@ -401,21 +401,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-tags to be updated
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityApplicationGroupExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

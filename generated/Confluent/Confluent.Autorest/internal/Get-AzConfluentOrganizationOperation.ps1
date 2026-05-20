@@ -16,67 +16,67 @@
 
 <#
 .Synopsis
-List all operations provided by Microsoft.Confluent.
+List the operations for the provider
 .Description
-List all operations provided by Microsoft.Confluent.
+List the operations for the provider
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOperationResult
+Microsoft.Azure.PowerShell.Cmdlets.confluent.Models.IOperationResult
 .Link
 https://learn.microsoft.com/powershell/module/az.confluent/get-azconfluentorganizationoperation
 #>
 function Get-AzConfluentOrganizationOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.IOperationResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.confluent.Models.IOperationResult])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Azure')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Azure')]
     [System.Management.Automation.PSObject]
     # The DefaultProfile parameter is not functional.
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Runtime')]
     [System.Uri]
     # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Runtime')]
     [System.Management.Automation.PSCredential]
     # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.confluent.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
@@ -91,10 +91,10 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
         
         $testPlayback = $false
-        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.confluent.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
-            List = 'Az.Confluent.private\Get-AzConfluentOrganizationOperation_List';
+            List = 'Az.confluent.private\Get-AzConfluentOrganizationOperation_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

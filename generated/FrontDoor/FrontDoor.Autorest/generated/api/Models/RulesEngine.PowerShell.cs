@@ -116,6 +116,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RulesEnginePropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineInternal)this).Id, global::System.Convert.ToString);
+            }
             if (content.Contains("Name"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineInternal)this).Name, global::System.Convert.ToString);
@@ -123,10 +127,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineInternal)this).Type, global::System.Convert.ToString);
-            }
-            if (content.Contains("Id"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineInternal)this).Id, global::System.Convert.ToString);
             }
             if (content.Contains("Rule"))
             {
@@ -157,6 +157,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RulesEnginePropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineInternal)this).Id, global::System.Convert.ToString);
+            }
             if (content.Contains("Name"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineInternal)this).Name, global::System.Convert.ToString);
@@ -164,10 +168,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineInternal)this).Type, global::System.Convert.ToString);
-            }
-            if (content.Contains("Id"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineInternal)this).Id, global::System.Convert.ToString);
             }
             if (content.Contains("Rule"))
             {

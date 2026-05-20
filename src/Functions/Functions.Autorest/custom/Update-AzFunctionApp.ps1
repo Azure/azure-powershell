@@ -1,6 +1,7 @@
 
 function Update-AzFunctionApp {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PreviewMessage("*******************************************************************************************`n    * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026.           *`n    * At least one change applies to this cmdlet.                                                    *`n    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *`n    *******************************************************************************************")]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Updates a function app.')]
     [CmdletBinding(DefaultParameterSetName='ByName', SupportsShouldProcess=$true, ConfirmImpact='Medium')]
     param(
@@ -20,8 +21,8 @@ function Update-AzFunctionApp {
         [System.String]
         ${Name},
 
-        [Parameter(ParameterSetName='ByObjectInput', Mandatory=$true, ValueFromPipeline=$true)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite]
+        [Parameter(ParameterSetName='ByObjectInput', Mandatory=$true, ValueFromPipeline=$true, HelpMessage='The function app object.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite]
         [ValidateNotNull()]
         ${InputObject},
 
@@ -49,28 +50,22 @@ function Update-AzFunctionApp {
 
         [Parameter(HelpMessage='Resource tags.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IResourceTags]))]
         [System.Collections.Hashtable]
         [ValidateNotNull()]
         ${Tag},
 
-        [Parameter(HelpMessage="Specifies the type of identity used for the function app.
-            The type 'None' will remove any identities from the function app. The acceptable values for this parameter are:
-            - SystemAssigned
-            - UserAssigned
-            - None
-            ")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionAppManagedServiceIdentityUpdateType])]
+        [Parameter(HelpMessage="Determines whether to enable a system-assigned identity for the resource.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType]
-        ${IdentityType},
+        [System.Boolean]
+        ${EnableSystemAssignedIdentity},
 
-        [Parameter(HelpMessage="Specifies the list of user identities associated with the function app.
+        [Parameter(HelpMessage="The array of user assigned identities associated with the function app.
             The user identity references will be ARM resource ids in the form:
-            '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'")]
-        [ValidateNotNullOrEmpty()]
+            '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'")]
+        [ValidateNotNull()]
         [System.String[]]
-        ${IdentityID},
+        ${UserAssignedIdentity},
 
         [Parameter(HelpMessage='Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
@@ -82,6 +77,7 @@ function Update-AzFunctionApp {
         [System.Management.Automation.SwitchParameter]
         ${AsJob},
         
+        [Parameter(HelpMessage='The credentials, account, tenant, and subscription used for communication with Azure.')]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Azure')]
@@ -132,14 +128,18 @@ function Update-AzFunctionApp {
 
         RegisterFunctionsTabCompleters
 
-        # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets.
+        # Save identity parameter state before removing from PSBoundParameters
+        $hasEnableSystemAssignedIdentityParam = $PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity')
+        $hasUserAssignedIdentityParam = $PSBoundParameters.ContainsKey('UserAssignedIdentity')
+
+        # Remove bound parameters from the dictionary that cannot be processed by the internal cmdlets.
         $paramsToRemove = @(
             "PlanName",
             "ApplicationInsightsName",
-            "ApplicationInsightsKey"
-            "IdentityType",
-            "IdentityID",
-            "Tag"
+            "ApplicationInsightsKey",
+            "Tag",
+            "EnableSystemAssignedIdentity",
+            "UserAssignedIdentity"
         )
         foreach ($paramName in $paramsToRemove)
         {
@@ -176,36 +176,113 @@ function Update-AzFunctionApp {
             $existingFunctionApp = GetFunctionAppByName -Name $Name -ResourceGroupName $ResourceGroupName @params
         }
 
-        $appSettings = New-Object -TypeName System.Collections.Generic.List[System.Object]
-        $siteCofig = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.SiteConfig
-        $functionAppDef = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.Site
+        # Guard: reject app types not yet supported by Update-AzFunctionApp
+        if ($existingFunctionApp.Kind -and $existingFunctionApp.Kind.ToString() -match "azurecontainerapps")
+        {
+            $errorMessage = "Update-AzFunctionApp does not support updating Container Apps–hosted function apps."
+            $exception = [System.InvalidOperationException]::New($errorMessage)
+            ThrowTerminatingError -ErrorId "ContainerAppNotSupported" `
+                                    -ErrorMessage $errorMessage `
+                                    -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                    -Exception $exception
+        }
+
+        $currentPlan = $null
+        if ($existingFunctionApp.ServerFarmId)
+        {
+            $currentPlan = GetFunctionAppServicePlanInfo $existingFunctionApp.ServerFarmId @params
+        }
+
+        if ($currentPlan -and $currentPlan.SkuName -eq "FC1")
+        {
+            $errorMessage = "Update-AzFunctionApp does not yet support updating Flex Consumption function apps."
+            $exception = [System.InvalidOperationException]::New($errorMessage)
+            ThrowTerminatingError -ErrorId "FlexConsumptionNotSupported" `
+                                    -ErrorMessage $errorMessage `
+                                    -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                    -Exception $exception
+        }
+
+        $appSettings = New-Object -TypeName System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.INameValuePair]
+        $siteConfig = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.SiteConfig
+        $functionAppDef = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Site
 
         # Identity information
-        if ($IdentityType)
+        $userProvidedIdentitySettings = $hasEnableSystemAssignedIdentityParam -or
+                                         $hasUserAssignedIdentityParam
+
+        if ($userProvidedIdentitySettings)
         {
-            $functionAppDef.IdentityType = $IdentityType
+            $enableSystemAssigned = $EnableSystemAssignedIdentity -eq $true
 
-            if ($IdentityType -eq "UserAssigned")
+            if ($hasUserAssignedIdentityParam -and $UserAssignedIdentity.Count -eq 0)
             {
-                # Set UserAssigned managed identity
-                if (-not $IdentityID)
+                $errorMessage = "At least one user-assigned identity resource ID must be provided via the -UserAssignedIdentity parameter."
+                $exception = [System.InvalidOperationException]::New($errorMessage)
+                ThrowTerminatingError -ErrorId "UserAssignedIdentityRequired" `
+                                        -ErrorMessage $errorMessage `
+                                        -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                        -Exception $exception
+            }
+
+            # Validate that each identity ID is non-empty/non-whitespace
+            if ($hasUserAssignedIdentityParam)
+            {
+                foreach ($id in $UserAssignedIdentity)
                 {
-                    $errorMessage = "IdentityID is required for UserAssigned identity"
-                    $exception = [System.InvalidOperationException]::New($errorMessage)
-                    ThrowTerminatingError -ErrorId "IdentityIDIsRequiredForUserAssignedIdentity" `
-                                            -ErrorMessage $errorMessage `
-                                            -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-                                            -Exception $exception
-
+                    if ([string]::IsNullOrWhiteSpace($id))
+                    {
+                        $errorMessage = "User-assigned identity resource IDs must not be null, empty, or whitespace."
+                        $exception = [System.InvalidOperationException]::New($errorMessage)
+                        ThrowTerminatingError -ErrorId "UserAssignedIdentityRequired" `
+                                                -ErrorMessage $errorMessage `
+                                                -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                                                -Exception $exception
+                    }
                 }
+            }
 
-                $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $IdentityID
+            if ($enableSystemAssigned -and $hasUserAssignedIdentityParam)
+            {
+                $functionAppDef.IdentityType = "SystemAssigned,UserAssigned"
+                $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $UserAssignedIdentity
                 $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
+            }
+            elseif ($enableSystemAssigned)
+            {
+                $functionAppDef.IdentityType = "SystemAssigned"
+            }
+            elseif ($hasUserAssignedIdentityParam)
+            {
+                $functionAppDef.IdentityType = "UserAssigned"
+                $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $UserAssignedIdentity
+                $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
+            }
+            elseif ($EnableSystemAssignedIdentity -eq $false)
+            {
+                # Explicitly disable identity
+                $functionAppDef.IdentityType = "None"
             }
         }
         elseif ($existingFunctionApp.IdentityType)
         {
-            if ($existingFunctionApp.IdentityType -eq "UserAssigned")
+            # Preserve the existing identity configuration when no identity params are supplied.
+            # IdentityType can be "SystemAssigned", "UserAssigned", or "SystemAssigned,UserAssigned".
+            $existingIdentityType = $existingFunctionApp.IdentityType.ToString().Trim()
+            $hasSystemAssigned = $existingIdentityType -match "SystemAssigned"
+            $hasUserAssigned = $existingIdentityType -match "UserAssigned"
+
+            if ($hasSystemAssigned -and $hasUserAssigned)
+            {
+                $functionAppDef.IdentityType = "SystemAssigned,UserAssigned"
+
+                if ($existingFunctionApp.IdentityUserAssignedIdentity -and $existingFunctionApp.IdentityUserAssignedIdentity.Count -gt 0)
+                {
+                    $identityUserAssignedIdentity = NewIdentityUserAssignedIdentity -IdentityID $existingFunctionApp.IdentityUserAssignedIdentity.Keys
+                    $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
+                }
+            }
+            elseif ($hasUserAssigned)
             {
                 $functionAppDef.IdentityType = "UserAssigned"
 
@@ -215,18 +292,9 @@ function Update-AzFunctionApp {
                     $functionAppDef.IdentityUserAssignedIdentity = $identityUserAssignedIdentity
                 }
             }
-            elseif ($existingFunctionApp.IdentityType -eq "SystemAssigned")
+            elseif ($hasSystemAssigned)
             {
                 $functionAppDef.IdentityType = "SystemAssigned"
-            }
-            else
-            {
-                $errorMessage = "Unknown IdentityType '$($existingFunctionApp.IdentityType)'"
-                $exception = [System.InvalidOperationException]::New($errorMessage)
-                ThrowTerminatingError -ErrorId "UnknownIdentityType" `
-                                        -ErrorMessage $errorMessage `
-                                        -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
-                                        -Exception $exception
             }
         }
         
@@ -307,17 +375,17 @@ function Update-AzFunctionApp {
         }
 
         # Set siteConfig properties: AlwaysOn, LinuxFxVersion, JavaVersion, PowerShellVersion
-        $siteCofig.AlwaysOn = $existingFunctionApp.SiteConfig.AlwaysOn
-        $siteCofig.LinuxFxVersion = $existingFunctionApp.SiteConfig.LinuxFxVersion            
-        $siteCofig.JavaVersion = $existingFunctionApp.SiteConfig.JavaVersion
-        $siteCofig.PowerShellVersion = $existingFunctionApp.SiteConfig.PowerShellVersion
+        $siteConfig.AlwaysOn = $existingFunctionApp.SiteConfig.AlwaysOn
+        $siteConfig.LinuxFxVersion = $existingFunctionApp.SiteConfig.LinuxFxVersion            
+        $siteConfig.JavaVersion = $existingFunctionApp.SiteConfig.JavaVersion
+        $siteConfig.PowerShellVersion = $existingFunctionApp.SiteConfig.PowerShellVersion
 
         # Set the function app Kind
         $functionAppDef.Kind = $existingFunctionApp.Kind
 
         # Set app settings and site configuration
-        $siteCofig.AppSetting = $appSettings
-        $functionAppDef.Config = $siteCofig
+        $siteConfig.AppSetting = $appSettings
+        $functionAppDef.Config = $siteConfig
         $PSBoundParameters.Add("SiteEnvelope", $functionAppDef)  | Out-Null
 
         if ($PsCmdlet.ShouldProcess($Name, "Updating function app"))

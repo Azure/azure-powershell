@@ -19,6 +19,36 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.0
+* Updated to API version 2026-01-01
+* Added new cmdlets for the Buckets resource (alias `Anf*` for Azure NetApp Files):
+    - `Get-AzNetAppFilesBucket`
+    - `New-AzNetAppFilesBucket`
+    - `Update-AzNetAppFilesBucket`
+    - `Remove-AzNetAppFilesBucket`
+    - `New-AzNetAppFilesBucketCredential`
+    - `Set-AzNetAppFilesBucketAkvCredential`
+    - `Update-AzNetAppFilesBucketCertificate`
+* Added new cmdlets for the Caches resource (alias `Anf*` for Azure NetApp Files):
+    - `Get-AzNetAppFilesCache`
+    - `New-AzNetAppFilesCache`
+    - `Update-AzNetAppFilesCache`
+    - `Remove-AzNetAppFilesCache`
+    - `Get-AzNetAppFilesCachePeeringPassphrase`
+    - `Set-AzNetAppFilesCachePool`
+    - `Reset-AzNetAppFilesCacheSmbPassword`
+* `Start-AzNetAppFilesPeerExternalCluster` now returns the cluster peering command and passphrase as a `PSClusterPeerCommandResponse` (was previously discarded)
+* Surfaced new replication properties on `PSNetAppFilesReplicationObject` (`(Get-AzNetAppFilesVolume).DataProtection.Replication`):
+    - `ExternalReplicationSetupStatus`, `ExternalReplicationSetupInfo` - external replication setup state machine + next-step guidance
+    - `MirrorState`, `RelationshipStatus` - current mirror state and transfer status
+
+## Version 1.1.0
+* Updated to api-version 2025-12-01
+* Added new cmdlet `Get-AzNetAppFilesVolumeQuotaReport` to get quota report for a volume with optional filtering by `QuotaType`, `QuotaTarget`, and `UsageThresholdPercentage`
+* Added `DesiredRansomwareProtectionState` parameter to `New-AzNetAppFilesVolume` and `Update-AzNetAppFilesVolume` to enable or disable Advanced Ransomware Protection (ARP) on volumes
+* Added new cmdlet `Get-AzNetAppFilesRansomwareReport` to list or get Advanced Ransomware Protection (ARP) reports for a volume
+* Added new cmdlet `Clear-AzNetAppFilesRansomwareReportSuspect` to clear suspects on an ARP report by marking file extensions as `PotentialThreat` or `FalsePositive`
+
 ## Version 1.0.0
 * Updated Azure.Core from 1.47.3 to 1.50.0
 * General availability for module Az.NetAppFiles

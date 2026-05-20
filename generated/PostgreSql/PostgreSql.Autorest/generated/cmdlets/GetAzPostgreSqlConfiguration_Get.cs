@@ -13,6 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Cmdlets
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}/configurations/{configurationName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzPostgreSqlConfiguration_Get")]
+    [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.CmdletBreakingChange("16.0.0", "-", "2026/06/02", ChangeDescription="This module will be retired and replaced by Az.PostgreSqlFlexibleServer in a future release.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfiguration))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Description(@"Gets information about a configuration of server.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Generated]

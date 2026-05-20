@@ -25,7 +25,7 @@ Get-AzFunctionAppPlan -Name MyAppName -ResourceGroupName MyResourceGroupName | R
 Remove-AzFunctionAppPlan -Name MyAppName -ResourceGroupName MyResourceGroupName -Force
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServicePlan
 .Outputs
 System.Boolean
 .Notes
@@ -33,7 +33,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IAppServicePlan>: 
+INPUTOBJECT <IAppServicePlan>: The function app plan object.
   Location <String>: Resource Location.
   [Kind <String>]: Kind of resource.
   [Tag <IResourceTags>]: Resource tags.
@@ -50,7 +50,7 @@ INPUTOBJECT <IAppServicePlan>:
   [MaximumElasticWorkerCount <Int32?>]: Maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan
   [PerSiteScaling <Boolean?>]: If <code>true</code>, apps assigned to this App Service plan can be scaled independently.         If <code>false</code>, apps assigned to this App Service plan will scale to all instances of the plan.
   [Reserved <Boolean?>]: If Linux app service plan <code>true</code>, <code>false</code> otherwise.
-  [SkuCapability <ICapability[]>]: Capabilities of the SKU, e.g., is traffic manager enabled?
+  [SkuCapability <List<ICapability>>]: Capabilities of the SKU, e.g., is traffic manager enabled?
     [Name <String>]: Name of the SKU capability.
     [Reason <String>]: Reason of the SKU capability.
     [Value <String>]: Value of the SKU capability.
@@ -60,7 +60,7 @@ INPUTOBJECT <IAppServicePlan>:
   [SkuCapacityMinimum <Int32?>]: Minimum number of workers for this App Service plan SKU.
   [SkuCapacityScaleType <String>]: Available scale configurations for an App Service plan.
   [SkuFamily <String>]: Family code of the resource SKU.
-  [SkuLocation <String[]>]: Locations of the SKU.
+  [SkuLocation <List<String>>]: Locations of the SKU.
   [SkuName <String>]: Name of the resource SKU.
   [SkuSize <String>]: Size specifier of the resource SKU.
   [SkuTier <String>]: Service tier of the resource SKU.
@@ -85,6 +85,7 @@ param(
     [Parameter(ParameterSetName='ByName', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
+    # The name of the resource group.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='ByName')]
@@ -103,8 +104,8 @@ param(
     [Parameter(ParameterSetName='ByObjectInput', Mandatory, ValueFromPipeline)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan]
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServicePlan]
+    # The function app plan object.
     ${InputObject},
 
     [Parameter()]
@@ -162,6 +163,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -184,9 +193,7 @@ begin {
             ByName = 'Az.Functions.custom\Remove-AzFunctionAppPlan';
             ByObjectInput = 'Az.Functions.custom\Remove-AzFunctionAppPlan';
         }
-        if (('ByName') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ByName') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -200,6 +207,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

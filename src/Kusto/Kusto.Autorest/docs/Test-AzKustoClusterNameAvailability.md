@@ -24,6 +24,18 @@ Test-AzKustoClusterNameAvailability -InputObject <IKustoIdentity> -Name <String>
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CheckViaJsonFilePath
+```
+Test-AzKustoClusterNameAvailability -Location <String> -JsonFilePath <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CheckViaJsonString
+```
+Test-AzKustoClusterNameAvailability -Location <String> -JsonString <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Checks that the cluster name is valid and is not already in use.
 
@@ -75,7 +87,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
@@ -89,12 +100,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Check operation
+
+```yaml
+Type: System.String
+Parameter Sets: CheckViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Check operation
+
+```yaml
+Type: System.String
+Parameter Sets: CheckViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The name of Azure region.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded
+Parameter Sets: CheckExpanded, CheckViaJsonFilePath, CheckViaJsonString
 Aliases:
 
 Required: True
@@ -109,7 +150,7 @@ Cluster name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -124,7 +165,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CheckExpanded
+Parameter Sets: CheckExpanded, CheckViaJsonFilePath, CheckViaJsonString
 Aliases:
 
 Required: False
@@ -174,7 +215,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ICheckNameResult
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.ICheckNameResult
 
 ## NOTES
 

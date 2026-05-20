@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     /// [OpenAPI] DeleteAttachment=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/edgeActions/{edgeActionName}/deleteAttachment"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzCdnEdgeActionAttachment_DeleteViaJsonFilePath", SupportsShouldProcess = true)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.GenericBreakingChange("", "14.5.0", "5.4.0", "2026/05/15", ChangeDescription = "All 'Az*CdnEdgeAction*' cmdlets are being deprecated and will be removed in a future release. The underlying EdgeAction preview API is being retired.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAny))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"A long-running operation for deleting an EdgeAction attachment that returns no content.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Extensions;
 
-    /// <summary>Dictionary of <any></summary>
+    /// <summary>The collection of allowed values for the parameter.</summary>
     public partial class ParameterDefinitionsValueAllowedValuesItem :
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IParameterDefinitionsValueAllowedValuesItem,
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IParameterDefinitionsValueAllowedValuesItemInternal
@@ -21,14 +21,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
 
         }
     }
-    /// Dictionary of <any>
+    /// The collection of allowed values for the parameter.
     public partial interface IParameterDefinitionsValueAllowedValuesItem :
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IAssociativeArray<global::System.Object>
     {
 
     }
-    /// Dictionary of <any>
+    /// The collection of allowed values for the parameter.
     internal partial interface IParameterDefinitionsValueAllowedValuesItemInternal
 
     {

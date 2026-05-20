@@ -24,8 +24,8 @@ Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName <String>
 ### TriggerExpanded
 ```
 Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName <String> -ObjectType <String>
- -ResourceGroupName <String> -RestoreTargetInfo <IRestoreTargetInfoBase>
- -SourceDataStoreType <SourceDataStoreType> -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>]
+ -ResourceGroupName <String> -RestoreTargetInfo <IRestoreTargetInfoBase> -SourceDataStoreType <String>
+ -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>]
  [-IdentityDetailUserAssignedIdentityArmUrl <String>] [-IdentityDetailUseSystemAssignedIdentity] [-NoWait]
  [-ResourceGuardOperationRequest <String[]>] [-RestoreToSecondaryRegion] [-SecureToken <SecureString>]
  [-SourceResourceId <String>] [-SubscriptionId <String>] [-Token <String>] [-Confirm] [-WhatIf]
@@ -206,13 +206,13 @@ $restoreJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId "xxxxx
 ```
 
 The first, second commands fetch the instance and recovery point for the instance.
-The third and fourthcommand initializes the target container id and target storage account ARM id.
+The third and fourth command initializes the target container id and target storage account ARM id.
 The fifth command initializes the restore request object for AzureDatabaseForPGFlexServer restore.
 This example also works for datasource type AzureDatabaseForMySQL.
 The sixth command assigns the permissions to the backup vault and other permissions necessary for triggering the restore for AzureDatabaseForPGFlexServer.
 The last command triggers the restore for AzureDatabaseForPGFlexServer.
 
-### Example 10: Trigger vaulted backup conatiners ItemLevelRestore with PrefixMatch for Azureblob.
+### Example 10: Trigger vaulted backup containers ItemLevelRestore with PrefixMatch for Azureblob.
 ```powershell
 $instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" | Where-Object { $_.Name -match "storageAcountName" }
 $rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -BackupInstanceName $instance.Name
@@ -230,7 +230,7 @@ $restoreJobILR = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId "xx
 The first, second commands fetch the instance and recovery point for the instance.
 The third command fetches the containers which are protected with vaulted policy.
 The fourth command initializes the prefix array for each container.
-PrefixMatch is a hashtable where each key is the conatiner name being restored and the value is a list of string prfixes for container names for Item level recovery.
+PrefixMatch is a hashtable where each key is the container name being restored and the value is a list of string prfixes for container names for Item level recovery.
 The fifth command initializes the target storage account Id.
 The sixth command initializes the restore request object for AzureBlob restore with parameters ContainersList, PrefixMatch.
 The seventh command triggers validate before restore.
@@ -274,6 +274,33 @@ After that, we assign the required permissions to the backup vault and the targe
 Please note that this command is not fully supported for all AKS scenarios; use the Azure portal to assign the necessary permissions.
 
 Finally, we use the Test command to validate the restore configuration and ensure that the necessary permissions are in place before triggering the restore for Azure Kubernetes Service.
+
+### Example 12: Trigger alternate location restore for AzureCosmosDB
+```powershell
+$subId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+$resourceGroupName = "resourceGroupName"
+$vaultName = "vaultName"
+$targetCosmosAccountId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/targetRG/providers/Microsoft.DocumentDB/databaseAccounts/target-cosmos-account"
+
+$vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
+$instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match "source-cosmos-account" }
+$rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.Name
+
+$cosmosRestoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureCosmosDB -SourceDataStore VaultStore -RestoreLocation $vault.Location -RestoreType AlternateLocation -RecoveryPoint $rp[0].Property.RecoveryPointId -TargetResourceId $targetCosmosAccountId
+
+Set-AzDataProtectionMSIPermission -VaultResourceGroup $resourceGroupName -VaultName $vaultName -PermissionsScope "ResourceGroup" -RestoreRequest $cosmosRestoreRequest
+
+$validateRestore = Test-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -RestoreRequest $cosmosRestoreRequest -Name $instance.BackupInstanceName
+
+$restoreJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.BackupInstanceName -Parameter $cosmosRestoreRequest
+```
+
+First, we initialize the necessary variables that will be used in the restore script.
+AzureCosmosDB only supports VaultStore source data store and AlternateLocation restore type, so the target must be a different Cosmos DB account.
+Next, we fetch the backup vault, the backup instance for the source Cosmos DB account, and the recovery point for the instance.
+We then initialize the restore request object for an AzureCosmosDB alternate location restore.
+After that, we assign the required permissions to the backup vault and the target Cosmos DB account to enable the restore operation.
+Finally, we use the Test command to validate the restore configuration and ensure that the necessary permissions are in place before triggering the restore for AzureCosmosDB.
 
 ## PARAMETERS
 
@@ -384,10 +411,9 @@ Accept wildcard characters: False
 
 ### -Parameter
 Restore request object to be initialized using Initialize-AzDataProtectionRestoreRequest cmdlet
-To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IAzureBackupRestoreRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRestoreRequest
 Parameter Sets: Trigger
 Aliases:
 
@@ -431,10 +457,9 @@ Accept wildcard characters: False
 
 ### -RestoreTargetInfo
 Gets or sets the restore target information
-To construct, see NOTES section for RESTORETARGETINFO properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IRestoreTargetInfoBase
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IRestoreTargetInfoBase
 Parameter Sets: TriggerExpanded
 Aliases:
 
@@ -480,7 +505,7 @@ Accept wildcard characters: False
 Type of the source data store
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SourceDataStoreType
+Type: System.String
 Parameter Sets: TriggerExpanded
 Aliases:
 
@@ -588,11 +613,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IAzureBackupRestoreRequest
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRestoreRequest
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IOperationJobExtendedInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IOperationJobExtendedInfo
 
 ## NOTES
 
