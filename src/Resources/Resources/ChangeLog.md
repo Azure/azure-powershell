@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed `New-AzDeployment`, `New-AzResourceGroupDeployment`, `Test-AzDeployment`, `Test-AzResourceGroupDeployment`, and deployment stack cmdlets to properly inherit dynamic parameters from base cmdlet class
 * Updated deployment stack cmdlets to use the `2025-07-01` deployment stacks service version.
 * Added `-ResourcesWithoutDeleteSupport` to deployment stack `New-`, `Set-`, `Test-`, and `Remove-` cmdlets at subscription, resource group, and management group scopes. This parameter controls whether resources that do not support deletion cause the operation to fail or are detached from the stack. Possible values: `Fail` (default) and `Detach`.
 * Added `-ValidationLevel` to deployment stack `New-`, `Set-`, and `Test-` cmdlets at subscription, resource group, and management group scopes. This parameter controls how deployment stack validation is performed. Possible values: `Provider` (default), `Template`, and `ProviderNoRbac` (provider validation without Role-Based Access Control checks).

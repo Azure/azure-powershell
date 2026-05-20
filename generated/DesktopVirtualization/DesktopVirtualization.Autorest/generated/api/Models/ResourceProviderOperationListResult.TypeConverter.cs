@@ -8,10 +8,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
     using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PowerShell;
 
     /// <summary>
-    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="ResourceModelWithAllowedPropertySetIdentity"
-    /// />
+    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="ResourceProviderOperationListResult" />
     /// </summary>
-    public partial class ResourceModelWithAllowedPropertySetIdentityTypeConverter : global::System.Management.Automation.PSTypeConverter
+    public partial class ResourceProviderOperationListResultTypeConverter : global::System.Management.Automation.PSTypeConverter
     {
 
         /// <summary>
@@ -27,13 +26,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         public override bool CanConvertFrom(object sourceValue, global::System.Type destinationType) => CanConvertFrom(sourceValue);
 
         /// <summary>
-        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="ResourceModelWithAllowedPropertySetIdentity"/>
+        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="ResourceProviderOperationListResult"/>
         /// type.
         /// </summary>
-        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="ResourceModelWithAllowedPropertySetIdentity"
+        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="ResourceProviderOperationListResult"
         /// /> type.</param>
         /// <returns>
-        /// <c>true</c> if the instance could be converted to a <see cref="ResourceModelWithAllowedPropertySetIdentity" /> type, otherwise
+        /// <c>true</c> if the instance could be converted to a <see cref="ResourceProviderOperationListResult" /> type, otherwise
         /// <c>false</c>
         /// </returns>
         public static bool CanConvertFrom(dynamic sourceValue)
@@ -97,33 +96,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <param name="formatProvider">not used by this TypeConverter.</param>
         /// <param name="ignoreCase">when set to <c>true</c>, will ignore the case when converting.</param>
         /// <returns>
-        /// an instance of <see cref="ResourceModelWithAllowedPropertySetIdentity" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="ResourceProviderOperationListResult" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
         public override object ConvertFrom(object sourceValue, global::System.Type destinationType, global::System.IFormatProvider formatProvider, bool ignoreCase) => ConvertFrom(sourceValue);
 
         /// <summary>
-        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="ResourceModelWithAllowedPropertySetIdentity"
+        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="ResourceProviderOperationListResult"
         /// />
         /// </summary>
-        /// <param name="sourceValue">the value to convert into an instance of <see cref="ResourceModelWithAllowedPropertySetIdentity"
-        /// />.</param>
+        /// <param name="sourceValue">the value to convert into an instance of <see cref="ResourceProviderOperationListResult" />.</param>
         /// <returns>
-        /// an instance of <see cref="ResourceModelWithAllowedPropertySetIdentity" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="ResourceProviderOperationListResult" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetIdentity ConvertFrom(dynamic sourceValue)
+        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperationListResult ConvertFrom(dynamic sourceValue)
         {
             if (null == sourceValue)
             {
                 return null;
             }
             global::System.Type type = sourceValue.GetType();
-            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetIdentity).IsAssignableFrom(type))
+            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceProviderOperationListResult).IsAssignableFrom(type))
             {
                 return sourceValue;
             }
             try
             {
-                return ResourceModelWithAllowedPropertySetIdentity.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
+                return ResourceProviderOperationListResult.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
             }
             catch
             {
@@ -131,11 +129,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             }
             if (typeof(global::System.Management.Automation.PSObject).IsAssignableFrom(type))
             {
-                return ResourceModelWithAllowedPropertySetIdentity.DeserializeFromPSObject(sourceValue);
+                return ResourceProviderOperationListResult.DeserializeFromPSObject(sourceValue);
             }
             if (typeof(global::System.Collections.IDictionary).IsAssignableFrom(type))
             {
-                return ResourceModelWithAllowedPropertySetIdentity.DeserializeFromDictionary(sourceValue);
+                return ResourceProviderOperationListResult.DeserializeFromDictionary(sourceValue);
             }
             return null;
         }
