@@ -618,7 +618,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Authorization
             ]);
 
             var ex = Assert.Throws<ArgumentException>(() => AuthorizationClient.ValidateRoleDefinition(roleDef));
-            Assert.Contains("exactly one permission entry", ex.Message, StringComparison.OrdinalIgnoreCase);
+            Assert.Contains("more than one permission entry", ex.Message, StringComparison.OrdinalIgnoreCase);
         }
 
         [Fact]
