@@ -57,6 +57,9 @@ directive:
   - from: swagger-document
     where: $.paths.["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/startAccountMigration"].post.operationId    
     transform: return "StartAccountMigration"
+  - from: swagger-document
+    where: $.definitions.StorageTaskAssignment  
+    transform: $['required'] = ["properties"]
   - remove-operation: StorageAccounts_Update
   - remove-operation: FileShares_Lease
   - where:
