@@ -7,8 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PowerShell;
 
-    [System.ComponentModel.TypeConverter(typeof(ResourceModelWithAllowedPropertySetIdentityTypeConverter))]
-    public partial class ResourceModelWithAllowedPropertySetIdentity
+    /// <summary>Managed service identity (either system assigned, or none)</summary>
+    [System.ComponentModel.TypeConverter(typeof(SystemAssignedServiceIdentityTypeConverter))]
+    public partial class SystemAssignedServiceIdentity
     {
 
         /// <summary>
@@ -62,49 +63,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ResourceModelWithAllowedPropertySetIdentity"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SystemAssignedServiceIdentity"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetIdentity"
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentity"
         /// />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetIdentity DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentity DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
-            return new ResourceModelWithAllowedPropertySetIdentity(content);
+            return new SystemAssignedServiceIdentity(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ResourceModelWithAllowedPropertySetIdentity"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SystemAssignedServiceIdentity"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetIdentity"
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentity"
         /// />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetIdentity DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentity DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
-            return new ResourceModelWithAllowedPropertySetIdentity(content);
+            return new SystemAssignedServiceIdentity(content);
         }
 
         /// <summary>
-        /// Creates a new instance of <see cref="ResourceModelWithAllowedPropertySetIdentity" />, deserializing the content from a
-        /// json string.
+        /// Creates a new instance of <see cref="SystemAssignedServiceIdentity" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>
-        /// an instance of the <see cref="ResourceModelWithAllowedPropertySetIdentity" /> model class.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceModelWithAllowedPropertySetIdentity FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode.Parse(jsonText));
+        /// <returns>an instance of the <see cref="SystemAssignedServiceIdentity" /> model class.</returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentity FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ResourceModelWithAllowedPropertySetIdentity"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SystemAssignedServiceIdentity"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal ResourceModelWithAllowedPropertySetIdentity(global::System.Collections.IDictionary content)
+        internal SystemAssignedServiceIdentity(global::System.Collections.IDictionary content)
         {
             bool returnNow = false;
             BeforeDeserializeDictionary(content, ref returnNow);
@@ -115,25 +113,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             // actually deserialize
             if (content.Contains("PrincipalId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal)this).PrincipalId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)this).PrincipalId, global::System.Convert.ToString);
             }
             if (content.Contains("TenantId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal)this).TenantId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)this).TenantId, global::System.Convert.ToString);
             }
             if (content.Contains("Type"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal)this).Type, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)this).Type, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ResourceModelWithAllowedPropertySetIdentity"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SystemAssignedServiceIdentity"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal ResourceModelWithAllowedPropertySetIdentity(global::System.Management.Automation.PSObject content)
+        internal SystemAssignedServiceIdentity(global::System.Management.Automation.PSObject content)
         {
             bool returnNow = false;
             BeforeDeserializePSObject(content, ref returnNow);
@@ -144,15 +142,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             // actually deserialize
             if (content.Contains("PrincipalId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal)this).PrincipalId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)this).PrincipalId, global::System.Convert.ToString);
             }
             if (content.Contains("TenantId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal)this).TenantId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)this).TenantId, global::System.Convert.ToString);
             }
             if (content.Contains("Type"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IIdentityInternal)this).Type, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)this).Type, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }
@@ -174,8 +172,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             return ToJsonString();
         }
     }
-    [System.ComponentModel.TypeConverter(typeof(ResourceModelWithAllowedPropertySetIdentityTypeConverter))]
-    public partial interface IResourceModelWithAllowedPropertySetIdentity
+    /// Managed service identity (either system assigned, or none)
+    [System.ComponentModel.TypeConverter(typeof(SystemAssignedServiceIdentityTypeConverter))]
+    public partial interface ISystemAssignedServiceIdentity
 
     {
 
