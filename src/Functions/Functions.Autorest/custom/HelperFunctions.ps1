@@ -2168,7 +2168,8 @@ function GetRuntimeName
 
     $name = $settingHashTable['FUNCTIONS_WORKER_RUNTIME']
 
-    if ([string]::IsNullOrWhiteSpace($name)){
+    if ([string]::IsNullOrWhiteSpace($name))
+    {
         $name = 'unknown'
     }
 
