@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Add or add alerts in the issue
+Add or add alerts associated with an issue
 .Description
-Add or add alerts in the issue
+Add or add alerts associated with an issue
 .Example
 $alerts = @(
     @{
@@ -638,9 +638,9 @@ end {
 
 <#
 .Synopsis
-Add or add resources in the issue
+Add or add resources associated with an issue
 .Description
-Add or add resources in the issue
+Add or add resources associated with an issue
 .Example
 $resources = @(
     @{
@@ -4602,9 +4602,9 @@ end {
 
 <#
 .Synopsis
-Add or add alerts in the issue
+Add or add alerts associated with an issue
 .Description
-Add or add alerts in the issue
+Add or add alerts associated with an issue
 .Example
 $alerts = @(
     @{
@@ -4874,9 +4874,9 @@ end {
 
 <#
 .Synopsis
-Add or add resources in the issue
+Add or add resources associated with an issue
 .Description
-Add or add resources in the issue
+Add or add resources associated with an issue
 .Example
 $resources = @(
     @{

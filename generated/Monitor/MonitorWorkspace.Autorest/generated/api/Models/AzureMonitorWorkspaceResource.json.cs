@@ -68,6 +68,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
             __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.TrackedResource(json);
             {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.AzureMonitorWorkspace.FromJson(__jsonProperties) : _property;}
             {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.ManagedServiceIdentity.FromJson(__jsonIdentity) : _identity;}
+            {_etag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonString>("etag"), out var __jsonEtag) ? (string)__jsonEtag : (string)_etag;}
             AfterFromJson(json);
         }
 
@@ -105,6 +106,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
             __trackedResource?.ToJson(container, serializationMode);
             AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
             AddIf( null != this._identity ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonNode) this._identity.ToJson(null,serializationMode) : null, "identity" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._etag)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Json.JsonString(this._etag.ToString()) : null, "etag" ,container.Add );
+            }
             AfterToJson(ref container);
             return container;
         }
