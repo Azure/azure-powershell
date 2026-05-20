@@ -20,9 +20,7 @@
 
 ## Upcoming Release
 * Added `-AcquirePolicyToken` and `-ChangeReference` dynamic parameters to all write cmdlets for Azure Change Safety policy token acquisition
-* Updated Azure PowerShell Common NuGet packages to 1.3.111-preview to support Change Safety feature
-* Fixed `Clear-AzConfig`, `Update-AzConfig`, and `Get-AzConfig` to properly inherit dynamic parameters from base cmdlet class
-* Upgraded `Azure.Identity` dependency from 1.13.0 to 1.17.2.
+* Upgraded `Azure.Identity` dependency to 1.17.2.
 
 ## Version 5.4.0
 * Updated the `System.Memory` dependency to v4.6.3 to support the Storage SDK update.

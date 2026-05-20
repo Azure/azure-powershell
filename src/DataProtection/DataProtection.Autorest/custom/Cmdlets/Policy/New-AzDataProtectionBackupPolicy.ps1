@@ -78,9 +78,18 @@ function New-AzDataProtectionBackupPolicy
         $retentionNames = @()
         $tagNames = @()
 
+        $mappedDefaultNames = @()
+        if($null -ne $Policy.DatasourceType -and $Policy.DatasourceType.Count -gt 0){
+            $clientDatasourceType = GetClientDatasourceType -ServiceDatasourceType $Policy.DatasourceType[0]
+            $manifest = LoadManifest -DatasourceType $clientDatasourceType
+            if($null -ne $manifest.policySettings -and ($manifest.policySettings.PSObject.Properties.Name -contains "defaultRetentionRuleNames")){
+                $mappedDefaultNames = @($manifest.policySettings.defaultRetentionRuleNames.PSObject.Properties.Value)
+            }
+        } 
+
         foreach($rule in $Policy.PolicyRule)
         {
-            if(($rule.ObjectType -eq "AzureRetentionRule") -and ($rule.Name -ne "Default"))
+            if(($rule.ObjectType -eq "AzureRetentionRule") -and ($rule.Name -ne "Default") -and ($mappedDefaultNames -notcontains $rule.Name))
             {
                 $retentionNames += $rule.Name
             }
@@ -89,7 +98,7 @@ function New-AzDataProtectionBackupPolicy
             {
                 foreach($criteria in $rule.Trigger.TaggingCriterion)
                 {
-                    if($criteria.TagInfoTagName -ne "Default")
+                    if(($criteria.TagInfoTagName -ne "Default") -and ($mappedDefaultNames -notcontains $criteria.TagInfoTagName))
                     {
                         $tagNames += $criteria.TagInfoTagName
                     }

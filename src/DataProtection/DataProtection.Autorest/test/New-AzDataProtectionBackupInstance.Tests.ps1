@@ -55,53 +55,41 @@ Describe 'New-AzDataProtectionBackupInstance' {
         $clusterName = $env.TestAksRestoreScenario.ClusterName
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
-        $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where-Object { $_.Name -match $clusterName -and $_.Property.FriendlyName -eq $friendlyName }
+        $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where-Object { $_.Property.DataSourceInfo.ResourceId -eq $sourceClusterId }
         $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | Where-Object {$_.Name -eq $policyName}
 
-        # create policy if it doesn't exist
-        # if($policy -eq $null){
-        #     $pol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureKubernetesService
-        #     $policy = New-AzDataProtectionBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $policyName -Policy $pol -SubscriptionId $sub
-        # }
+        # configure backup - create backup instance if it doesn't exist
+        if ($null -eq $backupInstance) {
+            $backupConfig = New-AzDataProtectionBackupConfigurationClientObject -SnapshotVolume $true -IncludeClusterScopeResource $true -DatasourceType AzureKubernetesService
 
-        # remove permissions
-        #
-        # if($backupInstance -ne $null){
-        #    Remove-azdataProtectionBackupInstance -ResourceGroupName $rgName -VaultName $vaultName -SubscriptionId $sub -Name $backupInstance.BackupInstanceName
-        # }
-        #
-        # $roles = Get-AzRoleAssignment -ObjectId $vault.Identity.PrincipalId
-        # foreach ($role in $roles){
-        #    Remove-AzRoleAssignment -ObjectId $vault.Identity.PrincipalId -RoleDefinitionName $role.RoleDefinitionName -Scope $role.Scope
-        # }
-        #
-        # $aksCluster = Get-AzAksCluster -Id $backupInstance.Property.DataSourceInfo.ResourceId -SubscriptionId $sub
-        # $dataSourceMSIRoles = Az.Resources\Get-AzRoleAssignment -ObjectId $aksCluster.Identity.PrincipalId
-        # Remove-AzRoleAssignment -ObjectId $aksCluster.Identity.PrincipalId -RoleDefinitionName "Contributor" -Scope $snapshotResourceGroupId
+            $backupInstanceInit = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureKubernetesService -DatasourceLocation $dataSourceLocation -PolicyId $policy.Id -DatasourceId $sourceClusterId -SnapshotResourceGroupId $snapshotResourceGroupId -FriendlyName $friendlyName -BackupConfiguration $backupConfig
 
-        # configure backup
-        # if($backupInstance -eq $null){
-            # $backupConfig = New-AzDataProtectionBackupConfigurationClientObject -SnapshotVolume $true -IncludeClusterScopeResource $true -DatasourceType AzureKubernetesService # -LabelSelector "x=y","foo=bar"
+            # set MSI permissions (may fail if user lacks role assignment permissions but roles are already configured)
+            try {
+                Set-AzDataProtectionMSIPermission -BackupInstance $backupInstanceInit -VaultResourceGroup $rgName -VaultName $vaultName -PermissionsScope "ResourceGroup" -Confirm:$false
+            }
+            catch {
+                Write-Host "Set-AzDataProtectionMSIPermission failed (permissions may already be configured): $_"
+            }
 
-            # $backupInstance = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureKubernetesService  -DatasourceLocation $dataSourceLocation -PolicyId $policy.Id -DatasourceId $sourceClusterId -SnapshotResourceGroupId $snapshotResourceGroupId -FriendlyName $friendlyName -BackupConfiguration $backupConfig
-
-            ## set MSI permissions
-            # Set-AzDataProtectionMSIPermission -BackupInstance $backupInstance -VaultResourceGroup $rgName -VaultName $vaultName -PermissionsScope "ResourceGroup"
-
-            ## enable protection
-            # $tag= @{"MABUsed"="Yes";"Owner"="hiaga";"Purpose"="Testing";"DeleteBy"="06-2027"}
-            # $biCreate = New-AzDataProtectionBackupInstance -ResourceGroupName $rgName -VaultName $vaultName -BackupInstance $backupInstance -SubscriptionId $sub -Tag $tag
-        # }
+            # enable protection
+            $tag = @{"MABUsed"="Yes";"Owner"="hiaga";"Purpose"="Testing";"DeleteBy"="12-2027"}
+            $biCreate = New-AzDataProtectionBackupInstance -ResourceGroupName $rgName -VaultName $vaultName -BackupInstance $backupInstanceInit -SubscriptionId $sub -Tag $tag
+        }
 
         # validate bi created
-        $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where-Object { $_.Name -match $clusterName -and $_.Property.FriendlyName -eq $friendlyName }
+        $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where-Object { $_.Property.DataSourceInfo.ResourceId -eq $sourceClusterId }
         ($backupInstance -ne $null) | Should be $true
 
-        while($backupInstance.Property.ProtectionStatus.Status -ne "ProtectionConfigured")
+        $maxRetries = 30
+        $retryCount = 0
+        while($backupInstance.Property.ProtectionStatus.Status -ne "ProtectionConfigured" -and $retryCount -lt $maxRetries)
         {
             Start-TestSleep -Seconds 10
-            $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where-Object { $_.Name -match $clusterName -and $_.Property.FriendlyName -eq $friendlyName}
+            $retryCount++
+            $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where-Object { $_.Property.DataSourceInfo.ResourceId -eq $sourceClusterId }
         }
+        $backupInstance.Property.ProtectionStatus.Status | Should be "ProtectionConfigured"
 
         $policyRule = $policy.Property.PolicyRule | Where-Object { $_.ObjectType -eq "AzureBackupRule"}
 

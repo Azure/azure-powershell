@@ -18,12 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added support for Expansion Jobs for AML (Azure Managed Lustre) file systems
-    - Added 'New-AzStorageCacheExpansionJob' cmdlet to create expansion jobs
-    - Added 'Get-AzStorageCacheExpansionJob' cmdlet to retrieve expansion jobs
-    - Added 'Update-AzStorageCacheExpansionJob' cmdlet to update expansion jobs
-    - Added 'Remove-AzStorageCacheExpansionJob' cmdlet to delete expansion jobs
-* Upgraded API version from 2025-07-01 to 2026-01-01
+* Added Expansion Jobs CRUD cmdlets (`New/Get/Update/Remove-AzStorageCacheExpansionJob`) for AML file systems
+* Upgraded API version to 2026-01-01
 
 ## Version 0.3.0
 * Added support for Import, AutoExport and AutoImport HSM Jobs
