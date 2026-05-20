@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Upgraded `Azure.Identity` dependency to 1.17.2.
 
 ## Version 5.4.0
 * Updated the `System.Memory` dependency to v4.6.3 to support the Storage SDK update.

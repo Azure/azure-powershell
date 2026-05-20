@@ -56,7 +56,7 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
    }
 ]
 
-New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -PolicyDefinition C:\VMPolicySet.json -Parameter '{ "buTagValue": { "type": "string" } }'
+New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -PolicyDefinition C:\VMPolicyWithParametersSet.json -Parameter '{ "buTagValue": { "type": "string" } }'
 .Example
 [
    {
@@ -71,6 +71,8 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -PolicyDefinition C:\VMP
 
 $groupsJson = ConvertTo-Json @{ name = "group1" }, @{ name = "group2" }
 New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition $groupsJson -PolicyDefinition C:\VMPolicySet.json
+.Example
+New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -PolicyDefinition C:\VMPolicySet.json -Version '2.0.0'
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition

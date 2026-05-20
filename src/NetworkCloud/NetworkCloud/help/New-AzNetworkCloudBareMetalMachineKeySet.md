@@ -17,25 +17,22 @@ Create a new bare metal machine key set or create the existing one for the provi
 New-AzNetworkCloudBareMetalMachineKeySet -Name <String> -ClusterInputObject <INetworkCloudIdentity>
  [-IfMatch <String>] [-IfNoneMatch <String>] -AzureGroupId <String> -Expiration <DateTime>
  -ExtendedLocationName <String> -ExtendedLocationType <String> -JumpHostsAllowed <String[]> -Location <String>
- -PrivilegeLevel <String> -UserList <IKeySetUser[]> [-OSGroupName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -PrivilegeLevel <String> -UserList <IKeySetUser[]> [-OSGroupName <String>] [-PrivilegeLevelName <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzNetworkCloudBareMetalMachineKeySet -Name <String> -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzNetworkCloudBareMetalMachineKeySet -Name <String> -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpanded
@@ -44,8 +41,8 @@ New-AzNetworkCloudBareMetalMachineKeySet -Name <String> -ClusterName <String> -R
  [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -AzureGroupId <String>
  -Expiration <DateTime> -ExtendedLocationName <String> -ExtendedLocationType <String>
  -JumpHostsAllowed <String[]> -Location <String> -PrivilegeLevel <String> -UserList <IKeySetUser[]>
- [-OSGroupName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-OSGroupName <String>] [-PrivilegeLevelName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -348,6 +345,21 @@ Parameter Sets: CreateViaIdentityClusterExpanded, CreateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivilegeLevelName
+The name of the access level to apply when the privilege level is set to Other.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaIdentityClusterExpanded, CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -27,7 +27,7 @@ Returns an Application Insights component.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponent
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IApplicationInsightsComponent
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -41,7 +41,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -71,7 +71,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -107,7 +107,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.functions/get-azappinsights
 #>
 function Get-AzAppInsights {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponent])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IApplicationInsightsComponent])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -139,7 +139,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -198,6 +197,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzAppInsights_Get';
@@ -205,9 +207,7 @@ begin {
             List = 'Az.Functions.private\Get-AzAppInsights_List';
             List1 = 'Az.Functions.private\Get-AzAppInsights_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -216,6 +216,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

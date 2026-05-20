@@ -6,23 +6,24 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Cmdlets;
     using System;
 
-    /// <summary>
-    /// Updates a BackupVault resource belonging to a resource group. For example, updating tags for a resource.
-    /// </summary>
+    /// <summary>update a BackupVault resource belonging to a resource group.</summary>
     /// <remarks>
-    /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}"
+    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}"
+    /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzDataProtectionBackupVault_UpdateExpanded", SupportsShouldProcess = true)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PreviewMessage("*****************************************************************************************\r\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026.           *\r\n* At least one change applies to this cmdlet.                                                    *\r\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\r\n**************************************************************************************************")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupVaultResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description(@"Updates a BackupVault resource belonging to a resource group. For example, updating tags for a resource.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description(@"update a BackupVault resource belonging to a resource group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}", ApiVersion = "2026-03-01")]
     public partial class UpdateAzDataProtectionBackupVault_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -38,8 +39,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
-        /// <summary>Patch Request content for Microsoft.DataProtection resources</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IPatchResourceRequestInput _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.PatchResourceRequestInput();
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>Backup Vault Resource</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.BackupVaultResource();
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -56,14 +60,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         ReadOnly = false,
         Description = @"Parameter to Enable or Disable built-in azure monitor alerts for job failures. Security alerts cannot be disabled.",
         SerializedName = @"alertsForAllJobFailures",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.AlertsState) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.AlertsState))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.AlertsState AzureMonitorAlertsForAllJobFailure { get => _parametersBody.AzureMonitorAlertsForAllJobFailure ?? ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.AlertsState)""); set => _parametersBody.AzureMonitorAlertsForAllJobFailure = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string AzureMonitorAlertsForAllJobFailure { get => _parametersBody.AzureMonitorAlertsForAllJobFailure ?? null; set => _parametersBody.AzureMonitorAlertsForAllJobFailure = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DataProtection Client => Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Module.Instance.ClientAPI;
@@ -76,9 +83,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         ReadOnly = false,
         Description = @"Cross region restore state of the vault. Allowed values are Disabled, Enabled.",
         SerializedName = @"state",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossRegionRestoreState) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossRegionRestoreState))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossRegionRestoreState CrossRegionRestoreState { get => _parametersBody.CrossRegionRestoreState ?? ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossRegionRestoreState)""); set => _parametersBody.CrossRegionRestoreState = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        public string CrossRegionRestoreState { get => _parametersBody.CrossRegionRestoreState ?? null; set => _parametersBody.CrossRegionRestoreState = value; }
 
         /// <summary>
         /// Cross subscription restore state of the vault. Allowed values are Disabled, Enabled, PermanentlyDisabled.
@@ -90,9 +97,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         ReadOnly = false,
         Description = @"Cross subscription restore state of the vault. Allowed values are Disabled, Enabled, PermanentlyDisabled.",
         SerializedName = @"state",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossSubscriptionRestoreState) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossSubscriptionRestoreState))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossSubscriptionRestoreState CrossSubscriptionRestoreState { get => _parametersBody.CrossSubscriptionRestoreState ?? ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossSubscriptionRestoreState)""); set => _parametersBody.CrossSubscriptionRestoreState = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PSArgumentCompleterAttribute("Disabled", "PermanentlyDisabled", "Enabled")]
+        public string CrossSubscriptionRestoreState { get => _parametersBody.CrossSubscriptionRestoreState ?? null; set => _parametersBody.CrossSubscriptionRestoreState = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -104,6 +111,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
+        /// <summary>Optional ETag.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Optional ETag.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Optional ETag.",
+        SerializedName = @"eTag",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ETag { get => _parametersBody.ETag ?? null; set => _parametersBody.ETag = value; }
+
+        /// <summary>Determines whether to enable a system-assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Determines whether to enable a system-assigned identity for the resource.")]
+        public System.Boolean? EnableSystemAssignedIdentity { get; set; }
+
         /// <summary>Customer Managed Key details of the resource.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Customer Managed Key details of the resource.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Body)]
@@ -112,8 +134,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         ReadOnly = false,
         Description = @"Customer Managed Key details of the resource.",
         SerializedName = @"encryptionSettings",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IEncryptionSettings) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IEncryptionSettings EncryptionSetting { get => _parametersBody.EncryptionSetting ?? null /* object */; set => _parametersBody.EncryptionSetting = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IEncryptionSettings) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IEncryptionSettings EncryptionSetting { get => _parametersBody.EncryptionSetting ?? null /* object */; set => _parametersBody.EncryptionSetting = value; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -127,31 +152,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
-        /// <summary>
-        /// The identityType which can be either SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' or None
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The identityType which can be either SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' or None")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The identityType which can be either SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' or None",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(string) })]
-        public string IdentityType { get => _parametersBody.IdentityType ?? null; set => _parametersBody.IdentityType = value; }
-
-        /// <summary>Gets or sets the user assigned identities.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Gets or sets the user assigned identities.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Gets or sets the user assigned identities.",
-        SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.IDppIdentityDetailsUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api50.IDppIdentityDetailsUserAssignedIdentities IdentityUserAssignedIdentity { get => _parametersBody.IdentityUserAssignedIdentity ?? null /* object */; set => _parametersBody.IdentityUserAssignedIdentity = value; }
-
         /// <summary>Immutability state of the vault. Allowed values are Disabled, Unlocked, Locked.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Immutability state of the vault. Allowed values are Disabled, Unlocked, Locked.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Body)]
@@ -160,9 +160,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         ReadOnly = false,
         Description = @"Immutability state of the vault. Allowed values are Disabled, Unlocked, Locked.",
         SerializedName = @"state",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ImmutabilityState) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ImmutabilityState))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ImmutabilityState ImmutabilityState { get => _parametersBody.ImmutabilityState ?? ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ImmutabilityState)""); set => _parametersBody.ImmutabilityState = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PSArgumentCompleterAttribute("Disabled", "Unlocked", "Locked")]
+        public string ImmutabilityState { get => _parametersBody.ImmutabilityState ?? null; set => _parametersBody.ImmutabilityState = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -204,6 +204,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
+        /// <summary>List of replicated regions for Backup Vault</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of replicated regions for Backup Vault")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"List of replicated regions for Backup Vault",
+        SerializedName = @"replicatedRegions",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] ReplicatedRegion { get => _parametersBody.ReplicatedRegion?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.ReplicatedRegion = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
+
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
@@ -218,17 +230,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
-        /// <summary>ResourceGuardOperationRequests on which LAC check will be performed</summary>
+        /// <summary>
+        /// Resource guard operation request in the format similar to <ResourceGuard-ARMID>/<operation>/default. Use this parameter
+        /// when the operation is MUA protected. Supported operations include dppReduceImmutabilityStateRequests, dppReduceSoftDeleteSecurityRequests,
+        /// and dppModifyEncryptionSettingsRequests.
+        /// </summary>
         [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "ResourceGuardOperationRequests on which LAC check will be performed")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource guard operation request in the format similar to <ResourceGuard-ARMID>/<operation>/default. Use this parameter when the operation is MUA protected. Supported operations include dppReduceImmutabilityStateRequests, dppReduceSoftDeleteSecurityRequests, and dppModifyEncryptionSettingsRequests.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"ResourceGuardOperationRequests on which LAC check will be performed",
+        Description = @"Resource guard operation request in the format similar to <ResourceGuard-ARMID>/<operation>/default. Use this parameter when the operation is MUA protected. Supported operations include dppReduceImmutabilityStateRequests, dppReduceSoftDeleteSecurityRequests, and dppModifyEncryptionSettingsRequests.",
         SerializedName = @"resourceGuardOperationRequests",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] ResourceGuardOperationRequest { get => _parametersBody.ResourceGuardOperationRequest ?? null /* arrayOf */; set => _parametersBody.ResourceGuardOperationRequest = value; }
+        public string[] ResourceGuardOperationRequest { get => _parametersBody.ResourceGuardOperationRequest?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.ResourceGuardOperationRequest = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>Soft delete retention duration in days.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Soft delete retention duration in days.")]
@@ -249,9 +265,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         ReadOnly = false,
         Description = @"Soft delete state of the vault. Allowed values are Off, On, AlwaysOn.",
         SerializedName = @"state",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SoftDeleteState) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SoftDeleteState))]
-        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SoftDeleteState SoftDeleteState { get => _parametersBody.SoftDeleteState ?? ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SoftDeleteState)""); set => _parametersBody.SoftDeleteState = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PSArgumentCompleterAttribute("Off", "On", "AlwaysOn")]
+        public string SoftDeleteState { get => _parametersBody.SoftDeleteState ?? null; set => _parametersBody.SoftDeleteState = value; }
+
+        /// <summary>Storage Settings</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Storage Settings")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Storage Settings",
+        SerializedName = @"storageSettings",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IStorageSetting) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IStorageSetting[] StorageSetting { get => _parametersBody.StorageSetting?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.StorageSetting = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IStorageSetting>(value) : null); }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -267,7 +295,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -280,8 +309,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IPatchResourceRequestInputTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IPatchResourceRequestInputTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ITrackedResourceTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
 
         /// <summary>Backing field for <see cref="Token" /> property.</summary>
         private string _token;
@@ -297,6 +326,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Header)]
         public string Token { get => this._token; set => this._token = value; }
 
+        /// <summary>
+        /// The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in
+        /// the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'")]
+        [global::System.Management.Automation.AllowEmptyCollection]
+        public string[] UserAssignedIdentity { get; set; }
+
         /// <summary>Backing field for <see cref="VaultName" /> property.</summary>
         private string _vaultName;
 
@@ -311,29 +348,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Path)]
         public string VaultName { get => this._vaultName; set => this._vaultName = value; }
 
+        /// <summary>Backing field for <see cref="XmsDeletedVaultId" /> property.</summary>
+        private string _xmsDeletedVaultId;
+
+        /// <summary>The ID of the deleted backup vault to restore from during undelete flow.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The ID of the deleted backup vault to restore from during undelete flow.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The ID of the deleted backup vault to restore from during undelete flow.",
+        SerializedName = @"x-ms-deleted-vault-id",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Header)]
+        public string XmsDeletedVaultId { get => this._xmsDeletedVaultId; set => this._xmsDeletedVaultId = value; }
+
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupVaultResource">Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupVaultResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource">Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupVaultResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -375,6 +426,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.VaultName = this.VaultName;
             clone.Token = this.Token;
+            clone.XmsDeletedVaultId = this.XmsDeletedVaultId;
             return clone;
         }
 
@@ -445,11 +497,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                     case Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.DelayBeforePolling:
                     {
+                        var data = messageData();
                         if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
                         {
-                            var data = messageData();
                             if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
                             {
                                 var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -461,15 +538,69 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
                                 return;
                             }
                         }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
                         break;
                     }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
                 }
                 WriteDebug($"{id}: {(messageData().Message ?? global::System.String.Empty)}");
+            }
+        }
+
+        private void PreProcessManagedIdentityParametersWithGetResult()
+        {
+            bool supportsSystemAssignedIdentity = (true == this.EnableSystemAssignedIdentity || null == this.EnableSystemAssignedIdentity && true == _parametersBody?.IdentityType?.Contains("SystemAssigned"));
+            bool supportsUserAssignedIdentity = false;
+            if (this.UserAssignedIdentity?.Length > 0)
+            {
+                // calculate UserAssignedIdentity
+                _parametersBody.IdentityUserAssignedIdentity.Clear();
+                foreach( var id in this.UserAssignedIdentity )
+                {
+                    _parametersBody.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.UserAssignedIdentity());
+                }
+            }
+            supportsUserAssignedIdentity = true == this.MyInvocation?.BoundParameters?.ContainsKey("UserAssignedIdentity") && this.UserAssignedIdentity?.Length > 0 ||
+                    true != this.MyInvocation?.BoundParameters?.ContainsKey("UserAssignedIdentity") && true == _parametersBody.IdentityType?.Contains("UserAssigned");
+            if (!supportsUserAssignedIdentity)
+            {
+                _parametersBody.IdentityUserAssignedIdentity = null;
+            }
+            // calculate IdentityType
+            if ((supportsUserAssignedIdentity && supportsSystemAssignedIdentity))
+            {
+                _parametersBody.IdentityType = "SystemAssigned,UserAssigned";
+            }
+            else if ((supportsUserAssignedIdentity && !supportsSystemAssignedIdentity))
+            {
+                _parametersBody.IdentityType = "UserAssigned";
+            }
+            else if ((!supportsUserAssignedIdentity && supportsSystemAssignedIdentity))
+            {
+                _parametersBody.IdentityType = "SystemAssigned";
+            }
+            else
+            {
+                _parametersBody.IdentityType = "None";
             }
         }
 
@@ -481,7 +612,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'BackupVaultsUpdate' operation"))
+                if (ShouldProcess($"Call remote 'BackupVaultsCreateOrUpdate' operation"))
                 {
                     if (true == MyInvocation?.BoundParameters?.ContainsKey("AsJob"))
                     {
@@ -532,7 +663,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -545,12 +676,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.BackupVaultsUpdate(SubscriptionId, ResourceGroupName, VaultName, this.InvocationInformation.BoundParameters.ContainsKey("Token") ? Token : null, _parametersBody, onOk, onDefault, this, Pipeline);
+                    _parametersBody = await this.Client.BackupVaultsGetWithResult(SubscriptionId, ResourceGroupName, VaultName, this, Pipeline);
+                    this.PreProcessManagedIdentityParametersWithGetResult();
+                    this.Update_parametersBody();
+                    await this.Client.BackupVaultsCreateOrUpdate(SubscriptionId, ResourceGroupName, VaultName, this.InvocationInformation.BoundParameters.ContainsKey("Token") ? Token : null, this.InvocationInformation.BoundParameters.ContainsKey("XmsDeletedVaultId") ? XmsDeletedVaultId : null, _parametersBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.SerializationMode.IncludeUpdate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,VaultName=VaultName,Token=this.InvocationInformation.BoundParameters.ContainsKey("Token") ? Token : null,body=_parametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,VaultName=VaultName,Token=this.InvocationInformation.BoundParameters.ContainsKey("Token") ? Token : null,XmsDeletedVaultId=this.InvocationInformation.BoundParameters.ContainsKey("XmsDeletedVaultId") ? XmsDeletedVaultId : null})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -570,11 +704,63 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="UpdateAzDataProtectionBackupVault_UpdateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="UpdateAzDataProtectionBackupVault_UpdateExpanded" /> cmdlet class.
         /// </summary>
         public UpdateAzDataProtectionBackupVault_UpdateExpanded()
         {
 
+        }
+
+        private void Update_parametersBody()
+        {
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Tag")))
+            {
+                this.Tag = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ITrackedResourceTags)(this.MyInvocation?.BoundParameters["Tag"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ETag")))
+            {
+                this.ETag = (string)(this.MyInvocation?.BoundParameters["ETag"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("StorageSetting")))
+            {
+                this.StorageSetting = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IStorageSetting[])(this.MyInvocation?.BoundParameters["StorageSetting"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ResourceGuardOperationRequest")))
+            {
+                this.ResourceGuardOperationRequest = (string[])(this.MyInvocation?.BoundParameters["ResourceGuardOperationRequest"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ReplicatedRegion")))
+            {
+                this.ReplicatedRegion = (string[])(this.MyInvocation?.BoundParameters["ReplicatedRegion"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("EncryptionSetting")))
+            {
+                this.EncryptionSetting = (Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IEncryptionSettings)(this.MyInvocation?.BoundParameters["EncryptionSetting"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("AzureMonitorAlertsForAllJobFailure")))
+            {
+                this.AzureMonitorAlertsForAllJobFailure = (string)(this.MyInvocation?.BoundParameters["AzureMonitorAlertsForAllJobFailure"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("SoftDeleteState")))
+            {
+                this.SoftDeleteState = (string)(this.MyInvocation?.BoundParameters["SoftDeleteState"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("SoftDeleteRetentionDurationInDay")))
+            {
+                this.SoftDeleteRetentionDurationInDay = (double)(this.MyInvocation?.BoundParameters["SoftDeleteRetentionDurationInDay"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ImmutabilityState")))
+            {
+                this.ImmutabilityState = (string)(this.MyInvocation?.BoundParameters["ImmutabilityState"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("CrossSubscriptionRestoreState")))
+            {
+                this.CrossSubscriptionRestoreState = (string)(this.MyInvocation?.BoundParameters["CrossSubscriptionRestoreState"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("CrossRegionRestoreState")))
+            {
+                this.CrossRegionRestoreState = (string)(this.MyInvocation?.BoundParameters["CrossRegionRestoreState"]);
+            }
         }
 
         /// <param name="sendToPipeline"></param>
@@ -596,12 +782,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -618,15 +804,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, VaultName=VaultName, Token=this.InvocationInformation.BoundParameters.ContainsKey("Token") ? Token : null, body=_parametersBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ICloudError>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, VaultName=VaultName, Token=this.InvocationInformation.BoundParameters.ContainsKey("Token") ? Token : null, body=_parametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -636,12 +822,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupVaultResource">Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupVaultResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource">Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupVaultResource> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource> response)
         {
             using( NoSynchronizationContext )
             {
@@ -653,8 +839,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupVaultResource
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupVaultResource
+                var result = (await response);
+                WriteObject(result, false);
             }
         }
     }

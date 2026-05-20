@@ -19,6 +19,10 @@ Describe 'Update-AzSentinelOnboardingState' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
+    It 'UpdateViaIdentityWorkspaceExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
     It 'UpdateViaIdentityExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

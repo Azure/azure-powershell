@@ -37,9 +37,6 @@ require:
 input-file:
   - $(repo)/specification/dataprotection/resource-manager/Microsoft.DataProtection/DataProtection/stable/2026-03-01/dataprotection.json
 title: DataProtection
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
 
 directive:
   - from: swagger-document
@@ -279,6 +276,33 @@ directive:
       parameter-name: SecuritySettingEncryptionSetting
     set:
       parameter-name: EncryptionSetting
+  # Update ResourceGuardOperationRequest description across all request models to provide actionable guidance
+  # The operation-specific dpp request name varies by cmdlet:
+  #   Suspend-AzDataProtectionBackupInstanceBackup -> dppDisableSuspendBackupsRequests
+  #   Stop-AzDataProtectionBackupInstanceProtection -> dppDisableStopProtectionRequests
+  #   Update-AzDataProtectionBackupInstance -> dppModifyPolicy
+  #   Start-AzDataProtectionBackupInstanceRestore -> dppTriggerRestoreRequests
+  #   Update-AzDataProtectionBackupVault -> dppReduceImmutabilityStateRequests, dppReduceSoftDeleteSecurityRequests, dppModifyEncryptionSettingsRequests
+  - from: swagger-document
+    where: $.definitions.SuspendBackupRequest.properties.resourceGuardOperationRequests
+    transform: >
+      $.description = "Resource guard operation request in the format similar to <ResourceGuard-ARMID>/dppDisableSuspendBackupsRequests/default. Use this parameter when the operation is MUA protected.";
+  - from: swagger-document
+    where: $.definitions.StopProtectionRequest.properties.resourceGuardOperationRequests
+    transform: >
+      $.description = "Resource guard operation request in the format similar to <ResourceGuard-ARMID>/dppDisableStopProtectionRequests/default. Use this parameter when the operation is MUA protected.";
+  - from: swagger-document
+    where: $.definitions.BackupInstance.properties.resourceGuardOperationRequests
+    transform: >
+      $.description = "Resource guard operation request in the format similar to <ResourceGuard-ARMID>/dppModifyPolicy/default. Use this parameter when the operation is MUA protected.";
+  - from: swagger-document
+    where: $.definitions.AzureBackupRestoreRequest.properties.resourceGuardOperationRequests
+    transform: >
+      $.description = "Resource guard operation request in the format similar to <ResourceGuard-ARMID>/dppTriggerRestoreRequests/default. Use this parameter when the operation is MUA protected.";
+  - from: swagger-document
+    where: $.definitions.BackupVault.properties.resourceGuardOperationRequests
+    transform: >
+      $.description = "Resource guard operation request in the format similar to <ResourceGuard-ARMID>/<operation>/default. Use this parameter when the operation is MUA protected. Supported operations include dppReduceImmutabilityStateRequests, dppReduceSoftDeleteSecurityRequests, and dppModifyEncryptionSettingsRequests.";
   - where:
       verb: Get
       subject: BackupVaultResource.*
@@ -317,7 +341,7 @@ directive:
     hide: true
   - where:
       verb: Unlock
-      variant: ^UnlockViaIdentityExpanded$|^UnlockViaIdentity$|^Unlock$
+      variant: ^(Unlock)(?!.*?(Expanded|JsonFilePath|JsonString))|^UnlockViaIdentityExpanded$|^UnlockViaIdentity$
     remove: true
   - where:
       verb: Unlock
@@ -326,12 +350,16 @@ directive:
   - where:
       verb: New
       subject: ResourceGuardProxy$
-      variant: ^Create$|^UpdateExpanded$|^UpdateViaIdentityExpanded$
+      variant: ^(Create)(?!.*?(Expanded|JsonFilePath|JsonString))|^UpdateExpanded$|^UpdateViaIdentityExpanded$
     remove: true
   - where:
       subject: DppResourceGuardProxy$
     set: 
       subject: ResourceGuardMapping
+  - where:
+      verb: Unlock
+      subject: ^DppResourceGuardProxyDelete$
+    remove: true
   - where:
       parameter-name: ResourceGuardProxyName
     hide: true 
@@ -343,6 +371,10 @@ directive:
       subject: ResourceGuardMapping
       parameter-name: LastUpdatedTime|Description|ResourceGuardOperationDetail
     hide: true
+  - where:
+      verb: Update
+      subject: ^ResourceGuardMapping$
+    remove: true
   - where:
       verb: Get
       subject: DeletedBackupVault
@@ -393,7 +425,14 @@ directive:
       subject: BackupPolicy.*
     hide: true
   - where:
-      variant: ^CreateViaIdentity$|^Patch$|^PatchViaIdentity$|^Backup$|^BackupViaIdentity$|^TriggerViaIdentity|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      verb: Update
+      subject: ^BackupPolicy$
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity$|^PatchViaIdentity$|^BackupViaIdentity$|^TriggerViaIdentity|^CreateViaIdentityExpanded$|^UpdateViaIdentity$
+    remove: true
+  - where:
+      variant: ^(Patch|Backup|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
       verb: Get
@@ -480,11 +519,11 @@ directive:
     hide: true
   - where:
       verb: Invoke
-      variant: ^Post$|^PostViaIdentity$|^PostViaIdentityExpanded$
+      variant: ^(Post)(?!.*?(Expanded|JsonFilePath|JsonString))|^PostViaIdentity$|^PostViaIdentityExpanded$
     remove: true
   - where:
       verb: Find
-      variant: ^Find$|^FindViaIdentity$|^FindViaIdentityExpanded$
+      variant: ^(Find)(?!.*?(Expanded|JsonFilePath|JsonString))|^FindViaIdentity$|^FindViaIdentityExpanded$
     remove: true
   - where:
       verb: Get
@@ -520,6 +559,11 @@ directive:
       parameter-name: BackupInstanceName
     set:
       parameter-description: The name of the deleted backup instance
+  - where:
+      verb: Update
+      subject: ^BackupInstance$
+      variant: ^UpdateViaIdentityBackupVaultExpanded$|^UpdateViaIdentityExpanded$
+    remove: true
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/findRestorableTimeRanges"].post
     transform: $["description"] = "Finds the valid recovery point in time ranges for the restore."
@@ -535,6 +579,9 @@ directive:
           "$ref": "#/definitions/OperationJobExtendedInfo"
         }
       }
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/validateForModifyBackup"].post.parameters[?(@.name=="parameters")]
+    transform: $["name"] = "validateForModifyBackupRequest"
   - where:
       verb: Test
       subject: BackupInstance
@@ -573,16 +620,23 @@ directive:
       subject: BackupInstanceCrossRegionRestore
     hide: true
   - where:
-      verb: Test
-      subject: BackupInstanceUpdate
-      parameter-name: Name
-    set: 
-      alias: 
-        - BackupInstanceName
-  - where:
       subject: FetchCrossRegionRestoreJob      
     set:
       subject: CrossRegionRestoreJob
+  - where:
+      verb: Update
+      subject: ^BackupInstance$
+      variant: ^UpdateExpanded$
+    hide: true
+  - where:
+      verb: Update
+      subject: ^BackupInstance$
+      parameter-name: Name
+    clear-alias: true
+  - where:
+      verb: Test
+      subject: ^BackupInstance$
+    remove: true
   - where:      
       subject: CrossRegionRestoreJob
       variant: ^Get.*
@@ -684,19 +738,19 @@ directive:
     - ValidateCrossRegionRestoreRequestObject
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBaseBackupPolicy Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBaseBackupPolicy Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBaseBackupPolicy Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBaseBackupPolicy Property');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ITriggerContext Trigger', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ITriggerContext Trigger');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ITriggerContext Trigger', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ITriggerContext Trigger');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupParameters BackupParameter', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupParameters BackupParameter');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupParameters BackupParameter', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupParameters BackupParameter');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IAzureBackupRecoveryPoint Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IAzureBackupRecoveryPoint Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRecoveryPoint Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRecoveryPoint Property');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.INamespacedNameResource ResourceModifierReference', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.INamespacedNameResource ResourceModifierReference');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.INamespacedNameResource ResourceModifierReference', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.INamespacedNameResource ResourceModifierReference');
 
   - where:
       verb: Backup|Edit|Find|Get|Initialize|New|Set|Start|Stop|Suspend|Sync|Test|Update
