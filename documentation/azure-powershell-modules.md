@@ -37,6 +37,7 @@
 | BotService                     | `Az.BotService`                 | [![BotService]][BotServiceGallery]                                 | [Changelog][BotServiceChangeLog]                 |
 | Content Delivery Network       | `Az.Cdn`                        | [![Cdn]][CdnGallery]                                               | [Changelog][CdnChangeLog]                        |
 | Change Analysis                | `Az.ChangeAnalysis`             | [![ChangeAnalysis]][ChangeAnalysisGallery]                         | [Changelog][ChangeAnalysisChangeLog]             |
+| Change Safety                  | `Az.ChangeSafety`               | [![ChangeSafety]][ChangeSafetyGallery]                             | [Changelog][ChangeSafetyChangeLog]               |
 | Cloud Service                  | `Az.CloudService`               | [![CloudService]][CloudServiceGallery]                             | [Changelog][CloudServiceChangeLog]               |
 | Cognitive Services             | `Az.CognitiveServices`          | [![CognitiveServices]][CognitiveServicesGallery]                   | [Changelog][CognitiveServicesChangeLog]          |
 | Communication                  | `Az.Communication`              | [![Communication]][CommunicationGallery]                           | [Changelog][CommunicationChangeLog]              |
@@ -221,6 +222,7 @@
 [BotService]:                 https://img.shields.io/powershellgallery/v/Az.BotService.svg?style=flat-square&label=Az.BotService
 [Cdn]:                        https://img.shields.io/powershellgallery/v/Az.Cdn.svg?style=flat-square&label=Az.Cdn
 [ChangeAnalysis]:             https://img.shields.io/powershellgallery/v/Az.ChangeAnalysis.svg?style=flat-square&label=Az.ChangeAnalysis
+[ChangeSafety]:               https://img.shields.io/powershellgallery/v/Az.ChangeSafety.svg?style=flat-square&label=Az.ChangeSafety
 [CloudService]:               https://img.shields.io/powershellgallery/v/Az.CloudService.svg?style=flat-square&label=Az.CloudService
 [CodeSigning]:                https://img.shields.io/powershellgallery/v/Az.CodeSigning.svg?style=flat-square&label=Az.CodeSigning
 [CognitiveServices]:          https://img.shields.io/powershellgallery/v/Az.CognitiveServices.svg?style=flat-square&label=Az.CognitiveServices
@@ -402,6 +404,7 @@
 [BotServiceGallery]:                 https://www.powershellgallery.com/packages/Az.BotService/
 [CdnGallery]:                        https://www.powershellgallery.com/packages/Az.Cdn/
 [ChangeAnalysisGallery]:             https://www.powershellgallery.com/packages/Az.ChangeAnalysis/
+[ChangeSafetyGallery]:               https://www.powershellgallery.com/packages/Az.ChangeSafety/
 [CloudServiceGallery]:               https://www.powershellgallery.com/packages/Az.CloudService/
 [CodeSigningGallery]:                https://www.powershellgallery.com/packages/Az.CodeSigning/
 [CognitiveServicesGallery]:          https://www.powershellgallery.com/packages/Az.CognitiveServices/
@@ -581,6 +584,7 @@
 [BotServiceChangeLog]:                 ../src/BotService/BotService/ChangeLog.md
 [CdnChangeLog]:                        ../src/Cdn/Cdn/ChangeLog.md
 [ChangeAnalysisChangeLog]:             ../src/ChangeAnalysis/ChangeAnalysis/ChangeLog.md
+[ChangeSafetyChangeLog]:               ../src/ChangeSafety/ChangeSafety/ChangeLog.md
 [CloudServiceChangeLog]:               ../src/CloudService/CloudService/ChangeLog.md
 [CodeSigningChangeLog]:                ../src/CodeSigning/CodeSigning/ChangeLog.md
 [CognitiveServicesChangeLog]:          ../src/CognitiveServices/CognitiveServices/ChangeLog.md

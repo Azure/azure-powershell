@@ -1,8 +1,8 @@
 {
-  "New-AzChangeSafetyStageMap+[NoContext]+CreateExpanded - Simple two-stage map+$PUT+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-qhwo1i?api-version=2026-01-01-preview+1": {
+  "New-AzChangeSafetyStageMap+[NoContext]+CreateExpanded - Simple two-stage map+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-qhwo1i?api-version=2026-01-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-qhwo1i?api-version=2026-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-qhwo1i?api-version=2026-01-01-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"stages\": [\r\n      {\r\n        \"name\": \"canary\",\r\n        \"sequence\": 1\r\n      },\r\n      {\r\n        \"name\": \"production\",\r\n        \"sequence\": 2\r\n      }\r\n    ]\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -20,7 +20,7 @@
         "ETag": [ "\"3100e20f-0000-0600-0000-6973f9db0000\"" ],
         "Vary": [ "Accept-Encoding" ],
         "Set-Cookie": [ "ARRAffinity=acc0c060a4ea93d721289f3df0160d88b7396116f7f855dc90c544d0e1563e3b;Path=/;HttpOnly;Secure;Domain=prod.changecontrol.changesafety.msft.net", "ARRAffinitySameSite=acc0c060a4ea93d721289f3df0160d88b7396116f7f855dc90c544d0e1563e3b;Path=/;HttpOnly;SameSite=None;Secure;Domain=prod.changecontrol.changesafety.msft.net" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/36575d4b-029c-4e32-892e-62b598913238" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-0000-0000-000000000000,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/36575d4b-029c-4e32-892e-62b598913238" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "mise-correlation-id": [ "888718f3-b373-449a-a67d-2f7b65297700" ],
         "X-Powered-By": [ "ASP.NET" ],
@@ -40,14 +40,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-qhwo1i\",\"name\":\"test-stagemap-qhwo1i\",\"type\":\"microsoft.changesafety/stagemaps\",\"systemData\":{\"createdBy\":\"henrydai@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T22:44:42.6437387Z\",\"lastModifiedBy\":\"henrydai@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:44:42.6437387Z\"},\"properties\":{\"parameters\":null,\"stages\":[{\"name\":\"canary\",\"sequence\":1,\"stageVariables\":null,\"nestedStageMap\":null},{\"name\":\"production\",\"sequence\":2,\"stageVariables\":null,\"nestedStageMap\":null}],\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-qhwo1i\",\"name\":\"test-stagemap-qhwo1i\",\"type\":\"microsoft.changesafety/stagemaps\",\"systemData\":{\"createdBy\":\"testuser@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T22:44:42.6437387Z\",\"lastModifiedBy\":\"testuser@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:44:42.6437387Z\"},\"properties\":{\"parameters\":null,\"stages\":[{\"name\":\"canary\",\"sequence\":1,\"stageVariables\":null,\"nestedStageMap\":null},{\"name\":\"production\",\"sequence\":2,\"stageVariables\":null,\"nestedStageMap\":null}],\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "New-AzChangeSafetyStageMap+[NoContext]+CreateExpanded - StageMap with stage variables+$PUT+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-qhwo1i-batches?api-version=2026-01-01-preview+1": {
+  "New-AzChangeSafetyStageMap+[NoContext]+CreateExpanded - StageMap with stage variables+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-qhwo1i-batches?api-version=2026-01-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-qhwo1i-batches?api-version=2026-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-qhwo1i-batches?api-version=2026-01-01-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"stages\": [\r\n      {\r\n        \"name\": \"firstBatch\",\r\n        \"sequence\": 1\r\n      },\r\n      {\r\n        \"name\": \"secondBatch\",\r\n        \"sequence\": 2\r\n      },\r\n      {\r\n        \"name\": \"all\",\r\n        \"sequence\": 3\r\n      }\r\n    ]\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -65,7 +65,7 @@
         "ETag": [ "\"3100e90f-0000-0600-0000-6973f9dc0000\"" ],
         "Vary": [ "Accept-Encoding" ],
         "Set-Cookie": [ "ARRAffinity=f40b9cb108a11c6cb9206001e46bdc67536c57dbb8cd6102cf2ec1227b1e84c5;Path=/;HttpOnly;Secure;Domain=prod.changecontrol.changesafety.msft.net", "ARRAffinitySameSite=f40b9cb108a11c6cb9206001e46bdc67536c57dbb8cd6102cf2ec1227b1e84c5;Path=/;HttpOnly;SameSite=None;Secure;Domain=prod.changecontrol.changesafety.msft.net" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/839f3037-c3b8-4ca7-a1d0-59bc7817ac7b" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-0000-0000-000000000000,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/839f3037-c3b8-4ca7-a1d0-59bc7817ac7b" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "mise-correlation-id": [ "b1f42ef6-64a2-451f-b25e-706ac021c9a8" ],
         "X-Powered-By": [ "ASP.NET" ],
@@ -85,15 +85,15 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-qhwo1i-batches\",\"name\":\"test-stagemap-qhwo1i-batches\",\"type\":\"microsoft.changesafety/stagemaps\",\"systemData\":{\"createdBy\":\"henrydai@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T22:44:43.5926248Z\",\"lastModifiedBy\":\"henrydai@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:44:43.5926248Z\"},\"properties\":{\"parameters\":null,\"stages\":[{\"name\":\"firstBatch\",\"sequence\":1,\"stageVariables\":null,\"nestedStageMap\":null},{\"name\":\"secondBatch\",\"sequence\":2,\"stageVariables\":null,\"nestedStageMap\":null},{\"name\":\"all\",\"sequence\":3,\"stageVariables\":null,\"nestedStageMap\":null}],\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-qhwo1i-batches\",\"name\":\"test-stagemap-qhwo1i-batches\",\"type\":\"microsoft.changesafety/stagemaps\",\"systemData\":{\"createdBy\":\"testuser@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T22:44:43.5926248Z\",\"lastModifiedBy\":\"testuser@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:44:43.5926248Z\"},\"properties\":{\"parameters\":null,\"stages\":[{\"name\":\"firstBatch\",\"sequence\":1,\"stageVariables\":null,\"nestedStageMap\":null},{\"name\":\"secondBatch\",\"sequence\":2,\"stageVariables\":null,\"nestedStageMap\":null},{\"name\":\"all\",\"sequence\":3,\"stageVariables\":null,\"nestedStageMap\":null}],\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "New-AzChangeSafetyStageMap+[NoContext]+CreateExpanded - StageMap with nested reference+$PUT+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-nested-zmlw8u?api-version=2026-01-01-preview+1": {
+  "New-AzChangeSafetyStageMap+[NoContext]+CreateExpanded - StageMap with nested reference+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-nested-zmlw8u?api-version=2026-01-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-nested-zmlw8u?api-version=2026-01-01-preview",
-      "Content": "{\r\n  \"properties\": {\r\n    \"stages\": [\r\n      {\r\n        \"nestedStageMap\": {\r\n          \"resourceId\": \"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-qhwo1i-batches\"\r\n        },\r\n        \"name\": \"auditStage\",\r\n        \"sequence\": 1\r\n      },\r\n      {\r\n        \"name\": \"enforceStage\",\r\n        \"sequence\": 2\r\n      }\r\n    ]\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-nested-zmlw8u?api-version=2026-01-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"stages\": [\r\n      {\r\n        \"nestedStageMap\": {\r\n          \"resourceId\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-qhwo1i-batches\"\r\n        },\r\n        \"name\": \"auditStage\",\r\n        \"sequence\": 1\r\n      },\r\n      {\r\n        \"name\": \"enforceStage\",\r\n        \"sequence\": 2\r\n      }\r\n    ]\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -110,7 +110,7 @@
         "ETag": [ "\"3100f50f-0000-0600-0000-6973f9dd0000\"" ],
         "Vary": [ "Accept-Encoding" ],
         "Set-Cookie": [ "ARRAffinity=acc0c060a4ea93d721289f3df0160d88b7396116f7f855dc90c544d0e1563e3b;Path=/;HttpOnly;Secure;Domain=prod.changecontrol.changesafety.msft.net", "ARRAffinitySameSite=acc0c060a4ea93d721289f3df0160d88b7396116f7f855dc90c544d0e1563e3b;Path=/;HttpOnly;SameSite=None;Secure;Domain=prod.changecontrol.changesafety.msft.net" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/2c55fde5-297e-402e-a25c-7ddcacb1d8ba" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-0000-0000-000000000000,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/2c55fde5-297e-402e-a25c-7ddcacb1d8ba" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "mise-correlation-id": [ "38bb1291-4514-46e4-a4a4-141eb59c74dd" ],
         "X-Powered-By": [ "ASP.NET" ],
@@ -130,7 +130,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-nested-zmlw8u\",\"name\":\"test-stagemap-nested-zmlw8u\",\"type\":\"microsoft.changesafety/stagemaps\",\"systemData\":{\"createdBy\":\"henrydai@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T22:44:44.783837Z\",\"lastModifiedBy\":\"henrydai@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:44:44.783837Z\"},\"properties\":{\"parameters\":null,\"stages\":[{\"name\":\"auditStage\",\"sequence\":1,\"stageVariables\":null,\"nestedStageMap\":{\"resourceId\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-qhwo1i-batches\",\"parameters\":null}},{\"name\":\"enforceStage\",\"sequence\":2,\"stageVariables\":null,\"nestedStageMap\":null}],\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-nested-zmlw8u\",\"name\":\"test-stagemap-nested-zmlw8u\",\"type\":\"microsoft.changesafety/stagemaps\",\"systemData\":{\"createdBy\":\"testuser@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T22:44:44.783837Z\",\"lastModifiedBy\":\"testuser@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:44:44.783837Z\"},\"properties\":{\"parameters\":null,\"stages\":[{\"name\":\"auditStage\",\"sequence\":1,\"stageVariables\":null,\"nestedStageMap\":{\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/test-stagemap-qhwo1i-batches\",\"parameters\":null}},{\"name\":\"enforceStage\",\"sequence\":2,\"stageVariables\":null,\"nestedStageMap\":null}],\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   }

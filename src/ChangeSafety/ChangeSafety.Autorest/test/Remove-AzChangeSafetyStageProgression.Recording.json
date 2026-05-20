@@ -1,8 +1,8 @@
 {
-  "Remove-AzChangeSafetyStageProgression+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/stagemap-for-remove-prog-tests?api-version=2026-01-01-preview+1": {
+  "Remove-AzChangeSafetyStageProgression+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/stagemap-for-remove-prog-tests?api-version=2026-01-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/stagemap-for-remove-prog-tests?api-version=2026-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/stagemap-for-remove-prog-tests?api-version=2026-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -23,7 +23,7 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"2f00fe0d-0000-0600-0000-6973b5520000\"" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/5b958552-dcbd-47f6-84e7-51be1aba9d95" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-0000-0000-000000000000,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/5b958552-dcbd-47f6-84e7-51be1aba9d95" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "x-ms-request-id": [ "a7bd2ce4-8559-463c-8816-58311345a6cb" ],
         "x-ms-correlation-request-id": [ "cca950f9-4fef-4c5e-b92f-7d9b41c0ff5b" ],
@@ -41,14 +41,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/stagemap-for-remove-prog-tests\",\"name\":\"stagemap-for-remove-prog-tests\",\"type\":\"microsoft.changesafety/stagemaps\",\"systemData\":{\"createdBy\":\"henrydai@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T17:52:17.9861405Z\",\"lastModifiedBy\":\"henrydai@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T17:52:17.9861405Z\"},\"properties\":{\"parameters\":null,\"stages\":[{\"name\":\"canary\",\"sequence\":1,\"stageVariables\":null,\"nestedStageMap\":null},{\"name\":\"production\",\"sequence\":2,\"stageVariables\":null,\"nestedStageMap\":null}],\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/stagemap-for-remove-prog-tests\",\"name\":\"stagemap-for-remove-prog-tests\",\"type\":\"microsoft.changesafety/stagemaps\",\"systemData\":{\"createdBy\":\"testuser@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T17:52:17.9861405Z\",\"lastModifiedBy\":\"testuser@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T17:52:17.9861405Z\"},\"properties\":{\"parameters\":null,\"stages\":[{\"name\":\"canary\",\"sequence\":1,\"stageVariables\":null,\"nestedStageMap\":null},{\"name\":\"production\",\"sequence\":2,\"stageVariables\":null,\"nestedStageMap\":null}],\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Remove-AzChangeSafetyStageProgression+[NoContext]+Delete - By name+$DELETE+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2?api-version=2026-01-01-preview+1": {
+  "Remove-AzChangeSafetyStageProgression+[NoContext]+Delete - By name+$DELETE+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2?api-version=2026-01-01-preview+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2?api-version=2026-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2?api-version=2026-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -69,7 +69,7 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Set-Cookie": [ "ARRAffinity=f40b9cb108a11c6cb9206001e46bdc67536c57dbb8cd6102cf2ec1227b1e84c5;Path=/;HttpOnly;Secure;Domain=prod.changecontrol.changesafety.msft.net", "ARRAffinitySameSite=f40b9cb108a11c6cb9206001e46bdc67536c57dbb8cd6102cf2ec1227b1e84c5;Path=/;HttpOnly;SameSite=None;Secure;Domain=prod.changecontrol.changesafety.msft.net" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/45019b89-b1e0-4b42-8f4c-2e73946ddf31" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-0000-0000-000000000000,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/45019b89-b1e0-4b42-8f4c-2e73946ddf31" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "mise-correlation-id": [ "890e470b-4fbf-41be-bb13-40ee9011870a" ],
         "X-Powered-By": [ "ASP.NET" ],
@@ -94,11 +94,11 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzChangeSafetyStageProgression+[NoContext]+Delete - By name+$PUT+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2?api-version=2026-01-01-preview+2": {
+  "Remove-AzChangeSafetyStageProgression+[NoContext]+Delete - By name+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2?api-version=2026-01-01-preview+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2?api-version=2026-01-01-preview",
-      "Content": "{\r\n  \"properties\": {\r\n    \"stageMap\": {\r\n      \"resourceId\": \"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/stagemap-for-remove-prog-tests\"\r\n    },\r\n    \"changeDefinition\": {\r\n      \"name\": \"TargetSelection\",\r\n      \"kind\": \"Targets\",\r\n      \"details\": {\r\n        \"targets\": [\r\n          {\r\n            \"resourceId\": \"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.Compute/virtualMachines/remove-prog-v2-vm-001\"\r\n          },\r\n          {\r\n            \"resourceId\": \"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.Compute/virtualMachines/remove-prog-v2-vm-002\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"changeType\": \"AppDeployment\",\r\n    \"rolloutType\": \"Normal\",\r\n    \"anticipatedStartTime\": \"2026-01-23T14:41:03.9347869-08:00\",\r\n    \"anticipatedEndTime\": \"2026-01-23T16:46:03.9360888-08:00\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2?api-version=2026-01-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"stageMap\": {\r\n      \"resourceId\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/stagemap-for-remove-prog-tests\"\r\n    },\r\n    \"changeDefinition\": {\r\n      \"name\": \"TargetSelection\",\r\n      \"kind\": \"Targets\",\r\n      \"details\": {\r\n        \"targets\": [\r\n          {\r\n            \"resourceId\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.Compute/virtualMachines/remove-prog-v2-vm-001\"\r\n          },\r\n          {\r\n            \"resourceId\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.Compute/virtualMachines/remove-prog-v2-vm-002\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"changeType\": \"AppDeployment\",\r\n    \"rolloutType\": \"Normal\",\r\n    \"anticipatedStartTime\": \"2026-01-23T14:41:03.9347869-08:00\",\r\n    \"anticipatedEndTime\": \"2026-01-23T16:46:03.9360888-08:00\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -115,7 +115,7 @@
         "ETag": [ "\"0e00e623-0000-0600-0000-6973fa2d0000\"" ],
         "Vary": [ "Accept-Encoding" ],
         "Set-Cookie": [ "ARRAffinity=f40b9cb108a11c6cb9206001e46bdc67536c57dbb8cd6102cf2ec1227b1e84c5;Path=/;HttpOnly;Secure;Domain=prod.changecontrol.changesafety.msft.net", "ARRAffinitySameSite=f40b9cb108a11c6cb9206001e46bdc67536c57dbb8cd6102cf2ec1227b1e84c5;Path=/;HttpOnly;SameSite=None;Secure;Domain=prod.changecontrol.changesafety.msft.net" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/b5995d07-d563-4ef2-ac81-f35f71e8a930" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-0000-0000-000000000000,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/b5995d07-d563-4ef2-ac81-f35f71e8a930" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "mise-correlation-id": [ "30665a1c-087c-4a9d-97d7-28583c1aca89" ],
         "X-Powered-By": [ "ASP.NET" ],
@@ -135,14 +135,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2\",\"name\":\"cr-remove-prog-v2\",\"type\":\"microsoft.changesafety/changerecords\",\"systemData\":{\"createdBy\":\"henrydai@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T18:01:39.3417332Z\",\"lastModifiedBy\":\"henrydai@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:46:04.5377126Z\"},\"properties\":{\"changeType\":\"AppDeployment\",\"rolloutType\":\"Normal\",\"description\":null,\"stageMap\":{\"resourceId\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/stagemap-for-remove-prog-tests\",\"parameters\":null},\"parameters\":null,\"comments\":null,\"changeDefinition\":{\"name\":\"TargetSelection\",\"kind\":\"Targets\",\"details\":{\"targets\":[{\"resourceId\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.Compute/virtualMachines/remove-prog-v2-vm-001\"},{\"resourceId\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.Compute/virtualMachines/remove-prog-v2-vm-002\"}]}},\"releaseLabel\":null,\"anticipatedStartTime\":\"2026-01-23T22:41:03.9347869+00:00\",\"anticipatedEndTime\":\"2026-01-24T00:46:03.9360888+00:00\",\"orchestrationTool\":null,\"links\":null,\"additionalData\":null,\"stageMapSnapshot\":[{\"key\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/stagemap-for-remove-prog-tests\",\"value\":{\"properties\":{\"parameters\":null,\"stages\":[{\"name\":\"canary\",\"sequence\":1,\"stageVariables\":null,\"nestedStageMap\":null},{\"name\":\"production\",\"sequence\":2,\"stageVariables\":null,\"nestedStageMap\":null}]},\"id\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/stagemap-for-remove-prog-tests\",\"name\":\"stagemap-for-remove-prog-tests\",\"type\":\"microsoft.changesafety/stagemaps\"}}],\"status\":\"Initialized\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2\",\"name\":\"cr-remove-prog-v2\",\"type\":\"microsoft.changesafety/changerecords\",\"systemData\":{\"createdBy\":\"testuser@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T18:01:39.3417332Z\",\"lastModifiedBy\":\"testuser@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:46:04.5377126Z\"},\"properties\":{\"changeType\":\"AppDeployment\",\"rolloutType\":\"Normal\",\"description\":null,\"stageMap\":{\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/stagemap-for-remove-prog-tests\",\"parameters\":null},\"parameters\":null,\"comments\":null,\"changeDefinition\":{\"name\":\"TargetSelection\",\"kind\":\"Targets\",\"details\":{\"targets\":[{\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.Compute/virtualMachines/remove-prog-v2-vm-001\"},{\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.Compute/virtualMachines/remove-prog-v2-vm-002\"}]}},\"releaseLabel\":null,\"anticipatedStartTime\":\"2026-01-23T22:41:03.9347869+00:00\",\"anticipatedEndTime\":\"2026-01-24T00:46:03.9360888+00:00\",\"orchestrationTool\":null,\"links\":null,\"additionalData\":null,\"stageMapSnapshot\":[{\"key\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/stagemap-for-remove-prog-tests\",\"value\":{\"properties\":{\"parameters\":null,\"stages\":[{\"name\":\"canary\",\"sequence\":1,\"stageVariables\":null,\"nestedStageMap\":null},{\"name\":\"production\",\"sequence\":2,\"stageVariables\":null,\"nestedStageMap\":null}]},\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/stagemap-for-remove-prog-tests\",\"name\":\"stagemap-for-remove-prog-tests\",\"type\":\"microsoft.changesafety/stagemaps\"}}],\"status\":\"Initialized\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Remove-AzChangeSafetyStageProgression+[NoContext]+Delete - By name+$PUT+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2/stageProgressions/remove-prog-v2?api-version=2026-01-01-preview+3": {
+  "Remove-AzChangeSafetyStageProgression+[NoContext]+Delete - By name+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2/stageProgressions/remove-prog-v2?api-version=2026-01-01-preview+3": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2/stageProgressions/remove-prog-v2?api-version=2026-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2/stageProgressions/remove-prog-v2?api-version=2026-01-01-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"stageReference\": \"canary\",\r\n    \"status\": \"InProgress\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -160,7 +160,7 @@
         "ETag": [ "\"3b003f15-0000-0600-0000-6973fa2f0000\"" ],
         "Vary": [ "Accept-Encoding" ],
         "Set-Cookie": [ "ARRAffinity=f40b9cb108a11c6cb9206001e46bdc67536c57dbb8cd6102cf2ec1227b1e84c5;Path=/;HttpOnly;Secure;Domain=prod.changecontrol.changesafety.msft.net", "ARRAffinitySameSite=f40b9cb108a11c6cb9206001e46bdc67536c57dbb8cd6102cf2ec1227b1e84c5;Path=/;HttpOnly;SameSite=None;Secure;Domain=prod.changecontrol.changesafety.msft.net" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/ded3a2e5-698c-4132-9cfd-d19f3c4b5b28" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-0000-0000-000000000000,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/ded3a2e5-698c-4132-9cfd-d19f3c4b5b28" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "mise-correlation-id": [ "f81856c3-f559-477c-bed6-e4ebd7dd7a11" ],
         "X-Powered-By": [ "ASP.NET" ],
@@ -180,14 +180,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2/stageProgressions/remove-prog-v2\",\"name\":\"remove-prog-v2\",\"type\":\"microsoft.changesafety/changerecords/stageprogressions\",\"systemData\":{\"createdBy\":\"henrydai@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T22:46:05.7186137Z\",\"lastModifiedBy\":\"henrydai@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:46:05.7186137Z\"},\"properties\":{\"stageReference\":\"canary\",\"sequence\":1,\"status\":\"InProgress\",\"comments\":null,\"stageVariables\":{},\"links\":null,\"additionalData\":null,\"parameters\":null,\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2/stageProgressions/remove-prog-v2\",\"name\":\"remove-prog-v2\",\"type\":\"microsoft.changesafety/changerecords/stageprogressions\",\"systemData\":{\"createdBy\":\"testuser@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T22:46:05.7186137Z\",\"lastModifiedBy\":\"testuser@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:46:05.7186137Z\"},\"properties\":{\"stageReference\":\"canary\",\"sequence\":1,\"status\":\"InProgress\",\"comments\":null,\"stageVariables\":{},\"links\":null,\"additionalData\":null,\"parameters\":null,\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Remove-AzChangeSafetyStageProgression+[NoContext]+Delete - By name+$PATCH+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2/stageProgressions/remove-prog-v2?api-version=2026-01-01-preview+4": {
+  "Remove-AzChangeSafetyStageProgression+[NoContext]+Delete - By name+$PATCH+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2/stageProgressions/remove-prog-v2?api-version=2026-01-01-preview+4": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2/stageProgressions/remove-prog-v2?api-version=2026-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2/stageProgressions/remove-prog-v2?api-version=2026-01-01-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"status\": \"Completed\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -205,7 +205,7 @@
         "ETag": [ "\"3b004115-0000-0600-0000-6973fa300000\"" ],
         "Vary": [ "Accept-Encoding" ],
         "Set-Cookie": [ "ARRAffinity=f40b9cb108a11c6cb9206001e46bdc67536c57dbb8cd6102cf2ec1227b1e84c5;Path=/;HttpOnly;Secure;Domain=prod.changecontrol.changesafety.msft.net", "ARRAffinitySameSite=f40b9cb108a11c6cb9206001e46bdc67536c57dbb8cd6102cf2ec1227b1e84c5;Path=/;HttpOnly;SameSite=None;Secure;Domain=prod.changecontrol.changesafety.msft.net" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/6be3d17a-4625-4aa8-b3e7-6590850b8e6a" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-0000-0000-000000000000,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/6be3d17a-4625-4aa8-b3e7-6590850b8e6a" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "mise-correlation-id": [ "cc7339a3-63eb-4215-88ee-c726a7511807" ],
         "X-Powered-By": [ "ASP.NET" ],
@@ -225,14 +225,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2/stageProgressions/remove-prog-v2\",\"name\":\"remove-prog-v2\",\"type\":\"microsoft.changesafety/changerecords/stageprogressions\",\"systemData\":{\"createdBy\":\"henrydai@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T22:46:05.7186137Z\",\"lastModifiedBy\":\"henrydai@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:46:07.6998597Z\"},\"properties\":{\"stageReference\":\"canary\",\"sequence\":1,\"status\":\"Completed\",\"stageVariables\":{},\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2/stageProgressions/remove-prog-v2\",\"name\":\"remove-prog-v2\",\"type\":\"microsoft.changesafety/changerecords/stageprogressions\",\"systemData\":{\"createdBy\":\"testuser@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T22:46:05.7186137Z\",\"lastModifiedBy\":\"testuser@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:46:07.6998597Z\"},\"properties\":{\"stageReference\":\"canary\",\"sequence\":1,\"status\":\"Completed\",\"stageVariables\":{},\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Remove-AzChangeSafetyStageProgression+[NoContext]+Delete - By name+$DELETE+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2/stageProgressions/remove-prog-v2?api-version=2026-01-01-preview+5": {
+  "Remove-AzChangeSafetyStageProgression+[NoContext]+Delete - By name+$DELETE+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2/stageProgressions/remove-prog-v2?api-version=2026-01-01-preview+5": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2/stageProgressions/remove-prog-v2?api-version=2026-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2/stageProgressions/remove-prog-v2?api-version=2026-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -257,7 +257,7 @@
         "mise-correlation-id": [ "05ce2a22-c573-4f0f-a82c-e958cb716fdc" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/4f55b98f-ef46-4118-b589-fcf550090df0" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-0000-0000-000000000000,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/4f55b98f-ef46-4118-b589-fcf550090df0" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
         "x-ms-correlation-request-id": [ "99c8ded9-c368-4f1d-9cd6-8c063eed817c" ],
@@ -276,10 +276,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzChangeSafetyStageProgression+[NoContext]+Delete - By name+$GET+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2/stageProgressions/remove-prog-v2?api-version=2026-01-01-preview+6": {
+  "Remove-AzChangeSafetyStageProgression+[NoContext]+Delete - By name+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2/stageProgressions/remove-prog-v2?api-version=2026-01-01-preview+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2/stageProgressions/remove-prog-v2?api-version=2026-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2/stageProgressions/remove-prog-v2?api-version=2026-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -299,7 +299,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/0f134415-fc8e-46cc-a98a-41227606a508" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-0000-0000-000000000000,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/0f134415-fc8e-46cc-a98a-41227606a508" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "x-ms-failure-cause": [ "gateway" ],
         "x-ms-request-id": [ "f204542f-a364-480c-8b02-635ee3081df0" ],
@@ -322,10 +322,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzChangeSafetyStageProgression+[NoContext]+Delete - By name+$DELETE+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2?api-version=2026-01-01-preview+7": {
+  "Remove-AzChangeSafetyStageProgression+[NoContext]+Delete - By name+$DELETE+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2?api-version=2026-01-01-preview+7": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2?api-version=2026-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-prog-v2?api-version=2026-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -346,7 +346,7 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Set-Cookie": [ "ARRAffinity=acc0c060a4ea93d721289f3df0160d88b7396116f7f855dc90c544d0e1563e3b;Path=/;HttpOnly;Secure;Domain=prod.changecontrol.changesafety.msft.net", "ARRAffinitySameSite=acc0c060a4ea93d721289f3df0160d88b7396116f7f855dc90c544d0e1563e3b;Path=/;HttpOnly;SameSite=None;Secure;Domain=prod.changecontrol.changesafety.msft.net" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/b17dfd40-efbb-46f3-aa14-29ae36ab3019" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-0000-0000-000000000000,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/b17dfd40-efbb-46f3-aa14-29ae36ab3019" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "mise-correlation-id": [ "11cd7e5e-c256-406e-95ea-270330354726" ],
         "X-Powered-By": [ "ASP.NET" ],
@@ -371,10 +371,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzChangeSafetyStageProgression+[NoContext]+Delete - Completed StageProgression+$DELETE+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01?api-version=2026-01-01-preview+1": {
+  "Remove-AzChangeSafetyStageProgression+[NoContext]+Delete - Completed StageProgression+$DELETE+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01?api-version=2026-01-01-preview+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01?api-version=2026-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01?api-version=2026-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -395,7 +395,7 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Set-Cookie": [ "ARRAffinity=f40b9cb108a11c6cb9206001e46bdc67536c57dbb8cd6102cf2ec1227b1e84c5;Path=/;HttpOnly;Secure;Domain=prod.changecontrol.changesafety.msft.net", "ARRAffinitySameSite=f40b9cb108a11c6cb9206001e46bdc67536c57dbb8cd6102cf2ec1227b1e84c5;Path=/;HttpOnly;SameSite=None;Secure;Domain=prod.changecontrol.changesafety.msft.net" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/9846ce1d-f4ec-40d3-a2d5-fe6d8615d6e4" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-0000-0000-000000000000,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/9846ce1d-f4ec-40d3-a2d5-fe6d8615d6e4" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "mise-correlation-id": [ "bd22bcad-59c7-4b11-ac2e-b1551e5a8fd3" ],
         "X-Powered-By": [ "ASP.NET" ],
@@ -420,11 +420,11 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzChangeSafetyStageProgression+[NoContext]+Delete - Completed StageProgression+$PUT+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01?api-version=2026-01-01-preview+2": {
+  "Remove-AzChangeSafetyStageProgression+[NoContext]+Delete - Completed StageProgression+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01?api-version=2026-01-01-preview+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01?api-version=2026-01-01-preview",
-      "Content": "{\r\n  \"properties\": {\r\n    \"stageMap\": {\r\n      \"resourceId\": \"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/stagemap-for-remove-prog-tests\"\r\n    },\r\n    \"changeDefinition\": {\r\n      \"name\": \"TargetSelection\",\r\n      \"kind\": \"Targets\",\r\n      \"details\": {\r\n        \"targets\": [\r\n          {\r\n            \"resourceId\": \"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.Compute/virtualMachines/remove-comp-vm-001\"\r\n          },\r\n          {\r\n            \"resourceId\": \"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.Compute/virtualMachines/remove-comp-vm-002\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"changeType\": \"AppDeployment\",\r\n    \"rolloutType\": \"Normal\",\r\n    \"anticipatedStartTime\": \"2026-01-23T14:41:10.5420757-08:00\",\r\n    \"anticipatedEndTime\": \"2026-01-23T16:46:10.5435042-08:00\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01?api-version=2026-01-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"stageMap\": {\r\n      \"resourceId\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/stagemap-for-remove-prog-tests\"\r\n    },\r\n    \"changeDefinition\": {\r\n      \"name\": \"TargetSelection\",\r\n      \"kind\": \"Targets\",\r\n      \"details\": {\r\n        \"targets\": [\r\n          {\r\n            \"resourceId\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.Compute/virtualMachines/remove-comp-vm-001\"\r\n          },\r\n          {\r\n            \"resourceId\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.Compute/virtualMachines/remove-comp-vm-002\"\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"changeType\": \"AppDeployment\",\r\n    \"rolloutType\": \"Normal\",\r\n    \"anticipatedStartTime\": \"2026-01-23T14:41:10.5420757-08:00\",\r\n    \"anticipatedEndTime\": \"2026-01-23T16:46:10.5435042-08:00\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -441,7 +441,7 @@
         "ETag": [ "\"0e000a24-0000-0600-0000-6973fa330000\"" ],
         "Vary": [ "Accept-Encoding" ],
         "Set-Cookie": [ "ARRAffinity=acc0c060a4ea93d721289f3df0160d88b7396116f7f855dc90c544d0e1563e3b;Path=/;HttpOnly;Secure;Domain=prod.changecontrol.changesafety.msft.net", "ARRAffinitySameSite=acc0c060a4ea93d721289f3df0160d88b7396116f7f855dc90c544d0e1563e3b;Path=/;HttpOnly;SameSite=None;Secure;Domain=prod.changecontrol.changesafety.msft.net" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/733f33ab-f496-4d9b-9646-ad19c70787ca" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-0000-0000-000000000000,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/733f33ab-f496-4d9b-9646-ad19c70787ca" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "mise-correlation-id": [ "25002950-8b41-4115-8f6c-4820ddddcc78" ],
         "X-Powered-By": [ "ASP.NET" ],
@@ -461,14 +461,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01\",\"name\":\"cr-remove-completed-prog-01\",\"type\":\"microsoft.changesafety/changerecords\",\"systemData\":{\"createdBy\":\"henrydai@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T17:52:24.8823655Z\",\"lastModifiedBy\":\"henrydai@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:46:11.4246715Z\"},\"properties\":{\"changeType\":\"AppDeployment\",\"rolloutType\":\"Normal\",\"description\":null,\"stageMap\":{\"resourceId\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/stagemap-for-remove-prog-tests\",\"parameters\":null},\"parameters\":null,\"comments\":null,\"changeDefinition\":{\"name\":\"TargetSelection\",\"kind\":\"Targets\",\"details\":{\"targets\":[{\"resourceId\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.Compute/virtualMachines/remove-comp-vm-001\"},{\"resourceId\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.Compute/virtualMachines/remove-comp-vm-002\"}]}},\"releaseLabel\":null,\"anticipatedStartTime\":\"2026-01-23T22:41:10.5420757+00:00\",\"anticipatedEndTime\":\"2026-01-24T00:46:10.5435042+00:00\",\"orchestrationTool\":null,\"links\":null,\"additionalData\":null,\"stageMapSnapshot\":[{\"key\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/stagemap-for-remove-prog-tests\",\"value\":{\"properties\":{\"parameters\":null,\"stages\":[{\"name\":\"canary\",\"sequence\":1,\"stageVariables\":null,\"nestedStageMap\":null},{\"name\":\"production\",\"sequence\":2,\"stageVariables\":null,\"nestedStageMap\":null}]},\"id\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/stagemap-for-remove-prog-tests\",\"name\":\"stagemap-for-remove-prog-tests\",\"type\":\"microsoft.changesafety/stagemaps\"}}],\"status\":\"Initialized\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01\",\"name\":\"cr-remove-completed-prog-01\",\"type\":\"microsoft.changesafety/changerecords\",\"systemData\":{\"createdBy\":\"testuser@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T17:52:24.8823655Z\",\"lastModifiedBy\":\"testuser@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:46:11.4246715Z\"},\"properties\":{\"changeType\":\"AppDeployment\",\"rolloutType\":\"Normal\",\"description\":null,\"stageMap\":{\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/stagemap-for-remove-prog-tests\",\"parameters\":null},\"parameters\":null,\"comments\":null,\"changeDefinition\":{\"name\":\"TargetSelection\",\"kind\":\"Targets\",\"details\":{\"targets\":[{\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.Compute/virtualMachines/remove-comp-vm-001\"},{\"resourceId\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.Compute/virtualMachines/remove-comp-vm-002\"}]}},\"releaseLabel\":null,\"anticipatedStartTime\":\"2026-01-23T22:41:10.5420757+00:00\",\"anticipatedEndTime\":\"2026-01-24T00:46:10.5435042+00:00\",\"orchestrationTool\":null,\"links\":null,\"additionalData\":null,\"stageMapSnapshot\":[{\"key\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/stagemap-for-remove-prog-tests\",\"value\":{\"properties\":{\"parameters\":null,\"stages\":[{\"name\":\"canary\",\"sequence\":1,\"stageVariables\":null,\"nestedStageMap\":null},{\"name\":\"production\",\"sequence\":2,\"stageVariables\":null,\"nestedStageMap\":null}]},\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/stageMaps/stagemap-for-remove-prog-tests\",\"name\":\"stagemap-for-remove-prog-tests\",\"type\":\"microsoft.changesafety/stagemaps\"}}],\"status\":\"Initialized\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Remove-AzChangeSafetyStageProgression+[NoContext]+Delete - Completed StageProgression+$PUT+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01/stageProgressions/remove-completed-prog-01?api-version=2026-01-01-preview+3": {
+  "Remove-AzChangeSafetyStageProgression+[NoContext]+Delete - Completed StageProgression+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01/stageProgressions/remove-completed-prog-01?api-version=2026-01-01-preview+3": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01/stageProgressions/remove-completed-prog-01?api-version=2026-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01/stageProgressions/remove-completed-prog-01?api-version=2026-01-01-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"stageReference\": \"canary\",\r\n    \"status\": \"InProgress\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -486,7 +486,7 @@
         "ETag": [ "\"3b005015-0000-0600-0000-6973fa350000\"" ],
         "Vary": [ "Accept-Encoding" ],
         "Set-Cookie": [ "ARRAffinity=acc0c060a4ea93d721289f3df0160d88b7396116f7f855dc90c544d0e1563e3b;Path=/;HttpOnly;Secure;Domain=prod.changecontrol.changesafety.msft.net", "ARRAffinitySameSite=acc0c060a4ea93d721289f3df0160d88b7396116f7f855dc90c544d0e1563e3b;Path=/;HttpOnly;SameSite=None;Secure;Domain=prod.changecontrol.changesafety.msft.net" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/f2cb02c4-1714-4b9a-bac6-c43b27298fa9" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-0000-0000-000000000000,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/f2cb02c4-1714-4b9a-bac6-c43b27298fa9" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "mise-correlation-id": [ "20f6601c-7fd4-4797-b320-58fba2c51b29" ],
         "X-Powered-By": [ "ASP.NET" ],
@@ -506,14 +506,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01/stageProgressions/remove-completed-prog-01\",\"name\":\"remove-completed-prog-01\",\"type\":\"microsoft.changesafety/changerecords/stageprogressions\",\"systemData\":{\"createdBy\":\"henrydai@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T22:46:12.4221436Z\",\"lastModifiedBy\":\"henrydai@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:46:12.4221436Z\"},\"properties\":{\"stageReference\":\"canary\",\"sequence\":1,\"status\":\"InProgress\",\"comments\":null,\"stageVariables\":{},\"links\":null,\"additionalData\":null,\"parameters\":null,\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01/stageProgressions/remove-completed-prog-01\",\"name\":\"remove-completed-prog-01\",\"type\":\"microsoft.changesafety/changerecords/stageprogressions\",\"systemData\":{\"createdBy\":\"testuser@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T22:46:12.4221436Z\",\"lastModifiedBy\":\"testuser@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:46:12.4221436Z\"},\"properties\":{\"stageReference\":\"canary\",\"sequence\":1,\"status\":\"InProgress\",\"comments\":null,\"stageVariables\":{},\"links\":null,\"additionalData\":null,\"parameters\":null,\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Remove-AzChangeSafetyStageProgression+[NoContext]+Delete - Completed StageProgression+$PATCH+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01/stageProgressions/remove-completed-prog-01?api-version=2026-01-01-preview+4": {
+  "Remove-AzChangeSafetyStageProgression+[NoContext]+Delete - Completed StageProgression+$PATCH+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01/stageProgressions/remove-completed-prog-01?api-version=2026-01-01-preview+4": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01/stageProgressions/remove-completed-prog-01?api-version=2026-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01/stageProgressions/remove-completed-prog-01?api-version=2026-01-01-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"status\": \"Completed\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -531,7 +531,7 @@
         "ETag": [ "\"3b005715-0000-0600-0000-6973fa360000\"" ],
         "Vary": [ "Accept-Encoding" ],
         "Set-Cookie": [ "ARRAffinity=acc0c060a4ea93d721289f3df0160d88b7396116f7f855dc90c544d0e1563e3b;Path=/;HttpOnly;Secure;Domain=prod.changecontrol.changesafety.msft.net", "ARRAffinitySameSite=acc0c060a4ea93d721289f3df0160d88b7396116f7f855dc90c544d0e1563e3b;Path=/;HttpOnly;SameSite=None;Secure;Domain=prod.changecontrol.changesafety.msft.net" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/50ae99e1-17ae-4d71-acce-9c8cf835de53" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-0000-0000-000000000000,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/50ae99e1-17ae-4d71-acce-9c8cf835de53" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "mise-correlation-id": [ "5f6f83a2-c622-4962-87b0-9f60abdf310c" ],
         "X-Powered-By": [ "ASP.NET" ],
@@ -551,14 +551,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01/stageProgressions/remove-completed-prog-01\",\"name\":\"remove-completed-prog-01\",\"type\":\"microsoft.changesafety/changerecords/stageprogressions\",\"systemData\":{\"createdBy\":\"henrydai@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T22:46:12.4221436Z\",\"lastModifiedBy\":\"henrydai@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:46:13.5797783Z\"},\"properties\":{\"stageReference\":\"canary\",\"sequence\":1,\"status\":\"Completed\",\"stageVariables\":{},\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01/stageProgressions/remove-completed-prog-01\",\"name\":\"remove-completed-prog-01\",\"type\":\"microsoft.changesafety/changerecords/stageprogressions\",\"systemData\":{\"createdBy\":\"testuser@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-01-23T22:46:12.4221436Z\",\"lastModifiedBy\":\"testuser@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-01-23T22:46:13.5797783Z\"},\"properties\":{\"stageReference\":\"canary\",\"sequence\":1,\"status\":\"Completed\",\"stageVariables\":{},\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Remove-AzChangeSafetyStageProgression+[NoContext]+Delete - Completed StageProgression+$DELETE+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01/stageProgressions/remove-completed-prog-01?api-version=2026-01-01-preview+5": {
+  "Remove-AzChangeSafetyStageProgression+[NoContext]+Delete - Completed StageProgression+$DELETE+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01/stageProgressions/remove-completed-prog-01?api-version=2026-01-01-preview+5": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01/stageProgressions/remove-completed-prog-01?api-version=2026-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01/stageProgressions/remove-completed-prog-01?api-version=2026-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -583,7 +583,7 @@
         "mise-correlation-id": [ "fbac77b6-67d8-4720-9b24-640b08ab14bb" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/e95587c1-6864-4cd4-88e8-ceb160e13be9" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-0000-0000-000000000000,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/e95587c1-6864-4cd4-88e8-ceb160e13be9" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
         "x-ms-correlation-request-id": [ "57c6ee1d-6b3f-4fe5-ba4c-cd84fb7feb11" ],
@@ -602,10 +602,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzChangeSafetyStageProgression+[NoContext]+Delete - Completed StageProgression+$DELETE+https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01?api-version=2026-01-01-preview+6": {
+  "Remove-AzChangeSafetyStageProgression+[NoContext]+Delete - Completed StageProgression+$DELETE+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01?api-version=2026-01-01-preview+6": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/53012dcb-5039-4e96-8e6c-5d913da1cdb5/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01?api-version=2026-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-changesafety-test/providers/Microsoft.ChangeSafety/changeRecords/cr-remove-completed-prog-01?api-version=2026-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -626,7 +626,7 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Set-Cookie": [ "ARRAffinity=f40b9cb108a11c6cb9206001e46bdc67536c57dbb8cd6102cf2ec1227b1e84c5;Path=/;HttpOnly;Secure;Domain=prod.changecontrol.changesafety.msft.net", "ARRAffinitySameSite=f40b9cb108a11c6cb9206001e46bdc67536c57dbb8cd6102cf2ec1227b1e84c5;Path=/;HttpOnly;SameSite=None;Secure;Domain=prod.changecontrol.changesafety.msft.net" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/1136ce37-8800-4b92-b91a-d673fc946824" ],
+        "x-ms-operation-identifier": [ "tenantId=00000000-0000-0000-0000-000000000000,objectId=bfa18db0-78d5-4d4d-8796-642151886af4/eastus/1136ce37-8800-4b92-b91a-d673fc946824" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "mise-correlation-id": [ "b3f84212-ab67-4e29-a88f-b53c1ea98772" ],
         "X-Powered-By": [ "ASP.NET" ],
