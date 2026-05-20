@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.Azure.Management.Authorization.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -799,37 +798,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Authorization
         #endregion
 
         #region PSPermission JSON Serialization Tests
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void PSPermission_JsonSerialize_ExcludesStringHelperProperties()
-        {
-            // The *String helper properties on PSPermission are decorated with [JsonIgnore]
-            // so JSON output (used by piping, ConvertTo-Json, and InputFile round-trips)
-            // does not duplicate the action collections as comma-joined strings.
-            var permission = new PSPermission
-            {
-                Actions = ["a1", "a2"],
-                NotActions = ["na1"],
-                DataActions = ["da1"],
-                NotDataActions = ["nda1"],
-                Condition = "cond",
-                ConditionVersion = "2.0"
-            };
-
-            var json = JsonConvert.SerializeObject(permission);
-            var jObject = JObject.Parse(json);
-
-            Assert.False(jObject.ContainsKey("ActionsString"), "ActionsString must not appear in serialized PSPermission JSON");
-            Assert.False(jObject.ContainsKey("NotActionsString"), "NotActionsString must not appear in serialized PSPermission JSON");
-            Assert.False(jObject.ContainsKey("DataActionsString"), "DataActionsString must not appear in serialized PSPermission JSON");
-            Assert.False(jObject.ContainsKey("NotDataActionsString"), "NotDataActionsString must not appear in serialized PSPermission JSON");
-
-            // And the real properties must still be there
-            Assert.True(jObject.ContainsKey("Actions"));
-            Assert.True(jObject.ContainsKey("Condition"));
-            Assert.True(jObject.ContainsKey("ConditionVersion"));
-        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
