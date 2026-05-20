@@ -99,7 +99,7 @@ Retention Rule Name
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RetentionRuleName
 Parameter Sets: (All)
 Aliases:
-Accepted values: Default, Daily, Weekly, Monthly, Yearly
+Accepted values: Default, Daily, Weekly, Monthly, Yearly, Default_OperationalStore
 
 Required: True
 Position: Named
