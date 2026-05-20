@@ -17,8 +17,8 @@ function Edit-AzDataProtectionPolicyRetentionRuleClientObject {
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupPolicy]
         ${Policy},
 
-        [Parameter(ParameterSetName='AddRetention',Mandatory, HelpMessage='Retention Rule Name. Note: Default_OperationalStore is applicable to AzureBlob only and is reserved for OperationalStore lifecycles; on AzureBlob, -Name Default is reserved for VaultStore lifecycles.')]
-        [Parameter(ParameterSetName='RemoveRetention',Mandatory, HelpMessage='Retention Rule Name. Note: Default and Default_OperationalStore are default retention rules and cannot be removed.')]
+        [Parameter(ParameterSetName='AddRetention',Mandatory, HelpMessage='Retention Rule Name.')]
+        [Parameter(ParameterSetName='RemoveRetention',Mandatory, HelpMessage='Retention Rule Name. Note: Default retention rules cannot be removed.')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RetentionRuleName]
         ${Name},
 
@@ -30,7 +30,7 @@ function Edit-AzDataProtectionPolicyRetentionRuleClientObject {
         [System.Management.Automation.SwitchParameter]
         ${RemoveRule},
         
-        [Parameter(ParameterSetName='AddRetention',Mandatory=$false, HelpMessage='Specifies whether to modify an existing LifeCycle.')]
+        [Parameter(ParameterSetName='AddRetention',Mandatory=$false, HelpMessage='[Deprecated] Specifies whether to modify an existing LifeCycle. Will be removed in a future release; duplicate retention rules are no longer permitted.')]
         [Nullable[System.Boolean]]
         ${OverwriteLifeCycle},
 

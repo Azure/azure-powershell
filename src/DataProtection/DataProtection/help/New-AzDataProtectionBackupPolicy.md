@@ -112,28 +112,6 @@ The seventh, eight commands update the policy object with lifecycles created.
 Next we create FirstOfDay, FirstOfWeek tag criteria and update the policy.
 The last command creates the policy.
 
-### Example 4: Create a operational policy for AzureBlob
-```powershell
-$defaultPol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureBlob
-Edit-AzDataProtectionPolicyTriggerClientObject -Policy $defaultPol -RemoveSchedule
-$lifeCycleOperationalTier = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore OperationalStore -SourceRetentionDurationType Days -SourceRetentionDurationCount 30
-Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $defaultPol -Name Default -LifeCycles $lifeCycleOperationalTier -IsDefault $true -OverwriteLifeCycle $true
-$opPolicy = New-AzDataProtectionBackupPolicy -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -Name "operationalPolicyName" -Policy $defaultPol
-```
-
-```output
-Name                        Type
-----                        ----
-operationalPolicyName       Microsoft.DataProtection/backupVaults/backupPolicies
-```
-
-The first command gets the default policy template for AzureBlob.
-Policy template is by default vaulted policy.
-The second command removes the vaulted policy schedule since we are creating operational policy.
-The third command creates a operational store lifecycle for 30 Days.
-The fourth command overwrites the vault lifecycle with operational store lifecycle.
-The last command creates the operational store policy.
-
 ### Example 4: Create a vaulted policy for AzureBlob
 ```powershell
 $defaultPol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureBlob
@@ -160,7 +138,7 @@ The last command creates the vault store policy.
 ```powershell
 $defaultPol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureBlob
 $lifeCycleOperationalTier = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore OperationalStore -SourceRetentionDurationType Days -SourceRetentionDurationCount 30
-Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $defaultPol -Name Default -LifeCycles $lifeCycleOperationalTier -IsDefault $true -OverwriteLifeCycle $false  
+Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $defaultPol -Name Default_OperationalStore -LifeCycles $lifeCycleOperationalTier -IsDefault $true
 $lifeCycleVaultTierWeekly = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore VaultStore -SourceRetentionDurationType Weeks -SourceRetentionDurationCount 7
 Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $defaultPol -Name Weekly -LifeCycles $lifeCycleVaultTierWeekly -IsDefault $false
 $tagCriteria = New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria FirstOfWeek
@@ -188,8 +166,9 @@ Name                               Type
 operationalVaultedPolicyName       Microsoft.DataProtection/backupVaults/backupPolicies
 ```
 
-The first command gets the default vaulted policy template for AzureBlob.
-The second to fifteenth command defines and updates the Operational, vaulted weekly, monthly, yearly lifecycle and tagcriteria.
+The first command gets the default vaulted policy template for AzureBlob. The template ships with a `Default` (Vault) retention rule.
+The second and third commands add an OperationalStore retention rule named `Default_OperationalStore` to the policy. This is **additive** — the existing `Default` Vault rule is preserved.
+The fourth through fifteenth commands define and update the vaulted weekly, monthly, yearly lifecycles and tag criteria.
 Next we define a trigger object with schedule time and timezone, set it to 2:30 AM West Europe standard time.
 The last command creates the hybrid AzureBlob policy.
 
