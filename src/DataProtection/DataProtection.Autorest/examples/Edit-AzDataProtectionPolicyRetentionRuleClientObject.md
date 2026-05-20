@@ -41,5 +41,5 @@ DatasourceType                                  ObjectType
 
 For AzureBlob, OperationalStore retention rules **must** be named `Default_OperationalStore`. The rule is added additively — the existing `Default` (VaultStore) retention rule on the policy template is preserved. Passing `-Name Default` with an OperationalStore lifecycle is rejected by validation.
 
-Note: `-OverwriteLifeCycle` is deprecated and will be removed in a future release; duplicate retention rules are no longer permitted.
+Note: `-OverwriteLifeCycle` is deprecated and will be removed in an upcoming release. Setting `-OverwriteLifeCycle $false` blocks updating an existing retention rule; when `$true` or omitted, the existing rule's lifecycles are replaced in place — the default behavior once this parameter is removed.
 

@@ -18,7 +18,7 @@ function Edit-AzDataProtectionPolicyRetentionRuleClientObject {
         ${Policy},
 
         [Parameter(ParameterSetName='AddRetention',Mandatory, HelpMessage='Retention Rule Name.')]
-        [Parameter(ParameterSetName='RemoveRetention',Mandatory, HelpMessage='Retention Rule Name. Note: Default retention rules cannot be removed.')]
+        [Parameter(ParameterSetName='RemoveRetention',Mandatory, HelpMessage='Retention Rule Name. Note: "Default" retention rules cannot be removed, regardless of lifecycle.')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RetentionRuleName]
         ${Name},
 
@@ -30,7 +30,7 @@ function Edit-AzDataProtectionPolicyRetentionRuleClientObject {
         [System.Management.Automation.SwitchParameter]
         ${RemoveRule},
         
-        [Parameter(ParameterSetName='AddRetention',Mandatory=$false, HelpMessage='[Deprecated] Specifies whether to modify an existing LifeCycle. Will be removed in a future release; duplicate retention rules are no longer permitted.')]
+        [Parameter(ParameterSetName='AddRetention',Mandatory=$false, HelpMessage='[Deprecated] Optional; this parameter will be removed in an upcoming release. Setting -OverwriteLifeCycle $false blocks updating an existing retention rule; when $true or omitted, the existing rule lifecycles are replaced in place — the default behavior once this parameter is removed.')]
         [Nullable[System.Boolean]]
         ${OverwriteLifeCycle},
 

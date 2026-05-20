@@ -26,7 +26,6 @@ Edit-AzDataProtectionPolicyRetentionRuleClientObject -IsDefault <Boolean> -LifeC
 
 ## DESCRIPTION
 Adds or removes Retention Rule to an existing backup policy.
-Adding a retention rule whose `-Name` already exists on the policy is rejected unless `-OverwriteLifeCycle $true` is supplied.
 
 ## EXAMPLES
 
@@ -75,7 +74,7 @@ DatasourceType                                  ObjectType
 
 For AzureBlob, OperationalStore retention rules **must** be named `Default_OperationalStore`. The rule is added additively — the existing `Default` (VaultStore) retention rule on the policy template is preserved. Passing `-Name Default` with an OperationalStore lifecycle is rejected by validation.
 
-Note: `-OverwriteLifeCycle` is deprecated and will be removed in a future release; duplicate retention rules are no longer permitted.
+Note: `-OverwriteLifeCycle` is deprecated and will be removed in an upcoming release. Setting `-OverwriteLifeCycle $false` blocks updating an existing retention rule; when `$true` or omitted, the existing rule's lifecycles are replaced in place — the default behavior once this parameter is removed.
 
 ## PARAMETERS
 
@@ -111,7 +110,7 @@ Accept wildcard characters: False
 
 ### -Name
 Retention Rule Name.
-Note: Default retention rules cannot be removed.
+Note: `"Default"` retention rules cannot be removed, regardless of lifecycle.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RetentionRuleName
@@ -127,7 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -OverwriteLifeCycle
-[Deprecated] Specifies whether to modify an existing LifeCycle. Will be removed in a future release; duplicate retention rules are no longer permitted.
+[Deprecated] Optional; this parameter will be removed in an upcoming release. Setting `-OverwriteLifeCycle $false` blocks updating an existing retention rule; when `$true` or omitted, the existing rule's lifecycles are replaced in place — the default behavior once this parameter is removed.
 
 ```yaml
 Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
@@ -184,9 +183,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Validation rules
 
-* **Duplicate retention rules are rejected.** Adding a rule whose `-Name` already exists on the policy throws `Retention rule '<Name>' already exists. Use -OverwriteLifeCycle $true to update it.` Pass `-OverwriteLifeCycle $true` to replace the existing rule's lifecycles in place.
-* **Default rule removal.** `-Name Default` cannot be removed via `-RemoveRule`; the cmdlet throws `Removing Default Retention Rule is not allowed. Please try again with different rule name.`
-* **`-OverwriteLifeCycle` is deprecated** and will be removed in a future release; duplicate retention rules are no longer permitted.
+* **`"Default"` retention rules cannot be removed**, regardless of lifecycle. `-RemoveRule -Name Default` throws `Removing Default Retention Rule is not allowed. Please try again with different rule name.`
+* **`-OverwriteLifeCycle` is deprecated and will be removed in an upcoming release.** Setting `-OverwriteLifeCycle $false` blocks updating an existing retention rule; when `$true` or omitted, the existing rule's lifecycles are replaced in place — the default behavior once this parameter is removed.
 
 ## RELATED LINKS
 

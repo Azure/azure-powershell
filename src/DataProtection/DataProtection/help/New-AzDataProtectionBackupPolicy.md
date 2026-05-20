@@ -166,8 +166,8 @@ Name                               Type
 operationalVaultedPolicyName       Microsoft.DataProtection/backupVaults/backupPolicies
 ```
 
-The first command gets the default vaulted policy template for AzureBlob. The template ships with a `Default` (Vault) retention rule.
-The second and third commands add an OperationalStore retention rule named `Default_OperationalStore` to the policy. This is **additive** — the existing `Default` Vault rule is preserved.
+The first command gets the default vaulted policy template for AzureBlob. The template ships with a `Default` (VaultStore) retention rule.
+The second and third commands add an OperationalStore retention rule named `Default_OperationalStore` to the policy. This is **additive** — the existing `Default` (VaultStore) rule is preserved.
 The fourth through fifteenth commands define and update the vaulted weekly, monthly, yearly lifecycles and tag criteria.
 Next we define a trigger object with schedule time and timezone, set it to 2:30 AM West Europe standard time.
 The last command creates the hybrid AzureBlob policy.
