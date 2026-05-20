@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated the prompt message for user confirmation of long running account migration operation in `Start-AzStorageAccountMigration`
 * Added Smart access tier and AllowedCopyScope 'All' support in `New/Set-AzStorageAccount`
 * Added static website configuration in `Update-AzStorageBlobServiceProperty`
 * Added tags replication in `Set-AzStorageObjectReplicationPolicy`
