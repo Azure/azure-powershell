@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System;
 using System.Collections;
+using System.Globalization;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
@@ -65,7 +66,8 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Bandwidth of the Virtual Network Appliance in Gbps.")]
-        public virtual double Bandwidth { get; set; }
+        [ValidateNotNullOrEmpty]
+        public virtual string Bandwidth { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -108,6 +110,12 @@ namespace Microsoft.Azure.Commands.Network
 
         private PSVirtualNetworkAppliance CreateVirtualNetworkAppliance()
         {
+            if (!double.TryParse(this.Bandwidth, NumberStyles.Float | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out var bandwidthInGbps)
+                && !double.TryParse(this.Bandwidth, NumberStyles.Float | NumberStyles.AllowThousands, CultureInfo.CurrentCulture, out bandwidthInGbps))
+            {
+                throw new PSArgumentException("Bandwidth must be a numeric value expressed in Gbps.");
+            }
+
             var vnaModel = new VirtualNetworkAppliance
             {
                 Location = this.Location,
@@ -116,7 +124,7 @@ namespace Microsoft.Azure.Commands.Network
             };
 
             // Set bandwidth (required)
-            vnaModel.BandwidthInGbps = this.Bandwidth;
+            vnaModel.BandwidthInGbps = bandwidthInGbps;
 
             // Set PrivateIPAddressVersion if specified
             if (!string.IsNullOrEmpty(this.PrivateIPAddressVersion))

@@ -14,7 +14,7 @@ Creates a new Virtual Network Appliance (VNA) resource.
 
 ```
 New-AzVirtualNetworkAppliance -Name <String> -ResourceGroupName <String> -Location <String> -SubnetId <String>
- -Bandwidth <Double> [-PrivateIPAddressVersion <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ -Bandwidth <String> [-PrivateIPAddressVersion <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -60,10 +60,10 @@ Accept wildcard characters: False
 ```
 
 ### -Bandwidth
-Bandwidth of the Virtual Network Appliance in Gbps.
+Bandwidth of the Virtual Network Appliance in Gbps. Numeric values are accepted and converted before the request is sent.
 
 ```yaml
-Type: System.Double
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
