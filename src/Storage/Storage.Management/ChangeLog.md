@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported advanced platform metrics for storage accounts
+    - `Get-AzStorageAdvancedPlatformMetric`
+    - `Set-AzStorageAdvancedPlatformMetric`
+    - `Remove-AzStorageAdvancedPlatformMetric`
 
 ## Version 9.6.2
 * Supported cross tenant user delegation SAS token generation with OAuth-based storage contexts
