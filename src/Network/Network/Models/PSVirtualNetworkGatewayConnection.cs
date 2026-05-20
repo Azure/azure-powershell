@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string RoutingConfigurationText
         {
-            get { return JsonConvert.SerializeObject(RoutingConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return RoutingConfiguration == null ? string.Empty : JsonConvert.SerializeObject(RoutingConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]

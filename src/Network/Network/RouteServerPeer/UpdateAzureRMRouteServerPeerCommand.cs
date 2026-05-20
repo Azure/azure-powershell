@@ -128,6 +128,12 @@ namespace Microsoft.Azure.Commands.Network
 
             base.Execute();
 
+            if (this.MyInvocation.BoundParameters.ContainsKey(nameof(this.VirtualHubVnetConnection)) &&
+                this.MyInvocation.BoundParameters.ContainsKey(nameof(this.VirtualHubVnetConnectionId)))
+            {
+                throw new PSArgumentException("Parameters -VirtualHubVnetConnection and -VirtualHubVnetConnectionId cannot be specified together.");
+            }
+
             var present = true;
             BgpConnection existingBgpConnection = null;
 

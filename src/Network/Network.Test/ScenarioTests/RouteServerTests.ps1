@@ -246,12 +246,16 @@ function Test-RouteServerPeerWithRoutingConfiguration
         # Get the route server hub and wait for provisioning
         $virtualHubName = $routeServerName
         $virtualHub = Get-AzVirtualHub -ResourceGroupName $rgname -Name $virtualHubName
-        while ($virtualHub.RoutingState -eq "Provisioning")
+        $routingStatePollIntervalSeconds = 180
+        $maxRoutingStatePollAttempts = 10
+        $routingStatePollAttempt = 0
+        while ($virtualHub.RoutingState -eq "Provisioning" -and $routingStatePollAttempt -lt $maxRoutingStatePollAttempts)
         {
-            Start-TestSleep -Seconds 180
+            Start-TestSleep -Seconds $routingStatePollIntervalSeconds
             $virtualHub = Get-AzVirtualHub -ResourceGroupName $rgname -Name $virtualHubName
+            $routingStatePollAttempt++
         }
-        Assert-AreEqual $virtualHub.RoutingState "Provisioned"
+        Assert-AreEqual "Provisioned" $virtualHub.RoutingState
 
         # Create a route map on the route server hub
         $routeMapMatchCriterion1 = New-AzRouteMapRuleCriterion -MatchCondition "Contains" -RoutePrefix @("10.0.0.0/16")
