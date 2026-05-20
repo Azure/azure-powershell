@@ -33,14 +33,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestCreateOctHsmKey()
         {
             TestRunner.RunTestScript("Test-CreateOctHsmKey");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestCreateOctHsmKeyAllSizes()
         {
             TestRunner.RunTestScript("Test-CreateOctHsmKeyAllSizes");
