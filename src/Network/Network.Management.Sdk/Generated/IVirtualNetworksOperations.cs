@@ -460,51 +460,5 @@ namespace Microsoft.Azure.Management.Network
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<PublicIpDdosProtectionStatusResult>>> BeginListDdosProtectionStatusNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
-        /// <summary>
-        /// Moves secondary private IP configurations from one or more NICs to target NICs within a virtual network.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='virtualNetworkName'>
-        /// The name of the virtual network.
-        /// </param>
-        /// <param name='parameters'>
-        /// Parameters supplied to the move IP configurations operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> MoveIpConfigurationsWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkName, MoveIpConfigurationsRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Moves secondary private IP configurations from one or more NICs to target NICs within a virtual network.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='virtualNetworkName'>
-        /// The name of the virtual network.
-        /// </param>
-        /// <param name='parameters'>
-        /// Parameters supplied to the move IP configurations operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginMoveIpConfigurationsWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkName, MoveIpConfigurationsRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
     }
 }
