@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added `-AcquirePolicyToken` and `-ChangeReference` dynamic parameters to write cmdlets for Azure Change Safety policy token acquisition
 
 ## Version 1.1.1
 * Removed "Microsoft.Azure.Management.DataShare" Version "1.0.1" PackageReference

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `-AcquirePolicyToken` and `-ChangeReference` dynamic parameters to write cmdlets for Azure Change Safety policy token acquisition
 
 ## Version 2.3.3
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229

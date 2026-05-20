@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `-AcquirePolicyToken` and `-ChangeReference` dynamic parameters to write cmdlets for Azure Change Safety policy token acquisition
 * Added `Enable-AzServiceFabricManagedClusterMaintenanceWindow` and `Get-AzServiceFabricManagedClusterMaintenanceWindowStatus` cmdlets
 
 ## Version 5.1.0

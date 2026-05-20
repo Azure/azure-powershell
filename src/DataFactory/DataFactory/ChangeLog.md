@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `-AcquirePolicyToken` and `-ChangeReference` dynamic parameters to write cmdlets for Azure Change Safety policy token acquisition
 
 ## Version 1.19.7
 * Added more support for Jira V2 (Jira Version 2) and Netezza V2 (Netezza Version 2) connection properties.

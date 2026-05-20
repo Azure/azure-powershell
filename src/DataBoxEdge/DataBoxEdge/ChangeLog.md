@@ -20,6 +20,7 @@
 
 
 ## Upcoming Release
+* Added `-AcquirePolicyToken` and `-ChangeReference` dynamic parameters to write cmdlets for Azure Change Safety policy token acquisition
 
 ## Version 1.2.1
 * Removed "Microsoft.Azure.Management.DataBoxEdge" Version "1.0.0" PackageReference
