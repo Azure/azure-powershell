@@ -181,8 +181,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-### Validation rules
-
 * **`"Default"` retention rules cannot be removed**, regardless of lifecycle. `-RemoveRule -Name Default` throws `Removing Default Retention Rule is not allowed. Please try again with different rule name.`
 * **`-OverwriteLifeCycle` is deprecated and will be removed in an upcoming release.** Setting `-OverwriteLifeCycle $false` blocks updating an existing retention rule; when `$true` or omitted, the existing rule's lifecycles are replaced in place — the default behavior once this parameter is removed.
 
