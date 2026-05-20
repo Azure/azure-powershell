@@ -622,7 +622,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/sql-ie-cmdlet-test-rg90071/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90071/firewallRules/AllowAllAzureIPs?api-version=2014-04-01",
+      "RequestUri": "/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/sql-ie-cmdlet-test-rg90071/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90071/firewallRules/AllowAllAzureIPs?api-version=2023-08-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjc1ODg5ZmEtNjY2MS00NGUwLWE4NDQtY2Q5NmVjOTM4OTkxL3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvc3FsLWllLWNtZGxldC1zZXJ2ZXI5MDA3MS9maXJld2FsbFJ1bGVzL0FsbG93QWxsQXp1cmVJUHM/YXBpLXZlcnNpb249MjAxNC0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -673,7 +673,7 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/sql-ie-cmdlet-test-rg90071/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90071/firewallRules/AllowAllAzureIPs?api-version=2014-04-01",
+      "RequestUri": "/subscriptions/b75889fa-6661-44e0-a844-cd96ec938991/resourceGroups/sql-ie-cmdlet-test-rg90071/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90071/firewallRules/AllowAllAzureIPs?api-version=2023-08-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjc1ODg5ZmEtNjY2MS00NGUwLWE4NDQtY2Q5NmVjOTM4OTkxL3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDcxL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvc3FsLWllLWNtZGxldC1zZXJ2ZXI5MDA3MS9maXJld2FsbFJ1bGVzL0FsbG93QWxsQXp1cmVJUHM/YXBpLXZlcnNpb249MjAxNC0wNC0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"startIpAddress\": \"0.0.0.0\",\r\n    \"endIpAddress\": \"0.0.0.0\"\r\n  }\r\n}",

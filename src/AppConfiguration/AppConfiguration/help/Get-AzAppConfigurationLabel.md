@@ -14,8 +14,9 @@ Gets a list of labels.
 
 ```
 Get-AzAppConfigurationLabel -Endpoint <String> [-After <String>] [-Name <String>]
- [-Select <System.Collections.Generic.List`1[System.String]>] [-AcceptDatetime <String>] [-SyncToken <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Select <System.Collections.Generic.List`1[System.String]>] [-AcceptDatetime <String>]
+ [-ClientRequestId <String>] [-SyncToken <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +41,8 @@ List all the labels in an App Configuration store.
 ## PARAMETERS
 
 ### -AcceptDatetime
-Requests the server to respond with the state of the resource at the specified time.
+Requests the server to respond with the state of the resource at the specified
+time.
 
 ```yaml
 Type: System.String
@@ -55,7 +57,23 @@ Accept wildcard characters: False
 ```
 
 ### -After
-Instructs the server to return elements that appear after the element referred to by the specified token.
+Instructs the server to return elements that appear after the element referred
+to by the specified token.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClientRequestId
+An opaque, globally-unique, client-generated string identifier for the request.
 
 ```yaml
 Type: System.String

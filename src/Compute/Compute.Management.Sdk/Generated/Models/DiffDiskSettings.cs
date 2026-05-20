@@ -39,11 +39,17 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// check which VM sizes exposes a cache disk. Minimum api-version for
         /// NvmeDisk: 2024-03-01.
         /// Possible values include: &#39;CacheDisk&#39;, &#39;ResourceDisk&#39;, &#39;NvmeDisk&#39;</param>
-        public DiffDiskSettings(string option = default(string), string placement = default(string))
+
+        /// <param name="enableFullCaching">Specifies whether or not to enable full caching for this VM which will
+        /// cache the OS disk locally on the host and make this VM more resilient to
+        /// storage outages
+        /// </param>
+        public DiffDiskSettings(string option = default(string), string placement = default(string), bool? enableFullCaching = default(bool?))
 
         {
             this.Option = option;
             this.Placement = placement;
+            this.EnableFullCaching = enableFullCaching;
             CustomInit();
         }
 
@@ -73,5 +79,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "placement")]
         public string Placement {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies whether or not to enable full caching for this VM
+        /// which will cache the OS disk locally on the host and make this VM more
+        /// resilient to storage outages
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enableFullCaching")]
+        public bool? EnableFullCaching {get; set; }
     }
 }

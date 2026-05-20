@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Improved usability and consistency (possible breaking changes). See [here](https://go.microsoft.com/fwlink/?linkid=2340249).
 
 ## Version 1.5.2
 * Updated preannouncement breaking changes date to May 2026.

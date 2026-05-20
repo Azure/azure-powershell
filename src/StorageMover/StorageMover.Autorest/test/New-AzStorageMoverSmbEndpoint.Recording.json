@@ -1,8 +1,8 @@
 {
-  "New/Update-AzStorageMoverSmbEndpoint+[NoContext]+Create and update+$PUT+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testsmbendpoint1y8nedf6x?api-version=2025-07-01+1": {
+  "New/Update-AzStorageMoverSmbEndpoint+[NoContext]+Create and update+$PUT+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testsmbendpoint1y8nedf6x?api-version=2025-12-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testsmbendpoint1y8nedf6x?api-version=2025-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testsmbendpoint1y8nedf6x?api-version=2025-12-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"endpointType\": \"SmbMount\",\r\n    \"description\": \"new smb endpoint\",\r\n    \"credentials\": {\r\n      \"type\": \"AzureKeyVaultSmb\",\r\n      \"usernameUri\": \"https://examples-azureKeyVault.vault.azure.net/secrets/examples-username\",\r\n      \"passwordUri\": \"https://examples-azureKeyVault.vault.azure.net/secrets/examples-password\"\r\n    },\r\n    \"host\": \"10.0.0.1\",\r\n    \"shareName\": \"shareNamey8nedf6x\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -41,10 +41,10 @@
       "isContentBase64": false
     }
   },
-  "New/Update-AzStorageMoverSmbEndpoint+[NoContext]+Create and update+$GET+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testsmbendpoint1y8nedf6x?api-version=2025-07-01+2": {
+  "New/Update-AzStorageMoverSmbEndpoint+[NoContext]+Create and update+$GET+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testsmbendpoint1y8nedf6x?api-version=2025-12-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://centraluseuap.management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testsmbendpoint1y8nedf6x?api-version=2025-07-01",
+      "RequestUri": "https://centraluseuap.management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testsmbendpoint1y8nedf6x?api-version=2025-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -87,10 +87,10 @@
       "isContentBase64": false
     }
   },
-  "New/Update-AzStorageMoverSmbEndpoint+[NoContext]+Create and update+$PATCH+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testsmbendpoint1y8nedf6x?api-version=2025-07-01+3": {
+  "New/Update-AzStorageMoverSmbEndpoint+[NoContext]+Create and update+$PATCH+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testsmbendpoint1y8nedf6x?api-version=2025-12-01+3": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testsmbendpoint1y8nedf6x?api-version=2025-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testsmbendpoint1y8nedf6x?api-version=2025-12-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"endpointType\": \"SmbMount\",\r\n    \"description\": \"update smb endpoint\",\r\n    \"credentials\": {\r\n      \"type\": \"AzureKeyVaultSmb\",\r\n      \"usernameUri\": \"https://examples-azureKeyVault.vault.azure.net/secrets/examples-username1\",\r\n      \"passwordUri\": \"https://examples-azureKeyVault.vault.azure.net/secrets/examples-password1\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -129,10 +129,10 @@
       "isContentBase64": false
     }
   },
-  "New/Update-AzStorageMoverSmbEndpoint+[NoContext]+Create and update+$GET+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testsmbendpoint1y8nedf6x?api-version=2025-07-01+4": {
+  "New/Update-AzStorageMoverSmbEndpoint+[NoContext]+Create and update+$GET+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testsmbendpoint1y8nedf6x?api-version=2025-12-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://centraluseuap.management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testsmbendpoint1y8nedf6x?api-version=2025-07-01",
+      "RequestUri": "https://centraluseuap.management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testsmbendpoint1y8nedf6x?api-version=2025-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -175,10 +175,10 @@
       "isContentBase64": false
     }
   },
-  "New/Update-AzStorageMoverSmbEndpoint+[NoContext]+Create and update+$PATCH+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testsmbendpoint1y8nedf6x?api-version=2025-07-01+5": {
+  "New/Update-AzStorageMoverSmbEndpoint+[NoContext]+Create and update+$PATCH+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testsmbendpoint1y8nedf6x?api-version=2025-12-01+5": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testsmbendpoint1y8nedf6x?api-version=2025-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testStoMover1y8nedf6x/endpoints/testsmbendpoint1y8nedf6x?api-version=2025-12-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"endpointType\": \"SmbMount\",\r\n    \"credentials\": {\r\n      \"type\": \"AzureKeyVaultSmb\",\r\n      \"usernameUri\": \"\",\r\n      \"passwordUri\": \"\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {

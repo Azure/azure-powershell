@@ -1,0 +1,75 @@
+{
+  "resourceType": "serviceGroupMember",
+  "apiVersion": "2023-09-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.relationships"
+  },
+  "commands": [
+    {
+      "name": "Get-AzRelationshipsServiceGroupMemberRelationship",
+      "description": "Get a ServiceGroupMemberRelationship",
+      "path": "/{resourceUri}/providers/Microsoft.Relationships/serviceGroupMember/{name}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.relationships/get-azrelationshipsservicegroupmemberrelationship"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceUri <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a ServiceGroupMemberRelationship",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-ResourceUri",
+              "value": "[Path.resourceUri]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzRelationshipsServiceGroupMemberRelationship",
+      "description": "Delete a ServiceGroupMemberRelationship",
+      "path": "/{resourceUri}/providers/Microsoft.Relationships/serviceGroupMember/{name}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.relationships/remove-azrelationshipsservicegroupmemberrelationship"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceUri <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a ServiceGroupMemberRelationship",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-ResourceUri",
+              "value": "[Path.resourceUri]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

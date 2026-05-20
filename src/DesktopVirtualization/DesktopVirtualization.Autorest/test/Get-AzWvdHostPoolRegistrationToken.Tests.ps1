@@ -29,7 +29,7 @@ Describe 'Get-AzWvdHostPoolRegistrationToken' {
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false `
-                            -PreferredAppGroupType 'Desktop'
+                            -PreferredAppGroupType 'Desktop' 
         }
         finally{
             $regToken = Get-AzWvdHostPoolRegistrationToken -SubscriptionId $env.SubscriptionId `

@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Ransomware
             else if (ParameterSetName == ParentObjectParameterSet)
             {
                 ResourceGroupName = VolumeObject.ResourceGroupName;
-                var NameParts = VolumeObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(VolumeObject.Id);
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
                 VolumeName = NameParts[2];

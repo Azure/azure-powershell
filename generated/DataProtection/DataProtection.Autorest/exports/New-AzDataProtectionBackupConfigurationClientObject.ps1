@@ -25,6 +25,13 @@ $backupConfig = New-AzDataProtectionBackupConfigurationClientObject -SnapshotVol
 $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName 
 $containers=Get-AzStorageContainer -Context $storageAccount.Context        
 $backupConfig = New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureBlob -VaultedBackupContainer $containers.Name[1,3,4]
+.Example
+$backupConfig = New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureBlob -AutoProtection
+.Example
+$rule = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.BlobBackupAutoProtectionRule]::new()
+$rule.ObjectType = "BlobBackupAutoProtectionRule"
+$rule.Pattern = "logs-"
+$backupConfig = New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureDataLakeStorage -AutoProtection -AutoProtectionExclusionRule @($rule)
 
 .Outputs
 System.Management.Automation.PSObject
@@ -32,6 +39,10 @@ System.Management.Automation.PSObject
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+AUTOPROTECTIONEXCLUSIONRULE <IBlobBackupAutoProtectionRule[]>: List of auto-protection exclusion rules. Each rule is a BlobBackupAutoProtectionRule object specifying container name prefix patterns to exclude. Use this parameter along with -AutoProtection.
+  ObjectType <String>: Type of the specific object - used for deserializing
+  Pattern <String>: The string pattern to evaluate against container names. For now this accepts literal strings only (no wildcards or regex).
 
 BACKUPHOOKREFERENCE <NamespacedNameResource[]>: Hook reference to be executed during backup.
   [Name <String>]: Name of the resource
@@ -95,9 +106,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.NamespacedNameResource[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.NamespacedNameResource[]]
     # Hook reference to be executed during backup.
-    # To construct, see NOTES section for BACKUPHOOKREFERENCE properties and create a hash table.
     ${BackupHookReference},
 
     [Parameter()]
@@ -126,7 +136,23 @@ param(
     [System.String]
     # Storage account resource group name where the Datasource is present.
     # Use this parameter for DatasourceType AzureBlob.
-    ${StorageAccountResourceGroupName}
+    ${StorageAccountResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Switch parameter to enable auto-protection.
+    # When enabled, new containers matching the rules will be automatically protected.
+    # Use this parameter for DatasourceType AzureBlob or AzureDataLakeStorage.
+    ${AutoProtection},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBlobBackupAutoProtectionRule[]]
+    # List of auto-protection exclusion rules.
+    # Each rule is a BlobBackupAutoProtectionRule object specifying container name prefix patterns to exclude.
+    # Use this parameter along with -AutoProtection.
+    ${AutoProtectionExclusionRule}
 )
 
 begin {
@@ -136,6 +162,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -164,6 +193,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

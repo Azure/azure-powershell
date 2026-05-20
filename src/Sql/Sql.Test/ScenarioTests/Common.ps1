@@ -348,10 +348,10 @@ Creates the basic test environment needed to perform the Elastic Job agent tests
 #>
 function Create-ElasticJobAgentTestEnvironment ()
 {
-	$location = Get-Location "Microsoft.Sql" "operations" "west europe"
-	$rg1 = Create-ResourceGroupForTest
+	$location = Get-Location "Microsoft.Sql" "operations" "West US 3"
+	$rg1 = Create-ResourceGroupForTest $location
 	$s1 = Create-ServerForTest $rg1 $location
-	$s1fw = $s1 | New-AzSqlServerFirewallRule -AllowAllAzureIPs # allow azure ips
+	$s1fw = $s1 | New-AzSqlServerFirewallRule -AllowAllAzureIPs
 	$db1 = Create-DatabaseForTest $s1
 	$agent = Create-AgentForTest $db1
 	return $agent

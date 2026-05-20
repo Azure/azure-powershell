@@ -103,6 +103,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentityInternal)this).KeyValueName = (string) content.GetValueForProperty("KeyValueName",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentityInternal)this).KeyValueName, global::System.Convert.ToString);
             }
+            if (content.Contains("ReplicaName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentityInternal)this).ReplicaName = (string) content.GetValueForProperty("ReplicaName",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentityInternal)this).ReplicaName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SnapshotName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentityInternal)this).SnapshotName = (string) content.GetValueForProperty("SnapshotName",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentityInternal)this).SnapshotName, global::System.Convert.ToString);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -151,6 +159,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models
             if (content.Contains("KeyValueName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentityInternal)this).KeyValueName = (string) content.GetValueForProperty("KeyValueName",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentityInternal)this).KeyValueName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ReplicaName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentityInternal)this).ReplicaName = (string) content.GetValueForProperty("ReplicaName",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentityInternal)this).ReplicaName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SnapshotName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentityInternal)this).SnapshotName = (string) content.GetValueForProperty("SnapshotName",((Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentityInternal)this).SnapshotName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
