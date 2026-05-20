@@ -771,6 +771,9 @@
   <data name="RoutingIntentNotFound" xml:space="preserve">
     <value>The routing intent resource could not be found</value>
   </data>
+  <data name="ConnectionPolicyNotFound" xml:space="preserve">
+    <value>The connection policy resource could not be found</value>
+  </data>
   <data name="SameTypeChildResourceAlreadyPresentInResourceGroup" xml:space="preserve">
     <value>Only one child allowed. A resource with name {0} and same type already exists in ResourceGroup {1}, ParentResource {2}. If you wish to modify this resource please use the Update operation instead.</value>
   </data>

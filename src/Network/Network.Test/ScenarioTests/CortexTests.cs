@@ -44,6 +44,14 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.virtualwan)]
+        public void TestConnectionPolicyCRUD()
+        {
+            TestRunner.RunTestScript("Test-ConnectionPolicyCRUD");
+        }
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.virtualwan)]
         public void TestStaticRoutesConfig()

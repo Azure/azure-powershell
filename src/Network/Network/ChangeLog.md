@@ -19,6 +19,11 @@
 --->
 
 ## Upcoming Release
+* Added new cmdlets for ConnectionPolicy management under VirtualHub
+    - `Get-AzConnectionPolicy`: Retrieve one or all ConnectionPolicy resources under a VirtualHub
+    - `New-AzConnectionPolicy`: Create a new ConnectionPolicy under a VirtualHub
+    - `Set-AzConnectionPolicy`: Update an existing ConnectionPolicy under a VirtualHub
+    - `Remove-AzConnectionPolicy`: Delete a ConnectionPolicy from a VirtualHub
 * Added properties `ServiceTag`, `ReadinessState`, `Description`, and `OutboundSupported` to `Get-AzNetworkSecurityPerimeterAssociableResourceType` response.
 * Removed validations to allow newly added AuxiliarySkus in New-AzNetworkInterface command without needing to add them in ValidateSet.
 * Added new cmdlets for DDoS Custom Policy management

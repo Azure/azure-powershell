@@ -798,6 +798,11 @@ namespace Microsoft.Azure.Management.Network
         IRoutingIntentOperations RoutingIntent { get; }
 
         /// <summary>
+        /// Gets the IConnectionPolicyOperations
+        /// </summary>
+        IConnectionPolicyOperations ConnectionPolicy { get; }
+
+        /// <summary>
         /// Gets the IWebApplicationFirewallPoliciesOperations
         /// </summary>
         IWebApplicationFirewallPoliciesOperations WebApplicationFirewallPolicies { get; }

@@ -1946,6 +1946,13 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.RoutingIntent, CNM.PSRoutingIntent>();
                 cfg.CreateMap<MNM.RoutingPolicy, CNM.PSRoutingPolicy>();
 
+                //// Virtual Hub Connection Policy
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSConnectionPolicy, MNM.ConnectionPolicy>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.ConnectionPolicy, CNM.PSConnectionPolicy>();
+
                 //// Virtual Hub Route Map
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSRouteMap, MNM.RouteMap>();

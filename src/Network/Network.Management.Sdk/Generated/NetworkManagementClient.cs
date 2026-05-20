@@ -645,6 +645,10 @@ namespace Microsoft.Azure.Management.Network
         /// </summary>
         public virtual IRoutingIntentOperations RoutingIntent { get; private set; }
         /// <summary>
+        /// Gets the IConnectionPolicyOperations
+        /// </summary>
+        public virtual IConnectionPolicyOperations ConnectionPolicy { get; private set; }
+        /// <summary>
         /// Gets the IWebApplicationFirewallPoliciesOperations
         /// </summary>
         public virtual IWebApplicationFirewallPoliciesOperations WebApplicationFirewallPolicies { get; private set; }
@@ -1032,6 +1036,7 @@ namespace Microsoft.Azure.Management.Network
             this.VirtualHubIPConfiguration = new VirtualHubIPConfigurationOperations(this);
             this.HubRouteTables = new HubRouteTablesOperations(this);
             this.RoutingIntent = new RoutingIntentOperations(this);
+            this.ConnectionPolicy = new ConnectionPolicyOperations(this);
             this.WebApplicationFirewallPolicies = new WebApplicationFirewallPoliciesOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
             this.AcceptLanguage = "en-US";
