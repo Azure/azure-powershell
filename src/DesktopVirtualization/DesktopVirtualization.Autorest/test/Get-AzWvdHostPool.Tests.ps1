@@ -30,7 +30,7 @@ Describe 'Get-AzWvdHostPool' {
                                 -Ring $null `
                                 -ValidationEnvironment:$false `
                                 -PreferredAppGroupType 'Desktop' ` `
-                                -StartVMOnConnect:$false 
+                                -StartVMOnConnect:$false
 
             $hostPool = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
