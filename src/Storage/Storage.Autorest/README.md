@@ -57,6 +57,27 @@ directive:
   - from: swagger-document
     where: $.paths.["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/startAccountMigration"].post.operationId    
     transform: return "StartAccountMigration"
+  - from: swagger-document
+    where: $.definitions.StorageTaskAssignment  
+    transform: >-
+      return {
+        "type": "object",
+        "description": "The storage task assignment.",
+        "properties": {
+            "properties": {
+                "$ref": "#/definitions/StorageTaskAssignmentProperties",
+                "description": "Properties of the storage task assignment."
+            }
+        },
+        "required": [
+        "properties"
+        ],
+        "allOf": [
+            {
+                "$ref": "../../../../../common-types/resource-management/v5/types.json#/definitions/ProxyResource"
+            }
+        ]
+      }
   - remove-operation: StorageAccounts_Update
   - remove-operation: FileShares_Lease
   - where:

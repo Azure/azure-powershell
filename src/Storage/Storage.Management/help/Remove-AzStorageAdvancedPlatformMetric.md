@@ -30,27 +30,12 @@ Delete the advanced platform metrics rule for the storage account by rule type.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove advanced platform metrics rule from a storage account
 ```powershell
-{{ Add code here }}
+Remove-AzStorageAdvancedPlatformMetric -AccountName mystorageaccount -ResourceGroupName myresourcegroup
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command removes the advanced platform metrics rule from the storage account mystorageaccount in resource group myresourcegroup.
 
 ## PARAMETERS
 

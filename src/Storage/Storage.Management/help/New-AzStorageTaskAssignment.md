@@ -16,9 +16,9 @@ If a storage task assignment is already created and a subsequent create request 
 
 ```
 New-AzStorageTaskAssignment -AccountName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Description <String>] [-Enabled] [-EndBy <DateTime>] [-Interval <Int32>]
- [-IntervalUnit <String>] [-ReportPrefix <String>] [-StartFrom <DateTime>] [-StartOn <DateTime>]
- [-TargetExcludePrefix <String[]>] [-TargetPrefix <String[]>] [-TaskId <String>] [-TriggerType <String>]
+ [-SubscriptionId <String>] -Description <String> [-Enabled] -ReportPrefix <String> -TaskId <String>
+ -TriggerType <String> [-EndBy <DateTime>] [-Interval <Int32>] [-IntervalUnit <String>] [-StartFrom <DateTime>]
+ [-StartOn <DateTime>] [-TargetExcludePrefix <String[]>] [-TargetPrefix <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -174,7 +174,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -189,7 +189,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -283,7 +283,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -393,7 +393,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -408,7 +408,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
