@@ -17,8 +17,8 @@ Creates or updates the specified object replication policy in a Storage account.
 Set-AzStorageObjectReplicationPolicy [-ResourceGroupName] <String> [-StorageAccountName] <String>
  [-PolicyId <String>] -SourceAccount <String> [-DestinationAccount <String>] [-EnableMetric <Boolean>]
  [-EnablePriorityReplication <Boolean>] [-EnableTagsReplication <Boolean>]
- -Rule <PSObjectReplicationPolicyRule[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -Rule <PSObjectReplicationPolicyRule[]> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PolicyObject
@@ -33,8 +33,8 @@ Set-AzStorageObjectReplicationPolicy [-ResourceGroupName] <String> [-StorageAcco
 Set-AzStorageObjectReplicationPolicy -StorageAccount <PSStorageAccount> [-PolicyId <String>]
  -SourceAccount <String> [-DestinationAccount <String>] [-EnableMetric <Boolean>]
  [-EnablePriorityReplication <Boolean>] [-EnableTagsReplication <Boolean>]
- -Rule <PSObjectReplicationPolicyRule[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -Rule <PSObjectReplicationPolicyRule[]> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
