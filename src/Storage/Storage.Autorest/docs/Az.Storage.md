@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Storage
-Module Guid: 4deee175-f94f-4dfd-80d5-fd7c43018494
+Module Guid: 78703396-9f24-4cc6-83bf-b58387833fad
 Download Help Link: https://learn.microsoft.com/powershell/module/az.storage
 Help Version: 1.0.0.0
 Locale: en-US
@@ -13,6 +13,9 @@ Microsoft Azure PowerShell: Storage cmdlets
 ## Az.Storage Cmdlets
 ### [Get-AzStorageAccountMigration](Get-AzStorageAccountMigration.md)
 Gets the status of the ongoing migration for the specified storage account.
+
+### [Get-AzStorageAdvancedPlatformMetric](Get-AzStorageAdvancedPlatformMetric.md)
+Get the advanced platform metrics rule for the storage account by rule type.
 
 ### [Get-AzStorageFileServiceUsage](Get-AzStorageFileServiceUsage.md)
 Gets the usage of file service in storage account including account limits, file share limits and constants used in recommendations and bursting formula.
@@ -37,8 +40,14 @@ Asynchronously create a new storage task assignment sub-resource with the specif
 If a storage task assignment is already created and a subsequent create request is issued with different properties, the storage task assignment properties will be updated.
 If a storage task assignment is already created and a subsequent create request is issued with the exact same set of properties, the request will succeed.
 
+### [Remove-AzStorageAdvancedPlatformMetric](Remove-AzStorageAdvancedPlatformMetric.md)
+Delete the advanced platform metrics rule for the storage account by rule type.
+
 ### [Remove-AzStorageTaskAssignment](Remove-AzStorageTaskAssignment.md)
 Delete the storage task assignment sub-resource
+
+### [Set-AzStorageAdvancedPlatformMetric](Set-AzStorageAdvancedPlatformMetric.md)
+Update the advanced platform metrics rule for the storage account.
 
 ### [Start-AzStorageAccountMigration](Start-AzStorageAccountMigration.md)
 Account Migration request can be triggered for a storage account to change its redundancy level.

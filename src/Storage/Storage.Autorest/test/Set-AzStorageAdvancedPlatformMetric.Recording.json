@@ -1,0 +1,207 @@
+{
+  "Set-AzStorageAdvancedPlatformMetric+[NoContext]+CreateUpdateGetRemove-AdvancedPlatformMetric+$PUT+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testaccountmigrationrg/providers/Microsoft.Storage/storageAccounts/weiapttest/advancedPlatformMetrics/ContainerLevelCapacityMetrics?api-version=2026-04-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testaccountmigrationrg/providers/Microsoft.Storage/storageAccounts/weiapttest/advancedPlatformMetrics/ContainerLevelCapacityMetrics?api-version=2026-04-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"ruleConfig\": {\r\n      \"filterType\": \"AllContainersFilter\"\r\n    },\r\n    \"enabled\": true\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "121" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "b0604603-cdc9-45c3-a23f-f981ae8254cb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=c2bdc6ca-a59c-411c-bf1a-a97ceade71ea/eastus2euap/e0059d7c-4756-4263-bd48-b8f1a14d90ea" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-correlation-request-id": [ "529608af-43ba-449c-8c83-52606000a369" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260520T070255Z:529608af-43ba-449c-8c83-52606000a369" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DA7A9AF64CAE40EAB9B3053792F3F089 Ref B: SG2AA1040512054 Ref C: 2026-05-20T07:02:54Z" ],
+        "Date": [ "Wed, 20 May 2026 07:02:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "551" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testaccountmigrationrg/providers/Microsoft.Storage/storageAccounts/weiapttest/advancedPlatformMetrics/ContainerLevelCapacityMetrics\",\"name\":\"DefaultAdvancedPlatformMetricsRule\",\"type\":\"Microsoft.Storage/storageAccounts/advancedPlatformMetrics\",\"properties\":{\"ruleType\":\"ContainerLevelCapacityMetrics\",\"metricsEmitted\":[\"ContainerUsedSize\",\"ContainerBlobCount\"],\"enabled\":true,\"lastModifiedTime\":\"2026-05-20T07:02:55.3756644Z\",\"ruleConfig\":{\"filterType\":\"AllContainersFilter\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzStorageAdvancedPlatformMetric+[NoContext]+CreateUpdateGetRemove-AdvancedPlatformMetric+$PUT+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testaccountmigrationrg/providers/Microsoft.Storage/storageAccounts/weiapttest/advancedPlatformMetrics/ContainerLevelCapacityMetrics?api-version=2026-04-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testaccountmigrationrg/providers/Microsoft.Storage/storageAccounts/weiapttest/advancedPlatformMetrics/ContainerLevelCapacityMetrics?api-version=2026-04-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"ruleConfig\": {\r\n      \"filterType\": \"ContainerPrefixFilter\",\r\n      \"filterValues\": [ \"logs\", \"data\" ]\r\n    },\r\n    \"enabled\": true\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "166" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "5a8249cd-98ac-4041-bd41-653afe0c359d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=c2bdc6ca-a59c-411c-bf1a-a97ceade71ea/eastus2euap/9b8e3ff6-8c8d-40cb-9bd0-b4f390f17683" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "798" ],
+        "x-ms-correlation-request-id": [ "216303c2-5309-4972-a986-67485222ec7a" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260520T070256Z:216303c2-5309-4972-a986-67485222ec7a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 86C291CA3A44423C958A4E16A8B32A47 Ref B: SG2AA1040512054 Ref C: 2026-05-20T07:02:55Z" ],
+        "Date": [ "Wed, 20 May 2026 07:02:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "584" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testaccountmigrationrg/providers/Microsoft.Storage/storageAccounts/weiapttest/advancedPlatformMetrics/ContainerLevelCapacityMetrics\",\"name\":\"DefaultAdvancedPlatformMetricsRule\",\"type\":\"Microsoft.Storage/storageAccounts/advancedPlatformMetrics\",\"properties\":{\"ruleType\":\"ContainerLevelCapacityMetrics\",\"metricsEmitted\":[\"ContainerUsedSize\",\"ContainerBlobCount\"],\"enabled\":true,\"lastModifiedTime\":\"2026-05-20T07:02:56.1941908Z\",\"ruleConfig\":{\"filterType\":\"ContainerPrefixFilter\",\"filterValues\":[\"logs\",\"data\"]}}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzStorageAdvancedPlatformMetric+[NoContext]+CreateUpdateGetRemove-AdvancedPlatformMetric+$PUT+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testaccountmigrationrg/providers/Microsoft.Storage/storageAccounts/weiapttest/advancedPlatformMetrics/ContainerLevelCapacityMetrics?api-version=2026-04-01+3": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testaccountmigrationrg/providers/Microsoft.Storage/storageAccounts/weiapttest/advancedPlatformMetrics/ContainerLevelCapacityMetrics?api-version=2026-04-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"ruleConfig\": {\r\n      \"filterType\": \"ContainerListFilter\",\r\n      \"filterValues\": [ \"container1\", \"container2\", \"container3\" ]\r\n    },\r\n    \"enabled\": false\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "191" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "b16eff47-c84c-4a1d-8443-4e04d7364869" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=c2bdc6ca-a59c-411c-bf1a-a97ceade71ea/eastus2euap/52308380-d215-41af-8771-4ce8f9899882" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-correlation-request-id": [ "61f23894-628b-4dec-9c97-5629a1a399a5" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260520T070257Z:61f23894-628b-4dec-9c97-5629a1a399a5" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B42237433AC14B82B435A9487A374661 Ref B: SG2AA1040512054 Ref C: 2026-05-20T07:02:56Z" ],
+        "Date": [ "Wed, 20 May 2026 07:02:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "608" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testaccountmigrationrg/providers/Microsoft.Storage/storageAccounts/weiapttest/advancedPlatformMetrics/ContainerLevelCapacityMetrics\",\"name\":\"DefaultAdvancedPlatformMetricsRule\",\"type\":\"Microsoft.Storage/storageAccounts/advancedPlatformMetrics\",\"properties\":{\"ruleType\":\"ContainerLevelCapacityMetrics\",\"metricsEmitted\":[\"ContainerUsedSize\",\"ContainerBlobCount\"],\"enabled\":false,\"lastModifiedTime\":\"2026-05-20T07:02:57.1053909Z\",\"ruleConfig\":{\"filterType\":\"ContainerListFilter\",\"filterValues\":[\"container1\",\"container2\",\"container3\"]}}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzStorageAdvancedPlatformMetric+[NoContext]+CreateUpdateGetRemove-AdvancedPlatformMetric+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testaccountmigrationrg/providers/Microsoft.Storage/storageAccounts/weiapttest/advancedPlatformMetrics/ContainerLevelCapacityMetrics?api-version=2026-04-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testaccountmigrationrg/providers/Microsoft.Storage/storageAccounts/weiapttest/advancedPlatformMetrics/ContainerLevelCapacityMetrics?api-version=2026-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "914c2b87-f08a-4d90-8601-7c273ef064f7" ],
+        "CommandName": [ "Get-AzStorageAdvancedPlatformMetric" ],
+        "FullCommandName": [ "Get-AzStorageAdvancedPlatformMetric_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.5", "Az.Storage/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "54ef8128-aefb-4615-85c5-8e817e1f38af" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=c2bdc6ca-a59c-411c-bf1a-a97ceade71ea/eastus2euap/3257db45-86d7-4cbc-a71e-8e03fb1d3405" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-correlation-request-id": [ "43020751-ded7-47f9-9772-c2ada6d86026" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260520T070257Z:43020751-ded7-47f9-9772-c2ada6d86026" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D28040053BB54022A823194482385E2C Ref B: SG2AA1040512054 Ref C: 2026-05-20T07:02:57Z" ],
+        "Date": [ "Wed, 20 May 2026 07:02:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "608" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testaccountmigrationrg/providers/Microsoft.Storage/storageAccounts/weiapttest/advancedPlatformMetrics/ContainerLevelCapacityMetrics\",\"name\":\"DefaultAdvancedPlatformMetricsRule\",\"type\":\"Microsoft.Storage/storageAccounts/advancedPlatformMetrics\",\"properties\":{\"ruleType\":\"ContainerLevelCapacityMetrics\",\"metricsEmitted\":[\"ContainerUsedSize\",\"ContainerBlobCount\"],\"enabled\":false,\"lastModifiedTime\":\"2026-05-20T07:02:57.1053909Z\",\"ruleConfig\":{\"filterType\":\"ContainerListFilter\",\"filterValues\":[\"container1\",\"container2\",\"container3\"]}}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzStorageAdvancedPlatformMetric+[NoContext]+CreateUpdateGetRemove-AdvancedPlatformMetric+$DELETE+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testaccountmigrationrg/providers/Microsoft.Storage/storageAccounts/weiapttest/advancedPlatformMetrics/ContainerLevelCapacityMetrics?api-version=2026-04-01+5": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testaccountmigrationrg/providers/Microsoft.Storage/storageAccounts/weiapttest/advancedPlatformMetrics/ContainerLevelCapacityMetrics?api-version=2026-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "d4bed1d5-e373-4cf6-b2cf-bfbe96977999" ],
+        "CommandName": [ "Remove-AzStorageAdvancedPlatformMetric" ],
+        "FullCommandName": [ "Remove-AzStorageAdvancedPlatformMetric_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.5.5", "Az.Storage/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "06b9425c-4657-4595-a921-0b4407b620f6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=c2bdc6ca-a59c-411c-bf1a-a97ceade71ea/eastus2euap/100872e2-33bc-45af-9a05-a2aed0c7ace6" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-correlation-request-id": [ "3b5193c2-026d-4e07-8bab-7ab4ba710047" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260520T070258Z:3b5193c2-026d-4e07-8bab-7ab4ba710047" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6193161448F64001BF2FE121B295C8C8 Ref B: SG2AA1040512054 Ref C: 2026-05-20T07:02:58Z" ],
+        "Date": [ "Wed, 20 May 2026 07:02:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "text/plain; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

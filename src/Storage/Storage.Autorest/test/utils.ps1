@@ -61,6 +61,7 @@ function setupEnv() {
     $env.TaskAssignmentAccount = "testassignmentaccount2"
     $env.NspResourceGroup = "nsprg"
     $env.NspAccount = "nspaccount"
+    $env.AptAccount = "weiapttest"
 
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
