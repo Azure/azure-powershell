@@ -51,8 +51,11 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IStorageIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  [AdvancedPlatformMetricsRuleType <String>]: The type of the advanced platform metrics rule.
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ConnectorName <String>]: The name of the Storage Connector.
   [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [DataShareName <String>]: The name of the Storage DataShare.
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [Id <String>]: Resource identity path

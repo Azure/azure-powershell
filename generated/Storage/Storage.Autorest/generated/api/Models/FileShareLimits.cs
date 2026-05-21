@@ -15,6 +15,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal
     {
 
+        /// <summary>Backing field for <see cref="GuardrailBandwidthScalar" /> property.</summary>
+        private double? _guardrailBandwidthScalar;
+
+        /// <summary>
+        /// The bandwidth scalar used for guardrail calculations for a file share in the storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
+        public double? GuardrailBandwidthScalar { get => this._guardrailBandwidthScalar; }
+
+        /// <summary>Backing field for <see cref="GuardrailIoScalar" /> property.</summary>
+        private double? _guardrailIoScalar;
+
+        /// <summary>
+        /// The IO scalar used for guardrail calculations for a file share in the storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
+        public double? GuardrailIoScalar { get => this._guardrailIoScalar; }
+
         /// <summary>Backing field for <see cref="MaxProvisionedBandwidthMiBPerSec" /> property.</summary>
         private int? _maxProvisionedBandwidthMiBPerSec;
 
@@ -39,6 +57,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public int? MaxProvisionedStorageGiB { get => this._maxProvisionedStorageGiB; }
+
+        /// <summary>Internal Acessors for GuardrailBandwidthScalar</summary>
+        double? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal.GuardrailBandwidthScalar { get => this._guardrailBandwidthScalar; set { {_guardrailBandwidthScalar = value;} } }
+
+        /// <summary>Internal Acessors for GuardrailIoScalar</summary>
+        double? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal.GuardrailIoScalar { get => this._guardrailIoScalar; set { {_guardrailIoScalar = value;} } }
 
         /// <summary>Internal Acessors for MaxProvisionedBandwidthMiBPerSec</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal.MaxProvisionedBandwidthMiBPerSec { get => this._maxProvisionedBandwidthMiBPerSec; set { {_maxProvisionedBandwidthMiBPerSec = value;} } }
@@ -93,6 +117,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
     public partial interface IFileShareLimits :
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IJsonSerializable
     {
+        /// <summary>
+        /// The bandwidth scalar used for guardrail calculations for a file share in the storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The bandwidth scalar used for guardrail calculations for a file share in the storage account.",
+        SerializedName = @"guardrailBandwidthScalar",
+        PossibleTypes = new [] { typeof(double) })]
+        double? GuardrailBandwidthScalar { get;  }
+        /// <summary>
+        /// The IO scalar used for guardrail calculations for a file share in the storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The IO scalar used for guardrail calculations for a file share in the storage account.",
+        SerializedName = @"guardrailIOScalar",
+        PossibleTypes = new [] { typeof(double) })]
+        double? GuardrailIoScalar { get;  }
         /// <summary>
         /// The maximum provisioned bandwidth limit in mebibytes per second for a file share in the storage account.
         /// </summary>
@@ -173,6 +223,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
     internal partial interface IFileShareLimitsInternal
 
     {
+        /// <summary>
+        /// The bandwidth scalar used for guardrail calculations for a file share in the storage account.
+        /// </summary>
+        double? GuardrailBandwidthScalar { get; set; }
+        /// <summary>
+        /// The IO scalar used for guardrail calculations for a file share in the storage account.
+        /// </summary>
+        double? GuardrailIoScalar { get; set; }
         /// <summary>
         /// The maximum provisioned bandwidth limit in mebibytes per second for a file share in the storage account.
         /// </summary>

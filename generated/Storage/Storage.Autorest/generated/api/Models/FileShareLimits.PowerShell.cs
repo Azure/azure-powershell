@@ -128,6 +128,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)this).MaxProvisionedBandwidthMiBPerSec = (int?) content.GetValueForProperty("MaxProvisionedBandwidthMiBPerSec",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)this).MaxProvisionedBandwidthMiBPerSec, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
+            if (content.Contains("GuardrailIoScalar"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)this).GuardrailIoScalar = (double?) content.GetValueForProperty("GuardrailIoScalar",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)this).GuardrailIoScalar, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("GuardrailBandwidthScalar"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)this).GuardrailBandwidthScalar = (double?) content.GetValueForProperty("GuardrailBandwidthScalar",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)this).GuardrailBandwidthScalar, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -168,6 +176,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("MaxProvisionedBandwidthMiBPerSec"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)this).MaxProvisionedBandwidthMiBPerSec = (int?) content.GetValueForProperty("MaxProvisionedBandwidthMiBPerSec",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)this).MaxProvisionedBandwidthMiBPerSec, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("GuardrailIoScalar"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)this).GuardrailIoScalar = (double?) content.GetValueForProperty("GuardrailIoScalar",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)this).GuardrailIoScalar, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("GuardrailBandwidthScalar"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)this).GuardrailBandwidthScalar = (double?) content.GetValueForProperty("GuardrailBandwidthScalar",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)this).GuardrailBandwidthScalar, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
             }
             AfterDeserializePSObject(content);
         }
