@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Add or add resources in the issue</summary>
+    /// <summary>Add or add resources associated with an issue</summary>
     /// <remarks>
     /// [OpenAPI] AddOrUpdateResources=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}/issues/{issueName}/addOrUpdateResources"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzMonitorWorkspaceIssueResource_UpdateViaIdentityAccountExpanded", SupportsShouldProcess = true)]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.OutputBreakingChange("Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IRelatedResources", "15.0.0", "7.0.0", "2025/11/03", DeprecatedOutputProperties = new string[] {"PrivateEndpointConnection","ProvisioningState"}, NewOutputProperties = new string[] {"PrivateEndpointConnection","ProvisioningState" } , ChangeDescription = "The types of the properties PrivateEndpointConnection and ProvisioningState will be changed from single object or fixed array to 'List'.")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IRelatedResources))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Description(@"Add or add resources in the issue")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Description(@"Add or add resources associated with an issue")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}/issues/{issueName}/addOrUpdateResources", ApiVersion = "2025-10-03")]
     public partial class UpdateAzMonitorWorkspaceIssueResource_UpdateViaIdentityAccountExpanded : global::System.Management.Automation.PSCmdlet,

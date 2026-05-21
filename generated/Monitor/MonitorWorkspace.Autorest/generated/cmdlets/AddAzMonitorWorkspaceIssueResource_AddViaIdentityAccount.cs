@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Add or add resources in the issue</summary>
+    /// <summary>Add or add resources associated with an issue</summary>
     /// <remarks>
     /// [OpenAPI] AddOrUpdateResources=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}/issues/{issueName}/addOrUpdateResources"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Add, @"AzMonitorWorkspaceIssueResource_AddViaIdentityAccount", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IRelatedResources))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Description(@"Add or add resources in the issue")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Description(@"Add or add resources associated with an issue")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}/issues/{issueName}/addOrUpdateResources", ApiVersion = "2025-10-03")]
     public partial class AddAzMonitorWorkspaceIssueResource_AddViaIdentityAccount : global::System.Management.Automation.PSCmdlet,
