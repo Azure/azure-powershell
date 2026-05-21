@@ -19,13 +19,21 @@
 -->
 
 ## Upcoming Release
-* Updated Policy.Autorest api-version to 2025-03-01
-    - Introduced support for `-Expand` query parameter in `Get-AzPolicyAssignment` and `Get-AzPolicySetDefinition`
-    - Removed the -BackwardCompatible parameter from all Policy cmdlets, including Get/Update/New/Remove‑PolicyAssignment, PolicyDefinition, PolicySetDefinition, and PolicyExemption.
-    - Updated `New-AzPolicyAssignment` and `Update-AzPolicyAssignment` to support the Enroll in `-EnforcementMode`.
-    - Added support for ExternalEvaluationEnforcementSettings to `New-AzPolicyDefinition` and `Update-AzPolicyDefinition`, including: `-ExternalEvaluationEnforcementSettingMissingTokenAction`, `-ExternalEvaluationEnforcementSettingResultLifespan`, `-ExternalEvaluationEnforcementSettingRoleDefinitionId`, `-EndpointSettingKind`, and `-EndpointSettingDetail` parameters
-    - `-Version` parameter in `Get-AzPolicyDefinition` and `Get-AzPolicySetDefinition` can now be used in `ManagementGroupName`, `SubscriptionId`, and `Id` parameter sets
-    - Added support for `-Version` parameter in Update/New/Remove-PolicyDefinition, and PolicySetDefinition where the Update and Remove commands target old versions.
+* Fixed `New-AzDeployment`, `New-AzResourceGroupDeployment`, `Test-AzDeployment`, `Test-AzResourceGroupDeployment`, and deployment stack cmdlets to properly inherit dynamic parameters from base cmdlet class
+* Updated deployment stack cmdlets to use the `2025-07-01` deployment stacks service version.
+* Added `-ResourcesWithoutDeleteSupport` to deployment stack `New-`, `Set-`, `Test-`, and `Remove-` cmdlets at subscription, resource group, and management group scopes. This parameter controls whether resources that do not support deletion cause the operation to fail or are detached from the stack. Possible values: `Fail` (default) and `Detach`.
+* Added `-ValidationLevel` to deployment stack `New-`, `Set-`, and `Test-` cmdlets at subscription, resource group, and management group scopes. This parameter controls how deployment stack validation is performed. Possible values: `Provider` (default), `Template`, and `ProviderNoRbac` (provider validation without Role-Based Access Control checks).
+* Deployment stack command output now includes the resource deletion support behavior and validation level for the stack.
+* Fixed `Set-AzRoleAssignment` unable to delete conditions from a role assignment
+* Updated Policy.Autorest to 2025-03-01: added `-Expand` to `Get-AzPolicyAssignment`/`Get-AzPolicySetDefinition`; removed `-BackwardCompatible`; added Enroll `-EnforcementMode` and ExternalEvaluationEnforcementSettings; extended `-Version` support
+* Fixed `Get-AzRoleDefinition` returning null `Condition` for roles with Attribute-Based Access Control (ABAC) conditions on non-first permission entries
+    - Fixed issue [#29058]
+    - Fixed issue [#25940]
+* [Breaking Change] Updated role definition cmdlets (`Get-AzRoleDefinition`, `New-AzRoleDefinition`, `Set-AzRoleDefinition`, `Remove-AzRoleDefinition`) to use a permissions array with per-permission conditions
+    - `PSRoleDefinition` now uses a `Permissions` property to represent actions, data actions, and conditions, including ABAC conditions
+    - `Get-AzRoleDefinition` and `Remove-AzRoleDefinition` output type `PSRoleDefinition` no longer has flattened `Actions`, `NotActions`, `DataActions`, `NotDataActions`, `Condition`, and `ConditionVersion` properties; use the `Permissions` collection instead
+    - JSON input files for `New-AzRoleDefinition` and `Set-AzRoleDefinition -InputFile` must define permissions in the `Permissions` array structure instead of using top-level `Actions`, `NotActions`, `DataActions`, and `NotDataActions` properties
+    - Scripts that pass a `PSRoleDefinition` object to `Set-AzRoleDefinition -Role` must update how they read and modify actions and conditions to use the `Permissions` collection
 
 ## Version 9.1.0
 * Made `Remove-AzDenyAssignment` honor `-Confirm:$false` and idempotent when no matching deny assignment exists. The redundant `-Force` switch was removed (the cmdlet relies on the standard `SupportsShouldProcess`/`ConfirmImpact` pattern).

@@ -117,7 +117,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             var allKeys = client.GetPropertiesOfKeys();
             foreach (var keyProperties in allKeys)
             {
-                results.Add(new PSKeyVaultKeyIdentityItem(keyProperties, _vaultUriHelper, false));
+                if (keyProperties.Managed != true)
+                {
+                    results.Add(new PSKeyVaultKeyIdentityItem(keyProperties, _vaultUriHelper, false));
+                }
             }
             return results;
         }
@@ -134,7 +137,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             var allKeys = client.GetPropertiesOfKeyVersions(keyName);
             foreach (var keyProperties in allKeys)
             {
-                results.Add(new PSKeyVaultKeyIdentityItem(keyProperties, _vaultUriHelper, false));
+                if (keyProperties.Managed != true)
+                {
+                    results.Add(new PSKeyVaultKeyIdentityItem(keyProperties, _vaultUriHelper, false));
+                }
             }
             return results;
         }

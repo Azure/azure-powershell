@@ -42,7 +42,7 @@ function GetTaggingPriority {
 	)
 
 	process{
-		$priorityMap = @{"Default"=99;"Daily"=25;"Weekly"=20;"Monthly"=15;"Yearly"=10}
+		$priorityMap = @{"Default"=99;"Default_OperationalStore"=99;"Daily"=25;"Weekly"=20;"Monthly"=15;"Yearly"=10}
 		return $priorityMap[$Name]
 	}
 }
@@ -94,5 +94,110 @@ function GetBackupFrequenceFromTimeInterval
 	{
 		$backupFrequencyMap = @{"D"="Daily";"H"="Hourly";"W"="Weekly"}
 		return "Backup" + $backupFrequencyMap[$RepeatingTimeInterval[0][-1].ToString()]
+	}
+}
+
+function ValidateRetentionRuleMatchesMappedStore
+{
+	# Enforces the manifest-driven mapping between SourceDataStoreType and the
+	# reserved "default" retention-rule name (e.g., for AzureBlob:
+	#   OperationalStore -> Default_OperationalStore, VaultStore -> Default).
+	# Throws when -Name targets a reserved default but the supplied -LifeCycles
+	# carry the wrong SourceDataStoreType for that name. Returns the list of
+	# mapped default rule names so the caller can reuse it for downstream checks.
+	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
+	param(
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[System.String]
+		$Name,
+
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		$DefaultRetentionMapping,
+
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		$LifeCycles,
+
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[System.String]
+		$DatasourceType
+	)
+
+	process
+	{
+		$mappedDefaultNames = @($DefaultRetentionMapping.PSObject.Properties.Value)
+		if($mappedDefaultNames -contains $Name){
+			foreach($lc in $LifeCycles){
+				$store = $lc.SourceDataStoreType.ToString()
+				$expectedName = $null
+				if($DefaultRetentionMapping.PSObject.Properties.Name -contains $store){
+					$expectedName = $DefaultRetentionMapping.$store
+				}
+				if($null -ne $expectedName -and $expectedName -ne $Name){
+					$reservedStores = @($DefaultRetentionMapping.PSObject.Properties | Where-Object { $_.Value -eq $Name } | ForEach-Object { $_.Name })
+					$reservedFor = $reservedStores -join ", "
+					throw "Retention rule '$Name' is reserved for source store '$reservedFor' on datasource type $DatasourceType. For source store '$store' use -Name $expectedName. See Get-Help Edit-AzDataProtectionPolicyRetentionRuleClientObject -Examples."
+				}
+			}
+		}
+		return $mappedDefaultNames
+	}
+}
+
+function ValidateExclusiveSourceStoreAssignment
+{
+	# Ensures exclusive source stores (e.g. OperationalStore for AzureBlob) are
+	# only used on their mapped default rule (e.g. Default_OperationalStore).
+	# Any lifecycle with an exclusive store is rejected on non-default rules
+	# (e.g. Weekly, Monthly, Yearly) — only the mapped default from
+	# defaultRetentionRuleNames in the manifest may carry that store.
+	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
+	param(
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[System.String]
+		$Name,
+
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		$Manifest,
+
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		$DefaultRetentionMapping,
+
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		$LifeCycles,
+
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[System.String]
+		$DatasourceType
+	)
+
+	process
+	{
+		$exclusiveStores = @()
+		if($null -ne $Manifest.policySettings -and ($Manifest.policySettings.PSObject.Properties.Name -contains "exclusiveSourceDataStores")){
+			$exclusiveStores = @($Manifest.policySettings.exclusiveSourceDataStores)
+		}
+		if($exclusiveStores.Count -gt 0){
+			foreach($lc in $LifeCycles){
+				$store = $lc.SourceDataStoreType.ToString()
+				if($exclusiveStores -contains $store){
+					$expectedName = $null
+					if($DefaultRetentionMapping.PSObject.Properties.Name -contains $store){
+						$expectedName = $DefaultRetentionMapping.$store
+					}
+					if($null -ne $expectedName -and $expectedName -ne $Name){
+						throw "Source store '$store' on datasource type $DatasourceType is exclusive: only the '$expectedName' retention rule may carry an $store lifecycle. Use -Name $expectedName instead of -Name $Name, or remove the $store lifecycle from -LifeCycles."
+					}
+				}
+			}
+		}
 	}
 }
