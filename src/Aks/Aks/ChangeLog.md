@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Bumped API version to 2026-03-01
 
 ## Version 7.1.2
 * Set `useAADAuth` to `true` by default in the omsagent addon profile when enabling the Monitoring addon via `Enable-AzAksAddOn` and `New-AzAksCluster`

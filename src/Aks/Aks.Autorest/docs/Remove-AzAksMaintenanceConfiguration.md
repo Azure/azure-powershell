@@ -54,6 +54,7 @@ $MaintenanceConfig | Remove-AzAksMaintenanceConfiguration
 
 ### -ConfigName
 The name of the maintenance configuration.
+Supported values are 'default', 'aksManagedAutoUpgradeSchedule', or 'aksManagedNodeOSUpgradeSchedule'.
 
 ```yaml
 Type: System.String

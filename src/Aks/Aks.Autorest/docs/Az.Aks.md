@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Aks
-Module Guid: 112e4bfd-f43c-4da3-9371-7e602ad45e83
+Module Guid: 927b3fff-9908-4a82-aac9-9d00b896919c
 Download Help Link: https://learn.microsoft.com/powershell/module/az.aks
 Help Version: 1.0.0.0
 Locale: en-US
@@ -32,6 +32,12 @@ Gets available upgrades for a service mesh in a cluster.
 ### [Get-AzAksManagedClusterOutboundNetworkDependencyEndpoint](Get-AzAksManagedClusterOutboundNetworkDependencyEndpoint.md)
 Gets a list of egress endpoints (network endpoints of all outbound dependencies) in the specified managed cluster.
 The operation returns properties of each egress endpoint.
+
+### [Get-AzAksManagedNamespace](Get-AzAksManagedNamespace.md)
+Gets the specified namespace of a managed cluster.
+
+### [Get-AzAksManagedNamespaceCredential](Get-AzAksManagedNamespaceCredential.md)
+Lists the credentials of a namespace.
 
 ### [Get-AzAksNodePoolUpgradeProfile](Get-AzAksNodePoolUpgradeProfile.md)
 Gets the upgrade profile for an agent pool.
@@ -71,6 +77,11 @@ Rotates the service account signing keys of a managed cluster.
 ### [New-AzAksMaintenanceConfiguration](New-AzAksMaintenanceConfiguration.md)
 Create a maintenance configuration in the specified managed cluster.
 
+### [New-AzAksManagedNamespace](New-AzAksManagedNamespace.md)
+Create a namespace managed by ARM for the specified managed cluster.
+Users can configure aspects like resource quotas, network ingress/egress policies, and more.
+See aka.ms/aks/managed-namespaces for more details.
+
 ### [New-AzAksSnapshot](New-AzAksSnapshot.md)
 Create a snapshot.
 
@@ -89,11 +100,19 @@ Deletes specific machines in an agent pool.
 ### [Remove-AzAksMaintenanceConfiguration](Remove-AzAksMaintenanceConfiguration.md)
 Deletes a maintenance configuration.
 
+### [Remove-AzAksManagedNamespace](Remove-AzAksManagedNamespace.md)
+Deletes a namespace.
+
 ### [Remove-AzAksSnapshot](Remove-AzAksSnapshot.md)
 Deletes a snapshot.
 
 ### [Remove-AzAksTrustedAccessRoleBinding](Remove-AzAksTrustedAccessRoleBinding.md)
 Delete a trusted access role binding.
+
+### [Set-AzAksManagedNamespace](Set-AzAksManagedNamespace.md)
+Update a namespace managed by ARM for the specified managed cluster.
+Users can configure aspects like resource quotas, network ingress/egress policies, and more.
+See aka.ms/aks/managed-namespaces for more details.
 
 ### [Start-AzAksCluster](Start-AzAksCluster.md)
 See [starting a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about starting a cluster.
@@ -111,6 +130,9 @@ See [stopping a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster
 
 ### [Update-AzAksMaintenanceConfiguration](Update-AzAksMaintenanceConfiguration.md)
 Update a maintenance configuration in the specified managed cluster.
+
+### [Update-AzAksManagedNamespace](Update-AzAksManagedNamespace.md)
+Update tags on a managed namespace.
 
 ### [Update-AzAksTrustedAccessRoleBinding](Update-AzAksTrustedAccessRoleBinding.md)
 Update a trusted access role binding

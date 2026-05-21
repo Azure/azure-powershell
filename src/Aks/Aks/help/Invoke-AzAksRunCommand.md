@@ -17,7 +17,7 @@ Run a shell command (with kubectl, helm) on your aks cluster, support attaching 
 Invoke-AzAksRunCommand [-ResourceGroupName] <String> [-Name] <String> -Command <String>
  [-CommandContextAttachment <String[]>] [-CommandContextAttachmentZip <String>] [-AsJob] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-SubscriptionId <String>] [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
@@ -25,14 +25,15 @@ Invoke-AzAksRunCommand [-ResourceGroupName] <String> [-Name] <String> -Command <
 Invoke-AzAksRunCommand -InputObject <PSKubernetesCluster> -Command <String>
  [-CommandContextAttachment <String[]>] [-CommandContextAttachmentZip <String>] [-AsJob] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-SubscriptionId <String>] [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### IdParameterSet
 ```
 Invoke-AzAksRunCommand [-Id] <String> -Command <String> [-CommandContextAttachment <String[]>]
  [-CommandContextAttachmentZip <String>] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,11 +61,41 @@ Get the pods in Aks cluster.
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

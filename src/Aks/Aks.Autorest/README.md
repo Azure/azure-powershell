@@ -27,11 +27,11 @@ For information on how to develop for `Az.Aks`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: c1a0abcedccb286ef44a03d6fb8363bc4e3dd560
+commit: 0e3000dfffe6c32c8ed124140dd972dafae67cfa
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService/aks/stable/2025-08-01/managedClusters.json
+  - $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService/aks/stable/2026-03-01/managedClusters.json
   - $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService/aks/stable/2019-08-01/location.json
 
 title: Aks

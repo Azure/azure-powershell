@@ -148,7 +148,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-host name of the machine
+Host name of the machine.
 
 ```yaml
 Type: System.String

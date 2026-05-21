@@ -1,6 +1,6 @@
 {
   "resourceType": "managedClusters",
-  "apiVersion": "2025-08-01",
+  "apiVersion": "2026-03-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.aks"
   },
@@ -46,7 +46,7 @@
     {
       "name": "Invoke-AzAksAbortManagedClusterLatestOperation",
       "description": "Aborts the currently running operation on the managed cluster.\nThe Managed Cluster will be moved to a Canceling state and eventually to a Canceled state when cancellation finishes.\nIf the operation completes before cancellation can take place, a 409 error code is returned.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedclusters/{resourceName}/abort",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/abort",
       "help": {
         "learnMore": {
           "url": "https://learn.microsoft.com/powershell/module/az.aks/invoke-azaksabortmanagedclusterlatestoperation"
