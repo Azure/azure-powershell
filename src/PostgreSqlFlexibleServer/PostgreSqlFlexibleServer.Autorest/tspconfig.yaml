@@ -1,0 +1,130 @@
+options:
+  "@azure-tools/typespec-powershell":
+    service-dir: "src"
+    emitter-output-dir: "{output-dir}/{service-dir}/PostgreSqlFlexibleServer/PostgreSqlFlexibleServer.Autorest"
+    clear-output-folder: true
+    debug: true
+    azure: true
+    module-version: 1.0.0
+    prefix: "Az"
+    subject-prefix: "PostgreSqlFlexibleServer"
+    service-name: PostgreSqlFlexibleServer
+    module-name: "{prefix}.{service-name}"
+    output-folder: "{output-dir}"
+    exclude-tableview-properties:
+      - Id
+      - Type
+    directive:
+      - where:
+          subject: Operation
+        hide: true
+      - where:
+          parameter-name: SubscriptionId
+        set:
+          default:
+            script: "(Get-AzContext).Subscription.Id"
+      - where:
+          variant: ^(Create|Update|Export)(?!.*?Expanded|ViaJsonString|ViaJsonFilePath)
+        remove: true
+      - where:
+          subject: MapConnection
+          variant: ^(Get)(?!.*?Expanded|ViaJsonString|ViaJsonFilePath)
+        remove: true
+      - where:
+          variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+        remove: true
+      - where:
+          verb: Set
+        remove: true
+      - where:
+          model-name: ^Server$
+        set:
+          format-table:
+            properties:
+              - Name
+              - ResourceGroupName
+              - Location
+              - SkuName
+              - SkuTier
+              - AdministratorLogin
+              - StorageSizeGB
+            width:
+              Name: 40
+              ResourceGroupName: 40
+              Location: 20
+              SkuName: 20
+              SkuTier: 15
+              AdministratorLogin: 25
+              StorageSizeGB: 15
+      - where:
+          model-name: ^Configuration$
+        set:
+          format-table:
+            properties:
+              - Name
+              - DataType
+              - Value
+              - AllowedValue
+              - DefaultValue
+              - Source
+              - Description
+            width:
+              Name: 35
+              DataType: 15
+              Value: 20
+              AllowedValue: 20
+              DefaultValue: 20
+              Source: 15
+              Description: 50
+      - where:
+          model-name: ^Database$
+        set:
+          format-table:
+            properties:
+              - Name
+              - Charset
+              - Collation
+            width:
+              Name: 35
+              Charset: 15
+              Collation: 20
+      - where:
+          model-name: ^FirewallRule$
+        set:
+          format-table:
+            properties:
+              - Name
+              - StartIpAddress
+              - EndIpAddress
+            width:
+              Name: 40
+              StartIpAddress: 20
+              EndIpAddress: 20
+      - where:
+          model-name: ^CapturedLog$
+        set:
+          format-table:
+            properties:
+              - Name
+              - PropertiesType
+              - SizeInKb
+              - Url
+            width:
+              Name: 40
+              PropertiesType: 15
+              SizeInKb: 10
+              Url: 60
+      - where:
+          model-name: ^BackupAutomaticAndOnDemand$
+        set:
+          format-table:
+            properties:
+              - Name
+              - BackupType
+              - CompletedTime
+              - Source
+            width:
+              Name: 30
+              BackupType: 20
+              CompletedTime: 25
+              Source: 20
