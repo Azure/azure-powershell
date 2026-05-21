@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
+* Validated SKU in `Update-AzFunctionApp`
+* Fixed cloud portability using dynamic `StorageEndpointSuffix` [#29034]
+* Fixed `Update-AzFunctionApp` identity fallback
 
 ## Version 4.3.2
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229

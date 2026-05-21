@@ -33,6 +33,10 @@
     - `Remove-AzDdosCustomPolicy`: Remove a DDoS custom policy
     - `Remove-AzDdosCustomPolicyDetectionRule` and `Set-AzDdosCustomPolicy`: Support the load balancer style workflow to mutate a local policy object and then persist it
     - Supports multiple detection rules with configurable traffic type (Tcp, Udp, TcpSyn) and packets per second thresholds
+* Fixed `Approve-AzPrivateEndpointConnection`, `Deny-AzPrivateEndpointConnection`, `Get-AzPrivateEndpointConnection`, `Remove-AzPrivateEndpointConnection`, and `Get-AzPrivateLinkResource`
+* Changed `UserAssignedIdentityId` type from string to string[] in Azure Firewall Policy
+
+## Version 7.27.0
 * Added support to associate a DDoS custom policy with a Load Balancer frontend IP configuration.
     - Added the `-DdosCustomPolicyId` parameter to `New-AzLoadBalancerFrontendIpConfig`, `Add-AzLoadBalancerFrontendIpConfig`, and `Set-AzLoadBalancerFrontendIpConfig`.
     - Added the `-RemoveDdosCustomPolicy` switch to `Set-AzLoadBalancerFrontendIpConfig`.

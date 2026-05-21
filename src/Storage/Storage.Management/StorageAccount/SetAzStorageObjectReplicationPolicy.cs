@@ -168,6 +168,27 @@ namespace Microsoft.Azure.Commands.Management.Storage
         private bool? enablePriorityReplication = null;
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "Indicates whether object replication tags replication feature is enabled for the policy.",
+            ParameterSetName = AccountNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Indicates whether object replication tags replication feature is enabled for the policy.",
+            ParameterSetName = AccountObjectParameterSet)]
+        public bool EnableTagsReplication
+        {
+            get
+            {
+                return enableTagsReplication.Value;
+            }
+            set
+            {
+                enableTagsReplication = value;
+            }
+        }
+        private bool? enableTagsReplication = null;
+
+        [Parameter(
             Mandatory = true,
             HelpMessage = "Object Replication Policy Rules.",
             ParameterSetName = AccountNameParameterSet)]
@@ -236,6 +257,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         policyToSet.PriorityReplication = new ObjectReplicationPolicyPropertiesPriorityReplication()
                         {
                             Enabled = this.enablePriorityReplication
+                        };
+                    }
+                    if (this.enableTagsReplication != null)
+                    {
+                        policyToSet.TagsReplication = new ObjectReplicationPolicyPropertiesTagsReplication()
+                        {
+                            Enabled = this.enableTagsReplication
                         };
                     }
                 }

@@ -19,9 +19,19 @@
 -->
 
 ## Upcoming Release
-* Added `-PrincipalId` and `-PrincipalType` parameters to `New-AzDenyAssignment` to support per-principal deny assignments targeting a specific User or ServicePrincipal, in addition to the existing Everyone mode.
-* Added `New-AzDenyAssignment` cmdlet for creating user-assigned deny assignments using the `2024-07-01-preview` API. Deny assignments allow denying specific write, delete, and action operations to all principals at a given scope while excluding specified principals.
-* Added `Remove-AzDenyAssignment` cmdlet for removing user-assigned deny assignments by ID, name and scope, or pipeline input.
+* Fixed dynamic parameter inheritance in deployment and deployment stack cmdlets
+* Updated deployment stack cmdlets to `2025-07-01` API; added `-ResourcesWithoutDeleteSupport` (`Fail`/`Detach`) and `-ValidationLevel` (`Provider`/`Template`/`ProviderNoRbac`); output now includes these settings
+* Fixed `Set-AzRoleAssignment` unable to delete conditions
+* Updated Policy.Autorest to 2025-03-01: added `-Expand`, Enroll `-EnforcementMode`, ExternalEvaluationEnforcementSettings, `-Version`; removed `-BackwardCompatible`
+* Fixed `Get-AzRoleDefinition` null `Condition` for ABAC on non-first permissions [#29058] [#25940]
+* [Breaking Change] Role definition cmdlets use `Permissions` array with per-permission conditions; flattened properties removed from `PSRoleDefinition`
+
+## Version 9.1.0
+* Made `Remove-AzDenyAssignment` honor `-Confirm:$false` and idempotent when no matching deny assignment exists. The redundant `-Force` switch was removed (the cmdlet relies on the standard `SupportsShouldProcess`/`ConfirmImpact` pattern).
+* Improved error messages for role assignment and role definition operations to include the underlying service error code and message instead of just the HTTP status code. [#19605] [#19374]
+* Added `-PrincipalId` and `-PrincipalType` to `New-AzDenyAssignment` to support per-principal deny assignments targeting a specific User or ServicePrincipal, in addition to the existing Everyone mode.
+* Added `New-AzDenyAssignment` for creating user-assigned deny assignments using the `2024-07-01-preview` API. Deny assignments allow denying specific write, delete, and action operations to all principals at a given scope while excluding specified principals.
+* Added `Remove-AzDenyAssignment` for removing user-assigned deny assignments by ID, name and scope, or pipeline input.
 * Regenerated Authorization Management SDK from `2024-07-01-preview` swagger specification to include deny assignment create and delete operations.
 * Fixed `New-AzDeployment` not reporting nested ARM (Azure Resource Manager) error details (e.g. `KeyVaultParameterReferenceSecretRetrieveFailed`) when a `MultipleErrorsOccurred` validation failure is returned. Previously, the inner errors were silently dropped and only the generic top-level error was shown. [#28308]
 

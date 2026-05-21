@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShare))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.Description(@"List FileShare resources by subscription ID")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.FileShares/fileShares", ApiVersion = "2025-09-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.FileShares/fileShares", ApiVersion = "2026-06-01")]
     public partial class GetAzFileShare_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IContext
