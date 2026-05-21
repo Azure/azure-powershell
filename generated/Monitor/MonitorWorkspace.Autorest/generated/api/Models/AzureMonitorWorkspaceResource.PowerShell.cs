@@ -84,6 +84,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceResourceInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceResourceInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Etag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceResourceInternal)this).Etag = (string) content.GetValueForProperty("Etag",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceResourceInternal)this).Etag, global::System.Convert.ToString);
+            }
             if (content.Contains("SystemDataCreatedBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
@@ -228,6 +232,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
             if (content.Contains("Identity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceResourceInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IManagedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceResourceInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.ManagedServiceIdentityTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Etag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceResourceInternal)this).Etag = (string) content.GetValueForProperty("Etag",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceResourceInternal)this).Etag, global::System.Convert.ToString);
             }
             if (content.Contains("SystemDataCreatedBy"))
             {

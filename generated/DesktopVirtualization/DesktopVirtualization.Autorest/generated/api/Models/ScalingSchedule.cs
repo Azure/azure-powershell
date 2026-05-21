@@ -203,6 +203,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         Description = @"Set of days of the week on which this schedule is active.",
         SerializedName = @"daysOfWeek",
         PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
         System.Collections.Generic.List<string> DaysOfWeek { get; set; }
         /// <summary>Name of the ScalingPlanPooledSchedule.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
@@ -447,6 +448,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
     {
         /// <summary>Set of days of the week on which this schedule is active.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
         System.Collections.Generic.List<string> DaysOfWeek { get; set; }
         /// <summary>Name of the ScalingPlanPooledSchedule.</summary>
         string Name { get; set; }
