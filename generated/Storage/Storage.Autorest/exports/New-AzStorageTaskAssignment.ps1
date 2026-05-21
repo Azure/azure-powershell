@@ -96,7 +96,7 @@ param(
     ${TaskId},
 
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("RunOnce", "OnSchedule")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("RunOnce", "OnSchedule", "MockRun")]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
     [System.String]
     # The trigger type of the storage task assignment execution

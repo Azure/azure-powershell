@@ -132,9 +132,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).DeletedAccountName = (string) content.GetValueForProperty("DeletedAccountName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).DeletedAccountName, global::System.Convert.ToString);
             }
+            if (content.Contains("AdvancedPlatformMetricsRuleType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).AdvancedPlatformMetricsRuleType = (string) content.GetValueForProperty("AdvancedPlatformMetricsRuleType",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).AdvancedPlatformMetricsRuleType, global::System.Convert.ToString);
+            }
             if (content.Contains("ContainerName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ContainerName = (string) content.GetValueForProperty("ContainerName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ContainerName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConnectorName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ConnectorName = (string) content.GetValueForProperty("ConnectorName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ConnectorName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataShareName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).DataShareName = (string) content.GetValueForProperty("DataShareName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).DataShareName, global::System.Convert.ToString);
             }
             if (content.Contains("EncryptionScopeName"))
             {
@@ -225,9 +237,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).DeletedAccountName = (string) content.GetValueForProperty("DeletedAccountName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).DeletedAccountName, global::System.Convert.ToString);
             }
+            if (content.Contains("AdvancedPlatformMetricsRuleType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).AdvancedPlatformMetricsRuleType = (string) content.GetValueForProperty("AdvancedPlatformMetricsRuleType",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).AdvancedPlatformMetricsRuleType, global::System.Convert.ToString);
+            }
             if (content.Contains("ContainerName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ContainerName = (string) content.GetValueForProperty("ContainerName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ContainerName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConnectorName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ConnectorName = (string) content.GetValueForProperty("ConnectorName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ConnectorName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataShareName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).DataShareName = (string) content.GetValueForProperty("DataShareName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).DataShareName, global::System.Convert.ToString);
             }
             if (content.Contains("EncryptionScopeName"))
             {

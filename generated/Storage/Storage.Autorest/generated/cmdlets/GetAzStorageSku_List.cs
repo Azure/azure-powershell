@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISkuInformation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.Description(@"Lists the available SKUs supported by Microsoft.Storage for given subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/skus", ApiVersion = "2025-06-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/skus", ApiVersion = "2026-04-01")]
     public partial class GetAzStorageSku_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IContext
