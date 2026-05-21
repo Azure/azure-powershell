@@ -23,22 +23,29 @@ Create an in-memory object for DataBoxCustomerDiskJobDetails.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.DataBoxCustomerDiskJobDetails
 .Link
-https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxCustomerDiskJobDetailsObject
+https://learn.microsoft.com/powershell/module/Az.DataBox/new-azdataboxcustomerdiskjobdetailsobject
 #>
 function New-AzDataBoxCustomerDiskJobDetailsObject {
+    [Microsoft.Azure.PowerShell.Cmdlets.DataBox.ModelCmdletAttribute()]
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.DataBoxCustomerDiskJobDetails')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
+        [Parameter(HelpMessage="Flag to indicate if disk manifest should be backed-up in the Storage Account.")]
+        [bool]
+        $EnableManifestBackup,
         [Parameter(HelpMessage="Contains the map of disk serial number to the disk details for import jobs.")]
         [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IDataBoxCustomerDiskJobDetailsImportDiskDetailsCollection]
         $ImportDiskDetailsCollection,
-        [Parameter(HelpMessage="Contains the map of disk serial number to the disk details for export jobs.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IDataBoxCustomerDiskJobDetailsExportDiskDetailsCollection]
-        $ExportDiskDetailsCollection,
         [Parameter(HelpMessage="Carrier Account Number of customer for customer disk.")]
         [string]
         $ReturnToCustomerPackageDetailCarrierAccountNumber,
+        [Parameter(HelpMessage="Name of the carrier.")]
+        [string]
+        $ReturnToCustomerPackageDetailCarrierName,
+        [Parameter(HelpMessage="Tracking Id of shipment.")]
+        [string]
+        $ReturnToCustomerPackageDetailTrackingId,
         [Parameter(Mandatory, HelpMessage="Contact details for notification and shipping.")]
         [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IContactDetails]
         $ContactDetail,
@@ -62,24 +69,26 @@ function New-AzDataBoxCustomerDiskJobDetailsObject {
         $ReverseShippingDetail,
         [Parameter(HelpMessage="Shipping address of the customer.")]
         [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IShippingAddress]
-        $ShippingAddress,
-        [Parameter(Mandatory, HelpMessage="Indicates the type of job details.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.PSArgumentCompleterAttribute("DataBox", "DataBoxDisk", "DataBoxHeavy", "DataBoxCustomerDisk")]
-        [string]
-        $Type
+        $ShippingAddress
     )
 
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.DataBoxCustomerDiskJobDetails]::New()
 
+        if ($PSBoundParameters.ContainsKey('EnableManifestBackup')) {
+            $Object.EnableManifestBackup = $EnableManifestBackup
+        }
         if ($PSBoundParameters.ContainsKey('ImportDiskDetailsCollection')) {
             $Object.ImportDiskDetailsCollection = $ImportDiskDetailsCollection
         }
-        if ($PSBoundParameters.ContainsKey('ExportDiskDetailsCollection')) {
-            $Object.ExportDiskDetailsCollection = $ExportDiskDetailsCollection
-        }
         if ($PSBoundParameters.ContainsKey('ReturnToCustomerPackageDetailCarrierAccountNumber')) {
             $Object.ReturnToCustomerPackageDetailCarrierAccountNumber = $ReturnToCustomerPackageDetailCarrierAccountNumber
+        }
+        if ($PSBoundParameters.ContainsKey('ReturnToCustomerPackageDetailCarrierName')) {
+            $Object.ReturnToCustomerPackageDetailCarrierName = $ReturnToCustomerPackageDetailCarrierName
+        }
+        if ($PSBoundParameters.ContainsKey('ReturnToCustomerPackageDetailTrackingId')) {
+            $Object.ReturnToCustomerPackageDetailTrackingId = $ReturnToCustomerPackageDetailTrackingId
         }
         if ($PSBoundParameters.ContainsKey('ContactDetail')) {
             $Object.ContactDetail = $ContactDetail
@@ -105,10 +114,6 @@ function New-AzDataBoxCustomerDiskJobDetailsObject {
         if ($PSBoundParameters.ContainsKey('ShippingAddress')) {
             $Object.ShippingAddress = $ShippingAddress
         }
-        if ($PSBoundParameters.ContainsKey('Type')) {
-            $Object.Type = $Type
-        }
         return $Object
     }
 }
-

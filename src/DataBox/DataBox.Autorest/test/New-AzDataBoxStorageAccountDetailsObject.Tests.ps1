@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'New-AzDataBoxStorageAccountDetailsObject' {
     It '__AllParameterSets'  {
-        $dataAccount = New-AzDataBoxStorageAccountDetailsObject -DataAccountType "StorageAccount" -StorageAccountId $env.StorageAccountId
+        $dataAccount = New-AzDataBoxStorageAccountDetailsObject -StorageAccountId $env.StorageAccountId
         $dataAccount.DataAccountType | Should -Be "StorageAccount"
     }
 }

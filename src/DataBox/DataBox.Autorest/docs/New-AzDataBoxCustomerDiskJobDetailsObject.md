@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataBox
-online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxCustomerDiskJobDetailsObject
+online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-azdataboxcustomerdiskjobdetailsobject
 schema: 2.0.0
 ---
 
@@ -13,13 +13,13 @@ Create an in-memory object for DataBoxCustomerDiskJobDetails.
 ## SYNTAX
 
 ```
-New-AzDataBoxCustomerDiskJobDetailsObject -ContactDetail <IContactDetails> -Type <String>
+New-AzDataBoxCustomerDiskJobDetailsObject -ContactDetail <IContactDetails>
  [-DataExportDetail <IDataExportDetails[]>] [-DataImportDetail <IDataImportDetails[]>]
- [-ExpectedDataSizeInTeraByte <Int32>]
- [-ExportDiskDetailsCollection <IDataBoxCustomerDiskJobDetailsExportDiskDetailsCollection>]
+ [-EnableManifestBackup <Boolean>] [-ExpectedDataSizeInTeraByte <Int32>]
  [-ImportDiskDetailsCollection <IDataBoxCustomerDiskJobDetailsImportDiskDetailsCollection>]
  [-KeyEncryptionKey <IKeyEncryptionKey>] [-Preference <IPreferences>]
  [-ReturnToCustomerPackageDetailCarrierAccountNumber <String>]
+ [-ReturnToCustomerPackageDetailCarrierName <String>] [-ReturnToCustomerPackageDetailTrackingId <String>]
  [-ReverseShippingDetail <IReverseShippingDetails>] [-ShippingAddress <IShippingAddress>] [<CommonParameters>]
 ```
 
@@ -87,11 +87,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExpectedDataSizeInTeraByte
-The expected size of the data, which needs to be transferred in this job, in terabytes.
+### -EnableManifestBackup
+Flag to indicate if disk manifest should be backed-up in the Storage Account.
 
 ```yaml
-Type: System.Int32
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -102,11 +102,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExportDiskDetailsCollection
-Contains the map of disk serial number to the disk details for export jobs.
+### -ExpectedDataSizeInTeraByte
+The expected size of the data, which needs to be transferred in this job, in terabytes.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IDataBoxCustomerDiskJobDetailsExportDiskDetailsCollection
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -177,6 +177,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ReturnToCustomerPackageDetailCarrierName
+Name of the carrier.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReturnToCustomerPackageDetailTrackingId
+Tracking Id of shipment.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ReverseShippingDetail
 Optional Reverse Shipping details for order.
 
@@ -201,21 +231,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Type
-Indicates the type of job details.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
