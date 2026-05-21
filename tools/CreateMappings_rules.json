@@ -1027,9 +1027,5 @@
   {
     "module": "Relationships",
     "alias": "Relationships"
-  },
-  {
-    "module": "StackHCIVM",
-    "alias": "StackHCIVM"
   }
 ]
