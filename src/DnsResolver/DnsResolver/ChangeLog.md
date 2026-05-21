@@ -18,12 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Upgraded API version to 2025-10-01-preview
 * Added `Invoke-AzDnsResolverBulkDnsResolverDomainList` for bulk domain upload
-* Upgraded code generator. See [details](https://go.microsoft.com/fwlink/?linkid=2340249).
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
 * Removed `-ActionBlockResponseCode` from `New/Update-AzDnsResolverPolicyDnsSecurityRule`
-* Changed `-DnsResolverDomainList` to optional on `New-AzDnsResolverPolicyDnsSecurityRule` (supports `ManagedDomainList`)
-* Changed `-Domain` to optional on `New-AzDnsResolverDomainList` (supports bulk upload)
+* Changed `-DnsResolverDomainList` to optional on `New-AzDnsResolverPolicyDnsSecurityRule`
+* Changed `-Domain` to optional on `New-AzDnsResolverDomainList`
 
 
 ## Version 1.2.4

@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Added Storage task assignment TriggerType new value MockRun in `New/Update-AzStorageTaskAssignment`
-* Fixed `Get-AzStorageFileContent` and `Set-AzStorageFileContent` to properly inherit dynamic parameters from base cmdlet class
+* Fixed `Get-AzStorageFileContent` and `Set-AzStorageFileContent`
 * Added Smart access tier and AllowedCopyScope 'All' support in `New/Set-AzStorageAccount`
 * Added static website configuration in `Update-AzStorageBlobServiceProperty`
 * Added tags replication in `Set-AzStorageObjectReplicationPolicy`
