@@ -272,6 +272,16 @@ namespace Microsoft.Azure.Commands.CosmosDB
             // Update analytical storage schema type.
             databaseAccountUpdateParameters.AnalyticalStorageConfiguration = CreateAnalyticalStorageConfiguration(AnalyticalStorageSchemaType);
 
+            if (EnableSoftDelete != null || SoftDeleteRetentionPeriodInMinutes != null || MinMinutesBeforePermanentDeletionAllowed != null)
+            {
+                databaseAccountUpdateParameters.SoftDeleteConfiguration = new SoftDeleteConfiguration
+                {
+                    SoftDeletionEnabled = EnableSoftDelete,
+                    SoftDeleteRetentionPeriodInMinutes = SoftDeleteRetentionPeriodInMinutes,
+                    MinMinutesBeforePermanentDeletionAllowed = MinMinutesBeforePermanentDeletionAllowed
+                };
+            }
+
             if (ShouldProcess(Name, "Updating Database Account"))
             {
                 DatabaseAccountGetResults cosmosDBAccount = CosmosDBManagementClient.DatabaseAccounts.UpdateWithHttpMessagesAsync(ResourceGroupName, Name, databaseAccountUpdateParameters).GetAwaiter().GetResult().Body;

@@ -19,6 +19,20 @@
 -->
 
 ## Upcoming Release
+* Added soft delete cmdlets for Cosmos DB accounts, SQL databases, and SQL containers
+    - `Get-AzCosmosDBSoftDeletedAccount`: List or get soft-deleted database accounts by location
+    - `Remove-AzCosmosDBSoftDeletedAccount`: Permanently purge a soft-deleted database account
+    - `Restore-AzCosmosDBSoftDeletedAccount`: Recover a soft-deleted database account
+    - `Get-AzCosmosDBSqlSoftDeletedDatabase`: List or get soft-deleted SQL databases
+    - `Remove-AzCosmosDBSqlSoftDeletedDatabase`: Permanently purge a soft-deleted SQL database
+    - `Restore-AzCosmosDBSqlSoftDeletedDatabase`: Recover a soft-deleted SQL database
+    - `Get-AzCosmosDBSqlSoftDeletedContainer`: List or get soft-deleted SQL containers
+    - `Remove-AzCosmosDBSqlSoftDeletedContainer`: Permanently purge a soft-deleted SQL container
+    - `Restore-AzCosmosDBSqlSoftDeletedContainer`: Recover a soft-deleted SQL container
+* Added soft delete configuration parameters to `Update-AzCosmosDBAccount`
+    - `-EnableSoftDelete`: Enable or disable soft delete on the account
+    - `-SoftDeleteRetentionPeriodInMinutes`: Set the retention period for soft-deleted resources
+    - `-MinMinutesBeforePermanentDeletionAllowed`: Set minimum wait time before permanent deletion
 
 ## Version 1.20.0
 * Added `-DisableLocalAuth` parameter to `New-AzCosmosDBAccount` and `Update-AzCosmosDBAccount` to opt out of local authentication.

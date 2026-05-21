@@ -339,5 +339,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string FleetspaceAccountObjectHelpMessage = "Fleetspace Account Object.";
         public const string GlobalDatabaseAccountResourceIdHelpMessage = "Resource ID of the global database account to associate with the fleetspace account.";
         public const string GlobalDatabaseAccountLocationHelpMessage = "Location of the global database account to associate with the fleetspace account.";
+
+        //SoftDelete specific help messages
+        public const string SoftDeletedAccountNameHelpMessage = "Name of the soft-deleted Cosmos DB database account.";
+        public const string SoftDeletedDatabaseNameHelpMessage = "Name of the soft-deleted SQL database.";
+        public const string SoftDeletedContainerNameHelpMessage = "Name of the soft-deleted SQL container.";
+        public const string SoftDeletedLocationHelpMessage = "Location of the soft-deleted Cosmos DB database account.";
     }
 }
