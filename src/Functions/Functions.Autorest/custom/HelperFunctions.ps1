@@ -11,7 +11,6 @@ $constants["RuntimeToFormattedName"] = @{
     'python' = 'Python'
     'java' = 'Java'
     'powershell' = 'PowerShell'
-    'unknown' = 'Unknown'
 }
 $constants["RuntimeToDefaultOSType"] = @{
     'DotNet'= 'Windows'
@@ -2170,7 +2169,7 @@ function GetRuntimeName
 
     if ([string]::IsNullOrWhiteSpace($name))
     {
-        $name = 'unknown'
+        return 'Unknown'
     }
 
     if ($RuntimeToFormattedName.ContainsKey($name))
