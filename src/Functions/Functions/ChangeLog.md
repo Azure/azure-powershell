@@ -21,7 +21,6 @@
 * [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
 * Validated SKU in `Update-AzFunctionApp`
 * Fixed cloud portability using dynamic `StorageEndpointSuffix` [#29034]
-* Fixed `Update-AzFunctionApp` identity fallback to preserve combined identity type
 * Fixed handling of 'unknown' runtime to return a formatted name when `FUNCTIONS_WORKER_RUNTIME` is missing or empty [#29630]
 
 ## Version 4.3.2
