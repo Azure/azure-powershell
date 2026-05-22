@@ -37,27 +37,13 @@ Deletes an existing server administrator associated to a Microsoft Entra princip
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a Microsoft Entra administrator from a flexible server
 ```powershell
-{{ Add code here }}
+Remove-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -ObjectId 00000000-0000-0000-0000-000000000000
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Removes a Microsoft Entra administrator from an Azure Database for PostgreSQL flexible server that has Microsoft Entra authentication enabled.
+If subscription is not passed explicitly, it's taken from default context.
 
 ## PARAMETERS
 

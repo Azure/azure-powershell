@@ -45,27 +45,29 @@ Create a pair of virtual endpoints for a server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create virtual endpoints in a flexible server
 ```powershell
-{{ Add code here }}
+New-AzPostgreSqlFlexibleServerVirtualEndpoint -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -Name example-virtual-endpoints -EndpointType ReadWrite -Member example-server
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+EndpointType                 : ReadWrite
+Id                           : /subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/example-resource-group/providers/Microsoft.DBforPostgreSQL/flexibleServers/example-server/virtualendpoints/example-virtual-endpoints
+Member                       : {example-server}
+Name                         : example-virtual-endpoints
+PropertiesVirtualEndpoints   : {example-virtual-endpoints.writer.postgres.database.azure.com, example-virtual-endpoints.reader.postgres.database.azure.com}
+ResourceGroupName            : example-resource-group
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : Microsoft.DBforPostgreSQL/flexibleServers/virtualendpoints
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Creates virtual endpoints in an Azure Database for PostgreSQL flexible server with member servers, virtual endpoint type, virtual endpoint name, server name, resource group, and subscription explicitly passed as an arguments.
+If subscription is not passed explicitly, it's taken from default context.
 
 ## PARAMETERS
 

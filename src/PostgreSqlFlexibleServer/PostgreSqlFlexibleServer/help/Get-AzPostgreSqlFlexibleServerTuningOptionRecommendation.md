@@ -23,7 +23,7 @@ Lists available object recommendations.
 
 ## EXAMPLES
 
-### Example 1: List all index recommendations in a server
+### Example 1: List all index recommendations in a flexible server
 ```powershell
 Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -TuningOption index
 ```
@@ -53,7 +53,7 @@ Lists all index recommendations in an Azure Database for PostgreSQL flexible ser
 If subscription is not passed explicitly, it's taken from default context.
 It includes any existing recommendations of CreateIndex, DropIndex or ReIndex.
 
-### Example 2: List all CreateIndex index recommendations in a server
+### Example 2: List all CreateIndex index recommendations in a flexible server
 ```powershell
 Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -TuningOption index -RecommendationType CreateIndex
 ```
@@ -75,7 +75,7 @@ CreateIndex_tpch_public_c_nationkey_c_m… tpch                 public          
 Lists all index recommendations of CreateIndex type in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
-### Example 3: List all DropIndex index recommendations in a server
+### Example 3: List all DropIndex index recommendations in a flexible server
 ```powershell
 Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -TuningOption index -RecommendationType DropIndex
 ```
@@ -93,7 +93,7 @@ DropIndex_duplicateIndexes_invalididxte… duplicateIndexes     invalididxtests 
 Lists all index recommendations of DropIndex type in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
-### Example 4: List all ReIndex index recommendations in a server
+### Example 4: List all ReIndex index recommendations in a flexible server
 ```powershell
 Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -TuningOption index -RecommendationType ReIndex
 ```
@@ -108,7 +108,7 @@ ReIndex_duplicateIndexes_invalididxtest… duplicateIndexes     invalididxtests 
 Lists all index recommendations of DropIndex type in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
-### Example 5: List all table recommendations in a server
+### Example 5: List all table recommendations in a flexible server
 ```powershell
 Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -TuningOption table
 ```
@@ -122,7 +122,7 @@ Lists all table recommendations in an Azure Database for PostgreSQL flexible ser
 If subscription is not passed explicitly, it's taken from default context.
 It includes any existing recommendations of AnalyzeTable, or VacuumTable.
 
-### Example 6: List all AnalyzeTable table recommendations in a server
+### Example 6: List all AnalyzeTable table recommendations in a flexible server
 ```powershell
 Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -TuningOption table -RecommendationType AnalyzeTable
 ```
@@ -135,7 +135,7 @@ Name                                     DetailDatabaseName   DetailSchema      
 Lists all table recommendations of AnalyzeTable type in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
-### Example 7: List all VacuumTable table recommendations in a server
+### Example 7: List all VacuumTable table recommendations in a flexible server
 ```powershell
 Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -TuningOption table -RecommendationType VacuumTable
 ```

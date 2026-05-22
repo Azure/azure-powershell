@@ -22,27 +22,19 @@ Lists the capabilities available in a given location for a specific subscription
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get flexible server capabilities in a location
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerCapabilitiesByLocation -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -Location example-location
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                        ZoneRedundantHaSupported  ZoneRedundantHaAndGeoBackupSupported  StorageAutoGrowthSupported  OnlineResizeSupported   GeoBackupSupported
+----                        ------------------------  ------------------------------------  --------------------------  ---------------------   ------------------
+FlexibleServerCapabilities  Enabled                   Enabled                               Enabled                     Enabled                 Enabled
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Gets capabilities in a location for a subscription explicitly passed as an arguments.
+If subscription is not passed explicitly, it's taken from default context.
 
 ## PARAMETERS
 

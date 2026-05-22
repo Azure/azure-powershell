@@ -1,4 +1,4 @@
-### Example 1: List all backups in a server
+### Example 1: List all backups in a flexible server
 ```powershell
 Get-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server
 ```
@@ -16,7 +16,7 @@ example-on-demand-backup-02    Customer On-Demand   3/25/2026 9:36:13 PM      Cu
 
 Lists all automatic and on demand backups in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments. If subscription is not passed explicitly, it's taken from default context.
 
-### Example 2: Get one backup in a server
+### Example 2: Get one backup in a flexible server
 ```powershell
 Get-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -BackupName example-on-demand-backup-02
 ```

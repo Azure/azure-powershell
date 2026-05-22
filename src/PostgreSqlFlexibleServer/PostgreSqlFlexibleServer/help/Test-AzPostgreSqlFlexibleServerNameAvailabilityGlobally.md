@@ -43,27 +43,41 @@ Checks the validity and availability of the given name, to assign it to a new se
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Check if a name is available or already used globally for a flexible server
 ```powershell
-{{ Add code here }}
+Test-AzPostgreSqlFlexibleServerNameAvailability -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -LocationName example-location -Name server-name -Type Microsoft.DBforPostgreSQL/flexibleServers
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+When name is available:
+
+Message       : 
+Name          : example-server
+NameAvailable : True
+Reason        : 
+Type          : Microsoft.DBforPostgreSQL/flexibleServers
+
+
+When name is already used:
+
+Message       : Specified server name is already used.
+Name          : example-server
+NameAvailable : False
+Reason        : AlreadyExists
+Type          : Microsoft.DBforPostgreSQL/flexibleServers
+
+
+When name is invalid:
+
+Message       : Specified server name contains unsupported characters or is too long. Server name must be no longer than 63 characters long, contain only lower-case characters or digits, cannot contain '.' or '_' characters and can't start or end with '-' character.
+Name          : example~server
+NameAvailable : False
+Reason        : Invalid
+Type          : Microsoft.DBforPostgreSQL/flexibleServers
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Checks if a name is available or already used for an Azure Database for PostgreSQL flexible server with resource type, server name, and subscription explicitly passed as an arguments.
+If subscription is not passed explicitly, it's taken from default context.
 
 ## PARAMETERS
 

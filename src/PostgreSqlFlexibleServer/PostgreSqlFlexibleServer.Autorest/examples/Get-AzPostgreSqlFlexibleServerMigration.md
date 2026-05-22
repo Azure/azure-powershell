@@ -1,4 +1,4 @@
-### Example 1: List all migrations in a server
+### Example 1: List all migrations in a flexible server
 ```powershell
 Get-AzPostgreSqlFlexibleServerMigration -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -MigrationListFilter All
 ```
@@ -12,7 +12,7 @@ example-migration-02 InProgress                              ValidateAndMigrate 
 
 Lists all migrations in an Azure Database for PostgreSQL flexible server with filter configured to retrieve active and inactive migrations, server name, resource group, and subscription explicitly passed as an arguments. If subscription is not passed explicitly, it's taken from default context. If the migration filter is not passed, it defaults to active migration only.
 
-### Example 1: List only active migration in a server
+### Example 1: List only active migration in a flexible server
 ```powershell
 Get-AzPostgreSqlFlexibleServerMigration -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -MigrationListFilter Active
 ```

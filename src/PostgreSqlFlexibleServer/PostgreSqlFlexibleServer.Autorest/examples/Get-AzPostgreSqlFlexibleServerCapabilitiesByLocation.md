@@ -1,4 +1,4 @@
-### Example 1: Get capabilities in a location
+### Example 1: Get flexible server capabilities in a location
 ```powershell
 Get-AzPostgreSqlFlexibleServerCapabilitiesByLocation -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -Location example-location
 ```

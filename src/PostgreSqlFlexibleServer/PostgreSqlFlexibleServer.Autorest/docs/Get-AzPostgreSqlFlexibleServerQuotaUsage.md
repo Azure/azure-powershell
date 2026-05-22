@@ -22,7 +22,7 @@ Get quota usages at specified location in a given subscription.
 
 ## EXAMPLES
 
-### Example 1: List all quotas in a subscription for a given location
+### Example 1: List all flexible server quotas in a subscription for a given location
 ```powershell
 Get-AzPostgreSqlFlexibleServerQuotaUsage -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -LocationName example-location
 ```

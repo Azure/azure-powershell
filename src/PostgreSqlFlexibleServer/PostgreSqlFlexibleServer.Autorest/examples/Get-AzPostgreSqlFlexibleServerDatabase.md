@@ -1,4 +1,4 @@
-### Example 1: Get one database in a server
+### Example 1: Get one database in a flexible server
 ```powershell
 Get-AzPostgreSqlFlexibleServerDatabase -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -Name example-database
 ```
@@ -11,7 +11,7 @@ example-database                    UTF8            en_US.utf8
 
 Gets one database in an Azure Database for PostgreSQL flexible server with database name, server name, resource group, and subscription explicitly passed as an arguments. If subscription is not passed explicitly, it's taken from default context.
 
-### Example 2: List all databases in a server
+### Example 2: List all databases in a flexible server
 ```powershell
 Get-AzPostgreSqlFlexibleServerDatabase -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server
 ```

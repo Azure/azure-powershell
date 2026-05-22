@@ -1,4 +1,4 @@
-### Example 1: Add a firewall rule to a server
+### Example 1: Add a firewall rule to a flexible server
 ```powershell
 New-AzPostgreSqlFlexibleServerFirewallRule -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -Name example-firewall-rule -StartIPAddress #.#.#.# -EndIPAddress #.#.#.#
 ```

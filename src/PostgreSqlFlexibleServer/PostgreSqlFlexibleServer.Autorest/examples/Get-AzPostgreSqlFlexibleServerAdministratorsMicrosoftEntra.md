@@ -1,4 +1,4 @@
-### Example 1: List all Microsoft Entra administrators in a server
+### Example 1: List all Microsoft Entra administrators in a flexible server
 ```powershell
 Get-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server
 ```
@@ -12,7 +12,7 @@ operations@contoso.com                   22222222-2222-2222-2222-222222222222   
 
 Lists all Microsoft Entra administrators in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments. If subscription is not passed explicitly, it's taken from default context.
 
-### Example 2: Get one Microsoft Entra administrator in a server
+### Example 2: Get one Microsoft Entra administrator in a flexible server
 ```powershell
 Get-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -ObjectId 00000000-0000-0000-0000-000000000000
 ```

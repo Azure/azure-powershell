@@ -44,7 +44,7 @@ Gets information about a firewall rule in a server.
 
 ## EXAMPLES
 
-### Example 1: List all firewall rules in a server
+### Example 1: List all firewall rules in a flexible server
 ```powershell
 Get-AzPostgreSqlFlexibleServerFirewallRule -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server
 ```
@@ -59,7 +59,7 @@ example-firewall-rule-02                 ###.###.###.###      ###.###.###.###
 Lists all firewall rules in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
-### Example 2: Get one firewall rule in a server
+### Example 2: Get one firewall rule in a flexible server
 ```powershell
 Get-AzPostgreSqlFlexibleServerFirewallRule -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -Name example-firewall-rule
 ```

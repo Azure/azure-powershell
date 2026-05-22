@@ -1,22 +1,20 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a flexible server
 ```powershell
-{{ Add code here }}
+Remove-AzPostgreSqlFlexibleServer -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
+Removes an Azure Database for PostgreSQL flexible server. If subscription is not passed explicitly, it's taken from default context.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove a flexible server corresponding to specific resource identifier
 ```powershell
-{{ Add code here }}
+$ID = "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/example-resource-group/providers/Microsoft.DBforPostgreSQL/flexibleServers/example-server"
+Remove-AzPostgreSqlFlexibleServer -InputObject $ID
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
-
+Removes an Azure Database for PostgreSQL flexible server with the specific resource identifier of the server, explicitly passed as an argument.

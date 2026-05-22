@@ -22,7 +22,7 @@ Gets the private DNS zone suffix.
 
 ## EXAMPLES
 
-### Example 1: Get the suffix that should be appended to private DNS zones
+### Example 1: Get the suffix that should be appended to private DNS zones for flexible server
 ```powershell
 Get-AzPostgreSqlFlexibleServerPrivateDnsZoneSuffix
 ```
