@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzRedisEnterpriseCacheAccessPolicyAssignment
 
 ## SYNOPSIS
-Creates/Updates a particular access policy assignment for a database
+Create a particular access policy assignment for a database
 
 ## SYNTAX
 
@@ -58,7 +58,7 @@ New-AzRedisEnterpriseCacheAccessPolicyAssignment -InputObject <IRedisEnterpriseC
 ```
 
 ## DESCRIPTION
-Creates/Updates a particular access policy assignment for a database
+Create a particular access policy assignment for a database
 
 ## EXAMPLES
 

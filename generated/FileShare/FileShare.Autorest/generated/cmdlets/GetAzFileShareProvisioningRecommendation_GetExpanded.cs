@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareProvisioningRecommendationResponse))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.Description(@"Get file shares provisioning parameters recommendation.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.FileShares/locations/{location}/getProvisioningRecommendation", ApiVersion = "2025-09-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.FileShares/locations/{location}/getProvisioningRecommendation", ApiVersion = "2026-06-01")]
     public partial class GetAzFileShareProvisioningRecommendation_GetExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IContext

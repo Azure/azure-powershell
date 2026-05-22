@@ -12,14 +12,14 @@ Updates the database Redis version to the latest available.
 
 ## SYNTAX
 
-### Update (Default)
+### Upgrade (Default)
 ```
 Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion -ClusterName <String> -DatabaseName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityRedisEnterprise
+### UpgradeViaIdentityRedisEnterprise
 ```
 Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion -DatabaseName <String>
  -RedisEnterpriseInputObject <IRedisEnterpriseCacheIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]

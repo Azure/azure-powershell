@@ -23,7 +23,7 @@ https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratelocalserve
 #>
 function New-AzMigrateLocalServerReplication {
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PreviewMessageAttribute("This cmdlet is based on a preview API version and may experience breaking changes in future releases.")]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJobModel])]
     [CmdletBinding(DefaultParameterSetName = 'ByIdDefaultUser', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'ByIdDefaultUser', Mandatory)]
@@ -73,13 +73,13 @@ function New-AzMigrateLocalServerReplication {
 
         [Parameter(ParameterSetName = 'ByIdPowerUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalDiskInput[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AzLocalDiskInput[]]
         # Specifies the disks on the source server to be included for replication.
         ${DiskToInclude},
 
         [Parameter(ParameterSetName = 'ByIdPowerUser', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalNicInput[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AzLocalNicInput[]]
         # Specifies the NICs on the source server to be included for replication.
         ${NicToInclude},
 
@@ -177,9 +177,6 @@ function New-AzMigrateLocalServerReplication {
         CheckResourceGraphModuleDependency
         CheckResourcesModuleDependency
 
-        $HasMachineId = $PSBoundParameters.ContainsKey('MachineId')
-        $HasTargetStoragePathId = $PSBoundParameters.ContainsKey('TargetStoragePathId')
-        $HasTargetResourceGroupId = $PSBoundParameters.ContainsKey('TargetResourceGroupId')
         $HasTargetVMCPUCore = $PSBoundParameters.ContainsKey('TargetVMCPUCore')
         $HasIsDynamicMemoryEnabled = $PSBoundParameters.ContainsKey('IsDynamicMemoryEnabled')
         if ($HasIsDynamicMemoryEnabled) {
@@ -212,7 +209,7 @@ function New-AzMigrateLocalServerReplication {
         $null = $PSBoundParameters.Add('ErrorAction', 'SilentlyContinue')
 
         # Validate ARM ID format from inputs
-        if ($HasMachineId -and !(Test-AzureResourceIdFormat -Data $MachineId -Format $IdFormats.MachineArmIdTemplate))
+        if (!(Test-AzureResourceIdFormat -Data $MachineId -Format $IdFormats.MachineArmIdTemplate))
         {
             throw New-InvalidResourceIdProvidedException `
                 -ResourceId $MachineId `
@@ -220,14 +217,14 @@ function New-AzMigrateLocalServerReplication {
                 -Format $IdFormats.MachineArmIdTemplate
         }
 
-        if ($HasTargetStoragePathId -and !(Test-AzureResourceIdFormat -Data $TargetStoragePathId -Format $IdFormats.StoragePathArmIdTemplate)) {
+        if (!(Test-AzureResourceIdFormat -Data $TargetStoragePathId -Format $IdFormats.StoragePathArmIdTemplate)) {
             throw New-InvalidResourceIdProvidedException `
                 -ResourceId $TargetStoragePathId `
                 -ResourceType "StorageContainer" `
                 -Format $IdFormats.StoragePathArmIdTemplate
         }
 
-        if ($HasTargetResourceGroupId -and !(Test-AzureResourceIdFormat -Data $TargetResourceGroupId -Format $IdFormats.ResourceGroupArmIdTemplate)) {
+        if (!(Test-AzureResourceIdFormat -Data $TargetResourceGroupId -Format $IdFormats.ResourceGroupArmIdTemplate)) {
             throw New-InvalidResourceIdProvidedException `
                 -ResourceId $TargetResourceGroupId `
                 -ResourceType "ResourceGroup" `
@@ -633,16 +630,16 @@ function New-AzMigrateLocalServerReplication {
         }
 
         # Construct create protected item request object
-        $protectedItemProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ProtectedItemModelProperties]::new()
+        $protectedItemProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ProtectedItemModelProperties]::new()
         $protectedItemProperties.PolicyName = $policyName
         $protectedItemProperties.ReplicationExtensionName = $replicationExtensionName
 
         if ($SiteType -eq $SiteTypes.HyperVSites) {     
-            $customProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHCIProtectedItemModelCustomProperties]::new()
+            $customProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.HyperVToAzStackHCIProtectedItemModelCustomProperties]::new()
             $isSourceDynamicMemoryEnabled = $machine.IsDynamicMemoryEnabled
         }
         elseif ($SiteType -eq $SiteTypes.VMwareSites) {  
-            $customProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHCIProtectedItemModelCustomProperties]::new()
+            $customProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareToAzStackHCIProtectedItemModelCustomProperties]::new()
             $isSourceDynamicMemoryEnabled = $false
         }
 
@@ -651,6 +648,34 @@ function New-AzMigrateLocalServerReplication {
         $customProperties.FabricDiscoveryMachineId = $machine.Id
         $customProperties.RunAsAccountId = $runAsAccountId
         $customProperties.SourceFabricAgentName = $sourceDra.Name
+
+        # Validate storage path exists and is in a usable state
+        $storagePath = Get-AzResource `
+            -ResourceId $TargetStoragePathId `
+            -ErrorVariable notPresent `
+            -ErrorAction SilentlyContinue
+        if ($null -eq $storagePath) {
+            throw "Storage path with Id '$TargetStoragePathId' not found. Please provide a valid storage path ARM ID."
+        }
+
+        # Creation must have succeeded for the storage path to be usable
+        $creationStatus = $storagePath.Properties.status.provisioningStatus.status
+        if ([string]::IsNullOrEmpty($creationStatus)) {
+            throw "Storage path '$($storagePath.Name)' creation status is unavailable. Please verify the storage path resource is fully provisioned."
+        }
+        if ($creationStatus -ne "Succeeded") {
+            throw "Storage path '$($storagePath.Name)' has a creation provisioning status of '$creationStatus'. Only storage paths with a successful creation can be used. Please select a different storage path or wait for provisioning to complete."
+        }
+
+        # The latest operation (ProvisioningState) must also be Succeeded
+        $provisioningState = $storagePath.Properties.provisioningState
+        if ([string]::IsNullOrEmpty($provisioningState)) {
+            throw "Storage path '$($storagePath.Name)' provisioning state is unavailable. Please verify the storage path resource is fully provisioned."
+        }
+        if ($provisioningState -ne "Succeeded") {
+            throw "Storage path '$($storagePath.Name)' has a provisioning state of '$provisioningState'. Only storage paths with a 'Succeeded' provisioning state can be used. Please resolve the issue or select a different storage path."
+        }
+
         $customProperties.StorageContainerId = $TargetStoragePathId
         $customProperties.TargetArcClusterCustomLocationId = $arbArgResult.CustomLocation
         $customProperties.TargetFabricAgentName = $targetDra.Name
@@ -710,7 +735,7 @@ function New-AzMigrateLocalServerReplication {
         }
 
         # Construct default dynamic memory config
-        $memoryConfig = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ProtectedItemDynamicMemoryConfig]::new()
+        $memoryConfig = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ProtectedItemDynamicMemoryConfig]::new()
         $memoryConfig.MinimumMemoryInMegaByte = [System.Math]::Min($customProperties.TargetMemoryInMegaByte, $RAMConfig.DefaultMinDynamicMemoryInMB)
         $memoryConfig.MaximumMemoryInMegaByte = [System.Math]::Max($customProperties.TargetMemoryInMegaByte, $RAMConfig.DefaultMaxDynamicMemoryInMB)
         $memoryConfig.TargetMemoryBufferPercentage = $RAMConfig.DefaultTargetMemoryBufferPercentage
@@ -835,12 +860,12 @@ function New-AzMigrateLocalServerReplication {
         }
 
         if ($SiteType -eq $SiteTypes.HyperVSites) {     
-            $customProperties.DisksToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHCIDiskInput[]]$disks
-            $customProperties.NicsToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHCINicInput[]]$nics
+            $customProperties.DisksToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.HyperVToAzStackHCIDiskInput[]]$disks
+            $customProperties.NicsToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.HyperVToAzStackHCINicInput[]]$nics
         }
         elseif ($SiteType -eq $SiteTypes.VMwareSites) {     
-            $customProperties.DisksToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHCIDiskInput[]]$disks
-            $customProperties.NicsToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHCINicInput[]]$nics
+            $customProperties.DisksToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareToAzStackHCIDiskInput[]]$disks
+            $customProperties.NicsToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareToAzStackHCINicInput[]]$nics
         }
         
         $protectedItemProperties.CustomProperty = $customProperties

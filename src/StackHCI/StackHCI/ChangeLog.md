@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.7.1
+* Fixed single node registration scenario.
+
 ## Version 2.7.0
 * Updated preannouncement breaking changes date to May 2026.
 * Optimized cluster registration, significantly reducing registration time on large clusters.

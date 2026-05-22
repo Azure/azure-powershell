@@ -1,0 +1,41 @@
+{
+  "Get-AzAppConfigurationRevision+[NoContext]+Get+$GET+https://sanitized.azconfig.io/revisions?api-version=2024-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://sanitized.azconfig.io/revisions?api-version=2024-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-client-request-id": [ "192fceaa-dded-4762-a9ea-ebdcbb446640" ],
+        "CommandName": [ "Get-AzAppConfigurationRevision" ],
+        "FullCommandName": [ "Get-AzAppConfigurationRevision_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.5.5", "Az.AppConfigurationdata/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Date": [ "Thu, 16 Apr 2026 21:52:13 GMT" ],
+        "Transfer-Encoding": [ "chunked" ],
+        "Connection": [ "keep-alive" ],
+        "Accept-Ranges": [ "items" ],
+        "ETag": [ "\"gNjiPr1R6nEQprDMhQ-W-u7WQeflqLYzSITbpvMI31c\"" ],
+        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkyMzk=;sn=79279239" ],
+        "x-ms-request-id": [ "7d6f9a07-9e62-4123-9283-8ea56f5bb70f" ],
+        "x-ms-correlation-request-id": [ "7d6f9a07-9e62-4123-9283-8ea56f5bb70f" ],
+        "x-ms-date": [ "Thu, 16 Apr 2026 21:52:13 GMT" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Access-Control-Allow-Origin": [ "*" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/vnd.microsoft.appconfig.kvset+json; charset=utf-8" ]
+      },
+      "Content": "{\"etag\":\"gNjiPr1R6nEQprDMhQ-W-u7WQeflqLYzSITbpvMI31c\",\"items\":[{\"etag\":\"QzYPa9H6FnQ3HAeT3K6EGBdRk7fPlriFYWhzPd1EpPA\",\"key\":\"2wcg\",\"label\":null,\"content_type\":null,\"value\":\"value3\",\"tags\":{},\"locked\":true,\"last_modified\":\"2026-04-16T21:51:38+00:00\"},{\"etag\":\"Ycj9oFydl0P1_ILEaacbPFowF36Le8NeeLpRRLtDB3E\",\"key\":\"2wcg\",\"label\":null,\"content_type\":null,\"value\":\"value3\",\"tags\":{},\"locked\":false,\"last_modified\":\"2026-04-16T21:51:38+00:00\"},{\"etag\":\"ErEJeQVf1BW4QkI8cOFTTGiocKZk6pdkTUmCVlRfNvI\",\"key\":\"2wcg\",\"label\":null,\"content_type\":null,\"value\":\"value2\",\"tags\":{},\"locked\":false,\"last_modified\":\"2026-04-16T21:51:36+00:00\"},{\"etag\":\"FkJdY_hDOrHDxgbndjLGjHHbe7otDTkrD33VQ1EPEbw\",\"key\":\"2wcg\",\"label\":null,\"content_type\":null,\"value\":\"value3\",\"tags\":{},\"locked\":false,\"last_modified\":\"2026-04-16T21:51:36+00:00\"},{\"etag\":\"KPhDImqZ6QGFrrnZTgHMU9kgQfXDRoaZXL0anq9J9JY\",\"key\":\"2wcg\",\"label\":\"test\",\"content_type\":null,\"value\":\"9g70cdjrze4s326u\",\"tags\":{},\"locked\":false,\"last_modified\":\"2026-04-16T21:51:35+00:00\"}]}",
+      "isContentBase64": false
+    }
+  }
+}

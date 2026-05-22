@@ -175,6 +175,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Internal Acessors for RestorePolicyMinRestoreTime</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal.RestorePolicyMinRestoreTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IRestorePolicyPropertiesInternal)RestorePolicy).MinRestoreTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IRestorePolicyPropertiesInternal)RestorePolicy).MinRestoreTime = value ?? default(global::System.DateTime); }
 
+        /// <summary>Internal Acessors for StaticWebsite</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStaticWebsite Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBlobServiceProperties1Internal.StaticWebsite { get => (this._staticWebsite = this._staticWebsite ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StaticWebsite()); set { {_staticWebsite = value;} } }
+
         /// <summary>Backing field for <see cref="RestorePolicy" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IRestorePolicyProperties _restorePolicy;
 
@@ -199,6 +202,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Returns the minimum date and time that the restore can be started.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
         public global::System.DateTime? RestorePolicyMinRestoreTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IRestorePolicyPropertiesInternal)RestorePolicy).MinRestoreTime; }
+
+        /// <summary>Backing field for <see cref="StaticWebsite" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStaticWebsite _staticWebsite;
+
+        /// <summary>The static website properties for blob storage.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStaticWebsite StaticWebsite { get => (this._staticWebsite = this._staticWebsite ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StaticWebsite()); set => this._staticWebsite = value; }
+
+        /// <summary>
+        /// The absolute path where the default index file is present. This absolute path is mutually exclusive to "indexDocument"
+        /// and it is case-sensitive.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public string StaticWebsiteDefaultIndexDocumentPath { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStaticWebsiteInternal)StaticWebsite).DefaultIndexDocumentPath; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStaticWebsiteInternal)StaticWebsite).DefaultIndexDocumentPath = value ?? null; }
+
+        /// <summary>Indicates whether static website support is enabled for the specified account.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public bool? StaticWebsiteEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStaticWebsiteInternal)StaticWebsite).Enabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStaticWebsiteInternal)StaticWebsite).Enabled = value ?? default(bool); }
+
+        /// <summary>
+        /// The absolute path to a webpage that Azure Storage serves for requests that don't correspond to an existing file. The contents
+        /// of the page are returned with HTTP 404 Not Found. Only a single custom 404 page is supported in each static website.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public string StaticWebsiteErrorDocument404Path { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStaticWebsiteInternal)StaticWebsite).ErrorDocument404Path; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStaticWebsiteInternal)StaticWebsite).ErrorDocument404Path = value ?? null; }
+
+        /// <summary>
+        /// The webpage that Azure Storage serves for requests to the root of a website or any subfolder (for example, index.html).
+        /// The value is case-sensitive.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public string StaticWebsiteIndexDocument { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStaticWebsiteInternal)StaticWebsite).IndexDocument; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStaticWebsiteInternal)StaticWebsite).IndexDocument = value ?? null; }
 
         /// <summary>Creates an new <see cref="BlobServiceProperties1" /> instance.</summary>
         public BlobServiceProperties1()
@@ -460,6 +495,59 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"minRestoreTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? RestorePolicyMinRestoreTime { get;  }
+        /// <summary>
+        /// The absolute path where the default index file is present. This absolute path is mutually exclusive to "indexDocument"
+        /// and it is case-sensitive.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The absolute path where the default index file is present. This absolute path is mutually exclusive to ""indexDocument"" and it is case-sensitive.",
+        SerializedName = @"defaultIndexDocumentPath",
+        PossibleTypes = new [] { typeof(string) })]
+        string StaticWebsiteDefaultIndexDocumentPath { get; set; }
+        /// <summary>Indicates whether static website support is enabled for the specified account.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates whether static website support is enabled for the specified account.",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? StaticWebsiteEnabled { get; set; }
+        /// <summary>
+        /// The absolute path to a webpage that Azure Storage serves for requests that don't correspond to an existing file. The contents
+        /// of the page are returned with HTTP 404 Not Found. Only a single custom 404 page is supported in each static website.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The absolute path to a webpage that Azure Storage serves for requests that don't correspond to an existing file. The contents of the page are returned with HTTP 404 Not Found. Only a single custom 404 page is supported in each static website.",
+        SerializedName = @"errorDocument404Path",
+        PossibleTypes = new [] { typeof(string) })]
+        string StaticWebsiteErrorDocument404Path { get; set; }
+        /// <summary>
+        /// The webpage that Azure Storage serves for requests to the root of a website or any subfolder (for example, index.html).
+        /// The value is case-sensitive.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The webpage that Azure Storage serves for requests to the root of a website or any subfolder (for example, index.html). The value is case-sensitive.",
+        SerializedName = @"indexDocument",
+        PossibleTypes = new [] { typeof(string) })]
+        string StaticWebsiteIndexDocument { get; set; }
 
     }
     /// The properties of a storage account’s Blob service.
@@ -551,6 +639,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         global::System.DateTime? RestorePolicyLastEnabledTime { get; set; }
         /// <summary>Returns the minimum date and time that the restore can be started.</summary>
         global::System.DateTime? RestorePolicyMinRestoreTime { get; set; }
+        /// <summary>The static website properties for blob storage.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStaticWebsite StaticWebsite { get; set; }
+        /// <summary>
+        /// The absolute path where the default index file is present. This absolute path is mutually exclusive to "indexDocument"
+        /// and it is case-sensitive.
+        /// </summary>
+        string StaticWebsiteDefaultIndexDocumentPath { get; set; }
+        /// <summary>Indicates whether static website support is enabled for the specified account.</summary>
+        bool? StaticWebsiteEnabled { get; set; }
+        /// <summary>
+        /// The absolute path to a webpage that Azure Storage serves for requests that don't correspond to an existing file. The contents
+        /// of the page are returned with HTTP 404 Not Found. Only a single custom 404 page is supported in each static website.
+        /// </summary>
+        string StaticWebsiteErrorDocument404Path { get; set; }
+        /// <summary>
+        /// The webpage that Azure Storage serves for requests to the root of a website or any subfolder (for example, index.html).
+        /// The value is case-sensitive.
+        /// </summary>
+        string StaticWebsiteIndexDocument { get; set; }
 
     }
 }

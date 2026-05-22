@@ -50,6 +50,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// value cannot be larger than 1023.
         /// </param>
 
+        /// <param name="storageFaultDomainAlignment">Specifies the storage fault domain alignment type for the disk.
+        /// Possible values include: &#39;Aligned&#39;, &#39;BestEffortAligned&#39;</param>
+
         /// <param name="managedDisk">The managed disk parameters.
         /// </param>
 
@@ -71,7 +74,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// retained after VMSS Flex VM is deleted.&lt;br&gt;&lt;br&gt; The default value is set to
         /// **Delete**.
         /// Possible values include: &#39;Delete&#39;, &#39;Detach&#39;</param>
-        public VirtualMachineScaleSetDataDisk(int lun, string createOption, string name = default(string), CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), int? diskSizeGb = default(int?), VirtualMachineScaleSetManagedDiskParameters managedDisk = default(VirtualMachineScaleSetManagedDiskParameters), long? diskIopsReadWrite = default(long?), long? diskMBpsReadWrite = default(long?), string deleteOption = default(string))
+        public VirtualMachineScaleSetDataDisk(int lun, string createOption, string name = default(string), CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), int? diskSizeGb = default(int?), string storageFaultDomainAlignment = default(string), VirtualMachineScaleSetManagedDiskParameters managedDisk = default(VirtualMachineScaleSetManagedDiskParameters), long? diskIopsReadWrite = default(long?), long? diskMBpsReadWrite = default(long?), string deleteOption = default(string))
 
         {
             this.Name = name;
@@ -80,6 +83,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.WriteAcceleratorEnabled = writeAcceleratorEnabled;
             this.CreateOption = createOption;
             this.DiskSizeGB = diskSizeGb;
+            this.StorageFaultDomainAlignment = storageFaultDomainAlignment;
             this.ManagedDisk = managedDisk;
             this.DiskIOPSReadWrite = diskIopsReadWrite;
             this.DiskMBpsReadWrite = diskMBpsReadWrite;
@@ -138,6 +142,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         public int? DiskSizeGB {get; set; }
 
         /// <summary>
+        /// Gets or sets specifies the storage fault domain alignment type for the
+        /// disk. Possible values include: &#39;Aligned&#39;, &#39;BestEffortAligned&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "storageFaultDomainAlignment")]
+        public string StorageFaultDomainAlignment {get; set; }
+
+        /// <summary>
         /// Gets or sets the managed disk parameters.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "managedDisk")]
@@ -182,6 +193,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "CreateOption");
             }
+
 
 
 

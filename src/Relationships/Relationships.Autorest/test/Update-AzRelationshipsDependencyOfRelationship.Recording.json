@@ -1,0 +1,368 @@
+{
+  "Update-AzRelationshipsDependencyOfRelationship+[NoContext]+UpdateExpanded+$GET+https://management.azure.com//subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreluptodg1kq?api-version=2023-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreluptodg1kq?api-version=2023-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "74" ],
+        "x-ms-client-request-id": [ "749242d6-3e00-443c-a2e4-232673d0b9e4" ],
+        "CommandName": [ "Update-AzRelationshipsDependencyOfRelationship" ],
+        "FullCommandName": [ "Update-AzRelationshipsDependencyOfRelationship_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.6.1", "Az.Relationships/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Id": [ "fddd520c-f6f7-4b72-89de-e2509c369b09" ],
+        "x-ba-restapi": [ "3.2026.0404.1" ],
+        "x-ms-request-id": [ "westus2:fddd520c-f6f7-4b72-89de-e2509c369b09" ],
+        "mise-correlation-id": [ "9d5eecf0-d748-41d4-97f6-72b0db46eea5" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2c4638e2-9343-4565-be89-cbdad9762f57/westus2/ea2ec98b-0c2a-43ef-ae2a-744cdd54fb54" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "1e8e1102-9cf3-4d70-9f3b-20cc8b139b0b" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260427T142452Z:1e8e1102-9cf3-4d70-9f3b-20cc8b139b0b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 26410B39A7BA4240AC756942061A3CEC Ref B: BN1AA2051012017 Ref C: 2026-04-27T14:24:51Z" ],
+        "Date": [ "Mon, 27 Apr 2026 14:24:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "736" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"targetId\":\"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-sgm-odg1kq\",\"sourceId\":\"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq\",\"targetTenant\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"metadata\":{\"sourceType\":\"Microsoft.Resources/subscriptions/resourceGroups\",\"targetType\":\"Microsoft.Resources/subscriptions/resourceGroups\"},\"originInformation\":{\"relationshipOriginType\":\"UserExplicitlyCreated\"},\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreluptodg1kq\",\"name\":\"depreluptodg1kq\",\"type\":\"Microsoft.Relationships/dependencyOf\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzRelationshipsDependencyOfRelationship+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com//subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreluptodg1kq?api-version=2023-09-01-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com//subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreluptodg1kq?api-version=2023-09-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"targetId\": \"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-sgm-odg1kq\",\r\n    \"targetTenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "193" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Id": [ "f4d607fa-f6d7-408c-ac0b-2ce1b07b1f6b" ],
+        "x-ba-restapi": [ "3.2026.0404.1" ],
+        "x-ms-request-id": [ "westus2:f4d607fa-f6d7-408c-ac0b-2ce1b07b1f6b" ],
+        "mise-correlation-id": [ "d9c772e1-86b5-417c-abb1-9c63654a1e8d" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2c4638e2-9343-4565-be89-cbdad9762f57/westus2/97d71700-8f20-4d51-bb55-fd62a9b31a26" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "28d90c5a-ffb1-441c-bb63-c0a10b3ca61a" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260427T142453Z:28d90c5a-ffb1-441c-bb63-c0a10b3ca61a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9EC7F4EBD15E47C1ADF6BF0B266CA776 Ref B: BN1AA2051012017 Ref C: 2026-04-27T14:24:52Z" ],
+        "Date": [ "Mon, 27 Apr 2026 14:24:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "736" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"targetId\":\"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-sgm-odg1kq\",\"sourceId\":\"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq\",\"targetTenant\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"metadata\":{\"sourceType\":\"Microsoft.Resources/subscriptions/resourceGroups\",\"targetType\":\"Microsoft.Resources/subscriptions/resourceGroups\"},\"originInformation\":{\"relationshipOriginType\":\"UserExplicitlyCreated\"},\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreluptodg1kq\",\"name\":\"depreluptodg1kq\",\"type\":\"Microsoft.Relationships/dependencyOf\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzRelationshipsDependencyOfRelationship+[NoContext]+UpdateExpanded+$GET+https://management.azure.com//subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreluptodg1kq?api-version=2023-09-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreluptodg1kq?api-version=2023-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "76" ],
+        "x-ms-client-request-id": [ "749242d6-3e00-443c-a2e4-232673d0b9e4" ],
+        "CommandName": [ "Update-AzRelationshipsDependencyOfRelationship" ],
+        "FullCommandName": [ "Update-AzRelationshipsDependencyOfRelationship_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.6.1", "Az.Relationships/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Id": [ "eba4c111-bdec-45b0-9266-320aa19a755b" ],
+        "x-ba-restapi": [ "3.2026.0404.1" ],
+        "x-ms-request-id": [ "westus2:eba4c111-bdec-45b0-9266-320aa19a755b" ],
+        "mise-correlation-id": [ "c8899762-154d-4c30-9313-c77ad18ac059" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2c4638e2-9343-4565-be89-cbdad9762f57/westus2/d6a13f7e-c06f-4e02-b7fa-8d3305cbb2fa" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "123a9783-e583-4b87-8de6-60a7d5f85b0c" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260427T142523Z:123a9783-e583-4b87-8de6-60a7d5f85b0c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D2AD37FF0BDC4A859F591C51833A3E22 Ref B: BN1AA2051012017 Ref C: 2026-04-27T14:25:23Z" ],
+        "Date": [ "Mon, 27 Apr 2026 14:25:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "736" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"targetId\":\"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-sgm-odg1kq\",\"sourceId\":\"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq\",\"targetTenant\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"metadata\":{\"sourceType\":\"Microsoft.Resources/subscriptions/resourceGroups\",\"targetType\":\"Microsoft.Resources/subscriptions/resourceGroups\"},\"originInformation\":{\"relationshipOriginType\":\"UserExplicitlyCreated\"},\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreluptodg1kq\",\"name\":\"depreluptodg1kq\",\"type\":\"Microsoft.Relationships/dependencyOf\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzRelationshipsDependencyOfRelationship+[NoContext]+UpdateExpanded+$GET+https://management.azure.com//subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreluptodg1kq?api-version=2023-09-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreluptodg1kq?api-version=2023-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "77" ],
+        "x-ms-client-request-id": [ "749242d6-3e00-443c-a2e4-232673d0b9e4" ],
+        "CommandName": [ "Update-AzRelationshipsDependencyOfRelationship" ],
+        "FullCommandName": [ "Update-AzRelationshipsDependencyOfRelationship_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.6.1", "Az.Relationships/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Id": [ "37a86712-3417-40bc-82dd-8e63b96ed3b1" ],
+        "x-ba-restapi": [ "3.2026.0404.1" ],
+        "x-ms-request-id": [ "westus2:37a86712-3417-40bc-82dd-8e63b96ed3b1" ],
+        "mise-correlation-id": [ "3f97ef46-e739-40ca-bac6-0a84f79dd8c9" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2c4638e2-9343-4565-be89-cbdad9762f57/westus2/c23e4f8e-f209-4458-9a22-a0af6d4e21e8" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "59ca4783-24c4-4186-a16c-8fb386e3c43f" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260427T142524Z:59ca4783-24c4-4186-a16c-8fb386e3c43f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A179CA8EDA694D87BDEE3183EFB474D0 Ref B: BN1AA2051012017 Ref C: 2026-04-27T14:25:23Z" ],
+        "Date": [ "Mon, 27 Apr 2026 14:25:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "736" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"targetId\":\"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-sgm-odg1kq\",\"sourceId\":\"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq\",\"targetTenant\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"metadata\":{\"sourceType\":\"Microsoft.Resources/subscriptions/resourceGroups\",\"targetType\":\"Microsoft.Resources/subscriptions/resourceGroups\"},\"originInformation\":{\"relationshipOriginType\":\"UserExplicitlyCreated\"},\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreluptodg1kq\",\"name\":\"depreluptodg1kq\",\"type\":\"Microsoft.Relationships/dependencyOf\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzRelationshipsDependencyOfRelationship+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com//subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreluptodg1kq?api-version=2023-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreluptodg1kq?api-version=2023-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "78" ],
+        "x-ms-client-request-id": [ "0ec72224-b04a-4e0b-a421-957a1e3f6be8" ],
+        "CommandName": [ "Update-AzRelationshipsDependencyOfRelationship" ],
+        "FullCommandName": [ "Update-AzRelationshipsDependencyOfRelationship_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.6.1", "Az.Relationships/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Id": [ "7192658b-e243-415b-8046-35a9615ff622" ],
+        "x-ba-restapi": [ "3.2026.0404.1" ],
+        "x-ms-request-id": [ "westus2:7192658b-e243-415b-8046-35a9615ff622" ],
+        "mise-correlation-id": [ "02cc8013-ce49-44c2-9e42-fb77bec74c94" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2c4638e2-9343-4565-be89-cbdad9762f57/westus2/7cec6015-57e9-4569-b5c2-ef539b519db9" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "f9d1d63b-6b18-4f3e-8eee-c1300003d1b4" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260427T142524Z:f9d1d63b-6b18-4f3e-8eee-c1300003d1b4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 609A43DA1ADB42C3A0F4A5ACCDC83AEA Ref B: BN1AA2051012017 Ref C: 2026-04-27T14:25:24Z" ],
+        "Date": [ "Mon, 27 Apr 2026 14:25:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "736" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"targetId\":\"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-sgm-odg1kq\",\"sourceId\":\"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq\",\"targetTenant\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"metadata\":{\"sourceType\":\"Microsoft.Resources/subscriptions/resourceGroups\",\"targetType\":\"Microsoft.Resources/subscriptions/resourceGroups\"},\"originInformation\":{\"relationshipOriginType\":\"UserExplicitlyCreated\"},\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreluptodg1kq\",\"name\":\"depreluptodg1kq\",\"type\":\"Microsoft.Relationships/dependencyOf\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzRelationshipsDependencyOfRelationship+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com//subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreluptodg1kq?api-version=2023-09-01-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com//subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreluptodg1kq?api-version=2023-09-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"targetId\": \"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-sgm-odg1kq\",\r\n    \"targetTenant\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "193" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Id": [ "ae127974-d93a-47af-a114-c514e1186f24" ],
+        "x-ba-restapi": [ "3.2026.0404.1" ],
+        "x-ms-request-id": [ "westus2:ae127974-d93a-47af-a114-c514e1186f24" ],
+        "mise-correlation-id": [ "0288cb9c-c4aa-499b-91d4-87c485da2476" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2c4638e2-9343-4565-be89-cbdad9762f57/westus2/59153b82-92a0-4628-a307-e4f6a23ccf17" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "fa24f8a8-8f95-4885-8fdb-138f859eb0dd" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260427T142525Z:fa24f8a8-8f95-4885-8fdb-138f859eb0dd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F075AE0AC5C9447A8652958665CC73A3 Ref B: BN1AA2051012017 Ref C: 2026-04-27T14:25:25Z" ],
+        "Date": [ "Mon, 27 Apr 2026 14:25:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "736" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"targetId\":\"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-sgm-odg1kq\",\"sourceId\":\"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq\",\"targetTenant\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"metadata\":{\"sourceType\":\"Microsoft.Resources/subscriptions/resourceGroups\",\"targetType\":\"Microsoft.Resources/subscriptions/resourceGroups\"},\"originInformation\":{\"relationshipOriginType\":\"UserExplicitlyCreated\"},\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreluptodg1kq\",\"name\":\"depreluptodg1kq\",\"type\":\"Microsoft.Relationships/dependencyOf\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzRelationshipsDependencyOfRelationship+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com//subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreluptodg1kq?api-version=2023-09-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreluptodg1kq?api-version=2023-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "80" ],
+        "x-ms-client-request-id": [ "0ec72224-b04a-4e0b-a421-957a1e3f6be8" ],
+        "CommandName": [ "Update-AzRelationshipsDependencyOfRelationship" ],
+        "FullCommandName": [ "Update-AzRelationshipsDependencyOfRelationship_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.6.1", "Az.Relationships/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Id": [ "7c193cbb-c4ef-40b9-b816-7a5e4c4474b4" ],
+        "x-ba-restapi": [ "3.2026.0404.1" ],
+        "x-ms-request-id": [ "westus2:7c193cbb-c4ef-40b9-b816-7a5e4c4474b4" ],
+        "mise-correlation-id": [ "b7365ef7-aea6-45fe-91d8-a1cf7d9a3bbd" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2c4638e2-9343-4565-be89-cbdad9762f57/westus2/c07507f3-cd82-494f-b32f-dbe247b61a26" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "ae7a6f41-961f-45d8-bf60-900e5abffe25" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260427T142556Z:ae7a6f41-961f-45d8-bf60-900e5abffe25" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 47BF097C535F4972A5EABE69C7389F70 Ref B: BN1AA2051012017 Ref C: 2026-04-27T14:25:55Z" ],
+        "Date": [ "Mon, 27 Apr 2026 14:25:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "736" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"targetId\":\"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-sgm-odg1kq\",\"sourceId\":\"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq\",\"targetTenant\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"metadata\":{\"sourceType\":\"Microsoft.Resources/subscriptions/resourceGroups\",\"targetType\":\"Microsoft.Resources/subscriptions/resourceGroups\"},\"originInformation\":{\"relationshipOriginType\":\"UserExplicitlyCreated\"},\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreluptodg1kq\",\"name\":\"depreluptodg1kq\",\"type\":\"Microsoft.Relationships/dependencyOf\"}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzRelationshipsDependencyOfRelationship+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com//subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreluptodg1kq?api-version=2023-09-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreluptodg1kq?api-version=2023-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "81" ],
+        "x-ms-client-request-id": [ "0ec72224-b04a-4e0b-a421-957a1e3f6be8" ],
+        "CommandName": [ "Update-AzRelationshipsDependencyOfRelationship" ],
+        "FullCommandName": [ "Update-AzRelationshipsDependencyOfRelationship_UpdateViaIdentityExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.6.1", "Az.Relationships/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Request-Id": [ "0cb31283-b093-4bad-9765-557afce2d05c" ],
+        "x-ba-restapi": [ "3.2026.0404.1" ],
+        "x-ms-request-id": [ "westus2:0cb31283-b093-4bad-9765-557afce2d05c" ],
+        "mise-correlation-id": [ "702fb65f-84b3-43fe-91c3-ceb5be2c0782" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2c4638e2-9343-4565-be89-cbdad9762f57/westus2/bbd9b07a-8644-495b-be1a-98ef07d2214e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "d4331e5e-5b4c-440c-a90d-cea2ecef903a" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260427T142556Z:d4331e5e-5b4c-440c-a90d-cea2ecef903a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4B196FCD420F4DEAB2442DE5C2368647 Ref B: BN1AA2051012017 Ref C: 2026-04-27T14:25:56Z" ],
+        "Date": [ "Mon, 27 Apr 2026 14:25:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "736" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"targetId\":\"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-sgm-odg1kq\",\"sourceId\":\"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq\",\"targetTenant\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"metadata\":{\"sourceType\":\"Microsoft.Resources/subscriptions/resourceGroups\",\"targetType\":\"Microsoft.Resources/subscriptions/resourceGroups\"},\"originInformation\":{\"relationshipOriginType\":\"UserExplicitlyCreated\"},\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/453e692a-e16d-441c-bce6-10753115561d/resourceGroups/rg-rel-dep-odg1kq/providers/Microsoft.Relationships/dependencyOf/depreluptodg1kq\",\"name\":\"depreluptodg1kq\",\"type\":\"Microsoft.Relationships/dependencyOf\"}",
+      "isContentBase64": false
+    }
+  }
+}

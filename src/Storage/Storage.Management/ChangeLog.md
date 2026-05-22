@@ -18,6 +18,20 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated the prompt message for user confirmation of long running account migration operation in `Start-AzStorageAccountMigration`
+* Added Storage task assignment TriggerType new value MockRun in `New/Update-AzStorageTaskAssignment`
+* Fixed `Get-AzStorageFileContent` and `Set-AzStorageFileContent`
+* Added Smart access tier and AllowedCopyScope 'All' support in `New/Set-AzStorageAccount`
+* Added static website configuration in `Update-AzStorageBlobServiceProperty`
+* Added tags replication in `Set-AzStorageObjectReplicationPolicy`
+
+## Version 9.6.1
+* Removed breaking change warnings for TLS 1.0 and TLS 1.1 deprecation
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Updated MinimumTlsVersion parameter description to note that TLS 1.3 is not yet supported
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
 
 ## Version 9.6.0
 * Supported encryption in transit in file service properties 

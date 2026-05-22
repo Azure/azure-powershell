@@ -130,9 +130,6 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
         Import-Module Az.Resources
         Import-Module Az.Storage
 
-        $hasCacheStorageAccountId = $PSBoundParameters.ContainsKey('CacheStorageAccountId')
-
-        $parameterSetName = $PSCmdlet.ParameterSetName
         $null = $PSBoundParameters.Remove('ResourceGroupName')
         $null = $PSBoundParameters.Remove('ProjectName')
         $null = $PSBoundParameters.Remove('CacheStorageAccountId')
@@ -143,14 +140,19 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
         $null = $PSBoundParameters.Add('ErrorVariable', 'notPresent')
         $null = $PSBoundParameters.Add('ErrorAction', 'SilentlyContinue')
 
-        # Get subscription Id
+        # Validate Azure login
         $context = Get-AzContext
+        if ($null -eq $context -or $null -eq $context.Account) {
+            throw "Not logged in to Azure. Please run 'Connect-AzAccount' before running this command."
+        }
+
+        # Get subscription Id
         if ([string]::IsNullOrEmpty($SubscriptionId)) {
             Write-Host "No -SubscriptionId provided. Using the one from Get-AzContext."
 
             $SubscriptionId = $context.Subscription.Id
             if ([string]::IsNullOrEmpty($SubscriptionId)) {
-                throw "Please login to Azure to select a subscription."
+                throw "No subscription selected. Please run 'Set-AzContext -SubscriptionId <id>' or provide -SubscriptionId."
             }
         }
         Write-Host "*Selected Subscription Id: '$($SubscriptionId)'"
@@ -164,34 +166,6 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             throw "Resource group '$($ResourceGroupName)' does not exist in the subscription. Please create the resource group and try again."
         }
         Write-Host "*Selected Resource Group: '$($ResourceGroupName)'"
-
-        # Verify user validity
-        $userObject = Get-AzADUser -UserPrincipalName $context.Subscription.ExtendedProperties.Account
-
-        if (-not $userObject) {
-            $userObject = Get-AzADUser -Mail $context.Subscription.ExtendedProperties.Account
-        }
-
-        if (-not $userObject) {
-            $mailNickname = "{0}#EXT#" -f $($context.Account.Id -replace '@', '_')
-
-            $userObject = Get-AzADUser | 
-            Where-Object { $_.MailNickname -eq $mailNickname }
-        }
-
-        if (-not $userObject) {
-            if ($context.Account.Id.StartsWith("MSI@")) {
-                $hostname = $env:COMPUTERNAME
-                $userObject = Get-AzADServicePrincipal -DisplayName $hostname
-            }
-            else {
-                $userObject = Get-AzADServicePrincipal -ApplicationID $context.Account.Id
-            }
-        }
-
-        if (-not $userObject) {
-            throw 'User Object Id Not Found!'
-        }
 
         # Get Migrate Project with ResourceGroupName, Name
         $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
@@ -469,12 +443,12 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             }
 
             # Setup Policy deployment parameters
-            $policyProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.PolicyModelProperties]::new()
+            $policyProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.PolicyModelProperties]::new()
             if ($instanceType -eq $AzLocalInstanceTypes.HyperVToAzLocal) {
-                $policyCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHcipolicyModelCustomProperties]::new()
+                $policyCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.HyperVToAzStackHcipolicyModelCustomProperties]::new()
             }
             elseif ($instanceType -eq $AzLocalInstanceTypes.VMwareToAzLocal) {
-                $policyCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHcipolicyModelCustomProperties]::new()
+                $policyCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareToAzStackHcipolicyModelCustomProperties]::new()
             }
             else {
                 throw "Instance type '$($instanceType)' is not supported. Currently, for AzLocal scenario, only HyperV and VMware as the source is supported."
@@ -760,7 +734,7 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
                 -Location $params.location `
                 -Kind $params.kind `
                 -Tags $params.tags `
-                -AllowBlobPublicAccess $true
+                -AllowBlobPublicAccess $false
 
             if ($null -ne $cacheStorageAccount -and
                 $null -ne $cacheStorageAccount.ProvisioningState -and
@@ -797,6 +771,17 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             $null -eq $cacheStorageAccount.ProvisioningState -or
             $cacheStorageAccount.ProvisioningState -ne [StorageAccountProvisioningState]::Succeeded) {
             throw "Unexpected error occurs during Cache Storage Account selection process. Please re-run this command or contact support if help needed."
+        }
+
+        # Validate Cache Storage Account SKU tier is Standard (not Premium)
+        if ($cacheStorageAccount.Sku.Tier -ne "Standard") {
+            throw "Cache Storage Account '$($cacheStorageAccount.StorageAccountName)' uses an unsupported SKU tier '$($cacheStorageAccount.Sku.Tier)'. Only 'Standard' tier storage accounts are supported. Please provide a Standard tier storage account."
+        }
+
+        # Validate public network access should not be disabled even for private endpoint
+        if (![string]::IsNullOrEmpty($cacheStorageAccount.PublicNetworkAccess) -and
+            $cacheStorageAccount.PublicNetworkAccess -eq "Disabled") {
+            throw "Cache Storage Account '$($cacheStorageAccount.StorageAccountName)' does not allow public network access. Please enable 'Public network access' on the storage account and re-run this command."
         }
 
         $params = @{
@@ -1133,15 +1118,15 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             }
 
             # Setup Replication Extension deployment parameters
-            $replicationExtensionProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ReplicationExtensionModelProperties]::new()
+            $replicationExtensionProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ReplicationExtensionModelProperties]::new()
         
             if ($instanceType -eq $AzLocalInstanceTypes.HyperVToAzLocal) {
-                $replicationExtensionCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHcireplicationExtensionModelCustomProperties]::new()
+                $replicationExtensionCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.HyperVToAzStackHcireplicationExtensionModelCustomProperties]::new()
                 $replicationExtensionCustomProperties.HyperVFabricArmId = $params.SourceFabricArmId
                 
             }
             elseif ($instanceType -eq $AzLocalInstanceTypes.VMwareToAzLocal) {
-                $replicationExtensionCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHcireplicationExtensionModelCustomProperties]::new()
+                $replicationExtensionCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareToAzStackHcireplicationExtensionModelCustomProperties]::new()
                 $replicationExtensionCustomProperties.VMwareFabricArmId = $params.SourceFabricArmId
             }
             else {
