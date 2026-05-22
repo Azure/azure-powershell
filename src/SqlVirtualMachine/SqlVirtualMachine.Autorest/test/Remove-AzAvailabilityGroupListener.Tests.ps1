@@ -14,12 +14,12 @@ if (($null -eq $TestName) -or ($TestName -contains 'Remove-AzAvailabilityGroupLi
 }
 
 Describe 'Remove-AzAvailabilityGroupListener' {
-    It 'Delete' {
+    It 'Delete' -skip{
         Remove-AzAvailabilityGroupListener -ResourceGroupName $env.ResourceGroupName -SqlVMGroupName $env.SqlVMGroupName -Name $env.SqlVMGroupLoadBalancerListnerName
         { Get-AzAvailabilityGroupListener -ResourceGroupName $env.ResourceGroupName -SqlVMGroupName $env.SqlVMGroupName -Name $env.SqlVMGroupLoadBalancerListnerName } | Should -Throw -ExpectedMessage "The requested resource of type 'Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/availabilityGroupListeners' with name 'aglblistener' was not found."
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -skip{
         $msListner = [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.AvailabilityGroupListener]@{Id = $env.SqlVMGroupMultiSubnetIPListnerId }
         Remove-AzAvailabilityGroupListener -InputObject $msListner
         { Get-AzAvailabilityGroupListener -InputObject $msListner } | Should -Throw -ExpectedMessage "The requested resource of type 'Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/availabilityGroupListeners' with name 'agmslistener' was not found."

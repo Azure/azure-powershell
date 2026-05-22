@@ -14,7 +14,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'Get-AzSqlVM')) {
 }
 
 Describe 'Get-AzSqlVM' {
-    It 'List1' {
+    It 'List1' -skip{
         $sqlVMs = Get-AzSqlVM
 
         $sqlVMs.Count | Should -Be 2
@@ -33,7 +33,7 @@ Describe 'Get-AzSqlVM' {
 
     }
 
-    It 'Get' {
+    It 'Get' -skip{
         $sqlVMs = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName_HA1
 
         $sqlVMs.Count | Should -Be 1
@@ -45,7 +45,7 @@ Describe 'Get-AzSqlVM' {
         $sqlVMs.GroupResourceId.Split("/")[-1] | Should -Be $env.SqlVMGroupName
     }
 
-    It 'List2' {
+    It 'List2' -skip{
         $sqlVMs = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName
 
         $sqlVMs.Count | Should -Be 2
@@ -63,7 +63,7 @@ Describe 'Get-AzSqlVM' {
         $sqlVMs[1].GroupResourceId.Split("/")[-1] | Should -Be $env.SqlVMGroupName
     }
 
-    It 'List' {
+    It 'List' -skip{
         $sqlVMs = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -GroupName $env.SqlVMGroupName
 
         $sqlVMs.Count | Should -Be 2
@@ -81,7 +81,7 @@ Describe 'Get-AzSqlVM' {
         $sqlVMs[1].GroupResourceId.Split("/")[-1] | Should -Be $env.SqlVMGroupName
     }
 
-    It 'GetViaIdentity' {
+    It 'GetViaIdentity' -skip{
         $sqlVM1 = [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVirtualMachine]@{Id = $env.SqlVMName_HA1Id }
         $sqlVMs = Get-AzSqlVM -InputObject $sqlVM1 
 

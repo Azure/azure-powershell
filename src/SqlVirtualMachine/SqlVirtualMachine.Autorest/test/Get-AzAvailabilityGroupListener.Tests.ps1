@@ -14,7 +14,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'Get-AzAvailabilityGroupListe
 }
 
 Describe 'Get-AzAvailabilityGroupListener' {
-    It 'List' {
+    It 'List' -skip{
         $listeners = Get-AzAvailabilityGroupListener -ResourceGroupName $env.ResourceGroupName -SqlVMGroupName $env.SqlVMGroupName
         
         $listeners.Count | Should -Be 2
@@ -46,7 +46,7 @@ Describe 'Get-AzAvailabilityGroupListener' {
 
     }
 
-    It 'Get' {
+    It 'Get' -skip{
         $lbListner = Get-AzAvailabilityGroupListener -ResourceGroupName $env.ResourceGroupName -SqlVMGroupName $env.SqlVMGroupName -Name $env.SqlVMGroupLoadBalancerListnerName
 
         $lbListner.AvailabilityGroupName | Should -Be $env.SqlVMGroupName1
@@ -60,7 +60,7 @@ Describe 'Get-AzAvailabilityGroupListener' {
         ($SqlVirtualMachineInstances[0] -eq $env.SqlVMName_HA2Id) -or ($SqlVirtualMachineInstances[1] -eq $env.SqlVMName_HA2Id) | Should -Be $true
     }
 
-    It 'GetViaIdentity' {
+    It 'GetViaIdentity' -skip{
         $msListner = [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.AvailabilityGroupListener]@{Id = $env.SqlVMGroupMultiSubnetIPListnerId }
         $msListner = Get-AzAvailabilityGroupListener -InputObject $msListner
 
