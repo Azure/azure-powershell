@@ -45,16 +45,16 @@ In this directory, run AutoRest:
 
 ``` yaml
 skip-semantics-validation: true
-commit: ca9d05ed67fe556197b01fe795e80e4e2dc41e86
+commit: bf52af8dc34db91cb137ed935f1ce215c1b0190c
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/migrate/resource-manager/Microsoft.OffAzure/stable/2020-01-01/migrate.json
-  - $(repo)/specification/migrateprojects/resource-manager/Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+  - $(repo)/specification/migrateprojects/resource-manager/Microsoft.Migrate/MigrateProjects/preview/2018-09-01-preview/migrate.json
   - $(repo)/specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/SiteRecovery/stable/2025-08-01/service.json
-  - $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/DataReplication/stable/2026-05-01/recoveryservicesdatareplication.json
 
-module-version: 3.0.14
+module-version: 3.0.18
 title: Migrate 
 subject-prefix: 'Migrate'
 
@@ -75,13 +75,13 @@ directive:
   - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
     where: $.paths..operationId
     transform: return $.replace(/^(.*)_Refresh(.*)$/g, "$1_Refresh")
-  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+  - from: Microsoft.Migrate/MigrateProjects/preview/2018-09-01-preview/migrate.json
     where: $
     transform: return $.replace(/IEdm/g, "Iedm")
-  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+  - from: Microsoft.Migrate/MigrateProjects/preview/2018-09-01-preview/migrate.json
     where: $
     transform: return $.replace(/IServiceProvider/g, "IserviceProvider")
-  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+  - from: Microsoft.Migrate/MigrateProjects/preview/2018-09-01-preview/migrate.json
     where: $.paths..operationId
     transform: return $.replace(/^(.*)_Enumerate(.*)$/g, "$1_List")
   # Correct some generated models
@@ -202,31 +202,31 @@ directive:
       subject: Site$|Machine$|RunAsAccount$
       variant: ^GetViaIdentity$
     remove: true
-  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+  - from: Microsoft.Migrate/MigrateProjects/preview/2018-09-01-preview/migrate.json
     where:
       verb: Set$
       subject: Project$
       variant: ^Put$|^PutViaIdentity|^PutViaIdentityExpanded
     remove: true
-  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+  - from: Microsoft.Migrate/MigrateProjects/preview/2018-09-01-preview/migrate.json
     where:
       verb: Register$
       subject: ProjectTool$
       variant: ^Register$|^RegisterViaIdentity|^RegisterViaIdentityExpanded
     remove: true
-  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+  - from: Microsoft.Migrate/MigrateProjects/preview/2018-09-01-preview/migrate.json
     where:
       verb: Get$
       subject: Project$|Solution$
       variant: ^GetViaIdentity$
     remove: true
-  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+  - from: Microsoft.Migrate/MigrateProjects/preview/2018-09-01-preview/migrate.json
     where:
       verb: Get$
       subject: Solution$
       variant: ^List$
     remove: true
-  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+  - from: Microsoft.Migrate/MigrateProjects/preview/2018-09-01-preview/migrate.json
     where:
       verb: Remove$
       subject: Project$
@@ -252,26 +252,26 @@ directive:
     where:
       subject: ^VMwareOperationsStatus
     remove: true
-  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+  - from: Microsoft.Migrate/MigrateProjects/preview/2018-09-01-preview/migrate.json
     where:
       subject: ^Database|^DatabaseInstance|^SolutionConfig|^Event
     remove: true
-  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+  - from: Microsoft.Migrate/MigrateProjects/preview/2018-09-01-preview/migrate.json
     where:
       verb: Invoke$
       subject: CleanupSolutionData$
     remove: true
-  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+  - from: Microsoft.Migrate/MigrateProjects/preview/2018-09-01-preview/migrate.json
     where:
       verb: Set$|Remove$|Update$
       subject: ProjectSummary$
     remove: true
-  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+  - from: Microsoft.Migrate/MigrateProjects/preview/2018-09-01-preview/migrate.json
     where:
       verb: Remove$|Update$
       subject: ^Solution
     remove: true
-  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+  - from: Microsoft.Migrate/MigrateProjects/preview/2018-09-01-preview/migrate.json
     where:
       verb: Update$
       subject: Project$
@@ -358,41 +358,41 @@ directive:
       verb: New|Remove|Update
       subject: ^HyperV
     remove: true
-  - from: Microsoft.DataReplication/DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: Microsoft.DataReplication/DataReplication/stable/2026-05-01/recoveryservicesdatareplication.json
     where:
       verb: Test|Invoke
       subject: NameAvailability$|DeploymentPreflight
     remove: true
-  - from: Microsoft.DataReplication/DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: Microsoft.DataReplication/DataReplication/stable/2026-05-01/recoveryservicesdatareplication.json
     where:
       verb: Get|New
       subject: ^EmailConfiguration
     remove: true
-  - from: Microsoft.DataReplication/DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: Microsoft.DataReplication/DataReplication/stable/2026-05-01/recoveryservicesdatareplication.json
     where:
       verb: Get
       subject: ^(FabricAgent|ProtectedItem|Vault|Job)OperationStatus$
     remove: true
-  - from: Microsoft.DataReplication/DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: Microsoft.DataReplication/DataReplication/stable/2026-05-01/recoveryservicesdatareplication.json
     where:
       verb: Get
       subject: ^FabricOperationsStatus$
     remove: true
-  - from: Microsoft.DataReplication/DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: Microsoft.DataReplication/DataReplication/stable/2026-05-01/recoveryservicesdatareplication.json
     where:
       verb: New
       subject: ^(FabricAgent|Vault)
     remove: true
-  - from: Microsoft.DataReplication/DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: Microsoft.DataReplication/DataReplication/stable/2026-05-01/recoveryservicesdatareplication.json
     where:
       verb: Update
       subject: ^Vault
     remove: true
-  - from: Microsoft.DataReplication/DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: Microsoft.DataReplication/DataReplication/stable/2026-05-01/recoveryservicesdatareplication.json
     where:
       subject: PrivateEndpointConnection|PrivateLinkResource
     remove: true
-  - from: Microsoft.DataReplication/DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: Microsoft.DataReplication/DataReplication/stable/2026-05-01/recoveryservicesdatareplication.json
     where:
       subject: OperationResult
     remove: true
@@ -402,20 +402,20 @@ directive:
       subject: ^PlannedReplication
     remove: true
   # Rename cmdlets for Azure Local
-  - from: Microsoft.DataReplication/DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: Microsoft.DataReplication/DataReplication/stable/2026-05-01/recoveryservicesdatareplication.json
     where:
       verb: Get
       subject: ^Fabric$
     set:
       subject: LocalReplicationFabric
-  - from: Microsoft.DataReplication/DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from: Microsoft.DataReplication/DataReplication/stable/2026-05-01/recoveryservicesdatareplication.json
     where:
       verb: Get
       subject: ^Job$
     set:
       subject: LocalReplicationJob      
   # Hide cmdlets used by custom
-  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+  - from: Microsoft.Migrate/MigrateProjects/preview/2018-09-01-preview/migrate.json
     where:
       verb: Set$
       subject: ^Solution
@@ -480,7 +480,7 @@ directive:
       subject: ^HyperV(Site|RunAsAccount)$
     hide: true
   # Hide cmdlets not to be visible to user.
-  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+  - from: Microsoft.Migrate/MigrateProjects/preview/2018-09-01-preview/migrate.json
     where:
       verb: Set$
       subject: Project$
@@ -508,7 +508,7 @@ directive:
   - where:
       variant: ^(Update|Create)(?!.*?(Expanded|JsonFilePath|JsonString))|^CreateViaIdentityExpanded$|^CreateViaIdentity
     remove: true
-  - from:  Microsoft.DataReplication/DataReplication/stable/2024-09-01/recoveryservicesdatareplication.json
+  - from:  Microsoft.DataReplication/DataReplication/stable/2026-05-01/recoveryservicesdatareplication.json
     where:
       verb: Get$|Invoke$|New$|Remove$|Test$|Update$
       subject: ^FabricAgent|^Fabric|^Policy|^EmailConfiguration|^ProtectedItem|^ReplicationExtension|^Vault

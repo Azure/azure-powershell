@@ -80,6 +80,47 @@ Describe 'Test-AzMigrateLocalEndToEnd' -Tag 'LiveOnly' {
         $removeJob.Count | Should -BeGreaterOrEqual 1
     }
 
+    It 'DefaultUserWithMigrateAsArcVM' {
+        $subscriptionId = $env.hciSubscriptionId
+        $machineId = $env.hciSDSMachineId1
+        $targetRgId = "/subscriptions/$($env.hciTargetRgSubId)/resourceGroups/$($env.hciMigResourceGroup)-target"
+        $protectedItemId = $env.hciProtectedItem1
+
+        # New-AzMigrateLocalServerReplication with MigrateAsArcVM
+        $newJob = New-AzMigrateLocalServerReplication `
+            -MachineId $machineId `
+            -SourceApplianceName $env.hciSourceApplianceName `
+            -TargetApplianceName $env.hciTargetApplianceName `
+            -TargetResourceGroupId $targetRgId `
+            -TargetVMName $env.hciTgtVMName1 `
+            -TargetStoragePathId $env.hciTgtStoragePathId `
+            -TargetVirtualSwitchId $env.hciTgtVirtualSwitchId `
+            -OSDiskID $env.hciDiskId1 `
+            -SubscriptionId $subscriptionId `
+            -MigrateAsArcVM "true"
+        $newJob.Count | Should -BeGreaterOrEqual 1
+
+        for ($i = 0; $i -le 3; $i++)
+        {
+            Start-Sleep -Seconds 30
+
+            $protectedItem = Get-AzMigrateLocalServerReplication -TargetObjectID $protectedItemId
+            $protectedItem.Count | Should -BeGreaterOrEqual 1
+
+            if ($protectedItem.Property.AllowedJob.Count -gt 0)
+            {
+                break
+            }
+        }
+
+        # Verify MigrateAsArcVM is set on the protected item
+        $protectedItem.Property.CustomProperty.MigrateAsArcVM | Should -BeTrue
+
+        # Cleanup
+        $removeJob = Remove-AzMigrateLocalServerReplication -TargetObjectID $protectedItemId
+        $removeJob.Count | Should -BeGreaterOrEqual 1
+    }
+
     It 'PowerUser' {
         $subscriptionId = $env.hciSubscriptionId
         $resourceGroupName = $env.hciMigResourceGroup

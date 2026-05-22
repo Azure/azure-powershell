@@ -125,14 +125,20 @@ $ArcResourceBridgeValidationMessages = @{
     NoClusters = "There are no Azure Local clusters found in the selected resource group."
 }
 
+$ArcMachineReuseValidationMessages = @{
+    NotFound         = "MigrateAsArcVM is enabled, but no Azure Arc-enabled machine was found at '{0}'. Verify -TargetVMName and -TargetResourceGroupId, or onboard the machine to Azure Arc before retrying.";
+    KindIncompatible = "Azure Arc-enabled machine '{0}' has Kind='{1}', which is not compatible with Azure Local migration reuse. Only Arc machines with an unset Kind can be reused.";
+}
+
 $IdFormats = @{
-    ResourceGroupArmIdTemplate  = "/subscriptions/{0}/resourceGroups/{1}"
-    MachineArmIdTemplate        = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.OffAzure/{2}/{3}/machines/{4}"
-    StoragePathArmIdTemplate    = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.AzureStackHCI/storageContainers/{2}"
-    LogicalNetworkArmIdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.AzureStackHCI/logicalnetworks/{2}"
-    MigrateProjectArmIdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Migrate/MigrateProjects/{2}"
-    ProtectedItemArmIdTemplate  = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.DataReplication/replicationVaults/{2}/protectedItems/{3}"
-    ToLocalJobArmIdTemplate     = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.DataReplication/replicationVaults/{2}/jobs/{3}"
+    ResourceGroupArmIdTemplate        = "/subscriptions/{0}/resourceGroups/{1}"
+    MachineArmIdTemplate              = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.OffAzure/{2}/{3}/machines/{4}"
+    StoragePathArmIdTemplate          = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.AzureStackHCI/storageContainers/{2}"
+    LogicalNetworkArmIdTemplate       = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.AzureStackHCI/logicalnetworks/{2}"
+    MigrateProjectArmIdTemplate       = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Migrate/MigrateProjects/{2}"
+    ProtectedItemArmIdTemplate        = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.DataReplication/replicationVaults/{2}/protectedItems/{3}"
+    ToLocalJobArmIdTemplate           = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.DataReplication/replicationVaults/{2}/jobs/{3}"
+    HybridComputeMachineArmIdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.HybridCompute/machines/{2}"
 }
 
 $TargetVMCPUCores = @{

@@ -37,6 +37,19 @@ function CheckStorageModuleDependency {
     }
 }
 
+function CheckConnectedMachineModuleDependency {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param()
+
+    process {
+        $module = Get-Module -ListAvailable | Where-Object { $_.Name -eq "Az.ConnectedMachine" }
+        if ($null -eq $module) {
+            $message = "Az.ConnectedMachine Module must be installed to use -MigrateAsArcVM 'true'. Please run 'Install-Module -Name Az.ConnectedMachine' to install and continue."
+            throw $message
+        }
+    }
+}
+
 function GetARGQueryForArcResourceBridge {
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
     param(
@@ -255,6 +268,63 @@ function InvokeAzMigrateGetCommandWithRetries {
         }
 
         return $result
+    }
+}
+
+function Test-ArcMachineReuseEligibility {
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory)]
+        [string]
+        # Subscription that should contain the target Arc-enabled machine.
+        ${TargetSubscriptionId},
+
+        [Parameter(Mandatory)]
+        [string]
+        # Resource group that should contain the target Arc-enabled machine.
+        ${TargetResourceGroupName},
+
+        [Parameter(Mandatory)]
+        [string]
+        # Name of the Arc-enabled machine to be reused (matches -TargetVMName on the cmdlet).
+        ${TargetVMName}
+    )
+
+    process {
+        $arcMachineId = $IdFormats.HybridComputeMachineArmIdTemplate -f $TargetSubscriptionId, $TargetResourceGroupName, $TargetVMName
+
+        # GET the Arc-enabled machine via Az.ConnectedMachine. The module's presence is
+        # validated up-front by CheckConnectedMachineModuleDependency in the calling cmdlet,
+        # so reaching this point implies Az.ConnectedMachine is available.
+        $getErrors = $null
+        $arcMachine = Az.ConnectedMachine\Get-AzConnectedMachine `
+            -SubscriptionId    $TargetSubscriptionId `
+            -ResourceGroupName $TargetResourceGroupName `
+            -Name              $TargetVMName `
+            -ErrorAction       SilentlyContinue `
+            -ErrorVariable     getErrors
+
+        # 1. Existence: a null result means the Arc machine doesn't exist at the expected tuple.
+        #    Distinguish 'not found' from other failures (auth, throttling, network) via the error stream.
+        if ($null -eq $arcMachine) {
+            if ($getErrors -and ($getErrors[0].Exception.Message -match 'ResourceNotFound|was not found|StatusCode:\s*404|\b404\b')) {
+                throw ($ArcMachineReuseValidationMessages.NotFound -f $arcMachineId)
+            }
+            if ($getErrors) {
+                throw "Unable to validate Azure Arc-enabled machine '$arcMachineId': $($getErrors[0].Exception.Message)"
+            }
+            throw ($ArcMachineReuseValidationMessages.NotFound -f $arcMachineId)
+        }
+
+        # 2. Kind must be unset (any non-empty value blocks reuse).
+        if (-not [string]::IsNullOrEmpty($arcMachine.Kind)) {
+            throw ($ArcMachineReuseValidationMessages.KindIncompatible -f $arcMachineId, $arcMachine.Kind)
+        }
+
+        # Note: status and location checks are intentionally omitted. The DataReplication
+        # service will surface those failures at PUT time if they matter.
+
+        Write-Verbose "Arc machine reuse preflight passed: $arcMachineId"
     }
 }
 

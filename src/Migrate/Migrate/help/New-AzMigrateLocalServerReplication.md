@@ -17,9 +17,9 @@ Starts replication for the specified server.
 New-AzMigrateLocalServerReplication -MachineId <String> -TargetStoragePathId <String>
  -TargetResourceGroupId <String> -TargetVMName <String> -SourceApplianceName <String>
  -TargetApplianceName <String> -TargetVirtualSwitchId <String> -OSDiskID <String> [-TargetVMCPUCore <Int32>]
- [-TargetTestVirtualSwitchId <String>] [-IsDynamicMemoryEnabled <String>] [-TargetVMRam <Int64>]
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-TargetTestVirtualSwitchId <String>] [-IsDynamicMemoryEnabled <String>] [-MigrateAsArcVM <String>]
+ [-TargetVMRam <Int64>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByIdPowerUser
@@ -27,9 +27,9 @@ New-AzMigrateLocalServerReplication -MachineId <String> -TargetStoragePathId <St
 New-AzMigrateLocalServerReplication -MachineId <String> -TargetStoragePathId <String>
  -TargetResourceGroupId <String> -TargetVMName <String> -SourceApplianceName <String>
  -TargetApplianceName <String> [-TargetVMCPUCore <Int32>] [-IsDynamicMemoryEnabled <String>]
- [-TargetVMRam <Int64>] [-SubscriptionId <String>] -DiskToInclude <AzLocalDiskInput[]>
- -NicToInclude <AzLocalNicInput[]> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-MigrateAsArcVM <String>] [-TargetVMRam <Int64>] [-SubscriptionId <String>]
+ -DiskToInclude <AzLocalDiskInput[]> -NicToInclude <AzLocalNicInput[]> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -175,6 +175,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MigrateAsArcVM
+Specifies whether the VM should be migrated as an Arc VM.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
