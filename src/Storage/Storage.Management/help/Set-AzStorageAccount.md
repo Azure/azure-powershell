@@ -113,10 +113,10 @@ This command sets a custom domain for a Storage account.
 
 ### Example 3: Set the access tier value
 ```powershell
-Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -AccessTier Cool
+Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -AccessTier Smart
 ```
 
-The command sets the Access Tier value to be cool.
+This command sets a Storage account with AccessTier set to Smart, which automatically optimizes access costs based on usage patterns.
 
 ### Example 4: Set the custom domain and tags
 ```powershell
@@ -488,6 +488,13 @@ True
 
 This command enables Blob Geo Priority Replication on a Storage account. 
 
+### Example 25: Update a Storage account with AllowedCopyScope set to All
+```powershell
+$account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -AllowedCopyScope All
+```
+
+This command updates a Storage account by setting AllowedCopyScope to All, which allows copy operations from any source.
+
 ## PARAMETERS
 
 ### -AccessTier
@@ -502,7 +509,7 @@ If the Storage account has Kind as Storage, do not specify the *AccessTier* para
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Hot, Cool, Cold
+Accepted values: Hot, Cool, Cold, Smart
 
 Required: False
 Position: Named
@@ -662,7 +669,7 @@ Accept wildcard characters: False
 ```
 
 ### -AllowedCopyScope
-Set restrict copy to and from Storage Accounts within a Microsoft Entra tenant or with Private Links to the same VNet. Possible values include: 'PrivateLink', 'AAD'
+Set restrict copy to and from Storage Accounts within a Microsoft Entra tenant or with Private Links to the same VNet. Possible values include: 'PrivateLink', 'AAD', 'All'
 
 ```yaml
 Type: System.String
@@ -1081,7 +1088,7 @@ Accept wildcard characters: False
 ```
 
 ### -MinimumTlsVersion
-The minimum TLS version to be permitted on requests to storage.
+The minimum TLS version to be permitted on requests to storage. TLS 1.3 is not yet supported.
 
 ```yaml
 Type: System.String

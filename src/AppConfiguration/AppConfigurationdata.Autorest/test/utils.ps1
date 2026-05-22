@@ -58,13 +58,20 @@ function setupEnv() {
     $resourceGroup = "azpstestgroup-" + $str1
     $env.Add("resourceGroup", $resourceGroup)
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
-    $configurationStore = New-AzAppConfigurationStore -Name $env.appStoreName1 -ResourceGroupName $env.resourceGroup -Location $env.location
-    $env.Add("endpoint", $configurationStore.Endpoint)
-    $loginObjectId = (Get-AzContext).Account.ExtendedProperties['HomeAccountId']
-    New-AzRoleAssignment -ObjectId $loginObjectId -RoleDefinitionName "App Configuration Data Owner" -Scope $configurationStore.Id
+    # Use Az CLI to create the App Configuration store to avoid assembly version
+    # conflicts between Az.AppConfiguration and Az.AppConfigurationdata modules.
+    $storeJson = az appconfig create --name $env.appStoreName1 --resource-group $env.resourceGroup --location $env.location --output json | ConvertFrom-Json
+    $endpoint = "https://$($env.appStoreName1).azconfig.io"
+    $env.Add("endpoint", $endpoint)
+    # HomeAccountId is in "objectId.tenantId" format — extract just the objectId
+    $homeAccountId = (Get-AzContext).Account.ExtendedProperties['HomeAccountId']
+    $loginObjectId = ($homeAccountId -split '\.')[0]
+    New-AzRoleAssignment -ObjectId $loginObjectId -RoleDefinitionName "App Configuration Data Owner" -Scope $storeJson.id -ErrorAction SilentlyContinue
+    # Wait for RBAC propagation
+    Start-TestSleep -Seconds 30
     $key = (RandomString -allChars $false -len 4)
     $value = (RandomString -allChars $false -len 16)
-    Set-AzAppConfigurationKeyValue -Endpoint $configurationStore.Endpoint -Key $key -Value $value -Label "test"
+    Set-AzAppConfigurationKeyValue -Endpoint $endpoint -Key $key -Value $value -Label "test"
     $env.Add("key", $key)
 
     # For any resources you created for test, you should add it to $env here.
@@ -76,5 +83,37 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Remove-AzResourceGroup -Name $env.resourceGroup -NoWait -ErrorAction SilentlyContinue
+
+    # Sanitize recording files and env.json so they can be committed without PII
+    $subscriptionId = $env.SubscriptionId
+    $tenantId = $env.Tenant
+    $endpoint = $env.endpoint
+    $testDir = $PSScriptRoot
+
+    # Sanitize all recording JSON files
+    Get-ChildItem -Path $testDir -Filter '*.Recording.json' | ForEach-Object {
+        $content = Get-Content $_.FullName -Raw
+        $sanitized = $content -replace [regex]::Escape($subscriptionId), '00000000-0000-0000-0000-000000000000' `
+                              -replace [regex]::Escape($tenantId), '00000000-0000-0000-0000-000000000000' `
+                              -replace [regex]::Escape($endpoint), 'https://sanitized.azconfig.io' `
+                              -replace '(?<=Secret=)[^\\"]+', 'SANITIZED' `
+                              -replace '(?<=\\"connectionString\\":\\")(Endpoint=https://[^"\\]+)(?=\\")', 'Endpoint=https://sanitized.azconfig.io;Id=XXXX;Secret=SANITIZED' `
+                              -replace '(?<=\\"value\\":\\")[A-Za-z0-9+/]{20,}=*(?=\\")', 'SANITIZED' `
+                              -replace '[a-zA-Z0-9._%+-]+@microsoft\.com', 'testuser@microsoft.com'
+        if ($content -ne $sanitized) {
+            Set-Content $_.FullName $sanitized -NoNewline
+        }
+    }
+
+    # Sanitize env.json
+    $envFile = Join-Path $testDir 'env.json'
+    if (Test-Path $envFile) {
+        $envContent = Get-Content $envFile -Raw | ConvertFrom-Json
+        $envContent.SubscriptionId = '00000000-0000-0000-0000-000000000000'
+        $envContent.Tenant = '00000000-0000-0000-0000-000000000000'
+        $envContent.endpoint = 'https://sanitized.azconfig.io'
+        Set-Content $envFile -Value (ConvertTo-Json $envContent)
+    }
 }
 

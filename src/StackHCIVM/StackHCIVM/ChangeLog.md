@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed missing export of `Save-AzStackHCIVMVirtualMachine` and `Suspend-AzStackHCIVMVirtualMachine` cmdlets
 
 ## Version 1.1.1
 * Added breaking change announcements for upcoming SecureString parameter type changes in `New-AzStackHCIVMImage` and `New-AzStackHCIVMVirtualMachine`

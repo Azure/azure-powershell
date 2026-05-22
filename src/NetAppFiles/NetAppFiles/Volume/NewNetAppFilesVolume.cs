@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             {
                 ResourceGroupName = PoolObject.ResourceGroupName;
                 Location = PoolObject.Location;
-                var NameParts = PoolObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(PoolObject.Id);
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
             }

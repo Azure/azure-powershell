@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ILabel))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Description(@"Gets a list of labels.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.HttpPath(Path = "/labels", ApiVersion = "1.0")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.HttpPath(Path = "/labels", ApiVersion = "2024-09-01")]
     public partial class GetAzAppConfigurationLabel_Get : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IContext
@@ -59,13 +59,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
         private string _acceptDatetime;
 
         /// <summary>
-        /// Requests the server to respond with the state of the resource at the specified time.
+        /// Requests the server to respond with the state of the resource at the specified
+        /// time.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Requests the server to respond with the state of the resource at the specified time.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Requests the server to respond with the state of the resource at the specified\ntime.")]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Requests the server to respond with the state of the resource at the specified time.",
+        Description = @"Requests the server to respond with the state of the resource at the specified
+        time.",
         SerializedName = @"Accept-Datetime",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Header)]
@@ -75,13 +77,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
         private string _after;
 
         /// <summary>
-        /// Instructs the server to return elements that appear after the element referred to by the specified token.
+        /// Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Instructs the server to return elements that appear after the element referred to by the specified token.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Instructs the server to return elements that appear after the element referred\nto by the specified token.")]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Instructs the server to return elements that appear after the element referred to by the specified token.",
+        Description = @"Instructs the server to return elements that appear after the element referred
+        to by the specified token.",
         SerializedName = @"After",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Query)]
@@ -97,6 +101,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.AppConfigurationdata Client => Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Module.Instance.ClientAPI;
+
+        /// <summary>Backing field for <see cref="ClientRequestId" /> property.</summary>
+        private string _clientRequestId;
+
+        /// <summary>An opaque, globally-unique, client-generated string identifier for the request.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "An opaque, globally-unique, client-generated string identifier for the request.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"An opaque, globally-unique, client-generated string identifier for the request.",
+        SerializedName = @"x-ms-client-request-id",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Header)]
+        public string ClientRequestId { get => this._clientRequestId; set => this._clientRequestId = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -427,12 +445,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.GetLabels(this.InvocationInformation.BoundParameters.ContainsKey("SyncToken") ? SyncToken : null, this.InvocationInformation.BoundParameters.ContainsKey("AcceptDatetime") ? AcceptDatetime : null, this.InvocationInformation.BoundParameters.ContainsKey("Name") ? Name : null, this.InvocationInformation.BoundParameters.ContainsKey("After") ? After : null, this.InvocationInformation.BoundParameters.ContainsKey("Select") ? Select : null /* arrayOf */, Endpoint, onOk, onDefault, this, Pipeline);
+                    await this.Client.GetLabels(this.InvocationInformation.BoundParameters.ContainsKey("SyncToken") ? SyncToken : null, this.InvocationInformation.BoundParameters.ContainsKey("AcceptDatetime") ? AcceptDatetime : null, this.InvocationInformation.BoundParameters.ContainsKey("ClientRequestId") ? ClientRequestId : null, this.InvocationInformation.BoundParameters.ContainsKey("Name") ? Name : null, this.InvocationInformation.BoundParameters.ContainsKey("After") ? After : null, this.InvocationInformation.BoundParameters.ContainsKey("Select") ? Select : null /* arrayOf */, Endpoint, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Endpoint=Endpoint,Name=this.InvocationInformation.BoundParameters.ContainsKey("Name") ? Name : null,SyncToken=this.InvocationInformation.BoundParameters.ContainsKey("SyncToken") ? SyncToken : null,After=this.InvocationInformation.BoundParameters.ContainsKey("After") ? After : null,AcceptDatetime=this.InvocationInformation.BoundParameters.ContainsKey("AcceptDatetime") ? AcceptDatetime : null,Select=this.InvocationInformation.BoundParameters.ContainsKey("Select") ? Select : null /* arrayOf */})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Endpoint=Endpoint,Name=this.InvocationInformation.BoundParameters.ContainsKey("Name") ? Name : null,SyncToken=this.InvocationInformation.BoundParameters.ContainsKey("SyncToken") ? SyncToken : null,After=this.InvocationInformation.BoundParameters.ContainsKey("After") ? After : null,AcceptDatetime=this.InvocationInformation.BoundParameters.ContainsKey("AcceptDatetime") ? AcceptDatetime : null,Select=this.InvocationInformation.BoundParameters.ContainsKey("Select") ? Select : null /* arrayOf */,ClientRequestId=this.InvocationInformation.BoundParameters.ContainsKey("ClientRequestId") ? ClientRequestId : null})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -514,7 +532,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
                 {
                     return ;
                 }
-                // onOk - response for 200 / application/vnd.microsoft.appconfig.labelset+json/application/json/application/problem+json
+                // onOk - response for 200 / application/vnd.microsoft.appconfig.labelset+json/application/problem+json/application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ILabelListResult
                 var result = (await response);
                 // response should be returning an array of some kind. +Pageable

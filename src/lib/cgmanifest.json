@@ -15,15 +15,6 @@
       "component": {
         "type": "nuget",
         "nuget": {
-          "name": "System.Numerics.Vectors",
-          "version": "4.5.0"
-        }
-      }
-    },
-    {
-      "component": {
-        "type": "nuget",
-        "nuget": {
           "name": "System.Xml.ReaderWriter",
           "version": "4.3.0"
         }
@@ -42,15 +33,6 @@
       "component": {
         "type": "nuget",
         "nuget": {
-          "name": "System.Runtime.CompilerServices.Unsafe",
-          "version": "6.0.0"
-        }
-      }
-    },
-    {
-      "component": {
-        "type": "nuget",
-        "nuget": {
           "name": "System.Security.Cryptography.ProtectedData",
           "version": "4.5.0"
         }
@@ -62,6 +44,24 @@
         "nuget": {
           "name": "System.Diagnostics.DiagnosticSource",
           "version": "8.0.1"
+        }
+      }
+    },
+    {
+      "component": {
+        "type": "nuget",
+        "nuget": {
+          "name": "System.Numerics.Vectors",
+          "version": "4.6.1"
+        }
+      }
+    },
+    {
+      "component": {
+        "type": "nuget",
+        "nuget": {
+          "name": "System.Runtime.CompilerServices.Unsafe",
+          "version": "6.1.2"
         }
       }
     },
@@ -115,7 +115,7 @@
         "type": "nuget",
         "nuget": {
           "name": "Azure.Identity",
-          "version": "1.13.0"
+          "version": "1.17.2"
         }
       }
     },
@@ -178,7 +178,7 @@
         "type": "nuget",
         "nuget": {
           "name": "System.Buffers",
-          "version": "4.5.1"
+          "version": "4.6.1"
         }
       }
     },
@@ -214,7 +214,7 @@
         "type": "nuget",
         "nuget": {
           "name": "System.Memory",
-          "version": "4.5.5"
+          "version": "4.6.3"
         }
       }
     },

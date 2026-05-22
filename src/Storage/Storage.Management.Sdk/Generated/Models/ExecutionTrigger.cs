@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
 
         /// <param name="type">The trigger type of the storage task assignment execution
-        /// Possible values include: &#39;RunOnce&#39;, &#39;OnSchedule&#39;</param>
+        /// Possible values include: &#39;RunOnce&#39;, &#39;OnSchedule&#39;, &#39;MockRun&#39;</param>
 
         /// <param name="parameters">The trigger parameters of the storage task assignment execution
         /// </param>
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Storage.Models
 
 
         /// <summary>
-        /// Gets or sets the trigger type of the storage task assignment execution Possible values include: &#39;RunOnce&#39;, &#39;OnSchedule&#39;
+        /// Gets or sets the trigger type of the storage task assignment execution Possible values include: &#39;RunOnce&#39;, &#39;OnSchedule&#39;, &#39;MockRun&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
         public string Type {get; set; }
