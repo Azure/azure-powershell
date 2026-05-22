@@ -19,7 +19,7 @@
 --->
 
 ## Upcoming Release
-* Fixed `Approve-AzPrivateEndpointConnection`, `Deny-AzPrivateEndpointConnection`, `Get-AzPrivateEndpointConnection`, `Remove-AzPrivateEndpointConnection`, and `Get-AzPrivateLinkResource` to properly inherit dynamic parameters from base cmdlet class
+* Fixed `Approve-AzPrivateEndpointConnection`, `Deny-AzPrivateEndpointConnection`, `Get-AzPrivateEndpointConnection`, `Remove-AzPrivateEndpointConnection`, and `Get-AzPrivateLinkResource`
 * Changed `UserAssignedIdentityId` type from string to string[] in Azure Firewall Policy
 
 ## Version 7.27.0

@@ -85,7 +85,9 @@ CanFailover                   : True
 CanPlannedFailover            : True
 PostFailoverRedundancy        : Standard_LRS
 PostPlannedFailoverRedundancy : Standard_GRS
-``` 
+```
+
+ 
 
 This command gets a Storage account with its geo-replication stats, and shows the geo-replication stats.
 
