@@ -414,56 +414,6 @@ namespace Microsoft.Azure.Management.Network
         ISecurityUserRulesOperations SecurityUserRules { get; }
 
         /// <summary>
-        /// Gets the INetworkSecurityPerimeterOperationStatusesOperations
-        /// </summary>
-        INetworkSecurityPerimeterOperationStatusesOperations NetworkSecurityPerimeterOperationStatuses { get; }
-
-        /// <summary>
-        /// Gets the INetworkSecurityPerimeterServiceTagsOperations
-        /// </summary>
-        INetworkSecurityPerimeterServiceTagsOperations NetworkSecurityPerimeterServiceTags { get; }
-
-        /// <summary>
-        /// Gets the INetworkSecurityPerimeterAssociableResourceTypesOperations
-        /// </summary>
-        INetworkSecurityPerimeterAssociableResourceTypesOperations NetworkSecurityPerimeterAssociableResourceTypes { get; }
-
-        /// <summary>
-        /// Gets the INetworkSecurityPerimetersOperations
-        /// </summary>
-        INetworkSecurityPerimetersOperations NetworkSecurityPerimeters { get; }
-
-        /// <summary>
-        /// Gets the INetworkSecurityPerimeterLinkReferencesOperations
-        /// </summary>
-        INetworkSecurityPerimeterLinkReferencesOperations NetworkSecurityPerimeterLinkReferences { get; }
-
-        /// <summary>
-        /// Gets the INetworkSecurityPerimeterLinksOperations
-        /// </summary>
-        INetworkSecurityPerimeterLinksOperations NetworkSecurityPerimeterLinks { get; }
-
-        /// <summary>
-        /// Gets the INetworkSecurityPerimeterLoggingConfigurationsOperations
-        /// </summary>
-        INetworkSecurityPerimeterLoggingConfigurationsOperations NetworkSecurityPerimeterLoggingConfigurations { get; }
-
-        /// <summary>
-        /// Gets the INetworkSecurityPerimeterProfilesOperations
-        /// </summary>
-        INetworkSecurityPerimeterProfilesOperations NetworkSecurityPerimeterProfiles { get; }
-
-        /// <summary>
-        /// Gets the INetworkSecurityPerimeterAccessRulesOperations
-        /// </summary>
-        INetworkSecurityPerimeterAccessRulesOperations NetworkSecurityPerimeterAccessRules { get; }
-
-        /// <summary>
-        /// Gets the INetworkSecurityPerimeterAssociationsOperations
-        /// </summary>
-        INetworkSecurityPerimeterAssociationsOperations NetworkSecurityPerimeterAssociations { get; }
-
-        /// <summary>
         /// Gets the INetworkWatchersOperations
         /// </summary>
         INetworkWatchersOperations NetworkWatchers { get; }

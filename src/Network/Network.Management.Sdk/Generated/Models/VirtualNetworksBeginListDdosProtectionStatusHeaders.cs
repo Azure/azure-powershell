@@ -7,29 +7,26 @@ namespace Microsoft.Azure.Management.Network.Models
 {
     using System.Linq;
 
-    public partial class NetworkSecurityPerimetersDeleteHeaders
+    public partial class VirtualNetworksBeginListDdosProtectionStatusHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the NetworkSecurityPerimetersDeleteHeaders class.
+        /// Initializes a new instance of the VirtualNetworksBeginListDdosProtectionStatusHeaders class.
         /// </summary>
-        public NetworkSecurityPerimetersDeleteHeaders()
+        public VirtualNetworksBeginListDdosProtectionStatusHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the NetworkSecurityPerimetersDeleteHeaders class.
+        /// Initializes a new instance of the VirtualNetworksBeginListDdosProtectionStatusHeaders class.
         /// </summary>
-
-        /// <param name="azureAsyncOperation">
+        /// <param name="location">
         /// </param>
-
         /// <param name="retryAfter">
         /// </param>
-        public NetworkSecurityPerimetersDeleteHeaders(string azureAsyncOperation = default(string), int? retryAfter = default(int?))
-
+        public VirtualNetworksBeginListDdosProtectionStatusHeaders(string location = default(string), int? retryAfter = default(int?))
         {
-            this.AzureAsyncOperation = azureAsyncOperation;
+            this.Location = location;
             this.RetryAfter = retryAfter;
             CustomInit();
         }
@@ -39,17 +36,16 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         partial void CustomInit();
 
-
         /// <summary>
         /// Gets or sets
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "Azure-AsyncOperation")]
-        public string AzureAsyncOperation {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Location")]
+        public string Location { get; set; }
 
         /// <summary>
         /// Gets or sets
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "Retry-After")]
-        public int? RetryAfter {get; set; }
+        public int? RetryAfter { get; set; }
     }
 }

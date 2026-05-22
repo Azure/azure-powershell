@@ -337,46 +337,6 @@ namespace Microsoft.Azure.Management.Network
         /// </summary>
         public virtual ISecurityUserRulesOperations SecurityUserRules { get; private set; }
         /// <summary>
-        /// Gets the INetworkSecurityPerimeterOperationStatusesOperations
-        /// </summary>
-        public virtual INetworkSecurityPerimeterOperationStatusesOperations NetworkSecurityPerimeterOperationStatuses { get; private set; }
-        /// <summary>
-        /// Gets the INetworkSecurityPerimeterServiceTagsOperations
-        /// </summary>
-        public virtual INetworkSecurityPerimeterServiceTagsOperations NetworkSecurityPerimeterServiceTags { get; private set; }
-        /// <summary>
-        /// Gets the INetworkSecurityPerimeterAssociableResourceTypesOperations
-        /// </summary>
-        public virtual INetworkSecurityPerimeterAssociableResourceTypesOperations NetworkSecurityPerimeterAssociableResourceTypes { get; private set; }
-        /// <summary>
-        /// Gets the INetworkSecurityPerimetersOperations
-        /// </summary>
-        public virtual INetworkSecurityPerimetersOperations NetworkSecurityPerimeters { get; private set; }
-        /// <summary>
-        /// Gets the INetworkSecurityPerimeterLinkReferencesOperations
-        /// </summary>
-        public virtual INetworkSecurityPerimeterLinkReferencesOperations NetworkSecurityPerimeterLinkReferences { get; private set; }
-        /// <summary>
-        /// Gets the INetworkSecurityPerimeterLinksOperations
-        /// </summary>
-        public virtual INetworkSecurityPerimeterLinksOperations NetworkSecurityPerimeterLinks { get; private set; }
-        /// <summary>
-        /// Gets the INetworkSecurityPerimeterLoggingConfigurationsOperations
-        /// </summary>
-        public virtual INetworkSecurityPerimeterLoggingConfigurationsOperations NetworkSecurityPerimeterLoggingConfigurations { get; private set; }
-        /// <summary>
-        /// Gets the INetworkSecurityPerimeterProfilesOperations
-        /// </summary>
-        public virtual INetworkSecurityPerimeterProfilesOperations NetworkSecurityPerimeterProfiles { get; private set; }
-        /// <summary>
-        /// Gets the INetworkSecurityPerimeterAccessRulesOperations
-        /// </summary>
-        public virtual INetworkSecurityPerimeterAccessRulesOperations NetworkSecurityPerimeterAccessRules { get; private set; }
-        /// <summary>
-        /// Gets the INetworkSecurityPerimeterAssociationsOperations
-        /// </summary>
-        public virtual INetworkSecurityPerimeterAssociationsOperations NetworkSecurityPerimeterAssociations { get; private set; }
-        /// <summary>
         /// Gets the INetworkWatchersOperations
         /// </summary>
         public virtual INetworkWatchersOperations NetworkWatchers { get; private set; }
@@ -1015,16 +975,6 @@ namespace Microsoft.Azure.Management.Network
             this.SecurityUserConfigurations = new SecurityUserConfigurationsOperations(this);
             this.SecurityUserRuleCollections = new SecurityUserRuleCollectionsOperations(this);
             this.SecurityUserRules = new SecurityUserRulesOperations(this);
-            this.NetworkSecurityPerimeterOperationStatuses = new NetworkSecurityPerimeterOperationStatusesOperations(this);
-            this.NetworkSecurityPerimeterServiceTags = new NetworkSecurityPerimeterServiceTagsOperations(this);
-            this.NetworkSecurityPerimeterAssociableResourceTypes = new NetworkSecurityPerimeterAssociableResourceTypesOperations(this);
-            this.NetworkSecurityPerimeters = new NetworkSecurityPerimetersOperations(this);
-            this.NetworkSecurityPerimeterLinkReferences = new NetworkSecurityPerimeterLinkReferencesOperations(this);
-            this.NetworkSecurityPerimeterLinks = new NetworkSecurityPerimeterLinksOperations(this);
-            this.NetworkSecurityPerimeterLoggingConfigurations = new NetworkSecurityPerimeterLoggingConfigurationsOperations(this);
-            this.NetworkSecurityPerimeterProfiles = new NetworkSecurityPerimeterProfilesOperations(this);
-            this.NetworkSecurityPerimeterAccessRules = new NetworkSecurityPerimeterAccessRulesOperations(this);
-            this.NetworkSecurityPerimeterAssociations = new NetworkSecurityPerimeterAssociationsOperations(this);
             this.NetworkWatchers = new NetworkWatchersOperations(this);
             this.ConnectionMonitors = new ConnectionMonitorsOperations(this);
             this.FlowLogs = new FlowLogsOperations(this);

@@ -7,27 +7,24 @@ namespace Microsoft.Azure.Management.Network.Models
 {
     using System.Linq;
 
-    public partial class NetworkSecurityPerimeterLinkReferencesDeleteHeaders
+    public partial class BeginGetActiveSessionsHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the NetworkSecurityPerimeterLinkReferencesDeleteHeaders class.
+        /// Initializes a new instance of the BeginGetActiveSessionsHeaders class.
         /// </summary>
-        public NetworkSecurityPerimeterLinkReferencesDeleteHeaders()
+        public BeginGetActiveSessionsHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the NetworkSecurityPerimeterLinkReferencesDeleteHeaders class.
+        /// Initializes a new instance of the BeginGetActiveSessionsHeaders class.
         /// </summary>
-
         /// <param name="location">
         /// </param>
-
         /// <param name="retryAfter">
         /// </param>
-        public NetworkSecurityPerimeterLinkReferencesDeleteHeaders(string location = default(string), int? retryAfter = default(int?))
-
+        public BeginGetActiveSessionsHeaders(string location = default(string), int? retryAfter = default(int?))
         {
             this.Location = location;
             this.RetryAfter = retryAfter;
@@ -39,17 +36,16 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         partial void CustomInit();
 
-
         /// <summary>
         /// Gets or sets
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "Location")]
-        public string Location {get; set; }
+        public string Location { get; set; }
 
         /// <summary>
         /// Gets or sets
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "Retry-After")]
-        public int? RetryAfter {get; set; }
+        public int? RetryAfter { get; set; }
     }
 }
