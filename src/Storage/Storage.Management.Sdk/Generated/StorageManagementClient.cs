@@ -89,6 +89,14 @@ namespace Microsoft.Azure.Management.Storage
         /// </summary>
         public virtual IBlobContainersOperations BlobContainers { get; private set; }
         /// <summary>
+        /// Gets the IConnectorsOperations
+        /// </summary>
+        public virtual IConnectorsOperations Connectors { get; private set; }
+        /// <summary>
+        /// Gets the IDataSharesOperations
+        /// </summary>
+        public virtual IDataSharesOperations DataShares { get; private set; }
+        /// <summary>
         /// Gets the IEncryptionScopesOperations
         /// </summary>
         public virtual IEncryptionScopesOperations EncryptionScopes { get; private set; }
@@ -401,6 +409,8 @@ namespace Microsoft.Azure.Management.Storage
             this.Skus = new SkusOperations(this);
             this.BlobServices = new BlobServicesOperations(this);
             this.BlobContainers = new BlobContainersOperations(this);
+            this.Connectors = new ConnectorsOperations(this);
+            this.DataShares = new DataSharesOperations(this);
             this.EncryptionScopes = new EncryptionScopesOperations(this);
             this.FileServices = new FileServicesOperations(this);
             this.FileShares = new FileSharesOperations(this);
@@ -419,7 +429,7 @@ namespace Microsoft.Azure.Management.Storage
             this.TableServices = new TableServicesOperations(this);
             this.Table = new TableOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2025-06-01";
+            this.ApiVersion = "2025-08-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;
@@ -449,6 +459,16 @@ namespace Microsoft.Azure.Management.Storage
                         new Microsoft.Rest.Serialization.Iso8601TimeSpanConverter()
                     }
             };
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<StorageConnectorSource>("type"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<StorageConnectorSource>("type"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<StorageConnectorSourceUpdate>("type"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<StorageConnectorSourceUpdate>("type"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<StorageConnectorConnection>("type"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<StorageConnectorConnection>("type"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<StorageConnectorAuthProperties>("type"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<StorageConnectorAuthProperties>("type"));
+            SerializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicSerializeJsonConverter<StorageConnectorAuthPropertiesUpdate>("type"));
+            DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.PolymorphicDeserializeJsonConverter<StorageConnectorAuthPropertiesUpdate>("type"));
             CustomInitialize();
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Serialization.TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new Microsoft.Rest.Azure.CloudErrorJsonConverter());

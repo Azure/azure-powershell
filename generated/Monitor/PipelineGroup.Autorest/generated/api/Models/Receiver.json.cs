@@ -79,9 +79,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             }
             {_syslog = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonObject>("syslog"), out var __jsonSyslog) ? Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.SyslogReceiver.FromJson(__jsonSyslog) : _syslog;}
             {_otlp = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonObject>("otlp"), out var __jsonOtlp) ? Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.OtlpReceiver.FromJson(__jsonOtlp) : _otlp;}
-            {_udp = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonObject>("udp"), out var __jsonUdp) ? Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.UdpReceiver.FromJson(__jsonUdp) : _udp;}
             {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)_type;}
             {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
+            {_tlsConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString>("tlsConfiguration"), out var __jsonTlsConfiguration) ? (string)__jsonTlsConfiguration : (string)_tlsConfiguration;}
             AfterFromJson(json);
         }
 
@@ -106,9 +106,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models
             }
             AddIf( null != this._syslog ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) this._syslog.ToJson(null,serializationMode) : null, "syslog" ,container.Add );
             AddIf( null != this._otlp ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) this._otlp.ToJson(null,serializationMode) : null, "otlp" ,container.Add );
-            AddIf( null != this._udp ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) this._udp.ToJson(null,serializationMode) : null, "udp" ,container.Add );
             AddIf( null != (((object)this._type)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString(this._type.ToString()) : null, "type" ,container.Add );
             AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
+            AddIf( null != (((object)this._tlsConfiguration)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Runtime.Json.JsonString(this._tlsConfiguration.ToString()) : null, "tlsConfiguration" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

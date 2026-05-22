@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed `Add-AzIotHubDevice`, `Set-AzIotHubDevice`, `Add-AzIotHubModule`, `Set-AzIotHubModule`, and `Add-AzIotHubRoutingEndpoint`
 
 ## Version 2.8.1
 * Aligned dependency versions with other modules

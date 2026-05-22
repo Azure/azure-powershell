@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Management.Authorization
         /// The operations group for this extension method.
         /// </param>
         /// <param name='scope'>
-        /// The scope of the deny assignment.
+        /// The scope at which the operation is performed.
         /// </param>
         /// <param name='denyAssignmentId'>
         /// The ID of the deny assignment to get.
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Management.Authorization
         /// The operations group for this extension method.
         /// </param>
         /// <param name='scope'>
-        /// The scope of the deny assignment.
+        /// The scope at which the operation is performed.
         /// </param>
         /// <param name='denyAssignmentId'>
         /// The ID of the deny assignment to get.
@@ -185,6 +185,83 @@ namespace Microsoft.Azure.Management.Authorization
             {
                 return _result.Body;
             }
+        }
+        /// <summary>
+        /// Create or update a deny assignment by scope and name.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='scope'>
+        /// The scope at which the operation is performed.
+        /// </param>
+        /// <param name='denyAssignmentId'>
+        /// The ID of the deny assignment to create. A new GUID should be used for each
+        /// new deny assignment.
+        /// </param>
+        public static DenyAssignment CreateOrUpdate(this IDenyAssignmentsOperations operations, string scope, string denyAssignmentId, DenyAssignment parameters)
+        {
+                return ((IDenyAssignmentsOperations)operations).CreateOrUpdateAsync(scope, denyAssignmentId, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Create or update a deny assignment by scope and name.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='scope'>
+        /// The scope at which the operation is performed.
+        /// </param>
+        /// <param name='denyAssignmentId'>
+        /// The ID of the deny assignment to create. A new GUID should be used for each
+        /// new deny assignment.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<DenyAssignment> CreateOrUpdateAsync(this IDenyAssignmentsOperations operations, string scope, string denyAssignmentId, DenyAssignment parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(scope, denyAssignmentId, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Delete a deny assignment by scope and name.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='scope'>
+        /// The scope at which the operation is performed.
+        /// </param>
+        /// <param name='denyAssignmentId'>
+        /// The ID of the deny assignment to delete.
+        /// </param>
+        public static void Delete(this IDenyAssignmentsOperations operations, string scope, string denyAssignmentId)
+        {
+                ((IDenyAssignmentsOperations)operations).DeleteAsync(scope, denyAssignmentId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Delete a deny assignment by scope and name.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='scope'>
+        /// The scope at which the operation is performed.
+        /// </param>
+        /// <param name='denyAssignmentId'>
+        /// The ID of the deny assignment to delete.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DeleteAsync(this IDenyAssignmentsOperations operations, string scope, string denyAssignmentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DeleteWithHttpMessagesAsync(scope, denyAssignmentId, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets a deny assignment by ID.
@@ -237,7 +314,7 @@ namespace Microsoft.Azure.Management.Authorization
         /// 
         /// </param>
         /// <param name='scope'>
-        /// The scope of the deny assignments.
+        /// The scope at which the operation is performed.
         /// </param>
         public static Microsoft.Rest.Azure.IPage<DenyAssignment> ListForScope(this IDenyAssignmentsOperations operations, string scope, Microsoft.Rest.Azure.OData.ODataQuery<DenyAssignmentFilter> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<DenyAssignmentFilter>))
         {
@@ -254,7 +331,7 @@ namespace Microsoft.Azure.Management.Authorization
         /// 
         /// </param>
         /// <param name='scope'>
-        /// The scope of the deny assignments.
+        /// The scope at which the operation is performed.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

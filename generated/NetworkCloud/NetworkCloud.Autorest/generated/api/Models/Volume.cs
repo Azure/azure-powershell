@@ -21,6 +21,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrackedResource __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.TrackedResource();
 
+        /// <summary>The allocated size of the volume in Mebibytes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public long? AllocatedSizeMiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumePropertiesInternal)Property).AllocatedSizeMiB; }
+
         /// <summary>
         /// The list of resource IDs that attach the volume. It may include virtual machines and Hybrid AKS clusters.
         /// </summary>
@@ -97,6 +101,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IResourceInternal)__trackedResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IResourceInternal)__trackedResource).Type = value ?? null; }
 
+        /// <summary>Internal Acessors for AllocatedSizeMiB</summary>
+        long? Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumeInternal.AllocatedSizeMiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumePropertiesInternal)Property).AllocatedSizeMiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumePropertiesInternal)Property).AllocatedSizeMiB = value ?? default(long); }
+
         /// <summary>Internal Acessors for AttachedTo</summary>
         System.Collections.Generic.List<string> Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumeInternal.AttachedTo { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumePropertiesInternal)Property).AttachedTo; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumePropertiesInternal)Property).AttachedTo = value ?? null /* arrayOf */; }
 
@@ -144,9 +151,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
         public string SerialNumber { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumePropertiesInternal)Property).SerialNumber; }
 
-        /// <summary>The size of the allocation for this volume in Mebibytes.</summary>
+        /// <summary>The requested storage allocation for the volume in Mebibytes.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
-        public long? SizeMiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumePropertiesInternal)Property).SizeMiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumePropertiesInternal)Property).SizeMiB = value ?? default(long); }
+        public long SizeMiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumePropertiesInternal)Property).SizeMiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumePropertiesInternal)Property).SizeMiB = value ; }
+
+        /// <summary>The resource ID of the storage appliance that hosts the volume.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public string StorageApplianceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumePropertiesInternal)Property).StorageApplianceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVolumePropertiesInternal)Property).StorageApplianceId = value ?? null; }
 
         /// <summary>
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -211,6 +222,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrackedResource
     {
+        /// <summary>The allocated size of the volume in Mebibytes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The allocated size of the volume in Mebibytes.",
+        SerializedName = @"allocatedSizeMiB",
+        PossibleTypes = new [] { typeof(long) })]
+        long? AllocatedSizeMiB { get;  }
         /// <summary>
         /// The list of resource IDs that attach the volume. It may include virtual machines and Hybrid AKS clusters.
         /// </summary>
@@ -303,23 +325,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         SerializedName = @"serialNumber",
         PossibleTypes = new [] { typeof(string) })]
         string SerialNumber { get;  }
-        /// <summary>The size of the allocation for this volume in Mebibytes.</summary>
+        /// <summary>The requested storage allocation for the volume in Mebibytes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The requested storage allocation for the volume in Mebibytes.",
+        SerializedName = @"sizeMiB",
+        PossibleTypes = new [] { typeof(long) })]
+        long SizeMiB { get; set; }
+        /// <summary>The resource ID of the storage appliance that hosts the volume.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
-        Description = @"The size of the allocation for this volume in Mebibytes.",
-        SerializedName = @"sizeMiB",
-        PossibleTypes = new [] { typeof(long) })]
-        long? SizeMiB { get; set; }
+        Update = true,
+        Description = @"The resource ID of the storage appliance that hosts the volume.",
+        SerializedName = @"storageApplianceId",
+        PossibleTypes = new [] { typeof(string) })]
+        string StorageApplianceId { get; set; }
 
     }
     /// Volume represents storage made available for use by resources running on the cluster.
     internal partial interface IVolumeInternal :
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ITrackedResourceInternal
     {
+        /// <summary>The allocated size of the volume in Mebibytes.</summary>
+        long? AllocatedSizeMiB { get; set; }
         /// <summary>
         /// The list of resource IDs that attach the volume. It may include virtual machines and Hybrid AKS clusters.
         /// </summary>
@@ -344,8 +379,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         string ProvisioningState { get; set; }
         /// <summary>The unique identifier of the volume.</summary>
         string SerialNumber { get; set; }
-        /// <summary>The size of the allocation for this volume in Mebibytes.</summary>
-        long? SizeMiB { get; set; }
+        /// <summary>The requested storage allocation for the volume in Mebibytes.</summary>
+        long SizeMiB { get; set; }
+        /// <summary>The resource ID of the storage appliance that hosts the volume.</summary>
+        string StorageApplianceId { get; set; }
 
     }
 }

@@ -121,6 +121,13 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true)]
         public string GatewayLoadBalancerId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The DDoS custom policy resource ID to associate with the frontend IP configuration.",
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string DdosCustomPolicyId { get; set; }
+
         public override void Execute()
         {
             if (ShouldProcess(this.LoadBalancer.Name, "Adding Front-End IP Configuration"))
@@ -215,6 +222,16 @@ namespace Microsoft.Azure.Commands.Network
                         vFrontendIpConfigurations.PublicIPPrefix = new PSPublicIpPrefix();
                     }
                     vFrontendIpConfigurations.PublicIPPrefix.Id = this.PublicIpAddressPrefixId;
+                }
+
+                if (!string.IsNullOrEmpty(this.DdosCustomPolicyId))
+                {
+                    if (vFrontendIpConfigurations.DdosSettings == null)
+                    {
+                        vFrontendIpConfigurations.DdosSettings = new PSDdosSettings();
+                    }
+
+                    vFrontendIpConfigurations.DdosSettings.DdosCustomPolicy = new PSResourceId { Id = this.DdosCustomPolicyId };
                 }
 
                 var generatedId = string.Format(

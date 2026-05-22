@@ -237,6 +237,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 replication.RemoteVolumeRegion = DataProtection.Replication.RemoteVolumeRegion;
                 replication.RemotePath = DataProtection.Replication?.RemotePath?.ConvertToPs();
                 replication.DestinationReplications = DataProtection.Replication?.DestinationReplications?.ConvertToPs();
+                replication.ExternalReplicationSetupStatus = DataProtection.Replication.ExternalReplicationSetupStatus;
+                replication.ExternalReplicationSetupInfo = DataProtection.Replication.ExternalReplicationSetupInfo;
+                replication.MirrorState = DataProtection.Replication.MirrorState;
+                replication.RelationshipStatus = DataProtection.Replication.RelationshipStatus;
                 psDataProtection.Replication = replication;
             }
             if (DataProtection.Snapshot != null)
