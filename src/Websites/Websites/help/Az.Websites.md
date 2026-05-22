@@ -147,25 +147,25 @@ Creates inbound services for App Service Environment. For ASEv2 ILB, this will c
 Creates an Azure App Service plan in a given Geo location.
 
 ### [New-AzStaticWebApp](New-AzStaticWebApp.md)
-Description for Creates a new static site in an existing resource group, or updates an existing static site.
+Description for create a new static site in an existing resource group, or create an existing static site.
 
 ### [New-AzStaticWebAppBuildAppSetting](New-AzStaticWebAppBuildAppSetting.md)
-Description for Creates or updates the app settings of a static site build.
+Description for create the app settings of a static site build.
 
 ### [New-AzStaticWebAppBuildFunctionAppSetting](New-AzStaticWebAppBuildFunctionAppSetting.md)
-Description for Creates or updates the function app settings of a static site build.
+Description for create the function app settings of a static site build.
 
 ### [New-AzStaticWebAppCustomDomain](New-AzStaticWebAppCustomDomain.md)
-Description for Creates a new static site custom domain in an existing resource group and static site.
+Description for create a new static site custom domain in an existing resource group and static site.
 
 ### [New-AzStaticWebAppFunctionAppSetting](New-AzStaticWebAppFunctionAppSetting.md)
-Description for Creates or updates the function app settings of a static site.
+Description for create the function app settings of a static site.
 
 ### [New-AzStaticWebAppSetting](New-AzStaticWebAppSetting.md)
-Description for Creates or updates the app settings of a static site.
+Description for create the app settings of a static site.
 
 ### [New-AzStaticWebAppUserRoleInvitationLink](New-AzStaticWebAppUserRoleInvitationLink.md)
-Description for Creates an invitation link for a user with the role
+Description for create an invitation link for a user with the role
 
 ### [New-AzWebApp](New-AzWebApp.md)
 Creates an Azure Web App.
@@ -327,10 +327,10 @@ Description for Detach the user provided function app from the static site build
 Description for Detach the user provided function app from the static site
 
 ### [Update-AzStaticWebApp](Update-AzStaticWebApp.md)
-Description for Creates a new static site in an existing resource group, or updates an existing static site.
+Description for update a new static site in an existing resource group, or update an existing static site.
 
 ### [Update-AzStaticWebAppUser](Update-AzStaticWebAppUser.md)
-Description for Updates a user entry with the listed roles
+Description for update a user entry with the listed roles
 
 ### [Update-AzWebAppAccessRestrictionConfig](Update-AzWebAppAccessRestrictionConfig.md)
 Updates the inheritance of Main site Access Restriction config to SCM Site for an Azure Web App.
