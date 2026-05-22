@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+* Fixed `Invoke-AzDataMigrationCommand`, `New-AzDataMigrationConnectionInfo`, and `New-AzDataMigrationTask`
 
 ## Version 1.0.0
 * General availability for module Az.DataMigration

@@ -19,13 +19,12 @@
 -->
 
 ## Upcoming Release
-* Updated Policy.Autorest api-version to 2025-03-01
-    - Introduced support for `-Expand` query parameter in `Get-AzPolicyAssignment` and `Get-AzPolicySetDefinition`
-    - Removed the -BackwardCompatible parameter from all Policy cmdlets, including Get/Update/New/Remove‑PolicyAssignment, PolicyDefinition, PolicySetDefinition, and PolicyExemption.
-    - Updated `New-AzPolicyAssignment` and `Update-AzPolicyAssignment` to support the Enroll in `-EnforcementMode`.
-    - Added support for ExternalEvaluationEnforcementSettings to `New-AzPolicyDefinition` and `Update-AzPolicyDefinition`, including: `-ExternalEvaluationEnforcementSettingMissingTokenAction`, `-ExternalEvaluationEnforcementSettingResultLifespan`, `-ExternalEvaluationEnforcementSettingRoleDefinitionId`, `-EndpointSettingKind`, and `-EndpointSettingDetail` parameters
-    - `-Version` parameter in `Get-AzPolicyDefinition` and `Get-AzPolicySetDefinition` can now be used in `ManagementGroupName`, `SubscriptionId`, and `Id` parameter sets
-    - Added support for `-Version` parameter in Update/New/Remove-PolicyDefinition, and PolicySetDefinition where the Update and Remove commands target old versions.
+* Fixed dynamic parameter inheritance in deployment and deployment stack cmdlets
+* Updated deployment stack cmdlets to `2025-07-01` API; added `-ResourcesWithoutDeleteSupport` (`Fail`/`Detach`) and `-ValidationLevel` (`Provider`/`Template`/`ProviderNoRbac`); output now includes these settings
+* Fixed `Set-AzRoleAssignment` unable to delete conditions
+* Updated Policy.Autorest to 2025-03-01: added `-Expand`, Enroll `-EnforcementMode`, ExternalEvaluationEnforcementSettings, `-Version`; removed `-BackwardCompatible`
+* Fixed `Get-AzRoleDefinition` null `Condition` for ABAC on non-first permissions [#29058] [#25940]
+* [Breaking Change] Role definition cmdlets use `Permissions` array with per-permission conditions; flattened properties removed from `PSRoleDefinition`
 
 ## Version 9.1.0
 * Made `Remove-AzDenyAssignment` honor `-Confirm:$false` and idempotent when no matching deny assignment exists. The redundant `-Force` switch was removed (the cmdlet relies on the standard `SupportsShouldProcess`/`ConfirmImpact` pattern).

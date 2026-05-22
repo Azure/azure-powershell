@@ -18,12 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Upgraded API version from 2023-07-01-preview to 2025-10-01-preview
-* Added new cmdlet `Invoke-AzDnsResolverBulkDnsResolverDomainList`
-* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
-* [Breaking Change] Removed parameter `ActionBlockResponseCode` from `New-AzDnsResolverPolicyDnsSecurityRule` and `Update-AzDnsResolverPolicyDnsSecurityRule`. The block response code is no longer configurable.
-* [Breaking Change] Parameter `DnsResolverDomainList` is no longer mandatory on `New-AzDnsResolverPolicyDnsSecurityRule`. DNS security rules now support `ManagedDomainList` as an alternative.
-* [Breaking Change] Parameter `Domain` is no longer mandatory on `New-AzDnsResolverDomainList`. Domain lists now support bulk upload via `Invoke-AzDnsResolverBulkDnsResolverDomainList`.
+* Added `Invoke-AzDnsResolverBulkDnsResolverDomainList` for bulk domain upload
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
+* Removed `-ActionBlockResponseCode` from `New/Update-AzDnsResolverPolicyDnsSecurityRule`
+* Changed `-DnsResolverDomainList` to optional on `New-AzDnsResolverPolicyDnsSecurityRule`
+* Changed `-Domain` to optional on `New-AzDnsResolverDomainList`
 
 
 ## Version 1.2.4

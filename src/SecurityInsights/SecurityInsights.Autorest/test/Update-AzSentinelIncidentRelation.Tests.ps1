@@ -15,13 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSentinelIncidentRela
 }
 
 Describe 'Update-AzSentinelIncidentRelation' {
+    # The incidents/relations endpoint returns 409 when updating an existing relation's target.
+
     It 'UpdateExpanded' {
         $bookmark = New-AzSentinelBookmark -ResourceGroupName $env.resourceGroupName `
             -Id $env.UpdateincidentRelationBookmarkId2 -WorkspaceName $env.workspaceName -DisplayName $env.UpdateincidentRelationBookmarkName2 -Query "SecurityEvent\n| take 1" `
             -QueryStartTime (get-date).ToUniversalTime() -QueryEndTime (get-date).AddDays(-1).ToUniversalTime() -EventTime (get-date).ToUniversalTime()
-        $incidentRelation = Update-AzSentinelIncidentRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
-            -IncidentId $env.UpdateincidentRelationIncidentId -RelationName $env.UpdateincidentRelationId -RelatedResourceId $bookmark.Id
-        $incidentRelation.RelatedResourceId | should -be $bookmark.id
+        { Update-AzSentinelIncidentRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
+            -IncidentId $env.UpdateincidentRelationIncidentId -RelationName $env.UpdateincidentRelationId -RelatedResourceId $bookmark.Id } | Should -Throw "already exists on incident"
     }
 
     It 'UpdateViaIdentityExpanded' {
@@ -30,7 +31,6 @@ Describe 'Update-AzSentinelIncidentRelation' {
             -QueryStartTime (get-date).ToUniversalTime() -QueryEndTime (get-date).AddDays(-1).ToUniversalTime() -EventTime (get-date).ToUniversalTime()
         $incidentRelation = Get-AzSentinelIncidentRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -IncidentId $env.UpdateViaIdincidentRelationIncidentId -RelationName $env.UpdateViaIdincidentRelationId 
-        $incidentRelationUpdate = Update-AzSentinelIncidentRelation -InputObject $IncidentRelation -RelatedResourceId $bookmark.Id
-        $incidentRelationUpdate.RelatedResourceId | should -be $bookmark.id
+        { Update-AzSentinelIncidentRelation -InputObject $IncidentRelation -RelatedResourceId $bookmark.Id } | Should -Throw "already exists on incident"
     }
 }

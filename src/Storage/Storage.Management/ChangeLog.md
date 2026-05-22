@@ -18,16 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added support for Smart access tier
-    - `New-AzStorageAccount`
-    - `Set-AzStorageAccount`
-* Added support for AllowedCopyScope value 'All'
-    - `New-AzStorageAccount`
-    - `Set-AzStorageAccount`
-* Added support for static website configuration in blob service properties
-    - `Update-AzStorageBlobServiceProperty`
-* Added support for tags replication in object replication policy
-    - `Set-AzStorageObjectReplicationPolicy`
+* Updated the prompt message for user confirmation of long running account migration operation in `Start-AzStorageAccountMigration`
+* Added Storage task assignment TriggerType new value MockRun in `New/Update-AzStorageTaskAssignment`
+* Fixed `Get-AzStorageFileContent` and `Set-AzStorageFileContent`
+* Added Smart access tier and AllowedCopyScope 'All' support in `New/Set-AzStorageAccount`
+* Added static website configuration in `Update-AzStorageBlobServiceProperty`
+* Added tags replication in `Set-AzStorageObjectReplicationPolicy`
 
 ## Version 9.6.1
 * Removed breaking change warnings for TLS 1.0 and TLS 1.1 deprecation

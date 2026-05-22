@@ -78,15 +78,12 @@ function setupEnv() {
     set-content -Path .\test\deployment-templates\workspace\template.parameters.json -Value (ConvertTo-Json $workspaceParams)
     $TemplateFile = (Get-ChildItem $TemplatePath\workspace\template.json).FullName
     $TemplateParametersFile = (Get-ChildItem $TemplatePath\workspace\template.parameters.json).FullName
-    $result = New-AzDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name Workspace -ResourceGroupName $resourceGroupName
+    $result = New-AzResourceGroupDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name Workspace -ResourceGroupName $resourceGroupName
     if($result.ProvisioningState -eq "Succeeded"){
         $null = $env.Add("workspaceName", $workspaceName)
-        $url = "https://management.azure.com/"+ ($result.Id) + "?api-version=2021-04-01"
-        $deployResult = Invoke-RestMethod -Uri $url -Method GET -headers $header
-        $null = $env.Add('workspaceId', ($deployResult.properties.outputs.workspaceId.value))
-        #$null = $env.Add('workspaceKey', ($deployResult.properties.outputs.workspaceKey.value))
-        $workspaceKey = ($deployResult.properties.outputs.workspaceKey.value)
-        $null = $env.Add('workspaceResourceId', ($deployResult.properties.outputs.workspaceResourceId.value))
+        $null = $env.Add('workspaceId', $result.Outputs.workspaceId.Value)
+        $workspaceKey = $result.Outputs.workspaceKey.Value
+        $null = $env.Add('workspaceResourceId', $result.Outputs.workspaceResourceId.Value)
         $null = $env.Add("newOnboardingStateWS", $newOnboardingStateWS)
         $null = $env.Add("removeOnboardingStateWS", $removeOnboardingStateWS)
     }
@@ -118,7 +115,7 @@ function setupEnv() {
     set-content -Path .\test\deployment-templates\customData\alertRules.parameters.json -Value (ConvertTo-Json $alertRuleParams)
     $TemplateFile = (Get-ChildItem $TemplatePath\customData\alertRules.json).FullName
     $TemplateParametersFile = (Get-ChildItem $TemplatePath\customData\alertRules.parameters.json).FullName
-    $result = New-AzDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name CustomData -ResourceGroupName $resourceGroupName
+    $result = New-AzResourceGroupDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name CustomData -ResourceGroupName $resourceGroupName
     if($result.ProvisioningState -eq "Succeeded"){
         $null = $env.Add(("solarigateRuleGuid"), $solarigateRuleGuid)
         $null = $env.Add(("disabledRuleGuid"), $disabledRuleGuid)
@@ -129,18 +126,24 @@ function setupEnv() {
     Write-Host "Start to create test playbooks"
     $TemplateFile = (Get-ChildItem $TemplatePath\playbooks\template.json).FullName
     $TemplateParametersFile = (Get-ChildItem $TemplatePath\playbooks\template.parameters.json).FullName
-    $result = New-AzDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name Playbooks -ResourceGroupName $resourceGroupName
-    if($result.ProvisioningState -eq "Succeeded"){
-        $url = "https://management.azure.com/"+ ($result.Id) + "?api-version=2021-04-01"
-        $deployResult = Invoke-RestMethod -Uri $url -Method GET -headers $header
-        $null = $env.Add('Playbook1LogicAppResourceId', ($deployResult.properties.Outputs.Playbook1LogicAppResourceId.value))
-        $null = $env.Add('Playbook1TriggerUrl', ($deployResult.properties.Outputs.Playbook1triggerUrl.value))
-        $null = $env.Add('Playbook2LogicAppResourceId', ($deployResult.properties.Outputs.Playbook2LogicAppResourceId.value))
-        $null = $env.Add('Playbook2TriggerUrl', ($deployResult.properties.Outputs.Playbook2triggerUrl.value))
-        $null = $env.Add('Playbook3LogicAppResourceId', ($deployResult.properties.Outputs.Playbook3LogicAppResourceId.value))
-        $null = $env.Add('Playbook3TriggerUrl', ($deployResult.properties.Outputs.Playbook3triggerUrl.value))
-        $null = $env.Add('Playbook4LogicAppResourceId', ($deployResult.properties.Outputs.Playbook4LogicAppResourceId.value))
-        $null = $env.Add('Playbook4TriggerUrl', ($deployResult.properties.Outputs.Playbook4triggerUrl.value))
+    New-AzResourceGroupDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name Playbooks -ResourceGroupName $resourceGroupName
+    $result = Get-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name 'Playbooks' -ErrorAction SilentlyContinue
+    if(-not $result -or $result.ProvisioningState -ne "Succeeded"){
+        Start-TestSleep -Seconds 30
+        New-AzResourceGroupDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name PlaybooksRetry -ResourceGroupName $resourceGroupName
+        $result = Get-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name 'PlaybooksRetry' -ErrorAction SilentlyContinue
+    }
+    if($result -and $result.ProvisioningState -eq "Succeeded"){
+        $null = $env.Add('Playbook1LogicAppResourceId', $result.Outputs.playbook1LogicAppResourceId.Value)
+        $null = $env.Add('Playbook1TriggerUrl', $result.Outputs.playbook1triggerUrl.Value)
+        $null = $env.Add('Playbook2LogicAppResourceId', $result.Outputs.playbook2LogicAppResourceId.Value)
+        $null = $env.Add('Playbook2TriggerUrl', $result.Outputs.playbook2triggerUrl.Value)
+        $null = $env.Add('Playbook3LogicAppResourceId', $result.Outputs.playbook3LogicAppResourceId.Value)
+        $null = $env.Add('Playbook3TriggerUrl', $result.Outputs.playbook3triggerUrl.Value)
+        $null = $env.Add('Playbook4LogicAppResourceId', $result.Outputs.playbook4LogicAppResourceId.Value)
+        $null = $env.Add('Playbook4TriggerUrl', $result.Outputs.playbook4triggerUrl.Value)
+    } else {
+        Write-Host "Playbooks deployment failed after both attempts"
     }
 
 
@@ -212,7 +215,7 @@ function setupEnv() {
     set-content -Path .\test\deployment-templates\authorization\template.parameters.json -Value (ConvertTo-Json $authorizationParams)
     $TemplateFile = (Get-ChildItem $TemplatePath\authorization\template.json).FullName
     $TemplateParametersFile = (Get-ChildItem $TemplatePath\authorization\template.parameters.json).FullName
-    $result = New-AzDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name Authorization -ResourceGroupName $resourceGroupName
+    $result = New-AzResourceGroupDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name Authorization -ResourceGroupName $resourceGroupName
     start-sleep 60
 
     #Create Automation Rule
@@ -271,9 +274,10 @@ function setupEnv() {
     set-content -Path .\test\deployment-templates\dataConnector\template.parameters.json -Value (ConvertTo-Json $dataConnectorParams)
     $TemplateFile = (Get-ChildItem $TemplatePath\dataConnector\template.json).FullName
     $TemplateParametersFile = (Get-ChildItem $TemplatePath\dataConnector\template.parameters.json).FullName
-    $result = New-AzDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name dataConnector -ResourceGroupName $resourceGroupName
-    if($result.ProvisioningState -eq "Succeeded"){
-        $null = $env.Add('dataConnectorId', $dataConnectorId)
+    $result = New-AzResourceGroupDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name dataConnector -ResourceGroupName $resourceGroupName
+    # Workaround — save dataConnectorId even on partial failure (AzureSecurityCenter succeeds when Office365 fails)
+    $null = $env.Add('dataConnectorId', $dataConnectorId)
+    if($result -and $result.ProvisioningState -eq "Succeeded"){
         $null = $env.Add('updateDataConnectorId', $updateDataConnectorId)
     }
     $null = $env.Add('RemoveDataConnectorId', ((New-Guid).Guid))
@@ -361,7 +365,7 @@ function setupEnv() {
     set-content -Path .\test\deployment-templates\metadata\template.parameters.json -Value (ConvertTo-Json $metadataParams)
     $TemplateFile = (Get-ChildItem $TemplatePath\metadata\template.json).FullName
     $TemplateParametersFile = (Get-ChildItem $TemplatePath\metadata\template.parameters.json).FullName
-    $result = New-AzDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name metadata -ResourceGroupName $resourceGroupName
+    $result = New-AzResourceGroupDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name metadata -ResourceGroupName $resourceGroupName
     if($result.ProvisioningState -eq "Succeeded"){
         $null = $env.Add('metadataName', 'azuresentinel.azure-sentinel-solution-zerotrust')
     }

@@ -2611,7 +2611,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace
             }
         }
 
-        /// <summary>Add or add alerts in the issue</summary>
+        /// <summary>Add or add alerts associated with an issue</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="azureMonitorWorkspaceName">The name of the Azure Monitor Workspace. The name is case insensitive</param>
@@ -2664,7 +2664,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace
             }
         }
 
-        /// <summary>Add or add alerts in the issue</summary>
+        /// <summary>Add or add alerts associated with an issue</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The content of the action request</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2727,7 +2727,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace
             }
         }
 
-        /// <summary>Add or add alerts in the issue</summary>
+        /// <summary>Add or add alerts associated with an issue</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The content of the action request</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2788,7 +2788,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace
             }
         }
 
-        /// <summary>Add or add alerts in the issue</summary>
+        /// <summary>Add or add alerts associated with an issue</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="azureMonitorWorkspaceName">The name of the Azure Monitor Workspace. The name is case insensitive</param>
@@ -2840,7 +2840,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace
             }
         }
 
-        /// <summary>Add or add alerts in the issue</summary>
+        /// <summary>Add or add alerts associated with an issue</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="azureMonitorWorkspaceName">The name of the Azure Monitor Workspace. The name is case insensitive</param>
@@ -2890,7 +2890,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace
             }
         }
 
-        /// <summary>Add or add alerts in the issue</summary>
+        /// <summary>Add or add alerts associated with an issue</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="azureMonitorWorkspaceName">The name of the Azure Monitor Workspace. The name is case insensitive</param>
@@ -3082,7 +3082,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace
             }
         }
 
-        /// <summary>Add or add resources in the issue</summary>
+        /// <summary>Add or add resources associated with an issue</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="azureMonitorWorkspaceName">The name of the Azure Monitor Workspace. The name is case insensitive</param>
@@ -3135,7 +3135,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace
             }
         }
 
-        /// <summary>Add or add resources in the issue</summary>
+        /// <summary>Add or add resources associated with an issue</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The content of the action request</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3198,7 +3198,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace
             }
         }
 
-        /// <summary>Add or add resources in the issue</summary>
+        /// <summary>Add or add resources associated with an issue</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The content of the action request</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3259,7 +3259,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace
             }
         }
 
-        /// <summary>Add or add resources in the issue</summary>
+        /// <summary>Add or add resources associated with an issue</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="azureMonitorWorkspaceName">The name of the Azure Monitor Workspace. The name is case insensitive</param>
@@ -3311,7 +3311,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace
             }
         }
 
-        /// <summary>Add or add resources in the issue</summary>
+        /// <summary>Add or add resources associated with an issue</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="azureMonitorWorkspaceName">The name of the Azure Monitor Workspace. The name is case insensitive</param>
@@ -3361,7 +3361,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace
             }
         }
 
-        /// <summary>Add or add resources in the issue</summary>
+        /// <summary>Add or add resources associated with an issue</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="azureMonitorWorkspaceName">The name of the Azure Monitor Workspace. The name is case insensitive</param>
