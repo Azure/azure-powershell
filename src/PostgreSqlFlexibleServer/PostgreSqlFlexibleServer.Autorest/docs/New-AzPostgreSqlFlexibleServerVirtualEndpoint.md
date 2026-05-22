@@ -14,7 +14,7 @@ Create a pair of virtual endpoints for a server.
 
 ### CreateExpanded (Default)
 ```
-New-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroupName <String> -ServerName <String>
+New-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroup <String> -ServerName <String>
  [-SubscriptionId <String>] [-EndpointType <String>] [-Member <String[]>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -28,14 +28,14 @@ New-AzPostgreSqlFlexibleServerVirtualEndpoint -FlexibleServerInputObject <IPostg
 
 ### CreateViaJsonFilePath
 ```
-New-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroupName <String> -ServerName <String>
+New-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroup <String> -ServerName <String>
  -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroupName <String> -ServerName <String>
+New-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroup <String> -ServerName <String>
  -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -205,7 +205,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ResourceGroup
 The name of the resource group.
 The name is case insensitive.
 

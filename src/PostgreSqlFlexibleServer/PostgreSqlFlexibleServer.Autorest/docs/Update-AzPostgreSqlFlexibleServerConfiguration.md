@@ -14,7 +14,7 @@ Update the value assigned to a specific modifiable configuration (also known as 
 
 ### UpdateExpanded (Default)
 ```
-Update-AzPostgreSqlFlexibleServerConfiguration -Name <String> -ResourceGroupName <String> -ServerName <String>
+Update-AzPostgreSqlFlexibleServerConfiguration -Name <String> -ResourceGroup <String> -ServerName <String>
  [-SubscriptionId <String>] [-Source <String>] [-Value <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -35,14 +35,14 @@ Update-AzPostgreSqlFlexibleServerConfiguration -FlexibleServerInputObject <IPost
 
 ### UpdateViaJsonFilePath
 ```
-Update-AzPostgreSqlFlexibleServerConfiguration -Name <String> -ResourceGroupName <String> -ServerName <String>
+Update-AzPostgreSqlFlexibleServerConfiguration -Name <String> -ResourceGroup <String> -ServerName <String>
  -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
-Update-AzPostgreSqlFlexibleServerConfiguration -Name <String> -ResourceGroupName <String> -ServerName <String>
+Update-AzPostgreSqlFlexibleServerConfiguration -Name <String> -ResourceGroup <String> -ServerName <String>
  -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -197,7 +197,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ResourceGroup
 The name of the resource group.
 The name is case insensitive.
 

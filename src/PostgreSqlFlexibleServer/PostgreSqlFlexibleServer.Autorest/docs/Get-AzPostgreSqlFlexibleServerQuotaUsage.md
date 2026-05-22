@@ -22,27 +22,26 @@ Get quota usages at specified location in a given subscription.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all quotas in a subscription for a given location
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerQuotaUsage -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -LocationName example-location
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+NameValue                                NameLocalizedValue                       Unit       Limit      CurrentValue
+---------                                ------------------                       ----       -----      ------------
+cores                                    cores                                    Count      196        118
+standardBSFamily                         standardBSFamily                         Count      622        6
+standardDDSv4Family                      standardDDSv4Family                      Count      260        4
+standardDDSv5Family                      standardDDSv5Family                      Count      502        58
+standardDSv3Family                       standardDSv3Family                       Count      424        0
+standardEDSv4Family                      standardEDSv4Family                      Count      250        0
+standardEDSv5Family                      standardEDSv5Family                      Count      271        0
+standardESv3Family                       standardESv3Family                       Count      145        0
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Lists all quotas defined, and their corresponding usage, for Azure Database for PostgreSQL flexible server, with location and subscription explicitly passed as an arguments.
+If subscription is not passed explicitly, it's taken from default context.
 
 ## PARAMETERS
 

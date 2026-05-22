@@ -14,7 +14,7 @@ Update a new database.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzPostgreSqlFlexibleServerDatabase -Name <String> -ResourceGroupName <String> -ServerName <String>
+Update-AzPostgreSqlFlexibleServerDatabase -Name <String> -ResourceGroup <String> -ServerName <String>
  [-SubscriptionId <String>] [-Charset <String>] [-Collation <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -185,7 +185,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ResourceGroup
 The name of the resource group.
 The name is case insensitive.
 

@@ -13,9 +13,8 @@ Lists all read replicas of a server.
 ## SYNTAX
 
 ```
-Get-AzPostgreSqlFlexibleServerReplica -ResourceGroupName <String> -ServerName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzPostgreSqlFlexibleServerReplica -ResourceGroup <String> -ServerName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,27 +22,37 @@ Lists all read replicas of a server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all tuning options in a server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerTuningOption -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                           State
+----                           -----
+index                          
+configuration                  Disabled
+table
 ```
 
-{{ Add description here }}
+Lists all tuning options in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments.
+If subscription is not passed explicitly, it's taken from default context.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get all tuning options in a server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerTuningOption -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                           State
+----                           -----
+index                          
+configuration                  Disabled
+table
 ```
 
-{{ Add description here }}
+Lists all tuning options in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments.
+If subscription is not passed explicitly, it's taken from default context.
 
 ## PARAMETERS
 
@@ -63,7 +72,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ResourceGroup
 The name of the resource group.
 The name is case insensitive.
 

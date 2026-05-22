@@ -14,14 +14,14 @@ Restarts PostgreSQL database engine in a server.
 
 ### RestartExpanded (Default)
 ```
-Restart-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Restart-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroup <String> [-SubscriptionId <String>]
  [-FailoverMode <String>] [-RestartWithFailover] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Restart
 ```
-Restart-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroupName <String> -Parameter <IRestartParameter>
+Restart-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroup <String> -Parameter <IRestartParameter>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -42,14 +42,14 @@ Restart-AzPostgreSqlFlexibleServer -InputObject <IPostgreSqlFlexibleServerIdenti
 
 ### RestartViaJsonFilePath
 ```
-Restart-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+Restart-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroup <String> -JsonFilePath <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### RestartViaJsonString
 ```
-Restart-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroupName <String> -JsonString <String>
+Restart-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroup <String> -JsonString <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -234,7 +234,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ResourceGroup
 The name of the resource group.
 The name is case insensitive.
 

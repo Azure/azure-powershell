@@ -13,7 +13,7 @@ Lists all captured logs for download in a server.
 ## SYNTAX
 
 ```
-Get-AzPostgreSqlFlexibleServerCapturedLog -ResourceGroupName <String> -ServerName <String>
+Get-AzPostgreSqlFlexibleServerCapturedLog -ResourceGroup <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Lists all captured logs for download in a server.
 
 ### Example 1: List all captured logs
 ```powershell
-Get-AzPostgreSqlFlexibleServerCapturedLog -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server
+Get-AzPostgreSqlFlexibleServerCapturedLog -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server
 ```
 
 ```output
@@ -56,7 +56,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ResourceGroup
 The name of the resource group.
 The name is case insensitive.
 

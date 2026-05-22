@@ -21,14 +21,14 @@ Start-AzPostgreSqlFlexibleServerBackupsLongTermRetention -InputObject <IPostgreS
 
 ### Start
 ```
-Start-AzPostgreSqlFlexibleServerBackupsLongTermRetention -ResourceGroupName <String> -ServerName <String>
+Start-AzPostgreSqlFlexibleServerBackupsLongTermRetention -ResourceGroup <String> -ServerName <String>
  -Parameter <IBackupsLongTermRetentionRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### StartExpanded
 ```
-Start-AzPostgreSqlFlexibleServerBackupsLongTermRetention -ResourceGroupName <String> -ServerName <String>
+Start-AzPostgreSqlFlexibleServerBackupsLongTermRetention -ResourceGroup <String> -ServerName <String>
  -BackupSettingBackupName <String> -TargetDetailSasUriList <SecureString[]> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -42,14 +42,14 @@ Start-AzPostgreSqlFlexibleServerBackupsLongTermRetention -InputObject <IPostgreS
 
 ### StartViaJsonFilePath
 ```
-Start-AzPostgreSqlFlexibleServerBackupsLongTermRetention -ResourceGroupName <String> -ServerName <String>
+Start-AzPostgreSqlFlexibleServerBackupsLongTermRetention -ResourceGroup <String> -ServerName <String>
  -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### StartViaJsonString
 ```
-Start-AzPostgreSqlFlexibleServerBackupsLongTermRetention -ResourceGroupName <String> -ServerName <String>
+Start-AzPostgreSqlFlexibleServerBackupsLongTermRetention -ResourceGroup <String> -ServerName <String>
  -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -204,7 +204,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ResourceGroup
 The name of the resource group.
 The name is case insensitive.
 

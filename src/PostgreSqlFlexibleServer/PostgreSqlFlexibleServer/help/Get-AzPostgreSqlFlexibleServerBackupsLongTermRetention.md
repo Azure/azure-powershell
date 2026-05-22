@@ -14,7 +14,7 @@ Gets the results of a long retention backup operation for a server.
 
 ### List (Default)
 ```
-Get-AzPostgreSqlFlexibleServerBackupsLongTermRetention -ResourceGroupName <String> -ServerName <String>
+Get-AzPostgreSqlFlexibleServerBackupsLongTermRetention -ResourceGroup <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -28,7 +28,7 @@ Get-AzPostgreSqlFlexibleServerBackupsLongTermRetention -BackupName <String>
 
 ### Get
 ```
-Get-AzPostgreSqlFlexibleServerBackupsLongTermRetention -BackupName <String> -ResourceGroupName <String>
+Get-AzPostgreSqlFlexibleServerBackupsLongTermRetention -BackupName <String> -ResourceGroup <String>
  -ServerName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -129,7 +129,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ResourceGroup
 The name of the resource group.
 The name is case insensitive.
 

@@ -14,7 +14,7 @@ Update a new server.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Update-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroup <String> [-SubscriptionId <String>]
  [-AdministratorLoginPassword <SecureString>] [-AuthConfigActiveDirectoryAuth <String>]
  [-AuthConfigPasswordAuth <String>] [-AuthConfigTenantId <String>] [-BackupRetentionDay <Int32>]
  [-ClusterDefaultDatabaseName <String>] [-ClusterSize <Int32>] [-CreateMode <String>]
@@ -587,7 +587,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ResourceGroup
 The name of the resource group.
 The name is case insensitive.
 

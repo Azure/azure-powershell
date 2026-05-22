@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all virtual endpoints in a server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerVirtualEndpoint -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                          EndpointType Member                                 PropertiesVirtualEndpoints
+----                          ------------ ------                                 --------------------------
+example-virtual-endpoint      ReadWrite    {example-server-01, example-server-02} {example-virtual-endpoint.writer.postgres.database.azure.com, example-virtual-endpoint.reader.postgres.database.azure.com}
 ```
 
-{{ Add description here }}
+Lists all virtual endpoints in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments. If subscription is not passed explicitly, it's taken from default context.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get one virtual endpoint in a server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerVirtualEndpoint -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -Name example-virtual-endpoint
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                          EndpointType Member                                 PropertiesVirtualEndpoints
+----                          ------------ ------                                 --------------------------
+example-virtual-endpoint      ReadWrite    {example-server-01, example-server-02} {example-virtual-endpoint.writer.postgres.database.azure.com, example-virtual-endpoint.reader.postgres.database.azure.com}
 ```
 
-{{ Add description here }}
-
+Gets one virtual endpoint in an Azure Database for PostgreSQL flexible server with virtual endpoint name, server name, resource group, and subscription explicitly passed as an arguments. If subscription is not passed explicitly, it's taken from default context.

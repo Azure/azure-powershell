@@ -14,7 +14,7 @@ Update a new firewall rule or update an existing firewall rule.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzPostgreSqlFlexibleServerFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <String>
+Update-AzPostgreSqlFlexibleServerFirewallRule -Name <String> -ResourceGroup <String> -ServerName <String>
  [-SubscriptionId <String>] [-EndIPAddress <String>] [-StartIPAddress <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -170,7 +170,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ResourceGroup
 The name of the resource group.
 The name is case insensitive.
 

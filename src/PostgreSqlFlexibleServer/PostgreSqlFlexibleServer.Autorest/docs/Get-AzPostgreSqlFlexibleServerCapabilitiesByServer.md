@@ -13,7 +13,7 @@ Lists the capabilities available for a given server.
 ## SYNTAX
 
 ```
-Get-AzPostgreSqlFlexibleServerCapabilitiesByServer -ResourceGroupName <String> -ServerName <String>
+Get-AzPostgreSqlFlexibleServerCapabilitiesByServer -ResourceGroup <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -62,7 +62,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ResourceGroup
 The name of the resource group.
 The name is case insensitive.
 

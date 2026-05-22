@@ -14,21 +14,21 @@ Create a server's Advanced Threat Protection settings.
 
 ### CreateExpanded (Default)
 ```
-New-AzPostgreSqlFlexibleServerThreatProtectionSetting -ResourceGroupName <String> -ServerName <String>
+New-AzPostgreSqlFlexibleServerThreatProtectionSetting -ResourceGroup <String> -ServerName <String>
  [-SubscriptionId <String>] [-State <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzPostgreSqlFlexibleServerThreatProtectionSetting -ResourceGroupName <String> -ServerName <String>
+New-AzPostgreSqlFlexibleServerThreatProtectionSetting -ResourceGroup <String> -ServerName <String>
  -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzPostgreSqlFlexibleServerThreatProtectionSetting -ResourceGroupName <String> -ServerName <String>
+New-AzPostgreSqlFlexibleServerThreatProtectionSetting -ResourceGroup <String> -ServerName <String>
  -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -138,7 +138,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ResourceGroup
 The name of the resource group.
 The name is case insensitive.
 

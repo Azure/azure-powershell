@@ -14,7 +14,7 @@ Gets information about a migration.
 
 ### List (Default)
 ```
-Get-AzPostgreSqlFlexibleServerMigration -ResourceGroupName <String> -ServerName <String>
+Get-AzPostgreSqlFlexibleServerMigration -ResourceGroup <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-MigrationListFilter <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -28,7 +28,7 @@ Get-AzPostgreSqlFlexibleServerMigration -Name <String>
 
 ### Get
 ```
-Get-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroupName <String> -ServerName <String>
+Get-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroup <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -44,27 +44,37 @@ Gets information about a migration.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all migrations in a server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerMigration -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -MigrationListFilter All
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                 CurrentStatusState CurrentStatusError   Option               MigrateRole SourceType TriggerCutover SourceDbServerResourceId  DbsToMigrate              OverwriteDbsInTarget      Mode
+----                 ------------------ ------------------   ------               ----------- ---------- -------------- ------------------------  ------------              --------------------      ----
+example-migration-01 ValidationFailed   An unexpected error… ValidateAndMigrate   False       OnPremises True           example-source-server.po… {database-01, postgres}   True                      Offline
+example-migration-02 InProgress                              ValidateAndMigrate   False       OnPremises True           example-source-server.po… {database-01, postgres}   True                      Offline
 ```
 
-{{ Add description here }}
+Lists all migrations in an Azure Database for PostgreSQL flexible server with filter configured to retrieve active and inactive migrations, server name, resource group, and subscription explicitly passed as an arguments.
+If subscription is not passed explicitly, it's taken from default context.
+If the migration filter is not passed, it defaults to active migration only.
 
-### Example 2: {{ Add title here }}
+### Example 1: List only active migration in a server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerMigration -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -MigrationListFilter Active
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                 CurrentStatusState CurrentStatusError   Option               MigrateRole SourceType TriggerCutover SourceDbServerResourceId  DbsToMigrate              OverwriteDbsInTarget      Mode
+----                 ------------------ ------------------   ------               ----------- ---------- -------------- ------------------------  ------------              --------------------      ----
+example-migration-01 ValidationFailed   An unexpected error… ValidateAndMigrate   False       OnPremises True           example-source-server.po… {database-01, postgres}   True                      Offline
+example-migration-02 InProgress                              ValidateAndMigrate   False       OnPremises True           example-source-server.po… {database-01, postgres}   True                      Offline
 ```
 
-{{ Add description here }}
+Lists only active migration in an Azure Database for PostgreSQL flexible server with filter configured to retrieve active migration only, server name, resource group, and subscription explicitly passed as an arguments.
+If subscription is not passed explicitly, it's taken from default context.
+If the migration filter is not passed, it defaults to active migration only.
 
 ## PARAMETERS
 
@@ -146,7 +156,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ResourceGroup
 The name of the resource group.
 The name is case insensitive.
 

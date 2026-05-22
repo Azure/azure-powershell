@@ -14,28 +14,28 @@ Performs all checks required for a long term retention backup operation to succe
 
 ### CheckExpanded (Default)
 ```
-Test-AzPostgreSqlFlexibleServerBackupsLongTermRetentionPrerequisite -ResourceGroupName <String>
+Test-AzPostgreSqlFlexibleServerBackupsLongTermRetentionPrerequisite -ResourceGroup <String>
  -ServerName <String> [-SubscriptionId <String>] -BackupSettingBackupName <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaJsonString
 ```
-Test-AzPostgreSqlFlexibleServerBackupsLongTermRetentionPrerequisite -ResourceGroupName <String>
+Test-AzPostgreSqlFlexibleServerBackupsLongTermRetentionPrerequisite -ResourceGroup <String>
  -ServerName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaJsonFilePath
 ```
-Test-AzPostgreSqlFlexibleServerBackupsLongTermRetentionPrerequisite -ResourceGroupName <String>
+Test-AzPostgreSqlFlexibleServerBackupsLongTermRetentionPrerequisite -ResourceGroup <String>
  -ServerName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Check
 ```
-Test-AzPostgreSqlFlexibleServerBackupsLongTermRetentionPrerequisite -ResourceGroupName <String>
+Test-AzPostgreSqlFlexibleServerBackupsLongTermRetentionPrerequisite -ResourceGroup <String>
  -ServerName <String> [-SubscriptionId <String>] -Parameter <ILtrPreBackupRequest> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -174,7 +174,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ResourceGroup
 The name of the resource group.
 The name is case insensitive.
 

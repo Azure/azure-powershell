@@ -14,7 +14,7 @@ Create a new database.
 
 ### CreateExpanded (Default)
 ```
-New-AzPostgreSqlFlexibleServerDatabase -Name <String> -ResourceGroupName <String> -ServerName <String>
+New-AzPostgreSqlFlexibleServerDatabase -Name <String> -ResourceGroup <String> -ServerName <String>
  [-SubscriptionId <String>] [-Charset <String>] [-Collation <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -28,14 +28,14 @@ New-AzPostgreSqlFlexibleServerDatabase -FlexibleServerInputObject <IPostgreSqlFl
 
 ### CreateViaJsonFilePath
 ```
-New-AzPostgreSqlFlexibleServerDatabase -Name <String> -ResourceGroupName <String> -ServerName <String>
+New-AzPostgreSqlFlexibleServerDatabase -Name <String> -ResourceGroup <String> -ServerName <String>
  -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzPostgreSqlFlexibleServerDatabase -Name <String> -ResourceGroupName <String> -ServerName <String>
+New-AzPostgreSqlFlexibleServerDatabase -Name <String> -ResourceGroup <String> -ServerName <String>
  -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -206,7 +206,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ResourceGroup
 The name of the resource group.
 The name is case insensitive.
 

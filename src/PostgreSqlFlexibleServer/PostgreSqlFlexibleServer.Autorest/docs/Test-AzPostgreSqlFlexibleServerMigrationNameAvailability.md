@@ -14,14 +14,14 @@ Checks if a proposed migration name is valid and available.
 
 ### CheckExpanded (Default)
 ```
-Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroupName <String> -ServerName <String>
+Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroup <String> -ServerName <String>
  -Name <String> -Type <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### Check
 ```
-Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroupName <String> -ServerName <String>
+Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroup <String> -ServerName <String>
  -Parameter <IMigrationNameAvailability> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -41,14 +41,14 @@ Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -InputObject <IPostgreS
 
 ### CheckViaJsonFilePath
 ```
-Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroupName <String> -ServerName <String>
+Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroup <String> -ServerName <String>
  -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CheckViaJsonString
 ```
-Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroupName <String> -ServerName <String>
+Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroup <String> -ServerName <String>
  -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -173,7 +173,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ResourceGroup
 The name of the resource group.
 The name is case insensitive.
 

@@ -14,7 +14,7 @@ Gets information about an existing database.
 
 ### List (Default)
 ```
-Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName <String> -ServerName <String>
+Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroup <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -28,7 +28,7 @@ Get-AzPostgreSqlFlexibleServerDatabase -Name <String>
 
 ### Get
 ```
-Get-AzPostgreSqlFlexibleServerDatabase -Name <String> -ResourceGroupName <String> -ServerName <String>
+Get-AzPostgreSqlFlexibleServerDatabase -Name <String> -ResourceGroup <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -46,7 +46,7 @@ Gets information about an existing database.
 
 ### Example 1: Get one database in a server
 ```powershell
-Get-AzPostgreSqlFlexibleServerDatabase -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server -Name example-database
+Get-AzPostgreSqlFlexibleServerDatabase -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -Name example-database
 ```
 
 ```output
@@ -60,7 +60,7 @@ If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 2: List all databases in a server
 ```powershell
-Get-AzPostgreSqlFlexibleServerDatabase -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server
+Get-AzPostgreSqlFlexibleServerDatabase -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server
 ```
 
 ```output
@@ -139,7 +139,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ResourceGroup
 The name of the resource group.
 The name is case insensitive.
 

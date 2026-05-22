@@ -14,7 +14,7 @@ Gets information of an on demand backup, given its name.
 
 ### List (Default)
 ```
-Get-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand -ResourceGroupName <String> -ServerName <String>
+Get-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand -ResourceGroup <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -28,7 +28,7 @@ Get-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand -BackupName <String>
 
 ### Get
 ```
-Get-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand -BackupName <String> -ResourceGroupName <String>
+Get-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand -BackupName <String> -ResourceGroup <String>
  -ServerName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -44,27 +44,38 @@ Gets information of an on demand backup, given its name.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all backups in a server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                           BackupType           CompletedTime             Source
+----                           ----------           -------------             ------
+backup_639145838028276096      Full                 3/22/2026 3:03:23 AM      Automatic
+backup_639146702636854494      Full                 3/23/2026 3:04:24 AM      Automatic
+example-on-demand-backup-01    Customer On-Demand   5/23/2026 9:36:13 PM      Customer Initiated
+backup_639149035518395681      Full                 3/24/2026 7:52:32 PM      Automatic
+backup_639149900283518862      Full                 3/25/2026 7:53:49 PM      Automatic
+example-on-demand-backup-02    Customer On-Demand   3/25/2026 9:36:13 PM      Customer Initiated
 ```
 
-{{ Add description here }}
+Lists all automatic and on demand backups in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments.
+If subscription is not passed explicitly, it's taken from default context.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get one backup in a server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -BackupName example-on-demand-backup-02
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                           BackupType           CompletedTime             Source
+----                           ----------           -------------             ------
+example-on-demand-backup-02    Customer On-Demand   5/23/2026 9:36:13 PM      Customer Initiated
 ```
 
-{{ Add description here }}
+Gets one automatic and on demand backup in an Azure Database for PostgreSQL flexible server with backup name, server name, resource group, and subscription explicitly passed as an arguments.
+If subscription is not passed explicitly, it's taken from default context.
 
 ## PARAMETERS
 
@@ -129,7 +140,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ResourceGroup
 The name of the resource group.
 The name is case insensitive.
 

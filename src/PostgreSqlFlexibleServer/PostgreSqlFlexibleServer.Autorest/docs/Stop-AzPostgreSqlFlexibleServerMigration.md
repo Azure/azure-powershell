@@ -14,7 +14,7 @@ Cancels an active migration.
 
 ### Cancel (Default)
 ```
-Stop-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroupName <String> -ServerName <String>
+Stop-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroup <String> -ServerName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -135,7 +135,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ResourceGroup
 The name of the resource group.
 The name is case insensitive.
 

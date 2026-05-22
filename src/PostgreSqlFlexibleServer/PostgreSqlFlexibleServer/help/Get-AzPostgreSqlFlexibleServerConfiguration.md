@@ -14,7 +14,7 @@ Gets information about a specific configuration (also known as server parameter)
 
 ### List (Default)
 ```
-Get-AzPostgreSqlFlexibleServerConfiguration -ResourceGroupName <String> -ServerName <String>
+Get-AzPostgreSqlFlexibleServerConfiguration -ResourceGroup <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -28,7 +28,7 @@ Get-AzPostgreSqlFlexibleServerConfiguration -Name <String>
 
 ### Get
 ```
-Get-AzPostgreSqlFlexibleServerConfiguration -Name <String> -ResourceGroupName <String> -ServerName <String>
+Get-AzPostgreSqlFlexibleServerConfiguration -Name <String> -ResourceGroup <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -46,7 +46,7 @@ Gets information about a specific configuration (also known as server parameter)
 
 ### Example 1: List all configurations (also known as server parameters) in a server
 ```powershell
-Get-AzPostgreSqlFlexibleServerConfiguration -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server
+Get-AzPostgreSqlFlexibleServerConfiguration -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server
 ```
 
 ```output
@@ -68,7 +68,7 @@ If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 2: Get one configuration (also known as server parameter) in a server
 ```powershell
-Get-AzPostgreSqlFlexibleServerConfiguration -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server -Name work_mem
+Get-AzPostgreSqlFlexibleServerConfiguration -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -Name work_mem
 ```
 
 ```output
@@ -157,7 +157,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ResourceGroup
 The name of the resource group.
 The name is case insensitive.
 

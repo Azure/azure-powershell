@@ -14,24 +14,23 @@ Update a pair of virtual endpoints for a server.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroupName <String>
- -ServerName <String> [-SubscriptionId <String>] [-EndpointType <String>] [-Member <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroup <String> -ServerName <String>
+ [-SubscriptionId <String>] [-EndpointType <String>] [-Member <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
-Update-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroupName <String>
- -ServerName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroup <String> -ServerName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
-Update-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroupName <String>
- -ServerName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroup <String> -ServerName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityFlexibleServerExpanded
@@ -229,7 +228,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ResourceGroup
 The name of the resource group.
 The name is case insensitive.
 

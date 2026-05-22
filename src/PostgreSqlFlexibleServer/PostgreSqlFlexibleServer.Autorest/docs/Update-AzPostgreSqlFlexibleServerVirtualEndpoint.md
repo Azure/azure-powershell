@@ -14,9 +14,9 @@ Update a pair of virtual endpoints for a server.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroupName <String>
- -ServerName <String> [-SubscriptionId <String>] [-EndpointType <String>] [-Member <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroup <String> -ServerName <String>
+ [-SubscriptionId <String>] [-EndpointType <String>] [-Member <String[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -36,16 +36,16 @@ Update-AzPostgreSqlFlexibleServerVirtualEndpoint
 
 ### UpdateViaJsonFilePath
 ```
-Update-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroupName <String>
- -ServerName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroup <String> -ServerName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
-Update-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroupName <String>
- -ServerName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroup <String> -ServerName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -228,7 +228,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ResourceGroup
 The name of the resource group.
 The name is case insensitive.
 

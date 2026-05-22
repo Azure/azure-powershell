@@ -14,7 +14,7 @@ Create a new server.
 
 ### CreateExpanded (Default)
 ```
-New-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroupName <String> -Location <String>
+New-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroup <String> -Location <String>
  [-SubscriptionId <String>] [-AdministratorLogin <String>] [-AdministratorLoginPassword <SecureString>]
  [-AuthConfigActiveDirectoryAuth <String>] [-AuthConfigPasswordAuth <String>] [-AuthConfigTenantId <String>]
  [-AvailabilityZone <String>] [-BackupGeoRedundantBackup <String>] [-BackupRetentionDay <Int32>]
@@ -33,14 +33,14 @@ New-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroupName <String> -Locat
 
 ### CreateViaJsonFilePath
 ```
-New-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+New-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroup <String> -JsonFilePath <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroupName <String> -JsonString <String>
+New-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroup <String> -JsonString <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -565,7 +565,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ResourceGroup
 The name of the resource group.
 The name is case insensitive.
 

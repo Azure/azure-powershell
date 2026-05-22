@@ -14,7 +14,7 @@ Migrates an Azure Database for PostgreSQL server from VNet integration to a Priv
 
 ### Migrate (Default)
 ```
-Move-AzPostgreSqlFlexibleServerNetworkMode -ResourceGroupName <String> -ServerName <String>
+Move-AzPostgreSqlFlexibleServerNetworkMode -ResourceGroup <String> -ServerName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -115,7 +115,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ResourceGroup
 The name of the resource group.
 The name is case insensitive.
 
