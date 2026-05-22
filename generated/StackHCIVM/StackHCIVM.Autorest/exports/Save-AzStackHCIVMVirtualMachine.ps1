@@ -16,143 +16,48 @@
 
 <#
 .Synopsis
-The operation to create an image.
-Please note some properties can be set only during  image creation.
+The operation to save a virtual machine instance.
 .Description
-The operation to create an image.
-Please note some properties can be set only during image creation.
+The operation to save a virtual machine instance.
 .Example
-New-AzStackHCIVMImage -Name "testImage" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -ImagePath "C:\ClusterStorage\Volume1\Ubunut.vhdx" -OSType "Linux" -Location "eastus" 
-.Example
-New-AzStackHCIVMImage -Name "testMarketplaceImage" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus" -Offer "windowsserver" -Publisher "MicrosoftWindowsServer" -Sku "2022-Datacenter" -Version "latest" -OSType "Windows"
-.Example
-New-AzStackHCIVMImage -Name "testMarketplaceImageURN" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus" -URN  "microsoftwindowsserver:windowsserver:2022-datacenter:latest" -OSType "Windows"
+Save-AzStackHCIVMVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg"
+
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages
+Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance
 .Link
-https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmimage
+https://learn.microsoft.com/powershell/module/az.stackhcivm/Save-AzStackHCIVMVirtualMachine
 #>
-function New-AzStackHCIVMImage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages], [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages])]
-[CmdletBinding(DefaultParameterSetName='MarketplaceURN', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function Save-AzStackHCIVMVirtualMachine {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance])]
+[CmdletBinding(DefaultParameterSetName='ByResourceId', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Alias('ImageName')]
+    [Parameter(ParameterSetName='ByName', Mandatory)]
+    [Alias('VirtualMachineName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [System.String]
-    # Name of the Image
-    # The name must start and end with an alphanumeric character and must contain all alphanumeric characters or ‘-‘, ‘.’, or ‘_’.
-    # The max length can be 80 characters and the minimum length is 1 character.
+    # Name of the virtual machine
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='ByName', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ByName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Parameter(ParameterSetName='ByResourceId', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [System.String]
-    # The geo-location where the resource lives
-    ${Location},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [System.String]
-    # The ARM Id of the extended location to create image resource in.
-    ${CustomLocationId},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PSArgumentCompleterAttribute("Windows", "Linux")]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [System.Object]
-    # Operating system type that the gallery image uses [Windows, Linux]
-    ${OSType},
-
-    [Parameter(ParameterSetName='MarketplaceURN', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [System.String]
-    # The URN of the marketplace gallery image.
-    ${URN},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PSArgumentCompleterAttribute("NoCloud", "Azure")]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [System.String]
-    # Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure]
-    ${CloudInitDataSource},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [System.String]
-    # Storage Container Name of the storage container to be used for gallery image
-    ${StoragePathName},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [System.String]
-    # Resource Group of the Storage Path.
-    # The Default value is the Resource Group of the Image.
-    ${StoragePathResourceGroup},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [System.String]
-    # Storage ContainerID of the storage container to be used for gallery image
-    ${StoragePathId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ITrackedResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
-
-    [Parameter(ParameterSetName='GalleryImage', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [System.Security.SecureString]
-    # Local path of image that the image should be created from (as SecureString).
-    # This parameter is required for non marketplace images.
-    # Use: ConvertTo-SecureString -String "path\to\image.vhdx" -AsPlainText -Force
-    ${ImagePath},
-
-    [Parameter(ParameterSetName='Marketplace', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [System.String]
-    # The name of the marketplace gallery image definition offer.
-    ${Offer},
-
-    [Parameter(ParameterSetName='Marketplace', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [System.String]
-    # The name of the marketplace gallery image definition publisher.
-    ${Publisher},
-
-    [Parameter(ParameterSetName='Marketplace', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [System.String]
-    # The name of the marketplace gallery image definition SKU.
-    ${Sku},
-
-    [Parameter(ParameterSetName='Marketplace', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [System.String]
-    # The version of the marketplace gallery image.
-    ${Version},
+    # The ARM Resource ID of the virtual machine.
+    ${ResourceId},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -248,11 +153,10 @@ begin {
         }
 
         $mapping = @{
-            MarketplaceURN = 'Az.StackHCIVM.custom\New-AzStackHCIVMImage';
-            GalleryImage = 'Az.StackHCIVM.custom\New-AzStackHCIVMImage';
-            Marketplace = 'Az.StackHCIVM.custom\New-AzStackHCIVMImage';
+            ByName = 'Az.StackHCIVM.custom\Save-AzStackHCIVMVirtualMachine';
+            ByResourceId = 'Az.StackHCIVM.custom\Save-AzStackHCIVMVirtualMachine';
         }
-        if (('MarketplaceURN', 'GalleryImage', 'Marketplace') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('ByName') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
