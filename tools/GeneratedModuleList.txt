@@ -42,7 +42,6 @@ Az.MySql
 Az.NetworkFunction
 Az.Nginx
 Az.Portal
-Az.PostgreSql
 Az.ProviderHub
 Az.Purview
 Az.RedisEnterpriseCache
