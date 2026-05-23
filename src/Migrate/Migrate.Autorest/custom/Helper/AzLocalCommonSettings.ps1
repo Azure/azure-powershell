@@ -126,7 +126,7 @@ $ArcResourceBridgeValidationMessages = @{
 }
 
 $ArcMachineReuseValidationMessages = @{
-    NotFound         = "MigrateAsArcVM is enabled, but no Azure Arc-enabled machine was found at '{0}'. Verify -TargetVMName and -TargetResourceGroupId, or onboard the machine to Azure Arc before retrying.";
+    NotFound         = "Unable to validate Azure Arc-enabled machine '{0}'. Please ensure the Arc machine exists at the specified resource group and matches the naming given in -TargetVMName. Underlying error: {1}";
     KindIncompatible = "Azure Arc-enabled machine '{0}' has Kind='{1}', which is not compatible with Azure Local migration reuse. Only Arc machines with an unset Kind can be reused.";
 }
 
