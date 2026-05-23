@@ -304,16 +304,18 @@ function Test-ArcMachineReuseEligibility {
             -ErrorAction       SilentlyContinue `
             -ErrorVariable     getErrors
 
-        # 1. Existence: a null result means the Arc machine doesn't exist at the expected tuple.
-        #    Distinguish 'not found' from other failures (auth, throttling, network) via the error stream.
+        # 1. Existence: a null result means the lookup failed for any reason (not found,
+        #    auth, throttling, network, etc.). We deliberately do not distinguish 404 from
+        #    other failures: the actionable guidance is the same (verify the Arc machine
+        #    exists at the expected resource group and matches -TargetVMName), and including
+        #    the underlying exception message preserves diagnostic detail when present.
         if ($null -eq $arcMachine) {
-            if ($getErrors -and ($getErrors[0].Exception.Message -match 'ResourceNotFound|was not found|StatusCode:\s*404|\b404\b')) {
-                throw ($ArcMachineReuseValidationMessages.NotFound -f $arcMachineId)
+            $underlyingError = if ($getErrors -and $getErrors[0] -and $getErrors[0].Exception) {
+                $getErrors[0].Exception.Message
+            } else {
+                '(no error details available)'
             }
-            if ($getErrors) {
-                throw "Unable to validate Azure Arc-enabled machine '$arcMachineId': $($getErrors[0].Exception.Message)"
-            }
-            throw ($ArcMachineReuseValidationMessages.NotFound -f $arcMachineId)
+            throw ($ArcMachineReuseValidationMessages.NotFound -f $arcMachineId, $underlyingError)
         }
 
         # 2. Kind must be unset (any non-empty value blocks reuse).

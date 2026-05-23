@@ -121,6 +121,51 @@ Describe 'Test-AzMigrateLocalEndToEnd' -Tag 'LiveOnly' {
         $removeJob.Count | Should -BeGreaterOrEqual 1
     }
 
+    It 'DefaultUserWithMigrateAsArcVMFalse' {
+        $subscriptionId = $env.hciSubscriptionId
+        $machineId = $env.hciSDSMachineId1
+        $targetRgId = "/subscriptions/$($env.hciTargetRgSubId)/resourceGroups/$($env.hciMigResourceGroup)-target"
+        $protectedItemId = $env.hciProtectedItem1
+
+        # New-AzMigrateLocalServerReplication with MigrateAsArcVM explicitly set to "false".
+        # This covers the negative path: the Arc reuse preflight must be skipped and the
+        # protected item's CustomProperty.MigrateAsArcVM must not be true.
+        $newJob = New-AzMigrateLocalServerReplication `
+            -MachineId $machineId `
+            -SourceApplianceName $env.hciSourceApplianceName `
+            -TargetApplianceName $env.hciTargetApplianceName `
+            -TargetResourceGroupId $targetRgId `
+            -TargetVMName $env.hciTgtVMName1 `
+            -TargetStoragePathId $env.hciTgtStoragePathId `
+            -TargetVirtualSwitchId $env.hciTgtVirtualSwitchId `
+            -OSDiskID $env.hciDiskId1 `
+            -SubscriptionId $subscriptionId `
+            -MigrateAsArcVM "false"
+        $newJob.Count | Should -BeGreaterOrEqual 1
+
+        for ($i = 0; $i -le 3; $i++)
+        {
+            Start-Sleep -Seconds 30
+
+            $protectedItem = Get-AzMigrateLocalServerReplication -TargetObjectID $protectedItemId
+            $protectedItem.Count | Should -BeGreaterOrEqual 1
+
+            if ($protectedItem.Property.AllowedJob.Count -gt 0)
+            {
+                break
+            }
+        }
+
+        # Verify MigrateAsArcVM is NOT set to true on the protected item.
+        # Using -Not -BeTrue covers both $false and $null (in case the service omits the
+        # property when it is false), making the assertion robust across serialization shapes.
+        $protectedItem.Property.CustomProperty.MigrateAsArcVM | Should -Not -BeTrue
+
+        # Cleanup
+        $removeJob = Remove-AzMigrateLocalServerReplication -TargetObjectID $protectedItemId
+        $removeJob.Count | Should -BeGreaterOrEqual 1
+    }
+
     It 'PowerUser' {
         $subscriptionId = $env.hciSubscriptionId
         $resourceGroupName = $env.hciMigResourceGroup
