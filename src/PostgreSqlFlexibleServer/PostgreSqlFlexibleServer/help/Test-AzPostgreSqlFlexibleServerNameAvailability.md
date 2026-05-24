@@ -15,8 +15,8 @@ Check the availability of name for resource
 ### CheckExpanded (Default)
 ```
 Test-AzPostgreSqlFlexibleServerNameAvailability -LocationName <String> [-SubscriptionId <String>]
- [-Name <String>] [-Type <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Name <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CheckViaJsonString
@@ -43,8 +43,8 @@ Test-AzPostgreSqlFlexibleServerNameAvailability -LocationName <String> [-Subscri
 ### CheckViaIdentityExpanded
 ```
 Test-AzPostgreSqlFlexibleServerNameAvailability -InputObject <IPostgreSqlFlexibleServerIdentity>
- [-Name <String>] [-Type <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Name <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CheckViaIdentity
@@ -215,21 +215,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Type
-The resource type.
-
-```yaml
-Type: System.String
-Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

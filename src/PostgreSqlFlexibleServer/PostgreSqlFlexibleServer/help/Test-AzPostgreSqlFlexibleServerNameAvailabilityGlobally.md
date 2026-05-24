@@ -15,8 +15,7 @@ Checks the validity and availability of the given name, to assign it to a new se
 ### CheckExpanded (Default)
 ```
 Test-AzPostgreSqlFlexibleServerNameAvailabilityGlobally [-SubscriptionId <String>] [-Name <String>]
- [-Type <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Check
@@ -45,7 +44,7 @@ Checks the validity and availability of the given name, to assign it to a new se
 
 ### Example 1: Check if a name is available or already used globally for a flexible server
 ```powershell
-Test-AzPostgreSqlFlexibleServerNameAvailability -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -LocationName example-location -Name server-name -Type Microsoft.DBforPostgreSQL/flexibleServers
+Test-AzPostgreSqlFlexibleServerNameAvailability -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -LocationName example-location -Name server-name
 ```
 
 ```output
@@ -76,7 +75,7 @@ Reason        : Invalid
 Type          : Microsoft.DBforPostgreSQL/flexibleServers
 ```
 
-Checks if a name is available or already used for an Azure Database for PostgreSQL flexible server with resource type, server name, and subscription explicitly passed as an arguments.
+Checks if a name is available or already used for an Azure Database for PostgreSQL flexible server with server name, and subscription explicitly passed as an arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ## PARAMETERS
@@ -169,21 +168,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Type
-The resource type.
-
-```yaml
-Type: System.String
-Parameter Sets: CheckExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

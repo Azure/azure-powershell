@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Migrate from virtual network integration to Private Link network model a flexible server 
 ```powershell
-{{ Add code here }}
+Move-AzPostgreSqlFlexibleServerNetworkMode -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ResourceGroupName : 
+ServerName        : example-server
+State             : Succeeded
+SubscriptionId    : aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e
+XmsRequestId      : 00000000-1111-1111-1111-111111111111
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Migrates an Azure Database for PostgreSQL flexible server from virtual network integration to Private Link network model. If subscription is not passed explicitly, it's taken from default context.

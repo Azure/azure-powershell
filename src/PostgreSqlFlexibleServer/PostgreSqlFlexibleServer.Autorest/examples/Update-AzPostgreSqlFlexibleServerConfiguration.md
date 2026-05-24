@@ -8,7 +8,7 @@ AllowedValue                 : 25-5000
 DataType                     : Integer
 DefaultValue                 : 859
 Description                  : Sets the maximum number of concurrent connections.
-DocumentationLink            : https://www.postgresql.org/docs/17/runtime-config-connection.html#GUC-MAX-CONNECTIONS
+DocumentationLink            : https://www.postgresql.org/docs/18/runtime-config-connection.html#GUC-MAX-CONNECTIONS
 Id                           : /subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/example-resource-group/providers/Microsoft.DBforPostgreSQL/flexibleServers/example-server/configurations/max_connections
 IsConfigPendingRestart       : True
 IsDynamicConfig              : False
