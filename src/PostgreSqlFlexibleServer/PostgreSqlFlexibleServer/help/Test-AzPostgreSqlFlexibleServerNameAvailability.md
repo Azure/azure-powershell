@@ -61,7 +61,7 @@ Check the availability of name for resource
 
 ### Example 1: Check if a name is available or already used in a location for a flexible server
 ```powershell
-Test-AzPostgreSqlFlexibleServerNameAvailability -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -LocationName example-location -Name server-name -Type Microsoft.DBforPostgreSQL/flexibleServers
+Test-AzPostgreSqlFlexibleServerNameAvailability -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -LocationName example-location -Name server-name
 ```
 
 ```output
@@ -92,7 +92,7 @@ Reason        : Invalid
 Type          : Microsoft.DBforPostgreSQL/flexibleServers
 ```
 
-Checks if a name is available or already used for an Azure Database for PostgreSQL flexible server with resource type, server name, location, and subscription explicitly passed as an arguments.
+Checks if a name is available or already used for an Azure Database for PostgreSQL flexible server with server name, location, and subscription explicitly passed as an arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ## PARAMETERS

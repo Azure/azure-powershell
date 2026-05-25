@@ -266,14 +266,14 @@ options:
           parameter-name: ResourceGroup
       - where:
           parameter-name: Type
-          subject: MigrationNameAvailability
+          subject: ^MigrationNameAvailability.*
         hide: true
         set:
           default:
             script: '"Microsoft.DBforPostgreSQL/flexibleServers/migrations"'
       - where:
           parameter-name: Type
-          subject: NameAvailability.*
+          subject: ^NameAvailability.*
         hide: true
         set:
           default:

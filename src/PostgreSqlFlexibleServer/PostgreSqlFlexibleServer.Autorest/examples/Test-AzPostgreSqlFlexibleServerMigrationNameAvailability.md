@@ -1,6 +1,6 @@
 ### Example 1: Check if a name is available or already used for a migration in a flexible server
 ```powershell
-Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName server-name -Name example-migration -Type Microsoft.DBforPostgreSQL/flexibleServers/migrations
+Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName server-name -Name example-migration
 ```
 
 ```output
