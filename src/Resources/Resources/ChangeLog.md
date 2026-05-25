@@ -19,8 +19,8 @@
 -->
 
 ## Upcoming Release
-* Fixed dynamic parameter inheritance in deployment and deployment stack cmdlets
-* Updated deployment stack cmdlets to `2025-07-01` API; added `-ResourcesWithoutDeleteSupport` (`Fail`/`Detach`) and `-ValidationLevel` (`Provider`/`Template`/`ProviderNoRbac`); output now includes these settings
+* Fixed dynamic parameter inheritance in deployment, deployment stack cmdlets
+* Updated deployment stack cmdlets to `2025-07-01` API; added `-ResourcesWithoutDeleteSupport` (`Fail`/`Detach`), `-ValidationLevel` (`Provider`/`Template`/`ProviderNoRbac`); output now includes these settings
 * Fixed `Set-AzRoleAssignment` unable to delete conditions
 * Updated Policy.Autorest to 2025-03-01: added `-Expand`, Enroll `-EnforcementMode`, ExternalEvaluationEnforcementSettings, `-Version`; removed `-BackwardCompatible`
 * Fixed `Get-AzRoleDefinition` null `Condition` for ABAC on non-first permissions [#29058] [#25940]

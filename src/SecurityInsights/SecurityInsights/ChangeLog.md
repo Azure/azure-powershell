@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Introduced various new features by upgrading code generator. Please see details [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
 
 ## Version 3.2.2
 * Updated preannouncement breaking changes date to May 2026.

@@ -18,11 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added `Invoke-AzDnsResolverBulkDnsResolverDomainList` for bulk domain upload
+* Added `Invoke-AzDnsResolverBulkDnsResolverDomainList`
 * [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
-* Removed `-ActionBlockResponseCode` from `New/Update-AzDnsResolverPolicyDnsSecurityRule`
-* Changed `-DnsResolverDomainList` to optional on `New-AzDnsResolverPolicyDnsSecurityRule`
-* Changed `-Domain` to optional on `New-AzDnsResolverDomainList`
+* Removed `ActionBlockResponseCode` from `New/Update-AzDnsResolverPolicyDnsSecurityRule`
+* Made `DnsResolverDomainList` optional on `New-AzDnsResolverPolicyDnsSecurityRule`
+* Made `Domain` optional on `New-AzDnsResolverDomainList`
 
 
 ## Version 1.2.4
