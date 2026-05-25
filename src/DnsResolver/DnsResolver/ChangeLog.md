@@ -20,9 +20,8 @@
 ## Upcoming Release
 * Added `Invoke-AzDnsResolverBulkDnsResolverDomainList`
 * [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
-* Removed `ActionBlockResponseCode` from `New/Update-AzDnsResolverPolicyDnsSecurityRule`
-* Made `DnsResolverDomainList` optional on `New-AzDnsResolverPolicyDnsSecurityRule`
-* Made `Domain` optional on `New-AzDnsResolverDomainList`
+* Removed `ActionBlockResponseCode` from DNS security rule cmdlets
+* Made `DnsResolverDomainList`, `Domain` parameters optional
 
 
 ## Version 1.2.4

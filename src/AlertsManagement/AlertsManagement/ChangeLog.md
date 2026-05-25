@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* ChangeSafety
+* Added ChangeSafety Support
 
 ## Version 0.7.0
 * Bugfix of default pageCount from 0 to 25.

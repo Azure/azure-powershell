@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* ChangeSafety
+* Added ChangeSafety Support
 * Added `Enable-AzServiceFabricManagedClusterMaintenanceWindow`, `Get-AzServiceFabricManagedClusterMaintenanceWindowStatus`
 
 ## Version 5.1.0

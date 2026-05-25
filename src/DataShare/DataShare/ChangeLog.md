@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* ChangeSafety
+* Added ChangeSafety Support
 
 ## Version 1.1.1
 * Removed "Microsoft.Azure.Management.DataShare" Version "1.0.1" PackageReference

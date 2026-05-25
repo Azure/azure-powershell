@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* ChangeSafety
+* Added ChangeSafety Support
 
 ## Version 1.16.0
 * Updated SDK via autorest.powershell.

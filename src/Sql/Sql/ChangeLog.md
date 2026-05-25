@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* ChangeSafety
+* Added ChangeSafety Support
 * Removed `EnableSoftDelete` from `New-AzSqlServer`, `Set-AzSqlServer`. Used `SoftDeleteRetentionDays` instead: setting `SoftDeleteRetentionDays`.
 * Reverted "the support for UAMI authentication in Data Sync cmdlets"
 

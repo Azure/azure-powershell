@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* ChangeSafety
+* Added ChangeSafety Support
 
 ## Version 1.2.0
 * Updated to API version 2026-01-01

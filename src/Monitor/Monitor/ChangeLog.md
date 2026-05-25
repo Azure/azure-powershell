@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* ChangeSafety
+* Added ChangeSafety Support
 * Updated MonitorWorkspace module to API 2025-10-03 with CRUD cmdlets for issues, alerts, resources, investigation, visualization, metrics containers, `Set-AzMonitorWorkspace`
 * Upgraded Pipelines API to GA 2026-04-01: added `-DistributionMaxInstancesPerHost`, `-ExecutionPlacementConstraint`, `-TlsConfiguration`; removed `-NetworkingConfiguration`, UDP receiver, `TcpUrl`, `JsonArrayMapperKey`, `SourceFieldName`, `SyslogProtocol`, `DestinationField*`; expanded parameter sets
 

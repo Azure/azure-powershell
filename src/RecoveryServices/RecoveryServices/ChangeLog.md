@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* ChangeSafety
+* Added ChangeSafety Support
 * Added soft delete support for Azure File share backup items (`Undo-AzRecoveryServicesBackupItemDeletion` `Get-AzRecoveryServicesBackupItem -DeleteState SoftDeleted`)
 
 ## Version 7.11.2

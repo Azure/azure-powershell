@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* ChangeSafety
+* Added ChangeSafety Support
 * Upgraded `Azure.Identity` to 1.17.2.
 
 ## Version 5.4.0

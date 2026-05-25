@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* ChangeSafety
+* Added ChangeSafety Support
 
 ## Version 0.4.6
 * Deprecation of Blueprint cmdlets.

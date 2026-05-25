@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* ChangeSafety
+* Added ChangeSafety Support
 
 ## Version 4.1.0
 * Upgraded nuget package to signed package.
