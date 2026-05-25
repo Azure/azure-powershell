@@ -25,12 +25,12 @@ Lists all of the available SQL Virtual Machine Rest API operations.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/get-azsqlvmoperation
 #>
 function Get-AzSqlVMOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -89,12 +89,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             List = 'Az.SqlVirtualMachine.private\Get-AzSqlVMOperation_List';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -126,9 +132,9 @@ end {
 
 <#
 .Synopsis
-Creates or updates an availability group listener.
+Create an availability group listener.
 .Description
-Creates or updates an availability group listener.
+Create an availability group listener.
 .Example
 New-AzAvailabilityGroupListener -ResourceGroupName 'ResourceGroup01' -SqlVMGroupName 'sqlvmgroup01' -Name 'AgListener01' -AvailabilityGroupName 'AG01' -IpAddress '192.168.16.7' -LoadBalancerResourceId $LoadBalancerResourceId -SubnetId $SubnetResourceId -ProbePort 9999 -SqlVirtualMachineId $sqlvmResourceId1,$sqlvmResourceId2
 .Example
@@ -138,21 +144,21 @@ $msconfig2 = New-AzSqlVirtualMachineMultiSubnetIPConfigurationObject -PrivateIPA
 New-AzAvailabilityGroupListener -Name 'AgListener02' -ResourceGroupName 'ResourceGroup01' -SqlVMGroupName 'sqlvmgroup01' -AvailabilityGroupName 'AG02' -MultiSubnetIPConfiguration $msconfig1,$msconfig2
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAvailabilityGroupListener
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IAvailabilityGroupListener
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAvailabilityGroupListener
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IAvailabilityGroupListener
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 AVAILABILITYGROUPCONFIGURATIONREPLICA <IAgReplica[]>: Replica configurations.
-  [Commit <Commit?>]: Replica commit mode in availability group.
-  [Failover <Failover?>]: Replica failover mode in availability group.
-  [ReadableSecondary <ReadableSecondary?>]: Replica readable secondary mode in availability group.
-  [Role <Role?>]: Replica Role in availability group.
+  [Commit <String>]: Replica commit mode in availability group.
+  [Failover <String>]: Replica failover mode in availability group.
+  [ReadableSecondary <String>]: Replica readable secondary mode in availability group.
+  [Role <String>]: Replica Role in availability group.
   [SqlVirtualMachineInstanceId <String>]: Sql VirtualMachine Instance Id.
 
 INPUTOBJECT <ISqlVirtualMachineIdentity>: Identity Parameter
@@ -169,7 +175,7 @@ LOADBALANCERCONFIGURATION <ILoadBalancerConfiguration[]>: List of load balancer 
   [PrivateIPAddressSubnetResourceId <String>]: Subnet used to include private IP.
   [ProbePort <Int32?>]: Probe port.
   [PublicIPAddressResourceId <String>]: Resource id of the public IP.
-  [SqlVirtualMachineInstance <String[]>]: List of the SQL virtual machine instance resource id's that are enrolled into the availability group listener.
+  [SqlVirtualMachineInstance <List<String>>]: List of the SQL virtual machine instance resource id's that are enrolled into the availability group listener.
 
 MULTISUBNETIPCONFIGURATION <IMultiSubnetIPConfiguration[]>: List of multi subnet IP configurations for an AG listener.
   SqlVirtualMachineInstance <String>: SQL virtual machine instance resource id that are enrolled into the availability group listener.
@@ -177,40 +183,46 @@ MULTISUBNETIPCONFIGURATION <IMultiSubnetIPConfiguration[]>: List of multi subnet
   [PrivateIPAddressSubnetResourceId <String>]: Subnet used to include private IP.
 
 PARAMETER <IAvailabilityGroupListener>: A SQL Server availability group listener.
-  [AvailabilityGroupConfigurationReplica <IAgReplica[]>]: Replica configurations.
-    [Commit <Commit?>]: Replica commit mode in availability group.
-    [Failover <Failover?>]: Replica failover mode in availability group.
-    [ReadableSecondary <ReadableSecondary?>]: Replica readable secondary mode in availability group.
-    [Role <Role?>]: Replica Role in availability group.
+  [AvailabilityGroupConfigurationReplica <List<IAgReplica>>]: Replica configurations.
+    [Commit <String>]: Replica commit mode in availability group.
+    [Failover <String>]: Replica failover mode in availability group.
+    [ReadableSecondary <String>]: Replica readable secondary mode in availability group.
+    [Role <String>]: Replica Role in availability group.
     [SqlVirtualMachineInstanceId <String>]: Sql VirtualMachine Instance Id.
   [AvailabilityGroupName <String>]: Name of the availability group.
   [CreateDefaultAvailabilityGroupIfNotExist <Boolean?>]: Create a default availability group if it does not exist.
-  [LoadBalancerConfiguration <ILoadBalancerConfiguration[]>]: List of load balancer configurations for an availability group listener.
+  [LoadBalancerConfiguration <List<ILoadBalancerConfiguration>>]: List of load balancer configurations for an availability group listener.
     [LoadBalancerResourceId <String>]: Resource id of the load balancer.
     [PrivateIPAddressIpaddress <String>]: Private IP address bound to the availability group listener.
     [PrivateIPAddressSubnetResourceId <String>]: Subnet used to include private IP.
     [ProbePort <Int32?>]: Probe port.
     [PublicIPAddressResourceId <String>]: Resource id of the public IP.
-    [SqlVirtualMachineInstance <String[]>]: List of the SQL virtual machine instance resource id's that are enrolled into the availability group listener.
-  [MultiSubnetIPConfiguration <IMultiSubnetIPConfiguration[]>]: List of multi subnet IP configurations for an AG listener.
+    [SqlVirtualMachineInstance <List<String>>]: List of the SQL virtual machine instance resource id's that are enrolled into the availability group listener.
+  [MultiSubnetIPConfiguration <List<IMultiSubnetIPConfiguration>>]: List of multi subnet IP configurations for an AG listener.
     SqlVirtualMachineInstance <String>: SQL virtual machine instance resource id that are enrolled into the availability group listener.
     [PrivateIPAddressIpaddress <String>]: Private IP address bound to the availability group listener.
     [PrivateIPAddressSubnetResourceId <String>]: Subnet used to include private IP.
   [Port <Int32?>]: Listener port.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+
+SQLVIRTUALMACHINEGROUPINPUTOBJECT <ISqlVirtualMachineIdentity>: Identity Parameter
+  [AvailabilityGroupListenerName <String>]: Name of the availability group listener.
+  [Id <String>]: Resource identity path
+  [ResourceGroupName <String>]: Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [SqlVirtualMachineGroupName <String>]: Name of the SQL virtual machine group.
+  [SqlVirtualMachineName <String>]: Name of the SQL virtual machine.
+  [SubscriptionId <String>]: Subscription ID that identifies an Azure subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/new-azavailabilitygrouplistener
 #>
 function New-AzAvailabilityGroupListener {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAvailabilityGroupListener])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IAvailabilityGroupListener])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentitySqlVirtualMachineGroup', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentitySqlVirtualMachineGroupExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Alias('AvailabilityGroupListenerName')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
     [System.String]
@@ -218,6 +230,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
     [System.String]
     # Name of the resource group that contains the resource.
@@ -225,6 +239,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Alias('GroupName')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
     [System.String]
@@ -232,6 +248,8 @@ param(
     ${SqlVMGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -242,46 +260,55 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='CreateViaIdentitySqlVirtualMachineGroup', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentitySqlVirtualMachineGroupExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity]
+    # Identity Parameter
+    ${SqlVirtualMachineGroupInputObject},
+
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySqlVirtualMachineGroupExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAgReplica[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IAgReplica[]]
     # Replica configurations.
-    # To construct, see NOTES section for AVAILABILITYGROUPCONFIGURATIONREPLICA properties and create a hash table.
     ${AvailabilityGroupConfigurationReplica},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySqlVirtualMachineGroupExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
     [System.String]
     # Name of the availability group.
     ${AvailabilityGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySqlVirtualMachineGroupExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Create a default availability group if it does not exist.
     ${CreateDefaultAvailabilityGroupIfNotExist},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySqlVirtualMachineGroupExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ILoadBalancerConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ILoadBalancerConfiguration[]]
     # List of load balancer configurations for an availability group listener.
-    # To construct, see NOTES section for LOADBALANCERCONFIGURATION properties and create a hash table.
     ${LoadBalancerConfiguration},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySqlVirtualMachineGroupExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IMultiSubnetIPConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IMultiSubnetIPConfiguration[]]
     # List of multi subnet IP configurations for an AG listener.
-    # To construct, see NOTES section for MULTISUBNETIPCONFIGURATION properties and create a hash table.
     ${MultiSubnetIPConfiguration},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentitySqlVirtualMachineGroupExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.DefaultInfo(Script='1433')]
     [System.Int32]
@@ -289,11 +316,23 @@ param(
     ${Port},
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentitySqlVirtualMachineGroup', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAvailabilityGroupListener]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IAvailabilityGroupListener]
     # A SQL Server availability group listener.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -363,25 +402,33 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.SqlVirtualMachine.private\New-AzAvailabilityGroupListener_CreateExpanded';
             CreateViaIdentity = 'Az.SqlVirtualMachine.private\New-AzAvailabilityGroupListener_CreateViaIdentity';
+            CreateViaIdentitySqlVirtualMachineGroup = 'Az.SqlVirtualMachine.private\New-AzAvailabilityGroupListener_CreateViaIdentitySqlVirtualMachineGroup';
+            CreateViaIdentitySqlVirtualMachineGroupExpanded = 'Az.SqlVirtualMachine.private\New-AzAvailabilityGroupListener_CreateViaIdentitySqlVirtualMachineGroupExpanded';
+            CreateViaJsonFilePath = 'Az.SqlVirtualMachine.private\New-AzAvailabilityGroupListener_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.SqlVirtualMachine.private\New-AzAvailabilityGroupListener_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Port')) {
+        if (('CreateExpanded', 'CreateViaIdentitySqlVirtualMachineGroupExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Port') ) {
             $PSBoundParameters['Port'] = 1433
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -413,20 +460,20 @@ end {
 
 <#
 .Synopsis
-Creates or updates a SQL virtual machine group.
+Create a SQL virtual machine group.
 .Description
-Creates or updates a SQL virtual machine group.
+Create a SQL virtual machine group.
 .Example
 # $accessKey is a valid access key for the storage account
 $storageAccountPrimaryKey = ConvertTo-SecureString -String $accessKey -AsPlainText -Force
 New-AzSqlVMGroup -ResourceGroupName 'ResourceGroup01' -Name 'sqlvmgroup01' -Location 'eastus' -Offer 'SQL2022-WS2022' -Sku 'Developer' -DomainFqdn 'yourdomain.com' -ClusterOperatorAccount 'operatoruser@yourdomain.com' -ClusterBootstrapAccount 'bootstrapuser@yourdomain.com' -StorageAccountUrl 'https://yourstorageaccount.blob.core.windows.net/' -StorageAccountPrimaryKey $storageAccountPrimaryKey -SqlServiceAccount 'sqladmin@yourdomain.com' -ClusterSubnetType 'SingleSubnet'
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachineGroup
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineGroup
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachineGroup
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -441,20 +488,14 @@ INPUTOBJECT <ISqlVirtualMachineIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription ID that identifies an Azure subscription.
 
 PARAMETER <ISqlVirtualMachineGroup>: A SQL virtual machine group.
-  Location <String>: Resource location.
+  [Location <String>]: Resource location.
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [SqlImageOffer <String>]: SQL image offer. Examples may include SQL2016-WS2016, SQL2017-WS2016.
-  [SqlImageSku <SqlVMGroupImageSku?>]: SQL image sku.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [SqlImageSku <String>]: SQL image sku.
   [WsfcDomainProfileClusterBootstrapAccount <String>]: Account name used for creating cluster (at minimum needs permissions to 'Create Computer Objects' in domain).
   [WsfcDomainProfileClusterOperatorAccount <String>]: Account name used for operating cluster i.e. will be part of administrators group on all the participating virtual machines in the cluster.
-  [WsfcDomainProfileClusterSubnetType <ClusterSubnetType?>]: Cluster subnet type.
+  [WsfcDomainProfileClusterSubnetType <String>]: Cluster subnet type.
   [WsfcDomainProfileDomainFqdn <String>]: Fully qualified name of the domain.
   [WsfcDomainProfileFileShareWitnessPath <String>]: Optional path for fileshare witness.
   [WsfcDomainProfileOuPath <String>]: Organizational Unit path in which the nodes and cluster will be present.
@@ -465,21 +506,19 @@ PARAMETER <ISqlVirtualMachineGroup>: A SQL virtual machine group.
 https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/new-azsqlvmgroup
 #>
 function New-AzSqlVMGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachineGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineGroup])]
 [CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachineGroup]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineGroup]
     # A SQL virtual machine group.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter()]
@@ -550,12 +589,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateViaIdentity = 'Az.SqlVirtualMachine.private\New-AzSqlVMGroup_CreateViaIdentity';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -587,9 +632,9 @@ end {
 
 <#
 .Synopsis
-Creates or updates a SQL virtual machine.
+Create a SQL virtual machine.
 .Description
-Creates or updates a SQL virtual machine.
+Create a SQL virtual machine.
 .Example
 New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus'
 .Example
@@ -613,11 +658,11 @@ New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastu
 New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastus' -AsJob
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -632,18 +677,18 @@ INPUTOBJECT <ISqlVirtualMachineIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription ID that identifies an Azure subscription.
 
 PARAMETER <ISqlVirtualMachine>: A SQL virtual machine.
-  Location <String>: Resource location.
+  [Location <String>]: Resource location.
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [AdditionalFeatureServerConfigurationIsRServicesEnabled <Boolean?>]: Enable or disable R services (SQL 2016 onwards).
   [AssessmentSettingEnable <Boolean?>]: Enable or disable SQL best practices Assessment feature on SQL virtual machine.
   [AssessmentSettingRunImmediately <Boolean?>]: Run SQL best practices Assessment immediately on SQL virtual machine.
-  [AutoBackupSettingBackupScheduleType <BackupScheduleType?>]: Backup schedule type.
+  [AutoBackupSettingBackupScheduleType <String>]: Backup schedule type.
   [AutoBackupSettingBackupSystemDb <Boolean?>]: Include or exclude system databases from auto backup.
-  [AutoBackupSettingDaysOfWeek <AutoBackupDaysOfWeek[]>]: Days of the week for the backups when FullBackupFrequency is set to Weekly.
+  [AutoBackupSettingDaysOfWeek <List<String>>]: Days of the week for the backups when FullBackupFrequency is set to Weekly.
   [AutoBackupSettingEnable <Boolean?>]: Enable or disable autobackup on SQL virtual machine.
   [AutoBackupSettingEnableEncryption <Boolean?>]: Enable or disable encryption for backup on SQL virtual machine.
-  [AutoBackupSettingFullBackupFrequency <FullBackupFrequencyType?>]: Frequency of full backups. In both cases, full backups begin during the next scheduled time window.
+  [AutoBackupSettingFullBackupFrequency <String>]: Frequency of full backups. In both cases, full backups begin during the next scheduled time window.
   [AutoBackupSettingFullBackupStartTime <Int32?>]: Start time of a given day during which full backups can take place. 0-23 hours.
   [AutoBackupSettingFullBackupWindowHour <Int32?>]: Duration of the time window of a given day during which full backups can take place. 1-23 hours.
   [AutoBackupSettingLogBackupFrequency <Int32?>]: Frequency of log backups. 5-60 minutes.
@@ -652,33 +697,33 @@ PARAMETER <ISqlVirtualMachine>: A SQL virtual machine.
   [AutoBackupSettingStorageAccessKey <String>]: Storage account key where backup will be taken to.
   [AutoBackupSettingStorageAccountUrl <String>]: Storage account url where backup will be taken to.
   [AutoBackupSettingStorageContainerName <String>]: Storage container name where backup will be taken to.
-  [AutoPatchingSettingDayOfWeek <DayOfWeek?>]: Day of week to apply the patch on.
+  [AutoPatchingSettingDayOfWeek <String>]: Day of week to apply the patch on.
   [AutoPatchingSettingEnable <Boolean?>]: Enable or disable autopatching on SQL virtual machine.
   [AutoPatchingSettingMaintenanceWindowDuration <Int32?>]: Duration of patching.
   [AutoPatchingSettingMaintenanceWindowStartingHour <Int32?>]: Hour of the day when patching is initiated. Local VM time.
   [AzureAdAuthenticationSettingClientId <String>]: The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity
   [EnableAutomaticUpgrade <Boolean?>]: Enable automatic upgrade of Sql IaaS extension Agent.
   [GroupResourceId <String>]: ARM resource id of the SQL virtual machine group this SQL virtual machine is or will be part of.
-  [IdentityType <IdentityType?>]: The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
+  [IdentityType <String>]: The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
   [KeyVaultCredentialSettingAzureKeyVaultUrl <String>]: Azure Key Vault url.
   [KeyVaultCredentialSettingCredentialName <String>]: Credential name.
   [KeyVaultCredentialSettingEnable <Boolean?>]: Enable or disable key vault credential setting.
   [KeyVaultCredentialSettingServicePrincipalName <String>]: Service principal name to access key vault.
   [KeyVaultCredentialSettingServicePrincipalSecret <String>]: Service principal name secret to access key vault.
-  [LeastPrivilegeMode <LeastPrivilegeMode?>]: SQL IaaS Agent least privilege mode.
-  [ScheduleDayOfWeek <AssessmentDayOfWeek?>]: Day of the week to run assessment.
+  [LeastPrivilegeMode <String>]: SQL IaaS Agent least privilege mode.
+  [ScheduleDayOfWeek <String>]: Day of the week to run assessment.
   [ScheduleEnable <Boolean?>]: Enable or disable assessment schedule on SQL virtual machine.
   [ScheduleMonthlyOccurrence <Int32?>]: Occurrence of the DayOfWeek day within a month to schedule assessment. Takes values: 1,2,3,4 and -1. Use -1 for last DayOfWeek day of the month
   [ScheduleStartTime <String>]: Time of the day in HH:mm format. Eg. 17:30
   [ScheduleWeeklyInterval <Int32?>]: Number of weeks to schedule between 2 assessment runs. Takes value from 1-6
-  [SqlConnectivityUpdateSettingConnectivityType <ConnectivityType?>]: SQL Server connectivity option.
+  [SqlConnectivityUpdateSettingConnectivityType <String>]: SQL Server connectivity option.
   [SqlConnectivityUpdateSettingPort <Int32?>]: SQL Server port.
   [SqlConnectivityUpdateSettingSqlAuthUpdatePassword <SecureString>]: SQL Server sysadmin login password.
   [SqlConnectivityUpdateSettingSqlAuthUpdateUserName <String>]: SQL Server sysadmin login to create.
   [SqlDataSettingDefaultFilePath <String>]: SQL Server default file path
-  [SqlDataSettingLun <Int32[]>]: Logical Unit Numbers for the disks.
+  [SqlDataSettingLun <List<Int32>>]: Logical Unit Numbers for the disks.
   [SqlImageOffer <String>]: SQL image offer. Examples include SQL2016-WS2016, SQL2017-WS2016.
-  [SqlImageSku <SqlImageSku?>]: SQL Server edition type.
+  [SqlImageSku <String>]: SQL Server edition type.
   [SqlInstanceSettingCollation <String>]: SQL Server Collation.
   [SqlInstanceSettingIsIfiEnabled <Boolean?>]: SQL Server IFI.
   [SqlInstanceSettingIsLpimEnabled <Boolean?>]: SQL Server LPIM.
@@ -687,10 +732,10 @@ PARAMETER <ISqlVirtualMachine>: A SQL virtual machine.
   [SqlInstanceSettingMaxServerMemoryMb <Int32?>]: SQL Server maximum memory.
   [SqlInstanceSettingMinServerMemoryMb <Int32?>]: SQL Server minimum memory.
   [SqlLogSettingDefaultFilePath <String>]: SQL Server default file path
-  [SqlLogSettingLun <Int32[]>]: Logical Unit Numbers for the disks.
-  [SqlManagement <SqlManagementMode?>]: SQL Server Management type.
-  [SqlServerLicenseType <SqlServerLicenseType?>]: SQL Server license type.
-  [SqlStorageUpdateSettingDiskConfigurationType <DiskConfigurationType?>]: Disk configuration to apply to SQL Server.
+  [SqlLogSettingLun <List<Int32>>]: Logical Unit Numbers for the disks.
+  [SqlManagement <String>]: SQL Server Management type.
+  [SqlServerLicenseType <String>]: SQL Server license type.
+  [SqlStorageUpdateSettingDiskConfigurationType <String>]: Disk configuration to apply to SQL Server.
   [SqlStorageUpdateSettingDiskCount <Int32?>]: Virtual machine disk count.
   [SqlStorageUpdateSettingStartingDeviceId <Int32?>]: Device id of the first disk to be updated.
   [SqlTempDbSettingDataFileCount <Int32?>]: SQL Server tempdb data file count
@@ -699,20 +744,13 @@ PARAMETER <ISqlVirtualMachine>: A SQL virtual machine.
   [SqlTempDbSettingDefaultFilePath <String>]: SQL Server default file path
   [SqlTempDbSettingLogFileSize <Int32?>]: SQL Server tempdb log file size
   [SqlTempDbSettingLogGrowth <Int32?>]: SQL Server tempdb log file autoGrowth size
-  [SqlTempDbSettingLun <Int32[]>]: Logical Unit Numbers for the disks.
+  [SqlTempDbSettingLun <List<Int32>>]: Logical Unit Numbers for the disks.
   [SqlTempDbSettingPersistFolder <Boolean?>]: SQL Server tempdb persist folder choice
   [SqlTempDbSettingPersistFolderPath <String>]: SQL Server tempdb persist folder location
-  [SqlWorkloadTypeUpdateSettingSqlWorkloadType <SqlWorkloadType?>]: SQL Server workload type.
-  [StorageConfigurationSettingDiskConfigurationType <DiskConfigurationType?>]: Disk configuration to apply to SQL Server.
+  [SqlWorkloadTypeUpdateSettingSqlWorkloadType <String>]: SQL Server workload type.
+  [StorageConfigurationSettingDiskConfigurationType <String>]: Disk configuration to apply to SQL Server.
   [StorageConfigurationSettingSqlSystemDbOnDataDisk <Boolean?>]: SQL Server SystemDb Storage on DataPool if true.
-  [StorageConfigurationSettingStorageWorkloadType <StorageWorkloadType?>]: Storage workload type.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [UnhealthyReplicaInfoAvailabilityGroupName <String>]: The name of the availability group
+  [StorageConfigurationSettingStorageWorkloadType <String>]: Storage workload type.
   [VirtualMachineResourceId <String>]: ARM Resource id of underlying virtual machine created from SQL marketplace image.
   [WsfcDomainCredentialsClusterBootstrapAccountPassword <SecureString>]: Cluster bootstrap account password.
   [WsfcDomainCredentialsClusterOperatorAccountPassword <SecureString>]: Cluster operator account password.
@@ -722,10 +760,12 @@ PARAMETER <ISqlVirtualMachine>: A SQL virtual machine.
 https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/new-azsqlvm
 #>
 function New-AzSqlVM {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Alias('SqlVirtualMachineName', 'SqlVMName')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
     [System.String]
@@ -733,6 +773,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
     [System.String]
     # Name of the resource group that contains the resource.
@@ -740,6 +782,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -750,7 +794,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -778,9 +821,9 @@ param(
     ${AssessmentSettingRunImmediately},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Manual", "Automated")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType]
+    [System.String]
     # Backup schedule type.
     ${AutoBackupSettingBackupScheduleType},
 
@@ -792,9 +835,9 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AutoBackupDaysOfWeek])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AutoBackupDaysOfWeek[]]
+    [System.String[]]
     # Days of the week for the backups when FullBackupFrequency is set to Weekly.
     ${AutoBackupSettingDaysOfWeek},
 
@@ -811,9 +854,9 @@ param(
     ${AutoBackupSettingEnableEncryption},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Daily", "Weekly")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType]
+    [System.String]
     # Frequency of full backups.
     # In both cases, full backups begin during the next scheduled time window.
     ${AutoBackupSettingFullBackupFrequency},
@@ -870,9 +913,9 @@ param(
     ${AutoBackupSettingStorageContainerName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Everyday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek]
+    [System.String]
     # Day of week to apply the patch on.
     ${AutoPatchingSettingDayOfWeek},
 
@@ -909,9 +952,9 @@ param(
     ${EnableAutomaticUpgrade},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.IdentityType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("None", "SystemAssigned")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.IdentityType]
+    [System.String]
     # The identity type.
     # Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
     ${IdentityType},
@@ -947,16 +990,16 @@ param(
     ${KeyVaultCredentialSettingServicePrincipalSecret},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.LeastPrivilegeMode])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Enabled", "NotSet")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.LeastPrivilegeMode]
+    [System.String]
     # SQL IaaS Agent least privilege mode.
     ${LeastPrivilegeMode},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlServerLicenseType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("PAYG", "AHUB", "DR")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlServerLicenseType]
+    [System.String]
     # SQL Server license type.
     ${LicenseType},
 
@@ -968,9 +1011,9 @@ param(
     ${Offer},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek]
+    [System.String]
     # Day of the week to run assessment.
     ${ScheduleDayOfWeek},
 
@@ -1004,16 +1047,16 @@ param(
     ${ScheduleWeeklyInterval},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlImageSku])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Developer", "Express", "Standard", "Enterprise", "Web")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlImageSku]
+    [System.String]
     # SQL Server edition type.
     ${Sku},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.ConnectivityType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("LOCAL", "PRIVATE", "PUBLIC")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.ConnectivityType]
+    [System.String]
     # SQL Server connectivity option.
     ${SqlConnectivityUpdateSettingConnectivityType},
 
@@ -1104,16 +1147,16 @@ param(
     ${SqlLogSettingLun},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlManagementMode])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Full", "LightWeight", "NoAgent")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlManagementMode]
+    [System.String]
     # SQL Server Management type.
     ${SqlManagementType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("NEW", "EXTEND", "ADD")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType]
+    [System.String]
     # Disk configuration to apply to SQL Server.
     ${SqlStorageUpdateSettingDiskConfigurationType},
 
@@ -1191,16 +1234,16 @@ param(
     ${SqlVirtualMachineGroupResourceId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlWorkloadType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("GENERAL", "OLTP", "DW")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlWorkloadType]
+    [System.String]
     # SQL Server workload type.
     ${SqlWorkloadTypeUpdateSettingSqlWorkloadType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("NEW", "EXTEND", "ADD")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DiskConfigurationType]
+    [System.String]
     # Disk configuration to apply to SQL Server.
     ${StorageConfigurationSettingDiskConfigurationType},
 
@@ -1211,15 +1254,15 @@ param(
     ${StorageConfigurationSettingSqlSystemDbOnDataDisk},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.StorageWorkloadType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("GENERAL", "OLTP", "DW")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.StorageWorkloadType]
+    [System.String]
     # Storage workload type.
     ${StorageConfigurationSettingStorageWorkloadType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -1256,10 +1299,21 @@ param(
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine]
     # A SQL virtual machine.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1329,14 +1383,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateExpanded = 'Az.SqlVirtualMachine.private\New-AzSqlVM_CreateExpanded';
             CreateViaIdentity = 'Az.SqlVirtualMachine.private\New-AzSqlVM_CreateViaIdentity';
+            CreateViaJsonFilePath = 'Az.SqlVirtualMachine.private\New-AzSqlVM_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.SqlVirtualMachine.private\New-AzSqlVM_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1345,6 +1402,211 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+
+        throw
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+    } catch {
+
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update a SQL virtual machine.
+.Description
+Update a SQL virtual machine.
+.Example
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -LicenseType 'AHUB' -Tag @{'newkey'='newvalue'}
+.Example
+$sqlVM = Get-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1'
+$sqlVM | Update-AzSqlVM -Sku 'Standard' -LicenseType 'AHUB'
+.Example
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AutoBackupSettingEnable `
+-AutoBackupSettingBackupScheduleType manual -AutoBackupSettingFullBackupFrequency Weekly -AutoBackupSettingFullBackupStartTime 5 `
+-AutoBackupSettingFullBackupWindowHour 2 -AutoBackupSettingStorageAccessKey 'keyvalue' -AutoBackupSettingStorageAccountUrl `
+'https://storagename.blob.core.windows.net/' -AutoBackupSettingRetentionPeriod 10 -AutoBackupSettingLogBackupFrequency 60 `
+-AutoBackupSettingStorageContainerName 'storagecontainername'
+.Example
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AutoBackupSettingEnable:$false
+.Example
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' `
+-AutoPatchingSettingDayOfWeek Thursday `
+-AutoPatchingSettingMaintenanceWindowDuration 120 -AutoPatchingSettingMaintenanceWindowStartingHour 3 -AutoPatchingSettingEnable
+.Example
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AutoPatchingSettingEnable:$false
+.Example
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AssessmentSettingEnable
+.Example
+# $pwd is the password for cluster accounts
+$securepwd = ConvertTo-SecureString -String $pwd -AsPlainText -Force
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' `
+-SqlVirtualMachineGroupResourceId '<group resource id>' `
+-WsfcDomainCredentialsClusterBootstrapAccountPassword $securepwd `
+-WsfcDomainCredentialsClusterOperatorAccountPassword $securepwd `
+-WsfcDomainCredentialsSqlServiceAccountPassword $securepwd 
+.Example
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -SqlVirtualMachineGroupResourceId ''
+.Example
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1'  -Tag @{'newkey'='newvalue'} -AsJob
+.Example
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -IdentityType 'SystemAssigned'
+.Example
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -IdentityType 'UserAssigned' -ManagedIdentityClientId '11111111-2222-3333-4444-555555555555'
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine
+.Link
+https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/update-azsqlvm
+#>
+function Update-AzSqlVM {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine])]
+[CmdletBinding(DefaultParameterSetName='UpdateViaJsonFilePath', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(Mandatory)]
+    [Alias('SqlVirtualMachineName', 'SqlVMName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
+    [System.String]
+    # Name of the SQL virtual machine.
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
+    [System.String]
+    # Name of the resource group that contains the resource.
+    # You can obtain this value from the Azure Resource Manager API or the portal.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Subscription ID that identifies an Azure subscription.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $mapping = @{
+            UpdateViaJsonFilePath = 'Az.SqlVirtualMachine.private\Update-AzSqlVM_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.SqlVirtualMachine.private\Update-AzSqlVM_UpdateViaJsonString';
+        }
+        if (('UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
