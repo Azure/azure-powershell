@@ -71,7 +71,6 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             SharedTokenCacheCredentialOptions options = AzConfigReader.IsWamEnabled(authority)
                 ? new SharedTokenCacheCredentialBrokerOptions(tokenCacheProvider.GetTokenCachePersistenceOptions())
                 : new SharedTokenCacheCredentialOptions(tokenCacheProvider.GetTokenCachePersistenceOptions());
-#pragma warning restore CS0618
             options.EnableGuestTenantAuthentication = true;
             options.ClientId = Constants.PowerShellClientId;
             options.Username = silentParameters.UserId;
