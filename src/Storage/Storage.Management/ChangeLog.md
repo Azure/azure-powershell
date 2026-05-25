@@ -20,8 +20,8 @@
 ## Upcoming Release
 * Updated the prompt message for user confirmation of long running account migration operation in `Start-AzStorageAccountMigration`
 * Added Storage task assignment TriggerType new value MockRun in `New/Update-AzStorageTaskAssignment`
-* Fixed `Get-AzStorageFileContent` and `Set-AzStorageFileContent`
-* Added Smart access tier and AllowedCopyScope 'All' support in `New/Set-AzStorageAccount`
+* Fixed `Get-AzStorageFileContent`, `Set-AzStorageFileContent`
+* Added Smart access tier, AllowedCopyScope 'All' support in `New/Set-AzStorageAccount`
 * Added static website configuration in `Update-AzStorageBlobServiceProperty`
 * Added tags replication in `Set-AzStorageObjectReplicationPolicy`
 
