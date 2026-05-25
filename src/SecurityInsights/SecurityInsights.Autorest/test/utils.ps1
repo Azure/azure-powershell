@@ -1,4 +1,4 @@
-function RandomString([bool]$allChars, [int32]$len) {
+﻿function RandomString([bool]$allChars, [int32]$len) {
     if ($allChars) {
         return -join ((33..126) | Get-Random -Count $len | % {[char]$_})
     } else {
@@ -275,7 +275,7 @@ function setupEnv() {
     $TemplateFile = (Get-ChildItem $TemplatePath\dataConnector\template.json).FullName
     $TemplateParametersFile = (Get-ChildItem $TemplatePath\dataConnector\template.parameters.json).FullName
     $result = New-AzResourceGroupDeployment -Mode Incremental -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile -Name dataConnector -ResourceGroupName $resourceGroupName
-    # Workaround — save dataConnectorId even on partial failure (AzureSecurityCenter succeeds when Office365 fails)
+    # Workaround - save dataConnectorId even on partial failure (AzureSecurityCenter succeeds when Office365 fails)
     $null = $env.Add('dataConnectorId', $dataConnectorId)
     if($result -and $result.ProvisioningState -eq "Succeeded"){
         $null = $env.Add('updateDataConnectorId', $updateDataConnectorId)
