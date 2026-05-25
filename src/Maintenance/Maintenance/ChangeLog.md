@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Added `-AcquirePolicyToken` and `-ChangeReference` dynamic parameters to write cmdlets for Azure Change Safety policy token acquisition
+* ChangeSafety
 
 ## Version 1.5.1
 * Migrated SDK generation from autorest csharp to autorest powershell.

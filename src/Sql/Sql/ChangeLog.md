@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added `-AcquirePolicyToken` and `-ChangeReference` dynamic parameters to write cmdlets for Azure Change Safety policy token acquisition
+* ChangeSafety
 * Removed `EnableSoftDelete` from `New-AzSqlServer`, `Set-AzSqlServer`. Used `SoftDeleteRetentionDays` instead: setting `SoftDeleteRetentionDays`.
 * Reverted "the support for UAMI authentication in Data Sync cmdlets"
 

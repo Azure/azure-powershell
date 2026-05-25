@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added `-AcquirePolicyToken` and `-ChangeReference` dynamic parameters to write cmdlets for Azure Change Safety policy token acquisition
+* ChangeSafety
 
 ## Version 1.2.1
 * Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).

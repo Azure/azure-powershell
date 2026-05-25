@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added `-AcquirePolicyToken` and `-ChangeReference` dynamic parameters to write cmdlets for Azure Change Safety policy token acquisition
+* ChangeSafety
 
 ## Version 0.11.0
 * Added support for 2025-05-01 RP API 

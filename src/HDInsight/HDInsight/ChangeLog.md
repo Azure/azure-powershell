@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Added `-AcquirePolicyToken` and `-ChangeReference` dynamic parameters to write cmdlets for Azure Change Safety policy token acquisition
+* ChangeSafety
 
 ## Version 6.4.0
 * Supported create cluster with entra user as gateway credential to replace use username and password.

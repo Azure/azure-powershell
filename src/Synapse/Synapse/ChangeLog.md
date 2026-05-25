@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Added `-AcquirePolicyToken` and `-ChangeReference` dynamic parameters to write cmdlets for Azure Change Safety policy token acquisition
+* ChangeSafety
 
 ## Version 3.2.4
 * Updated Azure.Core from 1.47.3 to 1.50.0
