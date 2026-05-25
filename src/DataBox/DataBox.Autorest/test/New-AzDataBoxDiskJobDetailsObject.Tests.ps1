@@ -13,14 +13,22 @@ while(-not $mockingPath) {
 
 Describe 'New-AzDataBoxDiskJobDetailsObject' {
     It '__AllParameterSets' {
-        $contactDetail = New-AzDataBoxContactDetailsObject -ContactName $env.ContactName -EmailList $env.EmailList -Phone $env.Phone
-
-        $ShippingDetails = New-AzDataBoxShippingAddressObject -StreetAddress1 $env.StreetAddress1 -StateOrProvince $env.StateOrProvince -Country $env.Country -City $env.City -PostalCode $env.PostalCode -AddressType $env.AddressType
-    
         $dataAccount = New-AzDataBoxStorageAccountDetailsObject -StorageAccountId $env.StorageAccountId
 
-        $details = New-AzDataBoxDiskJobDetailsObject -DataImportDetail  @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"} ) -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -Passkey "randm@423jarABC" -PreferredDisk @{"8" = 8; "4" = 2} -ExpectedDataSizeInTeraByte 18
+        $details = New-AzDataBoxDiskJobDetailsObject -DataImportDetail @(@{AccountDetail=$dataAccount; AccountDetailDataAccountType = "StorageAccount"}) `
+            -ContactDetailsContactName $env.ContactName `
+            -ContactDetailEmailList $env.EmailList `
+            -ContactDetailsPhone $env.Phone `
+            -StreetAddress1 $env.StreetAddress1 `
+            -StateOrProvince $env.StateOrProvince `
+            -Country $env.Country `
+            -City $env.City `
+            -PostalCode $env.PostalCode `
+            -ShippingAddressType $env.AddressType `
+            -Passkey "randm@423jarABC" `
+            -PreferredDisk @{"8" = 8; "4" = 2} `
+            -ExpectedDataSizeInTeraByte 18
 
-        $details.ExpectedDataSizeInTeraByte  | Should -Be 18
+        $details.ExpectedDataSizeInTeraByte | Should -Be 18
     }
 }

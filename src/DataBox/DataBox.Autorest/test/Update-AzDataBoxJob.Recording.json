@@ -1,0 +1,116 @@
+{
+  "Update-AzDataBoxJob+[NoContext]+Microsoft managed to customer managed system assigned+$PATCH+https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/databox-pwsh-rg-ev/providers/Microsoft.DataBox/jobs/powershellRandoma9hi?api-version=2025-02-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/databox-pwsh-rg-ev/providers/Microsoft.DataBox/jobs/powershellRandoma9hi?api-version=2025-02-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"details\": {\r\n      \"contactDetails\": {\r\n        \"contactName\": \"random\",\r\n        \"phone\": \"1234567891\",\r\n        \"emailList\": [ \"v-jiasenglaw@microsoft.com\" ]\r\n      },\r\n      \"shippingAddress\": {\r\n        \"streetAddress1\": \"101 TOWNSEND ST\",\r\n        \"city\": \"San Francisco\",\r\n        \"stateOrProvince\": \"CA\",\r\n        \"country\": \"US\",\r\n        \"postalCode\": \"94107\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "472" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=544a7a2e-697f-487c-b2b0-a13df7f346b6,objectId=de9050dc-ffd4-444c-b113-b94ad83e7559/westus/78a0be9b-2681-417d-8c0f-e77234432e4e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "15ccc74f-93c4-4dcb-9ba7-176de824d0fd" ],
+        "x-ms-client-request-id": [ "5dafafc0-000a-4503-b88f-64b5d478f39c" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "198" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2998" ],
+        "x-ms-correlation-request-id": [ "15ccc74f-93c4-4dcb-9ba7-176de824d0fd" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260525T065055Z:15ccc74f-93c4-4dcb-9ba7-176de824d0fd" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C0B834E9450D4FFABD43DDB1868934A9 Ref B: SG2AA1070301042 Ref C: 2026-05-25T06:50:54Z" ],
+        "Date": [ "Mon, 25 May 2026 06:50:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "227" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"error\": {\r\n    \"code\": \"SsemUserErrorEntityNotFound\",\r\n    \"message\": \"Could not find the entity powershellRandoma9hi.\\r\\nProvide a valid entity name and retry the operation.\",\r\n    \"details\": [\r\n      null\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataBoxJob+[NoContext]+Microsoft managed to customer managed system assigned+$PATCH+https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/databox-pwsh-rg-ev/providers/Microsoft.DataBox/jobs/powershellRandoma9hi?api-version=2025-02-01+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/databox-pwsh-rg-ev/providers/Microsoft.DataBox/jobs/powershellRandoma9hi?api-version=2025-02-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"details\": {\r\n      \"contactDetails\": {\r\n        \"contactName\": \"random\",\r\n        \"phone\": \"1234567891\",\r\n        \"emailList\": [ \"v-jiasenglaw@microsoft.com\" ]\r\n      },\r\n      \"shippingAddress\": {\r\n        \"streetAddress1\": \"101 TOWNSEND ST\",\r\n        \"city\": \"San Francisco\",\r\n        \"stateOrProvince\": \"CA\",\r\n        \"country\": \"US\",\r\n        \"postalCode\": \"94107\"\r\n      },\r\n      \"keyEncryptionKey\": {\r\n        \"identityProperties\": {\r\n          \"type\": \"SystemAssigned\"\r\n        },\r\n        \"kekType\": \"CustomerManaged\",\r\n        \"kekUrl\": \"\",\r\n        \"kekVaultResourceID\": \"\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "688" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "be0e56cf-8de7-44f5-904e-a3d297382a9c" ],
+        "x-ms-correlation-request-id": [ "be0e56cf-8de7-44f5-904e-a3d297382a9c" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260525T065055Z:be0e56cf-8de7-44f5-904e-a3d297382a9c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D39E400C8B6E4ACF90CF0C4798132C88 Ref B: SG2AA1070301042 Ref C: 2026-05-25T06:50:55Z" ],
+        "Date": [ "Mon, 25 May 2026 06:50:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "279" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"LinkedInvalidPropertyId\",\"message\":\"Property id \u0027\u0027 at path \u0027properties.details.keyEncryptionKey.kekVaultResourceID\u0027 is invalid. Expect fully qualified resource Id that start with \u0027/subscriptions/{subscriptionId}\u0027 or \u0027/providers/{resourceProviderNamespace}/\u0027.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzDataBoxJob+[NoContext]+System assigned to user assigned+$PATCH+https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/databox-pwsh-rg-ev/providers/Microsoft.DataBox/jobs/powershellRandoma9hi?api-version=2025-02-01+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/databox-pwsh-rg-ev/providers/Microsoft.DataBox/jobs/powershellRandoma9hi?api-version=2025-02-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"details\": {\r\n      \"keyEncryptionKey\": {\r\n        \"identityProperties\": {\r\n          \"type\": \"UserAssigned\"\r\n        },\r\n        \"kekType\": \"CustomerManaged\",\r\n        \"kekUrl\": \"\",\r\n        \"kekVaultResourceID\": \"\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"\": {\r\n      }\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "380" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "bf6c066e-efda-487d-969e-30cd8f84260f" ],
+        "x-ms-correlation-request-id": [ "bf6c066e-efda-487d-969e-30cd8f84260f" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260525T065055Z:bf6c066e-efda-487d-969e-30cd8f84260f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 109E7B0854964B83A6E3FB5CFF513C37 Ref B: SG2AA1070301042 Ref C: 2026-05-25T06:50:55Z" ],
+        "Date": [ "Mon, 25 May 2026 06:50:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "279" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"LinkedInvalidPropertyId\",\"message\":\"Property id \u0027\u0027 at path \u0027properties.details.keyEncryptionKey.kekVaultResourceID\u0027 is invalid. Expect fully qualified resource Id that start with \u0027/subscriptions/{subscriptionId}\u0027 or \u0027/providers/{resourceProviderNamespace}/\u0027.\"}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -1,13 +1,13 @@
 {
-  "Get-AzDataBoxJob+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/databox-pwsh-rg-s7/providers/Microsoft.DataBox/jobs/powershellRandom572m?api-version=2025-02-01+1": {
+  "Get-AzDataBoxJob+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/databox-pwsh-rg-ev/providers/Microsoft.DataBox/jobs/powershellRandoma9hi?api-version=2025-02-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/databox-pwsh-rg-s7/providers/Microsoft.DataBox/jobs/powershellRandom572m?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/databox-pwsh-rg-ev/providers/Microsoft.DataBox/jobs/powershellRandoma9hi?api-version=2025-02-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "45" ],
-        "x-ms-client-request-id": [ "8a6176c1-6d07-429e-b096-ad71f64e1501" ],
+        "x-ms-unique-id": [ "104" ],
+        "x-ms-client-request-id": [ "acbb51a3-9bd6-47da-96ee-a02a76ccc349" ],
         "CommandName": [ "Get-AzDataBoxJob" ],
         "FullCommandName": [ "Get-AzDataBoxJob_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -25,21 +25,21 @@
         "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "b93762b4-9071-4696-9484-769601ead2e8" ],
-        "x-ms-client-request-id": [ "8a6176c1-6d07-429e-b096-ad71f64e1501" ],
+        "x-ms-request-id": [ "cb12dce7-1d4e-49b4-8f25-88cf666a68fb" ],
+        "x-ms-client-request-id": [ "acbb51a3-9bd6-47da-96ee-a02a76ccc349" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-correlation-request-id": [ "b93762b4-9071-4696-9484-769601ead2e8" ],
-        "x-ms-routing-request-id": [ "WESTUS:20260525T061917Z:b93762b4-9071-4696-9484-769601ead2e8" ],
+        "x-ms-correlation-request-id": [ "cb12dce7-1d4e-49b4-8f25-88cf666a68fb" ],
+        "x-ms-routing-request-id": [ "WESTUS:20260525T065002Z:cb12dce7-1d4e-49b4-8f25-88cf666a68fb" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 1D47E5D141344D569FBB51BD090B4CA9 Ref B: SG2AA1070302042 Ref C: 2026-05-25T06:19:16Z" ],
-        "Date": [ "Mon, 25 May 2026 06:19:17 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: BB977670FB00488086430D28C9DC30AD Ref B: SG2AA1070301042 Ref C: 2026-05-25T06:50:01Z" ],
+        "Date": [ "Mon, 25 May 2026 06:50:01 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "227" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"error\": {\r\n    \"code\": \"SsemUserErrorEntityNotFound\",\r\n    \"message\": \"Could not find the entity powershellRandom572m.\\r\\nProvide a valid entity name and retry the operation.\",\r\n    \"details\": [\r\n      null\r\n    ]\r\n  }\r\n}",
+      "Content": "{\r\n  \"error\": {\r\n    \"code\": \"SsemUserErrorEntityNotFound\",\r\n    \"message\": \"Could not find the entity powershellRandoma9hi.\\r\\nProvide a valid entity name and retry the operation.\",\r\n    \"details\": [\r\n      null\r\n    ]\r\n  }\r\n}",
       "isContentBase64": false
     }
   }

@@ -13,15 +13,38 @@ while(-not $mockingPath) {
 
 Describe 'Update-AzDataBoxJob' {
     It 'Microsoft managed to customer managed system assigned' {
-        $contactDetail = New-AzDataBoxContactDetailsObject -ContactName $env.ContactName -EmailList $env.EmailList -Phone $env.Phone
-        $ShippingDetails = New-AzDataBoxShippingAddressObject -StreetAddress1 $env.StreetAddress1 -StateOrProvince $env.StateOrProvince -Country $env.Country -City $env.City -PostalCode $env.PostalCode -AddressType $env.AddressType       
-        Update-AzDataBoxJob -Name $env.JobName -ResourceGroupName $env.ResourceGroup -SubscriptionId $env.SubscriptionId -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -EnableSystemAssignedIdentity $true
-        $keyEncryptionDetails = New-AzDataBoxKeyEncryptionKeyObject -KekType "CustomerManaged" -IdentityProperty @{Type = "SystemAssigned"} -KekUrl $env.KekUrl -KekVaultResourceId $env.KekVaultResourceId
-        Update-AzDataBoxJob -Name $env.JobName -ResourceGroupName $env.ResourceGroup -SubscriptionId $env.SubscriptionId -KeyEncryptionKey $keyEncryptionDetails -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -EnableSystemAssignedIdentity $true
-        
+        $updateDetail = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.UpdateJobDetails]::New()
+        $updateDetail.ContactDetailsContactName = $env.ContactName
+        $updateDetail.ContactDetailEmailList = $env.EmailList
+        $updateDetail.ContactDetailsPhone = $env.Phone
+        $updateDetail.StreetAddress1 = $env.StreetAddress1
+        $updateDetail.StateOrProvince = $env.StateOrProvince
+        $updateDetail.Country = $env.Country
+        $updateDetail.City = $env.City
+        $updateDetail.PostalCode = $env.PostalCode
+        Update-AzDataBoxJob -Name $env.JobName -ResourceGroupName $env.ResourceGroup -SubscriptionId $env.SubscriptionId -Detail $updateDetail -IdentityType "SystemAssigned"
+
+        $updateDetail2 = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.UpdateJobDetails]::New()
+        $updateDetail2.ContactDetailsContactName = $env.ContactName
+        $updateDetail2.ContactDetailEmailList = $env.EmailList
+        $updateDetail2.ContactDetailsPhone = $env.Phone
+        $updateDetail2.StreetAddress1 = $env.StreetAddress1
+        $updateDetail2.StateOrProvince = $env.StateOrProvince
+        $updateDetail2.Country = $env.Country
+        $updateDetail2.City = $env.City
+        $updateDetail2.PostalCode = $env.PostalCode
+        $updateDetail2.KeyEncryptionKeyKekType = "CustomerManaged"
+        $updateDetail2.IdentityPropertyType = "SystemAssigned"
+        $updateDetail2.KeyEncryptionKeyKekUrl = $env.KekUrl
+        $updateDetail2.KeyEncryptionKeyKekVaultResourceId = $env.KekVaultResourceId
+        Update-AzDataBoxJob -Name $env.JobName -ResourceGroupName $env.ResourceGroup -SubscriptionId $env.SubscriptionId -Detail $updateDetail2 -IdentityType "SystemAssigned"
     }
     It 'System assigned to user assigned' {
-        $keyEncryptionDetails = New-AzDataBoxKeyEncryptionKeyObject -KekType "CustomerManaged" -IdentityProperty @{Type = "UserAssigned"; UserAssignedResourceId = $env.UserAssignedResourceId} -KekUrl $env.KekUrl -KekVaultResourceId $env.KekVaultResourceId
-        Update-AzDataBoxJob -Name $env.JobName -ResourceGroupName $env.ResourceGroup -SubscriptionId $env.SubscriptionId -KeyEncryptionKey $keyEncryptionDetails -ContactDetail $contactDetail -ShippingAddress $ShippingDetails -EnableSystemAssignedIdentity $true -UserAssignedIdentity $env.UserAssignedResourceId
+        $updateDetail = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.UpdateJobDetails]::New()
+        $updateDetail.KeyEncryptionKeyKekType = "CustomerManaged"
+        $updateDetail.IdentityPropertyType = "UserAssigned"
+        $updateDetail.KeyEncryptionKeyKekUrl = $env.KekUrl
+        $updateDetail.KeyEncryptionKeyKekVaultResourceId = $env.KekVaultResourceId
+        Update-AzDataBoxJob -Name $env.JobName -ResourceGroupName $env.ResourceGroup -SubscriptionId $env.SubscriptionId -Detail $updateDetail -IdentityType "UserAssigned" -UserAssignedIdentity @($env.UserAssignedResourceId)
     }
 }
