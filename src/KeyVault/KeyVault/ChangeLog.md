@@ -19,8 +19,9 @@
 -->
 ## Upcoming Release
 * Added `-AcquirePolicyToken` and `-ChangeReference` dynamic parameters to write cmdlets for Azure Change Safety policy token acquisition
-* Fixed `New-AzKeyVault` `RequestDisallowedByPolicy` error by setting `enableSoftDelete` in request body
-* [Breaking Change] Certificate-backed keys and secrets are no longer returned by `Get-AzKeyVaultKey` and `Get-AzKeyVaultSecret`. Use `Get-AzKeyVaultCertificate` to manage certificates and their associated keys and secrets. [#26217]
+* Added support for creating AES `oct-HSM` keys via `Add-AzKeyVaultKey -KeyType oct -Destination HSM`.
+* Fixed `New-AzKeyVault` `RequestDisallowedByPolicy` error.
+* Removed certificate-backed items from `Get-AzKeyVaultKey`/`Get-AzKeyVaultSecret`; use `Get-AzKeyVaultCertificate` instead [#26217].
 
 ## Version 6.4.3
 * Added upcoming breaking change warning messages to `Get-AzKeyVaultKey` and `Get-AzKeyVaultSecret` for filtering certificate-backed keys and secrets.

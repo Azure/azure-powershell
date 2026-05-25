@@ -20,7 +20,7 @@
 
 ## Upcoming Release
 * Added `-AcquirePolicyToken` and `-ChangeReference` dynamic parameters to write cmdlets for Azure Change Safety policy token acquisition
-* Updated MonitorWorkspace module to API 2025-10-03 with CRUD cmdlets for issues, alerts, resources, investigation, visualization, metrics containers, and `Set-AzMonitorWorkspace`
+* Updated MonitorWorkspace module to API 2025-10-03 with CRUD cmdlets for issues, alerts, resources, investigation, visualization, metrics containers, `Set-AzMonitorWorkspace`
 * Upgraded Pipelines API to GA 2026-04-01: added `-DistributionMaxInstancesPerHost`, `-ExecutionPlacementConstraint`, `-TlsConfiguration`; removed `-NetworkingConfiguration`, UDP receiver, `TcpUrl`, `JsonArrayMapperKey`, `SourceFieldName`, `SyslogProtocol`, `DestinationField*`; expanded parameter sets
 
 ## Version 7.0.0

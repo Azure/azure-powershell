@@ -20,7 +20,7 @@
 
 ## Upcoming Release
 * Added `-AcquirePolicyToken` and `-ChangeReference` dynamic parameters to write cmdlets for Azure Change Safety policy token acquisition
-* Added soft delete support for Azure File share backup items (`Undo-AzRecoveryServicesBackupItemDeletion` and `Get-AzRecoveryServicesBackupItem -DeleteState SoftDeleted`)
+* Added soft delete support for Azure File share backup items (`Undo-AzRecoveryServicesBackupItemDeletion` `Get-AzRecoveryServicesBackupItem -DeleteState SoftDeleted`)
 
 ## Version 7.11.2
 * Added Cross region restore support for upcoming regions Southeast Asia 3

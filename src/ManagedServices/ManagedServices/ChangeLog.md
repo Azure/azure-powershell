@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Upgraded code generator. See [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
 
 ## Version 3.1.3
 * Update the deprecated-by-azversion and change-effective-date of breaking change announcements.

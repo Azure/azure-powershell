@@ -60,13 +60,13 @@ Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -IdentityType
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <ISqlVirtualMachineIdentity>: Identity Parameter
+INPUTOBJECT <ISqlVirtualMachineIdentity>: Identity Parameter To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
   [AvailabilityGroupListenerName <String>]: Name of the availability group listener.
   [Id <String>]: Resource identity path
   [ResourceGroupName <String>]: Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
@@ -77,7 +77,7 @@ INPUTOBJECT <ISqlVirtualMachineIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/update-azsqlvm
 #>
 function Update-AzSqlVM {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -109,9 +109,9 @@ param(
     ${InputObject},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlServerLicenseType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("PAYG", "AHUB", "DR")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlServerLicenseType]
+    [System.String]
     # SQL Server license type.
     ${LicenseType},
 
@@ -123,30 +123,30 @@ param(
     ${Offer},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlImageSku])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Developer", "Express", "Standard", "Enterprise", "Web")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlImageSku]
+    [System.String]
     # SQL Server edition type.
     ${Sku},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlManagementMode])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Full", "Lightweight", "NoAgent")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlManagementMode]
+    [System.String]
     # SQL Server Management type.
     ${SqlManagementType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachineUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Manual", "Automated")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType]
+    [System.String]
     # Backup schedule type.
     ${AutoBackupSettingBackupScheduleType},
 
@@ -158,9 +158,9 @@ param(
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AutoBackupDaysOfWeek])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AutoBackupDaysOfWeek[]]
+    [System.String[]]
     # Days of the week for the backups when FullBackupFrequency is set to Weekly.
     ${AutoBackupSettingDaysOfWeek},
 
@@ -177,9 +177,9 @@ param(
     ${AutoBackupSettingEnableEncryption},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Daily", "Weekly")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType]
+    [System.String]
     # Frequency of full backups.
     # In both cases, full backups begin during the next scheduled time window.
     ${AutoBackupSettingFullBackupFrequency},
@@ -236,9 +236,9 @@ param(
     ${AutoBackupSettingStorageContainerName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Everyday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek]
+    [System.String]
     # Day of week to apply the patch on.
     ${AutoPatchingSettingDayOfWeek},
 
@@ -274,9 +274,9 @@ param(
     ${AssessmentSettingRunImmediately},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek]
+    [System.String]
     # Day of the week to run assessment.
     ${ScheduleDayOfWeek},
 
@@ -431,6 +431,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -453,9 +461,7 @@ begin {
             UpdateExpanded = 'Az.SqlVirtualMachine.custom\Update-AzSqlVM';
             UpdateViaIdentity = 'Az.SqlVirtualMachine.custom\Update-AzSqlVM';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -469,6 +475,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

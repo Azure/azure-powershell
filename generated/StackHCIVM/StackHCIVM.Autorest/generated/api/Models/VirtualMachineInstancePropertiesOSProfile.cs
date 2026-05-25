@@ -16,11 +16,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
     {
 
         /// <summary>Backing field for <see cref="AdminPassword" /> property.</summary>
-        private string _adminPassword;
+        private System.Security.SecureString _adminPassword;
 
         /// <summary>AdminPassword - admin password</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Owned)]
-        public string AdminPassword { get => this._adminPassword; set => this._adminPassword = value; }
+        public System.Security.SecureString AdminPassword { get => this._adminPassword; set => this._adminPassword = value; }
 
         /// <summary>Backing field for <see cref="AdminUsername" /> property.</summary>
         private string _adminUsername;
@@ -133,8 +133,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
         Update = false,
         Description = @"AdminPassword - admin password",
         SerializedName = @"adminPassword",
-        PossibleTypes = new [] { typeof(string) })]
-        string AdminPassword { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString AdminPassword { get; set; }
         /// <summary>AdminUsername - admin username</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
         Required = false,
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
 
     {
         /// <summary>AdminPassword - admin password</summary>
-        string AdminPassword { get; set; }
+        System.Security.SecureString AdminPassword { get; set; }
         /// <summary>AdminUsername - admin username</summary>
         string AdminUsername { get; set; }
         /// <summary>ComputerName - name of the compute</summary>
