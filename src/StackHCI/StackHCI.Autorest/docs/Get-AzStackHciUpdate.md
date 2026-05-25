@@ -29,6 +29,12 @@ Get-AzStackHciUpdate -ClusterName <String> -Name <String> -ResourceGroupName <St
 Get-AzStackHciUpdate -InputObject <IStackHciIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityCluster
+```
+Get-AzStackHciUpdate -ClusterInputObject <IStackHciIdentity> -Name <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get specified Update
 
@@ -42,6 +48,21 @@ Get-AzStackHciUpdate -ClusterName 'test-cluster' -ResourceGroupName 'test-rg'
 Gets the Update for the cluster
 
 ## PARAMETERS
+
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
+Parameter Sets: GetViaIdentityCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -ClusterName
 The name of the cluster.
@@ -76,7 +97,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
@@ -95,7 +115,7 @@ The name of the Update
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityCluster
 Aliases: UpdateName
 
 Required: True
@@ -146,7 +166,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IUpdate
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUpdate
 
 ## NOTES
 

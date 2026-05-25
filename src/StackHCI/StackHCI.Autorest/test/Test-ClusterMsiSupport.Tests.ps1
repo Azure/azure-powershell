@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Update-AzStackHciCluster'))
+if(($null -eq $TestName) -or ($TestName -contains 'Test-ClusterMsiSupport'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzStackHciCluster.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Test-ClusterMsiSupport.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,8 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzStackHciCluster'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzStackHciCluster' {
-    It 'UpdateExpanded' -skip{
-        Update-AzStackHciCluster -ResourceGroupName $env.ResourceGroup -Name $env.ClusterName -DesiredPropertyDiagnosticLevel "Enhanced" -DesiredPropertyWindowsServerSubscription "Disabled"
+Describe 'Test-ClusterMsiSupport' {
+    It '__AllParameterSets' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

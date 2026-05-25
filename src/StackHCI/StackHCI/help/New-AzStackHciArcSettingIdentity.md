@@ -1,86 +1,57 @@
 ---
 external help file: Az.StackHCI-help.xml
 Module Name: Az.StackHCI
-online version: https://learn.microsoft.com/powershell/module/az.stackhci/remove-azstackhciextension
+online version: https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhciarcsettingidentity
 schema: 2.0.0
 ---
 
-# Remove-AzStackHciExtension
+# New-AzStackHciArcSettingIdentity
 
 ## SYNOPSIS
-Delete particular Arc Extension of HCI Cluster.
+Create Aad identity for arc settings.
 
 ## SYNTAX
 
-### Delete (Default)
+### Create (Default)
 ```
-Remove-AzStackHciExtension -ArcSettingName <String> -ClusterName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DeleteViaIdentityCluster
-```
-Remove-AzStackHciExtension -ArcSettingName <String> -Name <String> -ClusterInputObject <IStackHciIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzStackHciArcSettingIdentity -ArcSettingName <String> -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteViaIdentityArcSetting
+### CreateViaIdentityCluster
 ```
-Remove-AzStackHciExtension -Name <String> -ArcSettingInputObject <IStackHciIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzStackHciArcSettingIdentity -ArcSettingName <String> -ClusterInputObject <IStackHciIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### CreateViaIdentity
 ```
-Remove-AzStackHciExtension -InputObject <IStackHciIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzStackHciArcSettingIdentity -InputObject <IStackHciIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete particular Arc Extension of HCI Cluster.
+Create Aad identity for arc settings.
 
 ## EXAMPLES
 
-### Example 1:
+### Example 1: Create Aad identity for arc settings
 ```powershell
-Remove-AzStackHciExtension -ResourceGroupName test-rg -ClusterName myCluster -ArcSettingName "default" -Name MicrosoftMonitoringAgent
+New-AzStackHciArcSettingIdentity -ArcSettingName 'default' -ClusterName 'testcluster' -ResourceGroupName 'testgroup'
 ```
 
-Removes a particular extension under arcSettings of a cluster.
-
-### Example 2:
-```powershell
-Get-AzStackHciExtension -ResourceGroupName test-rg -ClusterName myCluster -ArcSettingName "default" | Remove-AzStackHciExtension
-```
-
-Another way to remove all of the extensions under acrSettings of a cluster.
+This command creates Aad identity for arc settings.
 
 ## PARAMETERS
-
-### -ArcSettingInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
-Parameter Sets: DeleteViaIdentityArcSetting
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -ArcSettingName
 The name of the proxy resource holding details of HCI ArcSetting information.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityCluster
+Parameter Sets: Create, CreateViaIdentityCluster
 Aliases:
 
 Required: True
@@ -110,7 +81,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
-Parameter Sets: DeleteViaIdentityCluster
+Parameter Sets: CreateViaIdentityCluster
 Aliases:
 
 Required: True
@@ -125,7 +96,7 @@ The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Create
 Aliases:
 
 Required: True
@@ -156,7 +127,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: CreateViaIdentity
 Aliases:
 
 Required: True
@@ -166,38 +137,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the machine extension.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityCluster, DeleteViaIdentityArcSetting
-Aliases: ExtensionName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -217,7 +158,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Create
 Aliases:
 
 Required: True
@@ -233,7 +174,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Create
 Aliases:
 
 Required: False
@@ -283,7 +224,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IArcIdentityResponse
 
 ## NOTES
 
