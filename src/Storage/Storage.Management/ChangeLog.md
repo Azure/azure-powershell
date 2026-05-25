@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 9.6.3
 * Supported advanced platform metrics for storage accounts
     - `Get-AzStorageAdvancedPlatformMetric`
     - `Set-AzStorageAdvancedPlatformMetric`
