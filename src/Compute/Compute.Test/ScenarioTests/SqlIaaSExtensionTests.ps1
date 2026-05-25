@@ -80,7 +80,7 @@ function Test-SetAzureRmVMSqlServerAKVExtension
     $extensionName = "SqlIaaSExtension";
 
     # 1) Installs the SqlIaaS extension by calling Set-AzVMSqlServerExtension cmdlet on a VM.
-    $securepfxpwd = ConvertTo-SecureString –String "Amu6y/RzJcc7JBzdAdRVv6mk=" –AsPlainText –Force;
+    $securepfxpwd = ConvertTo-SecureString -String "Amu6y/RzJcc7JBzdAdRVv6mk=" -AsPlainText -Force;
     $aps_akv = New-AzVMSqlServerKeyVaultCredentialConfig -ResourceGroupName $rgname -Enable -CredentialName "CredentialTesting" -AzureKeyVaultUrl "https://Testkeyvault.vault.azure.net/" -ServicePrincipalName "0326921f-bf005595337c" -ServicePrincipalSecret $securepfxpwd;
     Set-AzVMSqlServerExtension -KeyVaultCredentialSettings $aps_akv -ResourceGroupName $rgname -VMName $vmname -Version "2.0" -Verbose;
 

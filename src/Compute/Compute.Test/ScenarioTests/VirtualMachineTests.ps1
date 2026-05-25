@@ -8063,7 +8063,7 @@ function Test-VirtualMachineGalleryApplicationFlags
                     if ($v.ProvisioningState -eq 'Succeeded') { return $v }
                 }
                 catch {
-                    # transient – ignore during creation
+                    # transient - ignore during creation
                 }
                 Start-Sleep -Seconds 5
             } while ((Get-Date) - $start -lt [TimeSpan]::FromSeconds($TimeoutSeconds))

@@ -91,7 +91,7 @@ function Test-RestorePointsInstantAccess
 
         $vm1 = Get-AzVM -Name $vmname -ResourceGroupName $rgname -DisplayHint Expand;
 
-        # Attach a Premium SSD v2 (Direct Drive) data disk — required for Instant Access on app-consistent restore points
+        # Attach a Premium SSD v2 (Direct Drive) data disk - required for Instant Access on app-consistent restore points
         # PremiumV2_LRS requires an availability zone
         $ddDiskConfig = New-AzDiskConfig -Location $loc -SkuName 'PremiumV2_LRS' -DiskSizeGB 32 `
             -CreateOption Empty -DiskIOPSReadWrite 3000 -DiskMBpsReadWrite 125 -Zone '2'
