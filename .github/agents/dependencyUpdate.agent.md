@@ -117,9 +117,13 @@ Use past tense, reference GitHub issues if applicable, avoid special characters 
 
 After making all changes, verify the build and module loading:
 
-1. **Build all projects**:
+1. **Build the project** — do not use `dotnet build` directly; use the build script instead:
    ```powershell
+   # Complete build (all modules):
    ./tools/BuildScripts/BuildModules.ps1 -Configuration Debug
+
+   # Quick build (Az.Accounts only — sufficient for verifying shared dependency changes):
+   ./tools/BuildScripts/BuildModules.ps1 -Configuration Debug -TargetModule Accounts
    ```
 
 2. **Import Az.Accounts on PowerShell 7+** and verify no errors in verbose output:
@@ -172,6 +176,6 @@ Both PowerShell editions must be tested because shared assemblies use different 
 - [ ] `Update-DevAssembly` ran successfully — ConditionalAssemblyProvider.cs, cgmanifest.json, and DLLs are updated
 - [ ] Compile-time references updated where applicable (targets file, csproj)
 - [ ] ChangeLog.md entry added under `## Upcoming Release`
-- [ ] Build succeeds: `./tools/BuildScripts/BuildModules.ps1 -Configuration Debug`
+- [ ] Build succeeds: `./tools/BuildScripts/BuildModules.ps1 -Configuration Debug` (or `-TargetModule Accounts` for quick build)
 - [ ] Module imports without errors on PowerShell 7+
 - [ ] Module imports without errors on Windows PowerShell 5.1 (requires Windows)

@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 silentParameters.HomeAccountId);
         }
 
-#pragma warning disable CS0618
+#pragma warning disable CS0618 // SharedTokenCacheCredentialBrokerOptions is obsolete; suppressed pending migration
         private static SharedTokenCacheCredentialOptions GetTokenCredentialOptions(SilentParameters silentParameters, string tenantId, string authority, PowerShellTokenCacheProvider tokenCacheProvider)
         {
             SharedTokenCacheCredentialOptions options = AzConfigReader.IsWamEnabled(authority)
@@ -85,6 +85,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             }
             return options;
         }
+#pragma warning restore CS0618
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)
         {
