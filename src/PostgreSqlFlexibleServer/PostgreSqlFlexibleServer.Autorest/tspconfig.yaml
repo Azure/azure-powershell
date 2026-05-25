@@ -278,3 +278,6 @@ options:
         set:
           default:
             script: '"Microsoft.DBforPostgreSQL/flexibleServers"'
+      - where:
+          subject: ^BackupsLongTermRetention.*
+        remove: true
