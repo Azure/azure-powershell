@@ -16,42 +16,42 @@ Restarts PostgreSQL database engine in a server.
 ```
 Restart-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroup <String> [-SubscriptionId <String>]
  [-FailoverMode <String>] [-RestartWithFailover] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RestartViaJsonString
 ```
 Restart-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroup <String> [-SubscriptionId <String>]
  -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RestartViaJsonFilePath
 ```
 Restart-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroup <String> [-SubscriptionId <String>]
  -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Restart
 ```
 Restart-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroup <String> [-SubscriptionId <String>]
  -Parameter <IRestartParameter> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RestartViaIdentityExpanded
 ```
 Restart-AzPostgreSqlFlexibleServer -InputObject <IPostgreSqlFlexibleServerIdentity> [-FailoverMode <String>]
  [-RestartWithFailover] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RestartViaIdentity
 ```
 Restart-AzPostgreSqlFlexibleServer -InputObject <IPostgreSqlFlexibleServerIdentity>
  -Parameter <IRestartParameter> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -212,6 +212,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

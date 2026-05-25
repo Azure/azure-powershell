@@ -23,9 +23,6 @@ Gets state of advanced threat protection settings for a server.
 ### [Get-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand](Get-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand.md)
 Gets information of an on demand backup, given its name.
 
-### [Get-AzPostgreSqlFlexibleServerBackupsLongTermRetention](Get-AzPostgreSqlFlexibleServerBackupsLongTermRetention.md)
-Gets the results of a long retention backup operation for a server.
-
 ### [Get-AzPostgreSqlFlexibleServerCapabilitiesByLocation](Get-AzPostgreSqlFlexibleServerCapabilitiesByLocation.md)
 Lists the capabilities available in a given location for a specific subscription.
 
@@ -116,17 +113,11 @@ Restarts PostgreSQL database engine in a server.
 ### [Start-AzPostgreSqlFlexibleServer](Start-AzPostgreSqlFlexibleServer.md)
 Starts a stopped server.
 
-### [Start-AzPostgreSqlFlexibleServerBackupsLongTermRetention](Start-AzPostgreSqlFlexibleServerBackupsLongTermRetention.md)
-Initiates a long term retention backup.
-
 ### [Stop-AzPostgreSqlFlexibleServer](Stop-AzPostgreSqlFlexibleServer.md)
 Stops a server.
 
 ### [Stop-AzPostgreSqlFlexibleServerMigration](Stop-AzPostgreSqlFlexibleServerMigration.md)
 Cancels an active migration.
-
-### [Test-AzPostgreSqlFlexibleServerBackupsLongTermRetentionPrerequisite](Test-AzPostgreSqlFlexibleServerBackupsLongTermRetentionPrerequisite.md)
-Performs all checks required for a long term retention backup operation to succeed.
 
 ### [Test-AzPostgreSqlFlexibleServerMigrationNameAvailability](Test-AzPostgreSqlFlexibleServerMigrationNameAvailability.md)
 Checks if a proposed migration name is valid and available.

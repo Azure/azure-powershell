@@ -15,7 +15,7 @@ Gets information about a firewall rule in a server.
 ### List (Default)
 ```
 Get-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroup <String> -ServerName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -23,20 +23,20 @@ Get-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroup <String> -ServerName <
 ```
 Get-AzPostgreSqlFlexibleServerFirewallRule -Name <String>
  -FlexibleServerInputObject <IPostgreSqlFlexibleServerIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzPostgreSqlFlexibleServerFirewallRule -Name <String> -ResourceGroup <String> -ServerName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzPostgreSqlFlexibleServerFirewallRule -InputObject <IPostgreSqlFlexibleServerIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -144,6 +144,21 @@ Parameter Sets: GetViaIdentityFlexibleServer, Get
 Aliases: FirewallRuleName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

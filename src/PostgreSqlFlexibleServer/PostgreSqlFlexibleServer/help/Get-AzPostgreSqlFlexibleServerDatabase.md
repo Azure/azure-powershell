@@ -15,7 +15,7 @@ Gets information about an existing database.
 ### List (Default)
 ```
 Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroup <String> -ServerName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -23,20 +23,20 @@ Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroup <String> -ServerName <Stri
 ```
 Get-AzPostgreSqlFlexibleServerDatabase -Name <String>
  -FlexibleServerInputObject <IPostgreSqlFlexibleServerIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzPostgreSqlFlexibleServerDatabase -Name <String> -ResourceGroup <String> -ServerName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzPostgreSqlFlexibleServerDatabase -InputObject <IPostgreSqlFlexibleServerIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -133,6 +133,21 @@ Parameter Sets: GetViaIdentityFlexibleServer, Get
 Aliases: DatabaseName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

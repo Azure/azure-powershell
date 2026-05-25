@@ -15,7 +15,7 @@ Gets information about a pair of virtual endpoints.
 ### List (Default)
 ```
 Get-AzPostgreSqlFlexibleServerVirtualEndpoint -ResourceGroup <String> -ServerName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -23,20 +23,20 @@ Get-AzPostgreSqlFlexibleServerVirtualEndpoint -ResourceGroup <String> -ServerNam
 ```
 Get-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String>
  -FlexibleServerInputObject <IPostgreSqlFlexibleServerIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroup <String> -ServerName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzPostgreSqlFlexibleServerVirtualEndpoint -InputObject <IPostgreSqlFlexibleServerIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -129,6 +129,21 @@ Parameter Sets: GetViaIdentityFlexibleServer, Get
 Aliases: VirtualEndpointName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

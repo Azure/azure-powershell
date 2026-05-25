@@ -15,42 +15,42 @@ Check the availability of name for resource
 ### CheckExpanded (Default)
 ```
 Test-AzPostgreSqlFlexibleServerNameAvailability -LocationName <String> [-SubscriptionId <String>]
- [-Name <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [-Name <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CheckViaJsonString
 ```
 Test-AzPostgreSqlFlexibleServerNameAvailability -LocationName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CheckViaJsonFilePath
 ```
 Test-AzPostgreSqlFlexibleServerNameAvailability -LocationName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### Check
 ```
 Test-AzPostgreSqlFlexibleServerNameAvailability -LocationName <String> [-SubscriptionId <String>]
- -Parameter <ICheckNameAvailabilityRequest> [-DefaultProfile <PSObject>]
+ -Parameter <ICheckNameAvailabilityRequest> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaIdentityExpanded
 ```
 Test-AzPostgreSqlFlexibleServerNameAvailability -InputObject <IPostgreSqlFlexibleServerIdentity>
- [-Name <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [-Name <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CheckViaIdentity
 ```
 Test-AzPostgreSqlFlexibleServerNameAvailability -InputObject <IPostgreSqlFlexibleServerIdentity>
- -Parameter <ICheckNameAvailabilityRequest> [-DefaultProfile <PSObject>]
+ -Parameter <ICheckNameAvailabilityRequest> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -200,6 +200,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

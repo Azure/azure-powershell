@@ -16,27 +16,27 @@ Gets information about a migration.
 ```
 Get-AzPostgreSqlFlexibleServerMigration -ResourceGroup <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-MigrationListFilter <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityFlexibleServer
 ```
 Get-AzPostgreSqlFlexibleServerMigration -Name <String>
  -FlexibleServerInputObject <IPostgreSqlFlexibleServerIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroup <String> -ServerName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzPostgreSqlFlexibleServerMigration -InputObject <IPostgreSqlFlexibleServerIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -150,6 +150,21 @@ Parameter Sets: GetViaIdentityFlexibleServer, Get
 Aliases: MigrationName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

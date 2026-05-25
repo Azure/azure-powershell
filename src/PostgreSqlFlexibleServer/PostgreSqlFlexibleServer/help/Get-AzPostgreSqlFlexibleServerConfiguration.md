@@ -15,7 +15,7 @@ Gets information about a specific configuration (also known as server parameter)
 ### List (Default)
 ```
 Get-AzPostgreSqlFlexibleServerConfiguration -ResourceGroup <String> -ServerName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -23,20 +23,20 @@ Get-AzPostgreSqlFlexibleServerConfiguration -ResourceGroup <String> -ServerName 
 ```
 Get-AzPostgreSqlFlexibleServerConfiguration -Name <String>
  -FlexibleServerInputObject <IPostgreSqlFlexibleServerIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzPostgreSqlFlexibleServerConfiguration -Name <String> -ResourceGroup <String> -ServerName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzPostgreSqlFlexibleServerConfiguration -InputObject <IPostgreSqlFlexibleServerIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -151,6 +151,21 @@ Parameter Sets: GetViaIdentityFlexibleServer, Get
 Aliases: ConfigurationName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
