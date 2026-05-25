@@ -1,0 +1,43 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License. See License.txt in the project root for license information.
+
+namespace Microsoft.Azure.Management.Network.Models
+{
+    public partial class BeginGetActiveSessionsHeaders
+    {
+        /// <summary>
+        /// Initializes a new instance of the BeginGetActiveSessionsHeaders class.
+        /// </summary>
+        public BeginGetActiveSessionsHeaders()
+        {
+            CustomInit();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the BeginGetActiveSessionsHeaders class.
+        /// </summary>
+        public BeginGetActiveSessionsHeaders(string location = default(string), int? retryAfter = default(int?))
+        {
+            this.Location = location;
+            this.RetryAfter = retryAfter;
+            CustomInit();
+        }
+
+        /// <summary>
+        /// An initialization method that performs custom operations like setting defaults.
+        /// </summary>
+        partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets the URL where operation status can be queried.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Location")]
+        public string Location { get; set; }
+
+        /// <summary>
+        /// Gets or sets the retry interval for polling in seconds.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Retry-After")]
+        public int? RetryAfter { get; set; }
+    }
+}
