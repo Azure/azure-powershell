@@ -29,7 +29,7 @@ New-AzAksNodePool -ResourceGroupName <String> -ClusterName <String> -Name <Strin
  [-EnableSecureBoot] [-EnableVtpm] [-SshAccess <String>] [-MaxSurge <String>] [-MaxUnavailable <String>]
  [-DrainTimeoutInMinute <Int32>] [-NodeSoakDurationInMinute <Int32>] [-UndrainableNodeBehavior <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-SubscriptionId <String>] [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### ParentObjectParameterSet
@@ -48,7 +48,8 @@ New-AzAksNodePool -Name <String> -ClusterObject <PSKubernetesCluster> [-Count <I
  [-ScaleDownMode <String>] [-EnableSecureBoot] [-EnableVtpm] [-SshAccess <String>] [-MaxSurge <String>]
  [-MaxUnavailable <String>] [-DrainTimeoutInMinute <Int32>] [-NodeSoakDurationInMinute <Int32>]
  [-UndrainableNodeBehavior <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,6 +99,21 @@ New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myAKSCluster -
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AksCustomHeader
 Aks custom headers
 
@@ -118,6 +134,21 @@ Availability zones for nodes. Must use VirtualMachineScaleSets AgentPoolType.
 
 ```yaml
 Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

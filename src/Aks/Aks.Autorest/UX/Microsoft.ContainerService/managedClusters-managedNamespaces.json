@@ -1,0 +1,95 @@
+{
+  "resourceType": "managedClusters/managedNamespaces",
+  "apiVersion": "2026-03-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.aks"
+  },
+  "commands": [
+    {
+      "name": "Get-AzAksManagedNamespace",
+      "description": "Gets the specified namespace of a managed cluster.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.aks/get-azaksmanagednamespace"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-ResourceName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the specified namespace of a managed cluster.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.managedNamespaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ResourceName",
+              "value": "[Path.resourceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzAksManagedNamespace",
+      "description": "Deletes a namespace.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.aks/remove-azaksmanagednamespace"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "-ResourceName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a namespace.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.managedNamespaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ResourceName",
+              "value": "[Path.resourceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -88,6 +88,7 @@ Get a maintenance configuration via identity for a managed cluster "myCluster".
 
 ### -ConfigName
 The name of the maintenance configuration.
+Supported values are 'default', 'aksManagedAutoUpgradeSchedule', or 'aksManagedNodeOSUpgradeSchedule'.
 
 ```yaml
 Type: System.String

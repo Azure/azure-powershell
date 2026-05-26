@@ -22,7 +22,7 @@ Update-AzAksNodePool -ResourceGroupName <String> -ClusterName <String> -Name <St
  [-SshAccess <String>] [-MaxSurge <String>] [-MaxUnavailable <String>] [-DrainTimeoutInMinute <Int32>]
  [-NodeSoakDurationInMinute <Int32>] [-UndrainableNodeBehavior <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-SubscriptionId <String>] [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### ParentObjectParameterSet
@@ -35,7 +35,7 @@ Update-AzAksNodePool -Name <String> -ClusterObject <PSKubernetesCluster> [-NodeC
  [-SshAccess <String>] [-MaxSurge <String>] [-MaxUnavailable <String>] [-DrainTimeoutInMinute <Int32>]
  [-NodeSoakDurationInMinute <Int32>] [-UndrainableNodeBehavior <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-SubscriptionId <String>] [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
@@ -47,7 +47,8 @@ Update-AzAksNodePool -InputObject <PSNodePool> [-NodeCount <Int32>] [-NodeImageO
  [-ScaleDownMode <String>] [-EnableSecureBoot] [-EnableVtpm] [-SshAccess <String>] [-MaxSurge <String>]
  [-MaxUnavailable <String>] [-DrainTimeoutInMinute <Int32>] [-NodeSoakDurationInMinute <Int32>]
  [-UndrainableNodeBehavior <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### IdParameterSet
@@ -59,7 +60,8 @@ Update-AzAksNodePool -Id <String> [-NodeCount <Int32>] [-NodeImageOnly] [-AsJob]
  [-ScaleDownMode <String>] [-EnableSecureBoot] [-EnableVtpm] [-SshAccess <String>] [-MaxSurge <String>]
  [-MaxUnavailable <String>] [-DrainTimeoutInMinute <Int32>] [-NodeSoakDurationInMinute <Int32>]
  [-UndrainableNodeBehavior <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,6 +75,21 @@ Update-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myCluster -
 ```
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AksCustomHeader
 Aks custom headers
@@ -94,6 +111,21 @@ Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
