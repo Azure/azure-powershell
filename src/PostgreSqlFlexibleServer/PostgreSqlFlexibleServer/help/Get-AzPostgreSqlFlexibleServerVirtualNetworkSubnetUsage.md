@@ -45,27 +45,18 @@ Lists the virtual network subnet usage for a given virtual network.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List the subnets of a virtual network that are being used by flexible servers
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerVirtualNetworkSubnetUsage -LocationName example-location -VirtualNetworkArmResourceId /subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/example-resource-group/providers/Microsoft.Network/virtualNetworks/example-virtual-network
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+DelegatedSubnetsUsage                            Location         SubscriptionId
+---------------------                            --------         --------------
+{{…                                              example-location aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Lists all subnets of a virtual network that are being used by Azure Database for PostgreSQL flexible servers.
 
 ## PARAMETERS
 
