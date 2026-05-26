@@ -1027,5 +1027,9 @@
   {
     "module": "Relationships",
     "alias": "Relationships"
+  },
+  {
+    "module": "PostgreSqlFlexibleServer",
+    "alias": "PostgreSqlFlexibleServer"
   }
 ]
