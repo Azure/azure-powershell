@@ -60,7 +60,7 @@ If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 2: List flexible servers in specific resource group of a subscription
 ```powershell
-Get-AzPostgreSqlFlexibleServer -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group-01
+Get-AzPostgreSqlFlexibleServer -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group-01
 ```
 
 ```output
@@ -75,7 +75,7 @@ If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 3: Get flexible server corresponding to specific name, resource group and subscription
 ```powershell
-Get-AzPostgreSqlFlexibleServer -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -Name example-server
+Get-AzPostgreSqlFlexibleServer -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -Name example-server
 ```
 
 ```output

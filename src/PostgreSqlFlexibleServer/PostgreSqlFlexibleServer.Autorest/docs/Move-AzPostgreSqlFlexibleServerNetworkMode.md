@@ -32,7 +32,7 @@ Migrates an Azure Database for PostgreSQL server from VNet integration to a Priv
 
 ### Example 1: Migrate from virtual network integration to Private Link network model a flexible server 
 ```powershell
-Move-AzPostgreSqlFlexibleServerNetworkMode -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server
+Move-AzPostgreSqlFlexibleServerNetworkMode -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server
 ```
 
 ```output

@@ -43,7 +43,7 @@ Gets the tuning options of a server.
 
 ### Example 1: List all tuning options and their states in a flexible server
 ```powershell
-Get-AzPostgreSqlFlexibleServerTuningOption -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server
+Get-AzPostgreSqlFlexibleServerTuningOption -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server
 ```
 
 ```output
@@ -59,7 +59,7 @@ If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 2: Get state of index tuning option in a flexible server
 ```powershell
-Get-AzPostgreSqlFlexibleServerTuningOption -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -TuningOption index
+Get-AzPostgreSqlFlexibleServerTuningOption -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server -TuningOption index
 ```
 
 ```output
@@ -73,7 +73,7 @@ If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 3: Get state of configuration tuning option in a flexible server
 ```powershell
-Get-AzPostgreSqlFlexibleServerTuningOption -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -TuningOption configuration
+Get-AzPostgreSqlFlexibleServerTuningOption -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server -TuningOption configuration
 ```
 
 ```output
@@ -87,7 +87,7 @@ If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 4: Get state of table tuning option in a flexible server
 ```powershell
-Get-AzPostgreSqlFlexibleServerTuningOption -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -TuningOption table
+Get-AzPostgreSqlFlexibleServerTuningOption -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server -TuningOption table
 ```
 
 ```output

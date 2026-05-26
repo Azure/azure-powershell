@@ -43,7 +43,7 @@ Gets information about a specific configuration (also known as server parameter)
 
 ### Example 1: List all configurations (also known as server parameters) in a flexible server
 ```powershell
-Get-AzPostgreSqlFlexibleServerConfiguration -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server
+Get-AzPostgreSqlFlexibleServerConfiguration -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server
 ```
 
 ```output
@@ -65,7 +65,7 @@ If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 2: Get one configuration (also known as server parameter) in a flexible server
 ```powershell
-Get-AzPostgreSqlFlexibleServerConfiguration -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -Name work_mem
+Get-AzPostgreSqlFlexibleServerConfiguration -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server -Name work_mem
 ```
 
 ```output

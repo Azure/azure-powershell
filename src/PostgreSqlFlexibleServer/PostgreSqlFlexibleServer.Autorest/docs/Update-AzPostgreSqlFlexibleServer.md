@@ -60,7 +60,11 @@ Update a new server.
 ### Example 1: Change the administrator login password in a flexible server
 ```powershell
 $exampleAdministratorPassword = Read-Host "Enter admin password" -AsSecureString
+<<<<<<< HEAD
+New-AzPostgreSqlFlexibleServer -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -Name example-server -Location example-location -AdministratorLoginPassword $exampleAdministratorPassword -CreateMode Update
+=======
 New-AzPostgreSqlFlexibleServer -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -Name example-server -Location example-location -AdministratorLoginPassword $exampleAdministratorPassword -CreateMode Update
+>>>>>>> 15f018d78f3a5ebd1cabcfc830b54ee117a67146
 ```
 
 ```output
