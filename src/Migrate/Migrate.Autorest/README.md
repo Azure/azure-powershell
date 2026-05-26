@@ -54,7 +54,7 @@ input-file:
   - $(repo)/specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/SiteRecovery/stable/2025-08-01/service.json
   - $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/DataReplication/stable/2026-05-01/recoveryservicesdatareplication.json
 
-module-version: 3.0.18
+module-version: 3.0.14
 title: Migrate 
 subject-prefix: 'Migrate'
 
