@@ -49,7 +49,7 @@ Create a new server administrator associated to a Microsoft Entra principal.
 
 ### Example 1: Add a Microsoft Entra administrator to a flexible server
 ```powershell
-New-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -PrincipalName dba@microsoft.com -PrincipalType User -ObjectId 00000000-0000-0000-0000-000000000000 -TenantId 11111111-1111-1111-1111-111111111111
+New-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server -PrincipalName dba@microsoft.com -PrincipalType User -ObjectId 00000000-0000-0000-0000-000000000000 -TenantId 11111111-1111-1111-1111-111111111111
 ```
 
 ```output

@@ -46,7 +46,7 @@ Gets information about a pair of virtual endpoints.
 
 ### Example 1: List all virtual endpoints in a flexible server
 ```powershell
-Get-AzPostgreSqlFlexibleServerVirtualEndpoint -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server
+Get-AzPostgreSqlFlexibleServerVirtualEndpoint -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server
 ```
 
 ```output
@@ -60,7 +60,7 @@ If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 2: Get one virtual endpoint in a flexible server
 ```powershell
-Get-AzPostgreSqlFlexibleServerVirtualEndpoint -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -Name example-virtual-endpoint
+Get-AzPostgreSqlFlexibleServerVirtualEndpoint -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server -Name example-virtual-endpoint
 ```
 
 ```output

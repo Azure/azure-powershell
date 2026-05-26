@@ -56,7 +56,11 @@ Update a pair of virtual endpoints for a server.
 
 ### Example 1: Update virtual endpoints in a flexible server
 ```powershell
+<<<<<<< HEAD
+Update-AzPostgreSqlFlexibleServerVirtualEndpoint -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server -Name example-virtual-endpoints -EndpointType ReadWrite -Member example-server
+=======
 Update-AzPostgreSqlFlexibleServerVirtualEndpoint -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -Name example-virtual-endpoints-EndpointType ReadWrite -Member example-server
+>>>>>>> 15f018d78f3a5ebd1cabcfc830b54ee117a67146
 ```
 
 Updates virtual endpoints in an Azure Database for PostgreSQL flexible server with member servers, virtual endpoint type, virtual endpoint name, server name, resource group, and subscription explicitly passed as arguments.
