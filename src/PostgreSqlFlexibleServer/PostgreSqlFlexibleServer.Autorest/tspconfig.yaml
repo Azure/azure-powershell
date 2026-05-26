@@ -261,10 +261,6 @@ options:
               OnlineResizeSupported: 23
               GeoBackupSupported: 20
       - where:
-          parameter-name: ResourceGroupName
-        set:
-          parameter-name: ResourceGroup
-      - where:
           parameter-name: Type
           subject: ^MigrationNameAvailability.*
         hide: true

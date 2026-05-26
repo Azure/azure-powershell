@@ -25,21 +25,21 @@ Update-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroup <String
  [-SetupLogicalReplicationOnSourceDbIfNeeded <String>] [-SourceDbServerFullyQualifiedDomainName <String>]
  [-SourceDbServerResourceId <String>] [-StartDataMigration <String>] [-Tag <Hashtable>]
  [-TargetDbServerFullyQualifiedDomainName <String>] [-TriggerCutover <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroup <String> -ServerName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroup <String> -ServerName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityFlexibleServerExpanded
@@ -54,7 +54,7 @@ Update-AzPostgreSqlFlexibleServerMigration -Name <String>
  [-SetupLogicalReplicationOnSourceDbIfNeeded <String>] [-SourceDbServerFullyQualifiedDomainName <String>]
  [-SourceDbServerResourceId <String>] [-StartDataMigration <String>] [-Tag <Hashtable>]
  [-TargetDbServerFullyQualifiedDomainName <String>] [-TriggerCutover <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -68,7 +68,7 @@ Update-AzPostgreSqlFlexibleServerMigration -InputObject <IPostgreSqlFlexibleServ
  [-SetupLogicalReplicationOnSourceDbIfNeeded <String>] [-SourceDbServerFullyQualifiedDomainName <String>]
  [-SourceDbServerResourceId <String>] [-StartDataMigration <String>] [-Tag <Hashtable>]
  [-TargetDbServerFullyQualifiedDomainName <String>] [-TriggerCutover <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -336,21 +336,6 @@ If set to 'False', when the migration workflow detects that the database already
 Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityFlexibleServerExpanded, UpdateViaIdentityExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

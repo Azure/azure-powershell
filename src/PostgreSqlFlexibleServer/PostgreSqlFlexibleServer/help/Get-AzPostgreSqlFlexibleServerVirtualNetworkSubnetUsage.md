@@ -15,7 +15,7 @@ Lists the virtual network subnet usage for a given virtual network.
 ### ListExpanded (Default)
 ```
 Get-AzPostgreSqlFlexibleServerVirtualNetworkSubnetUsage -LocationName <String> [-SubscriptionId <String[]>]
- [-VirtualNetworkArmResourceId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-VirtualNetworkArmResourceId <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -23,20 +23,20 @@ Get-AzPostgreSqlFlexibleServerVirtualNetworkSubnetUsage -LocationName <String> [
 ```
 Get-AzPostgreSqlFlexibleServerVirtualNetworkSubnetUsage -LocationName <String> [-SubscriptionId <String[]>]
  -Parameter <IVirtualNetworkSubnetUsageParameter> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ListViaJsonFilePath
 ```
 Get-AzPostgreSqlFlexibleServerVirtualNetworkSubnetUsage -LocationName <String> [-SubscriptionId <String[]>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ListViaJsonString
 ```
 Get-AzPostgreSqlFlexibleServerVirtualNetworkSubnetUsage -LocationName <String> [-SubscriptionId <String[]>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -142,21 +142,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
