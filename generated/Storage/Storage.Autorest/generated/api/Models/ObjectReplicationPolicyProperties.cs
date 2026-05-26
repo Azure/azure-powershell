@@ -52,6 +52,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Internal Acessors for PriorityReplication</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesPriorityReplication Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal.PriorityReplication { get => (this._priorityReplication = this._priorityReplication ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ObjectReplicationPolicyPropertiesPriorityReplication()); set { {_priorityReplication = value;} } }
 
+        /// <summary>Internal Acessors for TagsReplication</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesTagsReplication Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesInternal.TagsReplication { get => (this._tagsReplication = this._tagsReplication ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ObjectReplicationPolicyPropertiesTagsReplication()); set { {_tagsReplication = value;} } }
+
         /// <summary>Backing field for <see cref="PolicyId" /> property.</summary>
         private string _policyId;
 
@@ -87,6 +90,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public string SourceAccount { get => this._sourceAccount; set => this._sourceAccount = value; }
+
+        /// <summary>
+        /// Indicates whether object replication tags replication feature is enabled for the policy.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public bool? TagReplicationEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesTagsReplicationInternal)TagsReplication).Enabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesTagsReplicationInternal)TagsReplication).Enabled = value ?? default(bool); }
+
+        /// <summary>Backing field for <see cref="TagsReplication" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesTagsReplication _tagsReplication;
+
+        /// <summary>Optional. The object replication policy tags replication feature options.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesTagsReplication TagsReplication { get => (this._tagsReplication = this._tagsReplication ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ObjectReplicationPolicyPropertiesTagsReplication()); set => this._tagsReplication = value; }
 
         /// <summary>Creates an new <see cref="ObjectReplicationPolicyProperties" /> instance.</summary>
         public ObjectReplicationPolicyProperties()
@@ -181,6 +197,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"sourceAccount",
         PossibleTypes = new [] { typeof(string) })]
         string SourceAccount { get; set; }
+        /// <summary>
+        /// Indicates whether object replication tags replication feature is enabled for the policy.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates whether object replication tags replication feature is enabled for the policy.",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? TagReplicationEnabled { get; set; }
 
     }
     /// The Storage Account ObjectReplicationPolicy properties.
@@ -211,6 +240,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// Required. Source account name. It should be full resource id if allowCrossTenantReplication set to false.
         /// </summary>
         string SourceAccount { get; set; }
+        /// <summary>
+        /// Indicates whether object replication tags replication feature is enabled for the policy.
+        /// </summary>
+        bool? TagReplicationEnabled { get; set; }
+        /// <summary>Optional. The object replication policy tags replication feature options.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IObjectReplicationPolicyPropertiesTagsReplication TagsReplication { get; set; }
 
     }
 }
