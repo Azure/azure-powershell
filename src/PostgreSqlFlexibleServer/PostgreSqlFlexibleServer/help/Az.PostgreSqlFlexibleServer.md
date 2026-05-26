@@ -140,11 +140,6 @@ Update a new database.
 ### [Update-AzPostgreSqlFlexibleServerFirewallRule](Update-AzPostgreSqlFlexibleServerFirewallRule.md)
 Update a new firewall rule or update an existing firewall rule.
 
-### [Update-AzPostgreSqlFlexibleServerMigration](Update-AzPostgreSqlFlexibleServerMigration.md)
-Update an existing migration.
-The request body can contain one to many of the mutable properties present in the migration definition.
-Certain property update initiate migration state transitions.
-
 ### [Update-AzPostgreSqlFlexibleServerVirtualEndpoint](Update-AzPostgreSqlFlexibleServerVirtualEndpoint.md)
 Update a pair of virtual endpoints for a server.
 

@@ -55,11 +55,7 @@ Update the value assigned to a specific modifiable configuration (also known as 
 
 ### Example 1: Update a configurations (also known as server parameter) in a flexible server
 ```powershell
-<<<<<<< HEAD
-Update-AzPostgreSqlFlexibleServerConfiguration -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server -Name max_connections -Value 450 -Source user-override 
-=======
-Update-AzPostgreSqlFlexibleServerConfiguration -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -Name max_connections -Value 450 -Source user-override 
->>>>>>> 15f018d78f3a5ebd1cabcfc830b54ee117a67146
+Update-AzPostgreSqlFlexibleServerConfiguration -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server -Name max_connections -Value 450 -Source user-override
 ```
 
 ```output
