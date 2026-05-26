@@ -1,6 +1,6 @@
 ### Example 1: List direct read replicas of a flexible server
 ```powershell
-Get-AzPostgreSqlFlexibleServerReplica -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group`-ServerName example-server
+Get-AzPostgreSqlFlexibleServerReplica -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server
 ```
 
 ```output
