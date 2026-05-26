@@ -469,14 +469,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             }
         }
 
-        public object GetDynamicParameters()
+        public new object GetDynamicParameters()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 context = new WindowsOnlyParameters();
                 return context;
             }
-            else return null;
+            return base.GetDynamicParameters();
         }
         private WindowsOnlyParameters context;
     }

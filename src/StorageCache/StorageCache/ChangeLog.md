@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Expansion Jobs CRUD cmdlets (`New/Get/Update/Remove-AzStorageCacheExpansionJob`) for AML file systems
+* Upgraded API version to 2026-01-01
 
 ## Version 0.3.0
 * Added support for Import, AutoExport and AutoImport HSM Jobs

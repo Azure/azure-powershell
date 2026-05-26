@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
             else if (ParameterSetName == ObjectParameterSet)
             {
                 ResourceGroupName = InputObject.ResourceGroupName;
-                var NameParts = InputObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(InputObject.Id);
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
                 VolumeName = NameParts[2];
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
             else if (ParameterSetName == ParentObjectParameterSet)
             {
                 ResourceGroupName = VolumeObject.ResourceGroupName;
-                var NameParts = VolumeObject.Name.Split('/');
+                var NameParts = ResourceIdHelpers.NamePartsFromId(VolumeObject.Id);
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
                 VolumeName = NameParts[2];

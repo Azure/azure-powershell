@@ -35,6 +35,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
   [EndpointName <String>]: The name of the Endpoint resource.
   [Id <String>]: Resource identity path
   [JobDefinitionName <String>]: The name of the Job Definition resource.
@@ -46,6 +47,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
 
 JOBDEFINITIONINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
   [EndpointName <String>]: The name of the Endpoint resource.
   [Id <String>]: Resource identity path
   [JobDefinitionName <String>]: The name of the Job Definition resource.
@@ -57,6 +59,7 @@ JOBDEFINITIONINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
 
 PROJECTINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
   [EndpointName <String>]: The name of the Endpoint resource.
   [Id <String>]: Resource identity path
   [JobDefinitionName <String>]: The name of the Job Definition resource.
@@ -68,6 +71,7 @@ PROJECTINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
 
 STORAGEMOVERINPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [AgentName <String>]: The name of the Agent resource.
+  [ConnectionName <String>]: The name of the Connection resource.
   [EndpointName <String>]: The name of the Endpoint resource.
   [Id <String>]: Resource identity path
   [JobDefinitionName <String>]: The name of the Job Definition resource.
@@ -219,8 +223,7 @@ begin {
 
         $context = Get-AzContext
         if (-not $context -and -not $testPlayback) {
-            Write-Error "No Azure login detected. Please run 'Connect-AzAccount' to log in."
-            exit
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
         }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {

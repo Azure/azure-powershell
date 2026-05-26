@@ -78,6 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
                 return;
             }
             {_sourceTargetMap = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonObject>("sourceTargetMap"), out var __jsonSourceTargetMap) ? Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.JobDefinitionPropertiesSourceTargetMap.FromJson(__jsonSourceTargetMap) : _sourceTargetMap;}
+            {_schedule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonObject>("schedule"), out var __jsonSchedule) ? Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.ScheduleInfo.FromJson(__jsonSchedule) : _schedule;}
             {_description = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("description"), out var __jsonDescription) ? (string)__jsonDescription : (string)_description;}
             {_jobType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("jobType"), out var __jsonJobType) ? (string)__jsonJobType : (string)_jobType;}
             {_copyMode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("copyMode"), out var __jsonCopyMode) ? (string)__jsonCopyMode : (string)_copyMode;}
@@ -93,6 +94,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             {_agentName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("agentName"), out var __jsonAgentName) ? (string)__jsonAgentName : (string)_agentName;}
             {_agentResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("agentResourceId"), out var __jsonAgentResourceId) ? (string)__jsonAgentResourceId : (string)_agentResourceId;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
+            {_connection = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonArray>("connections"), out var __jsonConnections) ? If( __jsonConnections as Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _connection;}
+            {_dataIntegrityValidation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("dataIntegrityValidation"), out var __jsonDataIntegrityValidation) ? (string)__jsonDataIntegrityValidation : (string)_dataIntegrityValidation;}
+            {_preservePermission = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonBoolean>("preservePermissions"), out var __jsonPreservePermissions) ? (bool?)__jsonPreservePermissions : _preservePermission;}
             AfterFromJson(json);
         }
 
@@ -116,6 +120,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
                 return container;
             }
             AddIf( null != this._sourceTargetMap ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) this._sourceTargetMap.ToJson(null,serializationMode) : null, "sourceTargetMap" ,container.Add );
+            AddIf( null != this._schedule ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) this._schedule.ToJson(null,serializationMode) : null, "schedule" ,container.Add );
             AddIf( null != (((object)this._description)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._description.ToString()) : null, "description" ,container.Add );
             AddIf( null != (((object)this._jobType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._jobType.ToString()) : null, "jobType" ,container.Add );
             AddIf( null != (((object)this._copyMode)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._copyMode.ToString()) : null, "copyMode" ,container.Add );
@@ -164,6 +169,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             {
                 AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
             }
+            if (null != this._connection)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.XNodeArray();
+                foreach( var __x in this._connection )
+                {
+                    AddIf(null != (((object)__x)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(__x.ToString()) : null ,__w.Add);
+                }
+                container.Add("connections",__w);
+            }
+            AddIf( null != (((object)this._dataIntegrityValidation)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._dataIntegrityValidation.ToString()) : null, "dataIntegrityValidation" ,container.Add );
+            AddIf( null != this._preservePermission ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonBoolean((bool)this._preservePermission) : null, "preservePermissions" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
