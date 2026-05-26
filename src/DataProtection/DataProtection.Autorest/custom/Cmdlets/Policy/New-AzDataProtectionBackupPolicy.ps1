@@ -1,7 +1,7 @@
-﻿function New-AzDataProtectionBackupPolicy
+function New-AzDataProtectionBackupPolicy
 {
 
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBaseBackupPolicyResource')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBaseBackupPolicyResource')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Creates a new backup policy in a given backup vault')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PreviewMessage("**********************************************************************************************`n
@@ -28,7 +28,7 @@
         ${Name},
 
         [Parameter(Mandatory, HelpMessage='Policy Request Object')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupPolicy]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupPolicy]
         ${Policy},
     
         [Parameter()]
@@ -78,9 +78,18 @@
         $retentionNames = @()
         $tagNames = @()
 
+        $mappedDefaultNames = @()
+        if($null -ne $Policy.DatasourceType -and $Policy.DatasourceType.Count -gt 0){
+            $clientDatasourceType = GetClientDatasourceType -ServiceDatasourceType $Policy.DatasourceType[0]
+            $manifest = LoadManifest -DatasourceType $clientDatasourceType
+            if($null -ne $manifest.policySettings -and ($manifest.policySettings.PSObject.Properties.Name -contains "defaultRetentionRuleNames")){
+                $mappedDefaultNames = @($manifest.policySettings.defaultRetentionRuleNames.PSObject.Properties.Value)
+            }
+        } 
+
         foreach($rule in $Policy.PolicyRule)
         {
-            if(($rule.ObjectType -eq "AzureRetentionRule") -and ($rule.Name -ne "Default"))
+            if(($rule.ObjectType -eq "AzureRetentionRule") -and ($rule.Name -ne "Default") -and ($mappedDefaultNames -notcontains $rule.Name))
             {
                 $retentionNames += $rule.Name
             }
@@ -89,7 +98,7 @@
             {
                 foreach($criteria in $rule.Trigger.TaggingCriterion)
                 {
-                    if($criteria.TagInfoTagName -ne "Default")
+                    if(($criteria.TagInfoTagName -ne "Default") -and ($mappedDefaultNames -notcontains $criteria.TagInfoTagName))
                     {
                         $tagNames += $criteria.TagInfoTagName
                     }
@@ -119,7 +128,7 @@
             $index += 1
         }
 
-        $policyObject = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.BaseBackupPolicyResource]::new()
+        $policyObject = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.BaseBackupPolicyResource]::new()
         $policyObject.Property = $Policy
 
         $null = $PSBoundParameters.Remove("Policy")

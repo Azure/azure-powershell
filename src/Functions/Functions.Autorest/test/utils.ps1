@@ -217,6 +217,9 @@ function setupEnv() {
     $functionNamePowerShellNew3 = "Func-PowerShell-NewTest3-" + (RandomString -len 10)
     $functionNamePowerShellNew4 = "Func-PowerShell-NewTest4-" + (RandomString -len 10)
     $functionNamePowerShellNew5 = "Func-PowerShell-NewTest5-" + (RandomString -len 10)
+    $functionNamePowerShellNew6 = "Func-PowerShell-NewTest6-" + (RandomString -len 10)
+    $functionNamePowerShellNew7 = "Func-PowerShell-NewTest7-" + (RandomString -len 10)
+    $functionNamePowerShellNew8 = "Func-PowerShell-NewTest8-" + (RandomString -len 10)
     $functionNameContainer = "Functions-CustomImage-" + (RandomString -len 10)
     $functionNameTestApp = "Functions-TestAppName-" + (RandomString -len 10)
     $functionNameDotNet = "Functions-DotNet-" + (RandomString -len 10)
@@ -238,6 +241,9 @@ function setupEnv() {
     $env.add('functionNamePowerShellNew3', $functionNamePowerShellNew3) | Out-Null
     $env.add('functionNamePowerShellNew4', $functionNamePowerShellNew4) | Out-Null
     $env.add('functionNamePowerShellNew5', $functionNamePowerShellNew5) | Out-Null
+    $env.add('functionNamePowerShellNew6', $functionNamePowerShellNew6) | Out-Null
+    $env.add('functionNamePowerShellNew7', $functionNamePowerShellNew7) | Out-Null
+    $env.add('functionNamePowerShellNew8', $functionNamePowerShellNew8) | Out-Null
     $env.add('functionNameContainer', $functionNameContainer) | Out-Null
     $env.add('functionNameTestApp', $functionNameTestApp) | Out-Null
     $env.add('functionNameDotNet', $functionNameDotNet) | Out-Null
@@ -332,6 +338,17 @@ function setupEnv() {
     $env.add('flexLocation', $flexLocation) | Out-Null
     $env.add('flexResourceGroupName', $flexResourceGroupName) | Out-Null
     $env.add('flexIdentityInfo', $flexIdentityInfo) | Out-Null
+
+    # Create a Flex Consumption function app for Update-AzFunctionApp guard tests
+    Write-Host "Creating Flex Consumption function app for update guard test" -ForegroundColor Yellow
+    $flexFunctionAppName = "Flex-PowerShell-" + $flexTestRunId
+    New-AzFunctionApp -Name $flexFunctionAppName `
+                      -ResourceGroupName $flexResourceGroupName `
+                      -StorageAccountName $env.flexStorageAccountPowerShell `
+                      -Runtime PowerShell `
+                      -FlexConsumptionLocation $flexLocation
+
+    $env.add('flexFunctionAppName', $flexFunctionAppName) | Out-Null
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

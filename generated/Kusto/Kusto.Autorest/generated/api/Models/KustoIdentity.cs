@@ -130,6 +130,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the attached database configuration.",
         SerializedName = @"attachedDatabaseConfigurationName",
         PossibleTypes = new [] { typeof(string) })]
@@ -138,6 +141,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Kusto cluster.",
         SerializedName = @"clusterName",
         PossibleTypes = new [] { typeof(string) })]
@@ -146,6 +152,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the data connection.",
         SerializedName = @"dataConnectionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -154,6 +163,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the database in the Kusto cluster.",
         SerializedName = @"databaseName",
         PossibleTypes = new [] { typeof(string) })]
@@ -162,6 +174,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -170,6 +185,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of Azure region.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
@@ -178,6 +196,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the managed private endpoint.",
         SerializedName = @"managedPrivateEndpointName",
         PossibleTypes = new [] { typeof(string) })]
@@ -186,6 +207,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of an ongoing async operation.",
         SerializedName = @"operationId",
         PossibleTypes = new [] { typeof(string) })]
@@ -194,6 +218,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Kusto principalAssignment.",
         SerializedName = @"principalAssignmentName",
         PossibleTypes = new [] { typeof(string) })]
@@ -202,6 +229,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the private endpoint connection.",
         SerializedName = @"privateEndpointConnectionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -210,6 +240,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the private link resource.",
         SerializedName = @"privateLinkResourceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -218,6 +251,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -226,6 +262,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the sandbox custom image.",
         SerializedName = @"sandboxCustomImageName",
         PossibleTypes = new [] { typeof(string) })]
@@ -234,6 +273,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Kusto database script.",
         SerializedName = @"scriptName",
         PossibleTypes = new [] { typeof(string) })]
@@ -242,6 +284,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
