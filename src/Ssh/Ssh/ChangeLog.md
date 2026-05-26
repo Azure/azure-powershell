@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added ChangeSafety Support
 
 ## Version 0.2.3
 * Implemented code refactoring, no behavior changes expected.

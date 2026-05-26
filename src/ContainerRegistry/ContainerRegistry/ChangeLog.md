@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added ChangeSafety Support
 
 ## Version 5.0.1
 * Fixed `-ExposeToken` with `Connect-AzContainerRegistry`

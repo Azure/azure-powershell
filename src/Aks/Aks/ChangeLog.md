@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added ChangeSafety Support
 
 ## Version 7.1.2
 * Set `useAADAuth` to `true` by default in the omsagent addon profile when enabling the Monitoring addon via `Enable-AzAksAddOn` and `New-AzAksCluster`

@@ -18,11 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Changed output types: `PSAttestation` -> `Attestation`, `PSPolicyMetadata` -> `PolicyMetadata`, `PSRemediation` -> `Remediation`; flattened `SystemData`, added `ResourceGroupName`
-* Renamed `ResourceTags`/`ManagementGroupIds` to singular forms in `Get-AzPolicyEvent`/`Get-AzPolicyState`
+* Changed output types: `PSAttestation`/`PSPolicyMetadata`/`PSRemediation` renamed; flattened `SystemData`
+* Renamed `ResourceTags`/`ManagementGroupIds` to singular forms
 * Flattened `Get-AzPolicyStateSummary`, remediation output properties
-* Changed `Start-AzPolicyRemediation` to wait for terminal state by default (added `-NoWait`)
-* Changed `Stop-AzPolicyRemediation` output from `bool` to `Remediation` (added `-NoWait`)
+* Changed `Start/Stop-AzPolicyRemediation` default behavior (added `-NoWait`)
 
 ## Version 1.7.4
 * Added Breaking Change notifications to many of the cmdlets in Az.PolicyInsights.
