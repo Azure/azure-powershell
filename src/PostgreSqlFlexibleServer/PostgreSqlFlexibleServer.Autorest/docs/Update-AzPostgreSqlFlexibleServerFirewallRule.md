@@ -40,7 +40,7 @@ Update a new firewall rule or update an existing firewall rule.
 
 ### Example 1: Update a firewall rule in a flexible server
 ```powershell
-Update-AzPostgreSqlFlexibleServerFirewallRule -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server -Name example-firewall-rule -StartIPAddres 1.1.1.1 -EndIPAddress 1.1.1.1
+Update-AzPostgreSqlFlexibleServerFirewallRule -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server -Name example-firewall-rule -StartIPAddress 1.1.1.1 -EndIPAddress 1.1.1.1
 ```
 
 ```output
