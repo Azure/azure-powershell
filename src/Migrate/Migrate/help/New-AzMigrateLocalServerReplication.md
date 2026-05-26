@@ -182,7 +182,8 @@ Accept wildcard characters: False
 ```
 
 ### -MigrateAsArcVM
-Specifies whether the VM should be migrated as an Arc VM.
+Specifies whether to migrate the server as an Azure Arc-enabled VM.
+When set to 'true', an Azure Arc-enabled machine resource with the same name as -TargetVMName must already exist in the resource group specified by -TargetResourceGroupId.
 
 ```yaml
 Type: System.String
