@@ -1,8 +1,8 @@
 {
-  "New-AzNetworkSecurityPerimeter+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_ta6r9/providers/Microsoft.Network/networkSecurityPerimeters/ta6r9-psnsp1?api-version=2025-07-01+1": {
+  "New-AzNetworkSecurityPerimeter+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tetxr/providers/Microsoft.Network/networkSecurityPerimeters/tetxr-psnsp1?api-version=2025-07-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_ta6r9/providers/Microsoft.Network/networkSecurityPerimeters/ta6r9-psnsp1?api-version=2025-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tetxr/providers/Microsoft.Network/networkSecurityPerimeters/tetxr-psnsp1?api-version=2025-07-01",
       "Content": "{\r\n  \"location\": \"eastus2euap\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -18,23 +18,23 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6ff7cb35-563e-4825-a6b5-50b43cd5f546/eastus2euap/e13a5c40-30e3-4b09-935c-3546b0288288" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=6ff7cb35-563e-4825-a6b5-50b43cd5f546/eastus2euap/a40af523-40a8-4e36-ac69-7c18988d89a1" ],
         "x-ms-throttling-version": [ "v2" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
-        "x-ms-request-id": [ "ca00a32f-97f3-43b9-a016-b6b1578c1b49" ],
-        "x-ms-correlation-request-id": [ "ca00a32f-97f3-43b9-a016-b6b1578c1b49" ],
-        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260526T104718Z:ca00a32f-97f3-43b9-a016-b6b1578c1b49" ],
+        "x-ms-request-id": [ "b61fafde-f749-435d-90c2-03d3e6513a3a" ],
+        "x-ms-correlation-request-id": [ "b61fafde-f749-435d-90c2-03d3e6513a3a" ],
+        "x-ms-routing-request-id": [ "EASTUS2EUAP:20260526T135908Z:b61fafde-f749-435d-90c2-03d3e6513a3a" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 7A07532E68054B72AD6498C2DE7DE1DC Ref B: PNQ231110909023 Ref C: 2026-05-26T10:47:17Z" ],
-        "Date": [ "Tue, 26 May 2026 10:47:17 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 8B5F924ABBFD4B2FBF14D486975DBFFB Ref B: PNQ231110909042 Ref C: 2026-05-26T13:59:06Z" ],
+        "Date": [ "Tue, 26 May 2026 13:59:08 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "617" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"ta6r9-psnsp1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_ta6r9/providers/Microsoft.Network/networkSecurityPerimeters/ta6r9-psnsp1\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"3fa7accb-9bd8-49e0-8df7-6210bb5d5a9b\",\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"henumpandit@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-05-26T10:47:17.9432049Z\",\"lastModifiedBy\":\"henumpandit@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-05-26T10:47:17.9432049Z\"}}",
+      "Content": "{\"name\":\"tetxr-psnsp1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/psrg_tetxr/providers/Microsoft.Network/networkSecurityPerimeters/tetxr-psnsp1\",\"location\":\"eastus2euap\",\"type\":\"Microsoft.Network/networkSecurityPerimeters\",\"tags\":{},\"etag\":\"\",\"properties\":{\"perimeterGuid\":\"c2803046-eba7-4e7c-9696-a440c01ab8a4\",\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"henumpandit@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2026-05-26T13:59:08.6718531Z\",\"lastModifiedBy\":\"henumpandit@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2026-05-26T13:59:08.6718531Z\"}}",
       "isContentBase64": false
     }
   }

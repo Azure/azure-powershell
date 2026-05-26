@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added properties `ServiceTag`, `ReadinessState`, `Description`, and `OutboundSupported` to `Get-AzNetworkSecurityPerimeterAssociableResourceType` response.
 * Removed validations to allow newly added AuxiliarySkus in New-AzNetworkInterface command without needing to add them in ValidateSet.
 * Added new cmdlets for DDoS Custom Policy management
     - `New-AzDdosCustomPolicy`: Create a new DDoS custom policy with detection rules

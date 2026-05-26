@@ -47,6 +47,24 @@ Microsoft.ServiceBus.namespaces
 
 List NetworkSecurityPerimeter AssociableResourceTypes
 
+### Example 2: List AssociableResourceTypes with new properties
+```powershell
+Get-AzNetworkSecurityPerimeterAssociableResourceType -Location eastus2euap | Select-Object DisplayName, ReadinessState, OutboundSupported, Description, ServiceTag
+```
+
+```output
+DisplayName                                         ReadinessState OutboundSupported Description ServiceTag
+-----------                                         -------------- ----------------- ----------- ----------
+Microsoft.AppConfiguration/configurationStores      Onboarding                  True             {}
+Microsoft.CognitiveServices/accounts                GA                          True             {}
+Microsoft.DocumentDB/databaseAccounts               Preview                     True             {}
+Microsoft.EventGrid/domains                         Preview                     True             {}
+Microsoft.Sql/servers                               Preview                     True             {}
+Microsoft.KeyVault/vaults                           GA                         False             {}
+```
+
+List AssociableResourceTypes showing the new ReadinessState, OutboundSupported, Description, and ServiceTag properties
+
 ## PARAMETERS
 
 ### -DefaultProfile
