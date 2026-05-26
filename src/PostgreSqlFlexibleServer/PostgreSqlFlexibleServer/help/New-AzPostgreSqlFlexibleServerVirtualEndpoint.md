@@ -14,21 +14,21 @@ Create a pair of virtual endpoints for a server.
 
 ### CreateExpanded (Default)
 ```
-New-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroup <String> -ServerName <String>
+New-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] [-EndpointType <String>] [-Member <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroup <String> -ServerName <String>
+New-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroup <String> -ServerName <String>
+New-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -67,7 +67,7 @@ SystemDataLastModifiedByType :
 Type                         : Microsoft.DBforPostgreSQL/flexibleServers/virtualendpoints
 ```
 
-Creates virtual endpoints in an Azure Database for PostgreSQL flexible server with member servers, virtual endpoint type, virtual endpoint name, server name, resource group, and subscription explicitly passed as an arguments.
+Creates virtual endpoints in an Azure Database for PostgreSQL flexible server with member servers, virtual endpoint type, virtual endpoint name, server name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ## PARAMETERS
@@ -208,7 +208,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 

@@ -9,4 +9,4 @@ Name       State      CreationTime
 Default    Enabled    3/22/2026 3:10:50 AM
 ```
 
-Gets the advanced protection setting in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments. If subscription is not passed explicitly, it's taken from default context.
+Gets the advanced protection setting in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as arguments. If subscription is not passed explicitly, it's taken from default context.

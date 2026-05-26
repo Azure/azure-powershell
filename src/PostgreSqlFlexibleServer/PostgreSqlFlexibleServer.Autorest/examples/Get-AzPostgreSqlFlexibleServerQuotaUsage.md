@@ -16,4 +16,4 @@ standardEDSv5Family                      standardEDSv5Family                    
 standardESv3Family                       standardESv3Family                       Count      145        0
 ```
 
-Lists all quotas defined, and their corresponding usage, for Azure Database for PostgreSQL flexible server, with location and subscription explicitly passed as an arguments. If subscription is not passed explicitly, it's taken from default context.
+Lists all quotas defined, and their corresponding usage, for Azure Database for PostgreSQL flexible server, with location and subscription explicitly passed as arguments. If subscription is not passed explicitly, it's taken from default context.

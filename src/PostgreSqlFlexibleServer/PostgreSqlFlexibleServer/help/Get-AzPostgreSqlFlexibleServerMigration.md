@@ -14,7 +14,7 @@ Gets information about a migration.
 
 ### List (Default)
 ```
-Get-AzPostgreSqlFlexibleServerMigration -ResourceGroup <String> -ServerName <String>
+Get-AzPostgreSqlFlexibleServerMigration -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-MigrationListFilter <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -28,7 +28,7 @@ Get-AzPostgreSqlFlexibleServerMigration -Name <String>
 
 ### Get
 ```
-Get-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroup <String> -ServerName <String>
+Get-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -56,7 +56,7 @@ example-migration-01 ValidationFailed   An unexpected error… ValidateAndMigrat
 example-migration-02 InProgress                              ValidateAndMigrate   False       OnPremises True           example-source-server.po… {database-01, postgres}   True                      Offline
 ```
 
-Lists all migrations in an Azure Database for PostgreSQL flexible server with filter configured to retrieve active and inactive migrations, server name, resource group, and subscription explicitly passed as an arguments.
+Lists all migrations in an Azure Database for PostgreSQL flexible server with filter configured to retrieve active and inactive migrations, server name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 If the migration filter is not passed, it defaults to active migration only.
 
@@ -72,7 +72,7 @@ example-migration-01 ValidationFailed   An unexpected error… ValidateAndMigrat
 example-migration-02 InProgress                              ValidateAndMigrate   False       OnPremises True           example-source-server.po… {database-01, postgres}   True                      Offline
 ```
 
-Lists only active migration in an Azure Database for PostgreSQL flexible server with filter configured to retrieve active migration only, server name, resource group, and subscription explicitly passed as an arguments.
+Lists only active migration in an Azure Database for PostgreSQL flexible server with filter configured to retrieve active migration only, server name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 If the migration filter is not passed, it defaults to active migration only.
 
@@ -156,7 +156,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 

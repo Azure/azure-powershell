@@ -9,7 +9,7 @@ Name                                Charset         Collation
 example-database                    UTF8            en_US.utf8
 ```
 
-Gets one database in an Azure Database for PostgreSQL flexible server with database name, server name, resource group, and subscription explicitly passed as an arguments. If subscription is not passed explicitly, it's taken from default context.
+Gets one database in an Azure Database for PostgreSQL flexible server with database name, server name, resource group, and subscription explicitly passed as arguments. If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 2: List all databases in a flexible server
 ```powershell
@@ -25,4 +25,4 @@ azure_sys                           UTF8            en_US.utf8
 example-database                    UTF8            en_US.utf8
 ```
 
-Lists all databases in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments. If subscription is not passed explicitly, it's taken from default context.
+Lists all databases in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as arguments. If subscription is not passed explicitly, it's taken from default context.

@@ -10,7 +10,7 @@ example-firewall-rule-01                 ###.###.###.###      ###.###.###.###
 example-firewall-rule-02                 ###.###.###.###      ###.###.###.###
 ```
 
-Lists all firewall rules in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments. If subscription is not passed explicitly, it's taken from default context.
+Lists all firewall rules in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as arguments. If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 2: Get one firewall rule in a flexible server
 ```powershell
@@ -23,7 +23,7 @@ Name                                     StartIPAddress       EndIPAddress
 example-firewall-rule                    ###.###.###.###      ###.###.###.###
 ```
 
-Gets one firewall rule in an Azure Database for PostgreSQL flexible server with firewall rule name, server name, resource group, and subscription explicitly passed as an arguments. If subscription is not passed explicitly, it's taken from default context.
+Gets one firewall rule in an Azure Database for PostgreSQL flexible server with firewall rule name, server name, resource group, and subscription explicitly passed as arguments. If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 3: Get one fireall rule corresponding to specific resource identifier
 ```powershell

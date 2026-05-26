@@ -14,28 +14,28 @@ Checks if a proposed migration name is valid and available.
 
 ### CheckExpanded (Default)
 ```
-Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroup <String> -ServerName <String>
+Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] -Name <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaJsonString
 ```
-Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroup <String> -ServerName <String>
+Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaJsonFilePath
 ```
-Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroup <String> -ServerName <String>
+Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Check
 ```
-Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroup <String> -ServerName <String>
+Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] -Parameter <IMigrationNameAvailability> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -92,7 +92,7 @@ Reason        : Invalid
 Type          : Microsoft.DBforPostgreSQL/flexibleServers/migrations
 ```
 
-Checks if a name is available or already used for a migration in an Azure Database for PostgreSQL flexible server with resource type, migration name, server name, and subscription explicitly passed as an arguments.
+Checks if a name is available or already used for a migration in an Azure Database for PostgreSQL flexible server with resource type, migration name, server name, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ## PARAMETERS
@@ -188,7 +188,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 

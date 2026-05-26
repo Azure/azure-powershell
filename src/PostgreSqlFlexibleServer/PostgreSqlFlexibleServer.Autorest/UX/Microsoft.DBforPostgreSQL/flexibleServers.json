@@ -17,7 +17,7 @@
           {
             "parameters": [
               "-Name <String>",
-              "-ResourceGroup <String>",
+              "-ResourceGroupName <String>",
               "[-SubscriptionId <String[]>]"
             ]
           }
@@ -32,7 +32,7 @@
               "value": "[Path.serverName]"
             },
             {
-              "name": "-ResourceGroup",
+              "name": "-ResourceGroupName",
               "value": "[Path.resourceGroupName]"
             },
             {
@@ -54,7 +54,7 @@
         "parameterSets": [
           {
             "parameters": [
-              "-ResourceGroup <String>",
+              "-ResourceGroupName <String>",
               "-ServerName <String>",
               "[-SubscriptionId <String>]"
             ]
@@ -66,7 +66,7 @@
           "description": "Migrates an Azure Database for PostgreSQL server from VNet integration to a Private Link network model.",
           "parameters": [
             {
-              "name": "-ResourceGroup",
+              "name": "-ResourceGroupName",
               "value": "[Path.resourceGroupName]"
             },
             {
@@ -93,7 +93,7 @@
           {
             "parameters": [
               "-Name <String>",
-              "-ResourceGroup <String>",
+              "-ResourceGroupName <String>",
               "[-SubscriptionId <String>]"
             ]
           }
@@ -108,7 +108,7 @@
               "value": "[Path.serverName]"
             },
             {
-              "name": "-ResourceGroup",
+              "name": "-ResourceGroupName",
               "value": "[Path.resourceGroupName]"
             },
             {
@@ -131,7 +131,7 @@
           {
             "parameters": [
               "-Name <String>",
-              "-ResourceGroup <String>",
+              "-ResourceGroupName <String>",
               "[-SubscriptionId <String>]"
             ]
           }
@@ -146,7 +146,7 @@
               "value": "[Path.serverName]"
             },
             {
-              "name": "-ResourceGroup",
+              "name": "-ResourceGroupName",
               "value": "[Path.resourceGroupName]"
             },
             {
@@ -169,7 +169,7 @@
           {
             "parameters": [
               "-Name <String>",
-              "-ResourceGroup <String>",
+              "-ResourceGroupName <String>",
               "[-SubscriptionId <String>]"
             ]
           }
@@ -184,7 +184,7 @@
               "value": "[Path.serverName]"
             },
             {
-              "name": "-ResourceGroup",
+              "name": "-ResourceGroupName",
               "value": "[Path.resourceGroupName]"
             },
             {

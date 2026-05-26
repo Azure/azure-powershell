@@ -14,14 +14,14 @@ Gets state of advanced threat protection settings for a server.
 
 ### Get (Default)
 ```
-Get-AzPostgreSqlFlexibleServerAdvancedThreatProtectionSetting -ResourceGroup <String> -ServerName <String>
+Get-AzPostgreSqlFlexibleServerAdvancedThreatProtectionSetting -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzPostgreSqlFlexibleServerAdvancedThreatProtectionSetting -ResourceGroup <String> -ServerName <String>
+Get-AzPostgreSqlFlexibleServerAdvancedThreatProtectionSetting -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -48,7 +48,7 @@ Name       State      CreationTime
 Default    Enabled    3/22/2026 3:10:50 AM
 ```
 
-Gets the advanced protection setting in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments.
+Gets the advanced protection setting in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ## PARAMETERS
@@ -84,7 +84,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 

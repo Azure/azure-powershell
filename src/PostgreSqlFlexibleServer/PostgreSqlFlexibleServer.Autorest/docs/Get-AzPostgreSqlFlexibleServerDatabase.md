@@ -14,13 +14,13 @@ Gets information about an existing database.
 
 ### List (Default)
 ```
-Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroup <String> -ServerName <String>
+Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzPostgreSqlFlexibleServerDatabase -Name <String> -ResourceGroup <String> -ServerName <String>
+Get-AzPostgreSqlFlexibleServerDatabase -Name <String> -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -52,7 +52,7 @@ Name                                Charset         Collation
 example-database                    UTF8            en_US.utf8
 ```
 
-Gets one database in an Azure Database for PostgreSQL flexible server with database name, server name, resource group, and subscription explicitly passed as an arguments.
+Gets one database in an Azure Database for PostgreSQL flexible server with database name, server name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 2: List all databases in a flexible server
@@ -69,7 +69,7 @@ azure_sys                           UTF8            en_US.utf8
 example-database                    UTF8            en_US.utf8
 ```
 
-Lists all databases in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments.
+Lists all databases in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ## PARAMETERS
@@ -136,7 +136,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 

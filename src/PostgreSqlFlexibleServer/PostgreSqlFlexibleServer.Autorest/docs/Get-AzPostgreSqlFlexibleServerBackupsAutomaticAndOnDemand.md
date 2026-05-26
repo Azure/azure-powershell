@@ -14,13 +14,13 @@ Gets information of an on demand backup, given its name.
 
 ### List (Default)
 ```
-Get-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand -ResourceGroup <String> -ServerName <String>
+Get-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand -BackupName <String> -ResourceGroup <String>
+Get-AzPostgreSqlFlexibleServerBackupsAutomaticAndOnDemand -BackupName <String> -ResourceGroupName <String>
  -ServerName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -58,7 +58,7 @@ backup_639149900283518862      Full                 3/25/2026 7:53:49 PM      Au
 example-on-demand-backup-02    Customer On-Demand   3/25/2026 9:36:13 PM      Customer Initiated
 ```
 
-Lists all automatic and on demand backups in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments.
+Lists all automatic and on demand backups in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 2: Get one backup in a flexible server
@@ -72,7 +72,7 @@ Name                           BackupType           CompletedTime             So
 example-on-demand-backup-02    Customer On-Demand   5/23/2026 9:36:13 PM      Customer Initiated
 ```
 
-Gets one automatic and on demand backup in an Azure Database for PostgreSQL flexible server with backup name, server name, resource group, and subscription explicitly passed as an arguments.
+Gets one automatic and on demand backup in an Azure Database for PostgreSQL flexible server with backup name, server name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ## PARAMETERS
@@ -138,7 +138,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 

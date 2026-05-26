@@ -13,7 +13,7 @@ Lists all read replicas of a server.
 ## SYNTAX
 
 ```
-Get-AzPostgreSqlFlexibleServerReplica -ResourceGroup <String> -ServerName <String>
+Get-AzPostgreSqlFlexibleServerReplica -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -22,27 +22,20 @@ Lists all read replicas of a server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List direct read replicas of a flexible server
 ```powershell
-{{ Add code here }}
+Get-AzPostgreSqlFlexibleServerReplica -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group`-ServerName example-server
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                                     ResourceGroupName                        Location             SkuName              SkuTier         AdministratorLogin        StorageSizeGb
+----                                     -----------------                        --------             -------              -------         ------------------        -------------
+example-direct-read-replica-01           example-resource-group                   example-location                                                                    0
+example-direct-read-replica-02           example-resource-group                   example-location                                                                    0
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Lists Azure Database for PostgreSQL flexible servers which are direct read replicas of the flexible server with name, resource group, and subscription explicitly passed as arguments.
+If subscription is not passed explicitly, it's taken from default context.
 
 ## PARAMETERS
 
@@ -62,7 +55,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 

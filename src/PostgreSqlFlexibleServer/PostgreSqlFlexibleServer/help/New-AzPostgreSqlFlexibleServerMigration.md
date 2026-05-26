@@ -14,7 +14,7 @@ Create a new migration.
 
 ### CreateExpanded (Default)
 ```
-New-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroup <String> -ServerName <String>
+New-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] -Location <String> [-AdminCredentialsSourceServerPassword <SecureString>]
  [-AdminCredentialsTargetServerPassword <SecureString>] [-Cancel <String>] [-DbsToCancelMigrationOn <String[]>]
  [-DbsToMigrate <String[]>] [-DbsToTriggerCutoverOn <String[]>] [-MigrateRole <String>]
@@ -30,14 +30,14 @@ New-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroup <String> -
 
 ### CreateViaJsonString
 ```
-New-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroup <String> -ServerName <String>
+New-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroup <String> -ServerName <String>
+New-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -374,7 +374,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 

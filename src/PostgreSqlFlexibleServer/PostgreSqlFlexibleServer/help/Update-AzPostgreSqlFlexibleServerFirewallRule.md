@@ -14,7 +14,7 @@ Update a new firewall rule or update an existing firewall rule.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzPostgreSqlFlexibleServerFirewallRule -Name <String> -ResourceGroup <String> -ServerName <String>
+Update-AzPostgreSqlFlexibleServerFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] [-EndIPAddress <String>] [-StartIPAddress <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -59,7 +59,7 @@ SystemDataLastModifiedByType :
 Type                         : Microsoft.DBforPostgreSQL/flexibleServers/firewallRules
 ```
 
-Updates one firewall rule in an Azure Database for PostgreSQL flexible server with firewall rule name, server name, resource group, and subscription explicitly passed as an arguments.
+Updates one firewall rule in an Azure Database for PostgreSQL flexible server with firewall rule name, server name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ## PARAMETERS
@@ -171,7 +171,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 

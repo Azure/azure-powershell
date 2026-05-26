@@ -14,7 +14,7 @@ Create a new server administrator associated to a Microsoft Entra principal.
 
 ### CreateExpanded (Default)
 ```
-New-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra -ObjectId <String> -ResourceGroup <String>
+New-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra -ObjectId <String> -ResourceGroupName <String>
  -ServerName <String> [-SubscriptionId <String>] [-PrincipalName <String>] [-PrincipalType <String>]
  [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -22,14 +22,14 @@ New-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra -ObjectId <String> -R
 
 ### CreateViaJsonString
 ```
-New-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra -ObjectId <String> -ResourceGroup <String>
+New-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra -ObjectId <String> -ResourceGroupName <String>
  -ServerName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra -ObjectId <String> -ResourceGroup <String>
+New-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra -ObjectId <String> -ResourceGroupName <String>
  -ServerName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -210,7 +210,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 

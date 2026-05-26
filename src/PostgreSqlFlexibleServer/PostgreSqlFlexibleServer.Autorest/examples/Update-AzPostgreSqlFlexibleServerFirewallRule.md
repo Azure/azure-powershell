@@ -18,4 +18,4 @@ SystemDataLastModifiedByType :
 Type                         : Microsoft.DBforPostgreSQL/flexibleServers/firewallRules
 ```
 
-Updates one firewall rule in an Azure Database for PostgreSQL flexible server with firewall rule name, server name, resource group, and subscription explicitly passed as an arguments. If subscription is not passed explicitly, it's taken from default context.
+Updates one firewall rule in an Azure Database for PostgreSQL flexible server with firewall rule name, server name, resource group, and subscription explicitly passed as arguments. If subscription is not passed explicitly, it's taken from default context.

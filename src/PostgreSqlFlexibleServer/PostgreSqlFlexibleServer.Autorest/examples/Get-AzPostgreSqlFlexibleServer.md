@@ -27,7 +27,7 @@ example-server-01                        example-resource-group-01              
 example-server-04                        example-resource-group-01                Southeast Asia       Standard_D4ads_v5    GeneralPurpose  adminlogin04              4096
 ```
 
-Gets Azure Database for PostgreSQL flexible servers in subscription and resource group explicitly passed as an arguments. If subscription is not passed explicitly, it's taken from default context.
+Gets Azure Database for PostgreSQL flexible servers in subscription and resource group explicitly passed as arguments. If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 3: Get flexible server corresponding to specific name, resource group and subscription
 ```powershell
@@ -40,7 +40,7 @@ Name                                     ResourceGroupName                      
 example-server                           example-resource-group                   Southeast Asia       Standard_D4ads_v5    GeneralPurpose  adminlogin                4096
 ```
 
-Gets Azure Database for PostgreSQL flexible server with name, resource group, and subscription explicitly passed as an arguments. If subscription is not passed explicitly, it's taken from default context.
+Gets Azure Database for PostgreSQL flexible server with name, resource group, and subscription explicitly passed as arguments. If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 4: Get flexible server corresponding to specific resource identifier
 ```powershell

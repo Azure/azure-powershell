@@ -9,4 +9,4 @@ Name                        ZoneRedundantHaSupported  ZoneRedundantHaAndGeoBacku
 FlexibleServerCapabilities  Enabled                   Enabled                               Enabled                     Enabled                 Enabled
 ```
 
-Gets capabilities in a location for a subscription explicitly passed as an arguments. If subscription is not passed explicitly, it's taken from default context.
+Gets capabilities in a location for a subscription explicitly passed as arguments. If subscription is not passed explicitly, it's taken from default context.

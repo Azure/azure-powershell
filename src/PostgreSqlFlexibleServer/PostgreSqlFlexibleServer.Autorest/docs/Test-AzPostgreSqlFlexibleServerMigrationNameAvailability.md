@@ -14,14 +14,14 @@ Checks if a proposed migration name is valid and available.
 
 ### CheckExpanded (Default)
 ```
-Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroup <String> -ServerName <String>
+Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroupName <String> -ServerName <String>
  -Name <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### Check
 ```
-Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroup <String> -ServerName <String>
+Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroupName <String> -ServerName <String>
  -Parameter <IMigrationNameAvailability> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -41,14 +41,14 @@ Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -InputObject <IPostgreS
 
 ### CheckViaJsonFilePath
 ```
-Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroup <String> -ServerName <String>
+Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroupName <String> -ServerName <String>
  -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CheckViaJsonString
 ```
-Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroup <String> -ServerName <String>
+Test-AzPostgreSqlFlexibleServerMigrationNameAvailability -ResourceGroupName <String> -ServerName <String>
  -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -91,7 +91,7 @@ Reason        : Invalid
 Type          : Microsoft.DBforPostgreSQL/flexibleServers/migrations
 ```
 
-Checks if a name is available or already used for a migration in an Azure Database for PostgreSQL flexible server with resource type, migration name, server name, and subscription explicitly passed as an arguments.
+Checks if a name is available or already used for a migration in an Azure Database for PostgreSQL flexible server with resource type, migration name, server name, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ## PARAMETERS
@@ -187,7 +187,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 

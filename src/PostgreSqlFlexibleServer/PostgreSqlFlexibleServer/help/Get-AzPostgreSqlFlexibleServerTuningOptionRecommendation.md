@@ -13,7 +13,7 @@ Lists available object recommendations.
 ## SYNTAX
 
 ```
-Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation -ResourceGroup <String> -ServerName <String>
+Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation -ResourceGroupName <String> -ServerName <String>
  -TuningOption <String> [-SubscriptionId <String[]>] [-RecommendationType <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -49,7 +49,7 @@ ReIndex_duplicateIndexes_invalididxtest… duplicateIndexes     invalididxtests 
 ReIndex_duplicateIndexes_invalididxtest… duplicateIndexes     invalididxtests      table1               REINDEX INDEX CONCURRENTLY "invalididxtests"."idx_test_inva… The index is invalid and the recommended recovery method is…
 ```
 
-Lists all index recommendations in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments.
+Lists all index recommendations in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 It includes any existing recommendations of CreateIndex, DropIndex or ReIndex.
 
@@ -72,7 +72,7 @@ CreateIndex_tpch_public_ps_suppkey_idx   tpch                 public            
 CreateIndex_tpch_public_c_nationkey_c_m… tpch                 public               customer             CREATE INDEX CONCURRENTLY "c_nationkey_c_mktsegment_idx" ON… Column "customer"."c_nationkey" appear in Equal Predicate c…
 ```
 
-Lists all index recommendations of CreateIndex type in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments.
+Lists all index recommendations of CreateIndex type in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 3: List all DropIndex index recommendations in a flexible server
@@ -90,7 +90,7 @@ DropIndex_duplicateIndexes_testdup2_idx… duplicateIndexes     testdup2        
 DropIndex_duplicateIndexes_invalididxte… duplicateIndexes     invalididxtests      table1               DROP INDEX CONCURRENTLY "invalididxtests"."idx_test_invalid… Duplicate of "idx_test_invalid_idx2". The equivalent index …
 ```
 
-Lists all index recommendations of DropIndex type in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments.
+Lists all index recommendations of DropIndex type in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 4: List all ReIndex index recommendations in a flexible server
@@ -105,7 +105,7 @@ ReIndex_duplicateIndexes_invalididxtest… duplicateIndexes     invalididxtests 
 ReIndex_duplicateIndexes_invalididxtest… duplicateIndexes     invalididxtests      table1               REINDEX INDEX CONCURRENTLY "invalididxtests"."idx_test_inva… The index is invalid and the recommended recovery method is…
 ```
 
-Lists all index recommendations of DropIndex type in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments.
+Lists all index recommendations of DropIndex type in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 5: List all table recommendations in a flexible server
@@ -118,7 +118,7 @@ Name                                     DetailDatabaseName   DetailSchema      
 ----                                     ------------------   ------------         -----------          --------------------------                                   --------------------
 ```
 
-Lists all table recommendations in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments.
+Lists all table recommendations in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 It includes any existing recommendations of AnalyzeTable, or VacuumTable.
 
@@ -132,7 +132,7 @@ Name                                     DetailDatabaseName   DetailSchema      
 ----                                     ------------------   ------------         -----------          --------------------------                                   --------------------
 ```
 
-Lists all table recommendations of AnalyzeTable type in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments.
+Lists all table recommendations of AnalyzeTable type in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 7: List all VacuumTable table recommendations in a flexible server
@@ -145,7 +145,7 @@ Name                                     DetailDatabaseName   DetailSchema      
 ----                                     ------------------   ------------         -----------          --------------------------                                   --------------------
 ```
 
-Lists all table recommendations of VacuumTable type in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments.
+Lists all table recommendations of VacuumTable type in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ## PARAMETERS
@@ -182,7 +182,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 

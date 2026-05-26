@@ -11,7 +11,7 @@ configuration                  Disabled
 table                          
 ```
 
-Lists all tuning options and their states in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments. If subscription is not passed explicitly, it's taken from default context.
+Lists all tuning options and their states in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as arguments. If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 2: Get state of index tuning option in a flexible server
 ```powershell
@@ -24,7 +24,7 @@ Name                           State
 index                          
 ```
 
-Gets the index tuning option and its state in an Azure Database for PostgreSQL flexible server with tuning option, server name, resource group, and subscription explicitly passed as an arguments. If subscription is not passed explicitly, it's taken from default context.
+Gets the index tuning option and its state in an Azure Database for PostgreSQL flexible server with tuning option, server name, resource group, and subscription explicitly passed as arguments. If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 3: Get state of configuration tuning option in a flexible server
 ```powershell
@@ -37,7 +37,7 @@ Name                           State
 configuration                  Disabled
 ```
 
-Gets the configuration tuning option and its state in an Azure Database for PostgreSQL flexible server with tuning option, server name, resource group, and subscription explicitly passed as an arguments. If subscription is not passed explicitly, it's taken from default context.
+Gets the configuration tuning option and its state in an Azure Database for PostgreSQL flexible server with tuning option, server name, resource group, and subscription explicitly passed as arguments. If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 4: Get state of table tuning option in a flexible server
 ```powershell
@@ -50,4 +50,4 @@ Name                           State
 table                          
 ```
 
-Gets the table tuning option and its state in an Azure Database for PostgreSQL flexible server with tuning option, server name, resource group, and subscription explicitly passed as an arguments. If subscription is not passed explicitly, it's taken from default context.
+Gets the table tuning option and its state in an Azure Database for PostgreSQL flexible server with tuning option, server name, resource group, and subscription explicitly passed as arguments. If subscription is not passed explicitly, it's taken from default context.

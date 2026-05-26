@@ -14,14 +14,14 @@ Gets the tuning options of a server.
 
 ### List (Default)
 ```
-Get-AzPostgreSqlFlexibleServerTuningOption -ResourceGroup <String> -ServerName <String>
+Get-AzPostgreSqlFlexibleServerTuningOption -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzPostgreSqlFlexibleServerTuningOption -ResourceGroup <String> -ServerName <String> -TuningOption <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPostgreSqlFlexibleServerTuningOption -ResourceGroupName <String> -ServerName <String>
+ -TuningOption <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -54,7 +54,7 @@ configuration                  Disabled
 table                          
 ```
 
-Lists all tuning options and their states in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments.
+Lists all tuning options and their states in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 2: Get state of index tuning option in a flexible server
@@ -68,7 +68,7 @@ Name                           State
 index                          
 ```
 
-Gets the index tuning option and its state in an Azure Database for PostgreSQL flexible server with tuning option, server name, resource group, and subscription explicitly passed as an arguments.
+Gets the index tuning option and its state in an Azure Database for PostgreSQL flexible server with tuning option, server name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 3: Get state of configuration tuning option in a flexible server
@@ -82,7 +82,7 @@ Name                           State
 configuration                  Disabled
 ```
 
-Gets the configuration tuning option and its state in an Azure Database for PostgreSQL flexible server with tuning option, server name, resource group, and subscription explicitly passed as an arguments.
+Gets the configuration tuning option and its state in an Azure Database for PostgreSQL flexible server with tuning option, server name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 4: Get state of table tuning option in a flexible server
@@ -96,7 +96,7 @@ Name                           State
 table                          
 ```
 
-Gets the table tuning option and its state in an Azure Database for PostgreSQL flexible server with tuning option, server name, resource group, and subscription explicitly passed as an arguments.
+Gets the table tuning option and its state in an Azure Database for PostgreSQL flexible server with tuning option, server name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ## PARAMETERS
@@ -147,7 +147,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 

@@ -14,7 +14,7 @@ Cancels an active migration.
 
 ### Cancel (Default)
 ```
-Stop-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroup <String> -ServerName <String>
+Stop-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -101,7 +101,7 @@ WindowEndTimeInUtc                          :
 WindowStartTimeInUtc                        : 3/22/2026 6:16:56 PM
 ```
 
-Cancels an active migration in an Azure Database for PostgreSQL flexible server with migration name, server name, and subscription explicitly passed as an arguments.
+Cancels an active migration in an Azure Database for PostgreSQL flexible server with migration name, server name, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ## PARAMETERS
@@ -182,7 +182,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 

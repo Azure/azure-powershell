@@ -13,7 +13,7 @@ Lists the capabilities available for a given server.
 ## SYNTAX
 
 ```
-Get-AzPostgreSqlFlexibleServerCapabilitiesByServer -ResourceGroup <String> -ServerName <String>
+Get-AzPostgreSqlFlexibleServerCapabilitiesByServer -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ Name                        ZoneRedundantHaSupported  ZoneRedundantHaAndGeoBacku
 FlexibleServerCapabilities  Enabled                   Enabled                               Enabled                     Enabled                 Enabled
 ```
 
-Gets capabilities in an Azure Database for PostgreSQL flexible server with name, resource group, and subscription explicitly passed as an arguments.
+Gets capabilities in an Azure Database for PostgreSQL flexible server with name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ## PARAMETERS
@@ -54,7 +54,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 

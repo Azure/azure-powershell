@@ -1,6 +1,6 @@
 ---
 Module Name: Az.PostgreSqlFlexibleServer
-Module Guid: 4a94f9ed-952f-4d98-a3c1-181dd61f360e
+Module Guid: a20a80ea-f25d-4222-8895-d6d17fea9bf7
 Download Help Link: https://learn.microsoft.com/powershell/module/az.postgresqlflexibleserver
 Help Version: 1.0.0.0
 Locale: en-US

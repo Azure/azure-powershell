@@ -16,7 +16,7 @@
         "parameterSets": [
           {
             "parameters": [
-              "-ResourceGroup <String>",
+              "-ResourceGroupName <String>",
               "-ServerName <String>",
               "[-SubscriptionId <String[]>]",
               "-TuningOption <String>"
@@ -29,7 +29,7 @@
           "description": "Gets the tuning options of a server.",
           "parameters": [
             {
-              "name": "-ResourceGroup",
+              "name": "-ResourceGroupName",
               "value": "[Path.resourceGroupName]"
             },
             {

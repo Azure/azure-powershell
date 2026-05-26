@@ -14,7 +14,7 @@ Gets information about a server administrator associated to a Microsoft Entra pr
 
 ### List (Default)
 ```
-Get-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra -ResourceGroup <String> -ServerName <String>
+Get-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -28,7 +28,7 @@ Get-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra -ObjectId <String>
 
 ### Get
 ```
-Get-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra -ObjectId <String> -ResourceGroup <String>
+Get-AzPostgreSqlFlexibleServerAdministratorsMicrosoftEntra -ObjectId <String> -ResourceGroupName <String>
  -ServerName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -56,7 +56,7 @@ dba@contoso.com                          00000000-0000-0000-0000-000000000000   
 operations@contoso.com                   22222222-2222-2222-2222-222222222222     operations@contoso.com                   Group         11111111-1111-1111-1111-111111111111
 ```
 
-Lists all Microsoft Entra administrators in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments.
+Lists all Microsoft Entra administrators in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 2: Get one Microsoft Entra administrator in a flexible server
@@ -71,7 +71,7 @@ dba@contoso.com                          00000000-0000-0000-0000-000000000000   
 operations@contoso.com                   22222222-2222-2222-2222-222222222222     operations@contoso.com                   Group         11111111-1111-1111-1111-111111111111
 ```
 
-Gets one Microsoft Entra administrator in an Azure Database for PostgreSQL flexible server with object identifier, server name, resource group, and subscription explicitly passed as an arguments.
+Gets one Microsoft Entra administrator in an Azure Database for PostgreSQL flexible server with object identifier, server name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ## PARAMETERS
@@ -137,7 +137,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 

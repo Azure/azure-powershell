@@ -14,7 +14,7 @@ Gets information about a firewall rule in a server.
 
 ### List (Default)
 ```
-Get-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroup <String> -ServerName <String>
+Get-AzPostgreSqlFlexibleServerFirewallRule -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -28,7 +28,7 @@ Get-AzPostgreSqlFlexibleServerFirewallRule -Name <String>
 
 ### Get
 ```
-Get-AzPostgreSqlFlexibleServerFirewallRule -Name <String> -ResourceGroup <String> -ServerName <String>
+Get-AzPostgreSqlFlexibleServerFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -56,7 +56,7 @@ example-firewall-rule-01                 ###.###.###.###      ###.###.###.###
 example-firewall-rule-02                 ###.###.###.###      ###.###.###.###
 ```
 
-Lists all firewall rules in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments.
+Lists all firewall rules in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 2: Get one firewall rule in a flexible server
@@ -70,7 +70,7 @@ Name                                     StartIPAddress       EndIPAddress
 example-firewall-rule                    ###.###.###.###      ###.###.###.###
 ```
 
-Gets one firewall rule in an Azure Database for PostgreSQL flexible server with firewall rule name, server name, resource group, and subscription explicitly passed as an arguments.
+Gets one firewall rule in an Azure Database for PostgreSQL flexible server with firewall rule name, server name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 3: Get one fireall rule corresponding to specific resource identifier
@@ -150,7 +150,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 

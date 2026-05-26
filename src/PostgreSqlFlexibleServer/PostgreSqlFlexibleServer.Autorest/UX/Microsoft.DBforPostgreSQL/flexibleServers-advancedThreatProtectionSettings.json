@@ -16,7 +16,7 @@
         "parameterSets": [
           {
             "parameters": [
-              "-ResourceGroup <String>",
+              "-ResourceGroupName <String>",
               "-ServerName <String>",
               "[-SubscriptionId <String[]>]"
             ]
@@ -28,7 +28,7 @@
           "description": "Gets state of advanced threat protection settings for a server.",
           "parameters": [
             {
-              "name": "-ResourceGroup",
+              "name": "-ResourceGroupName",
               "value": "[Path.resourceGroupName]"
             },
             {

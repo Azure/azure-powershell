@@ -16,7 +16,7 @@ Certain property update initiate migration state transitions.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroup <String> -ServerName <String>
+Update-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] [-AdminCredentialsSourceServerPassword <SecureString>]
  [-AdminCredentialsTargetServerPassword <SecureString>] [-Cancel <String>]
  [-DbsToCancelMigrationOn <String[]>] [-DbsToMigrate <String[]>] [-DbsToTriggerCutoverOn <String[]>]
@@ -58,14 +58,14 @@ Update-AzPostgreSqlFlexibleServerMigration -FlexibleServerInputObject <IPostgreS
 
 ### UpdateViaJsonFilePath
 ```
-Update-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroup <String> -ServerName <String>
+Update-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroupName <String> -ServerName <String>
  -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
-Update-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroup <String> -ServerName <String>
+Update-AzPostgreSqlFlexibleServerMigration -Name <String> -ResourceGroupName <String> -ServerName <String>
  -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -343,7 +343,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 

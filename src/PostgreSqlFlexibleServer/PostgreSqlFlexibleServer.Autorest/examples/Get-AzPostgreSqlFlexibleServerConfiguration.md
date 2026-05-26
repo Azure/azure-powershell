@@ -17,7 +17,7 @@ xmloption                           Enumeration     content              content
 zero_damaged_pages                  Boolean         off                  on,off               off                  system-default  Continues processing past damaged page headers. D…
 ```
 
-Lists all configurations (also known as server parameters) in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments. If subscription is not passed explicitly, it's taken from default context.
+Lists all configurations (also known as server parameters) in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as arguments. If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 2: Get one configuration (also known as server parameter) in a flexible server
 ```powershell
@@ -30,7 +30,7 @@ Name                                DataType        Value                Allowed
 work_mem                            Integer         4096                 4096-2097151         4096                 system-default  Sets the maximum memory to be used for query work…
 ```
 
-Gets one configuration (also known as server parameter) in an Azure Database for PostgreSQL flexible server with configuration name, server name, resource group, and subscription explicitly passed as an arguments. If subscription is not passed explicitly, it's taken from default context.
+Gets one configuration (also known as server parameter) in an Azure Database for PostgreSQL flexible server with configuration name, server name, resource group, and subscription explicitly passed as arguments. If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 3: Get one configuration (also known as server parameter) corresponding to specific resource identifier
 ```powershell

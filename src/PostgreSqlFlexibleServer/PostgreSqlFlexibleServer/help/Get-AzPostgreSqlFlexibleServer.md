@@ -20,13 +20,13 @@ Get-AzPostgreSqlFlexibleServer [-SubscriptionId <String[]>] [-DefaultProfile <PS
 
 ### Get
 ```
-Get-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroup <String> [-SubscriptionId <String[]>]
+Get-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzPostgreSqlFlexibleServer -ResourceGroup <String> [-SubscriptionId <String[]>]
+Get-AzPostgreSqlFlexibleServer -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -71,7 +71,7 @@ example-server-01                        example-resource-group-01              
 example-server-04                        example-resource-group-01                Southeast Asia       Standard_D4ads_v5    GeneralPurpose  adminlogin04              4096
 ```
 
-Gets Azure Database for PostgreSQL flexible servers in subscription and resource group explicitly passed as an arguments.
+Gets Azure Database for PostgreSQL flexible servers in subscription and resource group explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 3: Get flexible server corresponding to specific name, resource group and subscription
@@ -85,7 +85,7 @@ Name                                     ResourceGroupName                      
 example-server                           example-resource-group                   Southeast Asia       Standard_D4ads_v5    GeneralPurpose  adminlogin                4096
 ```
 
-Gets Azure Database for PostgreSQL flexible server with name, resource group, and subscription explicitly passed as an arguments.
+Gets Azure Database for PostgreSQL flexible server with name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 4: Get flexible server corresponding to specific resource identifier
@@ -150,7 +150,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 

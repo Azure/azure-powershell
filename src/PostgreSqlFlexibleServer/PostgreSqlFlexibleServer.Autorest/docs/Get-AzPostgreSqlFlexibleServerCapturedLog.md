@@ -13,7 +13,7 @@ Lists all captured logs for download in a server.
 ## SYNTAX
 
 ```
-Get-AzPostgreSqlFlexibleServerCapturedLog -ResourceGroup <String> -ServerName <String>
+Get-AzPostgreSqlFlexibleServerCapturedLog -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ postgresql_2026_03_22_11_00_00.log       ServerLogs      466        https://d8df
 postgresql_2026_03_22_12_00_00.log       ServerLogs      459        https://d8df7342e197sa.blob.core.windows.net/54d8e1fb40ba40…
 ```
 
-Lists all captured logs in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments.
+Lists all captured logs in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ## PARAMETERS
@@ -56,7 +56,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 

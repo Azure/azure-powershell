@@ -17,7 +17,7 @@
           {
             "parameters": [
               "-Name <String>",
-              "-ResourceGroup <String>",
+              "-ResourceGroupName <String>",
               "-ServerName <String>",
               "[-SubscriptionId <String[]>]"
             ]
@@ -33,7 +33,7 @@
               "value": "[Path.migrationName]"
             },
             {
-              "name": "-ResourceGroup",
+              "name": "-ResourceGroupName",
               "value": "[Path.resourceGroupName]"
             },
             {
@@ -60,7 +60,7 @@
           {
             "parameters": [
               "-Name <String>",
-              "-ResourceGroup <String>",
+              "-ResourceGroupName <String>",
               "-ServerName <String>",
               "[-SubscriptionId <String>]"
             ]
@@ -76,7 +76,7 @@
               "value": "[Path.migrationName]"
             },
             {
-              "name": "-ResourceGroup",
+              "name": "-ResourceGroupName",
               "value": "[Path.resourceGroupName]"
             },
             {

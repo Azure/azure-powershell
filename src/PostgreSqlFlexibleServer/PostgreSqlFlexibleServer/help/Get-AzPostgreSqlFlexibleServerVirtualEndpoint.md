@@ -14,7 +14,7 @@ Gets information about a pair of virtual endpoints.
 
 ### List (Default)
 ```
-Get-AzPostgreSqlFlexibleServerVirtualEndpoint -ResourceGroup <String> -ServerName <String>
+Get-AzPostgreSqlFlexibleServerVirtualEndpoint -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -28,7 +28,7 @@ Get-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String>
 
 ### Get
 ```
-Get-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroup <String> -ServerName <String>
+Get-AzPostgreSqlFlexibleServerVirtualEndpoint -Name <String> -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -55,7 +55,7 @@ Name                          EndpointType Member                               
 example-virtual-endpoint      ReadWrite    {example-server-01, example-server-02} {example-virtual-endpoint.writer.postgres.database.azure.com, example-virtual-endpoint.reader.postgres.database.azure.com}
 ```
 
-Lists all virtual endpoints in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as an arguments.
+Lists all virtual endpoints in an Azure Database for PostgreSQL flexible server with server name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ### Example 2: Get one virtual endpoint in a flexible server
@@ -69,7 +69,7 @@ Name                          EndpointType Member                               
 example-virtual-endpoint      ReadWrite    {example-server-01, example-server-02} {example-virtual-endpoint.writer.postgres.database.azure.com, example-virtual-endpoint.reader.postgres.database.azure.com}
 ```
 
-Gets one virtual endpoint in an Azure Database for PostgreSQL flexible server with virtual endpoints name, server name, resource group, and subscription explicitly passed as an arguments.
+Gets one virtual endpoint in an Azure Database for PostgreSQL flexible server with virtual endpoints name, server name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ## PARAMETERS
@@ -135,7 +135,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 

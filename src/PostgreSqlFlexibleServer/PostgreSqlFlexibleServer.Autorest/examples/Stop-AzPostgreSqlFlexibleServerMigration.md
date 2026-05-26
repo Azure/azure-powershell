@@ -64,4 +64,4 @@ WindowEndTimeInUtc                          :
 WindowStartTimeInUtc                        : 3/22/2026 6:16:56 PM
 ```
 
-Cancels an active migration in an Azure Database for PostgreSQL flexible server with migration name, server name, and subscription explicitly passed as an arguments. If subscription is not passed explicitly, it's taken from default context.
+Cancels an active migration in an Azure Database for PostgreSQL flexible server with migration name, server name, and subscription explicitly passed as arguments. If subscription is not passed explicitly, it's taken from default context.

@@ -88,7 +88,7 @@ Reason        : Invalid
 Type          : Microsoft.DBforPostgreSQL/flexibleServers
 ```
 
-Checks if a name is available or already used for an Azure Database for PostgreSQL flexible server with server name, location, and subscription explicitly passed as an arguments.
+Checks if a name is available or already used for an Azure Database for PostgreSQL flexible server with server name, location, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 
 ## PARAMETERS

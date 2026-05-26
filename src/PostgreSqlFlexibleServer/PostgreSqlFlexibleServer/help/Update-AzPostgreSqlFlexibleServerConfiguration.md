@@ -14,21 +14,21 @@ Update the value assigned to a specific modifiable configuration (also known as 
 
 ### UpdateExpanded (Default)
 ```
-Update-AzPostgreSqlFlexibleServerConfiguration -Name <String> -ResourceGroup <String> -ServerName <String>
+Update-AzPostgreSqlFlexibleServerConfiguration -Name <String> -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] [-Source <String>] [-Value <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
-Update-AzPostgreSqlFlexibleServerConfiguration -Name <String> -ResourceGroup <String> -ServerName <String>
+Update-AzPostgreSqlFlexibleServerConfiguration -Name <String> -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
-Update-AzPostgreSqlFlexibleServerConfiguration -Name <String> -ResourceGroup <String> -ServerName <String>
+Update-AzPostgreSqlFlexibleServerConfiguration -Name <String> -ResourceGroupName <String> -ServerName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -82,7 +82,7 @@ Unit                         :
 Value                        : 450
 ```
 
-Updates a configuration (also known as server parameter) in an Azure Database for PostgreSQL flexible server with configuration name, configuration value, server name, resource group, and subscription explicitly passed as an arguments.
+Updates a configuration (also known as server parameter) in an Azure Database for PostgreSQL flexible server with configuration name, configuration value, server name, resource group, and subscription explicitly passed as arguments.
 If subscription is not passed explicitly, it's taken from default context.
 If the the configuration is static (`IsDynamicConfig` is `False`), changing its value requires a restart of the PostgreSQL database engine for the change to take effect.
 `IsConfigPendingRestart` set to `True` means that the currently show value is not in effect until the database engine is restarted.
@@ -210,7 +210,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
+### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
