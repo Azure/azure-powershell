@@ -1,6 +1,6 @@
 ### Example 1: List all index recommendations in a flexible server
 ```powershell
-Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -TuningOption index
+Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server -TuningOption index
 ```
 
 ```output
@@ -28,7 +28,7 @@ Lists all index recommendations in an Azure Database for PostgreSQL flexible ser
 
 ### Example 2: List all CreateIndex index recommendations in a flexible server
 ```powershell
-Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -TuningOption index -RecommendationType CreateIndex
+Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server -TuningOption index -RecommendationType CreateIndex
 ```
 
 ```output
@@ -49,7 +49,7 @@ Lists all index recommendations of CreateIndex type in an Azure Database for Pos
 
 ### Example 3: List all DropIndex index recommendations in a flexible server
 ```powershell
-Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -TuningOption index -RecommendationType DropIndex
+Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server -TuningOption index -RecommendationType DropIndex
 ```
 
 ```output
@@ -66,7 +66,7 @@ Lists all index recommendations of DropIndex type in an Azure Database for Postg
 
 ### Example 4: List all ReIndex index recommendations in a flexible server
 ```powershell
-Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -TuningOption index -RecommendationType ReIndex
+Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server -TuningOption index -RecommendationType ReIndex
 ```
 
 ```output
@@ -80,7 +80,7 @@ Lists all index recommendations of DropIndex type in an Azure Database for Postg
 
 ### Example 5: List all table recommendations in a flexible server
 ```powershell
-Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -TuningOption table
+Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server -TuningOption table
 ```
 
 ```output
@@ -92,7 +92,7 @@ Lists all table recommendations in an Azure Database for PostgreSQL flexible ser
 
 ### Example 6: List all AnalyzeTable table recommendations in a flexible server
 ```powershell
-Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -TuningOption table -RecommendationType AnalyzeTable
+Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server -TuningOption table -RecommendationType AnalyzeTable
 ```
 
 ```output
@@ -104,7 +104,7 @@ Lists all table recommendations of AnalyzeTable type in an Azure Database for Po
 
 ### Example 7: List all VacuumTable table recommendations in a flexible server
 ```powershell
-Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -TuningOption table -RecommendationType VacuumTable
+Get-AzPostgreSqlFlexibleServerTuningOptionRecommendation -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server -TuningOption table -RecommendationType VacuumTable
 ```
 
 ```output

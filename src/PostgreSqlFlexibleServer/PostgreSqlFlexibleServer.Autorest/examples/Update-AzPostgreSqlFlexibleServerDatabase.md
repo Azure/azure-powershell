@@ -1,6 +1,6 @@
 ### Example 1: Update a database in a flexible server
 ```powershell
-Update-AzPostgreSqlFlexibleServerDatabase -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -Name example-database -Collation en_US.utf8 -Charset UTF8
+Update-AzPostgreSqlFlexibleServerDatabase -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server -Name example-database -Collation en_US.utf8 -Charset UTF8
 ```
 
 ```output

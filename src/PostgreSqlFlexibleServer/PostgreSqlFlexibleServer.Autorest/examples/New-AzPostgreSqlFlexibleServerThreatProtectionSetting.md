@@ -1,6 +1,6 @@
 ### Example 1: Enable threat advanced protection in a flexible server
 ```powershell
-New-AzPostgreSqlFlexibleServerThreatProtectionSetting -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -State Enabled
+New-AzPostgreSqlFlexibleServerThreatProtectionSetting -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server -State Enabled
 ```
 
 ```output
@@ -22,7 +22,7 @@ Enables threat advanced protection of an Azure Database for PostgreSQL flexible 
 
 ### Example 2: Disable threat advanced protection in a server
 ```powershell
-New-AzPostgreSqlFlexibleServerThreatProtectionSetting -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -State Disabled
+New-AzPostgreSqlFlexibleServerThreatProtectionSetting -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server -State Disabled
 ```
 
 ```output

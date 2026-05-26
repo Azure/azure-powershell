@@ -1,6 +1,6 @@
 ### Example 1: List all tuning options and their states in a flexible server
 ```powershell
-Get-AzPostgreSqlFlexibleServerTuningOption -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server
+Get-AzPostgreSqlFlexibleServerTuningOption -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server
 ```
 
 ```output
@@ -15,7 +15,7 @@ Lists all tuning options and their states in an Azure Database for PostgreSQL fl
 
 ### Example 2: Get state of index tuning option in a flexible server
 ```powershell
-Get-AzPostgreSqlFlexibleServerTuningOption -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -TuningOption index
+Get-AzPostgreSqlFlexibleServerTuningOption -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server -TuningOption index
 ```
 
 ```output
@@ -28,7 +28,7 @@ Gets the index tuning option and its state in an Azure Database for PostgreSQL f
 
 ### Example 3: Get state of configuration tuning option in a flexible server
 ```powershell
-Get-AzPostgreSqlFlexibleServerTuningOption -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -TuningOption configuration
+Get-AzPostgreSqlFlexibleServerTuningOption -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server -TuningOption configuration
 ```
 
 ```output
@@ -41,7 +41,7 @@ Gets the configuration tuning option and its state in an Azure Database for Post
 
 ### Example 4: Get state of table tuning option in a flexible server
 ```powershell
-Get-AzPostgreSqlFlexibleServerTuningOption -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroup example-resource-group -ServerName example-server -TuningOption table
+Get-AzPostgreSqlFlexibleServerTuningOption -SubscriptionId aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e -ResourceGroupName example-resource-group -ServerName example-server -TuningOption table
 ```
 
 ```output
