@@ -561,10 +561,6 @@
     "alias": "Portal"
   },
   {
-    "regex": "PostgreSql",
-    "alias": "Database for PostgreSQL"
-  },
-  {
     "module": "SqlVirtualMachine",
     "alias": "Sql VM"
   },
