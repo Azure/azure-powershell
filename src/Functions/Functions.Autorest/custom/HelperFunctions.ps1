@@ -768,11 +768,39 @@ function ValidateFunctionAppNameAvailability
                               -Exception $exception
     }
 
-    $result = Az.Functions.internal\Test-AzNameAvailability -Type Site @PSBoundParameters
+    $nameCheckError = $null
+    $result = Az.Functions.internal\Test-AzNameAvailability -Type Site @PSBoundParameters -ErrorVariable nameCheckError -ErrorAction SilentlyContinue
+
+    if ($nameCheckError)
+    {
+        Write-Warning "Test-AzNameAvailability call failed with error: $nameCheckError"
+    }
+
+    if (-not $result)
+    {
+        $errorMessage = "Failed to check name availability for function app name '$Name'. The name availability check returned no result."
+        if ($nameCheckError)
+        {
+            $errorMessage += " Error details: $nameCheckError"
+        }
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "FunctionAppNameAvailabilityCheckFailed" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
 
     if (-not $result.NameAvailable)
     {
         $errorMessage = "Function app name '$Name' is not available.  Please try a different name."
+        if ($result.Reason)
+        {
+            $errorMessage += " Reason: $($result.Reason)."
+        }
+        if ($result.Message)
+        {
+            $errorMessage += " Message: $($result.Message)."
+        }
         $exception = [System.InvalidOperationException]::New($errorMessage)
         ThrowTerminatingError -ErrorId "FunctionAppNameIsNotAvailable" `
                               -ErrorMessage $errorMessage `
