@@ -2,141 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVirtualMachineIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.AadAuthenticationSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVirtualMachineIdentity</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AvailabilityGroupListenerName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SqlVirtualMachineGroupName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SqlVirtualMachineName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SubscriptionId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AvailabilityGroupListenerName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SqlVirtualMachineGroupName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SqlVirtualMachineName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SubscriptionId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api30.ErrorDetail</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api30.ErrorDetail</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Code</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Target</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Code</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Target</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20.SystemData</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20.SystemData</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>CreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedByType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>CreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedByType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.AadAuthenticationSettings</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.AadAuthenticationSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.AadAuthenticationSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -156,9 +24,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.AdditionalFeaturesServerConfigurations</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.AdditionalFeaturesServerConfigurations</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.AdditionalFeaturesServerConfigurations</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.AdditionalFeaturesServerConfigurations#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -178,9 +46,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.AgReplica</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.AgReplica</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.AgReplica</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.AgReplica#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -224,9 +92,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.AssessmentSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.AssessmentSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.AssessmentSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.AssessmentSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -252,9 +120,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.AutoBackupSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.AutoBackupSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.AutoBackupSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.AutoBackupSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -263,9 +131,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>BackupSystemDb</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DaysOfWeek</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Enable</Label>
@@ -308,9 +173,6 @@
                 <PropertyName>BackupSystemDb</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>DaysOfWeek</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>Enable</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -346,9 +208,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.AutoPatchingSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.AutoPatchingSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.AutoPatchingSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.AutoPatchingSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -386,9 +248,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.AvailabilityGroupListener</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.AvailabilityGroupListener</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.AvailabilityGroupListener</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.AvailabilityGroupListener#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -414,9 +276,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.AvailabilityGroupListenerListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.AvailabilityGroupListenerListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.AvailabilityGroupListenerListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.AvailabilityGroupListenerListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -436,9 +298,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.AvailabilityGroupListenerProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.AvailabilityGroupListenerProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.AvailabilityGroupListenerProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.AvailabilityGroupListenerProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -476,9 +338,43 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.KeyVaultCredentialSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ErrorDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.KeyVaultCredentialSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ErrorDetail#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.KeyVaultCredentialSettings</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.KeyVaultCredentialSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -522,9 +418,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.LoadBalancerConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.LoadBalancerConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.LoadBalancerConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.LoadBalancerConfiguration#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -536,9 +432,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>PublicIPAddressResourceId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SqlVirtualMachineInstance</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -553,18 +446,15 @@
               <TableColumnItem>
                 <PropertyName>PublicIPAddressResourceId</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SqlVirtualMachineInstance</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.MultiSubnetIPConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.MultiSubnetIPConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.MultiSubnetIPConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.MultiSubnetIPConfiguration#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -584,9 +474,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.Operation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Operation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.Operation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Operation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -612,9 +502,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.OperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.OperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.OperationDisplay#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -652,9 +542,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.OperationListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.OperationListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.OperationListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.OperationListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -674,9 +564,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.PrivateIPAddress</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.PrivateIPAddress</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.PrivateIPAddress</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.PrivateIPAddress#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -702,9 +592,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ProxyResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ProxyResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ProxyResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ProxyResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -724,9 +614,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.Resource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.Resource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Resource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -746,9 +636,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ResourceIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ResourceIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ResourceIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ResourceIdentity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -774,9 +664,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.Schedule</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Schedule</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.Schedule</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Schedule#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -820,9 +710,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlConnectivityUpdateSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlConnectivityUpdateSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlConnectivityUpdateSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlConnectivityUpdateSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -854,9 +744,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlInstanceSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlInstanceSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlInstanceSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlInstanceSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -912,17 +802,14 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlStorageSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlStorageSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlStorageSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlStorageSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>DefaultFilePath</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Lun</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -931,18 +818,15 @@
               <TableColumnItem>
                 <PropertyName>DefaultFilePath</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Lun</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlStorageUpdateSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlStorageUpdateSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlStorageUpdateSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlStorageUpdateSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -974,9 +858,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlTempDbSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlTempDbSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlTempDbSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlTempDbSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -997,9 +881,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>LogGrowth</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Lun</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>PersistFolder</Label>
@@ -1030,9 +911,6 @@
                 <PropertyName>LogGrowth</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Lun</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>PersistFolder</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1044,9 +922,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlVirtualMachine</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVirtualMachine</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlVirtualMachine</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVirtualMachine#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1078,9 +956,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlVirtualMachineGroup</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVirtualMachineGroup</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlVirtualMachineGroup</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVirtualMachineGroup#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1112,9 +990,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlVirtualMachineGroupListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVirtualMachineGroupListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlVirtualMachineGroupListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVirtualMachineGroupListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1134,9 +1012,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlVirtualMachineGroupProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVirtualMachineGroupProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlVirtualMachineGroupProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVirtualMachineGroupProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1186,9 +1064,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlVirtualMachineGroupUpdateTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVirtualMachineGroupUpdateTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlVirtualMachineGroupUpdateTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVirtualMachineGroupUpdateTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1208,9 +1086,55 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlVirtualMachineListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVirtualMachineIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlVirtualMachineListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVirtualMachineIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AvailabilityGroupListenerName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SqlVirtualMachineGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SqlVirtualMachineName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SubscriptionId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AvailabilityGroupListenerName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SqlVirtualMachineGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SqlVirtualMachineName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubscriptionId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVirtualMachineListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVirtualMachineListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1230,9 +1154,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlVirtualMachineProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVirtualMachineProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlVirtualMachineProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVirtualMachineProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1306,9 +1230,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlVirtualMachineUpdateTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVirtualMachineUpdateTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlVirtualMachineUpdateTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVirtualMachineUpdateTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1328,9 +1252,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlVMTroubleshooting</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVMTroubleshooting</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlVMTroubleshooting</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVMTroubleshooting#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1368,9 +1292,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlWorkloadTypeUpdateSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlWorkloadTypeUpdateSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlWorkloadTypeUpdateSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlWorkloadTypeUpdateSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1390,9 +1314,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.StorageConfigurationSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.StorageConfigurationSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.StorageConfigurationSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.StorageConfigurationSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1424,9 +1348,61 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.TrackedResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.TrackedResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SystemData#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.TrackedResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.TrackedResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1452,9 +1428,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.TrackedResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.TrackedResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.TrackedResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.TrackedResourceTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1474,9 +1450,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.TroubleshootingStatus</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.TroubleshootingStatus</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.TroubleshootingStatus</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.TroubleshootingStatus#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1520,9 +1496,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.UnhealthyReplicaInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.UnhealthyReplicaInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.UnhealthyReplicaInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.UnhealthyReplicaInfo#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1542,9 +1518,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.WsfcDomainProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.WsfcDomainProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.WsfcDomainProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.WsfcDomainProfile#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

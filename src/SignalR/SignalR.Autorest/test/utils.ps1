@@ -55,7 +55,7 @@ function setupEnv()
 
     $env.ResourceGroupName = 'azwps-test-rg2'
     $env.Location = 'eastus'
-    $env.WpsPrefix = 'azwps-'
+    $env.WpsPrefix = 'azwps'
     $env.Wps1 = $env.WpsPrefix + '1'
     $env.Wps2 = $env.WpsPrefix +'2'
     $env.Hub1 = "hub1"
@@ -71,7 +71,8 @@ function setupEnv()
     Write-Host -ForegroundColor Green "Start to creating resource group for test..."
     New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location
     Write-Host -ForegroundColor Green "Resource group created successfully."
-    $createWpsJob1 = New-AzWebPubSub -ResourceGroupName $env.ResourceGroupName -Name $env.Wps1 -Location $env.Location -SkuName Standard_S1 -AsJob
+    ## If the resource create keep failing, could do it manually in portal or cli first to avoid the issue blocking other tests.
+    $createWpsJob1 = New-AzWebPubSub -ResourceGroupName $env.ResourceGroupName -Name $env.Wps1 -Location $env.Location -SkuName Premium_P1 -AsJob
     $createWpsJob2 = New-AzWebPubSub -ResourceGroupName $env.ResourceGroupName -Name $env.Wps2 -Location $env.Location -SkuName Standard_S1 -AsJob
     Wait-Job $createWpsJob1, $createWpsJob2
     $createHubJob1 = New-AzWebPubSubHub -ResourceGroupName $env.ResourceGroupName -ResourceName $env.Wps1 -Name $env.Hub1 -AsJob

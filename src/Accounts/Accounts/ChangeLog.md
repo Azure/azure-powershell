@@ -21,6 +21,7 @@
 ## Upcoming Release
 * Added Service Principal support for SSH certificate generation in 'SshCredentialFactory'
 * Upgraded `Azure.Identity` dependency to 1.17.2.
+* Added ChangeSafety Support
 
 ## Version 5.4.0
 * Updated the `System.Memory` dependency to v4.6.3 to support the Storage SDK update.

@@ -73,5 +73,5 @@ Updates an existing Redis Enterprise cluster
 Updates an existing Redis Enterprise database
 
 ### [Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion](Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion.md)
-Upgrades the database Redis version to the latest available.
+Updates the database Redis version to the latest available.
 

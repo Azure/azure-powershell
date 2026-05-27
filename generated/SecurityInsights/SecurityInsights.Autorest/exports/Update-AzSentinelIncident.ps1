@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Creates or updates the incident.
+Update the incident.
 .Description
-Creates or updates the incident.
+Update the incident.
 .Example
 Update-AzSentinelIncident -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Id "4a21e485-75ae-48b3-a7b9-e6a92bcfe434" -Title "Suspicious login activity" -Status "Active" -Severity "Medium" -OwnerAssignedTo "user@mydomain.local"
 .Example
@@ -34,7 +34,7 @@ Update-AzSentinelIncident -InputObject $incident -Title $incident.Title -Status 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncident
+Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IIncident
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -70,7 +70,7 @@ LABEL <IIncidentLabel[]>: List of labels relevant to this incident
 https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelincident
 #>
 function Update-AzSentinelIncident {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncident])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IIncident])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -104,13 +104,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentClassification])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("Undetermined", "TruePositive", "BenignPositive", "FalsePositive")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentClassification]
+    [System.String]
     # The reason the incident was closed
     ${Classification},
 
@@ -121,9 +120,9 @@ param(
     ${ClassificationComment},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentClassificationReason])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("SuspiciousActivity", "SuspiciousButExpected", "IncorrectAlertLogic", "InaccurateData")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentClassificationReason]
+    [System.String]
     # The classification reason the incident was closed with
     ${ClassificationReason},
 
@@ -142,9 +141,8 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentLabel[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IIncidentLabel[]]
     # List of labels relevant to this incident
-    # To construct, see NOTES section for LABEL properties and create a hash table.
     ${Label},
 
     [Parameter()]
@@ -190,16 +188,16 @@ param(
     ${ProviderName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentSeverity])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("High", "Medium", "Low", "Informational")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentSeverity]
+    [System.String]
     # The severity of the incident
     ${Severity},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentStatus])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("New", "Active", "Closed")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentStatus]
+    [System.String]
     # The status of the incident
     ${Status},
 
@@ -265,6 +263,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -287,9 +293,7 @@ begin {
             UpdateExpanded = 'Az.SecurityInsights.private\Update-AzSentinelIncident_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.SecurityInsights.private\Update-AzSentinelIncident_UpdateViaIdentityExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -303,6 +307,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
