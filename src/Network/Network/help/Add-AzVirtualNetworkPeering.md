@@ -18,7 +18,7 @@ Add-AzVirtualNetworkPeering -Name <String> -VirtualNetwork <PSVirtualNetwork> -R
  [-PeerCompleteVnets <Boolean>] [-LocalSubnetNames <String[]>] [-RemoteSubnetNames <String[]>]
  [-EnableOnlyIPv6Peering <Boolean>] [-BlockVirtualNetworkAccess] [-AllowForwardedTraffic]
  [-AllowGatewayTransit] [-UseRemoteGateways] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,6 +75,21 @@ Here 'myVnet1' in US West Central is peered with 'myVnet2' in Canada Central.
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AllowForwardedTraffic
 Indicates that this cmdlet allows the forwarded traffic from the virtual machines in the remote virtual network.
 
@@ -125,6 +140,21 @@ Indicates that this cmdlet blocks the virtual machines in the linked virtual net
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
