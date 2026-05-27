@@ -20,7 +20,6 @@
 
 ## Upcoming Release
 * Added ChangeSafety Support
-    - Fixed dynamic parameter inheritance in deployment and deployment stack cmdlets
 * Updated deployment stack cmdlets to `2025-07-01` API; added `-ResourcesWithoutDeleteSupport`, `-ValidationLevel`
 * Fixed `Set-AzRoleAssignment` unable to delete conditions
 * Updated Policy.Autorest to 2025-03-01: added `-Expand`, `-EnforcementMode`, `-Version`; removed `-BackwardCompatible`
