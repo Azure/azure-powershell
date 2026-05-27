@@ -19,7 +19,6 @@
 -->
 
 ## Upcoming Release
-* Updated `PSIdentity` conversions to explicitly use the Operational Insights SDK `Identity` model.
 
 ## Version 3.4.0
 * Added ChangeSafety Support

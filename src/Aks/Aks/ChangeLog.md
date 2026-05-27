@@ -18,9 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added support for `AzureContainerLinux` OS SKU in `New-AzAksCluster` (`-NodeOsSKU`) and `New-AzAksNodePool` (`-OsSKU`)
-    - Azure Container Linux is a container-optimized, immutable Linux OS for AKS node images. See https://aka.ms/azurecontainerlinux
-* Bumped API version to 2026-03-01
 
 ## Version 7.2.0
 * Added ChangeSafety Support

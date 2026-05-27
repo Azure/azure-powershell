@@ -18,11 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Updated `System.IO.FileSystem.AccessControl` dependency from `4.5.0` to `5.0.0`.
 
 ## Version 1.20.0
 * Added ChangeSafety Support
-* Added 'Microsoft.DataTransfer.Gateway.Encryption.dll' to the Authenticode signing target in the release pipeline
 
 ## Version 1.19.7
 * Added more support for Jira V2 (Jira Version 2) and Netezza V2 (Netezza Version 2) connection properties.
