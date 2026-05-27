@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -544,6 +544,113 @@ function Test-SimpleNewVmssSkipExtOverprovision
                    -SkipExtensionsOnOverprovisionedVMs;
         $vmss = Get-AzVmss -ResourceGroupName $vmssname -Name $vmssname;
         Assert-True { $vmss.DoNotRunExtensionsOnOverprovisionedVMs };
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmssname
+    }
+}
+
+<#
+.SYNOPSIS
+Test New-AzVmss (SimpleParameterSet) with ScheduledEventsPolicy parameters
+
+Note: ScheduledEventsPolicy is only supported in regions where the feature is
+enabled. This test pins to 'eastus2euap'. Re-record against a subscription
+where the feature is enabled.
+#>
+function Test-SimpleNewVmssScheduledEventsPolicy
+{
+    # Setup
+    $vmssname = Get-ResourceName
+
+    try
+    {
+        $loc = 'eastus2euap';
+        $username = 'admin01';
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = New-Object -typename System.Management.Automation.PSCredential -ArgumentList $username, $password;
+        [string]$domainNameLabel = "$vmssname$vmssname".ToLower();
+        $stnd = 'Standard';
+        $apiVersion = '2020-07-01';
+
+        # Create VMSS with ScheduledEventsPolicy (SimpleParameterSet)
+        $vmss = New-AzVmss -Name $vmssname -Location $loc -Credential $cred `
+            -DomainNameLabel $domainNameLabel -SecurityType $stnd `
+            -ScheduledEventsApiVersion $apiVersion `
+            -EnableAllInstancesDown $true;
+
+        Assert-NotNull $vmss;
+        Assert-NotNull $vmss.ScheduledEventsPolicy;
+        Assert-NotNull $vmss.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets;
+        Assert-NotNull $vmss.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph;
+        Assert-AreEqual $apiVersion `
+            $vmss.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph.ScheduledEventsApiVersion;
+        Assert-NotNull $vmss.ScheduledEventsPolicy.AllInstancesDown;
+        Assert-AreEqual $true $vmss.ScheduledEventsPolicy.AllInstancesDown.AutomaticallyApprove;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmssname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Update-AzVmss with ScheduledEventsPolicy parameters
+
+Note: ScheduledEventsPolicy is only supported in regions where the feature is
+enabled. This test pins to 'eastus2euap'. Re-record against a subscription
+where the feature is enabled.
+#>
+function Test-UpdateVmssScheduledEventsPolicy
+{
+    # Setup
+    $vmssname = Get-ResourceName
+
+    try
+    {
+        $loc = 'eastus2euap';
+        $username = 'admin01';
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = New-Object -typename System.Management.Automation.PSCredential -ArgumentList $username, $password;
+        [string]$domainNameLabel = "$vmssname$vmssname".ToLower();
+        $stnd = 'Standard';
+        $apiVersion = '2020-07-01';
+
+        # Create a basic VMSS (no ScheduledEvents on create)
+        $vmss = New-AzVmss -Name $vmssname -Location $loc -Credential $cred `
+            -DomainNameLabel $domainNameLabel -SecurityType $stnd;
+        Assert-NotNull $vmss;
+
+        # Negative: PATCH path must reject the ScheduledEvents params
+        Assert-ThrowsContains {
+            Update-AzVmss -ResourceGroupName $vmssname -VMScaleSetName $vmssname `
+                -ScheduledEventsApiVersion $apiVersion;
+        } "CreateOrUpdate path";
+
+        Assert-ThrowsContains {
+            Update-AzVmss -ResourceGroupName $vmssname -VMScaleSetName $vmssname `
+                -EnableAllInstancesDown $true;
+        } "CreateOrUpdate path";
+
+        # Positive: PUT path via -VirtualMachineScaleSet
+        $current = Get-AzVmss -ResourceGroupName $vmssname -Name $vmssname;
+        Update-AzVmss -ResourceGroupName $vmssname -VMScaleSetName $vmssname `
+            -VirtualMachineScaleSet $current `
+            -ScheduledEventsApiVersion $apiVersion `
+            -EnableAllInstancesDown $true;
+
+        $updated = Get-AzVmss -ResourceGroupName $vmssname -Name $vmssname;
+        Assert-NotNull $updated.ScheduledEventsPolicy;
+        Assert-NotNull $updated.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets;
+        Assert-NotNull $updated.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph;
+        Assert-AreEqual $apiVersion `
+            $updated.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph.ScheduledEventsApiVersion;
+        Assert-NotNull $updated.ScheduledEventsPolicy.AllInstancesDown;
+        Assert-AreEqual $true $updated.ScheduledEventsPolicy.AllInstancesDown.AutomaticallyApprove;
     }
     finally
     {

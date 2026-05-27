@@ -204,14 +204,14 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD")]
+            HelpMessage = "Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD. For available API versions, see https://learn.microsoft.com/rest/api/compute/scheduled-events.")]
         public string ScheduledEventsApiVersion { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies if Scheduled Events should be auto-approved when all instances are down.")]
-        public bool? EnableAllInstancesDown { get; set; }
+        public bool? ScheduledEventsAutoApproveAllInstancesDown { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Commands.Compute
                         parameters.StorageProfile.AlignRegionalDisksToVMZone = this.AlignRegionalDisksToVMZone;
                     }
 
-                    if (this.IsParameterBound(c => c.ScheduledEventsApiVersion) || this.IsParameterBound(c => c.EnableAllInstancesDown))
+                    if (this.IsParameterBound(c => c.ScheduledEventsApiVersion) || this.IsParameterBound(c => c.ScheduledEventsAutoApproveAllInstancesDown))
                     {
                         if (parameters.ScheduledEventsPolicy == null)
                         {
@@ -476,13 +476,13 @@ namespace Microsoft.Azure.Commands.Compute
                             parameters.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph.ScheduledEventsApiVersion = this.ScheduledEventsApiVersion;
                         }
 
-                        if (this.IsParameterBound(c => c.EnableAllInstancesDown))
+                        if (this.IsParameterBound(c => c.ScheduledEventsAutoApproveAllInstancesDown))
                         {
                             if (parameters.ScheduledEventsPolicy.AllInstancesDown == null)
                             {
                                 parameters.ScheduledEventsPolicy.AllInstancesDown = new AllInstancesDown();
                             }
-                            parameters.ScheduledEventsPolicy.AllInstancesDown.AutomaticallyApprove = this.EnableAllInstancesDown;
+                            parameters.ScheduledEventsPolicy.AllInstancesDown.AutomaticallyApprove = this.ScheduledEventsAutoApproveAllInstancesDown;
                         }
                     }
 

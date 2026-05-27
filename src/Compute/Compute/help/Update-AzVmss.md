@@ -318,7 +318,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableAllInstancesDown
-Specifies if Scheduled Events should be auto-approved when all instances are down.
+Specifies if Scheduled Events should be auto-approved when all instances are down. This parameter is only supported when updating a Virtual Machine Scale Set via the `-VirtualMachineScaleSet` object parameter (e.g. piping the output of `Get-AzVmss`).
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -1027,7 +1027,7 @@ Accept wildcard characters: False
 ```
 
 ### -ScheduledEventsApiVersion
-Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD
+Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD. For available API versions, see https://learn.microsoft.com/rest/api/compute/scheduled-events. This parameter is only supported when updating a Virtual Machine Scale Set via the `-VirtualMachineScaleSet` object parameter (e.g. piping the output of `Get-AzVmss`).
 
 ```yaml
 Type: System.String

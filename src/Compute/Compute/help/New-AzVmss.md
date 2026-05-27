@@ -42,7 +42,7 @@ New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [
  [-SkuProfileAllocationStrategy <String>] [-EnableProxyAgent] [-AddProxyAgentExtension]
  [-ZonePlacementPolicy <String>] [-IncludeZone <String[]>] [-ExcludeZone <String[]>]
  [-HighSpeedInterconnectPlacement <String>] [-ScheduledEventsApiVersion <String>]
- [-EnableAllInstancesDown <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-SinglePlacementGroup]
+ [-ScheduledEventsAutoApproveAllInstancesDown <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-SinglePlacementGroup]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -484,7 +484,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -EnableAllInstancesDown
+### -ScheduledEventsAutoApproveAllInstancesDown
 Specifies if Scheduled Events should be auto-approved when all instances are down.
 
 ```yaml
@@ -954,7 +954,7 @@ Accept wildcard characters: False
 ```
 
 ### -ScheduledEventsApiVersion
-Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD
+Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD. For available API versions, see https://learn.microsoft.com/rest/api/compute/scheduled-events.
 
 ```yaml
 Type: System.String

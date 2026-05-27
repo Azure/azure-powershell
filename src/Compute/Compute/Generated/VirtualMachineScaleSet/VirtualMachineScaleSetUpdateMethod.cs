@@ -484,7 +484,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD")]
+            HelpMessage = "Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD. For available API versions, see https://learn.microsoft.com/rest/api/compute/scheduled-events.")]
         public string ScheduledEventsApiVersion { get; set; }
 
         [Parameter(
@@ -1584,9 +1584,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Value = this.MaxInstancePercentPerZoneValue;
             }
 
-            // Note: ScheduledEventsPolicy is not supported in VirtualMachineScaleSetUpdate model yet.
-            // To use ScheduledEventsApiVersion or EnableAllInstancesDown parameters,
-            // you must provide a VirtualMachineScaleSet object which will use the CreateOrUpdate path.
+            // ScheduledEventsPolicy is not supported in VirtualMachineScaleSetUpdate (PATCH) model.
+            // When using the PATCH path (VirtualMachineScaleSet is null), ScheduledEventsApiVersion and
+            // EnableAllInstancesDown parameters are not applied and are therefore rejected at runtime.
+            if (this.IsParameterBound(c => c.ScheduledEventsApiVersion) ||
+                this.IsParameterBound(c => c.EnableAllInstancesDown))
+            {
+                throw new PSArgumentException(
+                    "The -ScheduledEventsApiVersion and -EnableAllInstancesDown parameters are only supported when updating a Virtual Machine Scale Set using the CreateOrUpdate path. " +
+                    "Provide a VirtualMachineScaleSet object via -VirtualMachineScaleSet parameter (e.g., pipe the output of 'Get-AzVmss') when configuring Scheduled Events.");
+            }
         }
 
         private void BuildPutObject()

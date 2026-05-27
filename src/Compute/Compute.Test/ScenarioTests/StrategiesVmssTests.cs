@@ -137,5 +137,19 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-SimpleNewVmssSkipExtOverprovision");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmssScheduledEventsPolicy()
+        {
+            TestRunner.RunTestScript("Test-SimpleNewVmssScheduledEventsPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateVmssScheduledEventsPolicy()
+        {
+            TestRunner.RunTestScript("Test-UpdateVmssScheduledEventsPolicy");
+        }
     }
 }

@@ -22,7 +22,7 @@ Update-AzVM [-ResourceGroupName] <String> -VM <PSVirtualMachine> [-Tag <Hashtabl
  [-HibernationEnabled] [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-SecurityType <String>]
  [-EnableVtpm <Boolean>] [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>]
  [-AlignRegionalDisksToVMZone <Boolean>] [-ScheduledEventsApiVersion <String>]
- [-EnableAllInstancesDown <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-ScheduledEventsAutoApproveAllInstancesDown <Boolean>] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,7 +36,7 @@ Update-AzVM [-ResourceGroupName] <String> -VM <PSVirtualMachine> [-Tag <Hashtabl
  [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
  [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>]
  [-AlignRegionalDisksToVMZone <Boolean>] [-ScheduledEventsApiVersion <String>]
- [-EnableAllInstancesDown <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-ScheduledEventsAutoApproveAllInstancesDown <Boolean>] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -49,7 +49,7 @@ Update-AzVM [-Id] <String> -VM <PSVirtualMachine> [-Tag <Hashtable>] [-OsDiskWri
  [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
  [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>]
  [-AlignRegionalDisksToVMZone <Boolean>] [-ScheduledEventsApiVersion <String>]
- [-EnableAllInstancesDown <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-ScheduledEventsAutoApproveAllInstancesDown <Boolean>] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -151,7 +151,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableAllInstancesDown
+### -ScheduledEventsAutoApproveAllInstancesDown
 Specifies if Scheduled Events should be auto-approved when all instances are down.
 
 ```yaml
@@ -410,7 +410,7 @@ Accept wildcard characters: False
 ```
 
 ### -ScheduledEventsApiVersion
-Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD
+Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD. For available API versions, see https://learn.microsoft.com/rest/api/compute/scheduled-events.
 
 ```yaml
 Type: System.String

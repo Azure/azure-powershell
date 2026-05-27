@@ -15,7 +15,7 @@ Updates an availability set.
 ```
 Update-AzAvailabilitySet [-AvailabilitySet] <PSAvailabilitySet> [[-Sku] <String>]
  [-ProximityPlacementGroupId <String>] [-Tag <Hashtable>] [-ScheduledEventsApiVersion <String>]
- [-EnableAllInstancesDown <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-ScheduledEventsAutoApproveAllInstancesDown <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -78,7 +78,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableAllInstancesDown
+### -ScheduledEventsAutoApproveAllInstancesDown
 Specifies if Scheduled Events should be auto-approved when all instances are down.
 
 ```yaml
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -ScheduledEventsApiVersion
-Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD
+Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD. For available API versions, see https://learn.microsoft.com/rest/api/compute/scheduled-events.
 
 ```yaml
 Type: System.String
