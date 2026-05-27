@@ -17,8 +17,9 @@ Starts replication for the specified server.
 New-AzMigrateLocalServerReplication -MachineId <String> -OSDiskID <String> -SourceApplianceName <String>
  -TargetApplianceName <String> -TargetResourceGroupId <String> -TargetStoragePathId <String>
  -TargetVirtualSwitchId <String> -TargetVMName <String> [-IsDynamicMemoryEnabled <String>]
- [-SubscriptionId <String>] [-TargetTestVirtualSwitchId <String>] [-TargetVMCPUCore <Int32>]
- [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-MigrateAsArcVM <String>] [-SubscriptionId <String>] [-TargetTestVirtualSwitchId <String>]
+ [-TargetVMCPUCore <Int32>] [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ByIdPowerUser
@@ -26,8 +27,9 @@ New-AzMigrateLocalServerReplication -MachineId <String> -OSDiskID <String> -Sour
 New-AzMigrateLocalServerReplication -DiskToInclude <AzLocalDiskInput[]> -MachineId <String>
  -NicToInclude <AzLocalNicInput[]> -SourceApplianceName <String> -TargetApplianceName <String>
  -TargetResourceGroupId <String> -TargetStoragePathId <String> -TargetVMName <String>
- [-IsDynamicMemoryEnabled <String>] [-SubscriptionId <String>] [-TargetVMCPUCore <Int32>]
- [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IsDynamicMemoryEnabled <String>] [-MigrateAsArcVM <String>] [-SubscriptionId <String>]
+ [-TargetVMCPUCore <Int32>] [-TargetVMRam <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -173,6 +175,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MigrateAsArcVM
+Specifies whether to migrate the server as an Azure Arc-enabled VM.
+When set to 'true', an Azure Arc-enabled machine resource with the same name as -TargetVMName must already exist in the resource group specified by -TargetResourceGroupId.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
