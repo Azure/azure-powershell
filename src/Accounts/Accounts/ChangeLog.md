@@ -19,7 +19,12 @@
 -->
 
 ## Upcoming Release
-* Upgraded `Azure.Identity` dependency to 1.17.2.
+* Upgraded `Azure.Core` dependency from 1.50.0 to 1.56.0.
+* Upgraded `Azure.Identity` dependency from 1.17.2 to 1.21.0.
+* Upgraded `Azure.Identity.Broker` dependency from 1.1.0 to 1.6.0.
+* Upgraded `Microsoft.Identity.Client` dependency from 4.83.1 to 4.83.3.
+* Upgraded `Microsoft.Identity.Client.Extensions.Msal` dependency from 4.83.1 to 4.83.3.
+* Upgraded `Microsoft.Identity.Client.Broker` dependency from 4.83.1 to 4.83.3.
 
 ## Version 5.4.0
 * Updated the `System.Memory` dependency to v4.6.3 to support the Storage SDK update.

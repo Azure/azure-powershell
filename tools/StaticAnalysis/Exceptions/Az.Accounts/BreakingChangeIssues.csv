@@ -1,0 +1,3 @@
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Az.Accounts","Microsoft.Azure.Commands.Profile.Context.RenameAzureRmContext","Rename-AzContext","0","1050","The parameter set 'RenameByInputObject' for cmdlet 'Rename-AzContext' has been removed.","Add parameter set 'RenameByInputObject' back to cmdlet 'Rename-AzContext'."
+"Az.Accounts","Microsoft.Azure.Commands.Profile.Context.RenameAzureRmContext","Rename-AzContext","0","1050","The parameter set '__AllParameterSets' for cmdlet 'Rename-AzContext' has been removed.","Add parameter set '__AllParameterSets' back to cmdlet 'Rename-AzContext'."
