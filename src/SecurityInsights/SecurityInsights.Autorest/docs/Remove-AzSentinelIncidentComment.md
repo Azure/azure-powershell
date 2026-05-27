@@ -25,6 +25,12 @@ Remove-AzSentinelIncidentComment -InputObject <ISecurityInsightsIdentity> [-Defa
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityIncident
+```
+Remove-AzSentinelIncidentComment -Id <String> -IncidentInputObject <ISecurityInsightsIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Delete the incident comment.
 
@@ -60,7 +66,7 @@ Incident comment ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityIncident
 Aliases: IncidentCommentId
 
 Required: True
@@ -85,9 +91,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IncidentInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
+Parameter Sets: DeleteViaIdentityIncident
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity

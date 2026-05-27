@@ -152,7 +152,7 @@ function ValidateExclusiveSourceStoreAssignment
 	# Ensures exclusive source stores (e.g. OperationalStore for AzureBlob) are
 	# only used on their mapped default rule (e.g. Default_OperationalStore).
 	# Any lifecycle with an exclusive store is rejected on non-default rules
-	# (e.g. Weekly, Monthly, Yearly) — only the mapped default from
+	# (e.g. Weekly, Monthly, Yearly) - only the mapped default from
 	# defaultRetentionRuleNames in the manifest may carry that store.
 	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
 	param(

@@ -18,10 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Changed `Edit-AzDataProtectionPolicyRetentionRuleClientObject` to require `-Name Default_OperationalStore`
-* Added `RenameTo` to `Initialize-AzDataProtectionRestoreRequest`
+* Changed retention rule to require `-Name Default_OperationalStore`
+* Added `RenameTo` to restore request
 * [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
-* Added Azure Cosmos DB protection support
+* Added Cosmos DB protection support
 
 ## Version 2.10.1
 * Fixed non-ASCII U+2013 characters failed module import in WindowsPowerShell
