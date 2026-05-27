@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 8.0.0
 * Added ChangeSafety Support
 * Changed `UserAssignedIdentityId` type to string[]
 

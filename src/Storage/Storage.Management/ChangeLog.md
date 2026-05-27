@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 9.7.0
 * Added ChangeSafety Support
 * Updated prompt in `Start-AzStorageAccountMigration`
 * Added MockRun TriggerType in `New/Update-AzStorageTaskAssignment`

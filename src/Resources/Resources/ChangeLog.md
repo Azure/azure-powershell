@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 10.0.0
 * Added ChangeSafety Support
 * Updated deployment stack cmdlets to `2025-07-01` API; added `-ResourcesWithoutDeleteSupport`, `-ValidationLevel`
 * Fixed `Set-AzRoleAssignment` unable to delete conditions

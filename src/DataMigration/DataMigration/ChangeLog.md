@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.0
 * Added ChangeSafety Support
 * [Preannounced breaking changes](https://go.microsoft.com/fwlink/?linkid=2333229)
 

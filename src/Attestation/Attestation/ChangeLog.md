@@ -20,6 +20,8 @@
 
 
 ## Upcoming Release
+
+## Version 3.1.0
 * Added ChangeSafety Support
 
 ## Version 3.0.0

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.0
 * Upgraded API version to 2025-11-01
 * Hid Network Experiment cmdlets
 * Fixed `New/Remove-AzFrontDoorWafPolicy` `UriFormatException`
