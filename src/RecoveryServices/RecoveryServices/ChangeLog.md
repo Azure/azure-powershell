@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added Cross region restore support for Delos cloud regions
 * Added ChangeSafety Support
 * Added soft delete support for Azure File share backup items (`Undo-AzRecoveryServicesBackupItemDeletion` `Get-AzRecoveryServicesBackupItem -DeleteState SoftDeleted`)
 
