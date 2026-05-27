@@ -24,7 +24,7 @@ Create an in-memory object for EdgeAction.
 
 ### Example 1: Create CdnRuleEdgeActionObject
 ```powershell
-New-AzFrontDoorCdnRuleEdgeActionObject -ParameterInvocationPoint ClientRequest -ParameterTypeName DeliveryRuleUrlRedirectActionParameters ReferenceId $id
+New-AzFrontDoorCdnRuleEdgeActionObject -ParameterInvocationPoint ClientRequest -ParameterTypeName DeliveryRuleUrlRedirectActionParameters -ReferenceId $id
 ```
 
 Create CdnRuleEdgeActionObject
