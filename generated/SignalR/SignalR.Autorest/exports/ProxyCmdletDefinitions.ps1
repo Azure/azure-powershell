@@ -30,7 +30,7 @@ $customCert | Get-AzWebPubSubCustomCertificate
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ICustomCertificate
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ICustomCertificate
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -47,14 +47,27 @@ INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
   [ResourceName <String>]: The name of the resource.
   [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
   [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+WEBPUBSUBINPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
+  [CertificateName <String>]: Custom certificate name
+  [HubName <String>]: The hub name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [Name <String>]: Custom domain name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ResourceName <String>]: The name of the resource.
+  [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
+  [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
 https://learn.microsoft.com/powershell/module/az.signalr/get-azwebpubsubcustomcertificate
 #>
 function Get-AzWebPubSubCustomCertificate {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ICustomCertificate])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ICustomCertificate])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityWebPubSub', Mandatory)]
     [Alias('CertificateName')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
     [System.String]
@@ -89,8 +102,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityWebPubSub', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity]
+    # Identity Parameter
+    ${WebPubSubInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -148,6 +166,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -169,11 +195,10 @@ begin {
         $mapping = @{
             Get = 'Az.SignalR.private\Get-AzWebPubSubCustomCertificate_Get';
             GetViaIdentity = 'Az.SignalR.private\Get-AzWebPubSubCustomCertificate_GetViaIdentity';
+            GetViaIdentityWebPubSub = 'Az.SignalR.private\Get-AzWebPubSubCustomCertificate_GetViaIdentityWebPubSub';
             List = 'Az.SignalR.private\Get-AzWebPubSubCustomCertificate_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -187,6 +212,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -246,7 +274,7 @@ $customDomain | Get-AzWebPubSubCustomDomain
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ICustomDomain
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ICustomDomain
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -263,14 +291,27 @@ INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
   [ResourceName <String>]: The name of the resource.
   [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
   [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+WEBPUBSUBINPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
+  [CertificateName <String>]: Custom certificate name
+  [HubName <String>]: The hub name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [Name <String>]: Custom domain name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ResourceName <String>]: The name of the resource.
+  [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
+  [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
 https://learn.microsoft.com/powershell/module/az.signalr/get-azwebpubsubcustomdomain
 #>
 function Get-AzWebPubSubCustomDomain {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ICustomDomain])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ICustomDomain])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityWebPubSub', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
     [System.String]
     # Custom domain name.
@@ -304,8 +345,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityWebPubSub', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity]
+    # Identity Parameter
+    ${WebPubSubInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -363,6 +409,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -384,11 +438,10 @@ begin {
         $mapping = @{
             Get = 'Az.SignalR.private\Get-AzWebPubSubCustomDomain_Get';
             GetViaIdentity = 'Az.SignalR.private\Get-AzWebPubSubCustomDomain_GetViaIdentity';
+            GetViaIdentityWebPubSub = 'Az.SignalR.private\Get-AzWebPubSubCustomDomain_GetViaIdentityWebPubSub';
             List = 'Az.SignalR.private\Get-AzWebPubSubCustomDomain_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -402,6 +455,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -464,11 +520,23 @@ $hubIdentity | Get-AzWebPubSubHub
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubHub
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubHub
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+HUBINPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
+  [CertificateName <String>]: Custom certificate name
+  [HubName <String>]: The hub name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [Name <String>]: Custom domain name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ResourceName <String>]: The name of the resource.
+  [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
+  [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
   [CertificateName <String>]: Custom certificate name
@@ -485,7 +553,7 @@ INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.signalr/get-azwebpubsubhub
 #>
 function Get-AzWebPubSubHub {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubHub])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubHub])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -504,6 +572,7 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityHub', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
     [System.String]
@@ -523,8 +592,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityHub', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity]
+    # Identity Parameter
+    ${HubInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -582,6 +656,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -603,11 +685,10 @@ begin {
         $mapping = @{
             Get = 'Az.SignalR.private\Get-AzWebPubSubHub_Get';
             GetViaIdentity = 'Az.SignalR.private\Get-AzWebPubSubHub_GetViaIdentity';
+            GetViaIdentityHub = 'Az.SignalR.private\Get-AzWebPubSubHub_GetViaIdentityHub';
             List = 'Az.SignalR.private\Get-AzWebPubSubHub_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -621,6 +702,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -678,13 +762,13 @@ $wps | Get-AzWebPubSubKey | Format-List
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubKeys
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubKeys
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
+INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
   [CertificateName <String>]: Custom certificate name
   [HubName <String>]: The hub name.
   [Id <String>]: Resource identity path
@@ -699,7 +783,7 @@ INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.signalr/get-azwebpubsubkey
 #>
 function Get-AzWebPubSubKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubKeys])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubKeys])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='List', Mandatory)]
@@ -786,6 +870,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -808,9 +900,7 @@ begin {
             List = 'Az.SignalR.private\Get-AzWebPubSubKey_List';
             ListViaIdentity = 'Az.SignalR.custom\Get-AzWebPubSubKey_ListViaIdentity';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -824,6 +914,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -876,12 +969,12 @@ List all available skus of the resource.
 Get-AzWebPubSubSku -ResourceGroupName psdemo -ResourceName psdemo-wps | Format-List
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ISkuList
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ISkuList
 .Link
 https://learn.microsoft.com/powershell/module/az.signalr/get-azwebpubsubsku
 #>
 function Get-AzWebPubSubSku {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ISkuList])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ISkuList])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -961,6 +1054,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -982,9 +1083,7 @@ begin {
         $mapping = @{
             List = 'Az.SignalR.private\Get-AzWebPubSubSku_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -998,6 +1097,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1050,12 +1152,12 @@ List resource usage quotas by location.
 Get-AzWebPubSubUsage -Location eastus | Format-List
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ISignalRServiceUsage
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ISignalRServiceUsage
 .Link
 https://learn.microsoft.com/powershell/module/az.signalr/get-azwebpubsubusage
 #>
 function Get-AzWebPubSubUsage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ISignalRServiceUsage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ISignalRServiceUsage])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -1128,6 +1230,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1149,9 +1259,7 @@ begin {
         $mapping = @{
             List = 'Az.SignalR.private\Get-AzWebPubSubUsage_List';
         }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1165,6 +1273,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1229,7 +1340,7 @@ $identity | Get-AzWebPubSub
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubResource
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1250,7 +1361,7 @@ INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.signalr/get-azwebpubsub
 #>
 function Get-AzWebPubSub {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1282,7 +1393,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -1341,6 +1451,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1365,9 +1483,7 @@ begin {
             List = 'Az.SignalR.private\Get-AzWebPubSub_List';
             List1 = 'Az.SignalR.private\Get-AzWebPubSub_List1';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1381,6 +1497,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1426,19 +1545,37 @@ end {
 
 <#
 .Synopsis
-Create or update a custom certificate.
+Create a custom certificate.
 .Description
-Create or update a custom certificate.
+Create a custom certificate.
 .Example
 New-AzWebPubSubCustomCertificate -Name mycustomcert -ResourceGroupName rg -ResourceName wps -KeyVaultBaseUri https://kvcustomcertificatetest.vault.azure.net/ -KeyVaultSecretName manual-test
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ICustomCertificate
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ICustomCertificate
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+WEBPUBSUBINPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
+  [CertificateName <String>]: Custom certificate name
+  [HubName <String>]: The hub name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [Name <String>]: Custom domain name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ResourceName <String>]: The name of the resource.
+  [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
+  [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
 https://learn.microsoft.com/powershell/module/az.signalr/new-azwebpubsubcustomcertificate
 #>
 function New-AzWebPubSubCustomCertificate {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ICustomCertificate])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ICustomCertificate])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1448,20 +1585,26 @@ param(
     # Custom certificate name
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
     [System.String]
     # The name of the resource group that contains the resource.
     # You can obtain this value from the Azure Resource Manager API or the portal.
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
     [System.String]
     # The name of the resource.
     ${ResourceName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -1469,23 +1612,44 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityWebPubSubExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity]
+    # Identity Parameter
+    ${WebPubSubInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityWebPubSubExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
     [System.String]
     # Base uri of the KeyVault that stores certificate.
     ${KeyVaultBaseUri},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityWebPubSubExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
     [System.String]
     # Certificate secret name.
     ${KeyVaultSecretName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityWebPubSubExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
     [System.String]
     # Certificate secret version.
     ${KeyVaultSecretVersion},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1555,6 +1719,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1575,10 +1747,11 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.SignalR.private\New-AzWebPubSubCustomCertificate_CreateExpanded';
+            CreateViaIdentityWebPubSubExpanded = 'Az.SignalR.private\New-AzWebPubSubCustomCertificate_CreateViaIdentityWebPubSubExpanded';
+            CreateViaJsonFilePath = 'Az.SignalR.private\New-AzWebPubSubCustomCertificate_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.SignalR.private\New-AzWebPubSubCustomCertificate_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1592,6 +1765,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1637,9 +1813,9 @@ end {
 
 <#
 .Synopsis
-Create or update a hub setting.
+Create a hub setting.
 .Description
-Create or update a hub setting.
+Create a hub setting.
 .Example
 $eventHandler = @{UrlTemplate = 'http://example.com/api/{hub}/connect/{event}' ; AuthType = 'None' ; SystemEvent = 'connect' ; } ,
         @{ UrlTemplate = 'http://example.com/api/{hub}/userevent/{event}' ; AuthType = 'None' ; UserEventPattern = '*' }
@@ -1658,8 +1834,10 @@ $eventListeners =
 
 $hub = New-AzWebPubSubHub -Name hub2 -ResourceGroupName rg -ResourceName psdemo -EventListener $eventListeners
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubHub
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubHub
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1667,42 +1845,60 @@ To create the parameters described below, construct a hash table containing the 
 
 EVENTHANDLER <IEventHandler[]>: Event handler of a hub.
   UrlTemplate <String>: Gets or sets the EventHandler URL template. You can use a predefined parameter {hub} and {event} inside the template, the value of the EventHandler URL is dynamically calculated when the client request comes in.         For example, UrlTemplate can be `http://example.com/api/{hub}/{event}`. The host part can't contains parameters.
-  [AuthType <UpstreamAuthType?>]: Upstream auth type enum.
+  [AuthType <String>]: Upstream auth type enum.
   [ManagedIdentityResource <String>]: The Resource indicating the App ID URI of the target resource.         It also appears in the aud (audience) claim of the issued token.
-  [SystemEvent <String[]>]: Gets ot sets the list of system events. Valid values contain: 'connect', 'connected', 'disconnected'.
+  [SystemEvent <List<String>>]: Gets ot sets the list of system events. Valid values contain: 'connect', 'connected', 'disconnected'.
   [UserEventPattern <String>]: Gets or sets the matching pattern for event names.         There are 3 kinds of patterns supported:             1. "*", it matches any event name             2. Combine multiple events with ",", for example "event1,event2", it matches event "event1" and "event2"             3. A single event name, for example, "event1", it matches "event1"
 
 EVENTLISTENER <IEventListener[]>: Event listener settings for forwarding your client events to listeners.Event listener is transparent to Web PubSub clients, and it doesn't return any result to clients nor interrupt the lifetime of clients.One event can be sent to multiple listeners, as long as it matches the filters in those listeners. The order of the array elements doesn't matter.Maximum count of event listeners among all hubs is 10.
   Endpoint <IEventListenerEndpoint>: An endpoint specifying where Web PubSub should send events to.
   Filter <IEventListenerFilter>: A base class for event filter which determines whether an event should be sent to an event listener.
+
+HUBINPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
+  [CertificateName <String>]: Custom certificate name
+  [HubName <String>]: The hub name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [Name <String>]: Custom domain name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ResourceName <String>]: The name of the resource.
+  [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
+  [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
 https://learn.microsoft.com/powershell/module/az.signalr/new-azwebpubsubhub
 #>
 function New-AzWebPubSubHub {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubHub])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubHub])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Alias('HubName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
-    [System.String]
-    # The hub name.
-    ${Name},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
-    [System.String]
-    # The name of the resource group that contains the resource.
-    # You can obtain this value from the Azure Resource Manager API or the portal.
-    ${ResourceGroupName},
-
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
     [System.String]
     # The name of the resource.
     ${ResourceName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Alias('HubName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
+    [System.String]
+    # The hub name.
+    ${Name},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
+    [System.String]
+    # The name of the resource group that contains the resource.
+    # You can obtain this value from the Azure Resource Manager API or the portal.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -1710,29 +1906,48 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateViaIdentityHubExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity]
+    # Identity Parameter
+    ${HubInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityHubExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
     [System.String]
     # The settings for configuring if anonymous connections are allowed for this hub: "allow" or "deny".
     # Default to "deny".
     ${AnonymousConnectPolicy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityHubExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IEventHandler[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IEventHandler[]]
     # Event handler of a hub.
-    # To construct, see NOTES section for EVENTHANDLER properties and create a hash table.
     ${EventHandler},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityHubExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IEventListener[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IEventListener[]]
     # Event listener settings for forwarding your client events to listeners.Event listener is transparent to Web PubSub clients, and it doesn't return any result to clients nor interrupt the lifetime of clients.One event can be sent to multiple listeners, as long as it matches the filters in those listeners.
     # The order of the array elements doesn't matter.Maximum count of event listeners among all hubs is 10.
-    # To construct, see NOTES section for EVENTLISTENER properties and create a hash table.
     ${EventListener},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1802,6 +2017,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -1822,10 +2045,11 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.SignalR.private\New-AzWebPubSubHub_CreateExpanded';
+            CreateViaIdentityHubExpanded = 'Az.SignalR.private\New-AzWebPubSubHub_CreateViaIdentityHubExpanded';
+            CreateViaJsonFilePath = 'Az.SignalR.private\New-AzWebPubSubHub_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.SignalR.private\New-AzWebPubSubHub_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1839,6 +2063,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -1913,6 +2140,18 @@ INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
   [ResourceName <String>]: The name of the resource.
   [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
   [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+WEBPUBSUBINPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
+  [CertificateName <String>]: Custom certificate name
+  [HubName <String>]: The hub name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [Name <String>]: Custom domain name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ResourceName <String>]: The name of the resource.
+  [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
+  [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
 https://learn.microsoft.com/powershell/module/az.signalr/remove-azwebpubsubcustomcertificate
 #>
@@ -1921,6 +2160,7 @@ function Remove-AzWebPubSubCustomCertificate {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityWebPubSub', Mandatory)]
     [Alias('CertificateName')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
     [System.String]
@@ -1952,8 +2192,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityWebPubSub', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity]
+    # Identity Parameter
+    ${WebPubSubInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2017,6 +2262,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2038,10 +2291,9 @@ begin {
         $mapping = @{
             Delete = 'Az.SignalR.private\Remove-AzWebPubSubCustomCertificate_Delete';
             DeleteViaIdentity = 'Az.SignalR.private\Remove-AzWebPubSubCustomCertificate_DeleteViaIdentity';
+            DeleteViaIdentityWebPubSub = 'Az.SignalR.private\Remove-AzWebPubSubCustomCertificate_DeleteViaIdentityWebPubSub';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2055,6 +2307,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2129,6 +2384,18 @@ INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
   [ResourceName <String>]: The name of the resource.
   [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
   [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+WEBPUBSUBINPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
+  [CertificateName <String>]: Custom certificate name
+  [HubName <String>]: The hub name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [Name <String>]: Custom domain name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ResourceName <String>]: The name of the resource.
+  [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
+  [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
 https://learn.microsoft.com/powershell/module/az.signalr/remove-azwebpubsubcustomdomain
 #>
@@ -2137,6 +2404,7 @@ function Remove-AzWebPubSubCustomDomain {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityWebPubSub', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
     [System.String]
     # Custom domain name.
@@ -2167,8 +2435,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityWebPubSub', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity]
+    # Identity Parameter
+    ${WebPubSubInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2244,6 +2517,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2265,10 +2546,9 @@ begin {
         $mapping = @{
             Delete = 'Az.SignalR.private\Remove-AzWebPubSubCustomDomain_Delete';
             DeleteViaIdentity = 'Az.SignalR.private\Remove-AzWebPubSubCustomDomain_DeleteViaIdentity';
+            DeleteViaIdentityWebPubSub = 'Az.SignalR.private\Remove-AzWebPubSubCustomDomain_DeleteViaIdentityWebPubSub';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2282,6 +2562,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2348,6 +2631,18 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+HUBINPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
+  [CertificateName <String>]: Custom certificate name
+  [HubName <String>]: The hub name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [Name <String>]: Custom domain name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ResourceName <String>]: The name of the resource.
+  [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
+  [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
 INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
   [CertificateName <String>]: Custom certificate name
   [HubName <String>]: The hub name.
@@ -2381,6 +2676,7 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityHub', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
     [System.String]
     # The name of the resource.
@@ -2398,8 +2694,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityHub', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity]
+    # Identity Parameter
+    ${HubInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -2475,6 +2776,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2496,10 +2805,9 @@ begin {
         $mapping = @{
             Delete = 'Az.SignalR.private\Remove-AzWebPubSubHub_Delete';
             DeleteViaIdentity = 'Az.SignalR.private\Remove-AzWebPubSubHub_DeleteViaIdentity';
+            DeleteViaIdentityHub = 'Az.SignalR.private\Remove-AzWebPubSubHub_DeleteViaIdentityHub';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2513,6 +2821,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2623,7 +2934,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -2700,6 +3010,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2722,9 +3040,7 @@ begin {
             Delete = 'Az.SignalR.private\Remove-AzWebPubSub_Delete';
             DeleteViaIdentity = 'Az.SignalR.private\Remove-AzWebPubSub_DeleteViaIdentity';
         }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2738,6 +3054,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -2848,7 +3167,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -2925,6 +3243,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -2947,9 +3273,7 @@ begin {
             Restart = 'Az.SignalR.private\Restart-AzWebPubSub_Restart';
             RestartViaIdentity = 'Az.SignalR.private\Restart-AzWebPubSub_RestartViaIdentity';
         }
-        if (('Restart') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Restart') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2963,6 +3287,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3015,12 +3342,12 @@ Checks that the resource name is valid and is not already in use.
 Test-AzWebPubSubNameAvailability -Location eastus -Name abc
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.INameAvailability
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.INameAvailability
 .Link
 https://learn.microsoft.com/powershell/module/az.signalr/test-azwebpubsubnameavailability
 #>
 function Test-AzWebPubSubNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.INameAvailability])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.INameAvailability])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3037,12 +3364,24 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
     [System.String]
     # The resource name to validate.
     # e.g."my-resource-name"
     ${Name},
+
+    [Parameter(ParameterSetName='CheckViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Check operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CheckViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
+    [System.String]
+    # Json string supplied to the Check operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -3100,6 +3439,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3120,17 +3467,17 @@ begin {
 
         $mapping = @{
             CheckExpanded = 'Az.SignalR.private\Test-AzWebPubSubNameAvailability_CheckExpanded';
+            CheckViaJsonFilePath = 'Az.SignalR.private\Test-AzWebPubSubNameAvailability_CheckViaJsonFilePath';
+            CheckViaJsonString = 'Az.SignalR.private\Test-AzWebPubSubNameAvailability_CheckViaJsonString';
         }
-        if (('CheckExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CheckExpanded', 'CheckViaJsonFilePath', 'CheckViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
         }
-        if (('CheckExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Type')) {
+        if (('CheckExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Type') ) {
             $PSBoundParameters['Type'] = "Microsoft.SignalRService/webPubSub"
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
@@ -3140,6 +3487,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3185,12 +3535,570 @@ end {
 
 <#
 .Synopsis
-Operation to update an exiting resource.
+Update a custom domain.
 .Description
-Operation to update an exiting resource.
+Update a custom domain.
+.Example
+$cert = Get-AzWebPubSubCustomCertificate -Name mycustomcert -ResourceGroupName rg -ResourceName wps
+Update-AzWebPubSubCustomDomain -Name mydomain -ResourceGroupName rg -ResourceName wps -DomainName wps.manual-test.dev.signalr.azure.com -CustomCertificateId $cert.Id
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ICustomDomain
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
+  [CertificateName <String>]: Custom certificate name
+  [HubName <String>]: The hub name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [Name <String>]: Custom domain name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ResourceName <String>]: The name of the resource.
+  [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
+  [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+WEBPUBSUBINPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
+  [CertificateName <String>]: Custom certificate name
+  [HubName <String>]: The hub name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [Name <String>]: Custom domain name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ResourceName <String>]: The name of the resource.
+  [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
+  [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+.Link
+https://learn.microsoft.com/powershell/module/az.signalr/update-azwebpubsubcustomdomain
+#>
+function Update-AzWebPubSubCustomDomain {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ICustomDomain])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityWebPubSubExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
+    [System.String]
+    # Custom domain name.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
+    [System.String]
+    # The name of the resource group that contains the resource.
+    # You can obtain this value from the Azure Resource Manager API or the portal.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
+    [System.String]
+    # The name of the resource.
+    ${ResourceName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Gets subscription Id which uniquely identify the Microsoft Azure subscription.
+    # The subscription ID forms part of the URI for every service call.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityWebPubSubExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity]
+    # Identity Parameter
+    ${WebPubSubInputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
+    [System.String]
+    # Resource ID.
+    ${CustomCertificateId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
+    [System.String]
+    # The custom domain name.
+    ${DomainName},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.SignalR.private\Update-AzWebPubSubCustomDomain_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.SignalR.private\Update-AzWebPubSubCustomDomain_UpdateViaIdentityExpanded';
+            UpdateViaIdentityWebPubSubExpanded = 'Az.SignalR.private\Update-AzWebPubSubCustomDomain_UpdateViaIdentityWebPubSubExpanded';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update a hub setting.
+.Description
+Update a hub setting.
+.Example
+$eventHandler = @{UrlTemplate = 'http://example.com/api/{hub}/connect/{event}' ; AuthType = 'None' ; SystemEvent = 'connect' ; } ,
+        @{ UrlTemplate = 'http://example.com/api/{hub}/userevent/{event}' ; AuthType = 'None' ; UserEventPattern = '*' }
+Update-AzWebPubSubHub -Name testHub -ResourceGroupName psdemo -ResourceName psdemo-wps -EventHandler $eventHandler
+.Example
+$eventListeners =
+@{
+    Endpoint = $(New-AzWebPubSubEventHubEndpointObject -EventHubName connectivityHub -FullyQualifiedNamespace example.servicebus.windows.net);
+    Filter = $(New-AzWebPubSubEventNameFilterObject -SystemEvent connected, disconnected)
+},
+@{
+    Endpoint = $(New-AzWebPubSubEventHubEndpointObject -EventHubName messageHub -FullyQualifiedNamespace example.servicebus.windows.net);
+    Filter = $(New-AzWebPubSubEventNameFilterObject -UserEventPattern *)
+}
+$hub = Update-AzWebPubSubHub -Name hub2 -ResourceGroupName rg -ResourceName psdemo -EventListener $eventListeners
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubHub
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+EVENTHANDLER <IEventHandler[]>: Event handler of a hub.
+  UrlTemplate <String>: Gets or sets the EventHandler URL template. You can use a predefined parameter {hub} and {event} inside the template, the value of the EventHandler URL is dynamically calculated when the client request comes in.         For example, UrlTemplate can be `http://example.com/api/{hub}/{event}`. The host part can't contains parameters.
+  [AuthType <String>]: Upstream auth type enum.
+  [ManagedIdentityResource <String>]: The Resource indicating the App ID URI of the target resource.         It also appears in the aud (audience) claim of the issued token.
+  [SystemEvent <List<String>>]: Gets ot sets the list of system events. Valid values contain: 'connect', 'connected', 'disconnected'.
+  [UserEventPattern <String>]: Gets or sets the matching pattern for event names.         There are 3 kinds of patterns supported:             1. "*", it matches any event name             2. Combine multiple events with ",", for example "event1,event2", it matches event "event1" and "event2"             3. A single event name, for example, "event1", it matches "event1"
+
+EVENTLISTENER <IEventListener[]>: Event listener settings for forwarding your client events to listeners.Event listener is transparent to Web PubSub clients, and it doesn't return any result to clients nor interrupt the lifetime of clients.One event can be sent to multiple listeners, as long as it matches the filters in those listeners. The order of the array elements doesn't matter.Maximum count of event listeners among all hubs is 10.
+  Endpoint <IEventListenerEndpoint>: An endpoint specifying where Web PubSub should send events to.
+  Filter <IEventListenerFilter>: A base class for event filter which determines whether an event should be sent to an event listener.
+
+HUBINPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
+  [CertificateName <String>]: Custom certificate name
+  [HubName <String>]: The hub name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [Name <String>]: Custom domain name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ResourceName <String>]: The name of the resource.
+  [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
+  [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
+  [CertificateName <String>]: Custom certificate name
+  [HubName <String>]: The hub name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: the region
+  [Name <String>]: Custom domain name.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection
+  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  [ResourceName <String>]: The name of the resource.
+  [SharedPrivateLinkResourceName <String>]: The name of the shared private link resource
+  [SubscriptionId <String>]: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+.Link
+https://learn.microsoft.com/powershell/module/az.signalr/update-azwebpubsubhub
+#>
+function Update-AzWebPubSubHub {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubHub])]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Alias('HubName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
+    [System.String]
+    # The hub name.
+    ${Name},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
+    [System.String]
+    # The name of the resource group that contains the resource.
+    # You can obtain this value from the Azure Resource Manager API or the portal.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityHubExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
+    [System.String]
+    # The name of the resource.
+    ${ResourceName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # Gets subscription Id which uniquely identify the Microsoft Azure subscription.
+    # The subscription ID forms part of the URI for every service call.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityHubExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity]
+    # Identity Parameter
+    ${HubInputObject},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
+    [System.String]
+    # The settings for configuring if anonymous connections are allowed for this hub: "allow" or "deny".
+    # Default to "deny".
+    ${AnonymousConnectPolicy},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IEventHandler[]]
+    # Event handler of a hub.
+    ${EventHandler},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IEventListener[]]
+    # Event listener settings for forwarding your client events to listeners.Event listener is transparent to Web PubSub clients, and it doesn't return any result to clients nor interrupt the lifetime of clients.One event can be sent to multiple listeners, as long as it matches the filters in those listeners.
+    # The order of the array elements doesn't matter.Maximum count of event listeners among all hubs is 10.
+    ${EventListener},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            UpdateExpanded = 'Az.SignalR.private\Update-AzWebPubSubHub_UpdateExpanded';
+            UpdateViaIdentityExpanded = 'Az.SignalR.private\Update-AzWebPubSubHub_UpdateViaIdentityExpanded';
+            UpdateViaIdentityHubExpanded = 'Az.SignalR.private\Update-AzWebPubSubHub_UpdateViaIdentityHubExpanded';
+        }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
+Update a resource.
+.Description
+Update a resource.
 .Example
 $wps = Update-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps `
--IdentityType SystemAssigned -LiveTraceEnabled true `
+-EnableSystemAssignedIdentity $true -LiveTraceEnabled true `
 -LiveTraceCategory @{ Name='ConnectivityLogs' ; Enabled = 'true' }, @{ Name='MessageLogs' ; Enabled = 'true' }
 .Example
 $identity = @{ ResourceGroupName = 'psdemo'
@@ -3203,7 +4111,7 @@ $wps | Format-List
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubResource
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3227,8 +4135,8 @@ LIVETRACECATEGORY <ILiveTraceCategory[]>: Gets or sets the list of category conf
 
 PRIVATEENDPOINTACL <IPrivateEndpointAcl[]>: ACLs for requests from private endpoints
   Name <String>: Name of the private endpoint connection
-  [Allow <WebPubSubRequestType[]>]: Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
-  [Deny <WebPubSubRequestType[]>]: Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
+  [Allow <List<String>>]: Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
+  [Deny <List<String>>]: Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
 
 RESOURCELOGCATEGORY <IResourceLogCategory[]>: Gets or sets the list of category configurations.
   [Enabled <String>]: Indicates whether or the resource log category is enabled.         Available values: true, false.         Case insensitive.
@@ -3237,7 +4145,7 @@ RESOURCELOGCATEGORY <IResourceLogCategory[]>: Gets or sets the list of category 
 https://learn.microsoft.com/powershell/module/az.signalr/update-azwebpubsub
 #>
 function Update-AzWebPubSub {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -3266,7 +4174,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -3283,23 +4190,21 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
+    [System.Nullable[System.Boolean]]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Request client certificate during TLS handshake if enabled
     ${EnableTlsClientCert},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType]
-    # Represents the identity type: systemAssigned, userAssigned, None
-    ${IdentityType},
-
-    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ILiveTraceCategory[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ILiveTraceCategory[]]
     # Gets or sets the list of category configurations.
-    # To construct, see NOTES section for LIVETRACECATEGORY properties and create a hash table.
     ${LiveTraceCategory},
 
     [Parameter()]
@@ -3309,18 +4214,17 @@ param(
     ${LiveTraceEnabled},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction])]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.PSArgumentCompleterAttribute("Allow", "Deny")]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction]
+    [System.String]
     # Azure Networking ACL Action.
     ${NetworkAcLDefaultAction},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IPrivateEndpointAcl[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IPrivateEndpointAcl[]]
     # ACLs for requests from private endpoints
-    # To construct, see NOTES section for PRIVATEENDPOINTACL properties and create a hash table.
     ${PrivateEndpointAcl},
 
     [Parameter()]
@@ -3332,18 +4236,18 @@ param(
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.PSArgumentCompleterAttribute("ClientConnection", "ServerConnection", "RESTAPI", "Trace")]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]]
+    [System.String[]]
     # Allowed request types.
     # The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
     ${PublicNetworkAllow},
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.PSArgumentCompleterAttribute("ClientConnection", "ServerConnection", "RESTAPI", "Trace")]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]]
+    [System.String[]]
     # Denied request types.
     # The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
     ${PublicNetworkDeny},
@@ -3351,9 +4255,8 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IResourceLogCategory[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceLogCategory[]]
     # Gets or sets the list of category configurations.
-    # To construct, see NOTES section for RESOURCELOGCATEGORY properties and create a hash table.
     ${ResourceLogCategory},
 
     [Parameter()]
@@ -3372,9 +4275,9 @@ param(
     ${SkuName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier])]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.PSArgumentCompleterAttribute("Free", "Basic", "Standard", "Premium")]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier]
+    [System.String]
     # Optional tier of this particular SKU.
     # 'Standard' or 'Free'.
     # `Basic` is deprecated, use `Standard` instead.
@@ -3382,16 +4285,17 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Tags of the service which is a list of key value pairs that describe the resource.
     ${Tag},
 
     [Parameter()]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IManagedIdentityUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # Get or set the user assigned identities
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
     ${UserAssignedIdentity},
 
     [Parameter()]
@@ -3462,6 +4366,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3484,9 +4396,7 @@ begin {
             UpdateExpanded = 'Az.SignalR.private\Update-AzWebPubSub_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.SignalR.private\Update-AzWebPubSub_UpdateViaIdentityExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3500,6 +4410,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3552,33 +4465,33 @@ Create or update a resource.
 New-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps -Location eastus -SkuName Standard_S1
 .Example
 $wps = New-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps `
--Location eastus -SkuName Standard_S1 -IdentityType SystemAssigned -LiveTraceEnabled true `
+-Location eastus -SkuName Standard_S1 -EnableSystemAssignedIdentity -LiveTraceEnabled true `
 -LiveTraceCategory @{ Name='ConnectivityLogs' ; Enabled = 'true' }, @{ Name='MessageLogs' ; Enabled = 'true' }
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubResource
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-LIVETRACECATEGORY <ILiveTraceCategory[]>: Gets or sets the list of category configurations.
+LIVETRACECATEGORY <ILiveTraceCategory[]>: Gets or sets the list of category configurations. To construct, see NOTES section for LIVETRACECATEGORY properties and create a hash table.
   [Enabled <String>]: Indicates whether or the live trace category is enabled.         Available values: true, false.         Case insensitive.
   [Name <String>]: Gets or sets the live trace category's name.         Available values: ConnectivityLogs, MessagingLogs.         Case insensitive.
 
-PRIVATEENDPOINTACL <IPrivateEndpointAcl[]>: ACLs for requests from private endpoints
+PRIVATEENDPOINTACL <IPrivateEndpointAcl[]>: ACLs for requests from private endpoints To construct, see NOTES section for PRIVATEENDPOINTACL properties and create a hash table.
   Name <String>: Name of the private endpoint connection
-  [Allow <WebPubSubRequestType[]>]: Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
-  [Deny <WebPubSubRequestType[]>]: Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
+  [Allow <List<String>>]: Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
+  [Deny <List<String>>]: Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
 
-RESOURCELOGCATEGORY <IResourceLogCategory[]>: Gets or sets the list of category configurations.
+RESOURCELOGCATEGORY <IResourceLogCategory[]>: Gets or sets the list of category configurations. To construct, see NOTES section for RESOURCELOGCATEGORY properties and create a hash table.
   [Enabled <String>]: Indicates whether or the resource log category is enabled.         Available values: true, false.         Case insensitive.
   [Name <String>]: Gets or sets the resource log category's name.         Available values: ConnectivityLogs, MessagingLogs.         Case insensitive.
 .Link
 https://learn.microsoft.com/powershell/module/az.signalr/new-azwebpubsub
 #>
 function New-AzWebPubSub {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3637,16 +4550,18 @@ param(
     ${EnableTlsClientCert},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType])]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType]
+    [System.Management.Automation.SwitchParameter]
+    # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType])]
+    # [System.String]
+    # [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.ManagedIdentityType]
     # Represent the identity type: systemAssigned, userAssigned, None
-    ${IdentityType},
+    ${EnableSystemAssignedIdentity},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ILiveTraceCategory[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ILiveTraceCategory[]]
     # Gets or sets the list of category configurations.
     # To construct, see NOTES section for LIVETRACECATEGORY properties and create a hash table.
     ${LiveTraceCategory},
@@ -3658,16 +4573,17 @@ param(
     ${LiveTraceEnabled},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction])]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction]
+    [System.String]
+    # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction])]
+    # [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.AclAction]
     # Default action when no other rule matches
     ${NetworkAcLDefaultAction},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IPrivateEndpointAcl[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IPrivateEndpointAcl[]]
     # ACLs for requests from private endpoints
     # To construct, see NOTES section for PRIVATEENDPOINTACL properties and create a hash table.
     ${PrivateEndpointAcl},
@@ -3681,18 +4597,20 @@ param(
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType])]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]]
+    [System.String[]]
+    # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType])]
+    # [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]]
     # Allowed request types.
     # The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
     ${PublicNetworkAllow},
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType])]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]]
+    [System.String[]]
+    # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType])]
+    # [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubRequestType[]]
     # Denied request types.
     # The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
     ${PublicNetworkDeny},
@@ -3700,7 +4618,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IResourceLogCategory[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceLogCategory[]]
     # Gets or sets the list of category configurations.
     # To construct, see NOTES section for RESOURCELOGCATEGORY properties and create a hash table.
     ${ResourceLogCategory},
@@ -3714,9 +4632,10 @@ param(
     ${SkuCapacity},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier])]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier]
+    [System.String]
+    # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier])]
+    # [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.WebPubSubSkuTier]
     # Optional tier of this particular SKU.
     # 'Standard' or 'Free'.
     # `Basic` is deprecated, use `Standard` instead.
@@ -3724,14 +4643,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Tags of the service which is a list of key value pairs that describe the resource.
     ${Tag},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IManagedIdentityUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IManagedIdentityUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # Get or set the user assigned identities
     ${UserAssignedIdentity},
@@ -3803,6 +4722,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -3824,9 +4751,7 @@ begin {
         $mapping = @{
             CreateExpanded = 'Az.SignalR.custom\New-AzWebPubSub';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3840,6 +4765,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -3893,12 +4821,12 @@ $cert = Get-AzWebPubSubCustomCertificate -Name mycustomcert -ResourceGroupName r
 New-AzWebPubSubCustomDomain -Name mydomain -ResourceGroupName rg -ResourceName wps -DomainName wps.manual-test.dev.signalr.azure.com -CustomCertificateId $cert.Id
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ICustomDomain
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ICustomDomain
 .Link
 https://learn.microsoft.com/powershell/module/az.signalr/new-azwebpubsubcustomdomain
 #>
 function New-AzWebPubSubCustomDomain {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ICustomDomain])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ICustomDomain])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -4013,6 +4941,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4034,9 +4970,7 @@ begin {
         $mapping = @{
             CreateExpanded = 'Az.SignalR.custom\New-AzWebPubSubCustomDomain';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4050,6 +4984,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4103,12 +5040,12 @@ $eventHub = New-AzWebPubSubEventHubEndpointObject -EventHubName hub1 -FullyQuali
 $eventHub
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.EventHubEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.EventHubEndpoint
 .Link
 https://learn.microsoft.com/powershell/module/az.signalr/new-azwebpubsubeventhubendpointobject
 #>
 function New-AzWebPubSubEventHubEndpointObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.EventHubEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.EventHubEndpoint])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -4132,6 +5069,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4160,6 +5100,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4213,12 +5156,12 @@ $filter = New-AzWebPubSubEventNameFilterObject -SystemEvent connected,disconnect
 $filter
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.EventNameFilter
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.EventNameFilter
 .Link
 https://learn.microsoft.com/powershell/module/az.signalr/new-azwebpubsubeventnamefilterobject
 #>
 function New-AzWebPubSubEventNameFilterObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.EventNameFilter])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.EventNameFilter])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -4250,6 +5193,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4278,6 +5224,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
@@ -4337,13 +5286,13 @@ $wps | New-AzWebPubSubKey -KeyType Primary | Format-List
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubKeys
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubKeys
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
+INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
   [CertificateName <String>]: Custom certificate name
   [HubName <String>]: The hub name.
   [Id <String>]: Resource identity path
@@ -4358,7 +5307,7 @@ INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.signalr/new-azwebpubsubkey
 #>
 function New-AzWebPubSubKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubKeys])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubKeys])]
 [CmdletBinding(DefaultParameterSetName='RegenerateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
@@ -4390,9 +5339,10 @@ param(
     ${InputObject},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType])]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType]
+    [System.String]
+    # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType])]
+    # [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType]
     # The keyType to regenerate.
     # Must be either 'primary', 'secondary' or 'salt'(case-insensitive).
     ${KeyType},
@@ -4470,6 +5420,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -4492,9 +5450,7 @@ begin {
             RegenerateExpanded = 'Az.SignalR.custom\New-AzWebPubSubKey';
             RegenerateViaIdentityExpanded = 'Az.SignalR.custom\New-AzWebPubSubKey';
         }
-        if (('RegenerateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('RegenerateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4508,6 +5464,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

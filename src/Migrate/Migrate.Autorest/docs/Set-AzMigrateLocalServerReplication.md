@@ -85,10 +85,9 @@ Accept wildcard characters: False
 
 ### -DynamicMemoryConfig
 Specifies the dynamic memory configuration of RAM.
-To construct, see NOTES section for DYNAMICMEMORYCONFIG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ProtectedItemDynamicMemoryConfig
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ProtectedItemDynamicMemoryConfig
 Parameter Sets: (All)
 Aliases:
 
@@ -118,7 +117,7 @@ Accept wildcard characters: False
 Specifies the nics on the source server to be included for replication.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzLocalNicInput[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AzLocalNicInput[]
 Parameter Sets: (All)
 Aliases:
 
@@ -243,7 +242,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJobModel
 
 ## NOTES
 

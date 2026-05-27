@@ -16,60 +16,51 @@
 
 <#
 .Synopsis
-Creates or updates the incident comment.
+Create the incident comment.
 .Description
-Creates or updates the incident comment.
+Create the incident comment.
 .Example
  New-AzSentinelIncidentComment -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -IncidentId "myIncidentId" -Message "IncidentCommentGoesHere"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentComment
+Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentComment
+Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IIncidentComment
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INCIDENTCOMMENT <IIncidentComment>: Represents an incident comment
-  [Etag <String>]: Etag of the azure resource
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [AuthorEmail <String>]: The email of the client.
-  [AuthorName <String>]: The name of the client.
-  [AuthorObjectId <String>]: The object id of the client.
-  [AuthorUserPrincipalName <String>]: The user principal name of the client.
-  [Message <String>]: The comment message
+INCIDENTINPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
+  [ActionId <String>]: Action ID
+  [AlertRuleTemplateId <String>]: Alert rule template ID
+  [AutomationRuleId <String>]: Automation rule ID
+  [BookmarkId <String>]: Bookmark ID
+  [ConsentId <String>]: consent ID
+  [DataConnectorId <String>]: Connector ID
+  [EntityId <String>]: entity ID
+  [EntityQueryId <String>]: entity query ID
+  [EntityQueryTemplateId <String>]: entity query template ID
+  [Id <String>]: Resource identity path
+  [IncidentCommentId <String>]: Incident comment ID
+  [IncidentId <String>]: Incident ID
+  [MetadataName <String>]: The Metadata name.
+  [Name <String>]: Threat intelligence indicator name field.
+  [RelationName <String>]: Relation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleId <String>]: Alert rule ID
+  [SentinelOnboardingStateName <String>]: The Sentinel onboarding state name. Supports - default
+  [SettingsName <String>]: The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
+  [SourceControlId <String>]: Source control Id
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [WorkspaceName <String>]: The name of the workspace.
 .Link
 https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelincidentcomment
 #>
 function New-AzSentinelIncidentComment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentComment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IIncidentComment])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
-    [System.String]
-    # Incident ID
-    ${IncidentId},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
-    [System.String]
-    # The name of the workspace.
-    ${WorkspaceName},
-
     [Parameter()]
     [Alias('IncidentCommentId')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
@@ -78,25 +69,64 @@ param(
     # Incident comment ID
     ${Id},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
+    [System.String]
+    # Incident ID
+    ${IncidentId},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentComment]
-    # Represents an incident comment
-    # To construct, see NOTES section for INCIDENTCOMMENT properties and create a hash table.
-    ${IncidentComment},
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
+    [System.String]
+    # The name of the workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='CreateViaIdentityIncidentExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity]
+    # Identity Parameter
+    ${IncidentInputObject},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityIncidentExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
     # The comment message
     ${Message},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -154,6 +184,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -173,15 +211,15 @@ begin {
         }
 
         $mapping = @{
-            Create = 'Az.SecurityInsights.private\New-AzSentinelIncidentComment_Create';
             CreateExpanded = 'Az.SecurityInsights.private\New-AzSentinelIncidentComment_CreateExpanded';
+            CreateViaIdentityIncidentExpanded = 'Az.SecurityInsights.private\New-AzSentinelIncidentComment_CreateViaIdentityIncidentExpanded';
+            CreateViaJsonFilePath = 'Az.SecurityInsights.private\New-AzSentinelIncidentComment_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.SecurityInsights.private\New-AzSentinelIncidentComment_CreateViaJsonString';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Id')) {
+        if (('CreateExpanded', 'CreateViaIdentityIncidentExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Id') ) {
             $PSBoundParameters['Id'] = (New-Guid).Guid
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -195,6 +233,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

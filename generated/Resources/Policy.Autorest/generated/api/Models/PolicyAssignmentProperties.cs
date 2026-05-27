@@ -13,6 +13,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal
     {
 
+        /// <summary>Backing field for <see cref="AssignmentType" /> property.</summary>
+        private string _assignmentType;
+
+        /// <summary>
+        /// The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        public string AssignmentType { get => this._assignmentType; set => this._assignmentType = value; }
+
         /// <summary>Backing field for <see cref="DefinitionVersion" /> property.</summary>
         private string _definitionVersion;
 
@@ -34,14 +43,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
         public string DisplayName { get => this._displayName; set => this._displayName = value; }
 
+        /// <summary>Backing field for <see cref="EffectiveDefinitionVersion" /> property.</summary>
+        private string _effectiveDefinitionVersion;
+
+        /// <summary>
+        /// The effective version of the policy definition in use. This is only present if requested via the $expand query parameter.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        public string EffectiveDefinitionVersion { get => this._effectiveDefinitionVersion; }
+
         /// <summary>Backing field for <see cref="EnforcementMode" /> property.</summary>
         private string _enforcementMode;
 
         /// <summary>
-        /// The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
+        /// The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
         public string EnforcementMode { get => this._enforcementMode; set => this._enforcementMode = value; }
+
+        /// <summary>Backing field for <see cref="InstanceId" /> property.</summary>
+        private string _instanceId;
+
+        /// <summary>
+        /// The instance ID of the policy assignment. This ID only and always changes when the assignment is deleted and recreated.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        public string InstanceId { get => this._instanceId; }
+
+        /// <summary>Backing field for <see cref="LatestDefinitionVersion" /> property.</summary>
+        private string _latestDefinitionVersion;
+
+        /// <summary>
+        /// The latest version of the policy definition available. This is only present if requested via the $expand query parameter.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
+        public string LatestDefinitionVersion { get => this._latestDefinitionVersion; }
 
         /// <summary>Backing field for <see cref="Metadata" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesMetadata _metadata;
@@ -51,6 +87,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Origin(Microsoft.Azure.PowerShell.Cmdlets.Policy.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesMetadata Metadata { get => (this._metadata = this._metadata ?? new Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.PolicyAssignmentPropertiesMetadata()); set => this._metadata = value; }
+
+        /// <summary>Internal Acessors for EffectiveDefinitionVersion</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal.EffectiveDefinitionVersion { get => this._effectiveDefinitionVersion; set { {_effectiveDefinitionVersion = value;} } }
+
+        /// <summary>Internal Acessors for InstanceId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal.InstanceId { get => this._instanceId; set { {_instanceId = value;} } }
+
+        /// <summary>Internal Acessors for LatestDefinitionVersion</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal.LatestDefinitionVersion { get => this._latestDefinitionVersion; set { {_latestDefinitionVersion = value;} } }
 
         /// <summary>Internal Acessors for Scope</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal.Scope { get => this._scope; set { {_scope = value;} } }
@@ -116,6 +161,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
     public partial interface IPolicyAssignmentProperties :
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IJsonSerializable
     {
+        /// <summary>
+        /// The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.",
+        SerializedName = @"assignmentType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("NotSpecified", "System", "SystemHidden", "Custom")]
+        string AssignmentType { get; set; }
         /// <summary>The version of the policy definition to use.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
         Required = false,
@@ -150,7 +209,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         PossibleTypes = new [] { typeof(string) })]
         string DisplayName { get; set; }
         /// <summary>
-        /// The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
+        /// The effective version of the policy definition in use. This is only present if requested via the $expand query parameter.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The effective version of the policy definition in use. This is only present if requested via the $expand query parameter.",
+        SerializedName = @"effectiveDefinitionVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        string EffectiveDefinitionVersion { get;  }
+        /// <summary>
+        /// The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
         Required = false,
@@ -158,11 +230,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.",
+        Description = @"The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll",
         SerializedName = @"enforcementMode",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Default", "DoNotEnforce")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Default", "DoNotEnforce", "Enroll")]
         string EnforcementMode { get; set; }
+        /// <summary>
+        /// The instance ID of the policy assignment. This ID only and always changes when the assignment is deleted and recreated.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The instance ID of the policy assignment. This ID only and always changes when the assignment is deleted and recreated.",
+        SerializedName = @"instanceId",
+        PossibleTypes = new [] { typeof(string) })]
+        string InstanceId { get;  }
+        /// <summary>
+        /// The latest version of the policy definition available. This is only present if requested via the $expand query parameter.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The latest version of the policy definition available. This is only present if requested via the $expand query parameter.",
+        SerializedName = @"latestDefinitionVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        string LatestDefinitionVersion { get;  }
         /// <summary>
         /// The policy assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
         /// </summary>
@@ -261,6 +359,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
     internal partial interface IPolicyAssignmentPropertiesInternal
 
     {
+        /// <summary>
+        /// The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("NotSpecified", "System", "SystemHidden", "Custom")]
+        string AssignmentType { get; set; }
         /// <summary>The version of the policy definition to use.</summary>
         string DefinitionVersion { get; set; }
         /// <summary>This message will be part of response in case of policy violation.</summary>
@@ -268,10 +371,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
         /// <summary>The display name of the policy assignment.</summary>
         string DisplayName { get; set; }
         /// <summary>
-        /// The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
+        /// The effective version of the policy definition in use. This is only present if requested via the $expand query parameter.
         /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Default", "DoNotEnforce")]
+        string EffectiveDefinitionVersion { get; set; }
+        /// <summary>
+        /// The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Default", "DoNotEnforce", "Enroll")]
         string EnforcementMode { get; set; }
+        /// <summary>
+        /// The instance ID of the policy assignment. This ID only and always changes when the assignment is deleted and recreated.
+        /// </summary>
+        string InstanceId { get; set; }
+        /// <summary>
+        /// The latest version of the policy definition available. This is only present if requested via the $expand query parameter.
+        /// </summary>
+        string LatestDefinitionVersion { get; set; }
         /// <summary>
         /// The policy assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
         /// </summary>

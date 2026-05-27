@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added ChangeSafety Support
 
 ## Version 3.3.0
 * Upgraded nuget package to signed package.

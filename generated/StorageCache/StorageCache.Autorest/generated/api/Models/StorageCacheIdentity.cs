@@ -39,6 +39,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PropertyOrigin.Owned)]
         public string AutoImportJobName { get => this._autoImportJobName; set => this._autoImportJobName = value; }
 
+        /// <summary>Backing field for <see cref="ExpansionJobName" /> property.</summary>
+        private string _expansionJobName;
+
+        /// <summary>
+        /// Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Origin(Microsoft.Azure.PowerShell.Cmdlets.StorageCache.PropertyOrigin.Owned)]
+        public string ExpansionJobName { get => this._expansionJobName; set => this._expansionJobName = value; }
+
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
@@ -117,6 +126,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
         SerializedName = @"autoImportJobName",
         PossibleTypes = new [] { typeof(string) })]
         string AutoImportJobName { get; set; }
+        /// <summary>
+        /// Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.",
+        SerializedName = @"expansionJobName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ExpansionJobName { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Runtime.Info(
         Required = false,
@@ -180,6 +202,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageCache.Models
         /// Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
         /// </summary>
         string AutoImportJobName { get; set; }
+        /// <summary>
+        /// Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
+        /// </summary>
+        string ExpansionJobName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>

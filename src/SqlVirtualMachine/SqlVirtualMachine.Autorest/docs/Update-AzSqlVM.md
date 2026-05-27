@@ -15,22 +15,20 @@ Updates a SQL virtual machine.
 ### UpdateExpanded (Default)
 ```
 Update-AzSqlVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AssessmentSettingEnable] [-AssessmentSettingRunImmediately]
- [-AutoBackupSettingBackupScheduleType <BackupScheduleType>] [-AutoBackupSettingBackupSystemDb]
- [-AutoBackupSettingDaysOfWeek <AutoBackupDaysOfWeek[]>] [-AutoBackupSettingEnable]
- [-AutoBackupSettingEnableEncryption] [-AutoBackupSettingFullBackupFrequency <FullBackupFrequencyType>]
+ [-AssessmentSettingEnable] [-AssessmentSettingRunImmediately] [-AutoBackupSettingBackupScheduleType <String>]
+ [-AutoBackupSettingBackupSystemDb] [-AutoBackupSettingDaysOfWeek <String[]>] [-AutoBackupSettingEnable]
+ [-AutoBackupSettingEnableEncryption] [-AutoBackupSettingFullBackupFrequency <String>]
  [-AutoBackupSettingFullBackupStartTime <Int32>] [-AutoBackupSettingFullBackupWindowHour <Int32>]
  [-AutoBackupSettingLogBackupFrequency <Int32>] [-AutoBackupSettingPassword <SecureString>]
  [-AutoBackupSettingRetentionPeriod <Int32>] [-AutoBackupSettingStorageAccessKey <String>]
  [-AutoBackupSettingStorageAccountUrl <String>] [-AutoBackupSettingStorageContainerName <String>]
- [-AutoPatchingSettingDayOfWeek <DayOfWeek>] [-AutoPatchingSettingEnable]
+ [-AutoPatchingSettingDayOfWeek <String>] [-AutoPatchingSettingEnable]
  [-AutoPatchingSettingMaintenanceWindowDuration <Int32>]
  [-AutoPatchingSettingMaintenanceWindowStartingHour <Int32>] [-EnableAutomaticUpgrade]
- [-IdentityType <String>] [-LicenseType <SqlServerLicenseType>] [-ManagedIdentityClientId <String>]
- [-Offer <String>] [-ScheduleDayOfWeek <AssessmentDayOfWeek>] [-ScheduleEnable]
- [-ScheduleMonthlyOccurrence <Int32>] [-ScheduleStartTime <String>] [-ScheduleWeeklyInterval <Int32>]
- [-Sku <SqlImageSku>] [-SqlManagementType <SqlManagementMode>] [-SqlVirtualMachineGroupResourceId <String>]
- [-Tag <Hashtable>] [-VirtualMachineResourceId <String>]
+ [-IdentityType <String>] [-LicenseType <String>] [-ManagedIdentityClientId <String>] [-Offer <String>]
+ [-ScheduleDayOfWeek <String>] [-ScheduleEnable] [-ScheduleMonthlyOccurrence <Int32>]
+ [-ScheduleStartTime <String>] [-ScheduleWeeklyInterval <Int32>] [-Sku <String>] [-SqlManagementType <String>]
+ [-SqlVirtualMachineGroupResourceId <String>] [-Tag <Hashtable>] [-VirtualMachineResourceId <String>]
  [-WsfcDomainCredentialsClusterBootstrapAccountPassword <SecureString>]
  [-WsfcDomainCredentialsClusterOperatorAccountPassword <SecureString>]
  [-WsfcDomainCredentialsSqlServiceAccountPassword <SecureString>] [-WsfcStaticIP <String>]
@@ -40,22 +38,20 @@ Update-AzSqlVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <Stri
 ### UpdateViaIdentity
 ```
 Update-AzSqlVM -InputObject <ISqlVirtualMachineIdentity> [-AssessmentSettingEnable]
- [-AssessmentSettingRunImmediately] [-AutoBackupSettingBackupScheduleType <BackupScheduleType>]
- [-AutoBackupSettingBackupSystemDb] [-AutoBackupSettingDaysOfWeek <AutoBackupDaysOfWeek[]>]
- [-AutoBackupSettingEnable] [-AutoBackupSettingEnableEncryption]
- [-AutoBackupSettingFullBackupFrequency <FullBackupFrequencyType>]
+ [-AssessmentSettingRunImmediately] [-AutoBackupSettingBackupScheduleType <String>]
+ [-AutoBackupSettingBackupSystemDb] [-AutoBackupSettingDaysOfWeek <String[]>] [-AutoBackupSettingEnable]
+ [-AutoBackupSettingEnableEncryption] [-AutoBackupSettingFullBackupFrequency <String>]
  [-AutoBackupSettingFullBackupStartTime <Int32>] [-AutoBackupSettingFullBackupWindowHour <Int32>]
  [-AutoBackupSettingLogBackupFrequency <Int32>] [-AutoBackupSettingPassword <SecureString>]
  [-AutoBackupSettingRetentionPeriod <Int32>] [-AutoBackupSettingStorageAccessKey <String>]
  [-AutoBackupSettingStorageAccountUrl <String>] [-AutoBackupSettingStorageContainerName <String>]
- [-AutoPatchingSettingDayOfWeek <DayOfWeek>] [-AutoPatchingSettingEnable]
+ [-AutoPatchingSettingDayOfWeek <String>] [-AutoPatchingSettingEnable]
  [-AutoPatchingSettingMaintenanceWindowDuration <Int32>]
  [-AutoPatchingSettingMaintenanceWindowStartingHour <Int32>] [-EnableAutomaticUpgrade]
- [-IdentityType <String>] [-LicenseType <SqlServerLicenseType>] [-ManagedIdentityClientId <String>]
- [-Offer <String>] [-ScheduleDayOfWeek <AssessmentDayOfWeek>] [-ScheduleEnable]
- [-ScheduleMonthlyOccurrence <Int32>] [-ScheduleStartTime <String>] [-ScheduleWeeklyInterval <Int32>]
- [-Sku <SqlImageSku>] [-SqlManagementType <SqlManagementMode>] [-SqlVirtualMachineGroupResourceId <String>]
- [-Tag <Hashtable>] [-VirtualMachineResourceId <String>]
+ [-IdentityType <String>] [-LicenseType <String>] [-ManagedIdentityClientId <String>] [-Offer <String>]
+ [-ScheduleDayOfWeek <String>] [-ScheduleEnable] [-ScheduleMonthlyOccurrence <Int32>]
+ [-ScheduleStartTime <String>] [-ScheduleWeeklyInterval <Int32>] [-Sku <String>] [-SqlManagementType <String>]
+ [-SqlVirtualMachineGroupResourceId <String>] [-Tag <Hashtable>] [-VirtualMachineResourceId <String>]
  [-WsfcDomainCredentialsClusterBootstrapAccountPassword <SecureString>]
  [-WsfcDomainCredentialsClusterOperatorAccountPassword <SecureString>]
  [-WsfcDomainCredentialsSqlServiceAccountPassword <SecureString>] [-WsfcStaticIP <String>]
@@ -287,7 +283,7 @@ Accept wildcard characters: False
 Backup schedule type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.BackupScheduleType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -317,7 +313,7 @@ Accept wildcard characters: False
 Days of the week for the backups when FullBackupFrequency is set to Weekly.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AutoBackupDaysOfWeek[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -363,7 +359,7 @@ Frequency of full backups.
 In both cases, full backups begin during the next scheduled time window.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.FullBackupFrequencyType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -501,7 +497,7 @@ Accept wildcard characters: False
 Day of week to apply the patch on.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.DayOfWeek
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -623,7 +619,7 @@ Accept wildcard characters: False
 SQL Server license type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlServerLicenseType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -716,7 +712,7 @@ Accept wildcard characters: False
 Day of the week to run assessment.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.AssessmentDayOfWeek
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -796,7 +792,7 @@ Accept wildcard characters: False
 SQL Server edition type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlImageSku
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -811,7 +807,7 @@ Accept wildcard characters: False
 SQL Server Management type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.SqlManagementMode
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -982,7 +978,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine
+### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachine
 
 ## NOTES
 

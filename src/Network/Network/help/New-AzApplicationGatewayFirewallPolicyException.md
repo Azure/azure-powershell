@@ -17,7 +17,7 @@ New-AzApplicationGatewayFirewallPolicyException -MatchVariable <String> -Value <
  -ValueMatchOperator <String> [-SelectorMatchOperator <String>] [-Selector <String>]
  [-ExceptionManagedRuleSet <PSApplicationGatewayFirewallPolicyExclusionManagedRuleSet[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,6 +33,36 @@ $exceptionEntry = New-AzApplicationGatewayFirewallPolicyException -MatchVariable
 This command creates a new exception-entry for the variable named RequestURI with the ValueMatchOperator as Contains and Match Values as hey and hi. The exception entry is saved in $exceptionEntry.
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

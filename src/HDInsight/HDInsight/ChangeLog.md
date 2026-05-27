@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added ChangeSafety Support
 
 ## Version 6.4.0
 * Supported create cluster with entra user as gateway credential to replace use username and password.
