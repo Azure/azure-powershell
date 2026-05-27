@@ -103,8 +103,17 @@ function Disable-AzTrafficManagerEndpoint {
             }
         }
 
-        $confirmMessage = "Are you sure you want to disable the Traffic Manager endpoint '$endpointName' in profile '$profName'?"
-        if ($Force -or $PSCmdlet.ShouldContinue($confirmMessage, 'Disable Traffic Manager Endpoint')) {
+        # Normalize endpoint type from ARM camelCase to PascalCase
+        $typeMap = @{ 'azureendpoints' = 'AzureEndpoints'; 'externalendpoints' = 'ExternalEndpoints'; 'nestedendpoints' = 'NestedEndpoints' }
+        if ($typeMap.ContainsKey($endpointType.ToLower())) {
+            $endpointType = $typeMap[$endpointType.ToLower()]
+        }
+
+        if ($Force) {
+            $ConfirmPreference = 'None'
+        }
+
+        if ($PSCmdlet.ShouldProcess($endpointName, 'Disable Traffic Manager Endpoint')) {
             $params = @{
                 EndpointName = $endpointName
                 EndpointType = $endpointType

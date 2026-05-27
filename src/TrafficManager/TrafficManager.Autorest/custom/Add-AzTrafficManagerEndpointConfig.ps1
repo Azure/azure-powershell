@@ -43,7 +43,7 @@ function Add-AzTrafficManagerEndpointConfig {
         ${Target},
 
         [Parameter(Mandatory, HelpMessage='The status of the endpoint (Enabled or Disabled).')]
-        [ValidateSet('Enabled', 'Disabled', IgnoreCase=$false)]
+        [ValidateSet('Enabled', 'Disabled', IgnoreCase=$true)]
         [ValidateNotNullOrEmpty()]
         [string]
         ${EndpointStatus},
@@ -61,7 +61,7 @@ function Add-AzTrafficManagerEndpointConfig {
         ${EndpointLocation},
 
         [Parameter(HelpMessage='If Always Serve is enabled, probing for endpoint health will be disabled.')]
-        [ValidateSet('Enabled', 'Disabled', IgnoreCase=$false)]
+        [ValidateSet('Enabled', 'Disabled', IgnoreCase=$true)]
         [string]
         ${AlwaysServe},
 

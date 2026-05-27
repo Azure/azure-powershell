@@ -87,8 +87,11 @@ function Disable-AzTrafficManagerProfile {
             }
         }
 
-        $confirmMessage = "Are you sure you want to disable the Traffic Manager profile '$profileName'?"
-        if ($Force -or $PSCmdlet.ShouldContinue($confirmMessage, 'Disable Traffic Manager Profile')) {
+        if ($Force) {
+            $ConfirmPreference = 'None'
+        }
+
+        if ($PSCmdlet.ShouldProcess($profileName, 'Disable Traffic Manager Profile')) {
             $params = @{
                 ProfileName = $profileName
                 ResourceGroupName = $rgName

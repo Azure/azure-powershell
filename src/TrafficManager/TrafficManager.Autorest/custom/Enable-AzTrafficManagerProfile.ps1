@@ -7,7 +7,7 @@ You can specify the profile by name and resource group, or you can pass a profil
 .Example
 Enable-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyResourceGroup
 .Example
-Get-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyResourceGroup | Enable-AzTrafficManagerProfile
+Get-AzTrafficManagerProfile -ProfileName MyProfile -ResourceGroupName MyResourceGroup | Enable-AzTrafficManagerProfile
 
 .Inputs
 Az.TrafficManager.Models.IProfile

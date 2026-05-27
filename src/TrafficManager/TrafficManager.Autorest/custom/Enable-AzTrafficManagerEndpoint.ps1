@@ -99,6 +99,12 @@ function Enable-AzTrafficManagerEndpoint {
             }
         }
 
+        # Normalize endpoint type from ARM camelCase to PascalCase
+        $typeMap = @{ 'azureendpoints' = 'AzureEndpoints'; 'externalendpoints' = 'ExternalEndpoints'; 'nestedendpoints' = 'NestedEndpoints' }
+        if ($typeMap.ContainsKey($endpointType.ToLower())) {
+            $endpointType = $typeMap[$endpointType.ToLower()]
+        }
+
         if ($PSCmdlet.ShouldProcess($endpointName, 'Enable Traffic Manager Endpoint')) {
             $params = @{
                 EndpointName = $endpointName
