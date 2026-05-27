@@ -21,4 +21,16 @@ Describe 'Get-AzNetworkSecurityPerimeterAssociableResourceType' {
 
         } | Should -Not -Throw
     }
+
+    It 'ListAndValidateNewProperties' {
+        $result = Get-AzNetworkSecurityPerimeterAssociableResourceType -Location $env.location
+        $result | Should -Not -BeNullOrEmpty
+        $resource = $result[0]
+        $resource.ReadinessState | Should -Not -BeNullOrEmpty
+        $resource.ReadinessState | Should -BeIn @('GA', 'Preview', 'Onboarding')
+        $resource.OutboundSupported | Should -Not -BeNull
+        $resource.OutboundSupported | Should -BeOfType [bool]
+        $resource.PSObject.Properties.Name | Should -Contain 'Description'
+        $resource.PSObject.Properties.Name | Should -Contain 'ServiceTag'
+    }
 }

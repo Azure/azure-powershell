@@ -77,6 +77,9 @@ Adds a trusted root certificate to an application gateway.
 ### [Add-AzApplicationGatewayUrlPathMapConfig](Add-AzApplicationGatewayUrlPathMapConfig.md)
 Adds an array of URL path mappings to a backend server pool.
 
+### [Add-AzDdosCustomPolicyDetectionRule](Add-AzDdosCustomPolicyDetectionRule.md)
+Adds a detection rule to an in-memory DDoS custom policy.
+
 ### [Add-AzDelegation](Add-AzDelegation.md)
 Adds a delegation to a subnet.
 
@@ -335,6 +338,9 @@ Provides a list of all services / regions, BGP communities, and associated prefi
 ### [Get-AzCustomIpPrefix](Get-AzCustomIpPrefix.md)
 Gets a CustomIpPrefix resource
 
+### [Get-AzDdosCustomPolicy](Get-AzDdosCustomPolicy.md)
+Gets a DDoS custom policy.
+
 ### [Get-AzDdosProtectionPlan](Get-AzDdosProtectionPlan.md)
 Gets a DDoS protection plan.
 
@@ -447,7 +453,7 @@ Gets a load balancer.
 Get-AzLoadBalancerBackendAddressInboundNatRulePortMapping retrieves inbound nat rule port mapping list for one backend address.
 
 ### [Get-AzLoadBalancerBackendAddressPool](Get-AzLoadBalancerBackendAddressPool.md)
-Get-AzLoadBalancerBackendAddressPool retrieves one or more backend address pools associated with a load balancer. 
+Get-AzLoadBalancerBackendAddressPool retrieves one or more backend address pools associated with a load balancer.
 
 ### [Get-AzLoadBalancerBackendAddressPoolConfig](Get-AzLoadBalancerBackendAddressPoolConfig.md)
 Gets a backend address pool configuration for a load balancer.
@@ -765,6 +771,9 @@ Gets a Virtual Network Connection in a virtual hub or lists all virtual network 
 
 ### [Get-AzVirtualNetwork](Get-AzVirtualNetwork.md)
 Gets a virtual network in a resource group.
+
+### [Get-AzVirtualNetworkAppliance](Get-AzVirtualNetworkAppliance.md)
+Gets a Virtual Network Appliance (VNA) resource.
 
 ### [Get-AzVirtualNetworkAvailableEndpointService](Get-AzVirtualNetworkAvailableEndpointService.md)
 Lists available endpoint services for location.
@@ -1114,6 +1123,12 @@ Creates a container nic configuration ip configuration object.
 ### [New-AzCustomIpPrefix](New-AzCustomIpPrefix.md)
 Creates a CustomIpPrefix resource
 
+### [New-AzDdosCustomPolicy](New-AzDdosCustomPolicy.md)
+Creates a DDoS custom policy.
+
+### [New-AzDdosCustomPolicyDetectionRule](New-AzDdosCustomPolicyDetectionRule.md)
+Creates a DDoS custom policy detection rule.
+
 ### [New-AzDdosProtectionPlan](New-AzDdosProtectionPlan.md)
 Creates a DDoS protection plan.
 
@@ -1400,22 +1415,22 @@ Creates a new network profile.
 Creates a network security group.
 
 ### [New-AzNetworkSecurityPerimeter](New-AzNetworkSecurityPerimeter.md)
-create a Network Security Perimeter.
+Create a Network Security Perimeter.
 
 ### [New-AzNetworkSecurityPerimeterAccessRule](New-AzNetworkSecurityPerimeterAccessRule.md)
-create a network access rule.
+Create a network access rule.
 
 ### [New-AzNetworkSecurityPerimeterAssociation](New-AzNetworkSecurityPerimeterAssociation.md)
-create a NSP resource association.
+Create a NSP resource association.
 
 ### [New-AzNetworkSecurityPerimeterLink](New-AzNetworkSecurityPerimeterLink.md)
-create NSP link resource.
+Create NSP link resource.
 
 ### [New-AzNetworkSecurityPerimeterLoggingConfiguration](New-AzNetworkSecurityPerimeterLoggingConfiguration.md)
-create NSP logging configuration.
+Create NSP logging configuration.
 
 ### [New-AzNetworkSecurityPerimeterProfile](New-AzNetworkSecurityPerimeterProfile.md)
-create a network profile.
+Create a network profile.
 
 ### [New-AzNetworkSecurityRuleConfig](New-AzNetworkSecurityRuleConfig.md)
 Creates a network security rule configuration.
@@ -1622,6 +1637,9 @@ The New-AzVirtualHubVnetConnection cmdlet creates a HubVirtualNetworkConnection 
 ### [New-AzVirtualNetwork](New-AzVirtualNetwork.md)
 Creates a virtual network.
 
+### [New-AzVirtualNetworkAppliance](New-AzVirtualNetworkAppliance.md)
+Creates a new Virtual Network Appliance (VNA) resource.
+
 ### [New-AzVirtualNetworkGateway](New-AzVirtualNetworkGateway.md)
 Creates a Virtual Network Gateway
 
@@ -1808,6 +1826,12 @@ The Bastion Shareable Link feature lets users connect to a target resource (virt
 
 ### [Remove-AzCustomIpPrefix](Remove-AzCustomIpPrefix.md)
 Removes a CustomIpPrefix
+
+### [Remove-AzDdosCustomPolicy](Remove-AzDdosCustomPolicy.md)
+Removes a DDoS custom policy.
+
+### [Remove-AzDdosCustomPolicyDetectionRule](Remove-AzDdosCustomPolicyDetectionRule.md)
+Removes a detection rule from a DDoS custom policy.
 
 ### [Remove-AzDdosProtectionPlan](Remove-AzDdosProtectionPlan.md)
 Removes a DDoS protection plan.
@@ -2097,6 +2121,9 @@ The Remove-AzVirtualHubVnetConnection cmdlet removes an Azure Virtual Network Co
 ### [Remove-AzVirtualNetwork](Remove-AzVirtualNetwork.md)
 Removes a virtual network.
 
+### [Remove-AzVirtualNetworkAppliance](Remove-AzVirtualNetworkAppliance.md)
+Removes a Virtual Network Appliance (VNA) resource.
+
 ### [Remove-AzVirtualNetworkGateway](Remove-AzVirtualNetworkGateway.md)
 Deletes a Virtual Network Gateway
 
@@ -2282,6 +2309,9 @@ Modifies the WAF configuration of an application gateway.
 
 ### [Set-AzBastion](Set-AzBastion.md)
 Updates the Bastion Resource.
+
+### [Set-AzDdosCustomPolicy](Set-AzDdosCustomPolicy.md)
+Updates and persists a DDoS custom policy to Azure.
 
 ### [Set-AzExpressRouteCircuit](Set-AzExpressRouteCircuit.md)
 Modifies an ExpressRoute circuit.
@@ -2633,6 +2663,9 @@ The Update-AzVirtualHubBgpConnection cmdlet updates an existing HubBgpConnection
 
 ### [Update-AzVirtualHubVnetConnection](Update-AzVirtualHubVnetConnection.md)
 Updates an existing HubVirtualNetworkConnection.
+
+### [Update-AzVirtualNetworkAppliance](Update-AzVirtualNetworkAppliance.md)
+Updates a Virtual Network Appliance (VNA) resource.
 
 ### [Update-AzVirtualNetworkGatewayNatRule](Update-AzVirtualNetworkGatewayNatRule.md)
 Updates a Virtual Network Gateway NatRule.
