@@ -19,7 +19,6 @@
 -->
 ## Upcoming Release
 * Added ChangeSafety Support
-    - Fixed `Invoke-AzDataMigrationCommand`, `New-AzDataMigrationConnectionInfo`, `New-AzDataMigrationTask` to properly inherit dynamic parameters from base cmdlet class
 * [Preannounced breaking changes](https://go.microsoft.com/fwlink/?linkid=2333229)
 
 ## Version 1.0.0
