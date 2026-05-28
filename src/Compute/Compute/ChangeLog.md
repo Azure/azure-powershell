@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added ChangeSafety Support
 * Added `-ZonalPlatformFaultDomainAlignMode` to `New-AzVmssConfig`, `New-AzVmss` (SimpleParameterSet), and `Update-AzVmss` cmdlets.
 * Added `-OsDiskStorageFaultDomainAlignment` parameter to `Set-AzVmssStorageProfile` cmdlet.
 * Added `-StorageFaultDomainAlignment` parameter to `Add-AzVmssDataDisk`, `Set-AzVMOSDisk`, and `Add-AzVMDataDisk` cmdlets.

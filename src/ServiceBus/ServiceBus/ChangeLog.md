@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added ChangeSafety Support
 
 ## Version 4.1.1
 * Fixed a bug when invoke `Set-AzServiceBusNamespace` with parameter `NoWait` [#26998]

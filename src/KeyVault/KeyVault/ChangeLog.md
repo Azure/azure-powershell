@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added ChangeSafety Support
 * Added support for creating AES `oct-HSM` keys via `Add-AzKeyVaultKey -KeyType oct -Destination HSM`.
 * Fixed `New-AzKeyVault` `RequestDisallowedByPolicy` error.
 * Removed certificate-backed items from `Get-AzKeyVaultKey`/`Get-AzKeyVaultSecret`; use `Get-AzKeyVaultCertificate` instead [#26217].

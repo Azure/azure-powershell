@@ -1,4 +1,4 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzSentinelDataConnector'))
+﻿if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzSentinelDataConnector'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzSentinelDataConnecto
 }
 
 Describe 'Remove-AzSentinelDataConnector' {
-    # Changed from MicrosoftCloudAppSecurity to GenericUI — MCAS needs a service license we don't have.
+    # Changed from MicrosoftCloudAppSecurity to GenericUI - MCAS needs a service license we don't have.
     It 'Delete' {
         $dataConnector = New-AzSentinelDataConnector -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
            -Id $env.RemoveDataConnectorId -Kind 'GenericUI' `

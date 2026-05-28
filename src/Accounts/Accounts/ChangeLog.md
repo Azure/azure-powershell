@@ -27,6 +27,8 @@
 * Upgraded MSAL dependencies (`Microsoft.Identity.Client`, `Microsoft.Identity.Client.Extensions.Msal`, `Microsoft.Identity.Client.Broker`) from 4.83.1 to 4.84.0.
 * Upgraded `Microsoft.Identity.Client.NativeInterop` from 0.20.2 to 0.20.4.
 * Added `-AcquirePolicyToken` and `-ChangeReference` dynamic parameters to all write cmdlets for Azure Change Safety policy token acquisition
+* Added Service Principal support for SSH certificate generation in 'SshCredentialFactory'
+* Added ChangeSafety Support
 
 ## Version 5.4.0
 * Updated the `System.Memory` dependency to v4.6.3 to support the Storage SDK update.
