@@ -450,7 +450,8 @@
                             "keys": [
                                 "Get",
                                 "WrapKey",
-                                "UnwrapKey"
+                                "UnwrapKey",
+                                "List"
                             ]
                         }
                     }

@@ -342,6 +342,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Specifies if Scheduled Events should be auto-approved when all instances are down.")]
         public bool? EnableAllInstancesDown { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the align mode between Virtual Machine Scale Set (VMSS) compute and storage Fault Domain count. Valid values are 'Aligned', 'Unaligned', and 'BestEffortAligned'. Applicable to VMSS Flex only.")]
+        [PSArgumentCompleter("Aligned", "Unaligned", "BestEffortAligned")]
+        public string ZonalPlatformFaultDomainAlignMode { get; set; }
+
         private void ConfigureSecuritySettings()
         {
             if (SecurityType?.ToLower() == SecurityTypes.TrustedLaunch ||
@@ -756,7 +764,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     excludeZone: _cmdlet.ExcludeZone,
                     highSpeedInterconnectPlacement: _cmdlet.IsParameterBound(c => c.HighSpeedInterconnectPlacement) ? _cmdlet.HighSpeedInterconnectPlacement : null,
                     scheduledEventsApiVersion: _cmdlet.ScheduledEventsApiVersion,
-                    enableAllInstancesDown: _cmdlet.EnableAllInstancesDown
+                    enableAllInstancesDown: _cmdlet.EnableAllInstancesDown,
+                    zonalPlatformFaultDomainAlignMode: _cmdlet.IsParameterBound(c => c.ZonalPlatformFaultDomainAlignMode) ? _cmdlet.ZonalPlatformFaultDomainAlignMode : null
                 );
             }
         }

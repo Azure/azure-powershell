@@ -493,6 +493,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Specifies if Scheduled Events should be auto-approved when all instances are down.")]
         public bool? EnableAllInstancesDown { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the align mode between Virtual Machine Scale Set (VMSS) compute and storage Fault Domain count. Valid values are 'Aligned', 'Unaligned', and 'BestEffortAligned'. Applicable to VMSS Flex only.")]
+        [PSArgumentCompleter("Aligned", "Unaligned", "BestEffortAligned")]
+        public string ZonalPlatformFaultDomainAlignMode { get; set; }
+
         private void BuildPatchObject()
         {
             if (this.IsParameterBound(c => c.AutomaticOSUpgrade))
@@ -1594,6 +1601,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     "The -ScheduledEventsApiVersion and -EnableAllInstancesDown parameters are only supported when updating a Virtual Machine Scale Set using the CreateOrUpdate path. " +
                     "Provide a VirtualMachineScaleSet object via -VirtualMachineScaleSet parameter (e.g., pipe the output of 'Get-AzVmss') when configuring Scheduled Events.");
             }
+
+            if (this.IsParameterBound(c => c.ZonalPlatformFaultDomainAlignMode))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                this.VirtualMachineScaleSetUpdate.ZonalPlatformFaultDomainAlignMode = this.ZonalPlatformFaultDomainAlignMode;
+            }
         }
 
         private void BuildPutObject()
@@ -2514,6 +2530,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     this.VirtualMachineScaleSet.ScheduledEventsPolicy.AllInstancesDown.AutomaticallyApprove = this.EnableAllInstancesDown;
                 }
+            }
+
+            if (this.IsParameterBound(c => c.ZonalPlatformFaultDomainAlignMode))
+            {
+                this.VirtualMachineScaleSet.ZonalPlatformFaultDomainAlignMode = this.ZonalPlatformFaultDomainAlignMode;
             }
         }
     }

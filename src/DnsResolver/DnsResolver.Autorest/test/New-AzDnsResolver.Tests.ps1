@@ -1,4 +1,4 @@
-# Self-contained test for New-AzDnsResolver
+﻿# Self-contained test for New-AzDnsResolver
 # Each test creates and cleans up its own resources
 
 $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzDnsResolver.Recording.json'
@@ -97,7 +97,7 @@ Describe 'New-AzDnsResolver' {
         # Create initial resolver
         New-AzDnsResolver -Name $resolverName -ResourceGroupName $rgName -VirtualNetworkId $virtualNetworkId -Location $location
 
-        # ACT — upsert with tags
+        # ACT - upsert with tags
         $tag = @{ "updated" = "true" }
         $resolver = New-AzDnsResolver -Name $resolverName -ResourceGroupName $rgName -VirtualNetworkId $virtualNetworkId -Location $location -Tag $tag
 

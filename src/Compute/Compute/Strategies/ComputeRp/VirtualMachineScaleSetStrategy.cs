@@ -287,7 +287,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string[] excludeZone = null,
             string highSpeedInterconnectPlacement = null,
             string scheduledEventsApiVersion = null,
-            bool? enableAllInstancesDown = null
+            bool? enableAllInstancesDown = null,
+            string zonalPlatformFaultDomainAlignMode = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -407,7 +408,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             {
                                 AutomaticallyApprove = enableAllInstancesDown
                             }
-                        }
+                        },
+                        ZonalPlatformFaultDomainAlignMode = zonalPlatformFaultDomainAlignMode
                     };
                     if (auxAuthHeader != null)
                     {
