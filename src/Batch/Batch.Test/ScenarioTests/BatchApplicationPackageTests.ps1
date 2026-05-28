@@ -23,7 +23,27 @@ function Test-UploadApplicationPackage
     # Setup
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
-    $addAppPack = New-AzBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationName $applicationName -ApplicationVersion $applicationVersion -format "zip" -ActivateOnly
+    $addAppPack = New-AzBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationName $applicationName -ApplicationVersion $applicationVersion -Format "zip" -FilePath $filePath
+    $subId = $context.Subscription
+    $resourceGroup = $context.ResourceGroupName
+    $batchAccountName = $context.AccountName
+
+    Assert-AreEqual "/subscriptions/$subId/resourceGroups/$resourceGroup/providers/Microsoft.Batch/batchAccounts/$batchAccountName/applications/$applicationName/versions/$applicationVersion" $addAppPack.Id
+    Assert-AreEqual $applicationVersion $addAppPack.Name
+}
+
+<#
+.SYNOPSIS
+Tests uploading an application package.
+#>
+function Test-UploadApplicationPackageActivateOnly
+{
+    param([string] $applicationName, [string] $applicationVersion, [string]$filePath)
+
+    # Setup
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
+
+    $addAppPack = New-AzBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationName $applicationName -ApplicationVersion $applicationVersion -Format "zip" -ActivateOnly
     $subId = $context.Subscription
     $resourceGroup = $context.ResourceGroupName
     $batchAccountName = $context.AccountName
@@ -46,7 +66,7 @@ function Test-UpdateApplicationPackage
 
     $beforeUpdateApp = Get-AzBatchApplication -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationName $applicationName
 
-    $addAppPack = New-AzBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationName $applicationName -ApplicationVersion $applicationVersion -format "zip" -ActivateOnly
+    $addAppPack = New-AzBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationName $applicationName -ApplicationVersion $applicationVersion -Format "zip" -ActivateOnly
     Set-AzBatchApplication -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationName $applicationName -displayName $newDisplayName -defaultVersion $applicationVersion
 
     $afterUpdateApp = Get-AzBatchApplication -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationName $applicationName
@@ -69,7 +89,7 @@ function Test-CreatePoolWithApplicationPackage
 
     try
     {
-        $addAppPack = New-AzBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationName $applicationName -ApplicationVersion $applicationVersion -format "zip" -ActivateOnly
+        $addAppPack = New-AzBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationName $applicationName -ApplicationVersion $applicationVersion -Format "zip" -ActivateOnly
 
         Assert-AreEqual $applicationVersion $addAppPack.Name
 
@@ -106,7 +126,7 @@ function Test-UpdatePoolWithApplicationPackage
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
-    $addAppPack = New-AzBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationName $applicationName -ApplicationVersion $applicationVersion -format "zip" -ActivateOnly
+    $addAppPack = New-AzBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationName $applicationName -ApplicationVersion $applicationVersion -Format "zip" -ActivateOnly
 
     Assert-AreEqual $applicationVersion $addAppPack.Name
 

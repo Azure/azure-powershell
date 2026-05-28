@@ -70,6 +70,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfile> AgentPoolProfile { get => this._agentPoolProfile; set => this._agentPoolProfile = value; }
 
+        /// <summary>Backing field for <see cref="AiToolchainOperatorProfile" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAiToolchainOperatorProfile _aiToolchainOperatorProfile;
+
+        /// <summary>AI toolchain operator settings that apply to the whole cluster.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAiToolchainOperatorProfile AiToolchainOperatorProfile { get => (this._aiToolchainOperatorProfile = this._aiToolchainOperatorProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterAiToolchainOperatorProfile()); set => this._aiToolchainOperatorProfile = value; }
+
+        /// <summary>
+        /// Whether to enable AI toolchain operator to the cluster. Indicates if AI toolchain operator enabled or not.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public bool? AiToolchainOperatorProfileEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAiToolchainOperatorProfileInternal)AiToolchainOperatorProfile).Enabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAiToolchainOperatorProfileInternal)AiToolchainOperatorProfile).Enabled = value ?? default(bool); }
+
         /// <summary>Backing field for <see cref="ApiServerAccessProfile" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfile _apiServerAccessProfile;
 
@@ -78,9 +91,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfile ApiServerAccessProfile { get => (this._apiServerAccessProfile = this._apiServerAccessProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterApiServerAccessProfile()); set => this._apiServerAccessProfile = value; }
 
         /// <summary>
-        /// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with clusters that use
-        /// Public IP Per Node, or clusters that are using a Basic Load Balancer. For more information see [API server authorized
-        /// IP ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges).
+        /// The IP ranges authorized to access the Kubernetes API server. IP ranges are specified in CIDR format, e.g. 137.117.106.88/29.
+        /// This feature is not compatible with clusters that use Public IP Per Node, or clusters that are using a Basic Load Balancer.
+        /// For more information see [API server authorized IP ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<string> ApiServerAccessProfileAuthorizedIPRange { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfileInternal)ApiServerAccessProfile).AuthorizedIPRange; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfileInternal)ApiServerAccessProfile).AuthorizedIPRange = value ?? null /* arrayOf */; }
@@ -90,7 +103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         public bool? ApiServerAccessProfileDisableRunCommand { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfileInternal)ApiServerAccessProfile).DisableRunCommand; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfileInternal)ApiServerAccessProfile).DisableRunCommand = value ?? default(bool); }
 
         /// <summary>
-        /// For more details, see [Creating a private AKS cluster](https://docs.microsoft.com/azure/aks/private-clusters).
+        /// Whether to create the cluster as a private cluster or not. For more details, see [Creating a private AKS cluster](https://docs.microsoft.com/azure/aks/private-clusters).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public bool? ApiServerAccessProfileEnablePrivateCluster { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfileInternal)ApiServerAccessProfile).EnablePrivateCluster; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfileInternal)ApiServerAccessProfile).EnablePrivateCluster = value ?? default(bool); }
@@ -100,11 +113,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         public bool? ApiServerAccessProfileEnablePrivateClusterPublicFqdn { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfileInternal)ApiServerAccessProfile).EnablePrivateClusterPublicFqdn; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfileInternal)ApiServerAccessProfile).EnablePrivateClusterPublicFqdn = value ?? default(bool); }
 
         /// <summary>
-        /// The default is System. For more details see [configure private DNS zone](https://docs.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone).
+        /// Whether to enable apiserver vnet integration for the cluster or not. See aka.ms/AksVnetIntegration for more details.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public bool? ApiServerAccessProfileEnableVnetIntegration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfileInternal)ApiServerAccessProfile).EnableVnetIntegration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfileInternal)ApiServerAccessProfile).EnableVnetIntegration = value ?? default(bool); }
+
+        /// <summary>
+        /// The private DNS zone mode for the cluster. The default is System. For more details see [configure private DNS zone](https://docs.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone).
         /// Allowed values are 'system' and 'none'.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public string ApiServerAccessProfilePrivateDnsZone { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfileInternal)ApiServerAccessProfile).PrivateDnsZone; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfileInternal)ApiServerAccessProfile).PrivateDnsZone = value ?? null; }
+
+        /// <summary>
+        /// The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new cluster with BYO
+        /// Vnet, or when updating an existing cluster to enable apiserver vnet integration.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public string ApiServerAccessProfileSubnetId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfileInternal)ApiServerAccessProfile).SubnetId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfileInternal)ApiServerAccessProfile).SubnetId = value ?? null; }
 
         /// <summary>Backing field for <see cref="AutoScalerProfile" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfile _autoScalerProfile;
@@ -113,91 +139,145 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfile AutoScalerProfile { get => (this._autoScalerProfile = this._autoScalerProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterPropertiesAutoScalerProfile()); set => this._autoScalerProfile = value; }
 
-        /// <summary>Valid values are 'true' and 'false'</summary>
+        /// <summary>
+        /// Detects similar node pools and balances the number of nodes between them. Valid values are 'true' and 'false'
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public string AutoScalerProfileBalanceSimilarNodeGroup { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).BalanceSimilarNodeGroup; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).BalanceSimilarNodeGroup = value ?? null; }
 
         /// <summary>
-        /// If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders)
+        /// DaemonSet pods will be gracefully terminated from empty nodes. If set to true, all daemonset pods on empty nodes will
+        /// be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling.
+        /// If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public bool? AutoScalerProfileDaemonsetEvictionForEmptyNode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).DaemonsetEvictionForEmptyNode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).DaemonsetEvictionForEmptyNode = value ?? default(bool); }
+
+        /// <summary>
+        /// DaemonSet pods will be gracefully terminated from non-empty nodes. If set to true, all daemonset pods on occupied nodes
+        /// will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling.
+        /// If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public bool? AutoScalerProfileDaemonsetEvictionForOccupiedNode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).DaemonsetEvictionForOccupiedNode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).DaemonsetEvictionForOccupiedNode = value ?? default(bool); }
+
+        /// <summary>
+        /// The expander to use when scaling up. If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders)
         /// for more information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public string AutoScalerProfileExpander { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).Expander; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).Expander = value ?? null; }
 
-        /// <summary>The default is 10.</summary>
+        /// <summary>
+        /// Should CA ignore DaemonSet pods when calculating resource utilization for scaling down. If set to true, the resources
+        /// used by daemonset will be taken into account when making scaling down decisions.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public bool? AutoScalerProfileIgnoreDaemonsetsUtilization { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).IgnoreDaemonsetsUtilization; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).IgnoreDaemonsetsUtilization = value ?? default(bool); }
+
+        /// <summary>
+        /// The maximum number of empty nodes that can be deleted at the same time. This must be a positive integer. The default is
+        /// 10.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public string AutoScalerProfileMaxEmptyBulkDelete { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).MaxEmptyBulkDelete; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).MaxEmptyBulkDelete = value ?? null; }
 
-        /// <summary>The default is 600.</summary>
+        /// <summary>
+        /// The maximum number of seconds the cluster autoscaler waits for pod termination when trying to scale down a node. The default
+        /// is 600.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public string AutoScalerProfileMaxGracefulTerminationSec { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).MaxGracefulTerminationSec; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).MaxGracefulTerminationSec = value ?? null; }
 
         /// <summary>
-        /// The default is '15m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// The maximum time the autoscaler waits for a node to be provisioned. The default is '15m'. Values must be an integer followed
+        /// by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public string AutoScalerProfileMaxNodeProvisionTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).MaxNodeProvisionTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).MaxNodeProvisionTime = value ?? null; }
 
-        /// <summary>The default is 45. The maximum is 100 and the minimum is 0.</summary>
+        /// <summary>
+        /// The maximum percentage of unready nodes in the cluster. After this percentage is exceeded, cluster autoscaler halts operations.
+        /// The default is 45. The maximum is 100 and the minimum is 0.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public string AutoScalerProfileMaxTotalUnreadyPercentage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).MaxTotalUnreadyPercentage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).MaxTotalUnreadyPercentage = value ?? null; }
 
         /// <summary>
-        /// For scenarios like burst/batch scale where you don't want CA to act before the kubernetes scheduler could schedule all
-        /// the pods, you can tell CA to ignore unscheduled pods before they're a certain age. The default is '0s'. Values must be
-        /// an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h' for hours, etc).
+        /// Ignore unscheduled pods before they're a certain age. For scenarios like burst/batch scale where you don't want CA to
+        /// act before the kubernetes scheduler could schedule all the pods, you can tell CA to ignore unscheduled pods before they're
+        /// a certain age. The default is '0s'. Values must be an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h'
+        /// for hours, etc).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public string AutoScalerProfileNewPodScaleUpDelay { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).NewPodScaleUpDelay; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).NewPodScaleUpDelay = value ?? null; }
 
-        /// <summary>This must be an integer. The default is 3.</summary>
+        /// <summary>
+        /// The number of allowed unready nodes, irrespective of max-total-unready-percentage. This must be an integer. The default
+        /// is 3.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public string AutoScalerProfileOkTotalUnreadyCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).OkTotalUnreadyCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).OkTotalUnreadyCount = value ?? null; }
 
         /// <summary>
-        /// The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// How long after scale up that scale down evaluation resumes. The default is '10m'. Values must be an integer followed by
+        /// an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public string AutoScalerProfileScaleDownDelayAfterAdd { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).ScaleDownDelayAfterAdd; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).ScaleDownDelayAfterAdd = value ?? null; }
 
         /// <summary>
-        /// The default is the scan-interval. Values must be an integer followed by an 'm'. No unit of time other than minutes (m)
-        /// is supported.
+        /// How long after node deletion that scale down evaluation resumes. The default is the scan-interval. Values must be an integer
+        /// followed by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public string AutoScalerProfileScaleDownDelayAfterDelete { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).ScaleDownDelayAfterDelete; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).ScaleDownDelayAfterDelete = value ?? null; }
 
         /// <summary>
-        /// The default is '3m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// How long after scale down failure that scale down evaluation resumes. The default is '3m'. Values must be an integer followed
+        /// by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public string AutoScalerProfileScaleDownDelayAfterFailure { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).ScaleDownDelayAfterFailure; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).ScaleDownDelayAfterFailure = value ?? null; }
 
         /// <summary>
-        /// The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// How long a node should be unneeded before it is eligible for scale down. The default is '10m'. Values must be an integer
+        /// followed by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public string AutoScalerProfileScaleDownUnneededTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).ScaleDownUnneededTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).ScaleDownUnneededTime = value ?? null; }
 
         /// <summary>
-        /// The default is '20m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// How long an unready node should be unneeded before it is eligible for scale down. The default is '20m'. Values must be
+        /// an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public string AutoScalerProfileScaleDownUnreadyTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).ScaleDownUnreadyTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).ScaleDownUnreadyTime = value ?? null; }
 
-        /// <summary>The default is '0.5'.</summary>
+        /// <summary>
+        /// Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered
+        /// for scale down. The default is '0.5'.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public string AutoScalerProfileScaleDownUtilizationThreshold { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).ScaleDownUtilizationThreshold; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).ScaleDownUtilizationThreshold = value ?? null; }
 
-        /// <summary>The default is '10'. Values must be an integer number of seconds.</summary>
+        /// <summary>
+        /// How often cluster is reevaluated for scale up or down. The default is '10'. Values must be an integer number of seconds.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public string AutoScalerProfileScanInterval { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).ScanInterval; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).ScanInterval = value ?? null; }
 
-        /// <summary>The default is true.</summary>
+        /// <summary>
+        /// If cluster autoscaler will skip deleting nodes with pods with local storage, for example, EmptyDir or HostPath. The default
+        /// is true.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public string AutoScalerProfileSkipNodesWithLocalStorage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).SkipNodesWithLocalStorage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).SkipNodesWithLocalStorage = value ?? null; }
 
-        /// <summary>The default is true.</summary>
+        /// <summary>
+        /// If cluster autoscaler will skip deleting nodes with pods from kube-system (except for DaemonSet or mirror pods). The default
+        /// is true.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public string AutoScalerProfileSkipNodesWithSystemPod { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).SkipNodesWithSystemPod; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfileInternal)AutoScalerProfile).SkipNodesWithSystemPod = value ?? null; }
 
@@ -209,7 +289,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAutoUpgradeProfile AutoUpgradeProfile { get => (this._autoUpgradeProfile = this._autoUpgradeProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterAutoUpgradeProfile()); set => this._autoUpgradeProfile = value; }
 
         /// <summary>
-        /// For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
+        /// Node OS Upgrade Channel. Manner in which the OS on your nodes is updated. The default is NodeImage.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public string AutoUpgradeProfileNodeOSUpgradeChannel { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAutoUpgradeProfileInternal)AutoUpgradeProfile).NodeOSUpgradeChannel; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAutoUpgradeProfileInternal)AutoUpgradeProfile).NodeOSUpgradeChannel = value ?? null; }
+
+        /// <summary>
+        /// The upgrade channel for auto upgrade. The default is 'none'. For more information see [setting the AKS cluster auto-upgrade
+        /// channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public string AutoUpgradeProfileUpgradeChannel { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAutoUpgradeProfileInternal)AutoUpgradeProfile).UpgradeChannel; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAutoUpgradeProfileInternal)AutoUpgradeProfile).UpgradeChannel = value ?? null; }
@@ -227,9 +314,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         public string AzureKeyVaultKmKeyId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)SecurityProfile).AzureKeyVaultKmKeyId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)SecurityProfile).AzureKeyVaultKmKeyId = value ?? null; }
 
         /// <summary>
-        /// Network access of key vault. The possible values are `Public` and `Private`. `Public` means the key vault allows public
-        /// access from all networks. `Private` means the key vault disables public access and enables private link. The default value
-        /// is `Public`.
+        /// Network access of the key vault. Network access of key vault. The possible values are `Public` and `Private`. `Public`
+        /// means the key vault allows public access from all networks. `Private` means the key vault disables public access and enables
+        /// private link. The default value is `Public`.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public string AzureKeyVaultKmKeyVaultNetworkAccess { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)SecurityProfile).AzureKeyVaultKmKeyVaultNetworkAccess; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)SecurityProfile).AzureKeyVaultKmKeyVaultNetworkAccess = value ?? null; }
@@ -252,8 +339,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         private string _azurePortalFqdn;
 
         /// <summary>
-        /// The Azure Portal requires certain Cross-Origin Resource Sharing (CORS) headers to be sent in some responses, which Kubernetes
-        /// APIServer doesn't handle by default. This special FQDN supports CORS, allowing the Azure Portal to function properly.
+        /// The special FQDN used by the Azure Portal to access the Managed Cluster. This FQDN is for use only by the Azure Portal
+        /// and should not be used by other clients. The Azure Portal requires certain Cross-Origin Resource Sharing (CORS) headers
+        /// to be sent in some responses, which Kubernetes APIServer doesn't handle by default. This special FQDN supports CORS, allowing
+        /// the Azure Portal to function properly.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string AzurePortalFqdn { get => this._azurePortalFqdn; }
@@ -262,12 +351,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public bool? BlobCsiDriverEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfileInternal)StorageProfile).BlobCsiDriverEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfileInternal)StorageProfile).BlobCsiDriverEnabled = value ?? default(bool); }
 
+        /// <summary>Backing field for <see cref="BootstrapProfile" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterBootstrapProfile _bootstrapProfile;
+
+        /// <summary>Profile of the cluster bootstrap configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterBootstrapProfile BootstrapProfile { get => (this._bootstrapProfile = this._bootstrapProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterBootstrapProfile()); set => this._bootstrapProfile = value; }
+
+        /// <summary>The artifact source. The source where the artifacts are downloaded from.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public string BootstrapProfileArtifactSource { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterBootstrapProfileInternal)BootstrapProfile).ArtifactSource; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterBootstrapProfileInternal)BootstrapProfile).ArtifactSource = value ?? null; }
+
+        /// <summary>
+        /// The resource Id of Azure Container Registry. The registry must have private network access, premium SKU and zone redundancy.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public string BootstrapProfileContainerRegistryId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterBootstrapProfileInternal)BootstrapProfile).ContainerRegistryId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterBootstrapProfileInternal)BootstrapProfile).ContainerRegistryId = value ?? null; }
+
+        /// <summary>Istio egress gateways.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IIstioEgressGateway> ComponentEgressGateway { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfileInternal)ServiceMeshProfile).ComponentEgressGateway; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfileInternal)ServiceMeshProfile).ComponentEgressGateway = value ?? null /* arrayOf */; }
+
+        /// <summary>Istio ingress gateways.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IIstioIngressGateway> ComponentIngressGateway { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfileInternal)ServiceMeshProfile).ComponentIngressGateway; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfileInternal)ServiceMeshProfile).ComponentIngressGateway = value ?? null /* arrayOf */; }
+
+        /// <summary>
+        /// Whether to enable cost analysis. The Managed Cluster sku.tier must be set to 'Standard' or 'Premium' to enable this feature.
+        /// Enabling this will add Kubernetes Namespace and Deployment details to the Cost Analysis views in the Azure portal. If
+        /// not specified, the default is false. For more information see aka.ms/aks/docs/cost-analysis.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public bool? CostAnalysisEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterMetricsProfileInternal)MetricsProfile).CostAnalysisEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterMetricsProfileInternal)MetricsProfile).CostAnalysisEnabled = value ?? default(bool); }
+
         /// <summary>Backing field for <see cref="CurrentKubernetesVersion" /> property.</summary>
         private string _currentKubernetesVersion;
 
         /// <summary>
-        /// If kubernetesVersion was a fully specified version <major.minor.patch>, this field will be exactly equal to it. If kubernetesVersion
-        /// was <major.minor>, this field will contain the full <major.minor.patch> version being used.
+        /// The version of Kubernetes the Managed Cluster is running. If kubernetesVersion was a fully specified version <major.minor.patch>,
+        /// this field will be exactly equal to it. If kubernetesVersion was <major.minor>, this field will contain the full <major.minor.patch>
+        /// version being used.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string CurrentKubernetesVersion { get => this._currentKubernetesVersion; }
@@ -284,8 +407,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         private bool? _disableLocalAccount;
 
         /// <summary>
-        /// If set to true, getting static credentials will be disabled for this cluster. This must only be used on Managed Clusters
-        /// that are AAD enabled. For more details see [disable local accounts](https://docs.microsoft.com/azure/aks/managed-aad#disable-local-accounts-preview).
+        /// If local accounts should be disabled on the Managed Cluster. If set to true, getting static credentials will be disabled
+        /// for this cluster. This must only be used on Managed Clusters that are AAD enabled. For more details see [disable local
+        /// accounts](https://docs.microsoft.com/azure/aks/managed-aad#disable-local-accounts-preview).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public bool? DisableLocalAccount { get => this._disableLocalAccount; set => this._disableLocalAccount = value; }
@@ -298,7 +422,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         private string _diskEncryptionSetId;
 
         /// <summary>
-        /// This is of the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{encryptionSetName}'
+        /// The Resource ID of the disk encryption set to use for enabling encryption at rest. This is of the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{encryptionSetName}'
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string DiskEncryptionSetId { get => this._diskEncryptionSetId; set => this._diskEncryptionSetId = value; }
@@ -306,19 +430,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// <summary>Backing field for <see cref="DnsPrefix" /> property.</summary>
         private string _dnsPrefix;
 
-        /// <summary>This cannot be updated once the Managed Cluster has been created.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
-        public string DnsPrefix { get => this._dnsPrefix; set => this._dnsPrefix = value; }
-
-        /// <summary>Backing field for <see cref="EnablePodSecurityPolicy" /> property.</summary>
-        private bool? _enablePodSecurityPolicy;
-
         /// <summary>
-        /// (DEPRECATED) Whether to enable Kubernetes pod security policy (preview). PodSecurityPolicy was deprecated in Kubernetes
-        /// v1.21, and removed from Kubernetes in v1.25. Learn more at https://aka.ms/k8s/psp and https://aka.ms/aks/psp.
+        /// The DNS prefix of the Managed Cluster. This cannot be updated once the Managed Cluster has been created.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
-        public bool? EnablePodSecurityPolicy { get => this._enablePodSecurityPolicy; set => this._enablePodSecurityPolicy = value; }
+        public string DnsPrefix { get => this._dnsPrefix; set => this._dnsPrefix = value; }
 
         /// <summary>Backing field for <see cref="EnableRbac" /> property.</summary>
         private bool? _enableRbac;
@@ -341,7 +457,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// <summary>Backing field for <see cref="FqdnSubdomain" /> property.</summary>
         private string _fqdnSubdomain;
 
-        /// <summary>This cannot be updated once the Managed Cluster has been created.</summary>
+        /// <summary>
+        /// The FQDN subdomain of the private cluster with custom private dns zone. This cannot be updated once the Managed Cluster
+        /// has been created.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string FqdnSubdomain { get => this._fqdnSubdomain; set => this._fqdnSubdomain = value; }
 
@@ -352,7 +471,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public string GmsaProfileDnsServer { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWindowsProfileInternal)WindowsProfile).GmsaProfileDnsServer; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWindowsProfileInternal)WindowsProfile).GmsaProfileDnsServer = value ?? null; }
 
-        /// <summary>Specifies whether to enable Windows gMSA in the managed cluster.</summary>
+        /// <summary>
+        /// Whether to enable Windows gMSA. Specifies whether to enable Windows gMSA in the managed cluster.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public bool? GmsaProfileEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWindowsProfileInternal)WindowsProfile).GmsaProfileEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWindowsProfileInternal)WindowsProfile).GmsaProfileEnabled = value ?? default(bool); }
 
@@ -386,12 +507,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public string HttpProxyConfigTrustedCa { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterHttpProxyConfigInternal)HttpProxyConfig).TrustedCa; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterHttpProxyConfigInternal)HttpProxyConfig).TrustedCa = value ?? null; }
 
+        /// <summary>The client ID of the user assigned identity.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public string IdentityClientId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfileInternal)IngressProfile).IdentityClientId; }
+
+        /// <summary>The object ID of the user assigned identity.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public string IdentityObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfileInternal)IngressProfile).IdentityObjectId; }
+
         /// <summary>Backing field for <see cref="IdentityProfile" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesIdentityProfile _identityProfile;
 
-        /// <summary>Identities associated with the cluster.</summary>
+        /// <summary>
+        /// The user identity associated with the managed cluster. This identity will be used by the kubelet. Only one user assigned
+        /// identity is allowed. The only accepted key is "kubeletidentity", with value of "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}".
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesIdentityProfile IdentityProfile { get => (this._identityProfile = this._identityProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterPropertiesIdentityProfile()); set => this._identityProfile = value; }
+
+        /// <summary>The resource ID of the user assigned identity.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public string IdentityResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfileInternal)IngressProfile).IdentityResourceId; }
 
         /// <summary>Whether to enable Image Cleaner on AKS cluster.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
@@ -400,6 +536,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// <summary>Image Cleaner scanning interval in hours.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public int? ImageCleanerIntervalHour { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)SecurityProfile).ImageCleanerIntervalHour; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)SecurityProfile).ImageCleanerIntervalHour = value ?? default(int); }
+
+        /// <summary>Backing field for <see cref="IngressProfile" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfile _ingressProfile;
+
+        /// <summary>Ingress profile for the managed cluster.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfile IngressProfile { get => (this._ingressProfile = this._ingressProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterIngressProfile()); set => this._ingressProfile = value; }
+
+        /// <summary>
+        /// The list of revisions of the Istio control plane. When an upgrade is not in progress, this holds one value. When canary
+        /// upgrade is in progress, this can only hold two consecutive values. For more information, see: https://learn.microsoft.com/en-us/azure/aks/istio-upgrade
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> IstioRevision { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfileInternal)ServiceMeshProfile).IstioRevision; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfileInternal)ServiceMeshProfile).IstioRevision = value ?? null /* arrayOf */; }
 
         /// <summary>Whether to enable KEDA.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
@@ -423,12 +573,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         private string _kubernetesVersion;
 
         /// <summary>
-        /// Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor> (e.g. 1.20) are supported. When <major.minor>
-        /// is specified, the latest supported GA patch version is chosen automatically. Updating the cluster with the same <major.minor>
-        /// once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade, even if a newer patch version is available.
-        /// When you upgrade a supported AKS cluster, Kubernetes minor versions cannot be skipped. All upgrades must be performed
-        /// sequentially by major version number. For example, upgrades between 1.14.x -> 1.15.x or 1.15.x -> 1.16.x are allowed,
-        /// however 1.14.x -> 1.16.x is not allowed. See [upgrading an AKS cluster](https://docs.microsoft.com/azure/aks/upgrade-cluster)
+        /// The version of Kubernetes specified by the user. Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor>
+        /// (e.g. 1.20) are supported. When <major.minor> is specified, the latest supported GA patch version is chosen automatically.
+        /// Updating the cluster with the same <major.minor> once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade,
+        /// even if a newer patch version is available. When you upgrade a supported AKS cluster, Kubernetes minor versions cannot
+        /// be skipped. All upgrades must be performed sequentially by major version number. For example, upgrades between 1.14.x
+        /// -> 1.15.x or 1.15.x -> 1.16.x are allowed, however 1.14.x -> 1.16.x is not allowed. See [upgrading an AKS cluster](https://docs.microsoft.com/azure/aks/upgrade-cluster)
         /// for more details.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
@@ -459,8 +609,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public bool? MetricEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAzureMonitorProfileInternal)AzureMonitorProfile).MetricEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAzureMonitorProfileInternal)AzureMonitorProfile).MetricEnabled = value ?? default(bool); }
 
+        /// <summary>Backing field for <see cref="MetricsProfile" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterMetricsProfile _metricsProfile;
+
+        /// <summary>Optional cluster metrics configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterMetricsProfile MetricsProfile { get => (this._metricsProfile = this._metricsProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterMetricsProfile()); set => this._metricsProfile = value; }
+
         /// <summary>Internal Acessors for AadProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAadProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.AadProfile { get => (this._aadProfile = this._aadProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterAadProfile()); set { {_aadProfile = value;} } }
+
+        /// <summary>Internal Acessors for AiToolchainOperatorProfile</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAiToolchainOperatorProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.AiToolchainOperatorProfile { get => (this._aiToolchainOperatorProfile = this._aiToolchainOperatorProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterAiToolchainOperatorProfile()); set { {_aiToolchainOperatorProfile = value;} } }
 
         /// <summary>Internal Acessors for ApiServerAccessProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.ApiServerAccessProfile { get => (this._apiServerAccessProfile = this._apiServerAccessProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterApiServerAccessProfile()); set { {_apiServerAccessProfile = value;} } }
@@ -475,16 +635,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAzureMonitorProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.AzureMonitorProfile { get => (this._azureMonitorProfile = this._azureMonitorProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterAzureMonitorProfile()); set { {_azureMonitorProfile = value;} } }
 
         /// <summary>Internal Acessors for AzureMonitorProfileMetric</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAzureMonitorProfileMetrics Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.AzureMonitorProfileMetric { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAzureMonitorProfileInternal)AzureMonitorProfile).Metric; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAzureMonitorProfileInternal)AzureMonitorProfile).Metric = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAzureMonitorProfileMetrics Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.AzureMonitorProfileMetric { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAzureMonitorProfileInternal)AzureMonitorProfile).Metric; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAzureMonitorProfileInternal)AzureMonitorProfile).Metric = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for AzurePortalFqdn</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.AzurePortalFqdn { get => this._azurePortalFqdn; set { {_azurePortalFqdn = value;} } }
+
+        /// <summary>Internal Acessors for BootstrapProfile</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterBootstrapProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.BootstrapProfile { get => (this._bootstrapProfile = this._bootstrapProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterBootstrapProfile()); set { {_bootstrapProfile = value;} } }
+
+        /// <summary>Internal Acessors for CertificateAuthorityPlugin</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IIstioPluginCertificateAuthority Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.CertificateAuthorityPlugin { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfileInternal)ServiceMeshProfile).CertificateAuthorityPlugin; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfileInternal)ServiceMeshProfile).CertificateAuthorityPlugin = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for CurrentKubernetesVersion</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.CurrentKubernetesVersion { get => this._currentKubernetesVersion; set { {_currentKubernetesVersion = value;} } }
 
         /// <summary>Internal Acessors for DefenderSecurityMonitoring</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileDefenderSecurityMonitoring Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.DefenderSecurityMonitoring { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)SecurityProfile).DefenderSecurityMonitoring; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)SecurityProfile).DefenderSecurityMonitoring = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileDefenderSecurityMonitoring Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.DefenderSecurityMonitoring { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)SecurityProfile).DefenderSecurityMonitoring; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)SecurityProfile).DefenderSecurityMonitoring = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Fqdn</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.Fqdn { get => this._fqdn; set { {_fqdn = value;} } }
@@ -492,23 +658,56 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// <summary>Internal Acessors for HttpProxyConfig</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterHttpProxyConfig Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.HttpProxyConfig { get => (this._httpProxyConfig = this._httpProxyConfig ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterHttpProxyConfig()); set { {_httpProxyConfig = value;} } }
 
+        /// <summary>Internal Acessors for IdentityClientId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.IdentityClientId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfileInternal)IngressProfile).IdentityClientId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfileInternal)IngressProfile).IdentityClientId = value ?? null; }
+
+        /// <summary>Internal Acessors for IdentityObjectId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.IdentityObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfileInternal)IngressProfile).IdentityObjectId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfileInternal)IngressProfile).IdentityObjectId = value ?? null; }
+
+        /// <summary>Internal Acessors for IdentityResourceId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.IdentityResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfileInternal)IngressProfile).IdentityResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfileInternal)IngressProfile).IdentityResourceId = value ?? null; }
+
+        /// <summary>Internal Acessors for IngressProfile</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.IngressProfile { get => (this._ingressProfile = this._ingressProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterIngressProfile()); set { {_ingressProfile = value;} } }
+
+        /// <summary>Internal Acessors for IngressProfileWebAppRouting</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfileWebAppRouting Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.IngressProfileWebAppRouting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfileInternal)IngressProfile).WebAppRouting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfileInternal)IngressProfile).WebAppRouting = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for IstioCertificateAuthority</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IIstioCertificateAuthority Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.IstioCertificateAuthority { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfileInternal)ServiceMeshProfile).IstioCertificateAuthority; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfileInternal)ServiceMeshProfile).IstioCertificateAuthority = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for IstioComponent</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IIstioComponents Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.IstioComponent { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfileInternal)ServiceMeshProfile).IstioComponent; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfileInternal)ServiceMeshProfile).IstioComponent = value ?? null /* model class */; }
+
         /// <summary>Internal Acessors for LinuxProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceLinuxProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.LinuxProfile { get => (this._linuxProfile = this._linuxProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ContainerServiceLinuxProfile()); set { {_linuxProfile = value;} } }
 
         /// <summary>Internal Acessors for LinuxProfileSsh</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceSshConfiguration Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.LinuxProfileSsh { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceLinuxProfileInternal)LinuxProfile).Ssh; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceLinuxProfileInternal)LinuxProfile).Ssh = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceSshConfiguration Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.LinuxProfileSsh { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceLinuxProfileInternal)LinuxProfile).Ssh; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceLinuxProfileInternal)LinuxProfile).Ssh = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for MaxAgentPool</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.MaxAgentPool { get => this._maxAgentPool; set { {_maxAgentPool = value;} } }
 
         /// <summary>Internal Acessors for MetricKubeStateMetric</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAzureMonitorProfileKubeStateMetrics Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.MetricKubeStateMetric { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAzureMonitorProfileInternal)AzureMonitorProfile).MetricKubeStateMetric; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAzureMonitorProfileInternal)AzureMonitorProfile).MetricKubeStateMetric = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAzureMonitorProfileKubeStateMetrics Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.MetricKubeStateMetric { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAzureMonitorProfileInternal)AzureMonitorProfile).MetricKubeStateMetric; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAzureMonitorProfileInternal)AzureMonitorProfile).MetricKubeStateMetric = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for MetricProfileCostAnalysis</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterCostAnalysis Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.MetricProfileCostAnalysis { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterMetricsProfileInternal)MetricsProfile).CostAnalysis; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterMetricsProfileInternal)MetricsProfile).CostAnalysis = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for MetricsProfile</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterMetricsProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.MetricsProfile { get => (this._metricsProfile = this._metricsProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterMetricsProfile()); set { {_metricsProfile = value;} } }
+
+        /// <summary>Internal Acessors for NodeProvisioningProfile</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNodeProvisioningProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.NodeProvisioningProfile { get => (this._nodeProvisioningProfile = this._nodeProvisioningProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterNodeProvisioningProfile()); set { {_nodeProvisioningProfile = value;} } }
+
+        /// <summary>Internal Acessors for NodeResourceGroupProfile</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNodeResourceGroupProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.NodeResourceGroupProfile { get => (this._nodeResourceGroupProfile = this._nodeResourceGroupProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterNodeResourceGroupProfile()); set { {_nodeResourceGroupProfile = value;} } }
 
         /// <summary>Internal Acessors for OidcIssuerProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterOidcIssuerProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.OidcIssuerProfile { get => (this._oidcIssuerProfile = this._oidcIssuerProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterOidcIssuerProfile()); set { {_oidcIssuerProfile = value;} } }
 
         /// <summary>Internal Acessors for OidcIssuerProfileIssuerUrl</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.OidcIssuerProfileIssuerUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterOidcIssuerProfileInternal)OidcIssuerProfile).IssuerUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterOidcIssuerProfileInternal)OidcIssuerProfile).IssuerUrl = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.OidcIssuerProfileIssuerUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterOidcIssuerProfileInternal)OidcIssuerProfile).IssuerUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterOidcIssuerProfileInternal)OidcIssuerProfile).IssuerUrl = value ?? null; }
 
         /// <summary>Internal Acessors for PodIdentityProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.PodIdentityProfile { get => (this._podIdentityProfile = this._podIdentityProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterPodIdentityProfile()); set { {_podIdentityProfile = value;} } }
@@ -517,49 +716,91 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IPowerState Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.PowerState { get => (this._powerState = this._powerState ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.PowerState()); set { {_powerState = value;} } }
 
         /// <summary>Internal Acessors for PowerStateCode</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.PowerStateCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IPowerStateInternal)PowerState).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IPowerStateInternal)PowerState).Code = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.PowerStateCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IPowerStateInternal)PowerState).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IPowerStateInternal)PowerState).Code = value ?? null; }
 
         /// <summary>Internal Acessors for PrivateFqdn</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.PrivateFqdn { get => this._privateFqdn; set { {_privateFqdn = value;} } }
 
+        /// <summary>Internal Acessors for ProvisioningErrorAdditionalInfo</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.ProvisioningErrorAdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStatusInternal)Status).ProvisioningErrorAdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStatusInternal)Status).ProvisioningErrorAdditionalInfo = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for ProvisioningErrorCode</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.ProvisioningErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStatusInternal)Status).ProvisioningErrorCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStatusInternal)Status).ProvisioningErrorCode = value ?? null; }
+
+        /// <summary>Internal Acessors for ProvisioningErrorDetail</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.ProvisioningErrorDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStatusInternal)Status).ProvisioningErrorDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStatusInternal)Status).ProvisioningErrorDetail = value ?? null /* arrayOf */; }
+
+        /// <summary>Internal Acessors for ProvisioningErrorMessage</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.ProvisioningErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStatusInternal)Status).ProvisioningErrorMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStatusInternal)Status).ProvisioningErrorMessage = value ?? null; }
+
+        /// <summary>Internal Acessors for ProvisioningErrorTarget</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.ProvisioningErrorTarget { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStatusInternal)Status).ProvisioningErrorTarget; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStatusInternal)Status).ProvisioningErrorTarget = value ?? null; }
+
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
+
+        /// <summary>Internal Acessors for ResourceUid</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.ResourceUid { get => this._resourceUid; set { {_resourceUid = value;} } }
 
         /// <summary>Internal Acessors for SecurityProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.SecurityProfile { get => (this._securityProfile = this._securityProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterSecurityProfile()); set { {_securityProfile = value;} } }
 
         /// <summary>Internal Acessors for SecurityProfileAzureKeyVaultKm</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAzureKeyVaultKms Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.SecurityProfileAzureKeyVaultKm { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)SecurityProfile).AzureKeyVaultKm; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)SecurityProfile).AzureKeyVaultKm = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAzureKeyVaultKms Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.SecurityProfileAzureKeyVaultKm { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)SecurityProfile).AzureKeyVaultKm; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)SecurityProfile).AzureKeyVaultKm = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SecurityProfileDefender</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileDefender Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.SecurityProfileDefender { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)SecurityProfile).Defender; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)SecurityProfile).Defender = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileDefender Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.SecurityProfileDefender { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)SecurityProfile).Defender; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)SecurityProfile).Defender = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SecurityProfileImageCleaner</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileImageCleaner Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.SecurityProfileImageCleaner { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)SecurityProfile).ImageCleaner; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)SecurityProfile).ImageCleaner = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileImageCleaner Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.SecurityProfileImageCleaner { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)SecurityProfile).ImageCleaner; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)SecurityProfile).ImageCleaner = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for SecurityProfileWorkloadIdentity</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileWorkloadIdentity Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.SecurityProfileWorkloadIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)SecurityProfile).WorkloadIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)SecurityProfile).WorkloadIdentity = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileWorkloadIdentity Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.SecurityProfileWorkloadIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)SecurityProfile).WorkloadIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)SecurityProfile).WorkloadIdentity = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for ServiceMeshProfile</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.ServiceMeshProfile { get => (this._serviceMeshProfile = this._serviceMeshProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ServiceMeshProfile()); set { {_serviceMeshProfile = value;} } }
+
+        /// <summary>Internal Acessors for ServiceMeshProfileIstio</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IIstioServiceMesh Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.ServiceMeshProfileIstio { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfileInternal)ServiceMeshProfile).Istio; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfileInternal)ServiceMeshProfile).Istio = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ServicePrincipalProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterServicePrincipalProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.ServicePrincipalProfile { get => (this._servicePrincipalProfile = this._servicePrincipalProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterServicePrincipalProfile()); set { {_servicePrincipalProfile = value;} } }
+
+        /// <summary>Internal Acessors for Status</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStatus Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.Status { get => (this._status = this._status ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterStatus()); set { {_status = value;} } }
+
+        /// <summary>Internal Acessors for StatusProvisioningError</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.StatusProvisioningError { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStatusInternal)Status).ProvisioningError; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStatusInternal)Status).ProvisioningError = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for StorageProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.StorageProfile { get => (this._storageProfile = this._storageProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterStorageProfile()); set { {_storageProfile = value;} } }
 
         /// <summary>Internal Acessors for StorageProfileBlobCsiDriver</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfileBlobCsiDriver Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.StorageProfileBlobCsiDriver { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfileInternal)StorageProfile).BlobCsiDriver; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfileInternal)StorageProfile).BlobCsiDriver = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfileBlobCsiDriver Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.StorageProfileBlobCsiDriver { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfileInternal)StorageProfile).BlobCsiDriver; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfileInternal)StorageProfile).BlobCsiDriver = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for StorageProfileDiskCsiDriver</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfileDiskCsiDriver Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.StorageProfileDiskCsiDriver { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfileInternal)StorageProfile).DiskCsiDriver; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfileInternal)StorageProfile).DiskCsiDriver = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfileDiskCsiDriver Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.StorageProfileDiskCsiDriver { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfileInternal)StorageProfile).DiskCsiDriver; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfileInternal)StorageProfile).DiskCsiDriver = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for StorageProfileFileCsiDriver</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfileFileCsiDriver Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.StorageProfileFileCsiDriver { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfileInternal)StorageProfile).FileCsiDriver; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfileInternal)StorageProfile).FileCsiDriver = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfileFileCsiDriver Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.StorageProfileFileCsiDriver { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfileInternal)StorageProfile).FileCsiDriver; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfileInternal)StorageProfile).FileCsiDriver = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for StorageProfileSnapshotController</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfileSnapshotController Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.StorageProfileSnapshotController { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfileInternal)StorageProfile).SnapshotController; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfileInternal)StorageProfile).SnapshotController = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfileSnapshotController Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.StorageProfileSnapshotController { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfileInternal)StorageProfile).SnapshotController; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfileInternal)StorageProfile).SnapshotController = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for UpgradeSetting</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IClusterUpgradeSettings Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.UpgradeSetting { get => (this._upgradeSetting = this._upgradeSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ClusterUpgradeSettings()); set { {_upgradeSetting = value;} } }
+
+        /// <summary>Internal Acessors for UpgradeSettingOverrideSetting</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IUpgradeOverrideSettings Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.UpgradeSettingOverrideSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IClusterUpgradeSettingsInternal)UpgradeSetting).OverrideSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IClusterUpgradeSettingsInternal)UpgradeSetting).OverrideSetting = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for WebAppRoutingIdentity</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IUserAssignedIdentity Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.WebAppRoutingIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfileInternal)IngressProfile).WebAppRoutingIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfileInternal)IngressProfile).WebAppRoutingIdentity = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for WebAppRoutingNginx</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfileNginx Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.WebAppRoutingNginx { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfileInternal)IngressProfile).WebAppRoutingNginx; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfileInternal)IngressProfile).WebAppRoutingNginx = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for WindowProfileGmsaProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IWindowsGmsaProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.WindowProfileGmsaProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWindowsProfileInternal)WindowsProfile).GmsaProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWindowsProfileInternal)WindowsProfile).GmsaProfile = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IWindowsGmsaProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.WindowProfileGmsaProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWindowsProfileInternal)WindowsProfile).GmsaProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWindowsProfileInternal)WindowsProfile).GmsaProfile = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for WindowsProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWindowsProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.WindowsProfile { get => (this._windowsProfile = this._windowsProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterWindowsProfile()); set { {_windowsProfile = value;} } }
@@ -568,7 +809,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfile Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.WorkloadAutoScalerProfile { get => (this._workloadAutoScalerProfile = this._workloadAutoScalerProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterWorkloadAutoScalerProfile()); set { {_workloadAutoScalerProfile = value;} } }
 
         /// <summary>Internal Acessors for WorkloadAutoScalerProfileKeda</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileKeda Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.WorkloadAutoScalerProfileKeda { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileInternal)WorkloadAutoScalerProfile).Keda; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileInternal)WorkloadAutoScalerProfile).Keda = value; }
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileKeda Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.WorkloadAutoScalerProfileKeda { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileInternal)WorkloadAutoScalerProfile).Keda; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileInternal)WorkloadAutoScalerProfile).Keda = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for WorkloadAutoScalerProfileVerticalPodAutoscaler</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesInternal.WorkloadAutoScalerProfileVerticalPodAutoscaler { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileInternal)WorkloadAutoScalerProfile).VerticalPodAutoscaler; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileInternal)WorkloadAutoScalerProfile).VerticalPodAutoscaler = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="NetworkProfile" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfile _networkProfile;
@@ -577,12 +821,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfile NetworkProfile { get => (this._networkProfile = this._networkProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ContainerServiceNetworkProfile()); set => this._networkProfile = value; }
 
+        /// <summary>Ingress type for the default NginxIngressController custom resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public string NginxDefaultIngressControllerType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfileInternal)IngressProfile).NginxDefaultIngressControllerType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfileInternal)IngressProfile).NginxDefaultIngressControllerType = value ?? null; }
+
+        /// <summary>Backing field for <see cref="NodeProvisioningProfile" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNodeProvisioningProfile _nodeProvisioningProfile;
+
+        /// <summary>Node provisioning settings that apply to the whole cluster.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNodeProvisioningProfile NodeProvisioningProfile { get => (this._nodeProvisioningProfile = this._nodeProvisioningProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterNodeProvisioningProfile()); set => this._nodeProvisioningProfile = value; }
+
+        /// <summary>
+        /// The set of default Karpenter NodePools (CRDs) configured for node provisioning. This field has no effect unless mode is
+        /// 'Auto'. Warning: Changing this from Auto to None on an existing cluster will cause the default Karpenter NodePools to
+        /// be deleted, which will drain and delete the nodes associated with those pools. It is strongly recommended to not do this
+        /// unless there are idle nodes ready to take the pods evicted by that action. If not specified, the default is Auto. For
+        /// more information see aka.ms/aks/nap#node-pools.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public string NodeProvisioningProfileDefaultNodePool { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNodeProvisioningProfileInternal)NodeProvisioningProfile).DefaultNodePool; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNodeProvisioningProfileInternal)NodeProvisioningProfile).DefaultNodePool = value ?? null; }
+
+        /// <summary>The node provisioning mode. If not specified, the default is Manual.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public string NodeProvisioningProfileMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNodeProvisioningProfileInternal)NodeProvisioningProfile).Mode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNodeProvisioningProfileInternal)NodeProvisioningProfile).Mode = value ?? null; }
+
         /// <summary>Backing field for <see cref="NodeResourceGroup" /> property.</summary>
         private string _nodeResourceGroup;
 
         /// <summary>The name of the resource group containing agent pool nodes.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string NodeResourceGroup { get => this._nodeResourceGroup; set => this._nodeResourceGroup = value; }
+
+        /// <summary>Backing field for <see cref="NodeResourceGroupProfile" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNodeResourceGroupProfile _nodeResourceGroupProfile;
+
+        /// <summary>Profile of the node resource group configuration.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNodeResourceGroupProfile NodeResourceGroupProfile { get => (this._nodeResourceGroupProfile = this._nodeResourceGroupProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterNodeResourceGroupProfile()); set => this._nodeResourceGroupProfile = value; }
+
+        /// <summary>
+        /// The restriction level applied to the cluster's node resource group. If not specified, the default is 'Unrestricted'
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public string NodeResourceGroupProfileRestrictionLevel { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNodeResourceGroupProfileInternal)NodeResourceGroupProfile).RestrictionLevel; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNodeResourceGroupProfileInternal)NodeResourceGroupProfile).RestrictionLevel = value ?? null; }
 
         /// <summary>Backing field for <see cref="OidcIssuerProfile" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterOidcIssuerProfile _oidcIssuerProfile;
@@ -599,19 +881,55 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public string OidcIssuerProfileIssuerUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterOidcIssuerProfileInternal)OidcIssuerProfile).IssuerUrl; }
 
+        /// <summary>
+        /// Whether to force upgrade the cluster. Note that this option instructs upgrade operation to bypass upgrade protections
+        /// such as checking for deprecated API usage. Enable this option only with caution.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public bool? OverrideSettingForceUpgrade { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IClusterUpgradeSettingsInternal)UpgradeSetting).OverrideSettingForceUpgrade; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IClusterUpgradeSettingsInternal)UpgradeSetting).OverrideSettingForceUpgrade = value ?? default(bool); }
+
+        /// <summary>
+        /// Until when the overrides are effective. Note that this only matches the start time of an upgrade, and the effectiveness
+        /// won't change once an upgrade starts even if the `until` expires as upgrade proceeds. This field is not set by default.
+        /// It must be set for the overrides to take effect.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public global::System.DateTime? OverrideSettingUntil { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IClusterUpgradeSettingsInternal)UpgradeSetting).OverrideSettingUntil; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IClusterUpgradeSettingsInternal)UpgradeSetting).OverrideSettingUntil = value ?? default(global::System.DateTime); }
+
+        /// <summary>Certificate chain object name in Azure Key Vault.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public string PluginCertChainObjectName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfileInternal)ServiceMeshProfile).PluginCertChainObjectName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfileInternal)ServiceMeshProfile).PluginCertChainObjectName = value ?? null; }
+
+        /// <summary>Intermediate certificate object name in Azure Key Vault.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public string PluginCertObjectName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfileInternal)ServiceMeshProfile).PluginCertObjectName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfileInternal)ServiceMeshProfile).PluginCertObjectName = value ?? null; }
+
+        /// <summary>Intermediate certificate private key object name in Azure Key Vault.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public string PluginKeyObjectName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfileInternal)ServiceMeshProfile).PluginKeyObjectName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfileInternal)ServiceMeshProfile).PluginKeyObjectName = value ?? null; }
+
+        /// <summary>The resource ID of the Key Vault.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public string PluginKeyVaultId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfileInternal)ServiceMeshProfile).PluginKeyVaultId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfileInternal)ServiceMeshProfile).PluginKeyVaultId = value ?? null; }
+
+        /// <summary>Root certificate object name in Azure Key Vault.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public string PluginRootCertObjectName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfileInternal)ServiceMeshProfile).PluginRootCertObjectName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfileInternal)ServiceMeshProfile).PluginRootCertObjectName = value ?? null; }
+
         /// <summary>Backing field for <see cref="PodIdentityProfile" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProfile _podIdentityProfile;
 
         /// <summary>
-        /// See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on AAD pod
-        /// identity integration.
+        /// The pod identity profile of the Managed Cluster. See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity)
+        /// for more details on AAD pod identity integration.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProfile PodIdentityProfile { get => (this._podIdentityProfile = this._podIdentityProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterPodIdentityProfile()); set => this._podIdentityProfile = value; }
 
         /// <summary>
-        /// Running in Kubenet is disabled by default due to the security related nature of AAD Pod Identity and the risks of IP spoofing.
-        /// See [using Kubenet network plugin with AAD Pod Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities)
+        /// Whether pod identity is allowed to run on clusters with Kubenet networking. Running in Kubenet is disabled by default
+        /// due to the security related nature of AAD Pod Identity and the risks of IP spoofing. See [using Kubenet network plugin
+        /// with AAD Pod Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities)
         /// for more information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
@@ -654,6 +972,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IPrivateLinkResource> PrivateLinkResource { get => this._privateLinkResource; set => this._privateLinkResource = value; }
 
+        /// <summary>The error additional info.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorAdditionalInfo> ProvisioningErrorAdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStatusInternal)Status).ProvisioningErrorAdditionalInfo; }
+
+        /// <summary>The error code.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public string ProvisioningErrorCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStatusInternal)Status).ProvisioningErrorCode; }
+
+        /// <summary>The error details.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorDetail> ProvisioningErrorDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStatusInternal)Status).ProvisioningErrorDetail; }
+
+        /// <summary>The error message.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public string ProvisioningErrorMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStatusInternal)Status).ProvisioningErrorMessage; }
+
+        /// <summary>The error target.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public string ProvisioningErrorTarget { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStatusInternal)Status).ProvisioningErrorTarget; }
+
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
         private string _provisioningState;
 
@@ -664,9 +1002,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// <summary>Backing field for <see cref="PublicNetworkAccess" /> property.</summary>
         private string _publicNetworkAccess;
 
-        /// <summary>Allow or deny public network access for AKS</summary>
+        /// <summary>
+        /// PublicNetworkAccess of the managedCluster. Allow or deny public network access for AKS
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string PublicNetworkAccess { get => this._publicNetworkAccess; set => this._publicNetworkAccess = value; }
+
+        /// <summary>Backing field for <see cref="ResourceUid" /> property.</summary>
+        private string _resourceUid;
+
+        /// <summary>
+        /// The resourceUID uniquely identifies ManagedClusters that reuse ARM ResourceIds (i.e: create, delete, create sequence)
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        public string ResourceUid { get => this._resourceUid; }
 
         /// <summary>Whether to enable Defender threat detection</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
@@ -678,6 +1027,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// <summary>Security profile for the managed cluster.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfile SecurityProfile { get => (this._securityProfile = this._securityProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterSecurityProfile()); set => this._securityProfile = value; }
+
+        /// <summary>
+        /// A list of up to 10 base64 encoded CAs that will be added to the trust store on all nodes in the cluster. For more information
+        /// see [Custom CA Trust Certificates](https://learn.microsoft.com/en-us/azure/aks/custom-certificate-authority).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<byte[]> SecurityProfileCustomCaTrustCertificate { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)SecurityProfile).CustomCaTrustCertificate; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileInternal)SecurityProfile).CustomCaTrustCertificate = value ?? null /* arrayOf */; }
+
+        /// <summary>Backing field for <see cref="ServiceMeshProfile" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfile _serviceMeshProfile;
+
+        /// <summary>Service mesh profile for a managed cluster.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfile ServiceMeshProfile { get => (this._serviceMeshProfile = this._serviceMeshProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ServiceMeshProfile()); set => this._serviceMeshProfile = value; }
+
+        /// <summary>Mode of the service mesh.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public string ServiceMeshProfileMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfileInternal)ServiceMeshProfile).Mode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfileInternal)ServiceMeshProfile).Mode = value ?? null; }
 
         /// <summary>Backing field for <see cref="ServicePrincipalProfile" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterServicePrincipalProfile _servicePrincipalProfile;
@@ -706,12 +1073,51 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceSshPublicKey> SshPublicKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceLinuxProfileInternal)LinuxProfile).SshPublicKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceLinuxProfileInternal)LinuxProfile).SshPublicKey = value ?? null /* arrayOf */; }
 
+        /// <summary>Backing field for <see cref="Status" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStatus _status;
+
+        /// <summary>Contains read-only information about the Managed Cluster.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStatus Status { get => (this._status = this._status ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterStatus()); set => this._status = value; }
+
         /// <summary>Backing field for <see cref="StorageProfile" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfile _storageProfile;
 
         /// <summary>Storage profile for the managed cluster.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfile StorageProfile { get => (this._storageProfile = this._storageProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ManagedClusterStorageProfile()); set => this._storageProfile = value; }
+
+        /// <summary>Backing field for <see cref="SupportPlan" /> property.</summary>
+        private string _supportPlan;
+
+        /// <summary>
+        /// The support plan for the Managed Cluster. If unspecified, the default is 'KubernetesOfficial'.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        public string SupportPlan { get => this._supportPlan; set => this._supportPlan = value; }
+
+        /// <summary>Backing field for <see cref="UpgradeSetting" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IClusterUpgradeSettings _upgradeSetting;
+
+        /// <summary>Settings for upgrading a cluster.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IClusterUpgradeSettings UpgradeSetting { get => (this._upgradeSetting = this._upgradeSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.ClusterUpgradeSettings()); set => this._upgradeSetting = value; }
+
+        /// <summary>Whether to enable VPA. Default value is false.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public bool? VerticalPodAutoscalerEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileInternal)WorkloadAutoScalerProfile).VerticalPodAutoscalerEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileInternal)WorkloadAutoScalerProfile).VerticalPodAutoscalerEnabled = value ?? default(bool); }
+
+        /// <summary>
+        /// Resource IDs of the DNS zones to be associated with the Application Routing add-on. Used only when Application Routing
+        /// add-on is enabled. Public and private DNS zones can be in different resource groups, but all public DNS zones must be
+        /// in the same resource group and all private DNS zones must be in the same resource group.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> WebAppRoutingDnsZoneResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfileInternal)IngressProfile).WebAppRoutingDnsZoneResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfileInternal)IngressProfile).WebAppRoutingDnsZoneResourceId = value ?? null /* arrayOf */; }
+
+        /// <summary>Whether to enable the Application Routing add-on.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
+        public bool? WebAppRoutingEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfileInternal)IngressProfile).WebAppRoutingEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfileInternal)IngressProfile).WebAppRoutingEnabled = value ?? default(bool); }
 
         /// <summary>
         /// Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:**
@@ -732,7 +1138,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         public string WindowProfileAdminUsername { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWindowsProfileInternal)WindowsProfile).AdminUsername; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWindowsProfileInternal)WindowsProfile).AdminUsername = value ?? null; }
 
         /// <summary>
-        /// For more details on CSI proxy, see the [CSI proxy GitHub repo](https://github.com/kubernetes-csi/csi-proxy).
+        /// Whether to enable CSI proxy. For more details on CSI proxy, see the [CSI proxy GitHub repo](https://github.com/kubernetes-csi/csi-proxy).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public bool? WindowProfileEnableCsiProxy { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWindowsProfileInternal)WindowsProfile).EnableCsiProxy; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWindowsProfileInternal)WindowsProfile).EnableCsiProxy = value ?? default(bool); }
@@ -880,9 +1286,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfile) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfile> AgentPoolProfile { get; set; }
         /// <summary>
-        /// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with clusters that use
-        /// Public IP Per Node, or clusters that are using a Basic Load Balancer. For more information see [API server authorized
-        /// IP ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges).
+        /// Whether to enable AI toolchain operator to the cluster. Indicates if AI toolchain operator enabled or not.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -890,7 +1294,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with clusters that use Public IP Per Node, or clusters that are using a Basic Load Balancer. For more information see [API server authorized IP ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges).",
+        Description = @"Whether to enable AI toolchain operator to the cluster. Indicates if AI toolchain operator  enabled or not.",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? AiToolchainOperatorProfileEnabled { get; set; }
+        /// <summary>
+        /// The IP ranges authorized to access the Kubernetes API server. IP ranges are specified in CIDR format, e.g. 137.117.106.88/29.
+        /// This feature is not compatible with clusters that use Public IP Per Node, or clusters that are using a Basic Load Balancer.
+        /// For more information see [API server authorized IP ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The IP ranges authorized to access the Kubernetes API server. IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with clusters that use Public IP Per Node, or clusters that are using a Basic Load Balancer. For more information see [API server authorized IP ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges).",
         SerializedName = @"authorizedIPRanges",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> ApiServerAccessProfileAuthorizedIPRange { get; set; }
@@ -906,7 +1325,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         PossibleTypes = new [] { typeof(bool) })]
         bool? ApiServerAccessProfileDisableRunCommand { get; set; }
         /// <summary>
-        /// For more details, see [Creating a private AKS cluster](https://docs.microsoft.com/azure/aks/private-clusters).
+        /// Whether to create the cluster as a private cluster or not. For more details, see [Creating a private AKS cluster](https://docs.microsoft.com/azure/aks/private-clusters).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -914,7 +1333,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"For more details, see [Creating a private AKS cluster](https://docs.microsoft.com/azure/aks/private-clusters).",
+        Description = @"Whether to create the cluster as a private cluster or not. For more details, see [Creating a private AKS cluster](https://docs.microsoft.com/azure/aks/private-clusters).",
         SerializedName = @"enablePrivateCluster",
         PossibleTypes = new [] { typeof(bool) })]
         bool? ApiServerAccessProfileEnablePrivateCluster { get; set; }
@@ -930,7 +1349,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         PossibleTypes = new [] { typeof(bool) })]
         bool? ApiServerAccessProfileEnablePrivateClusterPublicFqdn { get; set; }
         /// <summary>
-        /// The default is System. For more details see [configure private DNS zone](https://docs.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone).
+        /// Whether to enable apiserver vnet integration for the cluster or not. See aka.ms/AksVnetIntegration for more details.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Whether to enable apiserver vnet integration for the cluster or not. See aka.ms/AksVnetIntegration for more details.",
+        SerializedName = @"enableVnetIntegration",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? ApiServerAccessProfileEnableVnetIntegration { get; set; }
+        /// <summary>
+        /// The private DNS zone mode for the cluster. The default is System. For more details see [configure private DNS zone](https://docs.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone).
         /// Allowed values are 'system' and 'none'.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
@@ -939,23 +1371,69 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is System. For more details see [configure private DNS zone](https://docs.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone). Allowed values are 'system' and 'none'.",
+        Description = @"The private DNS zone mode for the cluster. The default is System. For more details see [configure private DNS zone](https://docs.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone). Allowed values are 'system' and 'none'.",
         SerializedName = @"privateDNSZone",
         PossibleTypes = new [] { typeof(string) })]
         string ApiServerAccessProfilePrivateDnsZone { get; set; }
-        /// <summary>Valid values are 'true' and 'false'</summary>
+        /// <summary>
+        /// The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new cluster with BYO
+        /// Vnet, or when updating an existing cluster to enable apiserver vnet integration.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Valid values are 'true' and 'false'",
+        Description = @"The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new cluster with BYO Vnet, or when updating an existing cluster to enable apiserver vnet integration.",
+        SerializedName = @"subnetId",
+        PossibleTypes = new [] { typeof(string) })]
+        string ApiServerAccessProfileSubnetId { get; set; }
+        /// <summary>
+        /// Detects similar node pools and balances the number of nodes between them. Valid values are 'true' and 'false'
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Detects similar node pools and balances the number of nodes between them. Valid values are 'true' and 'false'",
         SerializedName = @"balance-similar-node-groups",
         PossibleTypes = new [] { typeof(string) })]
         string AutoScalerProfileBalanceSimilarNodeGroup { get; set; }
         /// <summary>
-        /// If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders)
+        /// DaemonSet pods will be gracefully terminated from empty nodes. If set to true, all daemonset pods on empty nodes will
+        /// be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling.
+        /// If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"DaemonSet pods will be gracefully terminated from empty nodes. If set to true, all daemonset pods on empty nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.",
+        SerializedName = @"daemonset-eviction-for-empty-nodes",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? AutoScalerProfileDaemonsetEvictionForEmptyNode { get; set; }
+        /// <summary>
+        /// DaemonSet pods will be gracefully terminated from non-empty nodes. If set to true, all daemonset pods on occupied nodes
+        /// will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling.
+        /// If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"DaemonSet pods will be gracefully terminated from non-empty nodes. If set to true, all daemonset pods on occupied nodes will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling. If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.",
+        SerializedName = @"daemonset-eviction-for-occupied-nodes",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? AutoScalerProfileDaemonsetEvictionForOccupiedNode { get; set; }
+        /// <summary>
+        /// The expander to use when scaling up. If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders)
         /// for more information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
@@ -964,35 +1442,56 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.",
+        Description = @"The expander to use when scaling up. If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.",
         SerializedName = @"expander",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("least-waste", "most-pods", "priority", "random")]
         string AutoScalerProfileExpander { get; set; }
-        /// <summary>The default is 10.</summary>
+        /// <summary>
+        /// Should CA ignore DaemonSet pods when calculating resource utilization for scaling down. If set to true, the resources
+        /// used by daemonset will be taken into account when making scaling down decisions.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is 10.",
+        Description = @"Should CA ignore DaemonSet pods when calculating resource utilization for scaling down. If set to true, the resources used by daemonset will be taken into account when making scaling down decisions.",
+        SerializedName = @"ignore-daemonsets-utilization",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? AutoScalerProfileIgnoreDaemonsetsUtilization { get; set; }
+        /// <summary>
+        /// The maximum number of empty nodes that can be deleted at the same time. This must be a positive integer. The default is
+        /// 10.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The maximum number of empty nodes that can be deleted at the same time. This must be a positive integer. The default is 10.",
         SerializedName = @"max-empty-bulk-delete",
         PossibleTypes = new [] { typeof(string) })]
         string AutoScalerProfileMaxEmptyBulkDelete { get; set; }
-        /// <summary>The default is 600.</summary>
+        /// <summary>
+        /// The maximum number of seconds the cluster autoscaler waits for pod termination when trying to scale down a node. The default
+        /// is 600.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is 600.",
+        Description = @"The maximum number of seconds the cluster autoscaler waits for pod termination when trying to scale down a node. The default is 600.",
         SerializedName = @"max-graceful-termination-sec",
         PossibleTypes = new [] { typeof(string) })]
         string AutoScalerProfileMaxGracefulTerminationSec { get; set; }
         /// <summary>
-        /// The default is '15m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// The maximum time the autoscaler waits for a node to be provisioned. The default is '15m'. Values must be an integer followed
+        /// by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -1000,25 +1499,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is '15m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
+        Description = @"The maximum time the autoscaler waits for a node to be provisioned. The default is '15m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
         SerializedName = @"max-node-provision-time",
         PossibleTypes = new [] { typeof(string) })]
         string AutoScalerProfileMaxNodeProvisionTime { get; set; }
-        /// <summary>The default is 45. The maximum is 100 and the minimum is 0.</summary>
+        /// <summary>
+        /// The maximum percentage of unready nodes in the cluster. After this percentage is exceeded, cluster autoscaler halts operations.
+        /// The default is 45. The maximum is 100 and the minimum is 0.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is 45. The maximum is 100 and the minimum is 0.",
+        Description = @"The maximum percentage of unready nodes in the cluster. After this percentage is exceeded, cluster autoscaler halts operations. The default is 45. The maximum is 100 and the minimum is 0.",
         SerializedName = @"max-total-unready-percentage",
         PossibleTypes = new [] { typeof(string) })]
         string AutoScalerProfileMaxTotalUnreadyPercentage { get; set; }
         /// <summary>
-        /// For scenarios like burst/batch scale where you don't want CA to act before the kubernetes scheduler could schedule all
-        /// the pods, you can tell CA to ignore unscheduled pods before they're a certain age. The default is '0s'. Values must be
-        /// an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h' for hours, etc).
+        /// Ignore unscheduled pods before they're a certain age. For scenarios like burst/batch scale where you don't want CA to
+        /// act before the kubernetes scheduler could schedule all the pods, you can tell CA to ignore unscheduled pods before they're
+        /// a certain age. The default is '0s'. Values must be an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h'
+        /// for hours, etc).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -1026,23 +1529,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"For scenarios like burst/batch scale where you don't want CA to act before the kubernetes scheduler could schedule all the pods, you can tell CA to ignore unscheduled pods before they're a certain age. The default is '0s'. Values must be an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h' for hours, etc).",
+        Description = @"Ignore unscheduled pods before they're a certain age. For scenarios like burst/batch scale where you don't want CA to act before the kubernetes scheduler could schedule all the pods, you can tell CA to ignore unscheduled pods before they're a certain age. The default is '0s'. Values must be an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h' for hours, etc).",
         SerializedName = @"new-pod-scale-up-delay",
         PossibleTypes = new [] { typeof(string) })]
         string AutoScalerProfileNewPodScaleUpDelay { get; set; }
-        /// <summary>This must be an integer. The default is 3.</summary>
+        /// <summary>
+        /// The number of allowed unready nodes, irrespective of max-total-unready-percentage. This must be an integer. The default
+        /// is 3.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"This must be an integer. The default is 3.",
+        Description = @"The number of allowed unready nodes, irrespective of max-total-unready-percentage. This must be an integer. The default is 3.",
         SerializedName = @"ok-total-unready-count",
         PossibleTypes = new [] { typeof(string) })]
         string AutoScalerProfileOkTotalUnreadyCount { get; set; }
         /// <summary>
-        /// The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// How long after scale up that scale down evaluation resumes. The default is '10m'. Values must be an integer followed by
+        /// an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -1050,13 +1557,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
+        Description = @"How long after scale up that scale down evaluation resumes. The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
         SerializedName = @"scale-down-delay-after-add",
         PossibleTypes = new [] { typeof(string) })]
         string AutoScalerProfileScaleDownDelayAfterAdd { get; set; }
         /// <summary>
-        /// The default is the scan-interval. Values must be an integer followed by an 'm'. No unit of time other than minutes (m)
-        /// is supported.
+        /// How long after node deletion that scale down evaluation resumes. The default is the scan-interval. Values must be an integer
+        /// followed by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -1064,12 +1571,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is the scan-interval. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
+        Description = @"How long after node deletion that scale down evaluation resumes. The default is the scan-interval. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
         SerializedName = @"scale-down-delay-after-delete",
         PossibleTypes = new [] { typeof(string) })]
         string AutoScalerProfileScaleDownDelayAfterDelete { get; set; }
         /// <summary>
-        /// The default is '3m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// How long after scale down failure that scale down evaluation resumes. The default is '3m'. Values must be an integer followed
+        /// by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -1077,12 +1585,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is '3m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
+        Description = @"How long after scale down failure that scale down evaluation resumes. The default is '3m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
         SerializedName = @"scale-down-delay-after-failure",
         PossibleTypes = new [] { typeof(string) })]
         string AutoScalerProfileScaleDownDelayAfterFailure { get; set; }
         /// <summary>
-        /// The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// How long a node should be unneeded before it is eligible for scale down. The default is '10m'. Values must be an integer
+        /// followed by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -1090,12 +1599,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
+        Description = @"How long a node should be unneeded before it is eligible for scale down. The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
         SerializedName = @"scale-down-unneeded-time",
         PossibleTypes = new [] { typeof(string) })]
         string AutoScalerProfileScaleDownUnneededTime { get; set; }
         /// <summary>
-        /// The default is '20m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// How long an unready node should be unneeded before it is eligible for scale down. The default is '20m'. Values must be
+        /// an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -1103,56 +1613,67 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is '20m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
+        Description = @"How long an unready node should be unneeded before it is eligible for scale down. The default is '20m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
         SerializedName = @"scale-down-unready-time",
         PossibleTypes = new [] { typeof(string) })]
         string AutoScalerProfileScaleDownUnreadyTime { get; set; }
-        /// <summary>The default is '0.5'.</summary>
+        /// <summary>
+        /// Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered
+        /// for scale down. The default is '0.5'.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is '0.5'.",
+        Description = @"Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down. The default is '0.5'.",
         SerializedName = @"scale-down-utilization-threshold",
         PossibleTypes = new [] { typeof(string) })]
         string AutoScalerProfileScaleDownUtilizationThreshold { get; set; }
-        /// <summary>The default is '10'. Values must be an integer number of seconds.</summary>
+        /// <summary>
+        /// How often cluster is reevaluated for scale up or down. The default is '10'. Values must be an integer number of seconds.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is '10'. Values must be an integer number of seconds.",
+        Description = @"How often cluster is reevaluated for scale up or down. The default is '10'. Values must be an integer number of seconds.",
         SerializedName = @"scan-interval",
         PossibleTypes = new [] { typeof(string) })]
         string AutoScalerProfileScanInterval { get; set; }
-        /// <summary>The default is true.</summary>
+        /// <summary>
+        /// If cluster autoscaler will skip deleting nodes with pods with local storage, for example, EmptyDir or HostPath. The default
+        /// is true.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is true.",
+        Description = @"If cluster autoscaler will skip deleting nodes with pods with local storage, for example, EmptyDir or HostPath. The default is true.",
         SerializedName = @"skip-nodes-with-local-storage",
         PossibleTypes = new [] { typeof(string) })]
         string AutoScalerProfileSkipNodesWithLocalStorage { get; set; }
-        /// <summary>The default is true.</summary>
+        /// <summary>
+        /// If cluster autoscaler will skip deleting nodes with pods from kube-system (except for DaemonSet or mirror pods). The default
+        /// is true.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The default is true.",
+        Description = @"If cluster autoscaler will skip deleting nodes with pods from kube-system (except for DaemonSet or mirror pods). The default is true.",
         SerializedName = @"skip-nodes-with-system-pods",
         PossibleTypes = new [] { typeof(string) })]
         string AutoScalerProfileSkipNodesWithSystemPod { get; set; }
         /// <summary>
-        /// For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
+        /// Node OS Upgrade Channel. Manner in which the OS on your nodes is updated. The default is NodeImage.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -1160,7 +1681,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).",
+        Description = @"Node OS Upgrade Channel. Manner in which the OS on your nodes is updated. The default is NodeImage.",
+        SerializedName = @"nodeOSUpgradeChannel",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("None", "Unmanaged", "NodeImage", "SecurityPatch")]
+        string AutoUpgradeProfileNodeOSUpgradeChannel { get; set; }
+        /// <summary>
+        /// The upgrade channel for auto upgrade. The default is 'none'. For more information see [setting the AKS cluster auto-upgrade
+        /// channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The upgrade channel for auto upgrade. The default is 'none'. For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).",
         SerializedName = @"upgradeChannel",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("rapid", "stable", "patch", "node-image", "none")]
@@ -1192,9 +1728,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         PossibleTypes = new [] { typeof(string) })]
         string AzureKeyVaultKmKeyId { get; set; }
         /// <summary>
-        /// Network access of key vault. The possible values are `Public` and `Private`. `Public` means the key vault allows public
-        /// access from all networks. `Private` means the key vault disables public access and enables private link. The default value
-        /// is `Public`.
+        /// Network access of the key vault. Network access of key vault. The possible values are `Public` and `Private`. `Public`
+        /// means the key vault allows public access from all networks. `Private` means the key vault disables public access and enables
+        /// private link. The default value is `Public`.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -1202,7 +1738,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Network access of key vault. The possible values are `Public` and `Private`. `Public` means the key vault allows public access from all networks. `Private` means the key vault disables public access and enables private link. The default value is `Public`.",
+        Description = @"Network access of the key vault. Network access of key vault. The possible values are `Public` and `Private`. `Public` means the key vault allows public access from all networks. `Private` means the key vault disables public access and enables private link. The default value is `Public`.",
         SerializedName = @"keyVaultNetworkAccess",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Public", "Private")]
@@ -1222,8 +1758,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         PossibleTypes = new [] { typeof(string) })]
         string AzureKeyVaultKmKeyVaultResourceId { get; set; }
         /// <summary>
-        /// The Azure Portal requires certain Cross-Origin Resource Sharing (CORS) headers to be sent in some responses, which Kubernetes
-        /// APIServer doesn't handle by default. This special FQDN supports CORS, allowing the Azure Portal to function properly.
+        /// The special FQDN used by the Azure Portal to access the Managed Cluster. This FQDN is for use only by the Azure Portal
+        /// and should not be used by other clients. The Azure Portal requires certain Cross-Origin Resource Sharing (CORS) headers
+        /// to be sent in some responses, which Kubernetes APIServer doesn't handle by default. This special FQDN supports CORS, allowing
+        /// the Azure Portal to function properly.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -1231,7 +1769,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The Azure Portal requires certain Cross-Origin Resource Sharing (CORS) headers to be sent in some responses, which Kubernetes APIServer doesn't handle by default. This special FQDN supports CORS, allowing the Azure Portal to function properly.",
+        Description = @"The special FQDN used by the Azure Portal to access the Managed Cluster. This FQDN is for use only by the Azure Portal and should not be used by other clients. The Azure Portal requires certain Cross-Origin Resource Sharing (CORS) headers to be sent in some responses, which Kubernetes APIServer doesn't handle by default. This special FQDN supports CORS, allowing the Azure Portal to function properly.",
         SerializedName = @"azurePortalFQDN",
         PossibleTypes = new [] { typeof(string) })]
         string AzurePortalFqdn { get;  }
@@ -1246,9 +1784,72 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         SerializedName = @"enabled",
         PossibleTypes = new [] { typeof(bool) })]
         bool? BlobCsiDriverEnabled { get; set; }
+        /// <summary>The artifact source. The source where the artifacts are downloaded from.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The artifact source. The source where the artifacts are downloaded from.",
+        SerializedName = @"artifactSource",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Cache", "Direct")]
+        string BootstrapProfileArtifactSource { get; set; }
         /// <summary>
-        /// If kubernetesVersion was a fully specified version <major.minor.patch>, this field will be exactly equal to it. If kubernetesVersion
-        /// was <major.minor>, this field will contain the full <major.minor.patch> version being used.
+        /// The resource Id of Azure Container Registry. The registry must have private network access, premium SKU and zone redundancy.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The resource Id of Azure Container Registry. The registry must have private network access, premium SKU and zone redundancy.",
+        SerializedName = @"containerRegistryId",
+        PossibleTypes = new [] { typeof(string) })]
+        string BootstrapProfileContainerRegistryId { get; set; }
+        /// <summary>Istio egress gateways.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Istio egress gateways.",
+        SerializedName = @"egressGateways",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IIstioEgressGateway) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IIstioEgressGateway> ComponentEgressGateway { get; set; }
+        /// <summary>Istio ingress gateways.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Istio ingress gateways.",
+        SerializedName = @"ingressGateways",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IIstioIngressGateway) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IIstioIngressGateway> ComponentIngressGateway { get; set; }
+        /// <summary>
+        /// Whether to enable cost analysis. The Managed Cluster sku.tier must be set to 'Standard' or 'Premium' to enable this feature.
+        /// Enabling this will add Kubernetes Namespace and Deployment details to the Cost Analysis views in the Azure portal. If
+        /// not specified, the default is false. For more information see aka.ms/aks/docs/cost-analysis.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Whether to enable cost analysis. The Managed Cluster sku.tier must be set to 'Standard' or 'Premium' to enable this feature. Enabling this will add Kubernetes Namespace and Deployment details to the Cost Analysis views in the Azure portal. If not specified, the default is false. For more information see aka.ms/aks/docs/cost-analysis.",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? CostAnalysisEnabled { get; set; }
+        /// <summary>
+        /// The version of Kubernetes the Managed Cluster is running. If kubernetesVersion was a fully specified version <major.minor.patch>,
+        /// this field will be exactly equal to it. If kubernetesVersion was <major.minor>, this field will contain the full <major.minor.patch>
+        /// version being used.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -1256,7 +1857,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = false,
         Update = false,
-        Description = @"If kubernetesVersion was a fully specified version <major.minor.patch>, this field will be exactly equal to it. If kubernetesVersion was <major.minor>, this field will contain the full <major.minor.patch> version being used.",
+        Description = @"The version of Kubernetes the Managed Cluster is running. If kubernetesVersion was a fully specified version <major.minor.patch>, this field will be exactly equal to it. If kubernetesVersion was <major.minor>, this field will contain the full <major.minor.patch> version being used.",
         SerializedName = @"currentKubernetesVersion",
         PossibleTypes = new [] { typeof(string) })]
         string CurrentKubernetesVersion { get;  }
@@ -1276,8 +1877,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         PossibleTypes = new [] { typeof(string) })]
         string DefenderLogAnalyticsWorkspaceResourceId { get; set; }
         /// <summary>
-        /// If set to true, getting static credentials will be disabled for this cluster. This must only be used on Managed Clusters
-        /// that are AAD enabled. For more details see [disable local accounts](https://docs.microsoft.com/azure/aks/managed-aad#disable-local-accounts-preview).
+        /// If local accounts should be disabled on the Managed Cluster. If set to true, getting static credentials will be disabled
+        /// for this cluster. This must only be used on Managed Clusters that are AAD enabled. For more details see [disable local
+        /// accounts](https://docs.microsoft.com/azure/aks/managed-aad#disable-local-accounts-preview).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -1285,7 +1887,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"If set to true, getting static credentials will be disabled for this cluster. This must only be used on Managed Clusters that are AAD enabled. For more details see [disable local accounts](https://docs.microsoft.com/azure/aks/managed-aad#disable-local-accounts-preview).",
+        Description = @"If local accounts should be disabled on the Managed Cluster. If set to true, getting static credentials will be disabled for this cluster. This must only be used on Managed Clusters that are AAD enabled. For more details see [disable local accounts](https://docs.microsoft.com/azure/aks/managed-aad#disable-local-accounts-preview).",
         SerializedName = @"disableLocalAccounts",
         PossibleTypes = new [] { typeof(bool) })]
         bool? DisableLocalAccount { get; set; }
@@ -1301,7 +1903,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         PossibleTypes = new [] { typeof(bool) })]
         bool? DiskCsiDriverEnabled { get; set; }
         /// <summary>
-        /// This is of the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{encryptionSetName}'
+        /// The Resource ID of the disk encryption set to use for enabling encryption at rest. This is of the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{encryptionSetName}'
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -1309,24 +1911,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"This is of the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{encryptionSetName}'",
+        Description = @"The Resource ID of the disk encryption set to use for enabling encryption at rest. This is of the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{encryptionSetName}'",
         SerializedName = @"diskEncryptionSetID",
         PossibleTypes = new [] { typeof(string) })]
         string DiskEncryptionSetId { get; set; }
-        /// <summary>This cannot be updated once the Managed Cluster has been created.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"This cannot be updated once the Managed Cluster has been created.",
-        SerializedName = @"dnsPrefix",
-        PossibleTypes = new [] { typeof(string) })]
-        string DnsPrefix { get; set; }
         /// <summary>
-        /// (DEPRECATED) Whether to enable Kubernetes pod security policy (preview). PodSecurityPolicy was deprecated in Kubernetes
-        /// v1.21, and removed from Kubernetes in v1.25. Learn more at https://aka.ms/k8s/psp and https://aka.ms/aks/psp.
+        /// The DNS prefix of the Managed Cluster. This cannot be updated once the Managed Cluster has been created.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -1334,10 +1924,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"(DEPRECATED) Whether to enable Kubernetes pod security policy (preview). PodSecurityPolicy was deprecated in Kubernetes v1.21, and removed from Kubernetes in v1.25. Learn more at https://aka.ms/k8s/psp and https://aka.ms/aks/psp.",
-        SerializedName = @"enablePodSecurityPolicy",
-        PossibleTypes = new [] { typeof(bool) })]
-        bool? EnablePodSecurityPolicy { get; set; }
+        Description = @"The DNS prefix of the Managed Cluster. This cannot be updated once the Managed Cluster has been created.",
+        SerializedName = @"dnsPrefix",
+        PossibleTypes = new [] { typeof(string) })]
+        string DnsPrefix { get; set; }
         /// <summary>Whether to enable Kubernetes Role-Based Access Control.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -1371,14 +1961,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         SerializedName = @"fqdn",
         PossibleTypes = new [] { typeof(string) })]
         string Fqdn { get;  }
-        /// <summary>This cannot be updated once the Managed Cluster has been created.</summary>
+        /// <summary>
+        /// The FQDN subdomain of the private cluster with custom private dns zone. This cannot be updated once the Managed Cluster
+        /// has been created.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"This cannot be updated once the Managed Cluster has been created.",
+        Description = @"The FQDN subdomain of the private cluster with custom private dns zone. This cannot be updated once the Managed Cluster has been created.",
         SerializedName = @"fqdnSubdomain",
         PossibleTypes = new [] { typeof(string) })]
         string FqdnSubdomain { get; set; }
@@ -1396,14 +1989,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         SerializedName = @"dnsServer",
         PossibleTypes = new [] { typeof(string) })]
         string GmsaProfileDnsServer { get; set; }
-        /// <summary>Specifies whether to enable Windows gMSA in the managed cluster.</summary>
+        /// <summary>
+        /// Whether to enable Windows gMSA. Specifies whether to enable Windows gMSA in the managed cluster.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Specifies whether to enable Windows gMSA in the managed cluster.",
+        Description = @"Whether to enable Windows gMSA. Specifies whether to enable Windows gMSA in the managed cluster.",
         SerializedName = @"enabled",
         PossibleTypes = new [] { typeof(bool) })]
         bool? GmsaProfileEnabled { get; set; }
@@ -1465,17 +2060,53 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         SerializedName = @"trustedCa",
         PossibleTypes = new [] { typeof(string) })]
         string HttpProxyConfigTrustedCa { get; set; }
-        /// <summary>Identities associated with the cluster.</summary>
+        /// <summary>The client ID of the user assigned identity.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The client ID of the user assigned identity.",
+        SerializedName = @"clientId",
+        PossibleTypes = new [] { typeof(string) })]
+        string IdentityClientId { get;  }
+        /// <summary>The object ID of the user assigned identity.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The object ID of the user assigned identity.",
+        SerializedName = @"objectId",
+        PossibleTypes = new [] { typeof(string) })]
+        string IdentityObjectId { get;  }
+        /// <summary>
+        /// The user identity associated with the managed cluster. This identity will be used by the kubelet. Only one user assigned
+        /// identity is allowed. The only accepted key is "kubeletidentity", with value of "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}".
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Identities associated with the cluster.",
+        Description = @"The user identity associated with the managed cluster. This identity will be used by the kubelet. Only one user assigned identity is allowed. The only accepted key is ""kubeletidentity"", with value of ""resourceId"": ""/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}"".",
         SerializedName = @"identityProfile",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesIdentityProfile) })]
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesIdentityProfile IdentityProfile { get; set; }
+        /// <summary>The resource ID of the user assigned identity.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The resource ID of the user assigned identity.",
+        SerializedName = @"resourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        string IdentityResourceId { get;  }
         /// <summary>Whether to enable Image Cleaner on AKS cluster.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -1498,6 +2129,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         SerializedName = @"intervalHours",
         PossibleTypes = new [] { typeof(int) })]
         int? ImageCleanerIntervalHour { get; set; }
+        /// <summary>
+        /// The list of revisions of the Istio control plane. When an upgrade is not in progress, this holds one value. When canary
+        /// upgrade is in progress, this can only hold two consecutive values. For more information, see: https://learn.microsoft.com/en-us/azure/aks/istio-upgrade
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The list of revisions of the Istio control plane. When an upgrade is not in progress, this holds one value. When canary upgrade is in progress, this can only hold two consecutive values. For more information, see: https://learn.microsoft.com/en-us/azure/aks/istio-upgrade",
+        SerializedName = @"revisions",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> IstioRevision { get; set; }
         /// <summary>Whether to enable KEDA.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -1538,12 +2183,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         PossibleTypes = new [] { typeof(string) })]
         string KubeStateMetricLabelsAllowlist { get; set; }
         /// <summary>
-        /// Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor> (e.g. 1.20) are supported. When <major.minor>
-        /// is specified, the latest supported GA patch version is chosen automatically. Updating the cluster with the same <major.minor>
-        /// once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade, even if a newer patch version is available.
-        /// When you upgrade a supported AKS cluster, Kubernetes minor versions cannot be skipped. All upgrades must be performed
-        /// sequentially by major version number. For example, upgrades between 1.14.x -> 1.15.x or 1.15.x -> 1.16.x are allowed,
-        /// however 1.14.x -> 1.16.x is not allowed. See [upgrading an AKS cluster](https://docs.microsoft.com/azure/aks/upgrade-cluster)
+        /// The version of Kubernetes specified by the user. Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor>
+        /// (e.g. 1.20) are supported. When <major.minor> is specified, the latest supported GA patch version is chosen automatically.
+        /// Updating the cluster with the same <major.minor> once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade,
+        /// even if a newer patch version is available. When you upgrade a supported AKS cluster, Kubernetes minor versions cannot
+        /// be skipped. All upgrades must be performed sequentially by major version number. For example, upgrades between 1.14.x
+        /// -> 1.15.x or 1.15.x -> 1.16.x are allowed, however 1.14.x -> 1.16.x is not allowed. See [upgrading an AKS cluster](https://docs.microsoft.com/azure/aks/upgrade-cluster)
         /// for more details.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
@@ -1552,7 +2197,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor> (e.g. 1.20) are supported. When <major.minor> is specified, the latest supported GA patch version is chosen automatically. Updating the cluster with the same <major.minor> once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade, even if a newer patch version is available. When you upgrade a supported AKS cluster, Kubernetes minor versions cannot be skipped. All upgrades must be performed sequentially by major version number. For example, upgrades between 1.14.x -> 1.15.x or 1.15.x -> 1.16.x are allowed, however 1.14.x -> 1.16.x is not allowed. See [upgrading an AKS cluster](https://docs.microsoft.com/azure/aks/upgrade-cluster) for more details.",
+        Description = @"The version of Kubernetes specified by the user. Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor> (e.g. 1.20) are supported. When <major.minor> is specified, the latest supported GA patch version is chosen automatically. Updating the cluster with the same <major.minor> once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade, even if a newer patch version is available. When you upgrade a supported AKS cluster, Kubernetes minor versions cannot be skipped. All upgrades must be performed sequentially by major version number. For example, upgrades between 1.14.x -> 1.15.x or 1.15.x -> 1.16.x are allowed, however 1.14.x -> 1.16.x is not allowed. See [upgrading an AKS cluster](https://docs.microsoft.com/azure/aks/upgrade-cluster) for more details.",
         SerializedName = @"kubernetesVersion",
         PossibleTypes = new [] { typeof(string) })]
         string KubernetesVersion { get; set; }
@@ -1603,6 +2248,48 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         SerializedName = @"networkProfile",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfile) })]
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfile NetworkProfile { get; set; }
+        /// <summary>Ingress type for the default NginxIngressController custom resource</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Ingress type for the default NginxIngressController custom resource",
+        SerializedName = @"defaultIngressControllerType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("AnnotationControlled", "External", "Internal", "None")]
+        string NginxDefaultIngressControllerType { get; set; }
+        /// <summary>
+        /// The set of default Karpenter NodePools (CRDs) configured for node provisioning. This field has no effect unless mode is
+        /// 'Auto'. Warning: Changing this from Auto to None on an existing cluster will cause the default Karpenter NodePools to
+        /// be deleted, which will drain and delete the nodes associated with those pools. It is strongly recommended to not do this
+        /// unless there are idle nodes ready to take the pods evicted by that action. If not specified, the default is Auto. For
+        /// more information see aka.ms/aks/nap#node-pools.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The set of default Karpenter NodePools (CRDs) configured for node provisioning. This field has no effect unless mode is 'Auto'. Warning: Changing this from Auto to None on an existing cluster will cause the default Karpenter NodePools to be deleted, which will drain and delete the nodes associated with those pools. It is strongly recommended to not do this unless there are idle nodes ready to take the pods evicted by that action. If not specified, the default is Auto. For more information see aka.ms/aks/nap#node-pools.",
+        SerializedName = @"defaultNodePools",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("None", "Auto")]
+        string NodeProvisioningProfileDefaultNodePool { get; set; }
+        /// <summary>The node provisioning mode. If not specified, the default is Manual.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The node provisioning mode. If not specified, the default is Manual.",
+        SerializedName = @"mode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Manual", "Auto")]
+        string NodeProvisioningProfileMode { get; set; }
         /// <summary>The name of the resource group containing agent pool nodes.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -1614,6 +2301,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         SerializedName = @"nodeResourceGroup",
         PossibleTypes = new [] { typeof(string) })]
         string NodeResourceGroup { get; set; }
+        /// <summary>
+        /// The restriction level applied to the cluster's node resource group. If not specified, the default is 'Unrestricted'
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The restriction level applied to the cluster's node resource group. If not specified, the default is 'Unrestricted'",
+        SerializedName = @"restrictionLevel",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Unrestricted", "ReadOnly")]
+        string NodeResourceGroupProfileRestrictionLevel { get; set; }
         /// <summary>Whether the OIDC issuer is enabled.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -1637,8 +2338,93 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         PossibleTypes = new [] { typeof(string) })]
         string OidcIssuerProfileIssuerUrl { get;  }
         /// <summary>
-        /// Running in Kubenet is disabled by default due to the security related nature of AAD Pod Identity and the risks of IP spoofing.
-        /// See [using Kubenet network plugin with AAD Pod Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities)
+        /// Whether to force upgrade the cluster. Note that this option instructs upgrade operation to bypass upgrade protections
+        /// such as checking for deprecated API usage. Enable this option only with caution.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Whether to force upgrade the cluster. Note that this option instructs upgrade operation to bypass upgrade protections such as checking for deprecated API usage. Enable this option only with caution.",
+        SerializedName = @"forceUpgrade",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? OverrideSettingForceUpgrade { get; set; }
+        /// <summary>
+        /// Until when the overrides are effective. Note that this only matches the start time of an upgrade, and the effectiveness
+        /// won't change once an upgrade starts even if the `until` expires as upgrade proceeds. This field is not set by default.
+        /// It must be set for the overrides to take effect.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Until when the overrides are effective. Note that this only matches the start time of an upgrade, and the effectiveness won't change once an upgrade starts even if the `until` expires as upgrade proceeds. This field is not set by default. It must be set for the overrides to take effect.",
+        SerializedName = @"until",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        global::System.DateTime? OverrideSettingUntil { get; set; }
+        /// <summary>Certificate chain object name in Azure Key Vault.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Certificate chain object name in Azure Key Vault.",
+        SerializedName = @"certChainObjectName",
+        PossibleTypes = new [] { typeof(string) })]
+        string PluginCertChainObjectName { get; set; }
+        /// <summary>Intermediate certificate object name in Azure Key Vault.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Intermediate certificate object name in Azure Key Vault.",
+        SerializedName = @"certObjectName",
+        PossibleTypes = new [] { typeof(string) })]
+        string PluginCertObjectName { get; set; }
+        /// <summary>Intermediate certificate private key object name in Azure Key Vault.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Intermediate certificate private key object name in Azure Key Vault.",
+        SerializedName = @"keyObjectName",
+        PossibleTypes = new [] { typeof(string) })]
+        string PluginKeyObjectName { get; set; }
+        /// <summary>The resource ID of the Key Vault.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The resource ID of the Key Vault.",
+        SerializedName = @"keyVaultId",
+        PossibleTypes = new [] { typeof(string) })]
+        string PluginKeyVaultId { get; set; }
+        /// <summary>Root certificate object name in Azure Key Vault.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Root certificate object name in Azure Key Vault.",
+        SerializedName = @"rootCertObjectName",
+        PossibleTypes = new [] { typeof(string) })]
+        string PluginRootCertObjectName { get; set; }
+        /// <summary>
+        /// Whether pod identity is allowed to run on clusters with Kubenet networking. Running in Kubenet is disabled by default
+        /// due to the security related nature of AAD Pod Identity and the risks of IP spoofing. See [using Kubenet network plugin
+        /// with AAD Pod Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities)
         /// for more information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
@@ -1647,7 +2433,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Running in Kubenet is disabled by default due to the security related nature of AAD Pod Identity and the risks of IP spoofing. See [using Kubenet network plugin with AAD Pod Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities) for more information.",
+        Description = @"Whether pod identity is allowed to run on clusters with Kubenet networking. Running in Kubenet is disabled by default due to the security related nature of AAD Pod Identity and the risks of IP spoofing. See [using Kubenet network plugin with AAD Pod Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities) for more information.",
         SerializedName = @"allowNetworkPluginKubenet",
         PossibleTypes = new [] { typeof(bool) })]
         bool? PodIdentityProfileAllowNetworkPluginKubenet { get; set; }
@@ -1718,6 +2504,61 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         SerializedName = @"privateLinkResources",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IPrivateLinkResource) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IPrivateLinkResource> PrivateLinkResource { get; set; }
+        /// <summary>The error additional info.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The error additional info.",
+        SerializedName = @"additionalInfo",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorAdditionalInfo) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorAdditionalInfo> ProvisioningErrorAdditionalInfo { get;  }
+        /// <summary>The error code.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The error code.",
+        SerializedName = @"code",
+        PossibleTypes = new [] { typeof(string) })]
+        string ProvisioningErrorCode { get;  }
+        /// <summary>The error details.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The error details.",
+        SerializedName = @"details",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorDetail) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorDetail> ProvisioningErrorDetail { get;  }
+        /// <summary>The error message.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The error message.",
+        SerializedName = @"message",
+        PossibleTypes = new [] { typeof(string) })]
+        string ProvisioningErrorMessage { get;  }
+        /// <summary>The error target.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The error target.",
+        SerializedName = @"target",
+        PossibleTypes = new [] { typeof(string) })]
+        string ProvisioningErrorTarget { get;  }
         /// <summary>The current provisioning state.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -1729,18 +2570,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
         string ProvisioningState { get;  }
-        /// <summary>Allow or deny public network access for AKS</summary>
+        /// <summary>
+        /// PublicNetworkAccess of the managedCluster. Allow or deny public network access for AKS
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Allow or deny public network access for AKS",
+        Description = @"PublicNetworkAccess of the managedCluster. Allow or deny public network access for AKS",
         SerializedName = @"publicNetworkAccess",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         string PublicNetworkAccess { get; set; }
+        /// <summary>
+        /// The resourceUID uniquely identifies ManagedClusters that reuse ARM ResourceIds (i.e: create, delete, create sequence)
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The resourceUID uniquely identifies ManagedClusters that reuse ARM ResourceIds (i.e: create, delete, create sequence)",
+        SerializedName = @"resourceUID",
+        PossibleTypes = new [] { typeof(string) })]
+        string ResourceUid { get;  }
         /// <summary>Whether to enable Defender threat detection</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -1752,6 +2608,32 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         SerializedName = @"enabled",
         PossibleTypes = new [] { typeof(bool) })]
         bool? SecurityMonitoringEnabled { get; set; }
+        /// <summary>
+        /// A list of up to 10 base64 encoded CAs that will be added to the trust store on all nodes in the cluster. For more information
+        /// see [Custom CA Trust Certificates](https://learn.microsoft.com/en-us/azure/aks/custom-certificate-authority).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A list of up to 10 base64 encoded CAs that will be added to the trust store on all nodes in the cluster. For more information see [Custom CA Trust Certificates](https://learn.microsoft.com/en-us/azure/aks/custom-certificate-authority).",
+        SerializedName = @"customCATrustCertificates",
+        PossibleTypes = new [] { typeof(byte[]) })]
+        System.Collections.Generic.List<byte[]> SecurityProfileCustomCaTrustCertificate { get; set; }
+        /// <summary>Mode of the service mesh.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Mode of the service mesh.",
+        SerializedName = @"mode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Istio", "Disabled")]
+        string ServiceMeshProfileMode { get; set; }
         /// <summary>The ID for the service principal.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -1799,6 +2681,57 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceSshPublicKey) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceSshPublicKey> SshPublicKey { get; set; }
         /// <summary>
+        /// The support plan for the Managed Cluster. If unspecified, the default is 'KubernetesOfficial'.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The support plan for the Managed Cluster. If unspecified, the default is 'KubernetesOfficial'.",
+        SerializedName = @"supportPlan",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("KubernetesOfficial", "AKSLongTermSupport")]
+        string SupportPlan { get; set; }
+        /// <summary>Whether to enable VPA. Default value is false.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Whether to enable VPA. Default value is false.",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? VerticalPodAutoscalerEnabled { get; set; }
+        /// <summary>
+        /// Resource IDs of the DNS zones to be associated with the Application Routing add-on. Used only when Application Routing
+        /// add-on is enabled. Public and private DNS zones can be in different resource groups, but all public DNS zones must be
+        /// in the same resource group and all private DNS zones must be in the same resource group.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Resource IDs of the DNS zones to be associated with the Application Routing add-on. Used only when Application Routing add-on is enabled. Public and private DNS zones can be in different resource groups, but all public DNS zones must be in the same resource group and all private DNS zones must be in the same resource group.",
+        SerializedName = @"dnsZoneResourceIds",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> WebAppRoutingDnsZoneResourceId { get; set; }
+        /// <summary>Whether to enable the Application Routing add-on.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Whether to enable the Application Routing add-on.",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? WebAppRoutingEnabled { get; set; }
+        /// <summary>
         /// Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:**
         /// 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters
         /// <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:**
@@ -1831,7 +2764,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         PossibleTypes = new [] { typeof(string) })]
         string WindowProfileAdminUsername { get; set; }
         /// <summary>
-        /// For more details on CSI proxy, see the [CSI proxy GitHub repo](https://github.com/kubernetes-csi/csi-proxy).
+        /// Whether to enable CSI proxy. For more details on CSI proxy, see the [CSI proxy GitHub repo](https://github.com/kubernetes-csi/csi-proxy).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -1839,7 +2772,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"For more details on CSI proxy, see the [CSI proxy GitHub repo](https://github.com/kubernetes-csi/csi-proxy).",
+        Description = @"Whether to enable CSI proxy. For more details on CSI proxy, see the [CSI proxy GitHub repo](https://github.com/kubernetes-csi/csi-proxy).",
         SerializedName = @"enableCSIProxy",
         PossibleTypes = new [] { typeof(bool) })]
         bool? WindowProfileEnableCsiProxy { get; set; }
@@ -1903,88 +2836,157 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAddonProfiles AddonProfile { get; set; }
         /// <summary>The agent pool properties.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAgentPoolProfile> AgentPoolProfile { get; set; }
+        /// <summary>AI toolchain operator settings that apply to the whole cluster.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAiToolchainOperatorProfile AiToolchainOperatorProfile { get; set; }
+        /// <summary>
+        /// Whether to enable AI toolchain operator to the cluster. Indicates if AI toolchain operator enabled or not.
+        /// </summary>
+        bool? AiToolchainOperatorProfileEnabled { get; set; }
         /// <summary>The access profile for managed cluster API server.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterApiServerAccessProfile ApiServerAccessProfile { get; set; }
         /// <summary>
-        /// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with clusters that use
-        /// Public IP Per Node, or clusters that are using a Basic Load Balancer. For more information see [API server authorized
-        /// IP ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges).
+        /// The IP ranges authorized to access the Kubernetes API server. IP ranges are specified in CIDR format, e.g. 137.117.106.88/29.
+        /// This feature is not compatible with clusters that use Public IP Per Node, or clusters that are using a Basic Load Balancer.
+        /// For more information see [API server authorized IP ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges).
         /// </summary>
         System.Collections.Generic.List<string> ApiServerAccessProfileAuthorizedIPRange { get; set; }
         /// <summary>Whether to disable run command for the cluster or not.</summary>
         bool? ApiServerAccessProfileDisableRunCommand { get; set; }
         /// <summary>
-        /// For more details, see [Creating a private AKS cluster](https://docs.microsoft.com/azure/aks/private-clusters).
+        /// Whether to create the cluster as a private cluster or not. For more details, see [Creating a private AKS cluster](https://docs.microsoft.com/azure/aks/private-clusters).
         /// </summary>
         bool? ApiServerAccessProfileEnablePrivateCluster { get; set; }
         /// <summary>Whether to create additional public FQDN for private cluster or not.</summary>
         bool? ApiServerAccessProfileEnablePrivateClusterPublicFqdn { get; set; }
         /// <summary>
-        /// The default is System. For more details see [configure private DNS zone](https://docs.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone).
+        /// Whether to enable apiserver vnet integration for the cluster or not. See aka.ms/AksVnetIntegration for more details.
+        /// </summary>
+        bool? ApiServerAccessProfileEnableVnetIntegration { get; set; }
+        /// <summary>
+        /// The private DNS zone mode for the cluster. The default is System. For more details see [configure private DNS zone](https://docs.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone).
         /// Allowed values are 'system' and 'none'.
         /// </summary>
         string ApiServerAccessProfilePrivateDnsZone { get; set; }
+        /// <summary>
+        /// The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new cluster with BYO
+        /// Vnet, or when updating an existing cluster to enable apiserver vnet integration.
+        /// </summary>
+        string ApiServerAccessProfileSubnetId { get; set; }
         /// <summary>Parameters to be applied to the cluster-autoscaler when enabled</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesAutoScalerProfile AutoScalerProfile { get; set; }
-        /// <summary>Valid values are 'true' and 'false'</summary>
+        /// <summary>
+        /// Detects similar node pools and balances the number of nodes between them. Valid values are 'true' and 'false'
+        /// </summary>
         string AutoScalerProfileBalanceSimilarNodeGroup { get; set; }
         /// <summary>
-        /// If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders)
+        /// DaemonSet pods will be gracefully terminated from empty nodes. If set to true, all daemonset pods on empty nodes will
+        /// be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling.
+        /// If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
+        /// </summary>
+        bool? AutoScalerProfileDaemonsetEvictionForEmptyNode { get; set; }
+        /// <summary>
+        /// DaemonSet pods will be gracefully terminated from non-empty nodes. If set to true, all daemonset pods on occupied nodes
+        /// will be evicted before deletion of the node. If the daemonset pod cannot be evicted another node will be chosen for scaling.
+        /// If set to false, the node will be deleted without ensuring that daemonset pods are deleted or evicted.
+        /// </summary>
+        bool? AutoScalerProfileDaemonsetEvictionForOccupiedNode { get; set; }
+        /// <summary>
+        /// The expander to use when scaling up. If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders)
         /// for more information.
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("least-waste", "most-pods", "priority", "random")]
         string AutoScalerProfileExpander { get; set; }
-        /// <summary>The default is 10.</summary>
+        /// <summary>
+        /// Should CA ignore DaemonSet pods when calculating resource utilization for scaling down. If set to true, the resources
+        /// used by daemonset will be taken into account when making scaling down decisions.
+        /// </summary>
+        bool? AutoScalerProfileIgnoreDaemonsetsUtilization { get; set; }
+        /// <summary>
+        /// The maximum number of empty nodes that can be deleted at the same time. This must be a positive integer. The default is
+        /// 10.
+        /// </summary>
         string AutoScalerProfileMaxEmptyBulkDelete { get; set; }
-        /// <summary>The default is 600.</summary>
+        /// <summary>
+        /// The maximum number of seconds the cluster autoscaler waits for pod termination when trying to scale down a node. The default
+        /// is 600.
+        /// </summary>
         string AutoScalerProfileMaxGracefulTerminationSec { get; set; }
         /// <summary>
-        /// The default is '15m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// The maximum time the autoscaler waits for a node to be provisioned. The default is '15m'. Values must be an integer followed
+        /// by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         string AutoScalerProfileMaxNodeProvisionTime { get; set; }
-        /// <summary>The default is 45. The maximum is 100 and the minimum is 0.</summary>
+        /// <summary>
+        /// The maximum percentage of unready nodes in the cluster. After this percentage is exceeded, cluster autoscaler halts operations.
+        /// The default is 45. The maximum is 100 and the minimum is 0.
+        /// </summary>
         string AutoScalerProfileMaxTotalUnreadyPercentage { get; set; }
         /// <summary>
-        /// For scenarios like burst/batch scale where you don't want CA to act before the kubernetes scheduler could schedule all
-        /// the pods, you can tell CA to ignore unscheduled pods before they're a certain age. The default is '0s'. Values must be
-        /// an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h' for hours, etc).
+        /// Ignore unscheduled pods before they're a certain age. For scenarios like burst/batch scale where you don't want CA to
+        /// act before the kubernetes scheduler could schedule all the pods, you can tell CA to ignore unscheduled pods before they're
+        /// a certain age. The default is '0s'. Values must be an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h'
+        /// for hours, etc).
         /// </summary>
         string AutoScalerProfileNewPodScaleUpDelay { get; set; }
-        /// <summary>This must be an integer. The default is 3.</summary>
+        /// <summary>
+        /// The number of allowed unready nodes, irrespective of max-total-unready-percentage. This must be an integer. The default
+        /// is 3.
+        /// </summary>
         string AutoScalerProfileOkTotalUnreadyCount { get; set; }
         /// <summary>
-        /// The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// How long after scale up that scale down evaluation resumes. The default is '10m'. Values must be an integer followed by
+        /// an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         string AutoScalerProfileScaleDownDelayAfterAdd { get; set; }
         /// <summary>
-        /// The default is the scan-interval. Values must be an integer followed by an 'm'. No unit of time other than minutes (m)
-        /// is supported.
+        /// How long after node deletion that scale down evaluation resumes. The default is the scan-interval. Values must be an integer
+        /// followed by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         string AutoScalerProfileScaleDownDelayAfterDelete { get; set; }
         /// <summary>
-        /// The default is '3m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// How long after scale down failure that scale down evaluation resumes. The default is '3m'. Values must be an integer followed
+        /// by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         string AutoScalerProfileScaleDownDelayAfterFailure { get; set; }
         /// <summary>
-        /// The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// How long a node should be unneeded before it is eligible for scale down. The default is '10m'. Values must be an integer
+        /// followed by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         string AutoScalerProfileScaleDownUnneededTime { get; set; }
         /// <summary>
-        /// The default is '20m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
+        /// How long an unready node should be unneeded before it is eligible for scale down. The default is '20m'. Values must be
+        /// an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
         /// </summary>
         string AutoScalerProfileScaleDownUnreadyTime { get; set; }
-        /// <summary>The default is '0.5'.</summary>
+        /// <summary>
+        /// Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered
+        /// for scale down. The default is '0.5'.
+        /// </summary>
         string AutoScalerProfileScaleDownUtilizationThreshold { get; set; }
-        /// <summary>The default is '10'. Values must be an integer number of seconds.</summary>
+        /// <summary>
+        /// How often cluster is reevaluated for scale up or down. The default is '10'. Values must be an integer number of seconds.
+        /// </summary>
         string AutoScalerProfileScanInterval { get; set; }
-        /// <summary>The default is true.</summary>
+        /// <summary>
+        /// If cluster autoscaler will skip deleting nodes with pods with local storage, for example, EmptyDir or HostPath. The default
+        /// is true.
+        /// </summary>
         string AutoScalerProfileSkipNodesWithLocalStorage { get; set; }
-        /// <summary>The default is true.</summary>
+        /// <summary>
+        /// If cluster autoscaler will skip deleting nodes with pods from kube-system (except for DaemonSet or mirror pods). The default
+        /// is true.
+        /// </summary>
         string AutoScalerProfileSkipNodesWithSystemPod { get; set; }
         /// <summary>The auto upgrade configuration.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAutoUpgradeProfile AutoUpgradeProfile { get; set; }
         /// <summary>
-        /// For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
+        /// Node OS Upgrade Channel. Manner in which the OS on your nodes is updated. The default is NodeImage.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("None", "Unmanaged", "NodeImage", "SecurityPatch")]
+        string AutoUpgradeProfileNodeOSUpgradeChannel { get; set; }
+        /// <summary>
+        /// The upgrade channel for auto upgrade. The default is 'none'. For more information see [setting the AKS cluster auto-upgrade
+        /// channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("rapid", "stable", "patch", "node-image", "none")]
         string AutoUpgradeProfileUpgradeChannel { get; set; }
@@ -1997,9 +2999,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// </summary>
         string AzureKeyVaultKmKeyId { get; set; }
         /// <summary>
-        /// Network access of key vault. The possible values are `Public` and `Private`. `Public` means the key vault allows public
-        /// access from all networks. `Private` means the key vault disables public access and enables private link. The default value
-        /// is `Public`.
+        /// Network access of the key vault. Network access of key vault. The possible values are `Public` and `Private`. `Public`
+        /// means the key vault allows public access from all networks. `Private` means the key vault disables public access and enables
+        /// private link. The default value is `Public`.
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Public", "Private")]
         string AzureKeyVaultKmKeyVaultNetworkAccess { get; set; }
@@ -2017,15 +3019,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAzureMonitorProfileMetrics AzureMonitorProfileMetric { get; set; }
         /// <summary>
-        /// The Azure Portal requires certain Cross-Origin Resource Sharing (CORS) headers to be sent in some responses, which Kubernetes
-        /// APIServer doesn't handle by default. This special FQDN supports CORS, allowing the Azure Portal to function properly.
+        /// The special FQDN used by the Azure Portal to access the Managed Cluster. This FQDN is for use only by the Azure Portal
+        /// and should not be used by other clients. The Azure Portal requires certain Cross-Origin Resource Sharing (CORS) headers
+        /// to be sent in some responses, which Kubernetes APIServer doesn't handle by default. This special FQDN supports CORS, allowing
+        /// the Azure Portal to function properly.
         /// </summary>
         string AzurePortalFqdn { get; set; }
         /// <summary>Whether to enable AzureBlob CSI Driver. The default value is false.</summary>
         bool? BlobCsiDriverEnabled { get; set; }
+        /// <summary>Profile of the cluster bootstrap configuration.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterBootstrapProfile BootstrapProfile { get; set; }
+        /// <summary>The artifact source. The source where the artifacts are downloaded from.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Cache", "Direct")]
+        string BootstrapProfileArtifactSource { get; set; }
         /// <summary>
-        /// If kubernetesVersion was a fully specified version <major.minor.patch>, this field will be exactly equal to it. If kubernetesVersion
-        /// was <major.minor>, this field will contain the full <major.minor.patch> version being used.
+        /// The resource Id of Azure Container Registry. The registry must have private network access, premium SKU and zone redundancy.
+        /// </summary>
+        string BootstrapProfileContainerRegistryId { get; set; }
+        /// <summary>Plugin certificates information for Service Mesh.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IIstioPluginCertificateAuthority CertificateAuthorityPlugin { get; set; }
+        /// <summary>Istio egress gateways.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IIstioEgressGateway> ComponentEgressGateway { get; set; }
+        /// <summary>Istio ingress gateways.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IIstioIngressGateway> ComponentIngressGateway { get; set; }
+        /// <summary>
+        /// Whether to enable cost analysis. The Managed Cluster sku.tier must be set to 'Standard' or 'Premium' to enable this feature.
+        /// Enabling this will add Kubernetes Namespace and Deployment details to the Cost Analysis views in the Azure portal. If
+        /// not specified, the default is false. For more information see aka.ms/aks/docs/cost-analysis.
+        /// </summary>
+        bool? CostAnalysisEnabled { get; set; }
+        /// <summary>
+        /// The version of Kubernetes the Managed Cluster is running. If kubernetesVersion was a fully specified version <major.minor.patch>,
+        /// this field will be exactly equal to it. If kubernetesVersion was <major.minor>, this field will contain the full <major.minor.patch>
+        /// version being used.
         /// </summary>
         string CurrentKubernetesVersion { get; set; }
         /// <summary>
@@ -2039,37 +3065,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileDefenderSecurityMonitoring DefenderSecurityMonitoring { get; set; }
         /// <summary>
-        /// If set to true, getting static credentials will be disabled for this cluster. This must only be used on Managed Clusters
-        /// that are AAD enabled. For more details see [disable local accounts](https://docs.microsoft.com/azure/aks/managed-aad#disable-local-accounts-preview).
+        /// If local accounts should be disabled on the Managed Cluster. If set to true, getting static credentials will be disabled
+        /// for this cluster. This must only be used on Managed Clusters that are AAD enabled. For more details see [disable local
+        /// accounts](https://docs.microsoft.com/azure/aks/managed-aad#disable-local-accounts-preview).
         /// </summary>
         bool? DisableLocalAccount { get; set; }
         /// <summary>Whether to enable AzureDisk CSI Driver. The default value is true.</summary>
         bool? DiskCsiDriverEnabled { get; set; }
         /// <summary>
-        /// This is of the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{encryptionSetName}'
+        /// The Resource ID of the disk encryption set to use for enabling encryption at rest. This is of the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{encryptionSetName}'
         /// </summary>
         string DiskEncryptionSetId { get; set; }
-        /// <summary>This cannot be updated once the Managed Cluster has been created.</summary>
-        string DnsPrefix { get; set; }
         /// <summary>
-        /// (DEPRECATED) Whether to enable Kubernetes pod security policy (preview). PodSecurityPolicy was deprecated in Kubernetes
-        /// v1.21, and removed from Kubernetes in v1.25. Learn more at https://aka.ms/k8s/psp and https://aka.ms/aks/psp.
+        /// The DNS prefix of the Managed Cluster. This cannot be updated once the Managed Cluster has been created.
         /// </summary>
-        bool? EnablePodSecurityPolicy { get; set; }
+        string DnsPrefix { get; set; }
         /// <summary>Whether to enable Kubernetes Role-Based Access Control.</summary>
         bool? EnableRbac { get; set; }
         /// <summary>Whether to enable AzureFile CSI Driver. The default value is true.</summary>
         bool? FileCsiDriverEnabled { get; set; }
         /// <summary>The FQDN of the master pool.</summary>
         string Fqdn { get; set; }
-        /// <summary>This cannot be updated once the Managed Cluster has been created.</summary>
+        /// <summary>
+        /// The FQDN subdomain of the private cluster with custom private dns zone. This cannot be updated once the Managed Cluster
+        /// has been created.
+        /// </summary>
         string FqdnSubdomain { get; set; }
         /// <summary>
         /// Specifies the DNS server for Windows gMSA. <br><br> Set it to empty if you have configured the DNS server in the vnet
         /// which is used to create the managed cluster.
         /// </summary>
         string GmsaProfileDnsServer { get; set; }
-        /// <summary>Specifies whether to enable Windows gMSA in the managed cluster.</summary>
+        /// <summary>
+        /// Whether to enable Windows gMSA. Specifies whether to enable Windows gMSA in the managed cluster.
+        /// </summary>
         bool? GmsaProfileEnabled { get; set; }
         /// <summary>
         /// Specifies the root domain name for Windows gMSA. <br><br> Set it to empty if you have configured the DNS server in the
@@ -2086,12 +3115,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         System.Collections.Generic.List<string> HttpProxyConfigNoProxy { get; set; }
         /// <summary>Alternative CA cert to use for connecting to proxy servers.</summary>
         string HttpProxyConfigTrustedCa { get; set; }
-        /// <summary>Identities associated with the cluster.</summary>
+        /// <summary>The client ID of the user assigned identity.</summary>
+        string IdentityClientId { get; set; }
+        /// <summary>The object ID of the user assigned identity.</summary>
+        string IdentityObjectId { get; set; }
+        /// <summary>
+        /// The user identity associated with the managed cluster. This identity will be used by the kubelet. Only one user assigned
+        /// identity is allowed. The only accepted key is "kubeletidentity", with value of "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}".
+        /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPropertiesIdentityProfile IdentityProfile { get; set; }
+        /// <summary>The resource ID of the user assigned identity.</summary>
+        string IdentityResourceId { get; set; }
         /// <summary>Whether to enable Image Cleaner on AKS cluster.</summary>
         bool? ImageCleanerEnabled { get; set; }
         /// <summary>Image Cleaner scanning interval in hours.</summary>
         int? ImageCleanerIntervalHour { get; set; }
+        /// <summary>Ingress profile for the managed cluster.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfile IngressProfile { get; set; }
+        /// <summary>
+        /// App Routing settings for the ingress profile. You can find an overview and onboarding guide for this feature at https://learn.microsoft.com/en-us/azure/aks/app-routing?tabs=default%2Cdeploy-app-default.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfileWebAppRouting IngressProfileWebAppRouting { get; set; }
+        /// <summary>
+        /// Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described
+        /// here https://aka.ms/asm-plugin-ca
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IIstioCertificateAuthority IstioCertificateAuthority { get; set; }
+        /// <summary>Istio components configuration.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IIstioComponents IstioComponent { get; set; }
+        /// <summary>
+        /// The list of revisions of the Istio control plane. When an upgrade is not in progress, this holds one value. When canary
+        /// upgrade is in progress, this can only hold two consecutive values. For more information, see: https://learn.microsoft.com/en-us/azure/aks/istio-upgrade
+        /// </summary>
+        System.Collections.Generic.List<string> IstioRevision { get; set; }
         /// <summary>Whether to enable KEDA.</summary>
         bool? KedaEnabled { get; set; }
         /// <summary>
@@ -2105,12 +3161,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// </summary>
         string KubeStateMetricLabelsAllowlist { get; set; }
         /// <summary>
-        /// Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor> (e.g. 1.20) are supported. When <major.minor>
-        /// is specified, the latest supported GA patch version is chosen automatically. Updating the cluster with the same <major.minor>
-        /// once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade, even if a newer patch version is available.
-        /// When you upgrade a supported AKS cluster, Kubernetes minor versions cannot be skipped. All upgrades must be performed
-        /// sequentially by major version number. For example, upgrades between 1.14.x -> 1.15.x or 1.15.x -> 1.16.x are allowed,
-        /// however 1.14.x -> 1.16.x is not allowed. See [upgrading an AKS cluster](https://docs.microsoft.com/azure/aks/upgrade-cluster)
+        /// The version of Kubernetes specified by the user. Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor>
+        /// (e.g. 1.20) are supported. When <major.minor> is specified, the latest supported GA patch version is chosen automatically.
+        /// Updating the cluster with the same <major.minor> once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade,
+        /// even if a newer patch version is available. When you upgrade a supported AKS cluster, Kubernetes minor versions cannot
+        /// be skipped. All upgrades must be performed sequentially by major version number. For example, upgrades between 1.14.x
+        /// -> 1.15.x or 1.15.x -> 1.16.x are allowed, however 1.14.x -> 1.16.x is not allowed. See [upgrading an AKS cluster](https://docs.microsoft.com/azure/aks/upgrade-cluster)
         /// for more details.
         /// </summary>
         string KubernetesVersion { get; set; }
@@ -2132,10 +3188,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// pod that is deployed with the addon. See aka.ms/AzureManagedPrometheus-optional-parameters for details.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterAzureMonitorProfileKubeStateMetrics MetricKubeStateMetric { get; set; }
+        /// <summary>The configuration for detailed per-Kubernetes resource cost analysis.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterCostAnalysis MetricProfileCostAnalysis { get; set; }
+        /// <summary>Optional cluster metrics configuration.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterMetricsProfile MetricsProfile { get; set; }
         /// <summary>The network configuration profile.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceNetworkProfile NetworkProfile { get; set; }
+        /// <summary>Ingress type for the default NginxIngressController custom resource</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("AnnotationControlled", "External", "Internal", "None")]
+        string NginxDefaultIngressControllerType { get; set; }
+        /// <summary>Node provisioning settings that apply to the whole cluster.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNodeProvisioningProfile NodeProvisioningProfile { get; set; }
+        /// <summary>
+        /// The set of default Karpenter NodePools (CRDs) configured for node provisioning. This field has no effect unless mode is
+        /// 'Auto'. Warning: Changing this from Auto to None on an existing cluster will cause the default Karpenter NodePools to
+        /// be deleted, which will drain and delete the nodes associated with those pools. It is strongly recommended to not do this
+        /// unless there are idle nodes ready to take the pods evicted by that action. If not specified, the default is Auto. For
+        /// more information see aka.ms/aks/nap#node-pools.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("None", "Auto")]
+        string NodeProvisioningProfileDefaultNodePool { get; set; }
+        /// <summary>The node provisioning mode. If not specified, the default is Manual.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Manual", "Auto")]
+        string NodeProvisioningProfileMode { get; set; }
         /// <summary>The name of the resource group containing agent pool nodes.</summary>
         string NodeResourceGroup { get; set; }
+        /// <summary>Profile of the node resource group configuration.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterNodeResourceGroupProfile NodeResourceGroupProfile { get; set; }
+        /// <summary>
+        /// The restriction level applied to the cluster's node resource group. If not specified, the default is 'Unrestricted'
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Unrestricted", "ReadOnly")]
+        string NodeResourceGroupProfileRestrictionLevel { get; set; }
         /// <summary>The OIDC issuer profile of the Managed Cluster.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterOidcIssuerProfile OidcIssuerProfile { get; set; }
         /// <summary>Whether the OIDC issuer is enabled.</summary>
@@ -2143,13 +3227,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// <summary>The OIDC issuer url of the Managed Cluster.</summary>
         string OidcIssuerProfileIssuerUrl { get; set; }
         /// <summary>
-        /// See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on AAD pod
-        /// identity integration.
+        /// Whether to force upgrade the cluster. Note that this option instructs upgrade operation to bypass upgrade protections
+        /// such as checking for deprecated API usage. Enable this option only with caution.
+        /// </summary>
+        bool? OverrideSettingForceUpgrade { get; set; }
+        /// <summary>
+        /// Until when the overrides are effective. Note that this only matches the start time of an upgrade, and the effectiveness
+        /// won't change once an upgrade starts even if the `until` expires as upgrade proceeds. This field is not set by default.
+        /// It must be set for the overrides to take effect.
+        /// </summary>
+        global::System.DateTime? OverrideSettingUntil { get; set; }
+        /// <summary>Certificate chain object name in Azure Key Vault.</summary>
+        string PluginCertChainObjectName { get; set; }
+        /// <summary>Intermediate certificate object name in Azure Key Vault.</summary>
+        string PluginCertObjectName { get; set; }
+        /// <summary>Intermediate certificate private key object name in Azure Key Vault.</summary>
+        string PluginKeyObjectName { get; set; }
+        /// <summary>The resource ID of the Key Vault.</summary>
+        string PluginKeyVaultId { get; set; }
+        /// <summary>Root certificate object name in Azure Key Vault.</summary>
+        string PluginRootCertObjectName { get; set; }
+        /// <summary>
+        /// The pod identity profile of the Managed Cluster. See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity)
+        /// for more details on AAD pod identity integration.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterPodIdentityProfile PodIdentityProfile { get; set; }
         /// <summary>
-        /// Running in Kubenet is disabled by default due to the security related nature of AAD Pod Identity and the risks of IP spoofing.
-        /// See [using Kubenet network plugin with AAD Pod Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities)
+        /// Whether pod identity is allowed to run on clusters with Kubenet networking. Running in Kubenet is disabled by default
+        /// due to the security related nature of AAD Pod Identity and the risks of IP spoofing. See [using Kubenet network plugin
+        /// with AAD Pod Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities)
         /// for more information.
         /// </summary>
         bool? PodIdentityProfileAllowNetworkPluginKubenet { get; set; }
@@ -2168,11 +3274,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         string PrivateFqdn { get; set; }
         /// <summary>Private link resources associated with the cluster.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IPrivateLinkResource> PrivateLinkResource { get; set; }
+        /// <summary>The error additional info.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorAdditionalInfo> ProvisioningErrorAdditionalInfo { get; set; }
+        /// <summary>The error code.</summary>
+        string ProvisioningErrorCode { get; set; }
+        /// <summary>The error details.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorDetail> ProvisioningErrorDetail { get; set; }
+        /// <summary>The error message.</summary>
+        string ProvisioningErrorMessage { get; set; }
+        /// <summary>The error target.</summary>
+        string ProvisioningErrorTarget { get; set; }
         /// <summary>The current provisioning state.</summary>
         string ProvisioningState { get; set; }
-        /// <summary>Allow or deny public network access for AKS</summary>
+        /// <summary>
+        /// PublicNetworkAccess of the managedCluster. Allow or deny public network access for AKS
+        /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         string PublicNetworkAccess { get; set; }
+        /// <summary>
+        /// The resourceUID uniquely identifies ManagedClusters that reuse ARM ResourceIds (i.e: create, delete, create sequence)
+        /// </summary>
+        string ResourceUid { get; set; }
         /// <summary>Whether to enable Defender threat detection</summary>
         bool? SecurityMonitoringEnabled { get; set; }
         /// <summary>Security profile for the managed cluster.</summary>
@@ -2182,6 +3304,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// the security profile.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAzureKeyVaultKms SecurityProfileAzureKeyVaultKm { get; set; }
+        /// <summary>
+        /// A list of up to 10 base64 encoded CAs that will be added to the trust store on all nodes in the cluster. For more information
+        /// see [Custom CA Trust Certificates](https://learn.microsoft.com/en-us/azure/aks/custom-certificate-authority).
+        /// </summary>
+        System.Collections.Generic.List<byte[]> SecurityProfileCustomCaTrustCertificate { get; set; }
         /// <summary>Microsoft Defender settings for the security profile.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileDefender SecurityProfileDefender { get; set; }
         /// <summary>Image Cleaner settings for the security profile.</summary>
@@ -2191,6 +3318,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// cloud resources securely with Azure AD. See https://aka.ms/aks/wi for more details.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterSecurityProfileWorkloadIdentity SecurityProfileWorkloadIdentity { get; set; }
+        /// <summary>Service mesh profile for a managed cluster.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IServiceMeshProfile ServiceMeshProfile { get; set; }
+        /// <summary>Istio service mesh configuration.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IIstioServiceMesh ServiceMeshProfileIstio { get; set; }
+        /// <summary>Mode of the service mesh.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Istio", "Disabled")]
+        string ServiceMeshProfileMode { get; set; }
         /// <summary>
         /// Information about a service principal identity for the cluster to use for manipulating Azure APIs.
         /// </summary>
@@ -2205,6 +3339,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// The list of SSH public keys used to authenticate with Linux-based VMs. A maximum of 1 key may be specified.
         /// </summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IContainerServiceSshPublicKey> SshPublicKey { get; set; }
+        /// <summary>Contains read-only information about the Managed Cluster.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStatus Status { get; set; }
+        /// <summary>
+        /// The error details information of the managed cluster. Preserves the detailed info of failure. If there was no error, this
+        /// field is omitted.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IErrorDetail StatusProvisioningError { get; set; }
         /// <summary>Storage profile for the managed cluster.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfile StorageProfile { get; set; }
         /// <summary>AzureBlob CSI Driver settings for the storage profile.</summary>
@@ -2215,6 +3356,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfileFileCsiDriver StorageProfileFileCsiDriver { get; set; }
         /// <summary>Snapshot Controller settings for the storage profile.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterStorageProfileSnapshotController StorageProfileSnapshotController { get; set; }
+        /// <summary>
+        /// The support plan for the Managed Cluster. If unspecified, the default is 'KubernetesOfficial'.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("KubernetesOfficial", "AKSLongTermSupport")]
+        string SupportPlan { get; set; }
+        /// <summary>Settings for upgrading a cluster.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IClusterUpgradeSettings UpgradeSetting { get; set; }
+        /// <summary>Settings for overrides.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IUpgradeOverrideSettings UpgradeSettingOverrideSetting { get; set; }
+        /// <summary>Whether to enable VPA. Default value is false.</summary>
+        bool? VerticalPodAutoscalerEnabled { get; set; }
+        /// <summary>
+        /// Resource IDs of the DNS zones to be associated with the Application Routing add-on. Used only when Application Routing
+        /// add-on is enabled. Public and private DNS zones can be in different resource groups, but all public DNS zones must be
+        /// in the same resource group and all private DNS zones must be in the same resource group.
+        /// </summary>
+        System.Collections.Generic.List<string> WebAppRoutingDnsZoneResourceId { get; set; }
+        /// <summary>Whether to enable the Application Routing add-on.</summary>
+        bool? WebAppRoutingEnabled { get; set; }
+        /// <summary>
+        /// Managed identity of the Application Routing add-on. This is the identity that should be granted permissions, for example,
+        /// to manage the associated Azure DNS resource and get certificates from Azure Key Vault. See [this overview of the add-on](https://learn.microsoft.com/en-us/azure/aks/web-app-routing?tabs=with-osm)
+        /// for more instructions.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IUserAssignedIdentity WebAppRoutingIdentity { get; set; }
+        /// <summary>
+        /// Configuration for the default NginxIngressController. See more at https://learn.microsoft.com/en-us/azure/aks/app-routing-nginx-configuration#the-default-nginx-ingress-controller.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterIngressProfileNginx WebAppRoutingNginx { get; set; }
         /// <summary>
         /// Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:**
         /// 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters
@@ -2230,7 +3400,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// </summary>
         string WindowProfileAdminUsername { get; set; }
         /// <summary>
-        /// For more details on CSI proxy, see the [CSI proxy GitHub repo](https://github.com/kubernetes-csi/csi-proxy).
+        /// Whether to enable CSI proxy. For more details on CSI proxy, see the [CSI proxy GitHub repo](https://github.com/kubernetes-csi/csi-proxy).
         /// </summary>
         bool? WindowProfileEnableCsiProxy { get; set; }
         /// <summary>The Windows gMSA Profile in the Managed Cluster.</summary>
@@ -2249,6 +3419,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         /// KEDA (Kubernetes Event-driven Autoscaling) settings for the workload auto-scaler profile.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileKeda WorkloadAutoScalerProfileKeda { get; set; }
+        /// <summary>VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler WorkloadAutoScalerProfileVerticalPodAutoscaler { get; set; }
         /// <summary>Whether to enable workload identity.</summary>
         bool? WorkloadIdentityEnabled { get; set; }
 

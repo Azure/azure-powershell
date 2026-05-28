@@ -130,101 +130,102 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
         Import-Module Az.Resources
         Import-Module Az.Storage
 
-        # Get subscription Id
+        $null = $PSBoundParameters.Remove('ResourceGroupName')
+        $null = $PSBoundParameters.Remove('ProjectName')
+        $null = $PSBoundParameters.Remove('CacheStorageAccountId')
+        $null = $PSBoundParameters.Remove('SourceApplianceName')
+        $null = $PSBoundParameters.Remove('TargetApplianceName')
+
+        # Set common ErrorVariable and ErrorAction for get behaviors
+        $null = $PSBoundParameters.Add('ErrorVariable', 'notPresent')
+        $null = $PSBoundParameters.Add('ErrorAction', 'SilentlyContinue')
+
+        # Validate Azure login
         $context = Get-AzContext
+        if ($null -eq $context -or $null -eq $context.Account) {
+            throw "Not logged in to Azure. Please run 'Connect-AzAccount' before running this command."
+        }
+
+        # Get subscription Id
         if ([string]::IsNullOrEmpty($SubscriptionId)) {
             Write-Host "No -SubscriptionId provided. Using the one from Get-AzContext."
 
             $SubscriptionId = $context.Subscription.Id
             if ([string]::IsNullOrEmpty($SubscriptionId)) {
-                throw "Please login to Azure to select a subscription."
+                throw "No subscription selected. Please run 'Set-AzContext -SubscriptionId <id>' or provide -SubscriptionId."
             }
         }
         Write-Host "*Selected Subscription Id: '$($SubscriptionId)'"
     
-        # Get resource group
-        $resourceGroup = Get-AzResourceGroup -Name $ResourceGroupName -ErrorVariable notPresent -ErrorAction SilentlyContinue
+        # Get resource group with Name
+        $resourceGroup = Get-AzResourceGroup `
+            -Name $ResourceGroupName `
+            -ErrorVariable notPresent `
+            -ErrorAction SilentlyContinue
         if ($null -eq $resourceGroup) {
             throw "Resource group '$($ResourceGroupName)' does not exist in the subscription. Please create the resource group and try again."
         }
         Write-Host "*Selected Resource Group: '$($ResourceGroupName)'"
 
-        # Verify user validity
-        $userObject = Get-AzADUser -UserPrincipalName $context.Subscription.ExtendedProperties.Account
-
-        if (-not $userObject) {
-            $userObject = Get-AzADUser -Mail $context.Subscription.ExtendedProperties.Account
+        # Get Migrate Project with ResourceGroupName, Name
+        $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
+        $null = $PSBoundParameters.Add('Name', $ProjectName)
+        $migrateProject = Get-AzMigrateProject @PSBoundParameters
+        if ($null -eq $migrateProject)
+        {
+            throw "Migrate project '$ProjectName' not found."
         }
-
-        if (-not $userObject) {
-            $mailNickname = "{0}#EXT#" -f $($context.Account.Id -replace '@', '_')
-
-            $userObject = Get-AzADUser | 
-            Where-Object { $_.MailNickname -eq $mailNickname }
-        }
-
-        if (-not $userObject) {
-            if ($context.Account.Id.StartsWith("MSI@")) {
-                $hostname = $env:COMPUTERNAME
-                $userObject = Get-AzADServicePrincipal -DisplayName $hostname
-            }
-            else {
-                $userObject = Get-AzADServicePrincipal -ApplicationID $context.Account.Id
-            }
-        }
-
-        if (-not $userObject) {
-            throw 'User Object Id Not Found!'
-        }
-
-        # Get Migrate Project
-        $migrateProject = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName "Az.Migrate\Get-AzMigrateProject" `
-            -Parameters @{
-                "Name" = $ProjectName;
-                "ResourceGroupName" = $ResourceGroupName
-            } `
-            -ErrorMessage "Migrate project '$ProjectName' not found."
-        if ($migrateProject.Property.ProvisioningState -ne [ProvisioningState]::Succeeded) {
+        elseif ($migrateProject.Property.ProvisioningState -ne [ProvisioningState]::Succeeded)
+        {
             throw "Migrate project '$ProjectName' is not in a valid state. The provisioning state is '$($migrateProject.Property.ProvisioningState)'. Please verify your Azure Migrate project setup."
         }
+        $null = $PSBoundParameters.Remove('Name')
 
-        # Get Data Replication Service, or the AMH solution
-        $amhSolutionName = "Servers-Migration-ServerMigration_DataReplication"
-        $amhSolution = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName "Az.Migrate\Get-AzMigrateSolution" `
-            -Parameters @{
-                "SubscriptionId" = $SubscriptionId;
-                "ResourceGroupName" = $ResourceGroupName;
-                "MigrateProjectName" = $ProjectName;
-                "Name" = $amhSolutionName
-            } `
-            -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found. Please verify your appliance setup."
+        # Get Data Replication Service (AMH solution) with ResourceGroupName, MigrateProjectName, Name
+        $amhSolutionName = $AzMigrateSolutions.DataReplicationSolution
+        $null = $PSBoundParameters.Add('MigrateProjectName', $ProjectName)
+        $null = $PSBoundParameters.Add('Name', $amhSolutionName)
+        $amhSolution = Az.Migrate.private\Get-AzMigrateSolution_Get @PSBoundParameters
+        if ($null -eq $amhSolution)
+        {
+            throw New-AzMigrateSolutionNotFoundException `
+                -Name $amhSolutionName `
+                -ResourceGroupName $ResourceGroupName `
+                -ProjectName $ProjectName
+        }
+        $null = $PSBoundParameters.Remove('Name')
+        $null = $PSBoundParameters.Remove('MigrateProjectName')
 
         # Validate Replication Vault
         $replicationVaultName = $amhSolution.DetailExtendedDetail["vaultId"].Split("/")[8]
         if ([string]::IsNullOrEmpty($replicationVaultName)) {
             throw "No Replication Vault found. Please verify your Azure Migrate project setup."
         }
-        $replicationVault = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName "Az.Migrate.Internal\Get-AzMigrateVault" `
-            -Parameters @{
-                "ResourceGroupName" = $ResourceGroupName;
-                "Name" = $replicationVaultName
-            } `
-            -ErrorMessage "No Replication Vault '$replicationVaultName' found in Resource Group '$ResourceGroupName'. Please verify your Azure Migrate project setup"
+
+        # Get replication vault with ResourceGroupName, Name
+        $null = $PSBoundParameters.Add('Name', $replicationVaultName)
+        $replicationVault = Az.Migrate.Internal\Get-AzMigrateVault @PSBoundParameters
+        if ($null -eq $replicationVault)
+        {
+            throw "No Replication Vault '$replicationVaultName' found in Resource Group '$ResourceGroupName'. Please verify your Azure Migrate project setup."
+        }
+        $null = $PSBoundParameters.Remove('Name')
 
         # Access Discovery Service
-        $discoverySolutionName = "Servers-Discovery-ServerDiscovery"
-        $discoverySolution = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName "Az.Migrate\Get-AzMigrateSolution" `
-            -Parameters @{
-                "SubscriptionId" = $SubscriptionId;
-                "ResourceGroupName" = $ResourceGroupName;
-                "MigrateProjectName" = $ProjectName;
-                "Name" = $discoverySolutionName
-            } `
-            -ErrorMessage "Server Discovery Solution '$discoverySolutionName' not found."
+        # Get Discovery Solution with ResourceGroupName, MigrateProjectName, Name
+        $discoverySolutionName = $AzMigrateSolutions.DiscoverySolution
+        $null = $PSBoundParameters.Add('MigrateProjectName', $ProjectName)
+        $null = $PSBoundParameters.Add('Name', $discoverySolutionName)
+        $discoverySolution = Az.Migrate.private\Get-AzMigrateSolution_Get @PSBoundParameters
+        if ($null -eq $discoverySolution)
+        {
+            throw throw New-AzMigrateSolutionNotFoundException `
+                -Name $discoverySolutionName `
+                -ResourceGroupName $ResourceGroupName `
+                -ProjectName $ProjectName
+        }
+        $null = $PSBoundParameters.Remove('Name')
+        $null = $PSBoundParameters.Remove('MigrateProjectName')
 
         # Get Appliances Mapping
         $appMap = @{}
@@ -267,11 +268,12 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             throw "Error encountered in matching the given source appliance name '$SourceApplianceName' and target appliance name '$TargetApplianceName'. Please verify the VM site type to be either for HyperV or VMware for both source and target appliances, and the appliance names are correct."
         }
 
-        # Get healthy asrv2 fabrics in the resource group
-        $allFabrics = Az.Migrate\Get-AzMigrateLocalReplicationFabric -ResourceGroupName $ResourceGroupName | Where-Object {
-            $_.Property.ProvisioningState -eq [ProvisioningState]::Succeeded -and
-            $_.Property.CustomProperty.MigrationSolutionId -eq $amhSolution.Id
-        }
+        # Get healthy asrv2 fabrics with ResourceGroupName
+        $allFabrics = Az.Migrate.private\Get-AzMigrateLocalReplicationFabric_List1 @PSBoundParameters `
+            | Where-Object {
+                $_.Property.ProvisioningState -eq [ProvisioningState]::Succeeded -and
+                $_.Property.CustomProperty.MigrationSolutionId -eq $amhSolution.Id
+            }
 
         # Filter for source fabric
         $sourceFabric = $allFabrics | Where-Object {
@@ -285,25 +287,19 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
         }
         Write-Host "*Selected Source Fabric: '$($sourceFabric.Name)'"
 
-        # Get source fabric agent (dra)
-        $sourceDraErrorMessage = "The source appliance '$SourceApplianceName' is in a disconnected state. Ensure that the source appliance is running and has connectivity before proceeding."
-        $sourceDras = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName 'Az.Migrate.Internal\Get-AzMigrateFabricAgent' `
-            -Parameters @{
-                FabricName = $sourceFabric.Name;
-                ResourceGroupName = $ResourceGroupName
-            } `
-            -ErrorMessage $sourceDraErrorMessage
+        # Get source fabric agent (dra) with ResourceGroupName, FabricName
+        $null = $PSBoundParameters.Add('FabricName', $sourceFabric.Name)
+        $sourceDras = Az.Migrate.Internal\Get-AzMigrateFabricAgent @PSBoundParameters
         $sourceDra = $sourceDras | Where-Object {
             $_.Property.MachineName -eq $SourceApplianceName -and
             $_.Property.CustomProperty.InstanceType -eq $fabricInstanceType -and
             $_.Property.IsResponsive -eq $true
         }
-
         if ($null -eq $sourceDra)
         {
-            throw $sourceDraErrorMessage
+            throw "The source appliance '$SourceApplianceName' is in a disconnected state. Ensure that the source appliance is running and has connectivity before proceeding."
         }
+        $null = $PSBoundParameters.Remove('FabricName')
         $sourceDra = $sourceDra[0]
         Write-Host "*Selected Source Fabric Agent: '$($sourceDra.Name)'"
 
@@ -320,37 +316,28 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
         }
         "*Selected Target Fabric: '$($targetFabric.Name)'"
 
-        # Get target fabric agent (dra)
-        $targetDraErrorMessage = "The target appliance '$TargetApplianceName' is in a disconnected state. Ensure that the target appliance is running and has connectivity before proceeding."
-        $targetDras = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName 'Az.Migrate.Internal\Get-AzMigrateFabricAgent' `
-            -Parameters @{
-                FabricName = $($targetFabric.Name);
-                ResourceGroupName = $ResourceGroupName
-            } `
-            -ErrorMessage $targetDraErrorMessage
+        # Get target fabric agent (dra) with ResourceGroupName, FabricName
+        $null = $PSBoundParameters.Add('FabricName', $targetFabric.Name)
+        $targetDras = Az.Migrate.Internal\Get-AzMigrateFabricAgent @PSBoundParameters
         $targetDra = $targetDras | Where-Object {
             $_.Property.MachineName -eq $TargetApplianceName -and
             $_.Property.CustomProperty.InstanceType -eq $fabricInstanceType -and
             $_.Property.IsResponsive -eq $true
         }
-
         if ($null -eq $targetDra)
         {
-            throw $targetDraErrorMessage
+            throw "The target appliance '$TargetApplianceName' is in a disconnected state. Ensure that the target appliance is running and has connectivity before proceeding."
         }
+        $null = $PSBoundParameters.Remove('FabricName')
         $targetDra = $targetDras[0]
         Write-Host "*Selected Target Fabric Agent: '$($targetDra.Name)'"
 
         # Put Policy
+        # Get replication policy with ResourceGroupName, Name, VaultName
         $policyName = $replicationVault.Name + $instanceType + "policy"
-        $policy = Az.Migrate.Internal\Get-AzMigratePolicy `
-            -ResourceGroupName $ResourceGroupName `
-            -Name $policyName `
-            -VaultName $replicationVault.Name `
-            -SubscriptionId $SubscriptionId `
-            -ErrorVariable notPresent `
-            -ErrorAction SilentlyContinue
+        $null = $PSBoundParameters.Add('Name', $policyName)
+        $null = $PSBoundParameters.Add('VaultName', $replicationVault.Name)
+        $policy = Az.Migrate.Internal\Get-AzMigratePolicy @PSBoundParameters
         
         # Default policy is found
         if ($null -ne $policy) {
@@ -456,12 +443,12 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             }
 
             # Setup Policy deployment parameters
-            $policyProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.PolicyModelProperties]::new()
+            $policyProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.PolicyModelProperties]::new()
             if ($instanceType -eq $AzLocalInstanceTypes.HyperVToAzLocal) {
-                $policyCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHcipolicyModelCustomProperties]::new()
+                $policyCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.HyperVToAzStackHcipolicyModelCustomProperties]::new()
             }
             elseif ($instanceType -eq $AzLocalInstanceTypes.VMwareToAzLocal) {
-                $policyCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHcipolicyModelCustomProperties]::new()
+                $policyCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareToAzStackHcipolicyModelCustomProperties]::new()
             }
             else {
                 throw "Instance type '$($instanceType)' is not supported. Currently, for AzLocal scenario, only HyperV and VMware as the source is supported."
@@ -490,14 +477,9 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             # Check Policy creation status every 30s. Timeout after 10min
             for ($i = 0; $i -lt 20; $i++) {
                 Start-Sleep -Seconds 30
-                $policy = Az.Migrate.Internal\Get-AzMigratePolicy `
-                    -ResourceGroupName $ResourceGroupName `
-                    -Name $policyName `
-                    -VaultName $replicationVault.Name `
-                    -SubscriptionId $SubscriptionId `
-                    -ErrorVariable notPresent `
-                    -ErrorAction SilentlyContinue
-                if ($null -eq $policy) {
+                $policy = Az.Migrate.Internal\Get-AzMigratePolicy @PSBoundParameters
+                if ($null -eq $policy)
+                {
                     continue
                 }
                 
@@ -524,38 +506,42 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             throw "Policy '$($policyName)' has an unexpected Provisioning State of '$($policy.Property.ProvisioningState)'. Please re-run this command or contact support if help needed."
         }
 
-        $policy = Az.Migrate.Internal\Get-AzMigratePolicy `
-            -ResourceGroupName $ResourceGroupName `
-            -Name $policyName `
-            -VaultName $replicationVault.Name `
-            -SubscriptionId $SubscriptionId `
-            -ErrorVariable notPresent `
-            -ErrorAction SilentlyContinue
-        if ($null -eq $policy) {
+        $policy = Az.Migrate.Internal\Get-AzMigratePolicy @PSBoundParameters
+        if ($null -eq $policy)
+        {
             throw "Unexpected error occurred during policy creation. Please re-run this command or contact support if help needed."
         }
-        elseif ($policy.Property.ProvisioningState -ne [ProvisioningState]::Succeeded) {
+        elseif ($policy.Property.ProvisioningState -ne [ProvisioningState]::Succeeded)
+        {
             throw "Policy '$($policyName)' has an unexpected Provisioning State of '$($policy.Property.ProvisioningState)'. Please re-run this command or contact support if help needed."
         }
-        else {
+        else
+        {
             Write-Host "*Selected Policy: '$($policyName)'"
         }
+        $null = $PSBoundParameters.Remove('Name')
+        $null = $PSBoundParameters.Remove('VaultName')
 
         # Put Cache Storage Account
-        $amhSolution = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName "Az.Migrate\Get-AzMigrateSolution" `
-            -Parameters @{
-                "SubscriptionId" = $SubscriptionId;
-                "ResourceGroupName" = $ResourceGroupName;
-                "MigrateProjectName" = $ProjectName;
-                "Name" = $amhSolutionName
-            } `
-            -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found. Please verify your appliance setup."
+        # Get AMH solution with ResourceGroupName, MigrateProjectName, Name
+        $null = $PSBoundParameters.Add('MigrateProjectName', $ProjectName)
+        $null = $PSBoundParameters.Add('Name', $amhSolutionName)
+        $amhSolution = Az.Migrate.private\Get-AzMigrateSolution_Get @PSBoundParameters
+        if ($null -eq $amhSolution)
+        {
+            throw New-AzMigrateSolutionNotFoundException `
+                -Name $amhSolutionName `
+                -ResourceGroupName $ResourceGroupName `
+                -ProjectName $ProjectName
+        }
+        $null = $PSBoundParameters.Remove('Name')
+        $null = $PSBoundParameters.Remove('MigrateProjectName')
 
         $amhStoredStorageAccountId = $amhSolution.DetailExtendedDetail["replicationStorageAccountId"]
         
         # Record of rsa found in AMH solution
         if (![string]::IsNullOrEmpty($amhStoredStorageAccountId)) {
+            # Get amhStoredStorageAccount with ResourceGroupName, Name
             $amhStoredStorageAccountName = $amhStoredStorageAccountId.Split("/")[8]
             $amhStoredStorageAccount = Get-AzStorageAccount `
                 -ResourceGroupName $ResourceGroupName `
@@ -570,7 +556,7 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
                 # Check rsa state every 30s if not Succeeded already. Timeout after 10min
                 for ($i = 0; $i -lt 20; $i++) {
                     Start-Sleep -Seconds 30
-                    $amhStoredStorageAccount = Get-AzStorageAccount `
+                    $amhStoredStorageAccount =  Get-AzStorageAccount `
                         -ResourceGroupName $ResourceGroupName `
                         -Name $amhStoredStorageAccountName `
                         -ErrorVariable notPresent `
@@ -603,8 +589,8 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
                     -Name $amhSolution.Name `
                     -ResourceGroupName $ResourceGroupName `
                     -DetailExtendedDetail $amhSolution.DetailExtendedDetail.AdditionalProperties `
-                    -Tool "ServerMigration_DataReplication" `
-                    -Purpose "Migration" | Out-Null
+                    -Tool $DataReplicationSolutionSettings.Tool `
+                    -Purpose $DataReplicationSolutionSettings.Purpose | Out-Null
             }
             elseif ($null -eq $amhStoredStorageAccount -or $null -eq $amhStoredStorageAccount.ProvisioningState)
             {
@@ -625,8 +611,8 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
                         -Name $amhSolution.Name `
                         -ResourceGroupName $ResourceGroupName `
                         -DetailExtendedDetail $amhSolution.DetailExtendedDetail.AdditionalProperties `
-                        -Tool "ServerMigration_DataReplication" `
-                        -Purpose "Migration" | Out-Null
+                        -Tool $DataReplicationSolutionSettings.Tool `
+                        -Purpose $DataReplicationSolutionSettings.Purpose | Out-Null
                 }
             }
             else
@@ -634,20 +620,25 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
                 throw "A linked Cache Storage Account with Id '$($amhStoredStorageAccountId)' times out with Provisioning State: '$($amhStoredStorageAccount.ProvisioningState)'. Please re-run this command or contact support if help needed."
             }
 
-            $amhSolution = InvokeAzMigrateGetCommandWithRetries `
-                -CommandName "Az.Migrate\Get-AzMigrateSolution" `
-                -Parameters @{
-                    "SubscriptionId" = $SubscriptionId;
-                    "ResourceGroupName" = $ResourceGroupName;
-                    "MigrateProjectName" = $ProjectName;
-                    "Name" = $amhSolutionName
-                } `
-                -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found. Please verify your appliance setup."
+            # Refresh AMH solution with ResourceGroupName, MigrateProjectName, Name
+            $null = $PSBoundParameters.Add('MigrateProjectName', $ProjectName)
+            $null = $PSBoundParameters.Add('Name', $amhSolutionName)
+            $amhSolution = Az.Migrate.private\Get-AzMigrateSolution_Get @PSBoundParameters
+            if ($null -eq $amhSolution)
+            {
+                throw New-AzMigrateSolutionNotFoundException `
+                -Name $amhSolutionName `
+                -ResourceGroupName $ResourceGroupName `
+                -ProjectName $ProjectName
+            }
+            
             # Check if AMH record is removed
             if (($null -eq $amhStoredStorageAccount -or $null -eq $amhStoredStorageAccount.ProvisioningState) -and
                 ![string]::IsNullOrEmpty($amhSolution.DetailExtendedDetail["replicationStorageAccountId"])) {
                 throw "Unexpected error occurred in unlinking Cache Storage Account with Id '$($amhSolution.DetailExtendedDetail["replicationStorageAccountId"])'. Please re-run this command or contact support if help needed."
             }
+            $null = $PSBoundParameters.Remove('Name')
+            $null = $PSBoundParameters.Remove('MigrateProjectName')
         }
 
         # No linked Cache Storage Account found in AMH solution but user provides a Cache Storage Account Id
@@ -660,6 +651,7 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             $userProvidedStorageAccountName = ($userProvidedStorageAccountIdSegs[8]).ToLower()
 
             # Check if user provided Cache Storage Account exists
+            # Get userProvidedStorageAccount with ResourceGroupName, Name
             $userProvidedStorageAccount = Get-AzStorageAccount `
                 -ResourceGroupName $ResourceGroupName `
                 -Name $userProvidedStorageAccountName `
@@ -712,6 +704,7 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             $cacheStorageAccountId = "/subscriptions/$($SubscriptionId)/resourceGroups/$($ResourceGroupName)/providers/Microsoft.Storage/storageAccounts/$($cacheStorageAccountName)"
 
             # Check if default Cache Storage Account already exists, which it shouldn't
+            # Get cacheStorageAccount with ResourceGroupName, Name
             $cacheStorageAccount = Get-AzStorageAccount `
                 -ResourceGroupName $ResourceGroupName `
                 -Name $cacheStorageAccountName `
@@ -741,17 +734,19 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
                 -Location $params.location `
                 -Kind $params.kind `
                 -Tags $params.tags `
-                -AllowBlobPublicAccess $true
+                -AllowBlobPublicAccess $false
 
             if ($null -ne $cacheStorageAccount -and
                 $null -ne $cacheStorageAccount.ProvisioningState -and
                 $cacheStorageAccount.ProvisioningState -ne [StorageAccountProvisioningState]::Succeeded) {
                 # Check rsa state every 30s if not Succeeded already. Timeout after 10min
+                # Get cacheStorageAccount with ResourceGroupName, Name
                 for ($i = 0; $i -lt 20; $i++) {
                     Start-Sleep -Seconds 30
+
                     $cacheStorageAccount = Get-AzStorageAccount `
                         -ResourceGroupName $ResourceGroupName `
-                        -Name $params.name `
+                        -Name $cacheStorageAccountName `
                         -ErrorVariable notPresent `
                         -ErrorAction SilentlyContinue
                     # Stop if cacheStorageAccount is not found or in a terminal state
@@ -776,6 +771,17 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             $null -eq $cacheStorageAccount.ProvisioningState -or
             $cacheStorageAccount.ProvisioningState -ne [StorageAccountProvisioningState]::Succeeded) {
             throw "Unexpected error occurs during Cache Storage Account selection process. Please re-run this command or contact support if help needed."
+        }
+
+        # Validate Cache Storage Account SKU tier is Standard (not Premium)
+        if ($cacheStorageAccount.Sku.Tier -ne "Standard") {
+            throw "Cache Storage Account '$($cacheStorageAccount.StorageAccountName)' uses an unsupported SKU tier '$($cacheStorageAccount.Sku.Tier)'. Only 'Standard' tier storage accounts are supported. Please provide a Standard tier storage account."
+        }
+
+        # Validate public network access should not be disabled even for private endpoint
+        if (![string]::IsNullOrEmpty($cacheStorageAccount.PublicNetworkAccess) -and
+            $cacheStorageAccount.PublicNetworkAccess -eq "Disabled") {
+            throw "Cache Storage Account '$($cacheStorageAccount.StorageAccountName)' does not allow public network access. Please enable 'Public network access' on the storage account and re-run this command."
         }
 
         $params = @{
@@ -925,15 +931,20 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             throw "Failed to grant Cache Storage Account permissions. Please re-run this command or contact support if help needed."
         }
 
-        $amhSolution = InvokeAzMigrateGetCommandWithRetries `
-            -CommandName "Az.Migrate\Get-AzMigrateSolution" `
-            -Parameters @{
-                "SubscriptionId" = $SubscriptionId;
-                "ResourceGroupName" = $ResourceGroupName;
-                "MigrateProjectName" = $ProjectName;
-                "Name" = $amhSolutionName
-            } `
-            -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found. Please verify your appliance setup."
+        # Refresh AMH solution with ResourceGroupName, MigrateProjectName, Name
+        $null = $PSBoundParameters.Add('MigrateProjectName', $ProjectName)
+        $null = $PSBoundParameters.Add('Name', $amhSolutionName)
+        $amhSolution = Az.Migrate.private\Get-AzMigrateSolution_Get @PSBoundParameters
+        if ($null -eq $amhSolution)
+        {
+            throw New-AzMigrateSolutionNotFoundException `
+                -Name $amhSolutionName `
+                -ResourceGroupName $ResourceGroupName `
+                -ProjectName $ProjectName
+        }
+        $null = $PSBoundParameters.Remove('Name')
+        $null = $PSBoundParameters.Remove('MigrateProjectName')
+
         if ($amhSolution.DetailExtendedDetail.ContainsKey("replicationStorageAccountId")) {
             $amhStoredStorageAccountId = $amhSolution.DetailExtendedDetail["replicationStorageAccountId"]
             if ([string]::IsNullOrEmpty($amhStoredStorageAccountId)) {
@@ -956,21 +967,20 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
                 -Name $amhSolution.Name `
                 -ResourceGroupName $ResourceGroupName `
                 -DetailExtendedDetail $amhSolution.DetailExtendedDetail.AdditionalProperties `
-                -Tool "ServerMigration_DataReplication" `
-                -Purpose "Migration" | Out-Null
+                -Tool $DataReplicationSolutionSettings.Tool `
+                -Purpose $DataReplicationSolutionSettings.Purpose | Out-Null
         }
 
         Write-Host "*Selected Cache Storage Account: '$($cacheStorageAccount.StorageAccountName)' in Resource Group '$($ResourceGroupName)' at Location '$($cacheStorageAccount.Location)' for Migrate Project '$($migrateProject.Name)'"
 
         # Put replication extension
         $replicationExtensionName = ($sourceFabric.Id -split '/')[-1] + "-" + ($targetFabric.Id -split '/')[-1] + "-MigReplicationExtn"
-        $replicationExtension = Az.Migrate.Internal\Get-AzMigrateReplicationExtension `
-            -ResourceGroupName $ResourceGroupName `
-            -Name $replicationExtensionName `
-            -VaultName $replicationVaultName `
-            -SubscriptionId $SubscriptionId `
-            -ErrorVariable notPresent `
-            -ErrorAction SilentlyContinue
+        # Get replicationExtension with ResourceGroupName, VaultName, Name
+        $null = $PSBoundParameters.Add('Name', $replicationExtensionName)
+        $null = $PSBoundParameters.Add('VaultName', $replicationVaultName)
+        $replicationExtension = Az.Migrate.Internal\Get-AzMigrateReplicationExtension @PSBoundParameters
+        $null = $PSBoundParameters.Remove('Name')
+        $null = $PSBoundParameters.Remove('VaultName')
 
         # Remove replication extension if does not match the selected Cache Storage Account
         if ($null -ne $replicationExtension -and $replicationExtension.Property.CustomProperty.StorageAccountId -ne $cacheStorageAccount.Id) {
@@ -1108,15 +1118,15 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             }
 
             # Setup Replication Extension deployment parameters
-            $replicationExtensionProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ReplicationExtensionModelProperties]::new()
+            $replicationExtensionProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ReplicationExtensionModelProperties]::new()
         
             if ($instanceType -eq $AzLocalInstanceTypes.HyperVToAzLocal) {
-                $replicationExtensionCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHcireplicationExtensionModelCustomProperties]::new()
+                $replicationExtensionCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.HyperVToAzStackHcireplicationExtensionModelCustomProperties]::new()
                 $replicationExtensionCustomProperties.HyperVFabricArmId = $params.SourceFabricArmId
                 
             }
             elseif ($instanceType -eq $AzLocalInstanceTypes.VMwareToAzLocal) {
-                $replicationExtensionCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHcireplicationExtensionModelCustomProperties]::new()
+                $replicationExtensionCustomProperties = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareToAzStackHcireplicationExtensionModelCustomProperties]::new()
                 $replicationExtensionCustomProperties.VMwareFabricArmId = $params.SourceFabricArmId
             }
             else {
@@ -1144,15 +1154,13 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             }
 
             # Check replication extension creation status every 30s. Timeout after 10min
+            # Get replicationExtension with ResourceGroupName, VaultName, Name
+            $null = $PSBoundParameters.Add('Name', $replicationExtensionName)
+            $null = $PSBoundParameters.Add('VaultName', $replicationVaultName)
             for ($i = 0; $i -lt 20; $i++) {
                 Start-Sleep -Seconds 30
-                $replicationExtension = Az.Migrate.Internal\Get-AzMigrateReplicationExtension `
-                    -ResourceGroupName $ResourceGroupName `
-                    -Name $replicationExtensionName `
-                    -VaultName $replicationVaultName `
-                    -SubscriptionId $SubscriptionId `
-                    -ErrorVariable notPresent `
-                    -ErrorAction SilentlyContinue
+
+                $replicationExtension = Az.Migrate.Internal\Get-AzMigrateReplicationExtension @PSBoundParameters
 
                 if ($null -eq $replicationExtension) {
                    continue
@@ -1166,6 +1174,8 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
                     break
                 }
             }
+            $null = $PSBoundParameters.Remove('Name')
+            $null = $PSBoundParameters.Remove('VaultName')
 
             # Make sure replicationExtension is in a terminal state
             if (-not (
@@ -1181,13 +1191,10 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
             throw "Replication Extension '$($replicationExtensionName)' has an unexpected Provisioning State of '$($replicationExtension.Property.ProvisioningState)'. Please re-run this command or contact support if help needed."
         }
 
-        $replicationExtension = Az.Migrate.Internal\Get-AzMigrateReplicationExtension `
-            -ResourceGroupName $ResourceGroupName `
-            -Name $replicationExtensionName `
-            -VaultName $replicationVaultName `
-            -SubscriptionId $SubscriptionId `
-            -ErrorVariable notPresent `
-            -ErrorAction SilentlyContinue
+        # Get replicationExtension with ResourceGroupName, VaultName, Name
+        $null = $PSBoundParameters.Add('Name', $replicationExtensionName)
+        $null = $PSBoundParameters.Add('VaultName', $replicationVaultName)
+        $replicationExtension = Az.Migrate.Internal\Get-AzMigrateReplicationExtension @PSBoundParameters
         if ($null -eq $replicationExtension) {
             throw "Unexpected error occurred during Replication Extension creation. Please re-run this command or contact support if help needed."
         }
@@ -1197,6 +1204,9 @@ function Initialize-AzMigrateLocalReplicationInfrastructure {
         else {
             Write-Host "*Selected Replication Extension: '$($replicationExtensionName)'"
         }
+        $null = $PSBoundParameters.Remove('Name')
+        $null = $PSBoundParameters.Remove('VaultName')
+        $null = $PSBoundParameters.Remove('ResourceGroupName')
 
         if ($PassThru) {
             return $true

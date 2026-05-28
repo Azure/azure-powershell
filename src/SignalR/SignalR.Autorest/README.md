@@ -53,16 +53,15 @@ commit: 492cf91751be945ceae53cfdd53b1ff2fb878703
 # uncomment following line to support viaIdentity for these post APIs
 identity-correction-for-post: true
 
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+    remove: true
+  - where:
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   # Remove the set-* cmdlet
   - where:
@@ -328,10 +327,21 @@ directive:
     set:
       parameter-name: Name
       alias: CertificateName
+  - where:
+      subject: WebPubSubCustomCertificate
+      verb: Update
+    remove: true
 # Disable Inline on the Baseclass(Model).
   - no-inline:
     - EventListenerEndpoint
     - EventListenerFilter
+  # Add preview announcement for New/Update WebPubSub cmdlets that will have breaking changes in Az v16.0.0
+  - where:
+      verb: New|Update
+      subject: WebPubSub
+    set:
+      preview-announcement:
+        preview-message: "*****************************************************************************************\\r\\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026.           *\\r\\n* At least one change applies to this cmdlet.                                                    *\\r\\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\\r\\n**************************************************************************************************"
 ```
 
 ## Azure Web PubSub custom development guidance

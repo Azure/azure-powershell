@@ -594,7 +594,7 @@ function Add-AllModules {
     $Keys = @('ClientModules', 'AdminModules', 'RollupModules')
     Write-Output "adding modules to local repo"
     foreach ($module in $Keys) {
-        $modulePath = $Modules[$module]
+        $modulePath = $ModulePaths[$module]
         Write-Output "Adding $module modules to local repo"
         # Save missing dependencies locally from PS gallery.
         Save-PackagesFromPsGallery -TempRepo $TempRepo -TempRepoPath $TempRepoPath -ModulePaths $modulePath

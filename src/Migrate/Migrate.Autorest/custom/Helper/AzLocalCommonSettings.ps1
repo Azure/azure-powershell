@@ -12,8 +12,8 @@ $FabricInstanceTypes = @{
 
 $ReplicationDetails = @{
     PolicyDetails               = @{
-        DefaultCrashConsistentFrequencyInMinutes = 60;
-        DefaultAppConsistentFrequencyInMinutes   = 240;
+        DefaultCrashConsistentFrequencyInMinutes = 240;
+        DefaultAppConsistentFrequencyInMinutes   = 60;
         DefaultRecoveryPointHistoryInMinutes     = 4320;
     };
     ReplicationPollDelaySeconds = 180;
@@ -91,6 +91,7 @@ $PowerStatus = @{
 }
 
 $HighAvailability = @{
+    Unknown = "Unknown";
     NO = "No";
     YES = "Yes";
 }
@@ -111,7 +112,8 @@ $VmReplicationValidationMessage = "Replication could not be initiated. Please en
 $VmReplicationValidationMessages = @{
     VmPoweredOff            = "The VM is currently powered off. $VmReplicationValidationMessage";
     AlreadyInReplication    = "The VM is already in replication. $VmReplicationValidationMessage";
-    VmNotHighlyAvailable    = "VM not highly available. $VmReplicationValidationMessage";
+    VmNotHighlyAvailable    = "The VM is not highly available. $VmReplicationValidationMessage";
+    VmUnknownHighlyAvailable = "The VM has unknown high availability status. $VmReplicationValidationMessage";
     HyperVIntegrationServicesNotRunning = "Hyper-V Integration Services are not running on VM. $VmReplicationValidationMessage";
     VmWareToolsNotInstalled = "VMware Tools are not installed on the VM. To preserve static IPs during migration, install VMware Tools and wait up to 30 minutes for the system to detect the changes.";
     VmWareToolsNotRunning   = "VMware Tools are not running on the VM. To preserve static IPs during migration, ensure VMware Tools are running and wait up to 30 minutes for the system to detect the changes.";
@@ -130,6 +132,7 @@ $IdFormats = @{
     LogicalNetworkArmIdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.AzureStackHCI/logicalnetworks/{2}"
     MigrateProjectArmIdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Migrate/MigrateProjects/{2}"
     ProtectedItemArmIdTemplate  = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.DataReplication/replicationVaults/{2}/protectedItems/{3}"
+    ToLocalJobArmIdTemplate     = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.DataReplication/replicationVaults/{2}/jobs/{3}"
 }
 
 $TargetVMCPUCores = @{
@@ -142,4 +145,14 @@ $TargetVMRamInMB = @{
     Gen1Max = 1048576 # 1 TB
     Gen2Min = 32
     Gen2Max = 12582912 # 12 TB
+}
+
+$AzMigrateSolutions = @{
+    DataReplicationSolution = "Servers-Migration-ServerMigration_DataReplication"
+    DiscoverySolution = "Servers-Discovery-ServerDiscovery"
+}
+
+$DataReplicationSolutionSettings = @{
+    Tool = "ServerMigration_DataReplication"
+    Purpose = "Migration"
 }

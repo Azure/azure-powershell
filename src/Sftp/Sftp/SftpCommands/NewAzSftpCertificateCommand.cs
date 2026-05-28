@@ -68,7 +68,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
 
         protected override void ProcessRecord()
         {
-            WriteDebug("Starting SFTP certificate generation");
+            WriteDebug("[New-AzSftpCertificate] Starting certificate generation");
+            WriteDebug($"[New-AzSftpCertificate] Parameter set: '{ParameterSetName}'");
+            if (!string.IsNullOrEmpty(LocalUser))
+            {
+                WriteDebug($"[New-AzSftpCertificate] Target local user: '{LocalUser}'");
+            }
 
             string target = !string.IsNullOrEmpty(LocalUser) 
                 ? $"SSH certificate for local user '{LocalUser}'" 
@@ -91,6 +96,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
             if (string.IsNullOrEmpty(CertificatePath))
             {
                 CertificatePath = Path.Combine(Path.GetTempPath(), "id_rsa-cert.pub");
+                WriteDebug($"[CertGen] No output path specified, using temporary location: '{CertificatePath}'");
             }
             else
             {
@@ -102,7 +108,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                 if (Directory.Exists(CertificatePath) || (!File.Exists(CertificatePath) && !Path.HasExtension(CertificatePath)))
                 {
                     CertificatePath = Path.Combine(CertificatePath, "id_rsa-cert.pub");
-                    WriteDebug($"Treating as directory, certificate will be written to: {CertificatePath}");
+                    WriteDebug($"[CertGen] Path is a directory, certificate will be saved to: '{CertificatePath}'");
+                }
+                else
+                {
+                    WriteDebug($"[CertGen] Certificate output path: '{CertificatePath}'");
                 }
             }
 
@@ -114,7 +124,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
             bool isLocalUser = !string.IsNullOrEmpty(LocalUser);
             if (isLocalUser)
             {
-                WriteDebug($"Generating certificate for local user: {LocalUser}");
+                WriteVerbose($"[CertGen] Generating certificate for local user authentication: '{LocalUser}'");
+            }
+            else
+            {
+                WriteVerbose("[CertGen] Generating certificate for Microsoft Entra authentication");
             }
 
             // Validate SSH client availability
@@ -123,19 +137,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
             if (!string.IsNullOrEmpty(PublicKeyFile))
             {
                 PublicKeyFile = Path.GetFullPath(PublicKeyFile);
-                WriteDebug($"Using public key file: {PublicKeyFile}");
+                WriteDebug($"[CertGen] Using existing public key: '{PublicKeyFile}'");
             }
             
             if (!string.IsNullOrEmpty(PrivateKeyFile))
             {
                 PrivateKeyFile = Path.GetFullPath(PrivateKeyFile);
-                WriteDebug($"Using private key file: {PrivateKeyFile}");
+                WriteDebug($"[CertGen] Using existing private key: '{PrivateKeyFile}'");
             }
 
             if (!string.IsNullOrEmpty(SshClientFolder))
             {
                 SshClientFolder = Path.GetFullPath(SshClientFolder);
-                WriteDebug($"Using SSH client folder: {SshClientFolder}");
+                WriteDebug($"[CertGen] Using custom SSH client folder: '{SshClientFolder}'");
             }
 
             string keysFolder = null;
@@ -147,16 +161,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
             {
                 // Generate key pair in the same directory as the certificate
                 keysFolder = Path.GetDirectoryName(CertificatePath);
-                WriteDebug($"Will generate key pair in: {keysFolder}");
+                WriteVerbose($"[CertGen] No existing keys provided, will generate new key pair in: '{keysFolder}'");
                 
                 // Ensure the keys directory exists and is writable
                 if (!Directory.Exists(keysFolder))
                 {
+                    WriteDebug($"[CertGen] Creating keys directory: '{keysFolder}'");
                     Directory.CreateDirectory(keysFolder);
                 }
 
                 actualPrivateKeyFile = Path.Combine(keysFolder, "id_rsa");
                 actualPublicKeyFile = Path.Combine(keysFolder, "id_rsa.pub");
+                WriteDebug($"[CertGen] Key files will be: private='{actualPrivateKeyFile}', public='{actualPublicKeyFile}'");
+
+                // Check if key pair already exists and prompt user for overwrite confirmation
+                if (ShouldRegenerateKeyPair(actualPrivateKeyFile, actualPublicKeyFile))
+                {
+                    // User wants new keys (or no existing keys found) - remove existing files if present
+                    if (File.Exists(actualPrivateKeyFile))
+                    {
+                        WriteVerbose($"[CertGen] Removing existing private key: '{actualPrivateKeyFile}'");
+                        FileUtils.DeleteFile(actualPrivateKeyFile);
+                    }
+                    if (File.Exists(actualPublicKeyFile))
+                    {
+                        WriteVerbose($"[CertGen] Removing existing public key: '{actualPublicKeyFile}'");
+                        FileUtils.DeleteFile(actualPublicKeyFile);
+                    }
+                }
+                else
+                {
+                    WriteVerbose("[CertGen] Using existing SSH key pair for certificate generation");
+                }
             }
             else if (!string.IsNullOrEmpty(PrivateKeyFile) && string.IsNullOrEmpty(PublicKeyFile))
             {
@@ -190,9 +226,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                 // Check for cancellation before starting
                 CmdletCancellationToken.ThrowIfCancellationRequested();
 
+                WriteVerbose("[CertGen] Preparing SSH key pair...");
+                var keyPrepStartTime = DateTime.UtcNow;
                 var (pubKeyFile, _, _) = FileUtils.CheckOrCreatePublicPrivateFiles(
                     actualPublicKeyFile, actualPrivateKeyFile, keysFolder, SshClientFolder);
                 actualPublicKeyFile = pubKeyFile;
+                var keyPrepElapsed = DateTime.UtcNow - keyPrepStartTime;
+                WriteVerbose($"[CertGen] SSH key pair ready in {keyPrepElapsed.TotalSeconds:F1} seconds (public key: '{actualPublicKeyFile}')");
 
                 // Check for cancellation before authentication
                 CmdletCancellationToken.ThrowIfCancellationRequested();
@@ -201,6 +241,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                 string certFile;
                 string username;
                 
+                WriteVerbose("[CertGen] Requesting SSH certificate from Microsoft Entra...");
+                var certRequestStartTime = DateTime.UtcNow;
+
                 if (isLocalUser)
                 {
                     // For local user, use a different authentication flow or mock the certificate
@@ -218,6 +261,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                     certFile = cf;
                     username = un;
                 }
+
+                var certRequestElapsed = DateTime.UtcNow - certRequestStartTime;
+                WriteVerbose($"[CertGen] SSH certificate obtained in {certRequestElapsed.TotalSeconds:F1} seconds");
 
                 // Output success message
                 try
@@ -241,7 +287,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                 }
                 catch (Exception ex)
                 {
-                    WriteDebug($"Couldn't determine certificate validity: {ex.Message}");
+                    WriteDebug($"[CertGen] Could not determine certificate validity period: {ex.Message}");
                     Host.UI.WriteLine(ConsoleColor.Green, Host.UI.RawUI.BackgroundColor, 
                                     $"SSH certificate saved to: {certFile}");
                 }
@@ -249,8 +295,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                 // Warning about sensitive key files for security
                 if (!string.IsNullOrEmpty(keysFolder))
                 {
-                    WriteWarning($"Private key saved to: {actualPrivateKeyFile ?? Path.Combine(keysFolder, "id_rsa")}");
-                    WriteWarning($"Keep your private key secure and delete it when no longer needed.");
+                    WriteWarning(
+                        $"Private key saved to: {actualPrivateKeyFile ?? Path.Combine(keysFolder, "id_rsa")}. " +
+                        "Keep your private key secure and do not share it. Delete the key when no longer needed.");
                 }
 
                 // Create and return PSCertificateInfo object
@@ -272,33 +319,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.SftpCommands
                     {
                         certInfo.ValidFrom = certTimes.Item1;
                         certInfo.ValidUntil = certTimes.Item2;
+                        WriteDebug($"[CertGen] Certificate validity: {certTimes.Item1} to {certTimes.Item2}");
                     }
                 }
                 catch (Exception ex)
                 {
-                    WriteDebug($"Could not determine certificate validity: {ex.Message}");
+                    WriteDebug($"[CertGen] Could not retrieve certificate validity information: {ex.Message}");
                 }
 
+                WriteVerbose("[CertGen] Certificate generation completed successfully");
                 WriteObject(certInfo);
             }
             catch (OperationCanceledException)
             {
-                WriteWarning("Certificate generation was cancelled.");
+                WriteWarning("Certificate generation was cancelled by user.");
                 return;
             }
             catch (InvalidOperationException ex) when (ex.Message.Contains("SharedTokenCacheCredential authentication failed"))
             {
-                WriteDebug($"Authentication failed: {ex.Message}");
+                WriteDebug($"[Error] Azure authentication failed: {ex.Message}");
                 WriteError(new ErrorRecord(
                     ex,
                     "AuthenticationFailed",
                     ErrorCategory.AuthenticationError,
                     CertificatePath));
-                WriteWarning("Authentication failed. Try running 'Connect-AzAccount' to refresh your credentials.");
+                WriteWarning(
+                    "Microsoft Entra authentication failed. This may happen if your Azure session has expired. " +
+                    "Please run 'Connect-AzAccount' to sign in again and retry the operation.");
             }
             catch (Exception ex)
             {
-                WriteDebug($"Certificate generation failed: {ex.Message}");
+                WriteDebug($"[Error] Certificate generation failed: {ex.GetType().Name}: {ex.Message}");
+                if (ex.InnerException != null)
+                {
+                    WriteDebug($"[Error] Inner exception: {ex.InnerException.Message}");
+                }
                 WriteError(new ErrorRecord(
                     ex, 
                     "CertificateGenerationFailed", 

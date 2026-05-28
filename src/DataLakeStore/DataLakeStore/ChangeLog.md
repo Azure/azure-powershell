@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added ChangeSafety Support
+
+## Version 1.5.2
+* Updated Azure.Core from 1.47.3 to 1.50.0
 
 ## Version 1.5.1
 * Updated Azure.Core from 1.45.0 to 1.47.3

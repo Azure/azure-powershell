@@ -8,44 +8,68 @@ schema: 2.0.0
 # Update-AzSentinelIncident
 
 ## SYNOPSIS
-Creates or updates the incident.
+Update the incident.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzSentinelIncident -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-Classification <IncidentClassification>] [-ClassificationComment <String>]
- [-ClassificationReason <IncidentClassificationReason>] [-Description <String>]
- [-FirstActivityTimeUtc <DateTime>] [-Label <IIncidentLabel[]>] [-LastActivityTimeUtc <DateTime>]
- [-OwnerAssignedTo <String>] [-OwnerEmail <String>] [-OwnerObjectId <String>]
- [-OwnerUserPrincipalName <String>] [-ProviderIncidentId <String>] [-ProviderName <String>]
- [-Severity <IncidentSeverity>] [-Status <IncidentStatus>] [-Title <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Classification <String>] [-ClassificationComment <String>]
+ [-ClassificationReason <String>] [-Description <String>] [-FirstActivityTimeUtc <DateTime>]
+ [-Label <IIncidentLabel[]>] [-LastActivityTimeUtc <DateTime>] [-OwnerAssignedTo <String>]
+ [-OwnerEmail <String>] [-OwnerObjectId <String>] [-OwnerUserPrincipalName <String>]
+ [-ProviderIncidentId <String>] [-ProviderName <String>] [-Severity <String>] [-Status <String>]
+ [-Title <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzSentinelIncident -InputObject <ISecurityInsightsIdentity> [-Classification <IncidentClassification>]
- [-ClassificationComment <String>] [-ClassificationReason <IncidentClassificationReason>]
- [-Description <String>] [-FirstActivityTimeUtc <DateTime>] [-Label <IIncidentLabel[]>]
- [-LastActivityTimeUtc <DateTime>] [-OwnerAssignedTo <String>] [-OwnerEmail <String>]
- [-OwnerObjectId <String>] [-OwnerUserPrincipalName <String>] [-ProviderIncidentId <String>]
- [-ProviderName <String>] [-Severity <IncidentSeverity>] [-Status <IncidentStatus>] [-Title <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzSentinelIncident -InputObject <ISecurityInsightsIdentity> [-Classification <String>]
+ [-ClassificationComment <String>] [-ClassificationReason <String>] [-Description <String>]
+ [-FirstActivityTimeUtc <DateTime>] [-Label <IIncidentLabel[]>] [-LastActivityTimeUtc <DateTime>]
+ [-OwnerAssignedTo <String>] [-OwnerEmail <String>] [-OwnerObjectId <String>]
+ [-OwnerUserPrincipalName <String>] [-ProviderIncidentId <String>] [-ProviderName <String>]
+ [-Severity <String>] [-Status <String>] [-Title <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates the incident.
+Update the incident.
 
 ## EXAMPLES
 
 ### Example 1: Update an Incident
 ```powershell
-Update-AzSentinelIncident -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Id "4a21e485-75ae-48b3-a7b9-e6a92bcfe434" -OwnerAssignedTo "user@mydomain.local"
+Update-AzSentinelIncident -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Id "4a21e485-75ae-48b3-a7b9-e6a92bcfe434" -Title "Suspicious login activity" -Status "Active" -Severity "Medium" -OwnerAssignedTo "user@mydomain.local"
 ```
 
 This command updates an incident by assigning an owner.
+Note: The `-Title`, `-Status`, and `-Severity` parameters are required by the underlying API even though they are listed as optional.
+Omitting any of them will result in an error.
+When updating an incident, always include these three parameters.
+
+### Example 2: Update an Incident using InputObject
+```powershell
+$incident = Get-AzSentinelIncident -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Id "4a21e485-75ae-48b3-a7b9-e6a92bcfe434"
+$labels = $incident.Label + [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IncidentLabel]::new()
+$labels[-1].LabelName = "Reviewed"
+Update-AzSentinelIncident -InputObject $incident -Title $incident.Title -Status $incident.Status -Severity $incident.Severity -Label $labels
+```
+
+This command adds a label to an existing incident using `-InputObject`.
+When using `-InputObject`, you must still supply `-Title`, `-Status`, and `-Severity` (pass the original values to keep them unchanged).
+
+### Example 3: Update Incident Labels using InputObject
+```powershell
+$incident = Get-AzSentinelIncident -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Id "4a21e485-75ae-48b3-a7b9-e6a92bcfe434"
+$newLabels = @( @{ LabelName = "Critical" } )
+Update-AzSentinelIncident -InputObject $incident -Title $incident.Title -Status $incident.Status -Severity $incident.Severity -Label $newLabels
+```
+
+This command updates the labels on an existing incident.
+Note that `-Title`, `-Status`, and `-Severity` must be included to avoid validation errors.
+Passing the original values from `$incident` ensures those fields are not reset.
 
 ## PARAMETERS
 
@@ -53,7 +77,7 @@ This command updates an incident by assigning an owner.
 The reason the incident was closed
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentClassification
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -83,7 +107,7 @@ Accept wildcard characters: False
 The classification reason the incident was closed with
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentClassificationReason
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -157,7 +181,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
@@ -173,10 +196,9 @@ Accept wildcard characters: False
 
 ### -Label
 List of labels relevant to this incident
-To construct, see NOTES section for LABEL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentLabel[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IIncidentLabel[]
 Parameter Sets: (All)
 Aliases:
 
@@ -312,7 +334,7 @@ Accept wildcard characters: False
 The severity of the incident
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentSeverity
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -327,7 +349,7 @@ Accept wildcard characters: False
 The status of the incident
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -423,7 +445,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncident
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IIncident
 
 ## NOTES
 

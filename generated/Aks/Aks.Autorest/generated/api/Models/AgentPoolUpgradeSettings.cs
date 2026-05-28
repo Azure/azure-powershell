@@ -13,16 +13,61 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAgentPoolUpgradeSettingsInternal
     {
 
+        /// <summary>Backing field for <see cref="DrainTimeoutInMinute" /> property.</summary>
+        private int? _drainTimeoutInMinute;
+
+        /// <summary>
+        /// The drain timeout for a node. The amount of time (in minutes) to wait on eviction of pods and graceful termination per
+        /// node. This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails. If
+        /// not specified, the default is 30 minutes.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        public int? DrainTimeoutInMinute { get => this._drainTimeoutInMinute; set => this._drainTimeoutInMinute = value; }
+
         /// <summary>Backing field for <see cref="MaxSurge" /> property.</summary>
         private string _maxSurge;
 
         /// <summary>
-        /// This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the
-        /// percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up.
-        /// If not specified, the default is 1. For more information, including best practices, see: https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
+        /// The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5')
+        /// or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time
+        /// of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 10%. For more information,
+        /// including best practices, see: https://learn.microsoft.com/en-us/azure/aks/upgrade-cluster
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
         public string MaxSurge { get => this._maxSurge; set => this._maxSurge = value; }
+
+        /// <summary>Backing field for <see cref="MaxUnavailable" /> property.</summary>
+        private string _maxUnavailable;
+
+        /// <summary>
+        /// The maximum number or percentage of nodes that can be simultaneously unavailable during upgrade. This can either be set
+        /// to an integer (e.g. '1') or a percentage (e.g. '5%'). If a percentage is specified, it is the percentage of the total
+        /// agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default
+        /// is 0. For more information, including best practices, see: https://learn.microsoft.com/en-us/azure/aks/upgrade-cluster
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        public string MaxUnavailable { get => this._maxUnavailable; set => this._maxUnavailable = value; }
+
+        /// <summary>Backing field for <see cref="NodeSoakDurationInMinute" /> property.</summary>
+        private int? _nodeSoakDurationInMinute;
+
+        /// <summary>
+        /// The soak duration for a node. The amount of time (in minutes) to wait after draining a node and before reimaging it and
+        /// moving on to next node. If not specified, the default is 0 minutes.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        public int? NodeSoakDurationInMinute { get => this._nodeSoakDurationInMinute; set => this._nodeSoakDurationInMinute = value; }
+
+        /// <summary>Backing field for <see cref="UndrainableNodeBehavior" /> property.</summary>
+        private string _undrainableNodeBehavior;
+
+        /// <summary>
+        /// Defines the behavior for undrainable nodes during upgrade. The most common cause of undrainable nodes is Pod Disruption
+        /// Budgets (PDBs), but other issues, such as pod termination grace period is exceeding the remaining per-node drain timeout
+        /// or pod is still being in a running state, can also cause undrainable nodes.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
+        public string UndrainableNodeBehavior { get => this._undrainableNodeBehavior; set => this._undrainableNodeBehavior = value; }
 
         /// <summary>Creates an new <see cref="AgentPoolUpgradeSettings" /> instance.</summary>
         public AgentPoolUpgradeSettings()
@@ -35,9 +80,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IJsonSerializable
     {
         /// <summary>
-        /// This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the
-        /// percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up.
-        /// If not specified, the default is 1. For more information, including best practices, see: https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
+        /// The drain timeout for a node. The amount of time (in minutes) to wait on eviction of pods and graceful termination per
+        /// node. This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails. If
+        /// not specified, the default is 30 minutes.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
@@ -45,10 +90,72 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 1. For more information, including best practices, see: https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade",
+        Description = @"The drain timeout for a node. The amount of time (in minutes) to wait on eviction of pods and graceful termination per node. This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails. If not specified, the default is 30 minutes.",
+        SerializedName = @"drainTimeoutInMinutes",
+        PossibleTypes = new [] { typeof(int) })]
+        int? DrainTimeoutInMinute { get; set; }
+        /// <summary>
+        /// The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5')
+        /// or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time
+        /// of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 10%. For more information,
+        /// including best practices, see: https://learn.microsoft.com/en-us/azure/aks/upgrade-cluster
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 10%. For more information, including best practices, see: https://learn.microsoft.com/en-us/azure/aks/upgrade-cluster",
         SerializedName = @"maxSurge",
         PossibleTypes = new [] { typeof(string) })]
         string MaxSurge { get; set; }
+        /// <summary>
+        /// The maximum number or percentage of nodes that can be simultaneously unavailable during upgrade. This can either be set
+        /// to an integer (e.g. '1') or a percentage (e.g. '5%'). If a percentage is specified, it is the percentage of the total
+        /// agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default
+        /// is 0. For more information, including best practices, see: https://learn.microsoft.com/en-us/azure/aks/upgrade-cluster
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The maximum number or percentage of nodes that can be simultaneously unavailable during upgrade. This can either be set to an integer (e.g. '1') or a percentage (e.g. '5%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 0. For more information, including best practices, see: https://learn.microsoft.com/en-us/azure/aks/upgrade-cluster",
+        SerializedName = @"maxUnavailable",
+        PossibleTypes = new [] { typeof(string) })]
+        string MaxUnavailable { get; set; }
+        /// <summary>
+        /// The soak duration for a node. The amount of time (in minutes) to wait after draining a node and before reimaging it and
+        /// moving on to next node. If not specified, the default is 0 minutes.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The soak duration for a node. The amount of time (in minutes) to wait after draining a node and before reimaging it and moving on to next node. If not specified, the default is 0 minutes.",
+        SerializedName = @"nodeSoakDurationInMinutes",
+        PossibleTypes = new [] { typeof(int) })]
+        int? NodeSoakDurationInMinute { get; set; }
+        /// <summary>
+        /// Defines the behavior for undrainable nodes during upgrade. The most common cause of undrainable nodes is Pod Disruption
+        /// Budgets (PDBs), but other issues, such as pod termination grace period is exceeding the remaining per-node drain timeout
+        /// or pod is still being in a running state, can also cause undrainable nodes.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Defines the behavior for undrainable nodes during upgrade. The most common cause of undrainable nodes is Pod Disruption Budgets (PDBs), but other issues, such as pod termination grace period is exceeding the remaining per-node drain timeout or pod is still being in a running state, can also cause undrainable nodes.",
+        SerializedName = @"undrainableNodeBehavior",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Cordon", "Schedule")]
+        string UndrainableNodeBehavior { get; set; }
 
     }
     /// Settings for upgrading an agentpool
@@ -56,11 +163,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
 
     {
         /// <summary>
-        /// This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the
-        /// percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up.
-        /// If not specified, the default is 1. For more information, including best practices, see: https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
+        /// The drain timeout for a node. The amount of time (in minutes) to wait on eviction of pods and graceful termination per
+        /// node. This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails. If
+        /// not specified, the default is 30 minutes.
+        /// </summary>
+        int? DrainTimeoutInMinute { get; set; }
+        /// <summary>
+        /// The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5')
+        /// or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time
+        /// of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 10%. For more information,
+        /// including best practices, see: https://learn.microsoft.com/en-us/azure/aks/upgrade-cluster
         /// </summary>
         string MaxSurge { get; set; }
+        /// <summary>
+        /// The maximum number or percentage of nodes that can be simultaneously unavailable during upgrade. This can either be set
+        /// to an integer (e.g. '1') or a percentage (e.g. '5%'). If a percentage is specified, it is the percentage of the total
+        /// agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default
+        /// is 0. For more information, including best practices, see: https://learn.microsoft.com/en-us/azure/aks/upgrade-cluster
+        /// </summary>
+        string MaxUnavailable { get; set; }
+        /// <summary>
+        /// The soak duration for a node. The amount of time (in minutes) to wait after draining a node and before reimaging it and
+        /// moving on to next node. If not specified, the default is 0 minutes.
+        /// </summary>
+        int? NodeSoakDurationInMinute { get; set; }
+        /// <summary>
+        /// Defines the behavior for undrainable nodes during upgrade. The most common cause of undrainable nodes is Pod Disruption
+        /// Budgets (PDBs), but other issues, such as pod termination grace period is exceeding the remaining per-node drain timeout
+        /// or pod is still being in a running state, can also cause undrainable nodes.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.PSArgumentCompleterAttribute("Cordon", "Schedule")]
+        string UndrainableNodeBehavior { get; set; }
 
     }
 }

@@ -1,0 +1,52 @@
+{
+  "resourceType": "managementGroups/groupQuotas/resourceProviders/locationSettings",
+  "apiVersion": "2025-09-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.quota"
+  },
+  "commands": [
+    {
+      "name": "Get-AzQuotaGroupQuotaLocationSetting",
+      "description": "Gets the GroupQuotas enforcement settings for the ResourceProvider/location.\nThe locations, where GroupQuota enforcement is not enabled will return Not Found.",
+      "path": "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/resourceProviders/{resourceProviderName}/locationSettings/{location}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.quota/get-azquotagroupquotalocationsetting"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-GroupQuotaName <String>",
+              "-Location <String>",
+              "-ManagementGroupId <String>",
+              "-ResourceProviderName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the GroupQuotas enforcement settings for the ResourceProvider/location. The locations, where GroupQuota enforcement is not enabled will return Not Found.",
+          "parameters": [
+            {
+              "name": "-GroupQuotaName",
+              "value": "[Path.groupQuotaName]"
+            },
+            {
+              "name": "-Location",
+              "value": "[Path.location]"
+            },
+            {
+              "name": "-ManagementGroupId",
+              "value": "[Path.managementGroupId]"
+            },
+            {
+              "name": "-ResourceProviderName",
+              "value": "[Path.resourceProviderName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

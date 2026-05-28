@@ -123,6 +123,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateSet(AccountAccessTier.Hot,
             AccountAccessTier.Cool,
             AccountAccessTier.Cold,
+            AccountAccessTier.Smart,
             IgnoreCase = true)]
         public string AccessTier { get; set; }
 
@@ -522,7 +523,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.")]
+            HelpMessage = "The minimum TLS version to be permitted on requests to storage. TLS 1.3 is not yet supported.")]
         [ValidateSet(StorageModels.MinimumTlsVersion.TLS10,
             StorageModels.MinimumTlsVersion.TLS11,
             StorageModels.MinimumTlsVersion.TLS12,
@@ -641,8 +642,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string ImmutabilityPolicyState { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Set restrict copy to and from Storage Accounts within a Microsoft Entra tenant or with Private Links to the same VNet. Possible values include: 'PrivateLink', 'AAD'")]
-        [PSArgumentCompleter("PrivateLink", "AAD")]
+        [Parameter(Mandatory = false, HelpMessage = "Set restrict copy to and from Storage Accounts within a Microsoft Entra tenant or with Private Links to the same VNet. Possible values include: 'PrivateLink', 'AAD', 'All'")]
+        [PSArgumentCompleter("PrivateLink", "AAD", "All")]
         [ValidateNotNullOrEmpty]
         public string AllowedCopyScope { get; set; }
 
@@ -903,6 +904,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
             if (this.minimumTlsVersion != null)
             {
+                if (this.minimumTlsVersion == StorageModels.MinimumTlsVersion.TLS10 || this.minimumTlsVersion == StorageModels.MinimumTlsVersion.TLS11)
+                {
+                    WriteWarning("TLS 1.0 and TLS 1.1 are retired, so will use TLS 1.2");
+                    this.minimumTlsVersion = StorageModels.MinimumTlsVersion.TLS12;
+                }
                 createParameters.MinimumTlsVersion = this.minimumTlsVersion;
             }
             if (this.allowBlobPublicAccess != null)

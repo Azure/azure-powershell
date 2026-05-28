@@ -578,6 +578,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRReplicationProtectionCluster ReplicationProtectionCluster { get; set; }
 
         /// <summary>
+        /// Gets or sets the resource ID of virtual machine scale set to failover this virtual machine to.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, HelpMessage = "Specify the platform fault domain to be used by the failover Vm in target recovery region.")]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails, HelpMessage = "Specify the platform fault domain to be used by the failover Vm in target recovery region.")]
+        public int? PlatformFaultDomain { get; set; }
+
+        /// <summary>
         ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
@@ -994,7 +1001,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 RecoveryExtendedLocation = this.IsParameterBound(c => c.RecoveryExtendedLocation) ? new ExtendedLocation
                 {
                     Name = this.RecoveryExtendedLocation
-                } : null
+                } : null,
+                PlatformFaultDomain = this.PlatformFaultDomain,
             };
 
             if (!string.IsNullOrEmpty(this.ReplicationGroupName))

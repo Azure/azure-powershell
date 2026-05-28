@@ -15,8 +15,8 @@ Invokes failover of a Storage account.
 ### AccountName (Default)
 ```
 Invoke-AzStorageAccountFailover [-ResourceGroupName] <String> [-Name] <String> [-FailoverType <String>]
- [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
- [<CommonParameters>]
+ [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObject
@@ -57,8 +57,10 @@ $job | Wait-Job
 
 This command check the last sync time of a Storage account then invokes failover of it, the secondary cluster will become primary after failover. Since failover takes a long time, suggest to run it in the backend with -Asjob parameter, and then wait for the job complete.
 
-### Example 2: Invoke a planned failover of a Storage account 
+### Example 2: Invoke a planned failover of a Storage account
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\>$account = Get-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -IncludeGeoReplicationStats
 PS C:\>$account.GeoReplicationStats
@@ -73,10 +75,13 @@ PostPlannedFailoverRedundancy : Standard_GRS
 PS C:\>$job = Invoke-AzStorageAccountFailover -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -FailoverType Planned -Force -AsJob
 PS C:\>$job | Wait-Job
 ```
+
 This command check the last sync time and canFailover status of a Storage account and then invokes a planned failover of it. 
 
-### Example 3: Invoke an unplanned failover of a Storage account with FailoverType set to Unplanned 
+### Example 3: Invoke an unplanned failover of a Storage account with FailoverType set to Unplanned
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\>$account = Get-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -IncludeGeoReplicationStats
 PS C:\>$account.GeoReplicationStats
@@ -91,8 +96,8 @@ PostPlannedFailoverRedundancy : Standard_GRS
 PS C:\>$job = Invoke-AzStorageAccountFailover -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -FailoverType Unplanned -Force -AsJob
 PS C:\>$job | Wait-Job
 ```
-This command check the last sync time and canFailover status of a Storage account and then invokes an unplanned failover of it. 
 
+This command check the last sync time and canFailover status of a Storage account and then invokes an unplanned failover of it. 
 
 ## PARAMETERS
 

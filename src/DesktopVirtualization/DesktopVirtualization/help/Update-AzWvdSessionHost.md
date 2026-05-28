@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzWvdSessionHost
 
 ## SYNOPSIS
-update a session host.
+Update a session host.
 
 ## SYNTAX
 
@@ -55,7 +55,7 @@ Update-AzWvdSessionHost -InputObject <IDesktopVirtualizationIdentity> [-Force] [
 ```
 
 ## DESCRIPTION
-update a session host.
+Update a session host.
 
 ## EXAMPLES
 

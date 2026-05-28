@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added ChangeSafety Support
 
 ## Version 1.11.2
 * Fixed runbook_type: `PowerShell72` [#24779][#23967]

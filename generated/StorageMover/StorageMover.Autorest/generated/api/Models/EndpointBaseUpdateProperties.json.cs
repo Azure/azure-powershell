@@ -111,6 +111,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
                 {
                     return new NfsMountEndpointUpdateProperties(json);
                 }
+                case "S3WithHMAC":
+                {
+                    return new S3WithHmacEndpointUpdateProperties(json);
+                }
                 case "SmbMount":
                 {
                     return new SmbMountEndpointUpdateProperties(json);

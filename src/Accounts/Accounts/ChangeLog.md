@@ -19,6 +19,27 @@
 -->
 
 ## Upcoming Release
+* Added Service Principal support for SSH certificate generation in 'SshCredentialFactory'
+* Upgraded `Azure.Identity` dependency to 1.17.2.
+* Added ChangeSafety Support
+
+## Version 5.4.0
+* Updated the `System.Memory` dependency to v4.6.3 to support the Storage SDK update.
+* Added `AzureAppConfigurationEndpointSuffix` and `AzureAppConfigurationEndpointResourceId` to `Add-AzEnvironment` and `Set-AzEnvironment`
+    - Users can now configure Azure App Configuration endpoints when adding or updating custom environments
+
+## Version 5.3.4
+* Improved SSH certificate authentication for Az SSH cmdlets across all Azure clouds.
+    - SSH certificate authentication now works across all Azure clouds without configuring the `-SshAuthScope` parameter.
+    - The `-SshAuthScope` parameter in `Set-AzEnvironment` and `Add-AzEnvironment` does not take any effect.
+* Updated MSAL to 4.83.1 for bug fixes in IMDS endpoint cache.
+
+## Version 5.3.3
+* Updated MSAL to 4.82.1 to fix an issue with ARM endpoint discovery.
+
+## Version 5.3.2
+* Updated Azure.Core from 1.47.3 to 1.50.0
+* Fixed telemetry to capture client request ID instead of server response ID for AutoRest-generated cmdlets [#23555]
 
 ## Version 5.3.1
 * Updated Azure.Core from 1.45.0 to 1.47.3

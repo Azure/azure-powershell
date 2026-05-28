@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded API version to 2025-11-01
+* Hid Network Experiment cmdlets
+* Fixed `New/Remove-AzFrontDoorWafPolicy` `UriFormatException`
+
+## Version 2.1.0
+* Fixed New-AzFrontDoorWafManagedRuleOverrideObject issue.
 
 ## Version 2.0.0
 * Bumped swagger version to 2025-10-01

@@ -20,6 +20,50 @@
 
 -->
 ## Upcoming Release
+* Added ChangeSafety Support
+* Added `-ZonalPlatformFaultDomainAlignMode` to `New-AzVmssConfig`, `New-AzVmss` (SimpleParameterSet), and `Update-AzVmss` cmdlets.
+* Added `-OsDiskStorageFaultDomainAlignment` parameter to `Set-AzVmssStorageProfile` cmdlet.
+* Added `-StorageFaultDomainAlignment` parameter to `Add-AzVmssDataDisk`, `Set-AzVMOSDisk`, and `Add-AzVMDataDisk` cmdlets.
+* Fixed `Set-AzVMRunCommand` and `Set-AzVmssVMRunCommand` to skip blank lines when processing local script files via `-ScriptLocalPath`, preventing invalid `;;` syntax errors in shell scripts.
+* Added `-InstantAccess` parameter to `New-AzRestorePointCollection` and `Update-AzRestorePointCollection` cmdlets.
+* Added `-InstantAccessDurationInMinutes` parameter to `New-AzRestorePoint` cmdlet.
+
+## Version 11.5.0
+* Added `-Feature` parameter to `Update-AzGalleryImageDefinition` to allow updating existing gallery image features (such as DiskControllerTypes, SecurityType, IsAcceleratedNetwork, and IsHibernate). Each feature supports a `StartsAtVersion` property to specify the minimum gallery image version that supports the updated feature.
+* Added `-AllowUpdateImage` parameter to `Update-AzGalleryImageDefinition`. Must be set to true when using the `-Feature` parameter to update gallery image features.
+* Added managed identity support for Azure Compute Galleries
+    - `New-AzGallery`: Added `-EnableSystemAssignedIdentity` and `-UserAssignedIdentity` to assign managed identities at creation time
+    - `Update-AzGallery`: Added `-EnableSystemAssignedIdentity` and `-UserAssignedIdentity` to add managed identities to an existing gallery. `-UserAssignedIdentity` appends to existing identities
+    - `Update-AzGallery`: Added `-DisableSystemAssignedIdentity` to remove system-assigned managed identity
+    - `Update-AzGallery`: Added `-RemoveUserAssignedIdentity` accepting a list of identity resource IDs to remove specific user-assigned identities, or 'All' to remove all user-assigned identities
+    - `Get-AzGallery`: Now returns managed identity details in the `Identity` property
+* Compute ComputeRP related cmdlets will now use 2025-11-01 version of the ComputeRP API.
+
+## Version 11.4.0
+* Added `-DiskIOPSReadWrite` and `-DiskMBpsReadWrite` parameters to `Add-AzVMDataDisk` cmdlet
+* Added `-Tag` and `-Location` parameters to `New-AzSshKey` cmdlet
+* Added `-Tag` parameter to `Update-AzSshKey` cmdlet
+* Added support for Disk Availability Policy
+    - Added `-ActionOnDiskDelay` parameter to `New-AzDiskConfig` cmdlet to configure disk availability behavior
+    - Added `-ActionOnDiskDelay` parameter to `New-AzDiskUpdateConfig` cmdlet to update disk availability behavior
+
+## Version 11.3.0
+* Compute SDK generation updates:
+    - Generation now uses autorest.powershell, replacing deprecated track 1 SDK.
+    - Removed local swagger files and replaced references with remote swagger files.
+* Added new cmdlets for Availability Set to Virtual Machine Scale Set (VMSS) Flex migration (Public Preview)
+    - `Convert-AzAvailabilitySet`: Converts an Availability Set to a new Flexible Virtual Machine Scale Set without downtime
+    - `Test-AzAvailabilitySetMigration`: Validates that VMs in an Availability Set can be migrated to a VMSS
+    - `Start-AzAvailabilitySetMigration`: Starts migration of an Availability Set to an existing Flexible VMSS    
+    - `Stop-AzAvailabilitySetMigration`: Cancels a migration operation on an Availability Set
+    - `Move-AzVirtualMachineToVmss`: Migrates a VM from an Availability Set to a Flexible VMSS
+
+## Version 11.2.0
+* Added `-HighSpeedInterconnectPlacement` parameter to `New-AzVmssConfig` and `New-AzVmss` cmdlets.
+* Added new parameters `ZonePlacementPolicy`, `IncludeZone`, `ExcludeZone`, `MaxZoneCount`, `EnableMaxInstancePercentPerZone` and `MaxInstancePercentPerZoneValue` to `New-AzVmssConfig` cmdlet.
+* Added new parameters `ZonePlacementPolicy`, `IncludeZone` and `ExcludeZone` to `New-AzVmss` cmdlet.
+* Added new parameters `MaxZoneCount`, `EnableMaxInstancePercentPerZone` and `MaxInstancePercentPerZoneValue` to `Update-AzVmss` cmdlet.
+* Updated Azure.Core from 1.47.3 to 1.50.0
 
 ## Version 11.1.0
 * Added `-ResiliencyView` parameter to `Get-AzVmssVM` cmdlet
@@ -46,7 +90,7 @@
 * Updated SDK to use 2025-04-01 version of the ComputeRP API for Compute related cmdlets.
 
 ## Version 10.3.0
-* Fixed typo 'DeyAll' to 'DenyAll' in NetworkAccessPolicy description. 
+* Fixed typo 'DeyAll' to 'DenyAll' in NetworkAccessPolicy description.
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 * Updated New-AzDiskConfig to include `SecurityMetadataUri` and `SecurityDataUri` parameters.
 * Updated Grant-AzDisk to return `SecurityMetadataAccessSAS` property.

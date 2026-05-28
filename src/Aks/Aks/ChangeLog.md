@@ -18,6 +18,20 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added ChangeSafety Support
+
+## Version 7.1.2
+* Set `useAADAuth` to `true` by default in the omsagent addon profile when enabling the Monitoring addon via `Enable-AzAksAddOn` and `New-AzAksCluster`
+    - This ensures compatibility with the latest Azure Monitor agent which requires AAD authentication
+
+## Version 7.1.1
+* Fixed the default SSH key generation logic in `New-AzAksCluster` to enforce RSA key type (instead of ed25519 that became the default in OpenSSH 9.4 and above)
+
+## Version 7.1.0
+* Bumped API version to 2025-08-01
+* Added cmdlets `Get-AzAksMachine`, `Get-AzAksManagedClusterMeshRevisionProfile`, `Get-AzAksManagedClusterMeshUpgradeProfile`, `Get-AzAksTrustedAccessRole`, `Get-AzAksTrustedAccessRoleBinding`, `New-AzAksTrustedAccessRoleBinding`, `Remove-AzAksAgentPoolMachine`, `Remove-AzAksTrustedAccessRoleBinding`, `Update-AzAksTrustedAccessRoleBinding`
+* Added necessary parameters for `New-AzAksCluster`, `Set-AzAksCluster`, `New-AzAksNodePool`, `Update-AzAksNodePool`
+* Removed cmdlet `Get-AzAksManagedClusterOSOption`
 
 ## Version 7.0.0
 * Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).

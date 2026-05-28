@@ -328,7 +328,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"Represents the provisioning state of the storage task assignment.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Creating", "ResolvingDNS", "Succeeded", "ValidateSubscriptionQuotaBegin", "ValidateSubscriptionQuotaEnd", "Accepted", "Deleting", "Canceled", "Failed")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("ValidateSubscriptionQuotaBegin", "ValidateSubscriptionQuotaEnd", "Accepted", "Creating", "Succeeded", "Deleting", "Canceled", "Failed")]
         string ProvisioningState { get;  }
         /// <summary>The prefix of the storage task assignment report</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
@@ -486,7 +486,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Read = true,
         Create = false,
         Update = false,
-        Description = @"Full path to the verbose report stored in the reporting container as specified in the assignment execution context for the storage account. ",
+        Description = @"Full path to the verbose report stored in the reporting container as specified in the assignment execution context for the storage account.",
         SerializedName = @"summaryReportPath",
         PossibleTypes = new [] { typeof(string) })]
         string RunStatusSummaryReportPath { get;  }
@@ -599,7 +599,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"The trigger type of the storage task assignment execution",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("RunOnce", "OnSchedule")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("RunOnce", "OnSchedule", "MockRun")]
         string TriggerType { get; set; }
 
     }
@@ -636,7 +636,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Properties of the storage task assignment.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateProperties Property { get; set; }
         /// <summary>Represents the provisioning state of the storage task assignment.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("Creating", "ResolvingDNS", "Succeeded", "ValidateSubscriptionQuotaBegin", "ValidateSubscriptionQuotaEnd", "Accepted", "Deleting", "Canceled", "Failed")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("ValidateSubscriptionQuotaBegin", "ValidateSubscriptionQuotaEnd", "Accepted", "Creating", "Succeeded", "Deleting", "Canceled", "Failed")]
         string ProvisioningState { get; set; }
         /// <summary>The storage task assignment report</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignmentUpdateReport Report { get; set; }
@@ -724,7 +724,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>The trigger parameters of the storage task assignment execution</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ITriggerParametersUpdate TriggerParameter { get; set; }
         /// <summary>The trigger type of the storage task assignment execution</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("RunOnce", "OnSchedule")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("RunOnce", "OnSchedule", "MockRun")]
         string TriggerType { get; set; }
 
     }

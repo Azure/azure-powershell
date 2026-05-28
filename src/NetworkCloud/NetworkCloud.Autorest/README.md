@@ -28,15 +28,15 @@ For information on how to develop for `Az.NetworkCloud`, see [how-to.md](how-to.
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name : https://github.com/Azure/azure-rest-api-specs/
-# the 2025-02-01 stable in a commit: 08973141b0d31a7e75d4dc43a5224a1814a0994f
-commit: 08973141b0d31a7e75d4dc43a5224a1814a0994f
+# the 2025-09-01 stable in a commit: ccd751d5bf9d1457426de7fe6d857a4cfe890cd5
+commit: ccd751d5bf9d1457426de7fe6d857a4cfe890cd5
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/networkcloud/resource-manager/readme.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/networkcloud/resource-manager/Microsoft.NetworkCloud/stable/2025-02-01/networkcloud.json
+  - $(repo)/specification/networkcloud/resource-manager/Microsoft.NetworkCloud/stable/2025-09-01/networkcloud.json
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
@@ -46,6 +46,20 @@ service-name: NetworkCloud
 subject-prefix: NetworkCloud
 
 directive:
+  #breaking change announcement
+  - where:
+      verb: Update
+      subject: NetworkCloudVirtualMachine
+    set:
+      breaking-change:
+        change-description: The Update-AzNetworkCloudVirtualMachine cmdlet no longer supports
+          the JsonString and JsonFilePath parameters. The parameter sets
+          UpdateViaJsonString and UpdateViaJsonFilePath have been removed.
+          Users must now use the expanded parameter set instead.
+        deprecated-by-version: 3.0.0
+        deprecated-by-azversion: 16.0.0
+        change-effective-date: 2026/05/01
+
   # Fix model definition line break replacement issue
   - from: swagger-document
     where: $.definitions.L3NetworkProperties.properties.ipv4ConnectedPrefix
@@ -230,6 +244,15 @@ directive:
     set:
       subject: ClusterContinueVersionUpdate
       verb: Invoke
+  - where:
+      subject: ^StorageApplianceReadCommand$
+    set:
+      verb: Invoke
+  - where:
+      verb: Invoke
+      subject: ^BareMetalMachineDataExtractRestricted$
+    set:
+      subject: BareMetalMachineRestrictedDataExtract
   # rename parameter with duplicate or long names to shorted names
   # For. e.g, in cmdlet "New-AzNetworkCloudKubernetesCluster", the parameter "ControlPlaneNodeConfigurationAdministratorConfigurationAdminUsername" is long and
   # and contains duplicate word "Configuration".

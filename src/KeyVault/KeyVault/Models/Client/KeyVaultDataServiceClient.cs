@@ -719,7 +719,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
                 options.NextLink = result.NextPageLink;
                 return (result == null) ? new List<PSKeyVaultSecretIdentityItem>() :
-                    result.Select((secretItem) => new PSKeyVaultSecretIdentityItem(secretItem, this.vaultUriHelper));
+                    result.Where((secretItem) => secretItem.Managed != true)
+                          .Select((secretItem) => new PSKeyVaultSecretIdentityItem(secretItem, this.vaultUriHelper));
             }
             catch (Exception ex)
             {
@@ -748,7 +749,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     result = this.keyVaultClient.GetSecretVersionsNextAsync(options.NextLink).GetAwaiter().GetResult();
 
                 options.NextLink = result.NextPageLink;
-                return result.Select((secretItem) => new PSKeyVaultSecretIdentityItem(secretItem, this.vaultUriHelper));
+                return result.Where((secretItem) => secretItem.Managed != true)
+                             .Select((secretItem) => new PSKeyVaultSecretIdentityItem(secretItem, this.vaultUriHelper));
             }
             catch (Exception ex)
             {

@@ -82,7 +82,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Category('Body')]
     [System.String]
     # The user-provided name for the bare metal machine created from this specification.
-    #         If not provided, the machine name will be generated programmatically.
+    # If not provided, the machine name will be generated programmatically.
     ${MachineName}
 )
 

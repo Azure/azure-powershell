@@ -1,0 +1,98 @@
+if(($null -eq $TestName) -or ($TestName -contains 'New-AzEdgeActionExecutionFilter'))
+{
+  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+  if (-Not (Test-Path -Path $loadEnvPath)) {
+      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+  }
+  . ($loadEnvPath)
+  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzEdgeActionExecutionFilter.Recording.json'
+  $currentPath = $PSScriptRoot
+  while(-not $mockingPath) {
+      $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
+      $currentPath = Split-Path -Path $currentPath -Parent
+  }
+  . ($mockingPath | Select-Object -First 1).FullName
+}
+
+Describe 'New-AzEdgeActionExecutionFilter' {
+    BeforeAll {
+        $script:resourceGroupName = "powershelltests"
+        $script:edgeActionName = "eafilterdec03"
+        $script:version = "v1"
+        $script:testFilePath = Join-Path $PSScriptRoot 'test_handler.js'
+        
+        # Create edge action and version (required for execution filter)
+        New-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
+            -Name $script:edgeActionName `
+            -SkuName "Standard" `
+            -SkuTier "Standard" `
+            -Location "global"
+        
+        New-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
+            -EdgeActionName $script:edgeActionName `
+            -Version $script:version `
+            -DeploymentType "file" `
+            -IsDefaultVersion $true `
+            -Location "global"
+        
+        # Deploy code to version (required for execution filter)
+        # Deploy is an LRO that waits for completion
+        Deploy-AzEdgeActionVersionCode -ResourceGroupName $script:resourceGroupName `
+            -EdgeActionName $script:edgeActionName `
+            -Version $script:version `
+            -FilePath $script:testFilePath
+        
+        # Verify deployment completed before proceeding with tests
+        $versionStatus = Get-AzEdgeActionVersion -ResourceGroupName $script:resourceGroupName `
+            -EdgeActionName $script:edgeActionName `
+            -Version $script:version
+        if ($versionStatus.ProvisioningState -ne "Succeeded" -or $versionStatus.ValidationStatus -ne "Succeeded") {
+            throw "Deploy did not complete successfully. ProvisioningState: $($versionStatus.ProvisioningState), ValidationStatus: $($versionStatus.ValidationStatus)"
+        }
+        
+        # Store the version resource ID for execution filter
+        $script:versionId = $versionStatus.Id
+    }
+
+    AfterAll {
+        # Clean up test edge action
+        Remove-AzEdgeAction -ResourceGroupName $script:resourceGroupName `
+            -Name $script:edgeActionName -ErrorAction SilentlyContinue
+    }
+
+    It 'CreateExpanded' {
+        # Test creating execution filter
+        $filterName = "filternewdec01"
+        
+        $result = New-AzEdgeActionExecutionFilter -ResourceGroupName $script:resourceGroupName `
+            -EdgeActionName $script:edgeActionName `
+            -ExecutionFilter $filterName `
+            -Version $script:versionId `
+            -Location "global" `
+            -ExecutionFilterIdentifierHeaderName "X-Filter-Id" `
+            -ExecutionFilterIdentifierHeaderValue "test-filter-value"
+        
+        $result.Name | Should -Be $filterName
+        # Note: Execution filter may still be in "Provisioning" state even after creation completes
+        # The LRO cmdlet returns when the PUT is accepted, but background provisioning continues
+        # Only validate the immutable properties (name and header configuration)
+        $result.ExecutionFilterIdentifierHeaderName | Should -Be "X-Filter-Id"
+        $result.ExecutionFilterIdentifierHeaderValue | Should -Be "test-filter-value"
+    }
+
+    It 'CreateViaJsonString' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'CreateViaJsonFilePath' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'CreateViaIdentityEdgeActionExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'CreateViaIdentityEdgeAction' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+}

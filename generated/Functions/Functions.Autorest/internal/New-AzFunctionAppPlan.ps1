@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Description for Creates or updates an App Service Plan.
+Description for create an App Service Plan.
 .Description
-Description for Creates or updates an App Service Plan.
+Description for create an App Service Plan.
 .Example
 New-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
                       -Name MyPremiumPlan `
@@ -29,11 +29,11 @@ New-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
                       -WorkerType Windows
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServicePlan
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServicePlan
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -56,7 +56,7 @@ APPSERVICEPLAN <IAppServicePlan>: App Service plan.
   [MaximumElasticWorkerCount <Int32?>]: Maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan
   [PerSiteScaling <Boolean?>]: If <code>true</code>, apps assigned to this App Service plan can be scaled independently.         If <code>false</code>, apps assigned to this App Service plan will scale to all instances of the plan.
   [Reserved <Boolean?>]: If Linux app service plan <code>true</code>, <code>false</code> otherwise.
-  [SkuCapability <ICapability[]>]: Capabilities of the SKU, e.g., is traffic manager enabled?
+  [SkuCapability <List<ICapability>>]: Capabilities of the SKU, e.g., is traffic manager enabled?
     [Name <String>]: Name of the SKU capability.
     [Reason <String>]: Reason of the SKU capability.
     [Value <String>]: Value of the SKU capability.
@@ -66,7 +66,7 @@ APPSERVICEPLAN <IAppServicePlan>: App Service plan.
   [SkuCapacityMinimum <Int32?>]: Minimum number of workers for this App Service plan SKU.
   [SkuCapacityScaleType <String>]: Available scale configurations for an App Service plan.
   [SkuFamily <String>]: Family code of the resource SKU.
-  [SkuLocation <String[]>]: Locations of the SKU.
+  [SkuLocation <List<String>>]: Locations of the SKU.
   [SkuName <String>]: Name of the resource SKU.
   [SkuSize <String>]: Size specifier of the resource SKU.
   [SkuTier <String>]: Service tier of the resource SKU.
@@ -84,7 +84,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [Authprovider <String>]: The auth provider for the users.
   [BackupId <String>]: ID of the backup.
   [BaseAddress <String>]: Module base address.
-  [BasicAuthName <BasicAuthName?>]: name of the basic auth entry.
+  [BasicAuthName <String>]: name of the basic auth entry.
   [BlobServicesName <String>]: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
   [CertificateOrderName <String>]: Name of the certificate order..
   [ConnectionStringKey <String>]: 
@@ -114,7 +114,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [KeyType <String>]: The type of host key.
   [LinkedBackendName <String>]: Name of the linked backend that should be retrieved
   [Location <String>]: 
-  [ManagementPolicyName <ManagementPolicyName?>]: The name of the Storage Account Management Policy. It should always be 'default'
+  [ManagementPolicyName <String>]: The name of the Storage Account Management Policy. It should always be 'default'
   [Name <String>]: Name of the certificate.
   [NamespaceName <String>]: The namespace for this hybrid connection.
   [OperationId <String>]: GUID of the operation.
@@ -147,7 +147,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerPoolName <String>]: Name of the worker pool.
   [WorkflowName <String>]: Workflow name.
 
-SKUCAPABILITY <ICapability[]>: Capabilities of the SKU, e.g., is traffic manager enabled
+SKUCAPABILITY <ICapability[]>: Capabilities of the SKU, e.g., is traffic manager enabled?
   [Name <String>]: Name of the SKU capability.
   [Reason <String>]: Reason of the SKU capability.
   [Value <String>]: Value of the SKU capability.
@@ -155,11 +155,13 @@ SKUCAPABILITY <ICapability[]>: Capabilities of the SKU, e.g., is traffic manager
 https://learn.microsoft.com/powershell/module/az.functions/new-azfunctionappplan
 #>
 function New-AzFunctionAppPlan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServicePlan])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the App Service plan.
@@ -167,6 +169,8 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the resource group to which the resource belongs.
@@ -174,6 +178,8 @@ param(
 
     [Parameter(ParameterSetName='Create')]
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -187,15 +193,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServicePlan]
     # App Service plan.
-    # To construct, see NOTES section for APPSERVICEPLAN properties and create a hash table.
     ${AppServicePlan},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -301,9 +305,8 @@ param(
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICapability[]]
-    # Capabilities of the SKU, e.g., is traffic manager enabled
-    # To construct, see NOTES section for SKUCAPABILITY properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ICapability[]]
+    # Capabilities of the SKU, e.g., is traffic manager enabled?
     ${SkuCapability},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -388,7 +391,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -420,6 +423,18 @@ param(
     [System.Management.Automation.SwitchParameter]
     # If <code>true</code>, this App Service Plan will perform availability zone balancing.If <code>false</code>, this App Service Plan will not perform availability zone balancing.
     ${ZoneRedundant},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -489,16 +504,19 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Create = 'Az.Functions.private\New-AzFunctionAppPlan_Create';
             CreateExpanded = 'Az.Functions.private\New-AzFunctionAppPlan_CreateExpanded';
             CreateViaIdentity = 'Az.Functions.private\New-AzFunctionAppPlan_CreateViaIdentity';
             CreateViaIdentityExpanded = 'Az.Functions.private\New-AzFunctionAppPlan_CreateViaIdentityExpanded';
+            CreateViaJsonFilePath = 'Az.Functions.private\New-AzFunctionAppPlan_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Functions.private\New-AzFunctionAppPlan_CreateViaJsonString';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -507,6 +525,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

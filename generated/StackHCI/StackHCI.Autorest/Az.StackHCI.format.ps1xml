@@ -2,513 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.StackHciIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.AdapterPropertyOverrides</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.StackHciIdentity</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ArcSettingName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ClusterName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DeploymentSettingsName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>EdgeDeviceName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ExtensionName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceUri</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SecuritySettingsName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SubscriptionId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>UpdateName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>UpdateRunName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ArcSettingName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ClusterName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DeploymentSettingsName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>EdgeDeviceName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ExtensionName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceUri</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SecuritySettingsName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SubscriptionId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>UpdateName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>UpdateRunName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api40.ErrorDetail</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api40.ErrorDetail</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Code</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Target</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Code</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Target</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api40.ManagedServiceIdentity</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api40.ManagedServiceIdentity</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>PrincipalId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>TenantId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>PrincipalId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>TenantId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api40.ProxyResource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api40.ProxyResource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedByType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedByType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api40.Resource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api40.Resource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api40.TrackedResource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api40.TrackedResource</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api40.TrackedResourceTags</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api40.TrackedResourceTags</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Item</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Item</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api40.UserAssignedIdentity</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api40.UserAssignedIdentity</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ClientId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PrincipalId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ClientId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PrincipalId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.ErrorDetailAutoGenerated</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.ErrorDetailAutoGenerated</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Code</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Target</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Code</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Target</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.ProxyResourceAutoGenerated</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.ProxyResourceAutoGenerated</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataCreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemDataLastModifiedByType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataCreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedByType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.ResourceAutoGenerated</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.ResourceAutoGenerated</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.SystemData</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api30.SystemData</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>CreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedByType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedBy</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastModifiedByType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>CreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedByType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedBy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastModifiedByType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.AdapterPropertyOverrides</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.AdapterPropertyOverrides</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.AdapterPropertyOverrides#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -540,9 +36,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.AdapterPropertyOverridesAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.AdapterPropertyOverridesAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.AdapterPropertyOverridesAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.AdapterPropertyOverridesAutoGenerated#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -574,9 +70,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ArcConnectivityProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ArcConnectivityProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ArcConnectivityProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ArcConnectivityProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -596,9 +92,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ArcIdentityResponseProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ArcIdentityResponseProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ArcIdentityResponseProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ArcIdentityResponseProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -636,9 +132,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ArcSetting</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ArcSetting</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ArcSetting</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ArcSetting#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -664,9 +160,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ArcSettingList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ArcSettingList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ArcSettingList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ArcSettingList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -686,9 +182,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ArcSettingProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ArcSettingProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ArcSettingProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ArcSettingProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -744,9 +240,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ArcSettingsPatchTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ArcSettingsPatchTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ArcSettingsPatchTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ArcSettingsPatchTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -766,9 +262,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.Cluster</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Cluster</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.Cluster</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Cluster#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -800,9 +296,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ClusterDesiredProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ClusterDesiredProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ClusterDesiredProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ClusterDesiredProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -828,9 +324,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ClusterIdentityResponseProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ClusterIdentityResponseProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ClusterIdentityResponseProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ClusterIdentityResponseProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -868,9 +364,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ClusterList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ClusterList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ClusterList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ClusterList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -890,9 +386,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ClusterNode</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ClusterNode</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ClusterNode</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ClusterNode#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -990,9 +486,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ClusterPatchProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ClusterPatchProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ClusterPatchProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ClusterPatchProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1024,9 +520,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ClusterPatchTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ClusterPatchTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ClusterPatchTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ClusterPatchTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1046,9 +542,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ClusterProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ClusterProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ClusterProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ClusterProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1158,9 +654,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ClusterReportedProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ClusterReportedProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ClusterReportedProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ClusterReportedProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1190,9 +686,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>OemActivation</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SupportedCapability</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1225,18 +718,15 @@
               <TableColumnItem>
                 <PropertyName>OemActivation</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SupportedCapability</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.DefaultExtensionDetails</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.DefaultExtensionDetails</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.DefaultExtensionDetails</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.DefaultExtensionDetails#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1262,9 +752,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.DeploymentCluster</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.DeploymentCluster</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.DeploymentCluster</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.DeploymentCluster#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1308,9 +798,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.DeploymentConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.DeploymentConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.DeploymentConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.DeploymentConfiguration#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1330,9 +820,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.DeploymentData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.DeploymentData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.DeploymentData</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.DeploymentData#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1370,9 +860,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.DeploymentSecuritySettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.DeploymentSecuritySettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.DeploymentSecuritySettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.DeploymentSecuritySettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1446,9 +936,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.DeploymentSetting</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.DeploymentSetting</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.DeploymentSetting</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.DeploymentSetting#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1510,9 +1000,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.DeploymentSettingListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.DeploymentSettingListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.DeploymentSettingListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.DeploymentSettingListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1532,15 +1022,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.DeploymentSettingsProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.DeploymentSettingsProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.DeploymentSettingsProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.DeploymentSettingsProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>ArcNodeResourceId</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>DeploymentMode</Label>
           </TableColumnHeader>
@@ -1554,9 +1041,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ArcNodeResourceId</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>DeploymentMode</PropertyName>
               </TableColumnItem>
@@ -1572,9 +1056,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.DeploymentStep</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.DeploymentStep</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.DeploymentStep</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.DeploymentStep#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1583,9 +1067,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>EndTimeUtc</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Exception</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>FullStepIndex</Label>
@@ -1610,9 +1091,6 @@
                 <PropertyName>EndTimeUtc</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Exception</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>FullStepIndex</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1630,9 +1108,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.DeviceConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.DeviceConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.DeviceConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.DeviceConfiguration#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1652,9 +1130,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.EceActionStatus</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.EceActionStatus</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.EceActionStatus</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.EceActionStatus#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1674,9 +1152,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.EceDeploymentSecrets</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.EceDeploymentSecrets</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.EceDeploymentSecrets</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.EceDeploymentSecrets#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1708,9 +1186,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.EdgeDevice</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.EdgeDevice</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.EdgeDevice</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.EdgeDevice#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1778,9 +1256,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.EdgeDeviceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.EdgeDeviceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.EdgeDeviceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.EdgeDeviceListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1800,9 +1278,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.EdgeDeviceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.EdgeDeviceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.EdgeDeviceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.EdgeDeviceProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1822,9 +1300,77 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ErrorDetailAutoGenerated2</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ErrorDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ErrorDetailAutoGenerated2</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ErrorDetail#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ErrorDetailAutoGenerated</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ErrorDetailAutoGenerated#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ErrorDetailAutoGenerated2</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ErrorDetailAutoGenerated2#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1844,9 +1390,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.Extension</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Extension</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.Extension</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Extension#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1872,9 +1418,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ExtensionAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ExtensionAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ExtensionAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ExtensionAutoGenerated#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1918,9 +1464,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ExtensionInstanceView</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ExtensionInstanceView</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ExtensionInstanceView</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ExtensionInstanceView#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1946,9 +1492,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ExtensionInstanceViewStatus</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ExtensionInstanceViewStatus</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ExtensionInstanceViewStatus</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ExtensionInstanceViewStatus#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1992,9 +1538,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ExtensionList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ExtensionList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ExtensionList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ExtensionList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2014,9 +1560,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ExtensionParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ExtensionParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ExtensionParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ExtensionParameters#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2060,9 +1606,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ExtensionPatchParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ExtensionPatchParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ExtensionPatchParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ExtensionPatchParameters#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2088,9 +1634,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ExtensionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ExtensionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ExtensionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ExtensionProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2122,9 +1668,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ExtensionUpgradeParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ExtensionUpgradeParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ExtensionUpgradeParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ExtensionUpgradeParameters#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2144,9 +1690,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.HciEdgeDevice</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.HciEdgeDevice</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.HciEdgeDevice</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.HciEdgeDevice#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2208,9 +1754,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.HciEdgeDeviceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.HciEdgeDeviceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.HciEdgeDeviceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.HciEdgeDeviceProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2236,9 +1782,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.HciNicDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.HciNicDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.HciNicDetail</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.HciNicDetail#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2253,9 +1799,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>DefaultIsolationId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DnsServer</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>DriverVersion</Label>
@@ -2304,9 +1847,6 @@
                 <PropertyName>DefaultIsolationId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>DnsServer</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>DriverVersion</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -2342,9 +1882,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.HciOSProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.HciOSProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.HciOSProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.HciOSProfile#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2370,9 +1910,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.HciReportedProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.HciReportedProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.HciReportedProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.HciReportedProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2392,9 +1932,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.HostNetwork</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.HostNetwork</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.HostNetwork</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.HostNetwork#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2420,9 +1960,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.HostNetworkAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.HostNetworkAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.HostNetworkAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.HostNetworkAutoGenerated#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2448,15 +1988,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.InfrastructureNetwork</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.InfrastructureNetwork</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.InfrastructureNetwork</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.InfrastructureNetwork#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>DnsServer</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>Gateway</Label>
           </TableColumnHeader>
@@ -2470,9 +2007,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>DnsServer</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Gateway</PropertyName>
               </TableColumnItem>
@@ -2488,15 +2022,12 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.Intents</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Intents</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.Intents</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Intents#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>Adapter</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
@@ -2509,16 +2040,10 @@
           <TableColumnHeader>
             <Label>OverrideVirtualSwitchConfiguration</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>TrafficType</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Adapter</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
@@ -2531,24 +2056,18 @@
               <TableColumnItem>
                 <PropertyName>OverrideVirtualSwitchConfiguration</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>TrafficType</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IntentsAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IntentsAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IntentsAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IntentsAutoGenerated#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
-          <TableColumnHeader>
-            <Label>IntentAdapter</Label>
-          </TableColumnHeader>
           <TableColumnHeader>
             <Label>IntentName</Label>
           </TableColumnHeader>
@@ -2592,9 +2111,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>IntentAdapter</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>IntentName</PropertyName>
               </TableColumnItem>
@@ -2640,9 +2156,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IPPools</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IPPools</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IPPools</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IPPools#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2668,9 +2184,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IsolatedVMAttestationConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IsolatedVMAttestationConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IsolatedVMAttestationConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IsolatedVMAttestationConfiguration#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2702,9 +2218,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.LogCollectionError</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.LogCollectionError</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.LogCollectionError</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.LogCollectionError#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2730,9 +2246,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.LogCollectionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.LogCollectionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.LogCollectionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.LogCollectionProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2764,9 +2280,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.LogCollectionRequestProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.LogCollectionRequestProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.LogCollectionRequestProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.LogCollectionRequestProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2792,9 +2308,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.LogCollectionSession</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.LogCollectionSession</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.LogCollectionSession</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.LogCollectionSession#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2850,9 +2366,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.NetworkController</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ManagedServiceIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.NetworkController</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ManagedServiceIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>PrincipalId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TenantId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PrincipalId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TenantId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.NetworkController</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.NetworkController#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2884,9 +2428,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.NicDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.NicDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.NicDetail</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.NicDetail#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2901,9 +2445,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>DefaultIsolationId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DnsServer</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>DriverVersion</Label>
@@ -2934,9 +2475,6 @@
                 <PropertyName>DefaultIsolationId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>DnsServer</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>DriverVersion</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -2954,9 +2492,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.Observability</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Observability</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.Observability</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Observability#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2988,9 +2526,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.OptionalServices</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.OptionalServices</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.OptionalServices</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.OptionalServices#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3010,9 +2548,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.PackageVersionInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.PackageVersionInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.PackageVersionInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.PackageVersionInfo#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3044,9 +2582,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.PasswordCredential</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.PasswordCredential</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.PasswordCredential</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.PasswordCredential#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3084,9 +2622,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.PerNodeExtensionState</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.PerNodeExtensionState</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.PerNodeExtensionState</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.PerNodeExtensionState#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3124,9 +2662,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.PerNodeRemoteSupportSession</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.PerNodeRemoteSupportSession</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.PerNodeRemoteSupportSession</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.PerNodeRemoteSupportSession#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3170,9 +2708,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.PerNodeState</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.PerNodeState</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.PerNodeState</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.PerNodeState#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3210,9 +2748,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.PhysicalNodes</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.PhysicalNodes</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.PhysicalNodes</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.PhysicalNodes#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3238,9 +2776,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.PrecheckResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.PrecheckResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.PrecheckResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.PrecheckResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3326,9 +2864,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.PrecheckResultTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.PrecheckResultTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.PrecheckResultTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.PrecheckResultTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3354,9 +2892,125 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.QosPolicyOverrides</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ProxyResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.QosPolicyOverrides</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ProxyResource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ProxyResourceAutoGenerated</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ProxyResourceAutoGenerated#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.QosPolicyOverrides</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.QosPolicyOverrides#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3388,31 +3042,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.RawCertificateData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.RemoteSupportNodeSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.RawCertificateData</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Certificate</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Certificate</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.RemoteSupportNodeSettings</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.RemoteSupportNodeSettings</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.RemoteSupportNodeSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3468,9 +3100,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.RemoteSupportProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.RemoteSupportProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.RemoteSupportProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.RemoteSupportProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3502,9 +3134,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.RemoteSupportRequestProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.RemoteSupportRequestProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.RemoteSupportRequestProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.RemoteSupportRequestProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3536,9 +3168,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ReportedProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ReportedProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ReportedProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ReportedProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3558,9 +3190,53 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.SbeCredentials</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.SbeCredentials</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Resource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ResourceAutoGenerated</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ResourceAutoGenerated#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SbeCredentials</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SbeCredentials#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3592,9 +3268,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.SbeDeploymentInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SbeDeploymentInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.SbeDeploymentInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SbeDeploymentInfo#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3638,9 +3314,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.SbeDeploymentPackageInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SbeDeploymentPackageInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.SbeDeploymentPackageInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SbeDeploymentPackageInfo#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3672,9 +3348,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.SbePartnerProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SbePartnerProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.SbePartnerProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SbePartnerProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3700,9 +3376,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.SecurityComplianceStatus</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SecurityComplianceStatus</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.SecurityComplianceStatus</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SecurityComplianceStatus#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3746,9 +3422,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.SecurityProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SecurityProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.SecurityProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SecurityProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3786,9 +3462,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.SecuritySetting</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SecuritySetting</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.SecuritySetting</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SecuritySetting#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3850,9 +3526,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.SecuritySettingListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SecuritySettingListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.SecuritySettingListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SecuritySettingListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3872,9 +3548,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ServiceConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ServiceConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ServiceConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ServiceConfiguration#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3900,9 +3576,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.SoftwareAssuranceChangeRequestProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SoftwareAssuranceChangeRequestProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.SoftwareAssuranceChangeRequestProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SoftwareAssuranceChangeRequestProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3922,9 +3598,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.SoftwareAssuranceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SoftwareAssuranceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.SoftwareAssuranceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SoftwareAssuranceProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -3956,9 +3632,91 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.Step</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.StackHciIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.Step</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.StackHciIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ArcSettingName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ClusterName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DeploymentSettingsName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EdgeDeviceName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ExtensionName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceUri</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SecuritySettingsName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SubscriptionId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpdateName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpdateRunName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ArcSettingName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ClusterName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DeploymentSettingsName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EdgeDeviceName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ExtensionName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceUri</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SecuritySettingsName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubscriptionId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpdateName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpdateRunName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Step</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Step#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4014,9 +3772,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.Storage</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Storage</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.Storage</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Storage#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4036,9 +3794,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.StorageAdapterIPInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.StorageAdapterIPInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.StorageAdapterIPInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.StorageAdapterIPInfo#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4070,9 +3828,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.StorageAdapterIPInfoAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.StorageAdapterIPInfoAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.StorageAdapterIPInfoAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.StorageAdapterIPInfoAutoGenerated#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4104,9 +3862,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.StorageNetworks</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.StorageNetworks</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.StorageNetworks</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.StorageNetworks#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4138,9 +3896,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.StorageNetworksAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.StorageNetworksAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.StorageNetworksAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.StorageNetworksAutoGenerated#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4172,9 +3930,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.SwitchDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SwitchDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.SwitchDetail</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SwitchDetail#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4200,9 +3958,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.SwitchExtension</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SwitchExtension</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.SwitchExtension</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SwitchExtension#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4234,9 +3992,147 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.Update</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.Update</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SystemData#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>CreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastModifiedByType</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>CreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastModifiedByType</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.TrackedResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.TrackedResource#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataCreatedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedBy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SystemDataLastModifiedByType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataCreatedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.TrackedResourceTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.TrackedResourceTags#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Update</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Update#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4304,9 +4200,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.UpdateList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.UpdateList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.UpdateList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.UpdateList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4326,9 +4222,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.UpdatePrerequisite</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.UpdatePrerequisite</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.UpdatePrerequisite</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.UpdatePrerequisite#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4360,9 +4256,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.UpdateProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.UpdateProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.UpdateProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.UpdateProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4478,9 +4374,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.UpdateRun</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.UpdateRun</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.UpdateRun</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.UpdateRun#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4548,9 +4444,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.UpdateRunList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.UpdateRunList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.UpdateRunList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.UpdateRunList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4570,9 +4466,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.UpdateRunProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.UpdateRunProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.UpdateRunProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.UpdateRunProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4616,9 +4512,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.UpdateStateProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.UpdateStateProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.UpdateStateProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.UpdateStateProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4644,9 +4540,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.UpdateSummaries</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.UpdateSummaries</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.UpdateSummaries</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.UpdateSummaries#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4714,9 +4610,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.UpdateSummariesList</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.UpdateSummariesList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.UpdateSummariesList</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.UpdateSummariesList#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4736,9 +4632,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.UpdateSummariesProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.UpdateSummariesProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.UpdateSummariesProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.UpdateSummariesProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4812,17 +4708,42 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ValidateRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.UserAssignedIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ValidateRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.UserAssignedIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ClientId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PrincipalId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ClientId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PrincipalId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ValidateRequest</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ValidateRequest#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>AdditionalInfo</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>EdgeDeviceId</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -4831,18 +4752,15 @@
               <TableColumnItem>
                 <PropertyName>AdditionalInfo</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>EdgeDeviceId</PropertyName>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ValidateResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ValidateResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ValidateResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ValidateResponse#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4862,9 +4780,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.VirtualSwitchConfigurationOverrides</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.VirtualSwitchConfigurationOverrides</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.VirtualSwitchConfigurationOverrides</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.VirtualSwitchConfigurationOverrides#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -4890,9 +4808,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.VirtualSwitchConfigurationOverridesAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.VirtualSwitchConfigurationOverridesAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.VirtualSwitchConfigurationOverridesAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.VirtualSwitchConfigurationOverridesAutoGenerated#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

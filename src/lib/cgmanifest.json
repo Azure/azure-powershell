@@ -15,15 +15,6 @@
       "component": {
         "type": "nuget",
         "nuget": {
-          "name": "System.Numerics.Vectors",
-          "version": "4.5.0"
-        }
-      }
-    },
-    {
-      "component": {
-        "type": "nuget",
-        "nuget": {
           "name": "System.Xml.ReaderWriter",
           "version": "4.3.0"
         }
@@ -35,15 +26,6 @@
         "nuget": {
           "name": "System.Reflection.DispatchProxy",
           "version": "4.5.0"
-        }
-      }
-    },
-    {
-      "component": {
-        "type": "nuget",
-        "nuget": {
-          "name": "System.Runtime.CompilerServices.Unsafe",
-          "version": "6.0.0"
         }
       }
     },
@@ -69,6 +51,24 @@
       "component": {
         "type": "nuget",
         "nuget": {
+          "name": "System.Numerics.Vectors",
+          "version": "4.6.1"
+        }
+      }
+    },
+    {
+      "component": {
+        "type": "nuget",
+        "nuget": {
+          "name": "System.Runtime.CompilerServices.Unsafe",
+          "version": "6.1.2"
+        }
+      }
+    },
+    {
+      "component": {
+        "type": "nuget",
+        "nuget": {
           "name": "System.Text.Encodings.Web",
           "version": "8.0.0"
         }
@@ -79,7 +79,16 @@
         "type": "nuget",
         "nuget": {
           "name": "System.Security.Cryptography.Cng",
-          "version": "4.4.0"
+          "version": "5.0.0"
+        }
+      }
+    },
+    {
+      "component": {
+        "type": "nuget",
+        "nuget": {
+          "name": "System.ValueTuple",
+          "version": "4.5.0"
         }
       }
     },
@@ -88,7 +97,7 @@
         "type": "nuget",
         "nuget": {
           "name": "Azure.Core",
-          "version": "1.47.3"
+          "version": "1.50.0"
         }
       }
     },
@@ -106,7 +115,7 @@
         "type": "nuget",
         "nuget": {
           "name": "Azure.Identity",
-          "version": "1.13.0"
+          "version": "1.17.2"
         }
       }
     },
@@ -124,7 +133,7 @@
         "type": "nuget",
         "nuget": {
           "name": "Microsoft.Identity.Client.Broker",
-          "version": "4.65.0"
+          "version": "4.83.1"
         }
       }
     },
@@ -133,7 +142,7 @@
         "type": "nuget",
         "nuget": {
           "name": "Microsoft.Identity.Client",
-          "version": "4.65.0"
+          "version": "4.83.1"
         }
       }
     },
@@ -142,7 +151,7 @@
         "type": "nuget",
         "nuget": {
           "name": "Microsoft.Identity.Client.Extensions.Msal",
-          "version": "4.65.0"
+          "version": "4.83.1"
         }
       }
     },
@@ -151,7 +160,7 @@
         "type": "nuget",
         "nuget": {
           "name": "Microsoft.Identity.Client.NativeInterop",
-          "version": "0.16.2"
+          "version": "0.20.2"
         }
       }
     },
@@ -160,7 +169,7 @@
         "type": "nuget",
         "nuget": {
           "name": "Microsoft.IdentityModel.Abstractions",
-          "version": "6.35.0"
+          "version": "8.14.0"
         }
       }
     },
@@ -169,7 +178,7 @@
         "type": "nuget",
         "nuget": {
           "name": "System.Buffers",
-          "version": "4.5.1"
+          "version": "4.6.1"
         }
       }
     },
@@ -178,7 +187,16 @@
         "type": "nuget",
         "nuget": {
           "name": "System.ClientModel",
-          "version": "1.6.1"
+          "version": "1.8.0"
+        }
+      }
+    },
+    {
+      "component": {
+        "type": "nuget",
+        "nuget": {
+          "name": "System.Formats.Asn1",
+          "version": "8.0.1"
         }
       }
     },
@@ -196,7 +214,7 @@
         "type": "nuget",
         "nuget": {
           "name": "System.Memory",
-          "version": "4.5.5"
+          "version": "4.6.3"
         }
       }
     },
@@ -268,7 +286,7 @@
         "type": "nuget",
         "nuget": {
           "name": "System.Threading.Tasks.Extensions",
-          "version": "4.5.4"
+          "version": "4.6.0"
         }
       }
     }
