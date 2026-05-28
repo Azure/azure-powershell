@@ -208,11 +208,11 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                 // Apply the update if parameter is provided
                 if (this.IsParameterBound(c => c.ChangeEnumerationIntervalDay))
                 {
-                    updateParameters.ChangeEnumerationIntervalDays = ChangeEnumerationIntervalDay;
+                    updateParameters.Properties.ChangeEnumerationIntervalDays = ChangeEnumerationIntervalDay;
                 }
                 else if (existingCloudEndpoint.ChangeEnumerationIntervalDays.HasValue)
                 {
-                    updateParameters.ChangeEnumerationIntervalDays = existingCloudEndpoint.ChangeEnumerationIntervalDays;
+                    updateParameters.Properties.ChangeEnumerationIntervalDays = existingCloudEndpoint.ChangeEnumerationIntervalDays;
                 }
 
                 Target = string.Join("/", resourceGroupName, storageSyncServiceName, parentResourceName, resourceName);
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                         storageSyncServiceName,
                         parentResourceName,
                         resourceName,
-                        updateParameters.ChangeEnumerationIntervalDays);
+                        updateParameters.Properties);
 
                     WriteObject(resource);
                 }

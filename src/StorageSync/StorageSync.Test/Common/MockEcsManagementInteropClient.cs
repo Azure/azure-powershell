@@ -15,6 +15,8 @@
 using Commands.StorageSync.Interop.DataObjects;
 using Commands.StorageSync.Interop.Enums;
 using Commands.StorageSync.Interop.Interfaces;
+using Microsoft.Azure.Commands.StorageSync.Common;
+using Microsoft.Azure.Test.HttpRecorder;
 using System;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
@@ -342,7 +344,7 @@ namespace Commands.StorageSync.Interop.Clients
         /// <returns>System.Int32.</returns>
         public int GetSyncServerId([MarshalAs(UnmanagedType.BStr), Out] out string serverId)
         {
-            serverId = Guid.NewGuid().ToString();
+            serverId = HttpMockServer.GetVariable(StorageSyncConstants.SyncServerId, Guid.NewGuid().ToString());
             return 0;
         }
 
