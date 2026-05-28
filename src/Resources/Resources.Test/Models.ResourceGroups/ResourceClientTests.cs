@@ -1299,6 +1299,69 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             deploymentsMock.Verify(f => f.CancelWithHttpMessagesAsync(resourceGroupName, deploymentName + 3, null, new CancellationToken()), Times.Once());
         }
 
+        /// <summary>
+        /// Regression test for https://github.com/Azure/azure-powershell/issues/28308.
+        /// Verifies that when the ARM validation API returns a CloudException whose body contains
+        /// nested error details (e.g. MultipleErrorsOccurred → KeyVaultParameterReferenceSecretRetrieveFailed),
+        /// those inner errors are propagated into the TemplateValidationInfo and not silently dropped.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ValidateDeployment_WhenCloudExceptionHasNestedDetails_PropagatesInnerErrors()
+        {
+            // Arrange
+            PSDeploymentCmdletParameters parameters = new PSDeploymentCmdletParameters()
+            {
+                ScopeType = DeploymentScopeType.ResourceGroup,
+                ResourceGroupName = resourceGroupName,
+                DeploymentName = deploymentName,
+                DeploymentMode = DeploymentMode.Incremental,
+                TemplateFile = templateFile,
+            };
+
+            // CloudError.Details has a private setter; use JSON deserialization to populate it,
+            // mirroring how the ARM SDK populates the error body from a real HTTP response.
+            const string cloudErrorJson = @"{
+                ""code"": ""MultipleErrorsOccurred"",
+                ""message"": ""Multiple error occurred: NotFound,NotFound,NotFound,NotFound. Please see details."",
+                ""details"": [
+                    { ""code"": ""KeyVaultParameterReferenceSecretRetrieveFailed"", ""message"": ""Secret 'A-pass' not found in key vault."" },
+                    { ""code"": ""KeyVaultParameterReferenceSecretRetrieveFailed"", ""message"": ""Secret 'B-pass' not found in key vault."" },
+                    { ""code"": ""KeyVaultParameterReferenceSecretRetrieveFailed"", ""message"": ""Secret 'C-user' not found in key vault."" },
+                    { ""code"": ""KeyVaultParameterReferenceSecretRetrieveFailed"", ""message"": ""Secret 'C-pass' not found in key vault."" }
+                ]
+            }";
+
+            var cloudError = JsonConvert.DeserializeObject<CloudError>(cloudErrorJson);
+            var cloudException = new CloudException("Multiple errors occurred") { Body = cloudError };
+
+            deploymentsMock
+                .Setup(f => f.ValidateWithHttpMessagesAsync(
+                    resourceGroupName,
+                    It.IsAny<string>(),
+                    It.IsAny<Deployment>(),
+                    null,
+                    It.IsAny<CancellationToken>()))
+                .Returns(Task.FromException<AzureOperationResponse<DeploymentValidateResult>>(cloudException));
+
+            // Act
+            TemplateValidationInfo result = resourcesClient.ValidateDeployment(parameters);
+
+            // Assert – top-level error must be the MultipleErrorsOccurred envelope
+            Assert.Single(result.Errors);
+            ErrorResponse topError = result.Errors[0];
+            Assert.Equal("MultipleErrorsOccurred", topError.Code);
+
+            // Assert – the four nested details must be propagated (previously they were silently dropped)
+            Assert.NotNull(topError.Details);
+            Assert.Equal(4, topError.Details.Count);
+            Assert.All(topError.Details, d => Assert.Equal("KeyVaultParameterReferenceSecretRetrieveFailed", d.Code));
+            Assert.Contains(topError.Details, d => d.Message.Contains("A-pass"));
+            Assert.Contains(topError.Details, d => d.Message.Contains("B-pass"));
+            Assert.Contains(topError.Details, d => d.Message.Contains("C-user"));
+            Assert.Contains(topError.Details, d => d.Message.Contains("C-pass"));
+        }
+
         //[Fact(Skip = "Test produces different outputs since hashtable order is not guaranteed.")]
         //[Trait(Category.AcceptanceType, Category.CheckIn)]
         //public void SerializeHashtableProperlyHandlesAllDataTypes()

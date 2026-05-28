@@ -13,12 +13,12 @@ Updates a given backup instance
 ## SYNTAX
 
 ```
-Update-AzDataProtectionBackupInstance -ResourceGroupName <String> -VaultName <String>
- -BackupInstanceName <String> [-SubscriptionId <String>] [-PolicyId <String>]
- [-UseSystemAssignedIdentity <Boolean>] [-UserAssignedIdentityArmId <String>]
- [-VaultedBackupContainer <String[]>] [-ResourceGuardOperationRequest <String[]>] [-Token <String>]
- [-SecureToken <SecureString>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzDataProtectionBackupInstance -ResourceGroupName <String> -VaultName <String> -Name <String>
+ [-SubscriptionId <String>] [-PolicyId <String>] [-UseSystemAssignedIdentity <Boolean>]
+ [-UserAssignedIdentityArmId <String>] [-VaultedBackupContainer <String[]>]
+ [-ResourceGuardOperationRequest <String[]>] [-Token <String>] [-SecureToken <SecureString>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,7 +47,7 @@ First command fetch the backup instance which needs to be updated.
 Second command gets the backup policy with name vaulted-policy which need to be updated in Backup Instance.
 Third command fetches the list of vaulted containers which are currently backed up in the backup vault.
 Fourth command update the backup instance with new policy and new list of container (which is currently a subset of the existing backed up containers).
-Fifth and sixth command shows the updated policy and containers list in the backup instance.
+Fifth and sixth command shows the updated policy and containers list in the backu instance.
 
 ### Example 2: Update UAMI in Backup Instance
 ```powershell
@@ -81,21 +81,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BackupInstanceName
-Unique Name of protected backup instance
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 
 ```yaml
@@ -104,6 +89,21 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Unique Name of protected backup instance
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: BackupInstanceName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -316,7 +316,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupInstanceResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource
 
 ## NOTES
 

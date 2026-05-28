@@ -55,10 +55,9 @@ function setupEnv() {
     $Sku = "GP_Gen5_4"
     $FlexibleSku = "Standard_B1ms"
     if ($TestMode -eq 'live') {
-        $location = "eastus2euap"
+        # $location = "eastus2euap"
         $PowershellPrefix = "powershell-pipeline-mysql-"
-        $RandomNumbers = ""
-        for($i = 0; $i -lt 10; $i++){ $RandomNumbers += Get-Random -Maximum 10  }
+        $RandomNumbers = RandomString -allChars $false -len 10
         $serverName = $PowershellPrefix + "server" + $RandomNumbers
         $flexibleServerName = $PowershellPrefix + "flexibleserver" + $RandomNumbers
         $flexibleServerName2 = $PowershellPrefix + "2-flexibleserver" + $RandomNumbers
@@ -94,21 +93,21 @@ function setupEnv() {
     New-AzResourceGroup -Name $resourceGroup -Location $location
 
     #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-    $password = 'Pasword01!!2020' | ConvertTo-SecureString -AsPlainText -Force
+    $password = 'Pasword01!!2020'
+    $env.Add("password", $password)
 
     write-host (Get-AzContext | Out-String)
 
-    if ($TestMode -ne 'live') {
-         # Create the test Vnet
-        write-host "Deploy Vnet template"
-        New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\virtual-network\template.json -TemplateParameterFile .\test\deployment-templates\virtual-network\parameters.json -Name vn -ResourceGroupName $resourceGroup
+    # Create the test Vnet
+    write-host "Deploy Vnet template"
+    New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\virtual-network\template.json -TemplateParameterFile .\test\deployment-templates\virtual-network\parameters.json -Name vn -ResourceGroupName $resourceGroup
+    
+    Install-Module -Name SimplySQL -Scope CurrentUser -Force
 
-        write-host "New-AzMySqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku $Sku"
-        New-AzMySqlServer -Name $serverName -ResourceGroupName $resourceGroup -Location $location -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku $Sku
-    }
+    write-host "New-AzMySqlFlexibleServer -Name $flexibleServerName -ResourceGroupName $resourceGroup -AdministratorUserName mysql_test -AdministratorLoginPassword $password -PublicAccess none -Location $location -SkuTier GeneralPurpose -Sku Standard_D2ads_v5"
+    New-AzMySqlFlexibleServer -Name $flexibleServerName -ResourceGroupName $resourceGroup -AdministratorUserName mysql_test -AdministratorLoginPassword ($password | ConvertTo-SecureString -AsPlainText -Force) -PublicAccess none -Location $location -SkuTier GeneralPurpose -Sku Standard_D2ads_v5
 
-    write-host "New-AzMySqlFlexibleServer -Name $flexibleServerName -ResourceGroupName $resourceGroup -AdministratorUserName mysql_test -AdministratorLoginPassword $password -PublicAccess none -Location $location"
-    New-AzMySqlFlexibleServer -Name $flexibleServerName -ResourceGroupName $resourceGroup -AdministratorUserName mysql_test -AdministratorLoginPassword $password -PublicAccess none -Location $location
+    $env.Add("GeneralPurposeSku", "Standard_D2ads_v5")
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

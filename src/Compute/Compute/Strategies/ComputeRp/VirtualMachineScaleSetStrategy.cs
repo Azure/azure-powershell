@@ -269,7 +269,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string zonePlacementPolicy = null,
             string[] includeZone = null,
             string[] excludeZone = null,
-            string highSpeedInterconnectPlacement = null
+            string highSpeedInterconnectPlacement = null,
+            string zonalPlatformFaultDomainAlignMode = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -375,7 +376,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             IncludeZones = includeZone,
                             ExcludeZones = excludeZone
                         } : null,
-                        HighSpeedInterconnectPlacement = highSpeedInterconnectPlacement
+                        HighSpeedInterconnectPlacement = highSpeedInterconnectPlacement,
+                        ZonalPlatformFaultDomainAlignMode = zonalPlatformFaultDomainAlignMode
                     };
                     if (auxAuthHeader != null)
                     {

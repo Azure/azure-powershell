@@ -106,6 +106,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateSet(AccountAccessTier.Hot,
             AccountAccessTier.Cool,
             AccountAccessTier.Cold,
+            AccountAccessTier.Smart,
             IgnoreCase = true)]
         public string AccessTier { get; set; }
 
@@ -434,10 +435,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? allowBlobPublicAccess = null;
 
-        [CmdletParameterBreakingChangeWithVersion("MinimumTlsVersion", "15.4.0", "9.7.0", ChangeDescription = "The MinimumTlsVersion parameter will no longer allow TLS 1.0 or TLS 1.1. TLS 1.2 or later will be required.")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The minimum TLS version to be permitted on requests to storage.")]
+            HelpMessage = "The minimum TLS version to be permitted on requests to storage. TLS 1.3 is not yet supported.")]
         [ValidateSet(StorageModels.MinimumTlsVersion.TLS10,
             StorageModels.MinimumTlsVersion.TLS11,
             StorageModels.MinimumTlsVersion.TLS12,
@@ -602,8 +602,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? enableLocalUser = null;
 
-        [Parameter(Mandatory = false, HelpMessage = "Set restrict copy to and from Storage Accounts within a Microsoft Entra tenant or with Private Links to the same VNet. Possible values include: 'PrivateLink', 'AAD'")]
-        [PSArgumentCompleter("PrivateLink", "AAD")]
+        [Parameter(Mandatory = false, HelpMessage = "Set restrict copy to and from Storage Accounts within a Microsoft Entra tenant or with Private Links to the same VNet. Possible values include: 'PrivateLink', 'AAD', 'All'")]
+        [PSArgumentCompleter("PrivateLink", "AAD", "All")]
         [ValidateNotNullOrEmpty]
         public string AllowedCopyScope { get; set; }
 

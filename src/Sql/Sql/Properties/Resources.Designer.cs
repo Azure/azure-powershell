@@ -747,24 +747,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SoftDeleteRetentionDays can only be set to 0 when EnableSoftDelete is false..
-        /// </summary>
-        internal static string InvalidSoftDeleteRetentionDaysForDisablingSoftDelete {
-            get {
-                return ResourceManager.GetString("InvalidSoftDeleteRetentionDaysForDisablingSoftDelete", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SoftDeleteRetentionDays must be between 1 and 7 when EnableSoftDelete is true..
-        /// </summary>
-        internal static string InvalidSoftDeleteRetentionDaysRange {
-            get {
-                return ResourceManager.GetString("InvalidSoftDeleteRetentionDaysRange", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Please set a valid tenant id in the AzureEnvironment..
         /// </summary>
         internal static string InvalidTenantId {
@@ -833,15 +815,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string ManagedInstanceLinkAlreadyExists {
             get {
                 return ResourceManager.GetString("ManagedInstanceLinkAlreadyExists", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SoftDeleteRetentionDays parameter can only be specified if EnableSoftDelete is explicitly specified..
-        /// </summary>
-        internal static string MissingEnableSoftDelete {
-            get {
-                return ResourceManager.GetString("MissingEnableSoftDelete", resourceCulture);
             }
         }
         

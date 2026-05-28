@@ -81,6 +81,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Azure Databricks Access Connector.",
         SerializedName = @"connectorName",
         PossibleTypes = new [] { typeof(string) })]
@@ -89,6 +92,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the private link resource",
         SerializedName = @"groupId",
         PossibleTypes = new [] { typeof(string) })]
@@ -97,6 +103,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -105,6 +114,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the workspace vNet peering.",
         SerializedName = @"peeringName",
         PossibleTypes = new [] { typeof(string) })]
@@ -113,6 +125,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the private endpoint connection",
         SerializedName = @"privateEndpointConnectionName",
         PossibleTypes = new [] { typeof(string) })]
@@ -121,6 +136,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -129,6 +147,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -137,6 +158,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the workspace.",
         SerializedName = @"workspaceName",
         PossibleTypes = new [] { typeof(string) })]
