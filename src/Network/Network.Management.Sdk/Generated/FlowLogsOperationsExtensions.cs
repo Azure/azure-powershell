@@ -13,21 +13,105 @@ namespace Microsoft.Azure.Management.Network
     public static partial class FlowLogsOperationsExtensions
     {
         /// <summary>
+        /// Lists all flow log resources for the specified Network Watcher.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<CommonFlowLog> List(this IFlowLogsOperations operations, string resourceGroupName, string networkWatcherName)
+        {
+                return ((IFlowLogsOperations)operations).ListAsync(resourceGroupName, networkWatcherName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all flow log resources for the specified Network Watcher.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonFlowLog>> ListAsync(this IFlowLogsOperations operations, string resourceGroupName, string networkWatcherName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, networkWatcherName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets a flow log resource by name.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='flowLogName'>
+        /// The name of the flow log resource.
+        /// </param>
+        public static CommonFlowLog Get(this IFlowLogsOperations operations, string resourceGroupName, string networkWatcherName, string flowLogName)
+        {
+                return ((IFlowLogsOperations)operations).GetAsync(resourceGroupName, networkWatcherName, flowLogName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets a flow log resource by name.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkWatcherName'>
+        /// The name of the network watcher.
+        /// </param>
+        /// <param name='flowLogName'>
+        /// The name of the flow log resource.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CommonFlowLog> GetAsync(this IFlowLogsOperations operations, string resourceGroupName, string networkWatcherName, string flowLogName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkWatcherName, flowLogName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Create or update a flow log for the specified network security group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
         /// </param>
         /// <param name='flowLogName'>
-        /// The name of the flow log.
+        /// The name of the flow log resource.
         /// </param>
-        public static FlowLog CreateOrUpdate(this IFlowLogsOperations operations, string resourceGroupName, string networkWatcherName, string flowLogName, FlowLog parameters)
+        public static CommonFlowLog CreateOrUpdate(this IFlowLogsOperations operations, string resourceGroupName, string networkWatcherName, string flowLogName, CommonFlowLog parameters)
         {
                 return ((IFlowLogsOperations)operations).CreateOrUpdateAsync(resourceGroupName, networkWatcherName, flowLogName, parameters).GetAwaiter().GetResult();
         }
@@ -39,18 +123,18 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
         /// </param>
         /// <param name='flowLogName'>
-        /// The name of the flow log.
+        /// The name of the flow log resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<FlowLog> CreateOrUpdateAsync(this IFlowLogsOperations operations, string resourceGroupName, string networkWatcherName, string flowLogName, FlowLog parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<CommonFlowLog> CreateOrUpdateAsync(this IFlowLogsOperations operations, string resourceGroupName, string networkWatcherName, string flowLogName, CommonFlowLog parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkWatcherName, flowLogName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -64,15 +148,15 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
         /// </param>
         /// <param name='flowLogName'>
-        /// The name of the flow log.
+        /// The name of the flow log resource.
         /// </param>
-        public static FlowLog UpdateTags(this IFlowLogsOperations operations, string resourceGroupName, string networkWatcherName, string flowLogName, TagsObject parameters)
+        public static CommonFlowLog UpdateTags(this IFlowLogsOperations operations, string resourceGroupName, string networkWatcherName, string flowLogName, TagsObject parameters)
         {
                 return ((IFlowLogsOperations)operations).UpdateTagsAsync(resourceGroupName, networkWatcherName, flowLogName, parameters).GetAwaiter().GetResult();
         }
@@ -84,65 +168,20 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
         /// </param>
         /// <param name='flowLogName'>
-        /// The name of the flow log.
+        /// The name of the flow log resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<FlowLog> UpdateTagsAsync(this IFlowLogsOperations operations, string resourceGroupName, string networkWatcherName, string flowLogName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<CommonFlowLog> UpdateTagsAsync(this IFlowLogsOperations operations, string resourceGroupName, string networkWatcherName, string flowLogName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, networkWatcherName, flowLogName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets a flow log resource by name.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkWatcherName'>
-        /// The name of the network watcher.
-        /// </param>
-        /// <param name='flowLogName'>
-        /// The name of the flow log resource.
-        /// </param>
-        public static FlowLog Get(this IFlowLogsOperations operations, string resourceGroupName, string networkWatcherName, string flowLogName)
-        {
-                return ((IFlowLogsOperations)operations).GetAsync(resourceGroupName, networkWatcherName, flowLogName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets a flow log resource by name.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkWatcherName'>
-        /// The name of the network watcher.
-        /// </param>
-        /// <param name='flowLogName'>
-        /// The name of the flow log resource.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<FlowLog> GetAsync(this IFlowLogsOperations operations, string resourceGroupName, string networkWatcherName, string flowLogName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkWatcherName, flowLogName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -154,7 +193,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
@@ -174,7 +213,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
@@ -190,60 +229,21 @@ namespace Microsoft.Azure.Management.Network
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkWatcherName, flowLogName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Lists all flow log resources for the specified Network Watcher.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
-        /// </param>
-        /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<FlowLog> List(this IFlowLogsOperations operations, string resourceGroupName, string networkWatcherName)
-        {
-                return ((IFlowLogsOperations)operations).ListAsync(resourceGroupName, networkWatcherName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Lists all flow log resources for the specified Network Watcher.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group containing Network Watcher.
-        /// </param>
-        /// <param name='networkWatcherName'>
-        /// The name of the Network Watcher resource.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<FlowLog>> ListAsync(this IFlowLogsOperations operations, string resourceGroupName, string networkWatcherName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, networkWatcherName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Create or update a flow log for the specified network security group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
         /// </param>
         /// <param name='flowLogName'>
-        /// The name of the flow log.
+        /// The name of the flow log resource.
         /// </param>
-        public static FlowLog BeginCreateOrUpdate(this IFlowLogsOperations operations, string resourceGroupName, string networkWatcherName, string flowLogName, FlowLog parameters)
+        public static CommonFlowLog BeginCreateOrUpdate(this IFlowLogsOperations operations, string resourceGroupName, string networkWatcherName, string flowLogName, CommonFlowLog parameters)
         {
                 return ((IFlowLogsOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, networkWatcherName, flowLogName, parameters).GetAwaiter().GetResult();
         }
@@ -255,18 +255,18 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
         /// </param>
         /// <param name='flowLogName'>
-        /// The name of the flow log.
+        /// The name of the flow log resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<FlowLog> BeginCreateOrUpdateAsync(this IFlowLogsOperations operations, string resourceGroupName, string networkWatcherName, string flowLogName, FlowLog parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<CommonFlowLog> BeginCreateOrUpdateAsync(this IFlowLogsOperations operations, string resourceGroupName, string networkWatcherName, string flowLogName, CommonFlowLog parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkWatcherName, flowLogName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<FlowLog> ListNext(this IFlowLogsOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<CommonFlowLog> ListNext(this IFlowLogsOperations operations, string nextPageLink)
         {
                 return ((IFlowLogsOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<FlowLog>> ListNextAsync(this IFlowLogsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonFlowLog>> ListNextAsync(this IFlowLogsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {

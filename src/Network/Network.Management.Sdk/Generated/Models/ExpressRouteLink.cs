@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// ExpressRouteLink child resource definition.
     /// </remarks>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ExpressRouteLink : SubResource
+    public partial class ExpressRouteLink : CommonSubResource
     {
         /// <summary>
         /// Initializes a new instance of the ExpressRouteLink class.

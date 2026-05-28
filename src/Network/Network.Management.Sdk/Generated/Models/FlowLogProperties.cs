@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="format">Parameters that define the flow log format.
         /// </param>
-        public FlowLogProperties(string storageId, bool enabled, string enabledFilteringCriteria = default(string), string recordTypes = default(string), RetentionPolicyParameters retentionPolicy = default(RetentionPolicyParameters), FlowLogFormatParameters format = default(FlowLogFormatParameters))
+        public FlowLogProperties(string storageId, bool enabled, string enabledFilteringCriteria = default(string), string recordTypes = default(string), CommonRetentionPolicyParameters retentionPolicy = default(CommonRetentionPolicyParameters), CommonFlowLogFormatParameters format = default(CommonFlowLogFormatParameters))
 
         {
             this.StorageId = storageId;
@@ -102,13 +102,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets parameters that define the retention policy for flow log.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "retentionPolicy")]
-        public RetentionPolicyParameters RetentionPolicy {get; set; }
+        public CommonRetentionPolicyParameters RetentionPolicy {get; set; }
 
         /// <summary>
         /// Gets or sets parameters that define the flow log format.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "format")]
-        public FlowLogFormatParameters Format {get; set; }
+        public CommonFlowLogFormatParameters Format {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

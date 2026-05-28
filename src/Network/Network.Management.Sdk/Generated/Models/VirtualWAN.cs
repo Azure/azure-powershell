@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// VirtualWAN Resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class VirtualWAN : Resource
+    public partial class VirtualWAN : TrackedResourceWithSettableIdOptionalLocation
     {
         /// <summary>
         /// Initializes a new instance of the VirtualWAN class.
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="propertiesType">The type of the VirtualWAN.
         /// </param>
-        public VirtualWAN(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), bool? disableVpnEncryption = default(bool?), System.Collections.Generic.IList<SubResource> virtualHubs = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> vpnSites = default(System.Collections.Generic.IList<SubResource>), bool? allowBranchToBranchTraffic = default(bool?), bool? allowVnetToVnetTraffic = default(bool?), string office365LocalBreakoutCategory = default(string), string propertiesType = default(string))
+        public VirtualWAN(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), bool? disableVpnEncryption = default(bool?), System.Collections.Generic.IList<CommonSubResource> virtualHubs = default(System.Collections.Generic.IList<CommonSubResource>), System.Collections.Generic.IList<CommonSubResource> vpnSites = default(System.Collections.Generic.IList<CommonSubResource>), bool? allowBranchToBranchTraffic = default(bool?), bool? allowVnetToVnetTraffic = default(bool?), string office365LocalBreakoutCategory = default(string), string propertiesType = default(string))
 
         : base(id, name, type, location, tags)
         {
@@ -112,13 +112,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets list of VirtualHubs in the VirtualWAN.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.virtualHubs")]
-        public System.Collections.Generic.IList<SubResource> VirtualHubs {get; private set; }
+        public System.Collections.Generic.IList<CommonSubResource> VirtualHubs {get; private set; }
 
         /// <summary>
         /// Gets list of VpnSites in the VirtualWAN.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.vpnSites")]
-        public System.Collections.Generic.IList<SubResource> VpnSites {get; private set; }
+        public System.Collections.Generic.IList<CommonSubResource> VpnSites {get; private set; }
 
         /// <summary>
         /// Gets or sets true if branch to branch traffic is allowed.

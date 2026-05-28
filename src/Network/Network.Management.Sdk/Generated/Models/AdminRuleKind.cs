@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class AdminRuleKind
     {
+        /// <summary>
+        /// Custom
+        /// </summary>
         public const string Custom = "Custom";
+        /// <summary>
+        /// Default
+        /// </summary>
         public const string Default = "Default";
     }
 }

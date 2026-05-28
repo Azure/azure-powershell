@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// The virtual network appliance ip configuration.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class VirtualNetworkApplianceIpConfiguration : SubResource
+    public partial class VirtualNetworkApplianceIpConfiguration : CommonSubResource
     {
         /// <summary>
         /// Initializes a new instance of the VirtualNetworkApplianceIpConfiguration class.

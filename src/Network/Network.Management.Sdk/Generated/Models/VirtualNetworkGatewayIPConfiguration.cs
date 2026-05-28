@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// IP configuration for virtual network gateway.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class VirtualNetworkGatewayIPConfiguration : SubResource
+    public partial class VirtualNetworkGatewayIPConfiguration : CommonSubResource
     {
         /// <summary>
         /// Initializes a new instance of the VirtualNetworkGatewayIPConfiguration class.
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="privateIPAddress">Private IP Address for this gateway.
         /// </param>
-        public VirtualNetworkGatewayIPConfiguration(string id = default(string), string name = default(string), string etag = default(string), string provisioningState = default(string), string privateIPAllocationMethod = default(string), SubResource subnet = default(SubResource), SubResource publicIPAddress = default(SubResource), string privateIPAddress = default(string))
+        public VirtualNetworkGatewayIPConfiguration(string id = default(string), string name = default(string), string etag = default(string), string provisioningState = default(string), string privateIPAllocationMethod = default(string), CommonSubResource subnet = default(CommonSubResource), CommonSubResource publicIPAddress = default(CommonSubResource), string privateIPAddress = default(string))
 
         : base(id)
         {
@@ -102,13 +102,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the reference to the subnet resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.subnet")]
-        public SubResource Subnet {get; set; }
+        public CommonSubResource Subnet {get; set; }
 
         /// <summary>
         /// Gets or sets the reference to the public IP resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicIPAddress")]
-        public SubResource PublicIPAddress {get; set; }
+        public CommonSubResource PublicIPAddress {get; set; }
 
         /// <summary>
         /// Gets private IP Address for this gateway.

@@ -19,12 +19,12 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<FrontendIPConfiguration> List(this ILoadBalancerFrontendIPConfigurationsOperations operations, string resourceGroupName, string loadBalancerName)
+        public static Microsoft.Rest.Azure.IPage<CommonFrontendIPConfiguration> List(this ILoadBalancerFrontendIPConfigurationsOperations operations, string resourceGroupName, string loadBalancerName)
         {
                 return ((ILoadBalancerFrontendIPConfigurationsOperations)operations).ListAsync(resourceGroupName, loadBalancerName).GetAwaiter().GetResult();
         }
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<FrontendIPConfiguration>> ListAsync(this ILoadBalancerFrontendIPConfigurationsOperations operations, string resourceGroupName, string loadBalancerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonFrontendIPConfiguration>> ListAsync(this ILoadBalancerFrontendIPConfigurationsOperations operations, string resourceGroupName, string loadBalancerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, loadBalancerName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -58,15 +58,17 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
         /// </param>
         /// <param name='frontendIPConfigurationName'>
-        /// The name of the frontend IP configuration.
+        /// The name of the resource that is unique within the set of frontend IP
+        /// configurations used by the load balancer. This name can be used to access
+        /// the resource.
         /// </param>
-        public static FrontendIPConfiguration Get(this ILoadBalancerFrontendIPConfigurationsOperations operations, string resourceGroupName, string loadBalancerName, string frontendIPConfigurationName)
+        public static CommonFrontendIPConfiguration Get(this ILoadBalancerFrontendIPConfigurationsOperations operations, string resourceGroupName, string loadBalancerName, string frontendIPConfigurationName)
         {
                 return ((ILoadBalancerFrontendIPConfigurationsOperations)operations).GetAsync(resourceGroupName, loadBalancerName, frontendIPConfigurationName).GetAwaiter().GetResult();
         }
@@ -78,18 +80,20 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
         /// </param>
         /// <param name='frontendIPConfigurationName'>
-        /// The name of the frontend IP configuration.
+        /// The name of the resource that is unique within the set of frontend IP
+        /// configurations used by the load balancer. This name can be used to access
+        /// the resource.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<FrontendIPConfiguration> GetAsync(this ILoadBalancerFrontendIPConfigurationsOperations operations, string resourceGroupName, string loadBalancerName, string frontendIPConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<CommonFrontendIPConfiguration> GetAsync(this ILoadBalancerFrontendIPConfigurationsOperations operations, string resourceGroupName, string loadBalancerName, string frontendIPConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, loadBalancerName, frontendIPConfigurationName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -105,7 +109,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<FrontendIPConfiguration> ListNext(this ILoadBalancerFrontendIPConfigurationsOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<CommonFrontendIPConfiguration> ListNext(this ILoadBalancerFrontendIPConfigurationsOperations operations, string nextPageLink)
         {
                 return ((ILoadBalancerFrontendIPConfigurationsOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -122,7 +126,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<FrontendIPConfiguration>> ListNextAsync(this ILoadBalancerFrontendIPConfigurationsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonFrontendIPConfiguration>> ListNextAsync(this ILoadBalancerFrontendIPConfigurationsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {

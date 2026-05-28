@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="publicIPAddress">A reference to public IP address resource.
         /// </param>
-        public LoadBalancerVipSwapRequestFrontendIPConfigurationProperties(SubResource publicIPAddress = default(SubResource))
+        public LoadBalancerVipSwapRequestFrontendIPConfigurationProperties(CommonSubResource publicIPAddress = default(CommonSubResource))
 
         {
             this.PublicIPAddress = publicIPAddress;
@@ -43,6 +43,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets a reference to public IP address resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "publicIPAddress")]
-        public SubResource PublicIPAddress {get; set; }
+        public CommonSubResource PublicIPAddress {get; set; }
     }
 }

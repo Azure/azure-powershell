@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// A DDoS protection plan in a resource group.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class DdosProtectionPlan : Microsoft.Rest.Azure.IResource
+    public partial class DdosProtectionPlan : TrackedResourceWithOptionalLocation
     {
         /// <summary>
         /// Initializes a new instance of the DdosProtectionPlan class.
@@ -59,14 +59,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="virtualNetworks">The list of virtual networks associated with the DDoS protection plan
         /// resource. This list is read-only.
         /// </param>
-        public DdosProtectionPlan(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), string resourceGuid = default(string), System.Collections.Generic.IList<SubResource> publicIPAddresses = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> virtualNetworks = default(System.Collections.Generic.IList<SubResource>))
+        public DdosProtectionPlan(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), string resourceGuid = default(string), System.Collections.Generic.IList<CommonSubResource> publicIPAddresses = default(System.Collections.Generic.IList<CommonSubResource>), System.Collections.Generic.IList<CommonSubResource> virtualNetworks = default(System.Collections.Generic.IList<CommonSubResource>))
 
+        : base(id, name, type, location, tags)
         {
-            this.Id = id;
-            this.Name = name;
-            this.Type = type;
-            this.Location = location;
-            this.Tags = tags;
             this.Etag = etag;
             this.ProvisioningState = provisioningState;
             this.ResourceGuid = resourceGuid;
@@ -80,36 +76,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets resource ID.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; private set; }
-
-        /// <summary>
-        /// Gets resource name.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; private set; }
-
-        /// <summary>
-        /// Gets resource type.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
-
-        /// <summary>
-        /// Gets or sets resource location.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
-        public string Location {get; set; }
-
-        /// <summary>
-        /// Gets or sets resource tags.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
-        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
 
         /// <summary>
         /// Gets a unique read-only string that changes whenever the resource is
@@ -137,13 +103,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// resource. This list is read-only.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicIPAddresses")]
-        public System.Collections.Generic.IList<SubResource> PublicIPAddresses {get; private set; }
+        public System.Collections.Generic.IList<CommonSubResource> PublicIPAddresses {get; private set; }
 
         /// <summary>
         /// Gets the list of virtual networks associated with the DDoS protection plan
         /// resource. This list is read-only.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.virtualNetworks")]
-        public System.Collections.Generic.IList<SubResource> VirtualNetworks {get; private set; }
+        public System.Collections.Generic.IList<CommonSubResource> VirtualNetworks {get; private set; }
     }
 }

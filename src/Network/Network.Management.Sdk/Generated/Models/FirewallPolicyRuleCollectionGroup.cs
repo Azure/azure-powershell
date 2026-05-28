@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Rule Collection Group resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class FirewallPolicyRuleCollectionGroup : SubResource
+    public partial class FirewallPolicyRuleCollectionGroup : CommonSubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the FirewallPolicyRuleCollectionGroup class.
@@ -28,14 +28,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="name">The name of the resource that is unique within a resource group. This name
-        /// can be used to access the resource.
+        /// <param name="name">Name of the resource.
+        /// </param>
+
+        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
-        /// </param>
-
-        /// <param name="type">Rule Group type.
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the firewall policy rule collection group
@@ -52,13 +51,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="ruleCollections">Group of Firewall Policy rule collections.
         /// </param>
-        public FirewallPolicyRuleCollectionGroup(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), string size = default(string), int? priority = default(int?), System.Collections.Generic.IList<FirewallPolicyRuleCollection> ruleCollections = default(System.Collections.Generic.IList<FirewallPolicyRuleCollection>))
+        public FirewallPolicyRuleCollectionGroup(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), string size = default(string), int? priority = default(int?), System.Collections.Generic.IList<FirewallPolicyRuleCollection> ruleCollections = default(System.Collections.Generic.IList<FirewallPolicyRuleCollection>))
 
-        : base(id)
+        : base(id, name, type)
         {
-            this.Name = name;
             this.Etag = etag;
-            this.Type = type;
             this.ProvisioningState = provisioningState;
             this.Size = size;
             this.Priority = priority;
@@ -73,24 +70,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets the name of the resource that is unique within a resource
-        /// group. This name can be used to access the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
-
-        /// <summary>
         /// Gets a unique read-only string that changes whenever the resource is
         /// updated.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; private set; }
-
-        /// <summary>
-        /// Gets rule Group type.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets the provisioning state of the firewall policy rule collection group
@@ -126,8 +110,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </exception>
         public virtual void Validate()
         {
-
-
 
 
 

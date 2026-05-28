@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// <summary>
     /// Reference to container resource in remote resource provider.
     /// </summary>
-    public partial class Container : SubResource
+    public partial class Container : CommonSubResource
     {
         /// <summary>
         /// Initializes a new instance of the Container class.

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Security Partner Provider resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class SecurityPartnerProvider : Resource
+    public partial class SecurityPartnerProvider : CommonResource
     {
         /// <summary>
         /// Initializes a new instance of the SecurityPartnerProvider class.
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="virtualHub">The virtualHub to which the Security Partner Provider belongs.
         /// </param>
-        public SecurityPartnerProvider(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), string securityProviderName = default(string), string connectionStatus = default(string), SubResource virtualHub = default(SubResource))
+        public SecurityPartnerProvider(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), string securityProviderName = default(string), string connectionStatus = default(string), CommonSubResource virtualHub = default(CommonSubResource))
 
         : base(id, name, type, location, tags)
         {
@@ -103,6 +103,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the virtualHub to which the Security Partner Provider belongs.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.virtualHub")]
-        public SubResource VirtualHub {get; set; }
+        public CommonSubResource VirtualHub {get; set; }
     }
 }

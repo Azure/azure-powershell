@@ -13,13 +13,150 @@ namespace Microsoft.Azure.Management.Network
     public static partial class VirtualNetworkPeeringsOperationsExtensions
     {
         /// <summary>
+        /// Gets all virtual network peerings in a virtual network.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualNetworkName'>
+        /// The name of the virtual network.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<CommonVirtualNetworkPeering> List(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName)
+        {
+                return ((IVirtualNetworkPeeringsOperations)operations).ListAsync(resourceGroupName, virtualNetworkName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets all virtual network peerings in a virtual network.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualNetworkName'>
+        /// The name of the virtual network.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonVirtualNetworkPeering>> ListAsync(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets the specified virtual network peering.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualNetworkName'>
+        /// The name of the virtual network.
+        /// </param>
+        /// <param name='virtualNetworkPeeringName'>
+        /// The name of the virtual network peering.
+        /// </param>
+        public static CommonVirtualNetworkPeering Get(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName)
+        {
+                return ((IVirtualNetworkPeeringsOperations)operations).GetAsync(resourceGroupName, virtualNetworkName, virtualNetworkPeeringName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the specified virtual network peering.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualNetworkName'>
+        /// The name of the virtual network.
+        /// </param>
+        /// <param name='virtualNetworkPeeringName'>
+        /// The name of the virtual network peering.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CommonVirtualNetworkPeering> GetAsync(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates a peering in the specified virtual network.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualNetworkName'>
+        /// The name of the virtual network.
+        /// </param>
+        /// <param name='virtualNetworkPeeringName'>
+        /// The name of the virtual network peering.
+        /// </param>
+        /// <param name='syncRemoteAddressSpace'>
+        /// Parameter indicates the intention to sync the peering with the current
+        /// address space on the remote vNet after it&#39;s updated.
+        /// </param>
+        public static CommonVirtualNetworkPeering CreateOrUpdate(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName, CommonVirtualNetworkPeering virtualNetworkPeeringParameters, string syncRemoteAddressSpace = default(string))
+        {
+                return ((IVirtualNetworkPeeringsOperations)operations).CreateOrUpdateAsync(resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, virtualNetworkPeeringParameters, syncRemoteAddressSpace).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates a peering in the specified virtual network.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='virtualNetworkName'>
+        /// The name of the virtual network.
+        /// </param>
+        /// <param name='virtualNetworkPeeringName'>
+        /// The name of the virtual network peering.
+        /// </param>
+        /// <param name='syncRemoteAddressSpace'>
+        /// Parameter indicates the intention to sync the peering with the current
+        /// address space on the remote vNet after it&#39;s updated.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CommonVirtualNetworkPeering> CreateOrUpdateAsync(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName, CommonVirtualNetworkPeering virtualNetworkPeeringParameters, string syncRemoteAddressSpace = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, virtualNetworkPeeringParameters, syncRemoteAddressSpace, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Deletes the specified virtual network peering.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkName'>
         /// The name of the virtual network.
@@ -39,7 +176,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkName'>
         /// The name of the virtual network.
@@ -55,72 +192,27 @@ namespace Microsoft.Azure.Management.Network
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Gets the specified virtual network peering.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='virtualNetworkName'>
-        /// The name of the virtual network.
-        /// </param>
-        /// <param name='virtualNetworkPeeringName'>
-        /// The name of the virtual network peering.
-        /// </param>
-        public static VirtualNetworkPeering Get(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName)
-        {
-                return ((IVirtualNetworkPeeringsOperations)operations).GetAsync(resourceGroupName, virtualNetworkName, virtualNetworkPeeringName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the specified virtual network peering.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='virtualNetworkName'>
-        /// The name of the virtual network.
-        /// </param>
-        /// <param name='virtualNetworkPeeringName'>
-        /// The name of the virtual network peering.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkPeering> GetAsync(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Creates or updates a peering in the specified virtual network.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkName'>
         /// The name of the virtual network.
         /// </param>
         /// <param name='virtualNetworkPeeringName'>
-        /// The name of the peering.
+        /// The name of the virtual network peering.
         /// </param>
         /// <param name='syncRemoteAddressSpace'>
         /// Parameter indicates the intention to sync the peering with the current
         /// address space on the remote vNet after it&#39;s updated.
         /// </param>
-        public static VirtualNetworkPeering CreateOrUpdate(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName, VirtualNetworkPeering virtualNetworkPeeringParameters, string syncRemoteAddressSpace = default(string))
+        public static CommonVirtualNetworkPeering BeginCreateOrUpdate(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName, CommonVirtualNetworkPeering virtualNetworkPeeringParameters, string syncRemoteAddressSpace = default(string))
         {
-                return ((IVirtualNetworkPeeringsOperations)operations).CreateOrUpdateAsync(resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, virtualNetworkPeeringParameters, syncRemoteAddressSpace).GetAwaiter().GetResult();
+                return ((IVirtualNetworkPeeringsOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, virtualNetworkPeeringParameters, syncRemoteAddressSpace).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -130,13 +222,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkName'>
         /// The name of the virtual network.
         /// </param>
         /// <param name='virtualNetworkPeeringName'>
-        /// The name of the peering.
+        /// The name of the virtual network peering.
         /// </param>
         /// <param name='syncRemoteAddressSpace'>
         /// Parameter indicates the intention to sync the peering with the current
@@ -145,48 +237,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkPeering> CreateOrUpdateAsync(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName, VirtualNetworkPeering virtualNetworkPeeringParameters, string syncRemoteAddressSpace = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<CommonVirtualNetworkPeering> BeginCreateOrUpdateAsync(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName, CommonVirtualNetworkPeering virtualNetworkPeeringParameters, string syncRemoteAddressSpace = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, virtualNetworkPeeringParameters, syncRemoteAddressSpace, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets all virtual network peerings in a virtual network.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='virtualNetworkName'>
-        /// The name of the virtual network.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<VirtualNetworkPeering> List(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName)
-        {
-                return ((IVirtualNetworkPeeringsOperations)operations).ListAsync(resourceGroupName, virtualNetworkName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets all virtual network peerings in a virtual network.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='virtualNetworkName'>
-        /// The name of the virtual network.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VirtualNetworkPeering>> ListAsync(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, virtualNetworkPeeringParameters, syncRemoteAddressSpace, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -198,7 +251,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkName'>
         /// The name of the virtual network.
@@ -218,7 +271,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualNetworkName'>
         /// The name of the virtual network.
@@ -234,59 +287,6 @@ namespace Microsoft.Azure.Management.Network
             (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Creates or updates a peering in the specified virtual network.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='virtualNetworkName'>
-        /// The name of the virtual network.
-        /// </param>
-        /// <param name='virtualNetworkPeeringName'>
-        /// The name of the peering.
-        /// </param>
-        /// <param name='syncRemoteAddressSpace'>
-        /// Parameter indicates the intention to sync the peering with the current
-        /// address space on the remote vNet after it&#39;s updated.
-        /// </param>
-        public static VirtualNetworkPeering BeginCreateOrUpdate(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName, VirtualNetworkPeering virtualNetworkPeeringParameters, string syncRemoteAddressSpace = default(string))
-        {
-                return ((IVirtualNetworkPeeringsOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, virtualNetworkPeeringParameters, syncRemoteAddressSpace).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates a peering in the specified virtual network.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='virtualNetworkName'>
-        /// The name of the virtual network.
-        /// </param>
-        /// <param name='virtualNetworkPeeringName'>
-        /// The name of the peering.
-        /// </param>
-        /// <param name='syncRemoteAddressSpace'>
-        /// Parameter indicates the intention to sync the peering with the current
-        /// address space on the remote vNet after it&#39;s updated.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<VirtualNetworkPeering> BeginCreateOrUpdateAsync(this IVirtualNetworkPeeringsOperations operations, string resourceGroupName, string virtualNetworkName, string virtualNetworkPeeringName, VirtualNetworkPeering virtualNetworkPeeringParameters, string syncRemoteAddressSpace = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, virtualNetworkPeeringParameters, syncRemoteAddressSpace, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Gets all virtual network peerings in a virtual network.
         /// </summary>
         /// <param name='operations'>
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<VirtualNetworkPeering> ListNext(this IVirtualNetworkPeeringsOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<CommonVirtualNetworkPeering> ListNext(this IVirtualNetworkPeeringsOperations operations, string nextPageLink)
         {
                 return ((IVirtualNetworkPeeringsOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VirtualNetworkPeering>> ListNextAsync(this IVirtualNetworkPeeringsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonVirtualNetworkPeering>> ListNextAsync(this IVirtualNetworkPeeringsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {

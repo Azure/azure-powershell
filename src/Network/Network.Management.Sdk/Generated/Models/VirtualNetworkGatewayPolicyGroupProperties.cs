@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the VirtualNetworkGatewayPolicyGroup resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public VirtualNetworkGatewayPolicyGroupProperties(bool isDefault, int priority, System.Collections.Generic.IList<VirtualNetworkGatewayPolicyGroupMember> policyMembers, System.Collections.Generic.IList<SubResource> vngClientConnectionConfigurations = default(System.Collections.Generic.IList<SubResource>), string provisioningState = default(string))
+        public VirtualNetworkGatewayPolicyGroupProperties(bool isDefault, int priority, System.Collections.Generic.IList<VirtualNetworkGatewayPolicyGroupMember> policyMembers, System.Collections.Generic.IList<CommonSubResource> vngClientConnectionConfigurations = default(System.Collections.Generic.IList<CommonSubResource>), string provisioningState = default(string))
 
         {
             this.IsDefault = isDefault;
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets list of references to vngClientConnectionConfigurations.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vngClientConnectionConfigurations")]
-        public System.Collections.Generic.IList<SubResource> VngClientConnectionConfigurations {get; private set; }
+        public System.Collections.Generic.IList<CommonSubResource> VngClientConnectionConfigurations {get; private set; }
 
         /// <summary>
         /// Gets the provisioning state of the VirtualNetworkGatewayPolicyGroup

@@ -20,11 +20,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN for which configuration of all vpn-sites is
-        /// needed.
+        /// The name of the VirtualWAN.
         /// </param>
         public static void Download(this IVpnSitesConfigurationOperations operations, string resourceGroupName, string virtualWANName, GetVpnSitesConfigurationRequest request)
         {
@@ -39,11 +38,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN for which configuration of all vpn-sites is
-        /// needed.
+        /// The name of the VirtualWAN.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -60,11 +58,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN for which configuration of all vpn-sites is
-        /// needed.
+        /// The name of the VirtualWAN.
         /// </param>
         public static void BeginDownload(this IVpnSitesConfigurationOperations operations, string resourceGroupName, string virtualWANName, GetVpnSitesConfigurationRequest request)
         {
@@ -79,11 +76,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualWANName'>
-        /// The name of the VirtualWAN for which configuration of all vpn-sites is
-        /// needed.
+        /// The name of the VirtualWAN.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

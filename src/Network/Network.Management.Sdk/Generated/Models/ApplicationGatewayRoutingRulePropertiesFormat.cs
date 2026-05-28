@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the request routing rule resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public ApplicationGatewayRoutingRulePropertiesFormat(int priority, string ruleType = default(string), SubResource backendAddressPool = default(SubResource), SubResource backendSettings = default(SubResource), SubResource listener = default(SubResource), string provisioningState = default(string))
+        public ApplicationGatewayRoutingRulePropertiesFormat(int priority, string ruleType = default(string), CommonSubResource backendAddressPool = default(CommonSubResource), CommonSubResource backendSettings = default(CommonSubResource), CommonSubResource listener = default(CommonSubResource), string provisioningState = default(string))
 
         {
             this.RuleType = ruleType;
@@ -76,19 +76,19 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets backend address pool resource of the application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "backendAddressPool")]
-        public SubResource BackendAddressPool {get; set; }
+        public CommonSubResource BackendAddressPool {get; set; }
 
         /// <summary>
         /// Gets or sets backend settings resource of the application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "backendSettings")]
-        public SubResource BackendSettings {get; set; }
+        public CommonSubResource BackendSettings {get; set; }
 
         /// <summary>
         /// Gets or sets listener resource of the application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "listener")]
-        public SubResource Listener {get; set; }
+        public CommonSubResource Listener {get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the request routing rule resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;

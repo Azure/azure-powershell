@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Peering in an ExpressRouteCircuit resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ExpressRouteCircuitPeering : SubResource
+    public partial class ExpressRouteCircuitPeering : CommonSubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the ExpressRouteCircuitPeering class.
@@ -28,14 +28,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="id">Resource ID.
         /// </param>
 
-        /// <param name="name">The name of the resource that is unique within a resource group. This name
-        /// can be used to access the resource.
+        /// <param name="name">Name of the resource.
+        /// </param>
+
+        /// <param name="type">Resource type.
         /// </param>
 
         /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
-        /// </param>
-
-        /// <param name="type">Type of the resource.
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the express route circuit peering resource.
@@ -101,13 +100,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="peeredConnections">The list of peered circuit connections associated with Azure Private
         /// Peering for this circuit.
         /// </param>
-        public ExpressRouteCircuitPeering(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), string peeringType = default(string), string state = default(string), int? azureAsn = default(int?), long? peerAsn = default(long?), string primaryPeerAddressPrefix = default(string), string secondaryPeerAddressPrefix = default(string), string primaryAzurePort = default(string), string secondaryAzurePort = default(string), string sharedKey = default(string), int? vlanId = default(int?), ExpressRouteCircuitPeeringConfig microsoftPeeringConfig = default(ExpressRouteCircuitPeeringConfig), ExpressRouteCircuitStats stats = default(ExpressRouteCircuitStats), string gatewayManagerEtag = default(string), string lastModifiedBy = default(string), SubResource routeFilter = default(SubResource), Ipv6ExpressRouteCircuitPeeringConfig ipv6PeeringConfig = default(Ipv6ExpressRouteCircuitPeeringConfig), ExpressRouteConnectionId expressRouteConnection = default(ExpressRouteConnectionId), System.Collections.Generic.IList<ExpressRouteCircuitConnection> connections = default(System.Collections.Generic.IList<ExpressRouteCircuitConnection>), System.Collections.Generic.IList<PeerExpressRouteCircuitConnection> peeredConnections = default(System.Collections.Generic.IList<PeerExpressRouteCircuitConnection>))
+        public ExpressRouteCircuitPeering(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), string peeringType = default(string), string state = default(string), int? azureAsn = default(int?), long? peerAsn = default(long?), string primaryPeerAddressPrefix = default(string), string secondaryPeerAddressPrefix = default(string), string primaryAzurePort = default(string), string secondaryAzurePort = default(string), string sharedKey = default(string), int? vlanId = default(int?), ExpressRouteCircuitPeeringConfig microsoftPeeringConfig = default(ExpressRouteCircuitPeeringConfig), ExpressRouteCircuitStats stats = default(ExpressRouteCircuitStats), string gatewayManagerEtag = default(string), string lastModifiedBy = default(string), CommonSubResource routeFilter = default(CommonSubResource), Ipv6ExpressRouteCircuitPeeringConfig ipv6PeeringConfig = default(Ipv6ExpressRouteCircuitPeeringConfig), ExpressRouteConnectionId expressRouteConnection = default(ExpressRouteConnectionId), System.Collections.Generic.IList<ExpressRouteCircuitConnection> connections = default(System.Collections.Generic.IList<ExpressRouteCircuitConnection>), System.Collections.Generic.IList<PeerExpressRouteCircuitConnection> peeredConnections = default(System.Collections.Generic.IList<PeerExpressRouteCircuitConnection>))
 
-        : base(id)
+        : base(id, name, type)
         {
-            this.Name = name;
             this.Etag = etag;
-            this.Type = type;
             this.ProvisioningState = provisioningState;
             this.PeeringType = peeringType;
             this.State = state;
@@ -138,24 +135,11 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets or sets the name of the resource that is unique within a resource
-        /// group. This name can be used to access the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; set; }
-
-        /// <summary>
         /// Gets a unique read-only string that changes whenever the resource is
         /// updated.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "etag")]
         public string Etag {get; private set; }
-
-        /// <summary>
-        /// Gets type of the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets the provisioning state of the express route circuit peering resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
@@ -251,7 +235,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the reference to the RouteFilter resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.routeFilter")]
-        public SubResource RouteFilter {get; set; }
+        public CommonSubResource RouteFilter {get; set; }
 
         /// <summary>
         /// Gets or sets the IPv6 peering configuration.
@@ -286,8 +270,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </exception>
         public virtual void Validate()
         {
-
-
 
 
 

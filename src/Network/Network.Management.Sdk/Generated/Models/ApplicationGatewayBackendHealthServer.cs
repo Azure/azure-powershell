@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="healthProbeLog">Health Probe Log.
         /// </param>
-        public ApplicationGatewayBackendHealthServer(string address = default(string), NetworkInterfaceIPConfiguration ipConfiguration = default(NetworkInterfaceIPConfiguration), string health = default(string), string healthProbeLog = default(string))
+        public ApplicationGatewayBackendHealthServer(string address = default(string), CommonNetworkInterfaceIPConfiguration ipConfiguration = default(CommonNetworkInterfaceIPConfiguration), string health = default(string), string healthProbeLog = default(string))
 
         {
             this.Address = address;
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets reference to IP configuration of backend server.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ipConfiguration")]
-        public NetworkInterfaceIPConfiguration IPConfiguration {get; set; }
+        public CommonNetworkInterfaceIPConfiguration IPConfiguration {get; set; }
 
         /// <summary>
         /// Gets or sets health of backend server. Possible values include: &#39;Unknown&#39;, &#39;Up&#39;, &#39;Down&#39;, &#39;Partial&#39;, &#39;Draining&#39;

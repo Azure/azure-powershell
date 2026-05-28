@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the express route circuit connection resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public ExpressRouteCircuitConnectionPropertiesFormat(SubResource expressRouteCircuitPeering = default(SubResource), SubResource peerExpressRouteCircuitPeering = default(SubResource), string addressPrefix = default(string), string authorizationKey = default(string), Ipv6CircuitConnectionConfig ipv6CircuitConnectionConfig = default(Ipv6CircuitConnectionConfig), string circuitConnectionStatus = default(string), string provisioningState = default(string))
+        public ExpressRouteCircuitConnectionPropertiesFormat(CommonSubResource expressRouteCircuitPeering = default(CommonSubResource), CommonSubResource peerExpressRouteCircuitPeering = default(CommonSubResource), string addressPrefix = default(string), string authorizationKey = default(string), Ipv6CircuitConnectionConfig ipv6CircuitConnectionConfig = default(Ipv6CircuitConnectionConfig), string circuitConnectionStatus = default(string), string provisioningState = default(string))
 
         {
             this.ExpressRouteCircuitPeering = expressRouteCircuitPeering;
@@ -71,14 +71,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// the circuit initiating connection.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "expressRouteCircuitPeering")]
-        public SubResource ExpressRouteCircuitPeering {get; set; }
+        public CommonSubResource ExpressRouteCircuitPeering {get; set; }
 
         /// <summary>
         /// Gets or sets reference to Express Route Circuit Private Peering Resource of
         /// the peered circuit.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "peerExpressRouteCircuitPeering")]
-        public SubResource PeerExpressRouteCircuitPeering {get; set; }
+        public CommonSubResource PeerExpressRouteCircuitPeering {get; set; }
 
         /// <summary>
         /// Gets or sets /29 IP address space to carve out Customer addresses for

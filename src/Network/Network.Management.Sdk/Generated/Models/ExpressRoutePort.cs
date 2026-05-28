@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// ExpressRoutePort resource definition.
     /// </remarks>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ExpressRoutePort : Resource
+    public partial class ExpressRoutePort : CommonResource
     {
         /// <summary>
         /// Initializes a new instance of the ExpressRoutePort class.
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="billingType">The billing type of the ExpressRoutePort resource.
         /// Possible values include: &#39;MeteredData&#39;, &#39;UnlimitedData&#39;</param>
-        public ExpressRoutePort(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string provisioningState = default(string), string peeringLocation = default(string), int? bandwidthInGbps = default(int?), double? provisionedBandwidthInGbps = default(double?), string mtu = default(string), string encapsulation = default(string), string etherType = default(string), string allocationDate = default(string), System.Collections.Generic.IList<ExpressRouteLink> links = default(System.Collections.Generic.IList<ExpressRouteLink>), System.Collections.Generic.IList<SubResource> circuits = default(System.Collections.Generic.IList<SubResource>), string resourceGuid = default(string), string billingType = default(string))
+        public ExpressRoutePort(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), CommonManagedServiceIdentity identity = default(CommonManagedServiceIdentity), string provisioningState = default(string), string peeringLocation = default(string), int? bandwidthInGbps = default(int?), double? provisionedBandwidthInGbps = default(double?), string mtu = default(string), string encapsulation = default(string), string etherType = default(string), string allocationDate = default(string), System.Collections.Generic.IList<ExpressRouteLink> links = default(System.Collections.Generic.IList<ExpressRouteLink>), System.Collections.Generic.IList<CommonSubResource> circuits = default(System.Collections.Generic.IList<CommonSubResource>), string resourceGuid = default(string), string billingType = default(string))
 
         : base(id, name, type, location, tags)
         {
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the identity of ExpressRoutePort, if configured.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
-        public ManagedServiceIdentity Identity {get; set; }
+        public CommonManagedServiceIdentity Identity {get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the express route port resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// ExpressRoutePort resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.circuits")]
-        public System.Collections.Generic.IList<SubResource> Circuits {get; private set; }
+        public System.Collections.Generic.IList<CommonSubResource> Circuits {get; private set; }
 
         /// <summary>
         /// Gets the resource GUID property of the express route port resource.

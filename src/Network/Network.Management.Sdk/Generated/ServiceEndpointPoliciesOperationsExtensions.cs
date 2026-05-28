@@ -13,13 +13,196 @@ namespace Microsoft.Azure.Management.Network
     public static partial class ServiceEndpointPoliciesOperationsExtensions
     {
         /// <summary>
+        /// Gets all the service endpoint policies in a subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<CommonServiceEndpointPolicy> List(this IServiceEndpointPoliciesOperations operations)
+        {
+                return ((IServiceEndpointPoliciesOperations)operations).ListAsync().GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets all the service endpoint policies in a subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonServiceEndpointPolicy>> ListAsync(this IServiceEndpointPoliciesOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets all service endpoint Policies in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<CommonServiceEndpointPolicy> ListByResourceGroup(this IServiceEndpointPoliciesOperations operations, string resourceGroupName)
+        {
+                return ((IServiceEndpointPoliciesOperations)operations).ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets all service endpoint Policies in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonServiceEndpointPolicy>> ListByResourceGroupAsync(this IServiceEndpointPoliciesOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets the specified service Endpoint Policies in a specified resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serviceEndpointPolicyName'>
+        /// The name of the service endpoint policy.
+        /// </param>
+        /// <param name='expand'>
+        /// Expands referenced resources.
+        /// </param>
+        public static CommonServiceEndpointPolicy Get(this IServiceEndpointPoliciesOperations operations, string resourceGroupName, string serviceEndpointPolicyName, string expand = default(string))
+        {
+                return ((IServiceEndpointPoliciesOperations)operations).GetAsync(resourceGroupName, serviceEndpointPolicyName, expand).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the specified service Endpoint Policies in a specified resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serviceEndpointPolicyName'>
+        /// The name of the service endpoint policy.
+        /// </param>
+        /// <param name='expand'>
+        /// Expands referenced resources.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CommonServiceEndpointPolicy> GetAsync(this IServiceEndpointPoliciesOperations operations, string resourceGroupName, string serviceEndpointPolicyName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serviceEndpointPolicyName, expand, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates a service Endpoint Policies.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serviceEndpointPolicyName'>
+        /// The name of the service endpoint policy.
+        /// </param>
+        public static CommonServiceEndpointPolicy CreateOrUpdate(this IServiceEndpointPoliciesOperations operations, string resourceGroupName, string serviceEndpointPolicyName, CommonServiceEndpointPolicy parameters)
+        {
+                return ((IServiceEndpointPoliciesOperations)operations).CreateOrUpdateAsync(resourceGroupName, serviceEndpointPolicyName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates a service Endpoint Policies.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serviceEndpointPolicyName'>
+        /// The name of the service endpoint policy.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CommonServiceEndpointPolicy> CreateOrUpdateAsync(this IServiceEndpointPoliciesOperations operations, string resourceGroupName, string serviceEndpointPolicyName, CommonServiceEndpointPolicy parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serviceEndpointPolicyName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Updates tags of a service endpoint policy.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serviceEndpointPolicyName'>
+        /// The name of the service endpoint policy.
+        /// </param>
+        public static CommonServiceEndpointPolicy UpdateTags(this IServiceEndpointPoliciesOperations operations, string resourceGroupName, string serviceEndpointPolicyName, TagsObject parameters)
+        {
+                return ((IServiceEndpointPoliciesOperations)operations).UpdateTagsAsync(resourceGroupName, serviceEndpointPolicyName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates tags of a service endpoint policy.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serviceEndpointPolicyName'>
+        /// The name of the service endpoint policy.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CommonServiceEndpointPolicy> UpdateTagsAsync(this IServiceEndpointPoliciesOperations operations, string resourceGroupName, string serviceEndpointPolicyName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, serviceEndpointPolicyName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Deletes the specified service endpoint policy.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceEndpointPolicyName'>
         /// The name of the service endpoint policy.
@@ -36,7 +219,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceEndpointPolicyName'>
         /// The name of the service endpoint policy.
@@ -49,65 +232,20 @@ namespace Microsoft.Azure.Management.Network
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serviceEndpointPolicyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Gets the specified service Endpoint Policies in a specified resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='serviceEndpointPolicyName'>
-        /// The name of the service endpoint policy.
-        /// </param>
-        /// <param name='expand'>
-        /// Expands referenced resources.
-        /// </param>
-        public static ServiceEndpointPolicy Get(this IServiceEndpointPoliciesOperations operations, string resourceGroupName, string serviceEndpointPolicyName, string expand = default(string))
-        {
-                return ((IServiceEndpointPoliciesOperations)operations).GetAsync(resourceGroupName, serviceEndpointPolicyName, expand).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the specified service Endpoint Policies in a specified resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='serviceEndpointPolicyName'>
-        /// The name of the service endpoint policy.
-        /// </param>
-        /// <param name='expand'>
-        /// Expands referenced resources.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ServiceEndpointPolicy> GetAsync(this IServiceEndpointPoliciesOperations operations, string resourceGroupName, string serviceEndpointPolicyName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serviceEndpointPolicyName, expand, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Creates or updates a service Endpoint Policies.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceEndpointPolicyName'>
         /// The name of the service endpoint policy.
         /// </param>
-        public static ServiceEndpointPolicy CreateOrUpdate(this IServiceEndpointPoliciesOperations operations, string resourceGroupName, string serviceEndpointPolicyName, ServiceEndpointPolicy parameters)
+        public static CommonServiceEndpointPolicy BeginCreateOrUpdate(this IServiceEndpointPoliciesOperations operations, string resourceGroupName, string serviceEndpointPolicyName, CommonServiceEndpointPolicy parameters)
         {
-                return ((IServiceEndpointPoliciesOperations)operations).CreateOrUpdateAsync(resourceGroupName, serviceEndpointPolicyName, parameters).GetAwaiter().GetResult();
+                return ((IServiceEndpointPoliciesOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, serviceEndpointPolicyName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -117,7 +255,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceEndpointPolicyName'>
         /// The name of the service endpoint policy.
@@ -125,108 +263,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ServiceEndpointPolicy> CreateOrUpdateAsync(this IServiceEndpointPoliciesOperations operations, string resourceGroupName, string serviceEndpointPolicyName, ServiceEndpointPolicy parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<CommonServiceEndpointPolicy> BeginCreateOrUpdateAsync(this IServiceEndpointPoliciesOperations operations, string resourceGroupName, string serviceEndpointPolicyName, CommonServiceEndpointPolicy parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serviceEndpointPolicyName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Updates tags of a service endpoint policy.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='serviceEndpointPolicyName'>
-        /// The name of the service endpoint policy.
-        /// </param>
-        public static ServiceEndpointPolicy UpdateTags(this IServiceEndpointPoliciesOperations operations, string resourceGroupName, string serviceEndpointPolicyName, TagsObject parameters)
-        {
-                return ((IServiceEndpointPoliciesOperations)operations).UpdateTagsAsync(resourceGroupName, serviceEndpointPolicyName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Updates tags of a service endpoint policy.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='serviceEndpointPolicyName'>
-        /// The name of the service endpoint policy.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ServiceEndpointPolicy> UpdateTagsAsync(this IServiceEndpointPoliciesOperations operations, string resourceGroupName, string serviceEndpointPolicyName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, serviceEndpointPolicyName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets all the service endpoint policies in a subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<ServiceEndpointPolicy> List(this IServiceEndpointPoliciesOperations operations)
-        {
-                return ((IServiceEndpointPoliciesOperations)operations).ListAsync().GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets all the service endpoint policies in a subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ServiceEndpointPolicy>> ListAsync(this IServiceEndpointPoliciesOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets all service endpoint Policies in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<ServiceEndpointPolicy> ListByResourceGroup(this IServiceEndpointPoliciesOperations operations, string resourceGroupName)
-        {
-                return ((IServiceEndpointPoliciesOperations)operations).ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets all service endpoint Policies in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ServiceEndpointPolicy>> ListByResourceGroupAsync(this IServiceEndpointPoliciesOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serviceEndpointPolicyName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -238,7 +277,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceEndpointPolicyName'>
         /// The name of the service endpoint policy.
@@ -255,7 +294,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceEndpointPolicyName'>
         /// The name of the service endpoint policy.
@@ -268,45 +307,6 @@ namespace Microsoft.Azure.Management.Network
             (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serviceEndpointPolicyName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Creates or updates a service Endpoint Policies.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='serviceEndpointPolicyName'>
-        /// The name of the service endpoint policy.
-        /// </param>
-        public static ServiceEndpointPolicy BeginCreateOrUpdate(this IServiceEndpointPoliciesOperations operations, string resourceGroupName, string serviceEndpointPolicyName, ServiceEndpointPolicy parameters)
-        {
-                return ((IServiceEndpointPoliciesOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, serviceEndpointPolicyName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates a service Endpoint Policies.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='serviceEndpointPolicyName'>
-        /// The name of the service endpoint policy.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ServiceEndpointPolicy> BeginCreateOrUpdateAsync(this IServiceEndpointPoliciesOperations operations, string resourceGroupName, string serviceEndpointPolicyName, ServiceEndpointPolicy parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serviceEndpointPolicyName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Gets all the service endpoint policies in a subscription.
         /// </summary>
         /// <param name='operations'>
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<ServiceEndpointPolicy> ListNext(this IServiceEndpointPoliciesOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<CommonServiceEndpointPolicy> ListNext(this IServiceEndpointPoliciesOperations operations, string nextPageLink)
         {
                 return ((IServiceEndpointPoliciesOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ServiceEndpointPolicy>> ListNextAsync(this IServiceEndpointPoliciesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonServiceEndpointPolicy>> ListNextAsync(this IServiceEndpointPoliciesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
@@ -348,7 +348,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<ServiceEndpointPolicy> ListByResourceGroupNext(this IServiceEndpointPoliciesOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<CommonServiceEndpointPolicy> ListByResourceGroupNext(this IServiceEndpointPoliciesOperations operations, string nextPageLink)
         {
                 return ((IServiceEndpointPoliciesOperations)operations).ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ServiceEndpointPolicy>> ListByResourceGroupNextAsync(this IServiceEndpointPoliciesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonServiceEndpointPolicy>> ListByResourceGroupNextAsync(this IServiceEndpointPoliciesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
