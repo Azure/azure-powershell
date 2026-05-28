@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added Service Principal support for SSH with Entra ID (AAD) login
 * Added ChangeSafety Support
 
 ## Version 0.2.3
