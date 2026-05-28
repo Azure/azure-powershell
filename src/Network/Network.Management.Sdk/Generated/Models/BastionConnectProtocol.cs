@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class BastionConnectProtocol
     {
+        /// <summary>
+        /// SSH
+        /// </summary>
         public const string SSH = "SSH";
+        /// <summary>
+        /// RDP
+        /// </summary>
         public const string RDP = "RDP";
     }
 }

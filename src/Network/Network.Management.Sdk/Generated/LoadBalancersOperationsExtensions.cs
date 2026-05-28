@@ -13,13 +13,236 @@ namespace Microsoft.Azure.Management.Network
     public static partial class LoadBalancersOperationsExtensions
     {
         /// <summary>
+        /// Gets all the load balancers in a subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<CommonLoadBalancer> ListAll(this ILoadBalancersOperations operations)
+        {
+                return ((ILoadBalancersOperations)operations).ListAllAsync().GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets all the load balancers in a subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonLoadBalancer>> ListAllAsync(this ILoadBalancersOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListAllWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Swaps VIPs between two load balancers.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='location'>
+        /// The name of the Azure region.
+        /// </param>
+        public static void SwapPublicIpAddresses(this ILoadBalancersOperations operations, string location, LoadBalancerVipSwapRequest parameters)
+        {
+                ((ILoadBalancersOperations)operations).SwapPublicIpAddressesAsync(location, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Swaps VIPs between two load balancers.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='location'>
+        /// The name of the Azure region.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task SwapPublicIpAddressesAsync(this ILoadBalancersOperations operations, string location, LoadBalancerVipSwapRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.SwapPublicIpAddressesWithHttpMessagesAsync(location, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Gets all the load balancers in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<CommonLoadBalancer> List(this ILoadBalancersOperations operations, string resourceGroupName)
+        {
+                return ((ILoadBalancersOperations)operations).ListAsync(resourceGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets all the load balancers in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonLoadBalancer>> ListAsync(this ILoadBalancersOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets the specified load balancer.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='loadBalancerName'>
+        /// The name of the load balancer.
+        /// </param>
+        /// <param name='expand'>
+        /// Expands referenced resources.
+        /// </param>
+        /// <param name='detailLevel'>
+        /// Controls verbosity of the returned load balancer resource. When set to
+        /// &#39;Reduced&#39;, read-only back-reference collections (e.g., rules referencing
+        /// frontendIPConfigurations) are omitted from the response.
+        /// </param>
+        public static CommonLoadBalancer Get(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, string expand = default(string), string detailLevel = default(string))
+        {
+                return ((ILoadBalancersOperations)operations).GetAsync(resourceGroupName, loadBalancerName, expand, detailLevel).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the specified load balancer.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='loadBalancerName'>
+        /// The name of the load balancer.
+        /// </param>
+        /// <param name='expand'>
+        /// Expands referenced resources.
+        /// </param>
+        /// <param name='detailLevel'>
+        /// Controls verbosity of the returned load balancer resource. When set to
+        /// &#39;Reduced&#39;, read-only back-reference collections (e.g., rules referencing
+        /// frontendIPConfigurations) are omitted from the response.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CommonLoadBalancer> GetAsync(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, string expand = default(string), string detailLevel = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, loadBalancerName, expand, detailLevel, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates a load balancer.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='loadBalancerName'>
+        /// The name of the load balancer.
+        /// </param>
+        public static CommonLoadBalancer CreateOrUpdate(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, CommonLoadBalancer parameters)
+        {
+                return ((ILoadBalancersOperations)operations).CreateOrUpdateAsync(resourceGroupName, loadBalancerName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates a load balancer.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='loadBalancerName'>
+        /// The name of the load balancer.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CommonLoadBalancer> CreateOrUpdateAsync(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, CommonLoadBalancer parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, loadBalancerName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Updates a load balancer tags.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='loadBalancerName'>
+        /// The name of the load balancer.
+        /// </param>
+        public static CommonLoadBalancer UpdateTags(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, TagsObject parameters)
+        {
+                return ((ILoadBalancersOperations)operations).UpdateTagsAsync(resourceGroupName, loadBalancerName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates a load balancer tags.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='loadBalancerName'>
+        /// The name of the load balancer.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CommonLoadBalancer> UpdateTagsAsync(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, loadBalancerName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Deletes the specified load balancer.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -36,7 +259,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -49,232 +272,19 @@ namespace Microsoft.Azure.Management.Network
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, loadBalancerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Gets the specified load balancer.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='loadBalancerName'>
-        /// The name of the load balancer.
-        /// </param>
-        /// <param name='expand'>
-        /// Expands referenced resources.
-        /// </param>
-        public static LoadBalancer Get(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, string expand = default(string))
-        {
-                return ((ILoadBalancersOperations)operations).GetAsync(resourceGroupName, loadBalancerName, expand).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the specified load balancer.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='loadBalancerName'>
-        /// The name of the load balancer.
-        /// </param>
-        /// <param name='expand'>
-        /// Expands referenced resources.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<LoadBalancer> GetAsync(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, loadBalancerName, expand, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Creates or updates a load balancer.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='loadBalancerName'>
-        /// The name of the load balancer.
-        /// </param>
-        public static LoadBalancer CreateOrUpdate(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, LoadBalancer parameters)
-        {
-                return ((ILoadBalancersOperations)operations).CreateOrUpdateAsync(resourceGroupName, loadBalancerName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates a load balancer.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='loadBalancerName'>
-        /// The name of the load balancer.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<LoadBalancer> CreateOrUpdateAsync(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, LoadBalancer parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, loadBalancerName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Updates a load balancer tags.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='loadBalancerName'>
-        /// The name of the load balancer.
-        /// </param>
-        public static LoadBalancer UpdateTags(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, TagsObject parameters)
-        {
-                return ((ILoadBalancersOperations)operations).UpdateTagsAsync(resourceGroupName, loadBalancerName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Updates a load balancer tags.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='loadBalancerName'>
-        /// The name of the load balancer.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<LoadBalancer> UpdateTagsAsync(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, loadBalancerName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets all the load balancers in a subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<LoadBalancer> ListAll(this ILoadBalancersOperations operations)
-        {
-                return ((ILoadBalancersOperations)operations).ListAllAsync().GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets all the load balancers in a subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<LoadBalancer>> ListAllAsync(this ILoadBalancersOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListAllWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets all the load balancers in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<LoadBalancer> List(this ILoadBalancersOperations operations, string resourceGroupName)
-        {
-                return ((ILoadBalancersOperations)operations).ListAsync(resourceGroupName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets all the load balancers in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<LoadBalancer>> ListAsync(this ILoadBalancersOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Swaps VIPs between two load balancers.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='location'>
-        /// The region where load balancers are located at.
-        /// </param>
-        public static void SwapPublicIpAddresses(this ILoadBalancersOperations operations, string location, LoadBalancerVipSwapRequest parameters)
-        {
-                ((ILoadBalancersOperations)operations).SwapPublicIpAddressesAsync(location, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Swaps VIPs between two load balancers.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='location'>
-        /// The region where load balancers are located at.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task SwapPublicIpAddressesAsync(this ILoadBalancersOperations operations, string location, LoadBalancerVipSwapRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.SwapPublicIpAddressesWithHttpMessagesAsync(location, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// List of inbound NAT rule port mappings.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='groupName'>
-        /// The name of the resource group.
+        /// 
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
         /// </param>
         /// <param name='backendPoolName'>
-        /// The name of the load balancer backend address pool.
+        /// The name of the backend address pool.
         /// </param>
         public static BackendAddressInboundNatRulePortMappings ListInboundNatRulePortMappings(this ILoadBalancersOperations operations, string groupName, string loadBalancerName, string backendPoolName, QueryInboundNatRulePortMappingRequest parameters)
         {
@@ -288,13 +298,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='groupName'>
-        /// The name of the resource group.
+        /// 
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
         /// </param>
         /// <param name='backendPoolName'>
-        /// The name of the load balancer backend address pool.
+        /// The name of the backend address pool.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -313,7 +323,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='groupName'>
-        /// The name of the resource group.
+        /// 
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -330,7 +340,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='groupName'>
-        /// The name of the resource group.
+        /// 
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -346,13 +356,82 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Swaps VIPs between two load balancers.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='location'>
+        /// The name of the Azure region.
+        /// </param>
+        public static void BeginSwapPublicIpAddresses(this ILoadBalancersOperations operations, string location, LoadBalancerVipSwapRequest parameters)
+        {
+                ((ILoadBalancersOperations)operations).BeginSwapPublicIpAddressesAsync(location, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Swaps VIPs between two load balancers.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='location'>
+        /// The name of the Azure region.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task BeginSwapPublicIpAddressesAsync(this ILoadBalancersOperations operations, string location, LoadBalancerVipSwapRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.BeginSwapPublicIpAddressesWithHttpMessagesAsync(location, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Creates or updates a load balancer.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='loadBalancerName'>
+        /// The name of the load balancer.
+        /// </param>
+        public static CommonLoadBalancer BeginCreateOrUpdate(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, CommonLoadBalancer parameters)
+        {
+                return ((ILoadBalancersOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, loadBalancerName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates a load balancer.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='loadBalancerName'>
+        /// The name of the load balancer.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CommonLoadBalancer> BeginCreateOrUpdateAsync(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, CommonLoadBalancer parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, loadBalancerName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Deletes the specified load balancer.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -369,7 +448,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
@@ -382,88 +461,19 @@ namespace Microsoft.Azure.Management.Network
             (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, loadBalancerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Creates or updates a load balancer.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='loadBalancerName'>
-        /// The name of the load balancer.
-        /// </param>
-        public static LoadBalancer BeginCreateOrUpdate(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, LoadBalancer parameters)
-        {
-                return ((ILoadBalancersOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, loadBalancerName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates a load balancer.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='loadBalancerName'>
-        /// The name of the load balancer.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<LoadBalancer> BeginCreateOrUpdateAsync(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, LoadBalancer parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, loadBalancerName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Swaps VIPs between two load balancers.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='location'>
-        /// The region where load balancers are located at.
-        /// </param>
-        public static void BeginSwapPublicIpAddresses(this ILoadBalancersOperations operations, string location, LoadBalancerVipSwapRequest parameters)
-        {
-                ((ILoadBalancersOperations)operations).BeginSwapPublicIpAddressesAsync(location, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Swaps VIPs between two load balancers.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='location'>
-        /// The region where load balancers are located at.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task BeginSwapPublicIpAddressesAsync(this ILoadBalancersOperations operations, string location, LoadBalancerVipSwapRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.BeginSwapPublicIpAddressesWithHttpMessagesAsync(location, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// List of inbound NAT rule port mappings.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='groupName'>
-        /// The name of the resource group.
+        /// 
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
         /// </param>
         /// <param name='backendPoolName'>
-        /// The name of the load balancer backend address pool.
+        /// The name of the backend address pool.
         /// </param>
         public static BackendAddressInboundNatRulePortMappings BeginListInboundNatRulePortMappings(this ILoadBalancersOperations operations, string groupName, string loadBalancerName, string backendPoolName, QueryInboundNatRulePortMappingRequest parameters)
         {
@@ -477,13 +487,13 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='groupName'>
-        /// The name of the resource group.
+        /// 
         /// </param>
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
         /// </param>
         /// <param name='backendPoolName'>
-        /// The name of the load balancer backend address pool.
+        /// The name of the backend address pool.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -504,7 +514,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<LoadBalancer> ListAllNext(this ILoadBalancersOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<CommonLoadBalancer> ListAllNext(this ILoadBalancersOperations operations, string nextPageLink)
         {
                 return ((ILoadBalancersOperations)operations).ListAllNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -521,7 +531,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<LoadBalancer>> ListAllNextAsync(this ILoadBalancersOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonLoadBalancer>> ListAllNextAsync(this ILoadBalancersOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListAllNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
@@ -537,7 +547,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<LoadBalancer> ListNext(this ILoadBalancersOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<CommonLoadBalancer> ListNext(this ILoadBalancersOperations operations, string nextPageLink)
         {
                 return ((ILoadBalancersOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -554,7 +564,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<LoadBalancer>> ListNextAsync(this ILoadBalancersOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonLoadBalancer>> ListNextAsync(this ILoadBalancersOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {

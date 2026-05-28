@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public VirtualRouterPropertiesFormat(long? virtualRouterAsn = default(long?), System.Collections.Generic.IList<string> virtualRouterIps = default(System.Collections.Generic.IList<string>), SubResource hostedSubnet = default(SubResource), SubResource hostedGateway = default(SubResource), System.Collections.Generic.IList<SubResource> peerings = default(System.Collections.Generic.IList<SubResource>), string provisioningState = default(string))
+        public VirtualRouterPropertiesFormat(long? virtualRouterAsn = default(long?), System.Collections.Generic.IList<string> virtualRouterIps = default(System.Collections.Generic.IList<string>), CommonSubResource hostedSubnet = default(CommonSubResource), CommonSubResource hostedGateway = default(CommonSubResource), System.Collections.Generic.IList<CommonSubResource> peerings = default(System.Collections.Generic.IList<CommonSubResource>), string provisioningState = default(string))
 
         {
             this.VirtualRouterAsn = virtualRouterAsn;
@@ -76,19 +76,19 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the Subnet on which VirtualRouter is hosted.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "hostedSubnet")]
-        public SubResource HostedSubnet {get; set; }
+        public CommonSubResource HostedSubnet {get; set; }
 
         /// <summary>
         /// Gets or sets the Gateway on which VirtualRouter is hosted.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "hostedGateway")]
-        public SubResource HostedGateway {get; set; }
+        public CommonSubResource HostedGateway {get; set; }
 
         /// <summary>
         /// Gets list of references to VirtualRouterPeerings.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "peerings")]
-        public System.Collections.Generic.IList<SubResource> Peerings {get; private set; }
+        public System.Collections.Generic.IList<CommonSubResource> Peerings {get; private set; }
 
         /// <summary>
         /// Gets the provisioning state of the resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;

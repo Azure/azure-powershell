@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// SSL certificates of an application gateway.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationGatewaySslCertificate : SubResource
+    public partial class ApplicationGatewaySslCertificate : CommonSubResource
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationGatewaySslCertificate class.
@@ -55,7 +55,10 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="keyVaultSecretId">Secret Id of (base-64 encoded unencrypted pfx) &#39;Secret&#39; or &#39;Certificate&#39;
         /// object stored in KeyVault.
         /// </param>
-        public ApplicationGatewaySslCertificate(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), string data = default(string), string password = default(string), string publicCertData = default(string), string keyVaultSecretId = default(string))
+
+        /// <param name="hsm">Managed HSM properties of the Application Gateway resource.
+        /// </param>
+        public ApplicationGatewaySslCertificate(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), string data = default(string), string password = default(string), string publicCertData = default(string), string keyVaultSecretId = default(string), ApplicationGatewayManagedHsm hsm = default(ApplicationGatewayManagedHsm))
 
         : base(id)
         {
@@ -67,6 +70,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.Password = password;
             this.PublicCertData = publicCertData;
             this.KeyVaultSecretId = keyVaultSecretId;
+            this.Hsm = hsm;
             CustomInit();
         }
 
@@ -129,5 +133,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.keyVaultSecretId")]
         public string KeyVaultSecretId {get; set; }
+
+        /// <summary>
+        /// Gets or sets managed HSM properties of the Application Gateway resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.hsm")]
+        public ApplicationGatewayManagedHsm Hsm {get; set; }
     }
 }

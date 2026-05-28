@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="backendAddressPool">Backend address pool resource of the application gateway.
         /// </param>
-        public ApplicationGatewayLoadDistributionTargetPropertiesFormat(int? weightPerServer = default(int?), SubResource backendAddressPool = default(SubResource))
+        public ApplicationGatewayLoadDistributionTargetPropertiesFormat(int? weightPerServer = default(int?), CommonSubResource backendAddressPool = default(CommonSubResource))
 
         {
             this.WeightPerServer = weightPerServer;
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets backend address pool resource of the application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "backendAddressPool")]
-        public SubResource BackendAddressPool {get; set; }
+        public CommonSubResource BackendAddressPool {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

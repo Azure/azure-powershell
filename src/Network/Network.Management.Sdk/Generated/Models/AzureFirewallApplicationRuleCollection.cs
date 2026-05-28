@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Application rule collection resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class AzureFirewallApplicationRuleCollection : SubResource
+    public partial class AzureFirewallApplicationRuleCollection : CommonSubResource
     {
         /// <summary>
         /// Initializes a new instance of the AzureFirewallApplicationRuleCollection class.

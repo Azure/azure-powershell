@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class PreferredIPVersion
     {
+        /// <summary>
+        /// IPv4
+        /// </summary>
         public const string IPv4 = "IPv4";
+        /// <summary>
+        /// IPv6
+        /// </summary>
         public const string IPv6 = "IPv6";
     }
 }

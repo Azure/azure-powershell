@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// <summary>
     /// Network Intent Policy resource.
     /// </summary>
-    public partial class NetworkIntentPolicy : Resource
+    public partial class NetworkIntentPolicy : CommonResource
     {
         /// <summary>
         /// Initializes a new instance of the NetworkIntentPolicy class.

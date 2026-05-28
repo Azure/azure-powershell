@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="backendHttpSettings">Reference to backend http setting of application gateway to be used for
         /// test probe.
         /// </param>
-        public ApplicationGatewayOnDemandProbe(string protocol = default(string), string host = default(string), string path = default(string), int? timeout = default(int?), bool? pickHostNameFromBackendHttpSettings = default(bool?), bool? enableProbeProxyProtocolHeader = default(bool?), ApplicationGatewayProbeHealthResponseMatch match = default(ApplicationGatewayProbeHealthResponseMatch), SubResource backendAddressPool = default(SubResource), SubResource backendHttpSettings = default(SubResource))
+        public ApplicationGatewayOnDemandProbe(string protocol = default(string), string host = default(string), string path = default(string), int? timeout = default(int?), bool? pickHostNameFromBackendHttpSettings = default(bool?), bool? enableProbeProxyProtocolHeader = default(bool?), ApplicationGatewayProbeHealthResponseMatch match = default(ApplicationGatewayProbeHealthResponseMatch), CommonSubResource backendAddressPool = default(CommonSubResource), CommonSubResource backendHttpSettings = default(CommonSubResource))
 
         {
             this.Protocol = protocol;
@@ -130,13 +130,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// probe request will be sent.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "backendAddressPool")]
-        public SubResource BackendAddressPool {get; set; }
+        public CommonSubResource BackendAddressPool {get; set; }
 
         /// <summary>
         /// Gets or sets reference to backend http setting of application gateway to be
         /// used for test probe.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "backendHttpSettings")]
-        public SubResource BackendHttpSettings {get; set; }
+        public CommonSubResource BackendHttpSettings {get; set; }
     }
 }

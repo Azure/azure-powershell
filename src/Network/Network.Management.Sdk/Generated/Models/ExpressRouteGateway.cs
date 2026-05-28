@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// ExpressRoute gateway resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ExpressRouteGateway : Resource
+    public partial class ExpressRouteGateway : CommonResource
     {
         /// <summary>
         /// Initializes a new instance of the ExpressRouteGateway class.

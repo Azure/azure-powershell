@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Rewrite rule set of an application gateway.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationGatewayRewriteRuleSet : SubResource
+    public partial class ApplicationGatewayRewriteRuleSet : CommonSubResource
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationGatewayRewriteRuleSet class.

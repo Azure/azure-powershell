@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Public IP prefix resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class PublicIPPrefix : Resource
+    public partial class PublicIPPrefix : CommonResource
     {
         /// <summary>
         /// Initializes a new instance of the PublicIPPrefix class.
@@ -57,9 +57,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
-        /// <param name="natGateway">NatGateway of Public IP Prefix.
-        /// </param>
-
         /// <param name="publicIPAddressVersion">The public IP address version.
         /// Possible values include: &#39;IPv4&#39;, &#39;IPv6&#39;</param>
 
@@ -84,7 +81,10 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="resourceGuid">The resource GUID property of the public IP prefix resource.
         /// </param>
-        public PublicIPPrefix(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), PublicIPPrefixSku sku = default(PublicIPPrefixSku), string etag = default(string), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), string provisioningState = default(string), NatGateway natGateway = default(NatGateway), string publicIPAddressVersion = default(string), System.Collections.Generic.IList<IpTag> ipTags = default(System.Collections.Generic.IList<IpTag>), int? prefixLength = default(int?), string ipPrefix = default(string), System.Collections.Generic.IList<ReferencedPublicIpAddress> publicIPAddresses = default(System.Collections.Generic.IList<ReferencedPublicIpAddress>), SubResource loadBalancerFrontendIPConfiguration = default(SubResource), SubResource customIPPrefix = default(SubResource), string resourceGuid = default(string))
+
+        /// <param name="natGateway">NatGateway of Public IP Prefix.
+        /// </param>
+        public PublicIPPrefix(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), CommonExtendedLocation extendedLocation = default(CommonExtendedLocation), PublicIPPrefixSku sku = default(PublicIPPrefixSku), string etag = default(string), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), string provisioningState = default(string), string publicIPAddressVersion = default(string), System.Collections.Generic.IList<CommonIpTag> ipTags = default(System.Collections.Generic.IList<CommonIpTag>), int? prefixLength = default(int?), string ipPrefix = default(string), System.Collections.Generic.IList<ReferencedPublicIpAddress> publicIPAddresses = default(System.Collections.Generic.IList<ReferencedPublicIpAddress>), CommonSubResource loadBalancerFrontendIPConfiguration = default(CommonSubResource), CommonSubResource customIPPrefix = default(CommonSubResource), string resourceGuid = default(string), CommonNatGateway natGateway = default(CommonNatGateway))
 
         : base(id, name, type, location, tags)
         {
@@ -93,7 +93,6 @@ namespace Microsoft.Azure.Management.Network.Models
             this.Etag = etag;
             this.Zones = zones;
             this.ProvisioningState = provisioningState;
-            this.NatGateway = natGateway;
             this.PublicIPAddressVersion = publicIPAddressVersion;
             this.IPTags = ipTags;
             this.PrefixLength = prefixLength;
@@ -102,6 +101,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.LoadBalancerFrontendIPConfiguration = loadBalancerFrontendIPConfiguration;
             this.CustomIPPrefix = customIPPrefix;
             this.ResourceGuid = resourceGuid;
+            this.NatGateway = natGateway;
             CustomInit();
         }
 
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the extended location of the public ip address.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "extendedLocation")]
-        public ExtendedLocation ExtendedLocation {get; set; }
+        public CommonExtendedLocation ExtendedLocation {get; set; }
 
         /// <summary>
         /// Gets or sets the public IP prefix SKU.
@@ -144,12 +144,6 @@ namespace Microsoft.Azure.Management.Network.Models
         public string ProvisioningState {get; private set; }
 
         /// <summary>
-        /// Gets or sets natGateway of Public IP Prefix.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.natGateway")]
-        public NatGateway NatGateway {get; set; }
-
-        /// <summary>
         /// Gets or sets the public IP address version. Possible values include: &#39;IPv4&#39;, &#39;IPv6&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicIPAddressVersion")]
@@ -159,7 +153,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the list of tags associated with the public IP prefix.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ipTags")]
-        public System.Collections.Generic.IList<IpTag> IPTags {get; set; }
+        public System.Collections.Generic.IList<CommonIpTag> IPTags {get; set; }
 
         /// <summary>
         /// Gets or sets the Length of the Public IP Prefix.
@@ -184,18 +178,24 @@ namespace Microsoft.Azure.Management.Network.Models
         /// with the public IP prefix.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.loadBalancerFrontendIpConfiguration")]
-        public SubResource LoadBalancerFrontendIPConfiguration {get; private set; }
+        public CommonSubResource LoadBalancerFrontendIPConfiguration {get; private set; }
 
         /// <summary>
         /// Gets or sets the customIpPrefix that this prefix is associated with.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.customIPPrefix")]
-        public SubResource CustomIPPrefix {get; set; }
+        public CommonSubResource CustomIPPrefix {get; set; }
 
         /// <summary>
         /// Gets the resource GUID property of the public IP prefix resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.resourceGuid")]
         public string ResourceGuid {get; private set; }
+
+        /// <summary>
+        /// Gets or sets natGateway of Public IP Prefix.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.natGateway")]
+        public CommonNatGateway NatGateway {get; set; }
     }
 }

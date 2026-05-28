@@ -13,13 +13,198 @@ namespace Microsoft.Azure.Management.Network
     public static partial class NetworkSecurityGroupsOperationsExtensions
     {
         /// <summary>
+        /// Gets all network security groups in a subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<CommonNetworkSecurityGroup> ListAll(this INetworkSecurityGroupsOperations operations)
+        {
+                return ((INetworkSecurityGroupsOperations)operations).ListAllAsync().GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets all network security groups in a subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonNetworkSecurityGroup>> ListAllAsync(this INetworkSecurityGroupsOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListAllWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets all network security groups in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<CommonNetworkSecurityGroup> List(this INetworkSecurityGroupsOperations operations, string resourceGroupName)
+        {
+                return ((INetworkSecurityGroupsOperations)operations).ListAsync(resourceGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets all network security groups in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonNetworkSecurityGroup>> ListAsync(this INetworkSecurityGroupsOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets the specified network security group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkSecurityGroupName'>
+        /// The name of the network security group.
+        /// </param>
+        /// <param name='expand'>
+        /// Expands referenced resources.
+        /// </param>
+        public static CommonNetworkSecurityGroup Get(this INetworkSecurityGroupsOperations operations, string resourceGroupName, string networkSecurityGroupName, string expand = default(string))
+        {
+                return ((INetworkSecurityGroupsOperations)operations).GetAsync(resourceGroupName, networkSecurityGroupName, expand).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the specified network security group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkSecurityGroupName'>
+        /// The name of the network security group.
+        /// </param>
+        /// <param name='expand'>
+        /// Expands referenced resources.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CommonNetworkSecurityGroup> GetAsync(this INetworkSecurityGroupsOperations operations, string resourceGroupName, string networkSecurityGroupName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkSecurityGroupName, expand, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates or updates a network security group in the specified resource
+        /// group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkSecurityGroupName'>
+        /// The name of the network security group.
+        /// </param>
+        public static CommonNetworkSecurityGroup CreateOrUpdate(this INetworkSecurityGroupsOperations operations, string resourceGroupName, string networkSecurityGroupName, CommonNetworkSecurityGroup parameters)
+        {
+                return ((INetworkSecurityGroupsOperations)operations).CreateOrUpdateAsync(resourceGroupName, networkSecurityGroupName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates or updates a network security group in the specified resource
+        /// group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkSecurityGroupName'>
+        /// The name of the network security group.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CommonNetworkSecurityGroup> CreateOrUpdateAsync(this INetworkSecurityGroupsOperations operations, string resourceGroupName, string networkSecurityGroupName, CommonNetworkSecurityGroup parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkSecurityGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Updates a network security group tags.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkSecurityGroupName'>
+        /// The name of the network security group.
+        /// </param>
+        public static CommonNetworkSecurityGroup UpdateTags(this INetworkSecurityGroupsOperations operations, string resourceGroupName, string networkSecurityGroupName, TagsObject parameters)
+        {
+                return ((INetworkSecurityGroupsOperations)operations).UpdateTagsAsync(resourceGroupName, networkSecurityGroupName, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates a network security group tags.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='networkSecurityGroupName'>
+        /// The name of the network security group.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<CommonNetworkSecurityGroup> UpdateTagsAsync(this INetworkSecurityGroupsOperations operations, string resourceGroupName, string networkSecurityGroupName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, networkSecurityGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Deletes the specified network security group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkSecurityGroupName'>
         /// The name of the network security group.
@@ -36,7 +221,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkSecurityGroupName'>
         /// The name of the network security group.
@@ -49,51 +234,6 @@ namespace Microsoft.Azure.Management.Network
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, networkSecurityGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Gets the specified network security group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkSecurityGroupName'>
-        /// The name of the network security group.
-        /// </param>
-        /// <param name='expand'>
-        /// Expands referenced resources.
-        /// </param>
-        public static NetworkSecurityGroup Get(this INetworkSecurityGroupsOperations operations, string resourceGroupName, string networkSecurityGroupName, string expand = default(string))
-        {
-                return ((INetworkSecurityGroupsOperations)operations).GetAsync(resourceGroupName, networkSecurityGroupName, expand).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets the specified network security group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkSecurityGroupName'>
-        /// The name of the network security group.
-        /// </param>
-        /// <param name='expand'>
-        /// Expands referenced resources.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<NetworkSecurityGroup> GetAsync(this INetworkSecurityGroupsOperations operations, string resourceGroupName, string networkSecurityGroupName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkSecurityGroupName, expand, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Creates or updates a network security group in the specified resource
         /// group.
         /// </summary>
@@ -101,14 +241,14 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkSecurityGroupName'>
         /// The name of the network security group.
         /// </param>
-        public static NetworkSecurityGroup CreateOrUpdate(this INetworkSecurityGroupsOperations operations, string resourceGroupName, string networkSecurityGroupName, NetworkSecurityGroup parameters)
+        public static CommonNetworkSecurityGroup BeginCreateOrUpdate(this INetworkSecurityGroupsOperations operations, string resourceGroupName, string networkSecurityGroupName, CommonNetworkSecurityGroup parameters)
         {
-                return ((INetworkSecurityGroupsOperations)operations).CreateOrUpdateAsync(resourceGroupName, networkSecurityGroupName, parameters).GetAwaiter().GetResult();
+                return ((INetworkSecurityGroupsOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, networkSecurityGroupName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -119,7 +259,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkSecurityGroupName'>
         /// The name of the network security group.
@@ -127,108 +267,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<NetworkSecurityGroup> CreateOrUpdateAsync(this INetworkSecurityGroupsOperations operations, string resourceGroupName, string networkSecurityGroupName, NetworkSecurityGroup parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<CommonNetworkSecurityGroup> BeginCreateOrUpdateAsync(this INetworkSecurityGroupsOperations operations, string resourceGroupName, string networkSecurityGroupName, CommonNetworkSecurityGroup parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkSecurityGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Updates a network security group tags.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkSecurityGroupName'>
-        /// The name of the network security group.
-        /// </param>
-        public static NetworkSecurityGroup UpdateTags(this INetworkSecurityGroupsOperations operations, string resourceGroupName, string networkSecurityGroupName, TagsObject parameters)
-        {
-                return ((INetworkSecurityGroupsOperations)operations).UpdateTagsAsync(resourceGroupName, networkSecurityGroupName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Updates a network security group tags.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkSecurityGroupName'>
-        /// The name of the network security group.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<NetworkSecurityGroup> UpdateTagsAsync(this INetworkSecurityGroupsOperations operations, string resourceGroupName, string networkSecurityGroupName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, networkSecurityGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets all network security groups in a subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<NetworkSecurityGroup> ListAll(this INetworkSecurityGroupsOperations operations)
-        {
-                return ((INetworkSecurityGroupsOperations)operations).ListAllAsync().GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets all network security groups in a subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkSecurityGroup>> ListAllAsync(this INetworkSecurityGroupsOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListAllWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Gets all network security groups in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<NetworkSecurityGroup> List(this INetworkSecurityGroupsOperations operations, string resourceGroupName)
-        {
-                return ((INetworkSecurityGroupsOperations)operations).ListAsync(resourceGroupName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Gets all network security groups in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkSecurityGroup>> ListAsync(this INetworkSecurityGroupsOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkSecurityGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -240,7 +281,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkSecurityGroupName'>
         /// The name of the network security group.
@@ -257,7 +298,7 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkSecurityGroupName'>
         /// The name of the network security group.
@@ -270,47 +311,6 @@ namespace Microsoft.Azure.Management.Network
             (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkSecurityGroupName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Creates or updates a network security group in the specified resource
-        /// group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkSecurityGroupName'>
-        /// The name of the network security group.
-        /// </param>
-        public static NetworkSecurityGroup BeginCreateOrUpdate(this INetworkSecurityGroupsOperations operations, string resourceGroupName, string networkSecurityGroupName, NetworkSecurityGroup parameters)
-        {
-                return ((INetworkSecurityGroupsOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, networkSecurityGroupName, parameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates or updates a network security group in the specified resource
-        /// group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkSecurityGroupName'>
-        /// The name of the network security group.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<NetworkSecurityGroup> BeginCreateOrUpdateAsync(this INetworkSecurityGroupsOperations operations, string resourceGroupName, string networkSecurityGroupName, NetworkSecurityGroup parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkSecurityGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Gets all network security groups in a subscription.
         /// </summary>
         /// <param name='operations'>
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<NetworkSecurityGroup> ListAllNext(this INetworkSecurityGroupsOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<CommonNetworkSecurityGroup> ListAllNext(this INetworkSecurityGroupsOperations operations, string nextPageLink)
         {
                 return ((INetworkSecurityGroupsOperations)operations).ListAllNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkSecurityGroup>> ListAllNextAsync(this INetworkSecurityGroupsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonNetworkSecurityGroup>> ListAllNextAsync(this INetworkSecurityGroupsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListAllNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<NetworkSecurityGroup> ListNext(this INetworkSecurityGroupsOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<CommonNetworkSecurityGroup> ListNext(this INetworkSecurityGroupsOperations operations, string nextPageLink)
         {
                 return ((INetworkSecurityGroupsOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkSecurityGroup>> ListNextAsync(this INetworkSecurityGroupsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonNetworkSecurityGroup>> ListNextAsync(this INetworkSecurityGroupsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {

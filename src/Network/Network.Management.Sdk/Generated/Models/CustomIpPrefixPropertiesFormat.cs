@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the custom IP prefix resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public CustomIpPrefixPropertiesFormat(string asn = default(string), string cidr = default(string), string signedMessage = default(string), string authorizationMessage = default(string), SubResource customIPPrefixParent = default(SubResource), System.Collections.Generic.IList<SubResource> childCustomIPPrefixes = default(System.Collections.Generic.IList<SubResource>), string commissionedState = default(string), bool? expressRouteAdvertise = default(bool?), string geo = default(string), bool? noInternetAdvertise = default(bool?), string prefixType = default(string), System.Collections.Generic.IList<SubResource> publicIPPrefixes = default(System.Collections.Generic.IList<SubResource>), string resourceGuid = default(string), string failedReason = default(string), string provisioningState = default(string))
+        public CustomIpPrefixPropertiesFormat(string asn = default(string), string cidr = default(string), string signedMessage = default(string), string authorizationMessage = default(string), CommonSubResource customIPPrefixParent = default(CommonSubResource), System.Collections.Generic.IList<CommonSubResource> childCustomIPPrefixes = default(System.Collections.Generic.IList<CommonSubResource>), string commissionedState = default(string), bool? expressRouteAdvertise = default(bool?), string geo = default(string), bool? noInternetAdvertise = default(bool?), string prefixType = default(string), System.Collections.Generic.IList<CommonSubResource> publicIPPrefixes = default(System.Collections.Generic.IList<CommonSubResource>), string resourceGuid = default(string), string failedReason = default(string), string provisioningState = default(string))
 
         {
             this.Asn = asn;
@@ -129,13 +129,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the Parent CustomIpPrefix for IPv6 /64 CustomIpPrefix.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "customIpPrefixParent")]
-        public SubResource CustomIPPrefixParent {get; set; }
+        public CommonSubResource CustomIPPrefixParent {get; set; }
 
         /// <summary>
         /// Gets the list of all Children for IPv6 /48 CustomIpPrefix.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "childCustomIpPrefixes")]
-        public System.Collections.Generic.IList<SubResource> ChildCustomIPPrefixes {get; private set; }
+        public System.Collections.Generic.IList<CommonSubResource> ChildCustomIPPrefixes {get; private set; }
 
         /// <summary>
         /// Gets or sets the commissioned state of the Custom IP Prefix. Possible values include: &#39;Provisioning&#39;, &#39;Provisioned&#39;, &#39;Commissioning&#39;, &#39;CommissionedNoInternetAdvertise&#39;, &#39;Commissioned&#39;, &#39;Decommissioning&#39;, &#39;Deprovisioning&#39;, &#39;Deprovisioned&#39;
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets the list of all referenced PublicIpPrefixes.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "publicIpPrefixes")]
-        public System.Collections.Generic.IList<SubResource> PublicIPPrefixes {get; private set; }
+        public System.Collections.Generic.IList<CommonSubResource> PublicIPPrefixes {get; private set; }
 
         /// <summary>
         /// Gets the resource GUID property of the custom IP prefix resource.

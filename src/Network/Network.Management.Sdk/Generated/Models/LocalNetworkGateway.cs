@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// A common class for general resource information.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class LocalNetworkGateway : Resource
+    public partial class LocalNetworkGateway : CommonResource
     {
         /// <summary>
         /// Initializes a new instance of the LocalNetworkGateway class.
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="resourceGuid">The resource GUID property of the local network gateway resource.
         /// </param>
-        public LocalNetworkGateway(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), BgpSettings bgpSettings = default(BgpSettings), string provisioningState = default(string), AddressSpace localNetworkAddressSpace = default(AddressSpace), string gatewayIPAddress = default(string), string fqdn = default(string), string resourceGuid = default(string))
+        public LocalNetworkGateway(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), BgpSettings bgpSettings = default(BgpSettings), string provisioningState = default(string), CommonAddressSpace localNetworkAddressSpace = default(CommonAddressSpace), string gatewayIPAddress = default(string), string fqdn = default(string), string resourceGuid = default(string))
 
         : base(id, name, type, location, tags)
         {
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets local network site address space.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.localNetworkAddressSpace")]
-        public AddressSpace LocalNetworkAddressSpace {get; set; }
+        public CommonAddressSpace LocalNetworkAddressSpace {get; set; }
 
         /// <summary>
         /// Gets or sets iP address of local network gateway.

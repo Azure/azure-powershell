@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="natRules">List of all the nat Rules associated with the gateway.
         /// </param>
-        public VpnGatewayProperties(SubResource virtualHub = default(SubResource), System.Collections.Generic.IList<VpnConnection> connections = default(System.Collections.Generic.IList<VpnConnection>), BgpSettings bgpSettings = default(BgpSettings), string provisioningState = default(string), int? vpnGatewayScaleUnit = default(int?), System.Collections.Generic.IList<VpnGatewayIpConfiguration> ipConfigurations = default(System.Collections.Generic.IList<VpnGatewayIpConfiguration>), bool? enableBgpRouteTranslationForNat = default(bool?), bool? isRoutingPreferenceInternet = default(bool?), System.Collections.Generic.IList<VpnGatewayNatRule> natRules = default(System.Collections.Generic.IList<VpnGatewayNatRule>))
+        public VpnGatewayProperties(CommonSubResource virtualHub = default(CommonSubResource), System.Collections.Generic.IList<VpnConnection> connections = default(System.Collections.Generic.IList<VpnConnection>), BgpSettings bgpSettings = default(BgpSettings), string provisioningState = default(string), int? vpnGatewayScaleUnit = default(int?), System.Collections.Generic.IList<VpnGatewayIpConfiguration> ipConfigurations = default(System.Collections.Generic.IList<VpnGatewayIpConfiguration>), bool? enableBgpRouteTranslationForNat = default(bool?), bool? isRoutingPreferenceInternet = default(bool?), System.Collections.Generic.IList<VpnGatewayNatRule> natRules = default(System.Collections.Generic.IList<VpnGatewayNatRule>))
 
         {
             this.VirtualHub = virtualHub;
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the VirtualHub to which the gateway belongs.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "virtualHub")]
-        public SubResource VirtualHub {get; set; }
+        public CommonSubResource VirtualHub {get; set; }
 
         /// <summary>
         /// Gets or sets list of all vpn connections to the gateway.

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="networkInterface">The ID of the network interface if assigned.
         /// </param>
-        public EffectiveNetworkSecurityGroupAssociation(SubResource networkManager = default(SubResource), SubResource subnet = default(SubResource), SubResource networkInterface = default(SubResource))
+        public EffectiveNetworkSecurityGroupAssociation(CommonSubResource networkManager = default(CommonSubResource), CommonSubResource subnet = default(CommonSubResource), CommonSubResource networkInterface = default(CommonSubResource))
 
         {
             this.NetworkManager = networkManager;
@@ -51,18 +51,18 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the ID of the Azure network manager if assigned.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "networkManager")]
-        public SubResource NetworkManager {get; set; }
+        public CommonSubResource NetworkManager {get; set; }
 
         /// <summary>
         /// Gets or sets the ID of the subnet if assigned.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "subnet")]
-        public SubResource Subnet {get; set; }
+        public CommonSubResource Subnet {get; set; }
 
         /// <summary>
         /// Gets or sets the ID of the network interface if assigned.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "networkInterface")]
-        public SubResource NetworkInterface {get; set; }
+        public CommonSubResource NetworkInterface {get; set; }
     }
 }

@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class ApplicationGatewayClientAuthVerificationModes
     {
+        /// <summary>
+        /// Strict
+        /// </summary>
         public const string Strict = "Strict";
+        /// <summary>
+        /// Passthrough
+        /// </summary>
         public const string Passthrough = "Passthrough";
     }
 }

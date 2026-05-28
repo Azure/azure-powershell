@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// NAT rule collection resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class AzureFirewallNatRuleCollection : SubResource
+    public partial class AzureFirewallNatRuleCollection : CommonSubResource
     {
         /// <summary>
         /// Initializes a new instance of the AzureFirewallNatRuleCollection class.

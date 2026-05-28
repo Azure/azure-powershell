@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// FirewallPolicy Resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class FirewallPolicy : Resource
+    public partial class FirewallPolicy : CommonResource
     {
         /// <summary>
         /// Initializes a new instance of the FirewallPolicy class.
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="sku">The Firewall Policy SKU.
         /// </param>
-        public FirewallPolicy(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string provisioningState = default(string), DnsSettings dnsSettings = default(DnsSettings), ExplicitProxy explicitProxy = default(ExplicitProxy), string size = default(string), System.Collections.Generic.IList<SubResource> ruleCollectionGroups = default(System.Collections.Generic.IList<SubResource>), SubResource basePolicy = default(SubResource), System.Collections.Generic.IList<SubResource> firewalls = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> childPolicies = default(System.Collections.Generic.IList<SubResource>), string threatIntelMode = default(string), FirewallPolicyThreatIntelWhitelist threatIntelWhitelist = default(FirewallPolicyThreatIntelWhitelist), FirewallPolicyInsights insights = default(FirewallPolicyInsights), FirewallPolicySnat snat = default(FirewallPolicySnat), FirewallPolicySQL sql = default(FirewallPolicySQL), FirewallPolicyIntrusionDetection intrusionDetection = default(FirewallPolicyIntrusionDetection), FirewallPolicyTransportSecurity transportSecurity = default(FirewallPolicyTransportSecurity), FirewallPolicySku sku = default(FirewallPolicySku))
+        public FirewallPolicy(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), CommonManagedServiceIdentity identity = default(CommonManagedServiceIdentity), string provisioningState = default(string), DnsSettings dnsSettings = default(DnsSettings), ExplicitProxy explicitProxy = default(ExplicitProxy), string size = default(string), System.Collections.Generic.IList<CommonSubResource> ruleCollectionGroups = default(System.Collections.Generic.IList<CommonSubResource>), CommonSubResource basePolicy = default(CommonSubResource), System.Collections.Generic.IList<CommonSubResource> firewalls = default(System.Collections.Generic.IList<CommonSubResource>), System.Collections.Generic.IList<CommonSubResource> childPolicies = default(System.Collections.Generic.IList<CommonSubResource>), string threatIntelMode = default(string), FirewallPolicyThreatIntelWhitelist threatIntelWhitelist = default(FirewallPolicyThreatIntelWhitelist), FirewallPolicyInsights insights = default(FirewallPolicyInsights), FirewallPolicySnat snat = default(FirewallPolicySnat), FirewallPolicySQL sql = default(FirewallPolicySQL), FirewallPolicyIntrusionDetection intrusionDetection = default(FirewallPolicyIntrusionDetection), FirewallPolicyTransportSecurity transportSecurity = default(FirewallPolicyTransportSecurity), FirewallPolicySku sku = default(FirewallPolicySku))
 
         : base(id, name, type, location, tags)
         {
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the identity of the firewall policy.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
-        public ManagedServiceIdentity Identity {get; set; }
+        public CommonManagedServiceIdentity Identity {get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the firewall policy resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
@@ -169,26 +169,26 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets list of references to FirewallPolicyRuleCollectionGroups.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ruleCollectionGroups")]
-        public System.Collections.Generic.IList<SubResource> RuleCollectionGroups {get; private set; }
+        public System.Collections.Generic.IList<CommonSubResource> RuleCollectionGroups {get; private set; }
 
         /// <summary>
         /// Gets or sets the parent firewall policy from which rules are inherited.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.basePolicy")]
-        public SubResource BasePolicy {get; set; }
+        public CommonSubResource BasePolicy {get; set; }
 
         /// <summary>
         /// Gets list of references to Azure Firewalls that this Firewall Policy is
         /// associated with.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.firewalls")]
-        public System.Collections.Generic.IList<SubResource> Firewalls {get; private set; }
+        public System.Collections.Generic.IList<CommonSubResource> Firewalls {get; private set; }
 
         /// <summary>
         /// Gets list of references to Child Firewall Policies.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.childPolicies")]
-        public System.Collections.Generic.IList<SubResource> ChildPolicies {get; private set; }
+        public System.Collections.Generic.IList<CommonSubResource> ChildPolicies {get; private set; }
 
         /// <summary>
         /// Gets or sets the operation mode for Threat Intelligence. Possible values include: &#39;Alert&#39;, &#39;Deny&#39;, &#39;Off&#39;

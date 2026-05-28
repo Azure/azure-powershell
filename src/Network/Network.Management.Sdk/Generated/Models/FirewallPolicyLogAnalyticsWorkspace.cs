@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="workspaceId">The workspace Id for Firewall Policy Insights.
         /// </param>
-        public FirewallPolicyLogAnalyticsWorkspace(string region = default(string), SubResource workspaceId = default(SubResource))
+        public FirewallPolicyLogAnalyticsWorkspace(string region = default(string), CommonSubResource workspaceId = default(CommonSubResource))
 
         {
             this.Region = region;
@@ -53,6 +53,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the workspace Id for Firewall Policy Insights.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "workspaceId")]
-        public SubResource WorkspaceId {get; set; }
+        public CommonSubResource WorkspaceId {get; set; }
     }
 }

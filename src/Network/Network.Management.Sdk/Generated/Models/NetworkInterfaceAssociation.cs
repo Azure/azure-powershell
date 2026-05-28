@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="securityRules">Collection of custom security rules.
         /// </param>
-        public NetworkInterfaceAssociation(string id = default(string), System.Collections.Generic.IList<SecurityRule> securityRules = default(System.Collections.Generic.IList<SecurityRule>))
+        public NetworkInterfaceAssociation(string id = default(string), System.Collections.Generic.IList<CommonSecurityRule> securityRules = default(System.Collections.Generic.IList<CommonSecurityRule>))
 
         {
             this.Id = id;
@@ -53,6 +53,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets collection of custom security rules.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "securityRules")]
-        public System.Collections.Generic.IList<SecurityRule> SecurityRules {get; set; }
+        public System.Collections.Generic.IList<CommonSecurityRule> SecurityRules {get; set; }
     }
 }

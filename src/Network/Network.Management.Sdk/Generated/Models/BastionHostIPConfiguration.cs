@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// IP configuration of an Bastion Host.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class BastionHostIPConfiguration : SubResource
+    public partial class BastionHostIPConfiguration : CommonSubResource
     {
         /// <summary>
         /// Initializes a new instance of the BastionHostIPConfiguration class.
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="privateIPAllocationMethod">Private IP allocation method.
         /// Possible values include: &#39;Static&#39;, &#39;Dynamic&#39;</param>
-        public BastionHostIPConfiguration(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), SubResource subnet = default(SubResource), SubResource publicIPAddress = default(SubResource), string privateIPAllocationMethod = default(string))
+        public BastionHostIPConfiguration(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), CommonSubResource subnet = default(CommonSubResource), CommonSubResource publicIPAddress = default(CommonSubResource), string privateIPAllocationMethod = default(string))
 
         : base(id)
         {
@@ -100,14 +100,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets reference of the subnet resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.subnet")]
-        public SubResource Subnet {get; set; }
+        public CommonSubResource Subnet {get; set; }
 
         /// <summary>
         /// Gets or sets reference of the PublicIP resource. Null for private only
         /// bastion
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicIPAddress")]
-        public SubResource PublicIPAddress {get; set; }
+        public CommonSubResource PublicIPAddress {get; set; }
 
         /// <summary>
         /// Gets or sets private IP allocation method. Possible values include: &#39;Static&#39;, &#39;Dynamic&#39;

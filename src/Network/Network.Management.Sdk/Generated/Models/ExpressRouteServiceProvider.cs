@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// A ExpressRouteResourceProvider object.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ExpressRouteServiceProvider : Resource
+    public partial class ExpressRouteServiceProvider : CommonResource
     {
         /// <summary>
         /// Initializes a new instance of the ExpressRouteServiceProvider class.

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// VPN client revoked certificate of virtual network gateway.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class VpnClientRevokedCertificate : SubResource
+    public partial class VpnClientRevokedCertificate : CommonSubResource
     {
         /// <summary>
         /// Initializes a new instance of the VpnClientRevokedCertificate class.

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Parameters for VirtualNetworkGatewayPolicyGroup.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class VirtualNetworkGatewayPolicyGroup : SubResource
+    public partial class VirtualNetworkGatewayPolicyGroup : CommonSubResource
     {
         /// <summary>
         /// Initializes a new instance of the VirtualNetworkGatewayPolicyGroup class.
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="vngClientConnectionConfigurations">List of references to vngClientConnectionConfigurations.
         /// </param>
-        public VirtualNetworkGatewayPolicyGroup(string id = default(string), string name = default(string), string etag = default(string), string provisioningState = default(string), bool? isDefault = default(bool?), int? priority = default(int?), System.Collections.Generic.IList<VirtualNetworkGatewayPolicyGroupMember> policyMembers = default(System.Collections.Generic.IList<VirtualNetworkGatewayPolicyGroupMember>), System.Collections.Generic.IList<SubResource> vngClientConnectionConfigurations = default(System.Collections.Generic.IList<SubResource>))
+        public VirtualNetworkGatewayPolicyGroup(string id = default(string), string name = default(string), string etag = default(string), string provisioningState = default(string), bool? isDefault = default(bool?), int? priority = default(int?), System.Collections.Generic.IList<VirtualNetworkGatewayPolicyGroupMember> policyMembers = default(System.Collections.Generic.IList<VirtualNetworkGatewayPolicyGroupMember>), System.Collections.Generic.IList<CommonSubResource> vngClientConnectionConfigurations = default(System.Collections.Generic.IList<CommonSubResource>))
 
         : base(id)
         {
@@ -114,6 +114,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets list of references to vngClientConnectionConfigurations.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.vngClientConnectionConfigurations")]
-        public System.Collections.Generic.IList<SubResource> VngClientConnectionConfigurations {get; private set; }
+        public System.Collections.Generic.IList<CommonSubResource> VngClientConnectionConfigurations {get; private set; }
     }
 }

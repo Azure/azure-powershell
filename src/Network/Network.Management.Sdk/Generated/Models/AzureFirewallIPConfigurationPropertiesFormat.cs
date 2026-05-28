@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the Azure firewall IP configuration resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public AzureFirewallIPConfigurationPropertiesFormat(string privateIPAddress = default(string), SubResource subnet = default(SubResource), SubResource publicIPAddress = default(SubResource), string provisioningState = default(string))
+        public AzureFirewallIPConfigurationPropertiesFormat(string privateIPAddress = default(string), CommonSubResource subnet = default(CommonSubResource), CommonSubResource publicIPAddress = default(CommonSubResource), string provisioningState = default(string))
 
         {
             this.PrivateIPAddress = privateIPAddress;
@@ -67,14 +67,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// &#39;AzureFirewallSubnet&#39; or &#39;AzureFirewallManagementSubnet&#39;.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "subnet")]
-        public SubResource Subnet {get; set; }
+        public CommonSubResource Subnet {get; set; }
 
         /// <summary>
         /// Gets or sets reference to the PublicIP resource. This field is a mandatory
         /// input if subnet is not null.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "publicIPAddress")]
-        public SubResource PublicIPAddress {get; set; }
+        public CommonSubResource PublicIPAddress {get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the Azure firewall IP configuration

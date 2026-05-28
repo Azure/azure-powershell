@@ -14,19 +14,112 @@ namespace Microsoft.Azure.Management.Network
     public partial interface IServiceEndpointPolicyDefinitionsOperations
     {
         /// <summary>
+        /// Gets all service endpoint policy definitions in a service end point policy.
+        /// </summary>
+        /// <remarks>
+        /// Gets all service endpoint policy definitions in a service end point policy.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serviceEndpointPolicyName'>
+        /// The name of the service endpoint policy.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<CommonServiceEndpointPolicyDefinition>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, string serviceEndpointPolicyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Get a ServiceEndpointPolicyDefinition
+        /// </summary>
+        /// <remarks>
+        /// Get a ServiceEndpointPolicyDefinition
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serviceEndpointPolicyName'>
+        /// The name of the service endpoint policy.
+        /// </param>
+        /// <param name='serviceEndpointPolicyDefinitionName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CommonServiceEndpointPolicyDefinition>> GetWithHttpMessagesAsync(string resourceGroupName, string serviceEndpointPolicyName, string serviceEndpointPolicyDefinitionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Creates or updates a service endpoint policy definition in the specified
+        /// service endpoint policy.
+        /// </summary>
+        /// <remarks>
+        /// Creates or updates a service endpoint policy definition in the specified
+        /// service endpoint policy.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='serviceEndpointPolicyName'>
+        /// The name of the service endpoint policy.
+        /// </param>
+        /// <param name='serviceEndpointPolicyDefinitionName'>
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
+        /// </param>
+        /// <param name='serviceEndpointPolicyDefinitions'>
+        /// Parameters supplied to the create or update service endpoint policy
+        /// operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CommonServiceEndpointPolicyDefinition>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceEndpointPolicyName, string serviceEndpointPolicyDefinitionName, CommonServiceEndpointPolicyDefinition serviceEndpointPolicyDefinitions, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Deletes the specified ServiceEndpoint policy definitions.
         /// </summary>
         /// <remarks>
         /// Deletes the specified ServiceEndpoint policy definitions.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceEndpointPolicyName'>
-        /// The name of the Service Endpoint Policy.
+        /// The name of the service endpoint policy.
         /// </param>
         /// <param name='serviceEndpointPolicyDefinitionName'>
-        /// The name of the service endpoint policy definition.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -40,37 +133,6 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string serviceEndpointPolicyName, string serviceEndpointPolicyDefinitionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get the specified service endpoint policy definitions from service endpoint
-        /// policy.
-        /// </summary>
-        /// <remarks>
-        /// Get the specified service endpoint policy definitions from service endpoint
-        /// policy.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='serviceEndpointPolicyName'>
-        /// The name of the service endpoint policy name.
-        /// </param>
-        /// <param name='serviceEndpointPolicyDefinitionName'>
-        /// The name of the service endpoint policy definition name.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ServiceEndpointPolicyDefinition>> GetWithHttpMessagesAsync(string resourceGroupName, string serviceEndpointPolicyName, string serviceEndpointPolicyDefinitionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Creates or updates a service endpoint policy definition in the specified
         /// service endpoint policy.
         /// </summary>
@@ -79,13 +141,14 @@ namespace Microsoft.Azure.Management.Network
         /// service endpoint policy.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceEndpointPolicyName'>
         /// The name of the service endpoint policy.
         /// </param>
         /// <param name='serviceEndpointPolicyDefinitionName'>
-        /// The name of the service endpoint policy definition name.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='serviceEndpointPolicyDefinitions'>
         /// Parameters supplied to the create or update service endpoint policy
@@ -103,33 +166,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ServiceEndpointPolicyDefinition>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceEndpointPolicyName, string serviceEndpointPolicyDefinitionName, ServiceEndpointPolicyDefinition serviceEndpointPolicyDefinitions, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Gets all service endpoint policy definitions in a service end point policy.
-        /// </summary>
-        /// <remarks>
-        /// Gets all service endpoint policy definitions in a service end point policy.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='serviceEndpointPolicyName'>
-        /// The name of the service endpoint policy name.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ServiceEndpointPolicyDefinition>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, string serviceEndpointPolicyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CommonServiceEndpointPolicyDefinition>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceEndpointPolicyName, string serviceEndpointPolicyDefinitionName, CommonServiceEndpointPolicyDefinition serviceEndpointPolicyDefinitions, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes the specified ServiceEndpoint policy definitions.
@@ -138,13 +175,14 @@ namespace Microsoft.Azure.Management.Network
         /// Deletes the specified ServiceEndpoint policy definitions.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='serviceEndpointPolicyName'>
-        /// The name of the Service Endpoint Policy.
+        /// The name of the service endpoint policy.
         /// </param>
         /// <param name='serviceEndpointPolicyDefinitionName'>
-        /// The name of the service endpoint policy definition.
+        /// The name of the resource that is unique within a resource group. This name
+        /// can be used to access the resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -156,41 +194,6 @@ namespace Microsoft.Azure.Management.Network
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string serviceEndpointPolicyName, string serviceEndpointPolicyDefinitionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Creates or updates a service endpoint policy definition in the specified
-        /// service endpoint policy.
-        /// </summary>
-        /// <remarks>
-        /// Creates or updates a service endpoint policy definition in the specified
-        /// service endpoint policy.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='serviceEndpointPolicyName'>
-        /// The name of the service endpoint policy.
-        /// </param>
-        /// <param name='serviceEndpointPolicyDefinitionName'>
-        /// The name of the service endpoint policy definition name.
-        /// </param>
-        /// <param name='serviceEndpointPolicyDefinitions'>
-        /// Parameters supplied to the create or update service endpoint policy
-        /// operation.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ServiceEndpointPolicyDefinition>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string serviceEndpointPolicyName, string serviceEndpointPolicyDefinitionName, ServiceEndpointPolicyDefinition serviceEndpointPolicyDefinitions, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets all service endpoint policy definitions in a service end point policy.
@@ -213,7 +216,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<ServiceEndpointPolicyDefinition>>> ListByResourceGroupNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<CommonServiceEndpointPolicyDefinition>>> ListByResourceGroupNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

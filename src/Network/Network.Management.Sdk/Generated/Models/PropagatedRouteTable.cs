@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="ids">The list of resource ids of all the RouteTables.
         /// </param>
-        public PropagatedRouteTable(System.Collections.Generic.IList<string> labels = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<SubResource> ids = default(System.Collections.Generic.IList<SubResource>))
+        public PropagatedRouteTable(System.Collections.Generic.IList<string> labels = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<CommonSubResource> ids = default(System.Collections.Generic.IList<CommonSubResource>))
 
         {
             this.Labels = labels;
@@ -53,6 +53,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the list of resource ids of all the RouteTables.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ids")]
-        public System.Collections.Generic.IList<SubResource> Ids {get; set; }
+        public System.Collections.Generic.IList<CommonSubResource> Ids {get; set; }
     }
 }

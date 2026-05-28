@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// P2SVpnGateway Resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class P2SVpnGateway : Resource
+    public partial class P2SVpnGateway : TrackedResourceWithSettableIdOptionalLocation
     {
         /// <summary>
         /// Initializes a new instance of the P2SVpnGateway class.
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="isRoutingPreferenceInternet">Enable Routing Preference property for the Public IP Interface of the
         /// P2SVpnGateway.
         /// </param>
-        public P2SVpnGateway(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), SubResource virtualHub = default(SubResource), System.Collections.Generic.IList<P2SConnectionConfiguration> p2SConnectionConfigurations = default(System.Collections.Generic.IList<P2SConnectionConfiguration>), int? vpnGatewayScaleUnit = default(int?), SubResource vpnServerConfiguration = default(SubResource), VpnClientConnectionHealth vpnClientConnectionHealth = default(VpnClientConnectionHealth), System.Collections.Generic.IList<string> customDnsServers = default(System.Collections.Generic.IList<string>), bool? isRoutingPreferenceInternet = default(bool?))
+        public P2SVpnGateway(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), CommonSubResource virtualHub = default(CommonSubResource), System.Collections.Generic.IList<P2SConnectionConfiguration> p2SConnectionConfigurations = default(System.Collections.Generic.IList<P2SConnectionConfiguration>), int? vpnGatewayScaleUnit = default(int?), CommonSubResource vpnServerConfiguration = default(CommonSubResource), VpnClientConnectionHealth vpnClientConnectionHealth = default(VpnClientConnectionHealth), System.Collections.Generic.IList<string> customDnsServers = default(System.Collections.Generic.IList<string>), bool? isRoutingPreferenceInternet = default(bool?))
 
         : base(id, name, type, location, tags)
         {
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the VirtualHub to which the gateway belongs.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.virtualHub")]
-        public SubResource VirtualHub {get; set; }
+        public CommonSubResource VirtualHub {get; set; }
 
         /// <summary>
         /// Gets or sets list of all p2s connection configurations of the gateway.
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// attached to.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.vpnServerConfiguration")]
-        public SubResource VpnServerConfiguration {get; set; }
+        public CommonSubResource VpnServerConfiguration {get; set; }
 
         /// <summary>
         /// Gets all P2S VPN clients&#39; connection health status.
