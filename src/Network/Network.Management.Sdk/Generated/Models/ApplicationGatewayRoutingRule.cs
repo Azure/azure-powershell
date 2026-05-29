@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Routing rule of an application gateway.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationGatewayRoutingRule : CommonSubResource
+    public partial class ApplicationGatewayRoutingRule : SubResource
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationGatewayRoutingRule class.
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="listener">Listener resource of the application gateway.
         /// </param>
-        public ApplicationGatewayRoutingRule(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), string ruleType = default(string), int? priority = default(int?), CommonSubResource backendAddressPool = default(CommonSubResource), CommonSubResource backendSettings = default(CommonSubResource), CommonSubResource listener = default(CommonSubResource))
+        public ApplicationGatewayRoutingRule(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), string ruleType = default(string), int? priority = default(int?), SubResource backendAddressPool = default(SubResource), SubResource backendSettings = default(SubResource), SubResource listener = default(SubResource))
 
         : base(id)
         {
@@ -119,19 +119,19 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets backend address pool resource of the application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.backendAddressPool")]
-        public CommonSubResource BackendAddressPool {get; set; }
+        public SubResource BackendAddressPool {get; set; }
 
         /// <summary>
         /// Gets or sets backend settings resource of the application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.backendSettings")]
-        public CommonSubResource BackendSettings {get; set; }
+        public SubResource BackendSettings {get; set; }
 
         /// <summary>
         /// Gets or sets listener resource of the application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.listener")]
-        public CommonSubResource Listener {get; set; }
+        public SubResource Listener {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

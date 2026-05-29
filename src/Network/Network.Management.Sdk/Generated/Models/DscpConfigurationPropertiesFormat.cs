@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the DSCP Configuration resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public DscpConfigurationPropertiesFormat(System.Collections.Generic.IList<int?> markings = default(System.Collections.Generic.IList<int?>), System.Collections.Generic.IList<QosIpRange> sourceIPRanges = default(System.Collections.Generic.IList<QosIpRange>), System.Collections.Generic.IList<QosIpRange> destinationIPRanges = default(System.Collections.Generic.IList<QosIpRange>), System.Collections.Generic.IList<QosPortRange> sourcePortRanges = default(System.Collections.Generic.IList<QosPortRange>), System.Collections.Generic.IList<QosPortRange> destinationPortRanges = default(System.Collections.Generic.IList<QosPortRange>), string protocol = default(string), System.Collections.Generic.IList<QosDefinition> qosDefinitionCollection = default(System.Collections.Generic.IList<QosDefinition>), string qosCollectionId = default(string), System.Collections.Generic.IList<CommonNetworkInterface> associatedNetworkInterfaces = default(System.Collections.Generic.IList<CommonNetworkInterface>), string resourceGuid = default(string), string provisioningState = default(string))
+        public DscpConfigurationPropertiesFormat(System.Collections.Generic.IList<int?> markings = default(System.Collections.Generic.IList<int?>), System.Collections.Generic.IList<QosIpRange> sourceIPRanges = default(System.Collections.Generic.IList<QosIpRange>), System.Collections.Generic.IList<QosIpRange> destinationIPRanges = default(System.Collections.Generic.IList<QosIpRange>), System.Collections.Generic.IList<QosPortRange> sourcePortRanges = default(System.Collections.Generic.IList<QosPortRange>), System.Collections.Generic.IList<QosPortRange> destinationPortRanges = default(System.Collections.Generic.IList<QosPortRange>), string protocol = default(string), System.Collections.Generic.IList<QosDefinition> qosDefinitionCollection = default(System.Collections.Generic.IList<QosDefinition>), string qosCollectionId = default(string), System.Collections.Generic.IList<NetworkInterface> associatedNetworkInterfaces = default(System.Collections.Generic.IList<NetworkInterface>), string resourceGuid = default(string), string provisioningState = default(string))
 
         {
             this.Markings = markings;
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets associated Network Interfaces to the DSCP Configuration.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "associatedNetworkInterfaces")]
-        public System.Collections.Generic.IList<CommonNetworkInterface> AssociatedNetworkInterfaces {get; private set; }
+        public System.Collections.Generic.IList<NetworkInterface> AssociatedNetworkInterfaces {get; private set; }
 
         /// <summary>
         /// Gets the resource GUID property of the DSCP Configuration resource.

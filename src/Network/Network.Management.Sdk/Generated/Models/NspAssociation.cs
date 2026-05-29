@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="hasProvisioningIssues">Specifies if there are provisioning issues
         /// </param>
-        public NspAssociation(string id = default(string), string name = default(string), string type = default(string), SecurityPerimeterSystemData systemData = default(SecurityPerimeterSystemData), string provisioningState = default(string), CommonSubResource privateLinkResource = default(CommonSubResource), CommonSubResource profile = default(CommonSubResource), string accessMode = default(string), string hasProvisioningIssues = default(string))
+        public NspAssociation(string id = default(string), string name = default(string), string type = default(string), SecurityPerimeterSystemData systemData = default(SecurityPerimeterSystemData), string provisioningState = default(string), SubResource privateLinkResource = default(SubResource), SubResource profile = default(SubResource), string accessMode = default(string), string hasProvisioningIssues = default(string))
 
         : base(id, name, type, systemData)
         {
@@ -83,13 +83,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the PaaS resource to be associated.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.privateLinkResource")]
-        public CommonSubResource PrivateLinkResource {get; set; }
+        public SubResource PrivateLinkResource {get; set; }
 
         /// <summary>
         /// Gets or sets profile id to which the PaaS resource is associated.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.profile")]
-        public CommonSubResource Profile {get; set; }
+        public SubResource Profile {get; set; }
 
         /// <summary>
         /// Gets or sets access mode on the association. Possible values include: &#39;Learning&#39;, &#39;Enforced&#39;, &#39;Audit&#39;

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Http listener of an application gateway.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationGatewayHttpListener : CommonSubResource
+    public partial class ApplicationGatewayHttpListener : SubResource
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationGatewayHttpListener class.
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="hostNames">List of Host names for HTTP Listener that allows special wildcard
         /// characters as well.
         /// </param>
-        public ApplicationGatewayHttpListener(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), CommonSubResource frontendIPConfiguration = default(CommonSubResource), CommonSubResource frontendPort = default(CommonSubResource), string protocol = default(string), string hostName = default(string), CommonSubResource sslCertificate = default(CommonSubResource), CommonSubResource sslProfile = default(CommonSubResource), bool? requireServerNameIndication = default(bool?), System.Collections.Generic.IList<ApplicationGatewayCustomError> customErrorConfigurations = default(System.Collections.Generic.IList<ApplicationGatewayCustomError>), CommonSubResource firewallPolicy = default(CommonSubResource), System.Collections.Generic.IList<string> hostNames = default(System.Collections.Generic.IList<string>))
+        public ApplicationGatewayHttpListener(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), SubResource frontendIPConfiguration = default(SubResource), SubResource frontendPort = default(SubResource), string protocol = default(string), string hostName = default(string), SubResource sslCertificate = default(SubResource), SubResource sslProfile = default(SubResource), bool? requireServerNameIndication = default(bool?), System.Collections.Generic.IList<ApplicationGatewayCustomError> customErrorConfigurations = default(System.Collections.Generic.IList<ApplicationGatewayCustomError>), SubResource firewallPolicy = default(SubResource), System.Collections.Generic.IList<string> hostNames = default(System.Collections.Generic.IList<string>))
 
         : base(id)
         {
@@ -128,13 +128,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets frontend IP configuration resource of an application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.frontendIPConfiguration")]
-        public CommonSubResource FrontendIPConfiguration {get; set; }
+        public SubResource FrontendIPConfiguration {get; set; }
 
         /// <summary>
         /// Gets or sets frontend port resource of an application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.frontendPort")]
-        public CommonSubResource FrontendPort {get; set; }
+        public SubResource FrontendPort {get; set; }
 
         /// <summary>
         /// Gets or sets protocol of the HTTP listener. Possible values include: &#39;Http&#39;, &#39;Https&#39;, &#39;Tcp&#39;, &#39;Tls&#39;
@@ -152,13 +152,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets sSL certificate resource of an application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.sslCertificate")]
-        public CommonSubResource SslCertificate {get; set; }
+        public SubResource SslCertificate {get; set; }
 
         /// <summary>
         /// Gets or sets sSL profile resource of the application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.sslProfile")]
-        public CommonSubResource SslProfile {get; set; }
+        public SubResource SslProfile {get; set; }
 
         /// <summary>
         /// Gets or sets applicable only if protocol is https. Enables SNI for
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets reference to the FirewallPolicy resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.firewallPolicy")]
-        public CommonSubResource FirewallPolicy {get; set; }
+        public SubResource FirewallPolicy {get; set; }
 
         /// <summary>
         /// Gets or sets list of Host names for HTTP Listener that allows special

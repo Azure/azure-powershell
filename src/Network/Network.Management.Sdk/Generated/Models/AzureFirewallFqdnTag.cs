@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Azure Firewall FQDN Tag Resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class AzureFirewallFqdnTag : CommonResource
+    public partial class AzureFirewallFqdnTag : Resource
     {
         /// <summary>
         /// Initializes a new instance of the AzureFirewallFqdnTag class.

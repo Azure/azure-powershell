@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// The application gateway private link ip configuration.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationGatewayPrivateLinkIpConfiguration : CommonSubResource
+    public partial class ApplicationGatewayPrivateLinkIpConfiguration : SubResource
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationGatewayPrivateLinkIpConfiguration class.
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="primary">Whether the ip configuration is primary or not.
         /// </param>
-        public ApplicationGatewayPrivateLinkIpConfiguration(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), CommonSubResource subnet = default(CommonSubResource), bool? primary = default(bool?))
+        public ApplicationGatewayPrivateLinkIpConfiguration(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), SubResource subnet = default(SubResource), bool? primary = default(bool?))
 
         : base(id)
         {
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets reference to the subnet resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.subnet")]
-        public CommonSubResource Subnet {get; set; }
+        public SubResource Subnet {get; set; }
 
         /// <summary>
         /// Gets or sets whether the ip configuration is primary or not.

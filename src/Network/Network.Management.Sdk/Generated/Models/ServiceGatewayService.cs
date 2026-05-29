@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="publicNatGatewayId">Azure Resource Id of public natgateway.
         /// </param>
-        public ServiceGatewayService(string name = default(string), string serviceType = default(string), bool? isDefault = default(bool?), System.Collections.Generic.IList<CommonBackendAddressPool> loadBalancerBackendPools = default(System.Collections.Generic.IList<CommonBackendAddressPool>), string publicNatGatewayId = default(string))
+        public ServiceGatewayService(string name = default(string), string serviceType = default(string), bool? isDefault = default(bool?), System.Collections.Generic.IList<BackendAddressPool> loadBalancerBackendPools = default(System.Collections.Generic.IList<BackendAddressPool>), string publicNatGatewayId = default(string))
 
         {
             this.Name = name;
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets an array of load balancer backend address pools.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.loadBalancerBackendPools")]
-        public System.Collections.Generic.IList<CommonBackendAddressPool> LoadBalancerBackendPools {get; set; }
+        public System.Collections.Generic.IList<BackendAddressPool> LoadBalancerBackendPools {get; set; }
 
         /// <summary>
         /// Gets or sets azure Resource Id of public natgateway.

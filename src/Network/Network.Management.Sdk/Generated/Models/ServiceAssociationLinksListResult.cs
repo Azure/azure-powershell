@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="nextLink">The link to the next page of items
         /// </param>
-        public ServiceAssociationLinksListResult(System.Collections.Generic.IList<CommonServiceAssociationLink> value, string nextLink = default(string))
+        public ServiceAssociationLinksListResult(System.Collections.Generic.IList<ServiceAssociationLink> value, string nextLink = default(string))
 
         {
             this.Value = value;
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the ServiceAssociationLink items on this page
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "value")]
-        public System.Collections.Generic.IList<CommonServiceAssociationLink> Value {get; set; }
+        public System.Collections.Generic.IList<ServiceAssociationLink> Value {get; set; }
 
         /// <summary>
         /// Gets the link to the next page of items

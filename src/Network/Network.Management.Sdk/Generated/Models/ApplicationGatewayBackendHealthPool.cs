@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="backendHttpSettingsCollection">List of ApplicationGatewayBackendHealthHttpSettings resources.
         /// </param>
-        public ApplicationGatewayBackendHealthPool(CommonApplicationGatewayBackendAddressPool backendAddressPool = default(CommonApplicationGatewayBackendAddressPool), System.Collections.Generic.IList<ApplicationGatewayBackendHealthHttpSettings> backendHttpSettingsCollection = default(System.Collections.Generic.IList<ApplicationGatewayBackendHealthHttpSettings>))
+        public ApplicationGatewayBackendHealthPool(ApplicationGatewayBackendAddressPool backendAddressPool = default(ApplicationGatewayBackendAddressPool), System.Collections.Generic.IList<ApplicationGatewayBackendHealthHttpSettings> backendHttpSettingsCollection = default(System.Collections.Generic.IList<ApplicationGatewayBackendHealthHttpSettings>))
 
         {
             this.BackendAddressPool = backendAddressPool;
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets reference to an ApplicationGatewayBackendAddressPool resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "backendAddressPool")]
-        public CommonApplicationGatewayBackendAddressPool BackendAddressPool {get; set; }
+        public ApplicationGatewayBackendAddressPool BackendAddressPool {get; set; }
 
         /// <summary>
         /// Gets or sets list of ApplicationGatewayBackendHealthHttpSettings resources.

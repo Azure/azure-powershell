@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// VpnSiteLink Resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class VpnSiteLink : CommonSubResourceModel
+    public partial class VpnSiteLink : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the VpnSiteLink class.

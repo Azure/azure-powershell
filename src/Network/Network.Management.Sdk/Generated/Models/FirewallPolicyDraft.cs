@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// FirewallPolicy Resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class FirewallPolicyDraft : CommonResource
+    public partial class FirewallPolicyDraft : Resource
     {
         /// <summary>
         /// Initializes a new instance of the FirewallPolicyDraft class.
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="intrusionDetection">The configuration for Intrusion detection.
         /// </param>
-        public FirewallPolicyDraft(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), DnsSettings dnsSettings = default(DnsSettings), ExplicitProxy explicitProxy = default(ExplicitProxy), CommonSubResource basePolicy = default(CommonSubResource), string threatIntelMode = default(string), FirewallPolicyThreatIntelWhitelist threatIntelWhitelist = default(FirewallPolicyThreatIntelWhitelist), FirewallPolicyInsights insights = default(FirewallPolicyInsights), FirewallPolicySnat snat = default(FirewallPolicySnat), FirewallPolicySQL sql = default(FirewallPolicySQL), FirewallPolicyIntrusionDetection intrusionDetection = default(FirewallPolicyIntrusionDetection))
+        public FirewallPolicyDraft(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), DnsSettings dnsSettings = default(DnsSettings), ExplicitProxy explicitProxy = default(ExplicitProxy), SubResource basePolicy = default(SubResource), string threatIntelMode = default(string), FirewallPolicyThreatIntelWhitelist threatIntelWhitelist = default(FirewallPolicyThreatIntelWhitelist), FirewallPolicyInsights insights = default(FirewallPolicyInsights), FirewallPolicySnat snat = default(FirewallPolicySnat), FirewallPolicySQL sql = default(FirewallPolicySQL), FirewallPolicyIntrusionDetection intrusionDetection = default(FirewallPolicyIntrusionDetection))
 
         : base(id, name, type, location, tags)
         {
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the parent firewall policy from which rules are inherited.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.basePolicy")]
-        public CommonSubResource BasePolicy {get; set; }
+        public SubResource BasePolicy {get; set; }
 
         /// <summary>
         /// Gets or sets the operation mode for Threat Intelligence. Possible values include: &#39;Alert&#39;, &#39;Deny&#39;, &#39;Off&#39;

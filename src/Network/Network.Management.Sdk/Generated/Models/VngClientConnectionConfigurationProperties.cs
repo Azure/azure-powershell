@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the VngClientConnectionConfiguration resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public VngClientConnectionConfigurationProperties(CommonAddressSpace vpnClientAddressPool, System.Collections.Generic.IList<CommonSubResource> virtualNetworkGatewayPolicyGroups, string provisioningState = default(string))
+        public VngClientConnectionConfigurationProperties(AddressSpace vpnClientAddressPool, System.Collections.Generic.IList<SubResource> virtualNetworkGatewayPolicyGroups, string provisioningState = default(string))
 
         {
             this.VpnClientAddressPool = vpnClientAddressPool;
@@ -54,13 +54,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Address space for P2S VpnClient.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vpnClientAddressPool")]
-        public CommonAddressSpace VpnClientAddressPool {get; set; }
+        public AddressSpace VpnClientAddressPool {get; set; }
 
         /// <summary>
         /// Gets or sets list of references to virtualNetworkGatewayPolicyGroups
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "virtualNetworkGatewayPolicyGroups")]
-        public System.Collections.Generic.IList<CommonSubResource> VirtualNetworkGatewayPolicyGroups {get; set; }
+        public System.Collections.Generic.IList<SubResource> VirtualNetworkGatewayPolicyGroups {get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the VngClientConnectionConfiguration

@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="resiliencyModel">Property to indicate if the Express Route Gateway has resiliency model of
         /// MultiHomed or SingleHomed
         /// Possible values include: &#39;SingleHomed&#39;, &#39;MultiHomed&#39;</param>
-        public VirtualNetworkGatewayPropertiesFormat(VirtualNetworkGatewayAutoScaleConfiguration autoScaleConfiguration = default(VirtualNetworkGatewayAutoScaleConfiguration), System.Collections.Generic.IList<VirtualNetworkGatewayIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<VirtualNetworkGatewayIPConfiguration>), string gatewayType = default(string), string vpnType = default(string), string vpnGatewayGeneration = default(string), bool? enableBgp = default(bool?), bool? enablePrivateIPAddress = default(bool?), VirtualNetworkGatewayMigrationStatus virtualNetworkGatewayMigrationStatus = default(VirtualNetworkGatewayMigrationStatus), bool? active = default(bool?), bool? enableHighBandwidthVpnGateway = default(bool?), bool? disableIPSecReplayProtection = default(bool?), CommonSubResource gatewayDefaultSite = default(CommonSubResource), VirtualNetworkGatewaySku sku = default(VirtualNetworkGatewaySku), VpnClientConfiguration vpnClientConfiguration = default(VpnClientConfiguration), System.Collections.Generic.IList<VirtualNetworkGatewayPolicyGroup> virtualNetworkGatewayPolicyGroups = default(System.Collections.Generic.IList<VirtualNetworkGatewayPolicyGroup>), BgpSettings bgpSettings = default(BgpSettings), CommonAddressSpace customRoutes = default(CommonAddressSpace), string resourceGuid = default(string), string provisioningState = default(string), bool? enableDnsForwarding = default(bool?), string inboundDnsForwardingEndpoint = default(string), string vNetExtendedLocationResourceId = default(string), System.Collections.Generic.IList<VirtualNetworkGatewayNatRule> natRules = default(System.Collections.Generic.IList<VirtualNetworkGatewayNatRule>), bool? enableBgpRouteTranslationForNat = default(bool?), bool? allowVirtualWanTraffic = default(bool?), bool? allowRemoteVnetTraffic = default(bool?), string adminState = default(string), string resiliencyModel = default(string))
+        public VirtualNetworkGatewayPropertiesFormat(VirtualNetworkGatewayAutoScaleConfiguration autoScaleConfiguration = default(VirtualNetworkGatewayAutoScaleConfiguration), System.Collections.Generic.IList<VirtualNetworkGatewayIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<VirtualNetworkGatewayIPConfiguration>), string gatewayType = default(string), string vpnType = default(string), string vpnGatewayGeneration = default(string), bool? enableBgp = default(bool?), bool? enablePrivateIPAddress = default(bool?), VirtualNetworkGatewayMigrationStatus virtualNetworkGatewayMigrationStatus = default(VirtualNetworkGatewayMigrationStatus), bool? active = default(bool?), bool? enableHighBandwidthVpnGateway = default(bool?), bool? disableIPSecReplayProtection = default(bool?), SubResource gatewayDefaultSite = default(SubResource), VirtualNetworkGatewaySku sku = default(VirtualNetworkGatewaySku), VpnClientConfiguration vpnClientConfiguration = default(VpnClientConfiguration), System.Collections.Generic.IList<VirtualNetworkGatewayPolicyGroup> virtualNetworkGatewayPolicyGroups = default(System.Collections.Generic.IList<VirtualNetworkGatewayPolicyGroup>), BgpSettings bgpSettings = default(BgpSettings), AddressSpace customRoutes = default(AddressSpace), string resourceGuid = default(string), string provisioningState = default(string), bool? enableDnsForwarding = default(bool?), string inboundDnsForwardingEndpoint = default(string), string vNetExtendedLocationResourceId = default(string), System.Collections.Generic.IList<VirtualNetworkGatewayNatRule> natRules = default(System.Collections.Generic.IList<VirtualNetworkGatewayNatRule>), bool? enableBgpRouteTranslationForNat = default(bool?), bool? allowVirtualWanTraffic = default(bool?), bool? allowRemoteVnetTraffic = default(bool?), string adminState = default(string), string resiliencyModel = default(string))
 
         {
             this.AutoScaleConfiguration = autoScaleConfiguration;
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// case of removing existing default site setting.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "gatewayDefaultSite")]
-        public CommonSubResource GatewayDefaultSite {get; set; }
+        public SubResource GatewayDefaultSite {get; set; }
 
         /// <summary>
         /// Gets or sets the reference to the VirtualNetworkGatewaySku resource which
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// network gateway and VpnClient.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "customRoutes")]
-        public CommonAddressSpace CustomRoutes {get; set; }
+        public AddressSpace CustomRoutes {get; set; }
 
         /// <summary>
         /// Gets the resource GUID property of the virtual network gateway resource.

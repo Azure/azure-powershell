@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonPublicIPAddress> ListAll(this IPublicIPAddressesOperations operations)
+        public static Microsoft.Rest.Azure.IPage<PublicIPAddress> ListAll(this IPublicIPAddressesOperations operations)
         {
                 return ((IPublicIPAddressesOperations)operations).ListAllAsync().GetAwaiter().GetResult();
         }
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonPublicIPAddress>> ListAllAsync(this IPublicIPAddressesOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PublicIPAddress>> ListAllAsync(this IPublicIPAddressesOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListAllWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
             {
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonPublicIPAddress> List(this IPublicIPAddressesOperations operations, string resourceGroupName)
+        public static Microsoft.Rest.Azure.IPage<PublicIPAddress> List(this IPublicIPAddressesOperations operations, string resourceGroupName)
         {
                 return ((IPublicIPAddressesOperations)operations).ListAsync(resourceGroupName).GetAwaiter().GetResult();
         }
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonPublicIPAddress>> ListAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PublicIPAddress>> ListAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='expand'>
         /// Expands referenced resources.
         /// </param>
-        public static CommonPublicIPAddress Get(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, string expand = default(string))
+        public static PublicIPAddress Get(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, string expand = default(string))
         {
                 return ((IPublicIPAddressesOperations)operations).GetAsync(resourceGroupName, publicIpAddressName, expand).GetAwaiter().GetResult();
         }
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonPublicIPAddress> GetAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PublicIPAddress> GetAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, publicIpAddressName, expand, null, cancellationToken).ConfigureAwait(false))
             {
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='publicIpAddressName'>
         /// The name of the public IP address.
         /// </param>
-        public static CommonPublicIPAddress CreateOrUpdate(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, CommonPublicIPAddress parameters)
+        public static PublicIPAddress CreateOrUpdate(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, PublicIPAddress parameters)
         {
                 return ((IPublicIPAddressesOperations)operations).CreateOrUpdateAsync(resourceGroupName, publicIpAddressName, parameters).GetAwaiter().GetResult();
         }
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonPublicIPAddress> CreateOrUpdateAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, CommonPublicIPAddress parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PublicIPAddress> CreateOrUpdateAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, PublicIPAddress parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, publicIpAddressName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='publicIpAddressName'>
         /// The name of the public IP address.
         /// </param>
-        public static CommonPublicIPAddress UpdateTags(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, TagsObject parameters)
+        public static PublicIPAddress UpdateTags(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, TagsObject parameters)
         {
                 return ((IPublicIPAddressesOperations)operations).UpdateTagsAsync(resourceGroupName, publicIpAddressName, parameters).GetAwaiter().GetResult();
         }
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonPublicIPAddress> UpdateTagsAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PublicIPAddress> UpdateTagsAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, publicIpAddressName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='publicIpAddressName'>
         /// The name of the public IP address.
         /// </param>
-        public static CommonPublicIPAddress DisassociateCloudServiceReservedPublicIp(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, DisassociateCloudServicePublicIpRequest parameters)
+        public static PublicIPAddress DisassociateCloudServiceReservedPublicIp(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, DisassociateCloudServicePublicIpRequest parameters)
         {
                 return ((IPublicIPAddressesOperations)operations).DisassociateCloudServiceReservedPublicIpAsync(resourceGroupName, publicIpAddressName, parameters).GetAwaiter().GetResult();
         }
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonPublicIPAddress> DisassociateCloudServiceReservedPublicIpAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, DisassociateCloudServicePublicIpRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PublicIPAddress> DisassociateCloudServiceReservedPublicIpAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, DisassociateCloudServicePublicIpRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.DisassociateCloudServiceReservedPublicIpWithHttpMessagesAsync(resourceGroupName, publicIpAddressName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='publicIpAddressName'>
         /// The name of the public IP address.
         /// </param>
-        public static CommonPublicIPAddress ReserveCloudServicePublicIpAddress(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, ReserveCloudServicePublicIpAddressRequest parameters)
+        public static PublicIPAddress ReserveCloudServicePublicIpAddress(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, ReserveCloudServicePublicIpAddressRequest parameters)
         {
                 return ((IPublicIPAddressesOperations)operations).ReserveCloudServicePublicIpAddressAsync(resourceGroupName, publicIpAddressName, parameters).GetAwaiter().GetResult();
         }
@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonPublicIPAddress> ReserveCloudServicePublicIpAddressAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, ReserveCloudServicePublicIpAddressRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PublicIPAddress> ReserveCloudServicePublicIpAddressAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, ReserveCloudServicePublicIpAddressRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ReserveCloudServicePublicIpAddressWithHttpMessagesAsync(resourceGroupName, publicIpAddressName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cloudServiceName'>
         /// The name of the cloud service.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonPublicIPAddress> ListCloudServicePublicIPAddresses(this IPublicIPAddressesOperations operations, string resourceGroupName, string cloudServiceName)
+        public static Microsoft.Rest.Azure.IPage<PublicIPAddress> ListCloudServicePublicIPAddresses(this IPublicIPAddressesOperations operations, string resourceGroupName, string cloudServiceName)
         {
                 return ((IPublicIPAddressesOperations)operations).ListCloudServicePublicIPAddressesAsync(resourceGroupName, cloudServiceName).GetAwaiter().GetResult();
         }
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonPublicIPAddress>> ListCloudServicePublicIPAddressesAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string cloudServiceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PublicIPAddress>> ListCloudServicePublicIPAddressesAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string cloudServiceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListCloudServicePublicIPAddressesWithHttpMessagesAsync(resourceGroupName, cloudServiceName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -415,7 +415,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='ipConfigurationName'>
         /// The name of the IP configuration.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonPublicIPAddress> ListCloudServiceRoleInstancePublicIPAddresses(this IPublicIPAddressesOperations operations, string resourceGroupName, string cloudServiceName, string roleInstanceName, string networkInterfaceName, string ipConfigurationName)
+        public static Microsoft.Rest.Azure.IPage<PublicIPAddress> ListCloudServiceRoleInstancePublicIPAddresses(this IPublicIPAddressesOperations operations, string resourceGroupName, string cloudServiceName, string roleInstanceName, string networkInterfaceName, string ipConfigurationName)
         {
                 return ((IPublicIPAddressesOperations)operations).ListCloudServiceRoleInstancePublicIPAddressesAsync(resourceGroupName, cloudServiceName, roleInstanceName, networkInterfaceName, ipConfigurationName).GetAwaiter().GetResult();
         }
@@ -445,7 +445,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonPublicIPAddress>> ListCloudServiceRoleInstancePublicIPAddressesAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string cloudServiceName, string roleInstanceName, string networkInterfaceName, string ipConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PublicIPAddress>> ListCloudServiceRoleInstancePublicIPAddressesAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string cloudServiceName, string roleInstanceName, string networkInterfaceName, string ipConfigurationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListCloudServiceRoleInstancePublicIPAddressesWithHttpMessagesAsync(resourceGroupName, cloudServiceName, roleInstanceName, networkInterfaceName, ipConfigurationName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -479,7 +479,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='expand'>
         /// Expands referenced resources.
         /// </param>
-        public static CommonPublicIPAddress GetCloudServicePublicIPAddress(this IPublicIPAddressesOperations operations, string resourceGroupName, string cloudServiceName, string roleInstanceName, string networkInterfaceName, string ipConfigurationName, string publicIpAddressName, string expand = default(string))
+        public static PublicIPAddress GetCloudServicePublicIPAddress(this IPublicIPAddressesOperations operations, string resourceGroupName, string cloudServiceName, string roleInstanceName, string networkInterfaceName, string ipConfigurationName, string publicIpAddressName, string expand = default(string))
         {
                 return ((IPublicIPAddressesOperations)operations).GetCloudServicePublicIPAddressAsync(resourceGroupName, cloudServiceName, roleInstanceName, networkInterfaceName, ipConfigurationName, publicIpAddressName, expand).GetAwaiter().GetResult();
         }
@@ -514,7 +514,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonPublicIPAddress> GetCloudServicePublicIPAddressAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string cloudServiceName, string roleInstanceName, string networkInterfaceName, string ipConfigurationName, string publicIpAddressName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PublicIPAddress> GetCloudServicePublicIPAddressAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string cloudServiceName, string roleInstanceName, string networkInterfaceName, string ipConfigurationName, string publicIpAddressName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetCloudServicePublicIPAddressWithHttpMessagesAsync(resourceGroupName, cloudServiceName, roleInstanceName, networkInterfaceName, ipConfigurationName, publicIpAddressName, expand, null, cancellationToken).ConfigureAwait(false))
             {
@@ -533,7 +533,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='publicIpAddressName'>
         /// The name of the public IP address.
         /// </param>
-        public static CommonPublicIPAddress BeginCreateOrUpdate(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, CommonPublicIPAddress parameters)
+        public static PublicIPAddress BeginCreateOrUpdate(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, PublicIPAddress parameters)
         {
                 return ((IPublicIPAddressesOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, publicIpAddressName, parameters).GetAwaiter().GetResult();
         }
@@ -553,7 +553,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonPublicIPAddress> BeginCreateOrUpdateAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, CommonPublicIPAddress parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PublicIPAddress> BeginCreateOrUpdateAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, PublicIPAddress parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, publicIpAddressName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -648,7 +648,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='publicIpAddressName'>
         /// The name of the public IP address.
         /// </param>
-        public static CommonPublicIPAddress BeginDisassociateCloudServiceReservedPublicIp(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, DisassociateCloudServicePublicIpRequest parameters)
+        public static PublicIPAddress BeginDisassociateCloudServiceReservedPublicIp(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, DisassociateCloudServicePublicIpRequest parameters)
         {
                 return ((IPublicIPAddressesOperations)operations).BeginDisassociateCloudServiceReservedPublicIpAsync(resourceGroupName, publicIpAddressName, parameters).GetAwaiter().GetResult();
         }
@@ -669,7 +669,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonPublicIPAddress> BeginDisassociateCloudServiceReservedPublicIpAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, DisassociateCloudServicePublicIpRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PublicIPAddress> BeginDisassociateCloudServiceReservedPublicIpAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, DisassociateCloudServicePublicIpRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginDisassociateCloudServiceReservedPublicIpWithHttpMessagesAsync(resourceGroupName, publicIpAddressName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -690,7 +690,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='publicIpAddressName'>
         /// The name of the public IP address.
         /// </param>
-        public static CommonPublicIPAddress BeginReserveCloudServicePublicIpAddress(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, ReserveCloudServicePublicIpAddressRequest parameters)
+        public static PublicIPAddress BeginReserveCloudServicePublicIpAddress(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, ReserveCloudServicePublicIpAddressRequest parameters)
         {
                 return ((IPublicIPAddressesOperations)operations).BeginReserveCloudServicePublicIpAddressAsync(resourceGroupName, publicIpAddressName, parameters).GetAwaiter().GetResult();
         }
@@ -712,7 +712,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonPublicIPAddress> BeginReserveCloudServicePublicIpAddressAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, ReserveCloudServicePublicIpAddressRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<PublicIPAddress> BeginReserveCloudServicePublicIpAddressAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, ReserveCloudServicePublicIpAddressRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginReserveCloudServicePublicIpAddressWithHttpMessagesAsync(resourceGroupName, publicIpAddressName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -728,7 +728,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonPublicIPAddress> ListAllNext(this IPublicIPAddressesOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<PublicIPAddress> ListAllNext(this IPublicIPAddressesOperations operations, string nextPageLink)
         {
                 return ((IPublicIPAddressesOperations)operations).ListAllNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -745,7 +745,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonPublicIPAddress>> ListAllNextAsync(this IPublicIPAddressesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PublicIPAddress>> ListAllNextAsync(this IPublicIPAddressesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListAllNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
@@ -761,7 +761,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonPublicIPAddress> ListNext(this IPublicIPAddressesOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<PublicIPAddress> ListNext(this IPublicIPAddressesOperations operations, string nextPageLink)
         {
                 return ((IPublicIPAddressesOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -778,7 +778,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonPublicIPAddress>> ListNextAsync(this IPublicIPAddressesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PublicIPAddress>> ListNextAsync(this IPublicIPAddressesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
@@ -794,7 +794,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonPublicIPAddress> ListCloudServicePublicIPAddressesNext(this IPublicIPAddressesOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<PublicIPAddress> ListCloudServicePublicIPAddressesNext(this IPublicIPAddressesOperations operations, string nextPageLink)
         {
                 return ((IPublicIPAddressesOperations)operations).ListCloudServicePublicIPAddressesNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -811,7 +811,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonPublicIPAddress>> ListCloudServicePublicIPAddressesNextAsync(this IPublicIPAddressesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PublicIPAddress>> ListCloudServicePublicIPAddressesNextAsync(this IPublicIPAddressesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListCloudServicePublicIPAddressesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
@@ -828,7 +828,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonPublicIPAddress> ListCloudServiceRoleInstancePublicIPAddressesNext(this IPublicIPAddressesOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<PublicIPAddress> ListCloudServiceRoleInstancePublicIPAddressesNext(this IPublicIPAddressesOperations operations, string nextPageLink)
         {
                 return ((IPublicIPAddressesOperations)operations).ListCloudServiceRoleInstancePublicIPAddressesNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -846,7 +846,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonPublicIPAddress>> ListCloudServiceRoleInstancePublicIPAddressesNextAsync(this IPublicIPAddressesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PublicIPAddress>> ListCloudServiceRoleInstancePublicIPAddressesNextAsync(this IPublicIPAddressesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListCloudServiceRoleInstancePublicIPAddressesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// A web application firewall rule set.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationGatewayFirewallRuleSet : CommonResource
+    public partial class ApplicationGatewayFirewallRuleSet : Resource
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationGatewayFirewallRuleSet class.

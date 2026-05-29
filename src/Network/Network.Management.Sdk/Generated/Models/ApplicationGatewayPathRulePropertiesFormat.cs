@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="firewallPolicy">Reference to the FirewallPolicy resource.
         /// </param>
-        public ApplicationGatewayPathRulePropertiesFormat(System.Collections.Generic.IList<string> paths = default(System.Collections.Generic.IList<string>), CommonSubResource backendAddressPool = default(CommonSubResource), CommonSubResource backendHttpSettings = default(CommonSubResource), CommonSubResource redirectConfiguration = default(CommonSubResource), CommonSubResource rewriteRuleSet = default(CommonSubResource), CommonSubResource loadDistributionPolicy = default(CommonSubResource), string provisioningState = default(string), CommonSubResource firewallPolicy = default(CommonSubResource))
+        public ApplicationGatewayPathRulePropertiesFormat(System.Collections.Generic.IList<string> paths = default(System.Collections.Generic.IList<string>), SubResource backendAddressPool = default(SubResource), SubResource backendHttpSettings = default(SubResource), SubResource redirectConfiguration = default(SubResource), SubResource rewriteRuleSet = default(SubResource), SubResource loadDistributionPolicy = default(SubResource), string provisioningState = default(string), SubResource firewallPolicy = default(SubResource))
 
         {
             this.Paths = paths;
@@ -78,31 +78,31 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets backend address pool resource of URL path map path rule.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "backendAddressPool")]
-        public CommonSubResource BackendAddressPool {get; set; }
+        public SubResource BackendAddressPool {get; set; }
 
         /// <summary>
         /// Gets or sets backend http settings resource of URL path map path rule.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "backendHttpSettings")]
-        public CommonSubResource BackendHttpSettings {get; set; }
+        public SubResource BackendHttpSettings {get; set; }
 
         /// <summary>
         /// Gets or sets redirect configuration resource of URL path map path rule.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "redirectConfiguration")]
-        public CommonSubResource RedirectConfiguration {get; set; }
+        public SubResource RedirectConfiguration {get; set; }
 
         /// <summary>
         /// Gets or sets rewrite rule set resource of URL path map path rule.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "rewriteRuleSet")]
-        public CommonSubResource RewriteRuleSet {get; set; }
+        public SubResource RewriteRuleSet {get; set; }
 
         /// <summary>
         /// Gets or sets load Distribution Policy resource of URL path map path rule.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "loadDistributionPolicy")]
-        public CommonSubResource LoadDistributionPolicy {get; set; }
+        public SubResource LoadDistributionPolicy {get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the path rule resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
@@ -114,6 +114,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets reference to the FirewallPolicy resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "firewallPolicy")]
-        public CommonSubResource FirewallPolicy {get; set; }
+        public SubResource FirewallPolicy {get; set; }
     }
 }

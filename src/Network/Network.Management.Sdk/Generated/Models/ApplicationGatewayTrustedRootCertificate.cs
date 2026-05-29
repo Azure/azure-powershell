@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Trusted Root certificates of an application gateway.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationGatewayTrustedRootCertificate : CommonSubResource
+    public partial class ApplicationGatewayTrustedRootCertificate : SubResource
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationGatewayTrustedRootCertificate class.

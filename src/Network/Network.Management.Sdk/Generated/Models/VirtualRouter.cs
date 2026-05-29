@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// VirtualRouter Resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class VirtualRouter : CommonResource
+    public partial class VirtualRouter : Resource
     {
         /// <summary>
         /// Initializes a new instance of the VirtualRouter class.
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="peerings">List of references to VirtualRouterPeerings.
         /// </param>
-        public VirtualRouter(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), long? virtualRouterAsn = default(long?), System.Collections.Generic.IList<string> virtualRouterIps = default(System.Collections.Generic.IList<string>), CommonSubResource hostedSubnet = default(CommonSubResource), CommonSubResource hostedGateway = default(CommonSubResource), System.Collections.Generic.IList<CommonSubResource> peerings = default(System.Collections.Generic.IList<CommonSubResource>))
+        public VirtualRouter(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), long? virtualRouterAsn = default(long?), System.Collections.Generic.IList<string> virtualRouterIps = default(System.Collections.Generic.IList<string>), SubResource hostedSubnet = default(SubResource), SubResource hostedGateway = default(SubResource), System.Collections.Generic.IList<SubResource> peerings = default(System.Collections.Generic.IList<SubResource>))
 
         : base(id, name, type, location, tags)
         {
@@ -110,19 +110,19 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the Subnet on which VirtualRouter is hosted.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.hostedSubnet")]
-        public CommonSubResource HostedSubnet {get; set; }
+        public SubResource HostedSubnet {get; set; }
 
         /// <summary>
         /// Gets or sets the Gateway on which VirtualRouter is hosted.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.hostedGateway")]
-        public CommonSubResource HostedGateway {get; set; }
+        public SubResource HostedGateway {get; set; }
 
         /// <summary>
         /// Gets list of references to VirtualRouterPeerings.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.peerings")]
-        public System.Collections.Generic.IList<CommonSubResource> Peerings {get; private set; }
+        public System.Collections.Generic.IList<SubResource> Peerings {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

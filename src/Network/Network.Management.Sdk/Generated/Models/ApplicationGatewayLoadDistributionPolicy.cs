@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Load Distribution Policy of an application gateway.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationGatewayLoadDistributionPolicy : CommonSubResource
+    public partial class ApplicationGatewayLoadDistributionPolicy : SubResource
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationGatewayLoadDistributionPolicy class.

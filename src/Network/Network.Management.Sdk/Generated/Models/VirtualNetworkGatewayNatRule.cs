@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// VirtualNetworkGatewayNatRule Resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class VirtualNetworkGatewayNatRule : CommonSubResourceModel
+    public partial class VirtualNetworkGatewayNatRule : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the VirtualNetworkGatewayNatRule class.

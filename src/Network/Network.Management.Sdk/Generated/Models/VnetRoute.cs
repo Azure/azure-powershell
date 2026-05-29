@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="bgpConnections">The list of references to HubBgpConnection objects.
         /// </param>
-        public VnetRoute(StaticRoutesConfig staticRoutesConfig = default(StaticRoutesConfig), System.Collections.Generic.IList<StaticRoute> staticRoutes = default(System.Collections.Generic.IList<StaticRoute>), System.Collections.Generic.IList<CommonSubResource> bgpConnections = default(System.Collections.Generic.IList<CommonSubResource>))
+        public VnetRoute(StaticRoutesConfig staticRoutesConfig = default(StaticRoutesConfig), System.Collections.Generic.IList<StaticRoute> staticRoutes = default(System.Collections.Generic.IList<StaticRoute>), System.Collections.Generic.IList<SubResource> bgpConnections = default(System.Collections.Generic.IList<SubResource>))
 
         {
             this.StaticRoutesConfig = staticRoutesConfig;
@@ -64,6 +64,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets the list of references to HubBgpConnection objects.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "bgpConnections")]
-        public System.Collections.Generic.IList<CommonSubResource> BgpConnections {get; private set; }
+        public System.Collections.Generic.IList<SubResource> BgpConnections {get; private set; }
     }
 }

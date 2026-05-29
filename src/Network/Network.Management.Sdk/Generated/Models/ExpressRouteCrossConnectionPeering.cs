@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Peering in an ExpressRoute Cross Connection resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ExpressRouteCrossConnectionPeering : CommonSubResource
+    public partial class ExpressRouteCrossConnectionPeering : SubResource
     {
         /// <summary>
         /// Initializes a new instance of the ExpressRouteCrossConnectionPeering class.

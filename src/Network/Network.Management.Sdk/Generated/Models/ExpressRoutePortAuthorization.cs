@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// ExpressRoutePort Authorization resource definition.
     /// </remarks>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ExpressRoutePortAuthorization : CommonSubResourceModel
+    public partial class ExpressRoutePortAuthorization : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the ExpressRoutePortAuthorization class.

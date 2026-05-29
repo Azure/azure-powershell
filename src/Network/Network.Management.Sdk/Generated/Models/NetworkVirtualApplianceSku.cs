@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Definition of the NetworkVirtualApplianceSkus resource.
     /// </remarks>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class NetworkVirtualApplianceSku : CommonResource
+    public partial class NetworkVirtualApplianceSku : Resource
     {
         /// <summary>
         /// Initializes a new instance of the NetworkVirtualApplianceSku class.

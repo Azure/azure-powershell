@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class PeerExpressRouteCircuitConnection : CommonSubResourceModel
+    public partial class PeerExpressRouteCircuitConnection : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the PeerExpressRouteCircuitConnection class.
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="authResourceGuid">The resource guid of the authorization used for the express route circuit
         /// connection.
         /// </param>
-        public PeerExpressRouteCircuitConnection(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), CommonSubResource expressRouteCircuitPeering = default(CommonSubResource), CommonSubResource peerExpressRouteCircuitPeering = default(CommonSubResource), string addressPrefix = default(string), string circuitConnectionStatus = default(string), string connectionName = default(string), string authResourceGuid = default(string))
+        public PeerExpressRouteCircuitConnection(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), SubResource expressRouteCircuitPeering = default(SubResource), SubResource peerExpressRouteCircuitPeering = default(SubResource), string addressPrefix = default(string), string circuitConnectionStatus = default(string), string connectionName = default(string), string authResourceGuid = default(string))
 
         : base(id, name, type)
         {
@@ -102,14 +102,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// the circuit.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.expressRouteCircuitPeering")]
-        public CommonSubResource ExpressRouteCircuitPeering {get; set; }
+        public SubResource ExpressRouteCircuitPeering {get; set; }
 
         /// <summary>
         /// Gets or sets reference to Express Route Circuit Private Peering Resource of
         /// the peered circuit.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.peerExpressRouteCircuitPeering")]
-        public CommonSubResource PeerExpressRouteCircuitPeering {get; set; }
+        public SubResource PeerExpressRouteCircuitPeering {get; set; }
 
         /// <summary>
         /// Gets or sets /29 IP address space to carve out Customer addresses for

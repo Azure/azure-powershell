@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="type">The type of the VirtualWAN.
         /// </param>
-        public VirtualWanProperties(bool? disableVpnEncryption = default(bool?), System.Collections.Generic.IList<CommonSubResource> virtualHubs = default(System.Collections.Generic.IList<CommonSubResource>), System.Collections.Generic.IList<CommonSubResource> vpnSites = default(System.Collections.Generic.IList<CommonSubResource>), bool? allowBranchToBranchTraffic = default(bool?), bool? allowVnetToVnetTraffic = default(bool?), string office365LocalBreakoutCategory = default(string), string provisioningState = default(string), string type = default(string))
+        public VirtualWanProperties(bool? disableVpnEncryption = default(bool?), System.Collections.Generic.IList<SubResource> virtualHubs = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> vpnSites = default(System.Collections.Generic.IList<SubResource>), bool? allowBranchToBranchTraffic = default(bool?), bool? allowVnetToVnetTraffic = default(bool?), string office365LocalBreakoutCategory = default(string), string provisioningState = default(string), string type = default(string))
 
         {
             this.DisableVpnEncryption = disableVpnEncryption;
@@ -78,13 +78,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets list of VirtualHubs in the VirtualWAN.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "virtualHubs")]
-        public System.Collections.Generic.IList<CommonSubResource> VirtualHubs {get; private set; }
+        public System.Collections.Generic.IList<SubResource> VirtualHubs {get; private set; }
 
         /// <summary>
         /// Gets list of VpnSites in the VirtualWAN.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vpnSites")]
-        public System.Collections.Generic.IList<CommonSubResource> VpnSites {get; private set; }
+        public System.Collections.Generic.IList<SubResource> VpnSites {get; private set; }
 
         /// <summary>
         /// Gets or sets true if branch to branch traffic is allowed.

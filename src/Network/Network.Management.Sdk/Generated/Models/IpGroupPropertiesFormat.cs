@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="firewallPolicies">List of references to Firewall Policies resources that this IpGroups is
         /// associated with.
         /// </param>
-        public IpGroupPropertiesFormat(string provisioningState = default(string), System.Collections.Generic.IList<string> ipAddresses = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<CommonSubResource> firewalls = default(System.Collections.Generic.IList<CommonSubResource>), System.Collections.Generic.IList<CommonSubResource> firewallPolicies = default(System.Collections.Generic.IList<CommonSubResource>))
+        public IpGroupPropertiesFormat(string provisioningState = default(string), System.Collections.Generic.IList<string> ipAddresses = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<SubResource> firewalls = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> firewallPolicies = default(System.Collections.Generic.IList<SubResource>))
 
         {
             this.ProvisioningState = provisioningState;
@@ -71,13 +71,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// associated with.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "firewalls")]
-        public System.Collections.Generic.IList<CommonSubResource> Firewalls {get; private set; }
+        public System.Collections.Generic.IList<SubResource> Firewalls {get; private set; }
 
         /// <summary>
         /// Gets list of references to Firewall Policies resources that this IpGroups
         /// is associated with.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "firewallPolicies")]
-        public System.Collections.Generic.IList<CommonSubResource> FirewallPolicies {get; private set; }
+        public System.Collections.Generic.IList<SubResource> FirewallPolicies {get; private set; }
     }
 }

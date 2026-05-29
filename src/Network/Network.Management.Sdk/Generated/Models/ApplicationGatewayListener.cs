@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Listener of an application gateway.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationGatewayListener : CommonSubResource
+    public partial class ApplicationGatewayListener : SubResource
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationGatewayListener class.
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="hostNames">List of Server Name Indications(SNI) for TLS Multi-site Listener that
         /// allows special wildcard characters as well.
         /// </param>
-        public ApplicationGatewayListener(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), CommonSubResource frontendIPConfiguration = default(CommonSubResource), CommonSubResource frontendPort = default(CommonSubResource), string protocol = default(string), CommonSubResource sslCertificate = default(CommonSubResource), CommonSubResource sslProfile = default(CommonSubResource), System.Collections.Generic.IList<string> hostNames = default(System.Collections.Generic.IList<string>))
+        public ApplicationGatewayListener(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), SubResource frontendIPConfiguration = default(SubResource), SubResource frontendPort = default(SubResource), string protocol = default(string), SubResource sslCertificate = default(SubResource), SubResource sslProfile = default(SubResource), System.Collections.Generic.IList<string> hostNames = default(System.Collections.Generic.IList<string>))
 
         : base(id)
         {
@@ -112,13 +112,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets frontend IP configuration resource of an application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.frontendIPConfiguration")]
-        public CommonSubResource FrontendIPConfiguration {get; set; }
+        public SubResource FrontendIPConfiguration {get; set; }
 
         /// <summary>
         /// Gets or sets frontend port resource of an application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.frontendPort")]
-        public CommonSubResource FrontendPort {get; set; }
+        public SubResource FrontendPort {get; set; }
 
         /// <summary>
         /// Gets or sets protocol of the listener. Possible values include: &#39;Http&#39;, &#39;Https&#39;, &#39;Tcp&#39;, &#39;Tls&#39;
@@ -130,13 +130,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets sSL certificate resource of an application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.sslCertificate")]
-        public CommonSubResource SslCertificate {get; set; }
+        public SubResource SslCertificate {get; set; }
 
         /// <summary>
         /// Gets or sets sSL profile resource of the application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.sslProfile")]
-        public CommonSubResource SslProfile {get; set; }
+        public SubResource SslProfile {get; set; }
 
         /// <summary>
         /// Gets or sets list of Server Name Indications(SNI) for TLS Multi-site

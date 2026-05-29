@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the request routing rule resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public ApplicationGatewayRequestRoutingRulePropertiesFormat(string ruleType = default(string), int? priority = default(int?), CommonSubResource backendAddressPool = default(CommonSubResource), CommonSubResource backendHttpSettings = default(CommonSubResource), CommonSubResource httpListener = default(CommonSubResource), CommonSubResource urlPathMap = default(CommonSubResource), CommonSubResource rewriteRuleSet = default(CommonSubResource), CommonSubResource redirectConfiguration = default(CommonSubResource), CommonSubResource loadDistributionPolicy = default(CommonSubResource), CommonSubResource entraJwtValidationConfig = default(CommonSubResource), string provisioningState = default(string))
+        public ApplicationGatewayRequestRoutingRulePropertiesFormat(string ruleType = default(string), int? priority = default(int?), SubResource backendAddressPool = default(SubResource), SubResource backendHttpSettings = default(SubResource), SubResource httpListener = default(SubResource), SubResource urlPathMap = default(SubResource), SubResource rewriteRuleSet = default(SubResource), SubResource redirectConfiguration = default(SubResource), SubResource loadDistributionPolicy = default(SubResource), SubResource entraJwtValidationConfig = default(SubResource), string provisioningState = default(string))
 
         {
             this.RuleType = ruleType;
@@ -96,51 +96,51 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets backend address pool resource of the application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "backendAddressPool")]
-        public CommonSubResource BackendAddressPool {get; set; }
+        public SubResource BackendAddressPool {get; set; }
 
         /// <summary>
         /// Gets or sets backend http settings resource of the application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "backendHttpSettings")]
-        public CommonSubResource BackendHttpSettings {get; set; }
+        public SubResource BackendHttpSettings {get; set; }
 
         /// <summary>
         /// Gets or sets http listener resource of the application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "httpListener")]
-        public CommonSubResource HttpListener {get; set; }
+        public SubResource HttpListener {get; set; }
 
         /// <summary>
         /// Gets or sets uRL path map resource of the application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "urlPathMap")]
-        public CommonSubResource UrlPathMap {get; set; }
+        public SubResource UrlPathMap {get; set; }
 
         /// <summary>
         /// Gets or sets rewrite Rule Set resource in Basic rule of the application
         /// gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "rewriteRuleSet")]
-        public CommonSubResource RewriteRuleSet {get; set; }
+        public SubResource RewriteRuleSet {get; set; }
 
         /// <summary>
         /// Gets or sets redirect configuration resource of the application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "redirectConfiguration")]
-        public CommonSubResource RedirectConfiguration {get; set; }
+        public SubResource RedirectConfiguration {get; set; }
 
         /// <summary>
         /// Gets or sets load Distribution Policy resource of the application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "loadDistributionPolicy")]
-        public CommonSubResource LoadDistributionPolicy {get; set; }
+        public SubResource LoadDistributionPolicy {get; set; }
 
         /// <summary>
         /// Gets or sets entra JWT validation configuration resource of the application
         /// gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "entraJWTValidationConfig")]
-        public CommonSubResource EntraJwtValidationConfig {get; set; }
+        public SubResource EntraJwtValidationConfig {get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the request routing rule resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;

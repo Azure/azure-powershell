@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="tagMap">Mapping of tags to list of IP Addresses included within the tag.
         /// </param>
-        public EffectiveNetworkSecurityGroup(CommonSubResource networkSecurityGroup = default(CommonSubResource), EffectiveNetworkSecurityGroupAssociation association = default(EffectiveNetworkSecurityGroupAssociation), System.Collections.Generic.IList<EffectiveNetworkSecurityRule> effectiveSecurityRules = default(System.Collections.Generic.IList<EffectiveNetworkSecurityRule>), System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<string>> tagMap = default(System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<string>>))
+        public EffectiveNetworkSecurityGroup(SubResource networkSecurityGroup = default(SubResource), EffectiveNetworkSecurityGroupAssociation association = default(EffectiveNetworkSecurityGroupAssociation), System.Collections.Generic.IList<EffectiveNetworkSecurityRule> effectiveSecurityRules = default(System.Collections.Generic.IList<EffectiveNetworkSecurityRule>), System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<string>> tagMap = default(System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<string>>))
 
         {
             this.NetworkSecurityGroup = networkSecurityGroup;
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the ID of network security group that is applied.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "networkSecurityGroup")]
-        public CommonSubResource NetworkSecurityGroup {get; set; }
+        public SubResource NetworkSecurityGroup {get; set; }
 
         /// <summary>
         /// Gets or sets associated resources.

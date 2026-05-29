@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonOutboundRule> List(this ILoadBalancerOutboundRulesOperations operations, string resourceGroupName, string loadBalancerName)
+        public static Microsoft.Rest.Azure.IPage<OutboundRule> List(this ILoadBalancerOutboundRulesOperations operations, string resourceGroupName, string loadBalancerName)
         {
                 return ((ILoadBalancerOutboundRulesOperations)operations).ListAsync(resourceGroupName, loadBalancerName).GetAwaiter().GetResult();
         }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonOutboundRule>> ListAsync(this ILoadBalancerOutboundRulesOperations operations, string resourceGroupName, string loadBalancerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<OutboundRule>> ListAsync(this ILoadBalancerOutboundRulesOperations operations, string resourceGroupName, string loadBalancerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, loadBalancerName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='outboundRuleName'>
         /// The name of the outbound rule.
         /// </param>
-        public static CommonOutboundRule Get(this ILoadBalancerOutboundRulesOperations operations, string resourceGroupName, string loadBalancerName, string outboundRuleName)
+        public static OutboundRule Get(this ILoadBalancerOutboundRulesOperations operations, string resourceGroupName, string loadBalancerName, string outboundRuleName)
         {
                 return ((ILoadBalancerOutboundRulesOperations)operations).GetAsync(resourceGroupName, loadBalancerName, outboundRuleName).GetAwaiter().GetResult();
         }
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonOutboundRule> GetAsync(this ILoadBalancerOutboundRulesOperations operations, string resourceGroupName, string loadBalancerName, string outboundRuleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<OutboundRule> GetAsync(this ILoadBalancerOutboundRulesOperations operations, string resourceGroupName, string loadBalancerName, string outboundRuleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, loadBalancerName, outboundRuleName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonOutboundRule> ListNext(this ILoadBalancerOutboundRulesOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<OutboundRule> ListNext(this ILoadBalancerOutboundRulesOperations operations, string nextPageLink)
         {
                 return ((ILoadBalancerOutboundRulesOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonOutboundRule>> ListNextAsync(this ILoadBalancerOutboundRulesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<OutboundRule>> ListNextAsync(this ILoadBalancerOutboundRulesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Virtual Appliance Site resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class BgpConnection : CommonSubResourceModel
+    public partial class BgpConnection : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the BgpConnection class.
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="connectionState">The current state of the VirtualHub to Peer.
         /// Possible values include: &#39;Unknown&#39;, &#39;Connecting&#39;, &#39;Connected&#39;,
         /// &#39;NotConnected&#39;</param>
-        public BgpConnection(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), RoutingConfiguration routingConfiguration = default(RoutingConfiguration), long? peerAsn = default(long?), string peerIP = default(string), CommonSubResource hubVirtualNetworkConnection = default(CommonSubResource), string connectionState = default(string))
+        public BgpConnection(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), RoutingConfiguration routingConfiguration = default(RoutingConfiguration), long? peerAsn = default(long?), string peerIP = default(string), SubResource hubVirtualNetworkConnection = default(SubResource), string connectionState = default(string))
 
         : base(id, name, type)
         {
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the reference to the HubVirtualNetworkConnection resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.hubVirtualNetworkConnection")]
-        public CommonSubResource HubVirtualNetworkConnection {get; set; }
+        public SubResource HubVirtualNetworkConnection {get; set; }
 
         /// <summary>
         /// Gets the current state of the VirtualHub to Peer. Possible values include: &#39;Unknown&#39;, &#39;Connecting&#39;, &#39;Connected&#39;, &#39;NotConnected&#39;

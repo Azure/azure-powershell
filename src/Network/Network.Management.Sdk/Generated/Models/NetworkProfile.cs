@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Network profile resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class NetworkProfile : CommonResource
+    public partial class NetworkProfile : Resource
     {
         /// <summary>
         /// Initializes a new instance of the NetworkProfile class.

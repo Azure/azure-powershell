@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Path rule of URL path map of an application gateway.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationGatewayPathRule : CommonSubResource
+    public partial class ApplicationGatewayPathRule : SubResource
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationGatewayPathRule class.
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="firewallPolicy">Reference to the FirewallPolicy resource.
         /// </param>
-        public ApplicationGatewayPathRule(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), System.Collections.Generic.IList<string> paths = default(System.Collections.Generic.IList<string>), CommonSubResource backendAddressPool = default(CommonSubResource), CommonSubResource backendHttpSettings = default(CommonSubResource), CommonSubResource redirectConfiguration = default(CommonSubResource), CommonSubResource rewriteRuleSet = default(CommonSubResource), CommonSubResource loadDistributionPolicy = default(CommonSubResource), CommonSubResource firewallPolicy = default(CommonSubResource))
+        public ApplicationGatewayPathRule(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), System.Collections.Generic.IList<string> paths = default(System.Collections.Generic.IList<string>), SubResource backendAddressPool = default(SubResource), SubResource backendHttpSettings = default(SubResource), SubResource redirectConfiguration = default(SubResource), SubResource rewriteRuleSet = default(SubResource), SubResource loadDistributionPolicy = default(SubResource), SubResource firewallPolicy = default(SubResource))
 
         : base(id)
         {
@@ -121,36 +121,36 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets backend address pool resource of URL path map path rule.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.backendAddressPool")]
-        public CommonSubResource BackendAddressPool {get; set; }
+        public SubResource BackendAddressPool {get; set; }
 
         /// <summary>
         /// Gets or sets backend http settings resource of URL path map path rule.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.backendHttpSettings")]
-        public CommonSubResource BackendHttpSettings {get; set; }
+        public SubResource BackendHttpSettings {get; set; }
 
         /// <summary>
         /// Gets or sets redirect configuration resource of URL path map path rule.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.redirectConfiguration")]
-        public CommonSubResource RedirectConfiguration {get; set; }
+        public SubResource RedirectConfiguration {get; set; }
 
         /// <summary>
         /// Gets or sets rewrite rule set resource of URL path map path rule.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.rewriteRuleSet")]
-        public CommonSubResource RewriteRuleSet {get; set; }
+        public SubResource RewriteRuleSet {get; set; }
 
         /// <summary>
         /// Gets or sets load Distribution Policy resource of URL path map path rule.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.loadDistributionPolicy")]
-        public CommonSubResource LoadDistributionPolicy {get; set; }
+        public SubResource LoadDistributionPolicy {get; set; }
 
         /// <summary>
         /// Gets or sets reference to the FirewallPolicy resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.firewallPolicy")]
-        public CommonSubResource FirewallPolicy {get; set; }
+        public SubResource FirewallPolicy {get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Rule Collection Group resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class FirewallPolicyRuleCollectionGroup : CommonSubResourceModel
+    public partial class FirewallPolicyRuleCollectionGroup : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the FirewallPolicyRuleCollectionGroup class.

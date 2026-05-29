@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// NVA Inbound Security Rule resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class InboundSecurityRule : CommonSubResourceModel
+    public partial class InboundSecurityRule : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the InboundSecurityRule class.

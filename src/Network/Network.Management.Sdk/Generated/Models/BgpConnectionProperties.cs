@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="routingConfiguration">The routing configuration indicating the associated and propagated route
         /// tables for this connection.
         /// </param>
-        public BgpConnectionProperties(long? peerAsn = default(long?), string peerIP = default(string), CommonSubResource hubVirtualNetworkConnection = default(CommonSubResource), string provisioningState = default(string), string connectionState = default(string), RoutingConfiguration routingConfiguration = default(RoutingConfiguration))
+        public BgpConnectionProperties(long? peerAsn = default(long?), string peerIP = default(string), SubResource hubVirtualNetworkConnection = default(SubResource), string provisioningState = default(string), string connectionState = default(string), RoutingConfiguration routingConfiguration = default(RoutingConfiguration))
 
         {
             this.PeerAsn = peerAsn;
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the reference to the HubVirtualNetworkConnection resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "hubVirtualNetworkConnection")]
-        public CommonSubResource HubVirtualNetworkConnection {get; set; }
+        public SubResource HubVirtualNetworkConnection {get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
