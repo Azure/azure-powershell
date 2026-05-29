@@ -22,12 +22,28 @@ Create a DeploymentSetting
 .Example
 New-AzStackHciDeploymentSetting -ClusterName 'test-cluster' -ResourceGroupName 'test-rg' -SName 'default'
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IDeploymentSetting
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IDeploymentSetting
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+CLUSTERINPUTOBJECT <IStackHciIdentity>: Identity Parameter
+  [ArcSettingName <String>]: The name of the proxy resource holding details of HCI ArcSetting information.
+  [ClusterName <String>]: The name of the cluster.
+  [DeploymentSettingsName <String>]: Name of Deployment Setting
+  [EdgeDeviceName <String>]: Name of Device
+  [ExtensionName <String>]: The name of the machine extension.
+  [Id <String>]: Resource identity path
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource.
+  [SecuritySettingsName <String>]: Name of security setting
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UpdateName <String>]: The name of the Update
+  [UpdateRunName <String>]: The name of the Update Run
 
 DEPLOYMENTCONFIGURATIONSCALEUNIT <IScaleUnits[]>: Scale units will contains list of deployment data
   [ClusterAzureServiceEndpoint <String>]: For Azure blob service endpoint type, select either Default or Custom domain. If you selected **Custom domain, enter the domain for the blob service in this format core.windows.net.
@@ -37,26 +53,26 @@ DEPLOYMENTCONFIGURATIONSCALEUNIT <IScaleUnits[]>: Scale units will contains list
   [ClusterWitnessType <String>]: Use a cloud witness if you have internet access and if you use an Azure Storage account to provide a vote on cluster quorum. A cloud witness uses Azure Blob Storage to read or write a blob file and then uses it to arbitrate in split-brain resolution. Only allowed values are 'Cloud', 'FileShare'. 
   [DeploymentDataAdouPath <String>]: The path to the Active Directory Organizational Unit container object prepared for the deployment. 
   [DeploymentDataDomainFqdn <String>]: FQDN to deploy cluster
-  [DeploymentDataInfrastructureNetwork <IInfrastructureNetwork[]>]: InfrastructureNetwork config to deploy AzureStackHCI Cluster.
-    [DnsServer <String[]>]: IPv4 address of the DNS servers in your environment.
+  [DeploymentDataInfrastructureNetwork <List<IInfrastructureNetwork>>]: InfrastructureNetwork config to deploy AzureStackHCI Cluster.
+    [DnsServer <List<String>>]: IPv4 address of the DNS servers in your environment.
     [Gateway <String>]: Default gateway that should be used for the provided IP address space.
-    [IPPool <IIPPools[]>]: Range of IP addresses from which addresses are allocated for nodes within a subnet.
+    [IPPool <List<IIPPools>>]: Range of IP addresses from which addresses are allocated for nodes within a subnet.
       [EndingAddress <String>]: Ending IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.
       [StartingAddress <String>]: Starting IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.
     [SubnetMask <String>]: Subnet mask that matches the provided IP address space.
     [UseDhcp <Boolean?>]: Allows customers to use DHCP for Hosts and Cluster IPs. If not declared, the deployment will default to static IPs. When true, GW and DNS servers are not required
   [DeploymentDataNamingPrefix <String>]: naming prefix to deploy cluster.
-  [DeploymentDataPhysicalNode <IPhysicalNodes[]>]: list of physical nodes config to deploy AzureStackHCI Cluster.
+  [DeploymentDataPhysicalNode <List<IPhysicalNodes>>]: list of physical nodes config to deploy AzureStackHCI Cluster.
     [Ipv4Address <String>]: The IPv4 address assigned to each physical server on your Azure Stack HCI cluster.
     [Name <String>]: NETBIOS name of each physical server on your Azure Stack HCI cluster.
-  [DeploymentDataSecret <IEceDeploymentSecrets[]>]: secrets used for cloud deployment.
-    [EceSecretName <EceSecrets?>]: Secret name expected for Enterprise Cloud Engine (ECE) deployment.
+  [DeploymentDataSecret <List<IEceDeploymentSecrets>>]: secrets used for cloud deployment.
+    [EceSecretName <String>]: Secret name expected for Enterprise Cloud Engine (ECE) deployment.
     [SecretLocation <String>]: Secret URI stored in keyvault.
     [SecretName <String>]: Secret name stored in keyvault.
   [DeploymentDataSecretsLocation <String>]: Azure keyvault endpoint. This property is deprecated from 2023-12-01-preview. Please use secrets property instead.
   [HostNetworkEnableStorageAutoIP <Boolean?>]: Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically.
-  [HostNetworkIntent <IIntents[]>]: The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.
-    [Adapter <String[]>]: Array of network interfaces used for the network intent.
+  [HostNetworkIntent <List<IIntents>>]: The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.
+    [Adapter <List<String>>]: Array of network interfaces used for the network intent.
     [AdapterPropertyOverrideJumboPacket <String>]: This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
     [AdapterPropertyOverrideNetworkDirect <String>]: This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
     [AdapterPropertyOverrideNetworkDirectTechnology <String>]: This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. Expected values are 'iWARP', 'RoCEv2', 'RoCE'
@@ -67,14 +83,14 @@ DEPLOYMENTCONFIGURATIONSCALEUNIT <IScaleUnits[]>: Scale units will contains list
     [QoPolicyOverrideBandwidthPercentageSmb <String>]: This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
     [QoPolicyOverridePriorityValue8021ActionCluster <String>]: This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
     [QoPolicyOverridePriorityValue8021ActionSmb <String>]: This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-    [TrafficType <String[]>]: List of network traffic types. Only allowed values are 'Compute', 'Storage', 'Management'.
+    [TrafficType <List<String>>]: List of network traffic types. Only allowed values are 'Compute', 'Storage', 'Management'.
     [VirtualSwitchConfigurationOverrideEnableIov <String>]: Enable IoV for Virtual Switch
     [VirtualSwitchConfigurationOverrideLoadBalancingAlgorithm <String>]: Load Balancing Algorithm for Virtual Switch
   [HostNetworkStorageConnectivitySwitchless <Boolean?>]: Defines how the storage adapters between nodes are connected either switch or switch less..
-  [HostNetworkStorageNetwork <IStorageNetworks[]>]: List of StorageNetworks config to deploy AzureStackHCI Cluster.
+  [HostNetworkStorageNetwork <List<IStorageNetworks>>]: List of StorageNetworks config to deploy AzureStackHCI Cluster.
     [Name <String>]: Name of the storage network.
     [NetworkAdapterName <String>]: Name of the storage network adapter.
-    [StorageAdapterIPInfo <IStorageAdapterIPInfo[]>]: List of Storage adapter physical nodes config to deploy AzureStackHCI Cluster.
+    [StorageAdapterIPInfo <List<IStorageAdapterIPInfo>>]: List of Storage adapter physical nodes config to deploy AzureStackHCI Cluster.
       [Ipv4Address <String>]: The IPv4 address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
       [PhysicalNode <String>]: storage adapter physical node name.
       [SubnetMask <String>]: The SubnetMask address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
@@ -91,11 +107,11 @@ DEPLOYMENTCONFIGURATIONSCALEUNIT <IScaleUnits[]>: Scale units will contains list
   [SbeDeploymentInfoSbeManifestCreationDate <DateTime?>]: SBE Manifest Creation Date.
   [SbeDeploymentInfoSbeManifestSource <String>]: SBE Manifest Source.
   [SbeDeploymentInfoVersion <String>]: SBE package version.
-  [SbePartnerInfoCredentialList <ISbeCredentials[]>]: SBE credentials list for AzureStackHCI cluster deployment.
+  [SbePartnerInfoCredentialList <List<ISbeCredentials>>]: SBE credentials list for AzureStackHCI cluster deployment.
     [EceSecretName <String>]: secret name expected for Enterprise Cloud Engine (ECE).
     [SecretLocation <String>]: secret URI stored in keyvault.
     [SecretName <String>]: secret name stored in keyvault.
-  [SbePartnerInfoPartnerProperty <ISbePartnerProperties[]>]: List of SBE partner properties for AzureStackHCI cluster deployment.
+  [SbePartnerInfoPartnerProperty <List<ISbePartnerProperties>>]: List of SBE partner properties for AzureStackHCI cluster deployment.
     [Name <String>]: SBE partner property name.
     [Value <String>]: SBE partner property value.
   [SecuritySettingBitlockerBootVolume <Boolean?>]: When set to true, BitLocker XTS_AES 256-bit encryption is enabled for all data-at-rest on the OS volume of your Azure Stack HCI cluster. This setting is TPM-hardware dependent. 
@@ -113,22 +129,9 @@ DEPLOYMENTCONFIGURATIONSCALEUNIT <IScaleUnits[]>: Scale units will contains list
 https://learn.microsoft.com/powershell/module/az.stackhci/new-azstackhcideploymentsetting
 #>
 function New-AzStackHciDeploymentSetting {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IDeploymentSetting])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IDeploymentSetting])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Path')]
-    [System.String]
-    # The name of the cluster.
-    ${ClusterName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
     [Parameter(Mandatory)]
     [Alias('DeploymentSettingsName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Path')]
@@ -136,7 +139,26 @@ param(
     # Name of Deployment Setting
     ${SName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Path')]
+    [System.String]
+    # The name of the cluster.
+    ${ClusterName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -144,40 +166,62 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity]
+    # Identity Parameter
+    ${ClusterInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String[]]
     # Azure resource ids of Arc machines to be part of cluster.
     ${ArcNodeResourceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IScaleUnits[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IScaleUnits[]]
     # Scale units will contains list of deployment data
-    # To construct, see NOTES section for DEPLOYMENTCONFIGURATIONSCALEUNIT properties and create a hash table.
     ${DeploymentConfigurationScaleUnit},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
     # deployment template version
     ${DeploymentConfigurationVersion},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DeploymentMode])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.PSArgumentCompleterAttribute("Validate", "Deploy")]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.DeploymentMode]
+    [System.String]
     # The deployment mode for cluster deployment.
     ${DeploymentMode},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.OperationType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.PSArgumentCompleterAttribute("ClusterProvisioning", "ClusterUpgrade")]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.OperationType]
+    [System.String]
     # The intended operation for a cluster.
     ${OperationType},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -247,6 +291,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -267,10 +319,11 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.StackHCI.private\New-AzStackHciDeploymentSetting_CreateExpanded';
+            CreateViaIdentityClusterExpanded = 'Az.StackHCI.private\New-AzStackHciDeploymentSetting_CreateViaIdentityClusterExpanded';
+            CreateViaJsonFilePath = 'Az.StackHCI.private\New-AzStackHciDeploymentSetting_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.StackHCI.private\New-AzStackHciDeploymentSetting_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -284,6 +337,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

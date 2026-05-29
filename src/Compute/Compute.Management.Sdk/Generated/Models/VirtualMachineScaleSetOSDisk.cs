@@ -53,6 +53,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// value cannot be larger than 1023.
         /// </param>
 
+        /// <param name="storageFaultDomainAlignment">Specifies the storage fault domain alignment type for the disk.
+        /// Possible values include: &#39;Aligned&#39;, &#39;BestEffortAligned&#39;</param>
+
         /// <param name="osType">This property allows you to specify the type of the OS that is included in
         /// the disk if creating a VM from user-image or a specialized VHD. Possible
         /// values are: **Windows,** **Linux.**
@@ -78,7 +81,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// **Delete**. For an Ephemeral OS Disk, the default value is set to
         /// **Delete**. User cannot change the delete option for Ephemeral OS Disk.
         /// Possible values include: &#39;Delete&#39;, &#39;Detach&#39;</param>
-        public VirtualMachineScaleSetOSDisk(string createOption, string name = default(string), CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), DiffDiskSettings diffDiskSettings = default(DiffDiskSettings), int? diskSizeGb = default(int?), OperatingSystemTypes? osType = default(OperatingSystemTypes?), VirtualHardDisk image = default(VirtualHardDisk), System.Collections.Generic.IList<string> vhdContainers = default(System.Collections.Generic.IList<string>), VirtualMachineScaleSetManagedDiskParameters managedDisk = default(VirtualMachineScaleSetManagedDiskParameters), string deleteOption = default(string))
+        public VirtualMachineScaleSetOSDisk(string createOption, string name = default(string), CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), DiffDiskSettings diffDiskSettings = default(DiffDiskSettings), int? diskSizeGb = default(int?), string storageFaultDomainAlignment = default(string), OperatingSystemTypes? osType = default(OperatingSystemTypes?), VirtualHardDisk image = default(VirtualHardDisk), System.Collections.Generic.IList<string> vhdContainers = default(System.Collections.Generic.IList<string>), VirtualMachineScaleSetManagedDiskParameters managedDisk = default(VirtualMachineScaleSetManagedDiskParameters), string deleteOption = default(string))
 
         {
             this.Name = name;
@@ -87,6 +90,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.CreateOption = createOption;
             this.DiffDiskSettings = diffDiskSettings;
             this.DiskSizeGB = diskSizeGb;
+            this.StorageFaultDomainAlignment = storageFaultDomainAlignment;
             this.OsType = osType;
             this.Image = image;
             this.VhdContainers = vhdContainers;
@@ -150,6 +154,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         public int? DiskSizeGB {get; set; }
 
         /// <summary>
+        /// Gets or sets specifies the storage fault domain alignment type for the
+        /// disk. Possible values include: &#39;Aligned&#39;, &#39;BestEffortAligned&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "storageFaultDomainAlignment")]
+        public string StorageFaultDomainAlignment {get; set; }
+
+        /// <summary>
         /// Gets or sets this property allows you to specify the type of the OS that is
         /// included in the disk if creating a VM from user-image or a specialized VHD.
         /// Possible values are: **Windows,** **Linux.** Possible values include: &#39;Windows&#39;, &#39;Linux&#39;
@@ -201,6 +212,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "CreateOption");
             }
+
 
 
 

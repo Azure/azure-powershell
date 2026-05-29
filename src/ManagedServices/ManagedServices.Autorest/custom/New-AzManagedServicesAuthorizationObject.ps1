@@ -21,15 +21,16 @@ Create an in-memory object for Authorization.
 Create an in-memory object for Authorization.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.Authorization
+Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Authorization
 .Link
-https://learn.microsoft.com/powershell/module/Az.ManagedServices/new-AzManagedServicesAuthorizationObject
+https://learn.microsoft.com/powershell/module/Az.ManagedServices/new-azmanagedservicesauthorizationobject
 #>
 function New-AzManagedServicesAuthorizationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.Authorization')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.ModelCmdletAttribute()]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Authorization')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
-        [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.ParameterBreakingChangeAttribute("DelegatedRoleDefinitionId", "15.0.0", "9.0.0", "2025/11/03", OldParamaterType="Array", NewParameterType="List")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.ParameterBreakingChangeAttribute("DelegatedRoleDefinitionId", "16.0.0", "9.0.0", "May 2026", OldParamaterType="Array", NewParameterType="List")]
         [Parameter(HelpMessage="The delegatedRoleDefinitionIds field is required when the roleDefinitionId refers to the User Access Administrator Role. It is the list of role definition ids which define all the permissions that the user in the authorization can assign to other principals.")]
         [string[]]
         $DelegatedRoleDefinitionId,
@@ -45,7 +46,7 @@ function New-AzManagedServicesAuthorizationObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.Authorization]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Authorization]::New()
 
         if ($PSBoundParameters.ContainsKey('DelegatedRoleDefinitionId')) {
             $Object.DelegatedRoleDefinitionId = $DelegatedRoleDefinitionId

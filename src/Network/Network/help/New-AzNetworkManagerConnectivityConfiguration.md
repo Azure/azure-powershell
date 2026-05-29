@@ -18,7 +18,7 @@ New-AzNetworkManagerConnectivityConfiguration -Name <String> -NetworkManagerName
  -ConnectivityTopology <String> [-Description <String>] [-Hub <PSNetworkManagerHub[]>] [-DeleteExistingPeering]
  [-IsGlobal] [-ConnectivityCapability <PSNetworkManagerConnectivityCapabilities>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -182,6 +182,21 @@ Id                    : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/reso
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AppliesToGroup
 Connectivity Group.
 
@@ -202,6 +217,21 @@ Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

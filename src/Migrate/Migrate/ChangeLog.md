@@ -18,6 +18,19 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
+
+## Version 2.12.1
+* Fixed bugs in `Initialize-AzMigrateLocalReplicationInfrastructure`
+  - Added early Azure login validation with a clear error message when user is not logged in
+  - Removed unnecessary caller identity resolution
+  - Added cache storage account validations to reject unsupported SKU tiers and disabled public network access
+* Updated `New-AzMigrateLocalServerReplication`
+  - Added storage path health validation before initiating replication
+
+## Version 2.12.0
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+* Added 'TargetSecurityType' and 'TargetVMSecureBootEnabled' parameters to 'New-AzMigrateServerReplication' to support Trusted Launch VM (TVM) security type during server replication
 
 ## Version 2.11.0
 * Updated DefaultCrashConsistentFrequencyInMinutes and DefaultAppConsistentFrequencyInMinutes to align with Azure Portal UX for Replication Policy

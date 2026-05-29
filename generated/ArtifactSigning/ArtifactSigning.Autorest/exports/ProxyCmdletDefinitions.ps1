@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Get a trusted Signing Account.
+Get an artifact Signing Account.
 .Description
-Get a trusted Signing Account.
+Get an artifact Signing Account.
 .Example
 Get-AzArtifactSigningAccount -AccountName test -ResourceGroupName rg-test
 .Example
@@ -34,7 +34,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IArtifactSigningIdentity>: Identity Parameter
-  [AccountName <String>]: Trusted Signing account name.
+  [AccountName <String>]: Artifact Signing account name.
   [Id <String>]: Resource identity path
   [ProfileName <String>]: Certificate profile name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -49,7 +49,7 @@ param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Category('Path')]
     [System.String]
-    # Trusted Signing account name.
+    # Artifact Signing account name.
     ${AccountName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -245,14 +245,14 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 CODESIGNINGACCOUNTINPUTOBJECT <IArtifactSigningIdentity>: Identity Parameter
-  [AccountName <String>]: Trusted Signing account name.
+  [AccountName <String>]: Artifact Signing account name.
   [Id <String>]: Resource identity path
   [ProfileName <String>]: Certificate profile name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 INPUTOBJECT <IArtifactSigningIdentity>: Identity Parameter
-  [AccountName <String>]: Trusted Signing account name.
+  [AccountName <String>]: Artifact Signing account name.
   [Id <String>]: Resource identity path
   [ProfileName <String>]: Certificate profile name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -268,7 +268,7 @@ param(
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Category('Path')]
     [System.String]
-    # Trusted Signing account name.
+    # Artifact Signing account name.
     ${AccountName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -457,9 +457,9 @@ end {
 
 <#
 .Synopsis
-Create a trusted Signing Account.
+Create an artifact Signing Account.
 .Description
-Create a trusted Signing Account.
+Create an artifact Signing Account.
 .Example
 New-AzArtifactSigningAccount -AccountName test -ResourceGroupName rg-test -Location eastus -SkuName Basic
 .Example
@@ -477,7 +477,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Category('Path')]
     [System.String]
-    # Trusted Signing account name.
+    # Artifact Signing account name.
     ${AccountName},
 
     [Parameter(Mandatory)]
@@ -706,7 +706,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Category('Path')]
     [System.String]
-    # Trusted Signing account name.
+    # Artifact Signing account name.
     ${AccountName},
 
     [Parameter(Mandatory)]
@@ -949,9 +949,9 @@ end {
 
 <#
 .Synopsis
-Delete a trusted signing account.
+Delete an artifact signing account.
 .Description
-Delete a trusted signing account.
+Delete an artifact signing account.
 .Example
 Remove-AzArtifactSigningAccount -AccountName test -ResourceGroupName rg-test
 
@@ -965,7 +965,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IArtifactSigningIdentity>: Identity Parameter
-  [AccountName <String>]: Trusted Signing account name.
+  [AccountName <String>]: Artifact Signing account name.
   [Id <String>]: Resource identity path
   [ProfileName <String>]: Certificate profile name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -980,7 +980,7 @@ param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Category('Path')]
     [System.String]
-    # Trusted Signing account name.
+    # Artifact Signing account name.
     ${AccountName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
@@ -1186,14 +1186,14 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 CODESIGNINGACCOUNTINPUTOBJECT <IArtifactSigningIdentity>: Identity Parameter
-  [AccountName <String>]: Trusted Signing account name.
+  [AccountName <String>]: Artifact Signing account name.
   [Id <String>]: Resource identity path
   [ProfileName <String>]: Certificate profile name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 
 INPUTOBJECT <IArtifactSigningIdentity>: Identity Parameter
-  [AccountName <String>]: Trusted Signing account name.
+  [AccountName <String>]: Artifact Signing account name.
   [Id <String>]: Resource identity path
   [ProfileName <String>]: Certificate profile name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -1208,7 +1208,7 @@ param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Category('Path')]
     [System.String]
-    # Trusted Signing account name.
+    # Artifact Signing account name.
     ${AccountName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
@@ -1412,9 +1412,9 @@ end {
 
 <#
 .Synopsis
-Checks that the trusted signing account name is valid and is not already in use.
+Checks if the artifact signing account name is valid and is not already in use.
 .Description
-Checks that the trusted signing account name is valid and is not already in use.
+Checks if the artifact signing account name is valid and is not already in use.
 .Example
 Test-AzArtifactSigningAccountNameAvailability -Name unavaliable
 .Example
@@ -1429,8 +1429,8 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-BODY <ICheckNameAvailability>: The parameters used to check the availability of the trusted signing account name.
-  Name <String>: Trusted signing account name.
+BODY <ICheckNameAvailability>: The parameters used to check the availability of the artifact signing account name.
+  Name <String>: Artifact signing account name.
   Type <String>: The type of the resource, "Microsoft.CodeSigning/codeSigningAccounts".
 .Link
 https://learn.microsoft.com/powershell/module/az.artifactsigning/test-azartifactsigningaccountnameavailability
@@ -1450,13 +1450,13 @@ param(
     [Parameter(ParameterSetName='Check', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Models.ICheckNameAvailability]
-    # The parameters used to check the availability of the trusted signing account name.
+    # The parameters used to check the availability of the artifact signing account name.
     ${Body},
 
     [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Category('Body')]
     [System.String]
-    # Trusted signing account name.
+    # Artifact signing account name.
     ${Name},
 
     [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
@@ -1627,9 +1627,9 @@ end {
 
 <#
 .Synopsis
-Update a trusted signing account.
+Update an artifact signing account.
 .Description
-Update a trusted signing account.
+Update an artifact signing account.
 .Example
 Update-AzArtifactSigningAccount -AccountName test -ResourceGroupName rg-test -SkuName Premium
 .Example
@@ -1645,7 +1645,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IArtifactSigningIdentity>: Identity Parameter
-  [AccountName <String>]: Trusted Signing account name.
+  [AccountName <String>]: Artifact Signing account name.
   [Id <String>]: Resource identity path
   [ProfileName <String>]: Certificate profile name.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -1662,7 +1662,7 @@ param(
     [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ArtifactSigning.Category('Path')]
     [System.String]
-    # Trusted Signing account name.
+    # Artifact Signing account name.
     ${AccountName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]

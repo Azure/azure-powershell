@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Models
     /// <summary>
     /// Encapsulates session configuration options.
     /// </summary>
-    public class SessionConfiguration
+    internal class SessionConfiguration
     {
         public string[] SftpArgs { get; set; }
         public string SshClientFolder { get; set; }

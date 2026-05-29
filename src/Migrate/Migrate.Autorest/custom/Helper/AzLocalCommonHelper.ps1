@@ -302,9 +302,15 @@ function Test-ReplicationPrequisites {
             throw $VmReplicationValidationMessages.HyperVIntegrationServicesNotRunning
         }
 
-        # Hyper-V VMs should be highly available
-        if (![string]::IsNullOrEmpty($Machine.ClusterId) -and $Machine.HighAvailability -eq $HighAvailability.NO) {
-            throw $VmReplicationValidationMessages.VmNotHighlyAvailable
+        # Hyper-V VMs on cluster should be highly available
+        if (![string]::IsNullOrEmpty($Machine.ClusterId)) {
+            if ($Machine.HighAvailability -eq $HighAvailability.NO) {
+                throw $VmReplicationValidationMessages.VmNotHighlyAvailable
+            }
+            elseif ($Machine.HighAvailability -ne $HighAvailability.YES) {
+                # Unknown or unexpected value
+                throw $VmReplicationValidationMessages.VmUnknownHighlyAvailable
+            }
         }
     }
 

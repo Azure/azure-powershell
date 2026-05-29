@@ -19,6 +19,20 @@ Reset-AzStaticWebAppApiKey -Name <String> -ResourceGroupName <String> [-Subscrip
  [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ResetViaJsonString
+```
+Reset-AzStaticWebAppApiKey -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### ResetViaJsonFilePath
+```
+Reset-AzStaticWebAppApiKey -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ### ResetViaIdentityExpanded
 ```
 Reset-AzStaticWebAppApiKey -InputObject <IWebsitesIdentity> [-Kind <String>] [-RepositoryToken <String>]
@@ -65,7 +79,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
@@ -79,12 +92,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Reset operation
+
+```yaml
+Type: System.String
+Parameter Sets: ResetViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Reset operation
+
+```yaml
+Type: System.String
+Parameter Sets: ResetViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Kind
 Kind of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ResetExpanded, ResetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -99,7 +142,7 @@ Name of the static site.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetExpanded
+Parameter Sets: ResetExpanded, ResetViaJsonString, ResetViaJsonFilePath
 Aliases:
 
 Required: True
@@ -129,7 +172,7 @@ The token which proves admin privileges to the repository.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ResetExpanded, ResetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -144,7 +187,7 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetExpanded
+Parameter Sets: ResetExpanded, ResetViaJsonString, ResetViaJsonFilePath
 Aliases:
 
 Required: True
@@ -159,7 +202,7 @@ Determines whether the repository should be updated with the new properties.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: ResetExpanded, ResetViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -176,7 +219,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetExpanded
+Parameter Sets: ResetExpanded, ResetViaJsonString, ResetViaJsonFilePath
 Aliases:
 
 Required: False

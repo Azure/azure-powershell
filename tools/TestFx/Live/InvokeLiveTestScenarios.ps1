@@ -100,7 +100,7 @@ while ($queuedJobs.Count -gt 0) {
             if ($null -ne $curLiveJob.Instance) {
                 $liveJobOutput = $curLiveJob.Instance.EndInvoke($_.AsyncHandle)
 
-                Write-Output "##[section][Test Scenario Result] Live test run for module `"$($curLiveJob.Module)`"."
+                Write-Output "##[section]Live test run for module `"$($curLiveJob.Module)`"."
                 $liveJobOutput
 
                 $liveJobStreams = $curLiveJob.Instance.Streams

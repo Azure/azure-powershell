@@ -265,6 +265,41 @@ Next we create a tag criteria for Daily policy.
 Tag criteria needs to be added for each custom retention rule (automatically added for default retention rule).
 The last command creates the policy.
 
+### Example 8: Create a policy for AzureCosmosDB
+```powershell
+$defaultPol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureCosmosDB
+$lifeCycleVault = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore VaultStore -SourceRetentionDurationType Months -SourceRetentionDurationCount 3
+Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $defaultPol -Name Default -LifeCycles $lifeCycleVault -IsDefault $true
+$lifeCycleVaultMonthly = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore VaultStore -SourceRetentionDurationType Months -SourceRetentionDurationCount 6
+Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $defaultPol -Name Monthly -LifeCycles $lifeCycleVaultMonthly -IsDefault $false
+$lifeCycleVaultYearly = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore VaultStore -SourceRetentionDurationType Years -SourceRetentionDurationCount 1
+Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $defaultPol -Name Yearly -LifeCycles $lifeCycleVaultYearly -IsDefault $false
+$schDates = @(
+(
+    (Get-Date -Year 2024 -Month 03 -Day 04 -Hour 09 -Minute 0 -Second 0)
+))
+$trigger =  New-AzDataProtectionPolicyTriggerScheduleClientObject -ScheduleDays $schDates -IntervalType Weekly -IntervalCount 1
+Edit-AzDataProtectionPolicyTriggerClientObject -Schedule $trigger -Policy $defaultPol
+$tagCriteriaMonthly = New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria FirstOfMonth
+Edit-AzDataProtectionPolicyTagClientObject -Policy $defaultPol -Name Monthly -Criteria $tagCriteriaMonthly
+$tagCriteriaYearly = New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria FirstOfYear
+Edit-AzDataProtectionPolicyTagClientObject -Policy $defaultPol -Name Yearly -Criteria $tagCriteriaYearly
+$cosmosDbPolicy = New-AzDataProtectionBackupPolicy -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -Name "cosmosdb-policy" -Policy $defaultPol
+```
+
+```output
+Name              Type
+----              ----
+cosmosdb-policy       Microsoft.DataProtection/backupVaults/backupPolicies
+```
+
+The first command gets the default policy template for AzureCosmosDB.
+AzureCosmosDB only supports VaultStore data store and Weekly backup frequency.
+The second to seventh commands define and update the Default, Monthly and Yearly vaulted retention lifecycles.
+Next we define a trigger object with a Weekly schedule.
+Next we define FirstOfMonth and FirstOfYear tag criteria and update the policy.
+The last command creates the AzureCosmosDB policy.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -298,10 +333,9 @@ Accept wildcard characters: False
 
 ### -Policy
 Policy Request Object
-To construct, see NOTES section for POLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupPolicy
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -395,7 +429,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBaseBackupPolicyResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBaseBackupPolicyResource
 
 ## NOTES
 

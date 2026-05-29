@@ -52,7 +52,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolForecastValues Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolPredictionInternal.ForecastValue { get => (this._forecastValue = this._forecastValue ?? new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyContainerGroupPoolForecastValues()); set { {_forecastValue = value;} } }
 
         /// <summary>Internal Acessors for ForecastValueInstancesRequestedCount</summary>
-        System.Collections.Generic.List<long> Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolPredictionInternal.ForecastValueInstancesRequestedCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolForecastValuesInternal)ForecastValue).InstancesRequestedCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolForecastValuesInternal)ForecastValue).InstancesRequestedCount = value; }
+        System.Collections.Generic.List<long> Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolPredictionInternal.ForecastValueInstancesRequestedCount { get => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolForecastValuesInternal)ForecastValue).InstancesRequestedCount; set => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolForecastValuesInternal)ForecastValue).InstancesRequestedCount = value ?? null /* arrayOf */; }
 
         /// <summary>Creates an new <see cref="StandbyContainerGroupPoolPrediction" /> instance.</summary>
         public StandbyContainerGroupPoolPrediction()

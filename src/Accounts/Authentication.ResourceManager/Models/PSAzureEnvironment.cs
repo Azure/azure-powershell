@@ -119,6 +119,9 @@ namespace Microsoft.Azure.Commands.Profile.Models
             AzureAttestationServiceEndpointResourceId =
                 other.GetProperty<string>(nameof(AzureAttestationServiceEndpointResourceId));
             AzureAttestationServiceEndpointSuffix = other.GetProperty<string>(nameof(AzureAttestationServiceEndpointSuffix));
+            AzureAppConfigurationEndpointResourceId =
+                other.GetProperty<string>(nameof(AzureAppConfigurationEndpointResourceId));
+            AzureAppConfigurationEndpointSuffix = other.GetProperty<string>(nameof(AzureAppConfigurationEndpointSuffix));
             AzureSynapseAnalyticsEndpointResourceId =
                 other.GetProperty<string>(nameof(AzureSynapseAnalyticsEndpointResourceId));
             AzureSynapseAnalyticsEndpointSuffix = other.GetProperty<string>(nameof(AzureSynapseAnalyticsEndpointSuffix));
@@ -343,6 +346,36 @@ namespace Microsoft.Azure.Commands.Profile.Models
         }
 
         /// <summary>
+        /// The domain name suffix for Azure App Configuration
+        /// </summary>
+        public string AzureAppConfigurationEndpointSuffix
+        {
+            get
+            {
+                return this.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureAppConfigurationEndpointSuffix);
+            }
+            set
+            {
+                this.SetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureAppConfigurationEndpointSuffix, value);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the resource Id to use for contacting the Azure App Configuration endpoint
+        /// </summary>
+        public string AzureAppConfigurationEndpointResourceId
+        {
+            get
+            {
+                return this.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureAppConfigurationEndpointResourceId);
+            }
+            set
+            {
+                this.SetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureAppConfigurationEndpointResourceId, value);
+            }
+        }
+
+        /// <summary>
         /// The domain name suffix for Azure Synapse Analytics
         /// </summary>
         public string AzureSynapseAnalyticsEndpointSuffix
@@ -414,6 +447,8 @@ namespace Microsoft.Azure.Commands.Profile.Models
                        && AzureOperationalInsightsEndpoint == other.AzureOperationalInsightsEndpoint
                        && AzureAttestationServiceEndpointResourceId == other.AzureAttestationServiceEndpointResourceId
                        && AzureAttestationServiceEndpointSuffix == other.AzureAttestationServiceEndpointSuffix
+                       && AzureAppConfigurationEndpointResourceId == other.AzureAppConfigurationEndpointResourceId
+                       && AzureAppConfigurationEndpointSuffix == other.AzureAppConfigurationEndpointSuffix
                        && ContainerRegistryEndpointSuffix == other.ContainerRegistryEndpointSuffix;
             }
 

@@ -15,7 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzStorageMoverUploadLimit
 }
 
 Describe 'New-AzStorageMoverUploadLimitWeeklyRecurrenceObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        $recurrence = New-AzStorageMoverUploadLimitWeeklyRecurrenceObject -Day 'Monday','Tuesday','Friday' -LimitInMbps 100 -EndTimeHour 5 -StartTimeHour 1 -StartTimeMinute 30 -EndTimeMinute 0
+        $recurrence.Day | Should -Contain 'Monday'
+        $recurrence.Day | Should -Contain 'Tuesday'
+        $recurrence.Day | Should -Contain 'Friday'
+        $recurrence.LimitInMbps | Should -Be 100
+        $recurrence.EndTimeHour | Should -Be 5
+        $recurrence.StartTimeHour | Should -Be 1
+        $recurrence.StartTimeMinute | Should -Be 30
+        $recurrence.EndTimeMinute | Should -Be 0
     }
 }

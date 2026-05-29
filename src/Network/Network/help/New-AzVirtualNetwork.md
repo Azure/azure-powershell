@@ -20,7 +20,8 @@ New-AzVirtualNetwork -Name <String> -ResourceGroupName <String> -Location <Strin
  [-EncryptionEnforcementPolicy <String>] [-Tag <Hashtable>] [-EnableDdosProtection]
  [-DdosProtectionPlanId <String>] [-IpAllocation <PSIpAllocation[]>] [-EdgeZone <String>]
  [-PrivateEndpointVNetPoliciesValue <String>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,15 +87,30 @@ $subnet = New-AzVirtualNetworkSubnetConfig -Name "testSubnet" -IpamPoolPrefixAll
 New-AzVirtualNetwork -Name "testVnet" -ResourceGroupName "testRG" -Location "centralus" -Subnet $subnet -IpamPoolPrefixAllocation $ipamPoolPrefixAllocation
 ```
 
-This example creates a virtual network with an IPAM (IP Address Management) pool to automatically allocate address prefixes. 
+This example creates a virtual network with an IPAM (IP Address Management) pool to automatically allocate address prefixes.
 First, an IPAM pool named testIpamPool is created in the testRG resource group and testNM network manager in the centralus region with the address prefix 10.0.0.0/16.
 The Get-AzNetworkManagerIpamPool cmdlet retrieves the IPAM pool that was just created.
-Next, a custom object representing the IPAM pool prefix allocation is created. This object includes the Id of the IPAM pool and the NumberOfIpAddresses to allocate. 
+Next, a custom object representing the IPAM pool prefix allocation is created. This object includes the Id of the IPAM pool and the NumberOfIpAddresses to allocate.
 The New-AzVirtualNetworkSubnetConfig cmdlet creates a subnet named testSubnet configured to use the IPAM pool prefix allocation object.
-Finally, the New-AzVirtualNetwork cmdlet creates a virtual network named testVnet in the testRG resource group and centralus location. 
+Finally, the New-AzVirtualNetwork cmdlet creates a virtual network named testVnet in the testRG resource group and centralus location.
 The virtual network includes the subnet created in the previous step and uses the IPAM pool prefix allocation for address prefix allocation.
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AddressPrefix
 Specifies a range of IP addresses for a virtual network.
@@ -138,6 +154,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -187,7 +218,7 @@ Accept wildcard characters: False
 ```
 
 ### -EdgeZone
-{{ Fill EdgeZone Description }}
+The edge zone of the virtual network
 
 ```yaml
 Type: System.String

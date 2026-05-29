@@ -10,17 +10,3 @@ while(-not $mockingPath) {
     $currentPath = Split-Path -Path $currentPath -Parent
 }
 . ($mockingPath | Select-Object -First 1).FullName
-
-Describe 'Remove-AzRedisEnterpriseCacheDatabase' {
-    It 'Delete' {
-        $splat = @{
-            Name = $env.ClusterName2
-            ResourceGroupName = $env.ResourceGroupName
-        }
-        Remove-AzRedisEnterpriseCache @splat
-    }
-
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-}

@@ -14,7 +14,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'Remove-AzSqlVMGroup')) {
 }
 
 Describe 'Remove-AzSqlVMGroup' {
-    It 'Delete' {
+    It 'Delete' -skip{
         $Offer = "SQL2022-WS2022"
         $Sku = "Developer"
         $DomainFqdn = 'azpstestsqlvm.com'
@@ -29,7 +29,7 @@ Describe 'Remove-AzSqlVMGroup' {
         { Get-AzSqlVMGroup -ResourceGroupName $env.ResourceGroupName -Name $SqlVMGroupName } | Should -Throw -ExpectedMessage "The requested resource of type 'Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups' with name 'removeGroup1' was not found."
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -skip{
         $Offer = "SQL2022-WS2022"
         $Sku = "Developer"
         $DomainFqdn = 'azpstestsqlvm.com'

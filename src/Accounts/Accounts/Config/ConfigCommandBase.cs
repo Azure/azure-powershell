@@ -73,6 +73,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
         protected object GetDynamicParameters(Func<ConfigDefinition, RuntimeDefinedParameter> mapConfigToParameter)
         {
             _dynamicParameters.Clear();
+
+            // Preserve dynamic parameters from base classes (e.g., AzureRMCmdlet, AzurePSCmdlet)
+            var baseParameters = base.GetDynamicParameters() as RuntimeDefinedParameterDictionary;
+            if (baseParameters != null)
+            {
+                foreach (var pair in baseParameters)
+                {
+                    _dynamicParameters.Add(pair.Key, pair.Value);
+                }
+            }
+
             foreach (var config in ConfigDefinitions)
             {
                 _dynamicParameters.Add(config.Key, mapConfigToParameter(config));

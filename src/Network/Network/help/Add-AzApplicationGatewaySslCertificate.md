@@ -66,6 +66,21 @@ Add an SSL certificate referencing a key stored in Managed HSM to the Applicatio
 
 ## PARAMETERS
 
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ApplicationGateway
 Specifies the name of application gateway to which this cmdlet adds an SSL certificate.
 
@@ -83,6 +98,21 @@ Accept wildcard characters: False
 
 ### -CertificateFile
 Specifies the .pfx file of an SSL certificate that this cmdlet adds.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
 
 ```yaml
 Type: System.String

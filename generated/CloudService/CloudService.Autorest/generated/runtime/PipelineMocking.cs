@@ -93,9 +93,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime
             var last = content[content.Length - 1];
 
             // plaintext for JSON/SGML/XML/HTML/STRINGS/ARRAYS
-            
+            if ((first == '{' && last == '}') || (first == '<' && last == '>') || (first == '[' && last == ']') || (first == '"' && last == '"'))
+            {
                 return new JsonString(System.Text.Encoding.UTF8.GetString(content));
+            }
 
+            // base64 for everyone else
+            return new JsonString(System.Convert.ToBase64String(content));
         }
 
         internal static byte[] DeserializeContent(string content, bool isBase64)
