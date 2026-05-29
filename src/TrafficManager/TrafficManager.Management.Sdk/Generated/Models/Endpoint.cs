@@ -37,11 +37,11 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
 
         /// <param name="endpointStatus">The status of the endpoint. If the endpoint is Enabled, it is probed for
         /// endpoint health and is included in the traffic routing method.
-        /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="alwaysServe">If Always Serve is enabled, probing for endpoint health will be disabled
         /// and endpoints will be included in the traffic routing method.
-        /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="targetResourceId">The Azure Resource URI of the of the endpoint. Not applicable to endpoints
         /// of type &#39;ExternalEndpoints&#39;.
@@ -67,8 +67,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// </param>
 
         /// <param name="endpointMonitorStatus">The monitoring status of the endpoint.
-        /// Possible values include: 'CheckingEndpoint', 'Online', 'Degraded',
-        /// 'Disabled', 'Inactive', 'Stopped', 'Unmonitored'</param>
+        /// Possible values include: &#39;CheckingEndpoint&#39;, &#39;Online&#39;, &#39;Degraded&#39;,
+        /// &#39;Disabled&#39;, &#39;Inactive&#39;, &#39;Stopped&#39;, &#39;Unmonitored&#39;</param>
 
         /// <param name="minChildEndpoints">The minimum number of endpoints that must be available in the child profile
         /// in order for the parent profile to be considered available. Only applicable

@@ -67,8 +67,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps4319?api-version=2022-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczQzMTk/YXBpLXZlcnNpb249MjAyMi0wNC0wMQ==",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps4319?api-version=2024-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczQzMTk/YXBpLXZlcnNpb249MjAyNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -127,8 +127,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps4319?api-version=2022-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczQzMTk/YXBpLXZlcnNpb249MjAyMi0wNC0wMQ==",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps4319?api-version=2024-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczQzMTk/YXBpLXZlcnNpb249MjAyNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -196,8 +196,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps3219?api-version=2022-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczMyMTk/YXBpLXZlcnNpb249MjAyMi0wNC0wMQ==",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps3219?api-version=2024-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczMyMTk/YXBpLXZlcnNpb249MjAyNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -256,8 +256,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps3219?api-version=2022-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczMyMTk/YXBpLXZlcnNpb249MjAyMi0wNC0wMQ==",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps3219?api-version=2024-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczMyMTk/YXBpLXZlcnNpb249MjAyNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -319,8 +319,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps3219?api-version=2022-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczMyMTk/YXBpLXZlcnNpb249MjAyMi0wNC0wMQ==",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps3219?api-version=2024-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczMyMTk/YXBpLXZlcnNpb249MjAyNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -382,8 +382,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps3219?api-version=2022-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczMyMTk/YXBpLXZlcnNpb249MjAyMi0wNC0wMQ==",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps3219?api-version=2024-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczMyMTk/YXBpLXZlcnNpb249MjAyNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -445,8 +445,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps3219?api-version=2022-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczMyMTk/YXBpLXZlcnNpb249MjAyMi0wNC0wMQ==",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps3219?api-version=2024-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczMyMTk/YXBpLXZlcnNpb249MjAyNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -508,8 +508,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps3219?api-version=2022-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczMyMTk/YXBpLXZlcnNpb249MjAyMi0wNC0wMQ==",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps3219?api-version=2024-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczMyMTk/YXBpLXZlcnNpb249MjAyNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -577,8 +577,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps3219/NestedEndpoints/MyNestedEndpoint?api-version=2022-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczMyMTkvTmVzdGVkRW5kcG9pbnRzL015TmVzdGVkRW5kcG9pbnQ/YXBpLXZlcnNpb249MjAyMi0wNC0wMQ==",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps3219/NestedEndpoints/MyNestedEndpoint?api-version=2024-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczMyMTkvTmVzdGVkRW5kcG9pbnRzL015TmVzdGVkRW5kcG9pbnQ/YXBpLXZlcnNpb249MjAyNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -640,8 +640,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps3219/NestedEndpoints/MyNestedEndpoint?api-version=2022-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczMyMTkvTmVzdGVkRW5kcG9pbnRzL015TmVzdGVkRW5kcG9pbnQ/YXBpLXZlcnNpb249MjAyMi0wNC0wMQ==",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps3219/NestedEndpoints/MyNestedEndpoint?api-version=2024-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczMyMTkvTmVzdGVkRW5kcG9pbnRzL015TmVzdGVkRW5kcG9pbnQ/YXBpLXZlcnNpb249MjAyNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -709,8 +709,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps2357?api-version=2022-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczIzNTc/YXBpLXZlcnNpb249MjAyMi0wNC0wMQ==",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps2357?api-version=2024-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczIzNTc/YXBpLXZlcnNpb249MjAyNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -769,8 +769,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps2357?api-version=2022-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczIzNTc/YXBpLXZlcnNpb249MjAyMi0wNC0wMQ==",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps2357?api-version=2024-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczIzNTc/YXBpLXZlcnNpb249MjAyNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -838,8 +838,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps3219/NestedEndpoints/MySecondNestedEndpoint?api-version=2022-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczMyMTkvTmVzdGVkRW5kcG9pbnRzL015U2Vjb25kTmVzdGVkRW5kcG9pbnQ/YXBpLXZlcnNpb249MjAyMi0wNC0wMQ==",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps3219/NestedEndpoints/MySecondNestedEndpoint?api-version=2024-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczMyMTkvTmVzdGVkRW5kcG9pbnRzL015U2Vjb25kTmVzdGVkRW5kcG9pbnQ/YXBpLXZlcnNpb249MjAyNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -901,8 +901,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps3219/NestedEndpoints/MySecondNestedEndpoint?api-version=2022-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczMyMTkvTmVzdGVkRW5kcG9pbnRzL015U2Vjb25kTmVzdGVkRW5kcG9pbnQ/YXBpLXZlcnNpb249MjAyMi0wNC0wMQ==",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps3219/NestedEndpoints/MySecondNestedEndpoint?api-version=2024-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczMyMTkvTmVzdGVkRW5kcG9pbnRzL015U2Vjb25kTmVzdGVkRW5kcG9pbnQ/YXBpLXZlcnNpb249MjAyNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -970,8 +970,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps3219/NestedEndpoints/MySecondNestedEndpoint?api-version=2022-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczMyMTkvTmVzdGVkRW5kcG9pbnRzL015U2Vjb25kTmVzdGVkRW5kcG9pbnQ/YXBpLXZlcnNpb249MjAyMi0wNC0wMQ==",
+      "RequestUri": "/subscriptions/6bb9d374-1f0d-437e-8bbe-4bc892850065/resourceGroups/ps4324/providers/Microsoft.Network/trafficmanagerprofiles/ps3219/NestedEndpoints/MySecondNestedEndpoint?api-version=2024-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNmJiOWQzNzQtMWYwZC00MzdlLThiYmUtNGJjODkyODUwMDY1L3Jlc291cmNlR3JvdXBzL3BzNDMyNC9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdHJhZmZpY21hbmFnZXJwcm9maWxlcy9wczMyMTkvTmVzdGVkRW5kcG9pbnRzL015U2Vjb25kTmVzdGVkRW5kcG9pbnQ/YXBpLXZlcnNpb249MjAyNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [

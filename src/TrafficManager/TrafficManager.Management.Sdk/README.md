@@ -25,7 +25,7 @@ payload-flattening-threshold: 2
 
 ###
 ``` yaml
-commit: 4f4073bdb028bc84bc3e6405c1cbaf8e89b83caf
+commit: 28e08376806422730d28d8dd90479d0ad68397ac #d675477846b71ac94291b555d218bbb1fac13873
 directive:
   - from: trafficmanager.json
     where: $.definitions
@@ -42,20 +42,19 @@ directive:
         "modelAsString": true
       }
   - from: trafficmanager.json
-    where: $.paths..delete.responses["200"]
+    where: $.paths..delete.responses["200"] 
     transform: >
       delete $["schema"]
   - from: trafficmanager.json
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}/{endpointType}/{endpointName}"]..parameters[2]
-    transform:
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}/{endpointType}/{endpointName}"]..parameters[?(@.name === "endpointType")]
+    transform: >
       delete $["enum"];
       delete $["x-ms-enum"];
-      $["description"] = $["description"] + " Only AzureEndpoints, ExternalEndpoints and NestedEndpoints are allowed here."
     reason: The path parameter endpointType is defined as string in stable version, we can't change it to an enumeration.
  
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/trafficmanager/resource-manager/Microsoft.Network/stable/2022-04-01/trafficmanager.json
-
+  # - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/trafficmanager/resource-manager/Microsoft.Network/preview/2024-04-01-preview/trafficmanager.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/trafficmanager/resource-manager/Microsoft.Network/TrafficManager/preview/2024-04-01-preview/trafficmanager.json
 output-folder: Generated
 
 namespace: Microsoft.Azure.Management.TrafficManager

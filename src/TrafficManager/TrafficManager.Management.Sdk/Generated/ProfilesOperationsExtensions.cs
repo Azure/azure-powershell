@@ -67,6 +67,33 @@ namespace Microsoft.Azure.Management.TrafficManager
             }
         }
         /// <summary>
+        /// Lists all Traffic Manager profiles within a subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<Profile> ListBySubscription(this IProfilesOperations operations)
+        {
+                return ((IProfilesOperations)operations).ListBySubscriptionAsync().GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all Traffic Manager profiles within a subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Profile>> ListBySubscriptionAsync(this IProfilesOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListBySubscriptionWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Lists all Traffic Manager profiles within a resource group.
         /// </summary>
         /// <param name='operations'>
@@ -75,7 +102,7 @@ namespace Microsoft.Azure.Management.TrafficManager
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<Profile> ListByResourceGroup(this IProfilesOperations operations, string resourceGroupName)
+        public static Microsoft.Rest.Azure.IPage<Profile> ListByResourceGroup(this IProfilesOperations operations, string resourceGroupName)
         {
                 return ((IProfilesOperations)operations).ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
         }
@@ -92,36 +119,9 @@ namespace Microsoft.Azure.Management.TrafficManager
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<Profile>> ListByResourceGroupAsync(this IProfilesOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Profile>> ListByResourceGroupAsync(this IProfilesOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Lists all Traffic Manager profiles within a subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        public static System.Collections.Generic.IEnumerable<Profile> ListBySubscription(this IProfilesOperations operations)
-        {
-                return ((IProfilesOperations)operations).ListBySubscriptionAsync().GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Lists all Traffic Manager profiles within a subscription.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<Profile>> ListBySubscriptionAsync(this IProfilesOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListBySubscriptionWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -205,42 +205,6 @@ namespace Microsoft.Azure.Management.TrafficManager
             }
         }
         /// <summary>
-        /// Deletes a Traffic Manager profile.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='profileName'>
-        /// The name of the Traffic Manager profile to be deleted.
-        /// </param>
-        public static void Delete(this IProfilesOperations operations, string resourceGroupName, string profileName)
-        {
-                ((IProfilesOperations)operations).DeleteAsync(resourceGroupName, profileName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes a Traffic Manager profile.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='profileName'>
-        /// The name of the Traffic Manager profile to be deleted.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IProfilesOperations operations, string resourceGroupName, string profileName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, profileName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
         /// Update a Traffic Manager profile.
         /// </summary>
         /// <param name='operations'>
@@ -275,6 +239,108 @@ namespace Microsoft.Azure.Management.TrafficManager
         public static async System.Threading.Tasks.Task<Profile> UpdateAsync(this IProfilesOperations operations, string resourceGroupName, string profileName, Profile parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, profileName, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes a Traffic Manager profile.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='profileName'>
+        /// The name of the Traffic Manager profile.
+        /// </param>
+        public static void Delete(this IProfilesOperations operations, string resourceGroupName, string profileName)
+        {
+                ((IProfilesOperations)operations).DeleteAsync(resourceGroupName, profileName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes a Traffic Manager profile.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='profileName'>
+        /// The name of the Traffic Manager profile.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DeleteAsync(this IProfilesOperations operations, string resourceGroupName, string profileName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, profileName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Lists all Traffic Manager profiles within a subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<Profile> ListBySubscriptionNext(this IProfilesOperations operations, string nextPageLink)
+        {
+                return ((IProfilesOperations)operations).ListBySubscriptionNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all Traffic Manager profiles within a subscription.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Profile>> ListBySubscriptionNextAsync(this IProfilesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListBySubscriptionNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists all Traffic Manager profiles within a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<Profile> ListByResourceGroupNext(this IProfilesOperations operations, string nextPageLink)
+        {
+                return ((IProfilesOperations)operations).ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all Traffic Manager profiles within a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<Profile>> ListByResourceGroupNextAsync(this IProfilesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
