@@ -72,7 +72,7 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
                 CreateAssembly("netstandard2.0", "System.Buffers", "4.0.2.0").WithWindowsPowerShell(),
                 CreateAssembly("netstandard2.0", "System.ClientModel", "1.12.0.0"),
                 CreateAssembly("netstandard2.0", "System.Formats.Asn1", "8.0.0.0").WithWindowsPowerShell(),
-                CreateAssembly("netstandard2.0", "System.IO.Pipelines", "10.0.0.0").WithWindowsPowerShell(),
+                CreateAssembly("netstandard2.0", "System.IO.Pipelines", "10.0.0.0"),
                 CreateAssembly("netstandard2.0", "System.Memory.Data", "10.0.0.3"),
                 CreateAssembly("netstandard2.0", "System.Memory", "4.0.2.0").WithWindowsPowerShell(),
                 CreateAssembly("netstandard2.0", "System.Net.Http.WinHttpHandler", "4.0.4.0").WithWindowsPowerShell(),
