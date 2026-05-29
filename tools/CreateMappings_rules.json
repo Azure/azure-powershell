@@ -561,10 +561,6 @@
     "alias": "Portal"
   },
   {
-    "regex": "PostgreSql",
-    "alias": "Database for PostgreSQL"
-  },
-  {
     "module": "SqlVirtualMachine",
     "alias": "Sql VM"
   },
@@ -1027,5 +1023,9 @@
   {
     "module": "Relationships",
     "alias": "Relationships"
+  },
+  {
+    "module": "PostgreSqlFlexibleServer",
+    "alias": "PostgreSqlFlexibleServer"
   }
 ]

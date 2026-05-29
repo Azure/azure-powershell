@@ -20,7 +20,6 @@
 
 ## Upcoming Release
 * Added ChangeSafety Support
-* Fixed `New-AzCosmosDBAccount` to properly inherit dynamic parameters from base cmdlet class
 
 ## Version 1.20.0
 * Added `-DisableLocalAuth` parameter to `New-AzCosmosDBAccount` and `Update-AzCosmosDBAccount` to opt out of local authentication.
