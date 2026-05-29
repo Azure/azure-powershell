@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Container network interface configuration child resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ContainerNetworkInterfaceConfiguration : CommonSubResource
+    public partial class ContainerNetworkInterfaceConfiguration : SubResource
     {
         /// <summary>
         /// Initializes a new instance of the ContainerNetworkInterfaceConfiguration class.
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="containerNetworkInterfaces">A list of container network interfaces created from this container network
         /// interface configuration.
         /// </param>
-        public ContainerNetworkInterfaceConfiguration(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), System.Collections.Generic.IList<CommonIPConfigurationProfile> ipConfigurations = default(System.Collections.Generic.IList<CommonIPConfigurationProfile>), System.Collections.Generic.IList<CommonSubResource> containerNetworkInterfaces = default(System.Collections.Generic.IList<CommonSubResource>))
+        public ContainerNetworkInterfaceConfiguration(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), System.Collections.Generic.IList<IPConfigurationProfile> ipConfigurations = default(System.Collections.Generic.IList<IPConfigurationProfile>), System.Collections.Generic.IList<SubResource> containerNetworkInterfaces = default(System.Collections.Generic.IList<SubResource>))
 
         : base(id)
         {
@@ -100,13 +100,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// configuration.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ipConfigurations")]
-        public System.Collections.Generic.IList<CommonIPConfigurationProfile> IPConfigurations {get; set; }
+        public System.Collections.Generic.IList<IPConfigurationProfile> IPConfigurations {get; set; }
 
         /// <summary>
         /// Gets or sets a list of container network interfaces created from this
         /// container network interface configuration.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.containerNetworkInterfaces")]
-        public System.Collections.Generic.IList<CommonSubResource> ContainerNetworkInterfaces {get; set; }
+        public System.Collections.Generic.IList<SubResource> ContainerNetworkInterfaces {get; set; }
     }
 }

@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">The provisioning state of the hub virtual network connection resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public HubVirtualNetworkConnectionProperties(CommonSubResource remoteVirtualNetwork = default(CommonSubResource), bool? allowHubToRemoteVnetTransit = default(bool?), bool? allowRemoteVnetToUseHubVnetGateways = default(bool?), CommonSubResource connectionPolicy = default(CommonSubResource), bool? enableInternetSecurity = default(bool?), RoutingConfiguration routingConfiguration = default(RoutingConfiguration), string provisioningState = default(string))
+        public HubVirtualNetworkConnectionProperties(SubResource remoteVirtualNetwork = default(SubResource), bool? allowHubToRemoteVnetTransit = default(bool?), bool? allowRemoteVnetToUseHubVnetGateways = default(bool?), SubResource connectionPolicy = default(SubResource), bool? enableInternetSecurity = default(bool?), RoutingConfiguration routingConfiguration = default(RoutingConfiguration), string provisioningState = default(string))
 
         {
             this.RemoteVirtualNetwork = remoteVirtualNetwork;
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets reference to the remote virtual network.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "remoteVirtualNetwork")]
-        public CommonSubResource RemoteVirtualNetwork {get; set; }
+        public SubResource RemoteVirtualNetwork {get; set; }
 
         /// <summary>
         /// Gets or sets deprecated: VirtualHub to RemoteVnet transit to enabled or
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// HubVirtualNetworkConnection.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "connectionPolicy")]
-        public CommonSubResource ConnectionPolicy {get; set; }
+        public SubResource ConnectionPolicy {get; set; }
 
         /// <summary>
         /// Gets or sets enable internet security.

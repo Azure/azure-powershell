@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonNetworkInterface> ListAll(this INetworkInterfacesOperations operations)
+        public static Microsoft.Rest.Azure.IPage<NetworkInterface> ListAll(this INetworkInterfacesOperations operations)
         {
                 return ((INetworkInterfacesOperations)operations).ListAllAsync().GetAwaiter().GetResult();
         }
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonNetworkInterface>> ListAllAsync(this INetworkInterfacesOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkInterface>> ListAllAsync(this INetworkInterfacesOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListAllWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
             {
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonNetworkInterface> List(this INetworkInterfacesOperations operations, string resourceGroupName)
+        public static Microsoft.Rest.Azure.IPage<NetworkInterface> List(this INetworkInterfacesOperations operations, string resourceGroupName)
         {
                 return ((INetworkInterfacesOperations)operations).ListAsync(resourceGroupName).GetAwaiter().GetResult();
         }
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonNetworkInterface>> ListAsync(this INetworkInterfacesOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkInterface>> ListAsync(this INetworkInterfacesOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='expand'>
         /// Expands referenced resources.
         /// </param>
-        public static CommonNetworkInterface Get(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, string expand = default(string))
+        public static NetworkInterface Get(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, string expand = default(string))
         {
                 return ((INetworkInterfacesOperations)operations).GetAsync(resourceGroupName, networkInterfaceName, expand).GetAwaiter().GetResult();
         }
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonNetworkInterface> GetAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NetworkInterface> GetAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, expand, null, cancellationToken).ConfigureAwait(false))
             {
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkInterfaceName'>
         /// The name of the network interface.
         /// </param>
-        public static CommonNetworkInterface CreateOrUpdate(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, CommonNetworkInterface parameters)
+        public static NetworkInterface CreateOrUpdate(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, NetworkInterface parameters)
         {
                 return ((INetworkInterfacesOperations)operations).CreateOrUpdateAsync(resourceGroupName, networkInterfaceName, parameters).GetAwaiter().GetResult();
         }
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonNetworkInterface> CreateOrUpdateAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, CommonNetworkInterface parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NetworkInterface> CreateOrUpdateAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, NetworkInterface parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkInterfaceName'>
         /// The name of the network interface.
         /// </param>
-        public static CommonNetworkInterface UpdateTags(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, TagsObject parameters)
+        public static NetworkInterface UpdateTags(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, TagsObject parameters)
         {
                 return ((INetworkInterfacesOperations)operations).UpdateTagsAsync(resourceGroupName, networkInterfaceName, parameters).GetAwaiter().GetResult();
         }
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonNetworkInterface> UpdateTagsAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NetworkInterface> UpdateTagsAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cloudServiceName'>
         /// The name of the cloud service.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonNetworkInterface> ListCloudServiceNetworkInterfaces(this INetworkInterfacesOperations operations, string resourceGroupName, string cloudServiceName)
+        public static Microsoft.Rest.Azure.IPage<NetworkInterface> ListCloudServiceNetworkInterfaces(this INetworkInterfacesOperations operations, string resourceGroupName, string cloudServiceName)
         {
                 return ((INetworkInterfacesOperations)operations).ListCloudServiceNetworkInterfacesAsync(resourceGroupName, cloudServiceName).GetAwaiter().GetResult();
         }
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonNetworkInterface>> ListCloudServiceNetworkInterfacesAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string cloudServiceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkInterface>> ListCloudServiceNetworkInterfacesAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string cloudServiceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListCloudServiceNetworkInterfacesWithHttpMessagesAsync(resourceGroupName, cloudServiceName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -364,7 +364,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='roleInstanceName'>
         /// The name of role instance.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonNetworkInterface> ListCloudServiceRoleInstanceNetworkInterfaces(this INetworkInterfacesOperations operations, string resourceGroupName, string cloudServiceName, string roleInstanceName)
+        public static Microsoft.Rest.Azure.IPage<NetworkInterface> ListCloudServiceRoleInstanceNetworkInterfaces(this INetworkInterfacesOperations operations, string resourceGroupName, string cloudServiceName, string roleInstanceName)
         {
                 return ((INetworkInterfacesOperations)operations).ListCloudServiceRoleInstanceNetworkInterfacesAsync(resourceGroupName, cloudServiceName, roleInstanceName).GetAwaiter().GetResult();
         }
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonNetworkInterface>> ListCloudServiceRoleInstanceNetworkInterfacesAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string cloudServiceName, string roleInstanceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkInterface>> ListCloudServiceRoleInstanceNetworkInterfacesAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string cloudServiceName, string roleInstanceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListCloudServiceRoleInstanceNetworkInterfacesWithHttpMessagesAsync(resourceGroupName, cloudServiceName, roleInstanceName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -416,7 +416,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='expand'>
         /// Expands referenced resources.
         /// </param>
-        public static CommonNetworkInterface GetCloudServiceNetworkInterface(this INetworkInterfacesOperations operations, string resourceGroupName, string cloudServiceName, string roleInstanceName, string networkInterfaceName, string expand = default(string))
+        public static NetworkInterface GetCloudServiceNetworkInterface(this INetworkInterfacesOperations operations, string resourceGroupName, string cloudServiceName, string roleInstanceName, string networkInterfaceName, string expand = default(string))
         {
                 return ((INetworkInterfacesOperations)operations).GetCloudServiceNetworkInterfaceAsync(resourceGroupName, cloudServiceName, roleInstanceName, networkInterfaceName, expand).GetAwaiter().GetResult();
         }
@@ -445,7 +445,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonNetworkInterface> GetCloudServiceNetworkInterfaceAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string cloudServiceName, string roleInstanceName, string networkInterfaceName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NetworkInterface> GetCloudServiceNetworkInterfaceAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string cloudServiceName, string roleInstanceName, string networkInterfaceName, string expand = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetCloudServiceNetworkInterfaceWithHttpMessagesAsync(resourceGroupName, cloudServiceName, roleInstanceName, networkInterfaceName, expand, null, cancellationToken).ConfigureAwait(false))
             {
@@ -464,7 +464,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkInterfaceName'>
         /// The name of the network interface.
         /// </param>
-        public static CommonNetworkInterface BeginCreateOrUpdate(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, CommonNetworkInterface parameters)
+        public static NetworkInterface BeginCreateOrUpdate(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, NetworkInterface parameters)
         {
                 return ((INetworkInterfacesOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, networkInterfaceName, parameters).GetAwaiter().GetResult();
         }
@@ -484,7 +484,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonNetworkInterface> BeginCreateOrUpdateAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, CommonNetworkInterface parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NetworkInterface> BeginCreateOrUpdateAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, NetworkInterface parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -614,7 +614,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonNetworkInterface> ListAllNext(this INetworkInterfacesOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<NetworkInterface> ListAllNext(this INetworkInterfacesOperations operations, string nextPageLink)
         {
                 return ((INetworkInterfacesOperations)operations).ListAllNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -631,7 +631,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonNetworkInterface>> ListAllNextAsync(this INetworkInterfacesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkInterface>> ListAllNextAsync(this INetworkInterfacesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListAllNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
@@ -647,7 +647,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonNetworkInterface> ListNext(this INetworkInterfacesOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<NetworkInterface> ListNext(this INetworkInterfacesOperations operations, string nextPageLink)
         {
                 return ((INetworkInterfacesOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -664,7 +664,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonNetworkInterface>> ListNextAsync(this INetworkInterfacesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkInterface>> ListNextAsync(this INetworkInterfacesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
@@ -680,7 +680,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonNetworkInterface> ListCloudServiceNetworkInterfacesNext(this INetworkInterfacesOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<NetworkInterface> ListCloudServiceNetworkInterfacesNext(this INetworkInterfacesOperations operations, string nextPageLink)
         {
                 return ((INetworkInterfacesOperations)operations).ListCloudServiceNetworkInterfacesNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -697,7 +697,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonNetworkInterface>> ListCloudServiceNetworkInterfacesNextAsync(this INetworkInterfacesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkInterface>> ListCloudServiceNetworkInterfacesNextAsync(this INetworkInterfacesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListCloudServiceNetworkInterfacesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
@@ -714,7 +714,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonNetworkInterface> ListCloudServiceRoleInstanceNetworkInterfacesNext(this INetworkInterfacesOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<NetworkInterface> ListCloudServiceRoleInstanceNetworkInterfacesNext(this INetworkInterfacesOperations operations, string nextPageLink)
         {
                 return ((INetworkInterfacesOperations)operations).ListCloudServiceRoleInstanceNetworkInterfacesNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -732,7 +732,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonNetworkInterface>> ListCloudServiceRoleInstanceNetworkInterfacesNextAsync(this INetworkInterfacesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkInterface>> ListCloudServiceRoleInstanceNetworkInterfacesNextAsync(this INetworkInterfacesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListCloudServiceRoleInstanceNetworkInterfacesNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Authentication certificates of an application gateway.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationGatewayAuthenticationCertificate : CommonSubResource
+    public partial class ApplicationGatewayAuthenticationCertificate : SubResource
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationGatewayAuthenticationCertificate class.

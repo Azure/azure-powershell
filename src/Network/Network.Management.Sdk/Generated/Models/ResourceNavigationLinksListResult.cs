@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="nextLink">The link to the next page of items
         /// </param>
-        public ResourceNavigationLinksListResult(System.Collections.Generic.IList<CommonResourceNavigationLink> value, string nextLink = default(string))
+        public ResourceNavigationLinksListResult(System.Collections.Generic.IList<ResourceNavigationLink> value, string nextLink = default(string))
 
         {
             this.Value = value;
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the ResourceNavigationLink items on this page
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "value")]
-        public System.Collections.Generic.IList<CommonResourceNavigationLink> Value {get; set; }
+        public System.Collections.Generic.IList<ResourceNavigationLink> Value {get; set; }
 
         /// <summary>
         /// Gets the link to the next page of items

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Service Community Properties.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class BgpServiceCommunity : CommonResource
+    public partial class BgpServiceCommunity : Resource
     {
         /// <summary>
         /// Initializes a new instance of the BgpServiceCommunity class.

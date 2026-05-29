@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Peering in an ExpressRouteCircuit resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ExpressRouteCircuitPeering : CommonSubResourceModel
+    public partial class ExpressRouteCircuitPeering : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the ExpressRouteCircuitPeering class.
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="peeredConnections">The list of peered circuit connections associated with Azure Private
         /// Peering for this circuit.
         /// </param>
-        public ExpressRouteCircuitPeering(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), string peeringType = default(string), string state = default(string), int? azureAsn = default(int?), long? peerAsn = default(long?), string primaryPeerAddressPrefix = default(string), string secondaryPeerAddressPrefix = default(string), string primaryAzurePort = default(string), string secondaryAzurePort = default(string), string sharedKey = default(string), int? vlanId = default(int?), ExpressRouteCircuitPeeringConfig microsoftPeeringConfig = default(ExpressRouteCircuitPeeringConfig), ExpressRouteCircuitStats stats = default(ExpressRouteCircuitStats), string gatewayManagerEtag = default(string), string lastModifiedBy = default(string), CommonSubResource routeFilter = default(CommonSubResource), Ipv6ExpressRouteCircuitPeeringConfig ipv6PeeringConfig = default(Ipv6ExpressRouteCircuitPeeringConfig), ExpressRouteConnectionId expressRouteConnection = default(ExpressRouteConnectionId), System.Collections.Generic.IList<ExpressRouteCircuitConnection> connections = default(System.Collections.Generic.IList<ExpressRouteCircuitConnection>), System.Collections.Generic.IList<PeerExpressRouteCircuitConnection> peeredConnections = default(System.Collections.Generic.IList<PeerExpressRouteCircuitConnection>))
+        public ExpressRouteCircuitPeering(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), string peeringType = default(string), string state = default(string), int? azureAsn = default(int?), long? peerAsn = default(long?), string primaryPeerAddressPrefix = default(string), string secondaryPeerAddressPrefix = default(string), string primaryAzurePort = default(string), string secondaryAzurePort = default(string), string sharedKey = default(string), int? vlanId = default(int?), ExpressRouteCircuitPeeringConfig microsoftPeeringConfig = default(ExpressRouteCircuitPeeringConfig), ExpressRouteCircuitStats stats = default(ExpressRouteCircuitStats), string gatewayManagerEtag = default(string), string lastModifiedBy = default(string), SubResource routeFilter = default(SubResource), Ipv6ExpressRouteCircuitPeeringConfig ipv6PeeringConfig = default(Ipv6ExpressRouteCircuitPeeringConfig), ExpressRouteConnectionId expressRouteConnection = default(ExpressRouteConnectionId), System.Collections.Generic.IList<ExpressRouteCircuitConnection> connections = default(System.Collections.Generic.IList<ExpressRouteCircuitConnection>), System.Collections.Generic.IList<PeerExpressRouteCircuitConnection> peeredConnections = default(System.Collections.Generic.IList<PeerExpressRouteCircuitConnection>))
 
         : base(id, name, type)
         {
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the reference to the RouteFilter resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.routeFilter")]
-        public CommonSubResource RouteFilter {get; set; }
+        public SubResource RouteFilter {get; set; }
 
         /// <summary>
         /// Gets or sets the IPv6 peering configuration.

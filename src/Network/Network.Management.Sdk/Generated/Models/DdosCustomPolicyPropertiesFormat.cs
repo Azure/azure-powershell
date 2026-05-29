@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="publicIPAddresses">The list of public IP addresses associated with the custom policy. This
         /// list is read-only.
         /// </param>
-        public DdosCustomPolicyPropertiesFormat(string resourceGuid = default(string), string provisioningState = default(string), System.Collections.Generic.IList<DdosDetectionRule> detectionRules = default(System.Collections.Generic.IList<DdosDetectionRule>), System.Collections.Generic.IList<CommonSubResource> frontEndIPConfiguration = default(System.Collections.Generic.IList<CommonSubResource>), System.Collections.Generic.IList<CommonSubResource> publicIPAddresses = default(System.Collections.Generic.IList<CommonSubResource>))
+        public DdosCustomPolicyPropertiesFormat(string resourceGuid = default(string), string provisioningState = default(string), System.Collections.Generic.IList<DdosDetectionRule> detectionRules = default(System.Collections.Generic.IList<DdosDetectionRule>), System.Collections.Generic.IList<SubResource> frontEndIPConfiguration = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> publicIPAddresses = default(System.Collections.Generic.IList<SubResource>))
 
         {
             this.ResourceGuid = resourceGuid;
@@ -85,13 +85,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// custom policy.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "frontEndIpConfiguration")]
-        public System.Collections.Generic.IList<CommonSubResource> FrontEndIPConfiguration {get; set; }
+        public System.Collections.Generic.IList<SubResource> FrontEndIPConfiguration {get; set; }
 
         /// <summary>
         /// Gets the list of public IP addresses associated with the custom policy.
         /// This list is read-only.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "publicIPAddresses")]
-        public System.Collections.Generic.IList<CommonSubResource> PublicIPAddresses {get; private set; }
+        public System.Collections.Generic.IList<SubResource> PublicIPAddresses {get; private set; }
     }
 }

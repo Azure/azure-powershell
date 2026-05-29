@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='serviceEndpointPolicyName'>
         /// The name of the service endpoint policy.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonServiceEndpointPolicyDefinition> ListByResourceGroup(this IServiceEndpointPolicyDefinitionsOperations operations, string resourceGroupName, string serviceEndpointPolicyName)
+        public static Microsoft.Rest.Azure.IPage<ServiceEndpointPolicyDefinition> ListByResourceGroup(this IServiceEndpointPolicyDefinitionsOperations operations, string resourceGroupName, string serviceEndpointPolicyName)
         {
                 return ((IServiceEndpointPolicyDefinitionsOperations)operations).ListByResourceGroupAsync(resourceGroupName, serviceEndpointPolicyName).GetAwaiter().GetResult();
         }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonServiceEndpointPolicyDefinition>> ListByResourceGroupAsync(this IServiceEndpointPolicyDefinitionsOperations operations, string resourceGroupName, string serviceEndpointPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ServiceEndpointPolicyDefinition>> ListByResourceGroupAsync(this IServiceEndpointPolicyDefinitionsOperations operations, string resourceGroupName, string serviceEndpointPolicyName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, serviceEndpointPolicyName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the resource that is unique within a resource group. This name
         /// can be used to access the resource.
         /// </param>
-        public static CommonServiceEndpointPolicyDefinition Get(this IServiceEndpointPolicyDefinitionsOperations operations, string resourceGroupName, string serviceEndpointPolicyName, string serviceEndpointPolicyDefinitionName)
+        public static ServiceEndpointPolicyDefinition Get(this IServiceEndpointPolicyDefinitionsOperations operations, string resourceGroupName, string serviceEndpointPolicyName, string serviceEndpointPolicyDefinitionName)
         {
                 return ((IServiceEndpointPolicyDefinitionsOperations)operations).GetAsync(resourceGroupName, serviceEndpointPolicyName, serviceEndpointPolicyDefinitionName).GetAwaiter().GetResult();
         }
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonServiceEndpointPolicyDefinition> GetAsync(this IServiceEndpointPolicyDefinitionsOperations operations, string resourceGroupName, string serviceEndpointPolicyName, string serviceEndpointPolicyDefinitionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ServiceEndpointPolicyDefinition> GetAsync(this IServiceEndpointPolicyDefinitionsOperations operations, string resourceGroupName, string serviceEndpointPolicyName, string serviceEndpointPolicyDefinitionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serviceEndpointPolicyName, serviceEndpointPolicyDefinitionName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the resource that is unique within a resource group. This name
         /// can be used to access the resource.
         /// </param>
-        public static CommonServiceEndpointPolicyDefinition CreateOrUpdate(this IServiceEndpointPolicyDefinitionsOperations operations, string resourceGroupName, string serviceEndpointPolicyName, string serviceEndpointPolicyDefinitionName, CommonServiceEndpointPolicyDefinition serviceEndpointPolicyDefinitions)
+        public static ServiceEndpointPolicyDefinition CreateOrUpdate(this IServiceEndpointPolicyDefinitionsOperations operations, string resourceGroupName, string serviceEndpointPolicyName, string serviceEndpointPolicyDefinitionName, ServiceEndpointPolicyDefinition serviceEndpointPolicyDefinitions)
         {
                 return ((IServiceEndpointPolicyDefinitionsOperations)operations).CreateOrUpdateAsync(resourceGroupName, serviceEndpointPolicyName, serviceEndpointPolicyDefinitionName, serviceEndpointPolicyDefinitions).GetAwaiter().GetResult();
         }
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonServiceEndpointPolicyDefinition> CreateOrUpdateAsync(this IServiceEndpointPolicyDefinitionsOperations operations, string resourceGroupName, string serviceEndpointPolicyName, string serviceEndpointPolicyDefinitionName, CommonServiceEndpointPolicyDefinition serviceEndpointPolicyDefinitions, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ServiceEndpointPolicyDefinition> CreateOrUpdateAsync(this IServiceEndpointPolicyDefinitionsOperations operations, string resourceGroupName, string serviceEndpointPolicyName, string serviceEndpointPolicyDefinitionName, ServiceEndpointPolicyDefinition serviceEndpointPolicyDefinitions, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serviceEndpointPolicyName, serviceEndpointPolicyDefinitionName, serviceEndpointPolicyDefinitions, null, cancellationToken).ConfigureAwait(false))
             {
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the resource that is unique within a resource group. This name
         /// can be used to access the resource.
         /// </param>
-        public static CommonServiceEndpointPolicyDefinition BeginCreateOrUpdate(this IServiceEndpointPolicyDefinitionsOperations operations, string resourceGroupName, string serviceEndpointPolicyName, string serviceEndpointPolicyDefinitionName, CommonServiceEndpointPolicyDefinition serviceEndpointPolicyDefinitions)
+        public static ServiceEndpointPolicyDefinition BeginCreateOrUpdate(this IServiceEndpointPolicyDefinitionsOperations operations, string resourceGroupName, string serviceEndpointPolicyName, string serviceEndpointPolicyDefinitionName, ServiceEndpointPolicyDefinition serviceEndpointPolicyDefinitions)
         {
                 return ((IServiceEndpointPolicyDefinitionsOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, serviceEndpointPolicyName, serviceEndpointPolicyDefinitionName, serviceEndpointPolicyDefinitions).GetAwaiter().GetResult();
         }
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonServiceEndpointPolicyDefinition> BeginCreateOrUpdateAsync(this IServiceEndpointPolicyDefinitionsOperations operations, string resourceGroupName, string serviceEndpointPolicyName, string serviceEndpointPolicyDefinitionName, CommonServiceEndpointPolicyDefinition serviceEndpointPolicyDefinitions, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ServiceEndpointPolicyDefinition> BeginCreateOrUpdateAsync(this IServiceEndpointPolicyDefinitionsOperations operations, string resourceGroupName, string serviceEndpointPolicyName, string serviceEndpointPolicyDefinitionName, ServiceEndpointPolicyDefinition serviceEndpointPolicyDefinitions, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serviceEndpointPolicyName, serviceEndpointPolicyDefinitionName, serviceEndpointPolicyDefinitions, null, cancellationToken).ConfigureAwait(false))
             {
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonServiceEndpointPolicyDefinition> ListByResourceGroupNext(this IServiceEndpointPolicyDefinitionsOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<ServiceEndpointPolicyDefinition> ListByResourceGroupNext(this IServiceEndpointPolicyDefinitionsOperations operations, string nextPageLink)
         {
                 return ((IServiceEndpointPolicyDefinitionsOperations)operations).ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonServiceEndpointPolicyDefinition>> ListByResourceGroupNextAsync(this IServiceEndpointPolicyDefinitionsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ServiceEndpointPolicyDefinition>> ListByResourceGroupNextAsync(this IServiceEndpointPolicyDefinitionsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {

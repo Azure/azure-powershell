@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="virtualRouterAutoScaleConfiguration">The VirtualHub Router autoscale configuration.
         /// </param>
-        public VirtualHubProperties(CommonSubResource virtualWan = default(CommonSubResource), CommonSubResource vpnGateway = default(CommonSubResource), CommonSubResource p2SVpnGateway = default(CommonSubResource), CommonSubResource expressRouteGateway = default(CommonSubResource), CommonSubResource azureFirewall = default(CommonSubResource), CommonSubResource securityPartnerProvider = default(CommonSubResource), string addressPrefix = default(string), VirtualHubRouteTable routeTable = default(VirtualHubRouteTable), string provisioningState = default(string), string securityProviderName = default(string), System.Collections.Generic.IList<VirtualHubRouteTableV2> virtualHubRouteTableV2S = default(System.Collections.Generic.IList<VirtualHubRouteTableV2>), string sku = default(string), string routingState = default(string), System.Collections.Generic.IList<CommonSubResource> bgpConnections = default(System.Collections.Generic.IList<CommonSubResource>), System.Collections.Generic.IList<CommonSubResource> ipConfigurations = default(System.Collections.Generic.IList<CommonSubResource>), System.Collections.Generic.IList<CommonSubResource> routeMaps = default(System.Collections.Generic.IList<CommonSubResource>), long? virtualRouterAsn = default(long?), System.Collections.Generic.IList<string> virtualRouterIps = default(System.Collections.Generic.IList<string>), bool? allowBranchToBranchTraffic = default(bool?), string preferredRoutingGateway = default(string), string hubRoutingPreference = default(string), VirtualRouterAutoScaleConfiguration virtualRouterAutoScaleConfiguration = default(VirtualRouterAutoScaleConfiguration))
+        public VirtualHubProperties(SubResource virtualWan = default(SubResource), SubResource vpnGateway = default(SubResource), SubResource p2SVpnGateway = default(SubResource), SubResource expressRouteGateway = default(SubResource), SubResource azureFirewall = default(SubResource), SubResource securityPartnerProvider = default(SubResource), string addressPrefix = default(string), VirtualHubRouteTable routeTable = default(VirtualHubRouteTable), string provisioningState = default(string), string securityProviderName = default(string), System.Collections.Generic.IList<VirtualHubRouteTableV2> virtualHubRouteTableV2S = default(System.Collections.Generic.IList<VirtualHubRouteTableV2>), string sku = default(string), string routingState = default(string), System.Collections.Generic.IList<SubResource> bgpConnections = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> ipConfigurations = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> routeMaps = default(System.Collections.Generic.IList<SubResource>), long? virtualRouterAsn = default(long?), System.Collections.Generic.IList<string> virtualRouterIps = default(System.Collections.Generic.IList<string>), bool? allowBranchToBranchTraffic = default(bool?), string preferredRoutingGateway = default(string), string hubRoutingPreference = default(string), VirtualRouterAutoScaleConfiguration virtualRouterAutoScaleConfiguration = default(VirtualRouterAutoScaleConfiguration))
 
         {
             this.VirtualWan = virtualWan;
@@ -128,37 +128,37 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the VirtualWAN to which the VirtualHub belongs.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "virtualWan")]
-        public CommonSubResource VirtualWan {get; set; }
+        public SubResource VirtualWan {get; set; }
 
         /// <summary>
         /// Gets or sets the VpnGateway associated with this VirtualHub.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "vpnGateway")]
-        public CommonSubResource VpnGateway {get; set; }
+        public SubResource VpnGateway {get; set; }
 
         /// <summary>
         /// Gets or sets the P2SVpnGateway associated with this VirtualHub.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "p2SVpnGateway")]
-        public CommonSubResource P2SVpnGateway {get; set; }
+        public SubResource P2SVpnGateway {get; set; }
 
         /// <summary>
         /// Gets or sets the expressRouteGateway associated with this VirtualHub.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "expressRouteGateway")]
-        public CommonSubResource ExpressRouteGateway {get; set; }
+        public SubResource ExpressRouteGateway {get; set; }
 
         /// <summary>
         /// Gets or sets the azureFirewall associated with this VirtualHub.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "azureFirewall")]
-        public CommonSubResource AzureFirewall {get; set; }
+        public SubResource AzureFirewall {get; set; }
 
         /// <summary>
         /// Gets or sets the securityPartnerProvider associated with this VirtualHub.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "securityPartnerProvider")]
-        public CommonSubResource SecurityPartnerProvider {get; set; }
+        public SubResource SecurityPartnerProvider {get; set; }
 
         /// <summary>
         /// Gets or sets address-prefix for this VirtualHub.
@@ -207,19 +207,19 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets list of references to Bgp Connections.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "bgpConnections")]
-        public System.Collections.Generic.IList<CommonSubResource> BgpConnections {get; private set; }
+        public System.Collections.Generic.IList<SubResource> BgpConnections {get; private set; }
 
         /// <summary>
         /// Gets list of references to IpConfigurations.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ipConfigurations")]
-        public System.Collections.Generic.IList<CommonSubResource> IPConfigurations {get; private set; }
+        public System.Collections.Generic.IList<SubResource> IPConfigurations {get; private set; }
 
         /// <summary>
         /// Gets list of references to RouteMaps.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "routeMaps")]
-        public System.Collections.Generic.IList<CommonSubResource> RouteMaps {get; private set; }
+        public System.Collections.Generic.IList<SubResource> RouteMaps {get; private set; }
 
         /// <summary>
         /// Gets or sets virtualRouter ASN.

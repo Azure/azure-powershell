@@ -81,11 +81,35 @@ directive:
   - from: swagger-document
     where: $.definitions.EffectiveNetworkSecurityGroup.properties.tagMap
     transform: $.type = "object"
+# Strip the "Common." prefix from all definitions so the generated C# class names
+# stay backward-compatible with the handwritten Az.Network layer. Without this directive
+# every "Common.X" swagger definition becomes a "CommonX" C# class (e.g. CommonRouteTable,
+# CommonSubResource, CommonLoadBalancer), breaking the handwritten cmdlets that reference
+# the legacy names.
+# Long-term fix: drop the "Common." prefix at the TypeSpec/swagger source so this workaround
+# can be removed.
+  - from: swagger-document
+    where: $.definitions
+    transform: >
+      for (const k of Object.keys($)) {
+        if (k.startsWith('Common.')) {
+          $[k]['x-ms-client-name'] = k.substring('Common.'.length);
+        }
+      }
 # rename Common.CloudError to CloudError, see https://github.com/Azure/azure-rest-api-specs/blob/906c9971ea117692ad6e7e15fe1a0b38ac109c76/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-07-01/common.json#L2026
 # Srijani, I noticed in the swaggers generated from tsp, some model names are added the prefix "common.", the change will lead to the change of the generated C# class name. As a result, it may cause some issues and breaking changes. Following is a case. I would suggest you remove the prefix "common.".
   - from: swagger-document
     where: $.definitions["Common.CloudError"]
     transform: $["x-ms-client-name"] = "CloudError"
+# Keep SubscriptionId on NetworkManagementClient typed as string. TypeSpec emits the global subscriptionId
+# parameter with `format: uuid`, which makes the generated client property a System.Guid and breaks the
+# handwritten helpers (e.g. ApplicationGatewayChildResourceHelper) that expect a string.
+  - from: swagger-document
+    where: $.parameters.SubscriptionIdParameter
+    transform: delete $.format
+  - from: swagger-document
+    where: $..parameters[?(@.name=='subscriptionId')]
+    transform: delete $.format
 # Srijani, following cases are also breaking changes. I have to change them back with directives.
 # Yabo, Not sure if allof and x-ms-azure-resource could co-existed in a model. If so, we need to add support for it.
 # move x-ms-azure-resource from Common.SubResourceModel to Common.SubResource
@@ -117,7 +141,7 @@ directive:
     transform: $["x-ms-azure-resource"] = true
 # end of directives added by xiaogang
   - where:
-      model-name: Components1Jq1T4ISchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties
+      model-name: ManagedServiceIdentityUserAssignedIdentities
     set:
       model-name: ManagedServiceIdentityUserAssignedIdentitiesValue
 ```

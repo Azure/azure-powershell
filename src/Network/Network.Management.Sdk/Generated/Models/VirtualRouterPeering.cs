@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Virtual Router Peering resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class VirtualRouterPeering : CommonSubResourceModel
+    public partial class VirtualRouterPeering : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the VirtualRouterPeering class.

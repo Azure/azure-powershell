@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// VpnSiteLinkConnection Resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class VpnSiteLinkConnection : CommonSubResourceModel
+    public partial class VpnSiteLinkConnection : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the VpnSiteLinkConnection class.
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="dpdTimeoutSeconds">Dead Peer Detection timeout in seconds for VpnLink connection.
         /// </param>
-        public VpnSiteLinkConnection(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), CommonSubResource vpnSiteLink = default(CommonSubResource), int? routingWeight = default(int?), string vpnLinkConnectionMode = default(string), string connectionStatus = default(string), string vpnConnectionProtocolType = default(string), long? ingressBytesTransferred = default(long?), long? egressBytesTransferred = default(long?), int? connectionBandwidth = default(int?), string sharedKey = default(string), bool? enableBgp = default(bool?), System.Collections.Generic.IList<GatewayCustomBgpIpAddressIpConfiguration> vpnGatewayCustomBgpAddresses = default(System.Collections.Generic.IList<GatewayCustomBgpIpAddressIpConfiguration>), bool? usePolicyBasedTrafficSelectors = default(bool?), System.Collections.Generic.IList<IpsecPolicy> ipsecPolicies = default(System.Collections.Generic.IList<IpsecPolicy>), bool? enableRateLimiting = default(bool?), bool? useLocalAzureIPAddress = default(bool?), System.Collections.Generic.IList<CommonSubResource> ingressNatRules = default(System.Collections.Generic.IList<CommonSubResource>), System.Collections.Generic.IList<CommonSubResource> egressNatRules = default(System.Collections.Generic.IList<CommonSubResource>), int? dpdTimeoutSeconds = default(int?))
+        public VpnSiteLinkConnection(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), SubResource vpnSiteLink = default(SubResource), int? routingWeight = default(int?), string vpnLinkConnectionMode = default(string), string connectionStatus = default(string), string vpnConnectionProtocolType = default(string), long? ingressBytesTransferred = default(long?), long? egressBytesTransferred = default(long?), int? connectionBandwidth = default(int?), string sharedKey = default(string), bool? enableBgp = default(bool?), System.Collections.Generic.IList<GatewayCustomBgpIpAddressIpConfiguration> vpnGatewayCustomBgpAddresses = default(System.Collections.Generic.IList<GatewayCustomBgpIpAddressIpConfiguration>), bool? usePolicyBasedTrafficSelectors = default(bool?), System.Collections.Generic.IList<IpsecPolicy> ipsecPolicies = default(System.Collections.Generic.IList<IpsecPolicy>), bool? enableRateLimiting = default(bool?), bool? useLocalAzureIPAddress = default(bool?), System.Collections.Generic.IList<SubResource> ingressNatRules = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> egressNatRules = default(System.Collections.Generic.IList<SubResource>), int? dpdTimeoutSeconds = default(int?))
 
         : base(id, name, type)
         {
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets id of the connected vpn site link.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.vpnSiteLink")]
-        public CommonSubResource VpnSiteLink {get; set; }
+        public SubResource VpnSiteLink {get; set; }
 
         /// <summary>
         /// Gets or sets routing weight for vpn connection.
@@ -243,13 +243,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets list of ingress NatRules.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ingressNatRules")]
-        public System.Collections.Generic.IList<CommonSubResource> IngressNatRules {get; set; }
+        public System.Collections.Generic.IList<SubResource> IngressNatRules {get; set; }
 
         /// <summary>
         /// Gets or sets list of egress NatRules.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.egressNatRules")]
-        public System.Collections.Generic.IList<CommonSubResource> EgressNatRules {get; set; }
+        public System.Collections.Generic.IList<SubResource> EgressNatRules {get; set; }
 
         /// <summary>
         /// Gets or sets dead Peer Detection timeout in seconds for VpnLink connection.

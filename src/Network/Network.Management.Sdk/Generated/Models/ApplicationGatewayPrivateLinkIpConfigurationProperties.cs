@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// configuration.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public ApplicationGatewayPrivateLinkIpConfigurationProperties(string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), CommonSubResource subnet = default(CommonSubResource), bool? primary = default(bool?), string provisioningState = default(string))
+        public ApplicationGatewayPrivateLinkIpConfigurationProperties(string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), SubResource subnet = default(SubResource), bool? primary = default(bool?), string provisioningState = default(string))
 
         {
             this.PrivateIPAddress = privateIPAddress;
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets reference to the subnet resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "subnet")]
-        public CommonSubResource Subnet {get; set; }
+        public SubResource Subnet {get; set; }
 
         /// <summary>
         /// Gets or sets whether the ip configuration is primary or not.

@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// <summary>
     /// SharedKey Resource .
     /// </summary>
-    public partial class ConnectionSharedKeyResult : CommonSubResourceModel
+    public partial class ConnectionSharedKeyResult : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the ConnectionSharedKeyResult class.

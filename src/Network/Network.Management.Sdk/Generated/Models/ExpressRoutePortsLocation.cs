@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Definition of the ExpressRoutePorts peering location resource.
     /// </remarks>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ExpressRoutePortsLocation : CommonResource
+    public partial class ExpressRoutePortsLocation : Resource
     {
         /// <summary>
         /// Initializes a new instance of the ExpressRoutePortsLocation class.

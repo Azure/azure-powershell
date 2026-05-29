@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// The routing intent child resource of a Virtual hub.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class RoutingIntent : CommonSubResourceModel
+    public partial class RoutingIntent : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the RoutingIntent class.

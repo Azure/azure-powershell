@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Private Link Configuration on an application gateway.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationGatewayPrivateLinkConfiguration : CommonSubResource
+    public partial class ApplicationGatewayPrivateLinkConfiguration : SubResource
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationGatewayPrivateLinkConfiguration class.

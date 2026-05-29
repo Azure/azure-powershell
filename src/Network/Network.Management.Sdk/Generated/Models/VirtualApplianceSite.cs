@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Virtual Appliance Site resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class VirtualApplianceSite : CommonSubResourceModel
+    public partial class VirtualApplianceSite : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the VirtualApplianceSite class.

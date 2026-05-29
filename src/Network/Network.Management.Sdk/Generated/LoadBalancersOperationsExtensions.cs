@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonLoadBalancer> ListAll(this ILoadBalancersOperations operations)
+        public static Microsoft.Rest.Azure.IPage<LoadBalancer> ListAll(this ILoadBalancersOperations operations)
         {
                 return ((ILoadBalancersOperations)operations).ListAllAsync().GetAwaiter().GetResult();
         }
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonLoadBalancer>> ListAllAsync(this ILoadBalancersOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<LoadBalancer>> ListAllAsync(this ILoadBalancersOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListAllWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
             {
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonLoadBalancer> List(this ILoadBalancersOperations operations, string resourceGroupName)
+        public static Microsoft.Rest.Azure.IPage<LoadBalancer> List(this ILoadBalancersOperations operations, string resourceGroupName)
         {
                 return ((ILoadBalancersOperations)operations).ListAsync(resourceGroupName).GetAwaiter().GetResult();
         }
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonLoadBalancer>> ListAsync(this ILoadBalancersOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<LoadBalancer>> ListAsync(this ILoadBalancersOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Management.Network
         /// &#39;Reduced&#39;, read-only back-reference collections (e.g., rules referencing
         /// frontendIPConfigurations) are omitted from the response.
         /// </param>
-        public static CommonLoadBalancer Get(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, string expand = default(string), string detailLevel = default(string))
+        public static LoadBalancer Get(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, string expand = default(string), string detailLevel = default(string))
         {
                 return ((ILoadBalancersOperations)operations).GetAsync(resourceGroupName, loadBalancerName, expand, detailLevel).GetAwaiter().GetResult();
         }
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonLoadBalancer> GetAsync(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, string expand = default(string), string detailLevel = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<LoadBalancer> GetAsync(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, string expand = default(string), string detailLevel = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, loadBalancerName, expand, detailLevel, null, cancellationToken).ConfigureAwait(false))
             {
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
         /// </param>
-        public static CommonLoadBalancer CreateOrUpdate(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, CommonLoadBalancer parameters)
+        public static LoadBalancer CreateOrUpdate(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, LoadBalancer parameters)
         {
                 return ((ILoadBalancersOperations)operations).CreateOrUpdateAsync(resourceGroupName, loadBalancerName, parameters).GetAwaiter().GetResult();
         }
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonLoadBalancer> CreateOrUpdateAsync(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, CommonLoadBalancer parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<LoadBalancer> CreateOrUpdateAsync(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, LoadBalancer parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, loadBalancerName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
         /// </param>
-        public static CommonLoadBalancer UpdateTags(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, TagsObject parameters)
+        public static LoadBalancer UpdateTags(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, TagsObject parameters)
         {
                 return ((ILoadBalancersOperations)operations).UpdateTagsAsync(resourceGroupName, loadBalancerName, parameters).GetAwaiter().GetResult();
         }
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonLoadBalancer> UpdateTagsAsync(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<LoadBalancer> UpdateTagsAsync(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, loadBalancerName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
         /// </param>
-        public static CommonLoadBalancer BeginCreateOrUpdate(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, CommonLoadBalancer parameters)
+        public static LoadBalancer BeginCreateOrUpdate(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, LoadBalancer parameters)
         {
                 return ((ILoadBalancersOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, loadBalancerName, parameters).GetAwaiter().GetResult();
         }
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonLoadBalancer> BeginCreateOrUpdateAsync(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, CommonLoadBalancer parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<LoadBalancer> BeginCreateOrUpdateAsync(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, LoadBalancer parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, loadBalancerName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -514,7 +514,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonLoadBalancer> ListAllNext(this ILoadBalancersOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<LoadBalancer> ListAllNext(this ILoadBalancersOperations operations, string nextPageLink)
         {
                 return ((ILoadBalancersOperations)operations).ListAllNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -531,7 +531,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonLoadBalancer>> ListAllNextAsync(this ILoadBalancersOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<LoadBalancer>> ListAllNextAsync(this ILoadBalancersOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListAllNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
@@ -547,7 +547,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonLoadBalancer> ListNext(this ILoadBalancersOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<LoadBalancer> ListNext(this ILoadBalancersOperations operations, string nextPageLink)
         {
                 return ((ILoadBalancersOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -564,7 +564,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonLoadBalancer>> ListNextAsync(this ILoadBalancersOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<LoadBalancer>> ListNextAsync(this ILoadBalancersOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {

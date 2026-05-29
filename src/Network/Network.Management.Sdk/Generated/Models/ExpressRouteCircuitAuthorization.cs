@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Authorization in an ExpressRouteCircuit resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ExpressRouteCircuitAuthorization : CommonSubResourceModel
+    public partial class ExpressRouteCircuitAuthorization : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the ExpressRouteCircuitAuthorization class.

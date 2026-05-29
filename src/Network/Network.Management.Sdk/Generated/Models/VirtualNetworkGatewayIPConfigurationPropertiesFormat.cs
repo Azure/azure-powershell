@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public VirtualNetworkGatewayIPConfigurationPropertiesFormat(string privateIPAllocationMethod = default(string), CommonSubResource subnet = default(CommonSubResource), CommonSubResource publicIPAddress = default(CommonSubResource), string privateIPAddress = default(string), string provisioningState = default(string))
+        public VirtualNetworkGatewayIPConfigurationPropertiesFormat(string privateIPAllocationMethod = default(string), SubResource subnet = default(SubResource), SubResource publicIPAddress = default(SubResource), string privateIPAddress = default(string), string provisioningState = default(string))
 
         {
             this.PrivateIPAllocationMethod = privateIPAllocationMethod;
@@ -67,13 +67,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the reference to the subnet resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "subnet")]
-        public CommonSubResource Subnet {get; set; }
+        public SubResource Subnet {get; set; }
 
         /// <summary>
         /// Gets or sets the reference to the public IP resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "publicIPAddress")]
-        public CommonSubResource PublicIPAddress {get; set; }
+        public SubResource PublicIPAddress {get; set; }
 
         /// <summary>
         /// Gets private IP Address for this gateway.

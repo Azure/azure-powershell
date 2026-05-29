@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="afcConfiguration">AFC configuration for the Azure Firewall.
         /// </param>
-        public AzureFirewallPropertiesFormat(System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection> applicationRuleCollections = default(System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection>), System.Collections.Generic.IList<AzureFirewallNatRuleCollection> natRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNatRuleCollection>), System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection> networkRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection>), System.Collections.Generic.IList<AzureFirewallIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<AzureFirewallIPConfiguration>), AzureFirewallIPConfiguration managementIPConfiguration = default(AzureFirewallIPConfiguration), string provisioningState = default(string), string threatIntelMode = default(string), CommonSubResource virtualHub = default(CommonSubResource), CommonSubResource firewallPolicy = default(CommonSubResource), HubIPAddresses hubIPAddresses = default(HubIPAddresses), System.Collections.Generic.IList<AzureFirewallIpGroups> ipGroups = default(System.Collections.Generic.IList<AzureFirewallIpGroups>), AzureFirewallSku sku = default(AzureFirewallSku), System.Collections.Generic.IDictionary<string, string> additionalProperties = default(System.Collections.Generic.IDictionary<string, string>), AzureFirewallAutoscaleConfiguration autoscaleConfiguration = default(AzureFirewallAutoscaleConfiguration), AfcConfiguration afcConfiguration = default(AfcConfiguration))
+        public AzureFirewallPropertiesFormat(System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection> applicationRuleCollections = default(System.Collections.Generic.IList<AzureFirewallApplicationRuleCollection>), System.Collections.Generic.IList<AzureFirewallNatRuleCollection> natRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNatRuleCollection>), System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection> networkRuleCollections = default(System.Collections.Generic.IList<AzureFirewallNetworkRuleCollection>), System.Collections.Generic.IList<AzureFirewallIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<AzureFirewallIPConfiguration>), AzureFirewallIPConfiguration managementIPConfiguration = default(AzureFirewallIPConfiguration), string provisioningState = default(string), string threatIntelMode = default(string), SubResource virtualHub = default(SubResource), SubResource firewallPolicy = default(SubResource), HubIPAddresses hubIPAddresses = default(HubIPAddresses), System.Collections.Generic.IList<AzureFirewallIpGroups> ipGroups = default(System.Collections.Generic.IList<AzureFirewallIpGroups>), AzureFirewallSku sku = default(AzureFirewallSku), System.Collections.Generic.IDictionary<string, string> additionalProperties = default(System.Collections.Generic.IDictionary<string, string>), AzureFirewallAutoscaleConfiguration autoscaleConfiguration = default(AzureFirewallAutoscaleConfiguration), AfcConfiguration afcConfiguration = default(AfcConfiguration))
 
         {
             this.ApplicationRuleCollections = applicationRuleCollections;
@@ -145,13 +145,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the virtualHub to which the firewall belongs.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "virtualHub")]
-        public CommonSubResource VirtualHub {get; set; }
+        public SubResource VirtualHub {get; set; }
 
         /// <summary>
         /// Gets or sets the firewallPolicy associated with this azure firewall.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "firewallPolicy")]
-        public CommonSubResource FirewallPolicy {get; set; }
+        public SubResource FirewallPolicy {get; set; }
 
         /// <summary>
         /// Gets or sets iP addresses associated with AzureFirewall.

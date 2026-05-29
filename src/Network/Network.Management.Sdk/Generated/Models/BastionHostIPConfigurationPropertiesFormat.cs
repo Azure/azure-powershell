@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="privateIPAllocationMethod">Private IP allocation method.
         /// Possible values include: &#39;Static&#39;, &#39;Dynamic&#39;</param>
-        public BastionHostIPConfigurationPropertiesFormat(CommonSubResource subnet, CommonSubResource publicIPAddress = default(CommonSubResource), string provisioningState = default(string), string privateIPAllocationMethod = default(string))
+        public BastionHostIPConfigurationPropertiesFormat(SubResource subnet, SubResource publicIPAddress = default(SubResource), string provisioningState = default(string), string privateIPAllocationMethod = default(string))
 
         {
             this.Subnet = subnet;
@@ -56,14 +56,14 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets reference of the subnet resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "subnet")]
-        public CommonSubResource Subnet {get; set; }
+        public SubResource Subnet {get; set; }
 
         /// <summary>
         /// Gets or sets reference of the PublicIP resource. Null for private only
         /// bastion
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "publicIPAddress")]
-        public CommonSubResource PublicIPAddress {get; set; }
+        public SubResource PublicIPAddress {get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the bastion host IP configuration resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;

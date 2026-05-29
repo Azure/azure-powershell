@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Frontend IP configuration of an application gateway.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationGatewayFrontendIPConfiguration : CommonSubResource
+    public partial class ApplicationGatewayFrontendIPConfiguration : SubResource
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationGatewayFrontendIPConfiguration class.
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="privateLinkConfiguration">Reference to the application gateway private link configuration.
         /// </param>
-        public ApplicationGatewayFrontendIPConfiguration(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), CommonSubResource subnet = default(CommonSubResource), CommonSubResource publicIPAddress = default(CommonSubResource), CommonSubResource privateLinkConfiguration = default(CommonSubResource))
+        public ApplicationGatewayFrontendIPConfiguration(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), SubResource subnet = default(SubResource), SubResource publicIPAddress = default(SubResource), SubResource privateLinkConfiguration = default(SubResource))
 
         : base(id)
         {
@@ -120,19 +120,19 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets reference to the subnet resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.subnet")]
-        public CommonSubResource Subnet {get; set; }
+        public SubResource Subnet {get; set; }
 
         /// <summary>
         /// Gets or sets reference to the PublicIP resource.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicIPAddress")]
-        public CommonSubResource PublicIPAddress {get; set; }
+        public SubResource PublicIPAddress {get; set; }
 
         /// <summary>
         /// Gets or sets reference to the application gateway private link
         /// configuration.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.privateLinkConfiguration")]
-        public CommonSubResource PrivateLinkConfiguration {get; set; }
+        public SubResource PrivateLinkConfiguration {get; set; }
     }
 }

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonNetworkWatcher> ListAll(this INetworkWatchersOperations operations)
+        public static Microsoft.Rest.Azure.IPage<NetworkWatcher> ListAll(this INetworkWatchersOperations operations)
         {
                 return ((INetworkWatchersOperations)operations).ListAllAsync().GetAwaiter().GetResult();
         }
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonNetworkWatcher>> ListAllAsync(this INetworkWatchersOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkWatcher>> ListAllAsync(this INetworkWatchersOperations operations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListAllWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
             {
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonNetworkWatcher> List(this INetworkWatchersOperations operations, string resourceGroupName)
+        public static Microsoft.Rest.Azure.IPage<NetworkWatcher> List(this INetworkWatchersOperations operations, string resourceGroupName)
         {
                 return ((INetworkWatchersOperations)operations).ListAsync(resourceGroupName).GetAwaiter().GetResult();
         }
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonNetworkWatcher>> ListAsync(this INetworkWatchersOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkWatcher>> ListAsync(this INetworkWatchersOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
         /// </param>
-        public static CommonNetworkWatcher Get(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName)
+        public static NetworkWatcher Get(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName)
         {
                 return ((INetworkWatchersOperations)operations).GetAsync(resourceGroupName, networkWatcherName).GetAwaiter().GetResult();
         }
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonNetworkWatcher> GetAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NetworkWatcher> GetAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkWatcherName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
         /// </param>
-        public static CommonNetworkWatcher CreateOrUpdate(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, CommonNetworkWatcher parameters)
+        public static NetworkWatcher CreateOrUpdate(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, NetworkWatcher parameters)
         {
                 return ((INetworkWatchersOperations)operations).CreateOrUpdateAsync(resourceGroupName, networkWatcherName, parameters).GetAwaiter().GetResult();
         }
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonNetworkWatcher> CreateOrUpdateAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, CommonNetworkWatcher parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NetworkWatcher> CreateOrUpdateAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, NetworkWatcher parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
         /// </param>
-        public static CommonNetworkWatcher UpdateTags(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, TagsObject parameters)
+        public static NetworkWatcher UpdateTags(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, TagsObject parameters)
         {
                 return ((INetworkWatchersOperations)operations).UpdateTagsAsync(resourceGroupName, networkWatcherName, parameters).GetAwaiter().GetResult();
         }
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonNetworkWatcher> UpdateTagsAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<NetworkWatcher> UpdateTagsAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, TagsObject parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
@@ -1227,7 +1227,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonNetworkWatcher> ListAllNext(this INetworkWatchersOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<NetworkWatcher> ListAllNext(this INetworkWatchersOperations operations, string nextPageLink)
         {
                 return ((INetworkWatchersOperations)operations).ListAllNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -1244,7 +1244,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonNetworkWatcher>> ListAllNextAsync(this INetworkWatchersOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkWatcher>> ListAllNextAsync(this INetworkWatchersOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListAllNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
@@ -1260,7 +1260,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonNetworkWatcher> ListNext(this INetworkWatchersOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<NetworkWatcher> ListNext(this INetworkWatchersOperations operations, string nextPageLink)
         {
                 return ((INetworkWatchersOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -1277,7 +1277,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonNetworkWatcher>> ListNextAsync(this INetworkWatchersOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<NetworkWatcher>> ListNextAsync(this INetworkWatchersOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {

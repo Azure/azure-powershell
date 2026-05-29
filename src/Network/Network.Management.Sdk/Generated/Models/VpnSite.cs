@@ -46,6 +46,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="deviceProperties">The device properties.
         /// </param>
 
+        /// <param name="addressSpace">The AddressSpace that contains an array of IP address ranges.
+        /// </param>
+
         /// <param name="provisioningState">The provisioning state of the VPN site resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
@@ -59,9 +62,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="siteKey">The key for vpn-site that can be used for connections.
         /// </param>
 
-        /// <param name="addressSpace">The AddressSpace that contains an array of IP address ranges.
-        /// </param>
-
         /// <param name="bgpProperties">The set of bgp properties.
         /// </param>
 
@@ -73,17 +73,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="o365Policy">Office365 Policy.
         /// </param>
-        public VpnSite(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), DeviceProperties deviceProperties = default(DeviceProperties), string provisioningState = default(string), CommonSubResource virtualWan = default(CommonSubResource), string ipAddress = default(string), string siteKey = default(string), CommonAddressSpace addressSpace = default(CommonAddressSpace), BgpSettings bgpProperties = default(BgpSettings), bool? isSecuritySite = default(bool?), System.Collections.Generic.IList<VpnSiteLink> vpnSiteLinks = default(System.Collections.Generic.IList<VpnSiteLink>), O365PolicyProperties o365Policy = default(O365PolicyProperties))
+        public VpnSite(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string etag = default(string), DeviceProperties deviceProperties = default(DeviceProperties), AddressSpace addressSpace = default(AddressSpace), string provisioningState = default(string), SubResource virtualWan = default(SubResource), string ipAddress = default(string), string siteKey = default(string), BgpSettings bgpProperties = default(BgpSettings), bool? isSecuritySite = default(bool?), System.Collections.Generic.IList<VpnSiteLink> vpnSiteLinks = default(System.Collections.Generic.IList<VpnSiteLink>), O365PolicyProperties o365Policy = default(O365PolicyProperties))
 
         : base(id, name, type, location, tags)
         {
             this.Etag = etag;
             this.DeviceProperties = deviceProperties;
+            this.AddressSpace = addressSpace;
             this.ProvisioningState = provisioningState;
             this.VirtualWan = virtualWan;
             this.IPAddress = ipAddress;
             this.SiteKey = siteKey;
-            this.AddressSpace = addressSpace;
             this.BgpProperties = bgpProperties;
             this.IsSecuritySite = isSecuritySite;
             this.VpnSiteLinks = vpnSiteLinks;
@@ -111,6 +111,12 @@ namespace Microsoft.Azure.Management.Network.Models
         public DeviceProperties DeviceProperties {get; set; }
 
         /// <summary>
+        /// Gets or sets the AddressSpace that contains an array of IP address ranges.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.addressSpace")]
+        public AddressSpace AddressSpace {get; set; }
+
+        /// <summary>
         /// Gets the provisioning state of the VPN site resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
@@ -120,7 +126,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets the VirtualWAN to which the vpnSite belongs.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.virtualWan")]
-        public CommonSubResource VirtualWan {get; set; }
+        public SubResource VirtualWan {get; set; }
 
         /// <summary>
         /// Gets or sets the ip-address for the vpn-site.
@@ -133,12 +139,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.siteKey")]
         public string SiteKey {get; set; }
-
-        /// <summary>
-        /// Gets or sets the AddressSpace that contains an array of IP address ranges.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.addressSpace")]
-        public CommonAddressSpace AddressSpace {get; set; }
 
         /// <summary>
         /// Gets or sets the set of bgp properties.

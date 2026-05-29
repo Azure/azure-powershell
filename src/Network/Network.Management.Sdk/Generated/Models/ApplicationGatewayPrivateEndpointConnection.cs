@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Private Endpoint connection on an application gateway.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationGatewayPrivateEndpointConnection : CommonSubResourceModel
+    public partial class ApplicationGatewayPrivateEndpointConnection : SubResourceModel
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationGatewayPrivateEndpointConnection class.
@@ -37,13 +37,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
         /// </param>
 
+        /// <param name="privateEndpoint">The resource of private end point.
+        /// </param>
+
         /// <param name="provisioningState">The provisioning state of the application gateway private endpoint
         /// connection resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-
-        /// <param name="privateEndpoint">The resource of private end point.
-        /// </param>
 
         /// <param name="privateLinkServiceConnectionState">A collection of information about the state of the connection between
         /// service consumer and provider.
@@ -51,13 +51,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="linkIdentifier">The consumer link id.
         /// </param>
-        public ApplicationGatewayPrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string provisioningState = default(string), CommonPrivateEndpoint privateEndpoint = default(CommonPrivateEndpoint), CommonPrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(CommonPrivateLinkServiceConnectionState), string linkIdentifier = default(string))
+        public ApplicationGatewayPrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), string provisioningState = default(string), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState), string linkIdentifier = default(string))
 
         : base(id, name, type)
         {
             this.Etag = etag;
-            this.ProvisioningState = provisioningState;
             this.PrivateEndpoint = privateEndpoint;
+            this.ProvisioningState = provisioningState;
             this.PrivateLinkServiceConnectionState = privateLinkServiceConnectionState;
             this.LinkIdentifier = linkIdentifier;
             CustomInit();
@@ -77,6 +77,12 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Etag {get; private set; }
 
         /// <summary>
+        /// Gets the resource of private end point.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.privateEndpoint")]
+        public PrivateEndpoint PrivateEndpoint {get; private set; }
+
+        /// <summary>
         /// Gets the provisioning state of the application gateway private endpoint
         /// connection resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
@@ -84,17 +90,11 @@ namespace Microsoft.Azure.Management.Network.Models
         public string ProvisioningState {get; private set; }
 
         /// <summary>
-        /// Gets the resource of private end point.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.privateEndpoint")]
-        public CommonPrivateEndpoint PrivateEndpoint {get; private set; }
-
-        /// <summary>
         /// Gets or sets a collection of information about the state of the connection
         /// between service consumer and provider.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.privateLinkServiceConnectionState")]
-        public CommonPrivateLinkServiceConnectionState PrivateLinkServiceConnectionState {get; set; }
+        public PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState {get; set; }
 
         /// <summary>
         /// Gets the consumer link id.

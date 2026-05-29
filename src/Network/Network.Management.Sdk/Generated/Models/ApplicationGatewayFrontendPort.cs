@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Frontend port of an application gateway.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationGatewayFrontendPort : CommonSubResource
+    public partial class ApplicationGatewayFrontendPort : SubResource
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationGatewayFrontendPort class.

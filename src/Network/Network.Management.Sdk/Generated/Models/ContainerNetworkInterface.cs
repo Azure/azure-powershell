@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Container network interface child resource.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ContainerNetworkInterface : CommonSubResource
+    public partial class ContainerNetworkInterface : SubResource
     {
         /// <summary>
         /// Initializes a new instance of the ContainerNetworkInterface class.

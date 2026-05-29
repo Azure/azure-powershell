@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkSecurityGroupName'>
         /// The name of the network security group.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonSecurityRule> List(this IDefaultSecurityRulesOperations operations, string resourceGroupName, string networkSecurityGroupName)
+        public static Microsoft.Rest.Azure.IPage<SecurityRule> List(this IDefaultSecurityRulesOperations operations, string resourceGroupName, string networkSecurityGroupName)
         {
                 return ((IDefaultSecurityRulesOperations)operations).ListAsync(resourceGroupName, networkSecurityGroupName).GetAwaiter().GetResult();
         }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonSecurityRule>> ListAsync(this IDefaultSecurityRulesOperations operations, string resourceGroupName, string networkSecurityGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SecurityRule>> ListAsync(this IDefaultSecurityRulesOperations operations, string resourceGroupName, string networkSecurityGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, networkSecurityGroupName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='defaultSecurityRuleName'>
         /// The name of the default security rule.
         /// </param>
-        public static CommonSecurityRule Get(this IDefaultSecurityRulesOperations operations, string resourceGroupName, string networkSecurityGroupName, string defaultSecurityRuleName)
+        public static SecurityRule Get(this IDefaultSecurityRulesOperations operations, string resourceGroupName, string networkSecurityGroupName, string defaultSecurityRuleName)
         {
                 return ((IDefaultSecurityRulesOperations)operations).GetAsync(resourceGroupName, networkSecurityGroupName, defaultSecurityRuleName).GetAwaiter().GetResult();
         }
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CommonSecurityRule> GetAsync(this IDefaultSecurityRulesOperations operations, string resourceGroupName, string networkSecurityGroupName, string defaultSecurityRuleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<SecurityRule> GetAsync(this IDefaultSecurityRulesOperations operations, string resourceGroupName, string networkSecurityGroupName, string defaultSecurityRuleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, networkSecurityGroupName, defaultSecurityRuleName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<CommonSecurityRule> ListNext(this IDefaultSecurityRulesOperations operations, string nextPageLink)
+        public static Microsoft.Rest.Azure.IPage<SecurityRule> ListNext(this IDefaultSecurityRulesOperations operations, string nextPageLink)
         {
                 return ((IDefaultSecurityRulesOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
         }
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<CommonSecurityRule>> ListNextAsync(this IDefaultSecurityRulesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<SecurityRule>> ListNextAsync(this IDefaultSecurityRulesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {

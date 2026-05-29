@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="routingConfiguration">The Routing Configuration indicating the associated and propagated route
         /// tables on this connection.
         /// </param>
-        public VpnConnectionProperties(CommonSubResource remoteVpnSite = default(CommonSubResource), int? routingWeight = default(int?), int? dpdTimeoutSeconds = default(int?), string connectionStatus = default(string), string vpnConnectionProtocolType = default(string), long? ingressBytesTransferred = default(long?), long? egressBytesTransferred = default(long?), int? connectionBandwidth = default(int?), string sharedKey = default(string), bool? enableBgp = default(bool?), bool? usePolicyBasedTrafficSelectors = default(bool?), System.Collections.Generic.IList<IpsecPolicy> ipsecPolicies = default(System.Collections.Generic.IList<IpsecPolicy>), System.Collections.Generic.IList<TrafficSelectorPolicy> trafficSelectorPolicies = default(System.Collections.Generic.IList<TrafficSelectorPolicy>), bool? enableRateLimiting = default(bool?), bool? enableInternetSecurity = default(bool?), bool? useLocalAzureIPAddress = default(bool?), string provisioningState = default(string), System.Collections.Generic.IList<VpnSiteLinkConnection> vpnLinkConnections = default(System.Collections.Generic.IList<VpnSiteLinkConnection>), RoutingConfiguration routingConfiguration = default(RoutingConfiguration))
+        public VpnConnectionProperties(SubResource remoteVpnSite = default(SubResource), int? routingWeight = default(int?), int? dpdTimeoutSeconds = default(int?), string connectionStatus = default(string), string vpnConnectionProtocolType = default(string), long? ingressBytesTransferred = default(long?), long? egressBytesTransferred = default(long?), int? connectionBandwidth = default(int?), string sharedKey = default(string), bool? enableBgp = default(bool?), bool? usePolicyBasedTrafficSelectors = default(bool?), System.Collections.Generic.IList<IpsecPolicy> ipsecPolicies = default(System.Collections.Generic.IList<IpsecPolicy>), System.Collections.Generic.IList<TrafficSelectorPolicy> trafficSelectorPolicies = default(System.Collections.Generic.IList<TrafficSelectorPolicy>), bool? enableRateLimiting = default(bool?), bool? enableInternetSecurity = default(bool?), bool? useLocalAzureIPAddress = default(bool?), string provisioningState = default(string), System.Collections.Generic.IList<VpnSiteLinkConnection> vpnLinkConnections = default(System.Collections.Generic.IList<VpnSiteLinkConnection>), RoutingConfiguration routingConfiguration = default(RoutingConfiguration))
 
         {
             this.RemoteVpnSite = remoteVpnSite;
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets id of the connected vpn site.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "remoteVpnSite")]
-        public CommonSubResource RemoteVpnSite {get; set; }
+        public SubResource RemoteVpnSite {get; set; }
 
         /// <summary>
         /// Gets or sets routing weight for vpn connection.

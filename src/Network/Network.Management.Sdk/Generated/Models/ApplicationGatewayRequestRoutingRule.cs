@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Request routing rule of an application gateway.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplicationGatewayRequestRoutingRule : CommonSubResource
+    public partial class ApplicationGatewayRequestRoutingRule : SubResource
     {
         /// <summary>
         /// Initializes a new instance of the ApplicationGatewayRequestRoutingRule class.
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="entraJwtValidationConfig">Entra JWT validation configuration resource of the application gateway.
         /// </param>
-        public ApplicationGatewayRequestRoutingRule(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), string ruleType = default(string), int? priority = default(int?), CommonSubResource backendAddressPool = default(CommonSubResource), CommonSubResource backendHttpSettings = default(CommonSubResource), CommonSubResource httpListener = default(CommonSubResource), CommonSubResource urlPathMap = default(CommonSubResource), CommonSubResource rewriteRuleSet = default(CommonSubResource), CommonSubResource redirectConfiguration = default(CommonSubResource), CommonSubResource loadDistributionPolicy = default(CommonSubResource), CommonSubResource entraJwtValidationConfig = default(CommonSubResource))
+        public ApplicationGatewayRequestRoutingRule(string id = default(string), string name = default(string), string etag = default(string), string type = default(string), string provisioningState = default(string), string ruleType = default(string), int? priority = default(int?), SubResource backendAddressPool = default(SubResource), SubResource backendHttpSettings = default(SubResource), SubResource httpListener = default(SubResource), SubResource urlPathMap = default(SubResource), SubResource rewriteRuleSet = default(SubResource), SubResource redirectConfiguration = default(SubResource), SubResource loadDistributionPolicy = default(SubResource), SubResource entraJwtValidationConfig = default(SubResource))
 
         : base(id)
         {
@@ -140,51 +140,51 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets backend address pool resource of the application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.backendAddressPool")]
-        public CommonSubResource BackendAddressPool {get; set; }
+        public SubResource BackendAddressPool {get; set; }
 
         /// <summary>
         /// Gets or sets backend http settings resource of the application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.backendHttpSettings")]
-        public CommonSubResource BackendHttpSettings {get; set; }
+        public SubResource BackendHttpSettings {get; set; }
 
         /// <summary>
         /// Gets or sets http listener resource of the application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.httpListener")]
-        public CommonSubResource HttpListener {get; set; }
+        public SubResource HttpListener {get; set; }
 
         /// <summary>
         /// Gets or sets uRL path map resource of the application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.urlPathMap")]
-        public CommonSubResource UrlPathMap {get; set; }
+        public SubResource UrlPathMap {get; set; }
 
         /// <summary>
         /// Gets or sets rewrite Rule Set resource in Basic rule of the application
         /// gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.rewriteRuleSet")]
-        public CommonSubResource RewriteRuleSet {get; set; }
+        public SubResource RewriteRuleSet {get; set; }
 
         /// <summary>
         /// Gets or sets redirect configuration resource of the application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.redirectConfiguration")]
-        public CommonSubResource RedirectConfiguration {get; set; }
+        public SubResource RedirectConfiguration {get; set; }
 
         /// <summary>
         /// Gets or sets load Distribution Policy resource of the application gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.loadDistributionPolicy")]
-        public CommonSubResource LoadDistributionPolicy {get; set; }
+        public SubResource LoadDistributionPolicy {get; set; }
 
         /// <summary>
         /// Gets or sets entra JWT validation configuration resource of the application
         /// gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.entraJWTValidationConfig")]
-        public CommonSubResource EntraJwtValidationConfig {get; set; }
+        public SubResource EntraJwtValidationConfig {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

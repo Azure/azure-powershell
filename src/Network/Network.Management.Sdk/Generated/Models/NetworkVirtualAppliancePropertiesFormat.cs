@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="privateIPAddress">A Internal Load Balancer&#39;s HA port frontend IP address. Can be used to set
         /// routes &amp; UDR to load balance traffic between NVA instances
         /// </param>
-        public NetworkVirtualAppliancePropertiesFormat(VirtualApplianceSkuProperties nvaSku = default(VirtualApplianceSkuProperties), string addressPrefix = default(string), System.Collections.Generic.IList<string> bootStrapConfigurationBlobs = default(System.Collections.Generic.IList<string>), CommonSubResource virtualHub = default(CommonSubResource), System.Collections.Generic.IList<string> cloudInitConfigurationBlobs = default(System.Collections.Generic.IList<string>), string cloudInitConfiguration = default(string), long? virtualApplianceAsn = default(long?), string sshPublicKey = default(string), System.Collections.Generic.IList<VirtualApplianceNicProperties> virtualApplianceNics = default(System.Collections.Generic.IList<VirtualApplianceNicProperties>), NetworkVirtualAppliancePropertiesFormatNetworkProfile networkProfile = default(NetworkVirtualAppliancePropertiesFormatNetworkProfile), System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties> additionalNics = default(System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties>), System.Collections.Generic.IList<InternetIngressPublicIpsProperties> internetIngressPublicIps = default(System.Collections.Generic.IList<InternetIngressPublicIpsProperties>), System.Collections.Generic.IList<CommonSubResource> virtualApplianceSites = default(System.Collections.Generic.IList<CommonSubResource>), System.Collections.Generic.IList<CommonSubResource> virtualApplianceConnections = default(System.Collections.Generic.IList<CommonSubResource>), System.Collections.Generic.IList<CommonSubResource> inboundSecurityRules = default(System.Collections.Generic.IList<CommonSubResource>), string provisioningState = default(string), string deploymentType = default(string), DelegationProperties delegation = default(DelegationProperties), PartnerManagedResourceProperties partnerManagedResource = default(PartnerManagedResourceProperties), System.Collections.Generic.IList<NvaInterfaceConfigurationsProperties> nvaInterfaceConfigurations = default(System.Collections.Generic.IList<NvaInterfaceConfigurationsProperties>), string privateIPAddress = default(string))
+        public NetworkVirtualAppliancePropertiesFormat(VirtualApplianceSkuProperties nvaSku = default(VirtualApplianceSkuProperties), string addressPrefix = default(string), System.Collections.Generic.IList<string> bootStrapConfigurationBlobs = default(System.Collections.Generic.IList<string>), SubResource virtualHub = default(SubResource), System.Collections.Generic.IList<string> cloudInitConfigurationBlobs = default(System.Collections.Generic.IList<string>), string cloudInitConfiguration = default(string), long? virtualApplianceAsn = default(long?), string sshPublicKey = default(string), System.Collections.Generic.IList<VirtualApplianceNicProperties> virtualApplianceNics = default(System.Collections.Generic.IList<VirtualApplianceNicProperties>), NetworkVirtualAppliancePropertiesFormatNetworkProfile networkProfile = default(NetworkVirtualAppliancePropertiesFormatNetworkProfile), System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties> additionalNics = default(System.Collections.Generic.IList<VirtualApplianceAdditionalNicProperties>), System.Collections.Generic.IList<InternetIngressPublicIpsProperties> internetIngressPublicIps = default(System.Collections.Generic.IList<InternetIngressPublicIpsProperties>), System.Collections.Generic.IList<SubResource> virtualApplianceSites = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> virtualApplianceConnections = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> inboundSecurityRules = default(System.Collections.Generic.IList<SubResource>), string provisioningState = default(string), string deploymentType = default(string), DelegationProperties delegation = default(DelegationProperties), PartnerManagedResourceProperties partnerManagedResource = default(PartnerManagedResourceProperties), System.Collections.Generic.IList<NvaInterfaceConfigurationsProperties> nvaInterfaceConfigurations = default(System.Collections.Generic.IList<NvaInterfaceConfigurationsProperties>), string privateIPAddress = default(string))
 
         {
             this.NvaSku = nvaSku;
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// deployed.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "virtualHub")]
-        public CommonSubResource VirtualHub {get; set; }
+        public SubResource VirtualHub {get; set; }
 
         /// <summary>
         /// Gets or sets cloudInitConfigurationBlob storage URLs.
@@ -204,19 +204,19 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets list of references to VirtualApplianceSite.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "virtualApplianceSites")]
-        public System.Collections.Generic.IList<CommonSubResource> VirtualApplianceSites {get; private set; }
+        public System.Collections.Generic.IList<SubResource> VirtualApplianceSites {get; private set; }
 
         /// <summary>
         /// Gets list of references to VirtualApplianceConnections.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "virtualApplianceConnections")]
-        public System.Collections.Generic.IList<CommonSubResource> VirtualApplianceConnections {get; private set; }
+        public System.Collections.Generic.IList<SubResource> VirtualApplianceConnections {get; private set; }
 
         /// <summary>
         /// Gets list of references to InboundSecurityRules.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "inboundSecurityRules")]
-        public System.Collections.Generic.IList<CommonSubResource> InboundSecurityRules {get; private set; }
+        public System.Collections.Generic.IList<SubResource> InboundSecurityRules {get; private set; }
 
         /// <summary>
         /// Gets the provisioning state of the resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
