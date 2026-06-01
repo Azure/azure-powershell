@@ -655,4 +655,31 @@ $task = Update-AzStorageActionTask -ResourceGroupName MyRg -Name MyTask
 [Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IManagedServiceIdentityUserAssignedIdentities]$identity = $task.IdentityUserAssignedIdentity
 ```
 
+## Modules migrated from autorest v3 to autorest v4
 
+To maintain behavioral consistency and introduce new features supported by AutoRest v4, we have upgraded many modules to use AutoRest v4.
+This upgrade has introduced several breaking changes.
+Details about potential breaking changes and their mitigation approaches can be found at the following [link](https://go.microsoft.com/fwlink/?linkid=2333486).
+
+### Potentially affected modules
+
+- Az.CloudService
+- Az.ContainerInstance
+- Az.Databricks
+- Az.DataProtection
+- Az.DnsResolver
+- Az.Functions
+- Az.Kusto
+- Az.LoadTesting
+- Az.MachineLearningServices
+- Az.ManagedServices
+- Az.Migrate
+- Az.Monitor
+- Az.MySql
+- Az.RedisEnterpriseCache
+- Az.ResourceMover
+- Az.SecurityInsights
+- Az.SignalR
+- Az.SqlVirtualMachine
+- Az.StackHCI
+- Az.Websites
