@@ -19,7 +19,9 @@
 --->
 
 ## Upcoming Release
-* Changed `UserAssignedIdentityId` type from string to string[] in Azure Firewall Policy
+* Added ChangeSafety Support
+    - Fixed Private Endpoint Connection and Private Link Resource cmdlets to properly inherit dynamic parameters from base cmdlet class
+* Changed `UserAssignedIdentityId` type to string[]
 
 ## Version 7.27.0
 * Added support to associate a DDoS custom policy with a Load Balancer frontend IP configuration.
@@ -31,7 +33,7 @@
 * Added EdgeZone (Extended Location) parameter support for Azure Firewall
     - Added `-EdgeZone` parameter to `New-AzFirewall` cmdlet
     - When `-EdgeZone` is specified, availability zones are not supported for Azure Firewall resources
-    
+
 ## Version 7.25.1
 * Onboarded `Microsoft.DataReplication/replicationVaults` to Private Link Common Cmdlets
 * Onboarded `Microsoft.DurableTask/schedulers` to Private Link Common Cmdlets

@@ -6,6 +6,8 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Cmdlets;
     using System;
 
     /// <summary>
@@ -16,12 +18,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzKustoInviteDatabaseFollower_InviteExpanded", SupportsShouldProcess = true)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PreviewMessage("*****************************************************************************************\r\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *\r\n* At least one change applies to this cmdlet.                                                     *\r\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\r\n**************************************************************************************************")]
-    [global::System.Management.Automation.OutputType(typeof(string))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDatabaseInviteFollowerResult))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Description(@"Generates an invitation token that allows attaching a follower database to this database.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}/Databases/{databaseName}/inviteFollower", ApiVersion = "2024-04-13")]
     public partial class InvokeAzKustoInviteDatabaseFollower_InviteExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -37,13 +40,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
         /// <summary>The request to invite a follower to a database.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabaseInviteFollowerRequest _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.DatabaseInviteFollowerRequest();
+        private Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDatabaseInviteFollowerRequest _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.DatabaseInviteFollowerRequest();
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Kusto Client => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Module.Instance.ClientAPI;
@@ -86,6 +104,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
+
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
         [global::System.Management.Automation.ValidateNotNull]
@@ -123,7 +144,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -169,7 +190,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -183,7 +205,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"List of external tables to exclude from the follower database",
         SerializedName = @"externalTablesToExclude",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] TableLevelSharingPropertyExternalTablesToExclude { get => _parametersBody.TableLevelSharingPropertyExternalTablesToExclude ?? null /* arrayOf */; set => _parametersBody.TableLevelSharingPropertyExternalTablesToExclude = value; }
+        public string[] TableLevelSharingPropertyExternalTablesToExclude { get => _parametersBody.TableLevelSharingPropertyExternalTablesToExclude?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.TableLevelSharingPropertyExternalTablesToExclude = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>List of external tables to include in the follower database</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -195,7 +217,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"List of external tables to include in the follower database",
         SerializedName = @"externalTablesToInclude",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] TableLevelSharingPropertyExternalTablesToInclude { get => _parametersBody.TableLevelSharingPropertyExternalTablesToInclude ?? null /* arrayOf */; set => _parametersBody.TableLevelSharingPropertyExternalTablesToInclude = value; }
+        public string[] TableLevelSharingPropertyExternalTablesToInclude { get => _parametersBody.TableLevelSharingPropertyExternalTablesToInclude?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.TableLevelSharingPropertyExternalTablesToInclude = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>List of functions to exclude from the follower database</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -207,7 +229,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"List of functions to exclude from the follower database",
         SerializedName = @"functionsToExclude",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] TableLevelSharingPropertyFunctionsToExclude { get => _parametersBody.TableLevelSharingPropertyFunctionsToExclude ?? null /* arrayOf */; set => _parametersBody.TableLevelSharingPropertyFunctionsToExclude = value; }
+        public string[] TableLevelSharingPropertyFunctionsToExclude { get => _parametersBody.TableLevelSharingPropertyFunctionsToExclude?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.TableLevelSharingPropertyFunctionsToExclude = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>List of functions to include in the follower database</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -219,7 +241,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"List of functions to include in the follower database",
         SerializedName = @"functionsToInclude",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] TableLevelSharingPropertyFunctionsToInclude { get => _parametersBody.TableLevelSharingPropertyFunctionsToInclude ?? null /* arrayOf */; set => _parametersBody.TableLevelSharingPropertyFunctionsToInclude = value; }
+        public string[] TableLevelSharingPropertyFunctionsToInclude { get => _parametersBody.TableLevelSharingPropertyFunctionsToInclude?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.TableLevelSharingPropertyFunctionsToInclude = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>List of materialized views to exclude from the follower database</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -231,7 +253,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"List of materialized views to exclude from the follower database",
         SerializedName = @"materializedViewsToExclude",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] TableLevelSharingPropertyMaterializedViewsToExclude { get => _parametersBody.TableLevelSharingPropertyMaterializedViewsToExclude ?? null /* arrayOf */; set => _parametersBody.TableLevelSharingPropertyMaterializedViewsToExclude = value; }
+        public string[] TableLevelSharingPropertyMaterializedViewsToExclude { get => _parametersBody.TableLevelSharingPropertyMaterializedViewsToExclude?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.TableLevelSharingPropertyMaterializedViewsToExclude = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>List of materialized views to include in the follower database</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -243,7 +265,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"List of materialized views to include in the follower database",
         SerializedName = @"materializedViewsToInclude",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] TableLevelSharingPropertyMaterializedViewsToInclude { get => _parametersBody.TableLevelSharingPropertyMaterializedViewsToInclude ?? null /* arrayOf */; set => _parametersBody.TableLevelSharingPropertyMaterializedViewsToInclude = value; }
+        public string[] TableLevelSharingPropertyMaterializedViewsToInclude { get => _parametersBody.TableLevelSharingPropertyMaterializedViewsToInclude?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.TableLevelSharingPropertyMaterializedViewsToInclude = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>List of tables to exclude from the follower database</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -255,7 +277,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"List of tables to exclude from the follower database",
         SerializedName = @"tablesToExclude",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] TableLevelSharingPropertyTablesToExclude { get => _parametersBody.TableLevelSharingPropertyTablesToExclude ?? null /* arrayOf */; set => _parametersBody.TableLevelSharingPropertyTablesToExclude = value; }
+        public string[] TableLevelSharingPropertyTablesToExclude { get => _parametersBody.TableLevelSharingPropertyTablesToExclude?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.TableLevelSharingPropertyTablesToExclude = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>List of tables to include in the follower database</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -267,31 +289,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"List of tables to include in the follower database",
         SerializedName = @"tablesToInclude",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] TableLevelSharingPropertyTablesToInclude { get => _parametersBody.TableLevelSharingPropertyTablesToInclude ?? null /* arrayOf */; set => _parametersBody.TableLevelSharingPropertyTablesToInclude = value; }
+        public string[] TableLevelSharingPropertyTablesToInclude { get => _parametersBody.TableLevelSharingPropertyTablesToInclude?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.TableLevelSharingPropertyTablesToInclude = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabaseInviteFollowerResult">Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabaseInviteFollowerResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDatabaseInviteFollowerResult">Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDatabaseInviteFollowerResult</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabaseInviteFollowerResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDatabaseInviteFollowerResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -314,6 +336,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Kusto.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -335,7 +362,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="InvokeAzKustoInviteDatabaseFollower_InviteExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="InvokeAzKustoInviteDatabaseFollower_InviteExpanded" /> cmdlet class.
         /// </summary>
         public InvokeAzKustoInviteDatabaseFollower_InviteExpanded()
         {
@@ -386,8 +413,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.Kusto.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.Kusto.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -443,7 +495,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Kusto.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Kusto.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -461,7 +513,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,ClusterName=ClusterName,DatabaseName=DatabaseName,body=_parametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,ClusterName=ClusterName,DatabaseName=DatabaseName})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -499,12 +551,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -521,15 +573,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api30.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, ClusterName=ClusterName, DatabaseName=DatabaseName, body=_parametersBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, ClusterName=ClusterName, DatabaseName=DatabaseName, body=_parametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -539,12 +591,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabaseInviteFollowerResult">Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabaseInviteFollowerResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDatabaseInviteFollowerResult">Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDatabaseInviteFollowerResult</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabaseInviteFollowerResult> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDatabaseInviteFollowerResult> response)
         {
             using( NoSynchronizationContext )
             {
@@ -556,8 +608,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabaseInviteFollowerResult
-                WriteObject((await response).GeneratedInvitation);
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDatabaseInviteFollowerResult
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

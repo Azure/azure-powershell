@@ -1,9 +1,9 @@
 ﻿<#
 .SYNOPSIS
-    This cmdlet combines New-AzEdgeMarketplaceOfferAccessToken and Get-AzEdgeMarketplaceOfferAccessToken to generate access token and retrieve the final SAS token when the disk is ready—enabling clients to download marketplace images to their edge devices.
+    This cmdlet combines New-AzEdgeMarketplaceOfferAccessToken and Get-AzEdgeMarketplaceOfferAccessToken to generate access token and retrieve the final SAS token when the disk is ready-enabling clients to download marketplace images to their edge devices.
 
 .DESCRIPTION
-    This cmdlet combines New-AzEdgeMarketplaceOfferAccessToken and Get-AzEdgeMarketplaceOfferAccessToken to generate access token and retrieve the final SAS token when the disk is ready—enabling clients to download marketplace images to their edge devices.
+    This cmdlet combines New-AzEdgeMarketplaceOfferAccessToken and Get-AzEdgeMarketplaceOfferAccessToken to generate access token and retrieve the final SAS token when the disk is ready-enabling clients to download marketplace images to their edge devices.
 
 .PARAMETER OfferId
     Id of the offer.

@@ -26,6 +26,11 @@
 * Upgraded `Microsoft.Identity.Client.Extensions.Msal` dependency from 4.83.1 to 4.83.3.
 * Upgraded `Microsoft.Identity.Client.Broker` dependency from 4.83.1 to 4.83.3.
 
+## Version 6.0.0
+* Added Service Principal support for SSH certificate generation in 'SshCredentialFactory'
+* Upgraded `Azure.Identity` dependency to 1.17.2.
+* Added ChangeSafety Support
+
 ## Version 5.4.0
 * Updated the `System.Memory` dependency to v4.6.3 to support the Storage SDK update.
 * Added `AzureAppConfigurationEndpointSuffix` and `AzureAppConfigurationEndpointResourceId` to `Add-AzEnvironment` and `Set-AzEnvironment`

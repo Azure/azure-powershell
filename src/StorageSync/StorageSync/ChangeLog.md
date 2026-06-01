@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added ChangeSafety Support
 
 ## Version 2.5.2
 * Fixed security bug in checking tenant id for MI server registration
