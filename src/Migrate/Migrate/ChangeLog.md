@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
+* Updated Azure Data Replication API version from 2024-09-01 to 2026-05-01
+* Added 'MigrateAsArcVM' parameter to 'New-AzMigrateLocalServerReplication' to support migrating VMs as Arc VMs
 
 ## Version 2.12.1
 * Fixed bugs in `Initialize-AzMigrateLocalReplicationInfrastructure`
@@ -31,8 +33,6 @@
 ## Version 2.12.0
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 * Added 'TargetSecurityType' and 'TargetVMSecureBootEnabled' parameters to 'New-AzMigrateServerReplication' to support Trusted Launch VM (TVM) security type during server replication
-* Updated Azure Data Replication API version from 2024-09-01 to 2026-05-01
-* Added 'MigrateAsArcVM' parameter to 'New-AzMigrateLocalServerReplication' to support migrating VMs as Arc VMs
 
 ## Version 2.11.0
 * Updated DefaultCrashConsistentFrequencyInMinutes and DefaultAppConsistentFrequencyInMinutes to align with Azure Portal UX for Replication Policy
