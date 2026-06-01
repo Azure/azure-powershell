@@ -19,8 +19,9 @@
 --->
 
 ## Upcoming Release
-* Fixed `Approve-AzPrivateEndpointConnection`, `Deny-AzPrivateEndpointConnection`, `Get-AzPrivateEndpointConnection`, `Remove-AzPrivateEndpointConnection`, and `Get-AzPrivateLinkResource`
-* Changed `UserAssignedIdentityId` type from string to string[] in Azure Firewall Policy
+* Added ChangeSafety Support
+    - Fixed Private Endpoint Connection and Private Link Resource cmdlets to properly inherit dynamic parameters from base cmdlet class
+* Changed `UserAssignedIdentityId` type to string[]
 
 ## Version 7.27.0
 * Added support to associate a DDoS custom policy with a Load Balancer frontend IP configuration.

@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
 
 ## Version 3.2.2
 * Updated preannouncement breaking changes date to May 2026.

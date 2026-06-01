@@ -18,11 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Updated the prompt message for user confirmation of long running account migration operation in `Start-AzStorageAccountMigration`
-* Added Storage task assignment TriggerType new value MockRun in `New/Update-AzStorageTaskAssignment`
-* Fixed `Get-AzStorageFileContent` and `Set-AzStorageFileContent`
-* Added Smart access tier and AllowedCopyScope 'All' support in `New/Set-AzStorageAccount`
-* Added static website configuration in `Update-AzStorageBlobServiceProperty`
+* Added ChangeSafety Support
+    - Fixed `Get/Set-AzStorageFileContent` to properly inherit dynamic parameters from base cmdlet class
+* Updated prompt in `Start-AzStorageAccountMigration`
+* Added MockRun TriggerType in `New/Update-AzStorageTaskAssignment`
+* Added Smart access tier, AllowedCopyScope in `New/Set-AzStorageAccount`
+* Added static website config in `Update-AzStorageBlobServiceProperty`
 * Added tags replication in `Set-AzStorageObjectReplicationPolicy`
 
 ## Version 9.6.1

@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Upgraded API version to 2025-11-01
-* Hid cmdlets: `NetworkExperimentProfile`, `Experiment`, `PreconfiguredEndpoint`, `ReportLatencyScorecard`, `ReportTimesery`
+* Hid Network Experiment cmdlets
 * Fixed `New/Remove-AzFrontDoorWafPolicy` `UriFormatException`
 
 ## Version 2.1.0
