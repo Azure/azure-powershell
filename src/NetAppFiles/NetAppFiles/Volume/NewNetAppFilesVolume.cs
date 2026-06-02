@@ -28,7 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
-    [CmdletOutputBreakingChangeWithVersion(typeof(NewAzureRmNetAppFilesVolume), "12.0.0", "7.0.0", DeprecatedOutputProperties = new String[] { "EnableSubvolumes" })]
+    [CmdletOutputBreakingChangeWithVersion(typeof(NewAzureRmNetAppFilesVolume), "12.0.0", "7.0.0", DeprecatedOutputProperties = new String[] { "EnableSubvolume" })]
     [Cmdlet(
         "New",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVolume",
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         [ValidateNotNullOrEmpty]
         public IList<PSKeyValuePairs> PlacementRule { get; set; }
 
-        public const String ChangeDesc = "EnableSubvolume is being deprecated without being replaced";
+        private const String ChangeDesc = "EnableSubvolume is being deprecated without being replaced";
         [CmdletParameterBreakingChangeWithVersion("EnableSubvolume", "12.0.0", "7.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
