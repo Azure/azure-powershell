@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Added ChangeSafety Support
+* Added Breaking Change notifications to Subvolume and Volume cmdlets in Az.NetAppFiles.
 
 ## Version 1.2.0
 * Updated to API version 2026-01-01

@@ -12,20 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
-using System.Linq;
-using System.Collections.Generic;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
+    [CmdletDeprecationWithVersion("17.0.0", "2.0.0")]
     [Cmdlet(
         "Get",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesSubvolumeMetadata",
