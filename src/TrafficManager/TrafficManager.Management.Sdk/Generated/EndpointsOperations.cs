@@ -24,9 +24,9 @@ namespace Microsoft.Azure.Management.TrafficManager
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal EndpointsOperations(TrafficManagerManagementClient client)
+        internal EndpointsOperations (TrafficManagerManagementClient client)
         {
-            if (client == null)
+            if (client == null) 
             {
                 throw new System.ArgumentNullException("client");
             }
@@ -76,10 +76,15 @@ namespace Microsoft.Azure.Management.TrafficManager
         /// </return>
         public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Endpoint>> GetWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+
+
+
+ 
             if (this.Client.ApiVersion == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
+
 
             if (resourceGroupName == null)
             {
@@ -167,7 +172,7 @@ namespace Microsoft.Azure.Management.TrafficManager
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -206,7 +211,7 @@ namespace Microsoft.Azure.Management.TrafficManager
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
+                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
@@ -238,7 +243,7 @@ namespace Microsoft.Azure.Management.TrafficManager
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Endpoint>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
@@ -266,6 +271,11 @@ namespace Microsoft.Azure.Management.TrafficManager
                 Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
             }
             return _result;
+
+
+
+
+
         }
         /// <summary>
         /// Create or update a Traffic Manager endpoint.
@@ -309,6 +319,10 @@ namespace Microsoft.Azure.Management.TrafficManager
         /// </return>
         public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Endpoint>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, Endpoint parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+
+
+
+ 
             if (parameters == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "parameters");
@@ -318,6 +332,7 @@ namespace Microsoft.Azure.Management.TrafficManager
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
+
 
             if (resourceGroupName == null)
             {
@@ -406,7 +421,7 @@ namespace Microsoft.Azure.Management.TrafficManager
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -417,11 +432,11 @@ namespace Microsoft.Azure.Management.TrafficManager
             }
             // Serialize Request
             string _requestContent = null;
-            if (parameters != null)
+            if(parameters != null)
             {
                 _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(parameters, this.Client.SerializationSettings);
                 _httpRequest.Content = new System.Net.Http.StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
             if (this.Client.Credentials != null)
@@ -451,7 +466,7 @@ namespace Microsoft.Azure.Management.TrafficManager
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
+                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
@@ -483,7 +498,7 @@ namespace Microsoft.Azure.Management.TrafficManager
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Endpoint>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
@@ -529,6 +544,11 @@ namespace Microsoft.Azure.Management.TrafficManager
                 Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
             }
             return _result;
+
+
+
+
+
         }
         /// <summary>
         /// Update a Traffic Manager endpoint.
@@ -571,6 +591,10 @@ namespace Microsoft.Azure.Management.TrafficManager
         /// </return>
         public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Endpoint>> UpdateWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, Endpoint parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+
+
+
+ 
             if (parameters == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "parameters");
@@ -579,6 +603,7 @@ namespace Microsoft.Azure.Management.TrafficManager
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
+
 
             if (resourceGroupName == null)
             {
@@ -667,7 +692,7 @@ namespace Microsoft.Azure.Management.TrafficManager
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -678,11 +703,11 @@ namespace Microsoft.Azure.Management.TrafficManager
             }
             // Serialize Request
             string _requestContent = null;
-            if (parameters != null)
+            if(parameters != null)
             {
                 _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(parameters, this.Client.SerializationSettings);
                 _httpRequest.Content = new System.Net.Http.StringContent(_requestContent, System.Text.Encoding.UTF8);
-                _httpRequest.Content.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+                _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
             // Set Credentials
             if (this.Client.Credentials != null)
@@ -712,7 +737,7 @@ namespace Microsoft.Azure.Management.TrafficManager
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
+                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
@@ -744,7 +769,7 @@ namespace Microsoft.Azure.Management.TrafficManager
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Endpoint>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
@@ -772,6 +797,11 @@ namespace Microsoft.Azure.Management.TrafficManager
                 Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
             }
             return _result;
+
+
+
+
+
         }
         /// <summary>
         /// Deletes a Traffic Manager endpoint.
@@ -808,6 +838,10 @@ namespace Microsoft.Azure.Management.TrafficManager
         /// </return>
         public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+
+
+
+ 
             if (this.Client.ApiVersion == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -856,6 +890,7 @@ namespace Microsoft.Azure.Management.TrafficManager
                 tracingParameters.Add("endpointType", endpointType);
                 tracingParameters.Add("endpointName", endpointName);
 
+
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "Delete", tracingParameters);
             }
@@ -899,7 +934,7 @@ namespace Microsoft.Azure.Management.TrafficManager
 
             if (customHeaders != null)
             {
-                foreach (var _header in customHeaders)
+                foreach(var _header in customHeaders)
                 {
                     if (_httpRequest.Headers.Contains(_header.Key))
                     {
@@ -938,7 +973,7 @@ namespace Microsoft.Azure.Management.TrafficManager
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    CloudError _errorBody = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
+                    CloudError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<CloudError>(_responseContent, this.Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
                         ex = new Microsoft.Rest.Azure.CloudException(_errorBody.Message);
@@ -970,7 +1005,7 @@ namespace Microsoft.Azure.Management.TrafficManager
             var _result = new Microsoft.Rest.Azure.AzureOperationResponse();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
-
+            
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
@@ -980,6 +1015,11 @@ namespace Microsoft.Azure.Management.TrafficManager
                 Microsoft.Rest.ServiceClientTracing.Exit(_invocationId, _result);
             }
             return _result;
+
+
+
+
+
         }
     }
 }
