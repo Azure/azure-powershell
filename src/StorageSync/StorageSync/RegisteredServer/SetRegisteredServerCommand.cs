@@ -164,12 +164,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     resourceName = this.IsParameterBound(c => c.ServerId) ? ServerId : localServerId;
                     resourceGroupName = ResourceGroupName;
                     storageSyncServiceName = StorageSyncServiceName;
-                    resourceName = this.IsParameterBound(c => c.ServerId) ? ServerId : localServerId;
-                }
-
-                if (!Guid.TryParse(resourceName, out Guid resourceServerGuid) || resourceServerGuid != localServerGuid)
-                {
-                    throw new PSArgumentException($"The provided ServerId '{resourceName}' does not match the local machine's server ID '{localServerGuid}'. Run this command on the correct server.");
                 }
 
                 if (!Guid.TryParse(resourceName, out Guid resourceServerGuid))
