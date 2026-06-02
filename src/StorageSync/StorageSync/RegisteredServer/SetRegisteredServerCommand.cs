@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// <value>The name.</value>
         [Parameter(Position = 2,
            ParameterSetName = StorageSyncParameterSets.StringParameterSet,
-           Mandatory = true,
+           Mandatory = false,
            ValueFromPipelineByPropertyName = false,
             HelpMessage = HelpMessages.RegisteredServerNameParameter)]
         [ValidateNotNullOrEmpty]
@@ -161,10 +161,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 }
                 else
                 {
-                    resourceName = ServerId;
+                    resourceName = this.IsParameterBound(c => c.ServerId) ? ServerId : localServerId;
                     resourceGroupName = ResourceGroupName;
                     storageSyncServiceName = StorageSyncServiceName;
-                    resourceName = this.IsParameterBound(c => c.ServerId) ? ServerId : localServerId;
                 }
 
                 if (!Guid.TryParse(resourceName, out Guid resourceServerGuid) || resourceServerGuid != localServerGuid)
