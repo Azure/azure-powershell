@@ -25,7 +25,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.NetAppFiles.Volume
+namespace Microsoft.Azure.Commands.NetAppFiles.Subvolume
 {
     [CmdletDeprecationWithVersion("17.0.0", "2.0.0")]
     [Cmdlet(

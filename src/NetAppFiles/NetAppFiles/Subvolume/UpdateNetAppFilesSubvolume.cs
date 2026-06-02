@@ -25,7 +25,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.NetAppFiles.Backup
+namespace Microsoft.Azure.Commands.NetAppFiles.Subvolume
 {
     [CmdletDeprecationWithVersion("17.0.0", "2.0.0")]
     [Cmdlet(

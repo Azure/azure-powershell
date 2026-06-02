@@ -23,7 +23,7 @@ using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
-namespace Microsoft.Azure.Commands.NetAppFiles.Volume
+namespace Microsoft.Azure.Commands.NetAppFiles.Subvolume
 {
     [CmdletDeprecationWithVersion("17.0.0", "2.0.0")]
     [Cmdlet(
