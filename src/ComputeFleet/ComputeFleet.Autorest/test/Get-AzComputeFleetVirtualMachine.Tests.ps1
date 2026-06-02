@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Update-AzComputeFleet'))
+if(($null -eq $TestName) -or ($TestName -contains 'Get-AzComputeFleetVirtualMachine'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzComputeFleet.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzComputeFleetVirtualMachine.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,12 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzComputeFleet'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzComputeFleet' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
+Describe 'Get-AzComputeFleetVirtualMachine' {
+    It 'List' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

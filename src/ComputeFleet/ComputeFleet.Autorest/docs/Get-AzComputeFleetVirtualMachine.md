@@ -1,51 +1,48 @@
 ---
-external help file: Az.ComputeFleet-help.xml
+external help file:
 Module Name: Az.ComputeFleet
-online version: https://learn.microsoft.com/powershell/module/az.computefleet/get-azcomputefleetvmss
+online version: https://learn.microsoft.com/powershell/module/az.computefleet/get-azcomputefleetvirtualmachine
 schema: 2.0.0
 ---
 
-# Get-AzComputeFleetVMSS
+# Get-AzComputeFleetVirtualMachine
 
 ## SYNOPSIS
-List VirtualMachineScaleSet resources by Fleet
+List VirtualMachine resources of a Launch mode Fleet.
 
 ## SYNTAX
 
 ```
-Get-AzComputeFleetVMSS -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzComputeFleetVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-Filter <String>] [-Skiptoken <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-List VirtualMachineScaleSet resources by Fleet
+List VirtualMachine resources of a Launch mode Fleet.
 
 ## EXAMPLES
 
-### Example 1: Get a list of compute fleet resource's Virtual Machine Scale Sets (VMSS) information by ResourceGroupName and FleetName
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzComputeFleetVMSS -ResourceGroupName "test-fleet" -FleetName "testFleet"
+{{ Add code here }}
 ```
 
 ```output
-Name               OperationStatus
-----               ---------------
-testFleet_8553c385 Succeeded    
-
-Code                    : 
-Detail                  : 
-Id                      : /subscriptions/ca8520e1-3c83-4b64-bb99-60a64673daa3/resourceGroups/test-fleet/providers/Microsoft.Compute/virtualMac
-                          hineScaleSets/testFleet_8553c385
-InnererrorErrorDetail   : 
-InnererrorExceptionType : 
-Message                 : 
-Name                    : testFleet_8553c385
-OperationStatus         : Succeeded
-Target                  : 
-Type                    :
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command gets a list of compute fleet resource's Virtual Machine Scale Sets (VMSS) information by ResourceGroupName and FleetName.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -65,13 +62,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Filter
+Filter expression to filter the virtual machines.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the Fleet
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: FleetName
+Aliases:
 
 Required: True
 Position: Named
@@ -90,6 +102,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Skiptoken
+Skip token for pagination.
+Uses the token from a previous response to fetch the next page of results.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -119,8 +147,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineScaleSet
+### Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachine
 
 ## NOTES
 
 ## RELATED LINKS
+

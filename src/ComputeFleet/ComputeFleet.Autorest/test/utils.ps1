@@ -43,12 +43,6 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.ResourceGroupName = "test-fleet"
-    $env.FleetName = "testFleet"
-    $env.FleetName2 = "testFleet2"
-    $env.FleetName3 = "testFleet3"
-    $env.Location = "centralus"
-
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

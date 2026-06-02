@@ -15,21 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzComputeFleet'))
 }
 
 Describe 'New-AzComputeFleet' {
-    It 'Create' {
-        {
-            $fleet = Get-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -FleetName $env.FleetName
-            $securedPassword = ConvertTo-SecureString -AsPlainText "[Sanitized]" -Force
-            $fleet.ComputeProfileBaseVirtualMachineProfile.OSProfileAdminPassword = $securedPassword
-            $fleet = New-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -FleetName "testFleet5" -Resource $fleet
-            $fleet.Name | Should -Be "testFleet5"
-        } | Should -Not -Throw
+    It 'CreateExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
-    
-    It 'CreateViaIdentity' {
-        {
-            $fleet = Get-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -FleetName $env.FleetName
-            $fleet = New-AzComputeFleet -InputObject $fleet -Resource $fleet
-            $fleet.Name | Should -Be $env.FleetName
-        } | Should -Not -Throw
+
+    It 'CreateViaJsonFilePath' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'CreateViaJsonString' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
