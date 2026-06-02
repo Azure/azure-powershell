@@ -21,9 +21,9 @@ New-AzMigrateServerReplication -LicenseType <String> -TargetResourceGroupId <Str
  [-PerformAutoResync <String>] [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
  [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>]
  [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-Tag <Hashtable>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-DiskEncryptionSetID <String>] [-SubscriptionId <String>]
- [-TargetCapacityReservationGroupId <String>] [-TargetSecurityType <String>]
- [-TargetVMSecureBootEnabled <Boolean>] [-DefaultProfile <PSObject>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetSecurityType <String>]
+ [-TargetVMSecureBootEnabled <Boolean>] [-DiskEncryptionSetID <String>] [-SubscriptionId <String>]
+ [-TargetCapacityReservationGroupId <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -36,10 +36,10 @@ New-AzMigrateServerReplication -LicenseType <String> -TargetResourceGroupId <Str
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
  [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>]
  [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-Tag <Hashtable>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-SubscriptionId <String>]
- [-TargetCapacityReservationGroupId <String>] [-TargetSecurityType <String>]
- [-TargetVMSecureBootEnabled <Boolean>] -DiskToInclude <IVMwareCbtDiskInput[]>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetSecurityType <String>]
+ [-TargetVMSecureBootEnabled <Boolean>] [-SubscriptionId <String>] [-TargetCapacityReservationGroupId <String>]
+ -DiskToInclude <IVMwareCbtDiskInput[]> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### ByInputObjectDefaultUser
@@ -51,9 +51,9 @@ New-AzMigrateServerReplication -LicenseType <String> -TargetResourceGroupId <Str
  [-PerformAutoResync <String>] [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
  [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>]
  [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-Tag <Hashtable>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-DiskEncryptionSetID <String>] [-SubscriptionId <String>]
- [-TargetCapacityReservationGroupId <String>] [-TargetSecurityType <String>]
- [-TargetVMSecureBootEnabled <Boolean>] -InputObject <IVMwareMachine> [-DefaultProfile <PSObject>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetSecurityType <String>]
+ [-TargetVMSecureBootEnabled <Boolean>] [-DiskEncryptionSetID <String>] [-SubscriptionId <String>]
+ [-TargetCapacityReservationGroupId <String>] -InputObject <IVMwareMachine> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -66,10 +66,9 @@ New-AzMigrateServerReplication -LicenseType <String> -TargetResourceGroupId <Str
  [-TargetAvailabilitySet <String>] [-TargetAvailabilityZone <String>]
  [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>]
  [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-Tag <Hashtable>]
- [-TargetBootDiagnosticsStorageAccount <String>] [-SubscriptionId <String>]
- [-TargetCapacityReservationGroupId <String>] [-TargetSecurityType <String>]
- [-TargetVMSecureBootEnabled <Boolean>] -DiskToInclude <IVMwareCbtDiskInput[]>
- -InputObject <IVMwareMachine> [-DefaultProfile <PSObject>]
+ [-TargetBootDiagnosticsStorageAccount <String>] [-TargetSecurityType <String>]
+ [-TargetVMSecureBootEnabled <Boolean>] [-SubscriptionId <String>] [-TargetCapacityReservationGroupId <String>]
+ -DiskToInclude <IVMwareCbtDiskInput[]> -InputObject <IVMwareMachine> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -207,10 +206,9 @@ Accept wildcard characters: False
 
 ### -DiskTag
 Specifies the tag to be used for disk creation.
-To construct, see NOTES section for DISKTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IVMwareCbtEnableMigrationInputTargetDiskTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtEnableMigrationInputTargetDiskTags
 Parameter Sets: (All)
 Aliases:
 
@@ -223,10 +221,9 @@ Accept wildcard characters: False
 
 ### -DiskToInclude
 Specifies the disks on the source server to be included for replication.
-To construct, see NOTES section for DISKTOINCLUDE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IVMwareCbtDiskInput[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtDiskInput[]
 Parameter Sets: ByIdPowerUser, ByInputObjectPowerUser
 Aliases:
 
@@ -255,10 +252,9 @@ Accept wildcard characters: False
 ### -InputObject
 Specifies the discovered server to be migrated.
 The server object can be retrieved using the Get-AzMigrateServer cmdlet.
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareMachine
 Parameter Sets: ByInputObjectDefaultUser, ByInputObjectPowerUser
 Aliases:
 
@@ -316,10 +312,9 @@ Accept wildcard characters: False
 
 ### -NicTag
 Specifies the tag to be used for NIC creation.
-To construct, see NOTES section for NICTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IVMwareCbtEnableMigrationInputTargetNicTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtEnableMigrationInputTargetNicTags
 Parameter Sets: (All)
 Aliases:
 
@@ -465,36 +460,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetSecurityType
-Specifies the security type for the target Azure VM. Supported values are 'Standard' and 'TrustedLaunch'.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TargetVMSecureBootEnabled
-Specifies if secure boot needs to be enabled on the target Azure VM. Applicable only when TargetSecurityType is 'TrustedLaunch'.
-
-```yaml
-Type: System.Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -TargetNetworkId
 Specifies the Virtual Network id within the destination Azure subscription to which the server needs to be migrated.
 
@@ -525,6 +490,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TargetSecurityType
+Specifies the security type for the Azure VM.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -TargetSubnetName
 Specifies the Subnet name within the destination Virtual Network to which the server needs to be migrated.
 
@@ -549,6 +529,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetVMSecureBootEnabled
+Specifies if secure boot needs to be enabled on target VM.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -602,10 +597,9 @@ Accept wildcard characters: False
 
 ### -VMTag
 Specifies the tag to be used for VM creation.
-To construct, see NOTES section for VMTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IVMwareCbtEnableMigrationInputTargetVmtags
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtEnableMigrationInputTargetVmtags
 Parameter Sets: (All)
 Aliases:
 
@@ -638,7 +632,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.IJob
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob
 
 ## NOTES
 

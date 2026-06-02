@@ -15,17 +15,17 @@ Updates SQL virtual machine group.
 ### UpdateExpanded (Default)
 ```
 Update-AzSqlVMGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ClusterBootstrapAccount <String>] [-ClusterOperatorAccount <String>]
- [-ClusterSubnetType <ClusterSubnetType>] [-DomainFqdn <String>] [-FileShareWitnessPath <String>]
- [-OuPath <String>] [-SqlServiceAccount <String>] [-StorageAccountPrimaryKey <SecureString>]
- [-StorageAccountUrl <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ClusterBootstrapAccount <String>] [-ClusterOperatorAccount <String>] [-ClusterSubnetType <String>]
+ [-DomainFqdn <String>] [-FileShareWitnessPath <String>] [-OuPath <String>] [-SqlServiceAccount <String>]
+ [-StorageAccountPrimaryKey <SecureString>] [-StorageAccountUrl <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
 Update-AzSqlVMGroup -InputObject <ISqlVirtualMachineIdentity> [-ClusterBootstrapAccount <String>]
- [-ClusterOperatorAccount <String>] [-ClusterSubnetType <ClusterSubnetType>] [-DomainFqdn <String>]
+ [-ClusterOperatorAccount <String>] [-ClusterSubnetType <String>] [-DomainFqdn <String>]
  [-FileShareWitnessPath <String>] [-OuPath <String>] [-SqlServiceAccount <String>]
  [-StorageAccountPrimaryKey <SecureString>] [-StorageAccountUrl <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 Cluster subnet type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.ClusterSubnetType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -360,7 +360,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachineGroup
+### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineGroup
 
 ## NOTES
 

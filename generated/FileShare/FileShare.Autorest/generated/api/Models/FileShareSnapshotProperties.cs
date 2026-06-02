@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
 
         /// <summary>The initiator of the FileShareSnapshot. This is a user-defined value.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Origin(Microsoft.Azure.PowerShell.Cmdlets.FileShare.PropertyOrigin.Owned)]
-        public string InitiatorId { get => this._initiatorId; }
+        public string InitiatorId { get => this._initiatorId; set => this._initiatorId = value; }
 
         /// <summary>Backing field for <see cref="Metadata" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshotPropertiesMetadata _metadata;
@@ -24,9 +24,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
         /// <summary>The metadata</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Origin(Microsoft.Azure.PowerShell.Cmdlets.FileShare.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshotPropertiesMetadata Metadata { get => (this._metadata = this._metadata ?? new Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.FileShareSnapshotPropertiesMetadata()); set => this._metadata = value; }
-
-        /// <summary>Internal Acessors for InitiatorId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshotPropertiesInternal.InitiatorId { get => this._initiatorId; set { {_initiatorId = value;} } }
 
         /// <summary>Internal Acessors for SnapshotTime</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshotPropertiesInternal.SnapshotTime { get => this._snapshotTime; set { {_snapshotTime = value;} } }
@@ -51,14 +48,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models
         /// <summary>The initiator of the FileShareSnapshot. This is a user-defined value.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
+        Create = true,
         Update = false,
         Description = @"The initiator of the FileShareSnapshot. This is a user-defined value.",
         SerializedName = @"initiatorId",
         PossibleTypes = new [] { typeof(string) })]
-        string InitiatorId { get;  }
+        string InitiatorId { get; set; }
         /// <summary>The metadata</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Info(
         Required = false,

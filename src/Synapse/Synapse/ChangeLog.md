@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Updated Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.23
+* Added ChangeSafety Support
 
 ## Version 3.2.4
 * Updated Azure.Core from 1.47.3 to 1.50.0

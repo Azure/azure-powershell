@@ -208,7 +208,7 @@ param(
 
     process {
 
-      if ($Force.IsPresent -or $PsCmdlet.ShouldContinue("Confirm redundancy configuration change:", "After your request to convert the account's redundancy configuration is validated, the conversion will typically complete in a few days, but can take several weeks depending on current resource demands in the region, account size, and other factors. The conversion can't be stopped after being initiated, and for accounts with geo redundancy a failover can't be initiated while conversion is in progress. The data within the storage account will continue to be accessible with no loss of durability or availability.")) {
+      if ($Force.IsPresent -or $PsCmdlet.ShouldContinue("Confirm redundancy configuration change:", "After your request to convert the account's redundancy configuration is validated, the conversion will typically complete in a few days, but can take several weeks depending on current resource demands in the region, account size, and other factors. The conversion can't be stopped after being initiated, and for accounts with geo redundancy a failover can't be initiated while conversion is in progress. During the conversion, you can access data in your storage account with no loss of durability, and non-HNS-enabled accounts experience no interruption to availability. However, HNS-enabled accounts might experience a brief pause while the account switches to the new resiliency level. This pause lasts less than 30 seconds and requests will complete automatically after the pause.")) {
         if ($PSBoundParameters.ContainsKey("Force")) {
           $PSBoundParameters.Remove("Force")  | Out-Null
         }

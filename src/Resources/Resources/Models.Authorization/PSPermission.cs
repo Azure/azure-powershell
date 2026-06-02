@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 {
@@ -20,18 +21,26 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
     {
         public List<string> Actions { get; set; }
 
-        public string ActionsString { get { return string.Join(", ", Actions); } }
+        [JsonIgnore]
+        public string ActionsString { get { return Actions != null ? string.Join(", ", Actions) : string.Empty; } }
 
         public List<string> NotActions { get; set; }
 
-        public string NotActionsString { get { return string.Join(", ", NotActions); } }
+        [JsonIgnore]
+        public string NotActionsString { get { return NotActions != null ? string.Join(", ", NotActions) : string.Empty; } }
 
         public List<string> DataActions { get; set; }
 
-        public string DataActionsString { get { return string.Join(", ", DataActions); } }
+        [JsonIgnore]
+        public string DataActionsString { get { return DataActions != null ? string.Join(", ", DataActions) : string.Empty; } }
 
         public List<string> NotDataActions { get; set; }
 
-        public string NotDataActionsString { get { return string.Join(", ", NotDataActions); } }
+        [JsonIgnore]
+        public string NotDataActionsString { get { return NotDataActions != null ? string.Join(", ", NotDataActions) : string.Empty; } }
+
+        public string Condition { get; set; }
+
+        public string ConditionVersion { get; set; }
     }
 }

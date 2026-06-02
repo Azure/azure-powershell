@@ -29,7 +29,7 @@ Describe 'Remove-AzWvdHostPool' {
                             -Ring $null `
                             -ValidationEnvironment:$false `
                             -PreferredAppGroupType 'Desktop' `
-                            -StartVMOnConnect:$false
+                            -StartVMOnConnect:$false 
             $hostPool.Name | Should -Be $env.HostPool
             $hostPool.Location | Should -Be $env.Location
             $hostPool.HostPoolType | Should -Be 'Pooled'              
@@ -41,7 +41,7 @@ Describe 'Remove-AzWvdHostPool' {
             $hostPool.VMTemplate | Should -Be $null
             # @todo not correct since it should be null need to look into it
             # $hostPool.CustomRdpProperty | Should -Be ""
-            $hostPool.Ring | Should -Be $null
+            $hostPool.Ring | Should -Be 1
             # @todo need to check this
             # $hostPool.ValidationEnvironment | Should -Be $false
             $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
@@ -61,7 +61,7 @@ Describe 'Remove-AzWvdHostPool' {
             $hostPool.VMTemplate | Should -Be $null
             # @todo not correct since it should be null need to look into it
             # $hostPool.CustomRdpProperty | Should -Be ""
-            $hostPool.Ring | Should -Be $null
+            $hostPool.Ring | Should -Be 1
             # @todo need to check this
             # $hostPool.ValidationEnvironment | Should -Be $false
             $hostPool.PreferredAppGroupType | Should -Be 'Desktop'

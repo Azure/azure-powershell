@@ -78,10 +78,9 @@ Accept wildcard characters: False
 
 ### -LifeCycles
 Life cycles associated with the retention rule.
-To construct, see NOTES section for LIFECYCLES properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.ISourceLifeCycle[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ISourceLifeCycle[]
 Parameter Sets: AddRetention
 Aliases:
 
@@ -111,7 +110,7 @@ Accept wildcard characters: False
 Specifies whether to modify an existing LifeCycle.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: AddRetention
 Aliases:
 
@@ -124,10 +123,9 @@ Accept wildcard characters: False
 
 ### -Policy
 Backup Policy Object
-To construct, see NOTES section for POLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupPolicy
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -160,7 +158,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupPolicy
 
 ## NOTES
 

@@ -157,6 +157,30 @@ This command runs in async way using parameter -NoWait.
 Next we fetch the operation in a while loop until it succeeds.
 The last command is used to configure protection for the backup instance.
 
+### Example 6: Configure protection for AzureCosmosDB
+```powershell
+$vault = Get-AzDataProtectionBackupVault -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName"
+$pol = Get-AzDataProtectionBackupPolicy -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -ResourceGroupName "resourceGroupName" | Where-Object { $_.DatasourceType -match "documentdb" }
+$cosmosDbAccountId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/source-cosmos-account"
+$backupInstanceClientObject = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureCosmosDB -DatasourceLocation $vault.Location -PolicyId $pol[0].Id -DatasourceId $cosmosDbAccountId
+Set-AzDataProtectionMSIPermission -VaultResourceGroup "resourceGroupName" -VaultName "vaultName" -BackupInstance $backupInstanceClientObject -PermissionsScope ResourceGroup
+$biCreate = New-AzDataProtectionBackupInstance -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -BackupInstance $backupInstanceClientObject
+$biCreate
+```
+
+```output
+Name                                                                              BackupInstanceName
+----                                                                              ------------------
+source-cosmos-account-source-cosmos-account-64f7399a-b024-4d61-8f16-c424c5fd2564 source-cosmos-account-source-cosmos-account-64f7399a-b024-4d61-8f16-c424c5fd2564
+```
+
+The first command gets the backup vault.
+The second command gets the AzureCosmosDB policy.
+The third command initializes the Cosmos DB account ARM id.
+The fourth command initializes the backup instance client object for AzureCosmosDB.
+The fifth command assigns the necessary permissions for configure backup.
+The last command configures protection for the AzureCosmosDB account in the backup vault.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -175,10 +199,9 @@ Accept wildcard characters: False
 
 ### -BackupInstance
 Backup instance request object which will be used to configure backup
-To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250901.IBackupInstanceResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource
 Parameter Sets: (All)
 Aliases:
 

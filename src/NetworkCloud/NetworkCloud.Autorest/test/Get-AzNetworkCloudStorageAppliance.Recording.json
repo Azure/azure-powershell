@@ -1,8 +1,8 @@
 {
-  "Get-AzNetworkCloudStorageAppliance+[NoContext]+ListBySubscription+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/storageAppliances?api-version=2025-02-01+1": {
+  "Get-AzNetworkCloudStorageAppliance+[NoContext]+ListBySubscription+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/storageAppliances?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/storageAppliances?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/providers/Microsoft.NetworkCloud/storageAppliances?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -43,10 +43,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkCloudStorageAppliance+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev04-b511166984dd-HostedResources-21B60561/providers/Microsoft.NetworkCloud/storageAppliances/B37DEV04A1PU01?api-version=2025-02-01+1": {
+  "Get-AzNetworkCloudStorageAppliance+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev04-b511166984dd-HostedResources-21B60561/providers/Microsoft.NetworkCloud/storageAppliances/B37DEV04A1PU01?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev04-b511166984dd-HostedResources-21B60561/providers/Microsoft.NetworkCloud/storageAppliances/B37DEV04A1PU01?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev04-b511166984dd-HostedResources-21B60561/providers/Microsoft.NetworkCloud/storageAppliances/B37DEV04A1PU01?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -88,10 +88,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzNetworkCloudStorageAppliance+[NoContext]+ListByResourceGroup+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev04-b511166984dd-HostedResources-21B60561/providers/Microsoft.NetworkCloud/storageAppliances?api-version=2025-02-01+1": {
+  "Get-AzNetworkCloudStorageAppliance+[NoContext]+ListByResourceGroup+$GET+https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev04-b511166984dd-HostedResources-21B60561/providers/Microsoft.NetworkCloud/storageAppliances?api-version=2025-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev04-b511166984dd-HostedResources-21B60561/providers/Microsoft.NetworkCloud/storageAppliances?api-version=2025-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fca2e8ee-1179-48b8-9532-428ed0873a2e/resourceGroups/dev04-b511166984dd-HostedResources-21B60561/providers/Microsoft.NetworkCloud/storageAppliances?api-version=2025-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

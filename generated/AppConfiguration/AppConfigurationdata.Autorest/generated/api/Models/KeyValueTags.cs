@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Extensions;
 
-    /// <summary>Dictionary of <string></summary>
+    /// <summary>The tags of the key-value</summary>
     public partial class KeyValueTags :
         Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueTags,
         Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueTagsInternal
@@ -19,14 +19,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
 
         }
     }
-    /// Dictionary of <string>
+    /// The tags of the key-value
     public partial interface IKeyValueTags :
         Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IAssociativeArray<string>
     {
 
     }
-    /// Dictionary of <string>
+    /// The tags of the key-value
     internal partial interface IKeyValueTagsInternal
 
     {

@@ -122,6 +122,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMonitorWorkspaceIdentityInternal)this).AzureMonitorWorkspaceName = (string) content.GetValueForProperty("AzureMonitorWorkspaceName",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMonitorWorkspaceIdentityInternal)this).AzureMonitorWorkspaceName, global::System.Convert.ToString);
             }
+            if (content.Contains("IssueName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMonitorWorkspaceIdentityInternal)this).IssueName = (string) content.GetValueForProperty("IssueName",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMonitorWorkspaceIdentityInternal)this).IssueName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MetricsContainerName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMonitorWorkspaceIdentityInternal)this).MetricsContainerName = (string) content.GetValueForProperty("MetricsContainerName",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMonitorWorkspaceIdentityInternal)this).MetricsContainerName, global::System.Convert.ToString);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMonitorWorkspaceIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMonitorWorkspaceIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -154,6 +162,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
             if (content.Contains("AzureMonitorWorkspaceName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMonitorWorkspaceIdentityInternal)this).AzureMonitorWorkspaceName = (string) content.GetValueForProperty("AzureMonitorWorkspaceName",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMonitorWorkspaceIdentityInternal)this).AzureMonitorWorkspaceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("IssueName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMonitorWorkspaceIdentityInternal)this).IssueName = (string) content.GetValueForProperty("IssueName",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMonitorWorkspaceIdentityInternal)this).IssueName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MetricsContainerName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMonitorWorkspaceIdentityInternal)this).MetricsContainerName = (string) content.GetValueForProperty("MetricsContainerName",((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMonitorWorkspaceIdentityInternal)this).MetricsContainerName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
