@@ -164,6 +164,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     resourceName = this.IsParameterBound(c => c.ServerId) ? ServerId : localServerId;
                     resourceGroupName = ResourceGroupName;
                     storageSyncServiceName = StorageSyncServiceName;
+                    resourceName = this.IsParameterBound(c => c.ServerId) ? ServerId : localServerId;
+                }
+
+                if (!Guid.TryParse(resourceName, out Guid resourceServerGuid) || resourceServerGuid != localServerGuid)
+                {
+                    throw new PSArgumentException($"The provided ServerId '{resourceName}' does not match the local machine's server ID '{localServerGuid}'. Run this command on the correct server.");
                 }
 
                 if (!Guid.TryParse(resourceName, out Guid resourceServerGuid))
@@ -222,12 +228,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 if (registeredServer.ServerRole == InternalObjects.ServerRoleType.ClusterNode.ToString())
                 {
                     // this is unexpected scenario but can happen if the server is not registered properly
-                    if (string.IsNullOrEmpty(registeredServer.ClusterId) || Guid.Parse(registeredServer.ClusterId) == Guid.Empty)
+                    if (!Guid.TryParse(registeredServer.ClusterId, out Guid custerId) || custerId == Guid.Empty)
                     {
                         throw new PSArgumentException($"Cluster Id is not available for cluster node server {registeredServer.Id}. Please contact administrator for further troubleshooting.");
                     }
 
-                    RegisteredServer clusterNameServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, registeredServer.ClusterId.ToString());
+                    RegisteredServer clusterNameServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, custerId);
                     if (clusterNameServer == null)
                     {
                         throw new PSArgumentException($"Cluster  {registeredServer.ClusterName} not found.");
@@ -310,7 +316,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     RegisteredServer resource = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Update(
                         resourceGroupName,
                         storageSyncServiceName,
-                        resourceName,
+                        resourceServerGuid,
                         new RegisteredServerUpdateParameters()
                         {
                             Identity = identity,

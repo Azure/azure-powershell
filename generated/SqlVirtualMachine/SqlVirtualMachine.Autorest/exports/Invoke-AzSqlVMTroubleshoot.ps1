@@ -28,7 +28,7 @@ $sqlvm | Invoke-AzSqlVMTroubleshoot -StartTimeUtc '2023-03-15T17:10:00Z' -EndTim
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVMTroubleshooting
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVMTroubleshooting
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -45,10 +45,12 @@ INPUTOBJECT <ISqlVirtualMachineIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/invoke-azsqlvmtroubleshoot
 #>
 function Invoke-AzSqlVMTroubleshoot {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVMTroubleshooting])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVMTroubleshooting])]
 [CmdletBinding(DefaultParameterSetName='TroubleshootExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='TroubleshootExpanded', Mandatory)]
+    [Parameter(ParameterSetName='TroubleshootViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='TroubleshootViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
     [System.String]
     # Name of the resource group that contains the resource.
@@ -56,12 +58,16 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='TroubleshootExpanded', Mandatory)]
+    [Parameter(ParameterSetName='TroubleshootViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='TroubleshootViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
     [System.String]
     # Name of the SQL virtual machine.
     ${SqlVirtualMachineName},
 
     [Parameter(ParameterSetName='TroubleshootExpanded')]
+    [Parameter(ParameterSetName='TroubleshootViaJsonFilePath')]
+    [Parameter(ParameterSetName='TroubleshootViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -72,33 +78,48 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='TroubleshootExpanded')]
+    [Parameter(ParameterSetName='TroubleshootViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
     [System.DateTime]
     # End time in UTC timezone.
     ${EndTimeUtc},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='TroubleshootExpanded')]
+    [Parameter(ParameterSetName='TroubleshootViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
     [System.DateTime]
     # Start time in UTC timezone.
     ${StartTimeUtc},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.TroubleshootingScenario])]
+    [Parameter(ParameterSetName='TroubleshootExpanded')]
+    [Parameter(ParameterSetName='TroubleshootViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.PSArgumentCompleterAttribute("UnhealthyReplica")]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.TroubleshootingScenario]
+    [System.String]
     # SQL VM troubleshooting scenario.
     ${TroubleshootingScenario},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='TroubleshootExpanded')]
+    [Parameter(ParameterSetName='TroubleshootViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
     [System.String]
     # The name of the availability group
     ${UnhealthyReplicaInfoAvailabilityGroupName},
+
+    [Parameter(ParameterSetName='TroubleshootViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Troubleshoot operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='TroubleshootViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.String]
+    # Json string supplied to the Troubleshoot operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -168,6 +189,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -189,10 +218,10 @@ begin {
         $mapping = @{
             TroubleshootExpanded = 'Az.SqlVirtualMachine.private\Invoke-AzSqlVMTroubleshoot_TroubleshootExpanded';
             TroubleshootViaIdentityExpanded = 'Az.SqlVirtualMachine.private\Invoke-AzSqlVMTroubleshoot_TroubleshootViaIdentityExpanded';
+            TroubleshootViaJsonFilePath = 'Az.SqlVirtualMachine.private\Invoke-AzSqlVMTroubleshoot_TroubleshootViaJsonFilePath';
+            TroubleshootViaJsonString = 'Az.SqlVirtualMachine.private\Invoke-AzSqlVMTroubleshoot_TroubleshootViaJsonString';
         }
-        if (('TroubleshootExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('TroubleshootExpanded', 'TroubleshootViaJsonFilePath', 'TroubleshootViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -206,6 +235,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

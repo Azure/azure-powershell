@@ -95,6 +95,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the container group.",
         SerializedName = @"containerGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -103,6 +106,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the container group profile.",
         SerializedName = @"containerGroupProfileName",
         PossibleTypes = new [] { typeof(string) })]
@@ -111,6 +117,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the container instance.",
         SerializedName = @"containerName",
         PossibleTypes = new [] { typeof(string) })]
@@ -119,6 +128,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -127,6 +139,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Azure region.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
@@ -135,6 +150,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -143,6 +161,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The revision number of the container group profile.",
         SerializedName = @"revisionNumber",
         PossibleTypes = new [] { typeof(string) })]
@@ -151,6 +172,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the subnet.",
         SerializedName = @"subnetName",
         PossibleTypes = new [] { typeof(string) })]
@@ -159,6 +183,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -167,6 +194,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the virtual network.",
         SerializedName = @"virtualNetworkName",
         PossibleTypes = new [] { typeof(string) })]

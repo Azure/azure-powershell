@@ -25,13 +25,13 @@ Get-AzManagedServicesMarketplaceDefinition -MarketplaceIdentifier marketplace_te
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IManagedServicesIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IMarketplaceRegistrationDefinition
+Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IMarketplaceRegistrationDefinition
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IManagedServicesIdentity>: Identity Parameter
+INPUTOBJECT <IManagedServicesIdentity>: Identity Parameter To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
   [Id <String>]: Resource identity path
   [MarketplaceIdentifier <String>]: The Azure Marketplace identifier. Expected formats: {publisher}.{product[-preview]}.{planName}.{version} or {publisher}.{product[-preview]}.{planName} or {publisher}.{product[-preview]} or {publisher}).
   [RegistrationAssignmentId <String>]: The GUID of the registration assignment.
@@ -41,7 +41,7 @@ INPUTOBJECT <IManagedServicesIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.managedservices/get-azmanagedservicesmarketplacedefinition
 #>
 function Get-AzManagedServicesMarketplaceDefinition {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IMarketplaceRegistrationDefinition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IMarketplaceRegistrationDefinition])]
 [CmdletBinding(DefaultParameterSetName='ListWithScope', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='ListWithScope')]
@@ -136,6 +136,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -161,7 +169,7 @@ begin {
             GetViaIdentity = 'Az.ManagedServices.custom\Get-AzManagedServicesMarketplaceDefinition';
             ListWithoutScope = 'Az.ManagedServices.custom\Get-AzManagedServicesMarketplaceDefinition';
         }
-        if (('ListWithScope', 'GetWithScope') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Scope')) {
+        if (('ListWithScope', 'GetWithScope') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Scope') ) {
             $PSBoundParameters['Scope'] = "subscriptions/" + (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
@@ -171,6 +179,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

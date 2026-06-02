@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `Invoke-AzDnsResolverBulkDnsResolverDomainList`
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
+* Removed `ActionBlockResponseCode` from DNS security rule cmdlets
+* Made `DnsResolverDomainList`, `Domain` parameters optional
+
+
+## Version 1.2.4
 * Fixed misleading breaking change warning on `New-AzDnsResolverDomainList` that incorrectly stated the cmdlet was being deprecated
     - The cmdlet displayed "The cmdlet is being deprecated. There will be no replacement for it." when the intent was only to announce that the `Domain` parameter is no longer mandatory
     - `New-AzDnsResolverDomainList` are now able to create domain lists without domains.

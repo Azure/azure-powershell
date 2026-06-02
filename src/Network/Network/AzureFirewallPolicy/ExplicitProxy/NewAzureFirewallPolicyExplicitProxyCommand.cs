@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "SAS URL for PAC file.")]
+            HelpMessage = "URL for PAC file.")]
         public string PacFile { get; set; }
 
         public override void Execute()

@@ -9,7 +9,8 @@ namespace Microsoft.Azure.Management.Compute.Models
 
     /// <summary>
     /// Describes an resiliency policy - AutomaticZoneRebalancingPolicy,
-    /// ResilientVMCreationPolicy and/or ResilientVMDeletionPolicy.
+    /// ResilientVMCreationPolicy, ResilientVMDeletionPolicy and
+    /// OperationRecoverySettings (version &gt; 2025-11-01).
     /// </summary>
     public partial class ResiliencyPolicy
     {
@@ -36,13 +37,17 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <param name="zoneAllocationPolicy">The configuration parameters used while performing zone allocation.
         /// </param>
-        public ResiliencyPolicy(ResilientVMCreationPolicy resilientVMCreationPolicy = default(ResilientVMCreationPolicy), ResilientVMDeletionPolicy resilientVMDeletionPolicy = default(ResilientVMDeletionPolicy), AutomaticZoneRebalancingPolicy automaticZoneRebalancingPolicy = default(AutomaticZoneRebalancingPolicy), ZoneAllocationPolicy zoneAllocationPolicy = default(ZoneAllocationPolicy))
+
+        /// <param name="operationRecoverySettings">The configuration parameters used for operation recovery settings.
+        /// </param>
+        public ResiliencyPolicy(ResilientVMCreationPolicy resilientVMCreationPolicy = default(ResilientVMCreationPolicy), ResilientVMDeletionPolicy resilientVMDeletionPolicy = default(ResilientVMDeletionPolicy), AutomaticZoneRebalancingPolicy automaticZoneRebalancingPolicy = default(AutomaticZoneRebalancingPolicy), ZoneAllocationPolicy zoneAllocationPolicy = default(ZoneAllocationPolicy), OperationRecoverySettings operationRecoverySettings = default(OperationRecoverySettings))
 
         {
             this.ResilientVMCreationPolicy = resilientVMCreationPolicy;
             this.ResilientVMDeletionPolicy = resilientVMDeletionPolicy;
             this.AutomaticZoneRebalancingPolicy = automaticZoneRebalancingPolicy;
             this.ZoneAllocationPolicy = zoneAllocationPolicy;
+            this.OperationRecoverySettings = operationRecoverySettings;
             CustomInit();
         }
 
@@ -79,6 +84,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "zoneAllocationPolicy")]
         public ZoneAllocationPolicy ZoneAllocationPolicy {get; set; }
+
+        /// <summary>
+        /// Gets or sets the configuration parameters used for operation recovery
+        /// settings.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "operationRecoverySettings")]
+        public OperationRecoverySettings OperationRecoverySettings {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -94,6 +106,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             {
                 this.ZoneAllocationPolicy.Validate();
             }
+
         }
     }
 }

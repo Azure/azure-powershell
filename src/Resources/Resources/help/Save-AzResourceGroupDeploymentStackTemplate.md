@@ -15,19 +15,19 @@ Saves a Resource Group scoped Deployment Stack Template.
 ### SaveByNameAndResourceGroupName (Default)
 ```
 Save-AzResourceGroupDeploymentStackTemplate [-ResourceGroupName] <String> [-StackName] <String> [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### SaveByResourceId
 ```
 Save-AzResourceGroupDeploymentStackTemplate -ResourceId <String> [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### SaveByStackObject
 ```
-Save-AzResourceGroupDeploymentStackTemplate [-InputObjet] <PSDeploymentStack> [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Save-AzResourceGroupDeploymentStackTemplate [-InputObject] <PSDeploymentStack> [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,7 +48,7 @@ Save a template from a stack named 'MyRGStack' under an RG named 'MyResourceGrou
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -59,13 +59,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObjet
+### -InputObject
 The stack PS object
 
 ```yaml
-Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeploymentStack
+Type: PSDeploymentStack
 Parameter Sets: SaveByStackObject
-Aliases:
+Aliases: InputObjet
 
 Required: True
 Position: 0
@@ -78,9 +78,24 @@ Accept wildcard characters: False
 When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -93,7 +108,7 @@ Accept wildcard characters: False
 The name of the ResourceGroup where the DeploymentStack is deployed
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SaveByNameAndResourceGroupName
 Aliases:
 
@@ -108,7 +123,7 @@ Accept wildcard characters: False
 ResourceId of the DeploymentStack to get
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SaveByResourceId
 Aliases: Id
 
@@ -123,7 +138,7 @@ Accept wildcard characters: False
 The name of the DeploymentStack to get
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SaveByNameAndResourceGroupName
 Aliases:
 

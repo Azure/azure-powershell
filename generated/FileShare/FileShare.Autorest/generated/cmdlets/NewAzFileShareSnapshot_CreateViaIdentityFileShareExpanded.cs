@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.FileShare.Models.IFileShareSnapshot))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.Description(@"create a FileShareSnapshot.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}/fileShareSnapshots/{name}", ApiVersion = "2025-09-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}/fileShareSnapshots/{name}", ApiVersion = "2026-06-01")]
     public partial class NewAzFileShareSnapshot_CreateViaIdentityFileShareExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.IContext
@@ -94,6 +94,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FileShare.Cmdlets
         [global::System.Management.Automation.ValidateNotNull]
         [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
+
+        /// <summary>The initiator of the FileShareSnapshot. This is a user-defined value.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The initiator of the FileShareSnapshot. This is a user-defined value.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.Category(global::Microsoft.Azure.PowerShell.Cmdlets.FileShare.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.FileShare.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The initiator of the FileShareSnapshot. This is a user-defined value.",
+        SerializedName = @"initiatorId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string InitiatorId { get => _resourceBody.InitiatorId ?? null; set => _resourceBody.InitiatorId = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
