@@ -152,7 +152,7 @@
         "PackageVersion": "10.0.3",
         "TargetFramework": "netstandard2.0",
         "WindowsPowerShell": true,
-        "PowerShell7Plus": false
+        "PowerShell7Plus": true
     },
     {
         "PackageName": "System.Memory",

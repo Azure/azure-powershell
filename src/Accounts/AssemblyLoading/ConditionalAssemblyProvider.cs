@@ -83,7 +83,6 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
                 CreateAssembly("netstandard2.0", "System.ServiceModel.Primitives", "4.7.0.0").WithWindowsPowerShell(),
                 CreateAssembly("netstandard2.0", "System.Text.Json", "10.0.0.0"),
                 CreateAssembly("netstandard2.0", "System.Threading.Tasks.Extensions", "4.2.1.0").WithWindowsPowerShell(),
-                CreateAssembly("netstandard2.0", "System.ComponentModel.Annotations", "8.0.0.0").WithWindowsPowerShell(),
                 #endregion
             };
         }
