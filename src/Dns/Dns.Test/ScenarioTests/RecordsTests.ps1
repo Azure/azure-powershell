@@ -161,6 +161,21 @@ function Test-TrafficManagerProfileRecordSet
 	$tmRecord = $zone | Get-AzDnsRecordSet -Name $recordName -RecordType $recordType
 	Assert-AreEqual $tmProfileId $tmRecord.TrafficManagerProfileId
 
+	# Round-trip via Set-AzDnsRecordSet: change the TMLink target to a different profile and Ttl.
+	# Validates that DnsRecordSet.TrafficManagerProfileId flows through Clone() and UpdateDnsRecordSet.
+	$tmProfileName2 = "tmprofile" + $(getAssetname)
+	$tmProfileId2 = "/subscriptions/$($subscription)/resourceGroups/$($resourceGroup.ResourceGroupName)/providers/Microsoft.Network/trafficManagerProfiles/$tmProfileName2"
+	$tmRecord.TrafficManagerProfileId = $tmProfileId2
+	$tmRecord.Ttl = 7200
+	$updatedRecord = $tmRecord | Set-AzDnsRecordSet
+
+	Assert-AreEqual $tmProfileId2 $updatedRecord.TrafficManagerProfileId
+	Assert-AreEqual 7200 $updatedRecord.Ttl
+
+	$tmRecord = $zone | Get-AzDnsRecordSet -Name $recordName -RecordType $recordType
+	Assert-AreEqual $tmProfileId2 $tmRecord.TrafficManagerProfileId
+	Assert-AreEqual 7200 $tmRecord.Ttl
+
 	$tmRecord | Remove-AzDnsRecordSet
 
 	Assert-ThrowsLike { Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType $recordType } "*does not exist*"
