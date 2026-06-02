@@ -84,7 +84,7 @@ ProvisioningState : Succeeded
 Mode              : Launch
 
 Name              : fleet5-001
-Location          : SouthCentralUSSTG
+Location          : eastus2euap
 ResourceGroupName : MY-FLEET-RG-001
 ProvisioningState : Succeeded
 Mode              : Managed

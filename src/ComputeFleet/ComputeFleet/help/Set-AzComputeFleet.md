@@ -54,13 +54,13 @@ Update a Fleet
 ### Example 1: Update tags on a Managed mode Compute Fleet
 ```powershell
 Set-AzComputeFleet -Name "fleet5-001" -ResourceGroupName "MY-FLEET-RG-001" `
-    -Location "SouthCentralUSSTG" `
+    -Location "eastus2euap" `
     -Tag @{ EnableVMManagementPolicy = "true"; environment = "test" } | Select-Object Name, Location, Mode, Tag, ProvisioningState
 ```
 
 ```output
 Name              : fleet5-001
-Location          : SouthCentralUSSTG
+Location          : eastus2euap
 Mode              : Managed
 Tag               : {
                       "EnableVMManagementPolicy": "true",
@@ -74,7 +74,7 @@ Updates the tags on an existing Managed mode Compute Fleet using a full PUT oper
 ### Example 2: Update Spot priority capacity on a Managed mode Compute Fleet
 ```powershell
 Set-AzComputeFleet -Name "fleet5-001" -ResourceGroupName "MY-FLEET-RG-001" `
-    -Location "SouthCentralUSSTG" `
+    -Location "eastus2euap" `
     -SpotPriorityProfileCapacity 10 `
     -SpotPriorityProfileAllocationStrategy "LowestPrice" `
     -SpotPriorityProfileEvictionPolicy "Delete" `
