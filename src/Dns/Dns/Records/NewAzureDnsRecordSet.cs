@@ -55,8 +55,8 @@ namespace Microsoft.Azure.Commands.Dns
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The TTL value of all the records in this record set.", ParameterSetName = "Object")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The TTL value of all the records in this record set.", ParameterSetName = "AliasObject")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The TTL value of all the records in this record set.", ParameterSetName = "AliasFields")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The TTL value of all the records in this record set.", ParameterSetName = "TmFields")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The TTL value of all the records in this record set.", ParameterSetName = "TmObject")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The TTL value of all the records in this record set. Required when -TrafficManagerProfileId is supplied (the DNS service does not auto-derive TTL for TMLink record sets).", ParameterSetName = "TmFields")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The TTL value of all the records in this record set. Required when -TrafficManagerProfileId is supplied (the DNS service does not auto-derive TTL for TMLink record sets).", ParameterSetName = "TmObject")]
         [ValidateNotNullOrEmpty]
         public uint Ttl
         {

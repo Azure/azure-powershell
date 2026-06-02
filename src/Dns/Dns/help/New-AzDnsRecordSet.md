@@ -31,7 +31,7 @@ New-AzDnsRecordSet -Name <String> -ZoneName <String> -ResourceGroupName <String>
 
 ### TmFields
 ```
-New-AzDnsRecordSet -Name <String> -ZoneName <String> -ResourceGroupName <String> [-Ttl <UInt32>]
+New-AzDnsRecordSet -Name <String> -ZoneName <String> -ResourceGroupName <String> -Ttl <UInt32>
  -RecordType <RecordType> -TrafficManagerProfileId <String> [-Metadata <Hashtable>] [-DnsRecords <DnsRecordBase[]>]
  [-Overwrite] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
@@ -55,7 +55,7 @@ New-AzDnsRecordSet -Name <String> -Zone <DnsZone> [-Ttl <UInt32>] -RecordType <R
 
 ### TmObject
 ```
-New-AzDnsRecordSet -Name <String> -Zone <DnsZone> [-Ttl <UInt32>] -RecordType <RecordType>
+New-AzDnsRecordSet -Name <String> -Zone <DnsZone> -Ttl <UInt32> -RecordType <RecordType>
  -TrafficManagerProfileId <String> [-Metadata <Hashtable>] [-DnsRecords <DnsRecordBase[]>] [-Overwrite]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -225,7 +225,7 @@ The *Confirm* parameter with a value of $False suppresses the confirmation promp
 
 ### Example 13: Create a record set with a Traffic Manager profile (TMLink)
 ```powershell
-$RecordSet = New-AzDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -TrafficManagerProfileId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.Network/trafficManagerProfiles/myprofile"
+$RecordSet = New-AzDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -Ttl 3600 -TrafficManagerProfileId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup/providers/Microsoft.Network/trafficManagerProfiles/myprofile"
 ```
 
 This command creates a **RecordSet** named www in the zone myzone.com linked to an Azure Traffic Manager profile (TMLink).
@@ -409,6 +409,18 @@ Parameter Sets: AliasFields, AliasObject
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.UInt32
+Parameter Sets: TmFields, TmObject
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
