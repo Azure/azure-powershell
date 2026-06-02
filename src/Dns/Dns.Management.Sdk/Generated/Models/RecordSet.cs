@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Dns.Models
     /// and type).
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class RecordSet : Microsoft.Rest.Azure.IResource
+    public partial class RecordSet : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the RecordSet class.
@@ -26,13 +26,19 @@ namespace Microsoft.Azure.Management.Dns.Models
         /// Initializes a new instance of the RecordSet class.
         /// </summary>
 
-        /// <param name="id">The ID of the record set.
+        /// <param name="id">Fully qualified resource ID for the resource. Ex -
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </param>
 
-        /// <param name="name">The name of the record set.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of the record set.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="etag">The etag of the record set.
@@ -96,12 +102,10 @@ namespace Microsoft.Azure.Management.Dns.Models
 
         /// <param name="naptrRecords">The list of NAPTR records in the record set.
         /// </param>
-        public RecordSet(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), CnameRecord cnameRecord = default(CnameRecord), SoaRecord soaRecord = default(SoaRecord), System.Collections.Generic.IDictionary<string, string> metadata = default(System.Collections.Generic.IDictionary<string, string>), long? ttl = default(long?), string fqdn = default(string), string provisioningState = default(string), SubResource targetResource = default(SubResource), SubResource trafficManagementProfile = default(SubResource), System.Collections.Generic.IList<ARecord> aRecords = default(System.Collections.Generic.IList<ARecord>), System.Collections.Generic.IList<AaaaRecord> aaaaRecords = default(System.Collections.Generic.IList<AaaaRecord>), System.Collections.Generic.IList<MxRecord> mxRecords = default(System.Collections.Generic.IList<MxRecord>), System.Collections.Generic.IList<NsRecord> nsRecords = default(System.Collections.Generic.IList<NsRecord>), System.Collections.Generic.IList<PtrRecord> ptrRecords = default(System.Collections.Generic.IList<PtrRecord>), System.Collections.Generic.IList<SrvRecord> srvRecords = default(System.Collections.Generic.IList<SrvRecord>), System.Collections.Generic.IList<TxtRecord> txtRecords = default(System.Collections.Generic.IList<TxtRecord>), System.Collections.Generic.IList<CaaRecord> caaRecords = default(System.Collections.Generic.IList<CaaRecord>), System.Collections.Generic.IList<DsRecord> dsRecords = default(System.Collections.Generic.IList<DsRecord>), System.Collections.Generic.IList<TlsaRecord> tlsaRecords = default(System.Collections.Generic.IList<TlsaRecord>), System.Collections.Generic.IList<NaptrRecord> naptrRecords = default(System.Collections.Generic.IList<NaptrRecord>))
+        public RecordSet(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string etag = default(string), CnameRecord cnameRecord = default(CnameRecord), SoaRecord soaRecord = default(SoaRecord), System.Collections.Generic.IDictionary<string, string> metadata = default(System.Collections.Generic.IDictionary<string, string>), long? ttl = default(long?), string fqdn = default(string), string provisioningState = default(string), SubResource targetResource = default(SubResource), SubResource trafficManagementProfile = default(SubResource), System.Collections.Generic.IList<ARecord> aRecords = default(System.Collections.Generic.IList<ARecord>), System.Collections.Generic.IList<AaaaRecord> aaaaRecords = default(System.Collections.Generic.IList<AaaaRecord>), System.Collections.Generic.IList<MxRecord> mxRecords = default(System.Collections.Generic.IList<MxRecord>), System.Collections.Generic.IList<NsRecord> nsRecords = default(System.Collections.Generic.IList<NsRecord>), System.Collections.Generic.IList<PtrRecord> ptrRecords = default(System.Collections.Generic.IList<PtrRecord>), System.Collections.Generic.IList<SrvRecord> srvRecords = default(System.Collections.Generic.IList<SrvRecord>), System.Collections.Generic.IList<TxtRecord> txtRecords = default(System.Collections.Generic.IList<TxtRecord>), System.Collections.Generic.IList<CaaRecord> caaRecords = default(System.Collections.Generic.IList<CaaRecord>), System.Collections.Generic.IList<DsRecord> dsRecords = default(System.Collections.Generic.IList<DsRecord>), System.Collections.Generic.IList<TlsaRecord> tlsaRecords = default(System.Collections.Generic.IList<TlsaRecord>), System.Collections.Generic.IList<NaptrRecord> naptrRecords = default(System.Collections.Generic.IList<NaptrRecord>))
 
+        : base(id, name, type, systemData)
         {
-            this.Id = id;
-            this.Name = name;
-            this.Type = type;
             this.Etag = etag;
             this.CnameRecord = cnameRecord;
             this.SoaRecord = soaRecord;
@@ -130,24 +134,6 @@ namespace Microsoft.Azure.Management.Dns.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets the ID of the record set.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; private set; }
-
-        /// <summary>
-        /// Gets the name of the record set.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; private set; }
-
-        /// <summary>
-        /// Gets the type of the record set.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets or sets the etag of the record set.

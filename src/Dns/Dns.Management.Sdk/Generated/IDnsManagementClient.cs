@@ -55,28 +55,18 @@ namespace Microsoft.Azure.Management.Dns
 
         /// <summary>
         /// The retry timeout in seconds for Long Running Operations. Default
-        /// value is 30.
+        /// /// value is 30.
         /// </summary>
         int? LongRunningOperationRetryTimeout { get; set;}
 
 
         /// <summary>
-        /// Whether a unique x-ms-client-request-id should be generated. When 
-        /// set to true a unique x-ms-client-request-id value is generated and 
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// /// set to true a unique x-ms-client-request-id value is generated and
+        /// /// included in each request. Default is true.
         /// </summary>
         bool? GenerateClientRequestId { get; set;}
 
-
-        /// <summary>
-        /// Gets the IDnssecConfigsOperations
-        /// </summary>
-        IDnssecConfigsOperations DnssecConfigs { get; }
-
-        /// <summary>
-        /// Gets the IRecordSetsOperations
-        /// </summary>
-        IRecordSetsOperations RecordSets { get; }
 
         /// <summary>
         /// Gets the IZonesOperations
@@ -87,6 +77,16 @@ namespace Microsoft.Azure.Management.Dns
         /// Gets the IDnsResourceReferenceOperations
         /// </summary>
         IDnsResourceReferenceOperations DnsResourceReference { get; }
+
+        /// <summary>
+        /// Gets the IRecordSetsOperations
+        /// </summary>
+        IRecordSetsOperations RecordSets { get; }
+
+        /// <summary>
+        /// Gets the IDnssecConfigsOperations
+        /// </summary>
+        IDnssecConfigsOperations DnssecConfigs { get; }
 
     }
 }
