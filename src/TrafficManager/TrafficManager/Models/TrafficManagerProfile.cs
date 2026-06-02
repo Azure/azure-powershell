@@ -96,11 +96,6 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
                 }
             };
 
-            if (this.RecordType != null)
-            {
-                profile.RecordType = this.RecordType;
-            }
-
             if (this.Endpoints != null && this.Endpoints.Any())
             {
                 profile.Endpoints = this.Endpoints.Select(endpoint => endpoint.ToSDKEndpoint()).ToList();

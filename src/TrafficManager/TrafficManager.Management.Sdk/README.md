@@ -25,7 +25,7 @@ payload-flattening-threshold: 2
 
 ###
 ``` yaml
-commit: 28e08376806422730d28d8dd90479d0ad68397ac #d675477846b71ac94291b555d218bbb1fac13873
+commit: 28e08376806422730d28d8dd90479d0ad68397ac
 directive:
   - from: trafficmanager.json
     where: $.definitions
@@ -42,7 +42,7 @@ directive:
         "modelAsString": true
       }
   - from: trafficmanager.json
-    where: $.paths..delete.responses["200"] 
+    where: $.paths..delete.responses["200"]
     transform: >
       delete $["schema"]
   - from: trafficmanager.json
@@ -53,7 +53,6 @@ directive:
     reason: The path parameter endpointType is defined as string in stable version, we can't change it to an enumeration.
  
 input-file:
-  # - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/trafficmanager/resource-manager/Microsoft.Network/preview/2024-04-01-preview/trafficmanager.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/trafficmanager/resource-manager/Microsoft.Network/TrafficManager/preview/2024-04-01-preview/trafficmanager.json
 output-folder: Generated
 
