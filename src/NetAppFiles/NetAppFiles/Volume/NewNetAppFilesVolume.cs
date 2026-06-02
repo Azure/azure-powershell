@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         [ValidateNotNullOrEmpty]
         public IList<PSKeyValuePairs> PlacementRule { get; set; }
 
-        private const String ChangeDesc = "EnableSubvolume is being deprecated without being replaced";
+        private const String ChangeDesc = "EnableSubvolume is being deprecated and removed in a future release; there is no replacement.";
         [CmdletParameterBreakingChangeWithVersion("EnableSubvolume", "12.0.0", "7.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,

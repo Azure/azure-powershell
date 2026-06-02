@@ -27,7 +27,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
-    [CmdletOutputBreakingChangeWithVersion(typeof(GetAzureRmNetAppFilesVolume), "12.0.0", "7.0.0", DeprecatedOutputProperties = new String[] { "EnableSubvolumes" })]
+    [CmdletOutputBreakingChangeWithVersion(typeof(GetAzureRmNetAppFilesVolume), "12.0.0", "7.0.0", DeprecatedOutputProperties = new String[] { "EnableSubvolume" })]
     [Cmdlet(
         "Get",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVolume",
