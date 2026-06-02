@@ -30,40 +30,63 @@ Get-AzResourceMoverMoveResource -MoveCollectionName "PS-centralus-westcentralus-
 .Example
 Get-AzResourceMoverMoveResource -MoveCollectionName "PS-centralus-westcentralus-demoRMS1" -ResourceGroupName "RG-MoveCollection-demoRMS" -Filter "Properties/SourceResourceName eq 'psdemovm111'"
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveResource
+Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IMoveResource
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+MOVECOLLECTIONINPUTOBJECT <IResourceMoverIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [MoveCollectionName <String>]: The Move Collection Name.
+  [MoveResourceName <String>]: The Move Resource Name.
+  [ResourceGroupName <String>]: The Resource Group Name.
+  [SubscriptionId <String>]: The Subscription ID.
 .Link
 https://learn.microsoft.com/powershell/module/az.resourcemover/get-azresourcemovermoveresource
 #>
 function Get-AzResourceMoverMoveResource {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20230801.IMoveResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IMoveResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Path')]
     [System.String]
     # The Move Collection Name.
     ${MoveCollectionName},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Path')]
-    [System.String]
-    # The Resource Group Name.
-    ${ResourceGroupName},
-
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityMoveCollection', Mandatory)]
     [Alias('MoveResourceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Path')]
     [System.String]
     # The Move Resource Name.
     ${Name},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Path')]
+    [System.String]
+    # The Resource Group Name.
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The Subscription ID.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentityMoveCollection', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IResourceMoverIdentity]
+    # Identity Parameter
+    ${MoveCollectionInputObject},
 
     [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Query')]
@@ -128,6 +151,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -148,11 +179,10 @@ begin {
 
         $mapping = @{
             Get = 'Az.ResourceMover.private\Get-AzResourceMoverMoveResource_Get';
+            GetViaIdentityMoveCollection = 'Az.ResourceMover.private\Get-AzResourceMoverMoveResource_GetViaIdentityMoveCollection';
             List = 'Az.ResourceMover.private\Get-AzResourceMoverMoveResource_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -166,6 +196,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

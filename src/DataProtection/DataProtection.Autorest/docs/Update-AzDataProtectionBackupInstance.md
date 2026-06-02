@@ -13,10 +13,10 @@ Updates a given backup instance
 ## SYNTAX
 
 ```
-Update-AzDataProtectionBackupInstance -BackupInstanceName <String> -ResourceGroupName <String>
- -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>] [-NoWait] [-PolicyId <String>]
- [-ResourceGuardOperationRequest <String[]>] [-SecureToken <SecureString>] [-SubscriptionId <String>]
- [-Token <String>] [-UserAssignedIdentityArmId <String>] [-UseSystemAssignedIdentity <Boolean?>]
+Update-AzDataProtectionBackupInstance -Name <String> -ResourceGroupName <String> -VaultName <String> [-AsJob]
+ [-DefaultProfile <PSObject>] [-NoWait] [-PolicyId <String>] [-ResourceGuardOperationRequest <String[]>]
+ [-SecureToken <SecureString>] [-SubscriptionId <String>] [-Token <String>]
+ [-UserAssignedIdentityArmId <String>] [-UseSystemAssignedIdentity <Boolean?>]
  [-VaultedBackupContainer <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -81,21 +81,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BackupInstanceName
-Unique Name of protected backup instance
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 
 
@@ -105,6 +90,21 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Unique Name of protected backup instance
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: BackupInstanceName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -238,7 +238,7 @@ Accept wildcard characters: False
 Use system assigned identity
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 
@@ -318,7 +318,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupInstanceResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource
 
 ## NOTES
 

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
 
 ## Version 2.12.1
 * Fixed bugs in `Initialize-AzMigrateLocalReplicationInfrastructure`

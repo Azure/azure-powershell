@@ -101,6 +101,14 @@ directive:
         deprecated-by-version: 2.0.0
         deprecated-by-azversion: 16.0.0
         change-effective-date: May 2026
+ # Mark imagePath as a password format so AutoRest generates SecureString for the parameter
+ -  from: swagger-document
+    where: $.definitions.GalleryImageProperties.properties.imagePath
+    transform: $.format = "password"
+ # Mark adminPassword as a password format so AutoRest generates SecureString for the parameter
+ -  from: swagger-document
+    where: $.definitions.VirtualMachineInstanceProperties.properties.osProfile.properties.adminPassword
+    transform: $.format = "password"
  -  from: swagger-document 
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/virtualHardDisks/{virtualHardDiskName}"].delete.responses
     transform: >-

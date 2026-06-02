@@ -27,7 +27,7 @@ Get-AzCloudServiceRoleInstance -ResourceGroupName "ContosOrg" -CloudServiceName 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstance
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.IRoleInstance
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -47,14 +47,30 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [RoleName <String>]: Name of the role.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [UpdateDomain <Int32?>]: Specifies an integer value that identifies the update domain. Update domains are identified with a zero-based index: the first update domain has an ID of 0, the second has an ID of 1, and so on.
+
+ROLEINSTANCEINPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
+  [CloudServiceName <String>]: Name of the cloud service.
+  [IPConfigurationName <String>]: The IP configuration name.
+  [Id <String>]: Resource identity path
+  [Location <String>]: Name of the location that the OS version pertains to.
+  [NetworkInterfaceName <String>]: The name of the network interface.
+  [OSFamilyName <String>]: Name of the OS family.
+  [OSVersionName <String>]: Name of the OS version.
+  [PublicIPAddressName <String>]: The name of the public IP Address.
+  [ResourceGroupName <String>]: Name of the resource group.
+  [RoleInstanceName <String>]: Name of the role instance.
+  [RoleName <String>]: Name of the role.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [UpdateDomain <Int32?>]: Specifies an integer value that identifies the update domain. Update domains are identified with a zero-based index: the first update domain has an ID of 0, the second has an ID of 1, and so on.
 .Link
 https://learn.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceroleinstance
 #>
 function Get-AzCloudServiceRoleInstance {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstance])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.IRoleInstance])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityRoleInstance', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Path')]
     [System.String]
@@ -87,13 +103,18 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='GetViaIdentityRoleInstance', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity]
+    # Identity Parameter
+    ${RoleInstanceInputObject},
+
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.InstanceViewTypes])]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.PSArgumentCompleterAttribute("instanceView", "userData")]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Query')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.InstanceViewTypes]
+    [System.String]
     # The expand expression to apply to the operation.
     # 'UserData' is not supported for cloud services.
     ${Expand},
@@ -154,6 +175,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -175,11 +204,10 @@ begin {
         $mapping = @{
             Get = 'Az.CloudService.private\Get-AzCloudServiceRoleInstance_Get';
             GetViaIdentity = 'Az.CloudService.private\Get-AzCloudServiceRoleInstance_GetViaIdentity';
+            GetViaIdentityRoleInstance = 'Az.CloudService.private\Get-AzCloudServiceRoleInstance_GetViaIdentityRoleInstance';
             List = 'Az.CloudService.private\Get-AzCloudServiceRoleInstance_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -193,6 +221,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

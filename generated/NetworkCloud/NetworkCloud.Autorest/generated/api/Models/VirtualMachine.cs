@@ -38,48 +38,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         public string BootMethod { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)Property).BootMethod; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)Property).BootMethod = value ?? null; }
 
         /// <summary>
-        /// The resource ID of the associated network attached to the virtual machine.
-        /// It can be one of cloudServicesNetwork, l3Network, l2Network or trunkedNetwork resources.
+        /// The resource ID of the associated network attached to the virtual machine. It can be one of cloudServicesNetwork, l3Network,
+        /// l2Network or trunkedNetwork resources.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
         public string CloudServiceNetworkAttachmentAttachedNetworkId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)Property).CloudServiceNetworkAttachmentAttachedNetworkId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)Property).CloudServiceNetworkAttachmentAttachedNetworkId = value ?? null; }
 
         /// <summary>
-        /// The indicator of whether this is the default gateway.
-        /// Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified
-        /// as True.
+        /// The indicator of whether this is the default gateway. Only one of the attached networks (including the CloudServicesNetwork
+        /// attachment) for a single machine may be specified as True.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
         public string CloudServiceNetworkAttachmentDefaultGateway { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)Property).CloudServiceNetworkAttachmentDefaultGateway; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)Property).CloudServiceNetworkAttachmentDefaultGateway = value ?? null; }
 
         /// <summary>
-        /// The IP allocation mechanism for the virtual machine.
-        /// Dynamic and Static are only valid for l3Network which may also specify Disabled.
-        /// Otherwise, Disabled is the only permitted value.
+        /// The IP allocation mechanism for the virtual machine. Dynamic and Static are only valid for l3Network which may also specify
+        /// Disabled. Otherwise, Disabled is the only permitted value.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
         public string CloudServiceNetworkAttachmentIPAllocationMethod { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)Property).CloudServiceNetworkAttachmentIPAllocationMethod; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)Property).CloudServiceNetworkAttachmentIPAllocationMethod = value ?? null; }
 
         /// <summary>
-        /// The IPv4 address of the virtual machine.
-        /// This field is used only if the attached network has IPAllocationType of IPV4 or DualStack.
-        /// If IPAllocationMethod is:
-        /// Static - this field must contain a user specified IPv4 address from within the subnet specified in the attached network.
-        /// Dynamic - this field is read-only, but will be populated with an address from within the subnet specified in the attached
-        /// network.
-        /// Disabled - this field will be empty.
+        /// The IPv4 address of the virtual machine. This field is used only if the attached network has IPAllocationType of IPV4
+        /// or DualStack. If IPAllocationMethod is: Static - this field must contain a user specified IPv4 address from within the
+        /// subnet specified in the attached network. Dynamic - this field is read-only, but will be populated with an address from
+        /// within the subnet specified in the attached network. Disabled - this field will be empty.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
         public string CloudServiceNetworkAttachmentIpv4Address { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)Property).CloudServiceNetworkAttachmentIpv4Address; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)Property).CloudServiceNetworkAttachmentIpv4Address = value ?? null; }
 
         /// <summary>
-        /// The IPv6 address of the virtual machine.
-        /// This field is used only if the attached network has IPAllocationType of IPV6 or DualStack.
-        /// If IPAllocationMethod is:
-        /// Static - this field must contain an IPv6 address range from within the range specified in the attached network.
-        /// Dynamic - this field is read-only, but will be populated with an range from within the subnet specified in the attached
-        /// network.
-        /// Disabled - this field will be empty.
+        /// The IPv6 address of the virtual machine. This field is used only if the attached network has IPAllocationType of IPV6
+        /// or DualStack. If IPAllocationMethod is: Static - this field must contain an IPv6 address range from within the range specified
+        /// in the attached network. Dynamic - this field is read-only, but will be populated with an range from within the subnet
+        /// specified in the attached network. Disabled - this field will be empty.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
         public string CloudServiceNetworkAttachmentIpv6Address { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)Property).CloudServiceNetworkAttachmentIpv6Address; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)Property).CloudServiceNetworkAttachmentIpv6Address = value ?? null; }
@@ -91,10 +83,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         public string CloudServiceNetworkAttachmentMacAddress { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)Property).CloudServiceNetworkAttachmentMacAddress; }
 
         /// <summary>
-        /// The associated network's interface name.
-        /// If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine.
-        /// If the user doesn’t specify this value, the default interface name of the network resource will be used.
-        /// For a CloudServicesNetwork resource, this name will be ignored.
+        /// The associated network's interface name. If specified, the network attachment name has a maximum length of 15 characters
+        /// and must be unique to this virtual machine. If the user doesn’t specify this value, the default interface name of the
+        /// network resource will be used. For a CloudServicesNetwork resource, this name will be ignored.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
         public string CloudServiceNetworkAttachmentName { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)Property).CloudServiceNetworkAttachmentName; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)Property).CloudServiceNetworkAttachmentName = value ?? null; }
@@ -150,6 +141,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IResourceInternal)__trackedResource).Id; }
+
+        /// <summary>Backing field for <see cref="Identity" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentity _identity;
+
+        /// <summary>The identity for the resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentity Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ManagedServiceIdentity()); set => this._identity = value; }
+
+        /// <summary>
+        /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public string IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; }
+
+        /// <summary>
+        /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public string IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityInternal)Identity).TenantId; }
+
+        /// <summary>
+        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public string IdentityType { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityInternal)Identity).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityInternal)Identity).Type = value ?? null; }
+
+        /// <summary>
+        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
+        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        /// The dictionary values can be empty objects ({}) in requests.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityInternal)Identity).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityInternal)Identity).UserAssignedIdentity = value ?? null /* model class */; }
 
         /// <summary>
         /// Field Deprecated, the value will be ignored if provided. The indicator of whether one of the specified CPU cores is isolated
@@ -226,6 +250,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// <summary>Internal Acessors for ExtendedLocation</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IExtendedLocation Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachineInternal.ExtendedLocation { get => (this._extendedLocation = this._extendedLocation ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ExtendedLocation()); set { {_extendedLocation = value;} } }
 
+        /// <summary>Internal Acessors for Identity</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachineInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ManagedServiceIdentity()); set { {_identity = value;} } }
+
+        /// <summary>Internal Acessors for IdentityPrincipalId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachineInternal.IdentityPrincipalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityInternal)Identity).PrincipalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityInternal)Identity).PrincipalId = value ?? null; }
+
+        /// <summary>Internal Acessors for IdentityTenantId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachineInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityInternal)Identity).TenantId = value ?? null; }
+
         /// <summary>Internal Acessors for PowerState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachineInternal.PowerState { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)Property).PowerState; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)Property).PowerState = value ?? null; }
 
@@ -255,9 +288,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkAttachment> NetworkAttachment { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)Property).NetworkAttachment; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)Property).NetworkAttachment = value ?? null /* arrayOf */; }
 
-        /// <summary>The Base64 encoded cloud-init network data.</summary>
+        /// <summary>
+        /// Field Deprecated: The Base64 encoded cloud-init network data. The networkDataContent property will be used in preference
+        /// to this property.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
         public string NetworkData { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)Property).NetworkData; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)Property).NetworkData = value ?? null; }
+
+        /// <summary>The Base64 encoded cloud-init network data.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public string NetworkDataContent { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)Property).NetworkDataContent; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)Property).NetworkDataContent = value ?? null; }
 
         /// <summary>The strategy for creating the OS disk.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
@@ -349,9 +389,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inherited)]
         public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IResourceInternal)__trackedResource).Type; }
 
-        /// <summary>The Base64 encoded cloud-init user data.</summary>
+        /// <summary>
+        /// Field Deprecated: The Base64 encoded cloud-init user data. The userDataContent property will be used in preference to
+        /// this property.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
         public string UserData { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)Property).UserData; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)Property).UserData = value ?? null; }
+
+        /// <summary>The Base64 encoded cloud-init user data.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
+        public string UserDataContent { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)Property).UserDataContent; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IVirtualMachinePropertiesInternal)Property).UserDataContent = value ?? null; }
 
         /// <summary>The type of the device model to use.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
@@ -459,8 +506,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("UEFI", "BIOS")]
         string BootMethod { get; set; }
         /// <summary>
-        /// The resource ID of the associated network attached to the virtual machine.
-        /// It can be one of cloudServicesNetwork, l3Network, l2Network or trunkedNetwork resources.
+        /// The resource ID of the associated network attached to the virtual machine. It can be one of cloudServicesNetwork, l3Network,
+        /// l2Network or trunkedNetwork resources.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -468,15 +515,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Read = true,
         Create = true,
         Update = false,
-        Description = @"The resource ID of the associated network attached to the virtual machine.
-        It can be one of cloudServicesNetwork, l3Network, l2Network or trunkedNetwork resources.",
+        Description = @"The resource ID of the associated network attached to the virtual machine. It can be one of cloudServicesNetwork, l3Network, l2Network or trunkedNetwork resources.",
         SerializedName = @"attachedNetworkId",
         PossibleTypes = new [] { typeof(string) })]
         string CloudServiceNetworkAttachmentAttachedNetworkId { get; set; }
         /// <summary>
-        /// The indicator of whether this is the default gateway.
-        /// Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified
-        /// as True.
+        /// The indicator of whether this is the default gateway. Only one of the attached networks (including the CloudServicesNetwork
+        /// attachment) for a single machine may be specified as True.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -484,16 +529,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Read = true,
         Create = true,
         Update = false,
-        Description = @"The indicator of whether this is the default gateway.
-        Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified as True.",
+        Description = @"The indicator of whether this is the default gateway. Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified as True.",
         SerializedName = @"defaultGateway",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
         string CloudServiceNetworkAttachmentDefaultGateway { get; set; }
         /// <summary>
-        /// The IP allocation mechanism for the virtual machine.
-        /// Dynamic and Static are only valid for l3Network which may also specify Disabled.
-        /// Otherwise, Disabled is the only permitted value.
+        /// The IP allocation mechanism for the virtual machine. Dynamic and Static are only valid for l3Network which may also specify
+        /// Disabled. Otherwise, Disabled is the only permitted value.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -501,21 +544,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Read = true,
         Create = true,
         Update = false,
-        Description = @"The IP allocation mechanism for the virtual machine.
-        Dynamic and Static are only valid for l3Network which may also specify Disabled.
-        Otherwise, Disabled is the only permitted value.",
+        Description = @"The IP allocation mechanism for the virtual machine. Dynamic and Static are only valid for l3Network which may also specify Disabled. Otherwise, Disabled is the only permitted value.",
         SerializedName = @"ipAllocationMethod",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Dynamic", "Static", "Disabled")]
         string CloudServiceNetworkAttachmentIPAllocationMethod { get; set; }
         /// <summary>
-        /// The IPv4 address of the virtual machine.
-        /// This field is used only if the attached network has IPAllocationType of IPV4 or DualStack.
-        /// If IPAllocationMethod is:
-        /// Static - this field must contain a user specified IPv4 address from within the subnet specified in the attached network.
-        /// Dynamic - this field is read-only, but will be populated with an address from within the subnet specified in the attached
-        /// network.
-        /// Disabled - this field will be empty.
+        /// The IPv4 address of the virtual machine. This field is used only if the attached network has IPAllocationType of IPV4
+        /// or DualStack. If IPAllocationMethod is: Static - this field must contain a user specified IPv4 address from within the
+        /// subnet specified in the attached network. Dynamic - this field is read-only, but will be populated with an address from
+        /// within the subnet specified in the attached network. Disabled - this field will be empty.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -523,25 +561,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Read = true,
         Create = true,
         Update = false,
-        Description = @"The IPv4 address of the virtual machine.
-
-        This field is used only if the attached network has IPAllocationType of IPV4 or DualStack.
-
-        If IPAllocationMethod is:
-        Static - this field must contain a user specified IPv4 address from within the subnet specified in the attached network.
-        Dynamic - this field is read-only, but will be populated with an address from within the subnet specified in the attached network.
-        Disabled - this field will be empty.",
+        Description = @"The IPv4 address of the virtual machine.  This field is used only if the attached network has IPAllocationType of IPV4 or DualStack.  If IPAllocationMethod is: Static - this field must contain a user specified IPv4 address from within the subnet specified in the attached network. Dynamic - this field is read-only, but will be populated with an address from within the subnet specified in the attached network. Disabled - this field will be empty.",
         SerializedName = @"ipv4Address",
         PossibleTypes = new [] { typeof(string) })]
         string CloudServiceNetworkAttachmentIpv4Address { get; set; }
         /// <summary>
-        /// The IPv6 address of the virtual machine.
-        /// This field is used only if the attached network has IPAllocationType of IPV6 or DualStack.
-        /// If IPAllocationMethod is:
-        /// Static - this field must contain an IPv6 address range from within the range specified in the attached network.
-        /// Dynamic - this field is read-only, but will be populated with an range from within the subnet specified in the attached
-        /// network.
-        /// Disabled - this field will be empty.
+        /// The IPv6 address of the virtual machine. This field is used only if the attached network has IPAllocationType of IPV6
+        /// or DualStack. If IPAllocationMethod is: Static - this field must contain an IPv6 address range from within the range specified
+        /// in the attached network. Dynamic - this field is read-only, but will be populated with an range from within the subnet
+        /// specified in the attached network. Disabled - this field will be empty.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -549,14 +577,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Read = true,
         Create = true,
         Update = false,
-        Description = @"The IPv6 address of the virtual machine.
-
-        This field is used only if the attached network has IPAllocationType of IPV6 or DualStack.
-
-        If IPAllocationMethod is:
-        Static - this field must contain an IPv6 address range from within the range specified in the attached network.
-        Dynamic - this field is read-only, but will be populated with an range from within the subnet specified in the attached network.
-        Disabled - this field will be empty.",
+        Description = @"The IPv6 address of the virtual machine.  This field is used only if the attached network has IPAllocationType of IPV6 or DualStack.  If IPAllocationMethod is: Static - this field must contain an IPv6 address range from within the range specified in the attached network. Dynamic - this field is read-only, but will be populated with an range from within the subnet specified in the attached network. Disabled - this field will be empty.",
         SerializedName = @"ipv6Address",
         PossibleTypes = new [] { typeof(string) })]
         string CloudServiceNetworkAttachmentIpv6Address { get; set; }
@@ -574,10 +595,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         PossibleTypes = new [] { typeof(string) })]
         string CloudServiceNetworkAttachmentMacAddress { get;  }
         /// <summary>
-        /// The associated network's interface name.
-        /// If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine.
-        /// If the user doesn’t specify this value, the default interface name of the network resource will be used.
-        /// For a CloudServicesNetwork resource, this name will be ignored.
+        /// The associated network's interface name. If specified, the network attachment name has a maximum length of 15 characters
+        /// and must be unique to this virtual machine. If the user doesn’t specify this value, the default interface name of the
+        /// network resource will be used. For a CloudServicesNetwork resource, this name will be ignored.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -585,10 +605,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Read = true,
         Create = true,
         Update = false,
-        Description = @"The associated network's interface name.
-        If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine.
-        If the user doesn’t specify this value, the default interface name of the network resource will be used.
-        For a CloudServicesNetwork resource, this name will be ignored.",
+        Description = @"The associated network's interface name. If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine. If the user doesn’t specify this value, the default interface name of the network resource will be used. For a CloudServicesNetwork resource, this name will be ignored.",
         SerializedName = @"networkAttachmentName",
         PossibleTypes = new [] { typeof(string) })]
         string CloudServiceNetworkAttachmentName { get; set; }
@@ -693,6 +710,61 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         PossibleTypes = new [] { typeof(string) })]
         string ExtendedLocationType { get; set; }
         /// <summary>
+        /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.",
+        SerializedName = @"principalId",
+        PossibleTypes = new [] { typeof(string) })]
+        string IdentityPrincipalId { get;  }
+        /// <summary>
+        /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.",
+        SerializedName = @"tenantId",
+        PossibleTypes = new [] { typeof(string) })]
+        string IdentityTenantId { get;  }
+        /// <summary>
+        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
+        SerializedName = @"type",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
+        string IdentityType { get; set; }
+        /// <summary>
+        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
+        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        /// The dictionary values can be empty objects ({}) in requests.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
+        SerializedName = @"userAssignedIdentities",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityUserAssignedIdentities) })]
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
+        /// <summary>
         /// Field Deprecated, the value will be ignored if provided. The indicator of whether one of the specified CPU cores is isolated
         /// to run the emulator thread for this virtual machine.
         /// </summary>
@@ -729,6 +801,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         SerializedName = @"networkAttachments",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkAttachment) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkAttachment> NetworkAttachment { get; set; }
+        /// <summary>
+        /// Field Deprecated: The Base64 encoded cloud-init network data. The networkDataContent property will be used in preference
+        /// to this property.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"Field Deprecated: The Base64 encoded cloud-init network data. The networkDataContent property will be used in preference to this property.",
+        SerializedName = @"networkData",
+        PossibleTypes = new [] { typeof(string) })]
+        string NetworkData { get; set; }
         /// <summary>The Base64 encoded cloud-init network data.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -737,9 +823,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Create = true,
         Update = false,
         Description = @"The Base64 encoded cloud-init network data.",
-        SerializedName = @"networkData",
+        SerializedName = @"networkDataContent",
         PossibleTypes = new [] { typeof(string) })]
-        string NetworkData { get; set; }
+        string NetworkDataContent { get; set; }
         /// <summary>The strategy for creating the OS disk.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -839,6 +925,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         SerializedName = @"volumeAttachments",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> StorageProfileVolumeAttachment { get; set; }
+        /// <summary>
+        /// Field Deprecated: The Base64 encoded cloud-init user data. The userDataContent property will be used in preference to
+        /// this property.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = false,
+        Description = @"Field Deprecated: The Base64 encoded cloud-init user data. The userDataContent property will be used in preference to this property.",
+        SerializedName = @"userData",
+        PossibleTypes = new [] { typeof(string) })]
+        string UserData { get; set; }
         /// <summary>The Base64 encoded cloud-init user data.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -847,9 +947,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Create = true,
         Update = false,
         Description = @"The Base64 encoded cloud-init user data.",
-        SerializedName = @"userData",
+        SerializedName = @"userDataContent",
         PossibleTypes = new [] { typeof(string) })]
-        string UserData { get; set; }
+        string UserDataContent { get; set; }
         /// <summary>The type of the device model to use.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -954,42 +1054,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("UEFI", "BIOS")]
         string BootMethod { get; set; }
         /// <summary>
-        /// The resource ID of the associated network attached to the virtual machine.
-        /// It can be one of cloudServicesNetwork, l3Network, l2Network or trunkedNetwork resources.
+        /// The resource ID of the associated network attached to the virtual machine. It can be one of cloudServicesNetwork, l3Network,
+        /// l2Network or trunkedNetwork resources.
         /// </summary>
         string CloudServiceNetworkAttachmentAttachedNetworkId { get; set; }
         /// <summary>
-        /// The indicator of whether this is the default gateway.
-        /// Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified
-        /// as True.
+        /// The indicator of whether this is the default gateway. Only one of the attached networks (including the CloudServicesNetwork
+        /// attachment) for a single machine may be specified as True.
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("True", "False")]
         string CloudServiceNetworkAttachmentDefaultGateway { get; set; }
         /// <summary>
-        /// The IP allocation mechanism for the virtual machine.
-        /// Dynamic and Static are only valid for l3Network which may also specify Disabled.
-        /// Otherwise, Disabled is the only permitted value.
+        /// The IP allocation mechanism for the virtual machine. Dynamic and Static are only valid for l3Network which may also specify
+        /// Disabled. Otherwise, Disabled is the only permitted value.
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Dynamic", "Static", "Disabled")]
         string CloudServiceNetworkAttachmentIPAllocationMethod { get; set; }
         /// <summary>
-        /// The IPv4 address of the virtual machine.
-        /// This field is used only if the attached network has IPAllocationType of IPV4 or DualStack.
-        /// If IPAllocationMethod is:
-        /// Static - this field must contain a user specified IPv4 address from within the subnet specified in the attached network.
-        /// Dynamic - this field is read-only, but will be populated with an address from within the subnet specified in the attached
-        /// network.
-        /// Disabled - this field will be empty.
+        /// The IPv4 address of the virtual machine. This field is used only if the attached network has IPAllocationType of IPV4
+        /// or DualStack. If IPAllocationMethod is: Static - this field must contain a user specified IPv4 address from within the
+        /// subnet specified in the attached network. Dynamic - this field is read-only, but will be populated with an address from
+        /// within the subnet specified in the attached network. Disabled - this field will be empty.
         /// </summary>
         string CloudServiceNetworkAttachmentIpv4Address { get; set; }
         /// <summary>
-        /// The IPv6 address of the virtual machine.
-        /// This field is used only if the attached network has IPAllocationType of IPV6 or DualStack.
-        /// If IPAllocationMethod is:
-        /// Static - this field must contain an IPv6 address range from within the range specified in the attached network.
-        /// Dynamic - this field is read-only, but will be populated with an range from within the subnet specified in the attached
-        /// network.
-        /// Disabled - this field will be empty.
+        /// The IPv6 address of the virtual machine. This field is used only if the attached network has IPAllocationType of IPV6
+        /// or DualStack. If IPAllocationMethod is: Static - this field must contain an IPv6 address range from within the range specified
+        /// in the attached network. Dynamic - this field is read-only, but will be populated with an range from within the subnet
+        /// specified in the attached network. Disabled - this field will be empty.
         /// </summary>
         string CloudServiceNetworkAttachmentIpv6Address { get; set; }
         /// <summary>
@@ -997,10 +1089,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// </summary>
         string CloudServiceNetworkAttachmentMacAddress { get; set; }
         /// <summary>
-        /// The associated network's interface name.
-        /// If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine.
-        /// If the user doesn’t specify this value, the default interface name of the network resource will be used.
-        /// For a CloudServicesNetwork resource, this name will be ignored.
+        /// The associated network's interface name. If specified, the network attachment name has a maximum length of 15 characters
+        /// and must be unique to this virtual machine. If the user doesn’t specify this value, the default interface name of the
+        /// network resource will be used. For a CloudServicesNetwork resource, this name will be ignored.
         /// </summary>
         string CloudServiceNetworkAttachmentName { get; set; }
         /// <summary>
@@ -1030,6 +1121,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         string ExtendedLocationName { get; set; }
         /// <summary>The extended location type, for example, CustomLocation.</summary>
         string ExtendedLocationType { get; set; }
+        /// <summary>The identity for the resource.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentity Identity { get; set; }
+        /// <summary>
+        /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
+        string IdentityPrincipalId { get; set; }
+        /// <summary>
+        /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+        /// </summary>
+        string IdentityTenantId { get; set; }
+        /// <summary>
+        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
+        string IdentityType { get; set; }
+        /// <summary>
+        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
+        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        /// The dictionary values can be empty objects ({}) in requests.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
         /// <summary>
         /// Field Deprecated, the value will be ignored if provided. The indicator of whether one of the specified CPU cores is isolated
         /// to run the emulator thread for this virtual machine.
@@ -1040,8 +1152,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         long? MemorySizeGb { get; set; }
         /// <summary>The list of network attachments to the virtual machine.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.INetworkAttachment> NetworkAttachment { get; set; }
-        /// <summary>The Base64 encoded cloud-init network data.</summary>
+        /// <summary>
+        /// Field Deprecated: The Base64 encoded cloud-init network data. The networkDataContent property will be used in preference
+        /// to this property.
+        /// </summary>
         string NetworkData { get; set; }
+        /// <summary>The Base64 encoded cloud-init network data.</summary>
+        string NetworkDataContent { get; set; }
         /// <summary>The strategy for creating the OS disk.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Ephemeral", "Persistent")]
         string OSDiskCreateOption { get; set; }
@@ -1077,8 +1194,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// The resource IDs of volumes that are requested to be attached to the virtual machine.
         /// </summary>
         System.Collections.Generic.List<string> StorageProfileVolumeAttachment { get; set; }
-        /// <summary>The Base64 encoded cloud-init user data.</summary>
+        /// <summary>
+        /// Field Deprecated: The Base64 encoded cloud-init user data. The userDataContent property will be used in preference to
+        /// this property.
+        /// </summary>
         string UserData { get; set; }
+        /// <summary>The Base64 encoded cloud-init user data.</summary>
+        string UserDataContent { get; set; }
         /// <summary>The type of the device model to use.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("T1", "T2", "T3")]
         string VMDeviceModel { get; set; }

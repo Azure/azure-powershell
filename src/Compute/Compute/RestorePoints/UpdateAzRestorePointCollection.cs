@@ -50,6 +50,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
              HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
+        [Parameter(
+             Mandatory = false,
+             HelpMessage = "Enables or disables instant access snapshot for restore points created under this restore point collection for Premium SSD v2 or Ultra disk.")]
+        public bool? InstantAccess { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -64,6 +69,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     if (this.IsParameterBound(c => c.Tag))
                     {
                         update.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
+                    }
+
+                    if (this.IsParameterBound(c => c.InstantAccess))
+                    {
+                        update.InstantAccess = this.InstantAccess;
                     }
 
                     RestorePointCollectionsClient.Update(resourceGroup, restorePointCollectionName, update);

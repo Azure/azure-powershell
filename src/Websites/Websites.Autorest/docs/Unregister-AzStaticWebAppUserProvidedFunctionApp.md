@@ -25,6 +25,13 @@ Unregister-AzStaticWebAppUserProvidedFunctionApp -InputObject <IWebsitesIdentity
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DetachViaIdentityStaticSite
+```
+Unregister-AzStaticWebAppUserProvidedFunctionApp -FunctionAppName <String>
+ -StaticSiteInputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Description for Detach the user provided function app from the static site
 
@@ -69,7 +76,7 @@ Name of the function app registered with the static site.
 
 ```yaml
 Type: System.String
-Parameter Sets: Detach
+Parameter Sets: Detach, DetachViaIdentityStaticSite
 Aliases:
 
 Required: True
@@ -81,7 +88,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
@@ -137,6 +143,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StaticSiteInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
+Parameter Sets: DetachViaIdentityStaticSite
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

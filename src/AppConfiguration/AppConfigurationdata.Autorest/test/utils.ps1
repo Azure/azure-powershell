@@ -1,4 +1,4 @@
-function RandomString([bool]$allChars, [int32]$len) {
+﻿function RandomString([bool]$allChars, [int32]$len) {
     if ($allChars) {
         return -join ((33..126) | Get-Random -Count $len | % {[char]$_})
     } else {
@@ -63,7 +63,7 @@ function setupEnv() {
     $storeJson = az appconfig create --name $env.appStoreName1 --resource-group $env.resourceGroup --location $env.location --output json | ConvertFrom-Json
     $endpoint = "https://$($env.appStoreName1).azconfig.io"
     $env.Add("endpoint", $endpoint)
-    # HomeAccountId is in "objectId.tenantId" format — extract just the objectId
+    # HomeAccountId is in "objectId.tenantId" format - extract just the objectId
     $homeAccountId = (Get-AzContext).Account.ExtendedProperties['HomeAccountId']
     $loginObjectId = ($homeAccountId -split '\.')[0]
     New-AzRoleAssignment -ObjectId $loginObjectId -RoleDefinitionName "App Configuration Data Owner" -Scope $storeJson.id -ErrorAction SilentlyContinue

@@ -1,3 +1,5 @@
+## 15.6.1 - May 2026
+
 ## 15.6.0 - May 2026
 #### Az.Accounts 5.4.0 
 * Modified cmdlet `Add-AzEnvironment`
@@ -1310,6 +1312,7 @@
    - Changed the type of parameter `-ManagedResourcesNetworkAccessType` from `ManagedResourcesNetworkAccessType` to `String`
    - Changed the type of parameter `-UserAssignedIdentity` from `Hashtable` to `String[]`
 * Added cmdlet `Update-AzWorkloadsProviderInstance`
+
 
 
 
