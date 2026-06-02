@@ -315,9 +315,16 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                     // 5. Patch all servers which were having latest application id.
                     foreach(var serverKvp in candidateServersLookup)
                     {
+                        if (!Guid.TryParse(serverKvp.Value.ServerId, out Guid parsedServerId) || parsedServerId == Guid.Empty)
+                        {
+                            {
+                                throw new PSArgumentException(StorageSyncResources.MissingServerResourceIdErrorMessage);
+                            }
+                        }
+
                         if (serverKvp.Value.ServerRole != ServerRoleType.ClusterName.ToString())
                         {
-                            StorageSyncModels.RegisteredServer registeredServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Update(resourceGroupName, resourceName, serverKvp.Value.ServerId,
+                            StorageSyncModels.RegisteredServer registeredServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Update(resourceGroupName, resourceName, parsedServerId,
                                 new RegisteredServerUpdateParameters()
                                 {
                                     Identity = true
