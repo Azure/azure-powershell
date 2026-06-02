@@ -19,8 +19,8 @@
 -->
 ## Upcoming Release
 * Added ChangeSafety Support
-* Added Breaking Change notifications to Subvolume cmdlets in Az.NetAppFiles. 
-* Added Breaking Change notifications to New-AzNetAppFilesVolume for the EnableSubvolume parameter.
+* Added Breaking Change notifications to Subvolume cmdlets in Az.NetAppFiles
+* Added Breaking Change notifications to New-AzNetAppFilesVolume for the EnableSubvolume parameter
 
 ## Version 1.2.0
 * Updated to API version 2026-01-01
