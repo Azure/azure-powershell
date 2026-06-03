@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// <value>The name.</value>
         [Parameter(Position = 2,
            ParameterSetName = StorageSyncParameterSets.StringParameterSet,
-           Mandatory = true,
+           Mandatory = false,
            ValueFromPipelineByPropertyName = false,
             HelpMessage = HelpMessages.RegisteredServerNameParameter)]
         [ValidateNotNullOrEmpty]
@@ -142,14 +142,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 
                 bool? identity = default;
 
-                string localServerId = null;
-                Guid localServerGuid = Guid.Empty;
+                string localServerId;
+                Guid localServerGuid;
                 using (IEcsManagement ecsManagement = StorageSyncClientWrapper.StorageSyncResourceManager.CreateEcsManagement())
                 {
                     int hr = ecsManagement.GetSyncServerId(out localServerId);
                     if (hr != 0 || !Guid.TryParse(localServerId, out localServerGuid))
                     {
-                        throw new PSArgumentException("Unable to retrieve the local server ID. Ensure the Azure File Sync agent is installed and running.");
+                        throw new PSArgumentException("Unable to retrieve the local ServerId. Ensure the Azure File Sync agent is installed and running.");
                     }
                 }
                     
@@ -161,15 +161,19 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 }
                 else
                 {
-                    resourceName = ServerId;
+                    resourceName = this.IsParameterBound(c => c.ServerId) ? ServerId : localServerId;
                     resourceGroupName = ResourceGroupName;
                     storageSyncServiceName = StorageSyncServiceName;
-                    resourceName = this.IsParameterBound(c => c.ServerId) ? ServerId : localServerId;
                 }
 
-                if (!Guid.TryParse(resourceName, out Guid resourceServerGuid) || resourceServerGuid != localServerGuid)
+                if (!Guid.TryParse(resourceName, out Guid resourceServerGuid))
                 {
-                    throw new PSArgumentException($"The provided ServerId '{resourceName}' does not match the local machine's server ID '{localServerGuid}'. Run this command on the correct server.");
+                    throw new PSArgumentException($"The ServerId '{resourceName}' is not a valid GUID.");
+                }
+                
+                if (resourceServerGuid != localServerGuid)
+                {
+                    throw new PSArgumentException($"The ServerId '{resourceName}' does not match the local machine's ServerId '{localServerGuid}'. Run this command on the correct server.");
                 }
 
                 if (this.IsParameterBound(c => c.Identity))
