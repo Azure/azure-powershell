@@ -56,4 +56,14 @@ directive:
       delete $.CloudError;
       delete $.CloudErrorBody;
       return $;
+  # Autorest 4.0.754 has a word-wrap bug that emits "/// ///" on continuation
+  # lines in XML doc comments on the client boilerplate properties
+  # (LongRunningOperationRetryTimeout, GenerateClientRequestId, etc.). Strip the
+  # duplicated prefix so the doc comments render correctly.
+  - from: IDnsManagementClient.cs
+    where: $
+    transform: $ = $.replace(/^(\s*)\/\/\/ \/\/\/ /gm, '$1/// ');
+  - from: DnsManagementClient.cs
+    where: $
+    transform: $ = $.replace(/^(\s*)\/\/\/ \/\/\/ /gm, '$1/// ');
 ```
