@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System;
 using System.Collections;
+using System.Globalization;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
@@ -102,6 +103,11 @@ namespace Microsoft.Azure.Commands.Network
 
         private PSVirtualNetworkAppliance CreateVirtualNetworkAppliance()
         {
+            if (!double.TryParse(this.Bandwidth, NumberStyles.Float, CultureInfo.InvariantCulture, out double bandwidthInGbps))
+            {
+                throw new PSArgumentException($"Invalid bandwidth value '{this.Bandwidth}'. Provide a numeric value such as 50, 100, or 200.", nameof(Bandwidth));
+            }
+
             var vnaModel = new VirtualNetworkAppliance
             {
                 Location = this.Location,
@@ -110,7 +116,7 @@ namespace Microsoft.Azure.Commands.Network
             };
 
             // Set bandwidth (required)
-            vnaModel.BandwidthInGbps = this.Bandwidth;
+            vnaModel.BandwidthInGbps = bandwidthInGbps;
 
             // Create the resource
             var vnaResponse = this.VirtualNetworkAppliancesClient.CreateOrUpdate(this.ResourceGroupName, this.Name, vnaModel);
