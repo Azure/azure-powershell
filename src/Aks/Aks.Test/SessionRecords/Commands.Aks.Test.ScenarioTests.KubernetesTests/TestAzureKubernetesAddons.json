@@ -214,7 +214,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps91/providers/Microsoft.ContainerService/managedClusters/kubeps3489?api-version=2025-08-01",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps91/providers/Microsoft.ContainerService/managedClusters/kubeps3489?api-version=2026-03-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHM5MS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnRhaW5lclNlcnZpY2UvbWFuYWdlZENsdXN0ZXJzL2t1YmVwczM0ODk/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -280,7 +280,7 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps91/providers/Microsoft.ContainerService/managedClusters/kubeps3489?api-version=2025-08-01",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps91/providers/Microsoft.ContainerService/managedClusters/kubeps3489?api-version=2026-03-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHM5MS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnRhaW5lclNlcnZpY2UvbWFuYWdlZENsdXN0ZXJzL2t1YmVwczM0ODk/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -346,7 +346,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps91/providers/Microsoft.ContainerService/managedClusters/kubeps3489?api-version=2025-08-01",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps91/providers/Microsoft.ContainerService/managedClusters/kubeps3489?api-version=2026-03-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHM5MS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnRhaW5lclNlcnZpY2UvbWFuYWdlZENsdXN0ZXJzL2t1YmVwczM0ODk/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -415,7 +415,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps91/providers/Microsoft.ContainerService/managedClusters/kubeps3489?api-version=2025-08-01",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps91/providers/Microsoft.ContainerService/managedClusters/kubeps3489?api-version=2026-03-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHM5MS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnRhaW5lclNlcnZpY2UvbWFuYWdlZENsdXN0ZXJzL2t1YmVwczM0ODk/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -481,7 +481,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps91/providers/Microsoft.ContainerService/managedClusters/kubeps3489?api-version=2025-08-01",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps91/providers/Microsoft.ContainerService/managedClusters/kubeps3489?api-version=2026-03-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHM5MS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnRhaW5lclNlcnZpY2UvbWFuYWdlZENsdXN0ZXJzL2t1YmVwczM0ODk/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
@@ -616,7 +616,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps91/providers/Microsoft.ContainerService/managedClusters/kubeps3489?api-version=2025-08-01",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps91/providers/Microsoft.ContainerService/managedClusters/kubeps3489?api-version=2026-03-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHM5MS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnRhaW5lclNlcnZpY2UvbWFuYWdlZENsdXN0ZXJzL2t1YmVwczM0ODk/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
       "RequestMethod": "PUT",
       "RequestHeaders": {
@@ -697,7 +697,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps91/providers/Microsoft.ContainerService/managedClusters/kubeps3489?api-version=2025-08-01",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps91/providers/Microsoft.ContainerService/managedClusters/kubeps3489?api-version=2026-03-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHM5MS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnRhaW5lclNlcnZpY2UvbWFuYWdlZENsdXN0ZXJzL2t1YmVwczM0ODk/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
       "RequestMethod": "PUT",
       "RequestHeaders": {
@@ -778,7 +778,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps91/providers/Microsoft.ContainerService/managedClusters/kubeps3489?api-version=2025-08-01",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps91/providers/Microsoft.ContainerService/managedClusters/kubeps3489?api-version=2026-03-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHM5MS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnRhaW5lclNlcnZpY2UvbWFuYWdlZENsdXN0ZXJzL2t1YmVwczM0ODk/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
       "RequestMethod": "PUT",
       "RequestHeaders": {
@@ -2101,7 +2101,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps91/providers/Microsoft.ContainerService/managedClusters/kubeps3489?api-version=2025-08-01",
+      "RequestUri": "/subscriptions/0e745469-49f8-48c9-873b-24ca87143db1/resourceGroups/rgps91/providers/Microsoft.ContainerService/managedClusters/kubeps3489?api-version=2026-03-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGU3NDU0NjktNDlmOC00OGM5LTg3M2ItMjRjYTg3MTQzZGIxL3Jlc291cmNlR3JvdXBzL3JncHM5MS9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnRhaW5lclNlcnZpY2UvbWFuYWdlZENsdXN0ZXJzL2t1YmVwczM0ODk/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
