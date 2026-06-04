@@ -25,11 +25,35 @@ Gets the action of alert rule.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IActionResponse
+Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IActionResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+ALERTRULEINPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
+  [ActionId <String>]: Action ID
+  [AlertRuleTemplateId <String>]: Alert rule template ID
+  [AutomationRuleId <String>]: Automation rule ID
+  [BookmarkId <String>]: Bookmark ID
+  [ConsentId <String>]: consent ID
+  [DataConnectorId <String>]: Connector ID
+  [EntityId <String>]: entity ID
+  [EntityQueryId <String>]: entity query ID
+  [EntityQueryTemplateId <String>]: entity query template ID
+  [Id <String>]: Resource identity path
+  [IncidentCommentId <String>]: Incident comment ID
+  [IncidentId <String>]: Incident ID
+  [MetadataName <String>]: The Metadata name.
+  [Name <String>]: Threat intelligence indicator name field.
+  [RelationName <String>]: Relation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleId <String>]: Alert rule ID
+  [SentinelOnboardingStateName <String>]: The Sentinel onboarding state name. Supports - default
+  [SettingsName <String>]: The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
+  [SourceControlId <String>]: Source control Id
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [WorkspaceName <String>]: The name of the workspace.
 
 INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [ActionId <String>]: Action ID
@@ -58,10 +82,11 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelalertruleaction
 #>
 function Get-AzSentinelAlertRuleAction {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IActionResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IActionResponse])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityAlertRule', Mandatory)]
     [Alias('ActionId')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
     [System.String]
@@ -102,8 +127,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityAlertRule', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity]
+    # Identity Parameter
+    ${AlertRuleInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -161,6 +191,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -182,11 +220,10 @@ begin {
         $mapping = @{
             Get = 'Az.SecurityInsights.private\Get-AzSentinelAlertRuleAction_Get';
             GetViaIdentity = 'Az.SecurityInsights.private\Get-AzSentinelAlertRuleAction_GetViaIdentity';
+            GetViaIdentityAlertRule = 'Az.SecurityInsights.private\Get-AzSentinelAlertRuleAction_GetViaIdentityAlertRule';
             List = 'Az.SecurityInsights.private\Get-AzSentinelAlertRuleAction_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -200,6 +237,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

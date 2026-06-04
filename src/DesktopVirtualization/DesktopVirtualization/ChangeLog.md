@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded API version to 2025-10-10
+* Added MultiplePersistent enum value to HostPool property loadBalancerType.
+* Fixed `New-AzWvdRegistrationInfo`, `Remove-AzWvdRegistrationInfo`.
 
 ## Version 5.4.8
 * Fixed registration info command failures under Azure Policy constraints

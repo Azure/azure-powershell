@@ -18,15 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Migrated Az.Functions module from AutoRest PowerShell v3 to v4. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
-    - Replaced `-IdentityType` parameter with `-EnableSystemAssignedIdentity` in `New-AzFunctionApp` (SwitchParameter) and `Update-AzFunctionApp` (Boolean)
-    - Replaced `-IdentityID` parameter with `-UserAssignedIdentity` (String array of ARM (Azure Resource Manager) resource IDs) in `New-AzFunctionApp` and `Update-AzFunctionApp`
-    - `New-AzFunctionApp` and `Update-AzFunctionApp` now support combining SystemAssigned and UserAssigned identities in a single call
-* Fixed error message in `Update-AzFunctionApp` to reference `-EnableSystemAssignedIdentity` instead of removed `-IdentityType`
-* Fixed error message in `New-AzFunctionApp` to reference `-EnableSystemAssignedIdentity` instead of removed `-IdentityType`
-* Added SKU (stock keeping unit) validation guards in `Update-AzFunctionApp` to prevent unsupported operations on Flex Consumption and Container App plans
-* Fixed cloud portability in `New-AzFunctionApp` by using dynamic `StorageEndpointSuffix` from Azure context instead of hardcoded endpoint values [#29034]
-* Fixed `Update-AzFunctionApp` identity fallback to correctly preserve combined `SystemAssigned,UserAssigned` identity type when no identity parameters are supplied
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
+* Validated SKU in `Update-AzFunctionApp`
+* Fixed cloud portability using dynamic `StorageEndpointSuffix` [#29034]
+* Fixed `Update-AzFunctionApp`
 
 ## Version 4.3.2
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229

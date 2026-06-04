@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Updates a database.
+Update a database.
 .Description
-Updates a database.
+Update a database.
 .Example
 $2ds = New-TimeSpan -Days 2
 $4ds = New-TimeSpan -Days 4
@@ -39,13 +39,13 @@ Update-AzKustoDatabase -InputObject $database -Kind ReadOnlyFollowing -HotCacheP
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabase
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDatabase
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IKustoIdentity>: Identity Parameter
+INPUTOBJECT <IKustoIdentity>: Identity Parameter To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
   [AttachedDatabaseConfigurationName <String>]: The name of the attached database configuration.
   [ClusterName <String>]: The name of the Kusto cluster.
   [DataConnectionName <String>]: The name of the data connection.
@@ -65,15 +65,19 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/update-azkustodatabase
 #>
 function Update-AzKustoDatabase {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IDatabase])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDatabase])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [System.String]
     # The name of the Kusto cluster.
     ${ClusterName},
 
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Alias('DatabaseName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
@@ -81,18 +85,22 @@ param(
     # The name of the database in the Kusto cluster.
     ${Name},
 
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [System.String]
-    # The name of the resource group containing the Kusto cluster.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Gets subscription credentials which uniquely identify Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
@@ -103,56 +111,77 @@ param(
     ${InputObject},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.PSArgumentCompleterAttribute("Admin", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Query')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.CallerRole]
+    [System.String]
     # By default, any user who run operation on a database become an Admin on it.
     # This property allows the caller to exclude the caller from Admins list.
     ${CallerRole},
 
-    [Parameter(Mandatory)]
-    [ArgumentCompleter({ param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('ReadWrite', 'ReadOnlyFollowing') })]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
+
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.PSArgumentCompleterAttribute("ReadWrite", "ReadOnlyFollowing")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
     # Kind of the database
     ${Kind},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
     [System.String]
     # Resource location.
     ${Location},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
     [System.TimeSpan]
     # The time the data should be kept in cache for fast queries in TimeSpan.
     ${HotCachePeriod},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
     [System.TimeSpan]
     # The time the data should be kept before it stops being accessible to queries in TimeSpan.
     ${SoftDeletePeriod},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
     [System.String]
     # The name of the key vault key.
     ${KeyVaultPropertyKeyName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
     [System.String]
     # The Uri of the key vault.
     ${KeyVaultPropertyKeyVaultUri},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
     [System.String]
     # The version of the key vault key.
     ${KeyVaultPropertyKeyVersion},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
     [System.String]
     # The user assigned identity (ARM resource id) that has access to the key.
@@ -163,7 +192,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -225,6 +255,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -244,12 +282,12 @@ begin {
         }
 
         $mapping = @{
+            UpdateViaJsonFilePath = 'Az.Kusto.private\Update-AzKustoDatabase_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Kusto.private\Update-AzKustoDatabase_UpdateViaJsonString';
             UpdateExpanded = 'Az.Kusto.custom\Update-AzKustoDatabase';
             UpdateViaIdentityExpanded = 'Az.Kusto.custom\Update-AzKustoDatabase';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateViaJsonFilePath', 'UpdateViaJsonString', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -263,6 +301,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

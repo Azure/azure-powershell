@@ -4,11 +4,11 @@ function Edit-AzDataProtectionPolicyRetentionRuleClientObject {
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ModelCmdletAttribute()]
 	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupPolicy')]
     [CmdletBinding(PositionalBinding=$false)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Adds or removes Retention Rule to existing Policy')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Adds or removes Retention Rule to an existing backup policy. For AzureBlob hybrid policies, OperationalStore lifecycles must use -Name Default_OperationalStore; -Name Default is reserved for VaultStore. Mixing these (or attaching an OperationalStore lifecycle to Weekly/Monthly/Yearly) will throw a validation error.')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PreviewMessage("**********************************************************************************************`n
-    * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026. *`n
-    * At least one change applies to this cmdlet.                                           *`n
-    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486  *`n
+    * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026.            *`n
+    * At least one change applies to this cmdlet.                                                      *`n
+    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486             *`n
     ***************************************************************************************************")]
 
     param(
@@ -17,8 +17,8 @@ function Edit-AzDataProtectionPolicyRetentionRuleClientObject {
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupPolicy]
         ${Policy},
 
-        [Parameter(ParameterSetName='AddRetention',Mandatory, HelpMessage='Retention Rule Name')]
-        [Parameter(ParameterSetName='RemoveRetention',Mandatory, HelpMessage='Retention Rule Name')]
+        [Parameter(ParameterSetName='AddRetention',Mandatory, HelpMessage='Retention Rule Name. Note: Default_OperationalStore is applicable to AzureBlob only and is reserved for OperationalStore lifecycles; on AzureBlob, -Name Default is reserved for VaultStore lifecycles.')]
+        [Parameter(ParameterSetName='RemoveRetention',Mandatory, HelpMessage='Retention Rule Name. Note: Default and Default_OperationalStore are default retention rules and cannot be removed.')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RetentionRuleName]
         ${Name},
 
@@ -53,6 +53,20 @@ function Edit-AzDataProtectionPolicyRetentionRuleClientObject {
         }
 
         if($parameterSetName -eq "AddRetention"){
+            $DatasourceType = GetClientDatasourceType -ServiceDatasourceType $Policy.DatasourceType[0]
+            $manifest = LoadManifest -DatasourceType $DatasourceType
+
+            $defaultRetentionMapping = $null
+            if($null -ne $manifest.policySettings -and ($manifest.policySettings.PSObject.Properties.Name -contains "defaultRetentionRuleNames")){
+                $defaultRetentionMapping = $manifest.policySettings.defaultRetentionRuleNames
+            }
+            $mappedDefaultNames = @()
+            if($null -ne $defaultRetentionMapping){
+                $mappedDefaultNames = ValidateRetentionRuleMatchesMappedStore -Name $Name.ToString() -DefaultRetentionMapping $defaultRetentionMapping -LifeCycles $LifeCycles -DatasourceType $DatasourceType
+
+                ValidateExclusiveSourceStoreAssignment -Name $Name.ToString() -Manifest $manifest -DefaultRetentionMapping $defaultRetentionMapping -LifeCycles $LifeCycles -DatasourceType $DatasourceType
+            }
+
             $retentionPolicyIndex = -1
             $policyRuleCount = @($Policy.PolicyRule).Count
             Foreach($index in (0..($policyRuleCount - 1))){
@@ -62,15 +76,14 @@ function Edit-AzDataProtectionPolicyRetentionRuleClientObject {
             }
 
             if($retentionPolicyIndex -eq -1){
-                $DatasourceType = GetClientDatasourceType -ServiceDatasourceType $Policy.DatasourceType[0]
-                $manifest = LoadManifest -DatasourceType $DatasourceType
                 if($manifest.policySettings.disableAddRetentionRule -eq $true)
                 {
                     $message = "Adding New Retention Rule is not supported for " + $DatasourceType + " datasource type."
                     throw $message
                 }
 
-                if($manifest.policySettings.supportedRetentionTags.Contains($Name.ToString()) -eq $false)
+                $isMappedDefault = ($mappedDefaultNames -contains $Name.ToString())
+                if(($manifest.policySettings.supportedRetentionTags.Contains($Name.ToString()) -eq $false) -and (-not $isMappedDefault))
                 {
                     throw "Selected Retention Rule " + $Name  + " is not applicable for datasource type " + $DatasourceType
                 }
@@ -88,23 +101,7 @@ function Edit-AzDataProtectionPolicyRetentionRuleClientObject {
             if($retentionPolicyIndex -ne -1){
 
                 if($OverwriteLifeCycle -eq $false){
-
-                    if($Name -ne "Default"){
-                        $message = "Adding $Name Retention rule isn't supported for DataStoreType OperationalStore"
-                        throw $message
-                    }
-
-                    if($Policy.PolicyRule[$retentionPolicyIndex].LifeCycle[0].SourceDataStoreType -eq $LifeCycles[0].SourceDataStoreType){
-                        $message = "Lifecycles can't be created with same DataStoreType and Name"
-                        throw $message
-                    }
-
-                    $newRetentionRule = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.AzureRetentionRule]::new()
-                    $newRetentionRule.ObjectType = "AzureRetentionRule"
-                    $newRetentionRule.IsDefault = $IsDefault
-                    $newRetentionRule.Name = $Name
-                    $newRetentionRule.LifeCycle = $LifeCycles
-                    $Policy.PolicyRule += $newRetentionRule
+                    throw "Retention rule '$Name' already exists. Use -OverwriteLifeCycle `$true to update it."
                 }
                 else {
                     $Policy.PolicyRule[$retentionPolicyIndex].LifeCycle = $LifeCycles

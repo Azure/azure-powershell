@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -127,15 +126,6 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         public string IdentityType { get; set; }
 
         /// <summary>
-        /// Boolean for enabling Soft Delete Retention for server
-        /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = "[Public Preview] Specify whether to enable soft-delete retention for the server. When enabled, a dropped server can be restored within the retention window (defaults to 7 days if not specified).")]
-        [PSArgumentCompleter("true", "false")]
-        [GenericBreakingChangeWithVersion("The EnableSoftDelete parameter will be removed. Please use SoftDeleteRetentionDays parameter instead. Setting SoftDeleteRetentionDays to 1-7 enables soft-delete, and setting it to 0 disables soft-delete.", "16.0.0", "7.0.0")]
-        public bool? EnableSoftDelete { get; set; }
-
-        /// <summary>
         /// Value for soft-delete retention days for the server.
         /// </summary>
         [Parameter(Mandatory = false,
@@ -153,7 +143,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            ValidateSoftDeleteParameters(SoftDeleteRetentionDays, EnableSoftDelete);
+            ValidateSoftDeleteRetentionDays(SoftDeleteRetentionDays);
             
             base.ExecuteCmdlet();
         }
@@ -195,9 +185,10 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             updateData[0].PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId ?? model.FirstOrDefault().PrimaryUserAssignedIdentityId;
             updateData[0].KeyId = this.KeyId ?? updateData[0].KeyId;
             updateData[0].FederatedClientId = this.FederatedClientId ?? updateData[0].FederatedClientId;
-            // Compute SoftDeleteRetentionDays from user input or null to preserve existing value.
-            // Don't pass existing value back since API returns 0 for both null and explicitly disabled.
-            updateData[0].SoftDeleteRetentionDays = ComputeSoftDeleteRetentionDays(this.SoftDeleteRetentionDays, this.EnableSoftDelete);
+            // If the user supplied -SoftDeleteRetentionDays use it; otherwise fall back to the value returned by GET.
+            // The GET value may be -1 when soft-delete was never configured on the server, which the backend safely
+            // ignores in a PUT request (no-op), so existing server state is preserved.
+            updateData[0].SoftDeleteRetentionDays = this.SoftDeleteRetentionDays ?? updateData[0].SoftDeleteRetentionDays;
 
             return updateData;
         }

@@ -16,7 +16,7 @@ Creates a new Azure Web App Backup setting.
 ```
 New-AzWebAppDatabaseBackupSetting [-Name] <String> [-DatabaseType] <String> [-ConnectionString] <String>
  [[-ConnectionStringName] <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,6 +43,36 @@ New-AzWebAppDatabaseBackupSetting -ConnectionString 'MyConnectionString' -Connec
 ```
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ConnectionString
 Connection String

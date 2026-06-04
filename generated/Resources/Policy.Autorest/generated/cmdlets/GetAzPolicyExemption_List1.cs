@@ -25,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Description(@"This operation retrieves the list of all policy exemptions associated with the given resource group in the given subscription that match the optional given $filter. Valid values for $filter are: 'atScope()', 'atExactScope()', 'excludeExpired()' or 'policyAssignmentId eq '{value}''. If $filter is not provided, the unfiltered list includes all policy exemptions associated with the resource group, including those that apply directly or apply from containing scopes, as well as any applied to resources contained within the resource group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/policyExemptions", ApiVersion = "2022-07-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/policyExemptions", ApiVersion = "2024-12-01-preview")]
     public partial class GetAzPolicyExemption_List1 : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IContext

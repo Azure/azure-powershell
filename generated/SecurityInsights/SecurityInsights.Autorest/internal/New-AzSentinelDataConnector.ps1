@@ -16,36 +16,30 @@
 
 <#
 .Synopsis
-Creates or updates the data connector.
+Create the data connector.
 .Description
-Creates or updates the data connector.
+Create the data connector.
 .Example
 New-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Kind 'MicrosoftThreatIntelligence' -BingSafetyPhishingURL Enabled -BingSafetyPhishingUrlLookbackPeriod All  -MicrosoftEmergingThreatFeed Enabled -MicrosoftEmergingThreatFeedLookbackPeriod All
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IDataConnector
+Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IDataConnector
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IDataConnector
+Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IDataConnector
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 DATACONNECTOR <IDataConnector>: Data connector
-  Kind <DataConnectorKind>: The data connector kind
+  Kind <String>: The data connector kind
   [Etag <String>]: Etag of the azure resource
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
 https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentineldataconnector
 #>
 function New-AzSentinelDataConnector {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IDataConnector])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IDataConnector])]
+[CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
@@ -75,19 +69,11 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
+    [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IDataConnector]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IDataConnector]
     # Data connector
-    # To construct, see NOTES section for DATACONNECTOR properties and create a hash table.
     ${DataConnector},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataConnectorKind])]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataConnectorKind]
-    # The data connector kind
-    ${Kind},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -145,17 +131,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Create = 'Az.SecurityInsights.private\New-AzSentinelDataConnector_Create';
-            CreateExpanded = 'Az.SecurityInsights.private\New-AzSentinelDataConnector_CreateExpanded';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Id')) {
+        if (('Create') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Id') ) {
             $PSBoundParameters['Id'] = (New-Guid).Guid
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Create') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -164,6 +150,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzDataMigrationToSqlManagedInstance_CreateExpanded", SupportsShouldProcess = true)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.PreviewMessage("Only use cmdlets containing ToSqlManagedInstance in their name for getting or deleting or performing cutover on a migration created using New-AzDataMigrationToSqlManagedInstance")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.PreviewMessage("*****************************************************************************************\r\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in November 2026.           *\r\n* At least one change applies to this cmdlet.                                                    *\r\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\r\n**************************************************************************************************")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IDatabaseMigrationSqlMi))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Description(@"Create a new database migration to a given SQL Managed Instance.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Generated]
