@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using Microsoft.Azure.Management.NetApp.Models;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Models
 {
@@ -57,11 +56,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
 
         public string PeeringSubnetResourceId { get; set; }
 
-        public IList<CacheMountTargetProperties> MountTargets { get; set; }
+        public IList<PSNetAppFilesCacheMountTarget> MountTargets { get; set; }
 
         public string Kerberos { get; set; }
 
-        public SmbSettings SmbSettings { get; set; }
+        public PSNetAppFilesCacheSmbSettings SmbSettings { get; set; }
 
         public double? ThroughputMibps { get; set; }
 
@@ -81,7 +80,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
 
         public string LdapServerType { get; set; }
 
-        public OriginClusterInformation OriginClusterInformation { get; set; }
+        public PSNetAppFilesCacheOriginClusterInformation OriginClusterInformation { get; set; }
 
         public string CifsChangeNotifications { get; set; }
 

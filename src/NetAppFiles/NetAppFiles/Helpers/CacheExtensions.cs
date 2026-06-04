@@ -45,9 +45,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 CacheState = props.CacheState,
                 CacheSubnetResourceId = props.CacheSubnetResourceId,
                 PeeringSubnetResourceId = props.PeeringSubnetResourceId,
-                MountTargets = props.MountTargets,
+                MountTargets = props.MountTargets?.ConvertToPs(),
                 Kerberos = props.Kerberos,
-                SmbSettings = props.SmbSettings,
+                SmbSettings = props.SmbSettings?.ConvertToPs(),
                 ThroughputMibps = props.ThroughputMibps,
                 ActualThroughputMibps = props.ActualThroughputMibps,
                 EncryptionKeySource = props.EncryptionKeySource,
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Language = props.Language,
                 Ldap = props.Ldap,
                 LdapServerType = props.LdapServerType,
-                OriginClusterInformation = props.OriginClusterInformation,
+                OriginClusterInformation = props.OriginClusterInformation?.ConvertToPs(),
                 CifsChangeNotifications = props.CifsChangeNotifications,
                 GlobalFileLocking = props.GlobalFileLocking,
                 WriteBack = props.WriteBack
@@ -137,6 +137,62 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                     Kerberos5ReadOnly = rule.Kerberos5ReadOnly,
                     Kerberos5ReadWrite = rule.Kerberos5ReadWrite
                 }).ToArray()
+            };
+        }
+
+        public static PSNetAppFilesCacheMountTarget ConvertToPs(this CacheMountTargetProperties mountTarget)
+        {
+            if (mountTarget == null)
+            {
+                return null;
+            }
+
+            return new PSNetAppFilesCacheMountTarget
+            {
+                MountTargetId = mountTarget.MountTargetId,
+                IPAddress = mountTarget.IPAddress,
+                SmbServerFqdn = mountTarget.SmbServerFqdn
+            };
+        }
+
+        public static IList<PSNetAppFilesCacheMountTarget> ConvertToPs(this IEnumerable<CacheMountTargetProperties> mountTargets)
+        {
+            if (mountTargets == null)
+            {
+                return null;
+            }
+
+            return mountTargets.Select(mt => mt.ConvertToPs()).ToList();
+        }
+
+        public static PSNetAppFilesCacheSmbSettings ConvertToPs(this SmbSettings smbSettings)
+        {
+            if (smbSettings == null)
+            {
+                return null;
+            }
+
+            return new PSNetAppFilesCacheSmbSettings
+            {
+                SmbEncryption = smbSettings.SmbEncryption,
+                SmbAccessBasedEnumeration = smbSettings.SmbAccessBasedEnumeration,
+                SmbNonBrowsable = smbSettings.SmbNonBrowsable
+            };
+        }
+
+        public static PSNetAppFilesCacheOriginClusterInformation ConvertToPs(this OriginClusterInformation originClusterInformation)
+        {
+            if (originClusterInformation == null)
+            {
+                return null;
+            }
+
+            return new PSNetAppFilesCacheOriginClusterInformation
+            {
+                PeerClusterName = originClusterInformation.PeerClusterName,
+                PeerAddresses = originClusterInformation.PeerAddresses?.ToList(),
+                PeerVserverName = originClusterInformation.PeerVserverName,
+                PeerVolumeName = originClusterInformation.PeerVolumeName
             };
         }
     }
