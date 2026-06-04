@@ -89,6 +89,11 @@ ProvisioningState : Succeeded
 
 Uses `Set-AzComputeFleet` to replace the fleet configuration with updated Spot priority capacity. Since this is a PUT operation, any mutable properties not specified will be reset to defaults.
 
+## PARAMETERS
+
+### -AdditionalLocationProfile
+The list of location profiles.
+
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ILocationProfile[]
 Parameter Sets: UpdateExpanded
