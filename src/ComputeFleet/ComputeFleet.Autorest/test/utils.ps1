@@ -43,7 +43,39 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    # For any resources you created for test, you should add it to $env here.
+
+    $suffix = RandomString -allChars $false -len 6
+    $env.ResourceGroupName = "fleet-test-$suffix"
+    $env.Location = "centralus"
+    $env.ManagedFleetName = "managed-fleet-$suffix"
+    $env.LaunchFleetName = "launch-fleet-$suffix"
+    $env.LaunchFleetJsonName = "launch-fleet-json-$suffix"
+    $env.LaunchFleetJsonStrName = "launch-fleet-jsonstr-$suffix"
+    $env.ManagedFleetJsonName = "managed-fleet-json-$suffix"
+    $env.ManagedFleetJsonStrName = "managed-fleet-jsonstr-$suffix"
+    $env.VNetName = "vnet-$suffix"
+    $env.SubnetName = "subnet1"
+    $env.NsgName = "nsg-$suffix"
+    $env.VmNamePrefix = "fleetvm"
+
+    # Create resource group
+    New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location
+
+    # Create NSG
+    $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $env.ResourceGroupName `
+        -Location $env.Location -Name $env.NsgName
+
+    # Create VNet with subnet
+    $subnetConfig = New-AzVirtualNetworkSubnetConfig -Name $env.SubnetName `
+        -AddressPrefix "172.16.0.0/24" `
+        -NetworkSecurityGroupId $nsg.Id
+    $vnet = New-AzVirtualNetwork -ResourceGroupName $env.ResourceGroupName `
+        -Location $env.Location -Name $env.VNetName `
+        -AddressPrefix "172.16.0.0/16" -Subnet $subnetConfig
+
+    $env.SubnetId = $vnet.Subnets[0].Id
+    $env.NsgId = $nsg.Id
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -52,5 +84,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Remove-AzResourceGroup -Name $env.ResourceGroupName -ErrorAction SilentlyContinue -Confirm:$false
 }
 

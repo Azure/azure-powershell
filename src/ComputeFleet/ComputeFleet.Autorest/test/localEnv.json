@@ -1,0 +1,18 @@
+{
+  "Location": "centralus",
+  "ManagedFleetJsonName": "managed-fleet-json-dl8s9f",
+  "ManagedFleetName": "managed-fleet-dl8s9f",
+  "SubnetId": "/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-test-dl8s9f/providers/Microsoft.Network/virtualNetworks/vnet-dl8s9f/subnets/subnet1",
+  "SubnetName": "subnet1",
+  "VNetName": "vnet-dl8s9f",
+  "NsgId": "/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-test-dl8s9f/providers/Microsoft.Network/networkSecurityGroups/nsg-dl8s9f",
+  "LaunchFleetName": "launch-fleet-dl8s9f",
+  "SubscriptionId": "cfd0f5f2-722b-46ec-a74c-e62616c24b78",
+  "NsgName": "nsg-dl8s9f",
+  "ManagedFleetJsonStrName": "managed-fleet-jsonstr-dl8s9f",
+  "LaunchFleetJsonStrName": "launch-fleet-jsonstr-dl8s9f",
+  "LaunchFleetJsonName": "launch-fleet-json-dl8s9f",
+  "ResourceGroupName": "fleet-test-dl8s9f",
+  "VmNamePrefix": "fleetvm",
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+}
