@@ -7,13 +7,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Extensions;
 
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/DomainInfoPatchProperties.json.cs
-    /// <summary>Domain configurations of session hosts.</summary>
-    public partial class DomainInfoPatchProperties
-========
     /// <summary>ARM proxy resource.</summary>
     public partial class ProxyResource
->>>>>>>> origin:generated/SqlVirtualMachine/SqlVirtualMachine.Autorest/generated/api/Models/ProxyResource.json.cs
     {
 
         /// <summary>
@@ -59,12 +54,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/DomainInfoPatchProperties.json.cs
-        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject into a new instance of <see cref="DomainInfoPatchProperties" />.
-        /// </summary>
-        /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject instance to deserialize from.</param>
-        internal DomainInfoPatchProperties(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject json)
-========
         /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.IProxyResource.
         /// </summary>
         /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonNode" /> to deserialize from.</param>
@@ -81,7 +70,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models
         /// </summary>
         /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonObject instance to deserialize from.</param>
         internal ProxyResource(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonObject json)
->>>>>>>> origin:generated/SqlVirtualMachine/SqlVirtualMachine.Autorest/generated/api/Models/ProxyResource.json.cs
         {
             bool returnNow = false;
             BeforeFromJson(json, ref returnNow);
@@ -89,42 +77,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models
             {
                 return;
             }
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/DomainInfoPatchProperties.json.cs
-            {_activeDirectoryInfo = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject>("activeDirectoryInfo"), out var __jsonActiveDirectoryInfo) ? Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ActiveDirectoryInfoPatchProperties.FromJson(__jsonActiveDirectoryInfo) : _activeDirectoryInfo;}
-========
             __resource = new Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Resource(json);
->>>>>>>> origin:generated/SqlVirtualMachine/SqlVirtualMachine.Autorest/generated/api/Models/ProxyResource.json.cs
             AfterFromJson(json);
         }
 
         /// <summary>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/DomainInfoPatchProperties.json.cs
-        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDomainInfoPatchProperties.
-        /// </summary>
-        /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode" /> to deserialize from.</param>
-        /// <returns>
-        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDomainInfoPatchProperties.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDomainInfoPatchProperties FromJson(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode node)
-        {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject json ? new DomainInfoPatchProperties(json) : null;
-        }
-
-        /// <summary>
-        /// Serializes this instance of <see cref="DomainInfoPatchProperties" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode" />.
-========
         /// Serializes this instance of <see cref="ProxyResource" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonNode" />.
->>>>>>>> origin:generated/SqlVirtualMachine/SqlVirtualMachine.Autorest/generated/api/Models/ProxyResource.json.cs
         /// </summary>
         /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.SerializationMode"/>.</param>
         /// <returns>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/DomainInfoPatchProperties.json.cs
-        /// a serialized instance of <see cref="DomainInfoPatchProperties" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode" />.
-========
         /// a serialized instance of <see cref="ProxyResource" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonNode" />.
->>>>>>>> origin:generated/SqlVirtualMachine/SqlVirtualMachine.Autorest/generated/api/Models/ProxyResource.json.cs
         /// </returns>
         public Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.SerializationMode serializationMode)
         {
@@ -136,11 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models
             {
                 return container;
             }
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/DomainInfoPatchProperties.json.cs
-            AddIf( null != this._activeDirectoryInfo ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) this._activeDirectoryInfo.ToJson(null,serializationMode) : null, "activeDirectoryInfo" ,container.Add );
-========
             __resource?.ToJson(container, serializationMode);
->>>>>>>> origin:generated/SqlVirtualMachine/SqlVirtualMachine.Autorest/generated/api/Models/ProxyResource.json.cs
             AfterToJson(ref container);
             return container;
         }

@@ -7,13 +7,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.Extensions;
 
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/AppAttachPackagePatchTags.dictionary.cs
-    public partial class AppAttachPackagePatchTags :
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IAssociativeArray<string>
-========
     public partial class TrackedResourceTags :
         Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.IAssociativeArray<string>
->>>>>>>> origin:generated/SignalR/SignalR.Autorest/generated/api/Models/TrackedResourceTags.dictionary.cs
     {
         protected global::System.Collections.Generic.Dictionary<global::System.String,string> __additionalProperties = new global::System.Collections.Generic.Dictionary<global::System.String,string>();
 
@@ -75,10 +70,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
 
         /// <param name="source"></param>
 
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/AppAttachPackagePatchTags.dictionary.cs
-        public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.AppAttachPackagePatchTags source) => source.__additionalProperties;
-========
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.TrackedResourceTags source) => source.__additionalProperties;
->>>>>>>> origin:generated/SignalR/SignalR.Autorest/generated/api/Models/TrackedResourceTags.dictionary.cs
     }
 }

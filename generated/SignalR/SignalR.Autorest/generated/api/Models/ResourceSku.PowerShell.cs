@@ -7,15 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PowerShell;
 
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/MarketplaceInfoProperties.PowerShell.cs
-    /// <summary>Marketplace image information.</summary>
-    [System.ComponentModel.TypeConverter(typeof(MarketplaceInfoPropertiesTypeConverter))]
-    public partial class MarketplaceInfoProperties
-========
     /// <summary>The billing information of the resource.</summary>
     [System.ComponentModel.TypeConverter(typeof(ResourceSkuTypeConverter))]
     public partial class ResourceSku
->>>>>>>> origin:generated/SignalR/SignalR.Autorest/generated/api/Models/ResourceSku.PowerShell.cs
     {
 
         /// <summary>
@@ -69,27 +63,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/MarketplaceInfoProperties.PowerShell.cs
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.MarketplaceInfoProperties"
-========
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ResourceSku"
->>>>>>>> origin:generated/SignalR/SignalR.Autorest/generated/api/Models/ResourceSku.PowerShell.cs
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/MarketplaceInfoProperties.PowerShell.cs
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoProperties"
-        /// />.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoProperties DeserializeFromDictionary(global::System.Collections.IDictionary content)
-        {
-            return new MarketplaceInfoProperties(content);
-        }
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.MarketplaceInfoProperties"
-========
         /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceSku" />.
         /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceSku DeserializeFromDictionary(global::System.Collections.IDictionary content)
@@ -99,34 +77,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
 
         /// <summary>
         /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ResourceSku"
->>>>>>>> origin:generated/SignalR/SignalR.Autorest/generated/api/Models/ResourceSku.PowerShell.cs
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/MarketplaceInfoProperties.PowerShell.cs
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoProperties"
-        /// />.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoProperties DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
-        {
-            return new MarketplaceInfoProperties(content);
-        }
-
-        /// <summary>
-        /// Creates a new instance of <see cref="MarketplaceInfoProperties" />, deserializing the content from a json string.
-        /// </summary>
-        /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="MarketplaceInfoProperties" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode.Parse(jsonText));
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.MarketplaceInfoProperties"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal MarketplaceInfoProperties(global::System.Collections.IDictionary content)
-========
         /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceSku" />.
         /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceSku DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
@@ -147,7 +101,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         internal ResourceSku(global::System.Collections.IDictionary content)
->>>>>>>> origin:generated/SignalR/SignalR.Autorest/generated/api/Models/ResourceSku.PowerShell.cs
         {
             bool returnNow = false;
             BeforeDeserializeDictionary(content, ref returnNow);
@@ -156,59 +109,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Offer"))
+            if (content.Contains("Name"))
             {
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/MarketplaceInfoProperties.PowerShell.cs
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPropertiesInternal)this).Offer = (string) content.GetValueForProperty("Offer",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPropertiesInternal)this).Offer, global::System.Convert.ToString);
-========
                 ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceSkuInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceSkuInternal)this).Name, global::System.Convert.ToString);
->>>>>>>> origin:generated/SignalR/SignalR.Autorest/generated/api/Models/ResourceSku.PowerShell.cs
             }
-            if (content.Contains("Publisher"))
+            if (content.Contains("Tier"))
             {
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/MarketplaceInfoProperties.PowerShell.cs
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPropertiesInternal)this).Publisher = (string) content.GetValueForProperty("Publisher",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPropertiesInternal)this).Publisher, global::System.Convert.ToString);
-========
                 ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceSkuInternal)this).Tier = (string) content.GetValueForProperty("Tier",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceSkuInternal)this).Tier, global::System.Convert.ToString);
->>>>>>>> origin:generated/SignalR/SignalR.Autorest/generated/api/Models/ResourceSku.PowerShell.cs
             }
-            if (content.Contains("Sku"))
+            if (content.Contains("Size"))
             {
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/MarketplaceInfoProperties.PowerShell.cs
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPropertiesInternal)this).Sku = (string) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPropertiesInternal)this).Sku, global::System.Convert.ToString);
-========
                 ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceSkuInternal)this).Size = (string) content.GetValueForProperty("Size",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceSkuInternal)this).Size, global::System.Convert.ToString);
->>>>>>>> origin:generated/SignalR/SignalR.Autorest/generated/api/Models/ResourceSku.PowerShell.cs
             }
-            if (content.Contains("ExactVersion"))
+            if (content.Contains("Family"))
             {
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/MarketplaceInfoProperties.PowerShell.cs
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPropertiesInternal)this).ExactVersion = (string) content.GetValueForProperty("ExactVersion",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPropertiesInternal)this).ExactVersion, global::System.Convert.ToString);
-========
                 ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceSkuInternal)this).Family = (string) content.GetValueForProperty("Family",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceSkuInternal)this).Family, global::System.Convert.ToString);
             }
             if (content.Contains("Capacity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceSkuInternal)this).Capacity = (int?) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceSkuInternal)this).Capacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
->>>>>>>> origin:generated/SignalR/SignalR.Autorest/generated/api/Models/ResourceSku.PowerShell.cs
             }
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/MarketplaceInfoProperties.PowerShell.cs
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.MarketplaceInfoProperties"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal MarketplaceInfoProperties(global::System.Management.Automation.PSObject content)
-========
         /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ResourceSku"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         internal ResourceSku(global::System.Management.Automation.PSObject content)
->>>>>>>> origin:generated/SignalR/SignalR.Autorest/generated/api/Models/ResourceSku.PowerShell.cs
         {
             bool returnNow = false;
             BeforeDeserializePSObject(content, ref returnNow);
@@ -217,41 +146,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Offer"))
+            if (content.Contains("Name"))
             {
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/MarketplaceInfoProperties.PowerShell.cs
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPropertiesInternal)this).Offer = (string) content.GetValueForProperty("Offer",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPropertiesInternal)this).Offer, global::System.Convert.ToString);
-========
                 ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceSkuInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceSkuInternal)this).Name, global::System.Convert.ToString);
->>>>>>>> origin:generated/SignalR/SignalR.Autorest/generated/api/Models/ResourceSku.PowerShell.cs
             }
-            if (content.Contains("Publisher"))
+            if (content.Contains("Tier"))
             {
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/MarketplaceInfoProperties.PowerShell.cs
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPropertiesInternal)this).Publisher = (string) content.GetValueForProperty("Publisher",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPropertiesInternal)this).Publisher, global::System.Convert.ToString);
-========
                 ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceSkuInternal)this).Tier = (string) content.GetValueForProperty("Tier",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceSkuInternal)this).Tier, global::System.Convert.ToString);
->>>>>>>> origin:generated/SignalR/SignalR.Autorest/generated/api/Models/ResourceSku.PowerShell.cs
             }
-            if (content.Contains("Sku"))
+            if (content.Contains("Size"))
             {
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/MarketplaceInfoProperties.PowerShell.cs
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPropertiesInternal)this).Sku = (string) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPropertiesInternal)this).Sku, global::System.Convert.ToString);
-========
                 ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceSkuInternal)this).Size = (string) content.GetValueForProperty("Size",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceSkuInternal)this).Size, global::System.Convert.ToString);
->>>>>>>> origin:generated/SignalR/SignalR.Autorest/generated/api/Models/ResourceSku.PowerShell.cs
             }
-            if (content.Contains("ExactVersion"))
+            if (content.Contains("Family"))
             {
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/MarketplaceInfoProperties.PowerShell.cs
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPropertiesInternal)this).ExactVersion = (string) content.GetValueForProperty("ExactVersion",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPropertiesInternal)this).ExactVersion, global::System.Convert.ToString);
-========
                 ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceSkuInternal)this).Family = (string) content.GetValueForProperty("Family",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceSkuInternal)this).Family, global::System.Convert.ToString);
             }
             if (content.Contains("Capacity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceSkuInternal)this).Capacity = (int?) content.GetValueForProperty("Capacity",((Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceSkuInternal)this).Capacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
->>>>>>>> origin:generated/SignalR/SignalR.Autorest/generated/api/Models/ResourceSku.PowerShell.cs
             }
             AfterDeserializePSObject(content);
         }
@@ -273,15 +186,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models
             return ToJsonString();
         }
     }
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/MarketplaceInfoProperties.PowerShell.cs
-    /// Marketplace image information.
-    [System.ComponentModel.TypeConverter(typeof(MarketplaceInfoPropertiesTypeConverter))]
-    public partial interface IMarketplaceInfoProperties
-========
     /// The billing information of the resource.
     [System.ComponentModel.TypeConverter(typeof(ResourceSkuTypeConverter))]
     public partial interface IResourceSku
->>>>>>>> origin:generated/SignalR/SignalR.Autorest/generated/api/Models/ResourceSku.PowerShell.cs
 
     {
 

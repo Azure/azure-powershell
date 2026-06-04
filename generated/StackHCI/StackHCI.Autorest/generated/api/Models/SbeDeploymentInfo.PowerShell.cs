@@ -7,18 +7,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.PowerShell;
 
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/MarketplaceInfoPatchProperties.PowerShell.cs
-    /// <summary>Marketplace image information.</summary>
-    [System.ComponentModel.TypeConverter(typeof(MarketplaceInfoPatchPropertiesTypeConverter))]
-    public partial class MarketplaceInfoPatchProperties
-========
     /// <summary>
     /// Solution builder extension (SBE) package and manifest information for the solution builder extension staged for AzureStackHCI
     /// cluster deployment.
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(SbeDeploymentInfoTypeConverter))]
     public partial class SbeDeploymentInfo
->>>>>>>> origin:generated/StackHCI/StackHCI.Autorest/generated/api/Models/SbeDeploymentInfo.PowerShell.cs
     {
 
         /// <summary>
@@ -72,27 +66,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/MarketplaceInfoPatchProperties.PowerShell.cs
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.MarketplaceInfoPatchProperties"
-========
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SbeDeploymentInfo"
->>>>>>>> origin:generated/StackHCI/StackHCI.Autorest/generated/api/Models/SbeDeploymentInfo.PowerShell.cs
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/MarketplaceInfoPatchProperties.PowerShell.cs
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPatchProperties"
-        /// />.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPatchProperties DeserializeFromDictionary(global::System.Collections.IDictionary content)
-        {
-            return new MarketplaceInfoPatchProperties(content);
-        }
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.MarketplaceInfoPatchProperties"
-========
         /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ISbeDeploymentInfo" />.
         /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ISbeDeploymentInfo DeserializeFromDictionary(global::System.Collections.IDictionary content)
@@ -102,34 +80,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
 
         /// <summary>
         /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SbeDeploymentInfo"
->>>>>>>> origin:generated/StackHCI/StackHCI.Autorest/generated/api/Models/SbeDeploymentInfo.PowerShell.cs
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/MarketplaceInfoPatchProperties.PowerShell.cs
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPatchProperties"
-        /// />.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPatchProperties DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
-        {
-            return new MarketplaceInfoPatchProperties(content);
-        }
-
-        /// <summary>
-        /// Creates a new instance of <see cref="MarketplaceInfoPatchProperties" />, deserializing the content from a json string.
-        /// </summary>
-        /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="MarketplaceInfoPatchProperties" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPatchProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode.Parse(jsonText));
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.MarketplaceInfoPatchProperties"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal MarketplaceInfoPatchProperties(global::System.Collections.IDictionary content)
-========
         /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ISbeDeploymentInfo" />.
         /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ISbeDeploymentInfo DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
@@ -150,7 +104,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         internal SbeDeploymentInfo(global::System.Collections.IDictionary content)
->>>>>>>> origin:generated/StackHCI/StackHCI.Autorest/generated/api/Models/SbeDeploymentInfo.PowerShell.cs
         {
             bool returnNow = false;
             BeforeDeserializeDictionary(content, ref returnNow);
@@ -159,23 +112,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
                 return;
             }
             // actually deserialize
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/MarketplaceInfoPatchProperties.PowerShell.cs
-            if (content.Contains("Offer"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPatchPropertiesInternal)this).Offer = (string) content.GetValueForProperty("Offer",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPatchPropertiesInternal)this).Offer, global::System.Convert.ToString);
-            }
-            if (content.Contains("Publisher"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPatchPropertiesInternal)this).Publisher = (string) content.GetValueForProperty("Publisher",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPatchPropertiesInternal)this).Publisher, global::System.Convert.ToString);
-            }
-            if (content.Contains("Sku"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPatchPropertiesInternal)this).Sku = (string) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPatchPropertiesInternal)this).Sku, global::System.Convert.ToString);
-            }
-            if (content.Contains("ExactVersion"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPatchPropertiesInternal)this).ExactVersion = (string) content.GetValueForProperty("ExactVersion",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPatchPropertiesInternal)this).ExactVersion, global::System.Convert.ToString);
-========
             if (content.Contains("Version"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ISbeDeploymentInfoInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ISbeDeploymentInfoInternal)this).Version, global::System.Convert.ToString);
@@ -195,25 +131,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
             if (content.Contains("SbeManifestCreationDate"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ISbeDeploymentInfoInternal)this).SbeManifestCreationDate = (global::System.DateTime?) content.GetValueForProperty("SbeManifestCreationDate",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ISbeDeploymentInfoInternal)this).SbeManifestCreationDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
->>>>>>>> origin:generated/StackHCI/StackHCI.Autorest/generated/api/Models/SbeDeploymentInfo.PowerShell.cs
             }
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/MarketplaceInfoPatchProperties.PowerShell.cs
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.MarketplaceInfoPatchProperties"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal MarketplaceInfoPatchProperties(global::System.Management.Automation.PSObject content)
-========
         /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.SbeDeploymentInfo"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         internal SbeDeploymentInfo(global::System.Management.Automation.PSObject content)
->>>>>>>> origin:generated/StackHCI/StackHCI.Autorest/generated/api/Models/SbeDeploymentInfo.PowerShell.cs
         {
             bool returnNow = false;
             BeforeDeserializePSObject(content, ref returnNow);
@@ -222,23 +149,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
                 return;
             }
             // actually deserialize
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/MarketplaceInfoPatchProperties.PowerShell.cs
-            if (content.Contains("Offer"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPatchPropertiesInternal)this).Offer = (string) content.GetValueForProperty("Offer",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPatchPropertiesInternal)this).Offer, global::System.Convert.ToString);
-            }
-            if (content.Contains("Publisher"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPatchPropertiesInternal)this).Publisher = (string) content.GetValueForProperty("Publisher",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPatchPropertiesInternal)this).Publisher, global::System.Convert.ToString);
-            }
-            if (content.Contains("Sku"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPatchPropertiesInternal)this).Sku = (string) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPatchPropertiesInternal)this).Sku, global::System.Convert.ToString);
-            }
-            if (content.Contains("ExactVersion"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPatchPropertiesInternal)this).ExactVersion = (string) content.GetValueForProperty("ExactVersion",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMarketplaceInfoPatchPropertiesInternal)this).ExactVersion, global::System.Convert.ToString);
-========
             if (content.Contains("Version"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ISbeDeploymentInfoInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ISbeDeploymentInfoInternal)this).Version, global::System.Convert.ToString);
@@ -258,7 +168,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
             if (content.Contains("SbeManifestCreationDate"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ISbeDeploymentInfoInternal)this).SbeManifestCreationDate = (global::System.DateTime?) content.GetValueForProperty("SbeManifestCreationDate",((Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ISbeDeploymentInfoInternal)this).SbeManifestCreationDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
->>>>>>>> origin:generated/StackHCI/StackHCI.Autorest/generated/api/Models/SbeDeploymentInfo.PowerShell.cs
             }
             AfterDeserializePSObject(content);
         }
@@ -280,16 +189,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
             return ToJsonString();
         }
     }
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/MarketplaceInfoPatchProperties.PowerShell.cs
-    /// Marketplace image information.
-    [System.ComponentModel.TypeConverter(typeof(MarketplaceInfoPatchPropertiesTypeConverter))]
-    public partial interface IMarketplaceInfoPatchProperties
-========
     /// Solution builder extension (SBE) package and manifest information for the solution builder extension staged for AzureStackHCI
     /// cluster deployment.
     [System.ComponentModel.TypeConverter(typeof(SbeDeploymentInfoTypeConverter))]
     public partial interface ISbeDeploymentInfo
->>>>>>>> origin:generated/StackHCI/StackHCI.Autorest/generated/api/Models/SbeDeploymentInfo.PowerShell.cs
 
     {
 

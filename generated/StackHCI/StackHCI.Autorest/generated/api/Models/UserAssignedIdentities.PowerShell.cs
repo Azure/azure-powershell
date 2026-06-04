@@ -12,8 +12,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
     /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
     /// The dictionary values can be empty objects ({}) in requests.
     /// </summary>
-    [System.ComponentModel.TypeConverter(typeof(ManagedServiceIdentityUserAssignedIdentitiesTypeConverter))]
-    public partial class ManagedServiceIdentityUserAssignedIdentities
+    [System.ComponentModel.TypeConverter(typeof(UserAssignedIdentitiesTypeConverter))]
+    public partial class UserAssignedIdentities
     {
 
         /// <summary>
@@ -67,105 +67,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-<<<<<<<< HEAD:generated/NetworkCloud/NetworkCloud.Autorest/generated/api/Models/ManagedServiceIdentityUserAssignedIdentities.PowerShell.cs
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ManagedServiceIdentityUserAssignedIdentities"
-========
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.UserAssignedIdentities"
->>>>>>>> origin:generated/StackHCI/StackHCI.Autorest/generated/api/Models/UserAssignedIdentities.PowerShell.cs
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-<<<<<<<< HEAD:generated/NetworkCloud/NetworkCloud.Autorest/generated/api/Models/ManagedServiceIdentityUserAssignedIdentities.PowerShell.cs
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityUserAssignedIdentities"
-        /// />.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityUserAssignedIdentities DeserializeFromDictionary(global::System.Collections.IDictionary content)
-========
         /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUserAssignedIdentities" />.
         /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUserAssignedIdentities DeserializeFromDictionary(global::System.Collections.IDictionary content)
->>>>>>>> origin:generated/StackHCI/StackHCI.Autorest/generated/api/Models/UserAssignedIdentities.PowerShell.cs
         {
-            return new ManagedServiceIdentityUserAssignedIdentities(content);
+            return new UserAssignedIdentities(content);
         }
 
         /// <summary>
-<<<<<<<< HEAD:generated/NetworkCloud/NetworkCloud.Autorest/generated/api/Models/ManagedServiceIdentityUserAssignedIdentities.PowerShell.cs
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ManagedServiceIdentityUserAssignedIdentities"
-========
         /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.UserAssignedIdentities"
->>>>>>>> origin:generated/StackHCI/StackHCI.Autorest/generated/api/Models/UserAssignedIdentities.PowerShell.cs
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-<<<<<<<< HEAD:generated/NetworkCloud/NetworkCloud.Autorest/generated/api/Models/ManagedServiceIdentityUserAssignedIdentities.PowerShell.cs
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityUserAssignedIdentities"
-        /// />.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityUserAssignedIdentities DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
-========
         /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUserAssignedIdentities" />.
         /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUserAssignedIdentities DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
->>>>>>>> origin:generated/StackHCI/StackHCI.Autorest/generated/api/Models/UserAssignedIdentities.PowerShell.cs
         {
-            return new ManagedServiceIdentityUserAssignedIdentities(content);
+            return new UserAssignedIdentities(content);
         }
 
         /// <summary>
-        /// Creates a new instance of <see cref="ManagedServiceIdentityUserAssignedIdentities" />, deserializing the content from
-        /// a json string.
+        /// Creates a new instance of <see cref="UserAssignedIdentities" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-<<<<<<<< HEAD:generated/NetworkCloud/NetworkCloud.Autorest/generated/api/Models/ManagedServiceIdentityUserAssignedIdentities.PowerShell.cs
-        /// <returns>
-        /// an instance of the <see cref="ManagedServiceIdentityUserAssignedIdentities" /> model class.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityUserAssignedIdentities FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Json.JsonNode.Parse(jsonText));
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ManagedServiceIdentityUserAssignedIdentities"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal ManagedServiceIdentityUserAssignedIdentities(global::System.Collections.IDictionary content)
-        {
-            bool returnNow = false;
-            BeforeDeserializeDictionary(content, ref returnNow);
-            if (returnNow)
-            {
-                return;
-            }
-            // actually deserialize
-            // this type is a dictionary; copy elements from source to here.
-            CopyFrom(content);
-            AfterDeserializeDictionary(content);
-        }
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.ManagedServiceIdentityUserAssignedIdentities"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal ManagedServiceIdentityUserAssignedIdentities(global::System.Management.Automation.PSObject content)
-        {
-            bool returnNow = false;
-            BeforeDeserializePSObject(content, ref returnNow);
-            if (returnNow)
-            {
-                return;
-            }
-            // actually deserialize
-            // this type is a dictionary; copy elements from source to here.
-            CopyFrom(content);
-            AfterDeserializePSObject(content);
-        }
-========
         /// <returns>an instance of the <see cref="UserAssignedIdentities" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IUserAssignedIdentities FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonNode.Parse(jsonText));
->>>>>>>> origin:generated/StackHCI/StackHCI.Autorest/generated/api/Models/UserAssignedIdentities.PowerShell.cs
 
         /// <summary>Serializes this instance to a json string.</summary>
 
@@ -183,8 +115,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
             }
             return ToJsonString();
         }
-<<<<<<<< HEAD:generated/NetworkCloud/NetworkCloud.Autorest/generated/api/Models/ManagedServiceIdentityUserAssignedIdentities.PowerShell.cs
-========
 
         /// <summary>
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.UserAssignedIdentities"
@@ -223,13 +153,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
             CopyFrom(content);
             AfterDeserializePSObject(content);
         }
->>>>>>>> origin:generated/StackHCI/StackHCI.Autorest/generated/api/Models/UserAssignedIdentities.PowerShell.cs
     }
     /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
     /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
     /// The dictionary values can be empty objects ({}) in requests.
-    [System.ComponentModel.TypeConverter(typeof(ManagedServiceIdentityUserAssignedIdentitiesTypeConverter))]
-    public partial interface IManagedServiceIdentityUserAssignedIdentities
+    [System.ComponentModel.TypeConverter(typeof(UserAssignedIdentitiesTypeConverter))]
+    public partial interface IUserAssignedIdentities
 
     {
 

@@ -8,17 +8,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
     using Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PowerShell;
 
     /// <summary>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SessionHostManagementUpdateStatusProperties.TypeConverter.cs
-    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="SessionHostManagementUpdateStatusProperties"
-    /// />
-    /// </summary>
-    public partial class SessionHostManagementUpdateStatusPropertiesTypeConverter : global::System.Management.Automation.PSTypeConverter
-========
     /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="DatabasePrincipalAssignmentCheckNameRequest"
     /// />
     /// </summary>
     public partial class DatabasePrincipalAssignmentCheckNameRequestTypeConverter : global::System.Management.Automation.PSTypeConverter
->>>>>>>> origin:generated/Kusto/Kusto.Autorest/generated/api/Models/DatabasePrincipalAssignmentCheckNameRequest.TypeConverter.cs
     {
 
         /// <summary>
@@ -34,15 +27,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         public override bool CanConvertFrom(object sourceValue, global::System.Type destinationType) => CanConvertFrom(sourceValue);
 
         /// <summary>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SessionHostManagementUpdateStatusProperties.TypeConverter.cs
-        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="SessionHostManagementUpdateStatusProperties"/>
-        /// type.
-        /// </summary>
-        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="SessionHostManagementUpdateStatusProperties"
-        /// /> type.</param>
-        /// <returns>
-        /// <c>true</c> if the instance could be converted to a <see cref="SessionHostManagementUpdateStatusProperties" /> type, otherwise
-========
         /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="DatabasePrincipalAssignmentCheckNameRequest"/>
         /// type.
         /// </summary>
@@ -50,7 +34,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         /// /> type.</param>
         /// <returns>
         /// <c>true</c> if the instance could be converted to a <see cref="DatabasePrincipalAssignmentCheckNameRequest" /> type, otherwise
->>>>>>>> origin:generated/Kusto/Kusto.Autorest/generated/api/Models/DatabasePrincipalAssignmentCheckNameRequest.TypeConverter.cs
         /// <c>false</c>
         /// </returns>
         public static bool CanConvertFrom(dynamic sourceValue)
@@ -114,26 +97,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         /// <param name="formatProvider">not used by this TypeConverter.</param>
         /// <param name="ignoreCase">when set to <c>true</c>, will ignore the case when converting.</param>
         /// <returns>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SessionHostManagementUpdateStatusProperties.TypeConverter.cs
-        /// an instance of <see cref="SessionHostManagementUpdateStatusProperties" />, or <c>null</c> if there is no suitable conversion.
-========
         /// an instance of <see cref="DatabasePrincipalAssignmentCheckNameRequest" />, or <c>null</c> if there is no suitable conversion.
->>>>>>>> origin:generated/Kusto/Kusto.Autorest/generated/api/Models/DatabasePrincipalAssignmentCheckNameRequest.TypeConverter.cs
         /// </returns>
         public override object ConvertFrom(object sourceValue, global::System.Type destinationType, global::System.IFormatProvider formatProvider, bool ignoreCase) => ConvertFrom(sourceValue);
 
         /// <summary>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SessionHostManagementUpdateStatusProperties.TypeConverter.cs
-        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="SessionHostManagementUpdateStatusProperties"
-        /// />
-        /// </summary>
-        /// <param name="sourceValue">the value to convert into an instance of <see cref="SessionHostManagementUpdateStatusProperties"
-        /// />.</param>
-        /// <returns>
-        /// an instance of <see cref="SessionHostManagementUpdateStatusProperties" />, or <c>null</c> if there is no suitable conversion.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusProperties ConvertFrom(dynamic sourceValue)
-========
         /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="DatabasePrincipalAssignmentCheckNameRequest"
         /// />
         /// </summary>
@@ -143,28 +111,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         /// an instance of <see cref="DatabasePrincipalAssignmentCheckNameRequest" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDatabasePrincipalAssignmentCheckNameRequest ConvertFrom(dynamic sourceValue)
->>>>>>>> origin:generated/Kusto/Kusto.Autorest/generated/api/Models/DatabasePrincipalAssignmentCheckNameRequest.TypeConverter.cs
         {
             if (null == sourceValue)
             {
                 return null;
             }
             global::System.Type type = sourceValue.GetType();
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SessionHostManagementUpdateStatusProperties.TypeConverter.cs
-            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostManagementUpdateStatusProperties).IsAssignableFrom(type))
-========
             if (typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDatabasePrincipalAssignmentCheckNameRequest).IsAssignableFrom(type))
->>>>>>>> origin:generated/Kusto/Kusto.Autorest/generated/api/Models/DatabasePrincipalAssignmentCheckNameRequest.TypeConverter.cs
             {
                 return sourceValue;
             }
             try
             {
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SessionHostManagementUpdateStatusProperties.TypeConverter.cs
-                return SessionHostManagementUpdateStatusProperties.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
-========
                 return DatabasePrincipalAssignmentCheckNameRequest.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
->>>>>>>> origin:generated/Kusto/Kusto.Autorest/generated/api/Models/DatabasePrincipalAssignmentCheckNameRequest.TypeConverter.cs
             }
             catch
             {
@@ -172,19 +131,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
             }
             if (typeof(global::System.Management.Automation.PSObject).IsAssignableFrom(type))
             {
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SessionHostManagementUpdateStatusProperties.TypeConverter.cs
-                return SessionHostManagementUpdateStatusProperties.DeserializeFromPSObject(sourceValue);
-            }
-            if (typeof(global::System.Collections.IDictionary).IsAssignableFrom(type))
-            {
-                return SessionHostManagementUpdateStatusProperties.DeserializeFromDictionary(sourceValue);
-========
                 return DatabasePrincipalAssignmentCheckNameRequest.DeserializeFromPSObject(sourceValue);
             }
             if (typeof(global::System.Collections.IDictionary).IsAssignableFrom(type))
             {
                 return DatabasePrincipalAssignmentCheckNameRequest.DeserializeFromDictionary(sourceValue);
->>>>>>>> origin:generated/Kusto/Kusto.Autorest/generated/api/Models/DatabasePrincipalAssignmentCheckNameRequest.TypeConverter.cs
             }
             return null;
         }

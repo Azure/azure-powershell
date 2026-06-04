@@ -7,9 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PowerShell;
 
-    /// <summary>User assigned identity properties</summary>
-    [System.ComponentModel.TypeConverter(typeof(UserAssignedIdentityTypeConverter))]
-    public partial class UserAssignedIdentity
+    /// <summary>Identity for the resource.</summary>
+    [System.ComponentModel.TypeConverter(typeof(IdentityTypeConverter))]
+    public partial class Identity
     {
 
         /// <summary>
@@ -63,59 +63,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/UserAssignedIdentity.PowerShell.cs
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.UserAssignedIdentity"
-========
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Identity"
->>>>>>>> origin:generated/Kusto/Kusto.Autorest/generated/api/Models/Identity.PowerShell.cs
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/UserAssignedIdentity.PowerShell.cs
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IUserAssignedIdentity" />.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IUserAssignedIdentity DeserializeFromDictionary(global::System.Collections.IDictionary content)
-========
         /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IIdentity" />.
         /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IIdentity DeserializeFromDictionary(global::System.Collections.IDictionary content)
->>>>>>>> origin:generated/Kusto/Kusto.Autorest/generated/api/Models/Identity.PowerShell.cs
         {
-            return new UserAssignedIdentity(content);
+            return new Identity(content);
         }
 
         /// <summary>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/UserAssignedIdentity.PowerShell.cs
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.UserAssignedIdentity"
-========
         /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Identity"
->>>>>>>> origin:generated/Kusto/Kusto.Autorest/generated/api/Models/Identity.PowerShell.cs
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/UserAssignedIdentity.PowerShell.cs
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IUserAssignedIdentity" />.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IUserAssignedIdentity DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
-========
         /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IIdentity" />.
         /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IIdentity DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
->>>>>>>> origin:generated/Kusto/Kusto.Autorest/generated/api/Models/Identity.PowerShell.cs
         {
-            return new UserAssignedIdentity(content);
+            return new Identity(content);
         }
 
         /// <summary>
-        /// Creates a new instance of <see cref="UserAssignedIdentity" />, deserializing the content from a json string.
+        /// Creates a new instance of <see cref="Identity" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/UserAssignedIdentity.PowerShell.cs
-        /// <returns>an instance of the <see cref="UserAssignedIdentity" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IUserAssignedIdentity FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode.Parse(jsonText));
-========
         /// <returns>an instance of the <see cref="Identity" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IIdentity FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Json.JsonNode.Parse(jsonText));
 
@@ -184,7 +160,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
             }
             AfterDeserializePSObject(content);
         }
->>>>>>>> origin:generated/Kusto/Kusto.Autorest/generated/api/Models/Identity.PowerShell.cs
 
         /// <summary>Serializes this instance to a json string.</summary>
 
@@ -202,60 +177,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
             }
             return ToJsonString();
         }
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.UserAssignedIdentity"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal UserAssignedIdentity(global::System.Collections.IDictionary content)
-        {
-            bool returnNow = false;
-            BeforeDeserializeDictionary(content, ref returnNow);
-            if (returnNow)
-            {
-                return;
-            }
-            // actually deserialize
-            if (content.Contains("PrincipalId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IUserAssignedIdentityInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IUserAssignedIdentityInternal)this).PrincipalId, global::System.Convert.ToString);
-            }
-            if (content.Contains("ClientId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IUserAssignedIdentityInternal)this).ClientId = (string) content.GetValueForProperty("ClientId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IUserAssignedIdentityInternal)this).ClientId, global::System.Convert.ToString);
-            }
-            AfterDeserializeDictionary(content);
-        }
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.UserAssignedIdentity"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal UserAssignedIdentity(global::System.Management.Automation.PSObject content)
-        {
-            bool returnNow = false;
-            BeforeDeserializePSObject(content, ref returnNow);
-            if (returnNow)
-            {
-                return;
-            }
-            // actually deserialize
-            if (content.Contains("PrincipalId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IUserAssignedIdentityInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IUserAssignedIdentityInternal)this).PrincipalId, global::System.Convert.ToString);
-            }
-            if (content.Contains("ClientId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IUserAssignedIdentityInternal)this).ClientId = (string) content.GetValueForProperty("ClientId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IUserAssignedIdentityInternal)this).ClientId, global::System.Convert.ToString);
-            }
-            AfterDeserializePSObject(content);
-        }
     }
-    /// User assigned identity properties
-    [System.ComponentModel.TypeConverter(typeof(UserAssignedIdentityTypeConverter))]
-    public partial interface IUserAssignedIdentity
+    /// Identity for the resource.
+    [System.ComponentModel.TypeConverter(typeof(IdentityTypeConverter))]
+    public partial interface IIdentity
 
     {
 

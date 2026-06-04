@@ -8,9 +8,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
     using Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PowerShell;
 
     /// <summary>
-    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="DiskInfoProperties" />
+    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="Identity" />
     /// </summary>
-    public partial class DiskInfoPropertiesTypeConverter : global::System.Management.Automation.PSTypeConverter
+    public partial class IdentityTypeConverter : global::System.Management.Automation.PSTypeConverter
     {
 
         /// <summary>
@@ -26,13 +26,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         public override bool CanConvertFrom(object sourceValue, global::System.Type destinationType) => CanConvertFrom(sourceValue);
 
         /// <summary>
-        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="DiskInfoProperties"/>
-        /// type.
+        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="Identity"/> type.
         /// </summary>
-        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="DiskInfoProperties"
+        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="Identity"
         /// /> type.</param>
         /// <returns>
-        /// <c>true</c> if the instance could be converted to a <see cref="DiskInfoProperties" /> type, otherwise <c>false</c>
+        /// <c>true</c> if the instance could be converted to a <see cref="Identity" /> type, otherwise <c>false</c>
         /// </returns>
         public static bool CanConvertFrom(dynamic sourceValue)
         {
@@ -95,39 +94,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
         /// <param name="formatProvider">not used by this TypeConverter.</param>
         /// <param name="ignoreCase">when set to <c>true</c>, will ignore the case when converting.</param>
         /// <returns>
-        /// an instance of <see cref="DiskInfoProperties" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="Identity" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
         public override object ConvertFrom(object sourceValue, global::System.Type destinationType, global::System.IFormatProvider formatProvider, bool ignoreCase) => ConvertFrom(sourceValue);
 
         /// <summary>
-        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="DiskInfoProperties" />
+        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="Identity" />
         /// </summary>
-        /// <param name="sourceValue">the value to convert into an instance of <see cref="DiskInfoProperties" />.</param>
+        /// <param name="sourceValue">the value to convert into an instance of <see cref="Identity" />.</param>
         /// <returns>
-        /// an instance of <see cref="DiskInfoProperties" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="Identity" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/DiskInfoProperties.TypeConverter.cs
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoProperties ConvertFrom(dynamic sourceValue)
-========
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IIdentity ConvertFrom(dynamic sourceValue)
->>>>>>>> origin:generated/Kusto/Kusto.Autorest/generated/api/Models/Identity.TypeConverter.cs
         {
             if (null == sourceValue)
             {
                 return null;
             }
             global::System.Type type = sourceValue.GetType();
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/DiskInfoProperties.TypeConverter.cs
-            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDiskInfoProperties).IsAssignableFrom(type))
-========
             if (typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IIdentity).IsAssignableFrom(type))
->>>>>>>> origin:generated/Kusto/Kusto.Autorest/generated/api/Models/Identity.TypeConverter.cs
             {
                 return sourceValue;
             }
             try
             {
-                return DiskInfoProperties.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
+                return Identity.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
             }
             catch
             {
@@ -135,11 +126,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models
             }
             if (typeof(global::System.Management.Automation.PSObject).IsAssignableFrom(type))
             {
-                return DiskInfoProperties.DeserializeFromPSObject(sourceValue);
+                return Identity.DeserializeFromPSObject(sourceValue);
             }
             if (typeof(global::System.Collections.IDictionary).IsAssignableFrom(type))
             {
-                return DiskInfoProperties.DeserializeFromDictionary(sourceValue);
+                return Identity.DeserializeFromDictionary(sourceValue);
             }
             return null;
         }

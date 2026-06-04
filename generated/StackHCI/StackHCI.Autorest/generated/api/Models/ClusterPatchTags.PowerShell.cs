@@ -7,15 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.PowerShell;
 
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/AppAttachPackagePatchTags.PowerShell.cs
-    /// <summary>tags to be updated</summary>
-    [System.ComponentModel.TypeConverter(typeof(AppAttachPackagePatchTagsTypeConverter))]
-    public partial class AppAttachPackagePatchTags
-========
     /// <summary>Resource tags.</summary>
     [System.ComponentModel.TypeConverter(typeof(ClusterPatchTagsTypeConverter))]
     public partial class ClusterPatchTags
->>>>>>>> origin:generated/StackHCI/StackHCI.Autorest/generated/api/Models/ClusterPatchTags.PowerShell.cs
     {
 
         /// <summary>
@@ -69,19 +63,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/AppAttachPackagePatchTags.PowerShell.cs
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.AppAttachPackagePatchTags"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal AppAttachPackagePatchTags(global::System.Collections.IDictionary content)
-========
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ClusterPatchTags"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         internal ClusterPatchTags(global::System.Collections.IDictionary content)
->>>>>>>> origin:generated/StackHCI/StackHCI.Autorest/generated/api/Models/ClusterPatchTags.PowerShell.cs
         {
             bool returnNow = false;
             BeforeDeserializeDictionary(content, ref returnNow);
@@ -96,19 +82,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
         }
 
         /// <summary>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/AppAttachPackagePatchTags.PowerShell.cs
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.AppAttachPackagePatchTags"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal AppAttachPackagePatchTags(global::System.Management.Automation.PSObject content)
-========
         /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ClusterPatchTags"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         internal ClusterPatchTags(global::System.Management.Automation.PSObject content)
->>>>>>>> origin:generated/StackHCI/StackHCI.Autorest/generated/api/Models/ClusterPatchTags.PowerShell.cs
         {
             bool returnNow = false;
             BeforeDeserializePSObject(content, ref returnNow);
@@ -123,27 +101,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
         }
 
         /// <summary>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/AppAttachPackagePatchTags.PowerShell.cs
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.AppAttachPackagePatchTags"
-========
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ClusterPatchTags"
->>>>>>>> origin:generated/StackHCI/StackHCI.Autorest/generated/api/Models/ClusterPatchTags.PowerShell.cs
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/AppAttachPackagePatchTags.PowerShell.cs
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchTags"
-        /// />.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchTags DeserializeFromDictionary(global::System.Collections.IDictionary content)
-        {
-            return new AppAttachPackagePatchTags(content);
-        }
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.AppAttachPackagePatchTags"
-========
         /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IClusterPatchTags" />.
         /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IClusterPatchTags DeserializeFromDictionary(global::System.Collections.IDictionary content)
@@ -153,27 +115,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
 
         /// <summary>
         /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ClusterPatchTags"
->>>>>>>> origin:generated/StackHCI/StackHCI.Autorest/generated/api/Models/ClusterPatchTags.PowerShell.cs
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/AppAttachPackagePatchTags.PowerShell.cs
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchTags"
-        /// />.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchTags DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
-        {
-            return new AppAttachPackagePatchTags(content);
-        }
-
-        /// <summary>
-        /// Creates a new instance of <see cref="AppAttachPackagePatchTags" />, deserializing the content from a json string.
-        /// </summary>
-        /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="AppAttachPackagePatchTags" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IAppAttachPackagePatchTags FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode.Parse(jsonText));
-========
         /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IClusterPatchTags" />.
         /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IClusterPatchTags DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
@@ -187,7 +132,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
         /// <returns>an instance of the <see cref="ClusterPatchTags" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IClusterPatchTags FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonNode.Parse(jsonText));
->>>>>>>> origin:generated/StackHCI/StackHCI.Autorest/generated/api/Models/ClusterPatchTags.PowerShell.cs
 
         /// <summary>Serializes this instance to a json string.</summary>
 
@@ -206,15 +150,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
             return ToJsonString();
         }
     }
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/AppAttachPackagePatchTags.PowerShell.cs
-    /// tags to be updated
-    [System.ComponentModel.TypeConverter(typeof(AppAttachPackagePatchTagsTypeConverter))]
-    public partial interface IAppAttachPackagePatchTags
-========
     /// Resource tags.
     [System.ComponentModel.TypeConverter(typeof(ClusterPatchTagsTypeConverter))]
     public partial interface IClusterPatchTags
->>>>>>>> origin:generated/StackHCI/StackHCI.Autorest/generated/api/Models/ClusterPatchTags.PowerShell.cs
 
     {
 

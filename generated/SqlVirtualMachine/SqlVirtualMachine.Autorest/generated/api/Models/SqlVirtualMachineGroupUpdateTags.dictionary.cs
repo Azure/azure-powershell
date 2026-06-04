@@ -7,13 +7,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.Extensions;
 
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SessionHostConfigurationPropertiesVMTags.dictionary.cs
-    public partial class SessionHostConfigurationPropertiesVMTags :
-        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.IAssociativeArray<string>
-========
     public partial class SqlVirtualMachineGroupUpdateTags :
         Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.IAssociativeArray<string>
->>>>>>>> origin:generated/SqlVirtualMachine/SqlVirtualMachine.Autorest/generated/api/Models/SqlVirtualMachineGroupUpdateTags.dictionary.cs
     {
         protected global::System.Collections.Generic.Dictionary<global::System.String,string> __additionalProperties = new global::System.Collections.Generic.Dictionary<global::System.String,string>();
 
@@ -75,10 +70,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models
 
         /// <param name="source"></param>
 
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SessionHostConfigurationPropertiesVMTags.dictionary.cs
-        public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SessionHostConfigurationPropertiesVMTags source) => source.__additionalProperties;
-========
         public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,string>(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.SqlVirtualMachineGroupUpdateTags source) => source.__additionalProperties;
->>>>>>>> origin:generated/SqlVirtualMachine/SqlVirtualMachine.Autorest/generated/api/Models/SqlVirtualMachineGroupUpdateTags.dictionary.cs
     }
 }

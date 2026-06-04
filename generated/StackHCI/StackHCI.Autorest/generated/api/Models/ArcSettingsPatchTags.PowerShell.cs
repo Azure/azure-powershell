@@ -7,15 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.PowerShell;
 
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/CustomInfoProperties.PowerShell.cs
-    /// <summary>Custom image information.</summary>
-    [System.ComponentModel.TypeConverter(typeof(CustomInfoPropertiesTypeConverter))]
-    public partial class CustomInfoProperties
-========
     /// <summary>Resource tags.</summary>
     [System.ComponentModel.TypeConverter(typeof(ArcSettingsPatchTagsTypeConverter))]
     public partial class ArcSettingsPatchTags
->>>>>>>> origin:generated/StackHCI/StackHCI.Autorest/generated/api/Models/ArcSettingsPatchTags.PowerShell.cs
     {
 
         /// <summary>
@@ -69,19 +63,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/CustomInfoProperties.PowerShell.cs
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.CustomInfoProperties"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal CustomInfoProperties(global::System.Collections.IDictionary content)
-========
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ArcSettingsPatchTags"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         internal ArcSettingsPatchTags(global::System.Collections.IDictionary content)
->>>>>>>> origin:generated/StackHCI/StackHCI.Autorest/generated/api/Models/ArcSettingsPatchTags.PowerShell.cs
         {
             bool returnNow = false;
             BeforeDeserializeDictionary(content, ref returnNow);
@@ -90,27 +76,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("ResourceId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICustomInfoPropertiesInternal)this).ResourceId = (string) content.GetValueForProperty("ResourceId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICustomInfoPropertiesInternal)this).ResourceId, global::System.Convert.ToString);
-            }
+            // this type is a dictionary; copy elements from source to here.
+            CopyFrom(content);
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/CustomInfoProperties.PowerShell.cs
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.CustomInfoProperties"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal CustomInfoProperties(global::System.Management.Automation.PSObject content)
-========
         /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ArcSettingsPatchTags"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         internal ArcSettingsPatchTags(global::System.Management.Automation.PSObject content)
->>>>>>>> origin:generated/StackHCI/StackHCI.Autorest/generated/api/Models/ArcSettingsPatchTags.PowerShell.cs
         {
             bool returnNow = false;
             BeforeDeserializePSObject(content, ref returnNow);
@@ -119,34 +95,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("ResourceId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICustomInfoPropertiesInternal)this).ResourceId = (string) content.GetValueForProperty("ResourceId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICustomInfoPropertiesInternal)this).ResourceId, global::System.Convert.ToString);
-            }
+            // this type is a dictionary; copy elements from source to here.
+            CopyFrom(content);
             AfterDeserializePSObject(content);
         }
 
         /// <summary>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/CustomInfoProperties.PowerShell.cs
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.CustomInfoProperties"
-========
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ArcSettingsPatchTags"
->>>>>>>> origin:generated/StackHCI/StackHCI.Autorest/generated/api/Models/ArcSettingsPatchTags.PowerShell.cs
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/CustomInfoProperties.PowerShell.cs
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICustomInfoProperties" />.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICustomInfoProperties DeserializeFromDictionary(global::System.Collections.IDictionary content)
-        {
-            return new CustomInfoProperties(content);
-        }
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.CustomInfoProperties"
-========
         /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IArcSettingsPatchTags" />.
         /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IArcSettingsPatchTags DeserializeFromDictionary(global::System.Collections.IDictionary content)
@@ -156,26 +115,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
 
         /// <summary>
         /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ArcSettingsPatchTags"
->>>>>>>> origin:generated/StackHCI/StackHCI.Autorest/generated/api/Models/ArcSettingsPatchTags.PowerShell.cs
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/CustomInfoProperties.PowerShell.cs
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICustomInfoProperties" />.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICustomInfoProperties DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
-        {
-            return new CustomInfoProperties(content);
-        }
-
-        /// <summary>
-        /// Creates a new instance of <see cref="CustomInfoProperties" />, deserializing the content from a json string.
-        /// </summary>
-        /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="CustomInfoProperties" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICustomInfoProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode.Parse(jsonText));
-========
         /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IArcSettingsPatchTags" />.
         /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IArcSettingsPatchTags DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
@@ -189,7 +132,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
         /// <returns>an instance of the <see cref="ArcSettingsPatchTags" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IArcSettingsPatchTags FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.Json.JsonNode.Parse(jsonText));
->>>>>>>> origin:generated/StackHCI/StackHCI.Autorest/generated/api/Models/ArcSettingsPatchTags.PowerShell.cs
 
         /// <summary>Serializes this instance to a json string.</summary>
 
@@ -208,15 +150,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models
             return ToJsonString();
         }
     }
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/CustomInfoProperties.PowerShell.cs
-    /// Custom image information.
-    [System.ComponentModel.TypeConverter(typeof(CustomInfoPropertiesTypeConverter))]
-    public partial interface ICustomInfoProperties
-========
     /// Resource tags.
     [System.ComponentModel.TypeConverter(typeof(ArcSettingsPatchTagsTypeConverter))]
     public partial interface IArcSettingsPatchTags
->>>>>>>> origin:generated/StackHCI/StackHCI.Autorest/generated/api/Models/ArcSettingsPatchTags.PowerShell.cs
 
     {
 

@@ -7,12 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Extensions;
 
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/CustomInfoProperties.json.cs
-    /// <summary>Custom image information.</summary>
-    public partial class CustomInfoProperties
-========
     public partial class CodelessUiConnectorConfigPropertiesDataTypesItem
->>>>>>>> origin:generated/SecurityInsights/SecurityInsights.Autorest/generated/api/Models/CodelessUiConnectorConfigPropertiesDataTypesItem.json.cs
     {
 
         /// <summary>
@@ -58,18 +53,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/CustomInfoProperties.json.cs
-        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject into a new instance of <see cref="CustomInfoProperties" />.
-        /// </summary>
-        /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject instance to deserialize from.</param>
-        internal CustomInfoProperties(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject json)
-========
         /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Json.JsonObject into a new instance of <see cref="CodelessUiConnectorConfigPropertiesDataTypesItem"
         /// />.
         /// </summary>
         /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Json.JsonObject instance to deserialize from.</param>
         internal CodelessUiConnectorConfigPropertiesDataTypesItem(Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Json.JsonObject json)
->>>>>>>> origin:generated/SecurityInsights/SecurityInsights.Autorest/generated/api/Models/CodelessUiConnectorConfigPropertiesDataTypesItem.json.cs
         {
             bool returnNow = false;
             BeforeFromJson(json, ref returnNow);
@@ -77,30 +65,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models
             {
                 return;
             }
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/CustomInfoProperties.json.cs
-            {_resourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("resourceId"), out var __jsonResourceId) ? (string)__jsonResourceId : (string)_resourceId;}
-========
             __lastDataReceivedDataType = new Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.LastDataReceivedDataType(json);
->>>>>>>> origin:generated/SecurityInsights/SecurityInsights.Autorest/generated/api/Models/CodelessUiConnectorConfigPropertiesDataTypesItem.json.cs
             AfterFromJson(json);
         }
 
         /// <summary>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/CustomInfoProperties.json.cs
-        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICustomInfoProperties.
-        /// </summary>
-        /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode" /> to deserialize from.</param>
-        /// <returns>
-        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICustomInfoProperties.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ICustomInfoProperties FromJson(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode node)
-        {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject json ? new CustomInfoProperties(json) : null;
-        }
-
-        /// <summary>
-        /// Serializes this instance of <see cref="CustomInfoProperties" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode" />.
-========
         /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ICodelessUiConnectorConfigPropertiesDataTypesItem.
         /// </summary>
         /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Json.JsonNode" /> to deserialize from.</param>
@@ -115,18 +84,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models
         /// <summary>
         /// Serializes this instance of <see cref="CodelessUiConnectorConfigPropertiesDataTypesItem" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Json.JsonNode"
         /// />.
->>>>>>>> origin:generated/SecurityInsights/SecurityInsights.Autorest/generated/api/Models/CodelessUiConnectorConfigPropertiesDataTypesItem.json.cs
         /// </summary>
         /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.SerializationMode"/>.</param>
         /// <returns>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/CustomInfoProperties.json.cs
-        /// a serialized instance of <see cref="CustomInfoProperties" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode" />.
-========
         /// a serialized instance of <see cref="CodelessUiConnectorConfigPropertiesDataTypesItem" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Json.JsonNode"
         /// />.
->>>>>>>> origin:generated/SecurityInsights/SecurityInsights.Autorest/generated/api/Models/CodelessUiConnectorConfigPropertiesDataTypesItem.json.cs
         /// </returns>
         public Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.SerializationMode serializationMode)
         {
@@ -138,11 +102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models
             {
                 return container;
             }
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/CustomInfoProperties.json.cs
-            AddIf( null != (((object)this._resourceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._resourceId.ToString()) : null, "resourceId" ,container.Add );
-========
             __lastDataReceivedDataType?.ToJson(container, serializationMode);
->>>>>>>> origin:generated/SecurityInsights/SecurityInsights.Autorest/generated/api/Models/CodelessUiConnectorConfigPropertiesDataTypesItem.json.cs
             AfterToJson(ref container);
             return container;
         }

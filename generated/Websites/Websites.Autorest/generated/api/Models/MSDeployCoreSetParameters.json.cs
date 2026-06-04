@@ -7,13 +7,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Extensions;
 
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SessionHostConfigurationPropertiesVMTags.json.cs
-    /// <summary>Hashtable that lists key/value pair tags to apply to the VMs</summary>
-    public partial class SessionHostConfigurationPropertiesVMTags
-========
     /// <summary>MSDeploy Parameters. Must not be set if SetParametersXmlFileUri is used.</summary>
     public partial class MSDeployCoreSetParameters
->>>>>>>> origin:generated/Websites/Websites.Autorest/generated/api/Models/MSDeployCoreSetParameters.json.cs
     {
 
         /// <summary>
@@ -59,23 +54,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SessionHostConfigurationPropertiesVMTags.json.cs
-        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPropertiesVMTags.
-        /// </summary>
-        /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode" /> to deserialize from.</param>
-        /// <returns>
-        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPropertiesVMTags.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostConfigurationPropertiesVMTags FromJson(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode node)
-        {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject json ? new SessionHostConfigurationPropertiesVMTags(json) : null;
-        }
-
-        /// <summary>
-        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject into a new instance of <see cref="SessionHostConfigurationPropertiesVMTags" />.
-========
         /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IMSDeployCoreSetParameters.
->>>>>>>> origin:generated/Websites/Websites.Autorest/generated/api/Models/MSDeployCoreSetParameters.json.cs
         /// </summary>
         /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonNode" /> to deserialize from.</param>
         /// <returns>
@@ -91,11 +70,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
         /// </summary>
         /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonObject instance to deserialize from.</param>
         /// <param name="exclusions"></param>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SessionHostConfigurationPropertiesVMTags.json.cs
-        internal SessionHostConfigurationPropertiesVMTags(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject json, global::System.Collections.Generic.HashSet<string> exclusions = null)
-========
         internal MSDeployCoreSetParameters(Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonObject json, global::System.Collections.Generic.HashSet<string> exclusions = null)
->>>>>>>> origin:generated/Websites/Websites.Autorest/generated/api/Models/MSDeployCoreSetParameters.json.cs
         {
             bool returnNow = false;
             BeforeFromJson(json, ref returnNow);
@@ -108,25 +83,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Models
         }
 
         /// <summary>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SessionHostConfigurationPropertiesVMTags.json.cs
-        /// Serializes this instance of <see cref="SessionHostConfigurationPropertiesVMTags" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode"
-        /// />.
-        /// </summary>
-        /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
-========
         /// Serializes this instance of <see cref="MSDeployCoreSetParameters" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonNode" />.
         /// </summary>
         /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
->>>>>>>> origin:generated/Websites/Websites.Autorest/generated/api/Models/MSDeployCoreSetParameters.json.cs
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.SerializationMode"/>.</param>
         /// <returns>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SessionHostConfigurationPropertiesVMTags.json.cs
-        /// a serialized instance of <see cref="SessionHostConfigurationPropertiesVMTags" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode"
-        /// />.
-========
         /// a serialized instance of <see cref="MSDeployCoreSetParameters" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonNode" />.
->>>>>>>> origin:generated/Websites/Websites.Autorest/generated/api/Models/MSDeployCoreSetParameters.json.cs
         /// </returns>
         public Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.SerializationMode serializationMode)
         {
