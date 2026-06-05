@@ -15,11 +15,83 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzPostgreSqlFlexibleSe
 }
 
 Describe 'Update-AzPostgreSqlFlexibleServer' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll {
+        $serverTargets = @()
+        for ($i = 1; $i -le 6; $i++) {
+            $resourceGroupName = $env["ResourceGroupName$i"]
+            $serverName = $env["ServerName$i"]
+            if ($resourceGroupName -and $serverName) {
+                $serverTargets += [ordered]@{
+                    Index = $i
+                    ResourceGroupName = $resourceGroupName
+                    ServerName = $serverName
+                    HighAvailabilityMode = $env["ServerHighAvailabilityMode$i"]
+                }
+            }
+        }
+
+        $hasAllServers = $serverTargets.Count -eq 6
+        $haTargets = @($serverTargets | Where-Object { $_.HighAvailabilityMode -eq 'SameZone' -or $_.HighAvailabilityMode -eq 'ZoneRedundant' })
+        $hasHaServers = $haTargets.Count -gt 0
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpandedEnableStorageAutoGrowAllServers' -Skip:(-not $hasAllServers) {
+        foreach ($target in $serverTargets) {
+            $updatedServer = Update-AzPostgreSqlFlexibleServer `
+                -ResourceGroupName $target.ResourceGroupName `
+                -Name $target.ServerName `
+                -StorageAutoGrow Enabled
+
+            $updatedServer.StorageAutoGrow | Should -Be 'Enabled'
+
+            $fetchedServer = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $target.ResourceGroupName -Name $target.ServerName
+            $fetchedServer.StorageAutoGrow | Should -Be 'Enabled'
+        }
+    }
+
+    It 'UpdateExpandedDisableStorageAutoGrowAllServers' -Skip:(-not $hasAllServers) {
+        foreach ($target in $serverTargets) {
+            $updatedServer = Update-AzPostgreSqlFlexibleServer `
+                -ResourceGroupName $target.ResourceGroupName `
+                -Name $target.ServerName `
+                -StorageAutoGrow Disabled
+
+            $updatedServer.StorageAutoGrow | Should -Be 'Disabled'
+
+            $fetchedServer = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $target.ResourceGroupName -Name $target.ServerName
+            $fetchedServer.StorageAutoGrow | Should -Be 'Disabled'
+        }
+    }
+
+    It 'UpdateExpandedResetAdministratorLoginPasswordAllServers' -Skip:(-not $hasAllServers) {
+        foreach ($target in $serverTargets) {
+            $newPassword = ConvertTo-SecureString ("AzpsReset!Pass$($target.Index)23A") -AsPlainText -Force
+
+            $updatedServer = Update-AzPostgreSqlFlexibleServer `
+                -ResourceGroupName $target.ResourceGroupName `
+                -Name $target.ServerName `
+                -AdministratorLoginPassword $newPassword
+
+            $updatedServer.Name | Should -Be $target.ServerName
+        }
+    }
+
+    It 'UpdateExpandedSwitchHighAvailabilityModeShouldFailForAllHaServers' -Skip:(-not $hasHaServers) {
+        foreach ($target in $haTargets) {
+            $server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $target.ResourceGroupName -Name $target.ServerName
+            $currentMode = $server.HighAvailabilityMode
+            $oppositeMode = if ($currentMode -eq 'SameZone') { 'ZoneRedundant' } else { 'SameZone' }
+
+            {
+                Update-AzPostgreSqlFlexibleServer `
+                    -ResourceGroupName $target.ResourceGroupName `
+                    -Name $target.ServerName `
+                    -HighAvailabilityMode $oppositeMode `
+                    -ErrorAction Stop
+            } | Should -Throw
+
+            $postAttemptServer = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $target.ResourceGroupName -Name $target.ServerName
+            $postAttemptServer.HighAvailabilityMode | Should -Be $currentMode
+        }
     }
 }
