@@ -1,8 +1,8 @@
 {
-  "Test-AzPostgreSqlFlexibleServerNameAvailability+[NoContext]+CheckExpandedShouldReturnInvalidForWrongCharacters+$POST+https://management.azure.com/subscriptions/5c5037e5-d3f1-4e7b-b3a9-f6bf94902b30/providers/Microsoft.DBforPostgreSQL/locations/canadacentral/checkNameAvailability?api-version=2026-01-01-preview+1": {
+  "Test-AzPostgreSqlFlexibleServerNameAvailability+[NoContext]+CheckExpandedShouldReturnInvalidForWrongCharacters+$POST+https://management.azure.com/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.DBforPostgreSQL/locations/canadacentral/checkNameAvailability?api-version=2026-01-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/5c5037e5-d3f1-4e7b-b3a9-f6bf94902b30/providers/Microsoft.DBforPostgreSQL/locations/canadacentral/checkNameAvailability?api-version=2026-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.DBforPostgreSQL/locations/canadacentral/checkNameAvailability?api-version=2026-01-01-preview",
       "Content": "{\r\n  \"name\": \"wrong-~server\",\r\n  \"type\": \"Microsoft.DBforPostgreSQL/flexibleServers\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -19,7 +19,7 @@
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-request-id": [ "5ad75a05-9add-4b5f-bde3-cd54b4583847" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=15659232-7461-4854-b909-7dff9a1e844c/uksouth/439b2a15-bbc5-4233-8d68-efe23eaeb561" ],
+        "x-ms-operation-identifier": [ "tenantId=ffffffff-ffff-ffff-ffff-ffffffffffff,objectId=15659232-7461-4854-b909-7dff9a1e844c/uksouth/439b2a15-bbc5-4233-8d68-efe23eaeb561" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
         "x-ms-correlation-request-id": [ "3f54cd0c-72b6-4867-beea-b6467930c83e" ],
@@ -38,10 +38,10 @@
       "isContentBase64": false
     }
   },
-  "Test-AzPostgreSqlFlexibleServerNameAvailability+[NoContext]+CheckExpandedShouldReturnAvailableForRandom63CharName+$POST+https://management.azure.com/subscriptions/5c5037e5-d3f1-4e7b-b3a9-f6bf94902b30/providers/Microsoft.DBforPostgreSQL/locations/canadacentral/checkNameAvailability?api-version=2026-01-01-preview+1": {
+  "Test-AzPostgreSqlFlexibleServerNameAvailability+[NoContext]+CheckExpandedShouldReturnAvailableForRandom63CharName+$POST+https://management.azure.com/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.DBforPostgreSQL/locations/canadacentral/checkNameAvailability?api-version=2026-01-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/5c5037e5-d3f1-4e7b-b3a9-f6bf94902b30/providers/Microsoft.DBforPostgreSQL/locations/canadacentral/checkNameAvailability?api-version=2026-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.DBforPostgreSQL/locations/canadacentral/checkNameAvailability?api-version=2026-01-01-preview",
       "Content": "{\r\n  \"name\": \"l2c972459wsn307dqquytl2trrnsi4hqy06j577ao5v2asoj94a9wp4vpb5sp9l\",\r\n  \"type\": \"Microsoft.DBforPostgreSQL/flexibleServers\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -58,7 +58,7 @@
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-request-id": [ "2ec1a5a7-36c4-4947-930e-2ca820e80d58" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=15659232-7461-4854-b909-7dff9a1e844c/uksouth/3a81305c-d8d4-4f77-8271-b3582246d354" ],
+        "x-ms-operation-identifier": [ "tenantId=ffffffff-ffff-ffff-ffff-ffffffffffff,objectId=15659232-7461-4854-b909-7dff9a1e844c/uksouth/3a81305c-d8d4-4f77-8271-b3582246d354" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
         "x-ms-correlation-request-id": [ "a75c94f0-4474-40c1-b05b-629e362f9cf8" ],
@@ -77,10 +77,10 @@
       "isContentBase64": false
     }
   },
-  "Test-AzPostgreSqlFlexibleServerNameAvailability+[NoContext]+CheckShouldReturnAlreadyExistsForExistingServerName+$POST+https://management.azure.com/subscriptions/5c5037e5-d3f1-4e7b-b3a9-f6bf94902b30/providers/Microsoft.DBforPostgreSQL/locations/canadacentral/checkNameAvailability?api-version=2026-01-01-preview+1": {
+  "Test-AzPostgreSqlFlexibleServerNameAvailability+[NoContext]+CheckShouldReturnAlreadyExistsForExistingServerName+$POST+https://management.azure.com/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.DBforPostgreSQL/locations/canadacentral/checkNameAvailability?api-version=2026-01-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/5c5037e5-d3f1-4e7b-b3a9-f6bf94902b30/providers/Microsoft.DBforPostgreSQL/locations/canadacentral/checkNameAvailability?api-version=2026-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.DBforPostgreSQL/locations/canadacentral/checkNameAvailability?api-version=2026-01-01-preview",
       "Content": "{\r\n  \"name\": \"psqlflex-autorest-8lx5j3dq\",\r\n  \"type\": \"Microsoft.DBforPostgreSQL/flexibleServers\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -97,7 +97,7 @@
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-request-id": [ "d1fa37dc-6e20-404c-999a-741890a314a5" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=15659232-7461-4854-b909-7dff9a1e844c/ukwest/c3c77258-38a4-497c-b164-85e35ca72d04" ],
+        "x-ms-operation-identifier": [ "tenantId=ffffffff-ffff-ffff-ffff-ffffffffffff,objectId=15659232-7461-4854-b909-7dff9a1e844c/ukwest/c3c77258-38a4-497c-b164-85e35ca72d04" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
         "x-ms-correlation-request-id": [ "c8cff291-542e-49c5-ad7d-647c4e16c0a6" ],

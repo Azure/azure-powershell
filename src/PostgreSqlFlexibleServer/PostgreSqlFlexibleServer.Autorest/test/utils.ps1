@@ -41,8 +41,26 @@ $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val,
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
-    $env.SubscriptionId = (Get-AzContext).Subscription.Id
-    $env.Tenant = (Get-AzContext).Tenant.Id
+    $testSubscriptionId = $env:AZPS_TEST_SUBSCRIPTION_ID
+    $testTenantId = $env:AZPS_TEST_TENANT_ID
+    $context = Get-AzContext
+
+    if ([string]::IsNullOrWhiteSpace($testSubscriptionId) -and $null -ne $context) {
+        $testSubscriptionId = $context.Subscription.Id
+    }
+
+    if ([string]::IsNullOrWhiteSpace($testTenantId) -and $null -ne $context) {
+        $testTenantId = $context.Tenant.Id
+    }
+
+    if ([string]::IsNullOrWhiteSpace($testSubscriptionId)) {
+        throw "SubscriptionId is required. Set AZPS_TEST_SUBSCRIPTION_ID or run Connect-AzAccount."
+    }
+
+    $env.SubscriptionId = $testSubscriptionId
+    if (-not [string]::IsNullOrWhiteSpace($testTenantId)) {
+        $env.Tenant = $testTenantId
+    }
 
     if (-not $env.ContainsKey('mainLocation')) {
         $env.Add('mainLocation', 'canadacentral')
@@ -230,7 +248,17 @@ function setupEnv() {
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
     }
-    set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
+    # Do not persist subscription and tenant identifiers to tracked env files.
+    $persistEnv = @{}
+    foreach ($entry in $env.GetEnumerator()) {
+        if ($entry.Key -in @('SubscriptionId', 'Tenant')) {
+            continue
+        }
+
+        $persistEnv[$entry.Key] = $entry.Value
+    }
+
+    set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $persistEnv)
 }
 function cleanupEnv() {
     # Clean resources you create for testing

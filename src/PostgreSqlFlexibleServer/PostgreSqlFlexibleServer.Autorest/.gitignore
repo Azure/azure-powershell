@@ -6,6 +6,7 @@ internal
 exports
 tools
 test/*-TestResults.xml
+test/localEnv.json
 license.txt
 /*.ps1
 /*.psd1

@@ -25,5 +25,36 @@ if (Test-Path -Path (Join-Path $PSScriptRoot $envFile)) {
 $env = @{}
 if (Test-Path -Path $envFilePath) {
     $env = Get-Content -Path $envFilePath | ConvertFrom-Json
+}
+
+if ([string]::IsNullOrWhiteSpace([string]$env.SubscriptionId)) {
+    $resolvedSubscriptionId = $env:AZPS_TEST_SUBSCRIPTION_ID
+    if ([string]::IsNullOrWhiteSpace($resolvedSubscriptionId)) {
+        $context = Get-AzContext -ErrorAction SilentlyContinue
+        if ($null -ne $context) {
+            $resolvedSubscriptionId = $context.Subscription.Id
+        }
+    }
+
+    if (-not [string]::IsNullOrWhiteSpace($resolvedSubscriptionId)) {
+        $env | Add-Member -NotePropertyName 'SubscriptionId' -NotePropertyValue $resolvedSubscriptionId -Force
+    }
+}
+
+if ([string]::IsNullOrWhiteSpace([string]$env.Tenant)) {
+    $resolvedTenantId = $env:AZPS_TEST_TENANT_ID
+    if ([string]::IsNullOrWhiteSpace($resolvedTenantId)) {
+        $context = Get-AzContext -ErrorAction SilentlyContinue
+        if ($null -ne $context) {
+            $resolvedTenantId = $context.Tenant.Id
+        }
+    }
+
+    if (-not [string]::IsNullOrWhiteSpace($resolvedTenantId)) {
+        $env | Add-Member -NotePropertyName 'Tenant' -NotePropertyValue $resolvedTenantId -Force
+    }
+}
+
+if (-not [string]::IsNullOrWhiteSpace([string]$env.Tenant)) {
     $PSDefaultParameterValues=@{"*:Tenant"=$env.Tenant}
 }

@@ -1,8 +1,8 @@
 {
-  "Test-AzPostgreSqlFlexibleServerNameAvailabilityGlobally+[NoContext]+CheckExpandedShouldReturnInvalidForWrongCharacters+$POST+https://management.azure.com/subscriptions/5c5037e5-d3f1-4e7b-b3a9-f6bf94902b30/providers/Microsoft.DBforPostgreSQL/checkNameAvailability?api-version=2026-01-01-preview+1": {
+  "Test-AzPostgreSqlFlexibleServerNameAvailabilityGlobally+[NoContext]+CheckExpandedShouldReturnInvalidForWrongCharacters+$POST+https://management.azure.com/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.DBforPostgreSQL/checkNameAvailability?api-version=2026-01-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/5c5037e5-d3f1-4e7b-b3a9-f6bf94902b30/providers/Microsoft.DBforPostgreSQL/checkNameAvailability?api-version=2026-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.DBforPostgreSQL/checkNameAvailability?api-version=2026-01-01-preview",
       "Content": "{\r\n  \"name\": \"wrong-~server\",\r\n  \"type\": \"Microsoft.DBforPostgreSQL/flexibleServers\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -19,7 +19,7 @@
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-request-id": [ "769a3a96-dd00-4ad7-b919-a684b7173931" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=15659232-7461-4854-b909-7dff9a1e844c/uksouth/3c80fe7f-891f-443f-bc1a-c204e498b5e1" ],
+        "x-ms-operation-identifier": [ "tenantId=ffffffff-ffff-ffff-ffff-ffffffffffff,objectId=15659232-7461-4854-b909-7dff9a1e844c/uksouth/3c80fe7f-891f-443f-bc1a-c204e498b5e1" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
         "x-ms-correlation-request-id": [ "c2077b52-ba1f-4eed-9ccd-74f589ea1872" ],
@@ -38,10 +38,10 @@
       "isContentBase64": false
     }
   },
-  "Test-AzPostgreSqlFlexibleServerNameAvailabilityGlobally+[NoContext]+CheckExpandedShouldReturnAvailableForRandom63CharName+$POST+https://management.azure.com/subscriptions/5c5037e5-d3f1-4e7b-b3a9-f6bf94902b30/providers/Microsoft.DBforPostgreSQL/checkNameAvailability?api-version=2026-01-01-preview+1": {
+  "Test-AzPostgreSqlFlexibleServerNameAvailabilityGlobally+[NoContext]+CheckExpandedShouldReturnAvailableForRandom63CharName+$POST+https://management.azure.com/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.DBforPostgreSQL/checkNameAvailability?api-version=2026-01-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/5c5037e5-d3f1-4e7b-b3a9-f6bf94902b30/providers/Microsoft.DBforPostgreSQL/checkNameAvailability?api-version=2026-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.DBforPostgreSQL/checkNameAvailability?api-version=2026-01-01-preview",
       "Content": "{\r\n  \"name\": \"nb6bo4wdfusfb741gm5e8het6yxzvn7qtbmlrqf44n0yz53aerou5fe20vblg0c\",\r\n  \"type\": \"Microsoft.DBforPostgreSQL/flexibleServers\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -58,7 +58,7 @@
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-request-id": [ "d5a3f8ed-05dc-4376-9aa5-f6c6f89251f4" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=15659232-7461-4854-b909-7dff9a1e844c/uksouth/452c6793-eaca-4e12-af2a-72a69bbae3e8" ],
+        "x-ms-operation-identifier": [ "tenantId=ffffffff-ffff-ffff-ffff-ffffffffffff,objectId=15659232-7461-4854-b909-7dff9a1e844c/uksouth/452c6793-eaca-4e12-af2a-72a69bbae3e8" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
         "x-ms-correlation-request-id": [ "5607638c-36ed-4560-93d5-9b996eb0a642" ],
@@ -77,10 +77,10 @@
       "isContentBase64": false
     }
   },
-  "Test-AzPostgreSqlFlexibleServerNameAvailabilityGlobally+[NoContext]+CheckShouldReturnAlreadyExistsForExistingServerName+$POST+https://management.azure.com/subscriptions/5c5037e5-d3f1-4e7b-b3a9-f6bf94902b30/providers/Microsoft.DBforPostgreSQL/checkNameAvailability?api-version=2026-01-01-preview+1": {
+  "Test-AzPostgreSqlFlexibleServerNameAvailabilityGlobally+[NoContext]+CheckShouldReturnAlreadyExistsForExistingServerName+$POST+https://management.azure.com/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.DBforPostgreSQL/checkNameAvailability?api-version=2026-01-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/5c5037e5-d3f1-4e7b-b3a9-f6bf94902b30/providers/Microsoft.DBforPostgreSQL/checkNameAvailability?api-version=2026-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.DBforPostgreSQL/checkNameAvailability?api-version=2026-01-01-preview",
       "Content": "{\r\n  \"name\": \"psqlflex-autorest-8lx5j3dq\",\r\n  \"type\": \"Microsoft.DBforPostgreSQL/flexibleServers\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -97,7 +97,7 @@
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-request-id": [ "542ec5e4-2174-4a63-8206-b07ef44c72b5" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=15659232-7461-4854-b909-7dff9a1e844c/uksouth/d4789bad-7c10-4f80-a074-50e5dbd73171" ],
+        "x-ms-operation-identifier": [ "tenantId=ffffffff-ffff-ffff-ffff-ffffffffffff,objectId=15659232-7461-4854-b909-7dff9a1e844c/uksouth/d4789bad-7c10-4f80-a074-50e5dbd73171" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
         "x-ms-correlation-request-id": [ "8843f729-a811-4a51-9da9-b53ea10be5f2" ],
