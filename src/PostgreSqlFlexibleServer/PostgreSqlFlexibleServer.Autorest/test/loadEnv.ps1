@@ -27,6 +27,12 @@ if (Test-Path -Path $envFilePath) {
     $env = Get-Content -Path $envFilePath | ConvertFrom-Json
 }
 
+if ($TestMode -eq 'playback') {
+    $playbackIdentifier = 'ffffffff-ffff-ffff-ffff-ffffffffffff'
+    $env | Add-Member -NotePropertyName 'SubscriptionId' -NotePropertyValue $playbackIdentifier -Force
+    $env | Add-Member -NotePropertyName 'Tenant' -NotePropertyValue $playbackIdentifier -Force
+}
+
 if ([string]::IsNullOrWhiteSpace([string]$env.SubscriptionId)) {
     $resolvedSubscriptionId = $env:AZPS_TEST_SUBSCRIPTION_ID
     if ([string]::IsNullOrWhiteSpace($resolvedSubscriptionId)) {

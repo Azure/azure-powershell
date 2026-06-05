@@ -41,8 +41,15 @@ $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val,
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
+    $playbackIdentifier = 'ffffffff-ffff-ffff-ffff-ffffffffffff'
     $testSubscriptionId = $env:AZPS_TEST_SUBSCRIPTION_ID
     $testTenantId = $env:AZPS_TEST_TENANT_ID
+
+    if ($TestMode -eq 'playback') {
+        $testSubscriptionId = $playbackIdentifier
+        $testTenantId = $playbackIdentifier
+    }
+
     $context = Get-AzContext
 
     if ([string]::IsNullOrWhiteSpace($testSubscriptionId) -and $null -ne $context) {
