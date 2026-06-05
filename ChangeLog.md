@@ -463,6 +463,7 @@
     - When '-EdgeZone' is specified, availability zones are not supported for Azure Firewall resources
 
 #### Az.RecoveryServices 7.11.2
+* Removed unused System.Configuration.ConfigurationManager dependency from the Az.RecoveryServices module package.
 * Added Cross region restore support for upcoming regions Southeast Asia 3
 
 #### Az.RedisEnterpriseCache 1.6.1

@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Removed unused System.Configuration.ConfigurationManager dependency from the Az.RecoveryServices module package.
 
 ## Version 7.12.0
 * Added ChangeSafety Support
