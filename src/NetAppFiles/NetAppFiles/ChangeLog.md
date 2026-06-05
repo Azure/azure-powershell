@@ -21,6 +21,11 @@
 * Added ChangeSafety Support
 * Added Breaking Change notifications to Subvolume cmdlets in Az.NetAppFiles
 * Added Breaking Change notifications to New-AzNetAppFilesVolume for the EnableSubvolume parameter
+* Improved PowerShell rendering of `Get-AzNetAppFilesCache` output by introducing dedicated PS types for `MountTargets`, `SmbSettings`, and `OriginClusterInformation` so their members display correctly with `Format-List`, `Format-Custom`, and `ConvertTo-Json`.
+    - Output type change on `PSNetAppFilesCache.MountTargets`: `IList<Microsoft.Azure.Management.NetApp.Models.CacheMountTargetProperties>` -> `IList<Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesCacheMountTarget>` (members preserved: `MountTargetId`, `IPAddress`, `SmbServerFqdn`).
+    - Output type change on `PSNetAppFilesCache.SmbSettings`: `Microsoft.Azure.Management.NetApp.Models.SmbSettings` -> `Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesCacheSmbSettings` (members preserved: `SmbEncryption`, `SmbAccessBasedEnumeration`, `SmbNonBrowsable`).
+    - Output type change on `PSNetAppFilesCache.OriginClusterInformation`: `Microsoft.Azure.Management.NetApp.Models.OriginClusterInformation` -> `Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesCacheOriginClusterInformation` (members preserved: `PeerClusterName`, `PeerAddresses`, `PeerVserverName`, `PeerVolumeName`).
+    - Member names and values are unchanged, so scripts using dot-access (e.g. `$cache.SmbSettings.SmbEncryption` or `$cache.MountTargets.IPAddress`) continue to work without modification. Only scripts that type-check against `Microsoft.Azure.Management.NetApp.Models.*` for these three properties need updating.
 
 ## Version 1.2.0
 * Updated to API version 2026-01-01
