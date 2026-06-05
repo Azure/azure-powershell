@@ -26,17 +26,24 @@ Describe 'Get-AzComputeFleet' {
         $launchFleetName = "launch-fleet"
         $launchFleetName2 = "launch-fleet2"
 
-        $result1 = New-TestResourceGroup -ResourceGroupName $resourceGroupName `
-            -Location $env.Location -VNetName $vnetName -NsgName $nsgName `
-            -VNetAddressPrefix "172.16.0.0/16" -SubnetAddressPrefix "172.16.0.0/24"
-        $subnetId = $result1.SubnetId
-        $nsgId = $result1.NsgId
+        if ($TestMode -ne 'playback') {
+            $result1 = New-TestResourceGroup -ResourceGroupName $resourceGroupName `
+                -Location $env.Location -VNetName $vnetName -NsgName $nsgName `
+                -VNetAddressPrefix "172.16.0.0/16" -SubnetAddressPrefix "172.16.0.0/24"
+            $subnetId = $result1.SubnetId
+            $nsgId = $result1.NsgId
 
-        $result2 = New-TestResourceGroup -ResourceGroupName $resourceGroupName2 `
-            -Location $env.Location -VNetName $vnetName2 -NsgName $nsgName2 `
-            -VNetAddressPrefix "172.17.0.0/16" -SubnetAddressPrefix "172.17.0.0/24"
-        $subnetId2 = $result2.SubnetId
-        $nsgId2 = $result2.NsgId
+            $result2 = New-TestResourceGroup -ResourceGroupName $resourceGroupName2 `
+                -Location $env.Location -VNetName $vnetName2 -NsgName $nsgName2 `
+                -VNetAddressPrefix "172.17.0.0/16" -SubnetAddressPrefix "172.17.0.0/24"
+            $subnetId2 = $result2.SubnetId
+            $nsgId2 = $result2.NsgId
+        } else {
+            $subnetId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet1"
+            $nsgId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test/providers/Microsoft.Network/networkSecurityGroups/nsg"
+            $subnetId2 = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test2/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/subnet1"
+            $nsgId2 = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test2/providers/Microsoft.Network/networkSecurityGroups/nsg2"
+        }
 
         $vmProfile1 = New-TestVmProfile -SubnetId $subnetId -NsgId $nsgId
         $vmSize1 = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VMSizeProfile]::new()
@@ -128,7 +135,9 @@ Describe 'Get-AzComputeFleet' {
     }
 
     AfterAll {
-        Remove-AzResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue -Confirm:$false
-        Remove-AzResourceGroup -Name $resourceGroupName2 -ErrorAction SilentlyContinue -Confirm:$false
+        if ($TestMode -ne 'playback') {
+            Remove-AzResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue -Confirm:$false
+            Remove-AzResourceGroup -Name $resourceGroupName2 -ErrorAction SilentlyContinue -Confirm:$false
+        }
     }
 }

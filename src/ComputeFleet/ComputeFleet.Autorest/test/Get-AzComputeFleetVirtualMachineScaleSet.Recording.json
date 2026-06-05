@@ -1,0 +1,641 @@
+{
+  "Get-AzComputeFleetVirtualMachineScaleSet+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-vmss-list-test-rg/providers/Microsoft.AzureFleet/fleets/managed-fleet-vmss?api-version=2026-04-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-vmss-list-test-rg/providers/Microsoft.AzureFleet/fleets/managed-fleet-vmss?api-version=2026-04-01-preview",
+      "Content": "{\r\n  \"tags\": {\r\n    \"environment\": \"test\"\r\n  },\r\n  \"location\": \"centralus\",\r\n  \"properties\": {\r\n    \"spotPriorityProfile\": {\r\n      \"capacity\": 2,\r\n      \"evictionPolicy\": \"Delete\",\r\n      \"allocationStrategy\": \"PriceCapacityOptimized\"\r\n    },\r\n    \"regularPriorityProfile\": {\r\n      \"capacity\": 2,\r\n      \"minCapacity\": 1,\r\n      \"allocationStrategy\": \"LowestPrice\"\r\n    },\r\n    \"computeProfile\": {\r\n      \"computeApiVersion\": \"2024-03-01\",\r\n      \"baseVirtualMachineProfile\": {\r\n        \"networkProfile\": {\r\n          \"networkInterfaceConfigurations\": [\r\n            {\r\n              \"properties\": {\r\n                \"networkSecurityGroup\": {\r\n                  \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-vmss-list-test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg\"\r\n                },\r\n                \"primary\": true,\r\n                \"enableAcceleratedNetworking\": false,\r\n                \"ipConfigurations\": [\r\n                  {\r\n                    \"properties\": {\r\n                      \"subnet\": {\r\n                        \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-vmss-list-test-rg/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet1\"\r\n                      },\r\n                      \"primary\": true\r\n                    },\r\n                    \"name\": \"ipconfig1\"\r\n                  }\r\n                ]\r\n              },\r\n              \"name\": \"nic1\"\r\n            }\r\n          ],\r\n          \"networkApiVersion\": \"2020-11-01\"\r\n        },\r\n        \"securityProfile\": {\r\n          \"uefiSettings\": {\r\n            \"secureBootEnabled\": true,\r\n            \"vTpmEnabled\": true\r\n          },\r\n          \"securityType\": \"TrustedLaunch\"\r\n        },\r\n        \"osProfile\": {\r\n          \"computerNamePrefix\": \"fleetvm\",\r\n          \"adminUsername\": \"testadmin\",\r\n          \"adminPassword\": \"TestP@ss1234!\"\r\n        },\r\n        \"storageProfile\": {\r\n          \"imageReference\": {\r\n            \"publisher\": \"MicrosoftWindowsServer\",\r\n            \"offer\": \"WindowsServer\",\r\n            \"sku\": \"2022-datacenter-azure-edition\",\r\n            \"version\": \"latest\"\r\n          },\r\n          \"osDisk\": {\r\n            \"managedDisk\": {\r\n              \"storageAccountType\": \"Standard_LRS\"\r\n            },\r\n            \"caching\": \"ReadWrite\",\r\n            \"createOption\": \"FromImage\",\r\n            \"osType\": \"Windows\"\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"vmSizesProfile\": [\r\n      {\r\n        \"name\": \"Standard_D2s_v3\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "2534" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/PutFleet3Min;59,Microsoft.Compute/PutFleet30Min;712" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134169414392255062" ],
+        "x-ms-request-id": [ "5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=b9d5ac91-4b78-4b3f-902e-30bb8c3e8752/centralus/fd70a11e-7abe-45da-8687-da26eb74347e" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "95546d91-85d5-48cd-a6cd-0dadf981a5b8" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260605T031613Z:95546d91-85d5-48cd-a6cd-0dadf981a5b8" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C442ED3C6B3248359D2F81979A57DFE9 Ref B: CO6AA3150217025 Ref C: 2026-06-05T03:16:12Z" ],
+        "Date": [ "Fri, 05 Jun 2026 03:16:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2639" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"name\": \"managed-fleet-vmss\",\r\n  \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-vmss-list-test-rg/providers/Microsoft.AzureFleet/fleets/managed-fleet-vmss\",\r\n  \"type\": \"Microsoft.AzureFleet/fleets\",\r\n  \"location\": \"centralus\",\r\n  \"tags\": {\r\n    \"environment\": \"test\"\r\n  },\r\n  \"properties\": {\r\n    \"mode\": \"Managed\",\r\n    \"spotPriorityProfile\": {\r\n      \"evictionPolicy\": \"Delete\",\r\n      \"allocationStrategy\": \"PriceCapacityOptimized\",\r\n      \"maintain\": true,\r\n      \"capacity\": 2\r\n    },\r\n    \"regularPriorityProfile\": {\r\n      \"allocationStrategy\": \"LowestPrice\",\r\n      \"capacity\": 2,\r\n      \"minCapacity\": 1\r\n    },\r\n    \"vmSizesProfile\": [\r\n      {\r\n        \"name\": \"Standard_D2s_v3\"\r\n      }\r\n    ],\r\n    \"computeProfile\": {\r\n      \"baseVirtualMachineProfile\": {\r\n  \"networkProfile\": {\r\n    \"networkInterfaceConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-vmss-list-test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg\"\r\n          },\r\n          \"primary\": true,\r\n          \"enableAcceleratedNetworking\": false,\r\n          \"ipConfigurations\": [\r\n            {\r\n              \"properties\": {\r\n                \"subnet\": {\r\n                  \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-vmss-list-test-rg/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet1\"\r\n                },\r\n                \"primary\": true\r\n              },\r\n              \"name\": \"ipconfig1\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"nic1\"\r\n      }\r\n    ],\r\n    \"networkApiVersion\": \"2020-11-01\"\r\n  },\r\n  \"securityProfile\": {\r\n    \"uefiSettings\": {\r\n      \"secureBootEnabled\": true,\r\n      \"vTpmEnabled\": true\r\n    },\r\n    \"securityType\": \"TrustedLaunch\"\r\n  },\r\n  \"osProfile\": {\r\n    \"computerNamePrefix\": \"fleetvm\",\r\n    \"adminUsername\": \"testadmin\"\r\n  },\r\n  \"storageProfile\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"MicrosoftWindowsServer\",\r\n      \"offer\": \"WindowsServer\",\r\n      \"sku\": \"2022-datacenter-azure-edition\",\r\n      \"version\": \"latest\"\r\n    },\r\n    \"osDisk\": {\r\n      \"managedDisk\": {\r\n        \"storageAccountType\": \"Standard_LRS\"\r\n      },\r\n      \"caching\": \"ReadWrite\",\r\n      \"createOption\": \"FromImage\",\r\n      \"osType\": \"Windows\"\r\n    }\r\n  }\r\n},\r\n      \"platformFaultDomainCount\": 1,\r\n      \"computeApiVersion\": \"2024-03-01\"\r\n    },\r\n    \"timeCreated\": \"2026-06-05T03:16:13.2133919+00:00\",\r\n    \"uniqueId\": \"624555bf-fd7e-42ca-8038-337abce104d2\",\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzComputeFleetVirtualMachineScaleSet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "70" ],
+        "x-ms-client-request-id": [ "22f6a5ee-ed93-4b3a-838b-b734f9cef465" ],
+        "CommandName": [ "New-AzComputeFleet" ],
+        "FullCommandName": [ "New-AzComputeFleet_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.6.2", "Az.ComputeFleet/0.1.1" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1179,Microsoft.Compute/GetFleet30Min;7652" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134169414392255062" ],
+        "x-ms-request-id": [ "dc3c110a-1ee8-416e-8be7-028ad6e45af7" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=b9d5ac91-4b78-4b3f-902e-30bb8c3e8752/westus2/4901134b-7664-4ccf-b4c2-792e1c56f111" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "b074a199-b575-4230-af57-6eb2946e03c8" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260605T031644Z:b074a199-b575-4230-af57-6eb2946e03c8" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 149215DAF2374B549A4F2C2344171CB2 Ref B: CO6AA3150217025 Ref C: 2026-06-05T03:16:44Z" ],
+        "Date": [ "Fri, 05 Jun 2026 03:16:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2026-06-05T03:16:12.3412947+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzComputeFleetVirtualMachineScaleSet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "71" ],
+        "x-ms-client-request-id": [ "22f6a5ee-ed93-4b3a-838b-b734f9cef465" ],
+        "CommandName": [ "New-AzComputeFleet" ],
+        "FullCommandName": [ "New-AzComputeFleet_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.6.2", "Az.ComputeFleet/0.1.1" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1178,Microsoft.Compute/GetFleet30Min;7646" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134169414392255062" ],
+        "x-ms-request-id": [ "f76cfda7-91c8-4dc8-8385-515b77a45148" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=b9d5ac91-4b78-4b3f-902e-30bb8c3e8752/westus2/1bc83d40-3de8-4eeb-8761-983b7769269d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "746c8e5e-23f7-4d27-8467-dae626c7f480" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260605T031714Z:746c8e5e-23f7-4d27-8467-dae626c7f480" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DB6D157B1DD046988D79219FBCDA8812 Ref B: CO6AA3150217025 Ref C: 2026-06-05T03:17:14Z" ],
+        "Date": [ "Fri, 05 Jun 2026 03:17:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2026-06-05T03:16:12.3412947+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzComputeFleetVirtualMachineScaleSet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "72" ],
+        "x-ms-client-request-id": [ "22f6a5ee-ed93-4b3a-838b-b734f9cef465" ],
+        "CommandName": [ "New-AzComputeFleet" ],
+        "FullCommandName": [ "New-AzComputeFleet_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.6.2", "Az.ComputeFleet/0.1.1" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1174,Microsoft.Compute/GetFleet30Min;7639" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134169414392255062" ],
+        "x-ms-request-id": [ "b4baa46a-cebd-46ef-a5e7-d63e98765484" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=b9d5ac91-4b78-4b3f-902e-30bb8c3e8752/westus2/fd962968-5c6a-4efd-b4fd-d4bdb9d03928" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "ca949a2f-c977-4fac-9e6f-bb41eb05f852" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260605T031745Z:ca949a2f-c977-4fac-9e6f-bb41eb05f852" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AE58227293A14D098D845583AD03F98F Ref B: CO6AA3150217025 Ref C: 2026-06-05T03:17:45Z" ],
+        "Date": [ "Fri, 05 Jun 2026 03:17:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2026-06-05T03:16:12.3412947+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzComputeFleetVirtualMachineScaleSet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "73" ],
+        "x-ms-client-request-id": [ "22f6a5ee-ed93-4b3a-838b-b734f9cef465" ],
+        "CommandName": [ "New-AzComputeFleet" ],
+        "FullCommandName": [ "New-AzComputeFleet_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.6.2", "Az.ComputeFleet/0.1.1" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1171,Microsoft.Compute/GetFleet30Min;7633" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134169414392255062" ],
+        "x-ms-request-id": [ "b3f2da9a-8242-4af8-a14d-244ca0e65c46" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=b9d5ac91-4b78-4b3f-902e-30bb8c3e8752/westus2/5f8e4dd0-af59-4fc9-96b8-2e173439dbea" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "28ed34c4-5781-44a3-bf24-a2cc210b5bc0" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260605T031816Z:28ed34c4-5781-44a3-bf24-a2cc210b5bc0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A3E1ED98CF3041568D7E6C2036007BEE Ref B: CO6AA3150217025 Ref C: 2026-06-05T03:18:15Z" ],
+        "Date": [ "Fri, 05 Jun 2026 03:18:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2026-06-05T03:16:12.3412947+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzComputeFleetVirtualMachineScaleSet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "74" ],
+        "x-ms-client-request-id": [ "22f6a5ee-ed93-4b3a-838b-b734f9cef465" ],
+        "CommandName": [ "New-AzComputeFleet" ],
+        "FullCommandName": [ "New-AzComputeFleet_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.6.2", "Az.ComputeFleet/0.1.1" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1167,Microsoft.Compute/GetFleet30Min;7626" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134169414392255062" ],
+        "x-ms-request-id": [ "d864cb7c-7110-4cf7-ac92-158f1d15db7a" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=b9d5ac91-4b78-4b3f-902e-30bb8c3e8752/westus2/70de5cae-6503-436f-bc2a-7e14e7046d06" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "566969cd-807b-45b1-b82b-a4371f61d4cc" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260605T031846Z:566969cd-807b-45b1-b82b-a4371f61d4cc" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3C78DDCA0D364E9A86A94CA0430452BD Ref B: CO6AA3150217025 Ref C: 2026-06-05T03:18:46Z" ],
+        "Date": [ "Fri, 05 Jun 2026 03:18:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2026-06-05T03:16:12.3412947+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzComputeFleetVirtualMachineScaleSet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "75" ],
+        "x-ms-client-request-id": [ "22f6a5ee-ed93-4b3a-838b-b734f9cef465" ],
+        "CommandName": [ "New-AzComputeFleet" ],
+        "FullCommandName": [ "New-AzComputeFleet_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.6.2", "Az.ComputeFleet/0.1.1" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1158,Microsoft.Compute/GetFleet30Min;7612" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134169414392255062" ],
+        "x-ms-request-id": [ "f8ed0374-3ad5-4212-879b-dacbf75ad220" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=b9d5ac91-4b78-4b3f-902e-30bb8c3e8752/westus2/5e6d7e2e-a1f6-441d-8de9-0de8fc2e0edb" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "19cf3004-b8f8-4eb9-aab0-a49e36ca4cfa" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260605T031917Z:19cf3004-b8f8-4eb9-aab0-a49e36ca4cfa" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 343098A3EF844844B2BD80A19CABA12C Ref B: CO6AA3150217025 Ref C: 2026-06-05T03:19:17Z" ],
+        "Date": [ "Fri, 05 Jun 2026 03:19:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2026-06-05T03:16:12.3412947+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzComputeFleetVirtualMachineScaleSet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "76" ],
+        "x-ms-client-request-id": [ "22f6a5ee-ed93-4b3a-838b-b734f9cef465" ],
+        "CommandName": [ "New-AzComputeFleet" ],
+        "FullCommandName": [ "New-AzComputeFleet_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.6.2", "Az.ComputeFleet/0.1.1" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1155,Microsoft.Compute/GetFleet30Min;7603" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134169414392255062" ],
+        "x-ms-request-id": [ "2d5c3745-2ab3-4cfd-8893-25f6385b6784" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=b9d5ac91-4b78-4b3f-902e-30bb8c3e8752/westus2/8e71fbf0-30b7-4668-b258-9e0652d0d253" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "c3ae10bc-8548-40db-aa94-7cfe11d45bb8" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260605T031948Z:c3ae10bc-8548-40db-aa94-7cfe11d45bb8" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 30B8FC2AEA6B4C3BBDC398E9D9868DA9 Ref B: CO6AA3150217025 Ref C: 2026-06-05T03:19:47Z" ],
+        "Date": [ "Fri, 05 Jun 2026 03:19:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2026-06-05T03:16:12.3412947+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzComputeFleetVirtualMachineScaleSet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "77" ],
+        "x-ms-client-request-id": [ "22f6a5ee-ed93-4b3a-838b-b734f9cef465" ],
+        "CommandName": [ "New-AzComputeFleet" ],
+        "FullCommandName": [ "New-AzComputeFleet_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.6.2", "Az.ComputeFleet/0.1.1" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1157,Microsoft.Compute/GetFleet30Min;7631" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134169414392255062" ],
+        "x-ms-request-id": [ "453aa6f6-5dad-42e2-acd2-ae2158a007da" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=b9d5ac91-4b78-4b3f-902e-30bb8c3e8752/westus2/34c90ff1-7841-498a-b2f3-d2cf534bbf69" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "3c98b91d-0a1d-4420-a41e-ddfff7be3826" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260605T032018Z:3c98b91d-0a1d-4420-a41e-ddfff7be3826" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C0CE03372FE64B24A80CA6E4175C67E3 Ref B: CO6AA3150217025 Ref C: 2026-06-05T03:20:18Z" ],
+        "Date": [ "Fri, 05 Jun 2026 03:20:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2026-06-05T03:16:12.3412947+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzComputeFleetVirtualMachineScaleSet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "78" ],
+        "x-ms-client-request-id": [ "22f6a5ee-ed93-4b3a-838b-b734f9cef465" ],
+        "CommandName": [ "New-AzComputeFleet" ],
+        "FullCommandName": [ "New-AzComputeFleet_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.6.2", "Az.ComputeFleet/0.1.1" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1157,Microsoft.Compute/GetFleet30Min;7624" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134169414392255062" ],
+        "x-ms-request-id": [ "0a26792d-551a-4cb2-ad59-3714c7cfc82b" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=b9d5ac91-4b78-4b3f-902e-30bb8c3e8752/westus2/e6e16708-9c4a-4383-80f0-a449acbee77e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "ecca3830-822c-4a3b-930f-681ba8e6f577" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260605T032049Z:ecca3830-822c-4a3b-930f-681ba8e6f577" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6001686053E24FCB80D3FABD9442CE3D Ref B: CO6AA3150217025 Ref C: 2026-06-05T03:20:49Z" ],
+        "Date": [ "Fri, 05 Jun 2026 03:20:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2026-06-05T03:16:12.3412947+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzComputeFleetVirtualMachineScaleSet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "79" ],
+        "x-ms-client-request-id": [ "22f6a5ee-ed93-4b3a-838b-b734f9cef465" ],
+        "CommandName": [ "New-AzComputeFleet" ],
+        "FullCommandName": [ "New-AzComputeFleet_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.6.2", "Az.ComputeFleet/0.1.1" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1160,Microsoft.Compute/GetFleet30Min;7621" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134169414392255062" ],
+        "x-ms-request-id": [ "3a949bc2-0c97-4980-aed4-0cfa7f2120ef" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=b9d5ac91-4b78-4b3f-902e-30bb8c3e8752/westus2/ca5f2592-ce35-4bf3-819c-240eb0e2876d" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "e61721ad-1a37-4c07-920d-9037de27efaa" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260605T032120Z:e61721ad-1a37-4c07-920d-9037de27efaa" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C78DAAF11853447DA28366B5E44C7928 Ref B: CO6AA3150217025 Ref C: 2026-06-05T03:21:19Z" ],
+        "Date": [ "Fri, 05 Jun 2026 03:21:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "134" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2026-06-05T03:16:12.3412947+00:00\",\r\n  \"status\": \"InProgress\",\r\n  \"name\": \"5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzComputeFleetVirtualMachineScaleSet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview+12": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/providers/Microsoft.AzureFleet/locations/centralus/operations/5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7?p=65a71276-4112-4cf8-8570-22f41838150c\u0026api-version=2026-04-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "80" ],
+        "x-ms-client-request-id": [ "22f6a5ee-ed93-4b3a-838b-b734f9cef465" ],
+        "CommandName": [ "New-AzComputeFleet" ],
+        "FullCommandName": [ "New-AzComputeFleet_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.6.2", "Az.ComputeFleet/0.1.1" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1171,Microsoft.Compute/GetFleet30Min;7618" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134169414392255062" ],
+        "x-ms-request-id": [ "af26225a-b1c7-42cd-9cc0-d6c4e2933975" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=b9d5ac91-4b78-4b3f-902e-30bb8c3e8752/westus2/43022a55-e323-4f82-a0a8-a980870f7a51" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "78eff1c5-b88c-4032-b46f-f8d789fabb2c" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260605T032150Z:78eff1c5-b88c-4032-b46f-f8d789fabb2c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E23DCB94DECB482BABD2995ED28E9ADC Ref B: CO6AA3150217025 Ref C: 2026-06-05T03:21:50Z" ],
+        "Date": [ "Fri, 05 Jun 2026 03:21:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "184" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"startTime\": \"2026-06-05T03:16:12.3412947+00:00\",\r\n  \"endTime\": \"2026-06-05T03:21:50.0611916+00:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"name\": \"5fbc5c6a-5192-4ef6-afd6-f75d963dd3b7\"\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzComputeFleetVirtualMachineScaleSet+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-vmss-list-test-rg/providers/Microsoft.AzureFleet/fleets/managed-fleet-vmss?api-version=2026-04-01-preview+13": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-vmss-list-test-rg/providers/Microsoft.AzureFleet/fleets/managed-fleet-vmss?api-version=2026-04-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "81" ],
+        "x-ms-client-request-id": [ "22f6a5ee-ed93-4b3a-838b-b734f9cef465" ],
+        "CommandName": [ "New-AzComputeFleet" ],
+        "FullCommandName": [ "New-AzComputeFleet_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.6.2", "Az.ComputeFleet/0.1.1" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleet3Min;1170,Microsoft.Compute/GetFleet30Min;7617" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134169414392255062" ],
+        "x-ms-request-id": [ "66ad5309-b4c1-4aab-a993-7338c5a60d45" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "6ab69646-6f81-489c-83f0-23b2d80dd2e2" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260605T032150Z:6ab69646-6f81-489c-83f0-23b2d80dd2e2" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6902AECE157949AA930F192824FC7B0F Ref B: CO6AA3150217025 Ref C: 2026-06-05T03:21:50Z" ],
+        "Date": [ "Fri, 05 Jun 2026 03:21:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2640" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"name\": \"managed-fleet-vmss\",\r\n  \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-vmss-list-test-rg/providers/Microsoft.AzureFleet/fleets/managed-fleet-vmss\",\r\n  \"type\": \"Microsoft.AzureFleet/fleets\",\r\n  \"location\": \"centralus\",\r\n  \"tags\": {\r\n    \"environment\": \"test\"\r\n  },\r\n  \"properties\": {\r\n    \"mode\": \"Managed\",\r\n    \"spotPriorityProfile\": {\r\n      \"evictionPolicy\": \"Delete\",\r\n      \"allocationStrategy\": \"PriceCapacityOptimized\",\r\n      \"maintain\": true,\r\n      \"capacity\": 2\r\n    },\r\n    \"regularPriorityProfile\": {\r\n      \"allocationStrategy\": \"LowestPrice\",\r\n      \"capacity\": 2,\r\n      \"minCapacity\": 1\r\n    },\r\n    \"vmSizesProfile\": [\r\n      {\r\n        \"name\": \"Standard_D2s_v3\"\r\n      }\r\n    ],\r\n    \"computeProfile\": {\r\n      \"baseVirtualMachineProfile\": {\r\n  \"networkProfile\": {\r\n    \"networkInterfaceConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-vmss-list-test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg\"\r\n          },\r\n          \"primary\": true,\r\n          \"enableAcceleratedNetworking\": false,\r\n          \"ipConfigurations\": [\r\n            {\r\n              \"properties\": {\r\n                \"subnet\": {\r\n                  \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-vmss-list-test-rg/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet1\"\r\n                },\r\n                \"primary\": true\r\n              },\r\n              \"name\": \"ipconfig1\"\r\n            }\r\n          ]\r\n        },\r\n        \"name\": \"nic1\"\r\n      }\r\n    ],\r\n    \"networkApiVersion\": \"2020-11-01\"\r\n  },\r\n  \"securityProfile\": {\r\n    \"uefiSettings\": {\r\n      \"secureBootEnabled\": true,\r\n      \"vTpmEnabled\": true\r\n    },\r\n    \"securityType\": \"TrustedLaunch\"\r\n  },\r\n  \"osProfile\": {\r\n    \"computerNamePrefix\": \"fleetvm\",\r\n    \"adminUsername\": \"testadmin\"\r\n  },\r\n  \"storageProfile\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"MicrosoftWindowsServer\",\r\n      \"offer\": \"WindowsServer\",\r\n      \"sku\": \"2022-datacenter-azure-edition\",\r\n      \"version\": \"latest\"\r\n    },\r\n    \"osDisk\": {\r\n      \"managedDisk\": {\r\n        \"storageAccountType\": \"Standard_LRS\"\r\n      },\r\n      \"caching\": \"ReadWrite\",\r\n      \"createOption\": \"FromImage\",\r\n      \"osType\": \"Windows\"\r\n    }\r\n  }\r\n},\r\n      \"platformFaultDomainCount\": 1,\r\n      \"computeApiVersion\": \"2024-03-01\"\r\n    },\r\n    \"timeCreated\": \"2026-06-05T03:16:13.2133919+00:00\",\r\n    \"uniqueId\": \"624555bf-fd7e-42ca-8038-337abce104d2\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzComputeFleetVirtualMachineScaleSet+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-vmss-list-test-rg/providers/Microsoft.AzureFleet/fleets/managed-fleet-vmss/virtualMachineScaleSets?api-version=2026-04-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-vmss-list-test-rg/providers/Microsoft.AzureFleet/fleets/managed-fleet-vmss/virtualMachineScaleSets?api-version=2026-04-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "82" ],
+        "x-ms-client-request-id": [ "cc29349e-48e4-41cc-9185-4476d5299e33" ],
+        "CommandName": [ "Get-AzComputeFleetVirtualMachineScaleSet" ],
+        "FullCommandName": [ "Get-AzComputeFleetVirtualMachineScaleSet_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v13.4.0", "PSVersion/v7.6.2", "Az.ComputeFleet/0.1.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetFleetVMScaleSets3Min;399,Microsoft.Compute/GetFleetVMScaleSets30Min;2599" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-served-by": [ "65a71276-4112-4cf8-8570-22f41838150c_134169414392255062" ],
+        "x-ms-request-id": [ "29f24e1c-5356-48cb-a063-baa07382dbdc" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=b9d5ac91-4b78-4b3f-902e-30bb8c3e8752/centralus/148e5b16-dee5-4461-9f44-c434b56e6a17" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "48a3d69f-6798-453d-baa1-a8ee9410a5e4" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20260605T032251Z:48a3d69f-6798-453d-baa1-a8ee9410a5e4" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4E19406BC0C14358B86C77F2F1BA4BD0 Ref B: CO6AA3150217025 Ref C: 2026-06-05T03:22:51Z" ],
+        "Date": [ "Fri, 05 Jun 2026 03:22:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "594" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"managed-fleet-vmss_1cee89bd\",\r\n      \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-vmss-list-test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/managed-fleet-vmss_1cee89bd\",\r\n      \"operationStatus\": \"Succeeded\"\r\n    },\r\n    {\r\n      \"name\": \"managed-fleet-vmss_308ca38f\",\r\n      \"id\": \"/subscriptions/cfd0f5f2-722b-46ec-a74c-e62616c24b78/resourceGroups/fleet-vmss-list-test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/managed-fleet-vmss_308ca38f\",\r\n      \"operationStatus\": \"Succeeded\"\r\n    }\r\n  ]\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

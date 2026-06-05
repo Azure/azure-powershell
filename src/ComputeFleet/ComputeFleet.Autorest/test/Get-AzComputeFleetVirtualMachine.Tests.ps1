@@ -22,10 +22,15 @@ Describe 'Get-AzComputeFleetVirtualMachine' {
         $vmNamePrefix = "fleetvm"
         $launchFleetName = "launch-fleet-vm"
 
-        $result = New-TestResourceGroup -ResourceGroupName $resourceGroupName `
-            -Location $env.Location -VNetName $vnetName -NsgName $nsgName
-        $subnetId = $result.SubnetId
-        $nsgId = $result.NsgId
+        if ($TestMode -ne 'playback') {
+            $result = New-TestResourceGroup -ResourceGroupName $resourceGroupName `
+                -Location $env.Location -VNetName $vnetName -NsgName $nsgName
+            $subnetId = $result.SubnetId
+            $nsgId = $result.NsgId
+        } else {
+            $subnetId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet1"
+            $nsgId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test/providers/Microsoft.Network/networkSecurityGroups/nsg"
+        }
 
         $vmProfile = New-TestVmProfile -SubnetId $subnetId -NsgId $nsgId -VmNamePrefix $vmNamePrefix
 
@@ -47,7 +52,9 @@ Describe 'Get-AzComputeFleetVirtualMachine' {
             -Tag @{ environment = "test" }
 
         # Wait for VMs to be provisioned
-        Start-Sleep -Seconds 60
+        if ($TestMode -ne 'playback') {
+            Start-Sleep -Seconds 60
+        }
     }
 
     It 'List' {
@@ -61,6 +68,8 @@ Describe 'Get-AzComputeFleetVirtualMachine' {
     }
 
     AfterAll {
-        Remove-AzResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue -Confirm:$false
+        if ($TestMode -ne 'playback') {
+            Remove-AzResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue -Confirm:$false
+        }
     }
 }

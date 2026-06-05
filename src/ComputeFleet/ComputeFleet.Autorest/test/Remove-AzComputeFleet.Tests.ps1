@@ -24,10 +24,15 @@ Describe 'Remove-AzComputeFleet' {
         $deleteFleetName = "delete-fleet"
         $deleteViaIdentityFleetName = "delete-via-identity-fleet"
 
-        $result = New-TestResourceGroup -ResourceGroupName $resourceGroupName `
-            -Location $env.Location -VNetName $vnetName -NsgName $nsgName
-        $subnetId = $result.SubnetId
-        $nsgId = $result.NsgId
+        if ($TestMode -ne 'playback') {
+            $result = New-TestResourceGroup -ResourceGroupName $resourceGroupName `
+                -Location $env.Location -VNetName $vnetName -NsgName $nsgName
+            $subnetId = $result.SubnetId
+            $nsgId = $result.NsgId
+        } else {
+            $subnetId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet1"
+            $nsgId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test/providers/Microsoft.Network/networkSecurityGroups/nsg"
+        }
     }
 
     It 'Delete' {
@@ -95,6 +100,8 @@ Describe 'Remove-AzComputeFleet' {
     }
 
     AfterAll {
-        Remove-AzResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue -Confirm:$false
+        if ($TestMode -ne 'playback') {
+            Remove-AzResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue -Confirm:$false
+        }
     }
 }
