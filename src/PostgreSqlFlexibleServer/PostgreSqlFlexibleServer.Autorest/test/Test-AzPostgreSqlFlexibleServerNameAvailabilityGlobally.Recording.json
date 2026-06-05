@@ -18,16 +18,16 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "769a3a96-dd00-4ad7-b919-a684b7173931" ],
-        "x-ms-operation-identifier": [ "tenantId=ffffffff-ffff-ffff-ffff-ffffffffffff,objectId=15659232-7461-4854-b909-7dff9a1e844c/uksouth/3c80fe7f-891f-443f-bc1a-c204e498b5e1" ],
+        "x-ms-request-id": [ "80578b14-e2dd-45ce-bce6-78fd8ede3e3a" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=15659232-7461-4854-b909-7dff9a1e844c/uksouth/055b7a41-aafc-4548-a557-f20469d7d034" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "c2077b52-ba1f-4eed-9ccd-74f589ea1872" ],
-        "x-ms-routing-request-id": [ "UKSOUTH:20260605T142855Z:c2077b52-ba1f-4eed-9ccd-74f589ea1872" ],
+        "x-ms-correlation-request-id": [ "72c8ffd5-7644-45e0-9aa3-bf57eeda9ad2" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260605T164248Z:72c8ffd5-7644-45e0-9aa3-bf57eeda9ad2" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: EC83CD7F9B224B35A1443B791436C2A6 Ref B: AMS231020615053 Ref C: 2026-06-05T14:28:55Z" ],
-        "Date": [ "Fri, 05 Jun 2026 14:28:55 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 4CA34EC26F2E465CA5886F6986DAEFE6 Ref B: AMS231020614021 Ref C: 2026-06-05T16:42:48Z" ],
+        "Date": [ "Fri, 05 Jun 2026 16:42:48 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "379" ],
@@ -42,7 +42,7 @@
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.DBforPostgreSQL/checkNameAvailability?api-version=2026-01-01-preview",
-      "Content": "{\r\n  \"name\": \"nb6bo4wdfusfb741gm5e8het6yxzvn7qtbmlrqf44n0yz53aerou5fe20vblg0c\",\r\n  \"type\": \"Microsoft.DBforPostgreSQL/flexibleServers\"\r\n}",
+      "Content": "{\r\n  \"name\": \"lev0eu2m2t6wxesq8uveyexnbd6g0i6ek3fnfcmfu8b9k9va475j82hihijwo1r\",\r\n  \"type\": \"Microsoft.DBforPostgreSQL/flexibleServers\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -57,23 +57,23 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "d5a3f8ed-05dc-4376-9aa5-f6c6f89251f4" ],
-        "x-ms-operation-identifier": [ "tenantId=ffffffff-ffff-ffff-ffff-ffffffffffff,objectId=15659232-7461-4854-b909-7dff9a1e844c/uksouth/452c6793-eaca-4e12-af2a-72a69bbae3e8" ],
+        "x-ms-request-id": [ "fdc2bc8f-7d43-44b0-b53c-1a16d1a1125d" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=15659232-7461-4854-b909-7dff9a1e844c/ukwest/598a9c6a-ca61-4aba-b21b-e9a15e7ee31b" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "5607638c-36ed-4560-93d5-9b996eb0a642" ],
-        "x-ms-routing-request-id": [ "UKSOUTH:20260605T142857Z:5607638c-36ed-4560-93d5-9b996eb0a642" ],
+        "x-ms-correlation-request-id": [ "be7c1f31-1a4c-48e1-8de2-85f7ec23d4fa" ],
+        "x-ms-routing-request-id": [ "UKWEST:20260605T164250Z:be7c1f31-1a4c-48e1-8de2-85f7ec23d4fa" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 456985BB23ED4D378F1B54F1A5FD26CB Ref B: AMS231020615053 Ref C: 2026-06-05T14:28:56Z" ],
-        "Date": [ "Fri, 05 Jun 2026 14:28:56 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 2A6309975FFA4F87B186393739AD5D4F Ref B: AMS231020614021 Ref C: 2026-06-05T16:42:48Z" ],
+        "Date": [ "Fri, 05 Jun 2026 16:42:49 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "159" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"nb6bo4wdfusfb741gm5e8het6yxzvn7qtbmlrqf44n0yz53aerou5fe20vblg0c\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers\",\"nameAvailable\":true,\"message\":\"\"}",
+      "Content": "{\"name\":\"lev0eu2m2t6wxesq8uveyexnbd6g0i6ek3fnfcmfu8b9k9va475j82hihijwo1r\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers\",\"nameAvailable\":true,\"message\":\"\"}",
       "isContentBase64": false
     }
   },
@@ -81,7 +81,7 @@
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.DBforPostgreSQL/checkNameAvailability?api-version=2026-01-01-preview",
-      "Content": "{\r\n  \"name\": \"psqlflex-autorest-8lx5j3dq\",\r\n  \"type\": \"Microsoft.DBforPostgreSQL/flexibleServers\"\r\n}",
+      "Content": "{\r\n  \"name\": \"psqlflex-autorest-4psfro67\",\r\n  \"type\": \"Microsoft.DBforPostgreSQL/flexibleServers\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -96,23 +96,23 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "542ec5e4-2174-4a63-8206-b07ef44c72b5" ],
-        "x-ms-operation-identifier": [ "tenantId=ffffffff-ffff-ffff-ffff-ffffffffffff,objectId=15659232-7461-4854-b909-7dff9a1e844c/uksouth/d4789bad-7c10-4f80-a074-50e5dbd73171" ],
+        "x-ms-request-id": [ "177a187d-a1df-4c95-bb22-7eb11b56f1cb" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=15659232-7461-4854-b909-7dff9a1e844c/uksouth/9ee18a87-77a3-4e99-a991-8e89f3d572a8" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "8843f729-a811-4a51-9da9-b53ea10be5f2" ],
-        "x-ms-routing-request-id": [ "UKSOUTH:20260605T142858Z:8843f729-a811-4a51-9da9-b53ea10be5f2" ],
+        "x-ms-correlation-request-id": [ "5cc49e07-6c1c-4251-b5c6-01c87cfd058f" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20260605T164251Z:5cc49e07-6c1c-4251-b5c6-01c87cfd058f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 431043002E03452285ED1FA5BC37A7FB Ref B: AMS231020615053 Ref C: 2026-06-05T14:28:57Z" ],
-        "Date": [ "Fri, 05 Jun 2026 14:28:57 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 951E2196F3494500AC9AEA69A5A94807 Ref B: AMS231020614021 Ref C: 2026-06-05T16:42:50Z" ],
+        "Date": [ "Fri, 05 Jun 2026 16:42:50 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "186" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"psqlflex-autorest-8lx5j3dq\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers\",\"nameAvailable\":false,\"reason\":\"AlreadyExists\",\"message\":\"Specified server name is already used.\"}",
+      "Content": "{\"name\":\"psqlflex-autorest-4psfro67\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers\",\"nameAvailable\":false,\"reason\":\"AlreadyExists\",\"message\":\"Specified server name is already used.\"}",
       "isContentBase64": false
     }
   }

@@ -16,9 +16,51 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzPostgreSqlFlexibleServ
 
 Describe 'Test-AzPostgreSqlFlexibleServerNameAvailability' {
     BeforeAll {
+        function Get-PlaybackAvailableServerName {
+            param(
+                [Parameter(Mandatory = $true)]
+                [string]$RecordingPath
+            )
+
+            if (-not (Test-Path -Path $RecordingPath)) {
+                return $null
+            }
+
+            $recording = Get-Content -Path $RecordingPath -Raw | ConvertFrom-Json
+            $scenarioName = 'CheckExpandedShouldReturnAvailableForRandom63CharName'
+
+            foreach ($entry in $recording.PSObject.Properties) {
+                if ($entry.Name -like "*$scenarioName*") {
+                    $requestContent = [string]$entry.Value.Request.Content
+                    if ([string]::IsNullOrWhiteSpace($requestContent)) {
+                        continue
+                    }
+
+                    $requestBody = $requestContent | ConvertFrom-Json
+                    $candidate = [string]$requestBody.name
+                    if (-not [string]::IsNullOrWhiteSpace($candidate)) {
+                        return $candidate
+                    }
+                }
+            }
+
+            return $null
+        }
+
         $existingServerName = $env.ServerName
         if ([string]::IsNullOrWhiteSpace($existingServerName)) {
             $existingServerName = $env.ServerName1
+        }
+
+        $chars = 'abcdefghijklmnopqrstuvwxyz0123456789'.ToCharArray()
+        if ($TestMode -eq 'playback') {
+            $availableServerName = Get-PlaybackAvailableServerName -RecordingPath $TestRecordingFile
+            if ([string]::IsNullOrWhiteSpace($availableServerName)) {
+                throw "Unable to resolve a deterministic server name for playback from recording file '$TestRecordingFile'."
+            }
+        }
+        else {
+            $availableServerName = -join (1..63 | ForEach-Object { $chars[(Get-Random -Minimum 0 -Maximum $chars.Length)] })
         }
 
         $invalidNameMessage = "Specified server name contains unsupported characters or is too long. Server name must be no longer than 63 characters long, contain only lower-case characters or digits, cannot contain '.' or '_' characters and can't start or end with '-' character."
@@ -36,9 +78,6 @@ Describe 'Test-AzPostgreSqlFlexibleServerNameAvailability' {
     }
 
     It 'CheckExpandedShouldReturnAvailableForRandom63CharName' {
-        $chars = 'abcdefghijklmnopqrstuvwxyz0123456789'.ToCharArray()
-        $availableServerName = -join (1..63 | ForEach-Object { $chars[(Get-Random -Minimum 0 -Maximum $chars.Length)] })
-
         $result = Test-AzPostgreSqlFlexibleServerNameAvailability `
             -LocationName $env.mainLocation `
             -Name $availableServerName

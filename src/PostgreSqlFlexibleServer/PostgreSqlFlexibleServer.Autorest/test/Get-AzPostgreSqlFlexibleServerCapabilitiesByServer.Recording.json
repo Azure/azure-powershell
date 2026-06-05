@@ -1,13 +1,13 @@
 {
-  "Get-AzPostgreSqlFlexibleServerCapabilitiesByServer+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/psqlflex-autorest-m0ags6/providers/Microsoft.DBforPostgreSQL/flexibleServers/psqlflex-autorest-pqji3x69?api-version=2026-01-01-preview+1": {
+  "Get-AzPostgreSqlFlexibleServerCapabilitiesByServer+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/psqlflex-autorest-7rhve0/providers/Microsoft.DBforPostgreSQL/flexibleServers/psqlflex-autorest-y6rwbhul?api-version=2026-01-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/psqlflex-autorest-m0ags6/providers/Microsoft.DBforPostgreSQL/flexibleServers/psqlflex-autorest-pqji3x69?api-version=2026-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/psqlflex-autorest-7rhve0/providers/Microsoft.DBforPostgreSQL/flexibleServers/psqlflex-autorest-y6rwbhul?api-version=2026-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "69" ],
-        "x-ms-client-request-id": [ "f6aa0c44-e1a2-4dd4-a60e-69dfd1aee571" ],
+        "x-ms-unique-id": [ "74" ],
+        "x-ms-client-request-id": [ "460b5dab-0b75-4d5d-a936-440ec3c1fe67" ],
         "CommandName": [ "Get-AzPostgreSqlFlexibleServer" ],
         "FullCommandName": [ "Get-AzPostgreSqlFlexibleServer_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,34 +23,34 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "99dcdb10-d016-49a4-803b-fd5cf122abc5" ],
+        "x-ms-request-id": [ "91b3b36e-3c10-40c1-a2f6-895bfcfd4f91" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-correlation-request-id": [ "a26cf242-944a-49e7-9b19-be43c1043c0a" ],
-        "x-ms-routing-request-id": [ "CANADACENTRAL:20260605T142830Z:a26cf242-944a-49e7-9b19-be43c1043c0a" ],
+        "x-ms-correlation-request-id": [ "62030215-8167-4f1d-8d84-6d87a830c597" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20260605T164224Z:62030215-8167-4f1d-8d84-6d87a830c597" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5AFE52AE25B24041A15A9383B4FE0CCA Ref B: AMS231020615053 Ref C: 2026-06-05T14:28:30Z" ],
-        "Date": [ "Fri, 05 Jun 2026 14:28:29 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C1499E14FE2A4D5799CBA49B39C5F085 Ref B: AMS231020614021 Ref C: 2026-06-05T16:42:23Z" ],
+        "Date": [ "Fri, 05 Jun 2026 16:42:23 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1221" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"sku\":{\"name\":\"Standard_D4ds_v5\",\"tier\":\"GeneralPurpose\"},\"systemData\":{\"createdAt\":\"2026-06-05T14:19:30.5321306Z\"},\"properties\":{\"dataEncryption\":{\"type\":\"SystemManaged\"},\"replica\":{\"role\":\"Primary\",\"capacity\":6},\"storage\":{\"type\":\"PremiumV2_LRS\",\"iops\":3000,\"throughput\":125,\"storageSizeGB\":32,\"autoGrow\":\"Disabled\"},\"network\":{\"publicNetworkAccess\":\"Enabled\"},\"privateEndpointConnections\":[],\"authConfig\":{\"activeDirectoryAuth\":\"Disabled\",\"passwordAuth\":\"Enabled\"},\"fullyQualifiedDomainName\":\"psqlflex-autorest-pqji3x69.postgres.database.azure.com\",\"version\":\"16\",\"minorVersion\":\"14\",\"administratorLogin\":\"azpsadmin\",\"state\":\"Ready\",\"availabilityZone\":\"1\",\"backup\":{\"backupRetentionDays\":7,\"geoRedundantBackup\":\"Disabled\"},\"highAvailability\":{\"mode\":\"Disabled\",\"state\":\"NotEnabled\"},\"maintenanceWindow\":{\"customWindow\":\"Disabled\",\"dayOfWeek\":0,\"startHour\":0,\"startMinute\":0},\"replicationRole\":\"Primary\",\"replicaCapacity\":6},\"location\":\"Canada Central\",\"id\":\"/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/psqlflex-autorest-m0ags6/providers/Microsoft.DBforPostgreSQL/flexibleServers/psqlflex-autorest-pqji3x69\",\"name\":\"psqlflex-autorest-pqji3x69\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers\"}",
+      "Content": "{\"sku\":{\"name\":\"Standard_D4ds_v5\",\"tier\":\"GeneralPurpose\"},\"systemData\":{\"createdAt\":\"2026-06-05T16:32:14.2028737Z\"},\"properties\":{\"dataEncryption\":{\"type\":\"SystemManaged\"},\"replica\":{\"role\":\"Primary\",\"capacity\":6},\"storage\":{\"type\":\"PremiumV2_LRS\",\"iops\":3000,\"throughput\":125,\"storageSizeGB\":32,\"autoGrow\":\"Disabled\"},\"network\":{\"publicNetworkAccess\":\"Enabled\"},\"privateEndpointConnections\":[],\"authConfig\":{\"activeDirectoryAuth\":\"Disabled\",\"passwordAuth\":\"Enabled\"},\"fullyQualifiedDomainName\":\"psqlflex-autorest-y6rwbhul.postgres.database.azure.com\",\"version\":\"16\",\"minorVersion\":\"14\",\"administratorLogin\":\"azpsadmin\",\"state\":\"Ready\",\"availabilityZone\":\"1\",\"backup\":{\"backupRetentionDays\":7,\"geoRedundantBackup\":\"Disabled\"},\"highAvailability\":{\"mode\":\"Disabled\",\"state\":\"NotEnabled\"},\"maintenanceWindow\":{\"customWindow\":\"Disabled\",\"dayOfWeek\":0,\"startHour\":0,\"startMinute\":0},\"replicationRole\":\"Primary\",\"replicaCapacity\":6},\"location\":\"Canada Central\",\"id\":\"/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/psqlflex-autorest-7rhve0/providers/Microsoft.DBforPostgreSQL/flexibleServers/psqlflex-autorest-y6rwbhul\",\"name\":\"psqlflex-autorest-y6rwbhul\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers\"}",
       "isContentBase64": false
     }
   },
-  "Get-AzPostgreSqlFlexibleServerCapabilitiesByServer+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/psqlflex-autorest-m0ags6/providers/Microsoft.DBforPostgreSQL/flexibleServers/psqlflex-autorest-pqji3x69/capabilities?api-version=2026-01-01-preview+2": {
+  "Get-AzPostgreSqlFlexibleServerCapabilitiesByServer+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/psqlflex-autorest-7rhve0/providers/Microsoft.DBforPostgreSQL/flexibleServers/psqlflex-autorest-y6rwbhul/capabilities?api-version=2026-01-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/psqlflex-autorest-m0ags6/providers/Microsoft.DBforPostgreSQL/flexibleServers/psqlflex-autorest-pqji3x69/capabilities?api-version=2026-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/psqlflex-autorest-7rhve0/providers/Microsoft.DBforPostgreSQL/flexibleServers/psqlflex-autorest-y6rwbhul/capabilities?api-version=2026-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "70" ],
-        "x-ms-client-request-id": [ "68cb67a3-0738-476b-8e2f-8199710f2bd6" ],
+        "x-ms-unique-id": [ "75" ],
+        "x-ms-client-request-id": [ "9bdde00a-1162-4584-a6f4-ddc7203a62ce" ],
         "CommandName": [ "Get-AzPostgreSqlFlexibleServerCapabilitiesByServer" ],
         "FullCommandName": [ "Get-AzPostgreSqlFlexibleServerCapabilitiesByServer_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -66,16 +66,16 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "82ec7ed2-54dd-442d-a2a1-6baf3044aa93" ],
-        "x-ms-operation-identifier": [ "tenantId=ffffffff-ffff-ffff-ffff-ffffffffffff,objectId=15659232-7461-4854-b909-7dff9a1e844c/canadacentral/85989668-7d95-43fc-bf36-79a645b3a4c4" ],
+        "x-ms-request-id": [ "c381aa09-4575-4477-b6a4-6d71dcd1aded" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=15659232-7461-4854-b909-7dff9a1e844c/canadacentral/29b3b8dd-1e84-41a8-81c5-5430a391d785" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
-        "x-ms-correlation-request-id": [ "a1aead76-253d-4ba2-b282-7a1d4000d147" ],
-        "x-ms-routing-request-id": [ "CANADACENTRAL:20260605T142832Z:a1aead76-253d-4ba2-b282-7a1d4000d147" ],
+        "x-ms-correlation-request-id": [ "4e3ee890-9eaf-4398-9f39-b82c83fe7031" ],
+        "x-ms-routing-request-id": [ "CANADACENTRAL:20260605T164225Z:4e3ee890-9eaf-4398-9f39-b82c83fe7031" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 4FD29EDE656040E9881CFBE26C80C9DE Ref B: AMS231020615053 Ref C: 2026-06-05T14:28:30Z" ],
-        "Date": [ "Fri, 05 Jun 2026 14:28:31 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C585BA4168DD4523B1F32E88A3F9AFD4 Ref B: AMS231020614021 Ref C: 2026-06-05T16:42:24Z" ],
+        "Date": [ "Fri, 05 Jun 2026 16:42:25 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "24750" ],
