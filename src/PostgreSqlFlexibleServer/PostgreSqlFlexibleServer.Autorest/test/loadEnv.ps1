@@ -27,7 +27,8 @@ if (Test-Path -Path $envFilePath) {
     $env = Get-Content -Path $envFilePath | ConvertFrom-Json
 }
 
-if ($TestMode -eq 'playback') {
+$isPlaybackMode = ($TestMode -eq 'playback') -or ($env:AzPSAutorestTestPlaybackMode -eq 'true')
+if ($isPlaybackMode) {
     $playbackIdentifier = 'ffffffff-ffff-ffff-ffff-ffffffffffff'
     $env | Add-Member -NotePropertyName 'SubscriptionId' -NotePropertyValue $playbackIdentifier -Force
     $env | Add-Member -NotePropertyName 'Tenant' -NotePropertyValue $playbackIdentifier -Force
@@ -61,6 +62,10 @@ if ([string]::IsNullOrWhiteSpace([string]$env.Tenant)) {
     }
 }
 
+if (-not [string]::IsNullOrWhiteSpace([string]$env.SubscriptionId)) {
+    $PSDefaultParameterValues["*:SubscriptionId"] = [string]$env.SubscriptionId
+}
+
 if (-not [string]::IsNullOrWhiteSpace([string]$env.Tenant)) {
-    $PSDefaultParameterValues=@{"*:Tenant"=$env.Tenant}
+    $PSDefaultParameterValues["*:Tenant"] = [string]$env.Tenant
 }
