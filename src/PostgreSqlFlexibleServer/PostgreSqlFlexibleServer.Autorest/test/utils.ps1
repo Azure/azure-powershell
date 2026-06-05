@@ -30,10 +30,69 @@ function Start-TestSleep {
     }
 }
 
+function Get-PlaybackAvailableServerName {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$RecordingPath
+    )
+
+    if (-not (Test-Path -Path $RecordingPath)) {
+        return $null
+    }
+
+    $recording = Get-Content -Path $RecordingPath -Raw | ConvertFrom-Json
+    $scenarioName = 'CheckExpandedShouldReturnAvailableForRandom63CharName'
+
+    foreach ($entry in $recording.PSObject.Properties) {
+        if ($entry.Name -like "*$scenarioName*") {
+            $requestContent = [string]$entry.Value.Request.Content
+            if ([string]::IsNullOrWhiteSpace($requestContent)) {
+                continue
+            }
+
+            $requestBody = $requestContent | ConvertFrom-Json
+            $candidate = [string]$requestBody.name
+            if (-not [string]::IsNullOrWhiteSpace($candidate)) {
+                return $candidate
+            }
+        }
+    }
+
+    return $null
+}
+
+function ConvertTo-Hashtable {
+    param(
+        [Parameter(Mandatory = $false)]
+        [object]$InputObject
+    )
+
+    $result = @{}
+    if ($null -eq $InputObject) {
+        return $result
+    }
+
+    if ($InputObject -is [System.Collections.IDictionary]) {
+        foreach ($entry in $InputObject.GetEnumerator()) {
+            $result[[string]$entry.Key] = $entry.Value
+        }
+        return $result
+    }
+
+    foreach ($property in $InputObject.PSObject.Properties) {
+        $result[$property.Name] = $property.Value
+    }
+
+    return $result
+}
+
 $env = @{}
 if ($UsePreviousConfigForRecord) {
-    $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
-    $previousEnv.psobject.properties | Foreach-Object { $env[$_.Name] = $_.Value }
+    $previousEnvRaw = Get-Content -Path (Join-Path $PSScriptRoot 'env.json') -Raw | ConvertFrom-Json
+    $previousEnv = ConvertTo-Hashtable -InputObject $previousEnvRaw
+    foreach ($entry in $previousEnv.GetEnumerator()) {
+        $env[[string]$entry.Key] = $entry.Value
+    }
 }
 # Add script method called AddWithCache to $env, when useCache is set true, it will try to get the value from the $env first.
 # example: $val = $env.AddWithCache('key', $val, $true)
@@ -69,12 +128,12 @@ function setupEnv() {
         $env.Tenant = $testTenantId
     }
 
-    if (-not $env.ContainsKey('mainLocation')) {
-        $env.Add('mainLocation', 'canadacentral')
+    if (-not $env.ContainsKey('MainLocation')) {
+        $env.Add('MainLocation', 'canadacentral')
     }
 
-    if (-not $env.ContainsKey('pairedLocation')) {
-        $env.Add('pairedLocation', 'canadaeast')
+    if (-not $env.ContainsKey('PairedLocation')) {
+        $env.Add('PairedLocation', 'canadaeast')
     }
 
     if (-not $env.ContainsKey('ResourceGroupNamePrefix')) {
@@ -114,7 +173,7 @@ function setupEnv() {
         $resourceGroupName = $resourceGroups[$i]
         $resourceGroup = Get-AzResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue
         if (-not $resourceGroup) {
-            New-AzResourceGroup -Name $resourceGroupName -Location $env.mainLocation | Out-Null
+            New-AzResourceGroup -Name $resourceGroupName -Location $env.MainLocation | Out-Null
         } else {
             throw "Resource group '$resourceGroupName' already exists."
         }
@@ -147,7 +206,7 @@ function setupEnv() {
         $newServerParams = @{
             Name = $serverName
             ResourceGroupName = $resourceGroupName
-            Location = $env.mainLocation
+            Location = $env.MainLocation
             Version = $serverVersion
             SkuTier = $skuTier
             SkuName = $skuName

@@ -17,6 +17,31 @@ if ($TestMode -eq 'live') {
     $envFile = 'localEnv.json'
 }
 
+function ConvertTo-Hashtable {
+    param(
+        [Parameter(Mandatory = $false)]
+        [object]$InputObject
+    )
+
+    $result = @{}
+    if ($null -eq $InputObject) {
+        return $result
+    }
+
+    if ($InputObject -is [System.Collections.IDictionary]) {
+        foreach ($entry in $InputObject.GetEnumerator()) {
+            $result[[string]$entry.Key] = $entry.Value
+        }
+        return $result
+    }
+
+    foreach ($property in $InputObject.PSObject.Properties) {
+        $result[$property.Name] = $property.Value
+    }
+
+    return $result
+}
+
 if (Test-Path -Path (Join-Path $PSScriptRoot $envFile)) {
     $envFilePath = Join-Path $PSScriptRoot $envFile
 } else {
@@ -24,14 +49,15 @@ if (Test-Path -Path (Join-Path $PSScriptRoot $envFile)) {
 }
 $env = @{}
 if (Test-Path -Path $envFilePath) {
-    $env = Get-Content -Path $envFilePath | ConvertFrom-Json
+    $envJson = Get-Content -Path $envFilePath -Raw | ConvertFrom-Json
+    $env = ConvertTo-Hashtable -InputObject $envJson
 }
 
 $isPlaybackMode = ($TestMode -eq 'playback') -or ($env:AzPSAutorestTestPlaybackMode -eq 'true')
 if ($isPlaybackMode) {
     $playbackIdentifier = 'ffffffff-ffff-ffff-ffff-ffffffffffff'
-    $env | Add-Member -NotePropertyName 'SubscriptionId' -NotePropertyValue $playbackIdentifier -Force
-    $env | Add-Member -NotePropertyName 'Tenant' -NotePropertyValue $playbackIdentifier -Force
+    $env['SubscriptionId'] = $playbackIdentifier
+    $env['Tenant'] = $playbackIdentifier
 }
 
 if ([string]::IsNullOrWhiteSpace([string]$env.SubscriptionId)) {
@@ -44,7 +70,7 @@ if ([string]::IsNullOrWhiteSpace([string]$env.SubscriptionId)) {
     }
 
     if (-not [string]::IsNullOrWhiteSpace($resolvedSubscriptionId)) {
-        $env | Add-Member -NotePropertyName 'SubscriptionId' -NotePropertyValue $resolvedSubscriptionId -Force
+        $env['SubscriptionId'] = $resolvedSubscriptionId
     }
 }
 
@@ -58,7 +84,7 @@ if ([string]::IsNullOrWhiteSpace([string]$env.Tenant)) {
     }
 
     if (-not [string]::IsNullOrWhiteSpace($resolvedTenantId)) {
-        $env | Add-Member -NotePropertyName 'Tenant' -NotePropertyValue $resolvedTenantId -Force
+        $env['Tenant'] = $resolvedTenantId
     }
 }
 

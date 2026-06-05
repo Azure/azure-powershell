@@ -16,37 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzPostgreSqlFlexibleServ
 
 Describe 'Test-AzPostgreSqlFlexibleServerNameAvailability' {
     BeforeAll {
-        function Get-PlaybackAvailableServerName {
-            param(
-                [Parameter(Mandatory = $true)]
-                [string]$RecordingPath
-            )
-
-            if (-not (Test-Path -Path $RecordingPath)) {
-                return $null
-            }
-
-            $recording = Get-Content -Path $RecordingPath -Raw | ConvertFrom-Json
-            $scenarioName = 'CheckExpandedShouldReturnAvailableForRandom63CharName'
-
-            foreach ($entry in $recording.PSObject.Properties) {
-                if ($entry.Name -like "*$scenarioName*") {
-                    $requestContent = [string]$entry.Value.Request.Content
-                    if ([string]::IsNullOrWhiteSpace($requestContent)) {
-                        continue
-                    }
-
-                    $requestBody = $requestContent | ConvertFrom-Json
-                    $candidate = [string]$requestBody.name
-                    if (-not [string]::IsNullOrWhiteSpace($candidate)) {
-                        return $candidate
-                    }
-                }
-            }
-
-            return $null
-        }
-
         $existingServerName = $env.ServerName
         if ([string]::IsNullOrWhiteSpace($existingServerName)) {
             $existingServerName = $env.ServerName1
@@ -69,7 +38,7 @@ Describe 'Test-AzPostgreSqlFlexibleServerNameAvailability' {
 
     It 'CheckExpandedShouldReturnInvalidForWrongCharacters' {
         $result = Test-AzPostgreSqlFlexibleServerNameAvailability `
-            -LocationName $env.mainLocation `
+            -LocationName $env.MainLocation `
             -Name 'wrong-~server'
 
         $result.NameAvailable | Should -Be $false
@@ -79,7 +48,7 @@ Describe 'Test-AzPostgreSqlFlexibleServerNameAvailability' {
 
     It 'CheckExpandedShouldReturnAvailableForRandom63CharName' {
         $result = Test-AzPostgreSqlFlexibleServerNameAvailability `
-            -LocationName $env.mainLocation `
+            -LocationName $env.MainLocation `
             -Name $availableServerName
 
         $result.NameAvailable | Should -Be $true
@@ -89,7 +58,7 @@ Describe 'Test-AzPostgreSqlFlexibleServerNameAvailability' {
 
     It 'CheckShouldReturnAlreadyExistsForExistingServerName' -Skip:([string]::IsNullOrWhiteSpace($existingServerName)) {
         $result = Test-AzPostgreSqlFlexibleServerNameAvailability `
-            -LocationName $env.mainLocation `
+            -LocationName $env.MainLocation `
             -Name $existingServerName
 
         $result.NameAvailable | Should -Be $false
