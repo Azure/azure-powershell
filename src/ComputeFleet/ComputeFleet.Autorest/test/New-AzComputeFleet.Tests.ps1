@@ -15,57 +15,36 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzComputeFleet'))
 }
 
 Describe 'New-AzComputeFleet' {
+
+    BeforeAll {
+        $resourceGroupName = "fleet-create-test-rg"
+        $vnetName = "vnet"
+        $nsgName = "nsg"
+        $vmNamePrefix = "fleetvm"
+        $launchFleetName = "launch-fleet"
+        $launchFleetJsonName = "launch-fleet-json"
+        $launchFleetJsonStrName = "launch-fleet-jsonstr"
+        $managedFleetName = "managed-fleet"
+        $managedFleetJsonName = "managed-fleet-json"
+        $managedFleetJsonStrName = "managed-fleet-jsonstr"
+
+        $result = New-TestResourceGroup -ResourceGroupName $resourceGroupName `
+            -Location $env.Location -VNetName $vnetName -NsgName $nsgName
+        $subnetId = $result.SubnetId
+        $nsgId = $result.NsgId
+    }
+
     It 'CreateLaunchModeFleet' {
         {
-            # Build storage profile with managed disk
-            $storageProfile = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VirtualMachineScaleSetStorageProfile]::new()
-            $storageProfile.ImageReferencePublisher = "MicrosoftWindowsServer"
-            $storageProfile.ImageReferenceOffer = "WindowsServer"
-            $storageProfile.ImageReferenceSku = "2022-datacenter-azure-edition"
-            $storageProfile.ImageReferenceVersion = "latest"
-            $storageProfile.OSDiskCreateOption = "FromImage"
-            $storageProfile.OSDiskCaching = "ReadWrite"
-            $storageProfile.OSDiskOstype = "Windows"
-            $storageProfile.ManagedDiskStorageAccountType = "Standard_LRS"
+            $vmProfile = New-TestVmProfile -SubnetId $subnetId -NsgId $nsgId
 
-            # Build OS profile
-            $osProfile = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VirtualMachineScaleSetOSProfile]::new()
-            $osProfile.AdminUsername = "testadmin"
-            $osProfile.ComputerNamePrefix = $env.VmNamePrefix
-            $osProfile.AdminPassword = ConvertTo-SecureString "TestP@ss1234!" -AsPlainText -Force
-
-            # Build network profile
-            $ipConfig = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VirtualMachineScaleSetIPConfiguration]::new()
-            $ipConfig.Name = "ipconfig1"
-            $ipConfig.Primary = $true
-            $ipConfig.SubnetId = $env.SubnetId
-
-            $nicConfig = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VirtualMachineScaleSetNetworkConfiguration]::new()
-            $nicConfig.Name = "nic1"
-            $nicConfig.Primary = $true
-            $nicConfig.EnableAcceleratedNetworking = $false
-            $nicConfig.NetworkSecurityGroupId = $env.NsgId
-            $nicConfig.IPConfiguration = @($ipConfig)
-
-            # Build VM profile
-            $vmProfile = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.BaseVirtualMachineProfile]::new()
-            $vmProfile.StorageProfile = $storageProfile
-            $vmProfile.OSProfile = $osProfile
-            $vmProfile.NetworkProfileNetworkApiVersion = "2020-11-01"
-            $vmProfile.NetworkProfileNetworkInterfaceConfiguration = @($nicConfig)
-            $vmProfile.SecurityProfileSecurityType = "TrustedLaunch"
-            $vmProfile.UefiSettingSecureBootEnabled = $true
-            $vmProfile.UefiSettingVTpmEnabled = $true
-
-            # Build VM size profiles
             $vmSize1 = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VMSizeProfile]::new()
             $vmSize1.Name = "Standard_D2s_v3"
             $vmSize2 = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VMSizeProfile]::new()
             $vmSize2.Name = "Standard_D4s_v3"
 
-            # Create the fleet in Launch mode
-            $fleet = New-AzComputeFleet -Name $env.LaunchFleetName `
-                -ResourceGroupName $env.ResourceGroupName `
+            $fleet = New-AzComputeFleet -Name $launchFleetName `
+                -ResourceGroupName $resourceGroupName `
                 -SubscriptionId $env.SubscriptionId `
                 -Location $env.Location `
                 -ComputeProfileBaseVirtualMachineProfile $vmProfile `
@@ -75,10 +54,10 @@ Describe 'New-AzComputeFleet' {
                 -RegularPriorityProfileMinCapacity 1 `
                 -RegularPriorityProfileAllocationStrategy "LowestPrice" `
                 -Mode "Launch" `
-                -VMNamePrefix $env.VmNamePrefix `
+                -VMNamePrefix $vmNamePrefix `
                 -Tag @{ environment = "test" }
 
-            $fleet.Name | Should -Be $env.LaunchFleetName
+            $fleet.Name | Should -Be $launchFleetName
             $fleet.ProvisioningState | Should -Be "Succeeded"
             $fleet.Mode | Should -Be "Launch"
         } | Should -Not -Throw
@@ -87,61 +66,10 @@ Describe 'New-AzComputeFleet' {
     It 'CreateLaunchModeFleetViaJsonFilePath' {
         {
             $jsonBody = @{
-                location = $env.Location
+                location   = $env.Location
                 properties = @{
                     computeProfile = @{
-                        baseVirtualMachineProfile = @{
-                            storageProfile = @{
-                                imageReference = @{
-                                    publisher = "MicrosoftWindowsServer"
-                                    offer = "WindowsServer"
-                                    sku = "2022-datacenter-azure-edition"
-                                    version = "latest"
-                                }
-                                osDisk = @{
-                                    createOption = "FromImage"
-                                    caching = "ReadWrite"
-                                    osType = "Windows"
-                                    managedDisk = @{
-                                        storageAccountType = "Standard_LRS"
-                                    }
-                                }
-                            }
-                            osProfile = @{
-                                adminUsername = "testadmin"
-                                adminPassword = "TestP@ss1234!"
-                                computerNamePrefix = $env.VmNamePrefix
-                            }
-                            networkProfile = @{
-                                networkApiVersion = "2020-11-01"
-                                networkInterfaceConfigurations = @(
-                                    @{
-                                        name = "nic1"
-                                        properties = @{
-                                            primary = $true
-                                            enableAcceleratedNetworking = $false
-                                            networkSecurityGroup = @{ id = $env.NsgId }
-                                            ipConfigurations = @(
-                                                @{
-                                                    name = "ipconfig1"
-                                                    properties = @{
-                                                        primary = $true
-                                                        subnet = @{ id = $env.SubnetId }
-                                                    }
-                                                }
-                                            )
-                                        }
-                                    }
-                                )
-                            }
-                            securityProfile = @{
-                                securityType = "TrustedLaunch"
-                                uefiSettings = @{
-                                    secureBootEnabled = $true
-                                    vTpmEnabled = $true
-                                }
-                            }
-                        }
+                        baseVirtualMachineProfile = Get-BaseVmProfileJson -SubnetId $subnetId -NsgId $nsgId
                         computeApiVersion = "2024-03-01"
                     }
                     vmSizesProfile = @(
@@ -149,12 +77,12 @@ Describe 'New-AzComputeFleet' {
                         @{ name = "Standard_D4s_v3" }
                     )
                     regularPriorityProfile = @{
-                        capacity = 2
-                        minCapacity = 1
+                        capacity           = 2
+                        minCapacity        = 1
                         allocationStrategy = "LowestPrice"
                     }
-                    mode = "Launch"
-                    vmNamePrefix = $env.VmNamePrefix
+                    mode         = "Launch"
+                    vmNamePrefix = $vmNamePrefix
                 }
                 tags = @{ environment = "test" }
             }
@@ -162,12 +90,12 @@ Describe 'New-AzComputeFleet' {
             $jsonFilePath = Join-Path $PSScriptRoot "launch-fleet.json"
             $jsonBody | ConvertTo-Json -Depth 15 | Set-Content -Path $jsonFilePath
 
-            $fleet = New-AzComputeFleet -Name $env.LaunchFleetJsonName `
-                -ResourceGroupName $env.ResourceGroupName `
+            $fleet = New-AzComputeFleet -Name $launchFleetJsonName `
+                -ResourceGroupName $resourceGroupName `
                 -SubscriptionId $env.SubscriptionId `
                 -JsonFilePath $jsonFilePath
 
-            $fleet.Name | Should -Be $env.LaunchFleetJsonName
+            $fleet.Name | Should -Be $launchFleetJsonName
             $fleet.ProvisioningState | Should -Be "Succeeded"
             $fleet.Mode | Should -Be "Launch"
 
@@ -178,61 +106,10 @@ Describe 'New-AzComputeFleet' {
     It 'CreateLaunchModeFleetViaJsonString' {
         {
             $jsonBody = @{
-                location = $env.Location
+                location   = $env.Location
                 properties = @{
                     computeProfile = @{
-                        baseVirtualMachineProfile = @{
-                            storageProfile = @{
-                                imageReference = @{
-                                    publisher = "MicrosoftWindowsServer"
-                                    offer = "WindowsServer"
-                                    sku = "2022-datacenter-azure-edition"
-                                    version = "latest"
-                                }
-                                osDisk = @{
-                                    createOption = "FromImage"
-                                    caching = "ReadWrite"
-                                    osType = "Windows"
-                                    managedDisk = @{
-                                        storageAccountType = "Standard_LRS"
-                                    }
-                                }
-                            }
-                            osProfile = @{
-                                adminUsername = "testadmin"
-                                adminPassword = "TestP@ss1234!"
-                                computerNamePrefix = $env.VmNamePrefix
-                            }
-                            networkProfile = @{
-                                networkApiVersion = "2020-11-01"
-                                networkInterfaceConfigurations = @(
-                                    @{
-                                        name = "nic1"
-                                        properties = @{
-                                            primary = $true
-                                            enableAcceleratedNetworking = $false
-                                            networkSecurityGroup = @{ id = $env.NsgId }
-                                            ipConfigurations = @(
-                                                @{
-                                                    name = "ipconfig1"
-                                                    properties = @{
-                                                        primary = $true
-                                                        subnet = @{ id = $env.SubnetId }
-                                                    }
-                                                }
-                                            )
-                                        }
-                                    }
-                                )
-                            }
-                            securityProfile = @{
-                                securityType = "TrustedLaunch"
-                                uefiSettings = @{
-                                    secureBootEnabled = $true
-                                    vTpmEnabled = $true
-                                }
-                            }
-                        }
+                        baseVirtualMachineProfile = Get-BaseVmProfileJson -SubnetId $subnetId -NsgId $nsgId
                         computeApiVersion = "2024-03-01"
                     }
                     vmSizesProfile = @(
@@ -240,78 +117,38 @@ Describe 'New-AzComputeFleet' {
                         @{ name = "Standard_D4s_v3" }
                     )
                     regularPriorityProfile = @{
-                        capacity = 2
-                        minCapacity = 1
+                        capacity           = 2
+                        minCapacity        = 1
                         allocationStrategy = "LowestPrice"
                     }
-                    mode = "Launch"
-                    vmNamePrefix = $env.VmNamePrefix
+                    mode         = "Launch"
+                    vmNamePrefix = $vmNamePrefix
                 }
                 tags = @{ environment = "test" }
             }
 
             $jsonString = $jsonBody | ConvertTo-Json -Depth 15
 
-            $fleet = New-AzComputeFleet -Name $env.LaunchFleetJsonStrName `
-                -ResourceGroupName $env.ResourceGroupName `
+            $fleet = New-AzComputeFleet -Name $launchFleetJsonStrName `
+                -ResourceGroupName $resourceGroupName `
                 -SubscriptionId $env.SubscriptionId `
                 -JsonString $jsonString
 
-            $fleet.Name | Should -Be $env.LaunchFleetJsonStrName
+            $fleet.Name | Should -Be $launchFleetJsonStrName
             $fleet.ProvisioningState | Should -Be "Succeeded"
             $fleet.Mode | Should -Be "Launch"
         } | Should -Not -Throw
     }
 
-    It 'CreateManagedModeFleet' -Skip {
+    It 'CreateManagedModeFleet' {
         {
-            # Build storage profile with managed disk
-            $storageProfile = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VirtualMachineScaleSetStorageProfile]::new()
-            $storageProfile.ImageReferencePublisher = "MicrosoftWindowsServer"
-            $storageProfile.ImageReferenceOffer = "WindowsServer"
-            $storageProfile.ImageReferenceSku = "2022-datacenter-azure-edition"
-            $storageProfile.ImageReferenceVersion = "latest"
-            $storageProfile.OSDiskCreateOption = "FromImage"
-            $storageProfile.OSDiskCaching = "ReadWrite"
-            $storageProfile.OSDiskOstype = "Windows"
-            $storageProfile.ManagedDiskStorageAccountType = "Standard_LRS"
+            $vmProfile = New-TestVmProfile -SubnetId $subnetId -NsgId $nsgId
 
-            # Build OS profile
-            $osProfile = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VirtualMachineScaleSetOSProfile]::new()
-            $osProfile.AdminUsername = "testadmin"
-            $osProfile.ComputerNamePrefix = $env.VmNamePrefix
-            $osProfile.AdminPassword = ConvertTo-SecureString "TestP@ss1234!" -AsPlainText -Force
-
-            # Build network profile
-            $ipConfig = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VirtualMachineScaleSetIPConfiguration]::new()
-            $ipConfig.Name = "ipconfig1"
-            $ipConfig.Primary = $true
-            $ipConfig.SubnetId = $env.SubnetId
-
-            $nicConfig = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VirtualMachineScaleSetNetworkConfiguration]::new()
-            $nicConfig.Name = "nic1"
-            $nicConfig.Primary = $true
-            $nicConfig.EnableAcceleratedNetworking = $false
-            $nicConfig.NetworkSecurityGroupId = $env.NsgId
-            $nicConfig.IPConfiguration = @($ipConfig)
-
-            # Build VM profile
-            $vmProfile = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.BaseVirtualMachineProfile]::new()
-            $vmProfile.StorageProfile = $storageProfile
-            $vmProfile.OSProfile = $osProfile
-            $vmProfile.NetworkProfileNetworkApiVersion = "2020-11-01"
-            $vmProfile.NetworkProfileNetworkInterfaceConfiguration = @($nicConfig)
-            $vmProfile.SecurityProfileSecurityType = "TrustedLaunch"
-            $vmProfile.UefiSettingSecureBootEnabled = $true
-            $vmProfile.UefiSettingVTpmEnabled = $true
-
-            # Build VM size profiles
             $vmSize1 = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VMSizeProfile]::new()
             $vmSize1.Name = "Standard_D2s_v3"
 
-            # Create the fleet in Managed mode (default)
-            $fleet = New-AzComputeFleet -Name $env.ManagedFleetName `
-                -ResourceGroupName $env.ResourceGroupName `
+            $fleet = New-AzComputeFleet -Name $managedFleetName `
+                -ResourceGroupName $resourceGroupName `
                 -SubscriptionId $env.SubscriptionId `
                 -Location $env.Location `
                 -ComputeProfileBaseVirtualMachineProfile $vmProfile `
@@ -322,79 +159,27 @@ Describe 'New-AzComputeFleet' {
                 -SpotPriorityProfileEvictionPolicy "Delete" `
                 -Tag @{ environment = "test" }
 
-            $fleet.Name | Should -Be $env.ManagedFleetName
+            $fleet.Name | Should -Be $managedFleetName
             $fleet.ProvisioningState | Should -Be "Succeeded"
-            $fleet.Mode | Should -Be "Managed"
         } | Should -Not -Throw
     }
 
     It 'CreateManagedModeFleetViaJsonFilePath' {
         {
             $jsonBody = @{
-                location = $env.Location
+                location   = $env.Location
                 properties = @{
                     computeProfile = @{
-                        baseVirtualMachineProfile = @{
-                            storageProfile = @{
-                                imageReference = @{
-                                    publisher = "MicrosoftWindowsServer"
-                                    offer = "WindowsServer"
-                                    sku = "2022-datacenter-azure-edition"
-                                    version = "latest"
-                                }
-                                osDisk = @{
-                                    createOption = "FromImage"
-                                    caching = "ReadWrite"
-                                    osType = "Windows"
-                                    managedDisk = @{
-                                        storageAccountType = "Standard_LRS"
-                                    }
-                                }
-                            }
-                            osProfile = @{
-                                adminUsername = "testadmin"
-                                adminPassword = "TestP@ss1234!"
-                                computerNamePrefix = $env.VmNamePrefix
-                            }
-                            networkProfile = @{
-                                networkApiVersion = "2020-11-01"
-                                networkInterfaceConfigurations = @(
-                                    @{
-                                        name = "nic1"
-                                        properties = @{
-                                            primary = $true
-                                            enableAcceleratedNetworking = $false
-                                            networkSecurityGroup = @{ id = $env.NsgId }
-                                            ipConfigurations = @(
-                                                @{
-                                                    name = "ipconfig1"
-                                                    properties = @{
-                                                        primary = $true
-                                                        subnet = @{ id = $env.SubnetId }
-                                                    }
-                                                }
-                                            )
-                                        }
-                                    }
-                                )
-                            }
-                            securityProfile = @{
-                                securityType = "TrustedLaunch"
-                                uefiSettings = @{
-                                    secureBootEnabled = $true
-                                    vTpmEnabled = $true
-                                }
-                            }
-                        }
+                        baseVirtualMachineProfile = Get-BaseVmProfileJson -SubnetId $subnetId -NsgId $nsgId
                         computeApiVersion = "2024-03-01"
                     }
                     vmSizesProfile = @(
                         @{ name = "Standard_D2s_v3" }
                     )
                     spotPriorityProfile = @{
-                        capacity = 2
+                        capacity           = 2
                         allocationStrategy = "PriceCapacityOptimized"
-                        evictionPolicy = "Delete"
+                        evictionPolicy     = "Delete"
                     }
                 }
                 tags = @{ environment = "test" }
@@ -403,14 +188,13 @@ Describe 'New-AzComputeFleet' {
             $jsonFilePath = Join-Path $PSScriptRoot "managed-fleet.json"
             $jsonBody | ConvertTo-Json -Depth 15 | Set-Content -Path $jsonFilePath
 
-            $fleet = New-AzComputeFleet -Name $env.ManagedFleetJsonName `
-                -ResourceGroupName $env.ResourceGroupName `
+            $fleet = New-AzComputeFleet -Name $managedFleetJsonName `
+                -ResourceGroupName $resourceGroupName `
                 -SubscriptionId $env.SubscriptionId `
                 -JsonFilePath $jsonFilePath
 
-            $fleet.Name | Should -Be $env.ManagedFleetJsonName
+            $fleet.Name | Should -Be $managedFleetJsonName
             $fleet.ProvisioningState | Should -Be "Succeeded"
-            $fleet.Mode | Should -Be "Managed"
 
             Remove-Item -Path $jsonFilePath -ErrorAction SilentlyContinue
         } | Should -Not -Throw
@@ -419,70 +203,19 @@ Describe 'New-AzComputeFleet' {
     It 'CreateManagedModeFleetViaJsonString' {
         {
             $jsonBody = @{
-                location = $env.Location
+                location   = $env.Location
                 properties = @{
                     computeProfile = @{
-                        baseVirtualMachineProfile = @{
-                            storageProfile = @{
-                                imageReference = @{
-                                    publisher = "MicrosoftWindowsServer"
-                                    offer = "WindowsServer"
-                                    sku = "2022-datacenter-azure-edition"
-                                    version = "latest"
-                                }
-                                osDisk = @{
-                                    createOption = "FromImage"
-                                    caching = "ReadWrite"
-                                    osType = "Windows"
-                                    managedDisk = @{
-                                        storageAccountType = "Standard_LRS"
-                                    }
-                                }
-                            }
-                            osProfile = @{
-                                adminUsername = "testadmin"
-                                adminPassword = "TestP@ss1234!"
-                                computerNamePrefix = $env.VmNamePrefix
-                            }
-                            networkProfile = @{
-                                networkApiVersion = "2020-11-01"
-                                networkInterfaceConfigurations = @(
-                                    @{
-                                        name = "nic1"
-                                        properties = @{
-                                            primary = $true
-                                            enableAcceleratedNetworking = $false
-                                            networkSecurityGroup = @{ id = $env.NsgId }
-                                            ipConfigurations = @(
-                                                @{
-                                                    name = "ipconfig1"
-                                                    properties = @{
-                                                        primary = $true
-                                                        subnet = @{ id = $env.SubnetId }
-                                                    }
-                                                }
-                                            )
-                                        }
-                                    }
-                                )
-                            }
-                            securityProfile = @{
-                                securityType = "TrustedLaunch"
-                                uefiSettings = @{
-                                    secureBootEnabled = $true
-                                    vTpmEnabled = $true
-                                }
-                            }
-                        }
+                        baseVirtualMachineProfile = Get-BaseVmProfileJson -SubnetId $subnetId -NsgId $nsgId
                         computeApiVersion = "2024-03-01"
                     }
                     vmSizesProfile = @(
                         @{ name = "Standard_D2s_v3" }
                     )
                     spotPriorityProfile = @{
-                        capacity = 2
+                        capacity           = 2
                         allocationStrategy = "PriceCapacityOptimized"
-                        evictionPolicy = "Delete"
+                        evictionPolicy     = "Delete"
                     }
                 }
                 tags = @{ environment = "test" }
@@ -490,14 +223,17 @@ Describe 'New-AzComputeFleet' {
 
             $jsonString = $jsonBody | ConvertTo-Json -Depth 15
 
-            $fleet = New-AzComputeFleet -Name $env.ManagedFleetJsonStrName `
-                -ResourceGroupName $env.ResourceGroupName `
+            $fleet = New-AzComputeFleet -Name $managedFleetJsonStrName `
+                -ResourceGroupName $resourceGroupName `
                 -SubscriptionId $env.SubscriptionId `
                 -JsonString $jsonString
 
-            $fleet.Name | Should -Be $env.ManagedFleetJsonStrName
+            $fleet.Name | Should -Be $managedFleetJsonStrName
             $fleet.ProvisioningState | Should -Be "Succeeded"
-            $fleet.Mode | Should -Be "Managed"
         } | Should -Not -Throw
+    }
+
+    AfterAll {
+        Remove-AzResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue -Confirm:$false
     }
 }

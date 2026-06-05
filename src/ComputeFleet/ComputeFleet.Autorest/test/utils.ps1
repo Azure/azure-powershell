@@ -39,42 +39,9 @@ if ($UsePreviousConfigForRecord) {
 # example: $val = $env.AddWithCache('key', $val, $true)
 $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val, [bool]$useCache) if ($this.Contains($key) -and $useCache) { return $this[$key] } else { $this[$key] = $val; return $val } } -Name 'AddWithCache'
 function setupEnv() {
-    # Preload subscriptionId and tenant from context, which will be used in test
-    # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-
-    $suffix = RandomString -allChars $false -len 6
-    $env.ResourceGroupName = "fleet-test-$suffix"
     $env.Location = "centralus"
-    $env.ManagedFleetName = "managed-fleet-$suffix"
-    $env.LaunchFleetName = "launch-fleet-$suffix"
-    $env.LaunchFleetJsonName = "launch-fleet-json-$suffix"
-    $env.LaunchFleetJsonStrName = "launch-fleet-jsonstr-$suffix"
-    $env.ManagedFleetJsonName = "managed-fleet-json-$suffix"
-    $env.ManagedFleetJsonStrName = "managed-fleet-jsonstr-$suffix"
-    $env.VNetName = "vnet-$suffix"
-    $env.SubnetName = "subnet1"
-    $env.NsgName = "nsg-$suffix"
-    $env.VmNamePrefix = "fleetvm"
-
-    # Create resource group
-    New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location
-
-    # Create NSG
-    $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $env.ResourceGroupName `
-        -Location $env.Location -Name $env.NsgName
-
-    # Create VNet with subnet
-    $subnetConfig = New-AzVirtualNetworkSubnetConfig -Name $env.SubnetName `
-        -AddressPrefix "172.16.0.0/24" `
-        -NetworkSecurityGroupId $nsg.Id
-    $vnet = New-AzVirtualNetwork -ResourceGroupName $env.ResourceGroupName `
-        -Location $env.Location -Name $env.VNetName `
-        -AddressPrefix "172.16.0.0/16" -Subnet $subnetConfig
-
-    $env.SubnetId = $vnet.Subnets[0].Id
-    $env.NsgId = $nsg.Id
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -83,7 +50,144 @@ function setupEnv() {
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
 function cleanupEnv() {
-    # Clean resources you create for testing
-    Remove-AzResourceGroup -Name $env.ResourceGroupName -ErrorAction SilentlyContinue -Confirm:$false
+    # Cleanup is handled by AfterAll in each test suite
 }
 
+# Creates a resource group with VNet, subnet, and NSG. Returns a hashtable with SubnetId and NsgId.
+function New-TestResourceGroup {
+    param(
+        [string]$ResourceGroupName,
+        [string]$Location,
+        [string]$VNetName,
+        [string]$NsgName,
+        [string]$SubnetName = "subnet1",
+        [string]$VNetAddressPrefix = "172.16.0.0/16",
+        [string]$SubnetAddressPrefix = "172.16.0.0/24"
+    )
+
+    New-AzResourceGroup -Name $ResourceGroupName -Location $Location -Confirm:$false
+
+    $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $ResourceGroupName `
+        -Location $Location -Name $NsgName
+
+    $subnetConfig = New-AzVirtualNetworkSubnetConfig -Name $SubnetName `
+        -AddressPrefix $SubnetAddressPrefix `
+        -NetworkSecurityGroupId $nsg.Id
+    $vnet = New-AzVirtualNetwork -ResourceGroupName $ResourceGroupName `
+        -Location $Location -Name $VNetName `
+        -AddressPrefix $VNetAddressPrefix -Subnet $subnetConfig
+
+    return @{
+        SubnetId = $vnet.Subnets[0].Id
+        NsgId    = $nsg.Id
+    }
+}
+
+# Returns a hashtable representing the base VM profile for JSON-based tests
+function Get-BaseVmProfileJson {
+    param(
+        [Parameter(Mandatory)]
+        [string]$SubnetId,
+        [Parameter(Mandatory)]
+        [string]$NsgId,
+        [string]$VmNamePrefix = "fleetvm"
+    )
+    return @{
+        storageProfile = @{
+            imageReference = @{
+                publisher = "MicrosoftWindowsServer"
+                offer     = "WindowsServer"
+                sku       = "2022-datacenter-azure-edition"
+                version   = "latest"
+            }
+            osDisk = @{
+                createOption = "FromImage"
+                caching      = "ReadWrite"
+                osType       = "Windows"
+                managedDisk  = @{ storageAccountType = "Standard_LRS" }
+            }
+        }
+        osProfile = @{
+            adminUsername      = "testadmin"
+            adminPassword      = "TestP@ss1234!"
+            computerNamePrefix = $VmNamePrefix
+        }
+        networkProfile = @{
+            networkApiVersion = "2020-11-01"
+            networkInterfaceConfigurations = @(
+                @{
+                    name = "nic1"
+                    properties = @{
+                        primary                    = $true
+                        enableAcceleratedNetworking = $false
+                        networkSecurityGroup       = @{ id = $NsgId }
+                        ipConfigurations = @(
+                            @{
+                                name = "ipconfig1"
+                                properties = @{
+                                    primary = $true
+                                    subnet  = @{ id = $SubnetId }
+                                }
+                            }
+                        )
+                    }
+                }
+            )
+        }
+        securityProfile = @{
+            securityType = "TrustedLaunch"
+            uefiSettings = @{
+                secureBootEnabled = $true
+                vTpmEnabled       = $true
+            }
+        }
+    }
+}
+
+# Builds a typed .NET BaseVirtualMachineProfile object for expanded parameter set tests
+function New-TestVmProfile {
+    param(
+        [Parameter(Mandatory)]
+        [string]$SubnetId,
+        [Parameter(Mandatory)]
+        [string]$NsgId,
+        [string]$VmNamePrefix = "fleetvm"
+    )
+    $storageProfile = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VirtualMachineScaleSetStorageProfile]::new()
+    $storageProfile.ImageReferencePublisher = "MicrosoftWindowsServer"
+    $storageProfile.ImageReferenceOffer = "WindowsServer"
+    $storageProfile.ImageReferenceSku = "2022-datacenter-azure-edition"
+    $storageProfile.ImageReferenceVersion = "latest"
+    $storageProfile.OSDiskCreateOption = "FromImage"
+    $storageProfile.OSDiskCaching = "ReadWrite"
+    $storageProfile.OSDiskOstype = "Windows"
+    $storageProfile.ManagedDiskStorageAccountType = "Standard_LRS"
+
+    $osProfile = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VirtualMachineScaleSetOSProfile]::new()
+    $osProfile.AdminUsername = "testadmin"
+    $osProfile.ComputerNamePrefix = $VmNamePrefix
+    $osProfile.AdminPassword = ConvertTo-SecureString "TestP@ss1234!" -AsPlainText -Force
+
+    $ipConfig = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VirtualMachineScaleSetIPConfiguration]::new()
+    $ipConfig.Name = "ipconfig1"
+    $ipConfig.Primary = $true
+    $ipConfig.SubnetId = $SubnetId
+
+    $nicConfig = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VirtualMachineScaleSetNetworkConfiguration]::new()
+    $nicConfig.Name = "nic1"
+    $nicConfig.Primary = $true
+    $nicConfig.EnableAcceleratedNetworking = $false
+    $nicConfig.NetworkSecurityGroupId = $NsgId
+    $nicConfig.IPConfiguration = @($ipConfig)
+
+    $vmProfile = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.BaseVirtualMachineProfile]::new()
+    $vmProfile.StorageProfile = $storageProfile
+    $vmProfile.OSProfile = $osProfile
+    $vmProfile.NetworkProfileNetworkApiVersion = "2020-11-01"
+    $vmProfile.NetworkProfileNetworkInterfaceConfiguration = @($nicConfig)
+    $vmProfile.SecurityProfileSecurityType = "TrustedLaunch"
+    $vmProfile.UefiSettingSecureBootEnabled = $true
+    $vmProfile.UefiSettingVTpmEnabled = $true
+
+    return $vmProfile
+}
