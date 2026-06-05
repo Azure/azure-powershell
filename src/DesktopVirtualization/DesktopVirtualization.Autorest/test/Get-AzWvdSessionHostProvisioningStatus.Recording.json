@@ -6,12 +6,12 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "159" ],
-        "x-ms-client-request-id": [ "5d7589cc-adaa-460c-bdbc-122a1b8f65b0" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "d0935309-7a67-41f6-afea-0425fdd51362" ],
         "CommandName": [ "Get-AzWvdSessionHostProvisioningStatus" ],
         "FullCommandName": [ "Get-AzWvdSessionHostProvisioningStatus_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.5.5", "Az.DesktopVirtualization/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v15.6.1", "PSVersion/v7.5.5", "Az.DesktopVirtualization/5.4.8" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,32 +23,32 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "Set-Cookie": [ "ARRAffinity=fd2157af18a7c94eb2eb2dcc89d40079b4b7806eaf7a0b75073f67d47b0ffe7f;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com", "ARRAffinitySameSite=fd2157af18a7c94eb2eb2dcc89d40079b4b7806eaf7a0b75073f67d47b0ffe7f;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com" ],
-        "x-ms-operation-identifier": [ "tenantId=715492f1-ef6e-4eea-9176-7c81e765c3c8,objectId=1db230a9-e046-46ab-912b-9cea769323a2/westus2/a639f839-65e7-4787-8b88-56b8953bb088" ],
+        "Set-Cookie": [ "ARRAffinity=4198fe2ab928f32865a79fd9f6c63e108d7716a1989bb6275a255820b297c218;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com", "ARRAffinitySameSite=4198fe2ab928f32865a79fd9f6c63e108d7716a1989bb6275a255820b297c218;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com" ],
+        "x-ms-operation-identifier": [ "tenantId=715492f1-ef6e-4eea-9176-7c81e765c3c8,objectId=1db230a9-e046-46ab-912b-9cea769323a2/westus2/3049d803-a861-462e-b77d-e2301ad9d4e0" ],
         "X-Rate-Limit-Limit": [ "5m" ],
-        "X-Rate-Limit-Remaining": [ "9792" ],
-        "X-Rate-Limit-Reset": [ "2026-05-14T15:57:36.5809267Z" ],
+        "X-Rate-Limit-Remaining": [ "9998" ],
+        "X-Rate-Limit-Reset": [ "2026-06-05T06:20:50.1725861Z" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvNjczODUwOWQtODRlZC00YWQ2LTk3NGEtN2RjNGUzYzM0MTQ2L3Jlc291cmNlR3JvdXBzL3pob25namllLXJnLXd1cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvemhvbmdqaWUtYXV0b21hdGVkL3Nlc3Npb25Ib3N0TWFuYWdlbWVudHMvZGVmYXVsdC9zZXNzaW9uSG9zdFByb3Zpc2lvbmluZ1N0YXR1c2VzL2RlZmF1bHQ=" ],
-        "x-ms-lamport-ts": [ "-9223372036854775757" ],
-        "x-ms-correlation-id": [ "dc0a7e04-29ab-4c9b-ac80-ed3d68156169" ],
-        "x-ms-request-id": [ "5d7589cc-adaa-460c-bdbc-122a1b8f65b0" ],
+        "x-ms-lamport-ts": [ "-9223372036854775792" ],
+        "x-ms-correlation-id": [ "e48b0f99-167c-45c7-82ee-5c11cbdd7d1e" ],
+        "x-ms-request-id": [ "d0935309-7a67-41f6-afea-0425fdd51362" ],
         "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-correlation-request-id": [ "f0f7796e-934b-48f5-aa7e-62369583cfac" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260514T155552Z:f0f7796e-934b-48f5-aa7e-62369583cfac" ],
+        "x-ms-correlation-request-id": [ "62e5c559-20a8-4c74-99a0-afd7722c5795" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260605T061559Z:62e5c559-20a8-4c74-99a0-afd7722c5795" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 7369EB9B1BC848968987F73B67D3811B Ref B: SG2AA1040517029 Ref C: 2026-05-14T15:55:52Z" ],
-        "Date": [ "Thu, 14 May 2026 15:55:52 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 9EBF88394F074B40B65D885F8D3FC583 Ref B: TYO201151004042 Ref C: 2026-06-05T06:15:58Z" ],
+        "Date": [ "Fri, 05 Jun 2026 06:15:58 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1565" ],
+        "Content-Length": [ "2121" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated/sessionHostProvisioningStatuses/default\",\"status\":\"Succeeded\",\"startTime\":\"2026-05-07T10:55:31Z\",\"endTime\":\"2026-05-07T11:06:09Z\",\"percentComplete\":100.0,\"error\":null,\"correlationId\":\"c44f24a4-4312-4c89-85cc-ad0ae5bc7eb2\",\"progress\":{\"initialSessionHostCount\":2,\"finalSessionHostCount\":3,\"sessionHostsCreationFailed\":0,\"executionStartTime\":\"2026-05-07T10:55:32.3334354Z\",\"sessionHostsInProgress\":0,\"sessionHostsCompleted\":1},\"scheduledDateTime\":\"2026-05-07T10:55:31Z\",\"sessionHostManagement\":{\"properties\":{\"failedSessionHostCleanupPolicy\":\"KeepNone\",\"scheduledDateTimeZone\":\"UTC\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":2,\"logOffMessage\":\"You will be signed out\"},\"provisioning\":{\"instanceCount\":3,\"canaryPolicy\":\"Auto\",\"setDrainMode\":false}}},\"properties\":{\"correlationId\":\"c44f24a4-4312-4c89-85cc-ad0ae5bc7eb2\",\"progress\":{\"initialSessionHostCount\":2,\"finalSessionHostCount\":3,\"sessionHostsCreationFailed\":0,\"executionStartTime\":\"2026-05-07T10:55:32.3334354Z\",\"sessionHostsInProgress\":0,\"sessionHostsCompleted\":1},\"scheduledDateTime\":\"2026-05-07T10:55:31Z\",\"sessionHostManagement\":{\"properties\":{\"failedSessionHostCleanupPolicy\":\"KeepNone\",\"scheduledDateTimeZone\":\"UTC\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":2,\"logOffMessage\":\"You will be signed out\"},\"provisioning\":{\"instanceCount\":3,\"canaryPolicy\":\"Auto\",\"setDrainMode\":false}}}}}",
+      "Content": "{\"id\":\"/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated/sessionHostProvisioningStatuses/default\",\"status\":\"Failed\",\"startTime\":\"2026-06-05T06:11:11Z\",\"endTime\":\"2026-06-05T06:11:16Z\",\"percentComplete\":100.0,\"error\":{\"code\":\"ProvisioningFailure\",\"message\":\"[{\\\"faultCode\\\":\\\"ProvisioningMayExceedCapacityLimit_1024\\\",\\\"faultText\\\":\\\"It was detected that resources created during the update process may cause subscription limits to be exceeded for the following resources:  \u0027[{\\\\\\\"name\\\\\\\":{\\\\\\\"value\\\\\\\":\\\\\\\"standardDaldv6Family\\\\\\\",\\\\\\\"localizedValue\\\\\\\":\\\\\\\"standard Daldv6 Family vCPUs\\\\\\\"},\\\\\\\"limit\\\\\\\":10,\\\\\\\"projectedUsedCapacity\\\\\\\":12}]\u0027.  Please delete some resources of this type before creating a new one\\\",\\\"faultContext\\\":\\\"ComputeCapacityRule\\\",\\\"faultType\\\":0}]\"},\"correlationId\":\"8b71a3e9-02a7-435c-8bbb-81607ea03f32\",\"progress\":{\"initialSessionHostCount\":3,\"finalSessionHostCount\":4,\"sessionHostsCreationFailed\":0,\"executionStartTime\":\"2026-06-05T06:11:12.3173178Z\",\"sessionHostsInProgress\":0,\"sessionHostsCompleted\":0},\"scheduledDateTime\":\"2026-06-05T06:11:11Z\",\"sessionHostManagement\":{\"properties\":{\"failedSessionHostCleanupPolicy\":\"KeepNone\",\"scheduledDateTimeZone\":\"UTC\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":2,\"logOffMessage\":\"You will be signed out\"},\"provisioning\":{\"instanceCount\":4,\"canaryPolicy\":\"Auto\",\"setDrainMode\":false}}},\"properties\":{\"correlationId\":\"8b71a3e9-02a7-435c-8bbb-81607ea03f32\",\"progress\":{\"initialSessionHostCount\":3,\"finalSessionHostCount\":4,\"sessionHostsCreationFailed\":0,\"executionStartTime\":\"2026-06-05T06:11:12.3173178Z\",\"sessionHostsInProgress\":0,\"sessionHostsCompleted\":0},\"scheduledDateTime\":\"2026-06-05T06:11:11Z\",\"sessionHostManagement\":{\"properties\":{\"failedSessionHostCleanupPolicy\":\"KeepNone\",\"scheduledDateTimeZone\":\"UTC\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":2,\"logOffMessage\":\"You will be signed out\"},\"provisioning\":{\"instanceCount\":4,\"canaryPolicy\":\"Auto\",\"setDrainMode\":false}}}}}",
       "isContentBase64": false
     }
   }
