@@ -189,7 +189,7 @@ Accept wildcard characters: False
 ```
 
 ### -ContinuousTier
-The tier of continuous backups mode on the Cosmos DB account. Accepted values: Continuous7Days, Continuous30Days
+The tier of continuous backups mode on the Cosmos DB account. Accepted values: Continuous7Days, Continuous30Days, Continuous35Days
 
 ```yaml
 Type: System.String
