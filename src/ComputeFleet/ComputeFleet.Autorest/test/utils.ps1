@@ -51,6 +51,22 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Cleanup is handled by AfterAll in each test suite
+    # Sanitize recording files to remove secrets
+    Invoke-RecordingSanitizer
+}
+
+# Sanitizes all .Recording.json files in the test directory to remove sensitive data
+function Invoke-RecordingSanitizer {
+    $testFolder = Join-Path $PSScriptRoot '.'
+    Get-ChildItem -Path $testFolder -Filter '*.Recording.json' | ForEach-Object {
+        $content = Get-Content $_.FullName -Raw
+        # Handle both escaped JSON strings (\"adminPassword\": \"...\") and plain JSON ("adminPassword": "...")
+        $sanitized = $content -replace '(\\?"adminPassword\\?"\s*:\s*\\?")[^"\\]*(\\?")', '${1}[Sanitized]${2}'
+        if ($content -ne $sanitized) {
+            Set-Content -Path $_.FullName -Value $sanitized -NoNewline
+            Write-Host -ForegroundColor Yellow "Sanitized secrets in $($_.Name)"
+        }
+    }
 }
 
 # Creates a resource group with VNet, subnet, and NSG. Returns a hashtable with SubnetId and NsgId.
