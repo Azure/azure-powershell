@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// </param>
 
         /// <param name="profileStatus">The status of the Traffic Manager profile.
-        /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="dnsConfig">The DNS settings of the Traffic Manager profile.
         /// </param>
@@ -50,9 +50,13 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// <param name="monitorConfig">The endpoint monitoring settings of the Traffic Manager profile.
         /// </param>
 
+        /// <param name="recordType">When record type is set, a traffic manager profile will allow only
+        /// endpoints that match this type.
+        /// Possible values include: &#39;A&#39;, &#39;AAAA&#39;, &#39;CNAME&#39;</param>
+
         /// <param name="trafficRoutingMethod">The traffic routing method of the Traffic Manager profile.
-        /// Possible values include: 'Performance', 'Priority', 'Weighted',
-        /// 'Geographic', 'MultiValue', 'Subnet'</param>
+        /// Possible values include: &#39;Performance&#39;, &#39;Priority&#39;, &#39;Weighted&#39;,
+        /// &#39;Geographic&#39;, &#39;MultiValue&#39;, &#39;Subnet&#39;</param>
 
         /// <param name="endpoints">The list of endpoints in the Traffic Manager profile.
         /// </param>
@@ -60,20 +64,21 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// <param name="trafficViewEnrollmentStatus">Indicates whether Traffic View is &#39;Enabled&#39; or &#39;Disabled&#39; for the Traffic
         /// Manager profile. Null, indicates &#39;Disabled&#39;. Enabling this feature will
         /// increase the cost of the Traffic Manage profile.
-        /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="allowedEndpointRecordTypes">The list of allowed endpoint record types.
         /// </param>
 
         /// <param name="maxReturn">Maximum number of endpoints to be returned for MultiValue routing type.
         /// </param>
-        public Profile(string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string location = default(string), string profileStatus = default(string), DnsConfig dnsConfig = default(DnsConfig), MonitorConfig monitorConfig = default(MonitorConfig), string trafficRoutingMethod = default(string), System.Collections.Generic.IList<Endpoint> endpoints = default(System.Collections.Generic.IList<Endpoint>), string trafficViewEnrollmentStatus = default(string), System.Collections.Generic.IList<string> allowedEndpointRecordTypes = default(System.Collections.Generic.IList<string>), long? maxReturn = default(long?))
+        public Profile(string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string location = default(string), string profileStatus = default(string), DnsConfig dnsConfig = default(DnsConfig), MonitorConfig monitorConfig = default(MonitorConfig), string recordType = default(string), string trafficRoutingMethod = default(string), System.Collections.Generic.IList<Endpoint> endpoints = default(System.Collections.Generic.IList<Endpoint>), string trafficViewEnrollmentStatus = default(string), System.Collections.Generic.IList<string> allowedEndpointRecordTypes = default(System.Collections.Generic.IList<string>), long? maxReturn = default(long?))
 
         : base(id, name, type, tags, location)
         {
             this.ProfileStatus = profileStatus;
             this.DnsConfig = dnsConfig;
             this.MonitorConfig = monitorConfig;
+            this.RecordType = recordType;
             this.TrafficRoutingMethod = trafficRoutingMethod;
             this.Endpoints = endpoints;
             this.TrafficViewEnrollmentStatus = trafficViewEnrollmentStatus;
@@ -106,6 +111,13 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.monitorConfig")]
         public MonitorConfig MonitorConfig {get; set; }
+
+        /// <summary>
+        /// Gets or sets when record type is set, a traffic manager profile will allow
+        /// only endpoints that match this type. Possible values include: &#39;A&#39;, &#39;AAAA&#39;, &#39;CNAME&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.recordType")]
+        public string RecordType {get; set; }
 
         /// <summary>
         /// Gets or sets the traffic routing method of the Traffic Manager profile. Possible values include: &#39;Performance&#39;, &#39;Priority&#39;, &#39;Weighted&#39;, &#39;Geographic&#39;, &#39;MultiValue&#39;, &#39;Subnet&#39;

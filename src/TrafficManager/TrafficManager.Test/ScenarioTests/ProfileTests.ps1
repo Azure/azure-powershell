@@ -745,3 +745,67 @@ function Test-AddAndRemoveExpectedStatusCodeRanges
         TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
     }
 }
+
+<#
+.SYNOPSIS
+Create profile with RecordType and verify it is returned
+#>
+function Test-ProfileCrudWithRecordType
+{
+	$profileName = getAssetName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$relativeName = getAssetName
+
+	try
+	{
+	$createdProfile = New-AzTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" -ProfileStatus "Enabled" -RecordType "A"
+
+	Assert-NotNull $createdProfile
+	Assert-AreEqual $profileName $createdProfile.Name
+	Assert-AreEqual $resourceGroup.ResourceGroupName $createdProfile.ResourceGroupName
+	Assert-AreEqual "A" $createdProfile.RecordType
+
+	$retrievedProfile = Get-AzTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+
+	Assert-NotNull $retrievedProfile
+	Assert-AreEqual $profileName $retrievedProfile.Name
+	Assert-AreEqual "A" $retrievedProfile.RecordType
+
+	Assert-True { Remove-AzTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force }
+	}
+    finally
+    {
+        # Cleanup
+        TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
+    }
+}
+
+<#
+.SYNOPSIS
+Create profile with RecordType and verify changing RecordType fails
+#>
+function Test-ProfileChangeRecordTypeShouldFail
+{
+	$profileName = getAssetName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$relativeName = getAssetName
+
+	try
+	{
+	$createdProfile = New-AzTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" -ProfileStatus "Enabled" -RecordType "A"
+
+	Assert-NotNull $createdProfile
+	Assert-AreEqual "A" $createdProfile.RecordType
+
+	$createdProfile.RecordType = "AAAA"
+
+	Assert-Throws { Set-AzTrafficManagerProfile -TrafficManagerProfile $createdProfile }
+
+	Assert-True { Remove-AzTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force }
+	}
+    finally
+    {
+        # Cleanup
+        TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
+    }
+}

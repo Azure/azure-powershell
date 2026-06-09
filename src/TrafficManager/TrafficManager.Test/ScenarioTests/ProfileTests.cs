@@ -176,5 +176,19 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AddAndRemoveExpectedStatusCodeRanges");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileCrudWithRecordType()
+        {
+            TestRunner.RunTestScript("Test-ProfileCrudWithRecordType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileChangeRecordTypeShouldFail()
+        {
+            TestRunner.RunTestScript("Test-ProfileChangeRecordTypeShouldFail");
+        }
     }
 }

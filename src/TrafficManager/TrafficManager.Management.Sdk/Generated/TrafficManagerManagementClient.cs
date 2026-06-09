@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Management.TrafficManager
         public string ApiVersion { get; private set; }
 
         /// <summary>
-        /// The ID of the target subscription.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        public string SubscriptionId { get; set;}
+        public System.Guid SubscriptionId { get; set;}
 
         /// <summary>
         /// The preferred language for the response.
@@ -46,21 +46,17 @@ namespace Microsoft.Azure.Management.TrafficManager
 
         /// <summary>
         /// The retry timeout in seconds for Long Running Operations. Default
-        /// value is 30.
+        /// /// value is 30.
         /// </summary>
         public int? LongRunningOperationRetryTimeout { get; set;}
 
         /// <summary>
-        /// Whether a unique x-ms-client-request-id should be generated. When 
-        /// set to true a unique x-ms-client-request-id value is generated and 
-        /// included in each request. Default is true.
+        /// Whether a unique x-ms-client-request-id should be generated. When
+        /// /// set to true a unique x-ms-client-request-id value is generated and
+        /// /// included in each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set;}
 
-        /// <summary>
-        /// Gets the IEndpointsOperations
-        /// </summary>
-        public virtual IEndpointsOperations Endpoints { get; private set; }
         /// <summary>
         /// Gets the IProfilesOperations
         /// </summary>
@@ -70,13 +66,17 @@ namespace Microsoft.Azure.Management.TrafficManager
         /// </summary>
         public virtual IGeographicHierarchiesOperations GeographicHierarchies { get; private set; }
         /// <summary>
-        /// Gets the IHeatMapOperations
-        /// </summary>
-        public virtual IHeatMapOperations HeatMap { get; private set; }
-        /// <summary>
         /// Gets the ITrafficManagerUserMetricsKeysOperations
         /// </summary>
         public virtual ITrafficManagerUserMetricsKeysOperations TrafficManagerUserMetricsKeys { get; private set; }
+        /// <summary>
+        /// Gets the IEndpointsOperations
+        /// </summary>
+        public virtual IEndpointsOperations Endpoints { get; private set; }
+        /// <summary>
+        /// Gets the IHeatMapOperations
+        /// </summary>
+        public virtual IHeatMapOperations HeatMap { get; private set; }
         /// <summary>
         /// Initializes a new instance of the TrafficManagerManagementClient class.
         /// </summary>
@@ -281,6 +281,9 @@ namespace Microsoft.Azure.Management.TrafficManager
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
         /// </param>
+        /// <param name='handlers'>
+        /// Optional. The delegating handlers to add to the http client pipeline.
+        /// </param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -312,13 +315,13 @@ namespace Microsoft.Azure.Management.TrafficManager
         /// </summary>
         private void Initialize()
         {
-            this.Endpoints = new EndpointsOperations(this);
             this.Profiles = new ProfilesOperations(this);
             this.GeographicHierarchies = new GeographicHierarchiesOperations(this);
-            this.HeatMap = new HeatMapOperations(this);
             this.TrafficManagerUserMetricsKeys = new TrafficManagerUserMetricsKeysOperations(this);
+            this.Endpoints = new EndpointsOperations(this);
+            this.HeatMap = new HeatMapOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2022-04-01";
+            this.ApiVersion = "2024-04-01-preview";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

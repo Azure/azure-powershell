@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
 
         /// <param name="endpointStatus">The status of the endpoint. If the endpoint is Enabled, it is probed for
         /// endpoint health and is included in the traffic routing method.
-        /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="weight">The weight of this endpoint when using the &#39;Weighted&#39; traffic routing
         /// method. Possible values are from 1 to 1000.
@@ -52,8 +52,8 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
         /// </param>
 
         /// <param name="endpointMonitorStatus">The monitoring status of the endpoint.
-        /// Possible values include: 'CheckingEndpoint', 'Online', 'Degraded',
-        /// 'Disabled', 'Inactive', 'Stopped', 'Unmonitored'</param>
+        /// Possible values include: &#39;CheckingEndpoint&#39;, &#39;Online&#39;, &#39;Degraded&#39;,
+        /// &#39;Disabled&#39;, &#39;Inactive&#39;, &#39;Stopped&#39;, &#39;Unmonitored&#39;</param>
 
         /// <param name="minChildEndpoints">The minimum number of endpoints that must be available in the child profile
         /// in order for the parent profile to be considered available. Only applicable
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.TrafficManager.Models
 
         /// <param name="alwaysServe">If Always Serve is enabled, probing for endpoint health will be disabled
         /// and endpoints will be included in the traffic routing method.
-        /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
         public EndpointProperties(string targetResourceId = default(string), string target = default(string), string endpointStatus = default(string), long? weight = default(long?), long? priority = default(long?), string endpointLocation = default(string), string endpointMonitorStatus = default(string), long? minChildEndpoints = default(long?), long? minChildEndpointsIPv4 = default(long?), long? minChildEndpointsIPv6 = default(long?), System.Collections.Generic.IList<string> geoMapping = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<EndpointPropertiesSubnetsItem> subnets = default(System.Collections.Generic.IList<EndpointPropertiesSubnetsItem>), System.Collections.Generic.IList<EndpointPropertiesCustomHeadersItem> customHeaders = default(System.Collections.Generic.IList<EndpointPropertiesCustomHeadersItem>), string alwaysServe = default(string))
 
         {

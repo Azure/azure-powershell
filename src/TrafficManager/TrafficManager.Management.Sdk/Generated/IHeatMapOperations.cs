@@ -26,10 +26,12 @@ namespace Microsoft.Azure.Management.TrafficManager
         /// The name of the Traffic Manager profile.
         /// </param>
         /// <param name='topLeft'>
-        /// The top left latitude,longitude pair of the rectangular viewport to query for.
+        /// The top left latitude,longitude pair of the rectangular viewport to query
+        /// for.
         /// </param>
         /// <param name='botRight'>
-        /// The bottom right latitude,longitude pair of the rectangular viewport to query for.
+        /// The bottom right latitude,longitude pair of the rectangular viewport to
+        /// query for.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
