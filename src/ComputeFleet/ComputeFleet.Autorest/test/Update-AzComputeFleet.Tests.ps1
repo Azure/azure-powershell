@@ -15,42 +15,85 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzComputeFleet'))
 }
 
 Describe 'Update-AzComputeFleet' {
-    # All tests are skipped due to a known cmdlet bug.
-    # Update-AzComputeFleet does a read-modify-write (GET → merge → PUT), but the
-    # serialization of computeProfile during the PUT differs from the original, causing:
-    # "[PropertyChangeNotAllowed] : Changing property 'properties.computeProfile' is not allowed."
-    # Use Set-AzComputeFleet (full PUT with all properties) as a workaround.
 
-    It 'UpdateExpanded' -Skip {
-        # Known bug: Update-AzComputeFleet does a read-modify-write (GET → merge → PUT), but
-        # the serialization of computeProfile during the PUT differs from the original,
-        # causing: "[PropertyChangeNotAllowed] : Changing property 'properties.computeProfile' is not allowed."
+    BeforeAll {
+        $resourceGroupName = "fleet-update-test-rg2"
+        $vnetName = "vnet"
+        $nsgName = "nsg"
+        $fleetName = "update-fleet"
+        $fleetIdentityName = "update-fleet-identity"
+
+        if ($TestMode -ne 'playback') {
+            $result = New-TestResourceGroup -ResourceGroupName $resourceGroupName `
+                -Location $env.Location -VNetName $vnetName -NsgName $nsgName
+            $subnetId = $result.SubnetId
+            $nsgId = $result.NsgId
+        } else {
+            $subnetId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet1"
+            $nsgId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test/providers/Microsoft.Network/networkSecurityGroups/nsg"
+        }
+
+        # Create fleets for each test
+        $vmProfile = New-TestVmProfile -SubnetId $subnetId -NsgId $nsgId
+        $vmSize = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VMSizeProfile]::new()
+        $vmSize.Name = "Standard_D2s_v3"
+
+        New-AzComputeFleet -Name $fleetName `
+            -ResourceGroupName $resourceGroupName `
+            -SubscriptionId $env.SubscriptionId `
+            -Location $env.Location `
+            -ComputeProfileBaseVirtualMachineProfile $vmProfile `
+            -ComputeProfileComputeApiVersion "2024-03-01" `
+            -VMSizesProfile @($vmSize) `
+            -RegularPriorityProfileCapacity 2 `
+            -RegularPriorityProfileAllocationStrategy "LowestPrice" `
+
+        New-AzComputeFleet -Name $fleetIdentityName `
+            -ResourceGroupName $resourceGroupName `
+            -SubscriptionId $env.SubscriptionId `
+            -Location $env.Location `
+            -ComputeProfileBaseVirtualMachineProfile $vmProfile `
+            -ComputeProfileComputeApiVersion "2024-03-01" `
+            -VMSizesProfile @($vmSize) `
+            -RegularPriorityProfileCapacity 2 `
+            -RegularPriorityProfileAllocationStrategy "LowestPrice" `
+    }
+
+    It 'UpdateExpanded' {
         {
             $fleet = Update-AzComputeFleet -Name $fleetName `
                 -ResourceGroupName $resourceGroupName `
                 -SubscriptionId $env.SubscriptionId `
-                -RegularPriorityProfileCapacity 2
+                -RegularPriorityProfileCapacity 5 `
+                -ComputeProfileBaseVirtualMachineProfile $vmProfile `
+                -ComputeProfileComputeApiVersion "2024-03-01" `
 
             $fleet.Name | Should -Be $fleetName
             $fleet.ProvisioningState | Should -Be "Succeeded"
-            $fleet.RegularPriorityProfileCapacity | Should -Be 2
+            $fleet.RegularPriorityProfileCapacity | Should -Be 5
         } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' -Skip {
-        # Known bug: Same as UpdateExpanded - computeProfile serialization mismatch on PUT.
+    It 'UpdateViaIdentityExpanded' {
         {
             $existingFleet = Get-AzComputeFleet -Name $fleetIdentityName `
                 -ResourceGroupName $resourceGroupName `
                 -SubscriptionId $env.SubscriptionId
 
             $fleet = Update-AzComputeFleet -InputObject $existingFleet `
-                -RegularPriorityProfileCapacity 3
+                -ComputeProfileBaseVirtualMachineProfile $vmProfile `
+                -ComputeProfileComputeApiVersion "2024-03-01" `
+                -RegularPriorityProfileCapacity 6 `
 
             $fleet.Name | Should -Be $fleetIdentityName
             $fleet.ProvisioningState | Should -Be "Succeeded"
-            $fleet.RegularPriorityProfileCapacity | Should -Be 3
+            $fleet.RegularPriorityProfileCapacity | Should -Be 6
         } | Should -Not -Throw
     }
 
+    AfterAll {
+        if ($TestMode -ne 'playback') {
+            Remove-AzResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue -Confirm:$false
+        }
+    }
 }
