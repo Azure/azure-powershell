@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added Cross region restore support for Delos cloud regions
 
 ## Version 7.12.0
 * Added ChangeSafety Support
