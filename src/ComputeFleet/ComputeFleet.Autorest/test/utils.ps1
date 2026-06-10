@@ -31,6 +31,7 @@ function Start-TestSleep {
 }
 
 $env = @{}
+$vmAdminPassword = [System.Guid]::NewGuid().ToString()
 if ($UsePreviousConfigForRecord) {
     $previousEnv = Get-Content (Join-Path $PSScriptRoot 'env.json') | ConvertFrom-Json
     $previousEnv.psobject.properties | Foreach-Object { $env[$_.Name] = $_.Value }
@@ -125,7 +126,7 @@ function Get-BaseVmProfileJson {
         }
         osProfile = @{
             adminUsername      = "testadmin"
-            adminPassword      = "TestP@ss1234!"
+            adminPassword      = $vmAdminPassword
             computerNamePrefix = $VmNamePrefix
         }
         networkProfile = @{
@@ -182,7 +183,7 @@ function New-TestVmProfile {
     $osProfile = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VirtualMachineScaleSetOSProfile]::new()
     $osProfile.AdminUsername = "testadmin"
     $osProfile.ComputerNamePrefix = $VmNamePrefix
-    $osProfile.AdminPassword = ConvertTo-SecureString "TestP@ss1234!" -AsPlainText -Force
+    $osProfile.AdminPassword = ConvertTo-SecureString $vmAdminPassword -AsPlainText -Force
 
     $ipConfig = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VirtualMachineScaleSetIPConfiguration]::new()
     $ipConfig.Name = "ipconfig1"

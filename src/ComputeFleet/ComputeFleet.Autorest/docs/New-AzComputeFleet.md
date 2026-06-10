@@ -56,7 +56,7 @@ $resourceGroupName = "myResourceGroup"
 $location = "eastus"
 $fleetName = "fleet1"
 $vmNamePrefix = "fleet1prefix"
-$adminPassword = ConvertTo-SecureString "YourPassword123!" -AsPlainText -Force
+$adminPassword = Read-Host "Enter admin password" -AsSecureString
 
 $subnetId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet1"
 $nsgId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/nsg"
