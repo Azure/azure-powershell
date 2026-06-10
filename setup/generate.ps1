@@ -96,6 +96,10 @@ if( -not $noBuildNumber ) {
     }
 }
 
+Set-Service -Name msiserver -StartupType Manual
+Start-Service msiserver
+Get-Service msiserver  # confirm it's running
+
 # prepare include files 
 $archs |% {
     $arch = $_
