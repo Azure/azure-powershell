@@ -27,6 +27,8 @@
 * Upgraded `Microsoft.Identity.Client.Broker` dependency from 4.83.1 to 4.83.3.
 
 ## Version 6.0.0
+
+## Version 5.5.0
 * Added Service Principal support for SSH certificate generation in 'SshCredentialFactory'
 * Upgraded `Azure.Identity` dependency to 1.17.2.
 * Added ChangeSafety Support

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 7.2.0
 * Added ChangeSafety Support
 
 ## Version 7.1.2
