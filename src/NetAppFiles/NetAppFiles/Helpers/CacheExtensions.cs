@@ -60,7 +60,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 OriginClusterInformation = props.OriginClusterInformation?.ConvertToPs(),
                 CifsChangeNotifications = props.CifsChangeNotifications,
                 GlobalFileLocking = props.GlobalFileLocking,
-                WriteBack = props.WriteBack
+                WriteBack = props.WriteBack,
+                FileAccessLogs = props.FileAccessLogs,
+                
             };
         }
 

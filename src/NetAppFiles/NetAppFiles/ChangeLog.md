@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Added ChangeSafety Support
+* Added FileAccessLogs to PSNetAppFilesCache ouput
 * Added Breaking Change notifications to Subvolume cmdlets in Az.NetAppFiles
 * Added Breaking Change notifications to New-AzNetAppFilesVolume for the EnableSubvolume parameter
 * Improved PowerShell rendering of `Get-AzNetAppFilesCache` output by introducing dedicated PS types for `MountTargets`, `SmbSettings`, and `OriginClusterInformation` so their members display correctly with `Format-List`, `Format-Custom`, and `ConvertTo-Json`.

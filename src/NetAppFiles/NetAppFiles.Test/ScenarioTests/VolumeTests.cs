@@ -60,7 +60,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
             TestRunner.RunTestScript("Test-VolumePipelines");
         }
 
-        [Fact]
+        //[Fact]
+        [Fact(Skip = "Requires AFEC not currently active")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVolumeResetCifsOnNfsVolume()
         {
