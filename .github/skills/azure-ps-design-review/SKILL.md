@@ -5,7 +5,7 @@ metadata:
   version: "1.0.0"
 description: "Conversational agent that guides developers through creating complete Azure PowerShell cmdlet design specifications. Walks through an interactive interview covering service release details, contacts, scenarios, cmdlet syntax, parameter sets, piping, test cases, and spec links. Validates against PowerShell design guidelines, pre-populates fields from TypeSpec, and files the design as a GitHub Issue in Azure/azure-powershell-cmdlet-review-pr. USE FOR: 'create PowerShell design', 'PS design review', 'cmdlet design', 'PowerShell cmdlet review', 'submit PS design'. DO NOT USE FOR: SDK generation, TypeSpec authoring, releasing packages."
 compatibility:
-  requires: "GitHub MCP Server for issue creation in Azure/azure-powershell-cmdlet-review-pr; TypeSpec files in the current repo for pre-population"
+  requires: "GitHub MCP Server access to the TypeSpec PR (e.g., Azure/azure-rest-api-specs) for pre-population; write access to Azure/azure-powershell-cmdlet-review-pr for issue creation"
 ---
 
 # Azure PowerShell Cmdlet Design Review
