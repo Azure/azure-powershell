@@ -26,10 +26,26 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
         /// <param name="enabled">Whether to enable the egress gateway.
         /// </param>
-        public IstioEgressGateway(bool enabled)
+
+        /// <param name="name">Name of the Istio add-on egress gateway.
+        /// </param>
+
+        /// <param name="namespaceProperty">Namespace that the Istio add-on egress gateway should be deployed in. If
+        /// unspecified, the default is aks-istio-egress.
+        /// </param>
+
+        /// <param name="gatewayConfigurationName">Name of the gateway configuration custom resource for the Istio add-on
+        /// egress gateway. Must be specified when enabling the Istio egress gateway.
+        /// Must be deployed in the same namespace that the Istio egress gateway will
+        /// be deployed in.
+        /// </param>
+        public IstioEgressGateway(bool enabled, string name, string namespaceProperty = default(string), string gatewayConfigurationName = default(string))
 
         {
             this.Enabled = enabled;
+            this.Name = name;
+            this.NamespaceProperty = namespaceProperty;
+            this.GatewayConfigurationName = gatewayConfigurationName;
             CustomInit();
         }
 
@@ -44,6 +60,28 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "enabled")]
         public bool Enabled {get; set; }
+
+        /// <summary>
+        /// Gets or sets name of the Istio add-on egress gateway.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
+        public string Name {get; set; }
+
+        /// <summary>
+        /// Gets or sets namespace that the Istio add-on egress gateway should be
+        /// deployed in. If unspecified, the default is aks-istio-egress.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "namespace")]
+        public string NamespaceProperty {get; set; }
+
+        /// <summary>
+        /// Gets or sets name of the gateway configuration custom resource for the
+        /// Istio add-on egress gateway. Must be specified when enabling the Istio
+        /// egress gateway. Must be deployed in the same namespace that the Istio
+        /// egress gateway will be deployed in.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "gatewayConfigurationName")]
+        public string GatewayConfigurationName {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -52,7 +90,19 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </exception>
         public virtual void Validate()
         {
-            //Nothing to validate
+            if (this.Name == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Name");
+            }
+            if (this.Name != null)
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(this.Name, "[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*"))
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "Name", "[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*");
+                }
+            }
+
+
         }
     }
 }

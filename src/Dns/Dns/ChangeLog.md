@@ -22,6 +22,8 @@
     - New `-TrafficManagerProfileId` parameter on `New-AzDnsRecordSet`
     - `Get-AzDnsRecordSet` returns the `TrafficManagerProfileId` property
     - `Set-AzDnsRecordSet` round-trips the `TrafficManagerProfileId` property via the `DnsRecordSet` object
+
+## Version 2.1.0
 * Added ChangeSafety Support
 
 ## Version 2.0.0

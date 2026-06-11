@@ -15,25 +15,85 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzComputeFleet'))
 }
 
 Describe 'Update-AzComputeFleet' {
-    It 'Update' {
+
+    BeforeAll {
+        $resourceGroupName = "fleet-update-test-rg2"
+        $vnetName = "vnet"
+        $nsgName = "nsg"
+        $fleetName = "update-fleet"
+        $fleetIdentityName = "update-fleet-identity"
+
+        if ($TestMode -ne 'playback') {
+            $result = New-TestResourceGroup -ResourceGroupName $resourceGroupName `
+                -Location $env.Location -VNetName $vnetName -NsgName $nsgName
+            $subnetId = $result.SubnetId
+            $nsgId = $result.NsgId
+        } else {
+            $subnetId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test/providers/Microsoft.Network/virtualNetworks/vnet/subnets/subnet1"
+            $nsgId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test/providers/Microsoft.Network/networkSecurityGroups/nsg"
+        }
+
+        # Create fleets for each test
+        $vmProfile = New-TestVmProfile -SubnetId $subnetId -NsgId $nsgId
+        $vmSize = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.VMSizeProfile]::new()
+        $vmSize.Name = "Standard_D2s_v3"
+
+        New-AzComputeFleet -Name $fleetName `
+            -ResourceGroupName $resourceGroupName `
+            -SubscriptionId $env.SubscriptionId `
+            -Location $env.Location `
+            -ComputeProfileBaseVirtualMachineProfile $vmProfile `
+            -ComputeProfileComputeApiVersion "2024-03-01" `
+            -VMSizesProfile @($vmSize) `
+            -RegularPriorityProfileCapacity 2 `
+            -RegularPriorityProfileAllocationStrategy "LowestPrice" `
+
+        New-AzComputeFleet -Name $fleetIdentityName `
+            -ResourceGroupName $resourceGroupName `
+            -SubscriptionId $env.SubscriptionId `
+            -Location $env.Location `
+            -ComputeProfileBaseVirtualMachineProfile $vmProfile `
+            -ComputeProfileComputeApiVersion "2024-03-01" `
+            -VMSizesProfile @($vmSize) `
+            -RegularPriorityProfileCapacity 2 `
+            -RegularPriorityProfileAllocationStrategy "LowestPrice" `
+    }
+
+    It 'UpdateExpanded' {
         {
-            $fleet = Get-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -FleetName $env.FleetName
-            $securedPassword = ConvertTo-SecureString -AsPlainText "[Sanitized]" -Force
-            $fleet.ComputeProfileBaseVirtualMachineProfile.OSProfileAdminPassword = $securedPassword
-            $fleet.AcceleratorCountMax = 3
-            $fleet = Update-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -FleetName $env.FleetName -Resource $fleet
-            $fleet.AcceleratorCountMax | Should -Be 3
+            $fleet = Update-AzComputeFleet -Name $fleetName `
+                -ResourceGroupName $resourceGroupName `
+                -SubscriptionId $env.SubscriptionId `
+                -RegularPriorityProfileCapacity 5 `
+                -ComputeProfileBaseVirtualMachineProfile $vmProfile `
+                -ComputeProfileComputeApiVersion "2024-03-01" `
+
+            $fleet.Name | Should -Be $fleetName
+            $fleet.ProvisioningState | Should -Be "Succeeded"
+            $fleet.RegularPriorityProfileCapacity | Should -Be 5
         } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentity' {
+    It 'UpdateViaIdentityExpanded' {
         {
-            $fleet = Get-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -FleetName $env.FleetName
-            $securedPassword = ConvertTo-SecureString -AsPlainText "[Sanitized]" -Force
-            $fleet.ComputeProfileBaseVirtualMachineProfile.OSProfileAdminPassword = $securedPassword
-            $fleet.MemoryInGiBMax = 500
-            $fleet = Update-AzComputeFleet -InputObject $fleet -Resource $fleet
-            $fleet.MemoryInGiBMax | Should -Be 500
+            $existingFleet = Get-AzComputeFleet -Name $fleetIdentityName `
+                -ResourceGroupName $resourceGroupName `
+                -SubscriptionId $env.SubscriptionId
+
+            $fleet = Update-AzComputeFleet -InputObject $existingFleet `
+                -ComputeProfileBaseVirtualMachineProfile $vmProfile `
+                -ComputeProfileComputeApiVersion "2024-03-01" `
+                -RegularPriorityProfileCapacity 6 `
+
+            $fleet.Name | Should -Be $fleetIdentityName
+            $fleet.ProvisioningState | Should -Be "Succeeded"
+            $fleet.RegularPriorityProfileCapacity | Should -Be 6
         } | Should -Not -Throw
+    }
+
+    AfterAll {
+        if ($TestMode -ne 'playback') {
+            Remove-AzResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue -Confirm:$false
+        }
     }
 }
