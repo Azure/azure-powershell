@@ -7,13 +7,19 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 {
 
     /// <summary>
-    /// Defines values for IpFamily.
+    /// Defines values for IPFamily.
     /// </summary>
 
 
-    public static class IpFamily
+    public static class IPFamily
     {
+        /// <summary>
+        /// IPv4 family
+        /// </summary>
         public const string IPv4 = "IPv4";
+        /// <summary>
+        /// IPv6 family
+        /// </summary>
         public const string IPv6 = "IPv6";
     }
 }

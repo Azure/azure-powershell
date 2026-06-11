@@ -35,13 +35,19 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
         /// <param name="trustedCa">Alternative CA cert to use for connecting to proxy servers.
         /// </param>
-        public ManagedClusterHttpProxyConfig(string httpProxy = default(string), string httpsProxy = default(string), System.Collections.Generic.IList<string> noProxy = default(System.Collections.Generic.IList<string>), string trustedCa = default(string))
+
+        /// <param name="enabled">Whether to enable HTTP proxy. If disabled, the specified proxy
+        /// configuration will be not be set on pods and nodes. If not specified, the
+        /// default is true.
+        /// </param>
+        public ManagedClusterHttpProxyConfig(string httpProxy = default(string), string httpsProxy = default(string), System.Collections.Generic.IList<string> noProxy = default(System.Collections.Generic.IList<string>), string trustedCa = default(string), bool? enabled = default(bool?))
 
         {
             this.HttpProxy = httpProxy;
             this.HttpsProxy = httpsProxy;
             this.NoProxy = noProxy;
             this.TrustedCa = trustedCa;
+            this.Enabled = enabled;
             CustomInit();
         }
 
@@ -74,5 +80,13 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "trustedCa")]
         public string TrustedCa {get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to enable HTTP proxy. If disabled, the specified proxy
+        /// configuration will be not be set on pods and nodes. If not specified, the
+        /// default is true.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enabled")]
+        public bool? Enabled {get; set; }
     }
 }

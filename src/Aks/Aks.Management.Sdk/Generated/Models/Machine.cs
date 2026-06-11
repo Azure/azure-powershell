@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     /// may be visible here but not in kubectl get nodes; if so it may be because
     /// the machine has not been registered with the Kubernetes API Server yet.
     /// </summary>
-    public partial class Machine : SubResource
+    public partial class Machine : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the Machine class.
@@ -26,27 +26,32 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Initializes a new instance of the Machine class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">The name of the resource that is unique within a resource group. This name
-        /// can be used to access the resource.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="zones">The Availability zone in which machine is located.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="properties">The properties of the machine
         /// </param>
-        public Machine(string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), MachineProperties properties = default(MachineProperties))
 
-        : base(id, name, type)
+        /// <param name="zones">The Availability zone in which machine is located.
+        /// </param>
+        public Machine(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), MachineProperties properties = default(MachineProperties), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>))
+
+        : base(id, name, type, systemData)
         {
-            this.Zones = zones;
             this.Properties = properties;
+            this.Zones = zones;
             CustomInit();
         }
 
@@ -57,15 +62,15 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
 
         /// <summary>
+        /// Gets or sets the properties of the machine
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
+        public MachineProperties Properties {get; set; }
+
+        /// <summary>
         /// Gets the Availability zone in which machine is located.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "zones")]
         public System.Collections.Generic.IList<string> Zones {get; private set; }
-
-        /// <summary>
-        /// Gets the properties of the machine
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
-        public MachineProperties Properties {get; private set; }
     }
 }
