@@ -15,4 +15,8 @@
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
+  <!-- Preview-branch-only: inject preview AssemblyVersion at build time so AssemblyInfo.cs can stay aligned with main. Self-disables if the targets file is absent. -->
+  <Import Project="$(MSBuildThisFileDirectory)..\PreviewOverlay\PreviewAssemblyVersion.targets"
+          Condition="Exists('$(MSBuildThisFileDirectory)..\PreviewOverlay\PreviewAssemblyVersion.targets')" />
+
 </Project>
