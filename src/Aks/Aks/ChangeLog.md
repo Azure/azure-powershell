@@ -18,10 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added ChangeSafety Support
 * Added support for `AzureContainerLinux` OS SKU in `New-AzAksCluster` (`-NodeOsSKU`) and `New-AzAksNodePool` (`-OsSKU`)
     - Azure Container Linux is a container-optimized, immutable Linux OS for AKS node images. See https://aka.ms/azurecontainerlinux
 * Bumped API version to 2026-03-01
+* Added ChangeSafety Support
 
 ## Version 7.1.2
 * Set `useAADAuth` to `true` by default in the omsagent addon profile when enabling the Monitoring addon via `Enable-AzAksAddOn` and `New-AzAksCluster`
