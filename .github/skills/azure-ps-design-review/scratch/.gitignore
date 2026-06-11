@@ -1,0 +1,3 @@
+# Keep this directory but ignore scratch files created during design interviews
+*
+!.gitignore
