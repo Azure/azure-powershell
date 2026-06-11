@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 11.6.0
 * Added ChangeSafety Support
 * Added `-ZonalPlatformFaultDomainAlignMode` to `New-AzVmssConfig`, `New-AzVmss` (SimpleParameterSet), and `Update-AzVmss` cmdlets.
 * Added `-OsDiskStorageFaultDomainAlignment` parameter to `Set-AzVmssStorageProfile` cmdlet.
