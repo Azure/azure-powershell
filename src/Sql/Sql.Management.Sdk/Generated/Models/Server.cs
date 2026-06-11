@@ -106,8 +106,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="createMode">Create mode for server, only valid values for this are Normal and Restore.
-        /// Possible values include: &#39;Normal&#39;, &#39;ServerMigrationV1&#39;,
-        /// &#39;DatabaseMigrationV1&#39;, &#39;ServerMigration&#39;, &#39;Standby&#39;, &#39;Restore&#39;</param>
+        /// Possible values include: &#39;Normal&#39;, &#39;Restore&#39;</param>
         public Server(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ResourceIdentity identity = default(ResourceIdentity), string kind = default(string), string administratorLogin = default(string), string administratorLoginPassword = default(string), string version = default(string), string state = default(string), string fullyQualifiedDomainName = default(string), System.Collections.Generic.IList<ServerPrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<ServerPrivateEndpointConnection>), string minimalTlsVersion = default(string), string publicNetworkAccess = default(string), string workspaceFeature = default(string), string primaryUserAssignedIdentityId = default(string), System.Guid? federatedClientId = default(System.Guid?), string keyId = default(string), ServerExternalAdministrator administrators = default(ServerExternalAdministrator), string restrictOutboundNetworkAccess = default(string), string isIPv6Enabled = default(string), string externalGovernanceStatus = default(string), int? retentionDays = default(int?), string createMode = default(string))
 
         : base(location, id, name, type, tags)
@@ -271,7 +270,7 @@ namespace Microsoft.Azure.Management.Sql.Models
 
         /// <summary>
         /// Gets or sets create mode for server, only valid values for this are Normal
-        /// and Restore. Possible values include: &#39;Normal&#39;, &#39;ServerMigrationV1&#39;, &#39;DatabaseMigrationV1&#39;, &#39;ServerMigration&#39;, &#39;Standby&#39;, &#39;Restore&#39;
+        /// and Restore. Possible values include: &#39;Normal&#39;, &#39;Restore&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.createMode")]
         public string CreateMode {get; set; }

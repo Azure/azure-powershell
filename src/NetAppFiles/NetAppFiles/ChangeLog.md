@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.3.0
+* Added ChangeSafety Support
+
 ## Version 1.2.0
 * Updated to API version 2026-01-01
 * Added new cmdlets for the Buckets resource (alias `Anf*` for Azure NetApp Files):

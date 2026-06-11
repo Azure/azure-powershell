@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.0
+* Added ChangeSafety Support
+* [Preannounced breaking changes](https://go.microsoft.com/fwlink/?linkid=2333229)
+
 ## Version 1.0.0
 * General availability for module Az.DataMigration
 * Upgraded Data Migration API to stable version '2025-06-30'.

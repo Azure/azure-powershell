@@ -26,3 +26,20 @@ DatasourceType            ObjectType
 
 This command removes weekly retention rule if it exists in given backup policy.
 
+### Example 3: Add an OperationalStore retention rule to an AzureBlob policy
+```powershell
+$pol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureBlob
+$opLifecycle = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore OperationalStore -SourceRetentionDurationType Days -SourceRetentionDurationCount 30
+Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $pol -Name Default_OperationalStore -LifeCycles $opLifecycle -IsDefault $true
+```
+
+```output
+DatasourceType                                  ObjectType
+--------------                                  ----------
+{Microsoft.Storage/storageAccounts/blobServices} BackupPolicy
+```
+
+For AzureBlob, OperationalStore retention rules **must** be named `Default_OperationalStore`. The rule is added additively — the existing `Default` (Vault) retention rule on the policy template is preserved.
+
+Note: passing `-Name Default` with an OperationalStore lifecycle now errors out (it was previously the buggy `-OverwriteLifeCycle $true`/`$false` patterns that produced a duplicate-`Default` rule).
+
