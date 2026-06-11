@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ComputeFleet
-online version: https://learn.microsoft.com/powershell/module/az.computefleet/update-azcomputefleet
+online version: https://learn.microsoft.com/powershell/module/az.computefleet/set-azcomputefleet
 schema: 2.0.0
 ---
 
-# Update-AzComputeFleet
+# Set-AzComputeFleet
 
 ## SYNOPSIS
 Update a Fleet
@@ -14,7 +14,7 @@ Update a Fleet
 
 ### UpdateExpanded (Default)
 ```
-Update-AzComputeFleet -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Set-AzComputeFleet -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-AdditionalLocationProfile <ILocationProfile[]>] [-AdditionalVirtualMachineCapabilityHibernationEnabled]
  [-AdditionalVirtualMachineCapabilityUltraSsdEnabled] [-CapacityType <String>]
  [-ComputeProfileBaseVirtualMachineProfile <IBaseVirtualMachineProfile>]
@@ -32,23 +32,17 @@ Update-AzComputeFleet -Name <String> -ResourceGroupName <String> [-SubscriptionI
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### UpdateViaJsonFilePath
 ```
-Update-AzComputeFleet -InputObject <IComputeFleetIdentity> [-AdditionalLocationProfile <ILocationProfile[]>]
- [-AdditionalVirtualMachineCapabilityHibernationEnabled] [-AdditionalVirtualMachineCapabilityUltraSsdEnabled]
- [-CapacityType <String>] [-ComputeProfileBaseVirtualMachineProfile <IBaseVirtualMachineProfile>]
- [-ComputeProfileComputeApiVersion <String>] [-ComputeProfilePlatformFaultDomainCount <Int32>]
- [-EnableSystemAssignedIdentity <Boolean?>] [-Mode <String>] [-PlanName <String>] [-PlanProduct <String>]
- [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
- [-RegularPriorityProfileAllocationStrategy <String>] [-RegularPriorityProfileCapacity <Int32>]
- [-RegularPriorityProfileMinCapacity <Int32>] [-SpotPriorityProfileAllocationStrategy <String>]
- [-SpotPriorityProfileCapacity <Int32>] [-SpotPriorityProfileEvictionPolicy <String>]
- [-SpotPriorityProfileMaintain] [-SpotPriorityProfileMaxPricePerVM <Single>]
- [-SpotPriorityProfileMinCapacity <Int32>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-VMAttribute <IVMAttributes>] [-VMNamePrefix <String>] [-VMSizesProfile <IVMSizeProfile[]>]
- [-Zone <String[]>] [-ZoneAllocationPolicyDistributionStrategy <String>]
- [-ZoneAllocationPolicyZonePreference <IZonePreference[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzComputeFleet -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Set-AzComputeFleet -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,36 +50,43 @@ Update a Fleet
 
 ## EXAMPLES
 
-### Example 1: Update tags on a Compute Fleet using Update
+### Example 1: Update tags on a Managed mode Compute Fleet
 ```powershell
-Update-AzComputeFleet -Name "fleet5-001" -ResourceGroupName "MY-FLEET-RG-001" `
-    -Tag @{ EnableVMManagementPolicy = "true"; environment = "staging" } | Select-Object Name, Tag, ProvisioningState
+Set-AzComputeFleet -Name "fleet5-001" -ResourceGroupName "MY-FLEET-RG-001" `
+    -Location "eastus2euap" `
+    -Tag @{ EnableVMManagementPolicy = "true"; environment = "test" } | Select-Object Name, Location, Mode, Tag, ProvisioningState
 ```
 
 ```output
 Name              : fleet5-001
+Location          : eastus2euap
+Mode              : Managed
 Tag               : {
                       "EnableVMManagementPolicy": "true",
-                      "environment": "staging"
+                      "environment": "test"
                     }
 ProvisioningState : Succeeded
 ```
 
-Updates the tags on a Managed mode Compute Fleet. The `Update-AzComputeFleet` cmdlet performs a read-modify-write operation — it fetches the existing fleet, merges only the properties you specify, and PUTs the result back. This means unspecified properties retain their existing values.
+Updates the tags on an existing Managed mode Compute Fleet using a full PUT operation. Only `-Location` is required in addition to the fleet identity parameters. Properties not specified (such as `computeProfile`) are not sent in the request body. Note that `computeProfile` is immutable and must not be included when updating an existing fleet.
 
-### Example 2: Update Spot capacity via pipeline input
+### Example 2: Update Spot priority capacity on a Managed mode Compute Fleet
 ```powershell
-Get-AzComputeFleet -Name "fleet5-001" -ResourceGroupName "MY-FLEET-RG-001" | Update-AzComputeFleet `
-    -SpotPriorityProfileCapacity 8 | Select-Object Name, SpotPriorityProfileCapacity, ProvisioningState
+Set-AzComputeFleet -Name "fleet5-001" -ResourceGroupName "MY-FLEET-RG-001" `
+    -Location "eastus2euap" `
+    -SpotPriorityProfileCapacity 10 `
+    -SpotPriorityProfileAllocationStrategy "LowestPrice" `
+    -SpotPriorityProfileEvictionPolicy "Delete" `
+    -Tag @{ EnableVMManagementPolicy = "true" } | Select-Object Name, SpotPriorityProfileCapacity, ProvisioningState
 ```
 
 ```output
-Name                        : fleet5-001
-SpotPriorityProfileCapacity : 8
-ProvisioningState           : Succeeded
+Name              : fleet5-001
+SpotPriorityProfileCapacity : 10
+ProvisioningState : Succeeded
 ```
 
-Retrieves an existing Compute Fleet and pipes it to `Update-AzComputeFleet` using the `-InputObject` parameter set. Only the Spot priority capacity is changed; all other properties are preserved from the existing fleet. Note that `computeProfile` is immutable and cannot be changed after fleet creation.
+Uses `Set-AzComputeFleet` to replace the fleet configuration with updated Spot priority capacity. Since this is a PUT operation, any mutable properties not specified will be reset to defaults. Immutable properties like `computeProfile` must not be included.
 
 ## PARAMETERS
 
@@ -94,7 +95,7 @@ The list of location profiles.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ILocationProfile[]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -109,7 +110,7 @@ The flag that enables or disables hibernation capability on the VM.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -124,7 +125,7 @@ The flag that enables or disables a capability to have one or more managed data 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -155,7 +156,7 @@ Once set during Fleet creation, it cannot be updated.Specifying different capaci
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -170,7 +171,7 @@ Base Virtual Machine Profile Properties to be specified according to "specificat
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IBaseVirtualMachineProfile
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -185,7 +186,7 @@ Specifies the Microsoft.Compute API version to use when creating underlying Virt
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -200,7 +201,7 @@ Specifies the number of fault domains to use when creating the underlying VMSS.A
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -231,7 +232,7 @@ Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -241,18 +242,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
+### -JsonFilePath
+Path of Json file supplied to the Update operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+The geo-location where the resource lives
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -261,7 +292,7 @@ Mode of the Fleet.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -276,7 +307,7 @@ The name of the Compute Fleet
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases: FleetName
 
 Required: True
@@ -306,7 +337,7 @@ A user defined name of the 3rd Party Artifact that is being procured.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -324,7 +355,7 @@ Product maps to the OfferID specified for the artifact at the time of Data Marke
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -339,7 +370,7 @@ A publisher provided promotion code as provisioned in Data Market for the said p
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -356,7 +387,7 @@ NewRelic
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -371,7 +402,7 @@ The version of the desired product/artifact.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -386,7 +417,7 @@ Allocation strategy to follow when determining the VM sizes distribution for Reg
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -402,7 +433,7 @@ It is currently in terms of number of VMs.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -418,7 +449,7 @@ If we will not be able to "guarantee" minimum capacity, we will reject the reque
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -434,7 +465,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -449,7 +480,7 @@ Allocation strategy to follow when determining the VM sizes distribution for Spo
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -465,7 +496,7 @@ It is currently in terms of number of VMs.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -480,7 +511,7 @@ Eviction Policy to follow when evicting Spot VMs.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -495,7 +526,7 @@ Flag to enable/disable continuous goal seeking for the desired capacity and rest
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -510,7 +541,7 @@ Price per hour of each Spot VM will never exceed this.
 
 ```yaml
 Type: System.Single
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -526,7 +557,7 @@ If we will not be able to "guarantee" minimum capacity, we will reject the reque
 
 ```yaml
 Type: System.Int32
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -542,7 +573,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -557,7 +588,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -573,7 +604,7 @@ The elements in array will be ARM resource ids in the form: '/subscriptions/{sub
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -588,7 +619,7 @@ Attribute based Fleet.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMAttributes
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -604,7 +635,7 @@ Can be used only with Launch mode.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -619,7 +650,7 @@ List of VM sizes supported for Compute Fleet
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMSizeProfile[]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -634,7 +665,7 @@ Zones in which the Compute Fleet is available
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -649,7 +680,7 @@ Distribution strategy used for zone allocation policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -664,7 +695,7 @@ Zone preferences, required when zone distribution strategy is Prioritized.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference[]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -709,8 +740,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetIdentity
 
 ## OUTPUTS
 
