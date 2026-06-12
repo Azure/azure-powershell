@@ -23,18 +23,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
     /// <summary>
     /// Cmdlet to preview changes for creating a Management Group Deployment Stack.
     /// </summary>
-    [Cmdlet("New", AzureRMConstants.AzureRMPrefix + "ManagementGroupDeploymentStackWhatIf",
-        DefaultParameterSetName = ParameterlessTemplateFileParameterSetName)]
+    [Cmdlet("New", AzureRMConstants.AzureRMPrefix + "ManagementGroupDeploymentStackWhatIfResult",
+        DefaultParameterSetName = ParameterlessTemplateFileParameterSetName, SupportsShouldProcess = true)]
     [OutputType(typeof(PSDeploymentStackWhatIfResult))]
-    public class NewAzManagementGroupDeploymentStackWhatIf : DeploymentStackWhatIfCreateCmdlet
+    public class NewAzManagementGroupDeploymentStackWhatIf : DeploymentStackWhatIfCmdlet
     {
         #region Cmdlet Parameters
 
-        [Alias("StackName")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the DeploymentStack to preview changes for.")]
+            HelpMessage = "The name of the WhatIf result resource.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The fully-qualified resource ID of the deployment stack to use as the basis for comparison.")]
+        [ValidateNotNullOrEmpty]
+        public string StackResourceId { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The interval to persist the WhatIf result in ISO 8601 format (e.g. P1D for 1 day).")]
+        [ValidateNotNullOrEmpty]
+        public string RetentionInterval { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The ID of the target management group.")]
@@ -47,7 +56,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
         public string Location { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Description for the stack.")]
+            HelpMessage = "Description for the WhatIf result.")]
         public string Description { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The scope for the deployment stack. Determines where managed resources can be deployed.")]
@@ -69,6 +78,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
         [Parameter(Mandatory = false, HelpMessage = "Apply to child scopes.")]
         public SwitchParameter DenySettingsApplyToChildScopes { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Validation level. Possible values: Template, Provider, ProviderNoRbac.")]
+        public string ValidationLevel { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Debug setting detail level (e.g. RequestContent, ResponseContent).")]
+        public string DebugSettingDetailLevel { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Flag to bypass stack out-of-sync error.")]
+        public SwitchParameter BypassStackOutOfSyncError { get; set; }
+
         #endregion
 
         #region Cmdlet Implementation
@@ -82,6 +100,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
             return new PSDeploymentStackWhatIfParameters
             {
                 StackName = Name,
+                StackResourceId = StackResourceId,
+                RetentionInterval = RetentionInterval,
                 ManagementGroupId = ManagementGroupId,
                 Location = Location,
                 TemplateFile = TemplateFile,
@@ -98,7 +118,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
                 DenySettingsMode = DenySettingsMode.ToString(),
                 DenySettingsExcludedPrincipals = DenySettingsExcludedPrincipal,
                 DenySettingsExcludedActions = DenySettingsExcludedAction,
-                DenySettingsApplyToChildScopes = DenySettingsApplyToChildScopes.IsPresent
+                DenySettingsApplyToChildScopes = DenySettingsApplyToChildScopes.IsPresent,
+                ValidationLevel = ValidationLevel,
+                DebugSettingDetailLevel = DebugSettingDetailLevel,
+                BypassStackOutOfSyncError = BypassStackOutOfSyncError.IsPresent
             };
         }
 

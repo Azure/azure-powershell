@@ -16,20 +16,42 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
 {
     using System;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
     using Microsoft.Azure.Commands.ResourceManager.Common;
 
     /// <summary>
     /// Deletes an existing WhatIf result for a Subscription Deployment Stack.
     /// </summary>
-    [Cmdlet("Remove", AzureRMConstants.AzureRMPrefix + "SubscriptionDeploymentStackWhatIf",
-        SupportsShouldProcess = true)]
+    [Cmdlet("Remove", AzureRMConstants.AzureRMPrefix + "SubscriptionDeploymentStackWhatIfResult",
+        SupportsShouldProcess = true, DefaultParameterSetName = RemoveByNameParameterSetName), OutputType(typeof(bool))]
     public class RemoveAzSubscriptionDeploymentStackWhatIf : DeploymentStacksCmdletBase
     {
-        [Alias("StackName")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the DeploymentStack WhatIf result to delete.")]
+        internal const string RemoveByResourceIdParameterSetName = "RemoveByResourceId";
+        internal const string RemoveByNameParameterSetName = "RemoveByName";
+        internal const string RemoveByInputObjectParameterSetName = "RemoveByInputObject";
+
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            ParameterSetName = RemoveByNameParameterSetName,
+            HelpMessage = "The name of the WhatIf result to delete.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Alias("Id")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+            ParameterSetName = RemoveByResourceIdParameterSetName,
+            HelpMessage = "The fully-qualified resource ID of the WhatIf result to delete.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true,
+            ParameterSetName = RemoveByInputObjectParameterSetName,
+            HelpMessage = "The WhatIf result PS object.")]
+        [ValidateNotNullOrEmpty]
+        public PSDeploymentStackWhatIfResult InputObject { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "If set, a boolean will be returned with value dependent on cmdlet success.")]
+        public SwitchParameter PassThru { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -38,12 +60,33 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
         {
             try
             {
+                if (InputObject != null)
+                {
+                    ResourceId = InputObject.Id;
+                }
+
+                // Resolve Name if ResourceId was provided
+                Name = Name ?? ResourceIdUtility.GetDeploymentName(ResourceId);
+
+                if (Name == null)
+                {
+                    throw new PSArgumentException($"Provided Id '{ResourceId}' is not in correct form. Should be in form " +
+                        "/subscriptions/<subid>/providers/Microsoft.Resources/deploymentStacksWhatIfResults/<name>");
+                }
+
                 ConfirmAction(
                     Force.IsPresent,
                     $"Are you sure you want to delete WhatIf result '{Name}' in the current subscription?",
                     "Delete",
                     Name,
-                    () => DeploymentStacksSdkClient.DeleteSubscriptionDeploymentStackWhatIfResult(Name));
+                    () =>
+                    {
+                        DeploymentStacksSdkClient.DeleteSubscriptionDeploymentStackWhatIfResult(Name);
+                        if (PassThru.IsPresent)
+                        {
+                            WriteObject(true);
+                        }
+                    });
             }
             catch (Exception ex)
             {

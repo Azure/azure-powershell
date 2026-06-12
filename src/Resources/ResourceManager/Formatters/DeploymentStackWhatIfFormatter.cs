@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
     using System.Linq;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Formatter for Deployment Stack What-If operation results.
@@ -158,7 +159,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             bool printed = false;
             int titleIndex = this.builder.GetCurrentIndex();
 
-            if (this.whatIfChanges.DeploymentScopeChange != null)
+            if (this.whatIfChanges.DeploymentScopeChange != null &&
+                !IsNullNoChange(this.whatIfChanges.DeploymentScopeChange))
             {
                 if (FormatPrimitiveChange(this.whatIfChanges.DeploymentScopeChange, "DeploymentScope"))
                 {
@@ -360,7 +362,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             {
                 foreach (var delta in resourceChange.ResourceConfigurationChanges.Delta)
                 {
-                    FormatPrimitiveChange(delta, delta.Path);
+                    if (string.Equals(delta.ChangeType, "Array", StringComparison.OrdinalIgnoreCase))
+                    {
+                        FormatArrayChange(delta, delta.Path);
+                    }
+                    else
+                    {
+                        FormatPrimitiveChange(delta, delta.Path);
+                    }
                 }
             }
 
@@ -388,7 +397,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                 ? resourceChange.Id
                 : $"{resourceChange.Type} {FormatExtResourceIdentifiers(resourceChange.Identifiers)}";
 
-            this.builder.AppendLine(resourceId, color);
+            // Source API version from top-level apiVersion, or fall back to resourceConfigurationChanges.after
+            string apiVersion = resourceChange.ApiVersion;
+            if (string.IsNullOrEmpty(apiVersion) && resourceChange.ResourceConfigurationChanges?.After is JObject afterObj)
+            {
+                apiVersion = afterObj["apiVersion"]?.ToString();
+            }
+
+            string heading = !string.IsNullOrEmpty(apiVersion)
+                ? $"{resourceId} [{apiVersion}]"
+                : resourceId;
+
+            this.builder.AppendLine(heading, color);
         }
 
         private bool FormatResourceDeletionsSummary(List<DeploymentStackResourceChange> resourceChangesSorted)
@@ -497,6 +517,35 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             }
 
             return true;
+        }
+
+        private static bool IsNullValue(object value)
+        {
+            if (value == null)
+            {
+                return true;
+            }
+
+            if (value is JToken token)
+            {
+                return token.Type == JTokenType.Null;
+            }
+
+            return false;
+        }
+
+        private static bool IsNullNoChange(DeploymentStackChangeBase change)
+        {
+            if (change == null)
+            {
+                return true;
+            }
+
+            bool isNoChange = change.ChangeType == null ||
+                string.Equals(change.ChangeType, "NoChange", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(change.ChangeType, "NoEffect", StringComparison.OrdinalIgnoreCase);
+
+            return isNoChange && IsNullValue(change.Before) && IsNullValue(change.After);
         }
 
         private static string FormatValue(object value)

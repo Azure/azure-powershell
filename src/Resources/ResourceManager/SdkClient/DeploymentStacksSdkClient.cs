@@ -1185,7 +1185,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return JsonConvert.DeserializeObject<PSDeploymentStackWhatIfResult>(json);
         }
 
-        public PSDeploymentStackWhatIfResult GetResourceGroupDeploymentStackWhatIfResult(string resourceGroupName, string stackName, bool withPropertyChanges = false)
+        public PSDeploymentStackWhatIfResult GetResourceGroupDeploymentStackWhatIfResult(string resourceGroupName, string stackName, bool withPropertyChanges = false, bool throwIfNotExists = true)
         {
             try
             {
@@ -1197,9 +1197,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             catch (Exception ex)
             {
                 if (ex is ErrorResponseException dex)
+                {
+                    if (dex.Response.StatusCode == System.Net.HttpStatusCode.NotFound && !throwIfNotExists)
+                    {
+                        return null;
+                    }
+
                     throw new PSArgumentException(dex.Body?.Error?.Message ?? dex.Message);
+                }
                 throw;
             }
+        }
+
+        public PSDeploymentStackWhatIfResult GetResourceGroupDeploymentStackWhatIfResultWithPropertyChanges(string resourceGroupName, string stackName)
+        {
+            return GetResourceGroupDeploymentStackWhatIfResult(resourceGroupName, stackName, withPropertyChanges: true);
         }
 
         public IList<PSDeploymentStackWhatIfResult> ListResourceGroupDeploymentStackWhatIfResults(string resourceGroupName)
@@ -1239,7 +1251,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        public PSDeploymentStackWhatIfResult GetSubscriptionDeploymentStackWhatIfResult(string stackName, bool withPropertyChanges = false)
+        public PSDeploymentStackWhatIfResult GetSubscriptionDeploymentStackWhatIfResult(string stackName, bool withPropertyChanges = false, bool throwIfNotExists = true)
         {
             try
             {
@@ -1251,9 +1263,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             catch (Exception ex)
             {
                 if (ex is ErrorResponseException dex)
+                {
+                    if (dex.Response.StatusCode == System.Net.HttpStatusCode.NotFound && !throwIfNotExists)
+                    {
+                        return null;
+                    }
+
                     throw new PSArgumentException(dex.Body?.Error?.Message ?? dex.Message);
+                }
                 throw;
             }
+        }
+
+        public PSDeploymentStackWhatIfResult GetSubscriptionDeploymentStackWhatIfResultWithPropertyChanges(string stackName)
+        {
+            return GetSubscriptionDeploymentStackWhatIfResult(stackName, withPropertyChanges: true);
         }
 
         public IList<PSDeploymentStackWhatIfResult> ListSubscriptionDeploymentStackWhatIfResults()
@@ -1293,7 +1317,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        public PSDeploymentStackWhatIfResult GetManagementGroupDeploymentStackWhatIfResult(string managementGroupId, string stackName, bool withPropertyChanges = false)
+        public PSDeploymentStackWhatIfResult GetManagementGroupDeploymentStackWhatIfResult(string managementGroupId, string stackName, bool withPropertyChanges = false, bool throwIfNotExists = true)
         {
             try
             {
@@ -1305,9 +1329,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             catch (Exception ex)
             {
                 if (ex is ErrorResponseException dex)
+                {
+                    if (dex.Response.StatusCode == System.Net.HttpStatusCode.NotFound && !throwIfNotExists)
+                    {
+                        return null;
+                    }
+
                     throw new PSArgumentException(dex.Body?.Error?.Message ?? dex.Message);
+                }
                 throw;
             }
+        }
+
+        public PSDeploymentStackWhatIfResult GetManagementGroupDeploymentStackWhatIfResultWithPropertyChanges(string managementGroupId, string stackName)
+        {
+            return GetManagementGroupDeploymentStackWhatIfResult(managementGroupId, stackName, withPropertyChanges: true);
         }
 
         public IList<PSDeploymentStackWhatIfResult> ListManagementGroupDeploymentStackWhatIfResults(string managementGroupId)

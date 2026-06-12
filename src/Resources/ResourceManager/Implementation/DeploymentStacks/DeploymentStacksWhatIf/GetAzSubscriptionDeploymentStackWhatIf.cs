@@ -16,29 +16,39 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
 {
     using System;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
     using Microsoft.Azure.Commands.ResourceManager.Common;
 
     /// <summary>
     /// Gets or lists existing WhatIf results for a Subscription Deployment Stack.
     /// </summary>
-    [Cmdlet("Get", AzureRMConstants.AzureRMPrefix + "SubscriptionDeploymentStackWhatIf",
+    [Cmdlet("Get", AzureRMConstants.AzureRMPrefix + "SubscriptionDeploymentStackWhatIfResult",
         DefaultParameterSetName = ListParameterSetName)]
     [OutputType(typeof(PSDeploymentStackWhatIfResult))]
     public class GetAzSubscriptionDeploymentStackWhatIf : DeploymentStacksCmdletBase
     {
         internal const string GetByNameParameterSetName = "GetByName";
+        internal const string GetByResourceIdParameterSetName = "GetByResourceId";
         internal const string ListParameterSetName = "List";
 
-        [Alias("StackName")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             ParameterSetName = GetByNameParameterSetName,
-            HelpMessage = "The name of the DeploymentStack WhatIf result to get.")]
+            HelpMessage = "The name of the WhatIf result to get.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false,
-            HelpMessage = "If specified, calls the WhatIf POST endpoint to retrieve the result with property changes populated.")]
+        [Alias("Id")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+            ParameterSetName = GetByResourceIdParameterSetName,
+            HelpMessage = "The fully-qualified resource ID of the WhatIf result to get.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = GetByNameParameterSetName,
+            HelpMessage = "If set, returns the WhatIf result with resource property changes (delta) populated.")]
+        [Parameter(Mandatory = false, ParameterSetName = GetByResourceIdParameterSetName,
+            HelpMessage = "If set, returns the WhatIf result with resource property changes (delta) populated.")]
         public SwitchParameter WithPropertyChanges { get; set; }
 
         protected override void OnProcessRecord()
@@ -47,8 +57,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
             {
                 switch (ParameterSetName)
                 {
+                    case GetByResourceIdParameterSetName:
+                        var name = ResourceIdUtility.GetDeploymentName(ResourceId);
+                        if (string.IsNullOrEmpty(name))
+                        {
+                            throw new PSArgumentException($"Provided ResourceId '{ResourceId}' is not in correct form. Should be in form " +
+                                "/subscriptions/<subid>/providers/Microsoft.Resources/deploymentStacksWhatIfResults/<name>");
+                        }
+                        WriteObject(WithPropertyChanges.IsPresent
+                            ? DeploymentStacksSdkClient.GetSubscriptionDeploymentStackWhatIfResultWithPropertyChanges(name)
+                            : DeploymentStacksSdkClient.GetSubscriptionDeploymentStackWhatIfResult(name));
+                        break;
                     case GetByNameParameterSetName:
-                        WriteObject(DeploymentStacksSdkClient.GetSubscriptionDeploymentStackWhatIfResult(Name, WithPropertyChanges.IsPresent));
+                        WriteObject(WithPropertyChanges.IsPresent
+                            ? DeploymentStacksSdkClient.GetSubscriptionDeploymentStackWhatIfResultWithPropertyChanges(Name)
+                            : DeploymentStacksSdkClient.GetSubscriptionDeploymentStackWhatIfResult(Name));
                         break;
                     case ListParameterSetName:
                         WriteObject(DeploymentStacksSdkClient.ListSubscriptionDeploymentStackWhatIfResults(), true);

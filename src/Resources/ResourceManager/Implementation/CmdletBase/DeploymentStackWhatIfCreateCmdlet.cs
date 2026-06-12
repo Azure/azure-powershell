@@ -21,8 +21,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
     /// <summary>
     /// Base class for Deployment Stack What-If cmdlets.
     /// </summary>
-    public abstract class DeploymentStackWhatIfCreateCmdlet : DeploymentStacksCreateCmdletBase
+    public abstract class DeploymentStackWhatIfCmdlet : DeploymentStacksCreateCmdletBase
     {
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation when an existing WhatIf result will be overwritten.")]
+        public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background.")]
+        public SwitchParameter AsJob { get; set; }
+
         /// <summary>
         /// It's important not to call this function more than once during an invocation, as it can call the Bicep CLI.
         /// This is slow, and can also cause diagnostics to be emitted multiple times.
@@ -31,13 +37,57 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
 
         protected override void OnProcessRecord()
         {
-            PSDeploymentStackWhatIfResult whatIfResult = this.ExecuteWhatIf();
+            var parameters = this.BuildWhatIfParameters();
 
-            // The ToString() method on PSDeploymentStackWhatIfResult calls the formatter
-            this.WriteObject(whatIfResult);
+            // Check if a WhatIf result already exists for this name/scope
+            PSDeploymentStackWhatIfResult existing = null;
+            try
+            {
+                if (!string.IsNullOrEmpty(parameters.ResourceGroupName))
+                {
+                    existing = DeploymentStacksSdkClient.GetResourceGroupDeploymentStackWhatIfResult(
+                        parameters.ResourceGroupName, parameters.StackName, throwIfNotExists: false);
+                }
+                else if (!string.IsNullOrEmpty(parameters.ManagementGroupId))
+                {
+                    existing = DeploymentStacksSdkClient.GetManagementGroupDeploymentStackWhatIfResult(
+                        parameters.ManagementGroupId, parameters.StackName, throwIfNotExists: false);
+                }
+                else
+                {
+                    existing = DeploymentStacksSdkClient.GetSubscriptionDeploymentStackWhatIfResult(
+                        parameters.StackName, throwIfNotExists: false);
+                }
+            }
+            catch
+            {
+                // Any other error during existence check is non-fatal.
+                existing = null;
+            }
+
+            Action executeAction = () =>
+            {
+                PSDeploymentStackWhatIfResult whatIfResult = this.ExecuteWhatIf(parameters);
+                // The ToString() method on PSDeploymentStackWhatIfResult calls the formatter
+                this.WriteObject(whatIfResult);
+            };
+
+            if (existing != null)
+            {
+                ConfirmAction(
+                    Force.IsPresent,
+                    $"A WhatIf result '{parameters.StackName}' already exists. Overwriting it will replace any existing changes.",
+                    "Overwrite WhatIf result",
+                    parameters.StackName,
+                    executeAction);
+            }
+            else
+            {
+                executeAction();
+            }
         }
 
-        protected PSDeploymentStackWhatIfResult ExecuteWhatIf()
+        protected PSDeploymentStackWhatIfResult ExecuteWhatIf(PSDeploymentStackWhatIfParameters parameters)
         {
             const string statusMessage = "Getting the latest status of all resources...";
             var clearMessage = new string(' ', statusMessage.Length);
@@ -50,7 +100,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
                 // Write status message.
                 this.WriteInformation(information, tags);
 
-                var parameters = this.BuildWhatIfParameters();
                 var whatIfResult = DeploymentStacksSdkClient.ExecuteDeploymentStackWhatIf(parameters);
 
                 // Clear status before returning result.

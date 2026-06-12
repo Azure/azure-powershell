@@ -1906,611 +1906,668 @@ function Test-SaveAndRemoveManagementGroupDeploymentStackWithPipeOperator
 	}
 }
 
-
 #### Resource Group Scoped WhatIf ####
 
 <#
 .SYNOPSIS
-Tests New operation on WhatIf results at the RG scope across all parameter sets.
+Tests New (create) operation on WhatIf results at the RG scope.
 #>
-function Test-NewResourceGroupDeploymentStackWhatIf
+function Test-NewResourceGroupDeploymentStackWhatIfResult
 {
-    $rgname = Get-ResourceGroupName
-    $rname = Get-ResourceName
-    $rglocation = "West Central US"
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = "West Central US"
 
-    try
-    {
-        New-AzResourceGroup -Name $rgname -Location $rglocation
+	try
+	{
+		New-AzResourceGroup -Name $rgname -Location $rglocation
 
-        # --- ParameterlessTemplateFileParameterSetName ---
+		# Test - Success with template file
+		$result = New-AzResourceGroupDeploymentStackWhatIfResult -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile StacksRGTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
+		Assert-NotNull $result
 
-        # Test - Success
-        $result = New-AzResourceGroupDeploymentStackWhatIf -Name $rname -ResourceGroupName $rgname -TemplateFile blankTemplate.json -ActionOnUnmanage DetachAll -DenySettingsMode None
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
+		# Test - Success with parameter object
+		$result = New-AzResourceGroupDeploymentStackWhatIfResult -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterObject @{storageAccountName = "pscmdtestsa1928273615"} -ActionOnUnmanage DetachAll -DenySettingsMode None
+		Assert-NotNull $result
 
-        # Test - Failure - template file not found
-        Assert-ThrowsContains { New-AzResourceGroupDeploymentStackWhatIf -Name $rname -ResourceGroupName $rgname -TemplateFile "missingFile142.json" -ActionOnUnmanage DetachAll -DenySettingsMode None } "missingFile142.json"
-
-        # Test - Failure - RG does not exist
-        Assert-ThrowsContains { New-AzResourceGroupDeploymentStackWhatIf -Name $rname -ResourceGroupName "badRG114172" -TemplateFile blankTemplate.json -ActionOnUnmanage DetachAll -DenySettingsMode None } "badRG114172"
-
-        # --- ParameterFileTemplateFileParameterSetName ---
-
-        # Test - Success
-        $result = New-AzResourceGroupDeploymentStackWhatIf -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile StacksRGTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-        Assert-NotNull $result.Properties.Changes
-
-        # Test - Verify provisioning state directly via Get after New
-        $getResult = Get-AzResourceGroupDeploymentStackWhatIf -ResourceGroupName $rgname -Name $rname
-        Assert-AreEqual "succeeded" $getResult.Properties.ProvisioningState
-
-        # Test - Failure - parameter file not found
-        Assert-ThrowsContains { New-AzResourceGroupDeploymentStackWhatIf -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile "missingFile145.json" -ActionOnUnmanage DetachAll -DenySettingsMode None } "missingFile145.json"
-
-        # --- ParameterObjectTemplateFileParameterSetName ---
-
-        # Test - Success
-        $result = New-AzResourceGroupDeploymentStackWhatIf -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterObject @{templateSpecName = "StacksScenarioTestSpec"} -ActionOnUnmanage DetachAll -DenySettingsMode None
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-
-        # --- ParameterlessTemplateSpecParameterSetName ---
-
-        # Create a TemplateSpec first so the ID is valid
-        $sampleTemplateJson = Get-Content -Raw -Path StacksRGTemplate.json
-        $spec = New-AzTemplateSpec -ResourceGroupName $rgname -Name $rname -Location $rglocation -Version "v1" -TemplateJson $sampleTemplateJson -Force
-        $templateSpecId = $spec.Id + "/versions/v1"
-
-        $result = New-AzResourceGroupDeploymentStackWhatIf -Name $rname -ResourceGroupName $rgname -TemplateSpecId $templateSpecId -ActionOnUnmanage DetachAll -DenySettingsMode None
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-
-        # --- DenySettings variations ---
-
-        # Test - DenyDelete mode
-        $result = New-AzResourceGroupDeploymentStackWhatIf -Name $rname -ResourceGroupName $rgname -TemplateFile blankTemplate.json -ActionOnUnmanage DetachAll -DenySettingsMode DenyDelete
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-
-        # Test - DenyDelete with ApplyToChildScopes
-        $result = New-AzResourceGroupDeploymentStackWhatIf -Name $rname -ResourceGroupName $rgname -TemplateFile blankTemplate.json -ActionOnUnmanage DetachAll -DenySettingsMode DenyDelete -DenySettingsApplyToChildScopes
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-    }
-    finally
-    {
-        Clean-ResourceGroup $rgname
-    }
+		# Test - Failure - template file not found
+		$missingFile = "missingFile142.json"
+		Assert-ThrowsContains { New-AzResourceGroupDeploymentStackWhatIfResult -Name $rname -ResourceGroupName $rgname -TemplateFile $missingFile -ActionOnUnmanage DetachAll -DenySettingsMode None } $missingFile
+	}
+	finally
+	{
+		Clean-ResourceGroup $rgname
+	}
 }
 
 <#
 .SYNOPSIS
-Tests Set operation on WhatIf results at the RG scope across all parameter sets.
+Tests Set (update) operation on WhatIf results at the RG scope.
 #>
-function Test-SetResourceGroupDeploymentStackWhatIf
+function Test-SetResourceGroupDeploymentStackWhatIfResult
 {
-    $rgname = Get-ResourceGroupName
-    $rname = Get-ResourceName
-    $rglocation = "West Central US"
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = "West Central US"
 
-    try
-    {
-        New-AzResourceGroup -Name $rgname -Location $rglocation
+	try
+	{
+		New-AzResourceGroup -Name $rgname -Location $rglocation
 
-        # Prepare
-        New-AzResourceGroupDeploymentStackWhatIf -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile StacksRGTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
+		# Create initial WhatIf result
+		$result = New-AzResourceGroupDeploymentStackWhatIfResult -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile StacksRGTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
+		Assert-NotNull $result
 
-        # --- ParameterlessTemplateFileParameterSetName (TemplatePlus: 2 resources vs 1) ---
+		# Test - Set (update) with same template
+		$updated = Set-AzResourceGroupDeploymentStackWhatIfResult -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile StacksRGTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
+		Assert-NotNull $updated
 
-        # Test - Success
-        $result = Set-AzResourceGroupDeploymentStackWhatIf -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplatePlus.json -TemplateParameterFile StacksRGTemplatePlusParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-        Assert-NotNull $result.Properties.Changes
-
-        # Test - Verify updated provisioning state directly via Get
-        $getResult = Get-AzResourceGroupDeploymentStackWhatIf -ResourceGroupName $rgname -Name $rname
-        Assert-AreEqual "succeeded" $getResult.Properties.ProvisioningState
-
-        # Test - Failure - template file not found
-        Assert-ThrowsContains { Set-AzResourceGroupDeploymentStackWhatIf -Name $rname -ResourceGroupName $rgname -TemplateFile "missingFile142.json" -ActionOnUnmanage DetachAll -DenySettingsMode None } "missingFile142.json"
-
-        # --- ParameterFileTemplateFileParameterSetName ---
-
-        # Test - Success
-        $result = Set-AzResourceGroupDeploymentStackWhatIf -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile StacksRGTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-
-        # Test - Failure - parameter file not found
-        Assert-ThrowsContains { Set-AzResourceGroupDeploymentStackWhatIf -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile "missingFile145.json" -ActionOnUnmanage DetachAll -DenySettingsMode None } "missingFile145.json"
-
-        # --- ParameterObjectTemplateFileParameterSetName ---
-
-        # Test - Success
-        $result = Set-AzResourceGroupDeploymentStackWhatIf -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterObject @{templateSpecName = "StacksScenarioTestSpec"} -ActionOnUnmanage DetachAll -DenySettingsMode None
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-
-        # --- ActionOnUnmanage variations ---
-
-        $result = Set-AzResourceGroupDeploymentStackWhatIf -Name $rname -ResourceGroupName $rgname -TemplateFile blankTemplate.json -ActionOnUnmanage DeleteResources -DenySettingsMode None
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-
-        $result = Set-AzResourceGroupDeploymentStackWhatIf -Name $rname -ResourceGroupName $rgname -TemplateFile blankTemplate.json -ActionOnUnmanage DeleteAll -DenySettingsMode None
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-    }
-    finally
-    {
-        Clean-ResourceGroup $rgname
-    }
+		# Test - Set with different ActionOnUnmanage
+		$updated = Set-AzResourceGroupDeploymentStackWhatIfResult -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile StacksRGTemplateParams.json -ActionOnUnmanage DeleteAll -DenySettingsMode None
+		Assert-NotNull $updated
+	}
+	finally
+	{
+		Clean-ResourceGroup $rgname
+	}
 }
 
 <#
 .SYNOPSIS
-Tests Get operation on WhatIf results at the RG scope.
+Tests GET (list and get-by-name) operation on WhatIf results at the RG scope.
 #>
-function Test-GetResourceGroupDeploymentStackWhatIf
+function Test-GetResourceGroupDeploymentStackWhatIfResult
 {
-    $rgname = Get-ResourceGroupName
-    $rname = Get-ResourceName
-    $rglocation = "West Central US"
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = "West Central US"
 
-    try
-    {
-        New-AzResourceGroup -Name $rgname -Location $rglocation
-        New-AzResourceGroupDeploymentStackWhatIf -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile StacksRGTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
+	try
+	{
+		New-AzResourceGroup -Name $rgname -Location $rglocation
 
-        # Test - List - contains our entry
-        $list = Get-AzResourceGroupDeploymentStackWhatIf -ResourceGroupName $rgname
-        Assert-AreNotEqual 0 $list.Count
-        Assert-True { $list.Name -contains $rname }
+		# Create a WhatIf result to get
+		New-AzResourceGroupDeploymentStackWhatIfResult -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile StacksRGTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
 
-        # Test - GetByName - correct name and provisioning state
-        $getByName = Get-AzResourceGroupDeploymentStackWhatIf -ResourceGroupName $rgname -Name $rname
-        Assert-NotNull $getByName
-        Assert-AreEqual $rname $getByName.Name
-        Assert-AreEqual "succeeded" $getByName.Properties.ProvisioningState
-        Assert-NotNull $getByName.Properties.Changes
+		# Test - List - Success
+		$list = Get-AzResourceGroupDeploymentStackWhatIfResult -ResourceGroupName $rgname
+		Assert-AreNotEqual 0 $list.Count
 
-        # Test - Failure - stack not found
-        Assert-Throws { Get-AzResourceGroupDeploymentStackWhatIf -ResourceGroupName $rgname -Name "badwhatif1928273615" }
+		# Test - GetByName - Success
+		$getByName = Get-AzResourceGroupDeploymentStackWhatIfResult -ResourceGroupName $rgname -Name $rname
+		Assert-NotNull $getByName
 
-        # Test - Failure - RG not found
-        Assert-Throws { Get-AzResourceGroupDeploymentStackWhatIf -ResourceGroupName "badRG1928273615" -Name $rname }
-    }
-    finally
-    {
-        Clean-ResourceGroup $rgname
-    }
+		# Test - GetByName - Failure - NotFound
+		$badName = "badwhatif1928273615"
+		Assert-Throws { Get-AzResourceGroupDeploymentStackWhatIfResult -ResourceGroupName $rgname -Name $badName }
+	}
+	finally
+	{
+		Clean-ResourceGroup $rgname
+	}
 }
 
 <#
 .SYNOPSIS
-Tests Remove operation on WhatIf results at the RG scope.
+Tests Remove (delete) operation on WhatIf results at the RG scope.
 #>
-function Test-RemoveResourceGroupDeploymentStackWhatIf
+function Test-RemoveResourceGroupDeploymentStackWhatIfResult
 {
-    $rgname = Get-ResourceGroupName
-    $rname = Get-ResourceName
-    $rglocation = "West Central US"
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = "West Central US"
 
-    try
-    {
-        New-AzResourceGroup -Name $rgname -Location $rglocation
-        New-AzResourceGroupDeploymentStackWhatIf -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile StacksRGTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
+	try
+	{
+		New-AzResourceGroup -Name $rgname -Location $rglocation
 
-        # Verify exists with correct provisioning state before deleting
-        $exists = Get-AzResourceGroupDeploymentStackWhatIf -ResourceGroupName $rgname -Name $rname
-        Assert-NotNull $exists
-        Assert-AreEqual "succeeded" $exists.Properties.ProvisioningState
+		# Create a WhatIf result to delete
+		New-AzResourceGroupDeploymentStackWhatIfResult -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile StacksRGTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
 
-        # Test - Remove
-        Remove-AzResourceGroupDeploymentStackWhatIf -Name $rname -ResourceGroupName $rgname -Force
+		# Test - Remove - Success
+		Remove-AzResourceGroupDeploymentStackWhatIfResult -Name $rname -ResourceGroupName $rgname -Force
 
-        # Test - Confirm deleted via list
-        $list = Get-AzResourceGroupDeploymentStackWhatIf -ResourceGroupName $rgname
-        Assert-True { -not ($list.Name -contains $rname) }
-
-        # Test - Confirm deleted via get
-        Assert-Throws { Get-AzResourceGroupDeploymentStackWhatIf -ResourceGroupName $rgname -Name $rname }
-    }
-    finally
-    {
-        Clean-ResourceGroup $rgname
-    }
+		# Test - Confirm deleted - List should not contain it
+		$list = Get-AzResourceGroupDeploymentStackWhatIfResult -ResourceGroupName $rgname
+		Assert-True { -not ($list.name -contains $rname) }
+	}
+	finally
+	{
+		Clean-ResourceGroup $rgname
+	}
 }
 
 #### Subscription Scoped WhatIf ####
 
 <#
 .SYNOPSIS
-Tests New operation on WhatIf results at the subscription scope across all parameter sets.
+Tests New (create) operation on WhatIf results at the subscription scope.
 #>
-function Test-NewSubscriptionDeploymentStackWhatIf
+function Test-NewSubscriptionDeploymentStackWhatIfResult
 {
-    $rname = Get-ResourceName
-    $location = "West Central US"
+	# Setup
+	$rname = Get-ResourceName
+	$location = "West Central US"
 
-    try
-    {
-        # --- ParameterlessTemplateFileParameterSetName ---
+	try
+	{
+		# Test - Success with template file
+		$result = New-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -Location $location -TemplateFile StacksSubTemplate.json -TemplateParameterFile StacksSubTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
+		Assert-NotNull $result
 
-        # Test - Success
-        $result = New-AzSubscriptionDeploymentStackWhatIf -Name $rname -Location $location -TemplateFile blankTemplate.json -ActionOnUnmanage DetachAll -DenySettingsMode None
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
+		# Test - Success with parameter object
+		$result = New-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -Location $location -TemplateFile StacksSubTemplate.json -TemplateParameterObject @{policyDefinitionName = "PSCmdletTestPolicy4762"} -ActionOnUnmanage DetachAll -DenySettingsMode None
+		Assert-NotNull $result
 
-        # Test - Failure - template file not found
-        Assert-ThrowsContains { New-AzSubscriptionDeploymentStackWhatIf -Name $rname -Location $location -TemplateFile "missingFile142.json" -ActionOnUnmanage DetachAll -DenySettingsMode None } "missingFile142.json"
-
-        # --- ParameterFileTemplateFileParameterSetName ---
-
-        # Test - Success
-        $result = New-AzSubscriptionDeploymentStackWhatIf -Name $rname -Location $location -TemplateFile StacksSubTemplate.json -TemplateParameterFile StacksSubTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-        Assert-NotNull $result.Properties.Changes
-
-        # Test - Verify provisioning state directly via Get after New
-        $getResult = Get-AzSubscriptionDeploymentStackWhatIf -Name $rname
-        Assert-AreEqual "succeeded" $getResult.Properties.ProvisioningState
-
-        # Test - Failure - parameter file not found
-        Assert-ThrowsContains { New-AzSubscriptionDeploymentStackWhatIf -Name $rname -Location $location -TemplateFile StacksSubTemplate.json -TemplateParameterFile "missingFile145.json" -ActionOnUnmanage DetachAll -DenySettingsMode None } "missingFile145.json"
-
-        # --- ParameterObjectTemplateFileParameterSetName ---
-
-        # Test - Success
-        $result = New-AzSubscriptionDeploymentStackWhatIf -Name $rname -Location $location -TemplateFile StacksSubTemplate.json -TemplateParameterObject @{policyDefinitionName = "PSCmdletTestPolicy4762"} -ActionOnUnmanage DetachAll -DenySettingsMode None
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-
-        # Test - Failure - invalid template content
-        Assert-ThrowsContains { New-AzSubscriptionDeploymentStackWhatIf -Name $rname -Location $location -TemplateFile StacksSubBadRGName.bicep -TemplateParameterFile StacksSubBadRGName.bicepparam -ActionOnUnmanage DetachAll -DenySettingsMode None } "The provided resource group name"
-
-        # --- DenySettings variations ---
-
-        $result = New-AzSubscriptionDeploymentStackWhatIf -Name $rname -Location $location -TemplateFile blankTemplate.json -ActionOnUnmanage DetachAll -DenySettingsMode DenyDelete
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-
-        $result = New-AzSubscriptionDeploymentStackWhatIf -Name $rname -Location $location -TemplateFile blankTemplate.json -ActionOnUnmanage DetachAll -DenySettingsMode DenyDelete -DenySettingsApplyToChildScopes
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-    }
-    finally
-    {
-        Remove-AzSubscriptionDeploymentStackWhatIf -Name $rname -Force -ErrorAction SilentlyContinue
-    }
+		# Test - Failure - template file not found
+		$missingFile = "missingFile142.json"
+		Assert-ThrowsContains { New-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -Location $location -TemplateFile $missingFile -ActionOnUnmanage DetachAll -DenySettingsMode None } $missingFile
+	}
+	finally
+	{
+		Remove-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -Force -ErrorAction SilentlyContinue
+	}
 }
 
 <#
 .SYNOPSIS
-Tests Set operation on WhatIf results at the subscription scope across all parameter sets.
+Tests Set (update) operation on WhatIf results at the subscription scope.
 #>
-function Test-SetSubscriptionDeploymentStackWhatIf
+function Test-SetSubscriptionDeploymentStackWhatIfResult
 {
-    $rname = Get-ResourceName
-    $location = "West Central US"
+	# Setup
+	$rname = Get-ResourceName
+	$location = "West Central US"
 
-    try
-    {
-        # Prepare
-        New-AzSubscriptionDeploymentStackWhatIf -Name $rname -Location $location -TemplateFile StacksSubTemplate.json -TemplateParameterFile StacksSubTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
+	try
+	{
+		# Create initial WhatIf result
+		New-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -Location $location -TemplateFile StacksSubTemplate.json -TemplateParameterFile StacksSubTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
 
-        # --- ParameterlessTemplateFileParameterSetName (SubTemplatePlus: 2 policies vs 1) ---
+		# Test - Set (update)
+		$updated = Set-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -Location $location -TemplateFile StacksSubTemplate.json -TemplateParameterFile StacksSubTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
+		Assert-NotNull $updated
 
-        # Test - Success
-        $result = Set-AzSubscriptionDeploymentStackWhatIf -Name $rname -Location $location -TemplateFile StacksSubTemplatePlus.json -TemplateParameterFile StacksSubTemplatePlusParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-        Assert-NotNull $result.Properties.Changes
-
-        # Test - Verify updated provisioning state directly via Get
-        $getResult = Get-AzSubscriptionDeploymentStackWhatIf -Name $rname
-        Assert-AreEqual "succeeded" $getResult.Properties.ProvisioningState
-
-        # Test - Failure - template file not found
-        Assert-ThrowsContains { Set-AzSubscriptionDeploymentStackWhatIf -Name $rname -Location $location -TemplateFile "missingFile142.json" -ActionOnUnmanage DetachAll -DenySettingsMode None } "missingFile142.json"
-
-        # --- ParameterFileTemplateFileParameterSetName ---
-
-        $result = Set-AzSubscriptionDeploymentStackWhatIf -Name $rname -Location $location -TemplateFile StacksSubTemplate.json -TemplateParameterFile StacksSubTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-
-        # Test - Failure - parameter file not found
-        Assert-ThrowsContains { Set-AzSubscriptionDeploymentStackWhatIf -Name $rname -Location $location -TemplateFile StacksSubTemplate.json -TemplateParameterFile "missingFile145.json" -ActionOnUnmanage DetachAll -DenySettingsMode None } "missingFile145.json"
-
-        # --- ParameterObjectTemplateFileParameterSetName ---
-
-        $result = Set-AzSubscriptionDeploymentStackWhatIf -Name $rname -Location $location -TemplateFile StacksSubTemplate.json -TemplateParameterObject @{policyDefinitionName = "PSCmdletTestPolicy4762"} -ActionOnUnmanage DetachAll -DenySettingsMode None
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-
-        # --- ActionOnUnmanage variations ---
-
-        $result = Set-AzSubscriptionDeploymentStackWhatIf -Name $rname -Location $location -TemplateFile blankTemplate.json -ActionOnUnmanage DeleteResources -DenySettingsMode None
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-
-        $result = Set-AzSubscriptionDeploymentStackWhatIf -Name $rname -Location $location -TemplateFile blankTemplate.json -ActionOnUnmanage DeleteAll -DenySettingsMode None
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-    }
-    finally
-    {
-        Remove-AzSubscriptionDeploymentStackWhatIf -Name $rname -Force -ErrorAction SilentlyContinue
-    }
+		# Test - Set with different ActionOnUnmanage
+		$updated = Set-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -Location $location -TemplateFile StacksSubTemplate.json -TemplateParameterFile StacksSubTemplateParams.json -ActionOnUnmanage DeleteAll -DenySettingsMode None
+		Assert-NotNull $updated
+	}
+	finally
+	{
+		Remove-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -Force -ErrorAction SilentlyContinue
+	}
 }
 
 <#
 .SYNOPSIS
-Tests Get operation on WhatIf results at the subscription scope.
+Tests GET (list and get-by-name) operation on WhatIf results at the subscription scope.
 #>
-function Test-GetSubscriptionDeploymentStackWhatIf
+function Test-GetSubscriptionDeploymentStackWhatIfResult
 {
-    $rname = Get-ResourceName
-    $location = "West Central US"
+	# Setup
+	$rname = Get-ResourceName
+	$location = "West Central US"
 
-    try
-    {
-        New-AzSubscriptionDeploymentStackWhatIf -Name $rname -Location $location -TemplateFile StacksSubTemplate.json -TemplateParameterFile StacksSubTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
+	try
+	{
+		# Create a WhatIf result to get
+		New-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -Location $location -TemplateFile StacksSubTemplate.json -TemplateParameterFile StacksSubTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
 
-        # Test - List - contains our entry
-        $list = Get-AzSubscriptionDeploymentStackWhatIf
-        Assert-AreNotEqual 0 $list.Count
-        Assert-True { $list.Name -contains $rname }
+		# Test - List - Success
+		$list = Get-AzSubscriptionDeploymentStackWhatIfResult
+		Assert-AreNotEqual 0 $list.Count
 
-        # Test - GetByName - correct name and provisioning state
-        $getByName = Get-AzSubscriptionDeploymentStackWhatIf -Name $rname
-        Assert-NotNull $getByName
-        Assert-AreEqual $rname $getByName.Name
-        Assert-AreEqual "succeeded" $getByName.Properties.ProvisioningState
-        Assert-NotNull $getByName.Properties.Changes
+		# Test - GetByName - Success
+		$getByName = Get-AzSubscriptionDeploymentStackWhatIfResult -Name $rname
+		Assert-NotNull $getByName
 
-        # Test - Failure - not found
-        Assert-Throws { Get-AzSubscriptionDeploymentStackWhatIf -Name "badwhatif1928273615" }
-    }
-    finally
-    {
-        Remove-AzSubscriptionDeploymentStackWhatIf -Name $rname -Force -ErrorAction SilentlyContinue
-    }
+		# Test - GetByName - Failure - NotFound
+		$badName = "badwhatif1928273615"
+		Assert-Throws { Get-AzSubscriptionDeploymentStackWhatIfResult -Name $badName }
+	}
+	finally
+	{
+		Remove-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -Force -ErrorAction SilentlyContinue
+	}
 }
 
 <#
 .SYNOPSIS
-Tests Remove operation on WhatIf results at the subscription scope.
+Tests Remove (delete) operation on WhatIf results at the subscription scope.
 #>
-function Test-RemoveSubscriptionDeploymentStackWhatIf
+function Test-RemoveSubscriptionDeploymentStackWhatIfResult
 {
-    $rname = Get-ResourceName
-    $location = "West Central US"
+	# Setup
+	$rname = Get-ResourceName
+	$location = "West Central US"
 
-    try
-    {
-        New-AzSubscriptionDeploymentStackWhatIf -Name $rname -Location $location -TemplateFile StacksSubTemplate.json -TemplateParameterFile StacksSubTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
+	try
+	{
+		# Create a WhatIf result to delete
+		New-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -Location $location -TemplateFile StacksSubTemplate.json -TemplateParameterFile StacksSubTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
 
-        # Verify exists with correct provisioning state before deleting
-        $exists = Get-AzSubscriptionDeploymentStackWhatIf -Name $rname
-        Assert-NotNull $exists
-        Assert-AreEqual "succeeded" $exists.Properties.ProvisioningState
+		# Test - Remove - Success
+		Remove-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -Force
 
-        # Test - Remove
-        Remove-AzSubscriptionDeploymentStackWhatIf -Name $rname -Force
+		# Test - Confirm deleted
+		$list = Get-AzSubscriptionDeploymentStackWhatIfResult
+		Assert-True { -not ($list.name -contains $rname) }
+	}
+	finally
+	{
+		# No cleanup needed, stack was deleted in test
+	}
+}
 
-        # Test - Confirm deleted via list
-        $list = Get-AzSubscriptionDeploymentStackWhatIf
-        Assert-True { -not ($list.Name -contains $rname) }
+#### WithPropertyChanges Tests ####
 
-        # Test - Confirm deleted via get
-        Assert-Throws { Get-AzSubscriptionDeploymentStackWhatIf -Name $rname }
-    }
-    finally
-    {
-        # No cleanup needed, deleted in test
-    }
+<#
+.SYNOPSIS
+Tests that New-AzResourceGroupDeploymentStackWhatIfResult returns property changes automatically (via WhatIf POST).
+#>
+function Test-NewResourceGroupDeploymentStackWhatIfReturnsPropertyChanges
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = "West Central US"
+
+	try
+	{
+		New-AzResourceGroup -Name $rgname -Location $rglocation
+
+		# Test - New returns result with property changes populated by default
+		$result = New-AzResourceGroupDeploymentStackWhatIfResult -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile StacksRGTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
+		Assert-NotNull $result
+		Assert-NotNull $result.Properties
+
+		# Verify output does not contain '= DeploymentScope: null'
+		$output = $result.ToString()
+		Assert-False { $output -match "= DeploymentScope: null" }
+	}
+	finally
+	{
+		Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
+Tests that New-AzSubscriptionDeploymentStackWhatIfResult returns property changes automatically (via WhatIf POST).
+#>
+function Test-NewSubscriptionDeploymentStackWhatIfReturnsPropertyChanges
+{
+	# Setup
+	$rname = Get-ResourceName
+	$location = "West Central US"
+
+	try
+	{
+		# Test - New returns result with property changes populated by default
+		$result = New-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -Location $location -TemplateFile StacksSubTemplate.json -TemplateParameterFile StacksSubTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
+		Assert-NotNull $result
+		Assert-NotNull $result.Properties
+
+		# Verify output does not contain '= DeploymentScope: null'
+		$output = $result.ToString()
+		Assert-False { $output -match "= DeploymentScope: null" }
+	}
+	finally
+	{
+		Remove-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -Force -ErrorAction SilentlyContinue
+	}
+}
+
+<#
+.SYNOPSIS
+Tests that New-AzManagementGroupDeploymentStackWhatIfResult returns property changes automatically (via WhatIf POST).
+#>
+function Test-NewManagementGroupDeploymentStackWhatIfReturnsPropertyChanges
+{
+	# Setup
+	$mgid = "AzBlueprintAssignTest"
+	$rname = Get-ResourceName
+	$location = "West Central US"
+
+	try
+	{
+		# Test - New returns result with property changes populated by default
+		$result = New-AzManagementGroupDeploymentStackWhatIfResult -Name $rname -ManagementGroupId $mgid -Location $location -TemplateFile StacksMGTemplate.json -TemplateParameterFile StacksMGTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
+		Assert-NotNull $result
+		Assert-NotNull $result.Properties
+
+		# Verify output does not contain '= DeploymentScope: null'
+		$output = $result.ToString()
+		Assert-False { $output -match "= DeploymentScope: null" }
+	}
+	finally
+	{
+		Remove-AzManagementGroupDeploymentStackWhatIfResult -Name $rname -ManagementGroupId $mgid -Force -ErrorAction SilentlyContinue
+	}
+}
+
+<#
+.SYNOPSIS
+Tests Get-AzResourceGroupDeploymentStackWhatIfResult with -WithPropertyChanges switch (calls WhatIf POST).
+#>
+function Test-GetResourceGroupDeploymentStackWhatIfWithPropertyChanges
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = "West Central US"
+
+	try
+	{
+		New-AzResourceGroup -Name $rgname -Location $rglocation
+
+		# Create a WhatIf result first
+		New-AzResourceGroupDeploymentStackWhatIfResult -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile StacksRGTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
+
+		# Test - Get without -WithPropertyChanges (uses GET, no delta)
+		$resultGet = Get-AzResourceGroupDeploymentStackWhatIfResult -ResourceGroupName $rgname -Name $rname
+		Assert-NotNull $resultGet
+
+		# Test - Get with -WithPropertyChanges (uses POST, returns delta)
+		$resultPost = Get-AzResourceGroupDeploymentStackWhatIfResult -ResourceGroupName $rgname -Name $rname -WithPropertyChanges
+		Assert-NotNull $resultPost
+		Assert-NotNull $resultPost.Properties
+
+		# Verify output does not contain '= DeploymentScope: null'
+		$output = $resultPost.ToString()
+		Assert-False { $output -match "= DeploymentScope: null" }
+	}
+	finally
+	{
+		Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
+Tests Get-AzSubscriptionDeploymentStackWhatIfResult with -WithPropertyChanges switch (calls WhatIf POST).
+#>
+function Test-GetSubscriptionDeploymentStackWhatIfWithPropertyChanges
+{
+	# Setup
+	$rname = Get-ResourceName
+	$location = "West Central US"
+
+	try
+	{
+		# Create a WhatIf result first
+		New-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -Location $location -TemplateFile StacksSubTemplate.json -TemplateParameterFile StacksSubTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
+
+		# Test - Get without -WithPropertyChanges (uses GET, no delta)
+		$resultGet = Get-AzSubscriptionDeploymentStackWhatIfResult -Name $rname
+		Assert-NotNull $resultGet
+
+		# Test - Get with -WithPropertyChanges (uses POST, returns delta)
+		$resultPost = Get-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -WithPropertyChanges
+		Assert-NotNull $resultPost
+		Assert-NotNull $resultPost.Properties
+
+		# Verify output does not contain '= DeploymentScope: null'
+		$output = $resultPost.ToString()
+		Assert-False { $output -match "= DeploymentScope: null" }
+	}
+	finally
+	{
+		Remove-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -Force -ErrorAction SilentlyContinue
+	}
+}
+
+<#
+.SYNOPSIS
+Tests Get-AzManagementGroupDeploymentStackWhatIfResult with -WithPropertyChanges switch (calls WhatIf POST).
+#>
+function Test-GetManagementGroupDeploymentStackWhatIfWithPropertyChanges
+{
+	# Setup
+	$mgid = "AzBlueprintAssignTest"
+	$rname = Get-ResourceName
+	$location = "West Central US"
+
+	try
+	{
+		# Create a WhatIf result first
+		New-AzManagementGroupDeploymentStackWhatIfResult -Name $rname -ManagementGroupId $mgid -Location $location -TemplateFile StacksMGTemplate.json -TemplateParameterFile StacksMGTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
+
+		# Test - Get without -WithPropertyChanges (uses GET, no delta)
+		$resultGet = Get-AzManagementGroupDeploymentStackWhatIfResult -ManagementGroupId $mgid -Name $rname
+		Assert-NotNull $resultGet
+
+		# Test - Get with -WithPropertyChanges (uses POST, returns delta)
+		$resultPost = Get-AzManagementGroupDeploymentStackWhatIfResult -ManagementGroupId $mgid -Name $rname -WithPropertyChanges
+		Assert-NotNull $resultPost
+		Assert-NotNull $resultPost.Properties
+
+		# Verify output does not contain '= DeploymentScope: null'
+		$output = $resultPost.ToString()
+		Assert-False { $output -match "= DeploymentScope: null" }
+	}
+	finally
+	{
+		Remove-AzManagementGroupDeploymentStackWhatIfResult -Name $rname -ManagementGroupId $mgid -Force -ErrorAction SilentlyContinue
+	}
 }
 
 #### Management Group Scoped WhatIf ####
 
 <#
 .SYNOPSIS
-Tests New operation on WhatIf results at the management group scope across all parameter sets.
+Tests New (create) operation on WhatIf results at the management group scope.
 #>
-function Test-NewManagementGroupDeploymentStackWhatIf
+function Test-NewManagementGroupDeploymentStackWhatIfResult
 {
-    $mgid = "AzBlueprintAssignTest"
-    $rname = Get-ResourceName
-    $location = "West Central US"
+	# Setup
+	$mgid = "AzBlueprintAssignTest"
+	$rname = Get-ResourceName
+	$location = "West Central US"
+	$subId = (Get-AzContext).Subscription.SubscriptionId
 
-    try
-    {
-        # --- ParameterlessTemplateFileParameterSetName ---
+	try
+	{
+		# Test - Success with template file
+		$result = New-AzManagementGroupDeploymentStackWhatIfResult -Name $rname -ManagementGroupId $mgid -Location $location -TemplateFile StacksMGTemplate.json -TemplateParameterFile StacksMGTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
+		Assert-NotNull $result
 
-        # Test - Success
-        $result = New-AzManagementGroupDeploymentStackWhatIf -Name $rname -ManagementGroupId $mgid -Location $location -TemplateFile blankTemplate.json -ActionOnUnmanage DetachAll -DenySettingsMode None
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-
-        # Test - Failure - template file not found
-        Assert-ThrowsContains { New-AzManagementGroupDeploymentStackWhatIf -Name $rname -ManagementGroupId $mgid -Location $location -TemplateFile "missingFile142.json" -ActionOnUnmanage DetachAll -DenySettingsMode None } "missingFile142.json"
-
-        # --- ParameterFileTemplateFileParameterSetName ---
-
-        # Test - Success
-        $result = New-AzManagementGroupDeploymentStackWhatIf -Name $rname -ManagementGroupId $mgid -Location $location -TemplateFile StacksMGTemplate.json -TemplateParameterFile StacksMGTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-        Assert-NotNull $result.Properties.Changes
-
-        # Test - Verify provisioning state directly via Get after New
-        $getResult = Get-AzManagementGroupDeploymentStackWhatIf -ManagementGroupId $mgid -Name $rname
-        Assert-AreEqual "succeeded" $getResult.Properties.ProvisioningState
-
-        # Test - Failure - parameter file not found
-        Assert-ThrowsContains { New-AzManagementGroupDeploymentStackWhatIf -Name $rname -ManagementGroupId $mgid -Location $location -TemplateFile StacksMGTemplate.json -TemplateParameterFile "missingFile145.json" -ActionOnUnmanage DetachAll -DenySettingsMode None } "missingFile145.json"
-
-        # --- ParameterObjectTemplateFileParameterSetName ---
-        # MG template requires subId, moduleName, and policyDefinitionName
-
-        $result = New-AzManagementGroupDeploymentStackWhatIf -Name $rname -ManagementGroupId $mgid -Location $location -TemplateFile StacksMGTemplate.json -TemplateParameterObject @{subId = "4ce8c9fe-cadc-47d6-9c76-335812fd59df"; moduleName = "stacksMGtestmod"; policyDefinitionName = "PSCmdletTestPolicy476223"} -ActionOnUnmanage DetachAll -DenySettingsMode None
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-
-        # --- DenySettings variations ---
-
-        $result = New-AzManagementGroupDeploymentStackWhatIf -Name $rname -ManagementGroupId $mgid -Location $location -TemplateFile blankTemplate.json -ActionOnUnmanage DetachAll -DenySettingsMode DenyDelete
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-
-        $result = New-AzManagementGroupDeploymentStackWhatIf -Name $rname -ManagementGroupId $mgid -Location $location -TemplateFile blankTemplate.json -ActionOnUnmanage DetachAll -DenySettingsMode DenyDelete -DenySettingsApplyToChildScopes
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-    }
-    finally
-    {
-        Remove-AzManagementGroupDeploymentStackWhatIf -Name $rname -ManagementGroupId $mgid -Force -ErrorAction SilentlyContinue
-    }
+		# Test - Failure - template file not found
+		$missingFile = "missingFile142.json"
+		Assert-ThrowsContains { New-AzManagementGroupDeploymentStackWhatIfResult -Name $rname -ManagementGroupId $mgid -Location $location -TemplateFile $missingFile -ActionOnUnmanage DetachAll -DenySettingsMode None } $missingFile
+	}
+	finally
+	{
+		Remove-AzManagementGroupDeploymentStackWhatIfResult -Name $rname -ManagementGroupId $mgid -Force -ErrorAction SilentlyContinue
+	}
 }
 
 <#
 .SYNOPSIS
-Tests Set operation on WhatIf results at the management group scope across all parameter sets.
+Tests Set (update) operation on WhatIf results at the management group scope.
 #>
-function Test-SetManagementGroupDeploymentStackWhatIf
+function Test-SetManagementGroupDeploymentStackWhatIfResult
 {
-    $mgid = "AzBlueprintAssignTest"
-    $rname = Get-ResourceName
-    $location = "West Central US"
+	# Setup
+	$mgid = "AzBlueprintAssignTest"
+	$rname = Get-ResourceName
+	$location = "West Central US"
 
-    try
-    {
-        # Prepare
-        New-AzManagementGroupDeploymentStackWhatIf -Name $rname -ManagementGroupId $mgid -Location $location -TemplateFile StacksMGTemplate.json -TemplateParameterFile StacksMGTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
+	try
+	{
+		# Create initial WhatIf result
+		New-AzManagementGroupDeploymentStackWhatIfResult -Name $rname -ManagementGroupId $mgid -Location $location -TemplateFile StacksMGTemplate.json -TemplateParameterFile StacksMGTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
 
-        # --- ParameterlessTemplateFileParameterSetName (MGTemplatePlus: 2 resources vs 1) ---
+		# Test - Set (update)
+		$updated = Set-AzManagementGroupDeploymentStackWhatIfResult -Name $rname -ManagementGroupId $mgid -Location $location -TemplateFile StacksMGTemplate.json -TemplateParameterFile StacksMGTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
+		Assert-NotNull $updated
 
-        # Test - Success
-        $result = Set-AzManagementGroupDeploymentStackWhatIf -Name $rname -ManagementGroupId $mgid -Location $location -TemplateFile StacksMGTemplatePlus.json -TemplateParameterFile StacksMGTemplatePlusParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-        Assert-NotNull $result.Properties.Changes
-
-        # Test - Verify updated provisioning state directly via Get
-        $getResult = Get-AzManagementGroupDeploymentStackWhatIf -ManagementGroupId $mgid -Name $rname
-        Assert-AreEqual "succeeded" $getResult.Properties.ProvisioningState
-
-        # Test - Failure - template file not found
-        Assert-ThrowsContains { Set-AzManagementGroupDeploymentStackWhatIf -Name $rname -ManagementGroupId $mgid -Location $location -TemplateFile "missingFile142.json" -ActionOnUnmanage DetachAll -DenySettingsMode None } "missingFile142.json"
-
-        # --- ParameterFileTemplateFileParameterSetName ---
-
-        $result = Set-AzManagementGroupDeploymentStackWhatIf -Name $rname -ManagementGroupId $mgid -Location $location -TemplateFile StacksMGTemplate.json -TemplateParameterFile StacksMGTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-
-        # Test - Failure - parameter file not found
-        Assert-ThrowsContains { Set-AzManagementGroupDeploymentStackWhatIf -Name $rname -ManagementGroupId $mgid -Location $location -TemplateFile StacksMGTemplate.json -TemplateParameterFile "missingFile145.json" -ActionOnUnmanage DetachAll -DenySettingsMode None } "missingFile145.json"
-
-        # --- ParameterObjectTemplateFileParameterSetName ---
-
-        $result = Set-AzManagementGroupDeploymentStackWhatIf -Name $rname -ManagementGroupId $mgid -Location $location -TemplateFile StacksMGTemplate.json -TemplateParameterObject @{subId = "4ce8c9fe-cadc-47d6-9c76-335812fd59df"; moduleName = "stacksMGtestmod"; policyDefinitionName = "PSCmdletTestPolicy476223"} -ActionOnUnmanage DetachAll -DenySettingsMode None
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-
-        # --- ActionOnUnmanage variations ---
-
-        $result = Set-AzManagementGroupDeploymentStackWhatIf -Name $rname -ManagementGroupId $mgid -Location $location -TemplateFile blankTemplate.json -ActionOnUnmanage DeleteResources -DenySettingsMode None
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-
-        $result = Set-AzManagementGroupDeploymentStackWhatIf -Name $rname -ManagementGroupId $mgid -Location $location -TemplateFile blankTemplate.json -ActionOnUnmanage DeleteAll -DenySettingsMode None
-        Assert-NotNull $result
-        Assert-AreEqual "succeeded" $result.Properties.ProvisioningState
-    }
-    finally
-    {
-        Remove-AzManagementGroupDeploymentStackWhatIf -Name $rname -ManagementGroupId $mgid -Force -ErrorAction SilentlyContinue
-    }
+		# Test - Set with different ActionOnUnmanage
+		$updated = Set-AzManagementGroupDeploymentStackWhatIfResult -Name $rname -ManagementGroupId $mgid -Location $location -TemplateFile StacksMGTemplate.json -TemplateParameterFile StacksMGTemplateParams.json -ActionOnUnmanage DeleteAll -DenySettingsMode None
+		Assert-NotNull $updated
+	}
+	finally
+	{
+		Remove-AzManagementGroupDeploymentStackWhatIfResult -Name $rname -ManagementGroupId $mgid -Force -ErrorAction SilentlyContinue
+	}
 }
 
 <#
 .SYNOPSIS
-Tests Get operation on WhatIf results at the management group scope.
+Tests GET (list and get-by-name) operation on WhatIf results at the management group scope.
 #>
-function Test-GetManagementGroupDeploymentStackWhatIf
+function Test-GetManagementGroupDeploymentStackWhatIfResult
 {
-    $mgid = "AzBlueprintAssignTest"
-    $rname = Get-ResourceName
-    $location = "West Central US"
+	# Setup
+	$mgid = "AzBlueprintAssignTest"
+	$rname = Get-ResourceName
+	$location = "West Central US"
 
-    try
-    {
-        New-AzManagementGroupDeploymentStackWhatIf -Name $rname -ManagementGroupId $mgid -Location $location -TemplateFile StacksMGTemplate.json -TemplateParameterFile StacksMGTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
+	try
+	{
+		# Create a WhatIf result to get
+		New-AzManagementGroupDeploymentStackWhatIfResult -Name $rname -ManagementGroupId $mgid -Location $location -TemplateFile StacksMGTemplate.json -TemplateParameterFile StacksMGTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
 
-        # Test - List - contains our entry
-        $list = Get-AzManagementGroupDeploymentStackWhatIf -ManagementGroupId $mgid
-        Assert-AreNotEqual 0 $list.Count
-        Assert-True { $list.Name -contains $rname }
+		# Test - List - Success
+		$list = Get-AzManagementGroupDeploymentStackWhatIfResult -ManagementGroupId $mgid
+		Assert-AreNotEqual 0 $list.Count
 
-        # Test - GetByName - correct name and provisioning state
-        $getByName = Get-AzManagementGroupDeploymentStackWhatIf -ManagementGroupId $mgid -Name $rname
-        Assert-NotNull $getByName
-        Assert-AreEqual $rname $getByName.Name
-        Assert-AreEqual "succeeded" $getByName.Properties.ProvisioningState
-        Assert-NotNull $getByName.Properties.Changes
+		# Test - GetByName - Success
+		$getByName = Get-AzManagementGroupDeploymentStackWhatIfResult -ManagementGroupId $mgid -Name $rname
+		Assert-NotNull $getByName
 
-        # Test - Failure - stack not found
-        Assert-Throws { Get-AzManagementGroupDeploymentStackWhatIf -ManagementGroupId $mgid -Name "badwhatif1928273615" }
-
-        # Test - Failure - bad management group ID
-        Assert-Throws { Get-AzManagementGroupDeploymentStackWhatIf -ManagementGroupId "badmgid1928273615" -Name $rname }
-    }
-    finally
-    {
-        Remove-AzManagementGroupDeploymentStackWhatIf -Name $rname -ManagementGroupId $mgid -Force -ErrorAction SilentlyContinue
-    }
+		# Test - GetByName - Failure - NotFound
+		$badName = "badwhatif1928273615"
+		Assert-Throws { Get-AzManagementGroupDeploymentStackWhatIfResult -ManagementGroupId $mgid -Name $badName }
+	}
+	finally
+	{
+		Remove-AzManagementGroupDeploymentStackWhatIfResult -Name $rname -ManagementGroupId $mgid -Force -ErrorAction SilentlyContinue
+	}
 }
 
 <#
 .SYNOPSIS
-Tests Remove operation on WhatIf results at the management group scope.
+Tests Remove (delete) operation on WhatIf results at the management group scope.
 #>
-function Test-RemoveManagementGroupDeploymentStackWhatIf
+function Test-RemoveManagementGroupDeploymentStackWhatIfResult
 {
-    $mgid = "AzBlueprintAssignTest"
-    $rname = Get-ResourceName
-    $location = "West Central US"
+	# Setup
+	$mgid = "AzBlueprintAssignTest"
+	$rname = Get-ResourceName
+	$location = "West Central US"
 
-    try
-    {
-        New-AzManagementGroupDeploymentStackWhatIf -Name $rname -ManagementGroupId $mgid -Location $location -TemplateFile StacksMGTemplate.json -TemplateParameterFile StacksMGTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
+	try
+	{
+		# Create a WhatIf result to delete
+		New-AzManagementGroupDeploymentStackWhatIfResult -Name $rname -ManagementGroupId $mgid -Location $location -TemplateFile StacksMGTemplate.json -TemplateParameterFile StacksMGTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
 
-        # Verify exists with correct provisioning state before deleting
-        $exists = Get-AzManagementGroupDeploymentStackWhatIf -ManagementGroupId $mgid -Name $rname
-        Assert-NotNull $exists
-        Assert-AreEqual "succeeded" $exists.Properties.ProvisioningState
+		# Test - Remove - Success
+		Remove-AzManagementGroupDeploymentStackWhatIfResult -Name $rname -ManagementGroupId $mgid -Force
 
-        # Test - Remove
-        Remove-AzManagementGroupDeploymentStackWhatIf -Name $rname -ManagementGroupId $mgid -Force
+		# Test - Confirm deleted
+		$list = Get-AzManagementGroupDeploymentStackWhatIfResult -ManagementGroupId $mgid
+		Assert-True { -not ($list.name -contains $rname) }
+	}
+	finally
+	{
+		# No cleanup needed, stack was deleted in test
+	}
+}
 
-        # Test - Confirm deleted via list
-        $list = Get-AzManagementGroupDeploymentStackWhatIf -ManagementGroupId $mgid
-        Assert-True { -not ($list.Name -contains $rname) }
+#### Get by ResourceId Tests ####
 
-        # Test - Confirm deleted via get
-        Assert-Throws { Get-AzManagementGroupDeploymentStackWhatIf -ManagementGroupId $mgid -Name $rname }
-    }
-    finally
-    {
-        # No cleanup needed, deleted in test
-    }
+<#
+.SYNOPSIS
+Tests Get-AzResourceGroupDeploymentStackWhatIfResult with -ResourceId (success and invalid format).
+#>
+function Test-GetResourceGroupDeploymentStackWhatIfResultByResourceId
+{
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = "West Central US"
+	$subId = (Get-AzContext).Subscription.Id
+
+	try
+	{
+		New-AzResourceGroup -Name $rgname -Location $rglocation
+
+		# Create a WhatIf result first
+		$created = New-AzResourceGroupDeploymentStackWhatIfResult -Name $rname -ResourceGroupName $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile StacksRGTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
+
+		# Test - Success: Get by valid ResourceId
+		$resourceId = "/subscriptions/$subId/resourceGroups/$rgname/providers/Microsoft.Resources/deploymentStacksWhatIfResults/$rname"
+		$result = Get-AzResourceGroupDeploymentStackWhatIfResult -ResourceId $resourceId
+		Assert-NotNull $result
+
+		# Test - Failure: Invalid ResourceId format
+		$badResourceId = "not-a-valid-resource-id"
+		Assert-ThrowsContains { Get-AzResourceGroupDeploymentStackWhatIfResult -ResourceId $badResourceId } "not in correct form"
+	}
+	finally
+	{
+		Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
+Tests Get-AzSubscriptionDeploymentStackWhatIfResult with -ResourceId (success and invalid format).
+#>
+function Test-GetSubscriptionDeploymentStackWhatIfResultByResourceId
+{
+	$rname = Get-ResourceName
+	$location = "West Central US"
+	$subId = (Get-AzContext).Subscription.Id
+
+	try
+	{
+		New-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -Location $location -TemplateFile StacksSubTemplate.json -TemplateParameterFile StacksSubTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
+
+		# Test - Success: Get by valid ResourceId
+		$resourceId = "/subscriptions/$subId/providers/Microsoft.Resources/deploymentStacksWhatIfResults/$rname"
+		$result = Get-AzSubscriptionDeploymentStackWhatIfResult -ResourceId $resourceId
+		Assert-NotNull $result
+
+		# Test - Failure: Invalid ResourceId format
+		$badResourceId = "not-a-valid-resource-id"
+		Assert-ThrowsContains { Get-AzSubscriptionDeploymentStackWhatIfResult -ResourceId $badResourceId } "not in correct form"
+	}
+	finally
+	{
+		Remove-AzSubscriptionDeploymentStackWhatIfResult -Name $rname -Force -ErrorAction SilentlyContinue
+	}
+}
+
+<#
+.SYNOPSIS
+Tests Get-AzManagementGroupDeploymentStackWhatIfResult with -ResourceId (success and invalid format).
+#>
+function Test-GetManagementGroupDeploymentStackWhatIfResultByResourceId
+{
+	$mgid = "AzBlueprintAssignTest"
+	$rname = Get-ResourceName
+	$location = "West Central US"
+
+	try
+	{
+		New-AzManagementGroupDeploymentStackWhatIfResult -Name $rname -ManagementGroupId $mgid -Location $location -TemplateFile StacksMGTemplate.json -TemplateParameterFile StacksMGTemplateParams.json -ActionOnUnmanage DetachAll -DenySettingsMode None
+
+		# Test - Success: Get by valid ResourceId
+		$resourceId = "/providers/Microsoft.Management/managementGroups/$mgid/providers/Microsoft.Resources/deploymentStacksWhatIfResults/$rname"
+		$result = Get-AzManagementGroupDeploymentStackWhatIfResult -ResourceId $resourceId
+		Assert-NotNull $result
+
+		# Test - Failure: Invalid ResourceId format
+		$badResourceId = "not-a-valid-resource-id"
+		Assert-ThrowsContains { Get-AzManagementGroupDeploymentStackWhatIfResult -ResourceId $badResourceId } "not in correct form"
+	}
+	finally
+	{
+		Remove-AzManagementGroupDeploymentStackWhatIfResult -Name $rname -ManagementGroupId $mgid -Force -ErrorAction SilentlyContinue
+	}
 }
