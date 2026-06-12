@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -105,34 +105,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 // construct deploymentScope if ResourceGroup was provided
                 var deploymentScope = DeploymentResourceGroupName != null ? "/subscriptions/" + DeploymentStacksSdkClient.DeploymentStacksClient.SubscriptionId
                         + "/resourceGroups/" + DeploymentResourceGroupName : null;
-
-                // Handle WhatIf scenario
-                if (MyInvocation.BoundParameters.ContainsKey("WhatIf") && ((SwitchParameter)MyInvocation.BoundParameters["WhatIf"]).ToBool())
-                {
-                    var whatIfResult = DeploymentStacksWhatIfSdkClient.ExecuteSubscriptionDeploymentStackWhatIf(
-                        deploymentStackName: Name,
-                        location: Location,
-                        templateFile: TemplateFile,
-                        templateUri: !string.IsNullOrEmpty(protectedTemplateUri) ? protectedTemplateUri : TemplateUri,
-                        templateSpec: TemplateSpecId,
-                        templateObject: TemplateObject,
-                        parameterUri: TemplateParameterUri,
-                        parameters: GetTemplateParameterObject(),
-                        description: Description,
-                        resourcesCleanupAction: shouldDeleteResources ? "delete" : "detach",
-                        resourceGroupsCleanupAction: shouldDeleteResourceGroups ? "delete" : "detach",
-                        managementGroupsCleanupAction: shouldDeleteManagementGroups ? "delete" : "detach",
-                        deploymentScope: deploymentScope,
-                        denySettingsMode: DenySettingsMode.ToString(),
-                        denySettingsExcludedPrincipals: DenySettingsExcludedPrincipal,
-                        denySettingsExcludedActions: DenySettingsExcludedAction,
-                        denySettingsApplyToChildScopes: DenySettingsApplyToChildScopes.IsPresent,
-                        bypassStackOutOfSyncError: BypassStackOutOfSyncError.IsPresent
-                    );
-
-                    WriteObject(whatIfResult);
-                    return;
-                }
 
                 var currentStack = DeploymentStacksSdkClient.GetSubscriptionDeploymentStack(Name, throwIfNotExists: false);
                 if (currentStack != null && Tag == null)

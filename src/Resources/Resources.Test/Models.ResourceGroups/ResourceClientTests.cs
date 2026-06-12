@@ -1243,7 +1243,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                     properties: new DeploymentPropertiesExtended(
                         mode: DeploymentMode.Incremental,
                         correlationId: "123",
-                        templateLink: new Microsoft.Azure.Management.Resources.Models.TemplateLink()
+                        templateLink: new TemplateLink()
                         {
                             Uri = "http://microsoft.com/"
                         }))
@@ -1268,7 +1268,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                     name: deploymentName + 3,
                     properties: new DeploymentPropertiesExtended(
                         mode: DeploymentMode.Incremental,
-                        templateLink: new Microsoft.Azure.Management.Resources.Models.TemplateLink()
+                        templateLink: new TemplateLink()
                         {
                             Uri = "http://microsoft1.com"
                         },

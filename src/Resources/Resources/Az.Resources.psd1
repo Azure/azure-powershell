@@ -232,7 +232,19 @@ CmdletsToExport = 'Export-AzResourceGroup', 'Export-AzTemplateSpec',
                'Unregister-AzProviderFeature', 
                'Unregister-AzProviderPreviewFeature', 
                'Unregister-AzResourceProvider', 'Update-AzManagementGroup', 
-               'Update-AzManagementGroupHierarchySetting', 'Update-AzTag'
+               'Update-AzManagementGroupHierarchySetting', 'Update-AzTag',
+               'Get-AzResourceGroupDeploymentStackWhatIfResult',
+               'New-AzResourceGroupDeploymentStackWhatIfResult',
+               'Set-AzResourceGroupDeploymentStackWhatIfResult',
+               'Remove-AzResourceGroupDeploymentStackWhatIfResult',
+               'Get-AzSubscriptionDeploymentStackWhatIfResult',
+               'New-AzSubscriptionDeploymentStackWhatIfResult',
+               'Set-AzSubscriptionDeploymentStackWhatIfResult',
+               'Remove-AzSubscriptionDeploymentStackWhatIfResult',
+               'Get-AzManagementGroupDeploymentStackWhatIfResult',
+               'New-AzManagementGroupDeploymentStackWhatIfResult',
+               'Set-AzManagementGroupDeploymentStackWhatIfResult',
+               'Remove-AzManagementGroupDeploymentStackWhatIfResult'
 
 # Variables to export from this module
 # VariablesToExport = @()

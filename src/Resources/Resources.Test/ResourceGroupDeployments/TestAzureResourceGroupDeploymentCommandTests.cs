@@ -71,16 +71,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
 
             List<ErrorResponse> details = new List<ErrorResponse>()
             {
-                new ErrorResponse(new ErrorDetail("202", "bad input")),
-                new ErrorResponse(new ErrorDetail("203", "bad input 2")),
-                new ErrorResponse(new ErrorDetail("203", "bad input 3"))
+                new ErrorResponse(code: "202", message: "bad input"),
+                new ErrorResponse(code: "203", message: "bad input 2"),
+                new ErrorResponse(code: "203", message: "bad input 3")
             };
-
-            ErrorResponse expected = new ErrorResponse(new ErrorDetail(null, null, null, details.Select(d => d.Error).ToList()));
+            
+            ErrorResponse expected = new ErrorResponse(details: details);
 
             TemplateValidationInfo expectedResults = new(new DeploymentValidateResult(expected));
 
-            var expectedErrors = expected.Error?.Details?.Select(e => new ErrorResponse(e).ToPSResourceManagerError()).ToList();
+            var expectedErrors = expected.Details.Select(e => e.ToPSResourceManagerError()).ToList();
 
             resourcesClientMock.Setup(f => f.ValidateDeployment(
                 It.IsAny<PSDeploymentCmdletParameters>()))
