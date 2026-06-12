@@ -1570,7 +1570,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     deploymentStackName,
                     whatIfRequest);
 
-                return ConvertToPSDeploymentStackWhatIfResult(whatIfResult);
+                WriteVerbose("Retrieving What-If result with property changes...");
+                var postResult = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtResourceGroup.WhatIf(resourceGroupName, deploymentStackName);
+                return ConvertToPSDeploymentStackWhatIfResult(postResult);
             }
             catch (Exception ex)
             {
@@ -1628,7 +1630,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     deploymentStackName,
                     whatIfRequest);
 
-                return ConvertToPSDeploymentStackWhatIfResult(whatIfResult);
+                WriteVerbose("Retrieving What-If result with property changes...");
+                var postResult = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtSubscription.WhatIf(deploymentStackName);
+                return ConvertToPSDeploymentStackWhatIfResult(postResult);
             }
             catch (Exception ex)
             {
@@ -1688,7 +1692,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     deploymentStackName,
                     whatIfRequest);
 
-                return ConvertToPSDeploymentStackWhatIfResult(whatIfResult);
+                WriteVerbose("Retrieving What-If result with property changes...");
+                var postResult = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtManagementGroup.WhatIf(managementGroupId, deploymentStackName);
+                return ConvertToPSDeploymentStackWhatIfResult(postResult);
             }
             catch (Exception ex)
             {
