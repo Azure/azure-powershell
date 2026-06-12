@@ -96,10 +96,6 @@ if( -not $noBuildNumber ) {
     }
 }
 
-Set-Service -Name msiserver -StartupType Manual
-Start-Service msiserver
-Get-Service msiserver  # confirm it's running
-
 # prepare include files 
 $archs |% {
     $arch = $_
@@ -133,7 +129,7 @@ $archs |% {
     }
 
     Write-Host -fore green "Creating installer for $arch"
-    $out = light "$tmp\$outputName-$version-$arch.wixobj" -ext WixUIExtension -out "$scriptLocation\$outputName-$version-$arch.msi" -sw1076 -sice:ICE80  -nologo -b $scriptLocation
+    $out = light "$tmp\$outputName-$version-$arch.wixobj" -ext WixUIExtension -out "$scriptLocation\$outputName-$version-$arch.msi" -sw1076 -sval -nologo -b $scriptLocation
     if( $LASTEXITCODE) {
         write-host -fore red "ERROR: Failed to link MSI for $arch" 
         write-host -fore red $out
