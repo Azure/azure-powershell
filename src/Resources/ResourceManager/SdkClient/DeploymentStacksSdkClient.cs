@@ -1185,11 +1185,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return JsonConvert.DeserializeObject<PSDeploymentStackWhatIfResult>(json);
         }
 
-        public PSDeploymentStackWhatIfResult GetResourceGroupDeploymentStackWhatIfResult(string resourceGroupName, string stackName)
+        public PSDeploymentStackWhatIfResult GetResourceGroupDeploymentStackWhatIfResult(string resourceGroupName, string stackName, bool withPropertyChanges = false)
         {
             try
             {
-                var result = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtResourceGroup.Get(resourceGroupName, stackName);
+                var result = withPropertyChanges
+                    ? DeploymentStacksClient.DeploymentStacksWhatIfResultsAtResourceGroup.WhatIf(resourceGroupName, stackName)
+                    : DeploymentStacksClient.DeploymentStacksWhatIfResultsAtResourceGroup.Get(resourceGroupName, stackName);
                 return ConvertToPSDeploymentStackWhatIfResult(result);
             }
             catch (Exception ex)
@@ -1237,11 +1239,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        public PSDeploymentStackWhatIfResult GetSubscriptionDeploymentStackWhatIfResult(string stackName)
+        public PSDeploymentStackWhatIfResult GetSubscriptionDeploymentStackWhatIfResult(string stackName, bool withPropertyChanges = false)
         {
             try
             {
-                var result = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtSubscription.Get(stackName);
+                var result = withPropertyChanges
+                    ? DeploymentStacksClient.DeploymentStacksWhatIfResultsAtSubscription.WhatIf(stackName)
+                    : DeploymentStacksClient.DeploymentStacksWhatIfResultsAtSubscription.Get(stackName);
                 return ConvertToPSDeploymentStackWhatIfResult(result);
             }
             catch (Exception ex)
@@ -1289,11 +1293,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        public PSDeploymentStackWhatIfResult GetManagementGroupDeploymentStackWhatIfResult(string managementGroupId, string stackName)
+        public PSDeploymentStackWhatIfResult GetManagementGroupDeploymentStackWhatIfResult(string managementGroupId, string stackName, bool withPropertyChanges = false)
         {
             try
             {
-                var result = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtManagementGroup.Get(managementGroupId, stackName);
+                var result = withPropertyChanges
+                    ? DeploymentStacksClient.DeploymentStacksWhatIfResultsAtManagementGroup.WhatIf(managementGroupId, stackName)
+                    : DeploymentStacksClient.DeploymentStacksWhatIfResultsAtManagementGroup.Get(managementGroupId, stackName);
                 return ConvertToPSDeploymentStackWhatIfResult(result);
             }
             catch (Exception ex)

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
     [Cmdlet("New", AzureRMConstants.AzureRMPrefix + "ResourceGroupDeploymentStackWhatIf",
         DefaultParameterSetName = ParameterlessTemplateFileParameterSetName)]
     [OutputType(typeof(PSDeploymentStackWhatIfResult))]
-    public class NewAzResourceGroupDeploymentStackWhatIf : DeploymentStackWhatIfCmdlet
+    public class NewAzResourceGroupDeploymentStackWhatIf : DeploymentStackWhatIfCreateCmdlet
     {
         #region Cmdlet Parameters
 

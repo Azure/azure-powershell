@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
     using Microsoft.Azure.Commands.ResourceManager.Common;
 
     /// <summary>
-    /// Cmdlet to preview changes for updating a Management Group Deployment Stack.
+    /// Cmdlet to preview changes for creating a Management Group Deployment Stack.
     /// </summary>
-    [Cmdlet("Set", AzureRMConstants.AzureRMPrefix + "ManagementGroupDeploymentStackWhatIf",
+    [Cmdlet("New", AzureRMConstants.AzureRMPrefix + "ManagementGroupDeploymentStackWhatIf",
         DefaultParameterSetName = ParameterlessTemplateFileParameterSetName)]
     [OutputType(typeof(PSDeploymentStackWhatIfResult))]
-    public class SetAzManagementGroupDeploymentStackWhatIf : DeploymentStackWhatIfCmdlet
+    public class NewAzManagementGroupDeploymentStackWhatIf : DeploymentStackWhatIfCreateCmdlet
     {
         #region Cmdlet Parameters
 
