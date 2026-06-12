@@ -8,350 +8,198 @@ schema: 2.0.0
 # Update-AzComputeFleet
 
 ## SYNOPSIS
-update a Fleet
+Update a Fleet
 
 ## SYNTAX
 
-### UpdateViaIdentity (Default)
+### UpdateExpanded (Default)
 ```
-Update-AzComputeFleet -InputObject <IComputeFleetIdentity> -Resource <IFleet> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzComputeFleet -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-AdditionalLocationProfile <ILocationProfile[]>] [-AdditionalVirtualMachineCapabilityHibernationEnabled]
+ [-AdditionalVirtualMachineCapabilityUltraSsdEnabled] [-CapacityType <String>]
+ [-ComputeProfileBaseVirtualMachineProfile <IBaseVirtualMachineProfile>]
+ [-ComputeProfileComputeApiVersion <String>] [-ComputeProfilePlatformFaultDomainCount <Int32>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-Mode <String>] [-PlanName <String>] [-PlanProduct <String>]
+ [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
+ [-RegularPriorityProfileAllocationStrategy <String>] [-RegularPriorityProfileCapacity <Int32>]
+ [-RegularPriorityProfileMinCapacity <Int32>] [-SpotPriorityProfileAllocationStrategy <String>]
+ [-SpotPriorityProfileCapacity <Int32>] [-SpotPriorityProfileEvictionPolicy <String>]
+ [-SpotPriorityProfileMaintain] [-SpotPriorityProfileMaxPricePerVM <Single>]
+ [-SpotPriorityProfileMinCapacity <Int32>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-VMAttribute <IVMAttributes>] [-VMNamePrefix <String>] [-VMSizesProfile <IVMSizeProfile[]>]
+ [-Zone <String[]>] [-ZoneAllocationPolicyDistributionStrategy <String>]
+ [-ZoneAllocationPolicyZonePreference <IZonePreference[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
+### UpdateViaIdentityExpanded
 ```
-Update-AzComputeFleet -Name <String> -ResourceGroupName <String> -Resource <IFleet> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzComputeFleet -InputObject <IComputeFleetIdentity> [-AdditionalLocationProfile <ILocationProfile[]>]
+ [-AdditionalVirtualMachineCapabilityHibernationEnabled] [-AdditionalVirtualMachineCapabilityUltraSsdEnabled]
+ [-CapacityType <String>] [-ComputeProfileBaseVirtualMachineProfile <IBaseVirtualMachineProfile>]
+ [-ComputeProfileComputeApiVersion <String>] [-ComputeProfilePlatformFaultDomainCount <Int32>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-Mode <String>] [-PlanName <String>] [-PlanProduct <String>]
+ [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
+ [-RegularPriorityProfileAllocationStrategy <String>] [-RegularPriorityProfileCapacity <Int32>]
+ [-RegularPriorityProfileMinCapacity <Int32>] [-SpotPriorityProfileAllocationStrategy <String>]
+ [-SpotPriorityProfileCapacity <Int32>] [-SpotPriorityProfileEvictionPolicy <String>]
+ [-SpotPriorityProfileMaintain] [-SpotPriorityProfileMaxPricePerVM <Single>]
+ [-SpotPriorityProfileMinCapacity <Int32>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-VMAttribute <IVMAttributes>] [-VMNamePrefix <String>] [-VMSizesProfile <IVMSizeProfile[]>]
+ [-Zone <String[]>] [-ZoneAllocationPolicyDistributionStrategy <String>]
+ [-ZoneAllocationPolicyZonePreference <IZonePreference[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-update a Fleet
+Update a Fleet
 
 ## EXAMPLES
 
-### Example 1: Update a compute fleet resource by ResourceGroupName and FleetName
+### Example 1: Update tags on a Compute Fleet using Update
 ```powershell
-$fleet = Get-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName "test-fleet" -FleetName "testFleet"
-$securedPassword = ConvertTo-SecureString -AsPlainText "[Sanitized]" -Force
-$fleet.ComputeProfileBaseVirtualMachineProfile.OSProfileAdminPassword = $securedPassword
-$fleet.AcceleratorCountMax = 3
-Update-AzComputeFleet -ResourceGroupName "test-fleet" -FleetName "testFleet" -Resource $fleet
+Update-AzComputeFleet -Name "fleet5-001" -ResourceGroupName "MY-FLEET-RG-001" `
+    -Tag @{ EnableVMManagementPolicy = "true"; environment = "staging" } | Select-Object Name, Tag, ProvisioningState
 ```
 
 ```output
-AcceleratorCountMax                                  : 3
-AcceleratorCountMin                                  : 
-AdditionalLocationProfile                            : 
-AdditionalVirtualMachineCapabilityHibernationEnabled : 
-AdditionalVirtualMachineCapabilityUltraSsdEnabled    : 
-ComputeProfileBaseVirtualMachineProfile              : {
-                                                         "osProfile": {
-                                                           "computerNamePrefix": "testfleet",
-                                                           "adminUsername": "azureuser"
-                                                         },
-                                                         "storageProfile": {
-                                                           "imageReference": {
-                                                             "publisher": "canonical",
-                                                             "offer": "ubuntu-24_04-lts",
-                                                             "sku": "server",
-                                                             "version": "latest"
-                                                           },
-                                                           "osDisk": {
-                                                             "managedDisk": {
-                                                               "storageAccountType": "Premium_LRS"
-                                                             },
-                                                             "caching": "ReadWrite",
-                                                             "createOption": "fromImage",
-                                                             "osType": "Linux"
-                                                           }
-                                                         },
-                                                         "networkProfile": {
-                                                           "networkInterfaceConfigurations": [
-                                                             {
-                                                               "properties": {
-                                                                 "networkSecurityGroup": {
-                                                                   "id": "/subscriptions/ca8520e1-3c83-4b64-bb99-60a64673daa3/resourceGroups/t
-                                                       est-fleet/providers/Microsoft.Network/networkSecurityGroups/basicNsgvnet-centralus-2-ni
-                                                       c01"
-                                                                 },
-                                                                 "primary": true,
-                                                                 "enableAcceleratedNetworking": false,
-                                                                 "ipConfigurations": [
-                                                                   {
-                                                                     "properties": {
-                                                                       "subnet": {
-                                                                         "id": "/subscriptions/ca8520e1-3c83-4b64-bb99-60a64673daa3/resourceGr
-                                                       oups/test-fleet/providers/Microsoft.Network/virtualNetworks/vnet-centralus-2/subnets/sn
-                                                       et-centralus-1"
-                                                                       },
-                                                                       "publicIPAddressConfiguration": {
-                                                                         "properties": {
-                                                                           "idleTimeoutInMinutes": 15
-                                                                         },
-                                                                         "name": "vnet-centralus-2-nic01-publicip"
-                                                                       },
-                                                                       "primary": true
-                                                                     },
-                                                                     "name": "vnet-centralus-2-nic01-ipConfig"
-                                                                   }
-                                                                 ]
-                                                               },
-                                                               "name": "vnet-centralus-2-nic01"
-                                                             }
-                                                           ],
-                                                           "networkApiVersion": "2020-11-01"
-                                                         },
-                                                         "securityProfile": {
-                                                           "uefiSettings": {
-                                                             "secureBootEnabled": true,
-                                                             "vTpmEnabled": false
-                                                           },
-                                                           "securityType": "TrustedLaunch"
-                                                         },
-                                                         "licenseType": "None"
-                                                       }
-ComputeProfileComputeApiVersion                      : 2023-09-01
-ComputeProfilePlatformFaultDomainCount               : 1
-DataDiskCountMax                                     : 
-DataDiskCountMin                                     : 
-Id                                                   : /subscriptions/ca8520e1-3c83-4b64-bb99-60a64673daa3/resourceGroups/test-fleet/providers
-                                                       /Microsoft.AzureFleet/fleets/testFleet
-IdentityPrincipalId                                  : 
-IdentityTenantId                                     : 
-IdentityType                                         : 
-IdentityUserAssignedIdentity                         : {
-                                                       }
-LocalStorageInGiBMax                                 : 
-LocalStorageInGiBMin                                 : 
-Location                                             : centralus
-MemoryInGiBMax                                       : 100
-MemoryInGiBMin                                       : 
-MemoryInGiBPerVcpuMax                                : 
-MemoryInGiBPerVcpuMin                                : 
-Name                                                 : testFleet
-NetworkBandwidthInMbpsMax                            : 
-NetworkBandwidthInMbpsMin                            : 
-NetworkInterfaceCountMax                             : 
-NetworkInterfaceCountMin                             : 
-PlanName                                             : 
-PlanProduct                                          : 
-PlanPromotionCode                                    : 
-PlanPublisher                                        : 
-PlanVersion                                          : 
-ProvisioningState                                    : Succeeded
-RdmaNetworkInterfaceCountMax                         : 
-RdmaNetworkInterfaceCountMin                         : 
-RegularPriorityProfileAllocationStrategy             : 
-RegularPriorityProfileCapacity                       : 
-RegularPriorityProfileMinCapacity                    : 
-ResourceGroupName                                    : test-fleet
-SpotPriorityProfileAllocationStrategy                : LowestPrice
-SpotPriorityProfileCapacity                          : 1
-SpotPriorityProfileEvictionPolicy                    : Delete
-SpotPriorityProfileMaintain                          : True
-SpotPriorityProfileMaxPricePerVM                     : 
-SpotPriorityProfileMinCapacity                       : 
-SystemDataCreatedAt                                  : 
-SystemDataCreatedBy                                  : 
-SystemDataCreatedByType                              : 
-SystemDataLastModifiedAt                             : 
-SystemDataLastModifiedBy                             : 
-SystemDataLastModifiedByType                         : 
-Tag                                                  : {
-                                                       }
-TimeCreated                                          : 11/14/2024 11:33:52 PM
-Type                                                 : Microsoft.AzureFleet/fleets
-UniqueId                                             : 7bbd33a5-6486-406d-9fe1-e6b051f28cc3
-VCpuCountMax                                         : 5
-VCpuCountMin                                         : 
-VMAttributeAcceleratorManufacturer                   : 
-VMAttributeAcceleratorSupport                        : Included
-VMAttributeAcceleratorType                           : 
-VMAttributeArchitectureType                          : 
-VMAttributeBurstableSupport                          : Excluded
-VMAttributeCpuManufacturer                           : 
-VMAttributeExcludedVmsize                            : 
-VMAttributeLocalStorageDiskType                      : 
-VMAttributeLocalStorageSupport                       : Included
-VMAttributeRdmaSupport                               : Excluded
-VMAttributeVmcategory                                : 
-VMSizesProfile                                       : {{
-                                                         "name": "Standard_D2s_v3"
-                                                       }, {
-                                                         "name": "Standard_D4s_v3"
-                                                       }, {
-                                                         "name": "Standard_E2s_v3"
-                                                       }}
-Zone                                                 : 
+Name              : fleet5-001
+Tag               : {
+                      "EnableVMManagementPolicy": "true",
+                      "environment": "staging"
+                    }
+ProvisioningState : Succeeded
 ```
 
-This command updates a compute fleet resource by ResourceGroupName and FleetName.
+Updates the tags on a Managed mode Compute Fleet. The `Update-AzComputeFleet` cmdlet performs a read-modify-write operation — it fetches the existing fleet, merges only the properties you specify, and PUTs the result back. This means unspecified properties retain their existing values.
 
-### Example 2: Update a compute fleet resource by Identity
+### Example 2: Update Spot capacity via pipeline input
 ```powershell
-$fleet = Get-AzComputeFleet -SubscriptionId "ca8520e1-3c83-4b64-bb99-60a64673daa3" -ResourceGroupName "test-fleet" -FleetName "testFleet"
-$securedPassword = ConvertTo-SecureString -AsPlainText "[Sanitized]" -Force
-$fleet.ComputeProfileBaseVirtualMachineProfile.OSProfileAdminPassword = $securedPassword
-$fleet.MemoryInGiBMax = 500
-Update-AzComputeFleet -InputObject $fleet -Resource $fleet
+Get-AzComputeFleet -Name "fleet5-001" -ResourceGroupName "MY-FLEET-RG-001" | Update-AzComputeFleet `
+    -SpotPriorityProfileCapacity 8 | Select-Object Name, SpotPriorityProfileCapacity, ProvisioningState
 ```
 
 ```output
-AcceleratorCountMax                                  : 3
-AcceleratorCountMin                                  : 
-AdditionalLocationProfile                            : 
-AdditionalVirtualMachineCapabilityHibernationEnabled : 
-AdditionalVirtualMachineCapabilityUltraSsdEnabled    : 
-ComputeProfileBaseVirtualMachineProfile              : {
-                                                         "osProfile": {
-                                                           "computerNamePrefix": "testfleet",
-                                                           "adminUsername": "azureuser"
-                                                         },
-                                                         "storageProfile": {
-                                                           "imageReference": {
-                                                             "publisher": "canonical",
-                                                             "offer": "ubuntu-24_04-lts",
-                                                             "sku": "server",
-                                                             "version": "latest"
-                                                           },
-                                                           "osDisk": {
-                                                             "managedDisk": {
-                                                               "storageAccountType": "Premium_LRS"
-                                                             },
-                                                             "caching": "ReadWrite",
-                                                             "createOption": "fromImage",
-                                                             "osType": "Linux"
-                                                           }
-                                                         },
-                                                         "networkProfile": {
-                                                           "networkInterfaceConfigurations": [
-                                                             {
-                                                               "properties": {
-                                                                 "networkSecurityGroup": {
-                                                                   "id": "/subscriptions/ca8520e1-3c83-4b64-bb99-60a64673daa3/resourceGroups/t
-                                                       est-fleet/providers/Microsoft.Network/networkSecurityGroups/basicNsgvnet-centralus-2-ni
-                                                       c01"
-                                                                 },
-                                                                 "primary": true,
-                                                                 "enableAcceleratedNetworking": false,
-                                                                 "ipConfigurations": [
-                                                                   {
-                                                                     "properties": {
-                                                                       "subnet": {
-                                                                         "id": "/subscriptions/ca8520e1-3c83-4b64-bb99-60a64673daa3/resourceGr
-                                                       oups/test-fleet/providers/Microsoft.Network/virtualNetworks/vnet-centralus-2/subnets/sn
-                                                       et-centralus-1"
-                                                                       },
-                                                                       "publicIPAddressConfiguration": {
-                                                                         "properties": {
-                                                                           "idleTimeoutInMinutes": 15
-                                                                         },
-                                                                         "name": "vnet-centralus-2-nic01-publicip"
-                                                                       },
-                                                                       "primary": true
-                                                                     },
-                                                                     "name": "vnet-centralus-2-nic01-ipConfig"
-                                                                   }
-                                                                 ]
-                                                               },
-                                                               "name": "vnet-centralus-2-nic01"
-                                                             }
-                                                           ],
-                                                           "networkApiVersion": "2020-11-01"
-                                                         },
-                                                         "securityProfile": {
-                                                           "uefiSettings": {
-                                                             "secureBootEnabled": true,
-                                                             "vTpmEnabled": false
-                                                           },
-                                                           "securityType": "TrustedLaunch"
-                                                         },
-                                                         "licenseType": "None"
-                                                       }
-ComputeProfileComputeApiVersion                      : 2023-09-01
-ComputeProfilePlatformFaultDomainCount               : 1
-DataDiskCountMax                                     : 
-DataDiskCountMin                                     : 
-Id                                                   : /subscriptions/ca8520e1-3c83-4b64-bb99-60a64673daa3/resourceGroups/test-fleet/providers
-                                                       /Microsoft.AzureFleet/fleets/testFleet
-IdentityPrincipalId                                  : 
-IdentityTenantId                                     : 
-IdentityType                                         : 
-IdentityUserAssignedIdentity                         : {
-                                                       }
-LocalStorageInGiBMax                                 : 
-LocalStorageInGiBMin                                 : 
-Location                                             : centralus
-MemoryInGiBMax                                       : 500
-MemoryInGiBMin                                       : 
-MemoryInGiBPerVcpuMax                                : 
-MemoryInGiBPerVcpuMin                                : 
-Name                                                 : testFleet
-NetworkBandwidthInMbpsMax                            : 
-NetworkBandwidthInMbpsMin                            : 
-NetworkInterfaceCountMax                             : 
-NetworkInterfaceCountMin                             : 
-PlanName                                             : 
-PlanProduct                                          : 
-PlanPromotionCode                                    : 
-PlanPublisher                                        : 
-PlanVersion                                          : 
-ProvisioningState                                    : Succeeded
-RdmaNetworkInterfaceCountMax                         : 
-RdmaNetworkInterfaceCountMin                         : 
-RegularPriorityProfileAllocationStrategy             : 
-RegularPriorityProfileCapacity                       : 
-RegularPriorityProfileMinCapacity                    : 
-ResourceGroupName                                    : test-fleet
-SpotPriorityProfileAllocationStrategy                : LowestPrice
-SpotPriorityProfileCapacity                          : 1
-SpotPriorityProfileEvictionPolicy                    : Delete
-SpotPriorityProfileMaintain                          : True
-SpotPriorityProfileMaxPricePerVM                     : 
-SpotPriorityProfileMinCapacity                       : 
-SystemDataCreatedAt                                  : 
-SystemDataCreatedBy                                  : 
-SystemDataCreatedByType                              : 
-SystemDataLastModifiedAt                             : 
-SystemDataLastModifiedBy                             : 
-SystemDataLastModifiedByType                         : 
-Tag                                                  : {
-                                                       }
-TimeCreated                                          : 11/14/2024 11:33:52 PM
-Type                                                 : Microsoft.AzureFleet/fleets
-UniqueId                                             : 7bbd33a5-6486-406d-9fe1-e6b051f28cc3
-VCpuCountMax                                         : 5
-VCpuCountMin                                         : 
-VMAttributeAcceleratorManufacturer                   : 
-VMAttributeAcceleratorSupport                        : Included
-VMAttributeAcceleratorType                           : 
-VMAttributeArchitectureType                          : 
-VMAttributeBurstableSupport                          : Excluded
-VMAttributeCpuManufacturer                           : 
-VMAttributeExcludedVmsize                            : 
-VMAttributeLocalStorageDiskType                      : 
-VMAttributeLocalStorageSupport                       : Included
-VMAttributeRdmaSupport                               : Excluded
-VMAttributeVmcategory                                : 
-VMSizesProfile                                       : {{
-                                                         "name": "Standard_D2s_v3"
-                                                       }, {
-                                                         "name": "Standard_D4s_v3"
-                                                       }, {
-                                                         "name": "Standard_E2s_v3"
-                                                       }}
-Zone                                                 : 
+Name                        : fleet5-001
+SpotPriorityProfileCapacity : 8
+ProvisioningState           : Succeeded
 ```
 
-This command updates a compute fleet resource by identity.
+Retrieves an existing Compute Fleet and pipes it to `Update-AzComputeFleet` using the `-InputObject` parameter set. Only the Spot priority capacity is changed; all other properties are preserved from the existing fleet. Note that `computeProfile` is immutable and cannot be changed after fleet creation.
 
 ## PARAMETERS
+
+### -AdditionalLocationProfile
+The list of location profiles.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.ILocationProfile[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AdditionalVirtualMachineCapabilityHibernationEnabled
+The flag that enables or disables hibernation capability on the VM.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AdditionalVirtualMachineCapabilityUltraSsdEnabled
+The flag that enables or disables a capability to have one or more managed data disks with UltraSSD_LRS storage account type on the VM or VMSS.Managed disks with storage account type UltraSSD_LRS can be added to a virtual machine or virtual machine scale set only if this property is enabled.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CapacityType
+Specifies capacity type for Fleet Regular and Spot priority profiles.capacityType is an immutable property.
+Once set during Fleet creation, it cannot be updated.Specifying different capacity type for Fleet Regular and Spot priority profiles is not allowed.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ComputeProfileBaseVirtualMachineProfile
+Base Virtual Machine Profile Properties to be specified according to "specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/{computeApiVersion}/virtualMachineScaleSet.json#/definitions/VirtualMachineScaleSetVMProfile"
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IBaseVirtualMachineProfile
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ComputeProfileComputeApiVersion
+Specifies the Microsoft.Compute API version to use when creating underlying Virtual Machine scale sets and Virtual Machines.The default value will be the latest supported computeApiVersion by Compute Fleet.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ComputeProfilePlatformFaultDomainCount
+Specifies the number of fault domains to use when creating the underlying VMSS.A fault domain is a logical group of hardware within an Azure datacenter.VMs in the same fault domain share a common power source and network switch.If not specified, defaults to 1, which represents "Max Spreading" (using as many fault domains as possible).This property cannot be updated.
+
+```yaml
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -378,12 +226,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetIdentity
-Parameter Sets: UpdateViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -393,12 +256,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Mode
+Mode of the Fleet.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the Compute Fleet
 
 ```yaml
 Type: System.String
-Parameter Sets: Update
+Parameter Sets: UpdateExpanded
 Aliases: FleetName
 
 Required: True
@@ -423,18 +301,130 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Resource
-An Compute Fleet resource
+### -PlanName
+A user defined name of the 3rd Party Artifact that is being procured.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PlanProduct
+The 3rd Party artifact that is being procured.
+E.g.
+NewRelic.
+Product maps to the OfferID specified for the artifact at the time of Data Market onboarding.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PlanPromotionCode
+A publisher provided promotion code as provisioned in Data Market for the said product/artifact.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PlanPublisher
+The publisher of the 3rd Party Artifact that is being bought.
+E.g.
+NewRelic
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PlanVersion
+The version of the desired product/artifact.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RegularPriorityProfileAllocationStrategy
+Allocation strategy to follow when determining the VM sizes distribution for Regular VMs.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RegularPriorityProfileCapacity
+Total capacity to achieve.
+It is currently in terms of number of VMs.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RegularPriorityProfileMinCapacity
+Minimum capacity to achieve which cannot be updated.
+If we will not be able to "guarantee" minimum capacity, we will reject the request in the sync path itself.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -444,10 +434,102 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SpotPriorityProfileAllocationStrategy
+Allocation strategy to follow when determining the VM sizes distribution for Spot VMs.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SpotPriorityProfileCapacity
+Total capacity to achieve.
+It is currently in terms of number of VMs.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SpotPriorityProfileEvictionPolicy
+Eviction Policy to follow when evicting Spot VMs.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SpotPriorityProfileMaintain
+Flag to enable/disable continuous goal seeking for the desired capacity and restoration of evicted Spot VMs.If maintain is enabled, AzureFleetRP will use all VM sizes in vmSizesProfile to create new VMs (if VMs are evicted deleted)or update existing VMs with new VM sizes (if VMs are evicted deallocated or failed to allocate due to capacity constraint) in order to achieve the desired capacity.Maintain is enabled by default.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SpotPriorityProfileMaxPricePerVM
+Price per hour of each Spot VM will never exceed this.
+
+```yaml
+Type: System.Single
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SpotPriorityProfileMinCapacity
+Minimum capacity to achieve which cannot be updated.
+If we will not be able to "guarantee" minimum capacity, we will reject the request in the sync path itself.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -460,12 +542,134 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VMAttribute
+Attribute based Fleet.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMAttributes
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VMNamePrefix
+VirtualMachine prefix to be used for the virtual machines launched by Fleet.
+Can be used only with Launch mode.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VMSizesProfile
+List of VM sizes supported for Compute Fleet
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVMSizeProfile[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Zone
+Zones in which the Compute Fleet is available
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ZoneAllocationPolicyDistributionStrategy
+Distribution strategy used for zone allocation policy.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ZoneAllocationPolicyZonePreference
+Zone preferences, required when zone distribution strategy is Prioritized.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IZonePreference[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -507,8 +711,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet
 
 ## OUTPUTS
 

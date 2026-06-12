@@ -28,6 +28,8 @@
 * Upgraded `Microsoft.Identity.Client.NativeInterop` from 0.20.2 to 0.20.4.
 * Added `-AcquirePolicyToken` and `-ChangeReference` dynamic parameters to all write cmdlets for Azure Change Safety policy token acquisition
 * Added Service Principal support for SSH certificate generation in 'SshCredentialFactory'
+
+## Version 5.5.0
 * Added ChangeSafety Support
 
 ## Version 5.4.0

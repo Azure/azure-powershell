@@ -19,6 +19,7 @@ Describe 'Get-AzAppConfigurationSnapshot' {
         # List all snapshots
         $results = Get-AzAppConfigurationSnapshot -Endpoint $env.endpoint
         $results | Should -Not -BeNullOrEmpty
+        $results[0].PSObject.Properties.Name | Should -Contain 'Description'
     }
 
     It 'GetByName' {
@@ -30,5 +31,6 @@ Describe 'Get-AzAppConfigurationSnapshot' {
         $result | Should -Not -BeNullOrEmpty
         $result.Name | Should -Be $snapshotName
         $result.Status | Should -Be "ready"
+        $result.PSObject.Properties.Name | Should -Contain 'Description'
     }
 }

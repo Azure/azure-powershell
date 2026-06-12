@@ -50,11 +50,15 @@ namespace Microsoft.Azure.Commands.Aks.Models
 
                             MethodInfo method;
 
-                            if (sourceProp.GetValue(source) is IList)
+                            var srcRuntimeValue = sourceProp.GetValue(source);
+                            var targetUnderlying = Nullable.GetUnderlyingType(targetProp.PropertyType) ?? targetProp.PropertyType;
+                            if (srcRuntimeValue is IList)
                                 method = type.GetMethod("AdaptList");
-                            else if (sourceProp.GetValue(source) is IDictionary)
+                            else if (srcRuntimeValue is IDictionary)
                                 method = type.GetMethod("AdaptDict");
-                            else if (sourceProp.GetValue(source).GetType().IsEnum)
+                            else if (srcRuntimeValue.GetType().IsEnum
+                                     || (srcRuntimeValue is string && targetUnderlying.IsEnum)
+                                     || (targetProp.PropertyType == typeof(string) && (Nullable.GetUnderlyingType(sourceProp.PropertyType) ?? sourceProp.PropertyType).IsEnum))
                                 method = type.GetMethod("AdaptEnum");
                             else
                                 method = type.GetMethod("Adapt");
@@ -154,16 +158,52 @@ namespace Microsoft.Azure.Commands.Aks.Models
         }
         public static Target AdaptEnum(Source source)
         {
-            Target targetEnum = (Target)FormatterServices.GetUninitializedObject(typeof(Target));
-            foreach (var ind in Enum.GetValues(targetEnum.GetType()))
+            if (source == null)
             {
-                if (ind.ToString() == Convert.ToString(source))
+                return default(Target);
+            }
+
+            // Direction: enum (or Nullable<enum>) -> string. Newer SDK regens (e.g. AKS 2026-03-01)
+            // emit enums as model-as-string, so the PS-side typed enum must serialize back to string.
+            if (typeof(Target) == typeof(string))
+            {
+                return (Target)(object)Convert.ToString(source);
+            }
+
+            Type targetUnderlying = Nullable.GetUnderlyingType(typeof(Target)) ?? typeof(Target);
+
+            // Direction: string -> enum (or Nullable<enum>). Required when the SDK property is now
+            // a plain string but the PS-side model still uses a typed enum.
+            if (source is string sourceStr)
+            {
+                if (string.IsNullOrEmpty(sourceStr) || !targetUnderlying.IsEnum)
                 {
-                    targetEnum = (Target)ind;
-                    break;
+                    return default(Target);
+                }
+                try
+                {
+                    return (Target)Enum.Parse(targetUnderlying, sourceStr, ignoreCase: true);
+                }
+                catch (ArgumentException)
+                {
+                    return default(Target);
                 }
             }
-            return targetEnum;
+
+            // Original direction: enum -> enum (match by ToString to bridge differently named source/target enums).
+            if (targetUnderlying.IsEnum)
+            {
+                var sourceText = Convert.ToString(source);
+                foreach (var ind in Enum.GetValues(targetUnderlying))
+                {
+                    if (ind.ToString() == sourceText)
+                    {
+                        return (Target)ind;
+                    }
+                }
+            }
+
+            return default(Target);
         }
     }
 }

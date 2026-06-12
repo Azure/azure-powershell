@@ -21,6 +21,7 @@ Describe 'Set-AzAppConfigurationKeyValue' {
         $result | Should -Not -BeNullOrEmpty
         $result.Key | Should -Be $setKey
         $result.Value | Should -Be "test-value"
+        $result.PSObject.Properties.Name | Should -Contain 'Description'
         # Cleanup
         Remove-AzAppConfigurationKeyValue -Endpoint $env.endpoint -Key $setKey
     }
@@ -31,6 +32,7 @@ Describe 'Set-AzAppConfigurationKeyValue' {
         $result = Set-AzAppConfigurationKeyValue -Endpoint $env.endpoint -Key $setKey -JsonString $jsonString
         $result | Should -Not -BeNullOrEmpty
         $result.Value | Should -Be "json-value"
+        $result.PSObject.Properties.Name | Should -Contain 'Description'
         # Cleanup
         Remove-AzAppConfigurationKeyValue -Endpoint $env.endpoint -Key $setKey
     }

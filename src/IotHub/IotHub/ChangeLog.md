@@ -18,8 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.9.0
 * Added ChangeSafety Support
-    - Fixed `Add-AzIotHubDevice`, `Set-AzIotHubDevice`, `Add-AzIotHubModule`, `Set-AzIotHubModule`, `Add-AzIotHubRoutingEndpoint` to properly inherit dynamic parameters from base cmdlet class
 
 ## Version 2.8.1
 * Aligned dependency versions with other modules
