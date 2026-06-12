@@ -13,9 +13,21 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
     public static class ConnectionStatus
     {
+        /// <summary>
+        /// Connection is pending approval.
+        /// </summary>
         public const string Pending = "Pending";
+        /// <summary>
+        /// Connection is approved.
+        /// </summary>
         public const string Approved = "Approved";
+        /// <summary>
+        /// Connection is rejected.
+        /// </summary>
         public const string Rejected = "Rejected";
+        /// <summary>
+        /// Connection is disconnected.
+        /// </summary>
         public const string Disconnected = "Disconnected";
     }
 }

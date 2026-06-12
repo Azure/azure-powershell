@@ -61,6 +61,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {"westeurope", "northeurope"},
             {"bleufrancecentral", "bleufrancesouth"},
             {"bleufrancesouth", "bleufrancecentral"},
+            {"deloscloudgermanycentral", "deloscloudgermanynorth"},
+            {"deloscloudgermanynorth", "deloscloudgermanycentral"},
             {"francecentral", "francesouth"},
             {"francesouth", "francecentral"},
             {"germanycentral", "germanynortheast"},
