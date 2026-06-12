@@ -18,7 +18,8 @@ New-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <Stri
  -CommandLineSetting <String> [-Description <String>] [-FriendlyName <String>] [-ShowInPortal]
  [-ApplicationType <String>] [-CommandLineArgument <String>] [-FilePath <String>] [-IconIndex <Int32>]
  [-IconPath <String>] [-MsixPackageApplicationId <String>] [-MsixPackageFamilyName <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ShortcutExtensionPutShortcutOnDesktop] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AppAlias
@@ -323,6 +324,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ShortcutExtensionPutShortcutOnDesktop
+Indicates whether to create a desktop shortcut for the remote application.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -18,15 +18,16 @@ Update-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId
  [-AgentUpdateMaintenanceWindow <IMaintenanceWindowPatchProperties[]>]
  [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <String>]
  [-AgentUpdateUseSessionHostLocalTime] [-AllowRdpShortPathWithPrivateLink <String>]
- [-CustomRdpProperty <String>] [-Description <String>] [-DirectUdp <String>] [-FriendlyName <String>]
- [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-LoadBalancerType <String>]
- [-ManagedPrivateUdp <String>] [-MaxSessionLimit <Int32>] [-PersonalDesktopAssignmentType <String>]
- [-PreferredAppGroupType <String>] [-PublicNetworkAccess <String>] [-PublicUdp <String>]
- [-RegistrationInfoExpirationTime <DateTime>] [-RegistrationInfoRegistrationTokenOperation <String>]
- [-RelayUdp <String>] [-Ring <Int32>] [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>]
- [-SsoSecretType <String>] [-SsoadfsAuthority <String>] [-StartVMOnConnect] [-Tag <Hashtable>]
- [-VMTemplate <String>] [-ValidationEnvironment] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ConditionalRdpProperty <String>] [-CustomRdpProperty <String>] [-Description <String>] [-DirectUdp <String>]
+ [-FriendlyName <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-LoadBalancerType <String>] [-ManagedPrivateUdp <String>] [-MaxSessionLimit <Int32>]
+ [-PersonalDesktopAssignmentType <String>] [-PreferredAppGroupType <String>] [-PublicNetworkAccess <String>]
+ [-PublicUdp <String>] [-RegistrationInfoExpirationTime <DateTime>]
+ [-RegistrationInfoRegistrationTokenOperation <String>] [-RelayUdp <String>] [-Ring <Int32>]
+ [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>] [-SsoSecretType <String>]
+ [-SsoadfsAuthority <String>] [-StartVMOnConnect] [-Tag <Hashtable>] [-VMTemplate <String>]
+ [-ValidationEnvironment] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
@@ -48,15 +49,16 @@ Update-AzWvdHostPool -InputObject <IDesktopVirtualizationIdentity>
  [-AgentUpdateMaintenanceWindow <IMaintenanceWindowPatchProperties[]>]
  [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <String>]
  [-AgentUpdateUseSessionHostLocalTime] [-AllowRdpShortPathWithPrivateLink <String>]
- [-CustomRdpProperty <String>] [-Description <String>] [-DirectUdp <String>] [-FriendlyName <String>]
- [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-LoadBalancerType <String>]
- [-ManagedPrivateUdp <String>] [-MaxSessionLimit <Int32>] [-PersonalDesktopAssignmentType <String>]
- [-PreferredAppGroupType <String>] [-PublicNetworkAccess <String>] [-PublicUdp <String>]
- [-RegistrationInfoExpirationTime <DateTime>] [-RegistrationInfoRegistrationTokenOperation <String>]
- [-RelayUdp <String>] [-Ring <Int32>] [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>]
- [-SsoSecretType <String>] [-SsoadfsAuthority <String>] [-StartVMOnConnect] [-Tag <Hashtable>]
- [-VMTemplate <String>] [-ValidationEnvironment] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ConditionalRdpProperty <String>] [-CustomRdpProperty <String>] [-Description <String>] [-DirectUdp <String>]
+ [-FriendlyName <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-LoadBalancerType <String>] [-ManagedPrivateUdp <String>] [-MaxSessionLimit <Int32>]
+ [-PersonalDesktopAssignmentType <String>] [-PreferredAppGroupType <String>] [-PublicNetworkAccess <String>]
+ [-PublicUdp <String>] [-RegistrationInfoExpirationTime <DateTime>]
+ [-RegistrationInfoRegistrationTokenOperation <String>] [-RelayUdp <String>] [-Ring <Int32>]
+ [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>] [-SsoSecretType <String>]
+ [-SsoadfsAuthority <String>] [-StartVMOnConnect] [-Tag <Hashtable>] [-VMTemplate <String>]
+ [-ValidationEnvironment] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -151,6 +153,21 @@ Accept wildcard characters: False
 
 ### -AllowRdpShortPathWithPrivateLink
 Controls if the use of RDPShortPath transport is allowed, possibly bypassing Private Link routes.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConditionalRdpProperty
+The conditional RDP properties of the host pool, serialized as a string in the format of `\<rdpPropertyName\>:\<type\>:\<value\>:\<conditionType\>:\<conditionValue\>`.
 
 ```yaml
 Type: System.String

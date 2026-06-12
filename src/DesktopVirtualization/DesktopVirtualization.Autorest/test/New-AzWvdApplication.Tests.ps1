@@ -51,7 +51,8 @@ Describe 'New-AzWvdApplication' {
                                 -IconIndex 0 `
                                 -IconPath 'C:\Users\zhongjieli\AppData\Local\Microsoft\WindowsApps\mspaint.exe' `
                                 -CommandLineSetting 'Allow' `
-                                -ShowInPortal:$true
+                                -ShowInPortal:$true `
+                                -ShortcutExtensionPutShortcutOnDesktop:$true
             $application.Name | Should -Be 'ApplicationGroupPowershell2/Paint'
             $application.FilePath | Should -Be 'C:\Users\zhongjieli\AppData\Local\Microsoft\WindowsApps\mspaint.exe'
             $application.FriendlyName | Should -Be 'fri'
@@ -60,6 +61,7 @@ Describe 'New-AzWvdApplication' {
             $application.IconPath | Should -Be 'C:\Users\zhongjieli\AppData\Local\Microsoft\WindowsApps\mspaint.exe'
             $application.CommandLineSetting | Should -Be 'Allow'
             $application.ShowInPortal | Should -Be $true
+            $application.ShortcutExtensionPutShortcutOnDesktop | Should -Be $true
 
             $application = Get-AzWvdApplication -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
@@ -73,6 +75,7 @@ Describe 'New-AzWvdApplication' {
             $application.IconPath | Should -Be 'C:\Users\zhongjieli\AppData\Local\Microsoft\WindowsApps\mspaint.exe'
             $application.CommandLineSetting | Should -Be 'Allow'
             $application.ShowInPortal | Should -Be $true
+            $application.ShortcutExtensionPutShortcutOnDesktop | Should -Be $true
         }
         finally{
             $application = Remove-AzWvdApplication -SubscriptionId $env.SubscriptionId `

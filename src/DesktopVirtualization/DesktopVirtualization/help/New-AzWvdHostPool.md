@@ -19,9 +19,9 @@ New-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <S
  [-AgentUpdateMaintenanceWindow <IMaintenanceWindowProperties[]>]
  [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <String>]
  [-AgentUpdateUseSessionHostLocalTime] [-AllowRdpShortPathWithPrivateLink <String>]
- [-CustomRdpProperty <String>] [-DeploymentScope <String>] [-Description <String>] [-DirectUdp <String>]
- [-ExpirationTime <DateTime>] [-FriendlyName <String>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>] [-ManagedBy <String>]
+ [-ConditionalRdpProperty <String>] [-CustomRdpProperty <String>] [-DeploymentScope <String>]
+ [-Description <String>] [-DirectUdp <String>] [-ExpirationTime <DateTime>] [-FriendlyName <String>]
+ [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>] [-ManagedBy <String>]
  [-ManagedPrivateUdp <String>] [-MaxSessionLimit <Int32>] [-OboTenantId <String>]
  [-PersonalDesktopAssignmentType <String>] [-PlanName <String>] [-PlanProduct <String>]
  [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
@@ -184,6 +184,21 @@ Accept wildcard characters: False
 
 ### -AllowRdpShortPathWithPrivateLink
 Controls if the use of RDPShortPath transport is allowed, possibly bypassing Private Link routes.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConditionalRdpProperty
+The conditional RDP properties of the host pool, serialized as a string in the format of `\<rdpPropertyName\>:\<type\>:\<value\>:\<conditionType\>:\<conditionValue\>`.
 
 ```yaml
 Type: System.String
