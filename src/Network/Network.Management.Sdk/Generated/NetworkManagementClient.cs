@@ -201,6 +201,14 @@ namespace Microsoft.Azure.Management.Network
         /// </summary>
         public virtual IFirewallPolicyIdpsSignaturesOverridesOperations FirewallPolicyIdpsSignaturesOverrides { get; private set; }
         /// <summary>
+        /// Gets the IInterconnectGroupsOperations
+        /// </summary>
+        public virtual IInterconnectGroupsOperations InterconnectGroups { get; private set; }
+        /// <summary>
+        /// Gets the ISubgroupsOperations
+        /// </summary>
+        public virtual ISubgroupsOperations Subgroups { get; private set; }
+        /// <summary>
         /// Gets the ILoadBalancersOperations
         /// </summary>
         public virtual ILoadBalancersOperations LoadBalancers { get; private set; }
@@ -973,6 +981,8 @@ namespace Microsoft.Azure.Management.Network
             this.FirewallPolicyRuleCollectionGroups = new FirewallPolicyRuleCollectionGroupsOperations(this);
             this.FirewallPolicyRuleCollectionGroupDrafts = new FirewallPolicyRuleCollectionGroupDraftsOperations(this);
             this.FirewallPolicyIdpsSignaturesOverrides = new FirewallPolicyIdpsSignaturesOverridesOperations(this);
+            this.InterconnectGroups = new InterconnectGroupsOperations(this);
+            this.Subgroups = new SubgroupsOperations(this);
             this.LoadBalancers = new LoadBalancersOperations(this);
             this.LoadBalancerBackendAddressPools = new LoadBalancerBackendAddressPoolsOperations(this);
             this.LoadBalancerFrontendIPConfigurations = new LoadBalancerFrontendIPConfigurationsOperations(this);

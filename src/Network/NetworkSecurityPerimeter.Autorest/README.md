@@ -31,10 +31,13 @@ require:
 # readme.azure.noprofile.md is the common configuration file
 # - ../../../../tools/SwaggerCI/readme.azure.noprofile.md
   - $(this-folder)/../../readme.azure.noprofile.md
-commit: a21a9d3f5f517648e29cde69e0fd5c0afb761902
+# Keep this commit in sync with src/Network/Network.Management.Sdk/README.md so the
+# NSP Autorest module is generated from the same azure-rest-api-specs snapshot as the
+# main Network SDK. Updated as part of the 2025-07-01 release regen.
+commit: 587a15661041e26ff8a3059a4886ff9e092adfda
 input-file:
 # You need to specify your swagger files here.
-  - https://github.com/Azure/azure-rest-api-specs/blob/a21a9d3f5f517648e29cde69e0fd5c0afb761902/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-07-01/networkSecurityPerimeter.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/Network/stable/2025-07-01/networkSecurityPerimeter.json
 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
@@ -52,6 +55,59 @@ sanitize-names: true
 # identity-correction-for-post: true
 
 directive:
+  # ---------------------------------------------------------------------------
+  # Swagger-level cleanup ported from src/Network/Network.Management.Sdk/README.md
+  # The 2025-07-01 NSP swagger (TypeSpec-generated) prefixes shared definitions with
+  # "Common." and relocates x-ms-azure-resource. Without these directives the regen
+  # produces customer-facing C# classes named CommonCloudError, CommonSubResource,
+  # SecurityPerimeterTrackedResource, etc., and breaks ARM resource identification.
+  # Keep this block in sync with the main Network SDK README.
+  # ---------------------------------------------------------------------------
+  # Strip the "Common." prefix from all swagger definitions so the generated C#
+  # class names stay backward-compatible (e.g. Common.CloudError -> CloudError,
+  # Common.SubResource -> SubResource).
+  - from: swagger-document
+    where: $.definitions
+    transform: >
+      for (const k of Object.keys($)) {
+        if (k.startsWith('Common.')) {
+          $[k]['x-ms-client-name'] = k.substring('Common.'.length);
+        }
+      }
+  # Explicit alias for Common.CloudError (referenced as default error type by all paths).
+  - from: swagger-document
+    where: $.definitions["Common.CloudError"]
+    transform: $["x-ms-client-name"] = "CloudError"
+  # Move x-ms-azure-resource from Common.SubResourceModel to Common.SubResource.
+  - from: swagger-document
+    where: $.definitions["Common.SubResourceModel"]
+    transform: delete $["x-ms-azure-resource"]
+  - from: swagger-document
+    where: $.definitions["Common.SubResource"]
+    transform: $["x-ms-azure-resource"] = true
+  # Move x-ms-azure-resource from CommonProxyResource / CommonTrackedResource to CommonResource.
+  - from: swagger-document
+    where: $.definitions["CommonProxyResource"]
+    transform: delete $["x-ms-azure-resource"]
+  - from: swagger-document
+    where: $.definitions["CommonTrackedResource"]
+    transform: delete $["x-ms-azure-resource"]
+  - from: swagger-document
+    where: $.definitions["CommonResource"]
+    transform: $["x-ms-azure-resource"] = true
+  # Move x-ms-azure-resource from SecurityPerimeterProxyResource / SecurityPerimeterTrackedResource
+  # to SecurityPerimeterResource so generated cmdlets bind ARM identity correctly.
+  - from: swagger-document
+    where: $.definitions["SecurityPerimeterProxyResource"]
+    transform: delete $["x-ms-azure-resource"]
+  - from: swagger-document
+    where: $.definitions["SecurityPerimeterTrackedResource"]
+    transform: delete $["x-ms-azure-resource"]
+  - from: swagger-document
+    where: $.definitions["SecurityPerimeterResource"]
+    transform: $["x-ms-azure-resource"] = true
+  # ---------------------------------------------------------------------------
+
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well

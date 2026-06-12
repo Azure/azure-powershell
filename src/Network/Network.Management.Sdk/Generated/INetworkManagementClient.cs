@@ -244,6 +244,16 @@ namespace Microsoft.Azure.Management.Network
         IFirewallPolicyIdpsSignaturesOverridesOperations FirewallPolicyIdpsSignaturesOverrides { get; }
 
         /// <summary>
+        /// Gets the IInterconnectGroupsOperations
+        /// </summary>
+        IInterconnectGroupsOperations InterconnectGroups { get; }
+
+        /// <summary>
+        /// Gets the ISubgroupsOperations
+        /// </summary>
+        ISubgroupsOperations Subgroups { get; }
+
+        /// <summary>
         /// Gets the ILoadBalancersOperations
         /// </summary>
         ILoadBalancersOperations LoadBalancers { get; }
