@@ -99,6 +99,33 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 var shouldDeleteResourceGroups = (ActionOnUnmanage is PSActionOnUnmanage.DeleteAll) ? true : false;
                 var shouldDeleteManagementGroups = (ActionOnUnmanage is PSActionOnUnmanage.DeleteAll) ? true : false;
 
+                // Handle WhatIf scenario
+                if (MyInvocation.BoundParameters.ContainsKey("WhatIf") && ((SwitchParameter)MyInvocation.BoundParameters["WhatIf"]).ToBool())
+                {
+                    var whatIfResult = DeploymentStacksSdkClient.ExecuteResourceGroupDeploymentStackWhatIf(
+                        deploymentStackName: Name,
+                        resourceGroupName: ResourceGroupName,
+                        templateFile: TemplateFile,
+                        templateUri: !string.IsNullOrEmpty(protectedTemplateUri) ? protectedTemplateUri : TemplateUri,
+                        templateSpec: TemplateSpecId,
+                        templateObject: TemplateObject,
+                        parameterUri: TemplateParameterUri,
+                        parameters: GetTemplateParameterObject(),
+                        description: Description,
+                        resourcesCleanupAction: shouldDeleteResources ? "delete" : "detach",
+                        resourceGroupsCleanupAction: shouldDeleteResourceGroups ? "delete" : "detach",
+                        managementGroupsCleanupAction: shouldDeleteManagementGroups ? "delete" : "detach",
+                        denySettingsMode: DenySettingsMode.ToString(),
+                        denySettingsExcludedPrincipals: DenySettingsExcludedPrincipal,
+                        denySettingsExcludedActions: DenySettingsExcludedAction,
+                        denySettingsApplyToChildScopes: DenySettingsApplyToChildScopes.IsPresent,
+                        bypassStackOutOfSyncError: BypassStackOutOfSyncError.IsPresent
+                    );
+
+                    WriteObject(whatIfResult);
+                    return;
+                }
+
                 var currentStack = DeploymentStacksSdkClient.GetResourceGroupDeploymentStack(ResourceGroupName, Name, throwIfNotExists: false);
                 if (currentStack != null && Tag == null)
                 {
