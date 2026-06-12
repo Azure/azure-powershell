@@ -76,10 +76,12 @@ namespace Microsoft.Azure.Commands.Dns
 
         [Parameter(Mandatory = true, HelpMessage = "Alias Target Resource Id.", ParameterSetName = "AliasFields")]
         [Parameter(Mandatory = true, HelpMessage = "Alias Target Resource Id.", ParameterSetName = "AliasObject")]
+        [ValidateNotNullOrEmpty]
         public string TargetResourceId { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Traffic Manager profile resource Id (TMLink). Provide the full resource Id of an Azure Traffic Manager profile to create a TMLink record set.", ParameterSetName = "TmFields")]
         [Parameter(Mandatory = true, HelpMessage = "Traffic Manager profile resource Id (TMLink). Provide the full resource Id of an Azure Traffic Manager profile to create a TMLink record set.", ParameterSetName = "TmObject")]
+        [ValidateNotNullOrEmpty]
         public string TrafficManagerProfileId { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.")]

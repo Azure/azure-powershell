@@ -204,8 +204,21 @@ namespace Microsoft.Azure.Commands.Dns
                 Ttl = ttl
             };
 
+            bool hasTargetResource = !string.IsNullOrEmpty(targetResourceId);
+            bool hasTrafficManagerProfile = !string.IsNullOrEmpty(trafficManagerProfileId);
+
+            if (hasTargetResource && hasTrafficManagerProfile)
+            {
+                throw new ArgumentException(ProjectResources.Error_RecordSetTargetResourceAndTrafficManagerProfile);
+            }
+
             if (resourceRecords != null && resourceRecords.Length != 0)
             {
+                if (hasTargetResource || hasTrafficManagerProfile)
+                {
+                    throw new ArgumentException(ProjectResources.Error_RecordSetRecordsWithLink);
+                }
+
                 var expectedTypeOfRecords = this.recordTypeValidationEntries[recordType];
                 var mismatchedRecord = resourceRecords.FirstOrDefault(x => x.GetType() != expectedTypeOfRecords);
                 if (mismatchedRecord != null)
@@ -219,12 +232,12 @@ namespace Microsoft.Azure.Commands.Dns
             {
                 FillEmptyRecordsForType(properties, recordType);
 
-                if (!string.IsNullOrEmpty(targetResourceId))
+                if (hasTargetResource)
                 {
                     properties.TargetResource = new Sdk.SubResource(targetResourceId);
                 }
 
-                if (!string.IsNullOrEmpty(trafficManagerProfileId))
+                if (hasTrafficManagerProfile)
                 {
                     properties.TrafficManagementProfile = new Sdk.SubResource(trafficManagerProfileId);
                 }
@@ -303,6 +316,11 @@ namespace Microsoft.Azure.Commands.Dns
 
         public DnsRecordSet UpdateDnsRecordSet(DnsRecordSet recordSet, bool overwrite)
         {
+            if (!string.IsNullOrWhiteSpace(recordSet.TargetResourceId) && !string.IsNullOrWhiteSpace(recordSet.TrafficManagerProfileId))
+            {
+                throw new ArgumentException(ProjectResources.Error_RecordSetTargetResourceAndTrafficManagerProfile);
+            }
+
             var response = this.DnsManagementClient.RecordSets.CreateOrUpdate(
                 recordSet.ResourceGroupName,
                 recordSet.ZoneName,
