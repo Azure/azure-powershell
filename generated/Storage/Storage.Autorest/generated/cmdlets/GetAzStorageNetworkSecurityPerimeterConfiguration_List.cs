@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.INetworkSecurityPerimeterConfiguration))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.Description(@"Gets list of effective NetworkSecurityPerimeterConfiguration for storage account")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/networkSecurityPerimeterConfigurations", ApiVersion = "2025-06-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/networkSecurityPerimeterConfigurations", ApiVersion = "2025-08-01")]
     public partial class GetAzStorageNetworkSecurityPerimeterConfiguration_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IContext

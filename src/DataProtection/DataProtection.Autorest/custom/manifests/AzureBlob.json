@@ -27,6 +27,11 @@
   "policySettings": {
     "supportedRetentionTags": [ "Weekly", "Monthly", "Yearly" ],
     "supportedDatastoreTypes": [ "OperationalStore", "VaultStore" ],
+    "defaultRetentionRuleNames": {
+      "OperationalStore": "Default_OperationalStore",
+      "VaultStore": "Default"
+    },
+    "exclusiveSourceDataStores": [ "OperationalStore" ],
     "disableAddRetentionRule": false,
     "disableCustomRetentionTag": false,
     "backupScheduleSupported": true,

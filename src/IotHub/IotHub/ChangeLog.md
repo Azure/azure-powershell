@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.9.0
+* Added ChangeSafety Support
+
 ## Version 2.8.1
 * Aligned dependency versions with other modules
 

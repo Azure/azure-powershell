@@ -50,8 +50,8 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 
 VALUE <ILanguageExtension[]>: The list of language extensions.
   [CustomImageName <String>]: The language extension custom image name.
-  [ImageName <LanguageExtensionImageName?>]: The language extension image name.
-  [Name <LanguageExtensionName?>]: The language extension name.
+  [ImageName <String>]: The language extension image name.
+  [Name <String>]: The language extension name.
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/remove-azkustoclusterlanguageextension
 #>
@@ -60,12 +60,16 @@ function Remove-AzKustoClusterLanguageExtension {
 [CmdletBinding(DefaultParameterSetName='RemoveExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='RemoveExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RemoveViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RemoveViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [System.String]
     # The name of the Kusto cluster.
     ${ClusterName},
 
     [Parameter(ParameterSetName='RemoveExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RemoveViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RemoveViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -73,6 +77,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='RemoveExpanded')]
+    [Parameter(ParameterSetName='RemoveViaJsonFilePath')]
+    [Parameter(ParameterSetName='RemoveViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -83,16 +89,27 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='RemoveExpanded')]
+    [Parameter(ParameterSetName='RemoveViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ILanguageExtension[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.ILanguageExtension[]]
     # The list of language extensions.
-    # To construct, see NOTES section for VALUE properties and create a hash table.
     ${Value},
+
+    [Parameter(ParameterSetName='RemoveViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Remove operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='RemoveViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # Json string supplied to the Remove operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -168,6 +185,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -189,10 +214,10 @@ begin {
         $mapping = @{
             RemoveExpanded = 'Az.Kusto.private\Remove-AzKustoClusterLanguageExtension_RemoveExpanded';
             RemoveViaIdentityExpanded = 'Az.Kusto.private\Remove-AzKustoClusterLanguageExtension_RemoveViaIdentityExpanded';
+            RemoveViaJsonFilePath = 'Az.Kusto.private\Remove-AzKustoClusterLanguageExtension_RemoveViaJsonFilePath';
+            RemoveViaJsonString = 'Az.Kusto.private\Remove-AzKustoClusterLanguageExtension_RemoveViaJsonString';
         }
-        if (('RemoveExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('RemoveExpanded', 'RemoveViaJsonFilePath', 'RemoveViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -206,6 +231,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

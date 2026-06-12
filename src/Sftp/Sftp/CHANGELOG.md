@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added Service Principal support for SFTP with Entra ID (AAD) login
 
 ## Version 0.2.0
 * Added confirmation prompt when an SSH key pair already exists at the target location

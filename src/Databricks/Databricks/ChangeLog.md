@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.0
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
+
+## Version 1.11.1
+* Added breaking change announcement for `Update-AzDatabricksVNetPeering`: parameters `AllowForwardedTraffic`, `AllowGatewayTransit`, `AllowVirtualNetworkAccess` and `UseRemoteGateway` will change from Boolean to SwitchParameter
+
 ## Version 1.11.1
 * Added breaking change announcement for `Update-AzDatabricksVNetPeering`: parameters `AllowForwardedTraffic`, `AllowGatewayTransit`, `AllowVirtualNetworkAccess` and `UseRemoteGateway` will change from Boolean to SwitchParameter
 

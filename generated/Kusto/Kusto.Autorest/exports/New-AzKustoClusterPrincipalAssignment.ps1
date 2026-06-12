@@ -22,67 +22,118 @@ Create a Kusto cluster principalAssignment.
 .Example
 New-AzKustoClusterPrincipalAssignment -ResourceGroupName testrg -ClusterName testnewkustocluster -PrincipalAssignmentName kustoprincipal1 -PrincipalId "7e1cb39f-d2cb-4f0d-801a-c9ea1f376e96" -PrincipalType App -Role AllDatabasesAdmin
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IClusterPrincipalAssignment
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IClusterPrincipalAssignment
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+CLUSTERINPUTOBJECT <IKustoIdentity>: Identity Parameter
+  [AttachedDatabaseConfigurationName <String>]: The name of the attached database configuration.
+  [ClusterName <String>]: The name of the Kusto cluster.
+  [DataConnectionName <String>]: The name of the data connection.
+  [DatabaseName <String>]: The name of the database in the Kusto cluster.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of Azure region.
+  [ManagedPrivateEndpointName <String>]: The name of the managed private endpoint.
+  [OperationId <String>]: The ID of an ongoing async operation.
+  [PrincipalAssignmentName <String>]: The name of the Kusto principalAssignment.
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
+  [PrivateLinkResourceName <String>]: The name of the private link resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SandboxCustomImageName <String>]: The name of the sandbox custom image.
+  [ScriptName <String>]: The name of the Kusto database script.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/new-azkustoclusterprincipalassignment
 #>
 function New-AzKustoClusterPrincipalAssignment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.IClusterPrincipalAssignment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IClusterPrincipalAssignment])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
-    [System.String]
-    # The name of the Kusto cluster.
-    ${ClusterName},
-
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [System.String]
     # The name of the Kusto principalAssignment.
     ${PrincipalAssignmentName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
+    [System.String]
+    # The name of the Kusto cluster.
+    ${ClusterName},
+
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
+    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity]
+    # Identity Parameter
+    ${ClusterInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
     [System.String]
     # The principal ID assigned to the cluster principal.
     # It can be a user email, application ID, or security group name.
     ${PrincipalId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PrincipalType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.PSArgumentCompleterAttribute("App", "Group", "User")]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PrincipalType]
+    [System.String]
     # Principal type.
     ${PrincipalType},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ClusterPrincipalRole])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.PSArgumentCompleterAttribute("AllDatabasesAdmin", "AllDatabasesViewer", "AllDatabasesMonitor")]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ClusterPrincipalRole]
+    [System.String]
     # Cluster principal role.
     ${Role},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityClusterExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
     [System.String]
     # The tenant id of the principal
     ${TenantId},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -152,6 +203,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -172,10 +231,11 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.Kusto.private\New-AzKustoClusterPrincipalAssignment_CreateExpanded';
+            CreateViaIdentityClusterExpanded = 'Az.Kusto.private\New-AzKustoClusterPrincipalAssignment_CreateViaIdentityClusterExpanded';
+            CreateViaJsonFilePath = 'Az.Kusto.private\New-AzKustoClusterPrincipalAssignment_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Kusto.private\New-AzKustoClusterPrincipalAssignment_CreateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -189,6 +249,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

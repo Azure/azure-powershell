@@ -6899,15 +6899,23 @@ end {
 
 <#
 .Synopsis
-Adds or removes Retention Rule to existing Policy
+Adds or removes Retention Rule to an existing backup policy.
+For AzureBlob hybrid policies, OperationalStore lifecycles must use -Name Default_OperationalStore; -Name Default is reserved for VaultStore.
+Mixing these (or attaching an OperationalStore lifecycle to Weekly/Monthly/Yearly) will throw a validation error.
 .Description
-Adds or removes Retention Rule to existing Policy
+Adds or removes Retention Rule to an existing backup policy.
+For AzureBlob hybrid policies, OperationalStore lifecycles must use -Name Default_OperationalStore; -Name Default is reserved for VaultStore.
+Mixing these (or attaching an OperationalStore lifecycle to Weekly/Monthly/Yearly) will throw a validation error.
 .Example
 $pol = Get-AzDataProtectionPolicyTemplate
 $lifecycle = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore OperationalStore -SourceRetentionDurationType Weeks -SourceRetentionDurationCount 5
 Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $pol -Name Weekly -LifeCycles $lifecycle -IsDefault $false
 .Example
 Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $pol -Name Weekly -RemoveRule
+.Example
+$pol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureBlob
+$opLifecycle = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore OperationalStore -SourceRetentionDurationType Days -SourceRetentionDurationCount 30
+Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $pol -Name Default_OperationalStore -LifeCycles $opLifecycle -IsDefault $true
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupPolicy
@@ -6962,7 +6970,8 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RetentionRuleName]
-    # Retention Rule Name
+    # Retention Rule Name.
+    # Note: Default and Default_OperationalStore are default retention rules and cannot be removed.
     ${Name},
 
     [Parameter(ParameterSetName='RemoveRetention', Mandatory)]
@@ -7985,6 +7994,15 @@ $rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId $subId -ResourceGroupNam
  $aksRestoreCriteria = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureKubernetesService  -PersistentVolumeRestoreMode RestoreWithVolumeData -IncludeClusterScopeResource $true -StagingResourceGroupId $snapshotResourceGroupId -StagingStorageAccountId $stagingStorageAccount -IncludedNamespace "hrweb" -NamespaceMapping @{"hrweb"="hrwebrestore"}
 
 $aksALRRestoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureKubernetesService -SourceDataStore VaultStore -RestoreLocation $location -RestoreType AlternateLocation -RecoveryPoint $rp[0].Property.RecoveryPointId -RestoreConfiguration $aksRestoreCriteria -TargetResourceId $targetAKSClusterARMId
+.Example
+$instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" | Where-Object { $_.Name -match "storageAccountName" }
+$rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -BackupInstanceName $instance.Name
+$backedUpContainers = $instance.Property.PolicyInfo.PolicyParameter.BackupDatasourceParametersList[0].ContainersList
+$renameTo = @{}
+$renameTo[$backedUpContainers[0]] = "newContainerName1"
+$renameTo[$backedUpContainers[1]] = "newContainerName2"
+$targetStorageAccountId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/targetStorageAccount"
+$restoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureBlob -SourceDataStore VaultStore -RestoreLocation "vaultLocation" -RecoveryPoint $rp[0].Name -ItemLevelRecovery -RestoreType AlternateLocation -TargetResourceId $targetStorageAccountId -ContainersList $backedUpContainers[0,1] -RenameTo $renameTo
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRestoreRequest
@@ -8166,6 +8184,13 @@ param(
     # When you specify a prefix, only blobs matching that prefix in the container will be restored.
     # Input for this parameter is a hashtable where each key is a container name and each value is an array of string prefixes for that container.
     ${PrefixMatch},
+
+    [Parameter(ParameterSetName='AlternateLocationILR')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.Collections.Hashtable]
+    # Use this parameter to rename container(s) for alternate location ILR.
+    # Input for this parameter is a hashtable where each key is the original container name and each value is the new name for the corresponding container.
+    ${RenameTo},
 
     [Parameter(ParameterSetName='RestoreAsFiles', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
@@ -8852,12 +8877,6 @@ Edit-AzDataProtectionPolicyTagClientObject -Policy $defaultPol -Name Weekly -Cri
 $newPolicy = New-AzDataProtectionBackupPolicy -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -Name "newAKSPolicy" -Policy $defaultPol -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 .Example
 $defaultPol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureBlob
-Edit-AzDataProtectionPolicyTriggerClientObject -Policy $defaultPol -RemoveSchedule
-$lifeCycleOperationalTier = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore OperationalStore -SourceRetentionDurationType Days -SourceRetentionDurationCount 30
-Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $defaultPol -Name Default -LifeCycles $lifeCycleOperationalTier -IsDefault $true -OverwriteLifeCycle $true
-$opPolicy = New-AzDataProtectionBackupPolicy -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -Name "operationalPolicyName" -Policy $defaultPol
-.Example
-$defaultPol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureBlob
 $lifeCycleVaultTierWeekly = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore VaultStore -SourceRetentionDurationType Weeks -SourceRetentionDurationCount 4
 Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $defaultPol -Name Weekly -LifeCycles $lifeCycleVaultTierWeekly -IsDefault $false
 $tagCriteria = New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria FirstOfWeek
@@ -8866,7 +8885,7 @@ $vaultedPolicy = New-AzDataProtectionBackupPolicy -SubscriptionId "xxxxxxxx-xxxx
 .Example
 $defaultPol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureBlob
 $lifeCycleOperationalTier = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore OperationalStore -SourceRetentionDurationType Days -SourceRetentionDurationCount 30
-Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $defaultPol -Name Default -LifeCycles $lifeCycleOperationalTier -IsDefault $true -OverwriteLifeCycle $false  
+Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $defaultPol -Name Default_OperationalStore -LifeCycles $lifeCycleOperationalTier -IsDefault $true
 $lifeCycleVaultTierWeekly = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore VaultStore -SourceRetentionDurationType Weeks -SourceRetentionDurationCount 7
 Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $defaultPol -Name Weekly -LifeCycles $lifeCycleVaultTierWeekly -IsDefault $false
 $tagCriteria = New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria FirstOfWeek

@@ -278,7 +278,8 @@
 $(RepoArtifacts)$(Configuration)/**/Microsoft*Azure*PowerShell*Cmdlets*.dll;
 $(RepoArtifacts)$(Configuration)/**/Microsoft.Azure.PowerShell.Authentication.dll;
 $(RepoArtifacts)$(Configuration)/**/Microsoft.Azure.PowerShell.Authentication.ResourceManager.dll;
-$(RepoArtifacts)$(Configuration)/**/Microsoft.Azure.PowerShell.Authenticators.dll" Exclude="$(RepoArtifacts)$(Configuration)/**/Microsoft*Azure*PowerShell*Cmdlets*.Test.dll" />
+$(RepoArtifacts)$(Configuration)/**/Microsoft.Azure.PowerShell.Authenticators.dll;
+$(RepoArtifacts)$(Configuration)/**/Microsoft.DataTransfer.Gateway.Encryption.dll" Exclude="$(RepoArtifacts)$(Configuration)/**/Microsoft*Azure*PowerShell*Cmdlets*.Test.dll" />
     </ItemGroup>
 
     <Message Importance="high" Text="$(RepoArtifacts)$(Configuration) does not contains any files to sign. Code sign will skip." Condition="'@(DelaySignedAssembliesToSign)' == ''" />

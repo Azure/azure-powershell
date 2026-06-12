@@ -1,8 +1,8 @@
 {
-  "Update-AzStorageMoverJobDefinition+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/projects/testProjecty8nedf6x/jobDefinitions/testUpdateJob5y8nedf6x?api-version=2025-07-01+1": {
+  "Update-AzStorageMoverJobDefinition+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/projects/testProjecty8nedf6x/jobDefinitions/testUpdateJob5y8nedf6x?api-version=2025-12-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/projects/testProjecty8nedf6x/jobDefinitions/testUpdateJob5y8nedf6x?api-version=2025-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/projects/testProjecty8nedf6x/jobDefinitions/testUpdateJob5y8nedf6x?api-version=2025-12-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"copyMode\": \"Additive\",\r\n    \"sourceName\": \"nfsEndpointy8nedf6x\",\r\n    \"targetName\": \"containerEndpointy8nedf6x\",\r\n    \"agentName\": \"testagent12\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -41,10 +41,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzStorageMoverJobDefinition+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/projects/testProjecty8nedf6x/jobDefinitions/testUpdateJob5y8nedf6x?api-version=2025-07-01+2": {
+  "Update-AzStorageMoverJobDefinition+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/projects/testProjecty8nedf6x/jobDefinitions/testUpdateJob5y8nedf6x?api-version=2025-12-01+2": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/projects/testProjecty8nedf6x/jobDefinitions/testUpdateJob5y8nedf6x?api-version=2025-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/b6b34ad8-ca89-4f85-beb7-c2ec13702dac/resourceGroups/choudharysutest/providers/Microsoft.StorageMover/storageMovers/testmoverpreview1/projects/testProjecty8nedf6x/jobDefinitions/testUpdateJob5y8nedf6x?api-version=2025-12-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"description\": \"update description\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {

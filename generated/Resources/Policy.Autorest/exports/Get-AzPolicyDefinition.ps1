@@ -30,9 +30,11 @@ Get-AzPolicyDefinition -SubscriptionId '3bf44b72-c631-427a-b8c8-53e2595398ca' -B
 .Example
 Get-AzPolicyDefinition | Where-Object {$_.Properties.metadata.category -eq 'Tags'}
 .Example
-Get-AzPolicyDefinition | Select-Object -Property DisplayName, Description, PolicyType, Metadata | Format-List
+Get-AzPolicyDefinition -Id '/providers/Microsoft.Authorization/policyDefinitions/36fd7371-8eb7-4321-9c30-a7100022d048' -Version "1.1.1"
 .Example
-Get-AzPolicyDefinition -BackwardCompatible | Select-Object -ExpandProperty properties | Select-Object -Property DisplayName, Description, PolicyType, Metadata | Format-List
+Get-AzPolicyDefinition -Name 'VMPolicyDefinition' -ListVersion
+.Example
+Get-AzPolicyDefinition | Select-Object -Property DisplayName, Description, PolicyType, Metadata | Format-List
 
 .Inputs
 System.Management.Automation.SwitchParameter
@@ -48,8 +50,6 @@ function Get-AzPolicyDefinition {
 [CmdletBinding(DefaultParameterSetName='Name', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='ListVersion', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='Version', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
     [Alias('PolicyDefinitionName')]
@@ -57,15 +57,6 @@ param(
     [System.String]
     # The name of the policy definition to get.
     ${Name},
-
-    [Parameter(ParameterSetName='ListVersion', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='Version', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='Id', Mandatory, ValueFromPipelineByPropertyName)]
-    [Alias('ResourceId')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [System.String]
-    # The full Id of the policy definition to get.
-    ${Id},
 
     [Parameter(ParameterSetName='SubscriptionId', Mandatory, ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Static', ValueFromPipelineByPropertyName)]
@@ -85,6 +76,22 @@ param(
     # The name of the management group.
     ${ManagementGroupName},
 
+    [Parameter(ParameterSetName='Id', Mandatory, ValueFromPipelineByPropertyName)]
+    [Alias('ResourceId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
+    [System.String]
+    # The full Id of the policy definition to get.
+    ${Id},
+
+    [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Id', ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
+    [System.Management.Automation.SwitchParameter]
+    # Causes cmdlet to return only custom policy definitions versions.
+    ${ListVersion},
+
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
     [System.String]
@@ -96,12 +103,6 @@ param(
     # Possible policyType values are NotSpecified, Builtin, Custom, and Static.
     # If $filter='category -eq {value}' is provided, the returned list only includes all policy definitions whose category match the {value}.
     ${Filter},
-
-    [Parameter(ParameterSetName='ListVersion', Mandatory, ValueFromPipelineByPropertyName)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
-    [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return only custom policy definitions.
-    ${ListVersion},
 
     [Parameter(ParameterSetName='Static', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
@@ -121,13 +122,10 @@ param(
     # Causes cmdlet to return only built-in policy definitions.
     ${Builtin},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-    ${BackwardCompatible},
-
-    [Parameter(ParameterSetName='Version', Mandatory, ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Name', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='SubscriptionId', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ManagementGroupName', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Id', ValueFromPipelineByPropertyName)]
     [Alias('PolicyDefinitionVersion')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
@@ -217,8 +215,6 @@ begin {
 
         $mapping = @{
             Name = 'Az.Policy.custom\Get-AzPolicyDefinition';
-            ListVersion = 'Az.Policy.custom\Get-AzPolicyDefinition';
-            Version = 'Az.Policy.custom\Get-AzPolicyDefinition';
             SubscriptionId = 'Az.Policy.custom\Get-AzPolicyDefinition';
             ManagementGroupName = 'Az.Policy.custom\Get-AzPolicyDefinition';
             Id = 'Az.Policy.custom\Get-AzPolicyDefinition';

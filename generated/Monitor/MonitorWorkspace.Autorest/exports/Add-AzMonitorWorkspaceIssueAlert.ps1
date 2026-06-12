@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Add or add alerts in the issue
+Add or add alerts associated with an issue
 .Description
-Add or add alerts in the issue
+Add or add alerts associated with an issue
 .Example
 $alerts = @(
     @{

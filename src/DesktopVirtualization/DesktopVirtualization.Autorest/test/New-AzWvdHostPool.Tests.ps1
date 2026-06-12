@@ -60,7 +60,9 @@ Describe 'New-AzWvdHostPool' {
                                 -PreferredAppGroupType 'Desktop' `
                                 -StartVMOnConnect:$false `
                                 -ManagementType 'Standard' `
-                                -AllowRdpShortPathWithPrivateLink 'Enabled'
+                                -AllowRdpShortPathWithPrivateLink 'Enabled' `
+                                -PublicUdp 'Disabled' `
+                                -RelayUdp 'Disabled'
 
                 $hostPool.Name | Should -Be $env.HostPool
                 $hostPool.Location | Should -Be $env.Location
@@ -79,6 +81,8 @@ Describe 'New-AzWvdHostPool' {
                 $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
                 $hostPool.StartVMOnConnect | Should -Be $false
                 $hostPool.AllowRdpShortPathWithPrivateLink | Should -Be 'Enabled'
+                $hostPool.PublicUdp | Should -Be 'Disabled'
+                $hostPool.RelayUdp | Should -Be 'Disabled'
 
             $hostPool = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
@@ -100,6 +104,8 @@ Describe 'New-AzWvdHostPool' {
                 $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
                 $hostPool.StartVMOnConnect | Should -Be $false
                 $hostPool.AllowRdpShortPathWithPrivateLink | Should -Be 'Enabled'
+                $hostPool.PublicUdp | Should -Be 'Disabled'
+                $hostPool.RelayUdp | Should -Be 'Disabled'
         }
         finally{
                 $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
