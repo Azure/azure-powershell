@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.ManagementGroups" Version="2.0.0-beta" />
+        <PackageReference Update="Azure.Core" Version="1.51.1" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
