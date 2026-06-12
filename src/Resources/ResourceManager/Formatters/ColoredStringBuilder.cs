@@ -103,12 +103,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
         {
             if (color != Color.Reset)
             {
-                this.Insert(index, color.ToString());
+                this.Insert(index, Color.Reset.ToString());
             }
             this.Insert(index, value + Environment.NewLine);
             if (color != Color.Reset)
             {
-                this.Insert(index, Color.Reset.ToString());
+                this.Insert(index, color.ToString());
             }
         }
 
