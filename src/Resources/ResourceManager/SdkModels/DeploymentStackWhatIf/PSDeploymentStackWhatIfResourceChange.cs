@@ -11,12 +11,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStackWhatIf
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class DeploymentStackResourceChange
+    public class PSDeploymentStackWhatIfResourceChange
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -34,16 +34,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments
         public string ApiVersion { get; set; }
 
         [JsonProperty("managementStatusChange")]
-        public DeploymentStackChangeBase ManagementStatusChange { get; set; }
+        public PSDeploymentStackWhatIfChangeBase ManagementStatusChange { get; set; }
 
         [JsonProperty("denyStatusChange")]
-        public DeploymentStackChangeBase DenyStatusChange { get; set; }
+        public PSDeploymentStackWhatIfChangeBase DenyStatusChange { get; set; }
 
-        [JsonProperty("resourceConfigurationChanges")]
-        public ResourceConfigurationChanges ResourceConfigurationChanges { get; set; }
+        [JsonProperty("PSDeploymentStackWhatIfResourceConfigurationChanges")]
+        public PSDeploymentStackWhatIfResourceConfigurationChanges PSDeploymentStackWhatIfResourceConfigurationChanges { get; set; }
 
         [JsonProperty("extension")]
-        public DeploymentStackExtensionInfo Extension { get; set; }
+        public PSDeploymentStackWhatIfExtensionInfo Extension { get; set; }
 
         [JsonProperty("identifiers")]
         public IDictionary<string, object> Identifiers { get; set; }

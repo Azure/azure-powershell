@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
     using System.Collections.Generic;
     using System.Linq;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStackWhatIf;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -62,8 +63,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
         private readonly ColoredStringBuilder builder;
         private PSDeploymentStackWhatIfResult whatIfResult;
-        private DeploymentStackWhatIfProperties whatIfProps;
-        private DeploymentStackWhatIfChanges whatIfChanges;
+        private PSDeploymentStackWhatIfProperties whatIfProps;
+        private PSDeploymentStackWhatIfChanges whatIfChanges;
 
         public DeploymentStackWhatIfFormatter(ColoredStringBuilder builder)
         {
@@ -186,7 +187,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             return printed;
         }
 
-        private bool FormatDenySettingsChange(DeploymentStackChangeDeltaRecord denySettingsChange)
+        private bool FormatDenySettingsChange(PSDeploymentStackWhatIfChangeDeltaRecord denySettingsChange)
         {
             if (denySettingsChange?.Delta == null || denySettingsChange.Delta.Count == 0)
             {
@@ -218,7 +219,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             return printed;
         }
 
-        private bool FormatArrayChange(DeploymentStackPropertyChange arrayChange, string path)
+        private bool FormatArrayChange(PSDeploymentStackWhatIfPropertyChange arrayChange, string path)
         {
             var (symbol, color) = GetChangeTypeFormatting("Modify");
 
@@ -257,7 +258,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             return true;
         }
 
-        private void FormatPrimitiveValue(DeploymentStackPropertyChange change)
+        private void FormatPrimitiveValue(PSDeploymentStackWhatIfPropertyChange change)
         {
             var (symbol, color) = GetChangeTypeFormatting(change.ChangeType);
             this.builder.Append(symbol, color).Append(" ").AppendLine(FormatValue(change.After), color);
@@ -286,8 +287,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             return printed;
         }
 
-        private List<DeploymentStackResourceChange> SortResourceChanges(
-            IList<DeploymentStackResourceChange> resourceChanges)
+        private List<PSDeploymentStackWhatIfResourceChange> SortResourceChanges(
+            IList<PSDeploymentStackWhatIfResourceChange> resourceChanges)
         {
             return resourceChanges
                 .OrderBy(x => string.IsNullOrEmpty(x.Id) ? 1 : 0)
@@ -303,7 +304,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             return string.Equals(certainty, "Definite", StringComparison.OrdinalIgnoreCase) ? 0 : 1;
         }
 
-        private bool FormatResourceChanges(List<DeploymentStackResourceChange> resourceChangesSorted)
+        private bool FormatResourceChanges(List<PSDeploymentStackWhatIfResourceChange> resourceChangesSorted)
         {
             if (resourceChangesSorted == null || resourceChangesSorted.Count == 0)
             {
@@ -342,7 +343,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             return true;
         }
 
-        private void FormatResourceChange(DeploymentStackResourceChange resourceChange)
+        private void FormatResourceChange(PSDeploymentStackWhatIfResourceChange resourceChange)
         {
             FormatResourceHeadingLine(resourceChange);
 
@@ -358,9 +359,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                 FormatPrimitiveChange(resourceChange.DenyStatusChange, "Deny Status");
             }
 
-            if (resourceChange.ResourceConfigurationChanges?.Delta != null)
+            if (resourceChange.PSDeploymentStackWhatIfResourceConfigurationChanges?.Delta != null)
             {
-                foreach (var delta in resourceChange.ResourceConfigurationChanges.Delta)
+                foreach (var delta in resourceChange.PSDeploymentStackWhatIfResourceConfigurationChanges.Delta)
                 {
                     if (string.Equals(delta.ChangeType, "Array", StringComparison.OrdinalIgnoreCase))
                     {
@@ -376,7 +377,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             this.builder.PopIndent();
         }
 
-        private void FormatResourceHeadingLine(DeploymentStackResourceChange resourceChange)
+        private void FormatResourceHeadingLine(PSDeploymentStackWhatIfResourceChange resourceChange)
         {
             var (symbol, color) = GetChangeTypeFormatting(resourceChange.ChangeType);
             bool isPotential = string.Equals(resourceChange.ChangeCertainty, "Potential", StringComparison.OrdinalIgnoreCase);
@@ -397,9 +398,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                 ? resourceChange.Id
                 : $"{resourceChange.Type} {FormatExtResourceIdentifiers(resourceChange.Identifiers)}";
 
-            // Source API version from top-level apiVersion, or fall back to resourceConfigurationChanges.after
+            // Source API version from top-level apiVersion, or fall back to PSDeploymentStackWhatIfResourceConfigurationChanges.after
             string apiVersion = resourceChange.ApiVersion;
-            if (string.IsNullOrEmpty(apiVersion) && resourceChange.ResourceConfigurationChanges?.After is JObject afterObj)
+            if (string.IsNullOrEmpty(apiVersion) && resourceChange.PSDeploymentStackWhatIfResourceConfigurationChanges?.After is JObject afterObj)
             {
                 apiVersion = afterObj["apiVersion"]?.ToString();
             }
@@ -411,7 +412,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             this.builder.AppendLine(heading, color);
         }
 
-        private bool FormatResourceDeletionsSummary(List<DeploymentStackResourceChange> resourceChangesSorted)
+        private bool FormatResourceDeletionsSummary(List<PSDeploymentStackWhatIfResourceChange> resourceChangesSorted)
         {
             var deleteChanges = resourceChangesSorted
                 .Where(x => string.Equals(x.ChangeType, "Delete", StringComparison.OrdinalIgnoreCase))
@@ -484,8 +485,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
         private bool FormatPrimitiveChange(object change, string path)
         {
-            var baseChange = change as DeploymentStackChangeBase;
-            var propertyChange = change as DeploymentStackPropertyChange;
+            var baseChange = change as PSDeploymentStackWhatIfChangeBase;
+            var propertyChange = change as PSDeploymentStackWhatIfPropertyChange;
 
             if (baseChange == null && propertyChange == null)
             {
@@ -534,7 +535,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             return false;
         }
 
-        private static bool IsNullNoChange(DeploymentStackChangeBase change)
+        private static bool IsNullNoChange(PSDeploymentStackWhatIfChangeBase change)
         {
             if (change == null)
             {
@@ -590,7 +591,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             return (symbol, color);
         }
 
-        private static string FormatResourceClassHeader(DeploymentStackResourceChange change)
+        private static string FormatResourceClassHeader(PSDeploymentStackWhatIfResourceChange change)
         {
             if (!string.IsNullOrEmpty(change.Id))
             {

@@ -16,17 +16,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
 {
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStackWhatIf;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStacks;
     using Microsoft.Azure.Commands.ResourceManager.Common;
 
     /// <summary>
-    /// Cmdlet to preview changes for creating a Subscription Deployment Stack.
+    /// Cmdlet to preview changes for updating a Subscription Deployment Stack.
     /// </summary>
-    [Cmdlet("New", AzureRMConstants.AzureRMPrefix + "SubscriptionDeploymentStackWhatIfResult",
+    [Cmdlet("Set", AzureRMConstants.AzureRMPrefix + "SubscriptionDeploymentStackWhatIfResult",
         DefaultParameterSetName = ParameterlessTemplateFileParameterSetName, SupportsShouldProcess = true)]
     [OutputType(typeof(PSDeploymentStackWhatIfResult))]
-    public class NewAzSubscriptionDeploymentStackWhatIf : DeploymentStackWhatIfCmdlet
+    public class SetAzSubscriptionDeploymentStackWhatIfResult : DeploymentStackWhatIfCmdlet
     {
         #region Cmdlet Parameters
 

@@ -11,13 +11,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStackWhatIf
 {
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class DeploymentStackWhatIfProperties
+    public class PSDeploymentStackWhatIfProperties
     {
         [JsonProperty("deploymentStackResourceId")]
         public string DeploymentStackResourceId { get; set; }
@@ -32,13 +32,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments
         public DateTime? DeploymentStackLastModified { get; set; }
 
         [JsonProperty("deploymentExtensions")]
-        public IList<DeploymentExtension> DeploymentExtensions { get; set; }
+        public IList<PSDeploymentStackWhatIfExtension> DeploymentExtensions { get; set; }
 
         [JsonProperty("changes")]
-        public DeploymentStackWhatIfChanges Changes { get; set; }
+        public PSDeploymentStackWhatIfChanges Changes { get; set; }
 
         [JsonProperty("diagnostics")]
-        public IList<DeploymentStackDiagnostic> Diagnostics { get; set; }
+        public IList<PSDeploymentStackWhatIfDiagnostic> Diagnostics { get; set; }
 
         [JsonProperty("correlationId")]
         public string CorrelationId { get; set; }

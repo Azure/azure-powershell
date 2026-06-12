@@ -16,17 +16,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
 {
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStackWhatIf;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStacks;
     using Microsoft.Azure.Commands.ResourceManager.Common;
 
     /// <summary>
-    /// Cmdlet to preview changes for updating a Management Group Deployment Stack.
+    /// Cmdlet to preview changes for creating a Management Group Deployment Stack.
     /// </summary>
-    [Cmdlet("Set", AzureRMConstants.AzureRMPrefix + "ManagementGroupDeploymentStackWhatIfResult",
+    [Cmdlet("New", AzureRMConstants.AzureRMPrefix + "ManagementGroupDeploymentStackWhatIfResult",
         DefaultParameterSetName = ParameterlessTemplateFileParameterSetName, SupportsShouldProcess = true)]
     [OutputType(typeof(PSDeploymentStackWhatIfResult))]
-    public class SetAzManagementGroupDeploymentStackWhatIf : DeploymentStackWhatIfCmdlet
+    public class NewAzManagementGroupDeploymentStackWhatIfResult : DeploymentStackWhatIfCmdlet
     {
         #region Cmdlet Parameters
 
@@ -100,6 +100,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
             return new PSDeploymentStackWhatIfParameters
             {
                 StackName = Name,
+                StackResourceId = StackResourceId,
+                RetentionInterval = RetentionInterval,
                 ManagementGroupId = ManagementGroupId,
                 Location = Location,
                 TemplateFile = TemplateFile,

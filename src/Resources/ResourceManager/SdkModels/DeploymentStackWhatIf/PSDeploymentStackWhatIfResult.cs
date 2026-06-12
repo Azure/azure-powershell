@@ -3,7 +3,7 @@
 // Licensed under the Apache License, Version 2.0 (the "License");
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStackWhatIf
 {
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters;
     using Newtonsoft.Json;
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments
         public string Type { get; set; }
 
         [JsonProperty("properties")]
-        public DeploymentStackWhatIfProperties Properties { get; set; }
+        public PSDeploymentStackWhatIfProperties Properties { get; set; }
 
         public override string ToString()
         {

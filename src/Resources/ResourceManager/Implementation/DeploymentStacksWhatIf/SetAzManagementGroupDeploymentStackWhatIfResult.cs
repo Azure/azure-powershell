@@ -16,17 +16,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
 {
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.CmdletBase;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStackWhatIf;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStacks;
     using Microsoft.Azure.Commands.ResourceManager.Common;
 
     /// <summary>
-    /// Cmdlet to preview changes for updating a Subscription Deployment Stack.
+    /// Cmdlet to preview changes for updating a Management Group Deployment Stack.
     /// </summary>
-    [Cmdlet("Set", AzureRMConstants.AzureRMPrefix + "SubscriptionDeploymentStackWhatIfResult",
+    [Cmdlet("Set", AzureRMConstants.AzureRMPrefix + "ManagementGroupDeploymentStackWhatIfResult",
         DefaultParameterSetName = ParameterlessTemplateFileParameterSetName, SupportsShouldProcess = true)]
     [OutputType(typeof(PSDeploymentStackWhatIfResult))]
-    public class SetAzSubscriptionDeploymentStackWhatIf : DeploymentStackWhatIfCmdlet
+    public class SetAzManagementGroupDeploymentStackWhatIfResult : DeploymentStackWhatIfCmdlet
     {
         #region Cmdlet Parameters
 
@@ -44,6 +44,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
             HelpMessage = "The interval to persist the WhatIf result in ISO 8601 format (e.g. P1D for 1 day).")]
         [ValidateNotNullOrEmpty]
         public string RetentionInterval { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The ID of the target management group.")]
+        [ValidateNotNullOrEmpty]
+        public string ManagementGroupId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location to store deployment data.")]
@@ -95,8 +100,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
             return new PSDeploymentStackWhatIfParameters
             {
                 StackName = Name,
-                StackResourceId = StackResourceId,
-                RetentionInterval = RetentionInterval,
+                ManagementGroupId = ManagementGroupId,
                 Location = Location,
                 TemplateFile = TemplateFile,
                 TemplateUri = !string.IsNullOrEmpty(protectedTemplateUri) ? protectedTemplateUri : TemplateUri,
