@@ -47,9 +47,9 @@ Condensed validation rules extracted from the [Azure PowerShell Design Guideline
 ## Piping Best Practices {#piping}
 
 | Rule                                | Description                                                       |
-| ----------------------------------- | ----------------------------------------------------------------- | --------------------------------------------------------------- |
-| **InputObject piping**              | Support `Get-Az\*                                                 | Update-Az\*` by accepting the output type of the source cmdlet. |
-| **ResourceId piping**               | Support `Get-AzResource                                           | Remove-Az\*`via the`-ResourceId` parameter set.                 |
+| ----------------------------------- | ----------------------------------------------------------------- |
+| **InputObject piping**              | Support `Get-Az | Update-Az` by accepting the output type of the source cmdlet. |
+| **ResourceId piping**               | Support `Get-AzResource | Remove-Az`via the`-ResourceId` parameter set. |
 | **ValueFromPipeline**               | Mark `-InputObject` with `ValueFromPipeline = true`.              |
 | **ValueFromPipelineByPropertyName** | Mark `-ResourceId` with `ValueFromPipelineByPropertyName = true`. |
 

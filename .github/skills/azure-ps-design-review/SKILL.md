@@ -228,7 +228,6 @@ Use this template — `{...}` values are filled from Steps 1 and 2:
 ```powershell
 
 ```
-````
 
 ## New Cmdlets
 
@@ -345,7 +344,7 @@ PS C:\> {CMDLET_NAME} -ResourceGroupName "rg1" -Name "example"
 - Test cases (full list of every scenario to test — positive, negative, edge cases)
 
 **Pre-population rules for cmdlets**:
-- Cmdlet names: Derive from operations (PUT → `New-`/`Set-`, PATCH → `Update-`, DELETE → `Remove-`, GET → `Get-`, POST actions → approved verb). Mark each with `<!-- FROM TYPESPEC -->`.
+- Cmdlet names: Derive from operations (PUT → `Set-`, PATCH → `Update-`, DELETE → `Remove-`, GET → `Get-`, POST actions → `New-`). Mark each with `<!-- FROM TYPESPEC -->`.
 - Parameters: Extract from resource model properties. Include type and mark as `<!-- FROM TYPESPEC -->`.
 
 Tell the developer: **"I've created `design-draft.md` in your editor. All the info from your PR and our chat is already filled in — you just need to write the long-form sections (piping scenarios, sample usage, business logic, and test cases). Let me know when you're done."**
@@ -426,7 +425,7 @@ For edge cases or when the developer requests detailed rationale, fetch the full
       }
     }
   }
-````
+  ```
 
 Do NOT fall back to `gh` CLI, `git`, `curl`, or PowerShell commands. Wait for the developer to fix the MCP configuration and retry.
 

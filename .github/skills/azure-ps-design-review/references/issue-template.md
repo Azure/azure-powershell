@@ -26,15 +26,15 @@ Please ensure your cmdlets comply with the design guidelines outlined in the [Po
 - What is the expected service release date?
   - {RELEASE_DATE}
 
-- Which [Powershell module](https://github.com/Azure/azure-powershell/blob/main/documentation/azure-powershell-modules.md) are these changes being made in?
+- Which [PowerShell module](https://github.com/Azure/azure-powershell/blob/main/documentation/azure-powershell-modules.md) are these changes being made in?
   - {MODULE}
 
 ## Contact Information
 
-- Main developer contacts (emails + github aliases)
+- Main developer contacts (emails + GitHub aliases)
   - {DEV_CONTACTS}
 
-- PM contact (email + github alias)
+- PM contact (email + GitHub alias)
   - {PM_CONTACT}
 
 - Other people who should attend a design review (email)
@@ -110,7 +110,7 @@ Please list every test scenario that should be tested for this feature, includin
 - Link to the OpenAPI (swagger) spec
   - {SPEC_LINK}
 
-- Link to any other Github work related to this request
+- Link to any other GitHub work related to this request
   - {RELATED_LINKS}
 
 - Indicate any feature flags or restrictions on the changes provided in this design specification.
