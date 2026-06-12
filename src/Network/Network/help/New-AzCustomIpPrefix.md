@@ -17,7 +17,7 @@ New-AzCustomIpPrefix -Name <String> -ResourceGroupName <String> -Location <Strin
  [-Asn <String>] [-Geo <String>] [-SignedMessage <String>] [-AuthorizationMessage <String>]
  [-ExpressRouteAdvertise] [-CustomIpPrefixParent <PSCustomIpPrefix>] [-IsParent] [-Zone <String[]>]
  [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,6 +47,21 @@ $myV4ChildIpPrefix = New-AzCustomIpPrefix -Name $prefixName -ResourceGroupName $
 This command kicks off the provisioning process for a new Child IPv4 Custom IP Prefix resource with name $prefixName in resource group $rgName with a CIDR of 40.40.40.0/25. Its parent prefix is $myV4ParentPrefix.
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run cmdlet in the background
@@ -90,6 +105,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
