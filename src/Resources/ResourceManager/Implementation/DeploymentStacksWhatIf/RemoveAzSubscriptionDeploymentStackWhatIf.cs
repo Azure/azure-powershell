@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
                     Name,
                     () =>
                     {
-                        DeploymentStacksSdkClient.DeleteSubscriptionDeploymentStackWhatIfResult(Name);
+                        DeploymentStacksWhatIfSdkClient.DeleteSubscriptionDeploymentStackWhatIfResult(Name);
                         if (PassThru.IsPresent)
                         {
                             WriteObject(true);

@@ -19,15 +19,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
     using Microsoft.Azure.Commands.ResourceManager.Common;
-    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
-    /// Gets or lists existing WhatIf results for a Resource Group Deployment Stack.
+    /// Gets or lists existing WhatIf results for a Subscription Deployment Stack.
     /// </summary>
-    [Cmdlet("Get", AzureRMConstants.AzureRMPrefix + "ResourceGroupDeploymentStackWhatIfResult",
+    [Cmdlet("Get", AzureRMConstants.AzureRMPrefix + "SubscriptionDeploymentStackWhatIfResult",
         DefaultParameterSetName = ListParameterSetName)]
     [OutputType(typeof(PSDeploymentStackWhatIfResult))]
-    public class GetAzResourceGroupDeploymentStackWhatIf : DeploymentStacksCmdletBase
+    public class GetAzSubscriptionDeploymentStackWhatIf : DeploymentStacksCmdletBase
     {
         internal const string GetByNameParameterSetName = "GetByName";
         internal const string GetByResourceIdParameterSetName = "GetByResourceId";
@@ -38,16 +37,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
             HelpMessage = "The name of the WhatIf result to get.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
-            ParameterSetName = GetByNameParameterSetName,
-            HelpMessage = "The name of the ResourceGroup.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ListParameterSetName,
-            HelpMessage = "The name of the ResourceGroup.")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
 
         [Alias("Id")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -69,25 +58,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
                 switch (ParameterSetName)
                 {
                     case GetByResourceIdParameterSetName:
-                        // Validate and parse the ResourceId
-                        var rg = ResourceIdUtility.GetResourceGroupName(ResourceId);
                         var name = ResourceIdUtility.GetDeploymentName(ResourceId);
-                        if (string.IsNullOrEmpty(rg) || string.IsNullOrEmpty(name))
+                        if (string.IsNullOrEmpty(name))
                         {
                             throw new PSArgumentException($"Provided ResourceId '{ResourceId}' is not in correct form. Should be in form " +
-                                "/subscriptions/<subid>/resourceGroups/<rgname>/providers/Microsoft.Resources/deploymentStacksWhatIfResults/<name>");
+                                "/subscriptions/<subid>/providers/Microsoft.Resources/deploymentStacksWhatIfResults/<name>");
                         }
                         WriteObject(WithPropertyChanges.IsPresent
-                            ? DeploymentStacksSdkClient.GetResourceGroupDeploymentStackWhatIfResultWithPropertyChanges(rg, name)
-                            : DeploymentStacksSdkClient.GetResourceGroupDeploymentStackWhatIfResult(rg, name));
+                            ? DeploymentStacksWhatIfSdkClient.GetSubscriptionDeploymentStackWhatIfResultWithPropertyChanges(name)
+                            : DeploymentStacksWhatIfSdkClient.GetSubscriptionDeploymentStackWhatIfResult(name));
                         break;
                     case GetByNameParameterSetName:
                         WriteObject(WithPropertyChanges.IsPresent
-                            ? DeploymentStacksSdkClient.GetResourceGroupDeploymentStackWhatIfResultWithPropertyChanges(ResourceGroupName, Name)
-                            : DeploymentStacksSdkClient.GetResourceGroupDeploymentStackWhatIfResult(ResourceGroupName, Name));
+                            ? DeploymentStacksWhatIfSdkClient.GetSubscriptionDeploymentStackWhatIfResultWithPropertyChanges(Name)
+                            : DeploymentStacksWhatIfSdkClient.GetSubscriptionDeploymentStackWhatIfResult(Name));
                         break;
                     case ListParameterSetName:
-                        WriteObject(DeploymentStacksSdkClient.ListResourceGroupDeploymentStackWhatIfResults(ResourceGroupName), true);
+                        WriteObject(DeploymentStacksWhatIfSdkClient.ListSubscriptionDeploymentStackWhatIfResults(), true);
                         break;
                     default:
                         throw new PSInvalidOperationException();

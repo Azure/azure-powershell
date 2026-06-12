@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
     using Microsoft.Azure.Commands.ResourceManager.Common;
 
     /// <summary>
-    /// Gets or lists existing WhatIf results for a Subscription Deployment Stack.
+    /// Gets or lists existing WhatIf results for a Management Group Deployment Stack.
     /// </summary>
-    [Cmdlet("Get", AzureRMConstants.AzureRMPrefix + "SubscriptionDeploymentStackWhatIfResult",
+    [Cmdlet("Get", AzureRMConstants.AzureRMPrefix + "ManagementGroupDeploymentStackWhatIfResult",
         DefaultParameterSetName = ListParameterSetName)]
     [OutputType(typeof(PSDeploymentStackWhatIfResult))]
-    public class GetAzSubscriptionDeploymentStackWhatIf : DeploymentStacksCmdletBase
+    public class GetAzManagementGroupDeploymentStackWhatIf : DeploymentStacksCmdletBase
     {
         internal const string GetByNameParameterSetName = "GetByName";
         internal const string GetByResourceIdParameterSetName = "GetByResourceId";
@@ -37,6 +37,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
             HelpMessage = "The name of the WhatIf result to get.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+            ParameterSetName = GetByNameParameterSetName,
+            HelpMessage = "The ID of the management group.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ListParameterSetName,
+            HelpMessage = "The ID of the management group.")]
+        [ValidateNotNullOrEmpty]
+        public string ManagementGroupId { get; set; }
 
         [Alias("Id")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -59,22 +68,29 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
                 {
                     case GetByResourceIdParameterSetName:
                         var name = ResourceIdUtility.GetDeploymentName(ResourceId);
-                        if (string.IsNullOrEmpty(name))
+                        string mgId = null;
+                        var segments = ResourceId.Split('/');
+                        var mgIndex = Array.IndexOf(segments, "managementGroups");
+                        if (mgIndex >= 0 && mgIndex + 1 < segments.Length)
+                        {
+                            mgId = segments[mgIndex + 1];
+                        }
+                        if (string.IsNullOrEmpty(mgId) || string.IsNullOrEmpty(name))
                         {
                             throw new PSArgumentException($"Provided ResourceId '{ResourceId}' is not in correct form. Should be in form " +
-                                "/subscriptions/<subid>/providers/Microsoft.Resources/deploymentStacksWhatIfResults/<name>");
+                                "/providers/Microsoft.Management/managementGroups/<mgId>/providers/Microsoft.Resources/deploymentStacksWhatIfResults/<name>");
                         }
                         WriteObject(WithPropertyChanges.IsPresent
-                            ? DeploymentStacksSdkClient.GetSubscriptionDeploymentStackWhatIfResultWithPropertyChanges(name)
-                            : DeploymentStacksSdkClient.GetSubscriptionDeploymentStackWhatIfResult(name));
+                            ? DeploymentStacksWhatIfSdkClient.GetManagementGroupDeploymentStackWhatIfResultWithPropertyChanges(mgId, name)
+                            : DeploymentStacksWhatIfSdkClient.GetManagementGroupDeploymentStackWhatIfResult(mgId, name));
                         break;
                     case GetByNameParameterSetName:
                         WriteObject(WithPropertyChanges.IsPresent
-                            ? DeploymentStacksSdkClient.GetSubscriptionDeploymentStackWhatIfResultWithPropertyChanges(Name)
-                            : DeploymentStacksSdkClient.GetSubscriptionDeploymentStackWhatIfResult(Name));
+                            ? DeploymentStacksWhatIfSdkClient.GetManagementGroupDeploymentStackWhatIfResultWithPropertyChanges(ManagementGroupId, Name)
+                            : DeploymentStacksWhatIfSdkClient.GetManagementGroupDeploymentStackWhatIfResult(ManagementGroupId, Name));
                         break;
                     case ListParameterSetName:
-                        WriteObject(DeploymentStacksSdkClient.ListSubscriptionDeploymentStackWhatIfResults(), true);
+                        WriteObject(DeploymentStacksWhatIfSdkClient.ListManagementGroupDeploymentStackWhatIfResults(ManagementGroupId), true);
                         break;
                     default:
                         throw new PSInvalidOperationException();
