@@ -56,11 +56,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Deploy
             HelpMessage = "Description for the WhatIf result.")]
         public string Description { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Action to take on resources that become unmanaged. Possible values include: " +
+        [Parameter(Mandatory = true, HelpMessage = "Action to take on resources that become unmanaged. Possible values include: " +
             "'detachAll', 'deleteResources', and 'deleteAll'.")]
         public PSActionOnUnmanage ActionOnUnmanage { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Mode for DenySettings. Possible values include: 'denyDelete', 'denyWriteAndDelete', and 'none'.")]
+        [Parameter(Mandatory = true, HelpMessage = "Mode for DenySettings. Possible values include: 'denyDelete', 'denyWriteAndDelete', and 'none'.")]
         public PSDenySettingsMode DenySettingsMode { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "List of AAD principal IDs excluded from the lock. Up to 5 principals are permitted.")]

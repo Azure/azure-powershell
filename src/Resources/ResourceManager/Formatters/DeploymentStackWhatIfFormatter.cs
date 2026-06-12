@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStackWhatIf;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStackWhatIf;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -93,6 +93,11 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStack
             this.whatIfProps = result.Properties;
             this.whatIfChanges = this.whatIfProps?.Changes;
 
+            if (FormatStackWhatIfResultInfo())
+            {
+                this.builder.EnsureNumNewLines(2);
+            }
+
             if (FormatChangeTypeLegend())
             {
                 this.builder.EnsureNumNewLines(2);
@@ -117,6 +122,75 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStack
             this.whatIfChanges = null;
 
             return output;
+        }
+
+        private bool FormatStackWhatIfResultInfo()
+        {
+            bool hasInfo = false;
+
+            if (!string.IsNullOrEmpty(this.whatIfResult?.Id))
+            {
+                this.builder.Append("Resource Id: ", Color.Green).AppendLine(this.whatIfResult.Id);
+                hasInfo = true;
+            }
+
+            if (!string.IsNullOrEmpty(this.whatIfResult?.Name))
+            {
+                this.builder.Append("Name: ", Color.Green).AppendLine(this.whatIfResult.Name);
+                hasInfo = true;
+            }
+
+            if (!string.IsNullOrEmpty(this.whatIfProps?.ProvisioningState))
+            {
+                this.builder.Append("Provisioning State: ", Color.Green).AppendLine(this.whatIfProps.ProvisioningState);
+                hasInfo = true;
+            }
+
+            if (!string.IsNullOrEmpty(this.whatIfProps?.DeploymentStackResourceId))
+            {
+                this.builder.Append("Stack Resource Id: ", Color.Green).AppendLine(this.whatIfProps.DeploymentStackResourceId);
+                hasInfo = true;
+            }
+
+            if (!string.IsNullOrEmpty(this.whatIfProps?.CorrelationId))
+            {
+                this.builder.Append("Correlation Id: ", Color.Green).AppendLine(this.whatIfProps.CorrelationId);
+                hasInfo = true;
+            }
+
+            DateTime creationTime = this.whatIfResult?.SystemData?.CreatedAt ?? DateTime.UtcNow;
+            this.builder.Append("Creation Time: ", Color.Green).AppendLine(creationTime.ToString("o"));
+            hasInfo = true;
+
+            if (!string.IsNullOrEmpty(this.whatIfProps?.RetentionInterval))
+            {
+                TimeSpan? retentionSpan = ParseRetentionInterval(this.whatIfProps.RetentionInterval);
+                if (retentionSpan.HasValue)
+                {
+                    DateTime expirationTime = creationTime.Add(retentionSpan.Value);
+                    this.builder.Append("Expiration Time: ", Color.Green).AppendLine(expirationTime.ToString("o"));
+                    hasInfo = true;
+                }
+            }
+
+            return hasInfo;
+        }
+
+        private static TimeSpan? ParseRetentionInterval(string retentionInterval)
+        {
+            if (string.IsNullOrEmpty(retentionInterval))
+            {
+                return null;
+            }
+
+            try
+            {
+                return System.Xml.XmlConvert.ToTimeSpan(retentionInterval);
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         private bool FormatChangeTypeLegend()

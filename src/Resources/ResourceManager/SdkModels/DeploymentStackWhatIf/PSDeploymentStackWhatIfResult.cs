@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStackWhatIf
 {
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters;
+    using Microsoft.Azure.Management.Resources.Models;
     using Newtonsoft.Json;
 
     public class PSDeploymentStackWhatIfResult
@@ -18,6 +19,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentS
 
         [JsonProperty("type")]
         public string Type { get; set; }
+
+        [JsonProperty("systemData")]
+        public SystemData SystemData { get; set; }
 
         [JsonProperty("properties")]
         public PSDeploymentStackWhatIfProperties Properties { get; set; }
