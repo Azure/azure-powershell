@@ -176,6 +176,21 @@ function Test-TrafficManagerProfileRecordSet
 	Assert-AreEqual $tmProfileId2 $tmRecord.TrafficManagerProfileId
 	Assert-AreEqual 7200 $tmRecord.Ttl
 
+	# Negative cases: TMLink mutual-exclusivity constraints are enforced client-side (no service round-trip).
+
+	# A record set cannot contain DNS records and also link to a Traffic Manager profile.
+	$dnsRecords = @()
+	$dnsRecords += New-AzDnsRecordConfig -Ipv4Address 1.1.1.1
+	Assert-ThrowsLike { New-AzDnsRecordSet -Name "negtmrecords" -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType $recordType -Ttl 3600 -TrafficManagerProfileId $tmProfileId -DnsRecords $dnsRecords } "*cannot contain DNS records*"
+
+	# New-AzDnsRecordSet cannot accept both -TargetResourceId (alias) and -TrafficManagerProfileId (TMLink): they live in mutually exclusive parameter sets.
+	Assert-Throws { New-AzDnsRecordSet -Name "negtmboth" -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType $recordType -Ttl 3600 -TargetResourceId $tmProfileId -TrafficManagerProfileId $tmProfileId }
+
+	# A DnsRecordSet object cannot specify both an alias target and a Traffic Manager profile link on update.
+	$tmRecord.TargetResourceId = "/subscriptions/$($subscription)/resourceGroups/$($resourceGroup.ResourceGroupName)/providers/Microsoft.Network/dnszones/$zoneName/A/$recordName"
+	Assert-ThrowsLike { $tmRecord | Set-AzDnsRecordSet } "*cannot specify both*"
+	$tmRecord.TargetResourceId = $null
+
 	$tmRecord | Remove-AzDnsRecordSet
 
 	Assert-ThrowsLike { Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType $recordType } "*does not exist*"
