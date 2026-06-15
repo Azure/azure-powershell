@@ -7,18 +7,18 @@ namespace Microsoft.Azure.Management.Dns.Models
 {
     using System.Linq;
 
-    public partial class DnssecConfigsDeleteHeaders
+    public partial class DnssecConfigsCreateOrUpdateHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the DnssecConfigsDeleteHeaders class.
+        /// Initializes a new instance of the DnssecConfigsCreateOrUpdateHeaders class.
         /// </summary>
-        public DnssecConfigsDeleteHeaders()
+        public DnssecConfigsCreateOrUpdateHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the DnssecConfigsDeleteHeaders class.
+        /// Initializes a new instance of the DnssecConfigsCreateOrUpdateHeaders class.
         /// </summary>
 
         /// <param name="location">
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Dns.Models
 
         /// <param name="retryAfter">
         /// </param>
-        public DnssecConfigsDeleteHeaders(string location = default(string), int? retryAfter = default(int?))
+        public DnssecConfigsCreateOrUpdateHeaders(string location = default(string), int? retryAfter = default(int?))
 
         {
             this.Location = location;
