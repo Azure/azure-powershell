@@ -1,0 +1,85 @@
+{
+  "resourceType": "topologyMaps",
+  "apiVersion": "2026-02-09-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.privatetrafficmanager"
+  },
+  "commands": [
+    {
+      "name": "Get-AzPrivateTrafficManagerTopologyMap",
+      "description": "Gets a Topology Map.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/topologyMaps/{topologyMapName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/get-azprivatetrafficmanagertopologymap"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a Topology Map.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.topologyMapName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzPrivateTrafficManagerTopologyMap",
+      "description": "Deletes a Topology Map.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/topologyMaps/{topologyMapName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/remove-azprivatetrafficmanagertopologymap"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a Topology Map.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.topologyMapName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

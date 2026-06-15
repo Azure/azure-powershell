@@ -1,0 +1,95 @@
+{
+  "resourceType": "privateTrafficManagerProfiles/healthPolicies",
+  "apiVersion": "2026-02-09-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.privatetrafficmanager"
+  },
+  "commands": [
+    {
+      "name": "Get-AzPrivateTrafficManagerHealthPolicy",
+      "description": "Gets a Traffic Manager health policy.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateTrafficManagerProfiles/{privateTrafficManagerProfileName}/healthPolicies/{healthPolicyName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/get-azprivatetrafficmanagerhealthpolicy"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-PrivateTrafficManagerProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a Traffic Manager health policy.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.healthPolicyName]"
+            },
+            {
+              "name": "-PrivateTrafficManagerProfileName",
+              "value": "[Path.privateTrafficManagerProfileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzPrivateTrafficManagerHealthPolicy",
+      "description": "Deletes a Traffic Manager health policy.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateTrafficManagerProfiles/{privateTrafficManagerProfileName}/healthPolicies/{healthPolicyName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/remove-azprivatetrafficmanagerhealthpolicy"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-PrivateTrafficManagerProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a Traffic Manager health policy.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.healthPolicyName]"
+            },
+            {
+              "name": "-PrivateTrafficManagerProfileName",
+              "value": "[Path.privateTrafficManagerProfileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

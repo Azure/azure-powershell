@@ -1,0 +1,95 @@
+{
+  "resourceType": "topologyMaps/sites",
+  "apiVersion": "2026-02-09-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.privatetrafficmanager"
+  },
+  "commands": [
+    {
+      "name": "Get-AzPrivateTrafficManagerSite",
+      "description": "Gets a Site.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/topologyMaps/{topologyMapName}/sites/{siteName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/get-azprivatetrafficmanagersite"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-TopologyMapName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a Site.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.siteName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-TopologyMapName",
+              "value": "[Path.topologyMapName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzPrivateTrafficManagerSite",
+      "description": "Deletes a Site.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/topologyMaps/{topologyMapName}/sites/{siteName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/remove-azprivatetrafficmanagersite"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]",
+              "-TopologyMapName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a Site.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.siteName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-TopologyMapName",
+              "value": "[Path.topologyMapName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

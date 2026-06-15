@@ -1,0 +1,85 @@
+{
+  "resourceType": "privateTrafficManagerProfiles",
+  "apiVersion": "2026-02-09-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.privatetrafficmanager"
+  },
+  "commands": [
+    {
+      "name": "Get-AzPrivateTrafficManagerProfile",
+      "description": "Gets a Private Traffic Manager profile.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateTrafficManagerProfiles/{privateTrafficManagerProfileName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/get-azprivatetrafficmanagerprofile"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-PrivateTrafficManagerProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a Private Traffic Manager profile.",
+          "parameters": [
+            {
+              "name": "-PrivateTrafficManagerProfileName",
+              "value": "[Path.privateTrafficManagerProfileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzPrivateTrafficManagerProfile",
+      "description": "Deletes a Private Traffic Manager profile.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateTrafficManagerProfiles/{privateTrafficManagerProfileName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/remove-azprivatetrafficmanagerprofile"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-PrivateTrafficManagerProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a Private Traffic Manager profile.",
+          "parameters": [
+            {
+              "name": "-PrivateTrafficManagerProfileName",
+              "value": "[Path.privateTrafficManagerProfileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

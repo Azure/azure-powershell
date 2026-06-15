@@ -1,0 +1,95 @@
+{
+  "resourceType": "privateTrafficManagerProfiles/endpoints",
+  "apiVersion": "2026-02-09-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.privatetrafficmanager"
+  },
+  "commands": [
+    {
+      "name": "Get-AzPrivateTrafficManagerEndpoint",
+      "description": "Gets a Private Traffic Manager endpoint.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateTrafficManagerProfiles/{privateTrafficManagerProfileName}/endpoints/{endpointName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/get-azprivatetrafficmanagerendpoint"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-PrivateTrafficManagerProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a Private Traffic Manager endpoint.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.endpointName]"
+            },
+            {
+              "name": "-PrivateTrafficManagerProfileName",
+              "value": "[Path.privateTrafficManagerProfileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzPrivateTrafficManagerEndpoint",
+      "description": "Deletes a Private Traffic Manager endpoint.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateTrafficManagerProfiles/{privateTrafficManagerProfileName}/endpoints/{endpointName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/remove-azprivatetrafficmanagerendpoint"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-PrivateTrafficManagerProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a Private Traffic Manager endpoint.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.endpointName]"
+            },
+            {
+              "name": "-PrivateTrafficManagerProfileName",
+              "value": "[Path.privateTrafficManagerProfileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
