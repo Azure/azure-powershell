@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.PrivateTrafficManager-help.xml
 Module Name: Az.PrivateTrafficManager
 online version: https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/new-azprivatetrafficmanagerprofile
 schema: 2.0.0
@@ -15,24 +15,24 @@ Create a Private Traffic Manager profile.
 ### CreateExpanded (Default)
 ```
 New-AzPrivateTrafficManagerProfile -PrivateTrafficManagerProfileName <String> -ResourceGroupName <String>
- -Location <String> [-SubscriptionId <String>] [-CustomTopologyMap <String>] [-DnsConfigRecordType <String>]
+ [-SubscriptionId <String>] -Location <String> [-CustomTopologyMap <String>] [-DnsConfigRecordType <String>]
  [-DnsConfigTtl <Int64>] [-Endpoint <IProfileEndpoint[]>] [-ProfileStatus <String>] [-Tag <Hashtable>]
  [-TopologyMapId <String>] [-TrafficRoutingMethod <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzPrivateTrafficManagerProfile -PrivateTrafficManagerProfileName <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzPrivateTrafficManagerProfile -PrivateTrafficManagerProfileName <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -365,4 +365,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

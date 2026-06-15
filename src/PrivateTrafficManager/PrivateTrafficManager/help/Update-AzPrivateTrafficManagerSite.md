@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.PrivateTrafficManager-help.xml
 Module Name: Az.PrivateTrafficManager
 online version: https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/update-azprivatetrafficmanagersite
 schema: 2.0.0
@@ -14,37 +14,38 @@ Update a Site.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzPrivateTrafficManagerSite -Name <String> -ResourceGroupName <String> -TopologyMapName <String>
- [-SubscriptionId <String>] [-ProbingGatewayId <String[]>] [-VirtualNetworkId <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzPrivateTrafficManagerSite -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -TopologyMapName <String> [-ProbingGatewayId <String[]>] [-VirtualNetworkId <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### UpdateViaJsonString
 ```
-Update-AzPrivateTrafficManagerSite -InputObject <IPrivateTrafficManagerIdentity>
- [-ProbingGatewayId <String[]>] [-VirtualNetworkId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzPrivateTrafficManagerSite -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -TopologyMapName <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzPrivateTrafficManagerSite -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -TopologyMapName <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityTopologyMapExpanded
 ```
 Update-AzPrivateTrafficManagerSite -Name <String> -TopologyMapInputObject <IPrivateTrafficManagerIdentity>
  [-ProbingGatewayId <String[]>] [-VirtualNetworkId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaJsonFilePath
+### UpdateViaIdentityExpanded
 ```
-Update-AzPrivateTrafficManagerSite -Name <String> -ResourceGroupName <String> -TopologyMapName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzPrivateTrafficManagerSite -Name <String> -ResourceGroupName <String> -TopologyMapName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzPrivateTrafficManagerSite -InputObject <IPrivateTrafficManagerIdentity> [-ProbingGatewayId <String[]>]
+ [-VirtualNetworkId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -157,7 +158,7 @@ The name of the Site.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityTopologyMapExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityTopologyMapExpanded
 Aliases: SiteName
 
 Required: True
@@ -187,7 +188,7 @@ The ARM resource ID of the probing gateway that can be used to monitor health as
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityTopologyMapExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityTopologyMapExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -203,7 +204,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -219,7 +220,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -249,7 +250,7 @@ The name of the Topology Map.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -264,7 +265,7 @@ The list of Network IDs that forms the Site.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityTopologyMapExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityTopologyMapExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -319,4 +320,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

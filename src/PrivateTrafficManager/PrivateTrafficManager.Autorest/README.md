@@ -33,7 +33,7 @@ title: PrivateTrafficManager
 subject-prefix: $(service-name)
 
 # pin the swagger version by using the commit id instead of branch name
-commit: 5403dd9dd32b921c9e3d50d4d285f9bd284230a9
+commit: dfb4d26996c17aaf42c52593924f027d7c6019e3
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md

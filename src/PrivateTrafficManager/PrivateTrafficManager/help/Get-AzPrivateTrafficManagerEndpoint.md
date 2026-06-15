@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.PrivateTrafficManager-help.xml
 Module Name: Az.PrivateTrafficManager
 online version: https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/get-azprivatetrafficmanagerendpoint
 schema: 2.0.0
@@ -15,18 +15,7 @@ Gets a Private Traffic Manager endpoint.
 ### List (Default)
 ```
 Get-AzPrivateTrafficManagerEndpoint -PrivateTrafficManagerProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzPrivateTrafficManagerEndpoint -Name <String> -PrivateTrafficManagerProfileName <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzPrivateTrafficManagerEndpoint -InputObject <IPrivateTrafficManagerIdentity> [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -34,6 +23,19 @@ Get-AzPrivateTrafficManagerEndpoint -InputObject <IPrivateTrafficManagerIdentity
 ```
 Get-AzPrivateTrafficManagerEndpoint -Name <String>
  -PrivateTrafficManagerProfileInputObject <IPrivateTrafficManagerIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzPrivateTrafficManagerEndpoint -Name <String> -PrivateTrafficManagerProfileName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzPrivateTrafficManagerEndpoint -InputObject <IPrivateTrafficManagerIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -102,7 +104,7 @@ The name of the Private Traffic Manager endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityPrivateTrafficManagerProfile
+Parameter Sets: GetViaIdentityPrivateTrafficManagerProfile, Get
 Aliases: EndpointName
 
 Required: True
@@ -132,7 +134,7 @@ The name of the Private Traffic Manager profile.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -148,7 +150,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -164,7 +166,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -188,4 +190,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

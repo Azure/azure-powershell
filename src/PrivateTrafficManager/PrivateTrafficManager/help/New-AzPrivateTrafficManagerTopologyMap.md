@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.PrivateTrafficManager-help.xml
 Module Name: Az.PrivateTrafficManager
 online version: https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/new-azprivatetrafficmanagertopologymap
 schema: 2.0.0
@@ -14,23 +14,24 @@ Create a Topology Map.
 
 ### CreateExpanded (Default)
 ```
-New-AzPrivateTrafficManagerTopologyMap -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-CatchAllSiteName <String>] [-Site <ISite[]>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzPrivateTrafficManagerTopologyMap -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> [-CatchAllSiteName <String>] [-Site <ISite[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzPrivateTrafficManagerTopologyMap -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzPrivateTrafficManagerTopologyMap -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzPrivateTrafficManagerTopologyMap -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzPrivateTrafficManagerTopologyMap -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -289,4 +290,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

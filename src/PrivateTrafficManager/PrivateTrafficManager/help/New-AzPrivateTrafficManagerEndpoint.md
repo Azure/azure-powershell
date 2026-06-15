@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.PrivateTrafficManager-help.xml
 Module Name: Az.PrivateTrafficManager
 online version: https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/new-azprivatetrafficmanagerendpoint
 schema: 2.0.0
@@ -17,8 +17,22 @@ Create a Private Traffic Manager endpoint.
 New-AzPrivateTrafficManagerEndpoint -Name <String> -PrivateTrafficManagerProfileName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-AlwaysServe <String>] [-EndpointStatus <String>]
  [-HealthPolicyId <String>] [-Kind <String>] [-MonitoringTarget <String>] [-Priority <Int64>]
- [-Target <String>] [-Weight <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Target <String>] [-Weight <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzPrivateTrafficManagerEndpoint -Name <String> -PrivateTrafficManagerProfileName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzPrivateTrafficManagerEndpoint -Name <String> -PrivateTrafficManagerProfileName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityPrivateTrafficManagerProfileExpanded
@@ -27,21 +41,7 @@ New-AzPrivateTrafficManagerEndpoint -Name <String>
  -PrivateTrafficManagerProfileInputObject <IPrivateTrafficManagerIdentity> [-AlwaysServe <String>]
  [-EndpointStatus <String>] [-HealthPolicyId <String>] [-Kind <String>] [-MonitoringTarget <String>]
  [-Priority <Int64>] [-Target <String>] [-Weight <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzPrivateTrafficManagerEndpoint -Name <String> -PrivateTrafficManagerProfileName <String>
- -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzPrivateTrafficManagerEndpoint -Name <String> -PrivateTrafficManagerProfileName <String>
- -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -283,7 +283,7 @@ The name of the Private Traffic Manager profile.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -299,7 +299,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -315,7 +315,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -402,4 +402,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

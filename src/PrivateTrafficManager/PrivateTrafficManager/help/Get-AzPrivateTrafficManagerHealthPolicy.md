@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.PrivateTrafficManager-help.xml
 Module Name: Az.PrivateTrafficManager
 online version: https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/get-azprivatetrafficmanagerhealthpolicy
 schema: 2.0.0
@@ -15,19 +15,8 @@ Gets a Traffic Manager health policy.
 ### List (Default)
 ```
 Get-AzPrivateTrafficManagerHealthPolicy -PrivateTrafficManagerProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzPrivateTrafficManagerHealthPolicy -Name <String> -PrivateTrafficManagerProfileName <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzPrivateTrafficManagerHealthPolicy -InputObject <IPrivateTrafficManagerIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentityPrivateTrafficManagerProfile
@@ -35,6 +24,19 @@ Get-AzPrivateTrafficManagerHealthPolicy -InputObject <IPrivateTrafficManagerIden
 Get-AzPrivateTrafficManagerHealthPolicy -Name <String>
  -PrivateTrafficManagerProfileInputObject <IPrivateTrafficManagerIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzPrivateTrafficManagerHealthPolicy -Name <String> -PrivateTrafficManagerProfileName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzPrivateTrafficManagerHealthPolicy -InputObject <IPrivateTrafficManagerIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -102,7 +104,7 @@ The name of the Traffic Manager health policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityPrivateTrafficManagerProfile
+Parameter Sets: GetViaIdentityPrivateTrafficManagerProfile, Get
 Aliases: HealthPolicyName
 
 Required: True
@@ -132,7 +134,7 @@ The name of the Private Traffic Manager profile.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -148,7 +150,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -164,7 +166,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -188,4 +190,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

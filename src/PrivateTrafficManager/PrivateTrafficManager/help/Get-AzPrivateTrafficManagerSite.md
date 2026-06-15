@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.PrivateTrafficManager-help.xml
 Module Name: Az.PrivateTrafficManager
 online version: https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/get-azprivatetrafficmanagersite
 schema: 2.0.0
@@ -14,19 +14,8 @@ Gets a Site.
 
 ### List (Default)
 ```
-Get-AzPrivateTrafficManagerSite -ResourceGroupName <String> -TopologyMapName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzPrivateTrafficManagerSite -Name <String> -ResourceGroupName <String> -TopologyMapName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzPrivateTrafficManagerSite -InputObject <IPrivateTrafficManagerIdentity> [-DefaultProfile <PSObject>]
+Get-AzPrivateTrafficManagerSite -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -TopologyMapName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -34,6 +23,19 @@ Get-AzPrivateTrafficManagerSite -InputObject <IPrivateTrafficManagerIdentity> [-
 ```
 Get-AzPrivateTrafficManagerSite -Name <String> -TopologyMapInputObject <IPrivateTrafficManagerIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzPrivateTrafficManagerSite -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -TopologyMapName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzPrivateTrafficManagerSite -InputObject <IPrivateTrafficManagerIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -101,7 +103,7 @@ The name of the Site.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityTopologyMap
+Parameter Sets: GetViaIdentityTopologyMap, Get
 Aliases: SiteName
 
 Required: True
@@ -117,7 +119,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -133,7 +135,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -163,7 +165,7 @@ The name of the Topology Map.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -187,4 +189,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

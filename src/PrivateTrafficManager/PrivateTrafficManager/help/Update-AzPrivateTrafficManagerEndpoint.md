@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.PrivateTrafficManager-help.xml
 Module Name: Az.PrivateTrafficManager
 online version: https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/update-azprivatetrafficmanagerendpoint
 schema: 2.0.0
@@ -17,15 +17,22 @@ Update a Private Traffic Manager endpoint.
 Update-AzPrivateTrafficManagerEndpoint -Name <String> -PrivateTrafficManagerProfileName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-AlwaysServe <String>] [-EndpointStatus <String>]
  [-HealthPolicyId <String>] [-MonitoringTarget <String>] [-Priority <Int64>] [-Target <String>]
- [-Weight <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Weight <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### UpdateViaJsonString
 ```
-Update-AzPrivateTrafficManagerEndpoint -InputObject <IPrivateTrafficManagerIdentity> [-AlwaysServe <String>]
- [-EndpointStatus <String>] [-HealthPolicyId <String>] [-MonitoringTarget <String>] [-Priority <Int64>]
- [-Target <String>] [-Weight <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzPrivateTrafficManagerEndpoint -Name <String> -PrivateTrafficManagerProfileName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzPrivateTrafficManagerEndpoint -Name <String> -PrivateTrafficManagerProfileName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityPrivateTrafficManagerProfileExpanded
@@ -33,22 +40,16 @@ Update-AzPrivateTrafficManagerEndpoint -InputObject <IPrivateTrafficManagerIdent
 Update-AzPrivateTrafficManagerEndpoint -Name <String>
  -PrivateTrafficManagerProfileInputObject <IPrivateTrafficManagerIdentity> [-AlwaysServe <String>]
  [-EndpointStatus <String>] [-HealthPolicyId <String>] [-MonitoringTarget <String>] [-Priority <Int64>]
- [-Target <String>] [-Weight <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Target <String>] [-Weight <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaJsonFilePath
+### UpdateViaIdentityExpanded
 ```
-Update-AzPrivateTrafficManagerEndpoint -Name <String> -PrivateTrafficManagerProfileName <String>
- -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzPrivateTrafficManagerEndpoint -Name <String> -PrivateTrafficManagerProfileName <String>
- -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzPrivateTrafficManagerEndpoint -InputObject <IPrivateTrafficManagerIdentity> [-AlwaysServe <String>]
+ [-EndpointStatus <String>] [-HealthPolicyId <String>] [-MonitoringTarget <String>] [-Priority <Int64>]
+ [-Target <String>] [-Weight <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,7 +87,7 @@ Always Serve endpoints are always considered to be healthy.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityPrivateTrafficManagerProfileExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityPrivateTrafficManagerProfileExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -133,7 +134,7 @@ If the endpoint is Enabled, it is probed for endpoint health and is included in 
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityPrivateTrafficManagerProfileExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityPrivateTrafficManagerProfileExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -148,7 +149,7 @@ The health policy associated with this endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityPrivateTrafficManagerProfileExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityPrivateTrafficManagerProfileExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -210,7 +211,7 @@ Monitoring Target cannot be an IPv6 address.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityPrivateTrafficManagerProfileExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityPrivateTrafficManagerProfileExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -225,7 +226,7 @@ The name of the Private Traffic Manager endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityPrivateTrafficManagerProfileExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityPrivateTrafficManagerProfileExpanded
 Aliases: EndpointName
 
 Required: True
@@ -258,7 +259,7 @@ If specified, it must be specified on all endpoints, and no two endpoints can sh
 
 ```yaml
 Type: System.Int64
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityPrivateTrafficManagerProfileExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityPrivateTrafficManagerProfileExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -288,7 +289,7 @@ The name of the Private Traffic Manager profile.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -304,7 +305,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -320,7 +321,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -336,7 +337,7 @@ Traffic Manager returns this value in DNS responses to direct traffic to this en
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityPrivateTrafficManagerProfileExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityPrivateTrafficManagerProfileExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -352,7 +353,7 @@ Possible values are from 1 to 1000.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityPrivateTrafficManagerProfileExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityPrivateTrafficManagerProfileExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -407,4 +408,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
