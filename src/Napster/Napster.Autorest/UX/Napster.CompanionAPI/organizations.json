@@ -1,0 +1,123 @@
+{
+  "resourceType": "organizations",
+  "apiVersion": "2025-12-24-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.napster"
+  },
+  "commands": [
+    {
+      "name": "Get-AzNapsterOrganization",
+      "description": "Get a OrganizationResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Napster.CompanionAPI/organizations/{organizationname}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.napster/get-aznapsterorganization"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a OrganizationResource",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.organizationname]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzNapsterLatestOrganizationLinkedSaaS",
+      "description": "Returns the latest SaaS linked to the Napster organization of the underlying monitor.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Napster.CompanionAPI/organizations/{organizationname}/latestLinkedSaaS",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.napster/invoke-aznapsterlatestorganizationlinkedsaas"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Organizationname <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Returns the latest SaaS linked to the Napster organization of the underlying monitor.",
+          "parameters": [
+            {
+              "name": "-Organizationname",
+              "value": "[Path.organizationname]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzNapsterOrganization",
+      "description": "Delete a OrganizationResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Napster.CompanionAPI/organizations/{organizationname}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.napster/remove-aznapsterorganization"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a OrganizationResource",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.organizationname]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

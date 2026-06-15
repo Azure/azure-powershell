@@ -1,0 +1,49 @@
+{
+  "Invoke-AzNapsterLatestOrganizationLinkedSaaS+[NoContext]+Latest+$POST+https://management.azure.com/subscriptions/61641157-140c-4b97-b365-30ff76d9f82e/resourceGroups/acctest0001/providers/Napster.CompanionAPI/organizations/napster-test1/latestLinkedSaaS?api-version=2025-12-24-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/61641157-140c-4b97-b365-30ff76d9f82e/resourceGroups/acctest0001/providers/Napster.CompanionAPI/organizations/napster-test1/latestLinkedSaaS?api-version=2025-12-24-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "69d0db08-1905-47e3-a406-f152b9453809" ],
+        "CommandName": [ "Invoke-AzNapsterLatestOrganizationLinkedSaaS" ],
+        "FullCommandName": [ "Invoke-AzNapsterLatestOrganizationLinkedSaaS_Latest" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.6.2", "Az.Napster/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-operation-identifier": [ "tenantId=888d76fa-54b2-4ced-8ee5-aac1585adee7,objectId=90986210-9aba-4706-b58b-7a9f3b652899/westeurope/574974a4-b27f-47eb-a619-013aa70be566" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "dfac4585-4ddb-4d64-b027-65d9c877518f" ],
+        "x-ms-correlation-request-id": [ "e99ee18d-28a6-4744-96f6-7f0a83f40e19" ],
+        "x-ms-client-request-id": [ "69d0db08-1905-47e3-a406-f152b9453809" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "dc7ff887-dddb-4b65-99d3-73561acd4222" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20260615T105925Z:e99ee18d-28a6-4744-96f6-7f0a83f40e19" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 959F546190644532A56E7703E6F61D97 Ref B: SG2AA1070305036 Ref C: 2026-06-15T10:59:22Z" ],
+        "Date": [ "Mon, 15 Jun 2026 10:59:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "178" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"saaSResourceId\":\"/subscriptions/61641157-140c-4b97-b365-30ff76d9f82e/resourceGroups/acctest0001/providers/Microsoft.SaaS/resources/075c26b5_napster-test1\",\"isHiddenSaaS\":false}",
+      "isContentBase64": false
+    }
+  }
+}
