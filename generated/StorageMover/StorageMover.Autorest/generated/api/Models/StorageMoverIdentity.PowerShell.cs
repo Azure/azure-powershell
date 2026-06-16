@@ -124,6 +124,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentityInternal)this).AgentName = (string) content.GetValueForProperty("AgentName",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentityInternal)this).AgentName, global::System.Convert.ToString);
             }
+            if (content.Contains("ConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentityInternal)this).ConnectionName = (string) content.GetValueForProperty("ConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentityInternal)this).ConnectionName, global::System.Convert.ToString);
+            }
             if (content.Contains("EndpointName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentityInternal)this).EndpointName = (string) content.GetValueForProperty("EndpointName",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentityInternal)this).EndpointName, global::System.Convert.ToString);
@@ -176,6 +180,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             if (content.Contains("AgentName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentityInternal)this).AgentName = (string) content.GetValueForProperty("AgentName",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentityInternal)this).AgentName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentityInternal)this).ConnectionName = (string) content.GetValueForProperty("ConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentityInternal)this).ConnectionName, global::System.Convert.ToString);
             }
             if (content.Contains("EndpointName"))
             {

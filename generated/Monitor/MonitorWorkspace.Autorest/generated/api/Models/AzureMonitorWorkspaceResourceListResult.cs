@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Extensions;
 
-    /// <summary>A pageable list of resources</summary>
+    /// <summary>The response of a AzureMonitorWorkspaceResource list operation.</summary>
     public partial class AzureMonitorWorkspaceResourceListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceResourceListResult,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceResourceListResultInternal
@@ -16,14 +16,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>The URL to use for getting the next set of results</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceResource> _value;
 
-        /// <summary>A list of resources</summary>
+        /// <summary>The AzureMonitorWorkspaceResource items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceResource> Value { get => this._value; set => this._value = value; }
 
@@ -33,41 +33,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
 
         }
     }
-    /// A pageable list of resources
+    /// The response of a AzureMonitorWorkspaceResource list operation.
     public partial interface IAzureMonitorWorkspaceResourceListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.IJsonSerializable
     {
-        /// <summary>The URL to use for getting the next set of results</summary>
+        /// <summary>The link to the next page of items</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The URL to use for getting the next set of results",
+        Description = @"The link to the next page of items",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>A list of resources</summary>
+        /// <summary>The AzureMonitorWorkspaceResource items on this page</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"A list of resources",
+        Description = @"The AzureMonitorWorkspaceResource items on this page",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceResource) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceResource> Value { get; set; }
 
     }
-    /// A pageable list of resources
+    /// The response of a AzureMonitorWorkspaceResource list operation.
     internal partial interface IAzureMonitorWorkspaceResourceListResultInternal
 
     {
-        /// <summary>The URL to use for getting the next set of results</summary>
+        /// <summary>The link to the next page of items</summary>
         string NextLink { get; set; }
-        /// <summary>A list of resources</summary>
+        /// <summary>The AzureMonitorWorkspaceResource items on this page</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceResource> Value { get; set; }
 
     }

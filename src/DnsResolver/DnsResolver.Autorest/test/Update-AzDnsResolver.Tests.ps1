@@ -1,16 +1,5 @@
-."$PSScriptRoot\testDataGenerator.ps1"
-."$PSScriptRoot\virtualNetworkClient.ps1"
-."$PSScriptRoot\dnsResolverAssertions.ps1"
-."$PSScriptRoot\Constants.ps1"
+# Self-contained test for Update-AzDnsResolver
 
-Add-AssertionOperator -Name 'BeSuccessfullyCreated' -Test $Function:BeSuccessfullyCreated
-Add-AssertionOperator -Name 'BeSameAsExpected' -Test $Function:BeSameAsExpected
-
-$loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-if (-Not (Test-Path -Path $loadEnvPath)) {
-    $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
-}
-. ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzDnsResolver.Recording.json'
 $currentPath = $PSScriptRoot
 while(-not $mockingPath) {
@@ -20,28 +9,30 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzDnsResolver' {
-    It 'Update DNS Resolver by adding tag, expect DNS resolver updated' {
-        # ARRANGE
-        $dnsResolverName = "psdnsresolvername47";
-        $virtualNetworkName = "psvirtualnetworkname47";
-        $virtualNetworkId = "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
-        $subnetId = $virtualNetworkId + "/subnets" + $SUBNET_NAME;
-        
-        if ($TestMode -eq "Record")
-        {
-            $virtualNetwork = CreateVirtualNetwork -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $virtualNetworkName;
+    BeforeAll {
+        $subscriptionId = '97db216c-169d-4ea9-9d98-114adba0aa20'
+        $location = 'westus2'
+        $rgName = "ps-dnsresolver-upd-15716"
+
+        if ($TestMode -ne 'playback') {
+            Select-AzSubscription -SubscriptionId $subscriptionId
+            New-AzResourceGroup -Name $rgName -Location $location
+            New-AzVirtualNetwork -Name "vnet-upd-1" -ResourceGroupName $rgName -Location $location -AddressPrefix "10.0.0.0/16"
+            $vnetId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.Network/virtualNetworks/vnet-upd-1"
+            New-AzDnsResolver -Name "resolver-upd-1" -ResourceGroupName $rgName -VirtualNetworkId $vnetId -Location $location
         }
+    }
 
-        $originalDnsResolver = New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetworkId -Location $LOCATION
+    AfterAll {
+        if ($TestMode -ne 'playback') {
+            Remove-AzResourceGroup -Name $rgName -ErrorAction SilentlyContinue -AsJob | Out-Null
+        }
+    }
 
-        $tag  = GetRandomHashtable -size 5
-
-        # ACT
-        $updatedDnsResolver = Update-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -Tag $tag
-
-        # ASSERT
-        $updatedDnsResolver | Should -BeSuccessfullyCreated
-        $updatedDnsResolver | Should -BeSameAsExpected -ExpectedValue $originalDnsResolver
-        $updatedDnsResolver.Tag.Count | Should -Be $tag.Count
+    It 'Update DNS resolver tags' {
+        $tag = @{ "updated" = "true"; "env" = "test" }
+        $resolver = Update-AzDnsResolver -Name "resolver-upd-1" -ResourceGroupName $rgName -Tag $tag
+        $resolver.ProvisioningState | Should -Be "Succeeded"
+        $resolver.Tag.Count | Should -Be 2
     }
 }

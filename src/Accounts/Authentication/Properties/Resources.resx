@@ -434,4 +434,10 @@ Run the cmdlet below to authenticate interactively; additional parameters may be
 Connect-AzAccount -Tenant (Get-AzContext).Tenant.Id -ClaimsChallenge "{1}"</value>
     <comment>0 = error message about policy violation; 1 = claims challenge in base64</comment>
   </data>
+  <data name="UnsupportedAccountTypeForSshCertificate" xml:space="preserve">
+    <value>Account type '{0}' is not supported for SSH certificate generation. Supported types are: User, ServicePrincipal.</value>
+  </data>
+  <data name="ServicePrincipalCredentialNotFound" xml:space="preserve">
+    <value>No credential (client secret or certificate) found for the Service Principal. Please re-authenticate using Connect-AzAccount with -CertificateThumbprint, -CertificatePath, or a client secret.</value>
+  </data>
 </root>

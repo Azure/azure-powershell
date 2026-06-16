@@ -24,7 +24,7 @@ PS C:\> $identity | New-AzWebPubSubKey -KeyType Primary
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubKeys
+Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubKeys
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -42,7 +42,7 @@ INPUTOBJECT <IWebPubSubIdentity>: Identity Parameter
 #>
 function New-AzWebPubSubKey
 {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubKeys])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubKeys])]
     [CmdletBinding(DefaultParameterSetName='RegenerateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
@@ -74,9 +74,10 @@ function New-AzWebPubSubKey
         ${InputObject},
 
         [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType])]
+        # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType])]
         [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType]
+        [System.String]
+        # [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType]
         # The keyType to regenerate.
         # Must be either 'primary', 'secondary' or 'salt'(case-insensitive).
         ${KeyType},

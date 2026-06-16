@@ -19,24 +19,11 @@
 -->
 
 ## Upcoming Release
-* Updated MonitorWorkspace module to API version 2025-10-03
-    - Added `New-AzMonitorWorkspaceIssue`, `Get-AzMonitorWorkspaceIssue`, `Update-AzMonitorWorkspaceIssue`, `Remove-AzMonitorWorkspaceIssue` cmdlets for managing workspace issues
-    - Added `Add-AzMonitorWorkspaceIssueAlert`, `Get-AzMonitorWorkspaceIssueAlert`, `Update-AzMonitorWorkspaceIssueAlert` cmdlets for managing issue alerts
-    - Added `Add-AzMonitorWorkspaceIssueResource`, `Get-AzMonitorWorkspaceIssueResource`, `Update-AzMonitorWorkspaceIssueResource` cmdlets for managing issue resources
-    - Added `Add-AzMonitorWorkspaceIssueInvestigationResult`, `Invoke-AzMonitorWorkspaceFetchIssueInvestigationResult` cmdlets for issue investigation results
-    - Added `Invoke-AzMonitorWorkspaceFetchIssueBackgroundVisualization`, `Set-AzMonitorWorkspaceIssueBackgroundVisualization` cmdlets for issue background visualization
-    - Added `New-AzMonitorWorkspaceMetricsContainer`, `Get-AzMonitorWorkspaceMetricsContainer`, `Set-AzMonitorWorkspaceMetricsContainer`, `Update-AzMonitorWorkspaceMetricsContainer` cmdlets for managing metrics containers
-    - Added `Set-AzMonitorWorkspace` cmdlet for creating or updating a workspace
-    - Added `-MetricEnableAccessUsingResourcePermission` parameter to `New-AzMonitorWorkspace`, `Update-AzMonitorWorkspace`, and `Set-AzMonitorWorkspace`
-* Upgraded Azure Monitor Pipelines API version from 2024-10-01-preview to GA version 2026-04-01
-    - Added 'DistributionMaxInstancesPerHost' parameter to control maximum instances per compute unit
-    - Added 'ExecutionPlacementConstraint' parameter to guide where pipeline group instances should run
-    - Added 'TlsConfiguration' parameter to configure TLS (Transport Layer Security) settings for pipeline group receivers
-    - Removed 'NetworkingConfiguration' parameter from 'New-AzPipelineGroup' and 'Update-AzPipelineGroup'
-    - Removed UDP receiver type support from pipeline group receivers
-    - Removed public properties/parameters 'TcpUrl', 'JsonArrayMapperKey', 'SourceFieldName', and 'SyslogProtocol'
-    - Removed 'DestinationField*' public properties/parameters
-    - Expanded parameter sets for the updated pipeline-related cmdlets, which may require script changes when upgrading
+
+## Version 8.0.0
+* Added ChangeSafety Support
+* Updated MonitorWorkspace module to API 2025-10-03 with CRUD cmdlets for issues, alerts, resources, investigation, visualization, metrics containers, `Set-AzMonitorWorkspace`
+* Upgraded Pipelines API to GA 2026-04-01: added `-DistributionMaxInstancesPerHost`, `-ExecutionPlacementConstraint`, `-TlsConfiguration`; removed `-NetworkingConfiguration`, UDP receiver, `TcpUrl`, `JsonArrayMapperKey`, `SourceFieldName`, `SyslogProtocol`, `DestinationField*`; expanded parameter sets
 
 ## Version 7.0.0
 * Parameters EmailSendToSubscriptionAdministrator and EmailSendToSubscriptionCoAdministrator of cmdlet `New-AzAutoscaleNotificationObject` was unavailable after April 3, 2024 due to Azure classic administrator retirement.

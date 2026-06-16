@@ -57,7 +57,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
         Daily,
         Weekly,
         Monthly,
-        Yearly
+        Yearly,
+        Default_OperationalStore
     }
 
     public enum TagName

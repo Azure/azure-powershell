@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/initialize-azdataprotectionrestorerequest
 schema: 2.0.0
@@ -14,52 +14,53 @@ Initializes Restore Request object for triggering restore on a protected backup 
 
 ### AlternateLocationFullRecovery (Default)
 ```
-Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -RestoreLocation <String>
- -RestoreType <RestoreTargetType> -SourceDataStore <DataStoreType> -TargetResourceId <String>
- [-PointInTime <DateTime>] [-RecoveryPoint <String>] [-RehydrationDuration <String>]
- [-RehydrationPriority <String>] [-RestoreConfiguration <PSObject>] [-SecretStoreType <SecretStoreTypes>]
- [-SecretStoreURI <String>] [-UserAssignedIdentityArmId <String>] [-UseSystemAssignedIdentity <Boolean?>]
- [<CommonParameters>]
+Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -SourceDataStore <DataStoreType>
+ -RestoreLocation <String> -RestoreType <RestoreTargetType> -TargetResourceId <String>
+ [-RecoveryPoint <String>] [-PointInTime <DateTime>] [-RehydrationDuration <String>]
+ [-RehydrationPriority <String>] [-RestoreConfiguration <PSObject>] [-SecretStoreURI <String>]
+ [-SecretStoreType <SecretStoreTypes>] [-UseSystemAssignedIdentity <Boolean>]
+ [-UserAssignedIdentityArmId <String>] [<CommonParameters>]
 ```
 
 ### AlternateLocationILR
 ```
-Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -ItemLevelRecovery
- -RestoreLocation <String> -RestoreType <RestoreTargetType> -SourceDataStore <DataStoreType>
- -TargetResourceId <String> [-ContainersList <String[]>] [-PrefixMatch <Hashtable>] [-RecoveryPoint <String>]
- [-RestoreConfiguration <PSObject>] [-UserAssignedIdentityArmId <String>]
- [-UseSystemAssignedIdentity <Boolean?>] [<CommonParameters>]
+Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -SourceDataStore <DataStoreType>
+ -RestoreLocation <String> -RestoreType <RestoreTargetType> -TargetResourceId <String>
+ [-RecoveryPoint <String>] [-RestoreConfiguration <PSObject>] [-UseSystemAssignedIdentity <Boolean>]
+ [-UserAssignedIdentityArmId <String>] [-ItemLevelRecovery] [-ContainersList <String[]>]
+ [-PrefixMatch <Hashtable>] [-RenameTo <Hashtable>] [<CommonParameters>]
 ```
 
 ### OriginalLocationFullRecovery
 ```
-Initialize-AzDataProtectionRestoreRequest -BackupInstance <BackupInstanceResource>
- -DatasourceType <DatasourceTypes> -RestoreLocation <String> -RestoreType <RestoreTargetType>
- -SourceDataStore <DataStoreType> [-PointInTime <DateTime>] [-RecoveryPoint <String>]
+Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -SourceDataStore <DataStoreType>
+ -RestoreLocation <String> -RestoreType <RestoreTargetType> [-RecoveryPoint <String>] [-PointInTime <DateTime>]
  [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-RestoreConfiguration <PSObject>]
- [-SecretStoreType <SecretStoreTypes>] [-SecretStoreURI <String>] [-UserAssignedIdentityArmId <String>]
- [-UseSystemAssignedIdentity <Boolean?>] [<CommonParameters>]
+ [-SecretStoreURI <String>] [-SecretStoreType <SecretStoreTypes>] [-UseSystemAssignedIdentity <Boolean>]
+ [-UserAssignedIdentityArmId <String>] -BackupInstance <BackupInstanceResource>
+ [<CommonParameters>]
 ```
 
 ### OriginalLocationILR
 ```
-Initialize-AzDataProtectionRestoreRequest -BackupInstance <BackupInstanceResource>
- -DatasourceType <DatasourceTypes> -ItemLevelRecovery -RestoreLocation <String>
- -RestoreType <RestoreTargetType> -SourceDataStore <DataStoreType> [-ContainersList <String[]>]
- [-FromPrefixPattern <String[]>] [-PointInTime <DateTime>] [-RecoveryPoint <String>]
+Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -SourceDataStore <DataStoreType>
+ -RestoreLocation <String> -RestoreType <RestoreTargetType> [-RecoveryPoint <String>] [-PointInTime <DateTime>]
  [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-RestoreConfiguration <PSObject>]
- [-SecretStoreType <SecretStoreTypes>] [-SecretStoreURI <String>] [-ToPrefixPattern <String[]>]
- [-UserAssignedIdentityArmId <String>] [-UseSystemAssignedIdentity <Boolean?>] [<CommonParameters>]
+ [-SecretStoreURI <String>] [-SecretStoreType <SecretStoreTypes>] [-UseSystemAssignedIdentity <Boolean>]
+ [-UserAssignedIdentityArmId <String>] [-ItemLevelRecovery] [-ContainersList <String[]>]
+ -BackupInstance <BackupInstanceResource> [-FromPrefixPattern <String[]>] [-ToPrefixPattern <String[]>]
+ [<CommonParameters>]
 ```
 
 ### RestoreAsFiles
 ```
-Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -RestoreLocation <String>
- -RestoreType <RestoreTargetType> -SourceDataStore <DataStoreType> -TargetContainerURI <String>
- [-FileNamePrefix <String>] [-RecoveryPoint <String>] [-RehydrationDuration <String>]
- [-RehydrationPriority <String>] [-SecretStoreType <SecretStoreTypes>] [-SecretStoreURI <String>]
- [-TargetResourceIdForRestoreAsFile <String>] [-UserAssignedIdentityArmId <String>]
- [-UseSystemAssignedIdentity <Boolean?>] [<CommonParameters>]
+Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -SourceDataStore <DataStoreType>
+ -RestoreLocation <String> -RestoreType <RestoreTargetType> [-RecoveryPoint <String>]
+ [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-SecretStoreURI <String>]
+ [-SecretStoreType <SecretStoreTypes>] [-UseSystemAssignedIdentity <Boolean>]
+ [-UserAssignedIdentityArmId <String>] -TargetContainerURI <String>
+ [-TargetResourceIdForRestoreAsFile <String>] [-FileNamePrefix <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -191,7 +192,6 @@ Use Test-AzDataProtectionBackupInstanceRestore, Start-AzDataProtectionBackupInst
 
 ### Example 7: Get restore request object for alternate location vaulted restore for AzureKubernetesService
 ```powershell
-
 $subId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 $resourceGroupName = "resourceGroupName"
 $vaultName = "vaultName"
@@ -218,14 +218,37 @@ Note that the $aksRestoreCriteria object contains the necessary parameters for V
 The RestoreConfiguration object is passed to the Initialize-AzDataProtectionRestoreRequest cmdlet to create the restore request object.
 The restore request object is then used to trigger the restore operation.
 
+### Example 8: Get restore request object for vaulted AzureBlob alternate location item level restore with container renaming
+```powershell
+$instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" | Where-Object { $_.Name -match "storageAccountName" }
+$rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -BackupInstanceName $instance.Name
+$backedUpContainers = $instance.Property.PolicyInfo.PolicyParameter.BackupDatasourceParametersList[0].ContainersList
+$renameTo = @{}
+$renameTo[$backedUpContainers[0]] = "newContainerName1"
+$renameTo[$backedUpContainers[1]] = "newContainerName2"
+$targetStorageAccountId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/targetStorageAccount"
+$restoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureBlob -SourceDataStore VaultStore -RestoreLocation "vaultLocation" -RecoveryPoint $rp[0].Name -ItemLevelRecovery -RestoreType AlternateLocation -TargetResourceId $targetStorageAccountId -ContainersList $backedUpContainers[0,1] -RenameTo $renameTo
+```
+
+```output
+ObjectType                                  RestoreTargetInfoObjectType  RestoreTargetInfoRecoveryOption RestoreTargetInfoRestoreLocation SourceDataStoreType RecoveryPointId
+----------                                  ---------------------------  ------------------------------- -------------------------------- ------------------- ---------------
+AzureBackupRecoveryPointBasedRestoreRequest  itemLevelRestoreTargetInfo   FailIfExists                    vaultLocation                    VaultStore
+```
+
+The first and second commands fetch the backup instance and recovery points.
+The third command retrieves the list of containers that are protected under the vaulted backup policy.
+The fourth through sixth commands build a RenameTo hashtable that maps each original container name to a new container name for the restore.
+The seventh command sets the target storage account ARM ID for the alternate location restore.
+The last command initializes the restore request with -ItemLevelRecovery, -ContainersList, and -RenameTo to perform an alternate-location vaulted blob restore while renaming the specified containers.
+
 ## PARAMETERS
 
 ### -BackupInstance
 Backup Instance object to trigger original location restore.
-To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BackupInstanceResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.BackupInstanceResource
 Parameter Sets: OriginalLocationFullRecovery, OriginalLocationILR
 Aliases:
 
@@ -258,6 +281,7 @@ Datasource Type
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes
 Parameter Sets: (All)
 Aliases:
+Accepted values: AzureDisk, AzureBlob, AzureDatabaseForPostgreSQL, AzureDataLakeStorage, AzureKubernetesService, AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL, AzureCosmosDB
 
 Required: True
 Position: Named
@@ -391,6 +415,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RenameTo
+Use this parameter to rename container(s) for alternate location ILR.
+Input for this parameter is a hashtable where each key is the original container name and each value is the new name for the corresponding container.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: AlternateLocationILR
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RestoreConfiguration
 Restore configuration for restore.
 Use this parameter to restore with AzureKubernetesService.
@@ -429,6 +469,7 @@ Restore Target Type
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RestoreTargetType
 Parameter Sets: (All)
 Aliases:
+Accepted values: AlternateLocation, OriginalLocation, RestoreAsFiles
 
 Required: True
 Position: Named
@@ -445,6 +486,7 @@ This parameter is only supported for AzureDatabaseForPostgreSQL currently.
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SecretStoreTypes
 Parameter Sets: AlternateLocationFullRecovery, OriginalLocationFullRecovery, OriginalLocationILR, RestoreAsFiles
 Aliases:
+Accepted values: AzureKeyVault
 
 Required: False
 Position: Named
@@ -476,6 +518,7 @@ DataStore Type of the Recovery point
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreType
 Parameter Sets: (All)
 Aliases:
+Accepted values: ArchiveStore, OperationalStore, VaultStore
 
 Required: True
 Position: Named
@@ -567,7 +610,7 @@ Accept wildcard characters: False
 Use system assigned identity
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -585,9 +628,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IAzureBackupRestoreRequest
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRestoreRequest
 
 ## NOTES
 
 ## RELATED LINKS
-

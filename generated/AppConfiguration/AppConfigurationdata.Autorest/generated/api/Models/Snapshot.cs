@@ -34,6 +34,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PropertyOrigin.Owned)]
         public global::System.DateTime? Created { get => this._created; }
 
+        /// <summary>Backing field for <see cref="Description" /> property.</summary>
+        private string _description;
+
+        /// <summary>The description of the snapshot.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Origin(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PropertyOrigin.Owned)]
+        public string Description { get => this._description; set => this._description = value; }
+
         /// <summary>Backing field for <see cref="ETag" /> property.</summary>
         private string _eTag;
 
@@ -203,6 +210,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
         SerializedName = @"created",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? Created { get;  }
+        /// <summary>The description of the snapshot.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The description of the snapshot.",
+        SerializedName = @"description",
+        PossibleTypes = new [] { typeof(string) })]
+        string Description { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
@@ -365,6 +383,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
         string CompositionType { get; set; }
         /// <summary>The time that the snapshot was created.</summary>
         global::System.DateTime? Created { get; set; }
+        /// <summary>The description of the snapshot.</summary>
+        string Description { get; set; }
 
         string ETag { get; set; }
         /// <summary>The time that the snapshot will expire.</summary>

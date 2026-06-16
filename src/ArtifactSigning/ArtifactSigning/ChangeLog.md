@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.0
+* Added ChangeSafety Support
+
 ## Version 0.1.6
 * Updated docs and code comments to reference artifact signing accounts instead of trusted signing accounts.
 

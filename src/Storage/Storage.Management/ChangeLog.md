@@ -19,6 +19,14 @@
 -->
 ## Upcoming Release
 
+## Version 9.7.0
+* Added ChangeSafety Support
+* Updated prompt in `Start-AzStorageAccountMigration`
+* Added MockRun TriggerType in `New/Update-AzStorageTaskAssignment`
+* Added Smart access tier, AllowedCopyScope in `New/Set-AzStorageAccount`
+* Added static website config in `Update-AzStorageBlobServiceProperty`
+* Added tags replication in `Set-AzStorageObjectReplicationPolicy`
+
 ## Version 9.6.1
 * Removed breaking change warnings for TLS 1.0 and TLS 1.1 deprecation
     - `New-AzStorageAccount`
