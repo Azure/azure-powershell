@@ -137,36 +137,36 @@ function New-AzDataMigrationLoginsMigration
             #Collecting data
             if(('CommandLine') -contains $PSCmdlet.ParameterSetName)
             {
-                # The array list $splat contains all the parameters that will be passed to '.\Microsoft.SqlServer.Migration.Logins.ConsoleApp.exe LoginsMigration'
-
+                # Use a secure temp config file to avoid exposing secrets in command-line arguments
                 $LoginsListArray = $($ListOfLogin -split " ")
-                [System.Collections.ArrayList] $splat = @(
-                    '--sourceSqlConnectionString', $SourceSqlConnectionString
-                    '--targetSqlConnectionString', $TargetSqlConnectionString
-                    '--csvFilePath', $CSVFilePath
-                    '--listOfLogin', $LoginsListArray
-                    '--outputFolder', $OutputFolder
-                    '--aadDomainName', $AADDomainName
-                )
-                # Removing the parameters for which the user did not provide any values
-                for($i = $splat.Count-1; $i -gt -1; $i = $i-2)
-                {
-                    $currVal = $splat[$i]
-                    if($currVal -ne "")
-                    {
-                    }
-                    else {
-                        $splat.RemoveAt($i)
-                        $i2 = $i -1
-                        $splat.RemoveAt($i2)
-    
-                    }                       
+                $configParams = [ordered]@{
+                    action = "LoginsMigration"
+                    sourceSqlConnectionString = $SourceSqlConnectionString
+                    targetSqlConnectionString = $TargetSqlConnectionString
+                }
+
+                if ($PSBoundParameters.ContainsKey('CSVFilePath') -and $CSVFilePath -ne "") {
+                    $configParams['csvFilePath'] = $CSVFilePath
+                }
+                if ($PSBoundParameters.ContainsKey('ListOfLogin') -and $ListOfLogin -ne "") {
+                    $configParams['listOfLogin'] = $LoginsListArray
+                }
+                if ($PSBoundParameters.ContainsKey('OutputFolder') -and $OutputFolder -ne "") {
+                    $configParams['outputFolder'] = $OutputFolder
+                }
+                if ($PSBoundParameters.ContainsKey('AADDomainName') -and $AADDomainName -ne "") {
+                    $configParams['aadDomainName'] = $AADDomainName
                 }
 
                 $ExePath = Join-Path -Path $LatestNugetFolder -ChildPath $ExePath;
-                # Running LoginsMigration
-                Write-Host "Starting Execution..."
-                & $ExePath LoginsMigration @splat
+                $configFilePath = . "$PSScriptRoot/../../utils/New-SecureConfigFile.ps1" $configParams
+                try {
+                    # Running LoginsMigration
+                    Write-Host "Starting Execution..."
+                    & $ExePath --configFile $configFilePath
+                } finally {
+                    Remove-Item -Path $configFilePath -Force -ErrorAction SilentlyContinue
+                }
             }
             else
             {   

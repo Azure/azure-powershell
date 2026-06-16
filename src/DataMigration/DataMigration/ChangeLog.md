@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed security issue where sensitive credentials (SQL connection strings, network share passwords) were exposed as plaintext in process command-line arguments
+    - Affected cmdlets: 'New-AzDataMigrationLoginsMigration', 'New-AzDataMigrationSqlServerSchema', 'Get-AzDataMigrationAssessment', 'Get-AzDataMigrationPerformanceDataCollection'
+    - Credentials are now passed via temporary config files with restrictive ACLs instead of command-line arguments
+    - 'New-AzDataMigrationTdeCertificateMigration' still passes credentials via command-line due to TDE Console App not supporting config file input
 
 ## Version 1.1.0
 * Added ChangeSafety Support

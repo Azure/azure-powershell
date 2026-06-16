@@ -196,8 +196,17 @@ function New-AzDataMigrationTdeCertificateMigration
                 return
             }
 
+            $ExePath = Join-Path -Path $LatestNugetFolder -ChildPath $ExePath;
+
+            # NOTE: The TDE Console App does not support --configFile, so credentials must be
+            # passed as command-line arguments. This is a known limitation - secrets may be
+            # visible in process telemetry (Event ID 4688, Sysmon). Plaintext variables are
+            # cleared immediately after use to minimize in-memory exposure.
             $SourceSqlConnectionStringParam = . "$PSScriptRoot/../../utils/Unprotect-SecureString.ps1" $SourceSqlConnectionString
-            $NetworkSharePasswordParam = . "$PSScriptRoot/../../utils/Unprotect-SecureString.ps1" $NetworkSharePassword
+            $NetworkSharePasswordParam = ""
+            if ($PSBoundParameters.ContainsKey('NetworkSharePassword')) {
+                $NetworkSharePasswordParam = . "$PSScriptRoot/../../utils/Unprotect-SecureString.ps1" $NetworkSharePassword
+            }
 
             [System.Collections.ArrayList] $parameterArray = @(
                 "--sourceSqlConnectionString", $SourceSqlConnectionStringParam,
@@ -212,12 +221,18 @@ function New-AzDataMigrationTdeCertificateMigration
                 "--databaseName"
             )
 
-            $ExePath = Join-Path -Path $LatestNugetFolder -ChildPath $ExePath;
             foreach($Name in $DatabaseName) {
                 $parameterArray.Add($Name) | Out-Null;
             }
 
-            & $ExePath $parameterArray
+            try {
+                & $ExePath $parameterArray
+            } finally {
+                # Clear plaintext secrets from memory
+                $SourceSqlConnectionStringParam = $null
+                $NetworkSharePasswordParam = $null
+                $parameterArray = $null
+            }
 
             if($PSBoundParameters.ContainsKey("PassThru"))
             {
