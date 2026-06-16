@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.0.0
 * Changed retention rule to require `-Name Default_OperationalStore`
 * Added `RenameTo` to restore request
 * [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Initializes a new instance of the MeshRevisionProfileProperties class.
         /// </summary>
 
-        /// <param name="meshRevisions">
+        /// <param name="meshRevisions">Available mesh revisions.
         /// </param>
         public MeshRevisionProfileProperties(System.Collections.Generic.IList<MeshRevision> meshRevisions = default(System.Collections.Generic.IList<MeshRevision>))
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
 
         /// <summary>
-        /// Gets or sets
+        /// Gets or sets available mesh revisions.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "meshRevisions")]
         public System.Collections.Generic.IList<MeshRevision> MeshRevisions {get; set; }
