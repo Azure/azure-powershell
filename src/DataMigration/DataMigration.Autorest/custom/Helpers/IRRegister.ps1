@@ -100,7 +100,7 @@ function Register-IR {
     )
 
     process {
-        Write-Host "Start to register IR with key: $key"
+        Write-Host "Start to register IR with key."
 
         $cmd = Get-CmdFilePath
 
