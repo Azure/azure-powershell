@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStacks
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
     public enum PSDenySettingsMode
     {

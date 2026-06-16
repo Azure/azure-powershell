@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         public Action<string> VerboseLogger { get; set; }
         public Action<string> ErrorLogger { get; set; }
         public Action<string> WarningLogger { get; set; }
+        internal Action<int> DelayAction { get; set; } = TestMockSupport.Delay;
         private IAzureContext azureContext;
 
         public DeploymentStacksWhatIfSdkClient(IDeploymentStacksClient deploymentStacksClient)
@@ -64,6 +65,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 : null;
         }
 
+        private string GetSubscriptionIdForStackResourceId()
+        {
+            string subscriptionId = azureContext?.Subscription?.Id;
+            if (string.IsNullOrEmpty(subscriptionId))
+            {
+                throw new PSArgumentException("A subscription context is required to construct the deployment stack resource ID. Provide StackResourceId or create DeploymentStacksWhatIfSdkClient with an Azure context.");
+            }
+
+            return subscriptionId;
+        }
+
 
         /// <summary>
         /// Converts Azure SDK What-If result to PowerShell model
@@ -75,6 +87,36 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             var json = JsonConvert.SerializeObject(sdkWhatIfResult);
             var psResult = JsonConvert.DeserializeObject<PSDeploymentStackWhatIfResult>(json);
             return psResult;
+        }
+
+        internal DeploymentStacksWhatIfResult WaitWhatIfResultCompletion(
+            DeploymentStacksWhatIfResult initialResult,
+            Func<DeploymentStacksWhatIfResult> getWhatIfResult,
+            params string[] status)
+        {
+            // Poll What-If result using the same cadence as deployment stack polling:
+            // phase one polls every 5 seconds for 400 seconds, then phase two polls every 60 seconds.
+            const int counterUnit = 1000;
+            int step = 5;
+            int phaseOne = 400;
+            DeploymentStacksWhatIfResult result = initialResult;
+
+            while (result?.Properties?.ProvisioningState != null &&
+                !status.Any(s => s.Equals(result.Properties.ProvisioningState, StringComparison.OrdinalIgnoreCase)))
+            {
+                WriteVerbose($"Polling What-If result status: {result.Properties.ProvisioningState}");
+                DelayAction(step * counterUnit);
+
+                if (phaseOne > 0)
+                {
+                    phaseOne -= step;
+                }
+
+                result = getWhatIfResult();
+                step = phaseOne > 0 ? 5 : 60;
+            }
+
+            return result;
         }
 
         /// <summary>
@@ -124,7 +166,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             {
                 if (!string.IsNullOrEmpty(resourceGroupName))
                 {
-                    resolvedStackResourceId = $"/subscriptions/{azureContext.Subscription.Id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}";
+                    resolvedStackResourceId = $"/subscriptions/{GetSubscriptionIdForStackResourceId()}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}";
                 }
                 else if (!string.IsNullOrEmpty(managementGroupId))
                 {
@@ -132,7 +174,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 }
                 else
                 {
-                    resolvedStackResourceId = $"/subscriptions/{azureContext.Subscription.Id}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}";
+                    resolvedStackResourceId = $"/subscriptions/{GetSubscriptionIdForStackResourceId()}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}";
                 }
             }
 
@@ -589,20 +631,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 WriteVerbose($"Initial What-If result state: {createResult.Properties?.ProvisioningState}");
                 
                 // Poll for completion if the result is being computed asynchronously
-                DeploymentStacksWhatIfResult finalResult = createResult;
-                const int maxPollingAttempts = 60; // 5 minutes max
-                int pollingInterval = 5; // seconds
-                int attempts = 0;
-                
-                while (finalResult.Properties?.ProvisioningState == "Running" && attempts < maxPollingAttempts)
-                {
-                    WriteVerbose($"Polling What-If result... attempt {attempts + 1}");
-                    System.Threading.Thread.Sleep(pollingInterval * 1000);
-                    finalResult = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtResourceGroup.Get(
+                DeploymentStacksWhatIfResult finalResult = WaitWhatIfResultCompletion(
+                    createResult,
+                    () => DeploymentStacksClient.DeploymentStacksWhatIfResultsAtResourceGroup.Get(
                         resourceGroupName,
-                        deploymentStackName);
-                    attempts++;
-                }
+                        deploymentStackName),
+                    "Succeeded",
+                    "SucceededWithFailures",
+                    "Failed",
+                    "Canceled");
 
                 WriteVerbose($"Final What-If result state: {finalResult.Properties?.ProvisioningState}");
 
@@ -734,18 +771,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 // Poll for completion if needed
                 WriteVerbose($"Initial What-If result state: {createResult.Properties?.ProvisioningState}");
                 
-                DeploymentStacksWhatIfResult finalResult = createResult;
-                const int maxPollingAttempts = 60;
-                int pollingInterval = 5;
-                int attempts = 0;
-                
-                while (finalResult.Properties?.ProvisioningState == "Running" && attempts < maxPollingAttempts)
-                {
-                    WriteVerbose($"Polling What-If result... attempt {attempts + 1}");
-                    System.Threading.Thread.Sleep(pollingInterval * 1000);
-                    finalResult = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtSubscription.Get(deploymentStackName);
-                    attempts++;
-                }
+                DeploymentStacksWhatIfResult finalResult = WaitWhatIfResultCompletion(
+                    createResult,
+                    () => DeploymentStacksClient.DeploymentStacksWhatIfResultsAtSubscription.Get(deploymentStackName),
+                    "Succeeded",
+                    "SucceededWithFailures",
+                    "Failed",
+                    "Canceled");
 
                 WriteVerbose($"Final What-If result state: {finalResult.Properties?.ProvisioningState}");
 
@@ -877,20 +909,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 // Poll for completion if needed
                 WriteVerbose($"Initial What-If result state: {createResult.Properties?.ProvisioningState}");
                 
-                DeploymentStacksWhatIfResult finalResult = createResult;
-                const int maxPollingAttempts = 60;
-                int pollingInterval = 5;
-                int attempts = 0;
-                
-                while (finalResult.Properties?.ProvisioningState == "Running" && attempts < maxPollingAttempts)
-                {
-                    WriteVerbose($"Polling What-If result... attempt {attempts + 1}");
-                    System.Threading.Thread.Sleep(pollingInterval * 1000);
-                    finalResult = DeploymentStacksClient.DeploymentStacksWhatIfResultsAtManagementGroup.Get(
+                DeploymentStacksWhatIfResult finalResult = WaitWhatIfResultCompletion(
+                    createResult,
+                    () => DeploymentStacksClient.DeploymentStacksWhatIfResultsAtManagementGroup.Get(
                         managementGroupId,
-                        deploymentStackName);
-                    attempts++;
-                }
+                        deploymentStackName),
+                    "Succeeded",
+                    "SucceededWithFailures",
+                    "Failed",
+                    "Canceled");
 
                 WriteVerbose($"Final What-If result state: {finalResult.Properties?.ProvisioningState}");
 

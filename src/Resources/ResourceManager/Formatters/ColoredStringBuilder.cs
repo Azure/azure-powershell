@@ -26,6 +26,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
         private readonly List<string> indentStack = new List<string>();
 
+        private bool atLineStart = true;
+
         public override string ToString()
         {
             return stringBuilder.ToString();
@@ -33,7 +35,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
         public ColoredStringBuilder Append(string value)
         {
-            this.stringBuilder.Append(value);
+            this.AppendWithIndent(value);
 
             return this;
         }
@@ -49,8 +51,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
         public ColoredStringBuilder Append(object value)
         {
-            string indent = this.indentStack.Count > 0 ? string.Join("", this.indentStack) : string.Empty;
-            this.stringBuilder.Append(indent + value);
+            this.AppendWithIndent(value?.ToString());
 
             return this;
         }
@@ -67,14 +68,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
         public ColoredStringBuilder AppendLine()
         {
             this.stringBuilder.AppendLine();
+            this.atLineStart = true;
 
             return this;
         }
 
         public ColoredStringBuilder AppendLine(string value)
         {
-            string indent = this.indentStack.Count > 0 ? string.Join("", this.indentStack) : string.Empty;
-            this.stringBuilder.AppendLine(indent + value);
+            this.AppendWithIndent(value);
+            this.stringBuilder.AppendLine();
+            this.atLineStart = true;
 
             return this;
         }
@@ -146,9 +149,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             string currentText = this.stringBuilder.ToString();
             int existingNewlines = 0;
 
-            for (int i = currentText.Length - 1; i >= 0 && currentText[i] == '\n'; i--)
+            for (int i = currentText.Length - 1; i >= 0; i--)
             {
-                existingNewlines++;
+                if (currentText[i] == '\n')
+                {
+                    existingNewlines++;
+                    if (i > 0 && currentText[i - 1] == '\r')
+                    {
+                        i--;
+                    }
+                }
+                else if (currentText[i] != '\r')
+                {
+                    break;
+                }
             }
 
             int remainingNewlines = numNewLines - existingNewlines;
@@ -163,6 +177,39 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             this.stringBuilder.Clear();
             this.colorStack.Clear();
             this.indentStack.Clear();
+            this.atLineStart = true;
+        }
+
+        private void AppendWithIndent(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return;
+            }
+
+            for (int i = 0; i < value.Length; i++)
+            {
+                if (this.atLineStart && value[i] != '\r' && value[i] != '\n')
+                {
+                    this.AppendIndent();
+                    this.atLineStart = false;
+                }
+
+                this.stringBuilder.Append(value[i]);
+
+                if (value[i] == '\n')
+                {
+                    this.atLineStart = true;
+                }
+            }
+        }
+
+        private void AppendIndent()
+        {
+            if (this.indentStack.Count > 0)
+            {
+                this.stringBuilder.Append(string.Join("", this.indentStack));
+            }
         }
 
         private void PushColor(Color color)
