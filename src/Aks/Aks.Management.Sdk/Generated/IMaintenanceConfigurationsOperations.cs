@@ -52,7 +52,8 @@ namespace Microsoft.Azure.Management.ContainerService
         /// The name of the managed cluster resource.
         /// </param>
         /// <param name='configName'>
-        /// The name of the maintenance configuration.
+        /// The name of the maintenance configuration. Supported values are &#39;default&#39;,
+        /// &#39;aksManagedAutoUpgradeSchedule&#39;, or &#39;aksManagedNodeOSUpgradeSchedule&#39;.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -83,7 +84,8 @@ namespace Microsoft.Azure.Management.ContainerService
         /// The name of the managed cluster resource.
         /// </param>
         /// <param name='configName'>
-        /// The name of the maintenance configuration.
+        /// The name of the maintenance configuration. Supported values are &#39;default&#39;,
+        /// &#39;aksManagedAutoUpgradeSchedule&#39;, or &#39;aksManagedNodeOSUpgradeSchedule&#39;.
         /// </param>
         /// <param name='parameters'>
         /// The maintenance configuration to create or update.
@@ -115,7 +117,8 @@ namespace Microsoft.Azure.Management.ContainerService
         /// The name of the managed cluster resource.
         /// </param>
         /// <param name='configName'>
-        /// The name of the maintenance configuration.
+        /// The name of the maintenance configuration. Supported values are &#39;default&#39;,
+        /// &#39;aksManagedAutoUpgradeSchedule&#39;, or &#39;aksManagedNodeOSUpgradeSchedule&#39;.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

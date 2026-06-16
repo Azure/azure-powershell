@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.PowerShell;
 
-    /// <summary>A pageable list of resources</summary>
+    /// <summary>The response of a AzureMonitorWorkspaceResource list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(AzureMonitorWorkspaceResourceListResultTypeConverter))]
     public partial class AzureMonitorWorkspaceResourceListResult
     {
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
             return ToJsonString();
         }
     }
-    /// A pageable list of resources
+    /// The response of a AzureMonitorWorkspaceResource list operation.
     [System.ComponentModel.TypeConverter(typeof(AzureMonitorWorkspaceResourceListResultTypeConverter))]
     public partial interface IAzureMonitorWorkspaceResourceListResult
 

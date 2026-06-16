@@ -1,4 +1,4 @@
-# ----------------------------------------------------------------------------------
+﻿# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +26,7 @@ function Get-TestExcludePrincipalId
     try {
         return (Get-AzADUser -SignedIn).Id
     } catch {
-        # SP auth fallback: known user in the test tenant — override via TEST_EXCLUDE_PRINCIPAL_ID
+        # SP auth fallback: known user in the test tenant - override via TEST_EXCLUDE_PRINCIPAL_ID
         return "1840cc0e-55b5-442d-bbf6-52c0c7e27302"
     }
 }
@@ -550,7 +550,7 @@ function Test-NewDaPerPrincipalNoExcludes
 
     try
     {
-        # No ExcludePrincipalId — should succeed in per-principal mode
+        # No ExcludePrincipalId - should succeed in per-principal mode
         $da = New-AzDenyAssignment `
             -DenyAssignmentName $daName `
             -Description "Per-principal DA without excluded principals" `

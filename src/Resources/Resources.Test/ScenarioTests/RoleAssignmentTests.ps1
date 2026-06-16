@@ -435,7 +435,7 @@ function Test-RaPropertiesValidation
     $roleDef = Get-AzRoleDefinition -Name "Reader"
     $roleDef.Id = "ff9cd1ab-d763-486f-b253-51a816c92aaf"
     $roleDef.Name = "Reader vm For Test"
-    $roleDef.Actions.Add("Microsoft.ClassicCompute/virtualMachines/restart/action")
+    $roleDef.Permissions[0].Actions.Add("Microsoft.ClassicCompute/virtualMachines/restart/action")
     $roleDef.Description = "Read, monitor and restart virtual machines"
     $roleDef.AssignableScopes[0] = '/subscriptions/'+$subscription[0].Id
 

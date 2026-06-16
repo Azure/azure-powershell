@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Dns
     public static partial class DnssecConfigsOperationsExtensions
     {
         /// <summary>
-        /// Creates or updates the DNSSEC configuration on a DNS zone.
+        /// Lists the DNSSEC configurations in a DNS zone.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -24,19 +24,13 @@ namespace Microsoft.Azure.Management.Dns
         /// <param name='zoneName'>
         /// The name of the DNS zone (without a terminating dot).
         /// </param>
-        /// <param name='ifMatch'>
-        /// The etag of the DNSSEC configuration. Omit this value to always overwrite the DNSSEC configuration. Specify the last-seen etag value to prevent accidentally overwriting any concurrent changes.
-        /// </param>
-        /// <param name='ifNoneMatch'>
-        /// Set to &#39;*&#39; to allow this DNSSEC configuration to be created, but to prevent updating existing DNSSEC configuration. Other values will be ignored.
-        /// </param>
-        public static DnssecConfig CreateOrUpdate(this IDnssecConfigsOperations operations, string resourceGroupName, string zoneName, string ifMatch = default(string), string ifNoneMatch = default(string))
+        public static Microsoft.Rest.Azure.IPage<DnssecConfig> ListByDnsZone(this IDnssecConfigsOperations operations, string resourceGroupName, string zoneName)
         {
-                return ((IDnssecConfigsOperations)operations).CreateOrUpdateAsync(resourceGroupName, zoneName, ifMatch, ifNoneMatch).GetAwaiter().GetResult();
+                return ((IDnssecConfigsOperations)operations).ListByDnsZoneAsync(resourceGroupName, zoneName).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Creates or updates the DNSSEC configuration on a DNS zone.
+        /// Lists the DNSSEC configurations in a DNS zone.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -46,66 +40,15 @@ namespace Microsoft.Azure.Management.Dns
         /// </param>
         /// <param name='zoneName'>
         /// The name of the DNS zone (without a terminating dot).
-        /// </param>
-        /// <param name='ifMatch'>
-        /// The etag of the DNSSEC configuration. Omit this value to always overwrite the DNSSEC configuration. Specify the last-seen etag value to prevent accidentally overwriting any concurrent changes.
-        /// </param>
-        /// <param name='ifNoneMatch'>
-        /// Set to &#39;*&#39; to allow this DNSSEC configuration to be created, but to prevent updating existing DNSSEC configuration. Other values will be ignored.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DnssecConfig> CreateOrUpdateAsync(this IDnssecConfigsOperations operations, string resourceGroupName, string zoneName, string ifMatch = default(string), string ifNoneMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DnssecConfig>> ListByDnsZoneAsync(this IDnssecConfigsOperations operations, string resourceGroupName, string zoneName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, zoneName, ifMatch, ifNoneMatch, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ListByDnsZoneWithHttpMessagesAsync(resourceGroupName, zoneName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Deletes the DNSSEC configuration on a DNS zone. This operation cannot be undone.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='zoneName'>
-        /// The name of the DNS zone (without a terminating dot).
-        /// </param>
-        /// <param name='ifMatch'>
-        /// The etag of this DNSSEC configuration. Omit this value to always delete the DNSSEC configuration. Specify the last-seen etag value to prevent accidentally deleting any concurrent changes.
-        /// </param>
-        public static DnssecConfigsDeleteHeaders Delete(this IDnssecConfigsOperations operations, string resourceGroupName, string zoneName, string ifMatch = default(string))
-        {
-                return ((IDnssecConfigsOperations)operations).DeleteAsync(resourceGroupName, zoneName, ifMatch).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes the DNSSEC configuration on a DNS zone. This operation cannot be undone.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='zoneName'>
-        /// The name of the DNS zone (without a terminating dot).
-        /// </param>
-        /// <param name='ifMatch'>
-        /// The etag of this DNSSEC configuration. Omit this value to always delete the DNSSEC configuration. Specify the last-seen etag value to prevent accidentally deleting any concurrent changes.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<DnssecConfigsDeleteHeaders> DeleteAsync(this IDnssecConfigsOperations operations, string resourceGroupName, string zoneName, string ifMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, zoneName, ifMatch, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Headers;
             }
         }
         /// <summary>
@@ -148,7 +91,7 @@ namespace Microsoft.Azure.Management.Dns
             }
         }
         /// <summary>
-        /// Lists the DNSSEC configurations in a DNS zone.
+        /// Creates or updates the DNSSEC configuration on a DNS zone.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -159,13 +102,22 @@ namespace Microsoft.Azure.Management.Dns
         /// <param name='zoneName'>
         /// The name of the DNS zone (without a terminating dot).
         /// </param>
-        public static Microsoft.Rest.Azure.IPage<DnssecConfig> ListByDnsZone(this IDnssecConfigsOperations operations, string resourceGroupName, string zoneName)
+        /// <param name='ifMatch'>
+        /// The etag of the DNSSEC configuration. Omit this value to always overwrite
+        /// the DNSSEC configuration. Specify the last-seen etag value to prevent
+        /// accidentally overwriting any concurrent changes.
+        /// </param>
+        /// <param name='ifNoneMatch'>
+        /// Set to &#39;*&#39; to allow this DNSSEC configuration to be created, but to prevent
+        /// updating existing DNSSEC configuration. Other values will be ignored.
+        /// </param>
+        public static DnssecConfig CreateOrUpdate(this IDnssecConfigsOperations operations, string resourceGroupName, string zoneName, string ifMatch = default(string), string ifNoneMatch = default(string))
         {
-                return ((IDnssecConfigsOperations)operations).ListByDnsZoneAsync(resourceGroupName, zoneName).GetAwaiter().GetResult();
+                return ((IDnssecConfigsOperations)operations).CreateOrUpdateAsync(resourceGroupName, zoneName, ifMatch, ifNoneMatch).GetAwaiter().GetResult();
         }
 
         /// <summary>
-        /// Lists the DNSSEC configurations in a DNS zone.
+        /// Creates or updates the DNSSEC configuration on a DNS zone.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -175,15 +127,75 @@ namespace Microsoft.Azure.Management.Dns
         /// </param>
         /// <param name='zoneName'>
         /// The name of the DNS zone (without a terminating dot).
+        /// </param>
+        /// <param name='ifMatch'>
+        /// The etag of the DNSSEC configuration. Omit this value to always overwrite
+        /// the DNSSEC configuration. Specify the last-seen etag value to prevent
+        /// accidentally overwriting any concurrent changes.
+        /// </param>
+        /// <param name='ifNoneMatch'>
+        /// Set to &#39;*&#39; to allow this DNSSEC configuration to be created, but to prevent
+        /// updating existing DNSSEC configuration. Other values will be ignored.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<DnssecConfig>> ListByDnsZoneAsync(this IDnssecConfigsOperations operations, string resourceGroupName, string zoneName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DnssecConfig> CreateOrUpdateAsync(this IDnssecConfigsOperations operations, string resourceGroupName, string zoneName, string ifMatch = default(string), string ifNoneMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ListByDnsZoneWithHttpMessagesAsync(resourceGroupName, zoneName, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, zoneName, ifMatch, ifNoneMatch, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes the DNSSEC configuration on a DNS zone. This operation cannot be
+        /// undone.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='zoneName'>
+        /// The name of the DNS zone (without a terminating dot).
+        /// </param>
+        /// <param name='ifMatch'>
+        /// The etag of this DNSSEC configuration. Omit this value to always delete the
+        /// DNSSEC configuration. Specify the last-seen etag value to prevent
+        /// accidentally deleting any concurrent changes.
+        /// </param>
+        public static DnssecConfigsDeleteHeaders Delete(this IDnssecConfigsOperations operations, string resourceGroupName, string zoneName, string ifMatch = default(string))
+        {
+                return ((IDnssecConfigsOperations)operations).DeleteAsync(resourceGroupName, zoneName, ifMatch).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes the DNSSEC configuration on a DNS zone. This operation cannot be
+        /// undone.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='zoneName'>
+        /// The name of the DNS zone (without a terminating dot).
+        /// </param>
+        /// <param name='ifMatch'>
+        /// The etag of this DNSSEC configuration. Omit this value to always delete the
+        /// DNSSEC configuration. Specify the last-seen etag value to prevent
+        /// accidentally deleting any concurrent changes.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<DnssecConfigsDeleteHeaders> DeleteAsync(this IDnssecConfigsOperations operations, string resourceGroupName, string zoneName, string ifMatch = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, zoneName, ifMatch, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
             }
         }
         /// <summary>
@@ -199,10 +211,13 @@ namespace Microsoft.Azure.Management.Dns
         /// The name of the DNS zone (without a terminating dot).
         /// </param>
         /// <param name='ifMatch'>
-        /// The etag of the DNSSEC configuration. Omit this value to always overwrite the DNSSEC configuration. Specify the last-seen etag value to prevent accidentally overwriting any concurrent changes.
+        /// The etag of the DNSSEC configuration. Omit this value to always overwrite
+        /// the DNSSEC configuration. Specify the last-seen etag value to prevent
+        /// accidentally overwriting any concurrent changes.
         /// </param>
         /// <param name='ifNoneMatch'>
-        /// Set to &#39;*&#39; to allow this DNSSEC configuration to be created, but to prevent updating existing DNSSEC configuration. Other values will be ignored.
+        /// Set to &#39;*&#39; to allow this DNSSEC configuration to be created, but to prevent
+        /// updating existing DNSSEC configuration. Other values will be ignored.
         /// </param>
         public static DnssecConfig BeginCreateOrUpdate(this IDnssecConfigsOperations operations, string resourceGroupName, string zoneName, string ifMatch = default(string), string ifNoneMatch = default(string))
         {
@@ -222,10 +237,13 @@ namespace Microsoft.Azure.Management.Dns
         /// The name of the DNS zone (without a terminating dot).
         /// </param>
         /// <param name='ifMatch'>
-        /// The etag of the DNSSEC configuration. Omit this value to always overwrite the DNSSEC configuration. Specify the last-seen etag value to prevent accidentally overwriting any concurrent changes.
+        /// The etag of the DNSSEC configuration. Omit this value to always overwrite
+        /// the DNSSEC configuration. Specify the last-seen etag value to prevent
+        /// accidentally overwriting any concurrent changes.
         /// </param>
         /// <param name='ifNoneMatch'>
-        /// Set to &#39;*&#39; to allow this DNSSEC configuration to be created, but to prevent updating existing DNSSEC configuration. Other values will be ignored.
+        /// Set to &#39;*&#39; to allow this DNSSEC configuration to be created, but to prevent
+        /// updating existing DNSSEC configuration. Other values will be ignored.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -238,7 +256,8 @@ namespace Microsoft.Azure.Management.Dns
             }
         }
         /// <summary>
-        /// Deletes the DNSSEC configuration on a DNS zone. This operation cannot be undone.
+        /// Deletes the DNSSEC configuration on a DNS zone. This operation cannot be
+        /// undone.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -250,7 +269,9 @@ namespace Microsoft.Azure.Management.Dns
         /// The name of the DNS zone (without a terminating dot).
         /// </param>
         /// <param name='ifMatch'>
-        /// The etag of this DNSSEC configuration. Omit this value to always delete the DNSSEC configuration. Specify the last-seen etag value to prevent accidentally deleting any concurrent changes.
+        /// The etag of this DNSSEC configuration. Omit this value to always delete the
+        /// DNSSEC configuration. Specify the last-seen etag value to prevent
+        /// accidentally deleting any concurrent changes.
         /// </param>
         public static DnssecConfigsDeleteHeaders BeginDelete(this IDnssecConfigsOperations operations, string resourceGroupName, string zoneName, string ifMatch = default(string))
         {
@@ -258,7 +279,8 @@ namespace Microsoft.Azure.Management.Dns
         }
 
         /// <summary>
-        /// Deletes the DNSSEC configuration on a DNS zone. This operation cannot be undone.
+        /// Deletes the DNSSEC configuration on a DNS zone. This operation cannot be
+        /// undone.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -270,7 +292,9 @@ namespace Microsoft.Azure.Management.Dns
         /// The name of the DNS zone (without a terminating dot).
         /// </param>
         /// <param name='ifMatch'>
-        /// The etag of this DNSSEC configuration. Omit this value to always delete the DNSSEC configuration. Specify the last-seen etag value to prevent accidentally deleting any concurrent changes.
+        /// The etag of this DNSSEC configuration. Omit this value to always delete the
+        /// DNSSEC configuration. Specify the last-seen etag value to prevent
+        /// accidentally deleting any concurrent changes.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

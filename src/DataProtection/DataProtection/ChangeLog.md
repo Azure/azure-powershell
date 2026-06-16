@@ -18,8 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added support for Azure Cosmos DB protection scenarios
-    - Users can now configure protection, backup, and restore for Azure Cosmos DB workloads
+
+## Version 3.0.0
+* Changed retention rule to require `-Name Default_OperationalStore`
+* Added `RenameTo` to restore request
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
+* Added Cosmos DB protection support
 
 ## Version 2.10.1
 * Fixed non-ASCII U+2013 characters failed module import in WindowsPowerShell

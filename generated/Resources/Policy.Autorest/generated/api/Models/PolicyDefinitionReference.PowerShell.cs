@@ -109,6 +109,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionReferenceInternal)this).DefinitionVersion = (string) content.GetValueForProperty("DefinitionVersion",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionReferenceInternal)this).DefinitionVersion, global::System.Convert.ToString);
             }
+            if (content.Contains("LatestDefinitionVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionReferenceInternal)this).LatestDefinitionVersion = (string) content.GetValueForProperty("LatestDefinitionVersion",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionReferenceInternal)this).LatestDefinitionVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("EffectiveDefinitionVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionReferenceInternal)this).EffectiveDefinitionVersion = (string) content.GetValueForProperty("EffectiveDefinitionVersion",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionReferenceInternal)this).EffectiveDefinitionVersion, global::System.Convert.ToString);
+            }
             if (content.Contains("Parameter"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionReferenceInternal)this).Parameter = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IParameterValues) content.GetValueForProperty("Parameter",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionReferenceInternal)this).Parameter, Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ParameterValuesTypeConverter.ConvertFrom);
@@ -145,6 +153,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
             if (content.Contains("DefinitionVersion"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionReferenceInternal)this).DefinitionVersion = (string) content.GetValueForProperty("DefinitionVersion",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionReferenceInternal)this).DefinitionVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("LatestDefinitionVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionReferenceInternal)this).LatestDefinitionVersion = (string) content.GetValueForProperty("LatestDefinitionVersion",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionReferenceInternal)this).LatestDefinitionVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("EffectiveDefinitionVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionReferenceInternal)this).EffectiveDefinitionVersion = (string) content.GetValueForProperty("EffectiveDefinitionVersion",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionReferenceInternal)this).EffectiveDefinitionVersion, global::System.Convert.ToString);
             }
             if (content.Contains("Parameter"))
             {

@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Management.ContainerService
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<Machine>>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<Machine>>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// The name of the agent pool.
         /// </param>
         /// <param name='machineName'>
-        /// host name of the machine
+        /// Host name of the machine.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -397,9 +397,9 @@ namespace Microsoft.Azure.Management.ContainerService
             }
             if (machineName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(machineName, "^[a-zA-Z0-9][-_a-zA-Z0-9]{0,39}$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(machineName, "^[a-z][a-z0-9]{0,11}$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,39}$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "machineName", "^[a-zA-Z0-9][-_a-zA-Z0-9]{0,39}$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "machineName", "^[a-z][a-z0-9]{0,11}$|^[a-zA-Z0-9][-_a-zA-Z0-9]{0,39}$");
                 }
             }
             // Tracing
@@ -712,7 +712,7 @@ namespace Microsoft.Azure.Management.ContainerService
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<Machine>>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<Machine>>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
