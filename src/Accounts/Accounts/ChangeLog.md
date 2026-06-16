@@ -19,13 +19,18 @@
 -->
 
 ## Upcoming Release
-<<<<<<< Daily/Release_20260527062757
+* Upgraded `Azure.Core` dependency from 1.50.0 to 1.56.0.
+* Upgraded `Azure.Identity` dependency from 1.17.2 to 1.21.0.
+* Upgraded `Azure.Identity.Broker` dependency from 1.1.0 to 1.6.0.
+* Upgraded `Microsoft.Identity.Client` dependency from 4.83.1 to 4.83.3.
+* Upgraded `Microsoft.Identity.Client.Extensions.Msal` dependency from 4.83.1 to 4.83.3.
+* Upgraded `Microsoft.Identity.Client.Broker` dependency from 4.83.1 to 4.83.3.
+
+## Version 6.0.0
 
 ## Version 5.5.0
-=======
 * Added Service Principal support for SSH certificate generation in 'SshCredentialFactory'
 * Upgraded `Azure.Identity` dependency to 1.17.2.
->>>>>>> main
 * Added ChangeSafety Support
 
 ## Version 5.4.0
