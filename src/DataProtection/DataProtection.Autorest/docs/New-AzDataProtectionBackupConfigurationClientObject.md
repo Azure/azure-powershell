@@ -19,7 +19,7 @@ New-AzDataProtectionBackupConfigurationClientObject -DatasourceType <DatasourceT
  [-ExcludedResourceType <String[]>] [-IncludeAllContainer] [-IncludeClusterScopeResource <Boolean?>]
  [-IncludedNamespace <String[]>] [-IncludedResourceType <String[]>] [-LabelSelector <String[]>]
  [-SnapshotVolume <Boolean?>] [-StorageAccountName <String>] [-StorageAccountResourceGroupName <String>]
- [-VaultedBackupContainer <String[]>] [<CommonParameters>]
+ [-VaultedBackupContainer <String[]>] [-ResourceSelector <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,6 +86,20 @@ AdlsBlobBackupDatasourceParametersForAutoProtection      True                   
 
 This command creates a backup configuration client object with auto-protection enabled for Azure Data Lake Storage.
 The exclusion rule excludes containers whose names match the prefix "logs-" from auto-protection.
+
+### Example 5: Create a BackupConfiguration for configuring protection with AzureElasticSAN
+```powershell
+$backupConfig = New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureElasticSAN -ResourceSelector @("volume001")
+```
+
+```output
+ObjectType                          ResourceSelector
+----------                          ----------------
+GenericBackupDatasourceParameters   {volume001}
+```
+
+This command creates a backup configuration client object for configuring backup of an Azure Elastic SAN volume group.
+The service currently supports protecting exactly one volume per backup instance, so ResourceSelector must contain a single volume name.
 
 ## PARAMETERS
 
