@@ -1,0 +1,52 @@
+{
+  "resourceType": "servers/databaseMigrations",
+  "apiVersion": "2025-06-30",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.datamigration"
+  },
+  "commands": [
+    {
+      "name": "Invoke-AzDataMigrationRetryToSqlDb",
+      "description": "Retry on going migration for the database.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/retry",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.datamigration/invoke-azdatamigrationretrytosqldb"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ResourceGroupName <String>",
+              "-SqlDbInstanceName <String>",
+              "[-SubscriptionId <String>]",
+              "-TargetDbName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Retry on going migration for the database.",
+          "parameters": [
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SqlDbInstanceName",
+              "value": "[Path.sqlDbInstanceName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-TargetDbName",
+              "value": "[Path.targetDbName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
