@@ -7,6 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.PowerShell;
 
+    /// <summary>A key-value pair representing application settings.</summary>
     [System.ComponentModel.TypeConverter(typeof(KeyValueTypeConverter))]
     public partial class KeyValue
     {
@@ -132,6 +133,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.KeyValueTagsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).Description, global::System.Convert.ToString);
+            }
             if (content.Contains("Locked"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).Locked = (bool?) content.GetValueForProperty("Locked",((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).Locked, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
@@ -143,6 +148,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
             if (content.Contains("SyncToken"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).SyncToken = (string) content.GetValueForProperty("SyncToken",((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).SyncToken, global::System.Convert.ToString);
+            }
+            if (content.Contains("XmsRequestId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).XmsRequestId = (string) content.GetValueForProperty("XmsRequestId",((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).XmsRequestId, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -185,6 +194,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.KeyValueTagsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).Description, global::System.Convert.ToString);
+            }
             if (content.Contains("Locked"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).Locked = (bool?) content.GetValueForProperty("Locked",((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).Locked, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
@@ -196,6 +209,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
             if (content.Contains("SyncToken"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).SyncToken = (string) content.GetValueForProperty("SyncToken",((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).SyncToken, global::System.Convert.ToString);
+            }
+            if (content.Contains("XmsRequestId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).XmsRequestId = (string) content.GetValueForProperty("XmsRequestId",((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).XmsRequestId, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }
@@ -217,6 +234,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
             return ToJsonString();
         }
     }
+    /// A key-value pair representing application settings.
     [System.ComponentModel.TypeConverter(typeof(KeyValueTypeConverter))]
     public partial interface IKeyValue
 

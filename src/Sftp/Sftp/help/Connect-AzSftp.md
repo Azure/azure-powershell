@@ -15,29 +15,35 @@ Users can login using Microsoft Entra accounts, or local user accounts via stand
 
 ### Default (Default)
 ```
-Connect-AzSftp -StorageAccount <String> [-Port <Int32>] [-PrivateKeyFile <String>] [-PublicKeyFile <String>]
- [-SftpArg <String[]>] [-SshClientFolder <String>] [-DefaultProfile <IAzureContextContainer>]
+Connect-AzSftp [-StorageAccount] <String> [-Port <Int32>] [-CertificateFile <String>]
+ [-PrivateKeyFile <String>] [-PublicKeyFile <String>] [-SftpArg <String[]>] [-SshClientFolder <String>]
+ [-BufferSizeInBytes <Int32>] [-StorageAccountEndpoint <String>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CertificateAuth
 ```
-Connect-AzSftp -StorageAccount <String> [-Port <Int32>] -CertificateFile <String> -PrivateKeyFile <String>
- [-SftpArg <String[]>] [-SshClientFolder <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Connect-AzSftp [-StorageAccount] <String> [-Port <Int32>] -CertificateFile <String> -PrivateKeyFile <String>
+ [-SftpArg <String[]>] [-SshClientFolder <String>] [-BufferSizeInBytes <Int32>]
+ [-StorageAccountEndpoint <String>] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PublicKeyAuth
 ```
-Connect-AzSftp -StorageAccount <String> [-Port <Int32>] -PublicKeyFile <String> [-SftpArg <String[]>]
- [-SshClientFolder <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Connect-AzSftp [-StorageAccount] <String> [-Port <Int32>] -PublicKeyFile <String> [-SftpArg <String[]>]
+ [-SshClientFolder <String>] [-BufferSizeInBytes <Int32>] [-StorageAccountEndpoint <String>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### LocalUserAuth
 ```
-Connect-AzSftp -StorageAccount <String> [-Port <Int32>] -LocalUser <String> [-PrivateKeyFile <String>]
- [-SftpArg <String[]>] [-SshClientFolder <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Connect-AzSftp [-StorageAccount] <String> [-Port <Int32>] [-PrivateKeyFile <String>] -LocalUser <String>
+ [-SftpArg <String[]>] [-SshClientFolder <String>] [-BufferSizeInBytes <Int32>]
+ [-StorageAccountEndpoint <String>] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -154,8 +160,35 @@ Connect-AzSftp -StorageAccount "mystorageaccount" -CertificateFile "C:\certs\azu
 
 ## PARAMETERS
 
+### -BufferSizeInBytes
+Buffer size in bytes for SFTP file transfers. Default: 262144 (256 KB).
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: 262144
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CertificateFile
 SSH Certificate to be used to authenticate to local user account.
+
+```yaml
+Type: System.String
+Parameter Sets: Default
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ```yaml
 Type: System.String
@@ -184,6 +217,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Force
+Forces the command to run without asking for user confirmation to overwrite existing SSH key pairs.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LocalUser
 Username for a local user in the target storage account.
 
@@ -203,7 +251,7 @@ Accept wildcard characters: False
 Port to connect to on the remote host.
 
 ```yaml
-Type: System.Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -219,10 +267,10 @@ Path to private key file.
 
 ```yaml
 Type: System.String
-Parameter Sets: CertificateAuth
+Parameter Sets: Default, LocalUserAuth
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -231,10 +279,10 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: Default, LocalUserAuth
+Parameter Sets: CertificateAuth
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -246,10 +294,10 @@ Path to public key file.
 
 ```yaml
 Type: System.String
-Parameter Sets: PublicKeyAuth
+Parameter Sets: Default
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -258,10 +306,10 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: Default
+Parameter Sets: PublicKeyAuth
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -307,9 +355,54 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccountEndpoint
+Custom storage account endpoint suffix. Default: Uses endpoint based on Azure environment (e.g., blob.core.windows.net).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

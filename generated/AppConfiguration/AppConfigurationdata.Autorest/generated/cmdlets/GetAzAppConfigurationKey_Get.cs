@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKey))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Description(@"Gets a list of keys.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.HttpPath(Path = "/keys", ApiVersion = "1.0")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.HttpPath(Path = "/keys", ApiVersion = "2026-04-01")]
     public partial class GetAzAppConfigurationKey_Get : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IContext
@@ -59,13 +59,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
         private string _acceptDatetime;
 
         /// <summary>
-        /// Requests the server to respond with the state of the resource at the specified time.
+        /// Requests the server to respond with the state of the resource at the specified
+        /// time.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Requests the server to respond with the state of the resource at the specified time.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Requests the server to respond with the state of the resource at the specified\ntime.")]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Requests the server to respond with the state of the resource at the specified time.",
+        Description = @"Requests the server to respond with the state of the resource at the specified
+        time.",
         SerializedName = @"Accept-Datetime",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Header)]
@@ -75,13 +77,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
         private string _after;
 
         /// <summary>
-        /// Instructs the server to return elements that appear after the element referred to by the specified token.
+        /// Instructs the server to return elements that appear after the element referred
+        /// to by the specified token.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Instructs the server to return elements that appear after the element referred to by the specified token.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Instructs the server to return elements that appear after the element referred\nto by the specified token.")]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Instructs the server to return elements that appear after the element referred to by the specified token.",
+        Description = @"Instructs the server to return elements that appear after the element referred
+        to by the specified token.",
         SerializedName = @"After",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.ParameterCategory.Query)]
@@ -416,7 +420,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Endpoint=Endpoint,Name=this.InvocationInformation.BoundParameters.ContainsKey("Name") ? Name : null,SyncToken=this.InvocationInformation.BoundParameters.ContainsKey("SyncToken") ? SyncToken : null,After=this.InvocationInformation.BoundParameters.ContainsKey("After") ? After : null,AcceptDatetime=this.InvocationInformation.BoundParameters.ContainsKey("AcceptDatetime") ? AcceptDatetime : null})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Endpoint=Endpoint,Name=this.InvocationInformation.BoundParameters.ContainsKey("Name") ? Name : null,After=this.InvocationInformation.BoundParameters.ContainsKey("After") ? After : null,SyncToken=this.InvocationInformation.BoundParameters.ContainsKey("SyncToken") ? SyncToken : null,AcceptDatetime=this.InvocationInformation.BoundParameters.ContainsKey("AcceptDatetime") ? AcceptDatetime : null})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -498,7 +502,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
                 {
                     return ;
                 }
-                // onOk - response for 200 / application/vnd.microsoft.appconfig.keyset+json/application/json/application/problem+json
+                // onOk - response for 200 / application/vnd.microsoft.appconfig.keyset+json/application/problem+json/application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyListResult
                 var result = (await response);
                 // response should be returning an array of some kind. +Pageable

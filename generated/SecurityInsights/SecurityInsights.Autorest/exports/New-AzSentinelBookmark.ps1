@@ -16,52 +16,21 @@
 
 <#
 .Synopsis
-Creates or updates the bookmark.
+Create the bookmark.
 .Description
-Creates or updates the bookmark.
+Create the bookmark.
 .Example
  $queryStartTime = (Get-Date).AddDays(-1).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
  $queryEndTime = (Get-Date).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
  New-AzSentinelBookmark -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id ((New-Guid).Guid) -DisplayName "Incident Evidence" -Query "SecurityEvent | take 1" -QueryStartTime $queryStartTime -QueryEndTime $queryEndTime -EventTime $queryEndTime
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IBookmark
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IBookmark
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-BOOKMARK <IBookmark>: Represents a bookmark in Azure Security Insights.
-  [Etag <String>]: Etag of the azure resource
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
-  [Created <DateTime?>]: The time the bookmark was created
-  [CreatedByObjectId <String>]: The object id of the user.
-  [DisplayName <String>]: The display name of the bookmark
-  [EventTime <DateTime?>]: The bookmark event time
-  [IncidentInfoIncidentId <String>]: Incident Id
-  [IncidentInfoRelationName <String>]: Relation Name
-  [IncidentInfoSeverity <IncidentSeverity?>]: The severity of the incident
-  [IncidentInfoTitle <String>]: The title of the incident
-  [Label <String[]>]: List of labels relevant to this bookmark
-  [Note <String>]: The notes of the bookmark
-  [Query <String>]: The query of the bookmark.
-  [QueryEndTime <DateTime?>]: The end time for the query
-  [QueryResult <String>]: The query result of the bookmark.
-  [QueryStartTime <DateTime?>]: The start time for the query
-  [Updated <DateTime?>]: The last time the bookmark was updated
-  [UpdatedByObjectId <String>]: The object id of the user.
+Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IBookmark
 .Link
 https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelbookmark
 #>
 function New-AzSentinelBookmark {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IBookmark])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IBookmark])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -92,13 +61,6 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IBookmark]
-    # Represents a bookmark in Azure Security Insights.
-    # To construct, see NOTES section for BOOKMARK properties and create a hash table.
-    ${Bookmark},
-
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
@@ -124,9 +86,9 @@ param(
     ${IncidentInfoRelationName},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentSeverity])]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.PSArgumentCompleterAttribute("High", "Medium", "Low", "Informational")]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentSeverity]
+    [System.String]
     # The severity of the incident
     ${IncidentInfoSeverity},
 
@@ -172,6 +134,30 @@ param(
     [System.DateTime]
     # The start time for the query
     ${QueryStartTime},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+    [System.String]
+    # The email of the user.
+    ${UpdatedByEmail},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+    [System.String]
+    # The name of the user.
+    ${UpdatedByName},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -229,6 +215,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -248,15 +242,14 @@ begin {
         }
 
         $mapping = @{
-            Create = 'Az.SecurityInsights.private\New-AzSentinelBookmark_Create';
             CreateExpanded = 'Az.SecurityInsights.private\New-AzSentinelBookmark_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.SecurityInsights.private\New-AzSentinelBookmark_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.SecurityInsights.private\New-AzSentinelBookmark_CreateViaJsonString';
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Id')) {
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Id') ) {
             $PSBoundParameters['Id'] = (New-Guid).Guid
         }
-        if (('Create', 'CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -270,6 +263,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

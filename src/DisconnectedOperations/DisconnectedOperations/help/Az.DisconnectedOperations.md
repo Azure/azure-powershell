@@ -23,6 +23,9 @@ Get a DisconnectedOperation
 ### [Get-AzDisconnectedOperationsDisconnectedOperationDeploymentManifest](Get-AzDisconnectedOperationsDisconnectedOperationDeploymentManifest.md)
 Get deployment manifest.
 
+### [Get-AzDisconnectedOperationsHardwareSetting](Get-AzDisconnectedOperationsHardwareSetting.md)
+Get the hardware settings resource
+
 ### [Get-AzDisconnectedOperationsImage](Get-AzDisconnectedOperationsImage.md)
 Get the resource.
 
@@ -32,9 +35,18 @@ Get the URI to download the image.
 ### [New-AzDisconnectedOperationsDisconnectedOperation](New-AzDisconnectedOperationsDisconnectedOperation.md)
 Create a DisconnectedOperation
 
+### [New-AzDisconnectedOperationsHardwareSetting](New-AzDisconnectedOperationsHardwareSetting.md)
+Create hardware settings
+
 ### [Remove-AzDisconnectedOperationsDisconnectedOperation](Remove-AzDisconnectedOperationsDisconnectedOperation.md)
 Delete a DisconnectedOperation
 
+### [Remove-AzDisconnectedOperationsHardwareSetting](Remove-AzDisconnectedOperationsHardwareSetting.md)
+Delete hardware settings
+
 ### [Update-AzDisconnectedOperationsDisconnectedOperation](Update-AzDisconnectedOperationsDisconnectedOperation.md)
 Update a DisconnectedOperation
+
+### [Update-AzDisconnectedOperationsHardwareSetting](Update-AzDisconnectedOperationsHardwareSetting.md)
+Update hardware settings
 

@@ -703,5 +703,19 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineGalleryApplicationFlags");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMDataDiskIOPSMBPS()
+        {
+            TestRunner.RunTestScript("Test-VMDataDiskIOPSMBPS");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMStorageFaultDomainAlignment()
+        {
+            TestRunner.RunTestScript("Test-VMStorageFaultDomainAlignment");
+        }
     }
 }

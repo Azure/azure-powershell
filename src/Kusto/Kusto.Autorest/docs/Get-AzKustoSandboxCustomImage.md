@@ -29,6 +29,12 @@ Get-AzKustoSandboxCustomImage -ClusterName <String> -Name <String> -ResourceGrou
 Get-AzKustoSandboxCustomImage -InputObject <IKustoIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityCluster
+```
+Get-AzKustoSandboxCustomImage -ClusterInputObject <IKustoIdentity> -Name <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Returns a sandbox custom image
 
@@ -61,6 +67,21 @@ myCluster/myImage
 The above command returns a Kusto sandbox custom image named "myImage" in cluster "myCluster" and resource group "myResourceGroup".
 
 ## PARAMETERS
+
+### -ClusterInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
+Parameter Sets: GetViaIdentityCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -ClusterName
 The name of the Kusto cluster.
@@ -95,7 +116,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
@@ -114,7 +134,7 @@ The name of the sandbox custom image.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityCluster
 Aliases: SandboxCustomImageName
 
 Required: True
@@ -164,7 +184,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20240413.ISandboxCustomImage
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.ISandboxCustomImage
 
 ## NOTES
 

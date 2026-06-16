@@ -16,20 +16,20 @@
 
 <#
 .Synopsis
-Creates or updates a SQL virtual machine group.
+Create a SQL virtual machine group.
 .Description
-Creates or updates a SQL virtual machine group.
+Create a SQL virtual machine group.
 .Example
 # $accessKey is a valid access key for the storage account
 $storageAccountPrimaryKey = ConvertTo-SecureString -String $accessKey -AsPlainText -Force
 New-AzSqlVMGroup -ResourceGroupName 'ResourceGroup01' -Name 'sqlvmgroup01' -Location 'eastus' -Offer 'SQL2022-WS2022' -Sku 'Developer' -DomainFqdn 'yourdomain.com' -ClusterOperatorAccount 'operatoruser@yourdomain.com' -ClusterBootstrapAccount 'bootstrapuser@yourdomain.com' -StorageAccountUrl 'https://yourstorageaccount.blob.core.windows.net/' -StorageAccountPrimaryKey $storageAccountPrimaryKey -SqlServiceAccount 'sqladmin@yourdomain.com' -ClusterSubnetType 'SingleSubnet'
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachineGroup
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineGroup
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachineGroup
+Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -44,20 +44,14 @@ INPUTOBJECT <ISqlVirtualMachineIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription ID that identifies an Azure subscription.
 
 PARAMETER <ISqlVirtualMachineGroup>: A SQL virtual machine group.
-  Location <String>: Resource location.
+  [Location <String>]: Resource location.
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [SqlImageOffer <String>]: SQL image offer. Examples may include SQL2016-WS2016, SQL2017-WS2016.
-  [SqlImageSku <SqlVMGroupImageSku?>]: SQL image sku.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The timestamp of resource last modification (UTC)
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [SqlImageSku <String>]: SQL image sku.
   [WsfcDomainProfileClusterBootstrapAccount <String>]: Account name used for creating cluster (at minimum needs permissions to 'Create Computer Objects' in domain).
   [WsfcDomainProfileClusterOperatorAccount <String>]: Account name used for operating cluster i.e. will be part of administrators group on all the participating virtual machines in the cluster.
-  [WsfcDomainProfileClusterSubnetType <ClusterSubnetType?>]: Cluster subnet type.
+  [WsfcDomainProfileClusterSubnetType <String>]: Cluster subnet type.
   [WsfcDomainProfileDomainFqdn <String>]: Fully qualified name of the domain.
   [WsfcDomainProfileFileShareWitnessPath <String>]: Optional path for fileshare witness.
   [WsfcDomainProfileOuPath <String>]: Organizational Unit path in which the nodes and cluster will be present.
@@ -68,21 +62,19 @@ PARAMETER <ISqlVirtualMachineGroup>: A SQL virtual machine group.
 https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/new-azsqlvmgroup
 #>
 function New-AzSqlVMGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachineGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineGroup])]
 [CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachineGroup]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineGroup]
     # A SQL virtual machine group.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter()]
@@ -153,12 +145,18 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             CreateViaIdentity = 'Az.SqlVirtualMachine.private\New-AzSqlVMGroup_CreateViaIdentity';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

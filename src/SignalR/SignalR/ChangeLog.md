@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 3.0.0
+* Added ChangeSafety Support
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
+
+## Version 2.3.3
+* Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
+
 ## Version 2.3.2
 * Updated Azure.Core from 1.47.3 to 1.50.0
 

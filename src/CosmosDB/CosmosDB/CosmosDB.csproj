@@ -14,4 +14,25 @@
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
+  <!-- Preview-branch-only: inject preview AssemblyVersion at build time so AssemblyInfo.cs can stay aligned with main. Self-disables if the targets file is absent. -->
+  <Import Project="$(MSBuildThisFileDirectory)..\PreviewOverlay\PreviewAssemblyVersion.targets"
+          Condition="Exists('$(MSBuildThisFileDirectory)..\PreviewOverlay\PreviewAssemblyVersion.targets')" />
+
+  <!--
+    Preview-branch-only: stamp preview values (ModuleVersion, Prerelease, ReleaseNotes,
+    AzPreview.psd1 pin) into the built artifacts. The source .psd1 / ChangeLog.md /
+    AzPreview.psd1 are kept aligned with main to eliminate recurring merge conflicts;
+    preview-specific values live in src/CosmosDB/PreviewOverlay/overlay.json and are
+    applied here at build time.
+
+    The Condition makes this target a no-op if the overlay script is absent (e.g. if
+    this csproj edit is ever ported to main), so it self-disables outside the
+    preview branch.
+  -->
+  <Target Name="ApplyPreviewOverlay" AfterTargets="Build"
+          Condition="Exists('$(MSBuildThisFileDirectory)..\PreviewOverlay\Apply-PreviewOverlay.ps1')">
+    <Message Importance="high" Text="Applying CosmosDB preview overlay..." />
+    <Exec Command="pwsh -NoProfile -NonInteractive -File &quot;$(MSBuildThisFileDirectory)..\PreviewOverlay\Apply-PreviewOverlay.ps1&quot; -Configuration $(Configuration)" />
+  </Target>
+
 </Project>

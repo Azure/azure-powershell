@@ -6,20 +6,24 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Description for Updates the configuration of an app.</summary>
+    /// <summary>Description for create the configuration of an app.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdateConfiguration=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzWebAppConfiguration_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Description(@"Description for Updates the configuration of an app.")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PreviewMessage("*******************************************************************************************\r\n* This cmdlet will undergo a breaking change in Az v16.0.0, to be released in May 2026.           *\r\n* At least one change applies to this cmdlet.                                                    *\r\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\r\n*******************************************************************************************")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Description(@"Description for create the configuration of an app.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/web", ApiVersion = "2023-12-01")]
     public partial class NewAzWebAppConfiguration_CreateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -35,8 +39,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
+
         /// <summary>Web app configuration ARM resource.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource _siteConfigBody = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.SiteConfigResource();
+        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource _siteConfigBody = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.SiteConfigResource();
 
         /// <summary>Flag to use Managed Identity Creds for ACR pull</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Flag to use Managed Identity Creds for ACR pull")]
@@ -79,9 +95,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"Predefined action to be taken.",
         SerializedName = @"actionType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType ActionType { get => _siteConfigBody.ActionType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AutoHealActionType)""); set => _siteConfigBody.ActionType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Recycle", "LogEvent", "CustomAction")]
+        public string ActionType { get => _siteConfigBody.ActionType ?? null; set => _siteConfigBody.ActionType = value; }
 
         /// <summary><code>true</code> if Always On is enabled; otherwise, <code>false</code>.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "<code>true</code> if Always On is enabled; otherwise, <code>false</code>.")]
@@ -136,8 +152,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"Application settings.",
         SerializedName = @"appSettings",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.INameValuePair) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.INameValuePair[] AppSetting { get => _siteConfigBody.AppSetting ?? null /* arrayOf */; set => _siteConfigBody.AppSetting = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.INameValuePair) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.INameValuePair[] AppSetting { get => _siteConfigBody.AppSetting?.ToArray() ?? null /* fixedArrayOf */; set => _siteConfigBody.AppSetting = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.INameValuePair>(value) : null); }
 
         /// <summary><code>true</code> if Auto Heal is enabled; otherwise, <code>false</code>.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "<code>true</code> if Auto Heal is enabled; otherwise, <code>false</code>.")]
@@ -170,13 +186,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"List of Azure Storage Accounts.",
         SerializedName = @"azureStorageAccounts",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigAzureStorageAccounts) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigAzureStorageAccounts AzureStorageAccount { get => _siteConfigBody.AzureStorageAccount ?? null /* object */; set => _siteConfigBody.AzureStorageAccount = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigAzureStorageAccounts) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigAzureStorageAccounts AzureStorageAccount { get => _siteConfigBody.AzureStorageAccount ?? null /* object */; set => _siteConfigBody.AzureStorageAccount = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Functions.Functions Client => Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.ClientAPI;
@@ -190,8 +209,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"Connection strings.",
         SerializedName = @"connectionStrings",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IConnStringInfo) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IConnStringInfo[] ConnectionString { get => _siteConfigBody.ConnectionString ?? null /* arrayOf */; set => _siteConfigBody.ConnectionString = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IConnStringInfo) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IConnStringInfo[] ConnectionString { get => _siteConfigBody.ConnectionString?.ToArray() ?? null /* fixedArrayOf */; set => _siteConfigBody.ConnectionString = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IConnStringInfo>(value) : null); }
 
         /// <summary>
         /// Gets or sets the list of origins that should be allowed to make cross-origincalls (for example: http://example.com:12345).
@@ -206,7 +225,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Gets or sets the list of origins that should be allowed to make cross-origincalls (for example: http://example.com:12345). Use ""*"" to allow all.",
         SerializedName = @"allowedOrigins",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] CorAllowedOrigin { get => _siteConfigBody.CorAllowedOrigin ?? null /* arrayOf */; set => _siteConfigBody.CorAllowedOrigin = value; }
+        public string[] CorAllowedOrigin { get => _siteConfigBody.CorAllowedOrigin?.ToArray() ?? null /* fixedArrayOf */; set => _siteConfigBody.CorAllowedOrigin = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>
         /// Gets or sets whether CORS requests with credentials are allowed. See https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentialsfor
@@ -254,7 +273,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Default documents.",
         SerializedName = @"defaultDocuments",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] DefaultDocument { get => _siteConfigBody.DefaultDocument ?? null /* arrayOf */; set => _siteConfigBody.DefaultDocument = value; }
+        public string[] DefaultDocument { get => _siteConfigBody.DefaultDocument?.ToArray() ?? null /* fixedArrayOf */; set => _siteConfigBody.DefaultDocument = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -327,8 +346,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"List of ramp-up rules.",
         SerializedName = @"rampUpRules",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IRampUpRule) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IRampUpRule[] ExperimentRampUpRule { get => _siteConfigBody.ExperimentRampUpRule ?? null /* arrayOf */; set => _siteConfigBody.ExperimentRampUpRule = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IRampUpRule) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IRampUpRule[] ExperimentRampUpRule { get => _siteConfigBody.ExperimentRampUpRule?.ToArray() ?? null /* fixedArrayOf */; set => _siteConfigBody.ExperimentRampUpRule = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IRampUpRule>(value) : null); }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>State of FTP / FTPS service</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "State of FTP / FTPS service")]
@@ -338,9 +360,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"State of FTP / FTPS service",
         SerializedName = @"ftpsState",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FtpsState) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FtpsState))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FtpsState FtpsState { get => _siteConfigBody.FtpsState ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FtpsState)""); set => _siteConfigBody.FtpsState = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("AllAllowed", "FtpsOnly", "Disabled")]
+        public string FtpsState { get => _siteConfigBody.FtpsState ?? null; set => _siteConfigBody.FtpsState = value; }
 
         /// <summary>
         /// Maximum number of workers that a site can scale out to.This setting only applies to the Consumption and Elastic Premium
@@ -379,8 +401,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"Handler mappings.",
         SerializedName = @"handlerMappings",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IHandlerMapping) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IHandlerMapping[] HandlerMapping { get => _siteConfigBody.HandlerMapping ?? null /* arrayOf */; set => _siteConfigBody.HandlerMapping = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IHandlerMapping) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IHandlerMapping[] HandlerMapping { get => _siteConfigBody.HandlerMapping?.ToArray() ?? null /* fixedArrayOf */; set => _siteConfigBody.HandlerMapping = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IHandlerMapping>(value) : null); }
 
         /// <summary>Health check path</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Health check path")]
@@ -436,8 +458,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"IP security restrictions for main.",
         SerializedName = @"ipSecurityRestrictions",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IIPSecurityRestriction) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IIPSecurityRestriction[] IPSecurityRestriction { get => _siteConfigBody.IPSecurityRestriction ?? null /* arrayOf */; set => _siteConfigBody.IPSecurityRestriction = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIPSecurityRestriction) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIPSecurityRestriction[] IPSecurityRestriction { get => _siteConfigBody.IPSecurityRestriction?.ToArray() ?? null /* fixedArrayOf */; set => _siteConfigBody.IPSecurityRestriction = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIPSecurityRestriction>(value) : null); }
 
         /// <summary>Default action for main access restriction if no rules are matched.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Default action for main access restriction if no rules are matched.")]
@@ -447,9 +469,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"Default action for main access restriction if no rules are matched.",
         SerializedName = @"ipSecurityRestrictionsDefaultAction",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction IPSecurityRestrictionsDefaultAction { get => _siteConfigBody.IPSecurityRestrictionsDefaultAction ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction)""); set => _siteConfigBody.IPSecurityRestrictionsDefaultAction = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Allow", "Deny")]
+        public string IPSecurityRestrictionsDefaultAction { get => _siteConfigBody.IPSecurityRestrictionsDefaultAction ?? null; set => _siteConfigBody.IPSecurityRestrictionsDefaultAction = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -572,9 +594,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"Site load balancing.",
         SerializedName = @"loadBalancing",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancing) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancing))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancing LoadBalancing { get => _siteConfigBody.LoadBalancing ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SiteLoadBalancing)""); set => _siteConfigBody.LoadBalancing = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("WeightedRoundRobin", "LeastRequests", "LeastResponseTime", "WeightedTotalTraffic", "RequestHash", "PerSiteRoundRobin")]
+        public string LoadBalancing { get => _siteConfigBody.LoadBalancing ?? null; set => _siteConfigBody.LoadBalancing = value; }
 
         /// <summary><code>true</code> to enable local MySQL; otherwise, <code>false</code>.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "<code>true</code> to enable local MySQL; otherwise, <code>false</code>.")]
@@ -606,9 +628,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"Managed pipeline mode.",
         SerializedName = @"managedPipelineMode",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedPipelineMode) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedPipelineMode))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedPipelineMode ManagedPipelineMode { get => _siteConfigBody.ManagedPipelineMode ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedPipelineMode)""); set => _siteConfigBody.ManagedPipelineMode = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Integrated", "Classic")]
+        public string ManagedPipelineMode { get => _siteConfigBody.ManagedPipelineMode ?? null; set => _siteConfigBody.ManagedPipelineMode = value; }
 
         /// <summary>Managed Service Identity Id</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Managed Service Identity Id")]
@@ -632,8 +654,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"Application metadata. This property cannot be retrieved, since it may contain secrets.",
         SerializedName = @"metadata",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.INameValuePair) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.INameValuePair[] Metadata { get => _siteConfigBody.Metadata ?? null /* arrayOf */; set => _siteConfigBody.Metadata = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.INameValuePair) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.INameValuePair[] Metadata { get => _siteConfigBody.Metadata?.ToArray() ?? null /* fixedArrayOf */; set => _siteConfigBody.Metadata = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.INameValuePair>(value) : null); }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -651,9 +673,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"The minimum strength TLS cipher suite allowed for an application",
         SerializedName = @"minTlsCipherSuite",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.TlsCipherSuites) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.TlsCipherSuites))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.TlsCipherSuites MinTlsCipherSuite { get => _siteConfigBody.MinTlsCipherSuite ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.TlsCipherSuites)""); set => _siteConfigBody.MinTlsCipherSuite = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("TLS_AES_256_GCM_SHA384", "TLS_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256", "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256", "TLS_RSA_WITH_AES_256_CBC_SHA256", "TLS_RSA_WITH_AES_128_CBC_SHA256", "TLS_RSA_WITH_AES_256_CBC_SHA", "TLS_RSA_WITH_AES_128_CBC_SHA")]
+        public string MinTlsCipherSuite { get => _siteConfigBody.MinTlsCipherSuite ?? null; set => _siteConfigBody.MinTlsCipherSuite = value; }
 
         /// <summary>MinTlsVersion: configures the minimum version of TLS required for SSL requests</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "MinTlsVersion: configures the minimum version of TLS required for SSL requests")]
@@ -663,9 +685,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"MinTlsVersion: configures the minimum version of TLS required for SSL requests",
         SerializedName = @"minTlsVersion",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions MinTlsVersion { get => _siteConfigBody.MinTlsVersion ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions)""); set => _siteConfigBody.MinTlsVersion = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("1.0", "1.1", "1.2", "1.3")]
+        public string MinTlsVersion { get => _siteConfigBody.MinTlsVersion ?? null; set => _siteConfigBody.MinTlsVersion = value; }
 
         /// <summary>
         /// Number of minimum instance count for a siteThis setting only applies to the Elastic Plans
@@ -741,7 +763,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>Version of PowerShell.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Version of PowerShell.")]
@@ -918,8 +940,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"IP security restrictions for scm.",
         SerializedName = @"scmIpSecurityRestrictions",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IIPSecurityRestriction) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IIPSecurityRestriction[] ScmIPSecurityRestriction { get => _siteConfigBody.ScmIPSecurityRestriction ?? null /* arrayOf */; set => _siteConfigBody.ScmIPSecurityRestriction = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIPSecurityRestriction) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIPSecurityRestriction[] ScmIPSecurityRestriction { get => _siteConfigBody.ScmIPSecurityRestriction?.ToArray() ?? null /* fixedArrayOf */; set => _siteConfigBody.ScmIPSecurityRestriction = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IIPSecurityRestriction>(value) : null); }
 
         /// <summary>Default action for scm access restriction if no rules are matched.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Default action for scm access restriction if no rules are matched.")]
@@ -929,9 +951,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"Default action for scm access restriction if no rules are matched.",
         SerializedName = @"scmIpSecurityRestrictionsDefaultAction",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction ScmIPSecurityRestrictionsDefaultAction { get => _siteConfigBody.ScmIPSecurityRestrictionsDefaultAction ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DefaultAction)""); set => _siteConfigBody.ScmIPSecurityRestrictionsDefaultAction = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Allow", "Deny")]
+        public string ScmIPSecurityRestrictionsDefaultAction { get => _siteConfigBody.ScmIPSecurityRestrictionsDefaultAction ?? null; set => _siteConfigBody.ScmIPSecurityRestrictionsDefaultAction = value; }
 
         /// <summary>IP security restrictions for scm to use main.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "IP security restrictions for scm to use main.")]
@@ -954,9 +976,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site",
         SerializedName = @"scmMinTlsVersion",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions ScmMinTlsVersion { get => _siteConfigBody.ScmMinTlsVersion ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions)""); set => _siteConfigBody.ScmMinTlsVersion = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("1.0", "1.1", "1.2", "1.3")]
+        public string ScmMinTlsVersion { get => _siteConfigBody.ScmMinTlsVersion ?? null; set => _siteConfigBody.ScmMinTlsVersion = value; }
 
         /// <summary>SCM type.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "SCM type.")]
@@ -966,9 +988,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"SCM type.",
         SerializedName = @"scmType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ScmType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ScmType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ScmType ScmType { get => _siteConfigBody.ScmType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ScmType)""); set => _siteConfigBody.ScmType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("None", "Dropbox", "Tfs", "LocalGit", "GitHub", "CodePlexGit", "CodePlexHg", "BitbucketGit", "BitbucketHg", "ExternalGit", "ExternalHg", "OneDrive", "VSO", "VSTSRM")]
+        public string ScmType { get => _siteConfigBody.ScmType ?? null; set => _siteConfigBody.ScmType = value; }
 
         /// <summary>Request Count.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Request Count.")]
@@ -1030,7 +1052,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -1093,8 +1116,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"A rule based on multiple Slow Requests Rule with path",
         SerializedName = @"slowRequestsWithPath",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISlowRequestsBasedTrigger) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISlowRequestsBasedTrigger[] TriggerSlowRequestsWithPath { get => _siteConfigBody.TriggerSlowRequestsWithPath ?? null /* arrayOf */; set => _siteConfigBody.TriggerSlowRequestsWithPath = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISlowRequestsBasedTrigger) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISlowRequestsBasedTrigger[] TriggerSlowRequestsWithPath { get => _siteConfigBody.TriggerSlowRequestsWithPath?.ToArray() ?? null /* fixedArrayOf */; set => _siteConfigBody.TriggerSlowRequestsWithPath = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISlowRequestsBasedTrigger>(value) : null); }
 
         /// <summary>A rule based on status codes.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -1105,8 +1128,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"A rule based on status codes.",
         SerializedName = @"statusCodes",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStatusCodesBasedTrigger) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStatusCodesBasedTrigger[] TriggerStatusCode { get => _siteConfigBody.TriggerStatusCode ?? null /* arrayOf */; set => _siteConfigBody.TriggerStatusCode = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStatusCodesBasedTrigger) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStatusCodesBasedTrigger[] TriggerStatusCode { get => _siteConfigBody.TriggerStatusCode?.ToArray() ?? null /* fixedArrayOf */; set => _siteConfigBody.TriggerStatusCode = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStatusCodesBasedTrigger>(value) : null); }
 
         /// <summary>A rule based on status codes ranges.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -1117,8 +1140,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"A rule based on status codes ranges.",
         SerializedName = @"statusCodesRange",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStatusCodesRangeBasedTrigger) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStatusCodesRangeBasedTrigger[] TriggerStatusCodesRange { get => _siteConfigBody.TriggerStatusCodesRange ?? null /* arrayOf */; set => _siteConfigBody.TriggerStatusCodesRange = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStatusCodesRangeBasedTrigger) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStatusCodesRangeBasedTrigger[] TriggerStatusCodesRange { get => _siteConfigBody.TriggerStatusCodesRange?.ToArray() ?? null /* fixedArrayOf */; set => _siteConfigBody.TriggerStatusCodesRange = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IStatusCodesRangeBasedTrigger>(value) : null); }
 
         /// <summary><code>true</code> to use 32-bit worker process; otherwise, <code>false</code>.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "<code>true</code> to use 32-bit worker process; otherwise, <code>false</code>.")]
@@ -1140,8 +1163,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"Virtual applications.",
         SerializedName = @"virtualApplications",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IVirtualApplication) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IVirtualApplication[] VirtualApplication { get => _siteConfigBody.VirtualApplication ?? null /* arrayOf */; set => _siteConfigBody.VirtualApplication = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IVirtualApplication) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IVirtualApplication[] VirtualApplication { get => _siteConfigBody.VirtualApplication?.ToArray() ?? null /* fixedArrayOf */; set => _siteConfigBody.VirtualApplication = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IVirtualApplication>(value) : null); }
 
         /// <summary>Virtual Network name.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Virtual Network name.")]
@@ -1235,24 +1258,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IDefaultErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IDefaultErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IDefaultErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IDefaultErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource">Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource">Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -1275,6 +1298,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -1339,8 +1367,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -1350,7 +1403,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzWebAppConfiguration_CreateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="NewAzWebAppConfiguration_CreateExpanded" /> cmdlet class.
         /// </summary>
         public NewAzWebAppConfiguration_CreateExpanded()
         {
@@ -1404,7 +1457,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -1417,12 +1470,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.WebAppsCreateOrUpdateConfiguration(ResourceGroupName, Name, SubscriptionId, _siteConfigBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.WebAppsCreateOrUpdateConfiguration(SubscriptionId, ResourceGroupName, Name, _siteConfigBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,Name=Name,SubscriptionId=SubscriptionId,body=_siteConfigBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -1460,12 +1513,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IDefaultErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IDefaultErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IDefaultErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IDefaultErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -1482,15 +1535,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IDefaultErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=_siteConfigBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IDefaultErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=_siteConfigBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -1500,12 +1553,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource">Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource">Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource> response)
         {
             using( NoSynchronizationContext )
             {
@@ -1517,8 +1570,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigResource
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfigResource
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

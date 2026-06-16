@@ -1,0 +1,60 @@
+<Project>
+
+  <!--
+    Preview-branch-only: stamp the preview AssemblyVersion/AssemblyFileVersion into the
+    built assemblies WITHOUT keeping the preview version in the checked-in AssemblyInfo.cs.
+
+    Why: main's release tooling rewrites the AssemblyVersion literal on every release, and
+    the preview branch carries a different version on the same line, so AssemblyInfo.cs
+    conflicts on every merge from main. By keeping AssemblyInfo.cs byte-identical to main
+    and injecting the preview version at build time (sourced from overlay.json, the single
+    source of truth), the file never conflicts again and the built assembly still reports
+    the preview version. This works across all machines/CI because it is part of the build,
+    unlike git rerere which is local to a single clone.
+
+    Self-disables (no-op) when overlay.json, the generator script, or the source
+    AssemblyInfo.cs is absent - e.g. if this import is ever ported to main.
+
+    Note: Az.Shared.props sets GenerateAssemblyVersionAttribute=false, so the literal in
+    AssemblyInfo.cs is the only version source; we therefore compile a generated copy with
+    the version swapped instead of adding a second (duplicate) attribute.
+  -->
+
+  <PropertyGroup>
+    <_PreviewOverlayDir>$(MSBuildThisFileDirectory)</_PreviewOverlayDir>
+    <_PreviewOverlayJson>$(_PreviewOverlayDir)overlay.json</_PreviewOverlayJson>
+    <_PreviewAssemblyInfoGenerator>$(_PreviewOverlayDir)Generate-PreviewAssemblyInfo.ps1</_PreviewAssemblyInfoGenerator>
+    <_PreviewAssemblyInfoSource>$(MSBuildProjectDirectory)\Properties\AssemblyInfo.cs</_PreviewAssemblyInfoSource>
+    <_PreviewOverlayEnabled Condition="Exists('$(_PreviewOverlayJson)') And Exists('$(_PreviewAssemblyInfoGenerator)') And Exists('$(_PreviewAssemblyInfoSource)')">true</_PreviewOverlayEnabled>
+  </PropertyGroup>
+
+  <!--
+    Generate a copy of AssemblyInfo.cs with the preview version into obj/. Incremental:
+    only regenerated when the source, overlay.json, or the generator script changes.
+  -->
+  <Target Name="GeneratePreviewAssemblyInfo"
+          Condition="'$(_PreviewOverlayEnabled)' == 'true'"
+          BeforeTargets="CoreCompile"
+          Inputs="$(_PreviewAssemblyInfoSource);$(_PreviewOverlayJson);$(_PreviewAssemblyInfoGenerator)"
+          Outputs="$(IntermediateOutputPath)PreviewAssemblyInfo.cs">
+    <Message Importance="high" Text="Generating preview AssemblyInfo for $(MSBuildProjectName) from overlay.json" />
+    <Exec Command="pwsh -NoProfile -NonInteractive -File &quot;$(_PreviewAssemblyInfoGenerator)&quot; -SourceAssemblyInfo &quot;$(_PreviewAssemblyInfoSource)&quot; -OutputFile &quot;$(IntermediateOutputPath)PreviewAssemblyInfo.cs&quot; -OverlayJson &quot;$(_PreviewOverlayJson)&quot;" />
+  </Target>
+
+  <!--
+    Swap the stock AssemblyInfo.cs out of the compilation for the generated preview copy.
+    This target has no Inputs/Outputs so it always runs (the item swap must happen on every
+    build even when generation was skipped as up-to-date).
+  -->
+  <Target Name="UsePreviewAssemblyInfo"
+          Condition="'$(_PreviewOverlayEnabled)' == 'true'"
+          BeforeTargets="CoreCompile"
+          DependsOnTargets="GeneratePreviewAssemblyInfo">
+    <ItemGroup>
+      <!-- Remove using the same relative spec the SDK default glob uses, so it matches. -->
+      <Compile Remove="Properties\AssemblyInfo.cs" />
+      <Compile Include="$(IntermediateOutputPath)PreviewAssemblyInfo.cs" />
+    </ItemGroup>
+  </Target>
+
+</Project>

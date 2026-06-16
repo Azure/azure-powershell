@@ -19,7 +19,7 @@ Set-AzSqlServer [-ServerName] <String> [-SqlAdministratorPassword <SecureString>
  [-RestrictOutboundNetworkAccess <String>] [-MinimalTlsVersion <String>]
  [-PrimaryUserAssignedIdentityId <String>] [-KeyId <String>] [-FederatedClientId <Guid>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-IdentityType <String>]
- [-EnableSoftDelete <Boolean>] [-SoftDeleteRetentionDays <Int32>]
+ [-SoftDeleteRetentionDays <Int32>]
  [-Force]
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] 
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -137,23 +137,6 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableSoftDelete
-**This parameter has been deprecated and will be removed in May 2026 (Az version 16.0.0 / Az.Sql version 7.0.0). Please use the SoftDeleteRetentionDays parameter instead.**
-
-Boolean value for whether or not to enable soft-delete for the server such that the server can be restored for a default of 7 days after dropping. To enable soft-delete, use `-SoftDeleteRetentionDays` with a value of 1-7 days. To disable soft-delete, use `-SoftDeleteRetentionDays 0`.
-
-```yaml
-Type: System.Boolean
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -331,7 +314,7 @@ Accept wildcard characters: False
 ```
 
 ### -SoftDeleteRetentionDays
-Value for soft-delete retention days for the server such that the server can be restored for the specified number of days after dropping. Only valid values are from 0-7. If set to 0, soft-delete retention is disabled.
+[Public Preview] Value for soft-delete retention days for the server such that the server can be restored for the specified number of days after dropping. Only valid values are from 0-7. If set to 0, soft-delete retention is disabled.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]

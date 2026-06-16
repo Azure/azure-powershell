@@ -328,6 +328,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("None", "Trunk")]
         public string HighSpeedInterconnectPlacement { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the align mode between Virtual Machine Scale Set (VMSS) compute and storage Fault Domain count. Valid values are 'Aligned', 'Unaligned', and 'BestEffortAligned'. Applicable to VMSS Flex only.")]
+        [PSArgumentCompleter("Aligned", "Unaligned", "BestEffortAligned")]
+        public string ZonalPlatformFaultDomainAlignMode { get; set; }
+
         private void ConfigureSecuritySettings()
         {
             if (SecurityType?.ToLower() == SecurityTypes.TrustedLaunch ||
@@ -738,7 +746,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     zonePlacementPolicy: _cmdlet.ZonePlacementPolicy,
                     includeZone: _cmdlet.IncludeZone,
                     excludeZone: _cmdlet.ExcludeZone,
-                    highSpeedInterconnectPlacement: _cmdlet.IsParameterBound(c => c.HighSpeedInterconnectPlacement) ? _cmdlet.HighSpeedInterconnectPlacement : null
+                    highSpeedInterconnectPlacement: _cmdlet.IsParameterBound(c => c.HighSpeedInterconnectPlacement) ? _cmdlet.HighSpeedInterconnectPlacement : null,
+                    zonalPlatformFaultDomainAlignMode: _cmdlet.IsParameterBound(c => c.ZonalPlatformFaultDomainAlignMode) ? _cmdlet.ZonalPlatformFaultDomainAlignMode : null
                 );
             }
         }

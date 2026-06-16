@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Description(@"Delete a DisconnectedOperation")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}", ApiVersion = "2025-06-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}", ApiVersion = "2026-03-15")]
     public partial class RemoveAzDisconnectedOperationsDisconnectedOperation_Delete : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.DisconnectedOperations.Runtime.IContext

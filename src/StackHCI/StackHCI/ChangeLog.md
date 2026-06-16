@@ -18,6 +18,18 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.0.0
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
+
+## Version 2.7.1
+* Fixed single node registration scenario.
+
+## Version 2.7.0
+* Updated preannouncement breaking changes date to May 2026.
+* Optimized cluster registration, significantly reducing registration time on large clusters.
+
+## Version 2.6.6
 * Improved cloud deployment detection during Azure Arc repair operations to prevent duplicate enablement attempts and ensure smoother deployment experiences.
 * Added ability to register in custom Azure Environments
 * Fixed issue where Arc enablement was incorrectly triggered during repair registration for cloud deployments

@@ -37,6 +37,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string CustomNetworkInterfaceName { get; internal set; }
 
+        public string IpVersionType { get; set; }
+
         [JsonIgnore]
         public string SubnetText
         {

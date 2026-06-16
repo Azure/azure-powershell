@@ -528,7 +528,7 @@ function Test-AzureFirewallCRUDWithZones {
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard -Zone 1, 2, 3
 
         # Create AzureFirewall (with no rules, ThreatIntel is in Alert mode by default)
-        $azureFirewall = New-AzFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip -Zone 1, 2, 3
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip -Zone 1, 2, 3
 
         # Get AzureFirewall
         $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
@@ -832,7 +832,7 @@ function Test-AzureFirewallPIPAndVNETObjectTypeParams {
         $publicip2 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIp2Name -location $location -AllocationMethod Static -Sku Standard
 
         # Create AzureFirewall with a single public IP address
-        $azureFirewall = New-AzFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip1
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip1
 
         # Get AzureFirewall
         $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
@@ -916,7 +916,7 @@ function Test-AzureFirewallPIPAndVNETObjectTypeParams {
         Assert-AreEqual true $delete
 
         # Create AzureFirewall with Two Public IP addresses
-        $azureFirewall = New-AzFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress @($publicip1, $publicip2)
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress @($publicip1, $publicip2)
 
         # Get AzureFirewall
         $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
@@ -1090,7 +1090,7 @@ function Test-AzureFirewallAllocateAndDeallocate {
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
 
         # Create AzureFirewall (with no vnet, public ip)
-        $azureFirewall = New-AzFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location
 
         # Get AzureFirewall
         $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
@@ -2490,6 +2490,149 @@ function Test-AzureFirewallAutoscaleConfiguration {
         # Verify
         $getAzureFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
         Assert-Null $getAzureFirewall.AutoscaleConfiguration
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests AzureFirewall CRUD with EdgeZone.
+#>
+function Test-AzureFirewallCRUDWithEdgeZone {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
+
+    $vnetName = Get-ResourceName
+    $subnetName = "AzureFirewallSubnet"
+    $publicIpName = Get-ResourceName
+    $edgeZone = "microsoftrrezm1"
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+
+        # Create the Virtual Network with EdgeZone
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet -EdgeZone $edgeZone
+
+        # Create public ip with EdgeZone
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard -EdgeZone $edgeZone
+
+        # Create AzureFirewall with EdgeZone (should have no zones)
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip -EdgeZone $edgeZone
+
+        # Get AzureFirewall
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
+
+        # Verification
+        Assert-AreEqual $rgName $getAzureFirewall.ResourceGroupName
+        Assert-AreEqual $azureFirewallName $getAzureFirewall.Name
+        Assert-NotNull $getAzureFirewall.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewall.Location
+        Assert-NotNull $getAzureFirewall.Etag
+        Assert-AreEqual "Alert" $getAzureFirewall.ThreatIntelMode
+        Assert-AreEqual 1 @($getAzureFirewall.IpConfigurations).Count
+        Assert-NotNull $getAzureFirewall.IpConfigurations[0].Subnet.Id
+        Assert-NotNull $getAzureFirewall.IpConfigurations[0].PublicIpAddress.Id
+        Assert-NotNull $getAzureFirewall.IpConfigurations[0].PrivateIpAddress
+        Assert-AreEqual 0 @($getAzureFirewall.ApplicationRuleCollections).Count
+        Assert-AreEqual 0 @($getAzureFirewall.NatRuleCollections).Count
+        Assert-AreEqual 0 @($getAzureFirewall.NetworkRuleCollections).Count
+
+        # Verify EdgeZone specific behavior
+        Assert-NotNull $getAzureFirewall.ExtendedLocation
+        Assert-AreEqual $edgeZone $getAzureFirewall.ExtendedLocation.Name
+        Assert-AreEqual "EdgeZone" $getAzureFirewall.ExtendedLocation.Type
+        # Verify that zones are null when EdgeZone is specified
+        Assert-Null $getAzureFirewall.Zones
+
+        # Update the firewall to test modification
+        $azureFirewall.ThreatIntelMode = "Deny"
+        Set-AzFirewall -AzureFirewall $azureFirewall
+
+        # Verify the update
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
+        Assert-AreEqual "Deny" $getAzureFirewall.ThreatIntelMode
+        # Verify EdgeZone properties are preserved
+        Assert-NotNull $getAzureFirewall.ExtendedLocation
+        Assert-AreEqual $edgeZone $getAzureFirewall.ExtendedLocation.Name
+        Assert-Null $getAzureFirewall.Zones
+
+        # Delete AzureFirewall
+        $delete = Remove-AzFirewall -ResourceGroupName $rgname -name $azureFirewallName -PassThru -Force
+        Assert-AreEqual true $delete
+
+        $list = Get-AzFirewall -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    catch [Microsoft.Azure.Commands.Network.Common.NetworkCloudException]
+    {
+        Assert-True { $_.Exception.Message -match 'Resource type .* does not support edge zone .* in location .* The supported edge zones are .*' }
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests EdgeZone and Zones validation - zones should be null when EdgeZone is specified.
+#>
+function Test-AzureFirewallEdgeZoneZonesValidation {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
+
+    $vnetName = Get-ResourceName
+    $subnetName = "AzureFirewallSubnet"
+    $publicIpName = Get-ResourceName
+    $edgeZone = "microsoftrrezm1"
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
+
+        # Create the Virtual Network with EdgeZone
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet -EdgeZone $edgeZone
+
+        # Create public ip with EdgeZone
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard -EdgeZone $edgeZone
+
+        # Test 1: Attempt to create firewall with both EdgeZone and Zone parameters (should fail with client-side validation)
+        Assert-ThrowsLike { New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip -EdgeZone $edgeZone -Zone 1,2,3 } "*Zones cannot be specified when EdgeZone is provided*"
+
+        # Test 2: Create firewall with only EdgeZone (should succeed) and then validate Set-AzFirewall rejects zones
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip -EdgeZone $edgeZone
+
+        # Get AzureFirewall
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
+
+        # Verify EdgeZone is set and Zones is null
+        Assert-NotNull $getAzureFirewall.ExtendedLocation
+        Assert-AreEqual $edgeZone $getAzureFirewall.ExtendedLocation.Name
+        Assert-AreEqual "EdgeZone" $getAzureFirewall.ExtendedLocation.Type
+        Assert-Null $getAzureFirewall.Zones
+
+        # Test 3: Try to add zones using Set-AzFirewall on an EdgeZone firewall (should fail with client-side validation)
+        $getAzureFirewall.Zones = @("1", "2", "3")
+        Assert-ThrowsLike { Set-AzFirewall -AzureFirewall $getAzureFirewall } "*Zones cannot be specified when EdgeZone is provided*"
+
+        # Clean up firewall
+        Remove-AzFirewall -ResourceGroupName $rgname -name $azureFirewallName -Force
+    }
+    catch [Microsoft.Azure.Commands.Network.Common.NetworkCloudException]
+    {
+        Assert-True { $_.Exception.Message -match 'Resource type .* does not support edge zone .* in location .* The supported edge zones are .*' }
     }
     finally {
         # Cleanup

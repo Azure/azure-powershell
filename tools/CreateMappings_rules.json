@@ -561,10 +561,6 @@
     "alias": "Portal"
   },
   {
-    "regex": "PostgreSql",
-    "alias": "Database for PostgreSQL"
-  },
-  {
     "module": "SqlVirtualMachine",
     "alias": "Sql VM"
   },
@@ -937,10 +933,6 @@
     "alias": "IoTOperationsService"
   },
   {
-    "module": "TrustedSigning",
-    "alias": "TrustedSigning"
-  },
-  {
     "module": "ScVmm",
     "alias": "ScVmm"
   },
@@ -1007,5 +999,33 @@
   {
     "alias": "EdgeAction",
     "module": "EdgeAction"
+  },
+  {
+    "alias": "ArtifactSigning",
+    "module": "ArtifactSigning"
+  },
+  {
+    "module": "FileShare",
+    "alias": "FileShare"
+  },
+  {
+    "module": "ComputeLimit",
+    "alias": "ComputeLimit"
+  },
+  {
+    "module": "ServiceGroups",
+    "alias": "ServiceGroups"
+  },
+  {
+    "module": "PlanetaryComputer",
+    "alias": "PlanetaryComputer"
+  },
+  {
+    "module": "Relationships",
+    "alias": "Relationships"
+  },
+  {
+    "module": "PostgreSqlFlexibleServer",
+    "alias": "PostgreSqlFlexibleServer"
   }
 ]

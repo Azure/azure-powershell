@@ -48,7 +48,7 @@ function Test-AccountQuotaLimit
     $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
     $resourceGroup = Get-ResourceGroupName
     $accName = Get-ResourceName
-    $quotaLimitName = "totalTiBsPerSubscription"
+    $quotaLimitName = "totalTiBsPerSubscription"    
     try
     {
         # create the resource group

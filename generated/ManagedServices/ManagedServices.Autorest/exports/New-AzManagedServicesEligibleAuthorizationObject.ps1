@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a in-memory object for EligibleAuthorization
+Create an in-memory object for EligibleAuthorization.
 .Description
-Create a in-memory object for EligibleAuthorization
+Create an in-memory object for EligibleAuthorization.
 .Example
 New-AzManagedServicesEligibleAuthorizationObject -PrincipalId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -PrincipalIdDisplayName "Test user" -RoleDefinitionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 .Example
@@ -29,7 +29,7 @@ $eligibleAuth = New-AzManagedServicesEligibleAuthorizationObject -PrincipalId "x
 $eligibleAuth | Format-List -Property PrinciPalId, PrincipalIdDisplayName, RoleDefinitionId, JustInTimeAccessPolicyManagedByTenantApprover, JustInTimeAccessPolicyMultiFactorAuthProvider, JustInTimeAccessPolicyMaximumActivationDuration
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.EligibleAuthorization
+Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.EligibleAuthorization
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -42,7 +42,7 @@ JUSTINTIMEACCESSPOLICYMANAGEDBYTENANTAPPROVER <IEligibleApprover[]>: The list of
 https://learn.microsoft.com/powershell/module/az.ManagedServices/new-AzManagedServicesEligibleAuthorizationObject
 #>
 function New-AzManagedServicesEligibleAuthorizationObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.EligibleAuthorization])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.EligibleAuthorization])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -59,9 +59,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleApprover[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IEligibleApprover[]]
     # The list of managedByTenant approvers for the eligible authorization.
-    # To construct, see NOTES section for JUSTINTIMEACCESSPOLICYMANAGEDBYTENANTAPPROVER properties and create a hash table.
     ${JustInTimeAccessPolicyManagedByTenantApprover},
 
     [Parameter()]
@@ -71,9 +70,9 @@ param(
     ${JustInTimeAccessPolicyMaximumActivationDuration},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.MultiFactorAuthProvider])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.PSArgumentCompleterAttribute("Azure", "None")]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.MultiFactorAuthProvider]
+    [System.String]
     # The multi-factor authorization provider to be used for just-in-time access requests.
     ${JustInTimeAccessPolicyMultiFactorAuthProvider},
 
@@ -91,6 +90,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -119,6 +121,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

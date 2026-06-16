@@ -16,15 +16,15 @@
 
 <#
 .Synopsis
-Creates or Updates a ResourceGuardProxy
+Create a ResourceGuardProxy
 .Description
-Creates or Updates a ResourceGuardProxy
+Create a ResourceGuardProxy
 .Example
 $proxy = Set-AzDataProtectionResourceGuardMapping -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -VaultName $vaultName -ResourceGuardId $resourceGuardARMId
 $proxy | fl
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IResourceGuardProxyBaseResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardProxyBaseResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,7 +37,7 @@ RESOURCEGUARDOPERATIONDETAIL <IResourceGuardOperationDetail[]>: .
 https://learn.microsoft.com/powershell/module/az.dataprotection/set-azdataprotectionresourceguardmapping
 #>
 function Set-AzDataProtectionResourceGuardMapping {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20250201.IResourceGuardProxyBaseResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IResourceGuardProxyBaseResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -61,11 +61,25 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
     # Resource Guard ARM Id to enable MUA protection for Backup Vault.
     ${ResourceGuardId},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -123,6 +137,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -143,18 +165,20 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.DataProtection.private\Set-AzDataProtectionResourceGuardMapping_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.DataProtection.private\Set-AzDataProtectionResourceGuardMapping_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.DataProtection.private\Set-AzDataProtectionResourceGuardMapping_CreateViaJsonString';
+            UpdateViaJsonFilePath = 'Az.DataProtection.private\Set-AzDataProtectionResourceGuardMapping_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.DataProtection.private\Set-AzDataProtectionResourceGuardMapping_UpdateViaJsonString';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('ResourceGuardProxyName')) {
-            $PSBoundParameters['ResourceGuardProxyName'] = "DppResourceGuardProxy"
-        }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
+        }
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('ResourceGuardProxyName') ) {
+            $PSBoundParameters['ResourceGuardProxyName'] = "DppResourceGuardProxy"
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -163,6 +187,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

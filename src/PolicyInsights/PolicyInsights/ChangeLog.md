@@ -19,6 +19,15 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.0
+* Changed output types: `PSAttestation`/`PSPolicyMetadata`/`PSRemediation` renamed; flattened `SystemData`
+* Renamed `ResourceTags`/`ManagementGroupIds` to singular forms
+* Flattened `Get-AzPolicyStateSummary`, remediation output properties
+* Changed `Start/Stop-AzPolicyRemediation` default behavior (added `-NoWait`)
+
+## Version 1.7.4
+* Added Breaking Change notifications to many of the cmdlets in Az.PolicyInsights.
+
 ## Version 1.7.3
 * Updated Azure.Core from 1.47.3 to 1.50.0
 

@@ -17,24 +17,21 @@ Create a new baseboard management controller key set or create the existing one 
 New-AzNetworkCloudBmcKeySet -Name <String> -ClusterInputObject <INetworkCloudIdentity> [-IfMatch <String>]
  [-IfNoneMatch <String>] -AzureGroupId <String> -Expiration <DateTime> -ExtendedLocationName <String>
  -ExtendedLocationType <String> -Location <String> -PrivilegeLevel <String> -UserList <IKeySetUser[]>
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzNetworkCloudBmcKeySet -Name <String> -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzNetworkCloudBmcKeySet -Name <String> -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpanded
