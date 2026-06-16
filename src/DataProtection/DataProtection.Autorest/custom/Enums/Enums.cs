@@ -12,7 +12,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
         AzureKubernetesService,
         AzureDatabaseForPGFlexServer,
         AzureDatabaseForMySQL,
-        AzureCosmosDB
+        AzureCosmosDB,
+        AzureElasticSAN
     }
 
     public enum StorageSettingType

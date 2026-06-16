@@ -108,6 +108,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
                 {
                     return new KubernetesClusterBackupDatasourceParameters(json);
                 }
+                // [eSAN graft] eSAN generic backup datasource parameters (2024-02-01-preview only)
+                case "GenericBackupDatasourceParameters":
+                {
+                    return new GenericBackupDatasourceParameters(json);
+                }
             }
             return new BackupDatasourceParameters(json);
         }

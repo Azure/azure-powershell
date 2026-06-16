@@ -1,0 +1,90 @@
+{
+  "datasourcePermissions": [ "Elastic SAN Snapshot Exporter" ],
+  "datasourceRGPermissions": [],
+  "snapshotRGPermissions": [ "Disk Snapshot Contributor" ],
+  "keyVaultPermissions": [],
+  "dataSourceOverSnapshotRGPermissions": [],
+  "supportRestoreGrantPermission": true,
+  "datasourcePermissionsForRestore": [ "Elastic SAN Volume Importer" ],
+  "storageAccountPermissionsForRestore": [],
+  "isProxyResource": true,
+  "enableDataSourceSetInfo": true,
+  "resourceType": "Microsoft.ElasticSan/elasticSans/volumeGroups",
+  "parentResourceType": "Microsoft.ElasticSan/elasticSans",
+  "datasourceType": "Microsoft.ElasticSan/elasticSans/volumeGroups",
+  "allowedRestoreModes": [ "RecoveryPointBased" ],
+  "allowedRestoreTargetTypes": [ "AlternateLocation" ],
+  "itemLevelRecoveyEnabled": true,
+  "fileNamePrefixDisabled": false,
+  "addBackupDatasourceParametersList": true,
+  "backupConfigurationRequired": true,
+  "addDataStoreParametersList": true,
+  "friendlyNameRequired": true,
+  "customFriendlyNameAllowed": false,
+  "supportSecretStoreAuthentication": false,
+  "supportCrossRegionRestore": false,
+  "policySettings": {
+    "supportedRetentionTags": [ "Daily", "Weekly" ],
+    "supportedDatastoreTypes": [ "OperationalStore" ],
+    "disableAddRetentionRule": false,
+    "disableCustomRetentionTag": true,
+    "backupScheduleSupported": true,
+    "supportedBackupFrequency": [ "Daily", "Weekly" ],
+    "defaultPolicy": {
+      "policyRules": [
+        {
+          "backupParameters": {
+            "backupType": "Incremental",
+            "objectType": "AzureBackupParams"
+          },
+          "trigger": {
+            "schedule": {
+              "repeatingTimeIntervals": [
+                "R/2024-02-08T13:00:00+00:00/P1D"
+              ]
+            },
+            "taggingCriteria": [
+              {
+                "tagInfo": {
+                  "tagName": "Default",
+                  "id": "Default_"
+                },
+                "taggingPriority": 99,
+                "isDefault": true
+              }
+            ],
+            "objectType": "ScheduleBasedTriggerContext"
+          },
+          "dataStore": {
+            "dataStoreType": "OperationalStore",
+            "objectType": "DataStoreInfoBase"
+          },
+          "name": "BackupDaily",
+          "objectType": "AzureBackupRule"
+        },
+        {
+          "lifecycles": [
+            {
+              "deleteAfter": {
+                "objectType": "AbsoluteDeleteOption",
+                "duration": "P7D"
+              },
+              "sourceDataStore": {
+                "dataStoreType": "OperationalStore",
+                "objectType": "DataStoreInfoBase"
+              }
+            }
+          ],
+          "isDefault": true,
+          "name": "Default",
+          "objectType": "AzureRetentionRule"
+        }
+      ],
+      "name": "ESANPolicy1",
+      "datasourceTypes": [
+        "Microsoft.ElasticSan/elasticSans/volumeGroups"
+      ],
+      "objectType": "BackupPolicy"
+    }
+  }
+}

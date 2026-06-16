@@ -242,6 +242,26 @@ The fourth through sixth commands build a RenameTo hashtable that maps each orig
 The seventh command sets the target storage account ARM ID for the alternate location restore.
 The last command initializes the restore request with -ItemLevelRecovery, -ContainersList, and -RenameTo to perform an alternate-location vaulted blob restore while renaming the specified containers.
 
+### Example 9: Get restore request object for alternate location item level restore for AzureElasticSAN
+```powershell
+$instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" | Where-Object { $_.Name -match "volumeGroupName" }
+$rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -BackupInstanceName $instance.Name
+$restoreConfig = New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType AzureElasticSAN -ResourceIdentifier @("source-vol1") -ResourceNameOverride @{"source-vol1" = "restored-vol1"}
+$targetVolumeGroupId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.ElasticSan/elasticSans/elasticSanName/volumeGroups/targetVolumeGroup"
+$restoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureElasticSAN -SourceDataStore OperationalStore -RestoreLocation "vaultLocation" -RestoreType AlternateLocation -RecoveryPoint $rp[0].Name -TargetResourceId $targetVolumeGroupId -RestoreConfiguration $restoreConfig -ItemLevelRecovery
+```
+
+```output
+ObjectType                                  RestoreTargetInfoObjectType  RestoreTargetInfoRecoveryOption RestoreTargetInfoRestoreLocation SourceDataStoreType RecoveryPointId
+----------                                  ---------------------------  ------------------------------- -------------------------------- ------------------- ---------------
+AzureBackupRecoveryPointBasedRestoreRequest  itemLevelRestoreTargetInfo   FailIfExists                    vaultLocation                    OperationalStore
+```
+
+The first and second commands fetch the backup instance and recovery points for the protected Elastic SAN volume group.
+The third command builds the restore configuration selecting the source volume and optionally renaming it on the target volume group.
+The fourth command sets the target volume group ARM ID.
+The last command initializes the restore request for an alternate-location item-level restore of the selected Elastic SAN volume.
+
 ## PARAMETERS
 
 ### -BackupInstance
