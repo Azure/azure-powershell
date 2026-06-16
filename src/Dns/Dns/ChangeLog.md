@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for linking a DNS record set to an Azure Traffic Manager profile (Traffic Manager link, also known as TMLink)
+    - Added `-TrafficManagerProfileId` to `New-AzDnsRecordSet`
+    - `Get-AzDnsRecordSet` and `Set-AzDnsRecordSet` now expose `TrafficManagerProfileId` for round-trip updates
+
+## Version 2.1.0
 * Added ChangeSafety Support
 
 ## Version 2.0.0

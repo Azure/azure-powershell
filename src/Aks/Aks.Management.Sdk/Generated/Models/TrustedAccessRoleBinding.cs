@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     /// Defines binding between a resource and role
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class TrustedAccessRoleBinding : Resource
+    public partial class TrustedAccessRoleBinding : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the TrustedAccessRoleBinding class.

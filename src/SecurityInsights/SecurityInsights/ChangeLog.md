@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 4.0.0
 * [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
 
 ## Version 3.2.2
