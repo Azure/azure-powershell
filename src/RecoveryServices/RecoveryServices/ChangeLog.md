@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Added Cross region restore support for Delos cloud regions
+* Added Cross region restore support for USSec cloud - USSec West Central region
 
 ## Version 7.12.0
 * Added ChangeSafety Support
