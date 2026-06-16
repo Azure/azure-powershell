@@ -811,7 +811,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.ImageName = ConstantValues.TrustedLaunchDefaultImageAlias;
             }
 
-            // Normalize casing of Standard securityType value.
+            // Normalize casing of Standard securityType value to ensure consistent capitalization regardless of user input.
             if (this.IsParameterBound(c => c.SecurityType)
                 && this.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
             {
