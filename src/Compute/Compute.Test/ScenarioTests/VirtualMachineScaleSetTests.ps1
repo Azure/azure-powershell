@@ -4542,9 +4542,8 @@ function Test-VirtualMachineScaleSetSecurityType
         Start-AzVmss -ResourceGroupName $rgname -Name $vmssName2
         $updated_vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName2;
         
-        Assert-Null $updated_vmss.VirtualMAchineProfile.SecurityProfile.SecurityType;
+        Assert-AreEqual $updated_vmss.VirtualMAchineProfile.SecurityProfile.SecurityType "Standard";
         Assert-Null $updated_vmss.VirtualMAchineProfile.SecurityProfile.UefiSettings;
-        Assert-Null $updated_vmss.VirtualMAchineProfile.SecurityProfile.SecurityType;
 
         # Guest Attestation extension defaulting test
         # Removed this portion as this logic was removed as per feature team request. 
@@ -4684,7 +4683,7 @@ function Test-VirtualMachineScaleSetSecurityTypeStandard
         # Create Vmss
         $vmss = New-AzVmss -ResourceGroupName $rgname -Credential $vmCred -VMScaleSetName $vmssName1 -ImageName $imageName -DomainNameLabel $domainNameLabel1 -SecurityType $securityTypeStnd;
 
-        Assert-Null $vmss.VirtualMachineProfile.SecurityProfile;
+        Assert-AreEqual $vmss.VirtualMachineProfile.SecurityProfile.SecurityType "Standard";
     }
     finally
     {
@@ -4696,7 +4695,7 @@ function Test-VirtualMachineScaleSetSecurityTypeStandard
 <#
 .SYNOPSIS
 Test Virtual Machine Scale Set with SecurityType of Standard with Config.
-No SecurityPRofile should be made for now in this scenario. 
+SecurityProfile with SecurityType Standard is returned in the API response.
 #>
 function Test-VirtualMachineScaleSetSecurityTypeStandardWithConfig
 {
@@ -4753,7 +4752,7 @@ function Test-VirtualMachineScaleSetSecurityTypeStandardWithConfig
         $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1;
 
         # Verify security value
-        Assert-Null $vmssGet.VirtualMachineProfile.SecurityProfile;
+        Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.SecurityType "Standard";
 
         
         # 2nd Scenario, SecurityType passed into only New-AzVmssConfig and not Set-AzVmssSecurityProfile.
@@ -4779,7 +4778,7 @@ function Test-VirtualMachineScaleSetSecurityTypeStandardWithConfig
         $vmssGet2 = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName2;
 
         # Verify security value
-        Assert-Null $vmssGet2.VirtualMachineProfile.SecurityProfile;
+        Assert-AreEqual $vmssGet2.VirtualMachineProfile.SecurityProfile.SecurityType "Standard";
     }
     finally
     {

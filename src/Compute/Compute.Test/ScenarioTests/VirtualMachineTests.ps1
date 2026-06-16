@@ -6857,15 +6857,14 @@ function Test-VirtualMachineSecurityTypeWithoutConfig
 
         Assert-AreEqual $updated_vm.SecurityProfile.UefiSettings.VTpmEnabled $true;
 
-        # Update SecurityType to Standard. Errors - Changing property 'securityProfile.securityType' is not allowed.
+        # Update SecurityType to Standard.
         Stop-AzVM -ResourceGroupName $rgname -Name $vmname2 -Force
         Update-AzVm -ResourceGroupName $rgname -VM $res -SecurityType "Standard"
         Start-AzVM -ResourceGroupName $rgname -Name $vmname2
         $updated_vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname2;
 
-        Assert-Null $updated_vm.SecurityProfile.SecurityType;
+        Assert-AreEqual $updated_vm.SecurityProfile.SecurityType "Standard";
         Assert-Null $updated_vm.SecurityProfile.UefiSettings;
-        Assert-Null $updated_vm.SecurityProfile.SecurityType;
 
         # validate GA extension
         # We removed this logic as per request fro the feature team.
@@ -6892,7 +6891,7 @@ function Test-VirtualMachineSecurityTypeWithoutConfig
 .SYNOPSIS
 Test Virtual Machines SecurityType parameter with the Standard value.
 This should prevent the TrustedLaunch value from being defaulted in.
-No SecurityProfile value should be made at this time.
+SecurityProfile with SecurityType Standard is returned in the API response.
 #>
 function Test-VirtualMachineSecurityTypeStandard
 {
@@ -6922,9 +6921,7 @@ function Test-VirtualMachineSecurityTypeStandard
         # Verify security value
         $vm1 = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
 
-        # VM Gets created with SecurityType: Standard but response has securityProfile null  
-        Assert-Null $vm1.SecurityProfile;
-        #Assert-AreEqual $vm1.SecurityProfile.SecurityType "Standard";
+        Assert-AreEqual $vm1.SecurityProfile.SecurityType "Standard";
 
         # validate GA extension is not installed by default.
         $extDefaultName = "GuestAttestation";
@@ -6943,7 +6940,7 @@ function Test-VirtualMachineSecurityTypeStandard
 <#
 .SYNOPSIS
 Test Virtual Machines SecurityType parameter with the Standard value with New-AzVMConfig.
-No SecurityProfile should be made at this time.
+SecurityProfile with SecurityType Standard is returned in the API response.
 #>
 function Test-VirtualMachineSecurityTypeStandardWithConfig
 {
@@ -6996,8 +6993,7 @@ function Test-VirtualMachineSecurityTypeStandardWithConfig
         New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
         # Verify security value
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
-        # used for defaulting in value Standard now.
-        Assert-Null $vm.SecurityProfile;
+        Assert-AreEqual $vm.SecurityProfile.SecurityType "Standard";
     }
     finally
     {

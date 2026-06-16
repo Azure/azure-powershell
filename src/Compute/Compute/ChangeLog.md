@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Removed AFEC `Microsoft.Compute/UseStandardSecurityType` dependency for `SecurityType Standard` in `New-AzVM`, `Update-AzVM`, `New-AzVMConfig`, `New-AzVmss`, and `Update-AzVmss`. CRP API version 2025-11-01 now supports `Standard` as a first-class security type value and returns it in GET responses by default.
 
 ## Version 11.6.0
 * Added ChangeSafety Support

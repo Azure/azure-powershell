@@ -811,7 +811,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.ImageName = ConstantValues.TrustedLaunchDefaultImageAlias;
             }
 
-            // API does not currently support Standard securityType value, so need to null it out here. 
+            // Normalize casing of Standard securityType value.
             if (this.IsParameterBound(c => c.SecurityType)
                 && this.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
             {
