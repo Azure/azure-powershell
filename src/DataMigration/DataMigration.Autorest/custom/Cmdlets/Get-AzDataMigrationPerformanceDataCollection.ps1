@@ -101,72 +101,37 @@ function Get-AzDataMigrationPerformanceDataCollection
             #Collecting performance data
             if(('CommandLine') -contains $PSCmdlet.ParameterSetName)
             {
-                # The array list $splat contains all the parameters that will be passed to '.\SqlAssessment.exe PerfDataCollection'
-                [System.Collections.ArrayList] $splat = @(
-                '--sqlConnectionStrings', $SqlConnectionStrings
-                '--outputfolder', $OutputFolder
-                '--perfQueryIntervalInSec', $PerfQueryInterval
-                '--staticQueryIntervalInSec', $StaticQueryInterval
-                '--numberOfIterations', $NumberOfIterations
-                )
-                
-                # Removing the parameters for which the user did not provide any values
-                for($i = $splat.Count-1; $i -gt -1; $i = $i-2)
-                { 
-                   $currVal = $splat[$i]
-                    if($currVal -ne "")
-                    {
+                # Use a secure temp config file to avoid exposing secrets in command-line arguments
+                $configParams = [ordered]@{
+                    action = "PerfDataCollection"
+                    sqlConnectionStrings = $SqlConnectionStrings
+                }
 
-                    }
-                    else {
-                        $splat.RemoveAt($i)
-                        $i2 = $i -1
-                        $splat.RemoveAt($i2)
-                    }                     
+                if ($PSBoundParameters.ContainsKey('OutputFolder') -and $OutputFolder -ne "") {
+                    $configParams['outputfolder'] = $OutputFolder
                 }
-                
-                # Running PerfDataCollection
-                If($PSBoundParameters.ContainsKey("Time"))
-                {   
-                    #this is used to create a json file in case the perf collection is to be time based
-                    $jsonHash = [Ordered]@{
-                    'action' = "PerfDataCollection"
-                    'sqlConnectionStrings'= $SqlConnectionStrings
-                    'outputfolder'= $OutputFolder
-                    'perfQueryIntervalInSec'= $PerfQueryInterval
-                    'staticQueryIntervalInSec'= $StaticQueryInterval
-                    'numberOfIterations'= $NumberOfIterations
-                    }
-                    # removing empty key,value pairs from $jsonHash
-                    if($OutputFolder -eq "")
-                    {
-                        $jsonHash.Remove('outputfolder')
-                    }
-                    if($PerfQueryInterval -eq "")
-                    {
-                        $jsonHash.Remove('perfQueryIntervalInSec')
-                    }
-                    if($StaticQueryInterval -eq "")
-                    {
-                        $jsonHash.Remove('staticQueryIntervalInSec')
-                    }
-                    if($NumberOfIterations -eq "")
-                    {
-                        $jsonHash.Remove('numberOfIterations')
-                    } 
-                    
-                    $saveAt = Join-Path -Path $DefaultOutputFolder -ChildPath Downloads;
-                    $saveas = Join-Path -Path $saveAt -ChildPath "tempConfigFileForPerf.json"
-                    $jsonHash | ConvertTo-Json -depth 100 | Set-Content $saveas
-                    $pro = Start-Process -FilePath $ExePath -ArgumentList "--configFile ""$saveas"""  -PassThru -NoNewWindow
-                    Start-Sleep -Seconds $Time
-                    $pro | stop-process  
-                    Remove-Item -Path $saveas       
+                if ($PSBoundParameters.ContainsKey('PerfQueryInterval') -and $PerfQueryInterval -ne "") {
+                    $configParams['perfQueryIntervalInSec'] = $PerfQueryInterval
                 }
-                else
-                {
-                    & $ExePath PerfDataCollection @splat
-                }                 
+                if ($PSBoundParameters.ContainsKey('StaticQueryInterval') -and $StaticQueryInterval -ne "") {
+                    $configParams['staticQueryIntervalInSec'] = $StaticQueryInterval
+                }
+                if ($PSBoundParameters.ContainsKey('NumberOfIterations') -and $NumberOfIterations -ne "") {
+                    $configParams['numberOfIterations'] = $NumberOfIterations
+                }
+
+                $configFilePath = . "$PSScriptRoot/../../utils/New-SecureConfigFile.ps1" $configParams
+                try {
+                    if ($PSBoundParameters.ContainsKey("Time")) {
+                        $pro = Start-Process -FilePath $ExePath -ArgumentList "--configFile ""$configFilePath""" -PassThru -NoNewWindow
+                        Start-Sleep -Seconds $Time
+                        $pro | Stop-Process
+                    } else {
+                        & $ExePath --configFile $configFilePath
+                    }
+                } finally {
+                    Remove-Item -Path $configFilePath -Force -ErrorAction SilentlyContinue
+                }
             }
             else
             {   

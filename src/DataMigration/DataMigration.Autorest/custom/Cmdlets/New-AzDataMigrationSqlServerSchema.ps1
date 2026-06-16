@@ -144,30 +144,26 @@ function New-AzDataMigrationSqlServerSchema
             #Collecting data
             if($PSCmdlet.ParameterSetName -eq 'CommandLine')
             {   
-                # The array list $splat contains all the parameters that will be passed to '.\SqlSchemaMigration.exe'
-                [System.Collections.ArrayList] $splat = @(
-                    '--sourceConnectionString', $SourceConnectionString
-                    '--targetConnectionString', $TargetConnectionString
-                    '--inputScriptFilePath', $InputScriptFilePath
-                    '--outputFolder', $OutputFolder
-                )
-
-                # Removing the parameters for which the user did not provide any values
-                for($i = $splat.Count-1; $i -gt -1; $i = $i-2)
-                {
-                    $currVal = $splat[$i]
-                    if($currVal -ne "")
-                    {
-                    }
-                    else {
-                        $splat.RemoveAt($i)
-                        $i2 = $i -1
-                        $splat.RemoveAt($i2)
-    
-                    }                       
+                # Use a secure temp config file to avoid exposing secrets in command-line arguments
+                $configParams = [ordered]@{
+                    action = $Action
+                    sourceConnectionString = $SourceConnectionString
+                    targetConnectionString = $TargetConnectionString
                 }
-                # Running Action                
-                & $ExePath $Action @splat
+
+                if ($PSBoundParameters.ContainsKey('InputScriptFilePath') -and $InputScriptFilePath -ne "") {
+                    $configParams['inputScriptFilePath'] = $InputScriptFilePath
+                }
+                if ($PSBoundParameters.ContainsKey('OutputFolder') -and $OutputFolder -ne "") {
+                    $configParams['outputFolder'] = $OutputFolder
+                }
+
+                $configFilePath = . "$PSScriptRoot/../../utils/New-SecureConfigFile.ps1" $configParams
+                try {
+                    & $ExePath --configFile $configFilePath
+                } finally {
+                    Remove-Item -Path $configFilePath -Force -ErrorAction SilentlyContinue
+                }
             }
             else
             {   

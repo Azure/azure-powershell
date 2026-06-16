@@ -93,29 +93,25 @@ function Get-AzDataMigrationAssessment
             #Running Assessment
             if(('CommandLine') -contains $PSCmdlet.ParameterSetName)
             {
-                if(($PSBoundParameters.ContainsKey("OutputFolder")))
-                {
-                    if($PSBoundParameters.ContainsKey("Overwrite"))
-                    {
-                        & $ExePath Assess --sqlConnectionStrings $PSBoundParameters.ConnectionString --outputFolder $PSBoundParameters.OutputFolder; 
-                    }
-                    else
-                    {
-                        & $ExePath Assess --sqlConnectionStrings $PSBoundParameters.ConnectionString --outputFolder $PSBoundParameters.OutputFolder --overwrite False;
-                        
-                    }
+                # Use a secure temp config file to avoid exposing secrets in command-line arguments
+                $configParams = [ordered]@{
+                    action = "Assess"
+                    sqlConnectionStrings = $PSBoundParameters.ConnectionString
                 }
-                else
-                {
-                    if(($PSBoundParameters.ContainsKey("Overwrite")))
-                    {
-                        & $ExePath Assess --sqlConnectionStrings $PSBoundParameters.ConnectionString;
-                    }
-                    else 
-                    {
-                        & $ExePath Assess --sqlConnectionStrings $PSBoundParameters.ConnectionString --overwrite False;
-                    }
-                } 
+
+                if ($PSBoundParameters.ContainsKey('OutputFolder')) {
+                    $configParams['outputFolder'] = $PSBoundParameters.OutputFolder
+                }
+                if (-not $PSBoundParameters.ContainsKey('Overwrite')) {
+                    $configParams['overwrite'] = "False"
+                }
+
+                $configFilePath = . "$PSScriptRoot/../../utils/New-SecureConfigFile.ps1" $configParams
+                try {
+                    & $ExePath --configFile $configFilePath
+                } finally {
+                    Remove-Item -Path $configFilePath -Force -ErrorAction SilentlyContinue
+                }
             }
             else
             {   
