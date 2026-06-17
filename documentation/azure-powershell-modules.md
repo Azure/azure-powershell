@@ -141,7 +141,6 @@
 | Virtual Network peering        | `Az.Peering`                    | [![Peering]][PeeringGallery]                                       | [Changelog][PeeringChangeLog]                    |
 | Policy Insights                | `Az.PolicyInsights`             | [![PolicyInsights]][PolicyInsightsGallery]                         | [Changelog][PolicyInsightsChangeLog]             |
 | Portal                         | `Az.Portal`                     | [![Portal]][PortalGallery]                                         | [Changelog][PortalChangeLog]                     |
-| Database for PostgreSQL        | `Az.PostgreSql`                 | [![PostgreSql]][PostgreSqlGallery]                                 | [Changelog][PostgreSqlChangeLog]                 |
 | Power BI Embedded              | `Az.PowerBIEmbedded`            | [![PowerBIEmbedded]][PowerBIEmbeddedGallery]                       | [Changelog][PowerBIEmbeddedChangeLog]            |
 | Private Dns                    | `Az.PrivateDns`                 | [![PrivateDns]][PrivateDnsGallery]                                 | [Changelog][PrivateDnsChangeLog]                 |
 | Provider Hub                   | `Az.ProviderHub`                | [![ProviderHub]][ProviderHubGallery]                               | [Changelog][ProviderHubChangeLog]                |

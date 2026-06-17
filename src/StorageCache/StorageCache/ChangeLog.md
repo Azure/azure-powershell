@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.4.0
 * Added Expansion Jobs CRUD cmdlets (`New/Get/Update/Remove-AzStorageCacheExpansionJob`) for AML file systems
 * Upgraded API version to 2026-01-01
 

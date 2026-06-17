@@ -18,8 +18,8 @@ Update-AzStorageBlobServiceProperty [-ResourceGroupName] <String> [-StorageAccou
  [-DefaultServiceVersion <String>] [-EnableChangeFeed <Boolean>] [-ChangeFeedRetentionInDays <Int32>]
  [-IsVersioningEnabled <Boolean>] [-CorsRule <PSCorsRule[]>] [-EnableStaticWebsite <Boolean>]
  [-StaticWebsiteIndexDocument <String>] [-StaticWebsiteDefaultIndexDocumentPath <String>]
- [-StaticWebsiteErrorDocument404Path <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-StaticWebsiteErrorDocument404Path <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObject
@@ -28,7 +28,8 @@ Update-AzStorageBlobServiceProperty -StorageAccount <PSStorageAccount> [-Default
  [-EnableChangeFeed <Boolean>] [-ChangeFeedRetentionInDays <Int32>] [-IsVersioningEnabled <Boolean>]
  [-CorsRule <PSCorsRule[]>] [-EnableStaticWebsite <Boolean>] [-StaticWebsiteIndexDocument <String>]
  [-StaticWebsiteDefaultIndexDocumentPath <String>] [-StaticWebsiteErrorDocument404Path <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### BlobServicePropertiesResourceId
@@ -37,7 +38,8 @@ Update-AzStorageBlobServiceProperty [-ResourceId] <String> [-DefaultServiceVersi
  [-EnableChangeFeed <Boolean>] [-ChangeFeedRetentionInDays <Int32>] [-IsVersioningEnabled <Boolean>]
  [-CorsRule <PSCorsRule[]>] [-EnableStaticWebsite <Boolean>] [-StaticWebsiteIndexDocument <String>]
  [-StaticWebsiteDefaultIndexDocumentPath <String>] [-StaticWebsiteErrorDocument404Path <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

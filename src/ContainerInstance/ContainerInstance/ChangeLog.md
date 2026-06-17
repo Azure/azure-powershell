@@ -19,7 +19,9 @@
 -->
 
 ## Upcoming Release
-* Improved usability and consistency (possible breaking changes). See [here](https://go.microsoft.com/fwlink/?linkid=2340249).
+
+## Version 5.0.0
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
 
 ## Version 4.1.3
 * Update the deprecated-by-azversion and change-effective-date of breaking change announcements.

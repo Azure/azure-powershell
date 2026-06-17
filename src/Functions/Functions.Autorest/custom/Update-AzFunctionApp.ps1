@@ -1,4 +1,4 @@
-
+﻿
 function Update-AzFunctionApp {
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PreviewMessage("*******************************************************************************************`n    * This cmdlet will undergo a breaking change in Az v16.0.0, to be released on May 2026.           *`n    * At least one change applies to this cmdlet.                                                    *`n    * See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *`n    *******************************************************************************************")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite])]
@@ -179,7 +179,7 @@ function Update-AzFunctionApp {
         # Guard: reject app types not yet supported by Update-AzFunctionApp
         if ($existingFunctionApp.Kind -and $existingFunctionApp.Kind.ToString() -match "azurecontainerapps")
         {
-            $errorMessage = "Update-AzFunctionApp does not support updating Container Apps–hosted function apps."
+            $errorMessage = "Update-AzFunctionApp does not support updating Container Apps-hosted function apps."
             $exception = [System.InvalidOperationException]::New($errorMessage)
             ThrowTerminatingError -ErrorId "ContainerAppNotSupported" `
                                     -ErrorMessage $errorMessage `

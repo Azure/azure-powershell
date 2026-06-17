@@ -84,7 +84,7 @@ param(
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PSArgumentCompleterAttribute("key", "label", "content_type", "value", "last_modified", "tags", "locked", "etag")]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PSArgumentCompleterAttribute("key", "label", "content_type", "value", "last_modified", "tags", "description", "locked", "etag")]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Query')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(PossibleTypes=([System.String]))]
     [System.Collections.Generic.List[System.String]]
@@ -301,7 +301,7 @@ param(
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PSArgumentCompleterAttribute("name", "status", "filters", "composition_type", "created", "expires", "retention_period", "size", "items_count", "tags", "etag")]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PSArgumentCompleterAttribute("name", "status", "filters", "composition_type", "created", "expires", "retention_period", "size", "items_count", "tags", "description", "etag")]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Query')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(PossibleTypes=([System.String]))]
     [System.Collections.Generic.List[System.String]]

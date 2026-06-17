@@ -18,9 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed `Get-AzStorageFileContent` and `Set-AzStorageFileContent` to properly inherit dynamic parameters from base cmdlet class
-* Added Smart access tier and AllowedCopyScope 'All' support in `New/Set-AzStorageAccount`
-* Added static website configuration in `Update-AzStorageBlobServiceProperty`
+
+## Version 9.7.0
+* Added ChangeSafety Support
+* Updated prompt in `Start-AzStorageAccountMigration`
+* Added MockRun TriggerType in `New/Update-AzStorageTaskAssignment`
+* Added Smart access tier, AllowedCopyScope in `New/Set-AzStorageAccount`
+* Added static website config in `Update-AzStorageBlobServiceProperty`
 * Added tags replication in `Set-AzStorageObjectReplicationPolicy`
 
 ## Version 9.6.1

@@ -19,13 +19,14 @@
 -->
 
 ## Upcoming Release
-* Fixed `New-AzDeployment`, `New-AzResourceGroupDeployment`, `Test-AzDeployment`, `Test-AzResourceGroupDeployment`, and deployment stack cmdlets to properly inherit dynamic parameters from base cmdlet class
-* Updated deployment stack cmdlets to use the `2025-07-01` deployment stacks service version.
-* Added `-ResourcesWithoutDeleteSupport` to deployment stack `New-`, `Set-`, `Test-`, and `Remove-` cmdlets at subscription, resource group, and management group scopes. This parameter controls whether resources that do not support deletion cause the operation to fail or are detached from the stack. Possible values: `Fail` (default) and `Detach`.
-* Added `-ValidationLevel` to deployment stack `New-`, `Set-`, and `Test-` cmdlets at subscription, resource group, and management group scopes. This parameter controls how deployment stack validation is performed. Possible values: `Provider` (default), `Template`, and `ProviderNoRbac` (provider validation without Role-Based Access Control checks).
-* Deployment stack command output now includes the resource deletion support behavior and validation level for the stack.
-* Fixed `Set-AzRoleAssignment` unable to delete conditions from a role assignment
-* Updated Policy.Autorest to 2025-03-01: added `-Expand` to `Get-AzPolicyAssignment`/`Get-AzPolicySetDefinition`; removed `-BackwardCompatible`; added Enroll `-EnforcementMode` and ExternalEvaluationEnforcementSettings; extended `-Version` support
+
+## Version 10.0.0
+* Added ChangeSafety Support
+* Updated deployment stack cmdlets to `2025-07-01` API; added `-ResourcesWithoutDeleteSupport`, `-ValidationLevel`
+* Fixed `Set-AzRoleAssignment` unable to delete conditions
+* Updated Policy.Autorest to 2025-03-01: added `-Expand`, `-EnforcementMode`, `-Version`; removed `-BackwardCompatible`
+* Fixed `Get-AzRoleDefinition` null ABAC `Condition` [#29058] [#25940]
+* [Breaking Change] Role definition cmdlets use `Permissions` array with per-permission conditions
 
 ## Version 9.1.0
 * Made `Remove-AzDenyAssignment` honor `-Confirm:$false` and idempotent when no matching deny assignment exists. The redundant `-Force` switch was removed (the cmdlet relies on the standard `SupportsShouldProcess`/`ConfirmImpact` pattern).
