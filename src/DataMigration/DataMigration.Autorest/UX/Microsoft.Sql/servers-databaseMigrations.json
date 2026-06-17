@@ -16,7 +16,6 @@
         "parameterSets": [
           {
             "parameters": [
-              "-MigrationOperationId <String>",
               "-ResourceGroupName <String>",
               "-SqlDbInstanceName <String>",
               "[-SubscriptionId <String>]",
@@ -29,10 +28,6 @@
         {
           "description": "Retry on going migration for the database.",
           "parameters": [
-            {
-              "name": "-MigrationOperationId",
-              "value": "[Body.migrationOperationId]"
-            },
             {
               "name": "-ResourceGroupName",
               "value": "[Path.resourceGroupName]"

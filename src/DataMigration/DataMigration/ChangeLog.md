@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Remove auth key from stdout.
 
 ## Version 1.1.0
 * Added ChangeSafety Support
