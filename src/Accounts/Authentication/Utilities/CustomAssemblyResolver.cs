@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             // highest shipping NuGet assembly (4.0.2.0) we already carry.
             if (IsLowerVersionRedirectionAllowed(requested.Name))
             {
-                return true;
+                return requested.Version == new Version(4, 0, 5, 0);
             }
 
             return false;

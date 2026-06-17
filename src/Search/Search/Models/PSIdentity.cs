@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Search.Models;
 using SearchModels = Microsoft.Azure.Management.Search.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
