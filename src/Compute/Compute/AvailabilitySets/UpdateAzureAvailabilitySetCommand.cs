@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies if Scheduled Events should be auto-approved when all instances are down.")]
-        public bool? ScheduledEventsAutoApproveAllInstancesDown { get; set; }
+        public bool? EnableAllInstancesDown { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Compute
                         avSetParams.ProximityPlacementGroup.Id = null;
                     }
 
-                    if (this.IsParameterBound(c => c.ScheduledEventsApiVersion) || this.IsParameterBound(c => c.ScheduledEventsAutoApproveAllInstancesDown))
+                    if (this.IsParameterBound(c => c.ScheduledEventsApiVersion) || this.IsParameterBound(c => c.EnableAllInstancesDown))
                     {
                         if (avSetParams.ScheduledEventsPolicy == null)
                         {
@@ -116,13 +116,13 @@ namespace Microsoft.Azure.Commands.Compute
                             avSetParams.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph.ScheduledEventsApiVersion = this.ScheduledEventsApiVersion;
                         }
 
-                        if (this.IsParameterBound(c => c.ScheduledEventsAutoApproveAllInstancesDown))
+                        if (this.IsParameterBound(c => c.EnableAllInstancesDown))
                         {
                             if (avSetParams.ScheduledEventsPolicy.AllInstancesDown == null)
                             {
                                 avSetParams.ScheduledEventsPolicy.AllInstancesDown = new AllInstancesDown();
                             }
-                            avSetParams.ScheduledEventsPolicy.AllInstancesDown.AutomaticallyApprove = this.ScheduledEventsAutoApproveAllInstancesDown;
+                            avSetParams.ScheduledEventsPolicy.AllInstancesDown.AutomaticallyApprove = this.EnableAllInstancesDown;
                         }
                     }
 

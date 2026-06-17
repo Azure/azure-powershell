@@ -22,7 +22,7 @@ Update-AzVM [-ResourceGroupName] <String> -VM <PSVirtualMachine> [-Tag <Hashtabl
  [-HibernationEnabled] [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-SecurityType <String>]
  [-EnableVtpm <Boolean>] [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>]
  [-AlignRegionalDisksToVMZone <Boolean>] [-ScheduledEventsApiVersion <String>]
- [-ScheduledEventsAutoApproveAllInstancesDown <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-EnableAllInstancesDown <Boolean>] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,7 +36,7 @@ Update-AzVM [-ResourceGroupName] <String> -VM <PSVirtualMachine> [-Tag <Hashtabl
  [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
  [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>]
  [-AlignRegionalDisksToVMZone <Boolean>] [-ScheduledEventsApiVersion <String>]
- [-ScheduledEventsAutoApproveAllInstancesDown <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-EnableAllInstancesDown <Boolean>] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -49,7 +49,7 @@ Update-AzVM [-Id] <String> -VM <PSVirtualMachine> [-Tag <Hashtable>] [-OsDiskWri
  [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
  [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>]
  [-AlignRegionalDisksToVMZone <Boolean>] [-ScheduledEventsApiVersion <String>]
- [-ScheduledEventsAutoApproveAllInstancesDown <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-EnableAllInstancesDown <Boolean>] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -151,7 +151,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ScheduledEventsAutoApproveAllInstancesDown
+### -EnableAllInstancesDown
 Specifies if Scheduled Events should be auto-approved when all instances are down.
 
 ```yaml

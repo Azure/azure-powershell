@@ -15,7 +15,7 @@ Updates an availability set.
 ```
 Update-AzAvailabilitySet [-AvailabilitySet] <PSAvailabilitySet> [[-Sku] <String>]
  [-ProximityPlacementGroupId <String>] [-Tag <Hashtable>] [-ScheduledEventsApiVersion <String>]
- [-ScheduledEventsAutoApproveAllInstancesDown <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-EnableAllInstancesDown <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -78,7 +78,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ScheduledEventsAutoApproveAllInstancesDown
+### -EnableAllInstancesDown
 Specifies if Scheduled Events should be auto-approved when all instances are down.
 
 ```yaml

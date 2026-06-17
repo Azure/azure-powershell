@@ -516,7 +516,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = SimpleParameterSet,
             HelpMessage = "Specifies if Scheduled Events should be auto-approved when all instances are down.")]
-        public bool? ScheduledEventsAutoApproveAllInstancesDown { get; set; }
+        public bool? EnableAllInstancesDown { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -773,7 +773,7 @@ namespace Microsoft.Azure.Commands.Compute
                         enableProxyAgent: _cmdlet.EnableProxyAgent ? true : (bool?)null,
                         addProxyAgentExtension: _cmdlet.AddProxyAgentExtension ? true : (bool?)null,
                         scheduledEventsApiVersion: _cmdlet.ScheduledEventsApiVersion,
-                        enableAllInstancesDown: _cmdlet.ScheduledEventsAutoApproveAllInstancesDown
+                        enableAllInstancesDown: _cmdlet.EnableAllInstancesDown
                     );
                 }
                 else  // does not get used. DiskFile parameter set is not supported.

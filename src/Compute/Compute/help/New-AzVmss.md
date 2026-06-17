@@ -42,7 +42,7 @@ New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [
  [-SkuProfileAllocationStrategy <String>] [-EnableProxyAgent] [-AddProxyAgentExtension]
  [-ZonePlacementPolicy <String>] [-IncludeZone <String[]>] [-ExcludeZone <String[]>]
  [-HighSpeedInterconnectPlacement <String>] [-ScheduledEventsApiVersion <String>]
- [-ScheduledEventsAutoApproveAllInstancesDown <Boolean>] [-ZonalPlatformFaultDomainAlignMode <String>]
+ [-EnableAllInstancesDown <Boolean>] [-ZonalPlatformFaultDomainAlignMode <String>]
  [-DefaultProfile <IAzureContextContainer>] [-SinglePlacementGroup] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -485,7 +485,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ScheduledEventsAutoApproveAllInstancesDown
+### -EnableAllInstancesDown
 Specifies if Scheduled Events should be auto-approved when all instances are down.
 
 ```yaml

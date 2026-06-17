@@ -725,7 +725,7 @@ function Test-SimpleNewVmScheduledEventsPolicy
         # the ScheduledEventsPolicy property in the GET response. The test verifies that
         # the VM is created successfully with these parameters (no error thrown).
         $vm = New-AzVM -Name $vmname -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel `
-            -SecurityType $stnd -ScheduledEventsApiVersion $apiVersion -ScheduledEventsAutoApproveAllInstancesDown $true
+            -SecurityType $stnd -ScheduledEventsApiVersion $apiVersion -EnableAllInstancesDown $true
 
         # Verify VM creation succeeded
         Assert-NotNull $vm;

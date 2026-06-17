@@ -401,7 +401,7 @@ function New-TestVmInAvailabilitySet {
 <#
 .SYNOPSIS
 Test Update-AzAvailabilitySet with ScheduledEventsPolicy parameters
-(-ScheduledEventsApiVersion and -ScheduledEventsAutoApproveAllInstancesDown).
+(-ScheduledEventsApiVersion and -EnableAllInstancesDown).
 
 Note: ScheduledEventsPolicy on AvailabilitySet is only supported in regions
 where the feature is enabled. This test pins to 'eastus2euap' for that reason.
@@ -430,7 +430,7 @@ function Test-AvailabilitySetScheduledEventsPolicy
         # Apply ScheduledEvents settings via Update-AzAvailabilitySet
         $aset | Update-AzAvailabilitySet `
             -ScheduledEventsApiVersion $apiVersion `
-            -ScheduledEventsAutoApproveAllInstancesDown $true;
+            -EnableAllInstancesDown $true;
 
         $updated = Get-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
         Assert-NotNull $updated.ScheduledEventsPolicy;

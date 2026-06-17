@@ -31,7 +31,7 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>] [-SshKeyType <String>]
  [-ZonePlacementPolicy <String>] [-IncludeZone <String[]>] [-ExcludeZone <String[]>]
  [-AlignRegionalDisksToVMZone] [-EnableProxyAgent] [-AddProxyAgentExtension]
- [-ScheduledEventsApiVersion <String>] [-ScheduledEventsAutoApproveAllInstancesDown <Boolean>]
+ [-ScheduledEventsApiVersion <String>] [-EnableAllInstancesDown <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -635,7 +635,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ScheduledEventsAutoApproveAllInstancesDown
+### -EnableAllInstancesDown
 Specifies if Scheduled Events should be auto-approved when all instances are down.
 
 ```yaml

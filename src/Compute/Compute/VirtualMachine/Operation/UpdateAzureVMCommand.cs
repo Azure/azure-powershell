@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies if Scheduled Events should be auto-approved when all instances are down.")]
-        public bool? ScheduledEventsAutoApproveAllInstancesDown { get; set; }
+        public bool? EnableAllInstancesDown { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Commands.Compute
                         parameters.StorageProfile.AlignRegionalDisksToVMZone = this.AlignRegionalDisksToVMZone;
                     }
 
-                    if (this.IsParameterBound(c => c.ScheduledEventsApiVersion) || this.IsParameterBound(c => c.ScheduledEventsAutoApproveAllInstancesDown))
+                    if (this.IsParameterBound(c => c.ScheduledEventsApiVersion) || this.IsParameterBound(c => c.EnableAllInstancesDown))
                     {
                         if (parameters.ScheduledEventsPolicy == null)
                         {
@@ -476,13 +476,13 @@ namespace Microsoft.Azure.Commands.Compute
                             parameters.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph.ScheduledEventsApiVersion = this.ScheduledEventsApiVersion;
                         }
 
-                        if (this.IsParameterBound(c => c.ScheduledEventsAutoApproveAllInstancesDown))
+                        if (this.IsParameterBound(c => c.EnableAllInstancesDown))
                         {
                             if (parameters.ScheduledEventsPolicy.AllInstancesDown == null)
                             {
                                 parameters.ScheduledEventsPolicy.AllInstancesDown = new AllInstancesDown();
                             }
-                            parameters.ScheduledEventsPolicy.AllInstancesDown.AutomaticallyApprove = this.ScheduledEventsAutoApproveAllInstancesDown;
+                            parameters.ScheduledEventsPolicy.AllInstancesDown.AutomaticallyApprove = this.EnableAllInstancesDown;
                         }
                     }
 
