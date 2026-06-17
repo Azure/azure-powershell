@@ -129,7 +129,12 @@ $archs |% {
     }
 
     Write-Host -fore green "Creating installer for $arch"
-    $out = light "$tmp\$outputName-$version-$arch.wixobj" -ext WixUIExtension -out "$scriptLocation\$outputName-$version-$arch.msi" -sw1076 -sval -nologo -b $scriptLocation
+    # ICE validation needs the Windows Installer service, which is unavailable in the
+    # OneBranch build container. When AZPS_SKIP_MSI_ICE_VALIDATION is 'true', suppress
+    # all ICE checks here (-sval); ICE is then run separately on a VM agent (smoke.exe
+    # in the release pipeline). Otherwise keep the normal ICE run (all ICEs but ICE80).
+    $iceArg = if ($env:AZPS_SKIP_MSI_ICE_VALIDATION -eq 'true') { '-sval' } else { '-sice:ICE80' }
+    $out = light "$tmp\$outputName-$version-$arch.wixobj" -ext WixUIExtension -out "$scriptLocation\$outputName-$version-$arch.msi" -sw1076 $iceArg -nologo -b $scriptLocation
     if( $LASTEXITCODE) {
         write-host -fore red "ERROR: Failed to link MSI for $arch" 
         write-host -fore red $out
