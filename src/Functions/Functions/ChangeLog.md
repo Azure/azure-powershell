@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.0.0
 * [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
 * Validated SKU in `Update-AzFunctionApp`
 * Fixed cloud portability using dynamic `StorageEndpointSuffix` [#29034]
