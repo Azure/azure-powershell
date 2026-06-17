@@ -159,7 +159,12 @@ function Set-AzServiceBusNamespace{
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
-        ${ProxyUseDefaultCredentials}
+        ${ProxyUseDefaultCredentials},
+
+        [Parameter(HelpMessage = "The IP address type for the Service Bus Namespace. Possible values are: 'IPv4', 'IPv6' and 'DualStack'.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+        [System.String]
+        ${IPAddressType}
 	)
 	process{
 	    try{

@@ -163,11 +163,25 @@ function New-AzServiceBusNamespace{
         # Credentials for a proxy server to use for the remote call
         ${ProxyCredential},
 
-        [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        # Use the default credentials for the proxy
-        ${ProxyUseDefaultCredentials}
+		[Parameter(DontShow)]
+		[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+		[System.Management.Automation.SwitchParameter]
+		# Use the default credentials for the proxy
+		${ProxyUseDefaultCredentials},
+
+		[Parameter(HelpMessage = "The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas. When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0 and 5 minutes to 1 day.")]
+		[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+		[System.Int64]
+		${GeoDataReplicationMaxReplicationLagDurationInSecond},
+
+		[Parameter(HelpMessage = "Properties for User Assigned Identities")]
+		[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation[]]
+		${GeoDataReplicationLocation},
+
+        [Parameter(HelpMessage = "The IP address type for the Service Bus Namespace. Possible values are: 'IPv4', 'IPv6' and 'DualStack'.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+        [System.String]
+        ${IPAddressType}
 	)
 	process{
 	    try{

@@ -14,8 +14,10 @@ Creates a new ServiceBus namespace.
 
 ```
 New-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-AlternateName <String>] [-DisableLocalAuth] [-IdentityType <String>]
- [-KeyVaultProperty <IKeyVaultProperties[]>] [-MinimumTlsVersion <String>]
+ [-SubscriptionId <String>] [-AlternateName <String>] [-DisableLocalAuth]
+ [-GeoDataReplicationLocation <INamespaceReplicaLocation[]>]
+ [-GeoDataReplicationMaxReplicationLagDurationInSecond <Int64>] [-IdentityType <String>]
+ [-IPAddressType <String>] [-KeyVaultProperty <IKeyVaultProperties[]>] [-MinimumTlsVersion <String>]
  [-PremiumMessagingPartition <Int32>] [-PublicNetworkAccess <String>] [-RequireInfrastructureEncryption]
  [-SkuCapacity <Int32>] [-SkuName <String>] [-Tag <Hashtable>] [-UserAssignedIdentityId <String[]>]
  [-ZoneRedundant] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -258,8 +260,56 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -GeoDataReplicationLocation
+Properties for User Assigned Identities
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GeoDataReplicationMaxReplicationLagDurationInSecond
+The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.
+When the lag exceeds the configured amount, operations on the primary replica will be failed.
+The allowed values are 0 and 5 minutes to 1 day.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IdentityType
 Type of managed service identity.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IPAddressType
+The IP address type for the Service Bus Namespace.
+Possible values are: 'IPv4', 'IPv6' and 'DualStack'.
 
 ```yaml
 Type: System.String

@@ -15,7 +15,7 @@ Updates a ServiceBus namespace
 ### SetExpanded (Default)
 ```
 Set-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AlternateName <String>] [-DisableLocalAuth] [-IdentityType <String>]
+ [-AlternateName <String>] [-DisableLocalAuth] [-IdentityType <String>] [-IPAddressType <String>]
  [-KeyVaultProperty <IKeyVaultProperties[]>] [-MinimumTlsVersion <String>] [-PublicNetworkAccess <String>]
  [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>] [-SkuName <String>] [-Tag <Hashtable>]
  [-UserAssignedIdentityId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
@@ -25,10 +25,10 @@ Set-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> [-Subscript
 ### SetViaIdentityExpanded
 ```
 Set-AzServiceBusNamespace [-InputObject <IServiceBusIdentity>] [-AlternateName <String>] [-DisableLocalAuth]
- [-IdentityType <String>] [-KeyVaultProperty <IKeyVaultProperties[]>] [-MinimumTlsVersion <String>]
- [-PublicNetworkAccess <String>] [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>] [-SkuName <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentityId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IdentityType <String>] [-IPAddressType <String>] [-KeyVaultProperty <IKeyVaultProperties[]>]
+ [-MinimumTlsVersion <String>] [-PublicNetworkAccess <String>] [-RequireInfrastructureEncryption]
+ [-SkuCapacity <Int32>] [-SkuName <String>] [-Tag <Hashtable>] [-UserAssignedIdentityId <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -368,6 +368,22 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 Parameter Sets: SetViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IPAddressType
+The IP address type for the Service Bus Namespace.
+Possible values are: 'IPv4', 'IPv6' and 'DualStack'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
