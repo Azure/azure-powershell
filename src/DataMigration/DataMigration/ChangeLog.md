@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Removed the integration runtime authentication key from the console output of 'Register-AzDataMigrationIntegrationRuntime'.
+* Removed the authentication key from console output.
 
 ## Version 1.1.0
 * Added ChangeSafety Support
