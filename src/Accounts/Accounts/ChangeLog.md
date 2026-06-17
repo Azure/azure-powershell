@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Fixed `MicrosoftGraphUrl` not being populated when ARM (Azure Resource Manager) metadata returns endpoint without trailing slash [Azure/CLIPS#179](https://github.com/Azure/CLIPS/issues/179)
+* Fixed `MicrosoftGraphUrl` not being populated when ARM (Azure Resource Manager) metadata returns endpoint without trailing slash
 
 ## Version 5.5.0
 * Added Service Principal support for SSH certificate generation in 'SshCredentialFactory'
