@@ -21,13 +21,13 @@ Create an in-memory object for EdgeAction.
 Create an in-memory object for EdgeAction.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.EdgeAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleEdgeAction
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnruleedgeactionobject
 #>
 function New-AzFrontDoorCdnRuleEdgeActionObject {
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.EdgeAction')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleEdgeAction')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -45,7 +45,7 @@ function New-AzFrontDoorCdnRuleEdgeActionObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.EdgeAction]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleEdgeAction]::New()
 
         if ($PSBoundParameters.ContainsKey('ParameterInvocationPoint')) {
             $Object.ParameterInvocationPoint = $ParameterInvocationPoint

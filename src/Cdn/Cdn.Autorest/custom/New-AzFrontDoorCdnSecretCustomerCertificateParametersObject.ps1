@@ -38,7 +38,6 @@ function New-AzFrontDoorCdnSecretCustomerCertificateParametersObject {
         [string]
         $SecretVersion,
         [Parameter(HelpMessage="The list of SANs.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ParameterBreakingChangeAttribute("SubjectAlternativeName", "14.5.0", "5.4.0", "2026/05/15", ChangeDescription = "The '-SubjectAlternativeName' parameter is being deprecated and will be removed in a future release, following the removal of the 'subjectAlternativeNames' property from the 'CustomerCertificateParameters' schema in the service contract.")]
         [string[]]
         $SubjectAlternativeName,
         [Parameter(HelpMessage="Whether to use the latest version for the certificate.")]
@@ -50,24 +49,24 @@ function New-AzFrontDoorCdnSecretCustomerCertificateParametersObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CustomerCertificateParameters]::New()
+        $ObjectProperties = @{}
 
         if ($PSBoundParameters.ContainsKey('SecretSourceId')) {
-            $Object.SecretSourceId = $SecretSourceId
+            $ObjectProperties.SecretSourceId = $SecretSourceId
         }
         if ($PSBoundParameters.ContainsKey('SecretVersion')) {
-            $Object.SecretVersion = $SecretVersion
+            $ObjectProperties.SecretVersion = $SecretVersion
         }
         if ($PSBoundParameters.ContainsKey('SubjectAlternativeName')) {
-            $Object.SubjectAlternativeName = $SubjectAlternativeName
+            $ObjectProperties.SubjectAlternativeName = $SubjectAlternativeName
         }
         if ($PSBoundParameters.ContainsKey('UseLatestVersion')) {
-            $Object.UseLatestVersion = $UseLatestVersion
+            $ObjectProperties.UseLatestVersion = $UseLatestVersion
         }
         if ($PSBoundParameters.ContainsKey('Type')) {
-            $Object.Type = $Type
+            $ObjectProperties.Type = $Type
         }
-        return $Object
+        return [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CustomerCertificateParameters]::DeserializeFromDictionary($ObjectProperties)
     }
 }
 

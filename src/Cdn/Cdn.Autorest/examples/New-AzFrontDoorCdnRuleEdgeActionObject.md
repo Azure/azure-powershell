@@ -1,26 +1,6 @@
-### Example 1: Create an in-memory object for EdgeAction
+### Example 1: Create an EdgeAction rule action object
 ```powershell
-New-AzFrontDoorCdnRuleEdgeActionObject -ParameterInvocationPoint ClientRequest -ParameterTypeName DeliveryRuleEdgeActionParameters
+New-AzFrontDoorCdnRuleEdgeActionObject -ParameterInvocationPoint ClientRequest -ParameterTypeName DeliveryRuleEdgeActionParameters -ReferenceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testps-rg-da16jm/providers/Microsoft.Cdn/edgeActions/edgeaction001"
 ```
 
-```output
-ParameterInvocationPoint ParameterTypeName
------------------------- -----------------
-ClientRequest            DeliveryRuleEdgeActionParameters
-```
-
-Create an in-memory object for EdgeAction.
-
-### Example 2: Create an in-memory object for EdgeAction with a reference ID
-```powershell
-$referenceId = "/subscriptions/testSubId/resourceGroups/testRg/providers/Microsoft.Cdn/profiles/contosoafd/ruleSets/ruleSet01/rules/rule01"
-New-AzFrontDoorCdnRuleEdgeActionObject -ParameterInvocationPoint OriginRequest -ParameterTypeName DeliveryRuleUrlRewriteActionParameters -ReferenceId $referenceId
-```
-
-```output
-ParameterInvocationPoint ParameterTypeName                    ReferenceId
------------------------- -----------------                    -----------
-OriginRequest            DeliveryRuleUrlRewriteActionParameters /subscriptions/testSubId/resourceGroups/testRg/providers/Microsoft.Cdn/profiles/contosoafd/ruleSets/ruleSet01/rules/rule01
-```
-
-Create an in-memory object for EdgeAction with a reference ID.
+Creates an in-memory EdgeAction rule action object.

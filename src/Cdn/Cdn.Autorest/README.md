@@ -32,7 +32,7 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/preview/2025-09-01-preview/openapi.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/preview/2026-04-01-preview/openapi.json
 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
@@ -42,7 +42,7 @@ module-version: 0.1.0
 # Normally, title is the service name
 title: Cdn
 subject-prefix: $(service-name)
-commit: c738a642bb7e41ed458ff2b1bb7271a865dcadef
+commit: 407c613aeb03cfe7dbd9e73321e3a0138e691557
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
