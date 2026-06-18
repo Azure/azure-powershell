@@ -1,7 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://learn.microsoft.com/powershell/module/az.resources/Remove-AzResourceGroupDeploymentStackWhatIfResultschema: 2.0.0
+online version: https://learn.microsoft.com/powershell/module/az.resources/Remove-AzResourceGroupDeploymentStackWhatIfResult
+schema: 2.0.0
 ---
 
 # Remove-AzResourceGroupDeploymentStackWhatIfResult
@@ -37,12 +38,12 @@ Removes a resource group scoped deployment stack WhatIf result resource. This cm
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Use Remove-AzResourceGroupDeploymentStackWhatIfResult
 ```powershell
-PS C:\> {{ Add example code here }}
+Remove-AzResourceGroupDeploymentStackWhatIfResult -Name MyWhatIfResult -ResourceGroupName MyResourceGroup -Force
 ```
 
-{{ Add example description here }}
+Removes the deployment stack WhatIf result named MyWhatIfResult.
 
 ## PARAMETERS
 

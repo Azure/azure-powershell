@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://learn.microsoft.com/powershell/module/az.resources/Get-AzSubscriptionDeploymentStackWhatIfResultschema: 2.0.0
+online version: https://learn.microsoft.com/powershell/module/az.resources/Get-AzSubscriptionDeploymentStackWhatIfResult
+schema: 2.0.0
 ---
 
 # Get-AzSubscriptionDeploymentStackWhatIfResult
@@ -34,12 +35,12 @@ Gets one or more subscription scoped deployment stack WhatIf result resources.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Use Get-AzSubscriptionDeploymentStackWhatIfResult
 ```powershell
-PS C:\> {{ Add example code here }}
+Get-AzSubscriptionDeploymentStackWhatIfResult
 ```
 
-{{ Add example description here }}
+Gets subscription scoped deployment stack WhatIf results.
 
 ## PARAMETERS
 

@@ -1,7 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://learn.microsoft.com/powershell/module/az.resources/New-AzManagementGroupDeploymentStackWhatIfResultschema: 2.0.0
+online version: https://learn.microsoft.com/powershell/module/az.resources/New-AzManagementGroupDeploymentStackWhatIfResult
+schema: 2.0.0
 ---
 
 # New-AzManagementGroupDeploymentStackWhatIfResult
@@ -172,12 +173,12 @@ Creates a management group scoped deployment stack WhatIf result resource. This 
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Use New-AzManagementGroupDeploymentStackWhatIfResult
 ```powershell
-PS C:\> {{ Add example code here }}
+New-AzManagementGroupDeploymentStackWhatIfResult -Name MyWhatIfResult -ManagementGroupId MyManagementGroup -Location westus2 -StackResourceId <stack-resource-id> -RetentionInterval P1D -TemplateFile ./main.json -ActionOnUnmanage DetachAll -DenySettingsMode None
 ```
 
-{{ Add example description here }}
+Creates a deployment stack WhatIf result named MyWhatIfResult.
 
 ## PARAMETERS
 

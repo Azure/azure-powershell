@@ -1,7 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://learn.microsoft.com/powershell/module/az.resources/Remove-AzSubscriptionDeploymentStackWhatIfResultschema: 2.0.0
+online version: https://learn.microsoft.com/powershell/module/az.resources/Remove-AzSubscriptionDeploymentStackWhatIfResult
+schema: 2.0.0
 ---
 
 # Remove-AzSubscriptionDeploymentStackWhatIfResult
@@ -37,12 +38,12 @@ Removes a subscription scoped deployment stack WhatIf result resource. This cmdl
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Use Remove-AzSubscriptionDeploymentStackWhatIfResult
 ```powershell
-PS C:\> {{ Add example code here }}
+Remove-AzSubscriptionDeploymentStackWhatIfResult -Name MyWhatIfResult -Force
 ```
 
-{{ Add example description here }}
+Removes the deployment stack WhatIf result named MyWhatIfResult.
 
 ## PARAMETERS
 

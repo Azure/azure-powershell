@@ -1,7 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://learn.microsoft.com/powershell/module/az.resources/Set-AzSubscriptionDeploymentStackWhatIfResultschema: 2.0.0
+online version: https://learn.microsoft.com/powershell/module/az.resources/Set-AzSubscriptionDeploymentStackWhatIfResult
+schema: 2.0.0
 ---
 
 # Set-AzSubscriptionDeploymentStackWhatIfResult
@@ -172,12 +173,12 @@ Updates a subscription scoped deployment stack WhatIf result resource. This cmdl
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Use Set-AzSubscriptionDeploymentStackWhatIfResult
 ```powershell
-PS C:\> {{ Add example code here }}
+Set-AzSubscriptionDeploymentStackWhatIfResult -Name MyWhatIfResult -Location westus2 -StackResourceId <stack-resource-id> -RetentionInterval P1D -TemplateFile ./main.json -ActionOnUnmanage DetachAll -DenySettingsMode None
 ```
 
-{{ Add example description here }}
+Updates the deployment stack WhatIf result named MyWhatIfResult.
 
 ## PARAMETERS
 

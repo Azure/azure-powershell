@@ -1,7 +1,8 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://learn.microsoft.com/powershell/module/az.resources/Set-AzResourceGroupDeploymentStackWhatIfResultschema: 2.0.0
+online version: https://learn.microsoft.com/powershell/module/az.resources/Set-AzResourceGroupDeploymentStackWhatIfResult
+schema: 2.0.0
 ---
 
 # Set-AzResourceGroupDeploymentStackWhatIfResult
@@ -172,12 +173,12 @@ Updates a resource group scoped deployment stack WhatIf result resource. This cm
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Use Set-AzResourceGroupDeploymentStackWhatIfResult
 ```powershell
-PS C:\> {{ Add example code here }}
+Set-AzResourceGroupDeploymentStackWhatIfResult -Name MyWhatIfResult -ResourceGroupName MyResourceGroup -StackResourceId <stack-resource-id> -RetentionInterval P1D -TemplateFile ./main.json -ActionOnUnmanage DetachAll -DenySettingsMode None
 ```
 
-{{ Add example description here }}
+Updates the deployment stack WhatIf result named MyWhatIfResult.
 
 ## PARAMETERS
 

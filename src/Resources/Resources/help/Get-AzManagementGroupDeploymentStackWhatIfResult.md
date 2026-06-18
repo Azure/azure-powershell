@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
-online version: https://learn.microsoft.com/powershell/module/az.resources/Get-AzManagementGroupDeploymentStackWhatIfResulthttps://learn.microsoft.com/powershell/module/az.resources/Get-AzManagementGroupDeploymentStackWhatIfResultschema: 2.0.0
+online version: https://learn.microsoft.com/powershell/module/az.resources/Get-AzManagementGroupDeploymentStackWhatIfResult
+schema: 2.0.0
 ---
 
 # Get-AzManagementGroupDeploymentStackWhatIfResult
@@ -34,12 +35,12 @@ Gets one or more management group scoped deployment stack WhatIf result resource
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Use Get-AzManagementGroupDeploymentStackWhatIfResult
 ```powershell
-PS C:\> {{ Add example code here }}
+Get-AzManagementGroupDeploymentStackWhatIfResult -ManagementGroupId MyManagementGroup
 ```
 
-{{ Add example description here }}
+Gets management group scoped deployment stack WhatIf results.
 
 ## PARAMETERS
 
