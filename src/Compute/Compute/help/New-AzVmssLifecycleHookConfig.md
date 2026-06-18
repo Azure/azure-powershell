@@ -22,8 +22,6 @@ The **New-AzVmssLifecycleHookConfig** cmdlet creates a lifecycle hook configurat
 
 Lifecycle hooks let customers register hooks that fire before VMSS Auto OS Upgrade phases, then respond to events on a per-VM basis (approve, reject, or delay) before the platform proceeds.
 
-> **Preview note:** During preview, the `-DefaultAction` value `Reject` returns a server-side validation error. No client change is required at GA.
-
 ## EXAMPLES
 
 ### Example 1: Create a lifecycle hook for Auto OS upgrade scheduling
@@ -31,7 +29,7 @@ Lifecycle hooks let customers register hooks that fire before VMSS Auto OS Upgra
 $hook = New-AzVmssLifecycleHookConfig -Type 'UpgradeAutoOSScheduling' -WaitDuration 'PT8H'
 ```
 
-This example creates a lifecycle hook that fires before Auto OS Upgrade scheduling, with an 8-hour wait duration before the default action (Approve) is applied.
+This example creates a lifecycle hook that fires before Auto OS Upgrade scheduling, with an 8-hour wait duration. Because `-DefaultAction` is not specified, the service applies its own default when the wait duration expires.
 
 ### Example 2: Create a lifecycle hook with explicit default action
 ```powershell
@@ -53,9 +51,7 @@ This example creates a VMSS with a lifecycle hook attached.
 ## PARAMETERS
 
 ### -DefaultAction
-Specifies the action applied to a target resource in the lifecycle hook event if the platform does not receive a response from the customer before the wait duration expires. Accepted values: 'Approve' (default), 'Reject'.
-
-> **Preview note:** 'Reject' returns a server error during preview.
+Specifies the action applied to a target resource in the lifecycle hook event if the platform does not receive a response from the customer before the wait duration expires. Accepted values: 'Approve', 'Reject'. If omitted, the service applies its own default.
 
 ```yaml
 Type: System.String
@@ -65,7 +61,7 @@ Accepted values: Approve, Reject
 
 Required: False
 Position: 2
-Default value: Approve
+Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```

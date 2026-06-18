@@ -24,8 +24,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(LifecycleHook))]
     public class NewAzureRmVmssLifecycleHookConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
-        private const string DefaultDefaultAction = "Approve";
-
         [Parameter(
             Mandatory = true,
             Position = 0,
@@ -46,7 +44,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies the default action applied when the wait duration expires with no customer response. Accepted values: 'Approve' (default), 'Reject'. Note: 'Reject' returns a server error during preview.")]
+            HelpMessage = "Specifies the default action applied when the wait duration expires with no customer response. Accepted values: 'Approve', 'Reject'. If omitted, the service applies its own default.")]
         [PSArgumentCompleter("Approve", "Reject")]
         [ValidateSet("Approve", "Reject")]
         public string DefaultAction { get; set; }
@@ -65,7 +63,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     Type = this.Type,
                     WaitDuration = waitDuration,
-                    DefaultAction = string.IsNullOrEmpty(this.DefaultAction) ? DefaultDefaultAction : this.DefaultAction
+                    // When the customer does not supply -DefaultAction, leave it null so the SDK
+                    // (NullValueHandling.Ignore) omits it from the request and the service applies
+                    // its own default for the hook type.
+                    DefaultAction = this.DefaultAction
                 };
 
                 WriteObject(hook);

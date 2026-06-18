@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The action state to apply to the lifecycle hook event targets. Accepted values: 'Approved', 'Rejected'. Note: 'Rejected' returns a server error during preview.")]
+            HelpMessage = "The action state to apply to the lifecycle hook event targets. Accepted values: 'Approved', 'Rejected'.")]
         [PSArgumentCompleter("Approved", "Rejected")]
         [ValidateSet("Approved", "Rejected")]
         public string ActionState { get; set; }

@@ -34,8 +34,6 @@ The **Update-AzVmssLifecycleHookEvent** cmdlet responds to a VMSS lifecycle hook
 
 The cmdlet accepts pipeline input from **Get-AzVmssLifecycleHookEvent**.
 
-> **Preview note:** `-ActionState Rejected` returns a server-side validation error during preview. No client change is required at GA.
-
 ## EXAMPLES
 
 ### Example 1: Approve all targets in an event
@@ -45,12 +43,12 @@ Update-AzVmssLifecycleHookEvent -ResourceGroupName 'myRg' -VMScaleSetName 'myVms
 
 This example approves all target resources in the lifecycle hook event.
 
-### Example 2: Reject all targets (returns server error during preview)
+### Example 2: Reject all targets
 ```powershell
 Update-AzVmssLifecycleHookEvent -ResourceGroupName 'myRg' -VMScaleSetName 'myVmss' -Name $eventGuid -ActionState Rejected
 ```
 
-This example rejects all target resources. Note: this returns a server error during preview.
+This example rejects all target resources.
 
 ### Example 3: Approve a subset of VMs in a Uniform VMSS
 ```powershell
@@ -95,8 +93,6 @@ This example retrieves all active lifecycle hook events and approves each one th
 The action state to apply to the lifecycle hook event targets. Accepted values: 'Approved', 'Rejected'.
 
 When `-InstanceId` is not specified, the action is applied to all target resources in the event. When `-InstanceId` is specified, only the matching targets are updated.
-
-> **Preview note:** 'Rejected' returns a server error during preview.
 
 ```yaml
 Type: System.String
