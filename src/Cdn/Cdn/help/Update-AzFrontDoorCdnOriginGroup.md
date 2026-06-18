@@ -15,12 +15,11 @@ Update an existing origin group within a profile.
 ### UpdateExpanded (Default)
 ```
 Update-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AuthenticationScope <String>] [-AuthenticationTokenDestinationHeader <String>]
- [-AuthenticationType <String>] [-HealthProbeSetting <IHealthProbeParameters>]
- [-LoadBalancingSetting <ILoadBalancingSettingsParameters>] [-SessionAffinityState <String>]
- [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-UserAssignedIdentityId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-AuthenticationScope <String>] [-AuthenticationType <String>]
+ [-HealthProbeSetting <IHealthProbeParameters>] [-LoadBalancingSetting <ILoadBalancingSettingsParameters>]
+ [-SessionAffinityState <String>] [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>]
+ [-UserAssignedIdentityId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
@@ -40,8 +39,7 @@ Update-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileName <String>
 ### UpdateViaIdentityProfileExpanded
 ```
 Update-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileInputObject <ICdnIdentity>
- [-AuthenticationScope <String>] [-AuthenticationTokenDestinationHeader <String>]
- [-AuthenticationType <String>] [-HealthProbeSetting <IHealthProbeParameters>]
+ [-AuthenticationScope <String>] [-AuthenticationType <String>] [-HealthProbeSetting <IHealthProbeParameters>]
  [-LoadBalancingSetting <ILoadBalancingSettingsParameters>] [-SessionAffinityState <String>]
  [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-UserAssignedIdentityId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
@@ -58,11 +56,11 @@ Update-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileInputObject <
 ### UpdateViaIdentityExpanded
 ```
 Update-AzFrontDoorCdnOriginGroup -InputObject <ICdnIdentity> [-AuthenticationScope <String>]
- [-AuthenticationTokenDestinationHeader <String>] [-AuthenticationType <String>]
- [-HealthProbeSetting <IHealthProbeParameters>] [-LoadBalancingSetting <ILoadBalancingSettingsParameters>]
- [-SessionAffinityState <String>] [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>]
- [-UserAssignedIdentityId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AuthenticationType <String>] [-HealthProbeSetting <IHealthProbeParameters>]
+ [-LoadBalancingSetting <ILoadBalancingSettingsParameters>] [-SessionAffinityState <String>]
+ [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-UserAssignedIdentityId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -118,22 +116,6 @@ Accept wildcard characters: False
 ### -AuthenticationScope
 The scope used when requesting token from Microsoft Entra.
 For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityProfileExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AuthenticationTokenDestinationHeader
-The HTTP request header where the origin authentication token will be placed when forwarding the request to the origin.
-If not specified, the service will use the `Authorization` header for backward compatibility.
 
 ```yaml
 Type: System.String

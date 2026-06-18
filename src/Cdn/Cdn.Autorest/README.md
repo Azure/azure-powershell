@@ -32,7 +32,7 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/preview/2026-04-01-preview/openapi.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/Cdn/preview/2025-09-01-preview/openapi.json
 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
@@ -42,7 +42,7 @@ module-version: 0.1.0
 # Normally, title is the service name
 title: Cdn
 subject-prefix: $(service-name)
-commit: 407c613aeb03cfe7dbd9e73321e3a0138e691557
+commit: c738a642bb7e41ed458ff2b1bb7271a865dcadef
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
@@ -58,6 +58,14 @@ directive:
   - from: swagger-document
     where: $.paths..operationId
     transform: return $.replace(/^AFDProfiles_Upgrade$/g, "AFDProfileSku_Upgrade")
+  - from: swagger-document
+    where: $.definitions
+    transform: >-
+      if ($.EdgeAction) {
+        $.DeliveryRuleEdgeAction = $.EdgeAction;
+        delete $.EdgeAction;
+      }
+      return $;
   - no-inline:
     # AFDX
     - SecurityPolicyPropertiesParameters
@@ -239,10 +247,6 @@ directive:
       cmdlet-name: New-AzFrontDoorCdnProfileUpgradeParametersObject
     - model-name: ProfileChangeSkuWafMapping
       cmdlet-name: New-AzFrontDoorCdnProfileChangeSkuWafMappingObject
-    # Generate the new Front Door CDN rule edge action helper object from the 2025-09-01-preview model.
-    - model-name: EdgeAction
-      cmdlet-name: New-AzFrontDoorCdnRuleEdgeActionObject
-
     - model-name: OriginGroupHealthProbeSetting
       cmdlet-name: New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject
 

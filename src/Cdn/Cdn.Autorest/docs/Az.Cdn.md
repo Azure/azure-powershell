@@ -357,7 +357,7 @@ Create an in-memory object for DeliveryRuleRouteConfigurationOverrideAction.
 Create an in-memory object for DeliveryRuleServerPortCondition.
 
 ### [New-AzFrontDoorCdnRuleSet](New-AzFrontDoorCdnRuleSet.md)
-Create or create a batch rule set within the specified profile along with the rules associate to it.
+Create a new rule set within the specified profile.
 
 ### [New-AzFrontDoorCdnRuleSocketAddrConditionObject](New-AzFrontDoorCdnRuleSocketAddrConditionObject.md)
 Create an in-memory object for DeliveryRuleSocketAddrCondition.
@@ -566,9 +566,6 @@ Update an existing route with the specified route name under the specified subsc
 
 ### [Update-AzFrontDoorCdnRule](Update-AzFrontDoorCdnRule.md)
 Update an existing delivery rule within a rule set.
-
-### [Update-AzFrontDoorCdnRuleSet](Update-AzFrontDoorCdnRuleSet.md)
-Update or update a batch rule set within the specified profile along with the rules associate to it.
 
 ### [Update-AzFrontDoorCdnSecret](Update-AzFrontDoorCdnSecret.md)
 Update a new Secret within the specified profile.

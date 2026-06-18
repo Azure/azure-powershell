@@ -207,7 +207,7 @@ FunctionsToExport = 'Add-AzCdnEdgeActionAttachment', 'Clear-AzCdnEndpointContent
                'Update-AzFrontDoorCdnEndpoint', 'Update-AzFrontDoorCdnOrigin',
                'Update-AzFrontDoorCdnOriginGroup', 'Update-AzFrontDoorCdnProfile',
                'Update-AzFrontDoorCdnProfileSku', 'Update-AzFrontDoorCdnRoute',
-               'Update-AzFrontDoorCdnRule', 'Update-AzFrontDoorCdnRuleSet',
+               'Update-AzFrontDoorCdnRule',
                'Update-AzFrontDoorCdnSecret',
                'Update-AzFrontDoorCdnSecurityPolicy'
 

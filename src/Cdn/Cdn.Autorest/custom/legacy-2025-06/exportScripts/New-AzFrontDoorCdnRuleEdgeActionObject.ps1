@@ -54,7 +54,7 @@ function New-AzFrontDoorCdnRuleEdgeActionObject {
             $Object.ParameterTypeName = $ParameterTypeName
         }
         if ($PSBoundParameters.ContainsKey('ReferenceId')) {
-            $Object.ReferenceId = $ReferenceId
+            $Object.EdgeActionReferenceId = $ReferenceId
         }
         return $Object
     }
