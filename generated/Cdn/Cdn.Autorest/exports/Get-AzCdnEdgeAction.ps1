@@ -20,9 +20,9 @@ Get EdgeAction resource
 .Description
 Get EdgeAction resource
 .Example
-Get-AzCdnEdgeAction -ResourceGroupName "testps-rg-da16jm"
+Get-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm
 .Example
-Get-AzCdnEdgeAction -ResourceGroupName "testps-rg-da16jm" -Name "edgeaction001"
+Get-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeAction
@@ -33,6 +33,14 @@ function Get-AzCdnEdgeAction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeAction])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # The ID of the target subscription.
+    # The value must be an UUID.
+    ${SubscriptionId},
+
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Alias('EdgeActionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
@@ -47,14 +55,6 @@ param(
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -139,11 +139,11 @@ begin {
         }
 
         $mapping = @{
-            Get = 'Az.Cdn.private\Get-AzCdnEdgeAction_Get';
-            List = 'Az.Cdn.private\Get-AzCdnEdgeAction_List';
-            List1 = 'Az.Cdn.private\Get-AzCdnEdgeAction_List1';
+            List = 'Az.Cdn.custom\Get-AzCdnEdgeAction';
+            Get = 'Az.Cdn.custom\Get-AzCdnEdgeAction';
+            List1 = 'Az.Cdn.custom\Get-AzCdnEdgeAction';
         }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('List', 'Get', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {

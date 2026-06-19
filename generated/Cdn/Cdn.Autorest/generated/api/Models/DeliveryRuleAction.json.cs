@@ -88,29 +88,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
             switch ( json.StringProperty("name") )
             {
-                case "UrlRedirect":
+                case "AfdUrlSigning":
                 {
-                    return new UrlRedirectAction(json);
-                }
-                case "UrlSigning":
-                {
-                    return new UrlSigningAction(json);
-                }
-                case "OriginGroupOverride":
-                {
-                    return new OriginGroupOverrideAction(json);
-                }
-                case "UrlRewrite":
-                {
-                    return new UrlRewriteAction(json);
-                }
-                case "ModifyRequestHeader":
-                {
-                    return new DeliveryRuleRequestHeaderAction(json);
-                }
-                case "ModifyResponseHeader":
-                {
-                    return new DeliveryRuleResponseHeaderAction(json);
+                    return new AfdUrlSigningAction(json);
                 }
                 case "CacheExpiration":
                 {
@@ -120,9 +100,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
                 {
                     return new DeliveryRuleCacheKeyQueryStringAction(json);
                 }
+                case "ModifyRequestHeader":
+                {
+                    return new DeliveryRuleRequestHeaderAction(json);
+                }
+                case "ModifyResponseHeader":
+                {
+                    return new DeliveryRuleResponseHeaderAction(json);
+                }
                 case "RouteConfigurationOverride":
                 {
                     return new DeliveryRuleRouteConfigurationOverrideAction(json);
+                }
+                case "OriginGroupOverride":
+                {
+                    return new OriginGroupOverrideAction(json);
+                }
+                case "UrlRedirect":
+                {
+                    return new UrlRedirectAction(json);
+                }
+                case "UrlRewrite":
+                {
+                    return new UrlRewriteAction(json);
+                }
+                case "UrlSigning":
+                {
+                    return new UrlSigningAction(json);
+                }
+                case "EdgeAction":
+                {
+                    return new DeliveryRuleEdgeAction(json);
                 }
             }
             return new DeliveryRuleAction(json);

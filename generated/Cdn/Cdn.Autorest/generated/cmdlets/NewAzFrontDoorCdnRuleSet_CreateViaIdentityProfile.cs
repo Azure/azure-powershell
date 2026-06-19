@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSet))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"create a new rule set within the specified profile.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}", ApiVersion = "2025-06-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}", ApiVersion = "2025-09-01-preview")]
     public partial class NewAzFrontDoorCdnRuleSet_CreateViaIdentityProfile : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IContext
@@ -99,12 +99,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
 
-        /// <summary>Name of the rule set under the profile which is unique globally</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the rule set under the profile which is unique globally")]
+        /// <summary>Name of the rule set under the profile which is unique globally.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the rule set under the profile which is unique globally.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Name of the rule set under the profile which is unique globally",
+        Description = @"Name of the rule set under the profile which is unique globally.",
         SerializedName = @"ruleSetName",
         PossibleTypes = new [] { typeof(string) })]
         [global::System.Management.Automation.Alias("RuleSetName")]

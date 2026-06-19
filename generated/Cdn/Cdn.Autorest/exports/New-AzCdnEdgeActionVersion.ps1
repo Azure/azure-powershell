@@ -20,7 +20,7 @@ Create EdgeActionVersion version
 .Description
 Create EdgeActionVersion version
 .Example
-New-AzCdnEdgeActionVersion -ResourceGroupName "testps-rg-da16jm" -EdgeActionName "edgeaction001" -Version "v1" -Location "global" -DeploymentType "zip" -IsDefaultVersion "True"
+New-AzCdnEdgeActionVersion -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version v1 -Location global -DeploymentType zip -IsDefaultVersion True
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersion
@@ -192,9 +192,9 @@ begin {
         }
 
         $mapping = @{
-            CreateExpanded = 'Az.Cdn.private\New-AzCdnEdgeActionVersion_CreateExpanded';
-            CreateViaJsonFilePath = 'Az.Cdn.private\New-AzCdnEdgeActionVersion_CreateViaJsonFilePath';
-            CreateViaJsonString = 'Az.Cdn.private\New-AzCdnEdgeActionVersion_CreateViaJsonString';
+            CreateExpanded = 'Az.Cdn.custom\New-AzCdnEdgeActionVersion';
+            CreateViaJsonFilePath = 'Az.Cdn.custom\New-AzCdnEdgeActionVersion';
+            CreateViaJsonString = 'Az.Cdn.custom\New-AzCdnEdgeActionVersion';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
