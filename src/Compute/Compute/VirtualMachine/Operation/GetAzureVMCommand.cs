@@ -26,6 +26,8 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using ArmCompute = Azure.ResourceManager.Compute.Models;
+using Azure.ResourceManager.Compute;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -117,6 +119,16 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipeline = true)]
         public String ResourceId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the API version for Event Grid and Resource Graph scheduled events in YYYY-MM-DD format.")]
+        [ValidatePattern(@"^\d{4}-\d{2}-\d{2}$")]
+        public string ScheduledEventsApiVersion { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies whether Scheduled Events should be auto-approved when all instances are down.")]
+        public bool EnableAllInstancesDown { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -168,16 +180,16 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                     else
                     {
-                        var result = this.VirtualMachineClient.GetWithHttpMessagesAsync(
-                            this.ResourceGroupName, this.Name).GetAwaiter().GetResult();
+                        VirtualMachineResource vmResource = this.ComputeClientTrack2.GetVirtualMachine(
+                            this.ResourceGroupName,
+                            this.Name);
 
-                        var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
-                        if (result.Body != null)
+
+                        if (vmResource.Data != null)
                         {
-                            psResult = ComputeAutoMapperProfile.Mapper.Map(result.Body, psResult);
+                            var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(data);
+                            WriteObject(psResult);
                         }
-                        psResult.DisplayHint = this.DisplayHint;
-                        WriteObject(psResult);
                     }
                 }
                 else
@@ -188,6 +200,8 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             });
         }
+
+        
 
         private void ReturnListVMObject(AzureOperationResponse<IPage<VirtualMachine>> vmListResult,
             Func<string, Dictionary<string, List<string>>, CancellationToken, Task<AzureOperationResponse<IPage<VirtualMachine>>>> listNextFunction)

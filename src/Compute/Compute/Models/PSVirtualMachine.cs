@@ -24,6 +24,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using System;
+using Azure.ResourceManager.Compute;
 
 namespace Microsoft.Azure.Commands.Compute.Models
 {
