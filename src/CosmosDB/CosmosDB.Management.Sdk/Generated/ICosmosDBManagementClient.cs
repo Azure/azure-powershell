@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.CosmosDB
     using Models;
 
     /// <summary>
-    /// Azure Cosmos DB Database Service Resource Provider REST API
+    /// Azure Cosmos DB Throughput Pool REST API
     /// </summary>
     public partial interface ICosmosDBManagementClient :  System.IDisposable
     {
@@ -42,9 +42,9 @@ namespace Microsoft.Azure.Management.CosmosDB
 
 
         /// <summary>
-        /// The ID of the target subscription.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        string SubscriptionId { get; set;}
+        System.Guid SubscriptionId { get; set;}
 
 
         /// <summary>
@@ -79,89 +79,19 @@ namespace Microsoft.Azure.Management.CosmosDB
         IOperations Operations { get; }
 
         /// <summary>
-        /// Gets the IDatabaseOperations
+        /// Gets the ICassandraClustersOperations
         /// </summary>
-        IDatabaseOperations Database { get; }
+        ICassandraClustersOperations CassandraClusters { get; }
 
         /// <summary>
-        /// Gets the ICollectionOperations
+        /// Gets the IFleetOperations
         /// </summary>
-        ICollectionOperations Collection { get; }
+        IFleetOperations Fleet { get; }
 
         /// <summary>
-        /// Gets the ICollectionRegionOperations
+        /// Gets the IGarnetClustersOperations
         /// </summary>
-        ICollectionRegionOperations CollectionRegion { get; }
-
-        /// <summary>
-        /// Gets the IDatabaseAccountRegionOperations
-        /// </summary>
-        IDatabaseAccountRegionOperations DatabaseAccountRegion { get; }
-
-        /// <summary>
-        /// Gets the IPercentileSourceTargetOperations
-        /// </summary>
-        IPercentileSourceTargetOperations PercentileSourceTarget { get; }
-
-        /// <summary>
-        /// Gets the IPercentileTargetOperations
-        /// </summary>
-        IPercentileTargetOperations PercentileTarget { get; }
-
-        /// <summary>
-        /// Gets the IPercentileOperations
-        /// </summary>
-        IPercentileOperations Percentile { get; }
-
-        /// <summary>
-        /// Gets the ICollectionPartitionRegionOperations
-        /// </summary>
-        ICollectionPartitionRegionOperations CollectionPartitionRegion { get; }
-
-        /// <summary>
-        /// Gets the ICollectionPartitionOperations
-        /// </summary>
-        ICollectionPartitionOperations CollectionPartition { get; }
-
-        /// <summary>
-        /// Gets the IPartitionKeyRangeIdOperations
-        /// </summary>
-        IPartitionKeyRangeIdOperations PartitionKeyRangeId { get; }
-
-        /// <summary>
-        /// Gets the IPartitionKeyRangeIdRegionOperations
-        /// </summary>
-        IPartitionKeyRangeIdRegionOperations PartitionKeyRangeIdRegion { get; }
-
-        /// <summary>
-        /// Gets the IGraphResourcesOperations
-        /// </summary>
-        IGraphResourcesOperations GraphResources { get; }
-
-        /// <summary>
-        /// Gets the ISqlResourcesOperations
-        /// </summary>
-        ISqlResourcesOperations SqlResources { get; }
-
-        /// <summary>
-        /// Gets the IMongoDbResourcesOperations
-        /// </summary>
-        IMongoDbResourcesOperations MongoDbResources { get; }
-
-        /// <summary>
-        /// Gets the ITableResourcesOperations
-        /// </summary>
-        ITableResourcesOperations TableResources { get; }
-
-        /// <summary>
-        /// Gets the ICassandraResourcesOperations
-        /// </summary>
-        ICassandraResourcesOperations CassandraResources { get; }
-
-        /// <summary>
-        /// Gets the IGremlinResourcesOperations
-        /// </summary>
-        IGremlinResourcesOperations GremlinResources { get; }
+        IGarnetClustersOperations GarnetClusters { get; }
 
         /// <summary>
         /// Gets the ILocationsOperations
@@ -169,14 +99,74 @@ namespace Microsoft.Azure.Management.CosmosDB
         ILocationsOperations Locations { get; }
 
         /// <summary>
-        /// Gets the IDataTransferJobsOperations
+        /// Gets the IRestorableDatabaseAccountsOperations
         /// </summary>
-        IDataTransferJobsOperations DataTransferJobs { get; }
+        IRestorableDatabaseAccountsOperations RestorableDatabaseAccounts { get; }
 
         /// <summary>
-        /// Gets the ICassandraClustersOperations
+        /// Gets the IRestorableGremlinGraphsOperations
         /// </summary>
-        ICassandraClustersOperations CassandraClusters { get; }
+        IRestorableGremlinGraphsOperations RestorableGremlinGraphs { get; }
+
+        /// <summary>
+        /// Gets the IRestorableGremlinDatabasesOperations
+        /// </summary>
+        IRestorableGremlinDatabasesOperations RestorableGremlinDatabases { get; }
+
+        /// <summary>
+        /// Gets the IRestorableGremlinResourcesOperations
+        /// </summary>
+        IRestorableGremlinResourcesOperations RestorableGremlinResources { get; }
+
+        /// <summary>
+        /// Gets the IRestorableMongodbCollectionsOperations
+        /// </summary>
+        IRestorableMongodbCollectionsOperations RestorableMongodbCollections { get; }
+
+        /// <summary>
+        /// Gets the IRestorableMongodbDatabasesOperations
+        /// </summary>
+        IRestorableMongodbDatabasesOperations RestorableMongodbDatabases { get; }
+
+        /// <summary>
+        /// Gets the IRestorableMongodbResourcesOperations
+        /// </summary>
+        IRestorableMongodbResourcesOperations RestorableMongodbResources { get; }
+
+        /// <summary>
+        /// Gets the IRestorableSqlContainersOperations
+        /// </summary>
+        IRestorableSqlContainersOperations RestorableSqlContainers { get; }
+
+        /// <summary>
+        /// Gets the IRestorableSqlDatabasesOperations
+        /// </summary>
+        IRestorableSqlDatabasesOperations RestorableSqlDatabases { get; }
+
+        /// <summary>
+        /// Gets the IRestorableSqlResourcesOperations
+        /// </summary>
+        IRestorableSqlResourcesOperations RestorableSqlResources { get; }
+
+        /// <summary>
+        /// Gets the IRestorableTableResourcesOperations
+        /// </summary>
+        IRestorableTableResourcesOperations RestorableTableResources { get; }
+
+        /// <summary>
+        /// Gets the IRestorableTablesOperations
+        /// </summary>
+        IRestorableTablesOperations RestorableTables { get; }
+
+        /// <summary>
+        /// Gets the ISoftDeletedDatabaseAccountsOperations
+        /// </summary>
+        ISoftDeletedDatabaseAccountsOperations SoftDeletedDatabaseAccounts { get; }
+
+        /// <summary>
+        /// Gets the IThroughputPoolsOperations
+        /// </summary>
+        IThroughputPoolsOperations ThroughputPools { get; }
 
         /// <summary>
         /// Gets the ICassandraDataCentersOperations
@@ -184,9 +174,79 @@ namespace Microsoft.Azure.Management.CosmosDB
         ICassandraDataCentersOperations CassandraDataCenters { get; }
 
         /// <summary>
+        /// Gets the ICassandraResourcesOperations
+        /// </summary>
+        ICassandraResourcesOperations CassandraResources { get; }
+
+        /// <summary>
+        /// Gets the IChaosFaultOperations
+        /// </summary>
+        IChaosFaultOperations ChaosFault { get; }
+
+        /// <summary>
+        /// Gets the ICopyJobsOperations
+        /// </summary>
+        ICopyJobsOperations CopyJobs { get; }
+
+        /// <summary>
+        /// Gets the IDataTransferJobsOperations
+        /// </summary>
+        IDataTransferJobsOperations DataTransferJobs { get; }
+
+        /// <summary>
+        /// Gets the ICollectionOperations
+        /// </summary>
+        ICollectionOperations Collection { get; }
+
+        /// <summary>
+        /// Gets the IPartitionKeyRangeIdOperations
+        /// </summary>
+        IPartitionKeyRangeIdOperations PartitionKeyRangeId { get; }
+
+        /// <summary>
+        /// Gets the ICollectionPartitionOperations
+        /// </summary>
+        ICollectionPartitionOperations CollectionPartition { get; }
+
+        /// <summary>
+        /// Gets the IDatabaseOperations
+        /// </summary>
+        IDatabaseOperations Database { get; }
+
+        /// <summary>
+        /// Gets the IGraphResourcesOperations
+        /// </summary>
+        IGraphResourcesOperations GraphResources { get; }
+
+        /// <summary>
+        /// Gets the IGremlinResourcesOperations
+        /// </summary>
+        IGremlinResourcesOperations GremlinResources { get; }
+
+        /// <summary>
+        /// Gets the IMongoMiResourcesOperations
+        /// </summary>
+        IMongoMiResourcesOperations MongoMiResources { get; }
+
+        /// <summary>
+        /// Gets the IMongoDbResourcesOperations
+        /// </summary>
+        IMongoDbResourcesOperations MongoDbResources { get; }
+
+        /// <summary>
+        /// Gets the INetworkSecurityPerimeterConfigurationsOperations
+        /// </summary>
+        INetworkSecurityPerimeterConfigurationsOperations NetworkSecurityPerimeterConfigurations { get; }
+
+        /// <summary>
         /// Gets the INotebookWorkspacesOperations
         /// </summary>
         INotebookWorkspacesOperations NotebookWorkspaces { get; }
+
+        /// <summary>
+        /// Gets the IPercentileOperations
+        /// </summary>
+        IPercentileOperations Percentile { get; }
 
         /// <summary>
         /// Gets the IPrivateEndpointConnectionsOperations
@@ -199,64 +259,24 @@ namespace Microsoft.Azure.Management.CosmosDB
         IPrivateLinkResourcesOperations PrivateLinkResources { get; }
 
         /// <summary>
-        /// Gets the IRestorableDatabaseAccountsOperations
+        /// Gets the ICollectionRegionOperations
         /// </summary>
-        IRestorableDatabaseAccountsOperations RestorableDatabaseAccounts { get; }
+        ICollectionRegionOperations CollectionRegion { get; }
 
         /// <summary>
-        /// Gets the IRestorableSqlDatabasesOperations
+        /// Gets the IPartitionKeyRangeIdRegionOperations
         /// </summary>
-        IRestorableSqlDatabasesOperations RestorableSqlDatabases { get; }
+        IPartitionKeyRangeIdRegionOperations PartitionKeyRangeIdRegion { get; }
 
         /// <summary>
-        /// Gets the IRestorableSqlContainersOperations
+        /// Gets the ICollectionPartitionRegionOperations
         /// </summary>
-        IRestorableSqlContainersOperations RestorableSqlContainers { get; }
+        ICollectionPartitionRegionOperations CollectionPartitionRegion { get; }
 
         /// <summary>
-        /// Gets the IRestorableSqlResourcesOperations
+        /// Gets the IDatabaseAccountRegionOperations
         /// </summary>
-        IRestorableSqlResourcesOperations RestorableSqlResources { get; }
-
-        /// <summary>
-        /// Gets the IRestorableMongodbDatabasesOperations
-        /// </summary>
-        IRestorableMongodbDatabasesOperations RestorableMongodbDatabases { get; }
-
-        /// <summary>
-        /// Gets the IRestorableMongodbCollectionsOperations
-        /// </summary>
-        IRestorableMongodbCollectionsOperations RestorableMongodbCollections { get; }
-
-        /// <summary>
-        /// Gets the IRestorableMongodbResourcesOperations
-        /// </summary>
-        IRestorableMongodbResourcesOperations RestorableMongodbResources { get; }
-
-        /// <summary>
-        /// Gets the IRestorableGremlinDatabasesOperations
-        /// </summary>
-        IRestorableGremlinDatabasesOperations RestorableGremlinDatabases { get; }
-
-        /// <summary>
-        /// Gets the IRestorableGremlinGraphsOperations
-        /// </summary>
-        IRestorableGremlinGraphsOperations RestorableGremlinGraphs { get; }
-
-        /// <summary>
-        /// Gets the IRestorableGremlinResourcesOperations
-        /// </summary>
-        IRestorableGremlinResourcesOperations RestorableGremlinResources { get; }
-
-        /// <summary>
-        /// Gets the IRestorableTablesOperations
-        /// </summary>
-        IRestorableTablesOperations RestorableTables { get; }
-
-        /// <summary>
-        /// Gets the IRestorableTableResourcesOperations
-        /// </summary>
-        IRestorableTableResourcesOperations RestorableTableResources { get; }
+        IDatabaseAccountRegionOperations DatabaseAccountRegion { get; }
 
         /// <summary>
         /// Gets the IServiceOperations
@@ -264,9 +284,24 @@ namespace Microsoft.Azure.Management.CosmosDB
         IServiceOperations Service { get; }
 
         /// <summary>
-        /// Gets the IFleetOperations
+        /// Gets the IPercentileSourceTargetOperations
         /// </summary>
-        IFleetOperations Fleet { get; }
+        IPercentileSourceTargetOperations PercentileSourceTarget { get; }
+
+        /// <summary>
+        /// Gets the ISqlResourcesOperations
+        /// </summary>
+        ISqlResourcesOperations SqlResources { get; }
+
+        /// <summary>
+        /// Gets the ITableResourcesOperations
+        /// </summary>
+        ITableResourcesOperations TableResources { get; }
+
+        /// <summary>
+        /// Gets the IPercentileTargetOperations
+        /// </summary>
+        IPercentileTargetOperations PercentileTarget { get; }
 
         /// <summary>
         /// Gets the IFleetAnalyticsOperations
@@ -284,9 +319,29 @@ namespace Microsoft.Azure.Management.CosmosDB
         IFleetspaceAccountOperations FleetspaceAccount { get; }
 
         /// <summary>
-        /// Gets the IMongoMiResourcesOperations
+        /// Gets the ISoftDeletedSqlDatabasesOperations
         /// </summary>
-        IMongoMiResourcesOperations MongoMiResources { get; }
+        ISoftDeletedSqlDatabasesOperations SoftDeletedSqlDatabases { get; }
+
+        /// <summary>
+        /// Gets the ISoftDeletedSqlContainersOperations
+        /// </summary>
+        ISoftDeletedSqlContainersOperations SoftDeletedSqlContainers { get; }
+
+        /// <summary>
+        /// Gets the IThroughputPoolOperations
+        /// </summary>
+        IThroughputPoolOperations ThroughputPool { get; }
+
+        /// <summary>
+        /// Gets the IThroughputPoolAccountsOperations
+        /// </summary>
+        IThroughputPoolAccountsOperations ThroughputPoolAccounts { get; }
+
+        /// <summary>
+        /// Gets the IThroughputPoolAccountOperations
+        /// </summary>
+        IThroughputPoolAccountOperations ThroughputPoolAccount { get; }
 
     }
 }

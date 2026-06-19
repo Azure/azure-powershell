@@ -153,7 +153,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="enableAllVersionsAndDeletesChangeFeed">Flag to indicate if All Versions and Deletes Change feed feature is enabled
         /// on the account
         /// </param>
-        public DatabaseAccountUpdateProperties(ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), System.Collections.Generic.IList<Location> locations = default(System.Collections.Generic.IList<Location>), System.Collections.Generic.IList<IpAddressOrRange> ipRules = default(System.Collections.Generic.IList<IpAddressOrRange>), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), System.Collections.Generic.IList<Capability> capabilities = default(System.Collections.Generic.IList<Capability>), System.Collections.Generic.IList<VirtualNetworkRule> virtualNetworkRules = default(System.Collections.Generic.IList<VirtualNetworkRule>), bool? enableMultipleWriteLocations = default(bool?), bool? enableCassandraConnector = default(bool?), string connectorOffer = default(string), bool? disableKeyBasedMetadataWriteAccess = default(bool?), string keyVaultKeyUri = default(string), string defaultIdentity = default(string), string publicNetworkAccess = default(string), bool? enableFreeTier = default(bool?), ApiProperties apiProperties = default(ApiProperties), bool? enableAnalyticalStorage = default(bool?), AnalyticalStorageConfiguration analyticalStorageConfiguration = default(AnalyticalStorageConfiguration), BackupPolicy backupPolicy = default(BackupPolicy), System.Collections.Generic.IList<CorsPolicy> cors = default(System.Collections.Generic.IList<CorsPolicy>), NetworkAclBypass? networkAclBypass = default(NetworkAclBypass?), System.Collections.Generic.IList<string> networkAclBypassResourceIds = default(System.Collections.Generic.IList<string>), DiagnosticLogSettings diagnosticLogSettings = default(DiagnosticLogSettings), bool? disableLocalAuth = default(bool?), Capacity capacity = default(Capacity), string capacityMode = default(string), bool? enableMaterializedViews = default(bool?), DatabaseAccountKeysMetadata keysMetadata = default(DatabaseAccountKeysMetadata), bool? enablePartitionMerge = default(bool?), bool? enableBurstCapacity = default(bool?), string minimalTlsVersion = default(string), string customerManagedKeyStatus = default(string), bool? enablePriorityBasedExecution = default(bool?), string defaultPriorityLevel = default(string), bool? enablePerRegionPerPartitionAutoscale = default(bool?), bool? enableAllVersionsAndDeletesChangeFeed = default(bool?))
+
+        /// <param name="softDeleteConfiguration">The configuration for soft delete on the Cosmos DB account.
+        /// </param>
+
+        /// <param name="enforceHierarchicalPartitionKeyIdLastLevel">Flag to indicate enabling/disabling of hierarchical partition key ID last
+        /// level enforcement on the account.
+        /// </param>
+        public DatabaseAccountUpdateProperties(ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), System.Collections.Generic.IList<Location> locations = default(System.Collections.Generic.IList<Location>), System.Collections.Generic.IList<IpAddressOrRange> ipRules = default(System.Collections.Generic.IList<IpAddressOrRange>), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), System.Collections.Generic.IList<Capability> capabilities = default(System.Collections.Generic.IList<Capability>), System.Collections.Generic.IList<VirtualNetworkRule> virtualNetworkRules = default(System.Collections.Generic.IList<VirtualNetworkRule>), bool? enableMultipleWriteLocations = default(bool?), bool? enableCassandraConnector = default(bool?), string connectorOffer = default(string), bool? disableKeyBasedMetadataWriteAccess = default(bool?), string keyVaultKeyUri = default(string), string defaultIdentity = default(string), string publicNetworkAccess = default(string), bool? enableFreeTier = default(bool?), ApiProperties apiProperties = default(ApiProperties), bool? enableAnalyticalStorage = default(bool?), AnalyticalStorageConfiguration analyticalStorageConfiguration = default(AnalyticalStorageConfiguration), BackupPolicy backupPolicy = default(BackupPolicy), System.Collections.Generic.IList<CorsPolicy> cors = default(System.Collections.Generic.IList<CorsPolicy>), NetworkAclBypass? networkAclBypass = default(NetworkAclBypass?), System.Collections.Generic.IList<string> networkAclBypassResourceIds = default(System.Collections.Generic.IList<string>), DiagnosticLogSettings diagnosticLogSettings = default(DiagnosticLogSettings), bool? disableLocalAuth = default(bool?), Capacity capacity = default(Capacity), string capacityMode = default(string), bool? enableMaterializedViews = default(bool?), DatabaseAccountKeysMetadata keysMetadata = default(DatabaseAccountKeysMetadata), bool? enablePartitionMerge = default(bool?), bool? enableBurstCapacity = default(bool?), string minimalTlsVersion = default(string), string customerManagedKeyStatus = default(string), bool? enablePriorityBasedExecution = default(bool?), string defaultPriorityLevel = default(string), bool? enablePerRegionPerPartitionAutoscale = default(bool?), bool? enableAllVersionsAndDeletesChangeFeed = default(bool?), SoftDeleteConfiguration softDeleteConfiguration = default(SoftDeleteConfiguration), bool? enforceHierarchicalPartitionKeyIdLastLevel = default(bool?))
 
         {
             this.ConsistencyPolicy = consistencyPolicy;
@@ -192,6 +199,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.DefaultPriorityLevel = defaultPriorityLevel;
             this.EnablePerRegionPerPartitionAutoscale = enablePerRegionPerPartitionAutoscale;
             this.EnableAllVersionsAndDeletesChangeFeed = enableAllVersionsAndDeletesChangeFeed;
+            this.SoftDeleteConfiguration = softDeleteConfiguration;
+            this.EnforceHierarchicalPartitionKeyIdLastLevel = enforceHierarchicalPartitionKeyIdLastLevel;
             CustomInit();
         }
 
@@ -445,6 +454,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "enableAllVersionsAndDeletesChangeFeed")]
         public bool? EnableAllVersionsAndDeletesChangeFeed {get; set; }
+
+        /// <summary>
+        /// Gets or sets the configuration for soft delete on the Cosmos DB account.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "softDeleteConfiguration")]
+        public SoftDeleteConfiguration SoftDeleteConfiguration {get; set; }
+
+        /// <summary>
+        /// Gets or sets flag to indicate enabling/disabling of hierarchical partition
+        /// key ID last level enforcement on the account.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enforceHierarchicalPartitionKeyIdLastLevel")]
+        public bool? EnforceHierarchicalPartitionKeyIdLastLevel {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -494,6 +516,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             {
                 this.Capacity.Validate();
             }
+
 
 
 

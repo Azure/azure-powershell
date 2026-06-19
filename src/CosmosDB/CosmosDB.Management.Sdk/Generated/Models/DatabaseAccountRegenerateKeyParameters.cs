@@ -27,10 +27,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="keyKind">The access key to regenerate.
         /// Possible values include: &#39;primary&#39;, &#39;secondary&#39;, &#39;primaryReadonly&#39;,
         /// &#39;secondaryReadonly&#39;</param>
-        public DatabaseAccountRegenerateKeyParameters(string keyKind)
+
+        /// <param name="skipAccountKeysLastUsageCheck">Optional flag indicating whether to skip account keys last usage check.
+        /// </param>
+        public DatabaseAccountRegenerateKeyParameters(string keyKind, bool? skipAccountKeysLastUsageCheck = default(bool?))
 
         {
             this.KeyKind = keyKind;
+            this.SkipAccountKeysLastUsageCheck = skipAccountKeysLastUsageCheck;
             CustomInit();
         }
 
@@ -45,6 +49,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "keyKind")]
         public string KeyKind {get; set; }
+
+        /// <summary>
+        /// Gets or sets optional flag indicating whether to skip account keys last
+        /// usage check.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "skipAccountKeysLastUsageCheck")]
+        public bool? SkipAccountKeysLastUsageCheck {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

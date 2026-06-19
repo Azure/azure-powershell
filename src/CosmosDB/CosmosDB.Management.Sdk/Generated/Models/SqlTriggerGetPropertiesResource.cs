@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 {
     using System.Linq;
 
-    public partial class SqlTriggerGetPropertiesResource
+    public partial class SqlTriggerGetPropertiesResource : SqlTriggerResource
     {
         /// <summary>
         /// Initializes a new instance of the SqlTriggerGetPropertiesResource class.
@@ -45,11 +45,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </param>
         public SqlTriggerGetPropertiesResource(string id, string body = default(string), string triggerType = default(string), string triggerOperation = default(string), string rid = default(string), double? ts = default(double?), string etag = default(string))
 
+        : base(id, body, triggerType, triggerOperation)
         {
-            this.Id = id;
-            this.Body = body;
-            this.TriggerType = triggerType;
-            this.TriggerOperation = triggerOperation;
             this.Rid = rid;
             this.Ts = ts;
             this.Etag = etag;
@@ -61,30 +58,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets or sets name of the Cosmos DB SQL trigger
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; set; }
-
-        /// <summary>
-        /// Gets or sets body of the Trigger
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "body")]
-        public string Body {get; set; }
-
-        /// <summary>
-        /// Gets or sets type of the Trigger Possible values include: &#39;Pre&#39;, &#39;Post&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "triggerType")]
-        public string TriggerType {get; set; }
-
-        /// <summary>
-        /// Gets or sets the operation the trigger is associated with Possible values include: &#39;All&#39;, &#39;Create&#39;, &#39;Update&#39;, &#39;Delete&#39;, &#39;Replace&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "triggerOperation")]
-        public string TriggerOperation {get; set; }
 
         /// <summary>
         /// Gets a system generated property. A unique identifier.
@@ -111,16 +84,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
-            if (this.Id == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Id");
-            }
-
-
-
-
+            base.Validate();
 
 
         }

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<ServiceResource> List(this IServiceOperations operations, string resourceGroupName, string accountName)
+        public static Microsoft.Rest.Azure.IPage<ServiceResource> List(this IServiceOperations operations, string resourceGroupName, string accountName)
         {
                 return ((IServiceOperations)operations).ListAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
         }
@@ -44,54 +44,9 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<ServiceResource>> ListAsync(this IServiceOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ServiceResource>> ListAsync(this IServiceOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Creates a service.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='serviceName'>
-        /// Cosmos DB service name.
-        /// </param>
-        public static ServiceResource Create(this IServiceOperations operations, string resourceGroupName, string accountName, string serviceName, ServiceResourceCreateUpdateParameters createUpdateParameters)
-        {
-                return ((IServiceOperations)operations).CreateAsync(resourceGroupName, accountName, serviceName, createUpdateParameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates a service.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='serviceName'>
-        /// Cosmos DB service name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(this IServiceOperations operations, string resourceGroupName, string accountName, string serviceName, ServiceResourceCreateUpdateParameters createUpdateParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, accountName, serviceName, createUpdateParameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -137,6 +92,51 @@ namespace Microsoft.Azure.Management.CosmosDB
         public static async System.Threading.Tasks.Task<ServiceResource> GetAsync(this IServiceOperations operations, string resourceGroupName, string accountName, string serviceName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, accountName, serviceName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates a service.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='serviceName'>
+        /// Cosmos DB service name.
+        /// </param>
+        public static ServiceResource Create(this IServiceOperations operations, string resourceGroupName, string accountName, string serviceName, ServiceResourceCreateUpdateParameters createUpdateParameters)
+        {
+                return ((IServiceOperations)operations).CreateAsync(resourceGroupName, accountName, serviceName, createUpdateParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates a service.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='serviceName'>
+        /// Cosmos DB service name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(this IServiceOperations operations, string resourceGroupName, string accountName, string serviceName, ServiceResourceCreateUpdateParameters createUpdateParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, accountName, serviceName, createUpdateParameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -274,6 +274,39 @@ namespace Microsoft.Azure.Management.CosmosDB
             using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, serviceName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Gets the status of service.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ServiceResource> ListNext(this IServiceOperations operations, string nextPageLink)
+        {
+                return ((IServiceOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the status of service.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ServiceResource>> ListNextAsync(this IServiceOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
             }
         }
     }

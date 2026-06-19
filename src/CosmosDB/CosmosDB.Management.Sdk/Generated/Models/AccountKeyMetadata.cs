@@ -28,10 +28,18 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// missing from the object, it means that the last key regeneration was
         /// triggered before 2022-06-18.
         /// </param>
-        public AccountKeyMetadata(System.DateTime? generationTime = default(System.DateTime?))
+
+        /// <param name="approximateLastUsageTime">Approximate time in UTC of the most recent usage of the key in ISO-8601
+        /// format.
+        /// If the value is missing from the object, it means there is no recorded data
+        /// plane
+        /// usage for this key.
+        /// </param>
+        public AccountKeyMetadata(System.DateTime? generationTime = default(System.DateTime?), System.DateTime? approximateLastUsageTime = default(System.DateTime?))
 
         {
             this.GenerationTime = generationTime;
+            this.ApproximateLastUsageTime = approximateLastUsageTime;
             CustomInit();
         }
 
@@ -48,5 +56,15 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "generationTime")]
         public System.DateTime? GenerationTime {get; private set; }
+
+        /// <summary>
+        /// Gets approximate time in UTC of the most recent usage of the key in
+        /// ISO-8601 format.
+        /// If the value is missing from the object, it means there is no recorded data
+        /// plane
+        /// usage for this key.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "approximateLastUsageTime")]
+        public System.DateTime? ApproximateLastUsageTime {get; private set; }
     }
 }

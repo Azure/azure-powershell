@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// have an or of multiple names), startTime, endTime, and timeGrain. The
         /// supported operator is eq.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<PartitionMetric> ListMetrics(this IPartitionKeyRangeIdRegionOperations operations, string resourceGroupName, string accountName, string region, string databaseRid, string collectionRid, string partitionKeyRangeId, string filter)
+        public static Microsoft.Rest.Azure.IPage<PartitionMetric> ListMetrics(this IPartitionKeyRangeIdRegionOperations operations, string resourceGroupName, string accountName, string region, string databaseRid, string collectionRid, string partitionKeyRangeId, string filter)
         {
                 return ((IPartitionKeyRangeIdRegionOperations)operations).ListMetricsAsync(resourceGroupName, accountName, region, databaseRid, collectionRid, partitionKeyRangeId, filter).GetAwaiter().GetResult();
         }
@@ -82,9 +82,44 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<PartitionMetric>> ListMetricsAsync(this IPartitionKeyRangeIdRegionOperations operations, string resourceGroupName, string accountName, string region, string databaseRid, string collectionRid, string partitionKeyRangeId, string filter, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PartitionMetric>> ListMetricsAsync(this IPartitionKeyRangeIdRegionOperations operations, string resourceGroupName, string accountName, string region, string databaseRid, string collectionRid, string partitionKeyRangeId, string filter, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListMetricsWithHttpMessagesAsync(resourceGroupName, accountName, region, databaseRid, collectionRid, partitionKeyRangeId, filter, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the metrics determined by the given filter for the given
+        /// partition key range id and region.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<PartitionMetric> ListMetricsNext(this IPartitionKeyRangeIdRegionOperations operations, string nextPageLink)
+        {
+                return ((IPartitionKeyRangeIdRegionOperations)operations).ListMetricsNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the metrics determined by the given filter for the given
+        /// partition key range id and region.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PartitionMetric>> ListMetricsNextAsync(this IPartitionKeyRangeIdRegionOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListMetricsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

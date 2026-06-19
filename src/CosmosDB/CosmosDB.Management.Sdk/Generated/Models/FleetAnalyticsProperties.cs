@@ -23,8 +23,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="provisioningState">A provisioning state of the FleetAnalytics.
         /// Possible values include: &#39;Uninitialized&#39;, &#39;Initializing&#39;,
-        /// &#39;InternallyReady&#39;, &#39;Online&#39;, &#39;Deleting&#39;, &#39;Creating&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;,
-        /// &#39;Canceled&#39;, &#39;Updating&#39;</param>
+        /// &#39;InternallyReady&#39;, &#39;Online&#39;, &#39;Deleting&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;,
+        /// &#39;Updating&#39;, &#39;Creating&#39;</param>
 
         /// <param name="storageLocationType">The type of the fleet analytics resource.
         /// Possible values include: &#39;StorageAccount&#39;, &#39;FabricLakehouse&#39;</param>
@@ -47,10 +47,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
 
         /// <summary>
-        /// Gets or sets a provisioning state of the FleetAnalytics. Possible values include: &#39;Uninitialized&#39;, &#39;Initializing&#39;, &#39;InternallyReady&#39;, &#39;Online&#39;, &#39;Deleting&#39;, &#39;Creating&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;Updating&#39;
+        /// Gets a provisioning state of the FleetAnalytics. Possible values include: &#39;Uninitialized&#39;, &#39;Initializing&#39;, &#39;InternallyReady&#39;, &#39;Online&#39;, &#39;Deleting&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;Updating&#39;, &#39;Creating&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
-        public string ProvisioningState {get; set; }
+        public string ProvisioningState {get; private set; }
 
         /// <summary>
         /// Gets or sets the type of the fleet analytics resource. Possible values include: &#39;StorageAccount&#39;, &#39;FabricLakehouse&#39;
