@@ -37,27 +37,32 @@ Update a Traffic Manager health policy.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a health policy using a JSON string
 ```powershell
-{{ Add code here }}
+$jsonString = '{"kind":"Probe","properties":{"name":"hp1","probeConfig":{"protocol":"HTTPS","port":443,"path":"/health","intervalInSeconds":60,"timeoutInSeconds":15,"toleratedNumberOfFailures":5}}}'
+Update-AzPrivateTrafficManagerHealthPolicy -Name "hp1" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg" -JsonString $jsonString
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name  Kind   ProvisioningState
+----  ----   -----------------
+hp1   Probe  Succeeded
 ```
 
-{{ Add description here }}
+This command updates the health policy to increase the probe interval to 60 seconds and tolerated failures to 5.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update a health policy using a JSON file
 ```powershell
-{{ Add code here }}
+Update-AzPrivateTrafficManagerHealthPolicy -Name "hp1" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg" -JsonFilePath "./updated-healthpolicy.json"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name  Kind   ProvisioningState
+----  ----   -----------------
+hp1   Probe  Succeeded
 ```
 
-{{ Add description here }}
+This command updates the health policy configuration from a JSON file.
 
 ## PARAMETERS
 

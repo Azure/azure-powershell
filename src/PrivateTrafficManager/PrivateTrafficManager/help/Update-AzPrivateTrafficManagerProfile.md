@@ -49,27 +49,31 @@ Update a Traffic Manager profile.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update the traffic routing method of a profile
 ```powershell
-{{ Add code here }}
+Update-AzPrivateTrafficManagerProfile -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg" -TrafficRoutingMethod "Priority"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              Location TrafficRoutingMethod ProfileStatus ProvisioningState
+----              -------- -------------------- ------------- -----------------
+weighted-profile  global   Priority             Enabled       Succeeded
 ```
 
-{{ Add description here }}
+This command updates the traffic routing method of the specified profile from Weighted to Priority.
 
-### Example 2: {{ Add title here }}
+### Example 2: Disable a Private Traffic Manager profile
 ```powershell
-{{ Add code here }}
+Update-AzPrivateTrafficManagerProfile -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg" -ProfileStatus "Disabled"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name              Location TrafficRoutingMethod ProfileStatus ProvisioningState
+----              -------- -------------------- ------------- -----------------
+weighted-profile  global   Priority             Disabled      Succeeded
 ```
 
-{{ Add description here }}
+This command disables the specified Private Traffic Manager profile.
 
 ## PARAMETERS
 

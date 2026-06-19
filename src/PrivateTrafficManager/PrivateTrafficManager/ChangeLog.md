@@ -18,13 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
- * Initial release of Az.PrivateTrafficManager module (API version 2026-02-09-preview)
-     - `New/Get/Update/Remove-AzPrivateTrafficManagerProfile` - Manage PTM profiles
-     - `New/Get/Update/Remove-AzPrivateTrafficManagerEndpoint` - Manage endpoints
-     - `New/Get/Update/Remove-AzPrivateTrafficManagerHealthPolicy` - Manage health policies
-     - `New/Get/Update/Remove-AzPrivateTrafficManagerTopologyMap` - Manage topology maps
-     - `New/Get/Update/Remove-AzPrivateTrafficManagerSite` - Manage sites
-
-## Version 0.1.0
-* First preview release for module Az.PrivateTrafficManager
+* First preview release of Az.PrivateTrafficManager module (API version 2026-02-09-preview)
+    - `New/Get/Update/Remove-AzPrivateTrafficManagerProfile` - Manage PTM (Private Traffic Manager) profiles
+    - `New/Get/Update/Remove-AzPrivateTrafficManagerEndpoint` - Manage endpoints
+    - `New/Get/Update/Remove-AzPrivateTrafficManagerHealthPolicy` - Manage health policies
+    - `New/Get/Update/Remove-AzPrivateTrafficManagerTopologyMap` - Manage topology maps
+    - `New/Get/Update/Remove-AzPrivateTrafficManagerSite` - Manage sites
 

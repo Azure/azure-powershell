@@ -38,27 +38,31 @@ Create a Topology Map.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a topology map
 ```powershell
-{{ Add code here }}
+New-AzPrivateTrafficManagerTopologyMap -Name "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo" -Location "global" -CatchAllSiteName "site-default" -Tag @{environment="test"}
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               Location CatchAllSiteName ProvisioningState
+----               -------- ---------------- -----------------
+ptm-topology-demo  global   site-default     Succeeded
 ```
 
-{{ Add description here }}
+This command creates a new topology map with a catch-all site for unmatched traffic.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a topology map using a JSON file
 ```powershell
-{{ Add code here }}
+New-AzPrivateTrafficManagerTopologyMap -Name "ptm-topology-prod" -ResourceGroupName "rg-ptm-demo" -JsonFilePath "./topologymap.json"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               Location CatchAllSiteName ProvisioningState
+----               -------- ---------------- -----------------
+ptm-topology-prod  global   site-default     Succeeded
 ```
 
-{{ Add description here }}
+This command creates a topology map from a JSON file that includes site configurations.
 
 ## PARAMETERS
 

@@ -30,27 +30,19 @@ Deletes a Private Traffic Manager profile.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a Private Traffic Manager profile
 ```powershell
-{{ Add code here }}
+Remove-AzPrivateTrafficManagerProfile -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This command removes the specified Private Traffic Manager profile and all its associated endpoints and health policies.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove a Private Traffic Manager profile with confirmation prompt
 ```powershell
-{{ Add code here }}
+Remove-AzPrivateTrafficManagerProfile -PrivateTrafficManagerProfileName "priority-profile" -ResourceGroupName "demo-rg" -Confirm
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command removes the specified Private Traffic Manager profile after prompting for confirmation.
 
 ## PARAMETERS
 

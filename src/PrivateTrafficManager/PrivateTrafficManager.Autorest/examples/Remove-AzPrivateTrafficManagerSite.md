@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a site from a topology map
 ```powershell
-{{ Add code here }}
+Remove-AzPrivateTrafficManagerSite -Name "site-westus" -TopologyMapName "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This command removes the specified site from the topology map.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove a site with confirmation
 ```powershell
-{{ Add code here }}
+Remove-AzPrivateTrafficManagerSite -Name "site-eastus" -TopologyMapName "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo" -Confirm
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command removes the specified site after prompting for confirmation.
 

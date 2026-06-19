@@ -45,27 +45,31 @@ Create a Site.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a site with virtual networks and probing gateways
 ```powershell
-{{ Add code here }}
+New-AzPrivateTrafficManagerSite -Name "site-eastus" -TopologyMapName "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo" -VirtualNetworkId @("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-ptm-demo/providers/Microsoft.Network/virtualNetworks/vnet-eastus") -ProbingGatewayId @("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-ptm-demo/providers/Microsoft.Network/probingGateways/pg-eastus")
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name         ProvisioningState
+----         -----------------
+site-eastus  Succeeded
 ```
 
-{{ Add description here }}
+This command creates a new site within a topology map, associating it with a virtual network and a probing gateway.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create a site using a JSON file
 ```powershell
-{{ Add code here }}
+New-AzPrivateTrafficManagerSite -Name "site-westus" -TopologyMapName "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo" -JsonFilePath "./site-config.json"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name         ProvisioningState
+----         -----------------
+site-westus  Succeeded
 ```
 
-{{ Add description here }}
+This command creates a site from a JSON configuration file.
 
 ## PARAMETERS
 

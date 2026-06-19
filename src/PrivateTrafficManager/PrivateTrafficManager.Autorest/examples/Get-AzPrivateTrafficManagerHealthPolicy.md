@@ -1,22 +1,27 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get a specific health policy
 ```powershell
-{{ Add code here }}
+Get-AzPrivateTrafficManagerHealthPolicy -Name "hp1" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name  Kind   ProvisioningState
+----  ----   -----------------
+hp1   Probe  Succeeded
 ```
 
-{{ Add description here }}
+This command gets the specified health policy from the Private Traffic Manager profile.
 
-### Example 2: {{ Add title here }}
+### Example 2: List all health policies in a profile
 ```powershell
-{{ Add code here }}
+Get-AzPrivateTrafficManagerHealthPolicy -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                Kind   ProvisioningState
+----                ----   -----------------
+hp1                 Probe  Succeeded
+https-probe-policy  Probe  Succeeded
 ```
 
-{{ Add description here }}
+This command lists all health policies configured for the specified profile.
 

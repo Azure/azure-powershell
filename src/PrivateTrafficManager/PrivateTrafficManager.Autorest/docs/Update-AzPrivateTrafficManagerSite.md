@@ -52,27 +52,31 @@ Update a Site.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a site with additional virtual networks
 ```powershell
-{{ Add code here }}
+Update-AzPrivateTrafficManagerSite -Name "site-eastus" -TopologyMapName "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo" -VirtualNetworkId @("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-ptm-demo/providers/Microsoft.Network/virtualNetworks/vnet-eastus", "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-ptm-demo/providers/Microsoft.Network/virtualNetworks/vnet-eastus2")
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name         ProvisioningState
+----         -----------------
+site-eastus  Succeeded
 ```
 
-{{ Add description here }}
+This command updates the site to include an additional virtual network.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update a site using a JSON file
 ```powershell
-{{ Add code here }}
+Update-AzPrivateTrafficManagerSite -Name "site-eastus" -TopologyMapName "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo" -JsonFilePath "./updated-site.json"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name         ProvisioningState
+----         -----------------
+site-eastus  Succeeded
 ```
 
-{{ Add description here }}
+This command updates the site configuration from a JSON file.
 
 ## PARAMETERS
 

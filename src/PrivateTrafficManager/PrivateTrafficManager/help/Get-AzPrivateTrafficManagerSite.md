@@ -43,27 +43,32 @@ Gets a Site.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a specific site from a topology map
 ```powershell
-{{ Add code here }}
+Get-AzPrivateTrafficManagerSite -Name "site-eastus" -TopologyMapName "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name         ProvisioningState
+----         -----------------
+site-eastus  Succeeded
 ```
 
-{{ Add description here }}
+This command gets the specified site from the topology map.
 
-### Example 2: {{ Add title here }}
+### Example 2: List all sites in a topology map
 ```powershell
-{{ Add code here }}
+Get-AzPrivateTrafficManagerSite -TopologyMapName "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name         ProvisioningState
+----         -----------------
+site-eastus  Succeeded
+site-westus  Succeeded
 ```
 
-{{ Add description here }}
+This command lists all sites configured in the specified topology map.
 
 ## PARAMETERS
 

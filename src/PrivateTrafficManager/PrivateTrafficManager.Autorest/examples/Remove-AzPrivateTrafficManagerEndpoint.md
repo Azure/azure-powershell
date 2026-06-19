@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove an endpoint from a profile
 ```powershell
-{{ Add code here }}
+Remove-AzPrivateTrafficManagerEndpoint -Name "web-endpoint-secondary" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This command removes the specified endpoint from the Private Traffic Manager profile.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove an endpoint with confirmation
 ```powershell
-{{ Add code here }}
+Remove-AzPrivateTrafficManagerEndpoint -Name "web-endpoint-primary" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg" -Confirm
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command removes the specified endpoint after prompting for confirmation.
 

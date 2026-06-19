@@ -44,27 +44,32 @@ Gets a Private Traffic Manager endpoint.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a specific endpoint from a profile
 ```powershell
-{{ Add code here }}
+Get-AzPrivateTrafficManagerEndpoint -Name "web-endpoint-primary" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                  Target                     EndpointStatus Weight Priority ProvisioningState
+----                  ------                     -------------- ------ -------- -----------------
+web-endpoint-primary  primary.contoso.internal.  Enabled        60     1        Succeeded
 ```
 
-{{ Add description here }}
+This command gets the specified endpoint from the Private Traffic Manager profile.
 
-### Example 2: {{ Add title here }}
+### Example 2: List all endpoints in a profile
 ```powershell
-{{ Add code here }}
+Get-AzPrivateTrafficManagerEndpoint -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                    Target                     EndpointStatus Weight Priority ProvisioningState
+----                    ------                     -------------- ------ -------- -----------------
+web-endpoint-primary    primary.contoso.internal.  Enabled        60     1        Succeeded
+web-endpoint-secondary  10.10.10.25                Enabled        40              Succeeded
 ```
 
-{{ Add description here }}
+This command lists all endpoints in the specified Private Traffic Manager profile.
 
 ## PARAMETERS
 

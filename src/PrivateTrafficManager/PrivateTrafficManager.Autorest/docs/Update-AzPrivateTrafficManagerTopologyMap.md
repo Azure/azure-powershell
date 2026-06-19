@@ -45,27 +45,31 @@ Update a Topology Map.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update the catch-all site of a topology map
 ```powershell
-{{ Add code here }}
+Update-AzPrivateTrafficManagerTopologyMap -Name "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo" -CatchAllSiteName "site-westus"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               Location CatchAllSiteName ProvisioningState
+----               -------- ---------------- -----------------
+ptm-topology-demo  global   site-westus      Succeeded
 ```
 
-{{ Add description here }}
+This command updates the catch-all site name for the specified topology map.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update topology map tags
 ```powershell
-{{ Add code here }}
+Update-AzPrivateTrafficManagerTopologyMap -Name "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo" -Tag @{environment="production"; team="networking"}
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               Location CatchAllSiteName ProvisioningState
+----               -------- ---------------- -----------------
+ptm-topology-demo  global   site-westus      Succeeded
 ```
 
-{{ Add description here }}
+This command updates the tags on the specified topology map.
 
 ## PARAMETERS
 

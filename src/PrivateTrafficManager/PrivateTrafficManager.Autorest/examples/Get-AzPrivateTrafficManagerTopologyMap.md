@@ -1,22 +1,27 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get a specific topology map
 ```powershell
-{{ Add code here }}
+Get-AzPrivateTrafficManagerTopologyMap -Name "ptm-topology-demo" -ResourceGroupName "rg-ptm-demo"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               Location CatchAllSiteName ProvisioningState
+----               -------- ---------------- -----------------
+ptm-topology-demo  global   site-default     Succeeded
 ```
 
-{{ Add description here }}
+This command gets the specified topology map by name and resource group.
 
-### Example 2: {{ Add title here }}
+### Example 2: List all topology maps in a resource group
 ```powershell
-{{ Add code here }}
+Get-AzPrivateTrafficManagerTopologyMap -ResourceGroupName "rg-ptm-demo"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name               Location CatchAllSiteName ProvisioningState
+----               -------- ---------------- -----------------
+ptm-topology-demo  global   site-default     Succeeded
+ptm-topology-prod  global   site-default     Succeeded
 ```
 
-{{ Add description here }}
+This command lists all topology maps in the specified resource group.
 
