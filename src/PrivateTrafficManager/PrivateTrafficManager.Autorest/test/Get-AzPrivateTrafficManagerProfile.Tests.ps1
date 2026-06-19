@@ -43,4 +43,24 @@ Describe 'Get-AzPrivateTrafficManagerProfile' {
         $help = Get-Help Get-AzPrivateTrafficManagerProfile
         $help | Should -Not -BeNullOrEmpty
     }
+
+    It 'Get - should retrieve a specific profile by name' {
+        $result = Get-AzPrivateTrafficManagerProfile `
+            -PrivateTrafficManagerProfileName $env.profileName `
+            -ResourceGroupName $env.resourceGroupName
+        $result | Should -Not -BeNullOrEmpty
+        $result.Name | Should -Be $env.profileName
+    }
+
+    It 'List - should list profiles in a resource group' {
+        $result = Get-AzPrivateTrafficManagerProfile `
+            -ResourceGroupName $env.resourceGroupName
+        $result | Should -Not -BeNullOrEmpty
+        $result.Count | Should -BeGreaterOrEqual 2
+    }
+
+    It 'List1 - should list profiles in a subscription' {
+        $result = Get-AzPrivateTrafficManagerProfile
+        $result | Should -Not -BeNullOrEmpty
+    }
 }

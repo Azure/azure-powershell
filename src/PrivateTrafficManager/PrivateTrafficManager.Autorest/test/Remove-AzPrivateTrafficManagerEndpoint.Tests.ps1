@@ -34,4 +34,11 @@ Describe 'Remove-AzPrivateTrafficManagerEndpoint' {
         $help = Get-Help Remove-AzPrivateTrafficManagerEndpoint
         $help.Description | Should Not BeNullOrEmpty
     }
+
+    It 'Delete - should remove an endpoint' {
+        { Remove-AzPrivateTrafficManagerEndpoint `
+            -Name $env.endpointNameForDelete `
+            -PrivateTrafficManagerProfileName $env.profileName `
+            -ResourceGroupName $env.resourceGroupName } | Should -Not -Throw
+    }
 }

@@ -39,4 +39,24 @@ Describe 'New-AzPrivateTrafficManagerSite' {
         $help = Get-Help New-AzPrivateTrafficManagerSite
         $help.Description | Should Not BeNullOrEmpty
     }
+
+    It 'CreateExpanded - should create a new site' {
+        $newSiteName = "ptm-site-new-$($env.randomStr)"
+        $newSiteJson = @{
+            properties = @{
+                virtualNetworkIds = @()
+            }
+        } | ConvertTo-Json -Depth 5
+        $result = New-AzPrivateTrafficManagerSite `
+            -Name $newSiteName `
+            -TopologyMapName $env.topologyMapName `
+            -ResourceGroupName $env.resourceGroupName `
+            -JsonString $newSiteJson
+        $result | Should -Not -BeNullOrEmpty
+        $result.Name | Should -Be $newSiteName
+        Remove-AzPrivateTrafficManagerSite `
+            -Name $newSiteName `
+            -TopologyMapName $env.topologyMapName `
+            -ResourceGroupName $env.resourceGroupName
+    }
 }

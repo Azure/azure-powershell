@@ -39,4 +39,21 @@ Describe 'Get-AzPrivateTrafficManagerEndpoint' {
         $help = Get-Help Get-AzPrivateTrafficManagerEndpoint
         $help.Description | Should Not BeNullOrEmpty
     }
+
+    It 'Get - should retrieve a specific endpoint by name' {
+        $result = Get-AzPrivateTrafficManagerEndpoint `
+            -Name $env.endpointName `
+            -PrivateTrafficManagerProfileName $env.profileName `
+            -ResourceGroupName $env.resourceGroupName
+        $result | Should -Not -BeNullOrEmpty
+        $result.Name | Should -Be $env.endpointName
+    }
+
+    It 'List - should list endpoints in a profile' {
+        $result = Get-AzPrivateTrafficManagerEndpoint `
+            -PrivateTrafficManagerProfileName $env.profileName `
+            -ResourceGroupName $env.resourceGroupName
+        $result | Should -Not -BeNullOrEmpty
+        $result.Count | Should -BeGreaterOrEqual 2
+    }
 }

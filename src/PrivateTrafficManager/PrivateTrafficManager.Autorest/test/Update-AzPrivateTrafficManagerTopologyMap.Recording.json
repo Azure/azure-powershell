@@ -1,0 +1,42 @@
+{
+  "Update-AzPrivateTrafficManagerTopologyMap+[NoContext]+UpdateExpanded - should update topology map properties+$PATCH+https://management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMaps/ptm-topo-70ad8z?api-version=2026-02-09-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMaps/ptm-topo-70ad8z?api-version=2026-02-09-preview",
+      "Content": "{\r\n  \"tags\": {\r\n    \"env\": \"test\",\r\n    \"updated\": \"true\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "65" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-envoy-upstream-service-time": [ "497" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=3ded4b87-de7e-4015-8a3e-cc1f338081e6/brazilus/e1a8e195-060e-4afd-8fb8-6520f9e06c3f" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
+        "x-ms-request-id": [ "3b09f067-5ffb-4623-ac5e-71de1006fbd0" ],
+        "x-ms-correlation-request-id": [ "3b09f067-5ffb-4623-ac5e-71de1006fbd0" ],
+        "x-ms-routing-request-id": [ "BRAZILUS:20260619T085732Z:3b09f067-5ffb-4623-ac5e-71de1006fbd0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AC6CDA6EAF544A49B256D0670754DD47 Ref B: MAA211070117031 Ref C: 2026-06-19T08:57:31Z" ],
+        "Date": [ "Fri, 19 Jun 2026 08:57:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "707" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"sites\":[{\"properties\":{\"probingGatewayIds\":[],\"virtualNetworkIds\":[],\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMaps/ptm-topo-70ad8z/sites/ptm-site-70ad8z\",\"name\":\"ptm-site-70ad8z\",\"type\":\"Microsoft.Network/topologyMaps/sites\"}],\"catchAllSiteName\":\"ptm-site-70ad8z\",\"provisioningState\":\"Succeeded\"},\"location\":\"global\",\"tags\":{\"env\":\"test\",\"updated\":\"true\"},\"id\":\"/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/topologyMaps/ptm-topo-70ad8z\",\"name\":\"ptm-topo-70ad8z\",\"type\":\"Microsoft.Network/topologyMaps\"}",
+      "isContentBase64": false
+    }
+  }
+}

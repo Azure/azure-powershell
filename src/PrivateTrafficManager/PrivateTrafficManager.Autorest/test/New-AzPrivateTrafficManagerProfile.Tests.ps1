@@ -34,4 +34,29 @@ Describe 'New-AzPrivateTrafficManagerProfile' {
         $help = Get-Help New-AzPrivateTrafficManagerProfile
         $help.Description | Should Not BeNullOrEmpty
     }
+
+    It 'CreateExpanded - should create a new profile' {
+        $newProfileName = "ptm-new-$($env.randomStr)"
+        $newProfileJson = @{
+            location = "global"
+            properties = @{
+                trafficRoutingMethod = "Weighted"
+                profileStatus = "Enabled"
+                customTopologyMapMode = "Disabled"
+                dnsConfig = @{
+                    recordType = "CNAME"
+                    ttl = 30
+                }
+            }
+        } | ConvertTo-Json -Depth 5
+        $result = New-AzPrivateTrafficManagerProfile `
+            -PrivateTrafficManagerProfileName $newProfileName `
+            -ResourceGroupName $env.resourceGroupName `
+            -JsonString $newProfileJson
+        $result | Should -Not -BeNullOrEmpty
+        $result.Name | Should -Be $newProfileName
+        Remove-AzPrivateTrafficManagerProfile `
+            -PrivateTrafficManagerProfileName $newProfileName `
+            -ResourceGroupName $env.resourceGroupName
+    }
 }

@@ -39,4 +39,25 @@ Describe 'Get-AzPrivateTrafficManagerTopologyMap' {
         $help = Get-Help Get-AzPrivateTrafficManagerTopologyMap
         $help.Description | Should Not BeNullOrEmpty
     }
+
+    It 'Get - should retrieve a specific topology map by name' {
+        $result = Get-AzPrivateTrafficManagerTopologyMap `
+            -Name $env.topologyMapName `
+            -ResourceGroupName $env.resourceGroupName
+        $result | Should -Not -BeNullOrEmpty
+        $result.Name | Should -Be $env.topologyMapName
+    }
+
+    It 'List - should list topology maps in a resource group' {
+        $result = Get-AzPrivateTrafficManagerTopologyMap `
+            -ResourceGroupName $env.resourceGroupName
+        $result | Should -Not -BeNullOrEmpty
+        $result.Count | Should -BeGreaterOrEqual 2
+    }
+
+    It 'List1 - should list topology maps in a subscription' -Skip {
+        # Subscription-level list is not supported by the regional ARM endpoint
+        $result = Get-AzPrivateTrafficManagerTopologyMap
+        $result | Should -Not -BeNullOrEmpty
+    }
 }

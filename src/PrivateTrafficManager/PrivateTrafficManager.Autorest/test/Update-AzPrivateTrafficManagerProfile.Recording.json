@@ -1,0 +1,42 @@
+{
+  "Update-AzPrivateTrafficManagerProfile+[NoContext]+UpdateExpanded - should update profile properties+$PATCH+https://management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z?api-version=2026-02-09-preview+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z?api-version=2026-02-09-preview",
+      "Content": "{\r\n  \"tags\": {\r\n    \"env\": \"test\",\r\n    \"updated\": \"true\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "65" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-envoy-upstream-service-time": [ "794" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=3ded4b87-de7e-4015-8a3e-cc1f338081e6/brazilus/9e7ab44b-0835-43a0-8b4a-56f0934f39b1" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
+        "x-ms-request-id": [ "604ec003-6776-4b97-a385-94682d48a8db" ],
+        "x-ms-correlation-request-id": [ "604ec003-6776-4b97-a385-94682d48a8db" ],
+        "x-ms-routing-request-id": [ "BRAZILUS:20260619T085714Z:604ec003-6776-4b97-a385-94682d48a8db" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B797D4F7995542C48B40D1685BF0B727 Ref B: MAA211070117031 Ref C: 2026-06-19T08:57:12Z" ],
+        "Date": [ "Fri, 19 Jun 2026 08:57:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "616" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"customTopologyMapMode\":\"Disabled\",\"dnsConfig\":{\"recordType\":\"CNAME\",\"ttl\":60},\"profileStatus\":\"Enabled\",\"trafficRoutingMethod\":\"weighted\",\"endpoints\":[{\"name\":\"ptm-ep-70ad8z\",\"target\":\"app1.contoso.internal\",\"monitoringTarget\":\"app1.contoso.internal\",\"endpointStatus\":\"Enabled\",\"weight\":75,\"priority\":1,\"alwaysServe\":\"Disabled\"}],\"provisioningState\":\"Succeeded\"},\"tags\":{\"env\":\"test\",\"updated\":\"true\"},\"id\":\"/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/PrivateTrafficManagerProfiles/ptm-profile-70ad8z\",\"name\":\"ptm-profile-70ad8z\"}",
+      "isContentBase64": false
+    }
+  }
+}

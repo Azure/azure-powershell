@@ -39,4 +39,13 @@ Describe 'Update-AzPrivateTrafficManagerTopologyMap' {
         $help = Get-Help Update-AzPrivateTrafficManagerTopologyMap
         $help.Description | Should Not BeNullOrEmpty
     }
+
+    It 'UpdateExpanded - should update topology map properties' {
+        $result = Update-AzPrivateTrafficManagerTopologyMap `
+            -Name $env.topologyMapName `
+            -ResourceGroupName $env.resourceGroupName `
+            -Tag @{ "env" = "test"; "updated" = "true" }
+        $result | Should -Not -BeNullOrEmpty
+        $result.Name | Should -Be $env.topologyMapName
+    }
 }

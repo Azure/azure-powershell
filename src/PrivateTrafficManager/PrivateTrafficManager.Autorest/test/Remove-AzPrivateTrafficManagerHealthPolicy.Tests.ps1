@@ -34,4 +34,11 @@ Describe 'Remove-AzPrivateTrafficManagerHealthPolicy' {
         $help = Get-Help Remove-AzPrivateTrafficManagerHealthPolicy
         $help.Description | Should Not BeNullOrEmpty
     }
+
+    It 'Delete - should remove a health policy' {
+        { Remove-AzPrivateTrafficManagerHealthPolicy `
+            -Name $env.healthPolicyNameForDelete `
+            -PrivateTrafficManagerProfileName $env.profileName `
+            -ResourceGroupName $env.resourceGroupName } | Should -Not -Throw
+    }
 }

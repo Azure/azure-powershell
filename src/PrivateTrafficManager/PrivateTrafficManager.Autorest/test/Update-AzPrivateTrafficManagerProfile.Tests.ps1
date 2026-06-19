@@ -39,4 +39,13 @@ Describe 'Update-AzPrivateTrafficManagerProfile' {
         $help = Get-Help Update-AzPrivateTrafficManagerProfile
         $help.Description | Should Not BeNullOrEmpty
     }
+
+    It 'UpdateExpanded - should update profile properties' {
+        $result = Update-AzPrivateTrafficManagerProfile `
+            -PrivateTrafficManagerProfileName $env.profileName `
+            -ResourceGroupName $env.resourceGroupName `
+            -Tag @{ "env" = "test"; "updated" = "true" }
+        $result | Should -Not -BeNullOrEmpty
+        $result.Name | Should -Be $env.profileName
+    }
 }

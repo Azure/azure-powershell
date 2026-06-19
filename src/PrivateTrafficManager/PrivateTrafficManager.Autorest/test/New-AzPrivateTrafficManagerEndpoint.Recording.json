@@ -1,0 +1,130 @@
+{
+  "New-AzPrivateTrafficManagerEndpoint+[NoContext]+CreateExpanded - should create a new endpoint+$PUT+https://management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/endpoints/ptm-ep-new-70ad8z?api-version=2026-02-09-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/endpoints/ptm-ep-new-70ad8z?api-version=2026-02-09-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"target\": \"app3.contoso.internal\",\r\n    \"endpointStatus\": \"Enabled\",\r\n    \"weight\": 30\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "120" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-envoy-upstream-service-time": [ "719" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=3ded4b87-de7e-4015-8a3e-cc1f338081e6/brazilus/7f9cf496-8c4c-41ab-ba9b-459fe6c25193" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "799" ],
+        "x-ms-request-id": [ "3668d785-b6c7-4032-b2ae-6991fcff7796" ],
+        "x-ms-correlation-request-id": [ "3668d785-b6c7-4032-b2ae-6991fcff7796" ],
+        "x-ms-routing-request-id": [ "BRAZILUS:20260619T084906Z:3668d785-b6c7-4032-b2ae-6991fcff7796" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1523A955E35346F3A80426E2B1468817 Ref B: MAA211070117031 Ref C: 2026-06-19T08:49:05Z" ],
+        "Date": [ "Fri, 19 Jun 2026 08:49:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "461" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"target\":\"app3.contoso.internal\",\"monitoringTarget\":\"app3.contoso.internal\",\"endpointStatus\":\"Enabled\",\"weight\":30,\"priority\":3,\"alwaysServe\":\"Disabled\"},\"id\":\"/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/PrivateTrafficManagerProfiles/ptm-profile-70ad8z/endpoints/ptm-ep-new-70ad8z\",\"name\":\"ptm-ep-new-70ad8z\",\"type\":\"Microsoft.Network/PrivateTrafficManagerProfiles/endpoints\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzPrivateTrafficManagerEndpoint+[NoContext]+CreateExpanded - should create a new endpoint+$GET+https://management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/endpoints/ptm-ep-new-70ad8z?api-version=2026-02-09-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://brazilus.management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/endpoints/ptm-ep-new-70ad8z?api-version=2026-02-09-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "44" ],
+        "x-ms-client-request-id": [ "c98522a3-8a0c-49c1-9413-0d7636fbdbcd" ],
+        "CommandName": [ "New-AzPrivateTrafficManagerEndpoint" ],
+        "FullCommandName": [ "New-AzPrivateTrafficManagerEndpoint_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.2", "Az.PrivateTrafficManager/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-envoy-upstream-service-time": [ "423" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=3ded4b87-de7e-4015-8a3e-cc1f338081e6/brazilus/4f12863d-9e42-4442-a2fc-e75a274213da" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-request-id": [ "41b27b4c-6a16-431a-8380-2712fbf75d90" ],
+        "x-ms-correlation-request-id": [ "41b27b4c-6a16-431a-8380-2712fbf75d90" ],
+        "x-ms-routing-request-id": [ "BRAZILUS:20260619T084937Z:41b27b4c-6a16-431a-8380-2712fbf75d90" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3FA962B6837E49BDA7693B9EC7308477 Ref B: MAA211070117031 Ref C: 2026-06-19T08:49:36Z" ],
+        "Date": [ "Fri, 19 Jun 2026 08:49:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "461" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"target\":\"app3.contoso.internal\",\"monitoringTarget\":\"app3.contoso.internal\",\"endpointStatus\":\"Enabled\",\"weight\":30,\"priority\":3,\"alwaysServe\":\"Disabled\"},\"id\":\"/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/PrivateTrafficManagerProfiles/ptm-profile-70ad8z/endpoints/ptm-ep-new-70ad8z\",\"name\":\"ptm-ep-new-70ad8z\",\"type\":\"Microsoft.Network/PrivateTrafficManagerProfiles/endpoints\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzPrivateTrafficManagerEndpoint+[NoContext]+CreateExpanded - should create a new endpoint+$DELETE+https://management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/endpoints/ptm-ep-new-70ad8z?api-version=2026-02-09-preview+3": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://brazilus.management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/endpoints/ptm-ep-new-70ad8z?api-version=2026-02-09-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "45" ],
+        "x-ms-client-request-id": [ "1ac06003-f3c5-4695-bdee-c8e79222ce8a" ],
+        "CommandName": [ "Remove-AzPrivateTrafficManagerEndpoint" ],
+        "FullCommandName": [ "Remove-AzPrivateTrafficManagerEndpoint_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.2", "Az.PrivateTrafficManager/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-envoy-upstream-service-time": [ "749" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=3ded4b87-de7e-4015-8a3e-cc1f338081e6/brazilus/763106b5-f062-403c-928f-db3192ee7ce1" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-request-id": [ "153c5481-18e9-48d7-8177-7191fad8e37f" ],
+        "x-ms-correlation-request-id": [ "153c5481-18e9-48d7-8177-7191fad8e37f" ],
+        "x-ms-routing-request-id": [ "BRAZILUS:20260619T084939Z:153c5481-18e9-48d7-8177-7191fad8e37f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6D9368E361534E649AB3C8B2CDC10641 Ref B: MAA211070117031 Ref C: 2026-06-19T08:49:38Z" ],
+        "Date": [ "Fri, 19 Jun 2026 08:49:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

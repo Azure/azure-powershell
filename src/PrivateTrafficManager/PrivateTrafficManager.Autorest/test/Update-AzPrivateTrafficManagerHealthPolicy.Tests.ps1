@@ -34,4 +34,10 @@ Describe 'Update-AzPrivateTrafficManagerHealthPolicy' {
         $help = Get-Help Update-AzPrivateTrafficManagerHealthPolicy
         $help.Description | Should Not BeNullOrEmpty
     }
+
+    It 'UpdateExpanded - should update health policy' -Skip {
+        # Update-AzPrivateTrafficManagerHealthPolicy has no body parameters to update
+        # The cmdlet only supports identity-based PATCH with no modifiable properties exposed
+        $true | Should -Be $true
+    }
 }

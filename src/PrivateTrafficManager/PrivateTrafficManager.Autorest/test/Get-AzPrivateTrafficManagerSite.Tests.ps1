@@ -39,4 +39,21 @@ Describe 'Get-AzPrivateTrafficManagerSite' {
         $help = Get-Help Get-AzPrivateTrafficManagerSite
         $help.Description | Should Not BeNullOrEmpty
     }
+
+    It 'Get - should retrieve a specific site by name' {
+        $result = Get-AzPrivateTrafficManagerSite `
+            -Name $env.siteName `
+            -TopologyMapName $env.topologyMapName `
+            -ResourceGroupName $env.resourceGroupName
+        $result | Should -Not -BeNullOrEmpty
+        $result.Name | Should -Be $env.siteName
+    }
+
+    It 'List - should list sites in a topology map' {
+        $result = Get-AzPrivateTrafficManagerSite `
+            -TopologyMapName $env.topologyMapName `
+            -ResourceGroupName $env.resourceGroupName
+        $result | Should -Not -BeNullOrEmpty
+        $result.Count | Should -BeGreaterOrEqual 2
+    }
 }

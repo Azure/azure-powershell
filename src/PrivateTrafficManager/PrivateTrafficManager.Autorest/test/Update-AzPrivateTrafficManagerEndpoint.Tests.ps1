@@ -44,4 +44,14 @@ Describe 'Update-AzPrivateTrafficManagerEndpoint' {
         $help = Get-Help Update-AzPrivateTrafficManagerEndpoint
         $help.Description | Should Not BeNullOrEmpty
     }
+
+    It 'UpdateExpanded - should update endpoint properties' {
+        $result = Update-AzPrivateTrafficManagerEndpoint `
+            -Name $env.endpointName `
+            -PrivateTrafficManagerProfileName $env.profileName `
+            -ResourceGroupName $env.resourceGroupName `
+            -Weight 75
+        $result | Should -Not -BeNullOrEmpty
+        $result.Name | Should -Be $env.endpointName
+    }
 }

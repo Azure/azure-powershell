@@ -29,4 +29,10 @@ Describe 'Remove-AzPrivateTrafficManagerProfile' {
         $help = Get-Help Remove-AzPrivateTrafficManagerProfile
         $help.Description | Should Not BeNullOrEmpty
     }
+
+    It 'Delete - should remove a profile' {
+        { Remove-AzPrivateTrafficManagerProfile `
+            -PrivateTrafficManagerProfileName $env.profileNameForDelete `
+            -ResourceGroupName $env.resourceGroupName } | Should -Not -Throw
+    }
 }

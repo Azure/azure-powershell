@@ -29,4 +29,10 @@ Describe 'Remove-AzPrivateTrafficManagerTopologyMap' {
         $help = Get-Help Remove-AzPrivateTrafficManagerTopologyMap
         $help.Description | Should Not BeNullOrEmpty
     }
+
+    It 'Delete - should remove a topology map' {
+        { Remove-AzPrivateTrafficManagerTopologyMap `
+            -Name $env.topologyMapNameForDelete `
+            -ResourceGroupName $env.resourceGroupName } | Should -Not -Throw
+    }
 }

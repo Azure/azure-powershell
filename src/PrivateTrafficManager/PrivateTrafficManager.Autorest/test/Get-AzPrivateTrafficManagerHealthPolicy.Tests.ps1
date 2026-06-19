@@ -39,4 +39,21 @@ Describe 'Get-AzPrivateTrafficManagerHealthPolicy' {
         $help = Get-Help Get-AzPrivateTrafficManagerHealthPolicy
         $help.Description | Should Not BeNullOrEmpty
     }
+
+    It 'Get - should retrieve a specific health policy by name' {
+        $result = Get-AzPrivateTrafficManagerHealthPolicy `
+            -Name $env.healthPolicyName `
+            -PrivateTrafficManagerProfileName $env.profileName `
+            -ResourceGroupName $env.resourceGroupName
+        $result | Should -Not -BeNullOrEmpty
+        $result.Name | Should -Be $env.healthPolicyName
+    }
+
+    It 'List - should list health policies in a profile' {
+        $result = Get-AzPrivateTrafficManagerHealthPolicy `
+            -PrivateTrafficManagerProfileName $env.profileName `
+            -ResourceGroupName $env.resourceGroupName
+        $result | Should -Not -BeNullOrEmpty
+        $result.Count | Should -BeGreaterOrEqual 2
+    }
 }

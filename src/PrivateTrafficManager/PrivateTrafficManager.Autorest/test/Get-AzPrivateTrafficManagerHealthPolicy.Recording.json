@@ -1,0 +1,92 @@
+{
+  "Get-AzPrivateTrafficManagerHealthPolicy+[NoContext]+Get - should retrieve a specific health policy by name+$GET+https://management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/healthPolicies/ptm-hp-70ad8z?api-version=2026-02-09-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://brazilus.management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/healthPolicies/ptm-hp-70ad8z?api-version=2026-02-09-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "34" ],
+        "x-ms-client-request-id": [ "857c4c08-e706-4091-86ca-b377292ec7ad" ],
+        "CommandName": [ "Get-AzPrivateTrafficManagerHealthPolicy" ],
+        "FullCommandName": [ "Get-AzPrivateTrafficManagerHealthPolicy_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.2", "Az.PrivateTrafficManager/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-envoy-upstream-service-time": [ "409" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=3ded4b87-de7e-4015-8a3e-cc1f338081e6/brazilus/3ed9c94a-69a7-4de2-bf1b-642fe9cd3b0a" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1099" ],
+        "x-ms-request-id": [ "d6296783-738b-4c09-b56c-6bca8f3682a0" ],
+        "x-ms-correlation-request-id": [ "d6296783-738b-4c09-b56c-6bca8f3682a0" ],
+        "x-ms-routing-request-id": [ "BRAZILUS:20260619T084839Z:d6296783-738b-4c09-b56c-6bca8f3682a0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1512219C13024B5DA529E3C2CA75CE4F Ref B: MAA211070117031 Ref C: 2026-06-19T08:48:38Z" ],
+        "Date": [ "Fri, 19 Jun 2026 08:48:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "463" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"kind\":\"Probe\",\"properties\":{\"probeConfig\":{\"protocol\":\"HTTPS\",\"port\":443,\"path\":\"/health\",\"intervalInSeconds\":30,\"timeoutInSeconds\":10,\"toleratedNumberOfFailures\":3}},\"id\":\"/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/PrivateTrafficManagerProfiles/ptm-profile-70ad8z/healthPolicies/ptm-hp-70ad8z\",\"name\":\"ptm-hp-70ad8z\",\"type\":\"Microsoft.Network/PrivateTrafficManagerProfiles/healthPolicies\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzPrivateTrafficManagerHealthPolicy+[NoContext]+List - should list health policies in a profile+$GET+https://management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/healthPolicies?api-version=2026-02-09-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://brazilus.management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/healthPolicies?api-version=2026-02-09-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "35" ],
+        "x-ms-client-request-id": [ "47518cfa-59de-4a3f-9974-41b3c7e8ed66" ],
+        "CommandName": [ "Get-AzPrivateTrafficManagerHealthPolicy" ],
+        "FullCommandName": [ "Get-AzPrivateTrafficManagerHealthPolicy_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.2", "Az.PrivateTrafficManager/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-envoy-upstream-service-time": [ "423" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=3ded4b87-de7e-4015-8a3e-cc1f338081e6/brazilus/c954a178-79bb-4fa9-852c-fc3d4570363c" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "1098" ],
+        "x-ms-request-id": [ "9c4fb75f-5062-4684-bde2-8ae5c9a01bb4" ],
+        "x-ms-correlation-request-id": [ "9c4fb75f-5062-4684-bde2-8ae5c9a01bb4" ],
+        "x-ms-routing-request-id": [ "BRAZILUS:20260619T084840Z:9c4fb75f-5062-4684-bde2-8ae5c9a01bb4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 680BD8D596894A27A27B83A64A5D9F50 Ref B: MAA211070117031 Ref C: 2026-06-19T08:48:39Z" ],
+        "Date": [ "Fri, 19 Jun 2026 08:48:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "943" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"kind\":\"Probe\",\"properties\":{\"probeConfig\":{\"protocol\":\"HTTPS\",\"port\":443,\"path\":\"/health\",\"intervalInSeconds\":30,\"timeoutInSeconds\":10,\"toleratedNumberOfFailures\":3}},\"id\":\"/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/PrivateTrafficManagerProfiles/ptm-profile-70ad8z/healthPolicies/ptm-hp-70ad8z\",\"name\":\"ptm-hp-70ad8z\",\"type\":\"Microsoft.Network/PrivateTrafficManagerProfiles/healthPolicies\"},{\"kind\":\"Probe\",\"properties\":{\"probeConfig\":{\"protocol\":\"HTTP\",\"port\":80,\"path\":\"/ping\",\"intervalInSeconds\":30,\"timeoutInSeconds\":10,\"toleratedNumberOfFailures\":3}},\"id\":\"/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/PrivateTrafficManagerProfiles/ptm-profile-70ad8z/healthPolicies/ptm-hp-del-70ad8z\",\"name\":\"ptm-hp-del-70ad8z\",\"type\":\"Microsoft.Network/PrivateTrafficManagerProfiles/healthPolicies\"}]}",
+      "isContentBase64": false
+    }
+  }
+}

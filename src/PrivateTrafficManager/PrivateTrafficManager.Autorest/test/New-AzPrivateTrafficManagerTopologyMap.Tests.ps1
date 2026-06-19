@@ -34,4 +34,23 @@ Describe 'New-AzPrivateTrafficManagerTopologyMap' {
         $help = Get-Help New-AzPrivateTrafficManagerTopologyMap
         $help.Description | Should Not BeNullOrEmpty
     }
+
+    It 'CreateExpanded - should create a new topology map' {
+        $newTopoName = "ptm-topo-new-$($env.randomStr)"
+        $newTopoJson = @{
+            location = "global"
+            properties = @{
+                sites = @()
+            }
+        } | ConvertTo-Json -Depth 5
+        $result = New-AzPrivateTrafficManagerTopologyMap `
+            -Name $newTopoName `
+            -ResourceGroupName $env.resourceGroupName `
+            -JsonString $newTopoJson
+        $result | Should -Not -BeNullOrEmpty
+        $result.Name | Should -Be $newTopoName
+        Remove-AzPrivateTrafficManagerTopologyMap `
+            -Name $newTopoName `
+            -ResourceGroupName $env.resourceGroupName
+    }
 }

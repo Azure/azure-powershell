@@ -39,4 +39,21 @@ Describe 'New-AzPrivateTrafficManagerEndpoint' {
         $help = Get-Help New-AzPrivateTrafficManagerEndpoint
         $help.Description | Should Not BeNullOrEmpty
     }
+
+    It 'CreateExpanded - should create a new endpoint' {
+        $newEpName = "ptm-ep-new-$($env.randomStr)"
+        $result = New-AzPrivateTrafficManagerEndpoint `
+            -Name $newEpName `
+            -PrivateTrafficManagerProfileName $env.profileName `
+            -ResourceGroupName $env.resourceGroupName `
+            -Target "app3.contoso.internal" `
+            -EndpointStatus "Enabled" `
+            -Weight 30
+        $result | Should -Not -BeNullOrEmpty
+        $result.Name | Should -Be $newEpName
+        Remove-AzPrivateTrafficManagerEndpoint `
+            -Name $newEpName `
+            -PrivateTrafficManagerProfileName $env.profileName `
+            -ResourceGroupName $env.resourceGroupName
+    }
 }

@@ -44,4 +44,12 @@ Describe 'Update-AzPrivateTrafficManagerSite' {
         $help = Get-Help Update-AzPrivateTrafficManagerSite
         $help.Description | Should Not BeNullOrEmpty
     }
+
+    It 'UpdateExpanded - should update site properties' {
+        { Update-AzPrivateTrafficManagerSite `
+            -Name $env.siteName `
+            -TopologyMapName $env.topologyMapName `
+            -ResourceGroupName $env.resourceGroupName `
+            -VirtualNetworkId @() } | Should -Not -Throw
+    }
 }

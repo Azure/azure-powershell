@@ -34,4 +34,11 @@ Describe 'Remove-AzPrivateTrafficManagerSite' {
         $help = Get-Help Remove-AzPrivateTrafficManagerSite
         $help.Description | Should Not BeNullOrEmpty
     }
+
+    It 'Delete - should remove a site' {
+        { Remove-AzPrivateTrafficManagerSite `
+            -Name $env.siteNameForDelete `
+            -TopologyMapName $env.topologyMapName `
+            -ResourceGroupName $env.resourceGroupName } | Should -Not -Throw
+    }
 }

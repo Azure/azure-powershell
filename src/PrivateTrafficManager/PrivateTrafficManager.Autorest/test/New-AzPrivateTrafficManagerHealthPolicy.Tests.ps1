@@ -39,4 +39,33 @@ Describe 'New-AzPrivateTrafficManagerHealthPolicy' {
         $help = Get-Help New-AzPrivateTrafficManagerHealthPolicy
         $help.Description | Should Not BeNullOrEmpty
     }
+
+    It 'CreateViaJsonString - should create a new health policy' {
+        $newHpName = "ptm-hp-new-$($env.randomStr)"
+        $hpJson = @{
+            properties = @{
+                name = $newHpName
+                probeConfig = @{
+                    protocol = "HTTPS"
+                    port = 8443
+                    path = "/status"
+                    intervalInSeconds = 30
+                    timeoutInSeconds = 10
+                    toleratedNumberOfFailures = 3
+                }
+            }
+            kind = "Probe"
+        } | ConvertTo-Json -Depth 5
+        $result = New-AzPrivateTrafficManagerHealthPolicy `
+            -Name $newHpName `
+            -PrivateTrafficManagerProfileName $env.profileName `
+            -ResourceGroupName $env.resourceGroupName `
+            -JsonString $hpJson
+        $result | Should -Not -BeNullOrEmpty
+        $result.Name | Should -Be $newHpName
+        Remove-AzPrivateTrafficManagerHealthPolicy `
+            -Name $newHpName `
+            -PrivateTrafficManagerProfileName $env.profileName `
+            -ResourceGroupName $env.resourceGroupName
+    }
 }
