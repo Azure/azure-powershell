@@ -145,10 +145,12 @@ function New-AzCdnProfile {
         ${ProxyUseDefaultCredentials}
     )
     
-    if(-Not (ISFrontDoorCdnProfile($PSBoundParameters['SkuName']))){
-        Az.Cdn.internal\New-AzCdnProfile @PSBoundParameters
-    }else{
-        throw "$($PSBoundParameters['SkuName']) is not a valid SKU. Please use a valid AzureCDN SkuName.";
+    process {
+        if(-Not (ISFrontDoorCdnProfile($PSBoundParameters['SkuName']))){
+            Az.Cdn.internal\New-AzCdnProfile @PSBoundParameters
+        }else{
+            throw "$($PSBoundParameters['SkuName']) is not a valid SKU. Please use a valid AzureCDN SkuName.";
+        }
     }
 }
     
