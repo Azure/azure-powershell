@@ -198,11 +198,15 @@ function New-AzChangeSafetyChangeRecord_Targets {
         # Set ChangeDefinition parameters based on -Targets
         $params['ChangeDefinitionKind'] = 'Targets'
         $params['ChangeDefinitionName'] = $TargetName
-        
+
         # Wrap targets in the expected structure: { targets: [...] }
-        # If a single hashtable is passed, wrap it in an array
-        $targetArray = if ($Targets -is [hashtable]) { @($Targets) } else { $Targets }
-        $params['ChangeDefinitionDetail'] = @{ targets = $targetArray }
+        # Use a typed list so that even a single target is serialized as a JSON
+        # array. A bare object[] with one element gets unwrapped to a scalar
+        # during the IAny (free-form) conversion, which makes the service reject
+        # the payload ("ChangeDefinition ... should have 'targets'").
+        $targetList = [System.Collections.Generic.List[object]]::new()
+        foreach ($target in $Targets) { $targetList.Add($target) }
+        $params['ChangeDefinitionDetail'] = @{ targets = $targetList }
 
         # Copy runtime parameters
         if ($PSBoundParameters.ContainsKey('DefaultProfile')) { $params['DefaultProfile'] = $DefaultProfile }
