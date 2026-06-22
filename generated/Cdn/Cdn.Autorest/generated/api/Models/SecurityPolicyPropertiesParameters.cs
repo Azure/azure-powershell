@@ -13,15 +13,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyPropertiesParametersInternal
     {
 
-        /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyPropertiesParametersInternal.Type { get => this._type; set { {_type = value;} } }
-
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
-        private string _type= @"WebApplicationFirewall";
+        private string _type;
 
         /// <summary>The type of the Security policy to create.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public string Type { get => this._type; }
+        public string Type { get => this._type; set => this._type = value; }
 
         /// <summary>Creates an new <see cref="SecurityPolicyPropertiesParameters" /> instance.</summary>
         public SecurityPolicyPropertiesParameters()
@@ -36,14 +33,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>The type of the Security policy to create.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = true,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
         Description = @"The type of the Security policy to create.",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
-        string Type { get;  }
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("WebApplicationFirewall", "WebApplicationFirewallEmbedded")]
+        string Type { get; set; }
 
     }
     /// The json object containing security policy parameters
@@ -51,6 +49,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
     {
         /// <summary>The type of the Security policy to create.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("WebApplicationFirewall", "WebApplicationFirewallEmbedded")]
         string Type { get; set; }
 
     }
