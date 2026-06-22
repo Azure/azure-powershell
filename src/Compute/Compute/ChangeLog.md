@@ -27,7 +27,6 @@
     - Added `Get-AzVmssLifecycleHookEvent` cmdlet to list or retrieve lifecycle hook events for a VMSS
     - Added `Update-AzVmssLifecycleHookEvent` cmdlet to respond to a lifecycle hook event (approve, reject, or delay) with optional per-VM instance filtering via `-InstanceId`
     - Added `-LifecycleHooksProfile` parameter to `New-AzVmssConfig` to support inline lifecycle hooks profile construction
-    - Note: `-DefaultAction Reject` and `-ActionState Rejected` return a server error during preview; no client change is needed at GA
 * Added `-InstantAccess` parameter to `New-AzRestorePointCollection` cmdlet to enable instant access snapshots for restore points on Premium SSD v2 and Ultra disks
 * Added `-InstantAccess` parameter to `Update-AzRestorePointCollection` cmdlet to enable or disable instant access on an existing restore point collection
 * Added `-InstantAccessDurationInMinutes` parameter to `New-AzRestorePoint` cmdlet to specify the duration (1-300 minutes) for which the instant access snapshot is retained

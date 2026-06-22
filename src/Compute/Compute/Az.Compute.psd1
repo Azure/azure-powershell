@@ -221,7 +221,10 @@ CmdletsToExport = 'Add-AzGalleryInVMAccessControlProfileVersionRulesIdentity',
                'Update-AzGalleryInVMAccessControlProfileVersion', 'Update-AzHost', 
                'Update-AzImage', 'Update-AzRestorePointCollection', 
                'Update-AzSnapshot', 'Update-AzSshKey', 'Update-AzVM', 'Update-AzVmss', 
-               'Update-AzVmssInstance', 'Update-AzVmssVM'
+               'Update-AzVmssInstance', 'Update-AzVmssVM', 
+               'New-AzVmssLifecycleHookConfig', 'Set-AzVmssLifecycleHooksProfile', 
+               'Remove-AzVmssLifecycleHook', 'Get-AzVmssLifecycleHookEvent', 
+               'Update-AzVmssLifecycleHookEvent'
 
 # Variables to export from this module
 # VariablesToExport = @()
