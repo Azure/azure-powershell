@@ -268,6 +268,11 @@ directive:
       verb: Set|Update
       subject: AccessPolicyAssignment
     remove: true
+  # Remove Update-Migration as there is no update to take place for an ongoing migration
+  - where:
+      verb: Update
+      subject: Migration
+    remove: true
 
   # Hide cmdlets
   - where:

@@ -1,22 +1,7 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get migration status for a cache
 ```powershell
-{{ Add code here }}
+Get-AzRedisEnterpriseCacheMigration -ClusterName "cache1" -ResourceGroupName "rg1"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Gets the migration status for the specified Redis Enterprise cache cluster.
 

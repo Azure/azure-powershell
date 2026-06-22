@@ -30,27 +30,12 @@ Cancel or rollback the migration operation in a Redis Enterprise cluster.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Cancel an in-progress migration
 ```powershell
-{{ Add code here }}
+Stop-AzRedisEnterpriseCacheMigration -ClusterName "cache1" -ResourceGroupName "rg1"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Cancels an in-progress migration to the specified Redis Enterprise cache cluster.
 
 ## PARAMETERS
 

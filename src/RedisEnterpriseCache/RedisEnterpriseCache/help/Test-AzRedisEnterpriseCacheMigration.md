@@ -59,27 +59,12 @@ Validates if a source Azure Cache for Redis resource can be migrated to a target
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Validate a migration before starting
 ```powershell
-{{ Add code here }}
+Test-AzRedisEnterpriseCacheMigration -ClusterName "cache1" -ResourceGroupName "rg1" -SourceResourceId "/subscriptions/e7b5a9d2-6b6a-4d2f-9143-20d9a10f5b8f/resourceGroups/rg1/providers/Microsoft.Cache/redis/cache1" -SkipDataMigration
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Validates whether a migration from the source Azure Cache for Redis to the target Redis Enterprise cache is possible.
 
 ## PARAMETERS
 

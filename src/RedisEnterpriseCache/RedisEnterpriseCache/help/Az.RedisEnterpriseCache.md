@@ -87,6 +87,3 @@ Updates an existing Redis Enterprise database
 ### [Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion](Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion.md)
 Upgrades the database Redis version to the latest available.
 
-### [Update-AzRedisEnterpriseCacheMigration](Update-AzRedisEnterpriseCacheMigration.md)
-Starts a new migration
-
