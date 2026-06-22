@@ -27,11 +27,10 @@ For information on how to develop for `Az.ChangeSafety`, see [how-to.md](how-to.
 > see https://aka.ms/autorest
 
 ```yaml
-commit: RPSaaSMaster
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/changesafety/resource-manager/Microsoft.ChangeSafety/ChangeControl/preview/2026-01-01-preview/ChangeControl.json
+  - file:///Q:/workspace/azure-rest-api-specs-pr/specification/changesafety/resource-manager/Microsoft.ChangeSafety/ChangeControl/preview/2026-01-01-preview/ChangeControl.json
 
 module-version: 0.1.0
 title: ChangeSafety

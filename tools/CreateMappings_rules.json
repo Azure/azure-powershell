@@ -1001,10 +1001,6 @@
     "module": "EdgeAction"
   },
   {
-    "module": "ChangeSafety",
-    "alias": "ChangeSafety"
-  },
-  {
     "alias": "ArtifactSigning",
     "module": "ArtifactSigning"
   },
