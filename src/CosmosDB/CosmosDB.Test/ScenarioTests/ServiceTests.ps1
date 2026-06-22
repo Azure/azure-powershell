@@ -27,7 +27,7 @@ function Test-ServiceRelatedCmdlets{
   Try
   {
     New-AzResourceGroup -ResourceGroupName $resourceGroupName -Location $location
-    $account = New-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
+    $account = New-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DisableLocalAuth 1
     $service = New-AzCosmosDBService -ResourceGroupName $resourceGroupName -AccountName $accountName -ServiceName $serviceName -InstanceCount $instanceCount -InstanceSize $instanceSize
     Assert-AreEqual $service.InstanceCount $instanceCount
 
