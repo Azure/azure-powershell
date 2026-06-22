@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the identity.
         /// </summary>
-        public Identity Identity { get; private set; }
+        public Microsoft.Azure.Management.Automation.Models.Identity Identity { get; private set; }
 
         /// <summary>
         /// Gets or sets the encryption properties.

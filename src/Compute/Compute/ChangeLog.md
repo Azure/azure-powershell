@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+## Version 11.7.0
 * Added VMSS (Virtual Machine Scale Set) Lifecycle Hooks support (public preview)
     - Added `New-AzVmssLifecycleHookConfig` cmdlet to create an in-memory lifecycle hook configuration object
     - Added `Set-AzVmssLifecycleHooksProfile` cmdlet to attach lifecycle hooks to a VMSS configuration or live VMSS object
@@ -27,9 +28,17 @@
     - Added `Get-AzVmssLifecycleHookEvent` cmdlet to list or retrieve lifecycle hook events for a VMSS
     - Added `Update-AzVmssLifecycleHookEvent` cmdlet to respond to a lifecycle hook event (approve, reject, or delay) with optional per-VM instance filtering via `-InstanceId`
     - Added `-LifecycleHooksProfile` parameter to `New-AzVmssConfig` to support inline lifecycle hooks profile construction
-* Added `-InstantAccess` parameter to `New-AzRestorePointCollection` cmdlet to enable instant access snapshots for restore points on Premium SSD v2 and Ultra disks
-* Added `-InstantAccess` parameter to `Update-AzRestorePointCollection` cmdlet to enable or disable instant access on an existing restore point collection
-* Added `-InstantAccessDurationInMinutes` parameter to `New-AzRestorePoint` cmdlet to specify the duration (1-300 minutes) for which the instant access snapshot is retained
+    - Note: `-DefaultAction Reject` and `-ActionState Rejected` return a server error during preview; no client change is needed at GA
+
+## Version 11.6.0
+* Added ChangeSafety Support
+* Added `-ZonalPlatformFaultDomainAlignMode` to `New-AzVmssConfig`, `New-AzVmss` (SimpleParameterSet), and `Update-AzVmss` cmdlets.
+* Added `-OsDiskStorageFaultDomainAlignment` parameter to `Set-AzVmssStorageProfile` cmdlet.
+* Added `-StorageFaultDomainAlignment` parameter to `Add-AzVmssDataDisk`, `Set-AzVMOSDisk`, and `Add-AzVMDataDisk` cmdlets.
+* Fixed `Set-AzVMRunCommand` and `Set-AzVmssVMRunCommand` to skip blank lines when processing local script files via `-ScriptLocalPath`, preventing invalid `;;` syntax errors in shell scripts.
+* Added `-InstantAccess` parameter to `New-AzRestorePointCollection` and `Update-AzRestorePointCollection` cmdlets.
+* Added `-InstantAccessDurationInMinutes` parameter to `New-AzRestorePoint` cmdlet.
+
 ## Version 11.5.0
 * Added `-Feature` parameter to `Update-AzGalleryImageDefinition` to allow updating existing gallery image features (such as DiskControllerTypes, SecurityType, IsAcceleratedNetwork, and IsHibernate). Each feature supports a `StartsAtVersion` property to specify the minimum gallery image version that supports the updated feature.
 * Added `-AllowUpdateImage` parameter to `Update-AzGalleryImageDefinition`. Must be set to true when using the `-Feature` parameter to update gallery image features.

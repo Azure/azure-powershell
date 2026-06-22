@@ -75,7 +75,7 @@ Create a new replica for an existing SignalR service.
 Create or update a resource.
 
 ### [New-AzWebPubSubCustomCertificate](New-AzWebPubSubCustomCertificate.md)
-Create or update a custom certificate.
+Create a custom certificate.
 
 ### [New-AzWebPubSubCustomDomain](New-AzWebPubSubCustomDomain.md)
 Create or update a custom domain.
@@ -87,7 +87,7 @@ Create an in-memory object for EventHubEndpoint.
 Create an in-memory object for EventNameFilter.
 
 ### [New-AzWebPubSubHub](New-AzWebPubSubHub.md)
-Create or update a hub setting.
+Create a hub setting.
 
 ### [New-AzWebPubSubKey](New-AzWebPubSubKey.md)
 Regenerate the access key for the resource.
@@ -157,5 +157,11 @@ Update the Network ACL of a SignalR service.
 Update properties of a SignalR replica.
 
 ### [Update-AzWebPubSub](Update-AzWebPubSub.md)
-Operation to update an exiting resource.
+Update a resource.
+
+### [Update-AzWebPubSubCustomDomain](Update-AzWebPubSubCustomDomain.md)
+Update a custom domain.
+
+### [Update-AzWebPubSubHub](Update-AzWebPubSubHub.md)
+Update a hub setting.
 

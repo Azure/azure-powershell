@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/undo-azdataprotectionbackupinstancedeletion
 schema: 2.0.0
@@ -15,14 +15,21 @@ Undeletes a soft deleted backup instance
 ### Undelete (Default)
 ```
 Undo-AzDataProtectionBackupInstanceDeletion -BackupInstanceName <String> -ResourceGroupName <String>
- -VaultName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -VaultName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UndeleteViaIdentityBackupVault
+```
+Undo-AzDataProtectionBackupInstanceDeletion -BackupInstanceName <String>
+ -BackupVaultInputObject <IDataProtectionIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UndeleteViaIdentity
 ```
-Undo-AzDataProtectionBackupInstanceDeletion -InputObject <IDataProtectionIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Undo-AzDataProtectionBackupInstanceDeletion -InputObject <IDataProtectionIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,10 +40,10 @@ Undeletes a soft deleted backup instance
 ### Example 1: Undelete the soft deleted backup instance
 ```powershell
 $softDeletedBI = Get-AzDataProtectionSoftDeletedBackupInstance -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -VaultName $vaultName
-Undo-AzDataProtectionBackupInstanceDeletion -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $softDeletedBI[0].Name 
+Undo-AzDataProtectionBackupInstanceDeletion -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $softDeletedBI[0].Name
 ```
 
-The first comamnd is used to fetch the backup instances which are in soft deleted for a give backup vault.
+The first command is used to fetch the backup instances which are in soft deleted for a give backup vault.
 The second command undeletes the backup instance to enable the protection again, revert the soft deleted state.
 
 ## PARAMETERS
@@ -61,13 +68,28 @@ The name of the deleted backup instance
 
 ```yaml
 Type: System.String
-Parameter Sets: Undelete
+Parameter Sets: Undelete, UndeleteViaIdentityBackupVault
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackupVaultInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
+Parameter Sets: UndeleteViaIdentityBackupVault
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -89,7 +111,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
@@ -225,4 +246,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

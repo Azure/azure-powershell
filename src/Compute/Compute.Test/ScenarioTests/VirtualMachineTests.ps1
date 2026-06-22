@@ -8170,3 +8170,119 @@ function Test-VMDataDiskIOPSMBPS
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test Set-AzVMOSDisk and Add-AzVMDataDisk with StorageFaultDomainAlignment parameter
+#>
+function Test-VMStorageFaultDomainAlignment
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = "eastus2euap";
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmsize = 'Standard_D4s_v3';
+        $vmname = 'vm' + $rgname;
+        $stnd = "Standard";
+
+        # Create VMSS Flex (required for StorageFaultDomainAlignment - CRP rejects it on standalone VMs)
+        $vmssName = "vmss" + $rgname;
+
+        # NRP (needed for both VMSS and VM)
+        $vnetname = "vnet" + $rgname;
+        $subnetname = "subnet" + $rgname;
+        $NICName = "nic" + $rgname;
+        $NSGName = "nsg" + $rgname;
+        $subnetAddress = "10.0.2.0/24";
+        $vnetAddress = "10.0.0.0/16";
+
+        $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
+        $vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
+        $nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP -Protocol Tcp -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
+        $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgname -Location $loc -Name $NSGName -SecurityRules $nsgRuleRDP;
+
+        # Credentials
+        $password = Get-PasswordForVM;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # VMSS Flex config with full VM profile (storage + OS + network required for Flex)
+        $subnetId = $vnet.Subnets[0].Id;
+        $ipConfig = New-AzVmssIpConfig -Name 'ipconfig1' -SubnetId $subnetId;
+        $vmssConfig = New-AzVmssConfig -Location $loc -SkuCapacity 0 -SkuName $vmsize -OrchestrationMode 'Flexible' -SecurityType $stnd -Zone "1","2","3" -PlatformFaultDomainCount 2 -ZonalPlatformFaultDomainAlignMode "BestEffortAligned";
+        Set-AzVmssStorageProfile $vmssConfig -OsDiskCreateOption "FromImage" -ManagedDisk "Premium_LRS" -ImageReferencePublisher "MicrosoftWindowsServer" -ImageReferenceOffer "WindowsServer" -ImageReferenceSku "2022-Datacenter" -ImageReferenceVersion "latest";
+        Set-AzVmssOsProfile $vmssConfig -AdminUsername $cred.UserName -AdminPassword $cred.Password -ComputerNamePrefix "vm";
+        Add-AzVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmssConfig -Name 'nicconfig1' -Primary $true -IPConfiguration $ipConfig -NetworkApiVersion "2020-11-01";
+
+        $VMSS = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmssConfig;
+
+        # Create a separate NIC for the individual VM
+        $nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $rgname -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
+
+        # VM Config within VMSS Flex
+        $OSDiskName = $vmname + "-osdisk";
+        $vmConfig = New-AzVMConfig -VMName $vmname -VMSize $vmsize -VmssId $VMSS.Id -SecurityType $stnd;
+        Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmname -Credential $cred;
+        Set-AzVMSourceImage -VM $vmConfig -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer" -Skus "2022-Datacenter" -Version latest;
+        Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
+
+        # Set OS disk with StorageFaultDomainAlignment
+        Set-AzVMOSDisk -VM $vmConfig -Name $OSDiskName -StorageAccountType "Premium_LRS" -Caching ReadWrite -CreateOption FromImage -StorageFaultDomainAlignment 'BestEffortAligned';
+        Assert-AreEqual $vmConfig.StorageProfile.OsDisk.StorageFaultDomainAlignment 'BestEffortAligned';
+
+        # Add data disk with BestEffortAligned StorageFaultDomainAlignment
+        Add-AzVMDataDisk -VM $vmConfig -Name 'datadisk0' -Lun 0 -CreateOption 'Empty' -DiskSizeInGB 128 -StorageAccountType 'Premium_LRS' -Caching 'ReadOnly' -StorageFaultDomainAlignment 'BestEffortAligned';
+        Assert-AreEqual $vmConfig.StorageProfile.DataDisks[0].StorageFaultDomainAlignment 'BestEffortAligned';
+
+        # Add data disk with BestEffortAligned StorageFaultDomainAlignment
+        Add-AzVMDataDisk -VM $vmConfig -Name 'datadisk1' -Lun 1 -CreateOption 'Empty' -DiskSizeInGB 64 -StorageAccountType 'Premium_LRS' -Caching 'None' -StorageFaultDomainAlignment 'BestEffortAligned';
+        Assert-AreEqual $vmConfig.StorageProfile.DataDisks[1].StorageFaultDomainAlignment 'BestEffortAligned';
+
+        # Add data disk without StorageFaultDomainAlignment
+        Add-AzVMDataDisk -VM $vmConfig -Name 'datadisk2' -Lun 2 -CreateOption 'Empty' -DiskSizeInGB 32 -StorageAccountType 'Premium_LRS' -Caching 'None';
+        Assert-Null $vmConfig.StorageProfile.DataDisks[2].StorageFaultDomainAlignment;
+
+        # Create the VM within the VMSS Flex
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
+
+        # Get the VM instance view and verify StorageAlignmentStatus on disk instance views
+        $vmStatus = Get-AzVM -ResourceGroupName $rgname -Name $vmname -Status;
+
+        $validAlignmentStatuses = @('Aligned', 'Unaligned');
+
+        # OS disk alignment status from instance view
+        Assert-NotNull $vmStatus.Disks;
+        $osDisk = $vmStatus.Disks | Where-Object { $_.Name -eq $OSDiskName };
+        Assert-NotNull $osDisk;
+        Assert-NotNull $osDisk.StorageAlignmentStatus;
+        Assert-True { $validAlignmentStatuses -contains $osDisk.StorageAlignmentStatus };
+
+        # Data disk alignment statuses from instance view
+        $dataDisk0 = $vmStatus.Disks | Where-Object { $_.Name -eq 'datadisk0' };
+        Assert-NotNull $dataDisk0;
+        Assert-NotNull $dataDisk0.StorageAlignmentStatus;
+        Assert-True { $validAlignmentStatuses -contains $dataDisk0.StorageAlignmentStatus };
+
+        $dataDisk1 = $vmStatus.Disks | Where-Object { $_.Name -eq 'datadisk1' };
+        Assert-NotNull $dataDisk1;
+        Assert-NotNull $dataDisk1.StorageAlignmentStatus;
+        Assert-True { $validAlignmentStatuses -contains $dataDisk1.StorageAlignmentStatus };
+
+        $dataDisk2 = $vmStatus.Disks | Where-Object { $_.Name -eq 'datadisk2' };
+        Assert-NotNull $dataDisk2;
+        Assert-NotNull $dataDisk2.StorageAlignmentStatus;
+        Assert-True { $validAlignmentStatuses -contains $dataDisk2.StorageAlignmentStatus };
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

@@ -16,8 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzAppConfigurationRevisio
 
 Describe 'Get-AzAppConfigurationRevision' {
     It 'Get' {
-        {
-            Get-AzAppConfigurationRevision -Endpoint $env.endpoint
-        } | Should -Not -Throw
+        $results = Get-AzAppConfigurationRevision -Endpoint $env.endpoint
+        $results | Should -Not -BeNullOrEmpty
+        $results[0].PSObject.Properties.Name | Should -Contain 'Description'
     }
 }

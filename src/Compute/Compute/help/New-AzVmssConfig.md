@@ -37,7 +37,7 @@ New-AzVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [-EdgeZone 
  [-EnableResilientVMDelete] [-EnableAutomaticZoneRebalance] [-AutomaticZoneRebalanceStrategy <String>]
  [-AutomaticZoneRebalanceBehavior <String>] [-ZonePlacementPolicy <String>] [-MaxZoneCount <Int32>]
  [-EnableMaxInstancePercentPerZone] [-MaxInstancePercentPerZoneValue <Int32>] [-IncludeZone <String[]>]
- [-ExcludeZone <String[]>] [-HighSpeedInterconnectPlacement <String>] [-LifecycleHooksProfile <LifecycleHooksProfile>] [-DefaultProfile <IAzureContextContainer>] 
+ [-ExcludeZone <String[]>] [-HighSpeedInterconnectPlacement <String>] [-LifecycleHooksProfile <LifecycleHooksProfile>] [-ZonalPlatformFaultDomainAlignMode <String>] [-DefaultProfile <IAzureContextContainer>] 
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -66,7 +66,7 @@ New-AzVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [-EdgeZone 
  [-EnableResilientVMDelete] [-EnableAutomaticZoneRebalance] [-AutomaticZoneRebalanceStrategy <String>]
  [-AutomaticZoneRebalanceBehavior <String>] [-ZonePlacementPolicy <String>] [-MaxZoneCount <Int32>]
  [-EnableMaxInstancePercentPerZone] [-MaxInstancePercentPerZoneValue <Int32>] [-IncludeZone <String[]>]
- [-ExcludeZone <String[]>] [-HighSpeedInterconnectPlacement <String>] [-LifecycleHooksProfile <LifecycleHooksProfile>] [-DefaultProfile <IAzureContextContainer>] 
+ [-ExcludeZone <String[]>] [-HighSpeedInterconnectPlacement <String>] [-LifecycleHooksProfile <LifecycleHooksProfile>] [-ZonalPlatformFaultDomainAlignMode <String>] [-DefaultProfile <IAzureContextContainer>] 
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -1350,6 +1350,22 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ZonalPlatformFaultDomainAlignMode
+Specifies the align mode between Virtual Machine Scale Set (VMSS) compute and storage Fault Domain count. Valid values are 'Aligned', 'Unaligned', and 'BestEffortAligned'. 'BestEffortAligned' offloads alignment to VMSS - disks that support enough Storage Fault Domains are aligned, while others remain unaligned, preventing deployment failures for mixed-SKU disk configurations. Applicable to VMSS Flex only.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Aligned, Unaligned, BestEffortAligned
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -LifecycleHooksProfile
 Specifies the lifecycle hooks profile for the virtual machine scale set.
 
@@ -1371,7 +1387,6 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
-```
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.

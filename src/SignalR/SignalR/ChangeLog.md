@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 3.0.0
+* Added ChangeSafety Support
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
+
 ## Version 2.3.3
 * Preannounced breaking changes. Please refer to https://go.microsoft.com/fwlink/?linkid=2333229
 

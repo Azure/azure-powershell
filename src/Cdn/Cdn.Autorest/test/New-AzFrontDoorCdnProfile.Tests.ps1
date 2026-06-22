@@ -14,35 +14,23 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnProfile'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzFrontDoorCdnProfile'  {
+Describe 'New-AzFrontDoorCdnProfile' {
     BeforeAll {
-        $profileSku = "Standard_AzureFrontDoor"
+        $script:profileName = 'fdp-pstest-new'
+    }
+
+    AfterAll {
+        Remove-AzFrontDoorCdnProfile -Name $script:profileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
     }
 
     It 'CreateExpanded' {
-        $frontDoorCdnProfileName = 'fdp-pstest010'
-        Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
-
-        $frontDoorCdnProfile = New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
-        
-        $frontDoorCdnProfile.Name | Should -Be $frontDoorCdnProfileName
-        $frontDoorCdnProfile.SkuName | Should -Be $profileSku
-        $frontDoorCdnProfile.Location | Should -Be "Global"
-    }
-
-    It 'CreateExpanded' {
-        $frontDoorCdnProfileName = 'fdp-pstest011'
-        Write-Host -ForegroundColor Green "New AzFrontDoorCdnProfile: $($frontDoorCdnProfileName), with using profile logScrubbing"
-
-        $rule1 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -State Enabled 
-        $rule2 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable QueryStringArgNames -State Enabled
-        $rules = New-AzFrontDoorCdnProfileLogScrubbingObject -ScrubbingRule @($rule1, $rule2) -State Enabled
-
-        $frontDoorCdnProfile = New-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -LogScrubbingRule $rules.ScrubbingRule -LogScrubbingState Enabled -Location Global  -SkuName $profileSku
-
-        $frontDoorCdnProfile.LogScrubbingState | Should -Be "Enabled"
-        $frontDoorCdnProfile.LogScrubbingRule.Count | Should -Be 2
-        $frontDoorCdnProfile.LogScrubbingRule[0].MatchVariable | Should -Be 'RequestIPAddress'
-        $frontDoorCdnProfile.LogScrubbingRule[1].MatchVariable | Should -Be 'QueryStringArgNames'
+        $rule1 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -SelectorMatchOperator EqualsAny -State Enabled
+        $rule2 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable QueryStringArgNames -SelectorMatchOperator EqualsAny -State Enabled
+        $p = New-AzFrontDoorCdnProfile -SkuName 'Standard_AzureFrontDoor' -Name $script:profileName -ResourceGroupName $env.ResourceGroupName -Location Global -LogScrubbingRule @($rule1, $rule2) -LogScrubbingState Enabled
+        $p.Name | Should -Be $script:profileName
+        $p.SkuName | Should -Be 'Standard_AzureFrontDoor'
+        $p.Location | Should -Be 'Global'
+        $p.LogScrubbingState | Should -Be 'Enabled'
+        $p.LogScrubbingRule.Count | Should -Be 2
     }
 }

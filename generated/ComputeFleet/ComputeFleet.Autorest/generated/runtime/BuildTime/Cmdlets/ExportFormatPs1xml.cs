@@ -25,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.PowerShell
 
     private static readonly bool IsAzure = Convert.ToBoolean(@"true");
 
-    private static string SelectedBySuffix = @"";
+    private static string SelectedBySuffix = @"#Multiple";
     
     protected override void ProcessRecord()
     {

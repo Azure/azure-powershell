@@ -1,4 +1,4 @@
-Describe 'StackHCI Registration Functions' {
+﻿Describe 'StackHCI Registration Functions' {
 
     BeforeAll {
         $privateDll = Join-Path $PSScriptRoot '..' 'bin' 'Az.StackHCI.private.dll'
@@ -1180,7 +1180,7 @@ Describe 'StackHCI Registration Functions' {
             Mock Execute-Without-ProgressBar { return $null }
             Mock Invoke-AzRestMethod { return [PSCustomObject]@{ StatusCode = 200 } }
 
-            # Don't provide ResourceName — it should be resolved from Get-Cluster
+            # Don't provide ResourceName - it should be resolved from Get-Cluster
             $output = Register-AzStackHCI -SubscriptionId 'sub-1' -Region 'eastus' -Confirm:$false -WarningAction SilentlyContinue -ErrorAction SilentlyContinue 2>&1
             # Verify Azure-Login was called (means it got past the cluster name resolution)
             Assert-MockCalled Azure-Login -Times 1

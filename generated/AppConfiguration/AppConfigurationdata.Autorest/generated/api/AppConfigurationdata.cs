@@ -39,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task CheckKeyValue(string key, string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> tags, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckKeyValueOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task CheckKeyValueViaIdentity(global::System.String viaIdentity, string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> tags, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckKeyValueOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task CheckKeys(string syncToken, string acceptDatetime, string xMSClientRequestId, string name, string after, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckKeysOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task CheckKeysViaIdentity(global::System.String viaIdentity, string syncToken, string acceptDatetime, string xMSClientRequestId, string name, string after, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckKeysOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -500,7 +500,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task CheckLabels(string syncToken, string acceptDatetime, string xMSClientRequestId, string name, string after, System.Collections.Generic.List<string> Select, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckLabelsOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -565,7 +565,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task CheckLabelsViaIdentity(global::System.String viaIdentity, string syncToken, string acceptDatetime, string xMSClientRequestId, string name, string after, System.Collections.Generic.List<string> Select, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckLabelsOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -724,7 +724,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task CheckRevisions(string syncToken, string acceptDatetime, string xMSClientRequestId, string key, string label, string after, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> tags, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckRevisionsOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -798,7 +798,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task CheckRevisionsViaIdentity(global::System.String viaIdentity, string syncToken, string acceptDatetime, string xMSClientRequestId, string key, string label, string after, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> tags, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckRevisionsOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -961,7 +961,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task CheckSnapshot(string name, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckSnapshotOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1023,7 +1023,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task CheckSnapshotViaIdentity(global::System.String viaIdentity, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckSnapshotOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1173,7 +1173,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task CheckSnapshots(string syncToken, string xMSClientRequestId, string after, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckSnapshotsOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1226,7 +1226,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task CheckSnapshotsViaIdentity(global::System.String viaIdentity, string syncToken, string xMSClientRequestId, string after, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ICheckSnapshotsOkResponseHeaders>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1362,7 +1362,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task CreateSnapshot(string name, string syncToken, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1413,7 +1413,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task CreateSnapshotViaIdentity(global::System.String viaIdentity, string syncToken, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1472,7 +1472,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot> CreateSnapshotViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot body, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1532,7 +1532,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task CreateSnapshotViaJsonString(string name, string syncToken, string endpoint, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1580,7 +1580,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot> CreateSnapshotViaJsonStringWithResult(string name, string syncToken, string endpoint, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1629,7 +1629,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot> CreateSnapshotWithResult(string name, string syncToken, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot body, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2000,7 +2000,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task DeleteKeyValue(string key, string syncToken, string ifMatch, string xMSClientRequestId, string label, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IDeleteKeyValueNoContentResponseHeaders>, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2060,7 +2060,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task DeleteKeyValueViaIdentity(global::System.String viaIdentity, string syncToken, string ifMatch, string xMSClientRequestId, string label, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IDeleteKeyValueNoContentResponseHeaders>, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2127,7 +2127,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> DeleteKeyValueViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string ifMatch, string xMSClientRequestId, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2194,7 +2194,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> DeleteKeyValueWithResult(string key, string syncToken, string ifMatch, string xMSClientRequestId, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2397,7 +2397,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task DeleteLock(string key, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2462,7 +2462,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task DeleteLockViaIdentity(global::System.String viaIdentity, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2535,7 +2535,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> DeleteLockViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2608,7 +2608,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> DeleteLockWithResult(string key, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2811,7 +2811,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task GetKeyValue(string key, string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> tags, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2889,7 +2889,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task GetKeyValueViaIdentity(global::System.String viaIdentity, string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> tags, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2975,7 +2975,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> GetKeyValueViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> tags, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3061,7 +3061,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> GetKeyValueWithResult(string key, string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> tags, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3283,7 +3283,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task GetKeyValues(string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, string key, string label, string after, System.Collections.Generic.List<string> Select, string snapshot, System.Collections.Generic.List<string> tags, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3368,7 +3368,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task GetKeyValuesViaIdentity(global::System.String viaIdentity, string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, string key, string label, string after, System.Collections.Generic.List<string> Select, string snapshot, System.Collections.Generic.List<string> tags, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3460,7 +3460,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult> GetKeyValuesViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, string key, string label, string after, System.Collections.Generic.List<string> Select, string snapshot, System.Collections.Generic.List<string> tags, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3551,7 +3551,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult> GetKeyValuesWithResult(string syncToken, string acceptDatetime, string ifMatch, string ifNoneMatch, string key, string label, string after, System.Collections.Generic.List<string> Select, string snapshot, System.Collections.Generic.List<string> tags, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3768,7 +3768,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task GetKeys(string syncToken, string acceptDatetime, string name, string after, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3825,7 +3825,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task GetKeysViaIdentity(global::System.String viaIdentity, string syncToken, string acceptDatetime, string name, string after, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3889,7 +3889,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyListResult> GetKeysViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string acceptDatetime, string name, string after, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3952,7 +3952,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyListResult> GetKeysWithResult(string syncToken, string acceptDatetime, string name, string after, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4139,7 +4139,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task GetLabels(string syncToken, string acceptDatetime, string xMSClientRequestId, string name, string after, System.Collections.Generic.List<string> Select, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ILabelListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4204,7 +4204,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task GetLabelsViaIdentity(global::System.String viaIdentity, string syncToken, string acceptDatetime, string xMSClientRequestId, string name, string after, System.Collections.Generic.List<string> Select, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ILabelListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4276,7 +4276,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ILabelListResult> GetLabelsViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string acceptDatetime, string xMSClientRequestId, string name, string after, System.Collections.Generic.List<string> Select, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4347,7 +4347,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ILabelListResult> GetLabelsWithResult(string syncToken, string acceptDatetime, string xMSClientRequestId, string name, string after, System.Collections.Generic.List<string> Select, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4537,7 +4537,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task GetOperationDetails(string xMSClientRequestId, string snapshot, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IOperationDetails>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4584,7 +4584,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task GetOperationDetailsViaIdentity(global::System.String viaIdentity, string xMSClientRequestId, string snapshot, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IOperationDetails>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4638,7 +4638,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IOperationDetails> GetOperationDetailsViaIdentityWithResult(global::System.String viaIdentity, string xMSClientRequestId, string snapshot, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4691,7 +4691,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IOperationDetails> GetOperationDetailsWithResult(string xMSClientRequestId, string snapshot, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4871,7 +4871,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task GetRevisions(string syncToken, string acceptDatetime, string xMSClientRequestId, string key, string label, string after, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> tags, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4945,7 +4945,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task GetRevisionsViaIdentity(global::System.String viaIdentity, string syncToken, string acceptDatetime, string xMSClientRequestId, string key, string label, string after, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> tags, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5026,7 +5026,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult> GetRevisionsViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string acceptDatetime, string xMSClientRequestId, string key, string label, string after, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> tags, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5106,7 +5106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueListResult> GetRevisionsWithResult(string syncToken, string acceptDatetime, string xMSClientRequestId, string key, string label, string after, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> tags, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5312,7 +5312,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task GetSnapshot(string name, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, System.Collections.Generic.List<string> Select, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5377,7 +5377,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task GetSnapshotViaIdentity(global::System.String viaIdentity, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, System.Collections.Generic.List<string> Select, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5450,7 +5450,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot> GetSnapshotViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, System.Collections.Generic.List<string> Select, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5523,7 +5523,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot> GetSnapshotWithResult(string name, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, System.Collections.Generic.List<string> Select, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5718,7 +5718,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task GetSnapshots(string syncToken, string name, string after, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> status, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5775,7 +5775,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task GetSnapshotsViaIdentity(global::System.String viaIdentity, string syncToken, string name, string after, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> status, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5839,7 +5839,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotListResult> GetSnapshotsViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string name, string after, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> status, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5902,7 +5902,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotListResult> GetSnapshotsWithResult(string syncToken, string name, string after, System.Collections.Generic.List<string> Select, System.Collections.Generic.List<string> status, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6090,7 +6090,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task PutKeyValue(string key, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6161,7 +6161,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task PutKeyValueViaIdentity(global::System.String viaIdentity, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6240,7 +6240,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> PutKeyValueViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue body, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6320,7 +6320,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task PutKeyValueViaJsonString(string key, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, string endpoint, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6388,7 +6388,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> PutKeyValueViaJsonStringWithResult(string key, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, string endpoint, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6457,7 +6457,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> PutKeyValueWithResult(string key, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue body, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6662,7 +6662,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task PutLock(string key, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6727,7 +6727,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task PutLockViaIdentity(global::System.String viaIdentity, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6800,7 +6800,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> PutLockViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6873,7 +6873,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValue> PutLockWithResult(string key, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string label, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7072,7 +7072,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task UpdateSnapshot(string name, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7140,7 +7140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task UpdateSnapshotViaIdentity(global::System.String viaIdentity, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7216,7 +7216,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot> UpdateSnapshotViaIdentityWithResult(global::System.String viaIdentity, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7293,7 +7293,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task UpdateSnapshotViaJsonString(string name, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string endpoint, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7358,7 +7358,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot> UpdateSnapshotViaJsonStringWithResult(string name, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string endpoint, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7424,7 +7424,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshot> UpdateSnapshotWithResult(string name, string syncToken, string ifMatch, string ifNoneMatch, string xMSClientRequestId, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ISnapshotUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2024-09-01";
+            var apiVersion = @"2026-04-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {

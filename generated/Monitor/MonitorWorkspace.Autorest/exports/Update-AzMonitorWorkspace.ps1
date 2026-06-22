@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update part of a workspace
+Update an Azure Monitor Workspace
 .Description
-Update part of a workspace
+Update an Azure Monitor Workspace
 .Example
 Update-AzMonitorWorkspace -Name azps-monitor-workspace -ResourceGroupName azps_test_group -Tag @{"123"="abc"}
 .Example
@@ -34,10 +34,12 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IMonitorWorkspaceIdentity>: Identity Parameter
-  [AzureMonitorWorkspaceName <String>]: The name of the Azure Monitor workspace.  The name is case insensitive
+  [AzureMonitorWorkspaceName <String>]: The name of the Azure Monitor Workspace. The name is case insensitive
   [Id <String>]: Resource identity path
+  [IssueName <String>]: The name of the IssueResource
+  [MetricsContainerName <String>]: The name of the MetricsContainer
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.monitor/update-azmonitorworkspace
 #>
@@ -46,18 +48,14 @@ function Update-AzMonitorWorkspace {
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('AzureMonitorWorkspaceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Category('Path')]
     [System.String]
-    # The name of the Azure Monitor workspace.
+    # The name of the Azure Monitor Workspace.
     # The name is case insensitive
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -65,12 +63,11 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
-    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
@@ -79,25 +76,39 @@ param(
     # Identity Parameter
     ${InputObject},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceResourceForUpdateTags]))]
+    [System.Nullable[System.Boolean]]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Flag that indicates whether to enable access using resource permissions.
+    ${MetricEnableAccessUsingResourcePermission},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Category('Body')]
+    [System.String]
+    # Gets or sets allow or disallow public network access to Azure Monitor Workspace
+    ${PublicNetworkAccess},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
-    # Resource tags
+    # Resource tags.
     ${Tag},
 
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter()]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Category('Body')]
-    [System.String]
-    # Path of Json file supplied to the Update operation
-    ${JsonFilePath},
-
-    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Category('Body')]
-    [System.String]
-    # Json string supplied to the Update operation
-    ${JsonString},
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -184,10 +195,8 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.MonitorWorkspace.private\Update-AzMonitorWorkspace_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.MonitorWorkspace.private\Update-AzMonitorWorkspace_UpdateViaIdentityExpanded';
-            UpdateViaJsonFilePath = 'Az.MonitorWorkspace.private\Update-AzMonitorWorkspace_UpdateViaJsonFilePath';
-            UpdateViaJsonString = 'Az.MonitorWorkspace.private\Update-AzMonitorWorkspace_UpdateViaJsonString';
         }
-        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {

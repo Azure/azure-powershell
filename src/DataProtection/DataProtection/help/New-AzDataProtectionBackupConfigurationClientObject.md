@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupconfigurationclientobject
 schema: 2.0.0
@@ -13,13 +13,14 @@ Creates new backup configuration object
 ## SYNTAX
 
 ```
-New-AzDataProtectionBackupConfigurationClientObject -DatasourceType <DatasourceTypes> [-AutoProtection]
+New-AzDataProtectionBackupConfigurationClientObject -DatasourceType <DatasourceTypes>
+ [-ExcludedResourceType <String[]>] [-IncludedResourceType <String[]>] [-ExcludedNamespace <String[]>]
+ [-IncludedNamespace <String[]>] [-LabelSelector <String[]>] [-SnapshotVolume <Boolean>]
+ [-IncludeClusterScopeResource <Boolean>] [-BackupHookReference <NamespacedNameResource[]>]
+ [-VaultedBackupContainer <String[]>] [-IncludeAllContainer] [-StorageAccountName <String>]
+ [-StorageAccountResourceGroupName <String>] [-AutoProtection]
  [-AutoProtectionExclusionRule <IBlobBackupAutoProtectionRule[]>]
- [-BackupHookReference <NamespacedNameResource[]>] [-ExcludedNamespace <String[]>]
- [-ExcludedResourceType <String[]>] [-IncludeAllContainer] [-IncludeClusterScopeResource <Boolean?>]
- [-IncludedNamespace <String[]>] [-IncludedResourceType <String[]>] [-LabelSelector <String[]>]
- [-SnapshotVolume <Boolean?>] [-StorageAccountName <String>] [-StorageAccountResourceGroupName <String>]
- [-VaultedBackupContainer <String[]>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +42,7 @@ KubernetesClusterBackupDatasourceParameters {excludeNS1, excludeNS2}            
 This command can be used to create a backup configuration client object used for configuring backup for a Kubernetes cluster.
 BackupHookReferences is a list of references to BackupHooks that should be executed before and after the backup is executed.
 
-### Example 2: Create a BackupConfiguration to select specific containers for configuring vaulted backups for AzureBlob. 
+### Example 2: Create a BackupConfiguration to select specific containers for configuring vaulted backups for AzureBlob.
 ```powershell
 $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName 
 $containers=Get-AzStorageContainer -Context $storageAccount.Context        
@@ -72,7 +73,7 @@ When auto-protection is enabled, new containers will be automatically protected 
 
 ### Example 4: Create a BackupConfiguration for enabling auto-protection for AzureDataLakeStorage with exclusion rules.
 ```powershell
-$rule = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BlobBackupAutoProtectionRule]::new()
+$rule = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.BlobBackupAutoProtectionRule]::new()
 $rule.ObjectType = "BlobBackupAutoProtectionRule"
 $rule.Pattern = "logs-"
 $backupConfig = New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureDataLakeStorage -AutoProtection -AutoProtectionExclusionRule @($rule)
@@ -110,10 +111,9 @@ Accept wildcard characters: False
 List of auto-protection exclusion rules.
 Each rule is a BlobBackupAutoProtectionRule object specifying container name prefix patterns to exclude.
 Use this parameter along with -AutoProtection.
-To construct, see NOTES section for AUTOPROTECTIONEXCLUSIONRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBlobBackupAutoProtectionRule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBlobBackupAutoProtectionRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -126,10 +126,9 @@ Accept wildcard characters: False
 
 ### -BackupHookReference
 Hook reference to be executed during backup.
-To construct, see NOTES section for BACKUPHOOKREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.NamespacedNameResource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.NamespacedNameResource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -147,6 +146,7 @@ Datasource Type
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes
 Parameter Sets: (All)
 Aliases:
+Accepted values: AzureDisk, AzureBlob, AzureDatabaseForPostgreSQL, AzureDataLakeStorage, AzureKubernetesService, AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL, AzureCosmosDB
 
 Required: True
 Position: Named
@@ -206,7 +206,7 @@ Boolean parameter to decide whether cluster scope resources are included for bac
 By default this is taken as true.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -267,7 +267,7 @@ Boolean parameter to decide whether snapshot volumes are included for backup.
 By default this is taken as true.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -338,4 +338,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

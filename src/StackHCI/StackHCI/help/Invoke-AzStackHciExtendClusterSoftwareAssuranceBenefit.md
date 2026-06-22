@@ -15,30 +15,29 @@ Extends Software Assurance Benefit to a cluster
 ### ExtendExpanded (Default)
 ```
 Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-SoftwareAssuranceIntent <SoftwareAssuranceIntent>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-SoftwareAssuranceIntent <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Extend
+### ExtendViaJsonString
 ```
 Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -SoftwareAssuranceChangeRequest <ISoftwareAssuranceChangeRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ExtendViaJsonFilePath
+```
+Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ExtendViaIdentityExpanded
 ```
 Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -InputObject <IStackHciIdentity>
- [-SoftwareAssuranceIntent <SoftwareAssuranceIntent>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-SoftwareAssuranceIntent <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ExtendViaIdentity
-```
-Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -InputObject <IStackHciIdentity>
- -SoftwareAssuranceChangeRequest <ISoftwareAssuranceChangeRequest> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,7 +81,7 @@ The name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: ExtendExpanded, Extend
+Parameter Sets: ExtendExpanded, ExtendViaJsonString, ExtendViaJsonFilePath
 Aliases:
 
 Required: True
@@ -110,17 +109,46 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
-Parameter Sets: ExtendViaIdentityExpanded, ExtendViaIdentity
+Parameter Sets: ExtendViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Extend operation
+
+```yaml
+Type: System.String
+Parameter Sets: ExtendViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Extend operation
+
+```yaml
+Type: System.String
+Parameter Sets: ExtendViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -145,7 +173,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ExtendExpanded, Extend
+Parameter Sets: ExtendExpanded, ExtendViaJsonString, ExtendViaJsonFilePath
 Aliases:
 
 Required: True
@@ -155,27 +183,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SoftwareAssuranceChangeRequest
-.
-To construct, see NOTES section for SOFTWAREASSURANCECHANGEREQUEST properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ISoftwareAssuranceChangeRequest
-Parameter Sets: Extend, ExtendViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -SoftwareAssuranceIntent
 Customer Intent for Software Assurance Benefit.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.SoftwareAssuranceIntent
+Type: System.String
 Parameter Sets: ExtendExpanded, ExtendViaIdentityExpanded
 Aliases:
 
@@ -192,7 +204,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: ExtendExpanded, Extend
+Parameter Sets: ExtendExpanded, ExtendViaJsonString, ExtendViaJsonFilePath
 Aliases:
 
 Required: False
@@ -238,13 +250,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ISoftwareAssuranceChangeRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ICluster
 
 ## NOTES
 

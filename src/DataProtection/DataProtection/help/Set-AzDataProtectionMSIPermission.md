@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/set-azdataprotectionmsipermission
 schema: 2.0.0
@@ -14,17 +14,17 @@ Grants required permissions to the backup vault and other resources for configur
 
 ### SetPermissionsForBackup (Default)
 ```
-Set-AzDataProtectionMSIPermission -BackupInstance <IBackupInstanceResource> -PermissionsScope <String>
- -VaultName <String> -VaultResourceGroup <String> [-KeyVaultId <String>] [-UserAssignedIdentityARMId <String>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzDataProtectionMSIPermission -VaultResourceGroup <String> -VaultName <String> -PermissionsScope <String>
+ -BackupInstance <IBackupInstanceResource> [-KeyVaultId <String>] [-UserAssignedIdentityARMId <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetPermissionsForRestore
 ```
-Set-AzDataProtectionMSIPermission -PermissionsScope <String> -RestoreRequest <IAzureBackupRestoreRequest>
- -VaultName <String> -VaultResourceGroup <String> [-DatasourceType <DatasourceTypes>]
- [-SnapshotResourceGroupId <String>] [-StorageAccountARMId <String>] [-SubscriptionId <String>]
- [-UserAssignedIdentityARMId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzDataProtectionMSIPermission -VaultResourceGroup <String> -VaultName <String> -PermissionsScope <String>
+ [-UserAssignedIdentityARMId <String>] -RestoreRequest <IAzureBackupRestoreRequest> [-SubscriptionId <String>]
+ [-DatasourceType <DatasourceTypes>] [-SnapshotResourceGroupId <String>] [-StorageAccountARMId <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +35,6 @@ Grants required permissions to the backup vault and other resources for configur
 ### Example 1: Grant Permissions for Azure Disks
 ```powershell
 Set-AzDataProtectionMSIPermission -BackupInstance $instance -VaultResourceGroup "VaultRG" -VaultName "Vaultname" -PermissionsScope "ResourceGroup"
-
 ```
 
 ```output
@@ -64,7 +63,6 @@ The above command is used to assign permissions to the backup vault "Vaultname" 
 ### Example 3: Grant Permissions for Azure Database For PostgreSQL
 ```powershell
 Set-AzDataProtectionMSIPermission -KeyVaultId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/Sqlrg/providers/Microsoft.KeyVault/vaults/testkeyvault"  -BackupInstance $instance -VaultResourceGroup "VaultRG" -VaultName "Vaultname" -PermissionsScope "Resource"
-
 ```
 
 ```output
@@ -121,10 +119,9 @@ The above command is used to assign permissions to the backup vault "VaultName" 
 
 ### -BackupInstance
 Backup instance request object which will be used to configure backup
-To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupInstanceResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource
 Parameter Sets: SetPermissionsForBackup
 Aliases:
 
@@ -142,6 +139,7 @@ Datasource Type
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes
 Parameter Sets: SetPermissionsForRestore
 Aliases:
+Accepted values: AzureDisk, AzureBlob, AzureDatabaseForPostgreSQL, AzureDataLakeStorage, AzureKubernetesService, AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL, AzureCosmosDB
 
 Required: False
 Position: Named
@@ -182,10 +180,9 @@ Accept wildcard characters: False
 
 ### -RestoreRequest
 Restore request object which will be used for restore
-To construct, see NOTES section for RESTOREREQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IAzureBackupRestoreRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupRestoreRequest
 Parameter Sets: SetPermissionsForRestore
 Aliases:
 
@@ -330,4 +327,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

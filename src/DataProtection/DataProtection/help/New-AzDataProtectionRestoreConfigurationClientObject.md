@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionrestoreconfigurationclientobject
 schema: 2.0.0
@@ -14,11 +14,11 @@ Creates new restore configuration object
 
 ```
 New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType <DatasourceTypes>
- [-ConflictPolicy <String>] [-ExcludedNamespace <String[]>] [-ExcludedResourceType <String[]>]
- [-IncludeClusterScopeResource <Boolean?>] [-IncludedNamespace <String[]>] [-IncludedResourceType <String[]>]
- [-LabelSelector <String[]>] [-NamespaceMapping <KubernetesClusterRestoreCriteriaNamespaceMappings>]
- [-PersistentVolumeRestoreMode <String>] [-ResourceModifierReference <NamespacedNameResource>]
- [-RestoreHookReference <NamespacedNameResource[]>] [-StagingResourceGroupId <String>]
+ [-ExcludedResourceType <String[]>] [-IncludedResourceType <String[]>] [-ExcludedNamespace <String[]>]
+ [-IncludedNamespace <String[]>] [-LabelSelector <String[]>] [-IncludeClusterScopeResource <Boolean>]
+ [-ConflictPolicy <String>] [-NamespaceMapping <KubernetesClusterRestoreCriteriaNamespaceMappings>]
+ [-PersistentVolumeRestoreMode <String>] [-RestoreHookReference <NamespacedNameResource[]>]
+ [-ResourceModifierReference <NamespacedNameResource>] [-StagingResourceGroupId <String>]
  [-StagingStorageAccountId <String>] [<CommonParameters>]
 ```
 
@@ -67,6 +67,7 @@ Datasource Type
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes
 Parameter Sets: (All)
 Aliases:
+Accepted values: AzureDisk, AzureBlob, AzureDatabaseForPostgreSQL, AzureDataLakeStorage, AzureKubernetesService, AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL, AzureCosmosDB
 
 Required: True
 Position: Named
@@ -110,7 +111,7 @@ Boolean parameter to decide whether cluster scope resources are included for res
 By default this is taken as true.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -168,10 +169,9 @@ Accept wildcard characters: False
 
 ### -NamespaceMapping
 Namespaces mapping from source namespaces to target namespaces to resolve namespace naming conflicts in the target cluster.
-To construct, see NOTES section for NAMESPACEMAPPING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.KubernetesClusterRestoreCriteriaNamespaceMappings
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.KubernetesClusterRestoreCriteriaNamespaceMappings
 Parameter Sets: (All)
 Aliases:
 
@@ -201,10 +201,9 @@ Accept wildcard characters: False
 
 ### -ResourceModifierReference
 Resource modifier reference to be executed during restore.
-To construct, see NOTES section for RESOURCEMODIFIERREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.NamespacedNameResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.NamespacedNameResource
 Parameter Sets: (All)
 Aliases:
 
@@ -217,10 +216,9 @@ Accept wildcard characters: False
 
 ### -RestoreHookReference
 Hook reference to be executed during restore.
-To construct, see NOTES section for RESTOREHOOKREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.NamespacedNameResource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.NamespacedNameResource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -273,4 +271,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

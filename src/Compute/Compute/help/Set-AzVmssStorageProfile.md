@@ -22,7 +22,7 @@ Set-AzVmssStorageProfile [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>
  [-DiffDiskSetting <String>] [-DiffDiskPlacement <String>] [-ManagedDisk <String>]
  [-DiskEncryptionSetId <String>] [-DataDisk <VirtualMachineScaleSetDataDisk[]>] [-OSDiskSizeGB <Int32>]
  [-DiskControllerType <String>] [-SecurityEncryptionType <String>] [-SecureVMDiskEncryptionSet <String>]
- [-SharedGalleryImageId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-SharedGalleryImageId <String>] [-OsDiskStorageFaultDomainAlignment <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -406,6 +406,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OsDiskStorageFaultDomainAlignment
+Specifies the storage fault domain alignment type for the OS disk in the VMSS template. Valid values are 'Aligned' and 'BestEffortAligned'. 'Aligned' maps disk Storage Fault Domains to Compute Fault Domains; deployment fails if disk doesn't support enough FDs. 'BestEffortAligned' attempts mapping but leaves the disk unaligned if it doesn't support enough FDs. Applicable to VMSS Flex only.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Aligned, BestEffortAligned
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

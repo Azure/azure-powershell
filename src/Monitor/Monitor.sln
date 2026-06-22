@@ -1,4 +1,4 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
@@ -53,17 +53,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Metricdata", "..\..\gene
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DiagnosticSetting", "..\..\generated\Monitor\DiagnosticSetting.Autorest\Az.DiagnosticSetting.csproj", "{88085FD3-B4EE-4AC4-94B7-D1D2A9A18033}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MonitorWorkspace", "..\..\generated\Monitor\MonitorWorkspace.Autorest\Az.MonitorWorkspace.csproj", "{3BDF8EC5-1C35-4425-AB3C-6EF677F618E2}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ScheduledQueryRule.Autorest", "ScheduledQueryRule.Autorest", "{DFE9A16E-4879-AFA3-BD8B-DBC73F42D0CA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ScheduledQueryRule", "..\..\generated\Monitor\ScheduledQueryRule.Autorest\Az.ScheduledQueryRule.csproj", "{0319911B-F2AD-483F-AC8B-9EA44666E545}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MonitorWorkspace.Autorest", "MonitorWorkspace.Autorest", "{635E4282-7AFB-1B5B-749B-823438FF2057}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PipelineGroup.Autorest", "PipelineGroup.Autorest", "{9CBC1FBB-DDD6-0590-92CA-FC8AEA7D2FF0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.PipelineGroup", "..\..\generated\Monitor\PipelineGroup.Autorest\Az.PipelineGroup.csproj", "{CD5F3D98-1A43-4227-9C46-B6D03434D01B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MonitorWorkspace.Autorest", "MonitorWorkspace.Autorest", "{635E4282-7AFB-1B5B-749B-823438FF2057}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MonitorWorkspace", "MonitorWorkspace.Autorest\Az.MonitorWorkspace.csproj", "{7800B9CC-41A0-42E8-BE8F-D425407D39C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -303,18 +303,6 @@ Global
 		{88085FD3-B4EE-4AC4-94B7-D1D2A9A18033}.Release|x64.Build.0 = Release|Any CPU
 		{88085FD3-B4EE-4AC4-94B7-D1D2A9A18033}.Release|x86.ActiveCfg = Release|Any CPU
 		{88085FD3-B4EE-4AC4-94B7-D1D2A9A18033}.Release|x86.Build.0 = Release|Any CPU
-		{3BDF8EC5-1C35-4425-AB3C-6EF677F618E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3BDF8EC5-1C35-4425-AB3C-6EF677F618E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3BDF8EC5-1C35-4425-AB3C-6EF677F618E2}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{3BDF8EC5-1C35-4425-AB3C-6EF677F618E2}.Debug|x64.Build.0 = Debug|Any CPU
-		{3BDF8EC5-1C35-4425-AB3C-6EF677F618E2}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{3BDF8EC5-1C35-4425-AB3C-6EF677F618E2}.Debug|x86.Build.0 = Debug|Any CPU
-		{3BDF8EC5-1C35-4425-AB3C-6EF677F618E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3BDF8EC5-1C35-4425-AB3C-6EF677F618E2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3BDF8EC5-1C35-4425-AB3C-6EF677F618E2}.Release|x64.ActiveCfg = Release|Any CPU
-		{3BDF8EC5-1C35-4425-AB3C-6EF677F618E2}.Release|x64.Build.0 = Release|Any CPU
-		{3BDF8EC5-1C35-4425-AB3C-6EF677F618E2}.Release|x86.ActiveCfg = Release|Any CPU
-		{3BDF8EC5-1C35-4425-AB3C-6EF677F618E2}.Release|x86.Build.0 = Release|Any CPU
 		{0319911B-F2AD-483F-AC8B-9EA44666E545}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0319911B-F2AD-483F-AC8B-9EA44666E545}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0319911B-F2AD-483F-AC8B-9EA44666E545}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -339,6 +327,18 @@ Global
 		{CD5F3D98-1A43-4227-9C46-B6D03434D01B}.Release|x64.Build.0 = Release|Any CPU
 		{CD5F3D98-1A43-4227-9C46-B6D03434D01B}.Release|x86.ActiveCfg = Release|Any CPU
 		{CD5F3D98-1A43-4227-9C46-B6D03434D01B}.Release|x86.Build.0 = Release|Any CPU
+		{7800B9CC-41A0-42E8-BE8F-D425407D39C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7800B9CC-41A0-42E8-BE8F-D425407D39C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7800B9CC-41A0-42E8-BE8F-D425407D39C3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7800B9CC-41A0-42E8-BE8F-D425407D39C3}.Debug|x64.Build.0 = Debug|Any CPU
+		{7800B9CC-41A0-42E8-BE8F-D425407D39C3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7800B9CC-41A0-42E8-BE8F-D425407D39C3}.Debug|x86.Build.0 = Debug|Any CPU
+		{7800B9CC-41A0-42E8-BE8F-D425407D39C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7800B9CC-41A0-42E8-BE8F-D425407D39C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7800B9CC-41A0-42E8-BE8F-D425407D39C3}.Release|x64.ActiveCfg = Release|Any CPU
+		{7800B9CC-41A0-42E8-BE8F-D425407D39C3}.Release|x64.Build.0 = Release|Any CPU
+		{7800B9CC-41A0-42E8-BE8F-D425407D39C3}.Release|x86.ActiveCfg = Release|Any CPU
+		{7800B9CC-41A0-42E8-BE8F-D425407D39C3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -360,9 +360,9 @@ Global
 		{138B61C0-9D0E-44A1-9EA1-E8142303ECA5} = {35E5CBAF-5596-AC3C-3DBD-816FC74B54D0}
 		{7AD2DC17-D116-4480-A74F-EB823CB6F7B5} = {0832AC06-44A1-FEDA-3879-082134F4AAB5}
 		{ABBBEF38-2D27-4BBA-B980-BEEBDC2843F4} = {97973F8C-3EE1-368A-3B71-C62280C2DC8C}
-		{3BDF8EC5-1C35-4425-AB3C-6EF677F618E2} = {635E4282-7AFB-1B5B-749B-823438FF2057}
 		{0319911B-F2AD-483F-AC8B-9EA44666E545} = {DFE9A16E-4879-AFA3-BD8B-DBC73F42D0CA}
 		{CD5F3D98-1A43-4227-9C46-B6D03434D01B} = {9CBC1FBB-DDD6-0590-92CA-FC8AEA7D2FF0}
+		{7800B9CC-41A0-42E8-BE8F-D425407D39C3} = {635E4282-7AFB-1B5B-749B-823438FF2057}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F718DE3F-FFE5-495E-949B-084513A4C606}
