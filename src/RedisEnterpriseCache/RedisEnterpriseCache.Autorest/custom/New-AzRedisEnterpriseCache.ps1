@@ -231,6 +231,13 @@ function New-AzRedisEnterpriseCache {
         # User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/<sub uuid>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
         ${KeyEncryptionKeyIdentityUserAssignedIdentityResourceId},
 
+        [Parameter()]
+        [AllowEmptyCollection()]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMaintenanceWindow[]]
+        # Custom maintenance windows that apply to the cluster.
+        ${MaintenanceConfigurationMaintenanceWindow},
+
         [Parameter(ParameterSetName='CreateClusterWithDatabase')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [System.Management.Automation.SwitchParameter]

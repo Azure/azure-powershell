@@ -32,12 +32,12 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: a39b73b1c7d12a633805a3b2ed3177a8bfddd9e2
+commit: edf549eca6a93cb812a4a799f133ebb6726c76c8
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - $(repo)/specification/redisenterprise/resource-manager/Microsoft.Cache/RedisEnterprise/stable/2025-07-01/redisenterprise.json
+  - $(repo)/specification/redisenterprise/resource-manager/Microsoft.Cache/RedisEnterprise/preview/2026-02-01-preview/redisenterprise.json
 
 module-version: 1.0.0
 title: RedisEnterpriseCache
@@ -48,11 +48,28 @@ directive:
     where: $.definitions.AccessPolicyAssignment
     transform: $['required'] = ['properties']
   - from: swagger-document
-    where: $.definitions.AccessPolicyAssignmentProperties.properties.user
+    where: $.definitions.AccessPolicyAssignmentPropertiesUser
     transform: $['required'] = ['objectId']
   - from: swagger-document
-    where: $.definitions.ForceLinkParameters.properties.geoReplication
+    where: $.definitions.ForceLinkParametersGeoReplication
     transform: $['required'] = ['linkedDatabases','groupNickname']
+  # Force these parameters as mandatory since swagger required on $ref definitions
+  # doesn't always propagate to cmdlet parameters in autorest.powershell
+  - where:
+      verb: New
+      subject: AccessPolicyAssignment
+      parameter-name: UserObjectId
+    required: true
+  - where:
+      verb: Invoke
+      subject: ForceDatabaseLinkToReplicationGroup
+      parameter-name: GroupNickname
+    required: true
+  - where:
+      verb: Invoke
+      subject: ForceDatabaseLinkToReplicationGroup
+      parameter-name: LinkedDatabase
+    required: true
 
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/accessPolicyAssignments/{accessPolicyAssignmentName}"].put
@@ -200,9 +217,28 @@ directive:
     remove: true
   - where:
       verb: Update
-      subject: ^$|Database
+      subject: ^(Database)?$
       variant: ^Update$|ViaIdentity$
     remove: true
+  # Rename Upgrade variants to Update for DatabaseDbRedisVersion to maintain backward compatibility
+  - where:
+      verb: Update
+      subject: DatabaseDbRedisVersion
+      variant: Upgrade
+    set:
+      variant: Update
+  - where:
+      verb: Update
+      subject: DatabaseDbRedisVersion
+      variant: UpgradeViaIdentity
+    set:
+      variant: UpdateViaIdentity
+  - where:
+      verb: Update
+      subject: DatabaseDbRedisVersion
+      variant: UpgradeViaIdentityRedisEnterprise
+    set:
+      variant: UpdateViaIdentityRedisEnterprise
   - where:
       verb: Get
       subject: OperationStatus
@@ -220,7 +256,7 @@ directive:
       variant: ^(Flush|Force)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
-      subject: ^$|Database
+      subject: ^(Database)?$
       variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:

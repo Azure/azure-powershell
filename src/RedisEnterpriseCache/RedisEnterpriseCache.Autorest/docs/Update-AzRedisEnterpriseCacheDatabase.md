@@ -17,17 +17,17 @@ Updates an existing Redis Enterprise database
 Update-AzRedisEnterpriseCacheDatabase -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AccessKeysAuthentication <String>] [-AofPersistenceEnabled]
  [-AofPersistenceFrequency <String>] [-ClientProtocol <String>] [-EvictionPolicy <String>]
- [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NotifyKeyspaceEvents <String>] [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzRedisEnterpriseCacheDatabase -InputObject <IRedisEnterpriseCacheIdentity>
  [-AccessKeysAuthentication <String>] [-AofPersistenceEnabled] [-AofPersistenceFrequency <String>]
- [-ClientProtocol <String>] [-EvictionPolicy <String>] [-RdbPersistenceEnabled]
- [-RdbPersistenceFrequency <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ClientProtocol <String>] [-EvictionPolicy <String>] [-NotifyKeyspaceEvents <String>]
+ [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -204,6 +204,25 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -NotifyKeyspaceEvents
+Specifies which keyspace events should trigger notifications.
+Default is an empty string, meaning this feature is disabled.
+When enabled, at least 'K' (keyspace events) or 'E' (keyevent events) must be present.
+For example, 'AKE' enables all standard events.
+See https://redis.io/docs/latest/develop/use/keyspace-notifications/ for the complete list of event types.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

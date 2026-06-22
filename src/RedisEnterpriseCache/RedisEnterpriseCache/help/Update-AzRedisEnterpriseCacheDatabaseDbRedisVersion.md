@@ -8,13 +8,13 @@ schema: 2.0.0
 # Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion
 
 ## SYNOPSIS
-Updates the database Redis version to the latest available.
+Upgrades the database Redis version to the latest available.
 
 ## SYNTAX
 
 ### Update (Default)
 ```
-Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion -DatabaseName <String> -ClusterName <String>
+Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion -ClusterName <String> -DatabaseName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -26,17 +26,24 @@ Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion -DatabaseName <String>
  [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### UpdateViaIdentity
+```
+Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion -InputObject <IRedisEnterpriseCacheIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Updates the database Redis version to the latest available.
+Upgrades the database Redis version to the latest available.
 
 ## EXAMPLES
 
-### Example 1: Update database Redis version
+### Example 1: Upgrade database Redis version
 ```powershell
 Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion -ClusterName "MyCache" -ResourceGroupName "MyResourceGroup" -DatabaseName "default"
 ```
 
-Updates the database Redis version to the latest available.
+Upgrades the database Redis version to the latest available.
 
 ## PARAMETERS
 
@@ -78,7 +85,7 @@ The name of the Redis Enterprise database.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Update, UpdateViaIdentityRedisEnterprise
 Aliases:
 
 Required: True
@@ -101,6 +108,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
+Parameter Sets: UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -167,6 +189,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

@@ -1,39 +1,55 @@
 ---
-external help file: Az.RedisEnterpriseCache-help.xml
+external help file:
 Module Name: Az.RedisEnterpriseCache
-online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecachesku
+online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecachemigration
 schema: 2.0.0
 ---
 
-# Get-AzRedisEnterpriseCacheSku
+# Get-AzRedisEnterpriseCacheMigration
 
 ## SYNOPSIS
-Lists the available SKUs for scaling the Redis Enterprise cluster.
+Gets information about a migration in a Redis Enterprise cluster.
 
 ## SYNTAX
 
+### Get (Default)
 ```
-Get-AzRedisEnterpriseCacheSku -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzRedisEnterpriseCacheMigration -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzRedisEnterpriseCacheMigration -ClusterName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Lists the available SKUs for scaling the Redis Enterprise cluster.
+Gets information about a migration in a Redis Enterprise cluster.
 
 ## EXAMPLES
 
-### Example 1: Get available SKUs for scaling the Redis Enterprise cluster
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzRedisEnterpriseCacheSku -ClusterName "MyCache" -ResourceGroupName "MyGroup"
+{{ Add code here }}
 ```
 
 ```output
-SizeInGb                       Name
-----------					------------
-size                         sku-name
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command provides all the SKUs and their memory sizes that a Redis Enterprise cluster can be scaled to.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -103,37 +119,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -141,8 +126,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.ISkuDetailsList
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IMigration
 
 ## NOTES
 
 ## RELATED LINKS
+
