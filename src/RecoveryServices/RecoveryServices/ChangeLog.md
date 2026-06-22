@@ -20,6 +20,8 @@
 
 ## Upcoming Release
 * Added Cross region restore support for Delos cloud regions
+* Updated Az.RecoveryServices.SiteRecovery to use API version 2026-02-01.
+* Added Private Disk Access support for Azure-to-Azure managed disk replication: new `-RecoveryNetworkAccessPolicy`, `-RecoveryDiskAccessId` and `-RecoveryPublicNetworkAccess` parameters on `New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig`; values are honored by `New-AzRecoveryServicesAsrReplicationProtectedItem` and surfaced on `ASRAzureToAzureProtectedDiskDetails`.
 
 ## Version 7.12.0
 * Added ChangeSafety Support
