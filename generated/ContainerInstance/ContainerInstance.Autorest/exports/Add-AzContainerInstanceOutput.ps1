@@ -23,22 +23,33 @@ Attach to the output stream of a specific container instance in a specified reso
 $response = Add-AzContainerInstanceOutput -GroupName test-cg -Name test-container -ResourceGroupName test-rg
 $response
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainerAttachResponse
+Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerAttachResponse
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+CONTAINERGROUPINPUTOBJECT <IContainerInstanceIdentity>: Identity Parameter
+  [ContainerGroupName <String>]: The name of the container group.
+  [ContainerGroupProfileName <String>]: The name of the container group profile.
+  [ContainerName <String>]: The name of the container instance.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RevisionNumber <String>]: The revision number of the container group profile.
+  [SubnetName <String>]: The name of the subnet.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [VirtualNetworkName <String>]: The name of the virtual network.
 .Link
 https://learn.microsoft.com/powershell/module/az.containerinstance/add-azcontainerinstanceoutput
 #>
 function Add-AzContainerInstanceOutput {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainerAttachResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerAttachResponse])]
 [CmdletBinding(DefaultParameterSetName='Attach', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Alias('ContainerGroupName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Path')]
-    [System.String]
-    # The name of the container group.
-    ${GroupName},
-
     [Parameter(Mandatory)]
     [Alias('ContainerName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Path')]
@@ -46,20 +57,33 @@ param(
     # The name of the container instance.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Attach', Mandatory)]
+    [Alias('ContainerGroupName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Path')]
+    [System.String]
+    # The name of the container group.
+    ${GroupName},
+
+    [Parameter(ParameterSetName='Attach', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='Attach')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     # The value must be an UUID.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='AttachViaIdentityContainerGroup', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentity]
+    # Identity Parameter
+    ${ContainerGroupInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -117,6 +141,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -137,10 +169,9 @@ begin {
 
         $mapping = @{
             Attach = 'Az.ContainerInstance.private\Add-AzContainerInstanceOutput_Attach';
+            AttachViaIdentityContainerGroup = 'Az.ContainerInstance.private\Add-AzContainerInstanceOutput_AttachViaIdentityContainerGroup';
         }
-        if (('Attach') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Attach') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -154,6 +185,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

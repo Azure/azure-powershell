@@ -19,6 +19,12 @@
 -->
 
 ## Upcoming Release
+* Updated `System.Security.Cryptography.Cng` dependency from `4.4.0` to `5.0.0`.
+* Added Cross region restore support for Delos cloud regions
+
+## Version 7.12.0
+* Added ChangeSafety Support
+* Added soft delete support for Azure File share backup items (`Undo-AzRecoveryServicesBackupItemDeletion` `Get-AzRecoveryServicesBackupItem -DeleteState SoftDeleted`)
 
 ## Version 7.11.2
 * Added Cross region restore support for upcoming regions Southeast Asia 3

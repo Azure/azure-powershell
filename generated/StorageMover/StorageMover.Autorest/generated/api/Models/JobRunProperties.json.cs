@@ -84,6 +84,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             {_agentResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("agentResourceId"), out var __jsonAgentResourceId) ? (string)__jsonAgentResourceId : (string)_agentResourceId;}
             {_executionStartTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("executionStartTime"), out var __jsonExecutionStartTime) ? global::System.DateTime.TryParse((string)__jsonExecutionStartTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonExecutionStartTimeValue) ? __jsonExecutionStartTimeValue : _executionStartTime : _executionStartTime;}
             {_executionEndTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("executionEndTime"), out var __jsonExecutionEndTime) ? global::System.DateTime.TryParse((string)__jsonExecutionEndTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonExecutionEndTimeValue) ? __jsonExecutionEndTimeValue : _executionEndTime : _executionEndTime;}
+            {_triggerType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("triggerType"), out var __jsonTriggerType) ? (string)__jsonTriggerType : (string)_triggerType;}
+            {_scheduledExecutionTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("scheduledExecutionTime"), out var __jsonScheduledExecutionTime) ? global::System.DateTime.TryParse((string)__jsonScheduledExecutionTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonScheduledExecutionTimeValue) ? __jsonScheduledExecutionTimeValue : _scheduledExecutionTime : _scheduledExecutionTime;}
             {_lastStatusUpdate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("lastStatusUpdate"), out var __jsonLastStatusUpdate) ? global::System.DateTime.TryParse((string)__jsonLastStatusUpdate, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastStatusUpdateValue) ? __jsonLastStatusUpdateValue : _lastStatusUpdate : _lastStatusUpdate;}
             {_itemsScanned = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNumber>("itemsScanned"), out var __jsonItemsScanned) ? (long?)__jsonItemsScanned : _itemsScanned;}
             {_itemsExcluded = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNumber>("itemsExcluded"), out var __jsonItemsExcluded) ? (long?)__jsonItemsExcluded : _itemsExcluded;}
@@ -104,6 +106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             {_targetResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("targetResourceId"), out var __jsonTargetResourceId) ? (string)__jsonTargetResourceId : (string)_targetResourceId;}
             {_targetProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonObject>("targetProperties"), out var __jsonTargetProperties) ? Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Any.FromJson(__jsonTargetProperties) : _targetProperty;}
             {_jobDefinitionProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonObject>("jobDefinitionProperties"), out var __jsonJobDefinitionProperties) ? Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Any.FromJson(__jsonJobDefinitionProperties) : _jobDefinitionProperty;}
+            {_warning = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonArray>("warnings"), out var __jsonWarnings) ? If( __jsonWarnings as Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunWarning>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobRunWarning) (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.JobRunWarning.FromJson(__u) )) ))() : null : _warning;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             AfterFromJson(json);
         }
@@ -154,6 +157,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != this._executionEndTime ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._executionEndTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "executionEndTime" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._triggerType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._triggerType.ToString()) : null, "triggerType" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._scheduledExecutionTime ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonString(this._scheduledExecutionTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "scheduledExecutionTime" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SerializationMode.IncludeRead))
             {
@@ -234,6 +245,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != this._jobDefinitionProperty ? (Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.JsonNode) this._jobDefinitionProperty.ToJson(null,serializationMode) : null, "jobDefinitionProperties" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SerializationMode.IncludeRead))
+            {
+                if (null != this._warning)
+                {
+                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.Json.XNodeArray();
+                    foreach( var __x in this._warning )
+                    {
+                        AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                    }
+                    container.Add("warnings",__w);
+                }
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.SerializationMode.IncludeRead))
             {

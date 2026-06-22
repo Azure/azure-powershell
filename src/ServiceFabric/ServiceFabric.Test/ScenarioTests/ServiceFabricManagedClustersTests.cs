@@ -75,5 +75,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-MaintenanceWindowStatus");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestApplyMaintenanceWindow()
+        {
+            TestRunner.RunTestScript("Test-ApplyMaintenanceWindow");
+        }
     }
 }

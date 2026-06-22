@@ -94,7 +94,7 @@ function Search-AzDataProtectionBackupVaultInAzGraph
         foreach($argVault in $argAllVaults)
         {
             $jsonStringResponse = $argVault | ConvertTo-Json -Depth 100                                                 
-            $backupVaults += [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.BackupVaultResource]::FromJsonString($jsonStringResponse)
+            $backupVaults += [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.BackupVaultResource]::FromJsonString($jsonStringResponse)
         }
         return $backupVaults
     }

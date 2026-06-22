@@ -20,13 +20,13 @@ Get-AzCdnEdgeAction [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
 
 ### Get
 ```
-Get-AzCdnEdgeAction -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzCdnEdgeAction [-SubscriptionId <String[]>] -Name <String> -ResourceGroupName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzCdnEdgeAction -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzCdnEdgeAction [-SubscriptionId <String[]>] -ResourceGroupName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -35,32 +35,19 @@ Get EdgeAction resource
 
 ## EXAMPLES
 
-### Example 1: List all Edge Actions in a resource group
+### Example 1: List EdgeActions in a resource group
 ```powershell
-Get-AzCdnEdgeAction -ResourceGroupName "testps-rg-da16jm"
+Get-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm
 ```
 
-```output
-Location Name          Kind ResourceGroupName
--------- ----          ---- -----------------
-Global   edgeaction001      testps-rg-da16jm
-Global   edgeaction002      testps-rg-da16jm
-```
+Lists EdgeAction resources in the specified resource group.
 
-List all Edge Actions under the resource group
-
-### Example 2: Get a specific Edge Action by name
+### Example 2: Get an EdgeAction
 ```powershell
-Get-AzCdnEdgeAction -ResourceGroupName "testps-rg-da16jm" -Name "edgeaction001"
+Get-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001
 ```
 
-```output
-Location Name          Kind ResourceGroupName
--------- ----          ---- -----------------
-Global   edgeaction001      testps-rg-da16jm
-```
-
-Get a specific Edge Action by name under the resource group
+Gets the specified EdgeAction resource.
 
 ## PARAMETERS
 

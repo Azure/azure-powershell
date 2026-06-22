@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DataMigration
-Module Guid: 524d950f-680d-49c3-8577-e4ac8336151a
+Module Guid: b92b8d4e-0b2d-4276-b447-254c17b97d3a
 Download Help Link: https://learn.microsoft.com/powershell/module/az.datamigration
 Help Version: 1.0.0.0
 Locale: en-US
@@ -57,7 +57,7 @@ Migrate logins from the source Sql Servers to the target Azure Sql Servers.
 Migrate Sql Server Schema from the source Sql Servers to the target Azure Sql Servers.
 
 ### [New-AzDataMigrationSqlService](New-AzDataMigrationSqlService.md)
-Create or Update Database Migration Service.
+Create Database Migration Service.
 
 ### [New-AzDataMigrationSqlServiceAuthKey](New-AzDataMigrationSqlServiceAuthKey.md)
 Regenerate a new set of Authentication Keys for Self Hosted Integration Runtime.

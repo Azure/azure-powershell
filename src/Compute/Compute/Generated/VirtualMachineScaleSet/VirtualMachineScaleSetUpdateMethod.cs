@@ -481,6 +481,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Limit on the number of instances in each availability zone as a percentage of the total capacity of the virtual machine scale set. For example: if set to 50, this means that at any time, no more than 50% of the VMs in your scale set can be allocated to a single zone.")]
         public int MaxInstancePercentPerZoneValue { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the align mode between Virtual Machine Scale Set (VMSS) compute and storage Fault Domain count. Valid values are 'Aligned', 'Unaligned', and 'BestEffortAligned'. Applicable to VMSS Flex only.")]
+        [PSArgumentCompleter("Aligned", "Unaligned", "BestEffortAligned")]
+        public string ZonalPlatformFaultDomainAlignMode { get; set; }
+
         private void BuildPatchObject()
         {
             if (this.IsParameterBound(c => c.AutomaticOSUpgrade))
@@ -1571,6 +1578,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Value = this.MaxInstancePercentPerZoneValue;
             }
+
+            if (this.IsParameterBound(c => c.ZonalPlatformFaultDomainAlignMode))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                this.VirtualMachineScaleSetUpdate.ZonalPlatformFaultDomainAlignMode = this.ZonalPlatformFaultDomainAlignMode;
+            }
         }
 
         private void BuildPutObject()
@@ -2461,6 +2477,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy = new MaxInstancePercentPerZonePolicy();
                 }
                 this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Value = this.MaxInstancePercentPerZoneValue;
+            }
+
+            if (this.IsParameterBound(c => c.ZonalPlatformFaultDomainAlignMode))
+            {
+                this.VirtualMachineScaleSet.ZonalPlatformFaultDomainAlignMode = this.ZonalPlatformFaultDomainAlignMode;
             }
         }
     }

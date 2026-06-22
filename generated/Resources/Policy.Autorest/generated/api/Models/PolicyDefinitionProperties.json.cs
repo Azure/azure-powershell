@@ -77,6 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
             {
                 return;
             }
+            {_externalEvaluationEnforcementSetting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonObject>("externalEvaluationEnforcementSettings"), out var __jsonExternalEvaluationEnforcementSettings) ? Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ExternalEvaluationEnforcementSettings.FromJson(__jsonExternalEvaluationEnforcementSettings) : _externalEvaluationEnforcementSetting;}
             {_policyType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString>("policyType"), out var __jsonPolicyType) ? (string)__jsonPolicyType : (string)_policyType;}
             {_mode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString>("mode"), out var __jsonMode) ? (string)__jsonMode : (string)_mode;}
             {_displayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString>("displayName"), out var __jsonDisplayName) ? (string)__jsonDisplayName : (string)_displayName;}
@@ -108,6 +109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
             {
                 return container;
             }
+            AddIf( null != this._externalEvaluationEnforcementSetting ? (Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode) this._externalEvaluationEnforcementSetting.ToJson(null,serializationMode) : null, "externalEvaluationEnforcementSettings" ,container.Add );
             AddIf( null != (((object)this._policyType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString(this._policyType.ToString()) : null, "policyType" ,container.Add );
             AddIf( null != (((object)this._mode)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString(this._mode.ToString()) : null, "mode" ,container.Add );
             AddIf( null != (((object)this._displayName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString(this._displayName.ToString()) : null, "displayName" ,container.Add );

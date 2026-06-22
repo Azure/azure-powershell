@@ -13,7 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Cmdlets
     /// [OpenAPI] ListMigrations=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}/listMigrations"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDataMigrationSqlServiceMigration_List")]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.PreviewMessage("This is a SQL Service resource and can only be accessed using cmdlets that have SqlService in their name. (For example Get-AzDataMigrationSqlService should be used to access a data migration SQL Service and NOT Get-AzDataMigrationService)")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.PreviewMessage("*****************************************************************************************\r\n* This cmdlet will undergo a breaking change in Az v17.0.0, to be released in November 2026.           *\r\n* At least one change applies to this cmdlet.                                                    *\r\n* See all possible breaking changes at https://go.microsoft.com/fwlink/?linkid=2333486            *\r\n**************************************************************************************************")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IDatabaseMigration))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Description(@"Retrieve the List of database migrations attached to the service.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Generated]

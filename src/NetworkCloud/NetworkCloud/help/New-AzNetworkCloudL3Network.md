@@ -19,8 +19,7 @@ New-AzNetworkCloudL3Network -Name <String> -ResourceGroupName <String> [-Subscri
  -L3IsolationDomainId <String> -Location <String> -Vlan <Int64> [-HybridAksIpamEnabled <String>]
  [-HybridAksPluginType <String>] [-IPAllocationType <String>] [-InterfaceName <String>]
  [-Ipv4ConnectedPrefix <String>] [-Ipv6ConnectedPrefix <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath

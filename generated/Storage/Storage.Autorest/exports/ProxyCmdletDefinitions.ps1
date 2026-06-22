@@ -34,7 +34,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IStorageIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ConnectorName <String>]: The name of the Storage Connector.
   [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [DataShareName <String>]: The name of the Storage DataShare.
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [Id <String>]: Resource identity path
@@ -252,7 +254,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IStorageIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ConnectorName <String>]: The name of the Storage Connector.
   [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [DataShareName <String>]: The name of the Storage DataShare.
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [Id <String>]: Resource identity path
@@ -482,7 +486,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IStorageIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ConnectorName <String>]: The name of the Storage Connector.
   [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [DataShareName <String>]: The name of the Storage DataShare.
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [Id <String>]: Resource identity path
@@ -503,7 +509,9 @@ INPUTOBJECT <IStorageIdentity>: Identity Parameter
 STORAGEACCOUNTINPUTOBJECT <IStorageIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ConnectorName <String>]: The name of the Storage Connector.
   [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [DataShareName <String>]: The name of the Storage DataShare.
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [Id <String>]: Resource identity path
@@ -912,7 +920,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IStorageIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ConnectorName <String>]: The name of the Storage Connector.
   [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [DataShareName <String>]: The name of the Storage DataShare.
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [Id <String>]: Resource identity path
@@ -933,7 +943,9 @@ INPUTOBJECT <IStorageIdentity>: Identity Parameter
 STORAGEACCOUNTINPUTOBJECT <IStorageIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ConnectorName <String>]: The name of the Storage Connector.
   [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [DataShareName <String>]: The name of the Storage DataShare.
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [Id <String>]: Resource identity path
@@ -1186,7 +1198,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IStorageIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ConnectorName <String>]: The name of the Storage Connector.
   [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [DataShareName <String>]: The name of the Storage DataShare.
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [Id <String>]: Resource identity path
@@ -1207,7 +1221,9 @@ INPUTOBJECT <IStorageIdentity>: Identity Parameter
 STORAGEACCOUNTINPUTOBJECT <IStorageIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ConnectorName <String>]: The name of the Storage Connector.
   [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [DataShareName <String>]: The name of the Storage DataShare.
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [Id <String>]: Resource identity path
@@ -1452,7 +1468,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IStorageIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ConnectorName <String>]: The name of the Storage Connector.
   [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [DataShareName <String>]: The name of the Storage DataShare.
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [Id <String>]: Resource identity path
@@ -1473,7 +1491,9 @@ INPUTOBJECT <IStorageIdentity>: Identity Parameter
 STORAGEACCOUNTINPUTOBJECT <IStorageIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ConnectorName <String>]: The name of the Storage Connector.
   [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [DataShareName <String>]: The name of the Storage DataShare.
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [Id <String>]: Resource identity path
@@ -1720,6 +1740,9 @@ $start = Get-Date -Year 2024 -Month 8 -Day 7 -Hour 1 -Minute 30
 $end = Get-Date -Year 2024 -Month 12 -Day 25 -Hour 2 -Minute 45
 $taskid = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageActions/storageTasks/mytask"
 New-AzStorageTaskAssignment -accountname myaccount -name mytaskassignment -resourcegroupname myresourcegroup -TaskId $taskid -ReportPrefix test -StartFrom $start.ToUniversalTime() -TriggerType OnSchedule -Interval 10 -IntervalUnit Days -Description "my task assignment" -Enabled:$false -EndBy $end.ToUniversalTime()
+.Example
+$taskid = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageActions/storageTasks/mytask"
+New-AzStorageTaskAssignment -accountname myaccount -name mytaskassignment -resourcegroupname myresourcegroup -TriggerType MockRun -StartOn (Get-Date).AddDays(1).ToUniversalTime() -TaskId $taskid -ReportPrefix test -Description "my task assignment" 
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignment
@@ -1785,7 +1808,7 @@ param(
     ${TaskId},
 
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("RunOnce", "OnSchedule")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("RunOnce", "OnSchedule", "MockRun")]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
     [System.String]
     # The trigger type of the storage task assignment execution
@@ -2019,7 +2042,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IStorageIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ConnectorName <String>]: The name of the Storage Connector.
   [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [DataShareName <String>]: The name of the Storage DataShare.
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [Id <String>]: Resource identity path
@@ -2040,7 +2065,9 @@ INPUTOBJECT <IStorageIdentity>: Identity Parameter
 STORAGEACCOUNTINPUTOBJECT <IStorageIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ConnectorName <String>]: The name of the Storage Connector.
   [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [DataShareName <String>]: The name of the Storage DataShare.
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [Id <String>]: Resource identity path
@@ -2294,7 +2321,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IStorageIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ConnectorName <String>]: The name of the Storage Connector.
   [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [DataShareName <String>]: The name of the Storage DataShare.
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [Id <String>]: Resource identity path
@@ -2315,7 +2344,9 @@ INPUTOBJECT <IStorageIdentity>: Identity Parameter
 STORAGEACCOUNTINPUTOBJECT <IStorageIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ConnectorName <String>]: The name of the Storage Connector.
   [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [DataShareName <String>]: The name of the Storage DataShare.
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [Id <String>]: Resource identity path
@@ -2452,7 +2483,7 @@ param(
     ${TargetPrefix},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("RunOnce", "OnSchedule")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("RunOnce", "OnSchedule", "MockRun")]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
     [System.String]
     # The trigger type of the storage task assignment execution
@@ -2653,7 +2684,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IStorageIdentity>: Identity Parameter
   [AccountName <String>]: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   [BlobInventoryPolicyName <String>]: The name of the storage account blob inventory policy. It should always be 'default'
+  [ConnectorName <String>]: The name of the Storage Connector.
   [ContainerName <String>]: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  [DataShareName <String>]: The name of the Storage DataShare.
   [DeletedAccountName <String>]: Name of the deleted storage account.
   [EncryptionScopeName <String>]: The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   [Id <String>]: Resource identity path

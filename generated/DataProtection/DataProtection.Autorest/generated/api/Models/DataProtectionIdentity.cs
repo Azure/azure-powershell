@@ -129,6 +129,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the backup instance.",
         SerializedName = @"backupInstanceName",
         PossibleTypes = new [] { typeof(string) })]
@@ -137,6 +140,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"",
         SerializedName = @"backupPolicyName",
         PossibleTypes = new [] { typeof(string) })]
@@ -145,6 +151,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the DeletedBackupVaultResource",
         SerializedName = @"deletedVaultName",
         PossibleTypes = new [] { typeof(string) })]
@@ -153,6 +162,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Resource identity path",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
@@ -163,6 +175,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The Job ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).",
         SerializedName = @"jobId",
         PossibleTypes = new [] { typeof(string) })]
@@ -171,6 +186,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the Azure region.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
@@ -179,6 +197,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"",
         SerializedName = @"operationId",
         PossibleTypes = new [] { typeof(string) })]
@@ -187,6 +208,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"",
         SerializedName = @"recoveryPointId",
         PossibleTypes = new [] { typeof(string) })]
@@ -195,6 +219,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the DppBaseResource",
         SerializedName = @"requestName",
         PossibleTypes = new [] { typeof(string) })]
@@ -203,6 +230,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
@@ -211,6 +241,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"name of the resource guard proxy",
         SerializedName = @"resourceGuardProxyName",
         PossibleTypes = new [] { typeof(string) })]
@@ -219,6 +252,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of ResourceGuard",
         SerializedName = @"resourceGuardsName",
         PossibleTypes = new [] { typeof(string) })]
@@ -227,6 +263,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"ARM path of the resource to be protected using Microsoft.DataProtection",
         SerializedName = @"resourceId",
         PossibleTypes = new [] { typeof(string) })]
@@ -235,6 +274,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
@@ -243,6 +285,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The name of the backup vault.",
         SerializedName = @"vaultName",
         PossibleTypes = new [] { typeof(string) })]

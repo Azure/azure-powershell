@@ -18,6 +18,12 @@ Get-AzWebPubSubCustomDomain -ResourceGroupName <String> -ResourceName <String> [
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityWebPubSub
+```
+Get-AzWebPubSubCustomDomain -Name <String> -WebPubSubInputObject <IWebPubSubIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzWebPubSubCustomDomain -Name <String> -ResourceGroupName <String> -ResourceName <String>
@@ -92,7 +98,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
@@ -111,7 +116,7 @@ Custom domain name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetViaIdentityWebPubSub, Get
 Aliases:
 
 Required: True
@@ -168,6 +173,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WebPubSubInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity
+Parameter Sets: GetViaIdentityWebPubSub
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -177,7 +197,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ICustomDomain
+### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ICustomDomain
 
 ## NOTES
 

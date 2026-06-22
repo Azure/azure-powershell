@@ -20,6 +20,9 @@
 -->
 ## Upcoming Release
 
+## Version 4.2.0
+* Added ChangeSafety Support
+
 ## Version 4.1.1
 * Fixed a bug when invoke `Set-AzServiceBusNamespace` with parameter `NoWait` [#26998]
 

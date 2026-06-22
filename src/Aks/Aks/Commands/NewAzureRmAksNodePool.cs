@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Aks
         public string PodIPAllocationMode { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "OsSKU to be used to specify OS SKU. The default is Ubuntu if OSType is Linux. The default is Windows2019 when Kubernetes <= 1.24 or Windows2022 when Kubernetes >= 1.25 if OSType is Windows.")]
-        [PSArgumentCompleter("Ubuntu", "CBLMariner", "AzureLinux", "Windows2019", "Windows2022")]
+        [PSArgumentCompleter("Ubuntu", "CBLMariner", "AzureLinux", "AzureContainerLinux", "Windows2019", "Windows2022")]
         public string OsSKU { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Whether to enable public IP for nodes.")]

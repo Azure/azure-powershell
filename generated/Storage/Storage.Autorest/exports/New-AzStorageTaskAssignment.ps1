@@ -31,6 +31,9 @@ $start = Get-Date -Year 2024 -Month 8 -Day 7 -Hour 1 -Minute 30
 $end = Get-Date -Year 2024 -Month 12 -Day 25 -Hour 2 -Minute 45
 $taskid = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageActions/storageTasks/mytask"
 New-AzStorageTaskAssignment -accountname myaccount -name mytaskassignment -resourcegroupname myresourcegroup -TaskId $taskid -ReportPrefix test -StartFrom $start.ToUniversalTime() -TriggerType OnSchedule -Interval 10 -IntervalUnit Days -Description "my task assignment" -Enabled:$false -EndBy $end.ToUniversalTime()
+.Example
+$taskid = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageActions/storageTasks/mytask"
+New-AzStorageTaskAssignment -accountname myaccount -name mytaskassignment -resourcegroupname myresourcegroup -TriggerType MockRun -StartOn (Get-Date).AddDays(1).ToUniversalTime() -TaskId $taskid -ReportPrefix test -Description "my task assignment" 
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignment
@@ -96,7 +99,7 @@ param(
     ${TaskId},
 
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("RunOnce", "OnSchedule")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("RunOnce", "OnSchedule", "MockRun")]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
     [System.String]
     # The trigger type of the storage task assignment execution
