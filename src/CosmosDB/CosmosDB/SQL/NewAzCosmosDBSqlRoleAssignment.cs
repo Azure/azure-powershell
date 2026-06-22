@@ -93,9 +93,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
             SqlRoleAssignmentGetResults readSqlRoleAssignmentGetResults = null;
             try
             {
-                readSqlRoleAssignmentGetResults = CosmosDBManagementClient.SqlResources.GetSqlRoleAssignment(Id, ResourceGroupName, AccountName);
+                readSqlRoleAssignmentGetResults = CosmosDBManagementClient.SqlResources.GetSqlRoleAssignment(ResourceGroupName, AccountName, Id);
             }
-            catch (CloudException e)
+            catch (ErrorResponseException e)
             {
                 if (e.Response.StatusCode != HttpStatusCode.NotFound)
                 {
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (ShouldProcess(Id.ToString(), "Creating a new CosmosDB Sql Role Assignment"))
             {
-                SqlRoleAssignmentGetResults sqlRoleAssignmentGetResults = CosmosDBManagementClient.SqlResources.CreateUpdateSqlRoleAssignmentWithHttpMessagesAsync(Id, ResourceGroupName, AccountName, sqlRoleAssignmentCreateUpdateParameters).GetAwaiter().GetResult().Body;
+                SqlRoleAssignmentGetResults sqlRoleAssignmentGetResults = CosmosDBManagementClient.SqlResources.CreateUpdateSqlRoleAssignmentWithHttpMessagesAsync(ResourceGroupName, AccountName, Id, sqlRoleAssignmentCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSSqlRoleAssignmentGetResults(sqlRoleAssignmentGetResults));
             }
 

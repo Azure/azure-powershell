@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (ShouldProcess(Id, "Deleting CosmosDB Sql Role Definition"))
             {
-                CosmosDBManagementClient.SqlResources.DeleteSqlRoleDefinitionWithHttpMessagesAsync(RoleHelper.ParseToRoleDefinitionId(Id), ResourceGroupName, AccountName).GetAwaiter().GetResult();
+                CosmosDBManagementClient.SqlResources.DeleteSqlRoleDefinitionWithHttpMessagesAsync(ResourceGroupName, AccountName, RoleHelper.ParseToRoleDefinitionId(Id)).GetAwaiter().GetResult();
 
                 if (PassThru)
                 {
