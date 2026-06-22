@@ -32,12 +32,16 @@ function New-AzFrontDoorCdnProfileScrubbingRulesObject {
     Param(
 
         [Parameter(Mandatory, HelpMessage="The variable to be scrubbed from the logs.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("RequestIPAddress", "RequestUri", "QueryStringArgNames")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("RequestIPAddress", "RequestUri", "QueryStringArgNames", "RequestHeaderNames", "RequestCookieNames", "RequestBodyPostArgNames", "RequestBodyJsonArgNames")]
         [string]
         $MatchVariable,
         [Parameter(HelpMessage="When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.")]
         [string]
         $Selector,
+        [Parameter(Mandatory, HelpMessage="When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("EqualsAny", "Equals")]
+        [string]
+        $SelectorMatchOperator,
         [Parameter(HelpMessage="Defines the state of a log scrubbing rule. Default value is enabled.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [string]
@@ -52,6 +56,9 @@ function New-AzFrontDoorCdnProfileScrubbingRulesObject {
         }
         if ($PSBoundParameters.ContainsKey('Selector')) {
             $Object.Selector = $Selector
+        }
+        if ($PSBoundParameters.ContainsKey('SelectorMatchOperator')) {
+            $Object.SelectorMatchOperator = $SelectorMatchOperator
         }
         if ($PSBoundParameters.ContainsKey('State')) {
             $Object.State = $State

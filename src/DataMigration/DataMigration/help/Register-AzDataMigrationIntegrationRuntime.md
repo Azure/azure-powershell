@@ -29,7 +29,7 @@ Register-AzDataMigrationIntegrationRuntime -AuthKey $authKeys.AuthKey1
 ```
 
 ```output
-Start to register IR with key: IR*********************yz6=
+Starting IR registration with key.
 Integration Runtime registration is successful!
 ```
 
@@ -44,7 +44,7 @@ Register-AzDataMigrationIntegrationRuntime -AuthKey $authKeys.AuthKey1 -Integrat
 ```output
 Start Gateway installation
 Succeed to install gateway
-Start to register IR with key: IR*********************yz6=
+Starting IR registration with key.
 Integration Runtime registration is successful!
 ```
 

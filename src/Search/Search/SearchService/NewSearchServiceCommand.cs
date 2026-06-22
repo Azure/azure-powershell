@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Management.Search.Models;
 using Microsoft.Azure.Commands.Management.Search.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Search.Models;
+using SdkSearchModels = Microsoft.Azure.Management.Search.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -191,7 +192,7 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                     partitionCount: PartitionCount,
                     hostingMode: (HostingMode?)HostingMode,
                     publicNetworkAccess: publicNetworkAccess,
-                    identity: (Identity)identity,
+                    identity: (SdkSearchModels.Identity)identity,
                     networkRuleSet: networkRuleSet,
                     disableLocalAuth: DisableLocalAuth,
                     authOptions: (DataPlaneAuthOptions)authOptions,
