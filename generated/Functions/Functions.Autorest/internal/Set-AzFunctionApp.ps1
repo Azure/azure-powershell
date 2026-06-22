@@ -16,27 +16,27 @@
 
 <#
 .Synopsis
-Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
+Description for update a new web, mobile, or API app in an existing resource group, or update an existing app.
 .Description
-Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
+Description for update a new web, mobile, or API app in an existing resource group, or update an existing app.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 HOSTNAMESSLSTATE <IHostNameSslState[]>: Hostname SSL states are used to manage the SSL bindings for app's hostnames.
-  [HostType <HostType?>]: Indicates whether the hostname is a standard or repository hostname.
+  [HostType <String>]: Indicates whether the hostname is a standard or repository hostname.
   [Name <String>]: Hostname.
-  [SslState <SslState?>]: SSL type.
+  [SslState <String>]: SSL type.
   [Thumbprint <String>]: SSL certificate thumbprint.
   [ToUpdate <Boolean?>]: Set to <code>true</code> to update existing hostname.
   [VirtualIP <String>]: Virtual IP address assigned to the hostname if IP based SSL is enabled.
@@ -49,32 +49,32 @@ SITECONFIG <ISiteConfig>: Configuration of the app.
   [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
   [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
-  [ActionType <AutoHealActionType?>]: Predefined action to be taken.
+  [ActionType <String>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
   [ApiDefinitionUrl <String>]: The URL of the API definition.
   [ApiManagementConfigId <String>]: APIM-Api Identifier.
   [AppCommandLine <String>]: App command line to launch.
-  [AppSetting <INameValuePair[]>]: Application settings.
+  [AppSetting <List<INameValuePair>>]: Application settings.
     [Name <String>]: Pair name.
     [Value <String>]: Pair value.
   [AutoHealEnabled <Boolean?>]: <code>true</code> if Auto Heal is enabled; otherwise, <code>false</code>.
   [AutoSwapSlotName <String>]: Auto-swap slot name.
   [AzureStorageAccount <ISiteConfigAzureStorageAccounts>]: List of Azure Storage Accounts.
     [(Any) <IAzureStorageInfoValue>]: This indicates any property can be added to this object.
-  [ConnectionString <IConnStringInfo[]>]: Connection strings.
+  [ConnectionString <List<IConnStringInfo>>]: Connection strings.
     [ConnectionString <String>]: Connection string value.
     [Name <String>]: Name of connection string.
-    [Type <ConnectionStringType?>]: Type of database.
-  [CorAllowedOrigin <String[]>]: Gets or sets the list of origins that should be allowed to make cross-origin         calls (for example: http://example.com:12345). Use "*" to allow all.
+    [Type <String>]: Type of database.
+  [CorAllowedOrigin <List<String>>]: Gets or sets the list of origins that should be allowed to make cross-origin         calls (for example: http://example.com:12345). Use "*" to allow all.
   [CorSupportCredentials <Boolean?>]: Gets or sets whether CORS requests with credentials are allowed. See         https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials         for more details.
   [CustomActionExe <String>]: Executable to be run.
   [CustomActionParameter <String>]: Parameters for the executable.
-  [DefaultDocument <String[]>]: Default documents.
+  [DefaultDocument <List<String>>]: Default documents.
   [DetailedErrorLoggingEnabled <Boolean?>]: <code>true</code> if detailed error logging is enabled; otherwise, <code>false</code>.
   [DocumentRoot <String>]: Document root.
   [DynamicTagsJson <String>]: Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.
   [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
-  [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
+  [ExperimentRampUpRule <List<IRampUpRule>>]: List of ramp-up rules.
     [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
     [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
     [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
@@ -83,30 +83,30 @@ SITECONFIG <ISiteConfig>: Configuration of the app.
     [MinReroutePercentage <Double?>]: Specifies lower boundary above which ReroutePercentage will stay.
     [Name <String>]: Name of the routing rule. The recommended name would be to point to the slot which will receive the traffic in the experiment.
     [ReroutePercentage <Double?>]: Percentage of the traffic which will be redirected to <code>ActionHostName</code>.
-  [FtpsState <FtpsState?>]: State of FTP / FTPS service
+  [FtpsState <String>]: State of FTP / FTPS service
   [FunctionAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to the Consumption and Elastic Premium Plans
   [FunctionsRuntimeScaleMonitoringEnabled <Boolean?>]: Gets or sets a value indicating whether functions runtime scale monitoring is enabled. When enabled,         the ScaleController will not monitor event sources directly, but will instead call to the         runtime to get scale status.
-  [HandlerMapping <IHandlerMapping[]>]: Handler mappings.
+  [HandlerMapping <List<IHandlerMapping>>]: Handler mappings.
     [Argument <String>]: Command-line arguments to be passed to the script processor.
     [Extension <String>]: Requests with this extension will be handled using the specified FastCGI application.
     [ScriptProcessor <String>]: The absolute path to the FastCGI application.
   [HealthCheckPath <String>]: Health check path
   [Http20Enabled <Boolean?>]: Http20Enabled: configures a web site to allow clients to connect over http2.0
   [HttpLoggingEnabled <Boolean?>]: <code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>.
-  [IPSecurityRestriction <IIPSecurityRestriction[]>]: IP security restrictions for main.
+  [IPSecurityRestriction <List<IIPSecurityRestriction>>]: IP security restrictions for main.
     [Action <String>]: Allow or Deny access for this IP range.
     [Description <String>]: IP restriction rule description.
     [Header <IIPSecurityRestrictionHeaders>]: IP restriction rule headers.         X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).         The matching logic is ..         - If the property is null or empty (default), all hosts(or lack of) are allowed.         - A value is compared using ordinal-ignore-case (excluding port number).         - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com          but not the root domain contoso.com or multi-level foo.bar.contoso.com         - Unicode host names are allowed but are converted to Punycode for matching.          X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).         The matching logic is ..         - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.         - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.          X-Azure-FDID and X-FD-HealthProbe.         The matching logic is exact match.
-      [(Any) <String[]>]: This indicates any property can be added to this object.
+      [(Any) <List<String>>]: This indicates any property can be added to this object.
     [IPAddress <String>]: IP address the security restriction is valid for.         It can be in form of pure ipv4 address (required SubnetMask property) or         CIDR notation such as ipv4/mask (leading bit match). For CIDR,         SubnetMask property must not be specified.
     [Name <String>]: IP restriction rule name.
     [Priority <Int32?>]: Priority of IP restriction rule.
     [SubnetMask <String>]: Subnet mask for the range of IP addresses the restriction is valid for.
     [SubnetTrafficTag <Int32?>]: (internal) Subnet traffic tag
-    [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+    [Tag <String>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
     [VnetSubnetResourceId <String>]: Virtual network resource id
     [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
-  [IPSecurityRestrictionsDefaultAction <DefaultAction?>]: Default action for main access restriction if no rules are matched.
+  [IPSecurityRestrictionsDefaultAction <String>]: Default action for main access restriction if no rules are matched.
   [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
   [JavaContainer <String>]: Java container.
   [JavaContainerVersion <String>]: Java container version.
@@ -116,18 +116,14 @@ SITECONFIG <ISiteConfig>: Configuration of the app.
   [LimitMaxMemoryInMb <Int64?>]: Maximum allowed memory usage in MB.
   [LimitMaxPercentageCpu <Double?>]: Maximum allowed CPU usage percentage.
   [LinuxFxVersion <String>]: Linux App Framework and version
-  [LoadBalancing <SiteLoadBalancing?>]: Site load balancing.
+  [LoadBalancing <String>]: Site load balancing.
   [LocalMySqlEnabled <Boolean?>]: <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
   [LogsDirectorySizeLimit <Int32?>]: HTTP logs directory size limit.
-  [MachineKeyDecryption <String>]: Algorithm used for decryption.
-  [MachineKeyDecryptionKey <String>]: Decryption key.
-  [MachineKeyValidation <String>]: MachineKey validation.
-  [MachineKeyValidationKey <String>]: Validation key.
-  [ManagedPipelineMode <ManagedPipelineMode?>]: Managed pipeline mode.
+  [ManagedPipelineMode <String>]: Managed pipeline mode.
   [ManagedServiceIdentityId <Int32?>]: Managed Service Identity Id
-  [Metadata <INameValuePair[]>]: Application metadata. This property cannot be retrieved, since it may contain secrets.
-  [MinTlsCipherSuite <TlsCipherSuites?>]: The minimum strength TLS cipher suite allowed for an application
-  [MinTlsVersion <SupportedTlsVersions?>]: MinTlsVersion: configures the minimum version of TLS required for SSL requests
+  [Metadata <List<INameValuePair>>]: Application metadata. This property cannot be retrieved, since it may contain secrets.
+  [MinTlsCipherSuite <String>]: The minimum strength TLS cipher suite allowed for an application
+  [MinTlsVersion <String>]: MinTlsVersion: configures the minimum version of TLS required for SSL requests
   [MinimumElasticInstanceCount <Int32?>]: Number of minimum instance count for a site         This setting only applies to the Elastic Plans
   [NetFrameworkVersion <String>]: .NET Framework version.
   [NodeVersion <String>]: Version of Node.js.
@@ -145,11 +141,11 @@ SITECONFIG <ISiteConfig>: Configuration of the app.
   [RequestTimeInterval <String>]: Time interval.
   [RequestTracingEnabled <Boolean?>]: <code>true</code> if request tracing is enabled; otherwise, <code>false</code>.
   [RequestTracingExpirationTime <DateTime?>]: Request tracing expiration time.
-  [ScmIPSecurityRestriction <IIPSecurityRestriction[]>]: IP security restrictions for scm.
-  [ScmIPSecurityRestrictionsDefaultAction <DefaultAction?>]: Default action for scm access restriction if no rules are matched.
+  [ScmIPSecurityRestriction <List<IIPSecurityRestriction>>]: IP security restrictions for scm.
+  [ScmIPSecurityRestrictionsDefaultAction <String>]: Default action for scm access restriction if no rules are matched.
   [ScmIPSecurityRestrictionsUseMain <Boolean?>]: IP security restrictions for scm to use main.
-  [ScmMinTlsVersion <SupportedTlsVersions?>]: ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
-  [ScmType <ScmType?>]: SCM type.
+  [ScmMinTlsVersion <String>]: ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
+  [ScmType <String>]: SCM type.
   [SlowRequestCount <Int32?>]: Request Count.
   [SlowRequestPath <String>]: Request Path.
   [SlowRequestTimeInterval <String>]: Time interval.
@@ -158,28 +154,28 @@ SITECONFIG <ISiteConfig>: Configuration of the app.
   [TagsRequiringAuth <String>]: Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.         Tags can consist of alphanumeric characters and the following:         '_', '@', '#', '.', ':', '-'.         Validation should be performed at the PushRequestHandler.
   [TracingOption <String>]: Tracing options.
   [TriggerPrivateBytesInKb <Int32?>]: A rule based on private bytes.
-  [TriggerSlowRequestsWithPath <ISlowRequestsBasedTrigger[]>]: A rule based on multiple Slow Requests Rule with path
+  [TriggerSlowRequestsWithPath <List<ISlowRequestsBasedTrigger>>]: A rule based on multiple Slow Requests Rule with path
     [Count <Int32?>]: Request Count.
     [Path <String>]: Request Path.
     [TimeInterval <String>]: Time interval.
     [TimeTaken <String>]: Time taken.
-  [TriggerStatusCode <IStatusCodesBasedTrigger[]>]: A rule based on status codes.
+  [TriggerStatusCode <List<IStatusCodesBasedTrigger>>]: A rule based on status codes.
     [Count <Int32?>]: Request Count.
     [Path <String>]: Request Path
     [Status <Int32?>]: HTTP status code.
     [SubStatus <Int32?>]: Request Sub Status.
     [TimeInterval <String>]: Time interval.
     [Win32Status <Int32?>]: Win32 error code.
-  [TriggerStatusCodesRange <IStatusCodesRangeBasedTrigger[]>]: A rule based on status codes ranges.
+  [TriggerStatusCodesRange <List<IStatusCodesRangeBasedTrigger>>]: A rule based on status codes ranges.
     [Count <Int32?>]: Request Count.
     [Path <String>]: 
     [StatusCode <String>]: HTTP status code.
     [TimeInterval <String>]: Time interval.
   [Use32BitWorkerProcess <Boolean?>]: <code>true</code> to use 32-bit worker process; otherwise, <code>false</code>.
-  [VirtualApplication <IVirtualApplication[]>]: Virtual applications.
+  [VirtualApplication <List<IVirtualApplication>>]: Virtual applications.
     [PhysicalPath <String>]: Physical path.
     [PreloadEnabled <Boolean?>]: <code>true</code> if preloading is enabled; otherwise, <code>false</code>.
-    [VirtualDirectory <IVirtualDirectory[]>]: Virtual directories for virtual application.
+    [VirtualDirectory <List<IVirtualDirectory>>]: Virtual directories for virtual application.
       [PhysicalPath <String>]: Physical path.
       [VirtualPath <String>]: Path to virtual application.
     [VirtualPath <String>]: Virtual path.
@@ -197,12 +193,12 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
   [Tag <IResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [AuthenticationStorageAccountConnectionStringName <String>]: Use this property for StorageAccountConnectionString. Set the name of the app setting that has the storage account connection string. Do not set a value for this property when using other authentication type.
-  [AuthenticationType <AuthenticationType?>]: Property to select authentication type to access the selected storage account. Available options: SystemAssignedIdentity, UserAssignedIdentity, StorageAccountConnectionString.
+  [AuthenticationType <String>]: Property to select authentication type to access the selected storage account. Available options: SystemAssignedIdentity, UserAssignedIdentity, StorageAccountConnectionString.
   [AuthenticationUserAssignedIdentityResourceId <String>]: Use this property for UserAssignedIdentity. Set the resource ID of the identity. Do not set a value for this property when using other authentication type.
   [ClientAffinityEnabled <Boolean?>]: <code>true</code> to enable client affinity; <code>false</code> to stop sending session affinity cookies, which route client requests in the same session to the same instance. Default is <code>true</code>.
   [ClientCertEnabled <Boolean?>]: <code>true</code> to enable client certificate authentication (TLS mutual authentication); otherwise, <code>false</code>. Default is <code>false</code>.
   [ClientCertExclusionPath <String>]: client certificate authentication comma-separated exclusion paths
-  [ClientCertMode <ClientCertMode?>]: This composes with ClientCertEnabled setting.         - ClientCertEnabled: false means ClientCert is ignored.         - ClientCertEnabled: true and ClientCertMode: Required means ClientCert is required.         - ClientCertEnabled: true and ClientCertMode: Optional means ClientCert is optional or accepted.
+  [ClientCertMode <String>]: This composes with ClientCertEnabled setting.         - ClientCertEnabled: false means ClientCert is ignored.         - ClientCertEnabled: true and ClientCertMode: Required means ClientCert is required.         - ClientCertEnabled: true and ClientCertMode: Optional means ClientCert is optional or accepted.
   [CloningInfoAppSettingsOverride <ICloningInfoAppSettingsOverrides>]: Application setting overrides for cloned app. If specified, these settings override the settings cloned         from source app. Otherwise, application settings from source app are retained.
     [(Any) <String>]: This indicates any property can be added to this object.
   [CloningInfoCloneCustomHostName <Boolean?>]: <code>true</code> to clone custom hostnames from source app; otherwise, <code>false</code>.
@@ -219,32 +215,32 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
     [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
     [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
     [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
-    [ActionType <AutoHealActionType?>]: Predefined action to be taken.
+    [ActionType <String>]: Predefined action to be taken.
     [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
     [ApiDefinitionUrl <String>]: The URL of the API definition.
     [ApiManagementConfigId <String>]: APIM-Api Identifier.
     [AppCommandLine <String>]: App command line to launch.
-    [AppSetting <INameValuePair[]>]: Application settings.
+    [AppSetting <List<INameValuePair>>]: Application settings.
       [Name <String>]: Pair name.
       [Value <String>]: Pair value.
     [AutoHealEnabled <Boolean?>]: <code>true</code> if Auto Heal is enabled; otherwise, <code>false</code>.
     [AutoSwapSlotName <String>]: Auto-swap slot name.
     [AzureStorageAccount <ISiteConfigAzureStorageAccounts>]: List of Azure Storage Accounts.
       [(Any) <IAzureStorageInfoValue>]: This indicates any property can be added to this object.
-    [ConnectionString <IConnStringInfo[]>]: Connection strings.
+    [ConnectionString <List<IConnStringInfo>>]: Connection strings.
       [ConnectionString <String>]: Connection string value.
       [Name <String>]: Name of connection string.
-      [Type <ConnectionStringType?>]: Type of database.
-    [CorAllowedOrigin <String[]>]: Gets or sets the list of origins that should be allowed to make cross-origin         calls (for example: http://example.com:12345). Use "*" to allow all.
+      [Type <String>]: Type of database.
+    [CorAllowedOrigin <List<String>>]: Gets or sets the list of origins that should be allowed to make cross-origin         calls (for example: http://example.com:12345). Use "*" to allow all.
     [CorSupportCredentials <Boolean?>]: Gets or sets whether CORS requests with credentials are allowed. See         https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials         for more details.
     [CustomActionExe <String>]: Executable to be run.
     [CustomActionParameter <String>]: Parameters for the executable.
-    [DefaultDocument <String[]>]: Default documents.
+    [DefaultDocument <List<String>>]: Default documents.
     [DetailedErrorLoggingEnabled <Boolean?>]: <code>true</code> if detailed error logging is enabled; otherwise, <code>false</code>.
     [DocumentRoot <String>]: Document root.
     [DynamicTagsJson <String>]: Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.
     [ElasticWebAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code>
-    [ExperimentRampUpRule <IRampUpRule[]>]: List of ramp-up rules.
+    [ExperimentRampUpRule <List<IRampUpRule>>]: List of ramp-up rules.
       [ActionHostName <String>]: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
       [ChangeDecisionCallbackUrl <String>]: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified.
       [ChangeIntervalInMinute <Int32?>]: Specifies interval in minutes to reevaluate ReroutePercentage.
@@ -253,30 +249,30 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
       [MinReroutePercentage <Double?>]: Specifies lower boundary above which ReroutePercentage will stay.
       [Name <String>]: Name of the routing rule. The recommended name would be to point to the slot which will receive the traffic in the experiment.
       [ReroutePercentage <Double?>]: Percentage of the traffic which will be redirected to <code>ActionHostName</code>.
-    [FtpsState <FtpsState?>]: State of FTP / FTPS service
+    [FtpsState <String>]: State of FTP / FTPS service
     [FunctionAppScaleLimit <Int32?>]: Maximum number of workers that a site can scale out to.         This setting only applies to the Consumption and Elastic Premium Plans
     [FunctionsRuntimeScaleMonitoringEnabled <Boolean?>]: Gets or sets a value indicating whether functions runtime scale monitoring is enabled. When enabled,         the ScaleController will not monitor event sources directly, but will instead call to the         runtime to get scale status.
-    [HandlerMapping <IHandlerMapping[]>]: Handler mappings.
+    [HandlerMapping <List<IHandlerMapping>>]: Handler mappings.
       [Argument <String>]: Command-line arguments to be passed to the script processor.
       [Extension <String>]: Requests with this extension will be handled using the specified FastCGI application.
       [ScriptProcessor <String>]: The absolute path to the FastCGI application.
     [HealthCheckPath <String>]: Health check path
     [Http20Enabled <Boolean?>]: Http20Enabled: configures a web site to allow clients to connect over http2.0
     [HttpLoggingEnabled <Boolean?>]: <code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>.
-    [IPSecurityRestriction <IIPSecurityRestriction[]>]: IP security restrictions for main.
+    [IPSecurityRestriction <List<IIPSecurityRestriction>>]: IP security restrictions for main.
       [Action <String>]: Allow or Deny access for this IP range.
       [Description <String>]: IP restriction rule description.
       [Header <IIPSecurityRestrictionHeaders>]: IP restriction rule headers.         X-Forwarded-Host (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host#Examples).         The matching logic is ..         - If the property is null or empty (default), all hosts(or lack of) are allowed.         - A value is compared using ordinal-ignore-case (excluding port number).         - Subdomain wildcards are permitted but don't match the root domain. For example, *.contoso.com matches the subdomain foo.contoso.com          but not the root domain contoso.com or multi-level foo.bar.contoso.com         - Unicode host names are allowed but are converted to Punycode for matching.          X-Forwarded-For (https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For#Examples).         The matching logic is ..         - If the property is null or empty (default), any forwarded-for chains (or lack of) are allowed.         - If any address (excluding port number) in the chain (comma separated) matches the CIDR defined by the property.          X-Azure-FDID and X-FD-HealthProbe.         The matching logic is exact match.
-        [(Any) <String[]>]: This indicates any property can be added to this object.
+        [(Any) <List<String>>]: This indicates any property can be added to this object.
       [IPAddress <String>]: IP address the security restriction is valid for.         It can be in form of pure ipv4 address (required SubnetMask property) or         CIDR notation such as ipv4/mask (leading bit match). For CIDR,         SubnetMask property must not be specified.
       [Name <String>]: IP restriction rule name.
       [Priority <Int32?>]: Priority of IP restriction rule.
       [SubnetMask <String>]: Subnet mask for the range of IP addresses the restriction is valid for.
       [SubnetTrafficTag <Int32?>]: (internal) Subnet traffic tag
-      [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+      [Tag <String>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
       [VnetSubnetResourceId <String>]: Virtual network resource id
       [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
-    [IPSecurityRestrictionsDefaultAction <DefaultAction?>]: Default action for main access restriction if no rules are matched.
+    [IPSecurityRestrictionsDefaultAction <String>]: Default action for main access restriction if no rules are matched.
     [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
     [JavaContainer <String>]: Java container.
     [JavaContainerVersion <String>]: Java container version.
@@ -286,18 +282,14 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
     [LimitMaxMemoryInMb <Int64?>]: Maximum allowed memory usage in MB.
     [LimitMaxPercentageCpu <Double?>]: Maximum allowed CPU usage percentage.
     [LinuxFxVersion <String>]: Linux App Framework and version
-    [LoadBalancing <SiteLoadBalancing?>]: Site load balancing.
+    [LoadBalancing <String>]: Site load balancing.
     [LocalMySqlEnabled <Boolean?>]: <code>true</code> to enable local MySQL; otherwise, <code>false</code>.
     [LogsDirectorySizeLimit <Int32?>]: HTTP logs directory size limit.
-    [MachineKeyDecryption <String>]: Algorithm used for decryption.
-    [MachineKeyDecryptionKey <String>]: Decryption key.
-    [MachineKeyValidation <String>]: MachineKey validation.
-    [MachineKeyValidationKey <String>]: Validation key.
-    [ManagedPipelineMode <ManagedPipelineMode?>]: Managed pipeline mode.
+    [ManagedPipelineMode <String>]: Managed pipeline mode.
     [ManagedServiceIdentityId <Int32?>]: Managed Service Identity Id
-    [Metadata <INameValuePair[]>]: Application metadata. This property cannot be retrieved, since it may contain secrets.
-    [MinTlsCipherSuite <TlsCipherSuites?>]: The minimum strength TLS cipher suite allowed for an application
-    [MinTlsVersion <SupportedTlsVersions?>]: MinTlsVersion: configures the minimum version of TLS required for SSL requests
+    [Metadata <List<INameValuePair>>]: Application metadata. This property cannot be retrieved, since it may contain secrets.
+    [MinTlsCipherSuite <String>]: The minimum strength TLS cipher suite allowed for an application
+    [MinTlsVersion <String>]: MinTlsVersion: configures the minimum version of TLS required for SSL requests
     [MinimumElasticInstanceCount <Int32?>]: Number of minimum instance count for a site         This setting only applies to the Elastic Plans
     [NetFrameworkVersion <String>]: .NET Framework version.
     [NodeVersion <String>]: Version of Node.js.
@@ -315,11 +307,11 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
     [RequestTimeInterval <String>]: Time interval.
     [RequestTracingEnabled <Boolean?>]: <code>true</code> if request tracing is enabled; otherwise, <code>false</code>.
     [RequestTracingExpirationTime <DateTime?>]: Request tracing expiration time.
-    [ScmIPSecurityRestriction <IIPSecurityRestriction[]>]: IP security restrictions for scm.
-    [ScmIPSecurityRestrictionsDefaultAction <DefaultAction?>]: Default action for scm access restriction if no rules are matched.
+    [ScmIPSecurityRestriction <List<IIPSecurityRestriction>>]: IP security restrictions for scm.
+    [ScmIPSecurityRestrictionsDefaultAction <String>]: Default action for scm access restriction if no rules are matched.
     [ScmIPSecurityRestrictionsUseMain <Boolean?>]: IP security restrictions for scm to use main.
-    [ScmMinTlsVersion <SupportedTlsVersions?>]: ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
-    [ScmType <ScmType?>]: SCM type.
+    [ScmMinTlsVersion <String>]: ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
+    [ScmType <String>]: SCM type.
     [SlowRequestCount <Int32?>]: Request Count.
     [SlowRequestPath <String>]: Request Path.
     [SlowRequestTimeInterval <String>]: Time interval.
@@ -328,28 +320,28 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
     [TagsRequiringAuth <String>]: Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.         Tags can consist of alphanumeric characters and the following:         '_', '@', '#', '.', ':', '-'.         Validation should be performed at the PushRequestHandler.
     [TracingOption <String>]: Tracing options.
     [TriggerPrivateBytesInKb <Int32?>]: A rule based on private bytes.
-    [TriggerSlowRequestsWithPath <ISlowRequestsBasedTrigger[]>]: A rule based on multiple Slow Requests Rule with path
+    [TriggerSlowRequestsWithPath <List<ISlowRequestsBasedTrigger>>]: A rule based on multiple Slow Requests Rule with path
       [Count <Int32?>]: Request Count.
       [Path <String>]: Request Path.
       [TimeInterval <String>]: Time interval.
       [TimeTaken <String>]: Time taken.
-    [TriggerStatusCode <IStatusCodesBasedTrigger[]>]: A rule based on status codes.
+    [TriggerStatusCode <List<IStatusCodesBasedTrigger>>]: A rule based on status codes.
       [Count <Int32?>]: Request Count.
       [Path <String>]: Request Path
       [Status <Int32?>]: HTTP status code.
       [SubStatus <Int32?>]: Request Sub Status.
       [TimeInterval <String>]: Time interval.
       [Win32Status <Int32?>]: Win32 error code.
-    [TriggerStatusCodesRange <IStatusCodesRangeBasedTrigger[]>]: A rule based on status codes ranges.
+    [TriggerStatusCodesRange <List<IStatusCodesRangeBasedTrigger>>]: A rule based on status codes ranges.
       [Count <Int32?>]: Request Count.
       [Path <String>]: 
       [StatusCode <String>]: HTTP status code.
       [TimeInterval <String>]: Time interval.
     [Use32BitWorkerProcess <Boolean?>]: <code>true</code> to use 32-bit worker process; otherwise, <code>false</code>.
-    [VirtualApplication <IVirtualApplication[]>]: Virtual applications.
+    [VirtualApplication <List<IVirtualApplication>>]: Virtual applications.
       [PhysicalPath <String>]: Physical path.
       [PreloadEnabled <Boolean?>]: <code>true</code> if preloading is enabled; otherwise, <code>false</code>.
-      [VirtualDirectory <IVirtualDirectory[]>]: Virtual directories for virtual application.
+      [VirtualDirectory <List<IVirtualDirectory>>]: Virtual directories for virtual application.
         [PhysicalPath <String>]: Physical path.
         [VirtualPath <String>]: Path to virtual application.
       [VirtualPath <String>]: Virtual path.
@@ -369,19 +361,19 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
   [DaprConfigEnabled <Boolean?>]: Boolean indicating if the Dapr side car is enabled
   [DaprConfigHttpMaxRequestSize <Int32?>]: Increasing max size of request body http servers parameter in MB to handle uploading of big files. Default is 4 MB.
   [DaprConfigHttpReadBufferSize <Int32?>]: Dapr max size of http header read buffer in KB to handle when sending multi-KB headers. Default is 65KB.
-  [DaprConfigLogLevel <DaprLogLevel?>]: Sets the log level for the Dapr sidecar. Allowed values are debug, info, warn, error. Default is info.
+  [DaprConfigLogLevel <String>]: Sets the log level for the Dapr sidecar. Allowed values are debug, info, warn, error. Default is info.
   [DnsConfigurationDnsAltServer <String>]: Alternate DNS server to be used by apps. This property replicates the WEBSITE_DNS_ALT_SERVER app setting.
   [DnsConfigurationDnsMaxCacheTimeout <Int32?>]: Custom time for DNS to be cached in seconds. Allowed range: 0-60. Default is 30 seconds. 0 means caching disabled.
   [DnsConfigurationDnsRetryAttemptCount <Int32?>]: Total number of retries for dns lookup. Allowed range: 1-5. Default is 3.
   [DnsConfigurationDnsRetryAttemptTimeout <Int32?>]: Timeout for a single dns lookup in seconds. Allowed range: 1-30. Default is 3.
-  [DnsConfigurationDnsServer <String[]>]: List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set.
+  [DnsConfigurationDnsServer <List<String>>]: List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set.
   [Enabled <Boolean?>]: <code>true</code> if the app is enabled; otherwise, <code>false</code>. Setting this value to false disables the app (takes the app offline).
   [EndToEndEncryptionEnabled <Boolean?>]: Whether to use end to end encryption between the FrontEnd and the Worker
   [ExtendedLocationName <String>]: Name of extended location.
-  [HostNameSslState <IHostNameSslState[]>]: Hostname SSL states are used to manage the SSL bindings for app's hostnames.
-    [HostType <HostType?>]: Indicates whether the hostname is a standard or repository hostname.
+  [HostNameSslState <List<IHostNameSslState>>]: Hostname SSL states are used to manage the SSL bindings for app's hostnames.
+    [HostType <String>]: Indicates whether the hostname is a standard or repository hostname.
     [Name <String>]: Hostname.
-    [SslState <SslState?>]: SSL type.
+    [SslState <String>]: SSL type.
     [Thumbprint <String>]: SSL certificate thumbprint.
     [ToUpdate <Boolean?>]: Set to <code>true</code> to update existing hostname.
     [VirtualIP <String>]: Virtual IP address assigned to the hostname if IP based SSL is enabled.
@@ -390,20 +382,20 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
   [HttpPerInstanceConcurrency <Int32?>]: The maximum number of concurrent HTTP trigger invocations per instance.
   [HttpsOnly <Boolean?>]: HttpsOnly: configures a web site to accept only https requests. Issues redirect for         http requests
   [HyperV <Boolean?>]: Hyper-V sandbox.
-  [IdentityType <ManagedServiceIdentityType?>]: Type of managed service identity.
+  [IdentityType <String>]: Type of managed service identity.
   [IdentityUserAssignedIdentity <IManagedServiceIdentityUserAssignedIdentities>]: The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
     [(Any) <IUserAssignedIdentity>]: This indicates any property can be added to this object.
   [IsXenon <Boolean?>]: Obsolete: Hyper-V sandbox.
   [KeyVaultReferenceIdentity <String>]: Identity to use for Key Vault Reference authentication.
   [ManagedEnvironmentId <String>]: Azure Resource Manager ID of the customer's selected Managed Environment on which to host this app. This must be of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName}
   [PublicNetworkAccess <String>]: Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled' or an empty string.
-  [RedundancyMode <RedundancyMode?>]: Site redundancy mode
+  [RedundancyMode <String>]: Site redundancy mode
   [Reserved <Boolean?>]: <code>true</code> if reserved; otherwise, <code>false</code>.
   [ResourceConfigCpu <Double?>]: Required CPU in cores, e.g. 0.5
   [ResourceConfigMemory <String>]: Required memory, e.g. "1Gi"
-  [RuntimeName <RuntimeName?>]: Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom
+  [RuntimeName <String>]: Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom
   [RuntimeVersion <String>]: Function app runtime version. Example: 8 (for dotnet-isolated)
-  [ScaleAndConcurrencyAlwaysReady <IFunctionsAlwaysReadyConfig[]>]: 'Always Ready' configuration for the function app.
+  [ScaleAndConcurrencyAlwaysReady <List<IFunctionsAlwaysReadyConfig>>]: 'Always Ready' configuration for the function app.
     [InstanceCount <Int32?>]: Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
     [Name <String>]: Either a function group or a function name is required. For additional information see https://aka.ms/flexconsumption/alwaysready.
   [ScaleAndConcurrencyInstanceMemoryMb <Int32?>]: Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
@@ -411,7 +403,7 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
   [StorageAccountRequired <Boolean?>]: Checks if Customer provided storage account is required
-  [StorageType <FunctionsDeploymentStorageType?>]: Property to select Azure Storage type. Available options: blobContainer.
+  [StorageType <String>]: Property to select Azure Storage type. Available options: blobContainer.
   [StorageValue <String>]: Property to set the URL for the selected Azure Storage type. Example: For blobContainer, the value could be https://<storageAccountName>.blob.core.windows.net/<containerName>.
   [VirtualNetworkSubnetId <String>]: Azure Resource Manager ID of the Virtual network and subnet to be joined by Regional VNET Integration.         This must be of the form /subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}
   [VnetBackupRestoreEnabled <Boolean?>]: To enable Backup and Restore operations over virtual network
@@ -423,7 +415,7 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
 https://learn.microsoft.com/powershell/module/az.functions/set-azfunctionapp
 #>
 function Set-AzFunctionApp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -450,9 +442,8 @@ param(
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite]
     # A web app, a mobile app backend, or an API app.
-    # To construct, see NOTES section for SITEENVELOPE properties and create a hash table.
     ${SiteEnvelope},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -470,9 +461,9 @@ param(
     ${AuthenticationStorageAccountConnectionStringName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AuthenticationType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("SystemAssignedIdentity", "UserAssignedIdentity", "StorageAccountConnectionString")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AuthenticationType]
+    [System.String]
     # Property to select authentication type to access the selected storage account.
     # Available options: SystemAssignedIdentity, UserAssignedIdentity, StorageAccountConnectionString.
     ${AuthenticationType},
@@ -506,15 +497,15 @@ param(
     ${ClientCertExclusionPath},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ClientCertMode])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("Required", "Optional", "OptionalInteractiveUser")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ClientCertMode]
+    [System.String]
     # This composes with ClientCertEnabled setting.- ClientCertEnabled: false means ClientCert is ignored.- ClientCertEnabled: true and ClientCertMode: Required means ClientCert is required.- ClientCertEnabled: true and ClientCertMode: Optional means ClientCert is optional or accepted.
     ${ClientCertMode},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICloningInfoAppSettingsOverrides]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ICloningInfoAppSettingsOverrides]))]
     [System.Collections.Hashtable]
     # Application setting overrides for cloned app.
     # If specified, these settings override the settings cloned from source app.
@@ -643,9 +634,9 @@ param(
     ${DaprConfigHttpReadBufferSize},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DaprLogLevel])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("info", "debug", "warn", "error")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DaprLogLevel]
+    [System.String]
     # Sets the log level for the Dapr sidecar.
     # Allowed values are debug, info, warn, error.
     # Default is info.
@@ -693,6 +684,12 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Nullable[System.Boolean]]
+    # Determines whether to enable a system-assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # <code>true</code> if the app is enabled; otherwise, <code>false</code>.
     # Setting this value to false disables the app (takes the app offline).
@@ -713,9 +710,8 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IHostNameSslState[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IHostNameSslState[]]
     # Hostname SSL states are used to manage the SSL bindings for app's hostnames.
-    # To construct, see NOTES section for HOSTNAMESSLSTATE properties and create a hash table.
     ${HostNameSslState},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -751,21 +747,6 @@ param(
     ${HyperV},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType]
-    # Type of managed service identity.
-    ${IdentityType},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IManagedServiceIdentityUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The list of user assigned identities associated with the resource.
-    # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
-    ${IdentityUserAssignedIdentity},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Obsolete: Hyper-V sandbox.
@@ -798,9 +779,9 @@ param(
     ${PublicNetworkAccess},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RedundancyMode])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("None", "Manual", "Failover", "ActiveActive", "GeoRedundant")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RedundancyMode]
+    [System.String]
     # Site redundancy mode
     ${RedundancyMode},
 
@@ -825,9 +806,9 @@ param(
     ${ResourceConfigMemory},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RuntimeName])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("dotnet-isolated", "node", "java", "powershell", "python", "custom")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RuntimeName]
+    [System.String]
     # Function app runtime name.
     # Available options: dotnet-isolated, node, java, powershell, python, custom
     ${RuntimeName},
@@ -842,9 +823,8 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IFunctionsAlwaysReadyConfig[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsAlwaysReadyConfig[]]
     # 'Always Ready' configuration for the function app.
-    # To construct, see NOTES section for SCALEANDCONCURRENCYALWAYSREADY properties and create a hash table.
     ${ScaleAndConcurrencyAlwaysReady},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -875,9 +855,8 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfig]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISiteConfig]
     # Configuration of the app.
-    # To construct, see NOTES section for SITECONFIG properties and create a hash table.
     ${SiteConfig},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -887,9 +866,9 @@ param(
     ${StorageAccountRequired},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionsDeploymentStorageType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.PSArgumentCompleterAttribute("blobContainer")]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionsDeploymentStorageType]
+    [System.String]
     # Property to select Azure Storage type.
     # Available options: blobContainer.
     ${StorageType},
@@ -903,10 +882,18 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    ${UserAssignedIdentity},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
@@ -944,6 +931,18 @@ param(
     [System.String]
     # Workload profile name for function app to execute on.
     ${WorkloadProfileName},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1013,14 +1012,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             Update = 'Az.Functions.private\Set-AzFunctionApp_Update';
             UpdateExpanded = 'Az.Functions.private\Set-AzFunctionApp_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.Functions.private\Set-AzFunctionApp_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.Functions.private\Set-AzFunctionApp_UpdateViaJsonString';
         }
-        if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1029,6 +1031,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

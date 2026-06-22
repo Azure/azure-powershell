@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 6.0.0
+* Upgraded API version to 2025-10-10
+* Added MultiplePersistent enum value to HostPool property loadBalancerType.
+* Fixed `New-AzWvdRegistrationInfo`, `Remove-AzWvdRegistrationInfo`.
+
 ## Version 5.4.7
 * Added preannouncement for breaking changes in Az.DesktopVirtualization 6.0.0
     - Parameter 'Tag' will be removed from the Update cmdlet of Application and Desktop.

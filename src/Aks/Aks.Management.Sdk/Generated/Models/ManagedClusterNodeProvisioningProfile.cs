@@ -7,6 +7,9 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 {
     using System.Linq;
 
+    /// <summary>
+    /// Node provisioning profile for the managed cluster.
+    /// </summary>
     public partial class ManagedClusterNodeProvisioningProfile
     {
         /// <summary>

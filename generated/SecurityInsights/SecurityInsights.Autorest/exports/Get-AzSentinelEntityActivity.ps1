@@ -25,40 +25,76 @@ Get Insights and Activities for an entity.
  $Entity = Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "4ebb68f3-a435-fac0-d3b6-94712d246f0a"
  $Entity | Get-AzSentinelEntityActivity
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityQueryItem
+Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IGetQueriesResponse
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
+  [ActionId <String>]: Action ID
+  [AlertRuleTemplateId <String>]: Alert rule template ID
+  [AutomationRuleId <String>]: Automation rule ID
+  [BookmarkId <String>]: Bookmark ID
+  [ConsentId <String>]: consent ID
+  [DataConnectorId <String>]: Connector ID
+  [EntityId <String>]: entity ID
+  [EntityQueryId <String>]: entity query ID
+  [EntityQueryTemplateId <String>]: entity query template ID
+  [Id <String>]: Resource identity path
+  [IncidentCommentId <String>]: Incident comment ID
+  [IncidentId <String>]: Incident ID
+  [MetadataName <String>]: The Metadata name.
+  [Name <String>]: Threat intelligence indicator name field.
+  [RelationName <String>]: Relation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleId <String>]: Alert rule ID
+  [SentinelOnboardingStateName <String>]: The Sentinel onboarding state name. Supports - default
+  [SettingsName <String>]: The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
+  [SourceControlId <String>]: Source control Id
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [WorkspaceName <String>]: The name of the workspace.
 .Link
 https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelentityactivity
 #>
 function Get-AzSentinelEntityActivity {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityQueryItem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IGetQueriesResponse])]
 [CmdletBinding(DefaultParameterSetName='Queries', PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Queries', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
     [System.String]
     # entity ID
     ${EntityId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Queries', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
-    [System.String]
-    # The name of the workspace.
-    ${WorkspaceName},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='Queries')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='Queries', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
+    [System.String]
+    # The name of the workspace.
+    ${WorkspaceName},
+
+    [Parameter(ParameterSetName='QueriesViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity]
+    # Identity Parameter
+    ${InputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -116,6 +152,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -136,10 +180,9 @@ begin {
 
         $mapping = @{
             Queries = 'Az.SecurityInsights.private\Get-AzSentinelEntityActivity_Queries';
+            QueriesViaIdentity = 'Az.SecurityInsights.private\Get-AzSentinelEntityActivity_QueriesViaIdentity';
         }
-        if (('Queries') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Queries') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -153,6 +196,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

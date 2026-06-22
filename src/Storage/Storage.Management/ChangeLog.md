@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated storage account identity handling to explicitly use the Storage SDK `Identity` model in `New-AzStorageAccount` and `Set-AzStorageAccount`.
+
+## Version 9.7.0
+* Added ChangeSafety Support
+* Updated prompt in `Start-AzStorageAccountMigration`
+* Added MockRun TriggerType in `New/Update-AzStorageTaskAssignment`
+* Added Smart access tier, AllowedCopyScope in `New/Set-AzStorageAccount`
+* Added static website config in `Update-AzStorageBlobServiceProperty`
+* Added tags replication in `Set-AzStorageObjectReplicationPolicy`
 
 ## Version 9.6.1
 * Removed breaking change warnings for TLS 1.0 and TLS 1.1 deprecation

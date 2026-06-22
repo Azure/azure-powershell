@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed the authentication key from console output.
+
+## Version 1.1.0
+* Added ChangeSafety Support
+* [Preannounced breaking changes](https://go.microsoft.com/fwlink/?linkid=2333229)
 
 ## Version 1.0.0
 * General availability for module Az.DataMigration

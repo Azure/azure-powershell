@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated Search service identity casts to explicitly use the Search SDK `Identity` model.
+
+## Version 0.12.0
+* Added ChangeSafety Support
 
 ## Version 0.11.0
 * Added support for 2025-05-01 RP API 

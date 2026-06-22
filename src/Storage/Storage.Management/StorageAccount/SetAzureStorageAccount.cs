@@ -106,6 +106,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateSet(AccountAccessTier.Hot,
             AccountAccessTier.Cool,
             AccountAccessTier.Cold,
+            AccountAccessTier.Smart,
             IgnoreCase = true)]
         public string AccessTier { get; set; }
 
@@ -601,8 +602,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? enableLocalUser = null;
 
-        [Parameter(Mandatory = false, HelpMessage = "Set restrict copy to and from Storage Accounts within a Microsoft Entra tenant or with Private Links to the same VNet. Possible values include: 'PrivateLink', 'AAD'")]
-        [PSArgumentCompleter("PrivateLink", "AAD")]
+        [Parameter(Mandatory = false, HelpMessage = "Set restrict copy to and from Storage Accounts within a Microsoft Entra tenant or with Private Links to the same VNet. Possible values include: 'PrivateLink', 'AAD', 'All'")]
+        [PSArgumentCompleter("PrivateLink", "AAD", "All")]
         [ValidateNotNullOrEmpty]
         public string AllowedCopyScope { get; set; }
 
@@ -709,7 +710,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
                     if (AssignIdentity.IsPresent || this.UserAssignedIdentityId != null || this.IdentityType != null)
                     {
-                        updateParameters.Identity = new Identity() { Type = StorageModels.IdentityType.SystemAssigned };
+                        updateParameters.Identity = new StorageModels.Identity() { Type = StorageModels.IdentityType.SystemAssigned };
                         if (this.IdentityType != null)
                         {
                             updateParameters.Identity.Type = GetIdentityTypeString(this.IdentityType);

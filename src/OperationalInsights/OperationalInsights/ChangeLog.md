@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+* Updated `PSIdentity` conversions to explicitly use the Operational Insights SDK `Identity` model.
+
+## Version 3.4.0
+* Added ChangeSafety Support
 
 ## Version 3.3.0
 * Upgraded nuget package to signed package.

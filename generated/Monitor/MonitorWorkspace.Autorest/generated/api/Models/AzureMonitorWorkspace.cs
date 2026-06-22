@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Extensions;
 
-    /// <summary>Properties of an Azure Monitor workspace</summary>
+    /// <summary>Properties of an Azure Monitor Workspace</summary>
     public partial class AzureMonitorWorkspace :
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspace,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal
@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
         /// <summary>Backing field for <see cref="AccountId" /> property.</summary>
         private string _accountId;
 
-        /// <summary>The immutable ID of the Azure Monitor workspace. This property is read-only.</summary>
+        /// <summary>The immutable Id of the Azure Monitor Workspace. This property is read-only.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Owned)]
         public string AccountId { get => this._accountId; }
 
@@ -28,29 +28,47 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
         internal Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettings DefaultIngestionSetting { get => (this._defaultIngestionSetting = this._defaultIngestionSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.AzureMonitorWorkspaceDefaultIngestionSettings()); }
 
         /// <summary>
-        /// The Azure resource Id of the default data collection endpoint for this workspace.
+        /// The Azure resource Id of the default data collection endpoint for this Azure Monitor Workspace.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Inlined)]
-        public string DefaultIngestionSettingDataCollectionEndpointResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionSettingsInternal)DefaultIngestionSetting).DataCollectionEndpointResourceId; }
+        public string DefaultIngestionSettingDataCollectionEndpointResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)DefaultIngestionSetting).DataCollectionEndpointResourceId; }
 
-        /// <summary>The Azure resource Id of the default data collection rule for this workspace.</summary>
+        /// <summary>
+        /// The immutable Id of the default data collection rule for this Azure Monitor Workspace.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Inlined)]
-        public string DefaultIngestionSettingDataCollectionRuleResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionSettingsInternal)DefaultIngestionSetting).DataCollectionRuleResourceId; }
+        public string DefaultIngestionSettingDataCollectionRuleImmutableId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)DefaultIngestionSetting).DataCollectionRuleImmutableId; }
+
+        /// <summary>
+        /// The Azure resource Id of the default data collection rule for this Azure Monitor Workspace.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Inlined)]
+        public string DefaultIngestionSettingDataCollectionRuleResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)DefaultIngestionSetting).DataCollectionRuleResourceId; }
+
+        /// <summary>The metrics ingestion endpoint for this Azure Monitor Workspace.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Inlined)]
+        public string IngestionEndpointMetric { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)DefaultIngestionSetting).IngestionEndpointMetric; }
 
         /// <summary>Backing field for <see cref="Metric" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetrics _metric;
 
-        /// <summary>Information about metrics for the Azure Monitor workspace</summary>
+        /// <summary>Properties related to the metrics container in the Azure Monitor Workspace</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetrics Metric { get => (this._metric = this._metric ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.AzureMonitorWorkspaceMetrics()); }
+        internal Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetrics Metric { get => (this._metric = this._metric ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.AzureMonitorWorkspaceMetrics()); set => this._metric = value; }
 
-        /// <summary>An internal identifier for the metrics container. Only to be used by the system</summary>
+        /// <summary>Flag that indicates whether to enable access using resource permissions.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Inlined)]
-        public string MetricInternalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetricsInternal)Metric).InternalId; }
+        public bool? MetricEnableAccessUsingResourcePermission { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetricsInternal)Metric).EnableAccessUsingResourcePermission; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetricsInternal)Metric).EnableAccessUsingResourcePermission = value ?? default(bool); }
 
-        /// <summary>The Prometheus query endpoint for the workspace</summary>
+        /// <summary>
+        /// An internal identifier for the metrics container. Only to be used by the system.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Inlined)]
-        public string MetricPrometheusQueryEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetricsInternal)Metric).PrometheusQueryEndpoint; }
+        public string MetricInternalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetricsInternal)Metric).InternalId; }
+
+        /// <summary>The Prometheus query endpoint for the Azure Monitor Workspace</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Inlined)]
+        public string MetricPrometheusQueryEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetricsInternal)Metric).PrometheusQueryEndpoint; }
 
         /// <summary>Internal Acessors for AccountId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal.AccountId { get => this._accountId; set { {_accountId = value;} } }
@@ -59,28 +77,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettings Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal.DefaultIngestionSetting { get => (this._defaultIngestionSetting = this._defaultIngestionSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.AzureMonitorWorkspaceDefaultIngestionSettings()); set { {_defaultIngestionSetting = value;} } }
 
         /// <summary>Internal Acessors for DefaultIngestionSettingDataCollectionEndpointResourceId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal.DefaultIngestionSettingDataCollectionEndpointResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionSettingsInternal)DefaultIngestionSetting).DataCollectionEndpointResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionSettingsInternal)DefaultIngestionSetting).DataCollectionEndpointResourceId = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal.DefaultIngestionSettingDataCollectionEndpointResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)DefaultIngestionSetting).DataCollectionEndpointResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)DefaultIngestionSetting).DataCollectionEndpointResourceId = value ?? null; }
+
+        /// <summary>Internal Acessors for DefaultIngestionSettingDataCollectionRuleImmutableId</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal.DefaultIngestionSettingDataCollectionRuleImmutableId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)DefaultIngestionSetting).DataCollectionRuleImmutableId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)DefaultIngestionSetting).DataCollectionRuleImmutableId = value ?? null; }
 
         /// <summary>Internal Acessors for DefaultIngestionSettingDataCollectionRuleResourceId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal.DefaultIngestionSettingDataCollectionRuleResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionSettingsInternal)DefaultIngestionSetting).DataCollectionRuleResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionSettingsInternal)DefaultIngestionSetting).DataCollectionRuleResourceId = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal.DefaultIngestionSettingDataCollectionRuleResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)DefaultIngestionSetting).DataCollectionRuleResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)DefaultIngestionSetting).DataCollectionRuleResourceId = value ?? null; }
+
+        /// <summary>Internal Acessors for DefaultIngestionSettingIngestionEndpoint</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionEndpoints Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal.DefaultIngestionSettingIngestionEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)DefaultIngestionSetting).IngestionEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)DefaultIngestionSetting).IngestionEndpoint = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for IngestionEndpointMetric</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal.IngestionEndpointMetric { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)DefaultIngestionSetting).IngestionEndpointMetric; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettingsInternal)DefaultIngestionSetting).IngestionEndpointMetric = value ?? null; }
 
         /// <summary>Internal Acessors for Metric</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetrics Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal.Metric { get => (this._metric = this._metric ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.AzureMonitorWorkspaceMetrics()); set { {_metric = value;} } }
 
         /// <summary>Internal Acessors for MetricInternalId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal.MetricInternalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetricsInternal)Metric).InternalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetricsInternal)Metric).InternalId = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal.MetricInternalId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetricsInternal)Metric).InternalId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetricsInternal)Metric).InternalId = value ?? null; }
 
         /// <summary>Internal Acessors for MetricPrometheusQueryEndpoint</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal.MetricPrometheusQueryEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetricsInternal)Metric).PrometheusQueryEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMetricsInternal)Metric).PrometheusQueryEndpoint = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal.MetricPrometheusQueryEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetricsInternal)Metric).PrometheusQueryEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetricsInternal)Metric).PrometheusQueryEndpoint = value ?? null; }
 
         /// <summary>Internal Acessors for PrivateEndpointConnection</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IPrivateEndpointConnection> Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal.PrivateEndpointConnection { get => this._privateEndpointConnection; set { {_privateEndpointConnection = value;} } }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
-
-        /// <summary>Internal Acessors for PublicNetworkAccess</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal.PublicNetworkAccess { get => this._publicNetworkAccess; set { {_publicNetworkAccess = value;} } }
 
         /// <summary>Backing field for <see cref="PrivateEndpointConnection" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IPrivateEndpointConnection> _privateEndpointConnection;
@@ -93,7 +117,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
         private string _provisioningState;
 
         /// <summary>
-        /// The provisioning state of the Azure Monitor workspace. Set to Succeeded if everything is healthy.
+        /// The provisioning state of the Azure Monitor Workspace. Set to Succeeded if everything is healthy.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Owned)]
         public string ProvisioningState { get => this._provisioningState; }
@@ -101,9 +125,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
         /// <summary>Backing field for <see cref="PublicNetworkAccess" /> property.</summary>
         private string _publicNetworkAccess;
 
-        /// <summary>Gets or sets allow or disallow public network access to workspace</summary>
+        /// <summary>Gets or sets allow or disallow public network access to Azure Monitor Workspace</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Owned)]
-        public string PublicNetworkAccess { get => this._publicNetworkAccess; }
+        public string PublicNetworkAccess { get => this._publicNetworkAccess; set => this._publicNetworkAccess = value; }
 
         /// <summary>Creates an new <see cref="AzureMonitorWorkspace" /> instance.</summary>
         public AzureMonitorWorkspace()
@@ -111,23 +135,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
 
         }
     }
-    /// Properties of an Azure Monitor workspace
+    /// Properties of an Azure Monitor Workspace
     public partial interface IAzureMonitorWorkspace :
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.IJsonSerializable
     {
-        /// <summary>The immutable ID of the Azure Monitor workspace. This property is read-only.</summary>
+        /// <summary>The immutable Id of the Azure Monitor Workspace. This property is read-only.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The immutable ID of the Azure Monitor workspace. This property is read-only.",
+        Description = @"The immutable Id of the Azure Monitor Workspace. This property is read-only.",
         SerializedName = @"accountId",
         PossibleTypes = new [] { typeof(string) })]
         string AccountId { get;  }
         /// <summary>
-        /// The Azure resource Id of the default data collection endpoint for this workspace.
+        /// The Azure resource Id of the default data collection endpoint for this Azure Monitor Workspace.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(
         Required = false,
@@ -135,40 +159,79 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The Azure resource Id of the default data collection endpoint for this workspace.",
+        Description = @"The Azure resource Id of the default data collection endpoint for this Azure Monitor Workspace.",
         SerializedName = @"dataCollectionEndpointResourceId",
         PossibleTypes = new [] { typeof(string) })]
         string DefaultIngestionSettingDataCollectionEndpointResourceId { get;  }
-        /// <summary>The Azure resource Id of the default data collection rule for this workspace.</summary>
+        /// <summary>
+        /// The immutable Id of the default data collection rule for this Azure Monitor Workspace.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The Azure resource Id of the default data collection rule for this workspace.",
+        Description = @"The immutable Id of the default data collection rule for this Azure Monitor Workspace.",
+        SerializedName = @"dataCollectionRuleImmutableId",
+        PossibleTypes = new [] { typeof(string) })]
+        string DefaultIngestionSettingDataCollectionRuleImmutableId { get;  }
+        /// <summary>
+        /// The Azure resource Id of the default data collection rule for this Azure Monitor Workspace.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The Azure resource Id of the default data collection rule for this Azure Monitor Workspace.",
         SerializedName = @"dataCollectionRuleResourceId",
         PossibleTypes = new [] { typeof(string) })]
         string DefaultIngestionSettingDataCollectionRuleResourceId { get;  }
-        /// <summary>An internal identifier for the metrics container. Only to be used by the system</summary>
+        /// <summary>The metrics ingestion endpoint for this Azure Monitor Workspace.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"An internal identifier for the metrics container. Only to be used by the system",
+        Description = @"The metrics ingestion endpoint for this Azure Monitor Workspace.",
+        SerializedName = @"metrics",
+        PossibleTypes = new [] { typeof(string) })]
+        string IngestionEndpointMetric { get;  }
+        /// <summary>Flag that indicates whether to enable access using resource permissions.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Flag that indicates whether to enable access using resource permissions.",
+        SerializedName = @"enableAccessUsingResourcePermissions",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? MetricEnableAccessUsingResourcePermission { get; set; }
+        /// <summary>
+        /// An internal identifier for the metrics container. Only to be used by the system.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"An internal identifier for the metrics container. Only to be used by the system.",
         SerializedName = @"internalId",
         PossibleTypes = new [] { typeof(string) })]
         string MetricInternalId { get;  }
-        /// <summary>The Prometheus query endpoint for the workspace</summary>
+        /// <summary>The Prometheus query endpoint for the Azure Monitor Workspace</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The Prometheus query endpoint for the workspace",
+        Description = @"The Prometheus query endpoint for the Azure Monitor Workspace",
         SerializedName = @"prometheusQueryEndpoint",
         PossibleTypes = new [] { typeof(string) })]
         string MetricPrometheusQueryEndpoint { get;  }
@@ -184,7 +247,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IPrivateEndpointConnection) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IPrivateEndpointConnection> PrivateEndpointConnection { get;  }
         /// <summary>
-        /// The provisioning state of the Azure Monitor workspace. Set to Succeeded if everything is healthy.
+        /// The provisioning state of the Azure Monitor Workspace. Set to Succeeded if everything is healthy.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(
         Required = false,
@@ -192,53 +255,67 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
         Read = true,
         Create = false,
         Update = false,
-        Description = @"The provisioning state of the Azure Monitor workspace. Set to Succeeded if everything is healthy.",
+        Description = @"The provisioning state of the Azure Monitor Workspace. Set to Succeeded if everything is healthy.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PSArgumentCompleterAttribute("Creating", "Succeeded", "Deleting", "Failed", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled")]
         string ProvisioningState { get;  }
-        /// <summary>Gets or sets allow or disallow public network access to workspace</summary>
+        /// <summary>Gets or sets allow or disallow public network access to Azure Monitor Workspace</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Gets or sets allow or disallow public network access to workspace",
+        Create = true,
+        Update = true,
+        Description = @"Gets or sets allow or disallow public network access to Azure Monitor Workspace",
         SerializedName = @"publicNetworkAccess",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PSArgumentCompleterAttribute("Enabled", "Disabled")]
-        string PublicNetworkAccess { get;  }
+        string PublicNetworkAccess { get; set; }
 
     }
-    /// Properties of an Azure Monitor workspace
+    /// Properties of an Azure Monitor Workspace
     internal partial interface IAzureMonitorWorkspaceInternal
 
     {
-        /// <summary>The immutable ID of the Azure Monitor workspace. This property is read-only.</summary>
+        /// <summary>The immutable Id of the Azure Monitor Workspace. This property is read-only.</summary>
         string AccountId { get; set; }
         /// <summary>The Data Collection Rule and Endpoint used for ingestion by default.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceDefaultIngestionSettings DefaultIngestionSetting { get; set; }
         /// <summary>
-        /// The Azure resource Id of the default data collection endpoint for this workspace.
+        /// The Azure resource Id of the default data collection endpoint for this Azure Monitor Workspace.
         /// </summary>
         string DefaultIngestionSettingDataCollectionEndpointResourceId { get; set; }
-        /// <summary>The Azure resource Id of the default data collection rule for this workspace.</summary>
+        /// <summary>
+        /// The immutable Id of the default data collection rule for this Azure Monitor Workspace.
+        /// </summary>
+        string DefaultIngestionSettingDataCollectionRuleImmutableId { get; set; }
+        /// <summary>
+        /// The Azure resource Id of the default data collection rule for this Azure Monitor Workspace.
+        /// </summary>
         string DefaultIngestionSettingDataCollectionRuleResourceId { get; set; }
-        /// <summary>Information about metrics for the Azure Monitor workspace</summary>
+        /// <summary>The ingestion endpoints for this Azure Monitor Workspace.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionEndpoints DefaultIngestionSettingIngestionEndpoint { get; set; }
+        /// <summary>The metrics ingestion endpoint for this Azure Monitor Workspace.</summary>
+        string IngestionEndpointMetric { get; set; }
+        /// <summary>Properties related to the metrics container in the Azure Monitor Workspace</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceMetrics Metric { get; set; }
-        /// <summary>An internal identifier for the metrics container. Only to be used by the system</summary>
+        /// <summary>Flag that indicates whether to enable access using resource permissions.</summary>
+        bool? MetricEnableAccessUsingResourcePermission { get; set; }
+        /// <summary>
+        /// An internal identifier for the metrics container. Only to be used by the system.
+        /// </summary>
         string MetricInternalId { get; set; }
-        /// <summary>The Prometheus query endpoint for the workspace</summary>
+        /// <summary>The Prometheus query endpoint for the Azure Monitor Workspace</summary>
         string MetricPrometheusQueryEndpoint { get; set; }
         /// <summary>List of private endpoint connections</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IPrivateEndpointConnection> PrivateEndpointConnection { get; set; }
         /// <summary>
-        /// The provisioning state of the Azure Monitor workspace. Set to Succeeded if everything is healthy.
+        /// The provisioning state of the Azure Monitor Workspace. Set to Succeeded if everything is healthy.
         /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PSArgumentCompleterAttribute("Creating", "Succeeded", "Deleting", "Failed", "Canceled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled")]
         string ProvisioningState { get; set; }
-        /// <summary>Gets or sets allow or disallow public network access to workspace</summary>
+        /// <summary>Gets or sets allow or disallow public network access to Azure Monitor Workspace</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         string PublicNetworkAccess { get; set; }
 

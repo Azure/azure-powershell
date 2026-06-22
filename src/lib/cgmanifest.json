@@ -43,7 +43,7 @@
         "type": "nuget",
         "nuget": {
           "name": "System.Diagnostics.DiagnosticSource",
-          "version": "8.0.1"
+          "version": "10.0.3"
         }
       }
     },
@@ -70,7 +70,7 @@
         "type": "nuget",
         "nuget": {
           "name": "System.Text.Encodings.Web",
-          "version": "8.0.0"
+          "version": "10.0.3"
         }
       }
     },
@@ -97,7 +97,7 @@
         "type": "nuget",
         "nuget": {
           "name": "Azure.Core",
-          "version": "1.50.0"
+          "version": "1.56.0"
         }
       }
     },
@@ -106,7 +106,7 @@
         "type": "nuget",
         "nuget": {
           "name": "Azure.Identity.Broker",
-          "version": "1.1.0"
+          "version": "1.6.0"
         }
       }
     },
@@ -115,7 +115,7 @@
         "type": "nuget",
         "nuget": {
           "name": "Azure.Identity",
-          "version": "1.17.2"
+          "version": "1.21.0"
         }
       }
     },
@@ -124,7 +124,79 @@
         "type": "nuget",
         "nuget": {
           "name": "Microsoft.Bcl.AsyncInterfaces",
-          "version": "8.0.0"
+          "version": "10.0.3"
+        }
+      }
+    },
+    {
+      "component": {
+        "type": "nuget",
+        "nuget": {
+          "name": "Microsoft.Extensions.Configuration.Abstractions",
+          "version": "10.0.3"
+        }
+      }
+    },
+    {
+      "component": {
+        "type": "nuget",
+        "nuget": {
+          "name": "Microsoft.Extensions.DependencyInjection.Abstractions",
+          "version": "10.0.3"
+        }
+      }
+    },
+    {
+      "component": {
+        "type": "nuget",
+        "nuget": {
+          "name": "Microsoft.Extensions.Diagnostics.Abstractions",
+          "version": "10.0.3"
+        }
+      }
+    },
+    {
+      "component": {
+        "type": "nuget",
+        "nuget": {
+          "name": "Microsoft.Extensions.FileProviders.Abstractions",
+          "version": "10.0.3"
+        }
+      }
+    },
+    {
+      "component": {
+        "type": "nuget",
+        "nuget": {
+          "name": "Microsoft.Extensions.Hosting.Abstractions",
+          "version": "10.0.3"
+        }
+      }
+    },
+    {
+      "component": {
+        "type": "nuget",
+        "nuget": {
+          "name": "Microsoft.Extensions.Logging.Abstractions",
+          "version": "10.0.3"
+        }
+      }
+    },
+    {
+      "component": {
+        "type": "nuget",
+        "nuget": {
+          "name": "Microsoft.Extensions.Options",
+          "version": "10.0.3"
+        }
+      }
+    },
+    {
+      "component": {
+        "type": "nuget",
+        "nuget": {
+          "name": "Microsoft.Extensions.Primitives",
+          "version": "10.0.3"
         }
       }
     },
@@ -133,7 +205,7 @@
         "type": "nuget",
         "nuget": {
           "name": "Microsoft.Identity.Client.Broker",
-          "version": "4.83.1"
+          "version": "4.84.0"
         }
       }
     },
@@ -142,7 +214,7 @@
         "type": "nuget",
         "nuget": {
           "name": "Microsoft.Identity.Client",
-          "version": "4.83.1"
+          "version": "4.84.0"
         }
       }
     },
@@ -151,7 +223,7 @@
         "type": "nuget",
         "nuget": {
           "name": "Microsoft.Identity.Client.Extensions.Msal",
-          "version": "4.83.1"
+          "version": "4.84.0"
         }
       }
     },
@@ -160,7 +232,7 @@
         "type": "nuget",
         "nuget": {
           "name": "Microsoft.Identity.Client.NativeInterop",
-          "version": "0.20.2"
+          "version": "0.20.4"
         }
       }
     },
@@ -187,7 +259,7 @@
         "type": "nuget",
         "nuget": {
           "name": "System.ClientModel",
-          "version": "1.8.0"
+          "version": "1.12.0"
         }
       }
     },
@@ -204,8 +276,17 @@
       "component": {
         "type": "nuget",
         "nuget": {
+          "name": "System.IO.Pipelines",
+          "version": "10.0.3"
+        }
+      }
+    },
+    {
+      "component": {
+        "type": "nuget",
+        "nuget": {
           "name": "System.Memory.Data",
-          "version": "8.0.1"
+          "version": "10.0.3"
         }
       }
     },
@@ -277,7 +358,7 @@
         "type": "nuget",
         "nuget": {
           "name": "System.Text.Json",
-          "version": "8.0.6"
+          "version": "10.0.3"
         }
       }
     },
@@ -286,7 +367,7 @@
         "type": "nuget",
         "nuget": {
           "name": "System.Threading.Tasks.Extensions",
-          "version": "4.6.0"
+          "version": "4.6.3"
         }
       }
     }

@@ -44,11 +44,11 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 1d3a6fbdea5ce574dd89ae581d11f7b7cbcdba3b
+commit: 609f05e331fd1b5b71ed2c476f0d356d25053c9a
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/appconfiguration/data-plane/AppConfiguration/stable/2024-09-01/appconfiguration.json
+  - $(repo)/specification/appconfiguration/data-plane/AppConfiguration/stable/2026-04-01/appconfiguration.json
 
 root-module-name: $(prefix).AppConfiguration
 module-version: 1.0.0

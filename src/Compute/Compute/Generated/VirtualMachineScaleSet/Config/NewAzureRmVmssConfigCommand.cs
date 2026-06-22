@@ -453,9 +453,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the align mode between Virtual Machine Scale Set (VMSS) compute and storage Fault Domain count. Valid values are 'Aligned', 'Unaligned', and 'BestEffortAligned'. Applicable to VMSS Flex only.")]
+        [PSArgumentCompleter("Aligned", "Unaligned", "BestEffortAligned")]
+        public string ZonalPlatformFaultDomainAlignMode { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the lifecycle hooks profile for the virtual machine scale set. Use Set-AzVmssLifecycleHooksProfile or create a LifecycleHooksProfile object directly.")]
         public LifecycleHooksProfile LifecycleHooksProfile { get; set; }
-
+        
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "New"))
@@ -1263,6 +1270,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ResiliencyPolicy = vResiliencyPolicy,
                 Placement = vPlacement,
                 HighSpeedInterconnectPlacement = this.IsParameterBound(c => c.HighSpeedInterconnectPlacement) ? this.HighSpeedInterconnectPlacement : null,
+                ZonalPlatformFaultDomainAlignMode = this.IsParameterBound(c => c.ZonalPlatformFaultDomainAlignMode) ? this.ZonalPlatformFaultDomainAlignMode : null,
                 LifecycleHooksProfile = this.IsParameterBound(c => c.LifecycleHooksProfile) ? this.LifecycleHooksProfile : null
             };
 

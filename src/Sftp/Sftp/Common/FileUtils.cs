@@ -311,13 +311,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sftp.Common
                     "Authentication failed. User interaction is required. " +
                     "This may be due to conditional access policy settings such as multi-factor authentication (MFA). ", ex);
             }
-            catch (System.Collections.Generic.KeyNotFoundException exception)
+            catch (Exception ex2) when (ex2 is System.Collections.Generic.KeyNotFoundException || ex2 is InvalidOperationException)
             {
-                if (context.Account.Type != AzureAccount.AccountType.User)
-                {
-                    throw new AzPSApplicationException($"Failed to generate AAD certificate. Unsupported account type: {context.Account.Type}. Only User accounts are supported for SSH certificate generation.");
-                }
-                throw new AzPSApplicationException($"Failed to generate AAD certificate: {exception.Message}. Please ensure you are properly authenticated with 'Connect-AzAccount'.");
+                throw new AzPSApplicationException($"Failed to generate AAD certificate: {ex2.Message}. Please ensure you are properly authenticated with 'Connect-AzAccount'.");
             }
 
             // Write OpenSSH certificate
