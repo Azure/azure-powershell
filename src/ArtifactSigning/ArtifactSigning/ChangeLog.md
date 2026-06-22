@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated `System.Formats.Asn1` dependency from `6.0.1` to `8.0.1`.
 
 ## Version 0.2.0
 * Added ChangeSafety Support
