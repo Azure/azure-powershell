@@ -42,14 +42,19 @@ CONDITION <IDeliveryRuleCondition[]>: A list of conditions that must be matched 
   Name <String>: The name of the condition for the delivery rule.
 
 INPUTOBJECT <ICdnIdentity>: Identity Parameter
-  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EdgeActionName <String>]: The name of the Edge Action
+  [Version <String>]: The name of the Edge Action version
+  [ExecutionFilter <String>]: The name of the Edge Action execution filter
+  [AgentName <String>]: Name of the web agent association.
+  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
-  [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
+  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
+  [KnowledgeSourceName <String>]: The name of the knowledge source.
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
+  [OriginName <String>]: Name of the origin which is unique within the endpoint.
+  [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -57,17 +62,23 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [Version <String>]: The name of the Edge Action version
+  [VersionName <String>]: Name of the DeploymentVersion under the profile.
+  [WebAgentName <String>]: The name of the web agent.
 
 PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
-  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EdgeActionName <String>]: The name of the Edge Action
+  [Version <String>]: The name of the Edge Action version
+  [ExecutionFilter <String>]: The name of the Edge Action execution filter
+  [AgentName <String>]: Name of the web agent association.
+  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
-  [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
+  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
+  [KnowledgeSourceName <String>]: The name of the knowledge source.
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
+  [OriginName <String>]: Name of the origin which is unique within the endpoint.
+  [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -75,17 +86,23 @@ PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [Version <String>]: The name of the Edge Action version
+  [VersionName <String>]: Name of the DeploymentVersion under the profile.
+  [WebAgentName <String>]: The name of the web agent.
 
 RULESETINPUTOBJECT <ICdnIdentity>: Identity Parameter
-  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EdgeActionName <String>]: The name of the Edge Action
+  [Version <String>]: The name of the Edge Action version
+  [ExecutionFilter <String>]: The name of the Edge Action execution filter
+  [AgentName <String>]: Name of the web agent association.
+  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
-  [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
+  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
+  [KnowledgeSourceName <String>]: The name of the knowledge source.
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
+  [OriginName <String>]: Name of the origin which is unique within the endpoint.
+  [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -93,7 +110,8 @@ RULESETINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [Version <String>]: The name of the Edge Action version
+  [VersionName <String>]: Name of the DeploymentVersion under the profile.
+  [WebAgentName <String>]: The name of the web agent.
 
 RULEUPDATEPROPERTY <IRuleUpdateParameters>: The domain JSON object required for domain creation or update.
   [Action <List<IDeliveryRuleAction>>]: A list of actions that are executed when all the conditions of a rule are satisfied.
@@ -127,7 +145,7 @@ param(
     [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
+    # Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
     ${ProfileName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -147,7 +165,7 @@ param(
     [Alias('RuleSetName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the rule set under the profile.
+    # Name of the rule set under the profile which is unique globally.
     ${SetName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]

@@ -68,6 +68,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Internal Acessors for AzureOrigin</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal.AzureOrigin { get => (this._azureOrigin = this._azureOrigin ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference()); set { {_azureOrigin = value;} } }
 
+        /// <summary>Internal Acessors for OriginCapacityResource</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginCapacityResourceProperties Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal.OriginCapacityResource { get => (this._originCapacityResource = this._originCapacityResource ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OriginCapacityResourceProperties()); set { {_originCapacityResource = value;} } }
+
         /// <summary>Internal Acessors for OriginGroupName</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal.OriginGroupName { get => this._originGroupName; set { {_originGroupName = value;} } }
 
@@ -76,6 +79,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
         /// <summary>Internal Acessors for SharedPrivateLinkResourcePrivateLink</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginUpdatePropertiesParametersInternal.SharedPrivateLinkResourcePrivateLink { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourcePropertiesInternal)SharedPrivateLinkResource).PrivateLink; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISharedPrivateLinkResourcePropertiesInternal)SharedPrivateLinkResource).PrivateLink = value ?? null /* model class */; }
+
+        /// <summary>Backing field for <see cref="OriginCapacityResource" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginCapacityResourceProperties _originCapacityResource;
+
+        /// <summary>Origin capacity settings for an origin</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginCapacityResourceProperties OriginCapacityResource { get => (this._originCapacityResource = this._originCapacityResource ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OriginCapacityResourceProperties()); set => this._originCapacityResource = value; }
+
+        /// <summary>Whether to enable origin capacity for a specific origin</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
+        public string OriginCapacityResourceEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginCapacityResourcePropertiesInternal)OriginCapacityResource).Enabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginCapacityResourcePropertiesInternal)OriginCapacityResource).Enabled = value ?? null; }
+
+        /// <summary>The ingress rate limit threshold for an origin per minute in bytes</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
+        public long? OriginCapacityResourceOriginIngressRateThreshold { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginCapacityResourcePropertiesInternal)OriginCapacityResource).OriginIngressRateThreshold; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginCapacityResourcePropertiesInternal)OriginCapacityResource).OriginIngressRateThreshold = value ?? default(long); }
+
+        /// <summary>The request rate limit threshold for an origin per minute</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
+        public long? OriginCapacityResourceOriginRequestRateThreshold { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginCapacityResourcePropertiesInternal)OriginCapacityResource).OriginRequestRateThreshold; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginCapacityResourcePropertiesInternal)OriginCapacityResource).OriginRequestRateThreshold = value ?? default(long); }
+
+        /// <summary>The nearest origin capacity pop region for an origin</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
+        public string OriginCapacityResourceRegion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginCapacityResourcePropertiesInternal)OriginCapacityResource).Region; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginCapacityResourcePropertiesInternal)OriginCapacityResource).Region = value ?? null; }
 
         /// <summary>Backing field for <see cref="OriginGroupName" /> property.</summary>
         private string _originGroupName;
@@ -230,6 +256,51 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"httpsPort",
         PossibleTypes = new [] { typeof(int) })]
         int? HttpsPort { get; set; }
+        /// <summary>Whether to enable origin capacity for a specific origin</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Whether to enable origin capacity for a specific origin",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string OriginCapacityResourceEnabled { get; set; }
+        /// <summary>The ingress rate limit threshold for an origin per minute in bytes</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The ingress rate limit threshold for an origin per minute in bytes",
+        SerializedName = @"originIngressRateThreshold",
+        PossibleTypes = new [] { typeof(long) })]
+        long? OriginCapacityResourceOriginIngressRateThreshold { get; set; }
+        /// <summary>The request rate limit threshold for an origin per minute</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The request rate limit threshold for an origin per minute",
+        SerializedName = @"originRequestRateThreshold",
+        PossibleTypes = new [] { typeof(long) })]
+        long? OriginCapacityResourceOriginRequestRateThreshold { get; set; }
+        /// <summary>The nearest origin capacity pop region for an origin</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The nearest origin capacity pop region for an origin",
+        SerializedName = @"region",
+        PossibleTypes = new [] { typeof(string) })]
+        string OriginCapacityResourceRegion { get; set; }
         /// <summary>The name of the origin group which contains this origin.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
@@ -372,6 +443,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         int? HttpPort { get; set; }
         /// <summary>The value of the HTTPS port. Must be between 1 and 65535.</summary>
         int? HttpsPort { get; set; }
+        /// <summary>Origin capacity settings for an origin</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginCapacityResourceProperties OriginCapacityResource { get; set; }
+        /// <summary>Whether to enable origin capacity for a specific origin</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string OriginCapacityResourceEnabled { get; set; }
+        /// <summary>The ingress rate limit threshold for an origin per minute in bytes</summary>
+        long? OriginCapacityResourceOriginIngressRateThreshold { get; set; }
+        /// <summary>The request rate limit threshold for an origin per minute</summary>
+        long? OriginCapacityResourceOriginRequestRateThreshold { get; set; }
+        /// <summary>The nearest origin capacity pop region for an origin</summary>
+        string OriginCapacityResourceRegion { get; set; }
         /// <summary>The name of the origin group which contains this origin.</summary>
         string OriginGroupName { get; set; }
         /// <summary>

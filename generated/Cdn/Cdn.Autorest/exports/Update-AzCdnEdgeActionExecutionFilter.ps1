@@ -20,7 +20,7 @@ Update EdgeActionExecutionFilter resource
 .Description
 Update EdgeActionExecutionFilter resource
 .Example
-Update-AzCdnEdgeActionExecutionFilter -ResourceGroupName "testps-rg-da16jm" -EdgeActionName "edgeaction001" -ExecutionFilter "filter001" -ExecutionFilterIdentifierHeaderName "X-Updated-Filter" -ExecutionFilterIdentifierHeaderValue "UpdatedValue"
+Update-AzCdnEdgeActionExecutionFilter -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -ExecutionFilter filter001 -ExecutionFilterIdentifierHeaderName "X-Updated-Filter" -ExecutionFilterIdentifierHeaderValue "UpdatedValue"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilter
@@ -190,9 +190,9 @@ begin {
         }
 
         $mapping = @{
-            UpdateExpanded = 'Az.Cdn.private\Update-AzCdnEdgeActionExecutionFilter_UpdateExpanded';
-            UpdateViaJsonFilePath = 'Az.Cdn.private\Update-AzCdnEdgeActionExecutionFilter_UpdateViaJsonFilePath';
-            UpdateViaJsonString = 'Az.Cdn.private\Update-AzCdnEdgeActionExecutionFilter_UpdateViaJsonString';
+            UpdateExpanded = 'Az.Cdn.custom\Update-AzCdnEdgeActionExecutionFilter';
+            UpdateViaJsonFilePath = 'Az.Cdn.custom\Update-AzCdnEdgeActionExecutionFilter';
+            UpdateViaJsonString = 'Az.Cdn.custom\Update-AzCdnEdgeActionExecutionFilter';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
