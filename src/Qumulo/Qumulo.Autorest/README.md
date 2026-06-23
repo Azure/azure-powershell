@@ -28,8 +28,7 @@ For information on how to develop for `Az.Qumulo`, see [how-to.md](how-to.md).
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: b56524cc505fc6605c9d62d913a974af63e43112
-tag: package-2022-10-12-preview
+commit: 9a84af9201f37ad7c221b42652c4e04f0d8473f3
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -44,23 +43,24 @@ try-require:
 module-version: 0.1.0
 # Normally, title is the service name
 title: Qumulo
-subject-prefix: $(service-name)
-
-# If there are post APIs for some kinds of actions in the RP, you may need to 
-# uncomment following line to support viaIdentity for these post APIs
-# identity-correction-for-post: true
-resourcegroup-append: true
-nested-object-to-string: true
-
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
+service-name: Qumulo
+subject-prefix: Qumulo
 
 directive:
+  # Following are common directives which are normally required in all the RPs
+  # 1. Remove the unexpanded parameter set
+  # 2. For New-* cmdlets, ViaIdentity is not required
+
+  # Remove unexpanded Create/Update variants (v4 directive)
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
-  # don't support updation of resource
+  # Remove CreateViaIdentity variants as they are not needed for New-* cmdlets
+  - where:
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+    remove: true
+
+  # Don't support update of resource
   - where:
       verb: Update
     hide: true
@@ -68,6 +68,7 @@ directive:
   - where:
       verb: Set
     remove: true
+
   # Set adminPassword to secure string
   - from: swagger-document 
     where: $.definitions.FileSystemResourceProperties.properties.adminPassword
@@ -78,7 +79,7 @@ directive:
           "description": "Initial administrator password of the resource",
           "format": "password"
       }
-  # Rename FileSystemResource to file system resource 
+  # Rename FileSystemResource descriptions to file system resource
   - from: swagger-document 
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Qumulo.Storage/fileSystems"].get.description
     transform: >-
@@ -99,9 +100,9 @@ directive:
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Qumulo.Storage/fileSystems/{fileSystemName}"].delete.description
     transform: >-
       return "Delete a file system resource"
-  # rename parameters
+  # Rename parameters for better PowerShell experience
   - where:
-      parameter-name: IdentityUserAssignedIdentity #Useless parameter
+      parameter-name: IdentityUserAssignedIdentity
     set:
       parameter-name: UserAssignedIdentity
   - where:
