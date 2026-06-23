@@ -1,6 +1,6 @@
 {
   "resourceType": "fileSystems",
-  "apiVersion": "2026-04-16",
+  "apiVersion": "2022-10-12-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.qumulo"
   },

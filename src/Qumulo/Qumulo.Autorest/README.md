@@ -29,6 +29,10 @@ For information on how to develop for `Az.Qumulo`, see [how-to.md](how-to.md).
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
 commit: 9a84af9201f37ad7c221b42652c4e04f0d8473f3
+# Pin the API version tag. The pinned swagger's default tag advanced to a newer
+# api-version; pin to the original tag so the generated module stays on the
+# api-version that the shipped code targets.
+tag: package-2022-10-12-preview
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
