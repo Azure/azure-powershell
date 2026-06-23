@@ -22,10 +22,26 @@ Create migration parameters to trigger prepare migration for a virtual network g
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create migration parameters for upgrading to standard IP
 ```powershell
 New-AzVirtualNetworkGatewayMigrationParameter -MigrationType UpgradeDeploymentToStandardIP
 ```
+
+Creates migration parameters to upgrade the virtual network gateway deployment from basic IP to standard IP.
+
+### Example 2: Create migration parameters for upgrading to dual stack
+```powershell
+New-AzVirtualNetworkGatewayMigrationParameter -MigrationType UpgradeGatewayToDualStack
+```
+
+Creates migration parameters to upgrade the virtual network gateway to dual stack (IPv4 + IPv6).
+
+### Example 3: Create migration parameters for point-to-site profile migration
+```powershell
+New-AzVirtualNetworkGatewayMigrationParameter -MigrationType MigrateGatewayForPointToSiteProfile
+```
+
+Creates migration parameters to migrate the virtual network gateway point-to-site profile.
 
 ## PARAMETERS
 
@@ -51,7 +67,7 @@ The migration type for the virtual network gateway.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: UpgradeDeploymentToStandardIP
+Accepted values: UpgradeDeploymentToStandardIP, UpgradeGatewayToDualStack, MigrateGatewayForPointToSiteProfile
 
 Required: True
 Position: Named

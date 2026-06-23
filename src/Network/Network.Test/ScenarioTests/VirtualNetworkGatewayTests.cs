@@ -226,5 +226,19 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualNetworkGatewayBasicIPToStandardIPMigration");
         }
+
+        [Fact]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset3)]
+        public void TestVirtualNetworkGatewayDualStackMigration()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayDualStackMigration");
+        }
+
+        [Fact]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset3)]
+        public void TestVirtualNetworkGatewayPointToSiteProfileMigration()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayPointToSiteProfileMigration");
+        }
     }
 }

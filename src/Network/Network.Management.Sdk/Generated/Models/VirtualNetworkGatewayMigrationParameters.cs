@@ -32,13 +32,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.ResourceUrl = resourceUrl;
             CustomInit();
         }
-        /// <summary>
-        /// Static constructor for VirtualNetworkGatewayMigrationParameters class.
-        /// </summary>
-        static VirtualNetworkGatewayMigrationParameters()
-        {
-            MigrationType = "UpgradeDeploymentToStandardIP";
-        }
+
 
         /// <summary>
         /// An initialization method that performs custom operations like setting defaults
@@ -55,6 +49,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Gets or sets migrationType for the virtual network gateway.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "migrationType")]
-        public static string MigrationType {get; private set; }
+        public string MigrationType {get; set; }
     }
 }

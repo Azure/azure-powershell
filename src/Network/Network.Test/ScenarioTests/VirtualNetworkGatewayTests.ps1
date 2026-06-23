@@ -2092,3 +2092,155 @@ function Test-VirtualNetworkGatewayBasicIPToStandardIPMigration
         Clean-ResourceGroup $rgname
      }
 }
+
+<#
+.SYNOPSIS
+Virtual network gateway migration to dual stack (IPv4 + IPv6) test
+#>
+function Test-VirtualNetworkGatewayDualStackMigration
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $vnetGatewayConfigName = Get-ResourceName
+    $rglocation = "eastus2euap"
+    $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
+    $location = "eastus2euap"
+    
+    try 
+    {
+      # Create the resource group
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+
+      # Create the Virtual Network
+      $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+      $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+      $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+
+      # Create the publicip
+      $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
+
+      # Create & Get virtualnetworkgateway
+      $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
+      $job = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku "VpnGw2" -VpnGatewayGeneration "Generation2" -AsJob
+      $job | Wait-Job
+      $actual = $job | Receive-Job
+      $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual $gateway.ResourceGroupName $actual.ResourceGroupName	
+      Assert-AreEqual $gateway.Name $actual.Name	
+      Assert-AreEqual "Vpn" $gateway.GatewayType
+      Assert-AreEqual "RouteBased" $gateway.VpnType
+
+      #Trigger prepare migration on gateway for dual stack
+      $migrationParams = New-AzVirtualNetworkGatewayMigrationParameter -MigrationType UpgradeGatewayToDualStack
+      $job = Invoke-AzVirtualNetworkGatewayPrepareMigration -InputObject $gateway -MigrationParameter $migrationParams -AsJob
+      $job | Wait-Job
+      $actual = $job | Receive-Job
+      Assert-NotNull $actual
+      Assert-NotNull $actual.virtualNetworkGatewayMigrationStatus
+      Assert-AreEqual "InProgress" $actual.virtualNetworkGatewayMigrationStatus.State
+      Assert-AreEqual "PrepareSucceeded" $actual.virtualNetworkGatewayMigrationStatus.Phase
+
+      #Trigger execute migration on gateway
+      $job = Invoke-AzVirtualNetworkGatewayExecuteMigration -InputObject $gateway -AsJob
+      $job | Wait-Job
+      $actual = $job | Receive-Job
+      Assert-NotNull $actual
+      Assert-NotNull $actual.virtualNetworkGatewayMigrationStatus
+      Assert-AreEqual "InProgress" $actual.virtualNetworkGatewayMigrationStatus.State
+      Assert-AreEqual "ExecuteSucceeded" $actual.virtualNetworkGatewayMigrationStatus.Phase
+
+      #Trigger commit migration on gateway
+      $job = Invoke-AzVirtualNetworkGatewayCommitMigration -InputObject $gateway -AsJob
+      $job | Wait-Job
+      $actual = $job | Receive-Job
+      Assert-NotNull $actual
+      Assert-NotNull $actual.virtualNetworkGatewayMigrationStatus
+      Assert-AreEqual "Succeeded" $actual.virtualNetworkGatewayMigrationStatus.State
+      Assert-AreEqual "CommitSucceeded" $actual.virtualNetworkGatewayMigrationStatus.Phase
+     }
+     finally
+     {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+     }
+}
+
+<#
+.SYNOPSIS
+Virtual network gateway migration for point-to-site profile test
+#>
+function Test-VirtualNetworkGatewayPointToSiteProfileMigration
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $vnetGatewayConfigName = Get-ResourceName
+    $rglocation = "eastus2euap"
+    $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
+    $location = "eastus2euap"
+    
+    try 
+    {
+      # Create the resource group
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+
+      # Create the Virtual Network
+      $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+      $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+      $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+
+      # Create the publicip
+      $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
+
+      # Create & Get virtualnetworkgateway
+      $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
+      $job = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku "VpnGw2" -VpnGatewayGeneration "Generation2" -AsJob
+      $job | Wait-Job
+      $actual = $job | Receive-Job
+      $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual $gateway.ResourceGroupName $actual.ResourceGroupName	
+      Assert-AreEqual $gateway.Name $actual.Name	
+      Assert-AreEqual "Vpn" $gateway.GatewayType
+      Assert-AreEqual "RouteBased" $gateway.VpnType
+
+      #Trigger prepare migration on gateway for point-to-site profile
+      $migrationParams = New-AzVirtualNetworkGatewayMigrationParameter -MigrationType MigrateGatewayForPointToSiteProfile
+      $job = Invoke-AzVirtualNetworkGatewayPrepareMigration -InputObject $gateway -MigrationParameter $migrationParams -AsJob
+      $job | Wait-Job
+      $actual = $job | Receive-Job
+      Assert-NotNull $actual
+      Assert-NotNull $actual.virtualNetworkGatewayMigrationStatus
+      Assert-AreEqual "InProgress" $actual.virtualNetworkGatewayMigrationStatus.State
+      Assert-AreEqual "PrepareSucceeded" $actual.virtualNetworkGatewayMigrationStatus.Phase
+
+      #Trigger execute migration on gateway
+      $job = Invoke-AzVirtualNetworkGatewayExecuteMigration -InputObject $gateway -AsJob
+      $job | Wait-Job
+      $actual = $job | Receive-Job
+      Assert-NotNull $actual
+      Assert-NotNull $actual.virtualNetworkGatewayMigrationStatus
+      Assert-AreEqual "InProgress" $actual.virtualNetworkGatewayMigrationStatus.State
+      Assert-AreEqual "ExecuteSucceeded" $actual.virtualNetworkGatewayMigrationStatus.Phase
+
+      #Trigger commit migration on gateway
+      $job = Invoke-AzVirtualNetworkGatewayCommitMigration -InputObject $gateway -AsJob
+      $job | Wait-Job
+      $actual = $job | Receive-Job
+      Assert-NotNull $actual
+      Assert-NotNull $actual.virtualNetworkGatewayMigrationStatus
+      Assert-AreEqual "Succeeded" $actual.virtualNetworkGatewayMigrationStatus.State
+      Assert-AreEqual "CommitSucceeded" $actual.virtualNetworkGatewayMigrationStatus.Phase
+     }
+     finally
+     {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+     }
+}

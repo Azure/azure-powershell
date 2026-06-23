@@ -76,6 +76,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             var migrationParamaterModel = new VirtualNetworkGatewayMigrationParameters();
+            migrationParamaterModel.MigrationType = this.MigrationParameter.MigrationType;
             if (!String.IsNullOrEmpty(this.MigrationParameter.ResourceUrl))
             {
                 migrationParamaterModel.ResourceUrl = this.MigrationParameter.ResourceUrl;
