@@ -98,10 +98,11 @@ This command creates a cache name MyCache with a georeplicated database named de
 
 ### Example 5: Create a Redis Enterprise cache with a maintenance window
 ```powershell
-New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Enterprise_E10" -MaintenanceConfigurationMaintenanceWindow @(@{DayOfWeek="Saturday"; StartHourUtc=0; Duration="PT8H"})
+New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Enterprise_E10" -MaintenanceConfigurationMaintenanceWindow @(@{Type="Weekly"; ScheduleDayOfWeek="Saturday"; StartHourUtc=0; Duration="PT10H"}, @{Type="Weekly"; ScheduleDayOfWeek="Wednesday"; StartHourUtc=0; Duration="PT10H"})
 ```
 
-This command creates a Redis Enterprise cache named MyCache with a custom maintenance window on Saturdays starting at midnight UTC for 8 hours.
+This command creates a Redis Enterprise cache named MyCache with custom maintenance windows on Saturdays and Wednesdays starting at midnight UTC for 8 hours.
+At least 2 maintenance windows are required.
 
 ## PARAMETERS
 

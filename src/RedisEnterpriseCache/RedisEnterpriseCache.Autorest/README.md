@@ -201,6 +201,10 @@ directive:
       parameter-name: PersistenceRdbFrequency
     set:
       parameter-name: RdbPersistenceFrequency
+  - where:
+      parameter-name: NotifyKeyspaceEvent
+    set:
+      parameter-name: NotifyKeyspaceEvents
 
   # Remove unused variants
   - where:
@@ -263,6 +267,18 @@ directive:
       subject: AccessPolicyAssignment
       variant: ^(Create)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
+  # Remove generated variants for Test-Migration except ViaJsonString (which the custom wrapper calls internally).
+  # The generated Expanded variant doesn't nest properties under ARM "properties" envelope.
+  - where:
+      verb: Test
+      subject: Migration
+      variant: ^Validate$|^ValidateExpanded$|^ValidateViaIdentity$|^ValidateViaIdentityExpanded$|^ValidateViaJsonFilePath$
+    remove: true
+  - where:
+      verb: Test
+      subject: Migration
+      variant: ^ValidateViaJsonString$
+    hide: true
   # Remove because cannot update
   - where:
       verb: Set|Update

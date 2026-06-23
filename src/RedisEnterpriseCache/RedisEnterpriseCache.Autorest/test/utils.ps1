@@ -41,9 +41,12 @@ function setupEnv() {
     $env.ClusterName2 = 'ps-cache-test2-' + (RandomString -allChars $false -len 8)
     $env.ClusterName3  = 'ps-cache-test3-' + (RandomString -allChars $false -len 8)
     $env.ClusterName4 = 'ps-cache-test4-' + (RandomString -allChars $false -len 8)
+    $env.OssCacheName = 'ps-oss-cache-' + (RandomString -allChars $false -len 8)
     $env.ResourceGroupName = 'ps-redisenterprise-rg-' + (RandomString -allChars $false -len 8)
-    $env.Location = 'eastus'
+    $env.Location = 'centralindia'
     New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location | Out-Null
+    # Create an OSS Redis cache for migration tests
+    New-AzRedisCache -ResourceGroupName $env.ResourceGroupName -Name $env.OssCacheName -Location $env.Location -Sku "Basic" -Size "C0" | Out-Null
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

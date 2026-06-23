@@ -381,6 +381,7 @@ function New-AzRedisEnterpriseCache {
         $null = $PSBoundParameters.Remove("KeyEncryptionKeyIdentityUserAssignedIdentityResourceId")
         $null = $PSBoundParameters.Remove("HighAvailability")
         $null = $PSBoundParameters.Remove("PublicNetworkAccess")  # Remove for database creation
+        $null = $PSBoundParameters.Remove("MaintenanceConfigurationMaintenanceWindow")
         $null = $PSBoundParameters.Add("DatabaseName", "default")
         $database = Az.RedisEnterpriseCache.internal\New-AzRedisEnterpriseCacheDatabase @PSBoundParameters
         $cluster.Database = @{$database.Name = $database}
