@@ -20,7 +20,6 @@
 
 -->
 ## Upcoming Release
-## Version 11.7.0
 * Added VMSS (Virtual Machine Scale Set) Lifecycle Hooks support (public preview)
     - Added `New-AzVmssLifecycleHookConfig` cmdlet to create an in-memory lifecycle hook configuration object
     - Added `Set-AzVmssLifecycleHooksProfile` cmdlet to attach lifecycle hooks to a VMSS configuration or live VMSS object
@@ -28,7 +27,6 @@
     - Added `Get-AzVmssLifecycleHookEvent` cmdlet to list or retrieve lifecycle hook events for a VMSS
     - Added `Update-AzVmssLifecycleHookEvent` cmdlet to respond to a lifecycle hook event (approve, reject, or delay) with optional per-VM instance filtering via `-InstanceId`
     - Added `-LifecycleHooksProfile` parameter to `New-AzVmssConfig` to support inline lifecycle hooks profile construction
-    - Note: `-DefaultAction Reject` and `-ActionState Rejected` return a server error during preview; no client change is needed at GA
 
 ## Version 11.6.0
 * Added ChangeSafety Support
