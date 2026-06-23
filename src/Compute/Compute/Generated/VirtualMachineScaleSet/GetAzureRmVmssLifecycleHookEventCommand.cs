@@ -58,7 +58,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "The name of the VM scale set.")]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        [Alias("VMScaleSetName")]
         public string VMScaleSetName { get; set; }
 
         [Parameter(

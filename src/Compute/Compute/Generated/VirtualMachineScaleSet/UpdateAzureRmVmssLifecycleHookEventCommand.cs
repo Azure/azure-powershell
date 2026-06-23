@@ -16,9 +16,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Rest;
+using Microsoft.Rest.Azure;
+using Microsoft.Rest.Serialization;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -48,7 +55,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "The name of the VM scale set.")]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachineScaleSets", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        [Alias("VMScaleSetName")]
         public string VMScaleSetName { get; set; }
 
         [Parameter(
@@ -198,7 +204,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         WaitUntil = this.IsParameterBound(c => c.WaitUntil) ? this.WaitUntil : null
                     };
 
-                    var result = VirtualMachineScaleSetLifeCycleHookEventsClient.Update(
+                    // The Update REST API returns 202 Accepted (LRO), but the generated SDK Update method
+                    // only accepts 200. Issue the PATCH manually, accept 200/202, and poll the LRO to completion
+                    // before re-fetching the updated event to return.
+                    var result = UpdateLifecycleHookEventLro(
                         resourceGroupName,
                         vmScaleSetName,
                         eventName,
@@ -207,6 +216,107 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     WriteObject(result);
                 }
             });
+        }
+
+        // Custom LRO-aware Update implementation. Bypasses the generated SDK Update method because
+        // it does not accept the 202 LRO response the service returns. Should be removed once the
+        // SDK is regenerated against an OpenAPI spec that declares 202 + LRO polling for this op.
+        private VMScaleSetLifecycleHookEvent UpdateLifecycleHookEventLro(
+            string resourceGroupName,
+            string vmScaleSetName,
+            string lifecycleHookEventName,
+            VMScaleSetLifecycleHookEventUpdate properties)
+        {
+            return UpdateLifecycleHookEventLroAsync(
+                resourceGroupName, vmScaleSetName, lifecycleHookEventName, properties, CancellationToken.None)
+                .ConfigureAwait(false).GetAwaiter().GetResult();
+        }
+
+        private async Task<VMScaleSetLifecycleHookEvent> UpdateLifecycleHookEventLroAsync(
+            string resourceGroupName,
+            string vmScaleSetName,
+            string lifecycleHookEventName,
+            VMScaleSetLifecycleHookEventUpdate properties,
+            CancellationToken cancellationToken)
+        {
+            var client = (Microsoft.Azure.Management.Compute.ComputeManagementClient)this.ComputeClient.ComputeManagementClient;
+            const string apiVersion = "2025-11-01";
+
+            var baseUrl = client.BaseUri.AbsoluteUri;
+            var url = new Uri(new Uri(baseUrl + (baseUrl.EndsWith("/") ? "" : "/")),
+                "subscriptions/" + Uri.EscapeDataString(client.SubscriptionId) +
+                "/resourceGroups/" + Uri.EscapeDataString(resourceGroupName) +
+                "/providers/Microsoft.Compute/virtualMachineScaleSets/" + Uri.EscapeDataString(vmScaleSetName) +
+                "/lifecycleHookEvents/" + Uri.EscapeDataString(lifecycleHookEventName) +
+                "?api-version=" + Uri.EscapeDataString(apiVersion)).ToString();
+
+            var httpRequest = new HttpRequestMessage
+            {
+                Method = new HttpMethod("PATCH"),
+                RequestUri = new Uri(url)
+            };
+            var requestContent = SafeJsonConvert.SerializeObject(properties, client.SerializationSettings);
+            httpRequest.Content = new StringContent(requestContent, System.Text.Encoding.UTF8);
+            httpRequest.Content.Headers.ContentType =
+                System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+
+            if (client.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+
+            cancellationToken.ThrowIfCancellationRequested();
+            var httpResponse = await client.HttpClient.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            var statusCode = (int)httpResponse.StatusCode;
+
+            if (statusCode != 200 && statusCode != 202)
+            {
+                var responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                CloudError errorBody = null;
+                try
+                {
+                    errorBody = SafeJsonConvert.DeserializeObject<CloudError>(responseContent, client.DeserializationSettings);
+                }
+                catch (Newtonsoft.Json.JsonException) { /* ignore */ }
+                var ex = errorBody != null
+                    ? new CloudException(errorBody.Message) { Body = errorBody }
+                    : new CloudException("Operation returned an invalid status code '" + httpResponse.StatusCode + "'");
+                ex.Request = new HttpRequestMessageWrapper(httpRequest, requestContent);
+                ex.Response = new HttpResponseMessageWrapper(httpResponse, responseContent);
+                if (httpResponse.Headers.Contains("x-ms-request-id"))
+                {
+                    ex.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+                }
+                throw ex;
+            }
+
+            var operationResponse = new AzureOperationResponse<VMScaleSetLifecycleHookEvent>
+            {
+                Request = httpRequest,
+                Response = httpResponse
+            };
+            if (httpResponse.Headers.Contains("x-ms-request-id"))
+            {
+                operationResponse.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+
+            if (statusCode == 200)
+            {
+                var bodyContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                operationResponse.Body = SafeJsonConvert.DeserializeObject<VMScaleSetLifecycleHookEvent>(
+                    bodyContent, client.DeserializationSettings);
+                return operationResponse.Body;
+            }
+
+            // 202 — poll the LRO via Azure-AsyncOperation / Location headers until completion.
+            await client.GetPutOrPatchOperationResultAsync(operationResponse, null, cancellationToken).ConfigureAwait(false);
+
+            // The LRO terminal response may not include the resource body. Re-fetch via GET to return final state.
+            var fetched = await client.VirtualMachineScaleSetLifeCycleHookEvents
+                .GetWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, lifecycleHookEventName, cancellationToken: cancellationToken)
+                .ConfigureAwait(false);
+            return fetched.Body;
         }
     }
 }
