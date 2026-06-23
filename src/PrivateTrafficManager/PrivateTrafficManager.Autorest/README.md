@@ -32,15 +32,16 @@ module-version: 0.1.0
 title: PrivateTrafficManager
 subject-prefix: $(service-name)
 
-# pin the swagger version by using the commit id instead of branch name
-commit: dfb4d26996c17aaf42c52593924f027d7c6019e3
+# Using local spec file for private engineering build (API not yet on public ARM)
+# When the API is publicly available, replace with remote commit reference:
+#   commit: dfb4d26996c17aaf42c52593924f027d7c6019e3
+#   require:
+#     - $(this-folder)/../../readme.azure.noprofile.md
+#     - $(repo)/specification/privatetrafficmanager/resource-manager/Microsoft.Network/PrivateTrafficManager/readme.md
 require:
-# readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
-  - $(repo)/specification/privatetrafficmanager/resource-manager/Microsoft.Network/PrivateTrafficManager/readme.md
-
-try-require:
-  - $(repo)/specification/privatetrafficmanager/resource-manager/Microsoft.Network/PrivateTrafficManager/readme.powershell.md
+input-file:
+  - ./spec/openapi.json
 
 directive:
   # Fix polymorphism conflict: ProbeHealthPolicy redefines 'properties' from parent HealthPolicy
