@@ -17,4 +17,4 @@ This command updates the minimum TLS version and adds a tag to the Redis Enterpr
 Update-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -MaintenanceConfigurationMaintenanceWindow @(@{Type="Weekly"; ScheduleDayOfWeek="Monday"; StartHourUtc=6; Duration="PT10H"}, @{Type="Weekly"; ScheduleDayOfWeek="Thursday"; StartHourUtc=6; Duration="PT10H"})
 ```
 
-This command updates the maintenance windows on the Redis Enterprise cache named MyCache to Mondays and Thursdays at 6:00 AM UTC for 8 hours. At least 2 maintenance windows are required.
+This command updates the maintenance windows on the Redis Enterprise cache named MyCache to Mondays and Thursdays at 6:00 AM UTC for 10 hours. At least 2 maintenance windows are required.

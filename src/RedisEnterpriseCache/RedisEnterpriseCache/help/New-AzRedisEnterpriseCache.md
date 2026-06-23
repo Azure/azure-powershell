@@ -101,7 +101,7 @@ This command creates a cache name MyCache with a georeplicated database named de
 New-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -Location "East US" -Sku "Enterprise_E10" -MaintenanceConfigurationMaintenanceWindow @(@{Type="Weekly"; ScheduleDayOfWeek="Saturday"; StartHourUtc=0; Duration="PT10H"}, @{Type="Weekly"; ScheduleDayOfWeek="Wednesday"; StartHourUtc=0; Duration="PT10H"})
 ```
 
-This command creates a Redis Enterprise cache named MyCache with custom maintenance windows on Saturdays and Wednesdays starting at midnight UTC for 8 hours.
+This command creates a Redis Enterprise cache named MyCache with custom maintenance windows on Saturdays and Wednesdays starting at midnight UTC for 10 hours.
 At least 2 maintenance windows are required.
 
 ## PARAMETERS

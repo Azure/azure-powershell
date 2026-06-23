@@ -45,7 +45,8 @@ function setupEnv() {
     $env.ResourceGroupName = 'ps-redisenterprise-rg-' + (RandomString -allChars $false -len 8)
     $env.Location = 'centralindia'
     New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location | Out-Null
-    # Create an OSS Redis cache for migration tests
+    # Create an OSS Redis cache for migration tests (requires Az.RedisCache module)
+    Import-Module Az.RedisCache -ErrorAction SilentlyContinue
     New-AzRedisCache -ResourceGroupName $env.ResourceGroupName -Name $env.OssCacheName -Location $env.Location -Sku "Basic" -Size "C0" | Out-Null
 
     $envFile = 'env.json'
