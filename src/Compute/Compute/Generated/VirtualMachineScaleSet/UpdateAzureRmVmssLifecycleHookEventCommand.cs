@@ -98,6 +98,30 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            // Reject silent no-op: the cmdlet must do something. At least one of -ActionState or -WaitUntil is required.
+            if (!this.IsParameterBound(c => c.ActionState) && !this.IsParameterBound(c => c.WaitUntil))
+            {
+                ThrowTerminatingError(new ErrorRecord(
+                    new ArgumentException("At least one of -ActionState or -WaitUntil must be specified."),
+                    "NoUpdateSpecified",
+                    ErrorCategory.InvalidArgument,
+                    null));
+                return;
+            }
+
+            // -InstanceId is a per-target filter that is only meaningful when -ActionState is supplied;
+            // without -ActionState it would be silently ignored, which is confusing.
+            if (this.IsParameterBound(c => c.InstanceId) && !this.IsParameterBound(c => c.ActionState))
+            {
+                ThrowTerminatingError(new ErrorRecord(
+                    new ArgumentException("The -InstanceId parameter requires -ActionState to be specified."),
+                    "InstanceIdRequiresActionState",
+                    ErrorCategory.InvalidArgument,
+                    this.InstanceId));
+                return;
+            }
+
             ExecuteClientAction(() =>
             {
                 string resourceGroupName;
@@ -126,7 +150,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     int vmssIndex = Array.FindIndex(parts, p => string.Equals(p, "virtualMachineScaleSets", StringComparison.OrdinalIgnoreCase));
                     int eventIndex = Array.FindIndex(parts, p => string.Equals(p, "lifecycleHookEvents", StringComparison.OrdinalIgnoreCase));
 
-                    if (rgIndex < 0 || vmssIndex < 0 || eventIndex < 0)
+                    if (rgIndex < 0 || rgIndex + 1 >= parts.Length
+                        || vmssIndex < 0 || vmssIndex + 1 >= parts.Length
+                        || eventIndex < 0 || eventIndex + 1 >= parts.Length)
                     {
                         ThrowTerminatingError(new ErrorRecord(
                             new ArgumentException($"Could not parse resource group, VMSS name, or event name from Id: {id}"),
