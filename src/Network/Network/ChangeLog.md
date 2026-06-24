@@ -19,7 +19,7 @@
 --->
 
 ## Upcoming Release
-* Onboarded `Microsoft.HorizonDB/clusters` to Private Link Common Cmdlets.
+* Onboarded `Microsoft.HorizonDB/clusters` to Private Link Common Cmdlets
 
 ## Version 8.0.0
 * Added ChangeSafety Support
