@@ -14,6 +14,7 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStackWhatIf
 {
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     public class PSDeploymentStackWhatIfDiagnostic
     {
@@ -28,5 +29,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentS
 
         [JsonProperty("target")]
         public string Target { get; set; }
+
+        [JsonProperty("additionalInfo")]
+        public JArray AdditionalInfo { get; set; }
     }
 }

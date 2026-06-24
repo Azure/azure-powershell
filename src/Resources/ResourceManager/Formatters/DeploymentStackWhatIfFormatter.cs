@@ -76,6 +76,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
         /// </summary>
         public static string Format(PSDeploymentStackWhatIfResult result)
         {
+            return Format(result, includeResultInfo: true);
+        }
+
+        public static string Format(PSDeploymentStackWhatIfResult result, bool includeResultInfo)
+        {
             if (result == null)
             {
                 return null;
@@ -84,16 +89,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             var builder = new ColoredStringBuilder();
             var formatter = new DeploymentStackWhatIfFormatter(builder);
 
-            return formatter.FormatInternal(result);
+            return formatter.FormatInternal(result, includeResultInfo);
         }
 
-        private string FormatInternal(PSDeploymentStackWhatIfResult result)
+        private string FormatInternal(PSDeploymentStackWhatIfResult result, bool includeResultInfo)
         {
             this.whatIfResult = result;
             this.whatIfProps = result.Properties;
             this.whatIfChanges = this.whatIfProps?.Changes;
 
-            if (FormatStackWhatIfResultInfo())
+            if (includeResultInfo && FormatStackWhatIfResultInfo())
             {
                 this.builder.EnsureNumNewLines(2);
             }
@@ -388,33 +393,85 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             this.builder.AppendLine("Changes to Managed Resources:", Color.DarkYellow);
             this.builder.AppendLine();
 
-            string lastGroup = null;
-            bool hasPotentialChanges = false;
+            var definiteChanges = resourceChangesSorted
+                .Where(x => !string.Equals(x.ChangeCertainty, "Potential", StringComparison.OrdinalIgnoreCase))
+                .ToList();
+            var potentialChanges = resourceChangesSorted
+                .Where(x => string.Equals(x.ChangeCertainty, "Potential", StringComparison.OrdinalIgnoreCase))
+                .ToList();
 
-            foreach (var change in resourceChangesSorted)
+            bool printedDefiniteChanges = FormatResourceChangeGroup(definiteChanges, includePotentialHeader: false);
+
+            if (printedDefiniteChanges && potentialChanges.Count > 0)
+            {
+                this.builder.EnsureNumNewLines(2);
+            }
+
+            FormatResourceChangeGroup(OrderPotentialChangesForDisplay(potentialChanges), includePotentialHeader: true);
+
+            return true;
+        }
+
+        private bool FormatResourceChangeGroup(
+            IList<PSDeploymentStackWhatIfResourceChange> resourceChanges,
+            bool includePotentialHeader)
+        {
+            if (resourceChanges == null || resourceChanges.Count == 0)
+            {
+                return false;
+            }
+
+            string lastGroup = null;
+            bool hasPotentialHeader = false;
+
+            foreach (var change in resourceChanges)
             {
                 string group = FormatResourceClassHeader(change);
 
                 if (group != lastGroup)
                 {
                     lastGroup = group;
-                    hasPotentialChanges = false;
+                    hasPotentialHeader = false;
                     this.builder.AppendLine(group);
                 }
 
-                if (!hasPotentialChanges &&
-                    string.Equals(change.ChangeCertainty, "Potential", StringComparison.OrdinalIgnoreCase))
+                if (includePotentialHeader && !hasPotentialHeader)
                 {
                     this.builder.Append(">> ").AppendLine(
                         "Potential Resource Changes (Learn more at https://aka.ms/whatIfPotentialChanges)",
                         Color.Purple);
-                    hasPotentialChanges = true;
+                    hasPotentialHeader = true;
                 }
 
                 FormatResourceChange(change);
             }
 
             return true;
+        }
+
+        private List<PSDeploymentStackWhatIfResourceChange> OrderPotentialChangesForDisplay(List<PSDeploymentStackWhatIfResourceChange> resourceChanges)
+        {
+            return resourceChanges
+                .OrderBy(x => GetPotentialChangeTypePriority(x.ChangeType))
+                .ThenBy(x => x.Id?.ToLowerInvariant() ?? string.Empty)
+                .ThenBy(x => x.Extension?.Name ?? string.Empty)
+                .ThenBy(x => x.Extension?.Version ?? string.Empty)
+                .ToList();
+        }
+
+        private static int GetPotentialChangeTypePriority(string changeType)
+        {
+            if (string.Equals(changeType, "Delete", StringComparison.OrdinalIgnoreCase))
+            {
+                return 0;
+            }
+
+            if (string.Equals(changeType, "Detach", StringComparison.OrdinalIgnoreCase))
+            {
+                return 1;
+            }
+
+            return 2;
         }
 
         private void FormatResourceChange(PSDeploymentStackWhatIfResourceChange resourceChange)
@@ -433,9 +490,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                 FormatPrimitiveChange(resourceChange.DenyStatusChange, "Deny Status");
             }
 
-            if (resourceChange.PSDeploymentStackWhatIfResourceConfigurationChanges?.Delta != null)
+            if (resourceChange.ResourceConfigurationChanges?.Delta != null)
             {
-                foreach (var delta in resourceChange.PSDeploymentStackWhatIfResourceConfigurationChanges.Delta)
+                foreach (var delta in resourceChange.ResourceConfigurationChanges.Delta)
                 {
                     if (string.Equals(delta.ChangeType, "Array", StringComparison.OrdinalIgnoreCase))
                     {
@@ -472,9 +529,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                 ? resourceChange.Id
                 : $"{resourceChange.Type} {FormatExtResourceIdentifiers(resourceChange.Identifiers)}";
 
-            // Source API version from top-level apiVersion, or fall back to PSDeploymentStackWhatIfResourceConfigurationChanges.after
+            // Source API version from top-level apiVersion, or fall back to resourceConfigurationChanges.after
             string apiVersion = resourceChange.ApiVersion;
-            if (string.IsNullOrEmpty(apiVersion) && resourceChange.PSDeploymentStackWhatIfResourceConfigurationChanges?.After is JObject afterObj)
+            if (string.IsNullOrEmpty(apiVersion) && resourceChange.ResourceConfigurationChanges?.After is JObject afterObj)
             {
                 apiVersion = afterObj["apiVersion"]?.ToString();
             }
@@ -547,14 +604,51 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                 .ToList();
 
             this.builder.AppendLine($"Diagnostics ({diagnosticsSorted.Count}):");
+            this.builder.AppendLine();
 
-            foreach (var diagnostic in diagnosticsSorted)
+            for (int i = 0; i < diagnosticsSorted.Count; i++)
             {
+                var diagnostic = diagnosticsSorted[i];
                 Color color = GetDiagnosticColor(diagnostic.Level);
-                this.builder.AppendLine(
-                $"{diagnostic.Level?.ToUpperInvariant()}: [{diagnostic.Code}] {diagnostic.Message}",
-                color);
+
+                this.builder.AppendLine(FormatDiagnosticHeader(diagnostic), color);
+
+                if (!string.IsNullOrEmpty(diagnostic.Message))
+                {
+                    this.builder.Append("  ", color).Append("Message: ", color).AppendLine(diagnostic.Message, color);
+                }
+
+                if (!string.IsNullOrEmpty(diagnostic.Target))
+                {
+                    this.builder.Append("  ", color).Append("Target: ", color).AppendLine(diagnostic.Target, color);
+                }
+
+                if (diagnostic.AdditionalInfo != null && diagnostic.AdditionalInfo.Count > 0)
+                {
+                    this.builder.Append("  ", color).AppendLine("AdditionalInfo:", color);
+                    this.builder.PushIndent("    ");
+                    this.builder.AppendLine(diagnostic.AdditionalInfo.ToString(Formatting.None), color);
+                    this.builder.PopIndent();
+                }
+
+                if (i < diagnosticsSorted.Count - 1)
+                {
+                    this.builder.AppendLine();
+                }
             }
+        }
+
+        private static string FormatDiagnosticHeader(PSDeploymentStackWhatIfDiagnostic diagnostic)
+        {
+            string level = string.IsNullOrEmpty(diagnostic.Level)
+                ? "DIAGNOSTIC"
+                : diagnostic.Level.ToUpperInvariant();
+
+            string code = string.IsNullOrEmpty(diagnostic.Code)
+                ? string.Empty
+                : $" [{diagnostic.Code}]";
+
+            return $"{level}:{code}";
         }
 
         private bool FormatPrimitiveChange(object change, string path)
