@@ -1,8 +1,8 @@
 {
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-01?api-version=2022-10-12-preview+1": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-01?api-version=2026-04-16+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-01?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-01?api-version=2026-04-16",
       "Content": "{\r\n  \"tags\": {\r\n    \"123\": \"abc\"\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"marketplaceDetails\": {\r\n      \"planId\": \"qumulo-on-azure-v1%%gmz7xq9ge3py%%P1M\",\r\n      \"offerId\": \"qumulo-saas-mpp\",\r\n      \"publisherId\": \"qumulo1584033880660\"\r\n    },\r\n    \"userDetails\": {\r\n      \"email\": \"v-jiaji@microsoft.com\"\r\n    },\r\n    \"storageSku\": \"Standard\",\r\n    \"delegatedSubnetId\": \"/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Microsoft.Network/virtualNetworks/eastus-ps-vnet/subnets/qumulo-vnet\",\r\n    \"adminPassword\": \"1qaz@WSX\",\r\n    \"initialCapacity\": 50,\r\n    \"availabilityZone\": \"1\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -18,7 +18,7 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"7500af03-0000-0100-0000-6497ab610000\"" ],
-        "Location": [ "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview" ],
+        "Location": [ "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "mise-correlation-id": [ "9ca28574-187c-4bd9-8963-91b9d0f50840" ],
@@ -26,7 +26,7 @@
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-correlation-request-id": [ "7840df17-e408-4adc-af5c-02256e0eb89d" ],
         "x-ms-client-request-id": [ "030ba72a-aad0-4b2c-aa33-703b44fcda3b" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16" ],
         "x-ms-request-id": [ "fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf" ],
         "x-ms-routing-request-id": [ "JAPANEAST:20230625T025011Z:7840df17-e408-4adc-af5c-02256e0eb89d" ],
         "Date": [ "Sun, 25 Jun 2023 02:50:10 GMT" ]
@@ -40,10 +40,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+2": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -81,10 +81,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+3": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -122,10 +122,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+4": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -163,10 +163,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+5": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -204,10 +204,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+6": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -245,10 +245,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+7": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -286,10 +286,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+8": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -327,10 +327,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+9": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -368,10 +368,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+10": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+10": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -409,10 +409,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+11": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+11": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -450,10 +450,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+12": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+12": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -491,10 +491,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+13": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+13": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -532,10 +532,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+14": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+14": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -573,10 +573,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+15": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+15": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -614,10 +614,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+16": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+16": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -655,10 +655,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+17": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+17": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -696,10 +696,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+18": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+18": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -737,10 +737,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+19": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+19": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -778,10 +778,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+20": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+20": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -819,10 +819,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+21": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+21": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -860,10 +860,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+22": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+22": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -901,10 +901,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+23": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+23": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -942,10 +942,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+24": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+24": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -983,10 +983,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+25": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+25": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1024,10 +1024,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+26": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+26": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1065,10 +1065,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+27": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+27": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1106,10 +1106,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+28": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+28": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1147,10 +1147,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+29": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+29": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1188,10 +1188,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+30": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+30": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1229,10 +1229,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+31": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+31": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1270,10 +1270,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+32": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+32": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1311,10 +1311,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+33": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+33": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1352,10 +1352,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+34": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+34": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1393,10 +1393,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+35": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+35": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1434,10 +1434,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+36": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+36": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1475,10 +1475,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+37": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+37": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1516,10 +1516,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+38": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+38": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1557,10 +1557,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+39": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+39": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/fbfb30b1-b60c-40f8-a8d7-82feb1d85ccf*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1598,10 +1598,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-01?api-version=2022-10-12-preview+40": {
+  "AzQumuloStorage+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-01?api-version=2026-04-16+40": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-01?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-01?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1640,10 +1640,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-01?api-version=2022-10-12-preview+1": {
+  "AzQumuloStorage+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-01?api-version=2026-04-16+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-01?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-01?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1682,10 +1682,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/pp-test/providers/Qumulo.Storage/fileSystems?api-version=2022-10-12-preview+1": {
+  "AzQumuloStorage+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/pp-test/providers/Qumulo.Storage/fileSystems?api-version=2026-04-16+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/pp-test/providers/Qumulo.Storage/fileSystems?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/pp-test/providers/Qumulo.Storage/fileSystems?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1723,10 +1723,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-01?api-version=2022-10-12-preview+1": {
+  "AzQumuloStorage+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-01?api-version=2026-04-16+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-01?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-01?api-version=2026-04-16",
       "Content": "{\r\n  \"tags\": {\r\n    \"123\": \"abc\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -1761,10 +1761,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-01?api-version=2022-10-12-preview+1": {
+  "AzQumuloStorage+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-01?api-version=2026-04-16+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-01?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-01?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1803,10 +1803,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-01?api-version=2022-10-12-preview+2": {
+  "AzQumuloStorage+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-01?api-version=2026-04-16+2": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-01?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-01?api-version=2026-04-16",
       "Content": "{\r\n  \"tags\": {\r\n    \"456\": \"def\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -1841,10 +1841,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-01?api-version=2022-10-12-preview+1": {
+  "AzQumuloStorage+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-01?api-version=2026-04-16+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-01?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-01?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1865,7 +1865,7 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"75006133-0000-0100-0000-6497afed0000\"" ],
-        "Location": [ "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview" ],
+        "Location": [ "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "mise-correlation-id": [ "5fdd635e-ac97-4fc7-930a-1f84e1528e4c" ],
@@ -1873,7 +1873,7 @@
         "x-ms-client-request-id": [ "9b0b97df-443a-44ab-820f-484351d3fce3" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16" ],
         "x-ms-request-id": [ "0a09e536-b27d-416a-878a-00cd0745d97d" ],
         "x-ms-routing-request-id": [ "JAPANEAST:20230625T030933Z:ab87856d-be9d-4722-86cf-006761055a9b" ],
         "Date": [ "Sun, 25 Jun 2023 03:09:33 GMT" ]
@@ -1887,10 +1887,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+2": {
+  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1928,10 +1928,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+3": {
+  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -1969,10 +1969,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+4": {
+  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2010,10 +2010,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+5": {
+  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2051,10 +2051,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+6": {
+  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2092,10 +2092,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+7": {
+  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2133,10 +2133,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+8": {
+  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2174,10 +2174,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+9": {
+  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2215,10 +2215,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+10": {
+  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+10": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2256,10 +2256,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+11": {
+  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+11": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2297,10 +2297,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+12": {
+  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+12": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2338,10 +2338,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+13": {
+  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+13": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2379,10 +2379,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+14": {
+  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+14": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2420,10 +2420,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+15": {
+  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+15": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2461,10 +2461,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview+16": {
+  "AzQumuloStorage+[NoContext]+Delete+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16+16": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/0a09e536-b27d-416a-878a-00cd0745d97d*DC03CB5CC5F66E722D86380F5839E2645800660C39076136A08210B51340B9B9?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2502,10 +2502,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-02?api-version=2022-10-12-preview+1": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-02?api-version=2026-04-16+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-02?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-02?api-version=2026-04-16",
       "Content": "{\r\n  \"tags\": {\r\n    \"678\": \"fgh\"\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"marketplaceDetails\": {\r\n      \"planId\": \"qumulo-on-azure-v1%%gmz7xq9ge3py%%P1M\",\r\n      \"offerId\": \"qumulo-saas-mpp\",\r\n      \"publisherId\": \"qumulo1584033880660\"\r\n    },\r\n    \"userDetails\": {\r\n      \"email\": \"v-jiaji@microsoft.com\"\r\n    },\r\n    \"storageSku\": \"Standard\",\r\n    \"delegatedSubnetId\": \"/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Microsoft.Network/virtualNetworks/eastus-ps-vnet/subnets/qumulo-vnet\",\r\n    \"adminPassword\": \"1qaz@WSX\",\r\n    \"initialCapacity\": 50,\r\n    \"availabilityZone\": \"1\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -2521,7 +2521,7 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"7500fb44-0000-0100-0000-6497b19a0000\"" ],
-        "Location": [ "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview" ],
+        "Location": [ "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "mise-correlation-id": [ "4a442b71-3247-4026-81b8-1934f4acb370" ],
@@ -2529,7 +2529,7 @@
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-correlation-request-id": [ "ca997f0c-8ed6-4a21-b9a6-983211eaede0" ],
         "x-ms-client-request-id": [ "433ac7e1-4686-4572-8901-e5747a6f2f7b" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16" ],
         "x-ms-request-id": [ "f91e0419-ce46-4821-b329-e33ac004b827" ],
         "x-ms-routing-request-id": [ "JAPANEAST:20230625T031643Z:ca997f0c-8ed6-4a21-b9a6-983211eaede0" ],
         "Date": [ "Sun, 25 Jun 2023 03:16:42 GMT" ]
@@ -2543,10 +2543,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+2": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2584,10 +2584,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+3": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2625,10 +2625,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+4": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2666,10 +2666,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+5": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2707,10 +2707,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+6": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2748,10 +2748,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+7": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2789,10 +2789,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+8": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2830,10 +2830,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+9": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2871,10 +2871,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+10": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+10": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2912,10 +2912,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+11": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+11": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2953,10 +2953,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+12": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+12": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -2994,10 +2994,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+13": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+13": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -3035,10 +3035,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+14": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+14": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -3076,10 +3076,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+15": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+15": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -3117,10 +3117,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+16": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+16": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -3158,10 +3158,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+17": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+17": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -3199,10 +3199,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+18": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+18": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -3240,10 +3240,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+19": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+19": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -3281,10 +3281,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+20": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+20": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -3322,10 +3322,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+21": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+21": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/f91e0419-ce46-4821-b329-e33ac004b827*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -3363,10 +3363,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-02?api-version=2022-10-12-preview+22": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-02?api-version=2026-04-16+22": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-02?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-02?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -3405,10 +3405,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-02?api-version=2022-10-12-preview+23": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-02?api-version=2026-04-16+23": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-02?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-test/providers/Qumulo.Storage/fileSystems/qumulo-rs-02?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -3429,7 +3429,7 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"7500315e-0000-0100-0000-6497b41f0000\"" ],
-        "Location": [ "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview" ],
+        "Location": [ "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "mise-correlation-id": [ "f0505e0c-c692-4d6c-b19b-53e97b3ece1c" ],
@@ -3437,7 +3437,7 @@
         "x-ms-client-request-id": [ "75be6543-db3b-48d5-b199-44813f3950a0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16" ],
         "x-ms-request-id": [ "20191347-e4bf-4ce6-a228-81b335687617" ],
         "x-ms-routing-request-id": [ "KOREASOUTH:20230625T032727Z:946fb48c-c3f0-4107-9eda-d30a008872b3" ],
         "Date": [ "Sun, 25 Jun 2023 03:27:27 GMT" ]
@@ -3451,10 +3451,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+24": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+24": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -3492,10 +3492,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+25": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+25": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -3533,10 +3533,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+26": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+26": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -3574,10 +3574,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+27": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+27": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -3615,10 +3615,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+28": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+28": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -3656,10 +3656,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+29": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+29": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -3697,10 +3697,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+30": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+30": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -3738,10 +3738,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+31": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+31": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -3779,10 +3779,10 @@
       "isContentBase64": false
     }
   },
-  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview+32": {
+  "AzQumuloStorage+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16+32": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2022-10-12-preview",
+      "RequestUri": "https://management.azure.com/providers/Qumulo.Storage/locations/EASTUS/operationStatuses/20191347-e4bf-4ce6-a228-81b335687617*F73656601FE8949A86BF48F206445F2D6C71AB3196E32CD2044E51345BC70B9E?api-version=2026-04-16",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Pinned the swagger api-version tag to `package-2022-10-12-preview` and restored the reference documentation to match the shipped cmdlet surface, so `New-AzQumuloFileSystem` correctly documents `-UserEmail` as `String`.
+* Migrated module to AutoRest v4 code generation
+    - Upgraded API version from 2022-10-12-preview to 2026-04-16 (stable)
+    - Updated model namespace references in custom cmdlets
 
 ## Version 0.1.3
 * Upgraded nuget package to signed package.
