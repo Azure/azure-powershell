@@ -18,5 +18,5 @@ Warning : {{
           }}
 ```
 
-Validates whether a migration from the source Azure Cache for Redis to the target Redis Enterprise cache is possible.
+Validates whether a migration from the source Azure Cache for Redis to the target Azure Managed Redis resource is possible.
 

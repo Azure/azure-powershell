@@ -34,5 +34,5 @@ TargetResourceId             : /subscriptions/e7b5a9d2-6b6a-4d2f-9143-20d9a10f5b
 Type                         : Microsoft.Cache/redisEnterprise/migrations
 ```
 
-Starts a migration from an Azure Cache for Redis instance to the specified Redis Enterprise cache cluster.
+Starts a migration from an Azure Cache for Redis instance to the specified Azure Managed Redis resource.
 
