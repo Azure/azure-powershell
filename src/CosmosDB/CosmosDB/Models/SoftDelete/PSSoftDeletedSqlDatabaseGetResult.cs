@@ -32,8 +32,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             Id = softDeletedSqlDatabaseGetResult.Id;
             Name = softDeletedSqlDatabaseGetResult.Name;
             Type = softDeletedSqlDatabaseGetResult.Type;
-            DeletionTime = softDeletedSqlDatabaseGetResult.DeletionTime;
-            ScheduledPurgeTime = softDeletedSqlDatabaseGetResult.ScheduledPurgeTime;
+            IsSoftDeleted = softDeletedSqlDatabaseGetResult.Properties?.SoftDeletionMetadata?.IsSoftDeleted;
+            SoftDeletionStartTimestamp = softDeletedSqlDatabaseGetResult.Properties?.SoftDeletionMetadata?.SoftDeletionStartTimestamp;
+            SoftDeletionResourceExpirationTimestamp = softDeletedSqlDatabaseGetResult.Properties?.SoftDeletionMetadata?.SoftDeletionResourceExpirationTimestamp;
+            ResourceId = softDeletedSqlDatabaseGetResult.Properties?.Resource?.Id;
         }
 
         /// <summary>
@@ -55,15 +57,27 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets or sets the time at which the database was deleted.
+        /// Gets or sets whether the database is soft-deleted.
         /// </summary>
-        [Ps1Xml(Label = "DeletionTime", Target = ViewControl.List)]
-        public System.DateTime? DeletionTime { get; set; }
+        [Ps1Xml(Label = "IsSoftDeleted", Target = ViewControl.List)]
+        public bool? IsSoftDeleted { get; set; }
 
         /// <summary>
-        /// Gets or sets the time at which the database will be permanently purged.
+        /// Gets or sets the time at which the database was deleted (epoch timestamp).
         /// </summary>
-        [Ps1Xml(Label = "ScheduledPurgeTime", Target = ViewControl.List)]
-        public System.DateTime? ScheduledPurgeTime { get; set; }
+        [Ps1Xml(Label = "SoftDeletionStartTimestamp", Target = ViewControl.List)]
+        public long? SoftDeletionStartTimestamp { get; set; }
+
+        /// <summary>
+        /// Gets or sets the time at which the database will be permanently purged (epoch timestamp).
+        /// </summary>
+        [Ps1Xml(Label = "SoftDeletionResourceExpirationTimestamp", Target = ViewControl.List)]
+        public long? SoftDeletionResourceExpirationTimestamp { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource ID of the soft-deleted database.
+        /// </summary>
+        [Ps1Xml(Label = "ResourceId", Target = ViewControl.List)]
+        public string ResourceId { get; set; }
     }
 }

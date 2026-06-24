@@ -32,6 +32,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 
+        [Parameter(Mandatory = true, HelpMessage = Constants.SoftDeletedLocationHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.SoftDeletedDatabaseNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -40,12 +44,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
         {
             if (!string.IsNullOrEmpty(Name))
             {
-                SoftDeletedSqlDatabaseGetResult softDeletedDatabase = CosmosDBManagementClient.SoftDeletedSqlDatabases.GetWithHttpMessagesAsync(ResourceGroupName, AccountName, Name).GetAwaiter().GetResult().Body;
+                SoftDeletedSqlDatabaseGetResult softDeletedDatabase = CosmosDBManagementClient.SoftDeletedSqlDatabases.GetWithHttpMessagesAsync(ResourceGroupName, Location, AccountName, Name).GetAwaiter().GetResult().Body;
                 WriteObject(new PSSoftDeletedSqlDatabaseGetResult(softDeletedDatabase));
             }
             else
             {
-                IEnumerable softDeletedDatabases = CosmosDBManagementClient.SoftDeletedSqlDatabases.ListWithHttpMessagesAsync(ResourceGroupName, AccountName).GetAwaiter().GetResult().Body;
+                IEnumerable softDeletedDatabases = CosmosDBManagementClient.SoftDeletedSqlDatabases.ListWithHttpMessagesAsync(ResourceGroupName, Location, AccountName).GetAwaiter().GetResult().Body;
                 foreach (SoftDeletedSqlDatabaseGetResult softDeletedDatabase in softDeletedDatabases)
                 {
                     WriteObject(new PSSoftDeletedSqlDatabaseGetResult(softDeletedDatabase));

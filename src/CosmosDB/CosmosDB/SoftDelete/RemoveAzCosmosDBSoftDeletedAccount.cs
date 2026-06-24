@@ -14,12 +14,18 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSoftDeletedAccount", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(void), typeof(bool))]
     public class RemoveAzCosmosDBSoftDeletedAccount : AzureCosmosDBCmdletBase
     {
+        [Parameter(Mandatory = true, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
         [Parameter(Mandatory = true, HelpMessage = Constants.SoftDeletedLocationHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
@@ -38,7 +44,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         {
             if (ShouldProcess(Name, "Permanently purging soft-deleted Cosmos DB account"))
             {
-                CosmosDBManagementClient.SoftDeletedDatabaseAccounts.PurgeWithHttpMessagesAsync(Location, Name).GetAwaiter().GetResult();
+                CosmosDBManagementClient.SoftDeletedDatabaseAccounts.PurgeWithHttpMessagesAsync(ResourceGroupName, Location, Name).GetAwaiter().GetResult();
 
                 if (PassThru)
                     WriteObject(true);

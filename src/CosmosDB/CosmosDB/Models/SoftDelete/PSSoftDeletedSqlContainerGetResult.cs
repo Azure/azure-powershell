@@ -32,8 +32,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             Id = softDeletedSqlContainerGetResult.Id;
             Name = softDeletedSqlContainerGetResult.Name;
             Type = softDeletedSqlContainerGetResult.Type;
-            DeletionTime = softDeletedSqlContainerGetResult.DeletionTime;
-            ScheduledPurgeTime = softDeletedSqlContainerGetResult.ScheduledPurgeTime;
+            IsSoftDeleted = softDeletedSqlContainerGetResult.Properties?.SoftDeletionMetadata?.IsSoftDeleted;
+            SoftDeletionStartTimestamp = softDeletedSqlContainerGetResult.Properties?.SoftDeletionMetadata?.SoftDeletionStartTimestamp;
+            SoftDeletionResourceExpirationTimestamp = softDeletedSqlContainerGetResult.Properties?.SoftDeletionMetadata?.SoftDeletionResourceExpirationTimestamp;
+            ResourceId = softDeletedSqlContainerGetResult.Properties?.Resource?.Id;
         }
 
         /// <summary>
@@ -55,15 +57,27 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets or sets the time at which the container was deleted.
+        /// Gets or sets whether the container is soft-deleted.
         /// </summary>
-        [Ps1Xml(Label = "DeletionTime", Target = ViewControl.List)]
-        public System.DateTime? DeletionTime { get; set; }
+        [Ps1Xml(Label = "IsSoftDeleted", Target = ViewControl.List)]
+        public bool? IsSoftDeleted { get; set; }
 
         /// <summary>
-        /// Gets or sets the time at which the container will be permanently purged.
+        /// Gets or sets the time at which the container was deleted (epoch timestamp).
         /// </summary>
-        [Ps1Xml(Label = "ScheduledPurgeTime", Target = ViewControl.List)]
-        public System.DateTime? ScheduledPurgeTime { get; set; }
+        [Ps1Xml(Label = "SoftDeletionStartTimestamp", Target = ViewControl.List)]
+        public long? SoftDeletionStartTimestamp { get; set; }
+
+        /// <summary>
+        /// Gets or sets the time at which the container will be permanently purged (epoch timestamp).
+        /// </summary>
+        [Ps1Xml(Label = "SoftDeletionResourceExpirationTimestamp", Target = ViewControl.List)]
+        public long? SoftDeletionResourceExpirationTimestamp { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource ID of the soft-deleted container.
+        /// </summary>
+        [Ps1Xml(Label = "ResourceId", Target = ViewControl.List)]
+        public string ResourceId { get; set; }
     }
 }

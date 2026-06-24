@@ -30,6 +30,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 
+        [Parameter(Mandatory = true, HelpMessage = Constants.SoftDeletedLocationHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
+
         [Parameter(Mandatory = true, HelpMessage = Constants.DatabaseNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
@@ -48,7 +52,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         {
             if (ShouldProcess(Name, "Permanently purging soft-deleted SQL container"))
             {
-                CosmosDBManagementClient.SoftDeletedSqlContainers.PurgeWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name).GetAwaiter().GetResult();
+                CosmosDBManagementClient.SoftDeletedSqlContainers.PurgeWithHttpMessagesAsync(ResourceGroupName, Location, AccountName, DatabaseName, Name).GetAwaiter().GetResult();
 
                 if (PassThru)
                     WriteObject(true);

@@ -15,6 +15,7 @@
 using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
@@ -26,20 +27,25 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.SoftDeletedAccountNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(Name))
+            if (!string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(ResourceGroupName))
             {
-                SoftDeletedDatabaseAccountGetResult softDeletedAccount = CosmosDBManagementClient.SoftDeletedDatabaseAccounts.GetWithHttpMessagesAsync(Location, Name).GetAwaiter().GetResult().Body;
+                SoftDeletedDatabaseAccountGetResult softDeletedAccount = CosmosDBManagementClient.SoftDeletedDatabaseAccounts.GetWithHttpMessagesAsync(ResourceGroupName, Location, Name).GetAwaiter().GetResult().Body;
                 WriteObject(new PSSoftDeletedDatabaseAccountGetResult(softDeletedAccount));
             }
             else
             {
-                IEnumerable softDeletedAccounts = CosmosDBManagementClient.SoftDeletedDatabaseAccounts.ListWithHttpMessagesAsync(Location).GetAwaiter().GetResult().Body;
+                IEnumerable softDeletedAccounts = CosmosDBManagementClient.SoftDeletedDatabaseAccounts.ListByLocationWithHttpMessagesAsync(Location).GetAwaiter().GetResult().Body;
                 foreach (SoftDeletedDatabaseAccountGetResult softDeletedAccount in softDeletedAccounts)
                 {
                     WriteObject(new PSSoftDeletedDatabaseAccountGetResult(softDeletedAccount));

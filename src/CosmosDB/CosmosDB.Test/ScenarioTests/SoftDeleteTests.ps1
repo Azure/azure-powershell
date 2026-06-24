@@ -18,6 +18,7 @@ Test soft-deleted account Get, Remove (Purge), and Restore cmdlets
 #>
 function Test-SoftDeletedAccountCmdlets
 {
+  $rgName = "CosmosDBSoftDeleteResourceGroup01"
   $location = "East US"
 
   Try {
@@ -32,7 +33,7 @@ function Test-SoftDeletedAccountCmdlets
           Assert-NotNull $account.Location
 
           # Get a specific soft-deleted account
-          $specificAccount = Get-AzCosmosDBSoftDeletedAccount -Location $location -Name $account.Name
+          $specificAccount = Get-AzCosmosDBSoftDeletedAccount -ResourceGroupName $rgName -Location $location -Name $account.Name
           Assert-AreEqual $account.Name $specificAccount.Name
           Assert-AreEqual $account.Location $specificAccount.Location
       }
@@ -50,10 +51,11 @@ function Test-SoftDeletedSqlDatabaseCmdlets
 {
   $rgName = "CosmosDBSoftDeleteResourceGroup01"
   $accountName = "softdelete-test-account01"
+  $location = "East US"
 
   Try {
       # List soft-deleted databases in the account
-      $softDeletedDatabases = Get-AzCosmosDBSqlSoftDeletedDatabase -ResourceGroupName $rgName -AccountName $accountName
+      $softDeletedDatabases = Get-AzCosmosDBSqlSoftDeletedDatabase -ResourceGroupName $rgName -AccountName $accountName -Location $location
       Assert-NotNull $softDeletedDatabases
 
       if ($softDeletedDatabases.Count -gt 0)
@@ -63,7 +65,7 @@ function Test-SoftDeletedSqlDatabaseCmdlets
           Assert-NotNull $database.Id
 
           # Get a specific soft-deleted database
-          $specificDb = Get-AzCosmosDBSqlSoftDeletedDatabase -ResourceGroupName $rgName -AccountName $accountName -Name $database.Name
+          $specificDb = Get-AzCosmosDBSqlSoftDeletedDatabase -ResourceGroupName $rgName -AccountName $accountName -Location $location -Name $database.Name
           Assert-AreEqual $database.Name $specificDb.Name
       }
   }
@@ -81,10 +83,11 @@ function Test-SoftDeletedSqlContainerCmdlets
   $rgName = "CosmosDBSoftDeleteResourceGroup01"
   $accountName = "softdelete-test-account01"
   $databaseName = "softdelete-test-db01"
+  $location = "East US"
 
   Try {
       # List soft-deleted containers in the database
-      $softDeletedContainers = Get-AzCosmosDBSqlSoftDeletedContainer -ResourceGroupName $rgName -AccountName $accountName -DatabaseName $databaseName
+      $softDeletedContainers = Get-AzCosmosDBSqlSoftDeletedContainer -ResourceGroupName $rgName -AccountName $accountName -Location $location -DatabaseName $databaseName
       Assert-NotNull $softDeletedContainers
 
       if ($softDeletedContainers.Count -gt 0)
@@ -94,7 +97,7 @@ function Test-SoftDeletedSqlContainerCmdlets
           Assert-NotNull $container.Id
 
           # Get a specific soft-deleted container
-          $specificContainer = Get-AzCosmosDBSqlSoftDeletedContainer -ResourceGroupName $rgName -AccountName $accountName -DatabaseName $databaseName -Name $container.Name
+          $specificContainer = Get-AzCosmosDBSqlSoftDeletedContainer -ResourceGroupName $rgName -AccountName $accountName -Location $location -DatabaseName $databaseName -Name $container.Name
           Assert-AreEqual $container.Name $specificContainer.Name
       }
   }

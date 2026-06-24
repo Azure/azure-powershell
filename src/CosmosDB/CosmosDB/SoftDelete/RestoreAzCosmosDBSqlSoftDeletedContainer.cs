@@ -31,6 +31,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 
+        [Parameter(Mandatory = true, HelpMessage = Constants.SoftDeletedLocationHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
+
         [Parameter(Mandatory = true, HelpMessage = Constants.DatabaseNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
@@ -46,8 +50,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
         {
             if (ShouldProcess(Name, "Recovering soft-deleted SQL container"))
             {
-                CosmosDBManagementClient.SoftDeletedSqlContainers.RestoreWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name).GetAwaiter().GetResult();
-                SoftDeletedSqlContainerGetResult result = CosmosDBManagementClient.SoftDeletedSqlContainers.GetWithHttpMessagesAsync(ResourceGroupName, AccountName, DatabaseName, Name).GetAwaiter().GetResult().Body;
+                CosmosDBManagementClient.SoftDeletedSqlContainers.RestoreWithHttpMessagesAsync(ResourceGroupName, Location, AccountName, DatabaseName, Name).GetAwaiter().GetResult();
+                SoftDeletedSqlContainerGetResult result = CosmosDBManagementClient.SoftDeletedSqlContainers.GetWithHttpMessagesAsync(ResourceGroupName, Location, AccountName, DatabaseName, Name).GetAwaiter().GetResult().Body;
                 WriteObject(new PSSoftDeletedSqlContainerGetResult(result));
             }
         }

@@ -32,9 +32,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             Id = softDeletedDatabaseAccountGetResult.Id;
             Name = softDeletedDatabaseAccountGetResult.Name;
             Type = softDeletedDatabaseAccountGetResult.Type;
-            Location = softDeletedDatabaseAccountGetResult.Location;
-            DeletionTime = softDeletedDatabaseAccountGetResult.DeletionTime;
-            ScheduledPurgeTime = softDeletedDatabaseAccountGetResult.ScheduledPurgeTime;
+            IsSoftDeleted = softDeletedDatabaseAccountGetResult.Properties?.SoftDeletionMetadata?.IsSoftDeleted;
+            SoftDeletionStartTimestamp = softDeletedDatabaseAccountGetResult.Properties?.SoftDeletionMetadata?.SoftDeletionStartTimestamp;
+            SoftDeletionResourceExpirationTimestamp = softDeletedDatabaseAccountGetResult.Properties?.SoftDeletionMetadata?.SoftDeletionResourceExpirationTimestamp;
+            AccountName = softDeletedDatabaseAccountGetResult.Properties?.AccountName;
         }
 
         /// <summary>
@@ -58,19 +59,25 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <summary>
         /// Gets or sets the location of the soft-deleted account.
         /// </summary>
-        [Ps1Xml(Label = "Location", Target = ViewControl.List)]
-        public string Location { get; set; }
+        [Ps1Xml(Label = "AccountName", Target = ViewControl.List)]
+        public string AccountName { get; set; }
 
         /// <summary>
-        /// Gets or sets the time at which the account was deleted.
+        /// Gets or sets whether the account is soft-deleted.
         /// </summary>
-        [Ps1Xml(Label = "DeletionTime", Target = ViewControl.List)]
-        public System.DateTime? DeletionTime { get; set; }
+        [Ps1Xml(Label = "IsSoftDeleted", Target = ViewControl.List)]
+        public bool? IsSoftDeleted { get; set; }
 
         /// <summary>
-        /// Gets or sets the time at which the account will be permanently purged.
+        /// Gets or sets the time at which the account was deleted (epoch timestamp).
         /// </summary>
-        [Ps1Xml(Label = "ScheduledPurgeTime", Target = ViewControl.List)]
-        public System.DateTime? ScheduledPurgeTime { get; set; }
+        [Ps1Xml(Label = "SoftDeletionStartTimestamp", Target = ViewControl.List)]
+        public long? SoftDeletionStartTimestamp { get; set; }
+
+        /// <summary>
+        /// Gets or sets the time at which the account will be permanently purged (epoch timestamp).
+        /// </summary>
+        [Ps1Xml(Label = "SoftDeletionResourceExpirationTimestamp", Target = ViewControl.List)]
+        public long? SoftDeletionResourceExpirationTimestamp { get; set; }
     }
 }

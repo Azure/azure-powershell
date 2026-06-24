@@ -14,6 +14,7 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
@@ -21,6 +22,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
     [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBSoftDeletedAccount", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSSoftDeletedDatabaseAccountGetResult))]
     public class RestoreAzCosmosDBSoftDeletedAccount : AzureCosmosDBCmdletBase
     {
+        [Parameter(Mandatory = true, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
         [Parameter(Mandatory = true, HelpMessage = Constants.SoftDeletedLocationHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
@@ -36,8 +42,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
         {
             if (ShouldProcess(Name, "Recovering soft-deleted Cosmos DB account"))
             {
-                CosmosDBManagementClient.SoftDeletedDatabaseAccounts.RestoreWithHttpMessagesAsync(Location, Name).GetAwaiter().GetResult();
-                SoftDeletedDatabaseAccountGetResult result = CosmosDBManagementClient.SoftDeletedDatabaseAccounts.GetWithHttpMessagesAsync(Location, Name).GetAwaiter().GetResult().Body;
+                CosmosDBManagementClient.SoftDeletedDatabaseAccounts.RestoreWithHttpMessagesAsync(ResourceGroupName, Location, Name).GetAwaiter().GetResult();
+                SoftDeletedDatabaseAccountGetResult result = CosmosDBManagementClient.SoftDeletedDatabaseAccounts.GetWithHttpMessagesAsync(ResourceGroupName, Location, Name).GetAwaiter().GetResult().Body;
                 WriteObject(new PSSoftDeletedDatabaseAccountGetResult(result));
             }
         }
