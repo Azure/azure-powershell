@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Bumped module version to 3.0.0-preview for public preview release
 * Added support for API versions 2025-08-01-preview and 2026-02-01-preview
 * Added `Get-AzRedisEnterpriseCacheMigration` cmdlet to get information about a migration in a Redis Enterprise cluster
 * Added `Start-AzRedisEnterpriseCacheMigration` cmdlet to start a new migration
