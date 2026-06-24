@@ -35,6 +35,10 @@ Cancel or rollback the migration operation in a Redis Enterprise cluster.
 Stop-AzRedisEnterpriseCacheMigration -ClusterName "cache1" -ResourceGroupName "rg1"
 ```
 
+```output
+True
+```
+
 Cancels an in-progress migration to the specified Redis Enterprise cache cluster.
 
 ## PARAMETERS
