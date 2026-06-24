@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             IncludeZones = includeZone,
                             ExcludeZones = excludeZone
                         },
-                        ScheduledEventsPolicy = (scheduledEventsApiVersion == null && enableAllInstancesDown == null) ? null : new ScheduledEventsPolicy
+                        ScheduledEventsPolicy = (string.IsNullOrEmpty(scheduledEventsApiVersion) && enableAllInstancesDown == null) ? null : new ScheduledEventsPolicy
                         {
                             ScheduledEventsAdditionalPublishingTargets = string.IsNullOrEmpty(scheduledEventsApiVersion) ? null : new ScheduledEventsAdditionalPublishingTargets
                             {

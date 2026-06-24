@@ -23,7 +23,7 @@ Update-AzVM [-ResourceGroupName] <String> -VM <PSVirtualMachine> [-Tag <Hashtabl
  [-EnableVtpm <Boolean>] [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>]
  [-AlignRegionalDisksToVMZone <Boolean>] [-ScheduledEventsApiVersion <String>]
  [-EnableAllInstancesDown <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ExplicitIdentityParameterSet
@@ -37,7 +37,7 @@ Update-AzVM [-ResourceGroupName] <String> -VM <PSVirtualMachine> [-Tag <Hashtabl
  [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>]
  [-AlignRegionalDisksToVMZone <Boolean>] [-ScheduledEventsApiVersion <String>]
  [-EnableAllInstancesDown <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterSetName
@@ -50,7 +50,7 @@ Update-AzVM [-Id] <String> -VM <PSVirtualMachine> [-Tag <Hashtable>] [-OsDiskWri
  [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>]
  [-AlignRegionalDisksToVMZone <Boolean>] [-ScheduledEventsApiVersion <String>]
  [-EnableAllInstancesDown <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,7 +85,7 @@ $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -Domai
 # The $vm.HardwareProfile.VmSizeProperties.VCPUsPerCore property is 2, and the $vm.HardwareProfile.VmSizeProperties.VCPUsAvailable property is 4.
 
 Update-AzVM -ResourceGroupName $rgname -VM $vm -vCPUCountAvailable $vCPUsAvailable1 -vCPUCountPerCore $vCPUsCore1;
-# The $vm.HardwareProfile.VmSizeProperties.VCPUsPerCore property is 1, and the $vm.HardwareProfile.VmSizeProperties.VCPUsAvailable property is 1. 
+# The $vm.HardwareProfile.VmSizeProperties.VCPUsPerCore property is 1, and the $vm.HardwareProfile.VmSizeProperties.VCPUsAvailable property is 1.
 # Hyperthreading is now disabled for this VM.
 ```
 
@@ -197,8 +197,8 @@ Accept wildcard characters: False
 ```
 
 ### -EncryptionAtHost
-EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. 
-This will enable the encryption for all the disks including Resource/Temp disk at host itself. 
+EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set.
+This will enable the encryption for all the disks including Resource/Temp disk at host itself.
 
 ```yaml
 Type: System.Boolean
@@ -356,21 +356,6 @@ Specifies whether WriteAccelerator should be enabled or disabled on the OS disk.
 Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

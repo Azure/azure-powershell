@@ -42,7 +42,7 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-EnableMaxInstancePercentPerZone <Boolean>] [-MaxInstancePercentPerZoneValue <Int32>]
  [-ScheduledEventsApiVersion <String>] [-EnableAllInstancesDown <Boolean>]
  [-ZonalPlatformFaultDomainAlignMode <String>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ExplicitIdentityParameterSet
@@ -75,7 +75,7 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-EnableMaxInstancePercentPerZone <Boolean>] [-MaxInstancePercentPerZoneValue <Int32>]
  [-ScheduledEventsApiVersion <String>] [-EnableAllInstancesDown <Boolean>]
  [-ZonalPlatformFaultDomainAlignMode <String>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -195,7 +195,7 @@ Accept wildcard characters: False
 ```
 
 ### -BaseRegularPriorityCount
-Specifies the minimum number of VMs that must be of Regular priority as a VMSS Flex instance scales out. This parameter is only valid for VMSS instances with Flexible OrchestrationMode. 
+Specifies the minimum number of VMs that must be of Regular priority as a VMSS Flex instance scales out. This parameter is only valid for VMSS instances with Flexible OrchestrationMode.
 
 ```yaml
 Type: System.Int32
@@ -929,21 +929,6 @@ Specifies the plan publisher.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
