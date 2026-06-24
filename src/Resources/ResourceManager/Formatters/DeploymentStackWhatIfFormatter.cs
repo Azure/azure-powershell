@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
         {
             var (symbol, color) = GetChangeTypeFormatting("Modify");
 
-            this.builder.Append(symbol, color).Append(" ").Append(path).AppendLine(": ", color);
+            this.builder.AppendIndent().Append(symbol, color).Append(" ").Append(path).Append(": ", color).AppendLine();
             this.builder.PushIndent(new string(' ', IndentSize));
 
             if (arrayChange.Children != null && arrayChange.Children.Count > 0)
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                     if (hasIndices)
                     {
                         var (childSymbol, childColor) = GetChangeTypeFormatting(child.ChangeType);
-                        this.builder.Append(childSymbol, childColor).AppendLine($" {child.Path}:");
+                        this.builder.AppendIndent().Append(childSymbol, childColor).Append($" {child.Path}:").AppendLine();
                         this.builder.PushIndent(new string(' ', IndentSize));
 
                         FormatPrimitiveValue(child);
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
         private void FormatPrimitiveValue(PSDeploymentStackWhatIfPropertyChange change)
         {
             var (symbol, color) = GetChangeTypeFormatting(change.ChangeType);
-            this.builder.Append(symbol, color).Append(" ").AppendLine(FormatValue(change.After), color);
+            this.builder.AppendIndent().Append(symbol, color).Append(" ").Append(FormatValue(change.After), color).AppendLine();
         }
 
         private bool FormatResourceChangesAndDeletionSummary()
@@ -400,53 +400,63 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                 .Where(x => string.Equals(x.ChangeCertainty, "Potential", StringComparison.OrdinalIgnoreCase))
                 .ToList();
 
-            bool printedDefiniteChanges = FormatResourceChangeGroup(definiteChanges, includePotentialHeader: false);
-
-            if (printedDefiniteChanges && potentialChanges.Count > 0)
-            {
-                this.builder.EnsureNumNewLines(2);
-            }
-
-            FormatResourceChangeGroup(OrderPotentialChangesForDisplay(potentialChanges), includePotentialHeader: true);
+            FormatResourceChangeGroups(definiteChanges, OrderPotentialChangesForDisplay(potentialChanges));
 
             return true;
         }
 
-        private bool FormatResourceChangeGroup(
-            IList<PSDeploymentStackWhatIfResourceChange> resourceChanges,
-            bool includePotentialHeader)
+        private void FormatResourceChangeGroups(
+            IList<PSDeploymentStackWhatIfResourceChange> definiteChanges,
+            IList<PSDeploymentStackWhatIfResourceChange> potentialChanges)
         {
-            if (resourceChanges == null || resourceChanges.Count == 0)
+            var groupNames = definiteChanges
+                .Concat(potentialChanges)
+                .Select(FormatResourceClassHeader)
+                .Distinct()
+                .ToList();
+
+            for (int i = 0; i < groupNames.Count; i++)
             {
-                return false;
-            }
+                string group = groupNames[i];
+                var definiteGroupChanges = definiteChanges
+                    .Where(change => string.Equals(FormatResourceClassHeader(change), group, StringComparison.Ordinal))
+                    .ToList();
+                var potentialGroupChanges = potentialChanges
+                    .Where(change => string.Equals(FormatResourceClassHeader(change), group, StringComparison.Ordinal))
+                    .ToList();
 
-            string lastGroup = null;
-            bool hasPotentialHeader = false;
+                this.builder.AppendLine(group);
+                this.builder.PushIndent(new string(' ', IndentSize));
 
-            foreach (var change in resourceChanges)
-            {
-                string group = FormatResourceClassHeader(change);
-
-                if (group != lastGroup)
+                foreach (var change in definiteGroupChanges)
                 {
-                    lastGroup = group;
-                    hasPotentialHeader = false;
-                    this.builder.AppendLine(group);
+                    FormatResourceChange(change);
                 }
 
-                if (includePotentialHeader && !hasPotentialHeader)
+                if (definiteGroupChanges.Count > 0 && potentialGroupChanges.Count > 0)
                 {
-                    this.builder.Append(">> ").AppendLine(
+                    this.builder.AppendLine();
+                }
+
+                if (potentialGroupChanges.Count > 0)
+                {
+                    this.builder.AppendIndent().Append(">> ").Append(
                         "Potential Resource Changes (Learn more at https://aka.ms/whatIfPotentialChanges)",
-                        Color.Purple);
-                    hasPotentialHeader = true;
+                        Color.Purple).AppendLine();
+
+                    foreach (var change in potentialGroupChanges)
+                    {
+                        FormatResourceChange(change);
+                    }
                 }
 
-                FormatResourceChange(change);
-            }
+                this.builder.PopIndent();
 
-            return true;
+                if (i < groupNames.Count - 1)
+                {
+                    this.builder.AppendLine();
+                }
+            }
         }
 
         private List<PSDeploymentStackWhatIfResourceChange> OrderPotentialChangesForDisplay(List<PSDeploymentStackWhatIfResourceChange> resourceChanges)
@@ -513,6 +523,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             var (symbol, color) = GetChangeTypeFormatting(resourceChange.ChangeType);
             bool isPotential = string.Equals(resourceChange.ChangeCertainty, "Potential", StringComparison.OrdinalIgnoreCase);
 
+            this.builder.AppendIndent();
+
             if (isPotential)
             {
                 this.builder.Append("?", Color.Cyan);
@@ -540,7 +552,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                 ? $"{resourceId} [{apiVersion}]"
                 : resourceId;
 
-            this.builder.AppendLine(heading, color);
+            this.builder.Append(heading, color).AppendLine();
         }
 
         private bool FormatResourceDeletionsSummary(List<PSDeploymentStackWhatIfResourceChange> resourceChangesSorted)
@@ -558,34 +570,60 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             this.builder.AppendLine($"Resources Marked for Deletion {deleteChanges.Count} total:");
             this.builder.AppendLine();
 
-            string lastGroup = null;
-            bool hasPotentialDeletions = false;
+            var definiteDeletions = deleteChanges
+                .Where(x => !string.Equals(x.ChangeCertainty, "Potential", StringComparison.OrdinalIgnoreCase))
+                .ToList();
+            var potentialDeletions = OrderPotentialChangesForDisplay(deleteChanges
+                .Where(x => string.Equals(x.ChangeCertainty, "Potential", StringComparison.OrdinalIgnoreCase))
+                .ToList());
 
-            foreach (var change in deleteChanges)
+            var groupNames = definiteDeletions
+                .Concat(potentialDeletions)
+                .Select(FormatResourceClassHeader)
+                .Distinct()
+                .ToList();
+
+            for (int i = 0; i < groupNames.Count; i++)
             {
-                string group = FormatResourceClassHeader(change);
+                string group = groupNames[i];
+                var definiteGroupDeletions = definiteDeletions
+                    .Where(change => string.Equals(FormatResourceClassHeader(change), group, StringComparison.Ordinal))
+                    .ToList();
+                var potentialGroupDeletions = potentialDeletions
+                    .Where(change => string.Equals(FormatResourceClassHeader(change), group, StringComparison.Ordinal))
+                    .ToList();
 
-                if (group != lastGroup)
+                this.builder.AppendLine(group);
+                this.builder.PushIndent(new string(' ', IndentSize));
+
+                foreach (var change in definiteGroupDeletions)
                 {
-                    lastGroup = group;
-                    hasPotentialDeletions = false;
-                    this.builder.AppendLine(group);
+                    FormatResourceHeadingLine(change);
                 }
 
-                if (!hasPotentialDeletions &&
-                    string.Equals(change.ChangeCertainty, "Potential", StringComparison.OrdinalIgnoreCase))
+                if (definiteGroupDeletions.Count > 0 && potentialGroupDeletions.Count > 0)
                 {
-                    int numPotential = deleteChanges.Skip(deleteChanges.IndexOf(change))
-                        .TakeWhile(c => string.Equals(c.ChangeCertainty, "Potential", StringComparison.OrdinalIgnoreCase))
-                        .Count();
-
-                    this.builder.Append(">> ").AppendLine(
-                        $"Potential Deletions {numPotential} total (Learn more at https://aka.ms/whatIfPotentialChanges)",
-                        Color.Red);
-                    hasPotentialDeletions = true;
+                    this.builder.AppendLine();
                 }
 
-                FormatResourceHeadingLine(change);
+                if (potentialGroupDeletions.Count > 0)
+                {
+                    this.builder.AppendIndent().Append(">> ").Append(
+                        $"Potential Deletions {potentialGroupDeletions.Count} total (Learn more at https://aka.ms/whatIfPotentialChanges)",
+                        Color.Red).AppendLine();
+
+                    foreach (var change in potentialGroupDeletions)
+                    {
+                        FormatResourceHeadingLine(change);
+                    }
+                }
+
+                this.builder.PopIndent();
+
+                if (i < groupNames.Count - 1)
+                {
+                    this.builder.AppendLine();
+                }
             }
 
             return true;
@@ -672,17 +710,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
             var (symbol, color) = GetChangeTypeFormatting(changeType);
 
-            this.builder.Append(symbol, color).Append(" ");
+            this.builder.AppendIndent().Append(symbol, color).Append(" ");
             this.builder.Append(path).Append(": ");
 
             if (string.Equals(changeType, "Modify", StringComparison.OrdinalIgnoreCase))
             {
-                this.builder.AppendLine($"{FormatValue(before)} => {FormatValue(after)}", color);
+                this.builder.Append($"{FormatValue(before)} => {FormatValue(after)}", color).AppendLine();
             }
             else
             {
                 object value = string.Equals(changeType, "Delete", StringComparison.OrdinalIgnoreCase) ? before : after;
-                this.builder.AppendLine(FormatValue(value));
+                this.builder.Append(FormatValue(value)).AppendLine();
             }
 
             return true;
