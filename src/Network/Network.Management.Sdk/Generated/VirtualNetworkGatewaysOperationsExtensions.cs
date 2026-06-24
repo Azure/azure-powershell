@@ -665,6 +665,47 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// This operation retrieves a list of effective routes configured for the
+        /// virtual network gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        public static GatewayEffectiveRouteListResult GetEffectiveRoutes(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
+        {
+                return ((IVirtualNetworkGatewaysOperations)operations).GetEffectiveRoutesAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// This operation retrieves a list of effective routes configured for the
+        /// virtual network gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<GatewayEffectiveRouteListResult> GetEffectiveRoutesAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetEffectiveRoutesWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// This operation retrieves the resiliency information for an Express Route
         /// Gateway, including the gateway&#39;s current resiliency score and
         /// recommendations to further improve the score
@@ -1855,6 +1896,47 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<GatewayRouteListResult> BeginGetAdvertisedRoutesAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string peer, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginGetAdvertisedRoutesWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, peer, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// This operation retrieves a list of effective routes configured for the
+        /// virtual network gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        public static GatewayEffectiveRouteListResult BeginGetEffectiveRoutes(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName)
+        {
+                return ((IVirtualNetworkGatewaysOperations)operations).BeginGetEffectiveRoutesAsync(resourceGroupName, virtualNetworkGatewayName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// This operation retrieves a list of effective routes configured for the
+        /// virtual network gateway.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='virtualNetworkGatewayName'>
+        /// The name of the virtual network gateway.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<GatewayEffectiveRouteListResult> BeginGetEffectiveRoutesAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginGetEffectiveRoutesWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

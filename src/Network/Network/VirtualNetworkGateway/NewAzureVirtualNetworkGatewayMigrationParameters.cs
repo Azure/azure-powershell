@@ -15,6 +15,8 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
            HelpMessage = "The migration type for the virtual network gateway.")]
         [ValidateSet(
         MNM.VirtualNetworkGatewayMigrationType.UpgradeDeploymentToStandardIP,
+        MNM.VirtualNetworkGatewayMigrationType.UpgradeGatewayToDualStack,
+        MNM.VirtualNetworkGatewayMigrationType.MigrateGatewayForPointToSiteProfile,
         IgnoreCase = true)]
         public String MigrationType { get; set; }
 
@@ -31,7 +33,7 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
             {
                 migrationParams.ResourceUrl = this.ResourceUrl;
             }
-            migrationParams.MigrationType = VirtualNetworkGatewayMigrationParameters.MigrationType;
+            migrationParams.MigrationType = this.MigrationType;
             WriteObject(migrationParams);
         }
     }

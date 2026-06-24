@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added new cmdlet `Get-AzVirtualNetworkGatewayEffectiveRoute` to retrieve effective routes for a Virtual Network Gateway
 
 ## Version 8.0.0
 * Added ChangeSafety Support

@@ -86,6 +86,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset3)]
+        public void VirtualNetworkGatewayEffectiveRouteApiTest()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayEffectiveRouteApi");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset3)]
         public void TestVirtualNetworkGatewayP2SVpnProfile()
         {
             TestRunner.RunTestScript(string.Format(
@@ -217,6 +225,20 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestVirtualNetworkGatewayMigrationFromBasicIPToSatndardIP()
         {
             TestRunner.RunTestScript("Test-VirtualNetworkGatewayBasicIPToStandardIPMigration");
+        }
+
+        [Fact]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset3)]
+        public void TestVirtualNetworkGatewayDualStackMigration()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayDualStackMigration");
+        }
+
+        [Fact]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset3)]
+        public void TestVirtualNetworkGatewayPointToSiteProfileMigration()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkGatewayPointToSiteProfileMigration");
         }
     }
 }
