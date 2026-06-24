@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* ComputeRP related cmdlets will now use 2026-03-01 version of the ComputeRP API.
 
 ## Version 11.6.0
 * Added ChangeSafety Support
