@@ -308,90 +308,153 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewResourceGroupDeploymentStackWhatIf()
+        public void TestNewResourceGroupDeploymentStackWhatIfResult()
         {
-            TestRunner.RunTestScript("Test-NewResourceGroupDeploymentStackWhatIf");
+            TestRunner.RunTestScript("Test-NewResourceGroupDeploymentStackWhatIfResult");
         }
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetResourceGroupDeploymentStackWhatIf()
+        public void TestSetResourceGroupDeploymentStackWhatIfResult()
         {
-            TestRunner.RunTestScript("Test-SetResourceGroupDeploymentStackWhatIf");
+            TestRunner.RunTestScript("Test-SetResourceGroupDeploymentStackWhatIfResult");
         }
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetResourceGroupDeploymentStackWhatIf()
+        public void TestGetResourceGroupDeploymentStackWhatIfResult()
         {
-            TestRunner.RunTestScript("Test-GetResourceGroupDeploymentStackWhatIf");
+            TestRunner.RunTestScript("Test-GetResourceGroupDeploymentStackWhatIfResult");
         }
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveResourceGroupDeploymentStackWhatIf()
+        public void TestRemoveResourceGroupDeploymentStackWhatIfResult()
         {
-            TestRunner.RunTestScript("Test-RemoveResourceGroupDeploymentStackWhatIf");
+            TestRunner.RunTestScript("Test-RemoveResourceGroupDeploymentStackWhatIfResult");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewResourceGroupDeploymentStackWhatIfReturnsPropertyChanges()
+        {
+            TestRunner.RunTestScript("Test-NewResourceGroupDeploymentStackWhatIfReturnsPropertyChanges");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetResourceGroupDeploymentStackWhatIfWithPropertyChanges()
+        {
+            TestRunner.RunTestScript("Test-GetResourceGroupDeploymentStackWhatIfWithPropertyChanges");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetResourceGroupDeploymentStackWhatIfResultByResourceId()
+        {
+            TestRunner.RunTestScript("Test-GetResourceGroupDeploymentStackWhatIfResultByResourceId");
         }
 
         // ---- WhatIf Subscription Scope ----
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewSubscriptionDeploymentStackWhatIf()
+        public void TestNewSubscriptionDeploymentStackWhatIfResult()
         {
-            TestRunner.RunTestScript("Test-NewSubscriptionDeploymentStackWhatIf");
+            TestRunner.RunTestScript("Test-NewSubscriptionDeploymentStackWhatIfResult");
         }
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetSubscriptionDeploymentStackWhatIf()
+        public void TestSetSubscriptionDeploymentStackWhatIfResult()
         {
-            TestRunner.RunTestScript("Test-SetSubscriptionDeploymentStackWhatIf");
+            TestRunner.RunTestScript("Test-SetSubscriptionDeploymentStackWhatIfResult");
         }
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetSubscriptionDeploymentStackWhatIf()
+        public void TestGetSubscriptionDeploymentStackWhatIfResult()
         {
-            TestRunner.RunTestScript("Test-GetSubscriptionDeploymentStackWhatIf");
+            TestRunner.RunTestScript("Test-GetSubscriptionDeploymentStackWhatIfResult");
         }
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveSubscriptionDeploymentStackWhatIf()
+        public void TestRemoveSubscriptionDeploymentStackWhatIfResult()
         {
-            TestRunner.RunTestScript("Test-RemoveSubscriptionDeploymentStackWhatIf");
+            TestRunner.RunTestScript("Test-RemoveSubscriptionDeploymentStackWhatIfResult");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSubscriptionDeploymentStackWhatIfReturnsPropertyChanges()
+        {
+            TestRunner.RunTestScript("Test-NewSubscriptionDeploymentStackWhatIfReturnsPropertyChanges");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetSubscriptionDeploymentStackWhatIfWithPropertyChanges()
+        {
+            TestRunner.RunTestScript("Test-GetSubscriptionDeploymentStackWhatIfWithPropertyChanges");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetSubscriptionDeploymentStackWhatIfResultByResourceId()
+        {
+            TestRunner.RunTestScript("Test-GetSubscriptionDeploymentStackWhatIfResultByResourceId");
         }
 
         // ---- WhatIf Management Group Scope ----
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewManagementGroupDeploymentStackWhatIf()
+        public void TestNewManagementGroupDeploymentStackWhatIfResult()
         {
-            TestRunner.RunTestScript("Test-NewManagementGroupDeploymentStackWhatIf");
+            TestRunner.RunTestScript("Test-NewManagementGroupDeploymentStackWhatIfResult");
         }
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetManagementGroupDeploymentStackWhatIf()
+        public void TestSetManagementGroupDeploymentStackWhatIfResult()
         {
-            TestRunner.RunTestScript("Test-SetManagementGroupDeploymentStackWhatIf");
+            TestRunner.RunTestScript("Test-SetManagementGroupDeploymentStackWhatIfResult");
         }
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetManagementGroupDeploymentStackWhatIf()
+        public void TestGetManagementGroupDeploymentStackWhatIfResult()
         {
-            TestRunner.RunTestScript("Test-GetManagementGroupDeploymentStackWhatIf");
+            TestRunner.RunTestScript("Test-GetManagementGroupDeploymentStackWhatIfResult");
         }
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveManagementGroupDeploymentStackWhatIf()
+        public void TestRemoveManagementGroupDeploymentStackWhatIfResult()
         {
-            TestRunner.RunTestScript("Test-RemoveManagementGroupDeploymentStackWhatIf");
+            TestRunner.RunTestScript("Test-RemoveManagementGroupDeploymentStackWhatIfResult");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewManagementGroupDeploymentStackWhatIfReturnsPropertyChanges()
+        {
+            TestRunner.RunTestScript("Test-NewManagementGroupDeploymentStackWhatIfReturnsPropertyChanges");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetManagementGroupDeploymentStackWhatIfWithPropertyChanges()
+        {
+            TestRunner.RunTestScript("Test-GetManagementGroupDeploymentStackWhatIfWithPropertyChanges");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetManagementGroupDeploymentStackWhatIfResultByResourceId()
+        {
+            TestRunner.RunTestScript("Test-GetManagementGroupDeploymentStackWhatIfResultByResourceId");
         }
     }
 }
