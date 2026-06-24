@@ -22,35 +22,59 @@ Executes a command for a specific container instance in a specified resource gro
 .Example
 Invoke-AzContainerInstanceCommand -ContainerGroupName test-cg -ContainerName test-container -ResourceGroupName test-rg -Command "echo hello"
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainerExecResponse
+Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerExecResponse
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+CONTAINERGROUPINPUTOBJECT <IContainerInstanceIdentity>: Identity Parameter
+  [ContainerGroupName <String>]: The name of the container group.
+  [ContainerGroupProfileName <String>]: The name of the container group profile.
+  [ContainerName <String>]: The name of the container instance.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The name of the Azure region.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RevisionNumber <String>]: The revision number of the container group profile.
+  [SubnetName <String>]: The name of the subnet.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [VirtualNetworkName <String>]: The name of the virtual network.
 .Link
 https://learn.microsoft.com/powershell/module/az.containerinstance/invoke-azcontainerinstancecommand
 #>
 function Invoke-AzContainerInstanceCommand {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainerExecResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerExecResponse])]
 [CmdletBinding(DefaultParameterSetName='ExecuteExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Path')]
-    [System.String]
-    # The name of the container group.
-    ${ContainerGroupName},
-
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Path')]
     [System.String]
     # The name of the container instance.
     ${ContainerName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='ExecuteExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ExecuteViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ExecuteViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Path')]
+    [System.String]
+    # The name of the container group.
+    ${ContainerGroupName},
+
+    [Parameter(ParameterSetName='ExecuteExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ExecuteViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ExecuteViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ExecuteExpanded')]
+    [Parameter(ParameterSetName='ExecuteViaJsonFilePath')]
+    [Parameter(ParameterSetName='ExecuteViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -58,25 +82,46 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ExecuteViaIdentityContainerGroupExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentity]
+    # Identity Parameter
+    ${ContainerGroupInputObject},
+
+    [Parameter(ParameterSetName='ExecuteExpanded')]
+    [Parameter(ParameterSetName='ExecuteViaIdentityContainerGroupExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
     [System.String]
     # The command to be executed.
     ${Command},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ExecuteExpanded')]
+    [Parameter(ParameterSetName='ExecuteViaIdentityContainerGroupExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.DefaultInfo(Script='$host.UI.RawUI.WindowSize.Width')]
     [System.Int32]
     # The column size of the terminal
     ${TerminalSizeCol},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ExecuteExpanded')]
+    [Parameter(ParameterSetName='ExecuteViaIdentityContainerGroupExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.DefaultInfo(Script='$host.UI.RawUI.WindowSize.Height')]
     [System.Int32]
     # The row size of the terminal
     ${TerminalSizeRow},
+
+    [Parameter(ParameterSetName='ExecuteViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Execute operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ExecuteViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
+    [System.String]
+    # Json string supplied to the Execute operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -87,7 +132,7 @@ param(
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='ExecuteExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Returns last execution result when the command succeeds.
@@ -141,27 +186,34 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             ExecuteExpanded = 'Az.ContainerInstance.private\Invoke-AzContainerInstanceCommand_ExecuteExpanded';
+            ExecuteViaIdentityContainerGroupExpanded = 'Az.ContainerInstance.private\Invoke-AzContainerInstanceCommand_ExecuteViaIdentityContainerGroupExpanded';
+            ExecuteViaJsonFilePath = 'Az.ContainerInstance.private\Invoke-AzContainerInstanceCommand_ExecuteViaJsonFilePath';
+            ExecuteViaJsonString = 'Az.ContainerInstance.private\Invoke-AzContainerInstanceCommand_ExecuteViaJsonString';
         }
-        if (('ExecuteExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('ExecuteExpanded', 'ExecuteViaJsonFilePath', 'ExecuteViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
         }
-        if (('ExecuteExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('TerminalSizeCol')) {
+        if (('ExecuteExpanded', 'ExecuteViaIdentityContainerGroupExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('TerminalSizeCol') ) {
             $PSBoundParameters['TerminalSizeCol'] = $host.UI.RawUI.WindowSize.Width
         }
-        if (('ExecuteExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('TerminalSizeRow')) {
+        if (('ExecuteExpanded', 'ExecuteViaIdentityContainerGroupExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('TerminalSizeRow') ) {
             $PSBoundParameters['TerminalSizeRow'] = $host.UI.RawUI.WindowSize.Height
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

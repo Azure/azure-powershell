@@ -56,9 +56,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="consistencyPolicy">The consistency policy for the Cosmos DB account.
         /// </param>
 
-        /// <param name="ipRules">List of IpRules.
-        /// </param>
-
         /// <param name="connectorOffer">The cassandra connector offer type for the Cosmos DB database C* account.
         /// Possible values include: &#39;Small&#39;</param>
 
@@ -83,6 +80,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="locations">An array that contains the georeplication locations enabled for the Cosmos
         /// DB account.
+        /// </param>
+
+        /// <param name="ipRules">List of IpRules.
         /// </param>
 
         /// <param name="isVirtualNetworkFilterEnabled">Flag to indicate whether to enable/disable Virtual Network ACL rules.
@@ -188,13 +188,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="enableAllVersionsAndDeletesChangeFeed">Flag to indicate if All Versions and Deletes Change feed feature is enabled
         /// on the account
         /// </param>
-        public DatabaseAccountCreateUpdateParameters(System.Collections.Generic.IList<Location> locations, string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string kind = default(string), ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), System.Collections.Generic.IList<IpAddressOrRange> ipRules = default(System.Collections.Generic.IList<IpAddressOrRange>), string connectorOffer = default(string), ApiProperties apiProperties = default(ApiProperties), string createMode = default(string), BackupPolicy backupPolicy = default(BackupPolicy), RestoreParameters restoreParameters = default(RestoreParameters), Capacity capacity = default(Capacity), string capacityMode = default(string), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), System.Collections.Generic.IList<Capability> capabilities = default(System.Collections.Generic.IList<Capability>), System.Collections.Generic.IList<VirtualNetworkRule> virtualNetworkRules = default(System.Collections.Generic.IList<VirtualNetworkRule>), bool? enableMultipleWriteLocations = default(bool?), bool? enableCassandraConnector = default(bool?), bool? disableKeyBasedMetadataWriteAccess = default(bool?), string keyVaultKeyUri = default(string), string defaultIdentity = default(string), string publicNetworkAccess = default(string), bool? enableFreeTier = default(bool?), bool? enableAnalyticalStorage = default(bool?), AnalyticalStorageConfiguration analyticalStorageConfiguration = default(AnalyticalStorageConfiguration), System.Collections.Generic.IList<CorsPolicy> cors = default(System.Collections.Generic.IList<CorsPolicy>), NetworkAclBypass? networkAclBypass = default(NetworkAclBypass?), System.Collections.Generic.IList<string> networkAclBypassResourceIds = default(System.Collections.Generic.IList<string>), DiagnosticLogSettings diagnosticLogSettings = default(DiagnosticLogSettings), bool? disableLocalAuth = default(bool?), bool? enableMaterializedViews = default(bool?), DatabaseAccountKeysMetadata keysMetadata = default(DatabaseAccountKeysMetadata), bool? enablePartitionMerge = default(bool?), bool? enableBurstCapacity = default(bool?), string minimalTlsVersion = default(string), string customerManagedKeyStatus = default(string), bool? enablePriorityBasedExecution = default(bool?), string defaultPriorityLevel = default(string), bool? enablePerRegionPerPartitionAutoscale = default(bool?), bool? enableAllVersionsAndDeletesChangeFeed = default(bool?))
+
+        /// <param name="softDeleteConfiguration">The configuration for soft delete on the Cosmos DB account.
+        /// </param>
+
+        /// <param name="enforceHierarchicalPartitionKeyIdLastLevel">Flag to indicate enabling/disabling of hierarchical partition key ID last
+        /// level enforcement on the account.
+        /// </param>
+        public DatabaseAccountCreateUpdateParameters(System.Collections.Generic.IList<Location> locations, string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string kind = default(string), ConsistencyPolicy consistencyPolicy = default(ConsistencyPolicy), string connectorOffer = default(string), ApiProperties apiProperties = default(ApiProperties), string createMode = default(string), BackupPolicy backupPolicy = default(BackupPolicy), RestoreParameters restoreParameters = default(RestoreParameters), Capacity capacity = default(Capacity), string capacityMode = default(string), System.Collections.Generic.IList<IpAddressOrRange> ipRules = default(System.Collections.Generic.IList<IpAddressOrRange>), bool? isVirtualNetworkFilterEnabled = default(bool?), bool? enableAutomaticFailover = default(bool?), System.Collections.Generic.IList<Capability> capabilities = default(System.Collections.Generic.IList<Capability>), System.Collections.Generic.IList<VirtualNetworkRule> virtualNetworkRules = default(System.Collections.Generic.IList<VirtualNetworkRule>), bool? enableMultipleWriteLocations = default(bool?), bool? enableCassandraConnector = default(bool?), bool? disableKeyBasedMetadataWriteAccess = default(bool?), string keyVaultKeyUri = default(string), string defaultIdentity = default(string), string publicNetworkAccess = default(string), bool? enableFreeTier = default(bool?), bool? enableAnalyticalStorage = default(bool?), AnalyticalStorageConfiguration analyticalStorageConfiguration = default(AnalyticalStorageConfiguration), System.Collections.Generic.IList<CorsPolicy> cors = default(System.Collections.Generic.IList<CorsPolicy>), NetworkAclBypass? networkAclBypass = default(NetworkAclBypass?), System.Collections.Generic.IList<string> networkAclBypassResourceIds = default(System.Collections.Generic.IList<string>), DiagnosticLogSettings diagnosticLogSettings = default(DiagnosticLogSettings), bool? disableLocalAuth = default(bool?), bool? enableMaterializedViews = default(bool?), DatabaseAccountKeysMetadata keysMetadata = default(DatabaseAccountKeysMetadata), bool? enablePartitionMerge = default(bool?), bool? enableBurstCapacity = default(bool?), string minimalTlsVersion = default(string), string customerManagedKeyStatus = default(string), bool? enablePriorityBasedExecution = default(bool?), string defaultPriorityLevel = default(string), bool? enablePerRegionPerPartitionAutoscale = default(bool?), bool? enableAllVersionsAndDeletesChangeFeed = default(bool?), SoftDeleteConfiguration softDeleteConfiguration = default(SoftDeleteConfiguration), bool? enforceHierarchicalPartitionKeyIdLastLevel = default(bool?))
 
         : base(id, name, type, location, tags, identity)
         {
             this.Kind = kind;
             this.ConsistencyPolicy = consistencyPolicy;
-            this.IPRules = ipRules;
             this.ConnectorOffer = connectorOffer;
             this.ApiProperties = apiProperties;
             this.CreateMode = createMode;
@@ -203,6 +209,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.Capacity = capacity;
             this.CapacityMode = capacityMode;
             this.Locations = locations;
+            this.IPRules = ipRules;
             this.IsVirtualNetworkFilterEnabled = isVirtualNetworkFilterEnabled;
             this.EnableAutomaticFailover = enableAutomaticFailover;
             this.Capabilities = capabilities;
@@ -231,6 +238,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             this.DefaultPriorityLevel = defaultPriorityLevel;
             this.EnablePerRegionPerPartitionAutoscale = enablePerRegionPerPartitionAutoscale;
             this.EnableAllVersionsAndDeletesChangeFeed = enableAllVersionsAndDeletesChangeFeed;
+            this.SoftDeleteConfiguration = softDeleteConfiguration;
+            this.EnforceHierarchicalPartitionKeyIdLastLevel = enforceHierarchicalPartitionKeyIdLastLevel;
             CustomInit();
         }
         /// <summary>
@@ -259,12 +268,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.consistencyPolicy")]
         public ConsistencyPolicy ConsistencyPolicy {get; set; }
-
-        /// <summary>
-        /// Gets or sets list of IpRules.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ipRules")]
-        public System.Collections.Generic.IList<IpAddressOrRange> IPRules {get; set; }
 
         /// <summary>
         /// Gets or sets the cassandra connector offer type for the Cosmos DB database
@@ -318,6 +321,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.locations")]
         public System.Collections.Generic.IList<Location> Locations {get; set; }
+
+        /// <summary>
+        /// Gets or sets list of IpRules.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ipRules")]
+        public System.Collections.Generic.IList<IpAddressOrRange> IPRules {get; set; }
 
         /// <summary>
         /// Gets or sets flag to indicate whether to enable/disable Virtual Network ACL
@@ -510,8 +519,21 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableAllVersionsAndDeletesChangeFeed")]
         public bool? EnableAllVersionsAndDeletesChangeFeed {get; set; }
+
         /// <summary>
-        /// Gets or sets the offer type for the database
+        /// Gets or sets the configuration for soft delete on the Cosmos DB account.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.softDeleteConfiguration")]
+        public SoftDeleteConfiguration SoftDeleteConfiguration {get; set; }
+
+        /// <summary>
+        /// Gets or sets flag to indicate enabling/disabling of hierarchical partition
+        /// key ID last level enforcement on the account.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enforceHierarchicalPartitionKeyIdLastLevel")]
+        public bool? EnforceHierarchicalPartitionKeyIdLastLevel {get; set; }
+        /// <summary>
+        /// Gets or sets the offer type for the Cosmos DB database account.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.databaseAccountOfferType")]
         public static string DatabaseAccountOfferType {get; private set; }
@@ -532,7 +554,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             {
                 this.ConsistencyPolicy.Validate();
             }
-
 
 
 
@@ -560,6 +581,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
 
 
+
             if (this.Cors != null)
             {
                 foreach (var element in this.Cors)
@@ -570,6 +592,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
                     }
                 }
             }
+
 
 
 

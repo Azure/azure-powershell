@@ -55,8 +55,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
         ReadOnly = false,
         Description = @"AdminPassword - admin password",
         SerializedName = @"adminPassword",
-        PossibleTypes = new [] { typeof(string) })]
-        public string AdminPassword { get => _virtualMachineInstanceBody.OSProfileAdminPassword ?? null; set => _virtualMachineInstanceBody.OSProfileAdminPassword = value; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        public System.Security.SecureString AdminPassword { get => _virtualMachineInstanceBody.OSProfileAdminPassword ?? null; set => _virtualMachineInstanceBody.OSProfileAdminPassword = value; }
 
         /// <summary>AdminUsername - admin username</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "AdminUsername - admin username")]

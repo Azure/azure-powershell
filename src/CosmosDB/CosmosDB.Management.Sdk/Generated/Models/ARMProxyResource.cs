@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
     /// The resource model definition for a ARM proxy resource. It will have
     /// everything other than required location and tags
     /// </summary>
-    public partial class ARMProxyResource : Microsoft.Rest.Azure.IResource
+    public partial class ARMProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the ARMProxyResource class.

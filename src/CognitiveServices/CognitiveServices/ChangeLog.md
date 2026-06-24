@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.17.0
+* Added ChangeSafety Support
+
 ## Version 1.16.0
 * Updated SDK via autorest.powershell.
 * Added Get, New, Remove cmdlets for AzCognitiveServicesAccountRaiPolicy, AzCognitiveServicesAccountRaiBlocklist, AzCognitiveServicesAccountRaiBlocklistItem.

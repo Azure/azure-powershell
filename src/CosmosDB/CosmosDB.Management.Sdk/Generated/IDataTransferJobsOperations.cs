@@ -14,22 +14,16 @@ namespace Microsoft.Azure.Management.CosmosDB
     public partial interface IDataTransferJobsOperations
     {
         /// <summary>
-        /// Creates a Data Transfer Job.
+        /// Get a list of Data Transfer jobs.
         /// </summary>
         /// <remarks>
-        /// Creates a Data Transfer Job.
+        /// Get a list of Data Transfer jobs.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='jobName'>
-        /// Name of the Data Transfer Job
-        /// </param>
-        /// <param name='jobCreateParameters'>
-        /// 
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -43,7 +37,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DataTransferJobGetResults>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string jobName, CreateJobRequest jobCreateParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DataTransferJobGetResults>>> ListByDatabaseAccountWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get a Data Transfer Job.
@@ -75,10 +69,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DataTransferJobGetResults>> GetWithHttpMessagesAsync(string resourceGroupName, string accountName, string jobName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Pause a Data Transfer Job.
+        /// Creates a Data Transfer Job.
         /// </summary>
         /// <remarks>
-        /// Pause a Data Transfer Job.
+        /// Creates a Data Transfer Job.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -88,6 +82,9 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// </param>
         /// <param name='jobName'>
         /// Name of the Data Transfer Job
+        /// </param>
+        /// <param name='jobCreateParameters'>
+        /// 
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -101,36 +98,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DataTransferJobGetResults>> PauseWithHttpMessagesAsync(string resourceGroupName, string accountName, string jobName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Resumes a Data Transfer Job.
-        /// </summary>
-        /// <remarks>
-        /// Resumes a Data Transfer Job.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='jobName'>
-        /// Name of the Data Transfer Job
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DataTransferJobGetResults>> ResumeWithHttpMessagesAsync(string resourceGroupName, string accountName, string jobName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DataTransferJobGetResults>> CreateWithHttpMessagesAsync(string resourceGroupName, string accountName, string jobName, CreateJobRequest jobCreateParameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Cancels a Data Transfer Job.
@@ -191,16 +159,19 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DataTransferJobGetResults>> CompleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string jobName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get a list of Data Transfer jobs.
+        /// Pause a Data Transfer Job.
         /// </summary>
         /// <remarks>
-        /// Get a list of Data Transfer jobs.
+        /// Pause a Data Transfer Job.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='jobName'>
+        /// Name of the Data Transfer Job
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -214,7 +185,36 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<DataTransferJobGetResults>>> ListByDatabaseAccountWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DataTransferJobGetResults>> PauseWithHttpMessagesAsync(string resourceGroupName, string accountName, string jobName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Resumes a Data Transfer Job.
+        /// </summary>
+        /// <remarks>
+        /// Resumes a Data Transfer Job.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// Cosmos DB database account name.
+        /// </param>
+        /// <param name='jobName'>
+        /// Name of the Data Transfer Job
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DataTransferJobGetResults>> ResumeWithHttpMessagesAsync(string resourceGroupName, string accountName, string jobName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get a list of Data Transfer jobs.

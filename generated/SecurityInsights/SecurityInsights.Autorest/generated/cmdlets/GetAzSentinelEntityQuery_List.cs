@@ -6,6 +6,8 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Cmdlets;
     using System;
 
     /// <summary>Gets all entity queries.</summary>
@@ -13,12 +15,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
     /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/entityQueries"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzSentinelEntityQuery_List")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityQuery))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IEntityQuery))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Description(@"Gets all entity queries.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/entityQueries", ApiVersion = "2021-09-01-preview")]
     public partial class GetAzSentinelEntityQuery_List : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -34,16 +37,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
         /// <summary>A flag to tell whether it is the first onOK call.</summary>
         private bool _isFirst = true;
 
         /// <summary>Link to retrieve next page.</summary>
         private string _nextLink;
 
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
+
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
+
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.SecurityInsights Client => Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Module.Instance.ClientAPI;
@@ -57,6 +75,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -98,7 +119,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -144,7 +165,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.ParameterCategory.Path)]
         public string[] SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
@@ -167,24 +189,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ICloudError</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityQueryList">Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityQueryList</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IEntityQueryList">Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IEntityQueryList</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityQueryList> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IEntityQueryList> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -207,6 +229,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
@@ -228,7 +255,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="GetAzSentinelEntityQuery_List" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="GetAzSentinelEntityQuery_List" /> cmdlet class.
         /// </summary>
         public GetAzSentinelEntityQuery_List()
         {
@@ -279,8 +306,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -333,7 +385,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -348,13 +400,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
                     foreach( var SubscriptionId in this.SubscriptionId )
                     {
                         await ((Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.EntityQueriesList(this.InvocationInformation.BoundParameters.ContainsKey("Kind") ? Kind : null, SubscriptionId, ResourceGroupName, WorkspaceName, onOk, onDefault, this, Pipeline);
+                        await this.Client.EntityQueriesList(SubscriptionId, ResourceGroupName, WorkspaceName, this.InvocationInformation.BoundParameters.ContainsKey("Kind") ? Kind : null, onOk, onDefault, this, Pipeline);
                         await ((Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  Kind=this.InvocationInformation.BoundParameters.ContainsKey("Kind") ? Kind : null,SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,WorkspaceName=WorkspaceName})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Kind=this.InvocationInformation.BoundParameters.ContainsKey("Kind") ? Kind : null,WorkspaceName=WorkspaceName})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -392,12 +444,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ICloudError</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ICloudError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -414,15 +466,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Kind=this.InvocationInformation.BoundParameters.ContainsKey("Kind") ? Kind : null, SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, WorkspaceName=WorkspaceName })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ICloudError>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Kind=this.InvocationInformation.BoundParameters.ContainsKey("Kind") ? Kind : null, SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, WorkspaceName=WorkspaceName })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -432,12 +484,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityQueryList">Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityQueryList</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IEntityQueryList">Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IEntityQueryList</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntityQueryList> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IEntityQueryList> response)
         {
             using( NoSynchronizationContext )
             {
@@ -449,15 +501,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IEntityQueryList
+                var result = (await response);
                 // response should be returning an array of some kind. +Pageable
                 // pageable / value / nextLink
-                var result = await response;
-                WriteObject(result.Value,true);
+                if (null != result.Value)
+                {
+                    if (0 == _responseSize && 1 == result.Value.Count)
+                    {
+                        _firstResponse = result.Value[0];
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        var values = new System.Collections.Generic.List<System.Management.Automation.PSObject>();
+                        foreach( var value in result.Value )
+                        {
+                            values.Add(value.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(values, true);
+                        _responseSize = 2;
+                    }
+                }
                 _nextLink = result.NextLink;
                 if (_isFirst)
                 {
                     _isFirst = false;
-                    while (_nextLink != null)
+                    while (!String.IsNullOrEmpty(_nextLink))
                     {
                         if (responseMessage.RequestMessage is System.Net.Http.HttpRequestMessage requestMessage )
                         {

@@ -34,6 +34,9 @@
     - `-SoftDeleteRetentionPeriodInMinutes`: Set the retention period for soft-deleted resources
     - `-MinMinutesBeforePermanentDeletionAllowed`: Set minimum wait time before permanent deletion
 
+## Version 1.21.0
+* Added ChangeSafety Support
+
 ## Version 1.20.0
 * Added `-DisableLocalAuth` parameter to `New-AzCosmosDBAccount` and `Update-AzCosmosDBAccount` to opt out of local authentication.
 * Added `-Capabilities` parameter to `Update-AzCosmosDBAccount` to allow adding or removing account capabilities.

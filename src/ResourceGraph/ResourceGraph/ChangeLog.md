@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.3.0
+* Added ChangeSafety Support
+
 ## Version 1.2.1
 * Introduced various new features by upgrading code generator. Please see detail [here](https://github.com/Azure/azure-powershell/blob/main/documentation/Autorest-powershell-v4-new-features.md).
 

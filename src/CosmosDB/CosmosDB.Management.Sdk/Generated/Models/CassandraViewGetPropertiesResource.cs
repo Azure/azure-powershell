@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 {
     using System.Linq;
 
-    public partial class CassandraViewGetPropertiesResource
+    public partial class CassandraViewGetPropertiesResource : CassandraViewResource
     {
         /// <summary>
         /// Initializes a new instance of the CassandraViewGetPropertiesResource class.
@@ -39,9 +39,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </param>
         public CassandraViewGetPropertiesResource(string id, string viewDefinition, string rid = default(string), double? ts = default(double?), string etag = default(string))
 
+        : base(id, viewDefinition)
         {
-            this.Id = id;
-            this.ViewDefinition = viewDefinition;
             this.Rid = rid;
             this.Ts = ts;
             this.Etag = etag;
@@ -53,18 +52,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets or sets name of the Cosmos DB Cassandra view
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; set; }
-
-        /// <summary>
-        /// Gets or sets view Definition of the Cosmos DB Cassandra view
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "viewDefinition")]
-        public string ViewDefinition {get; set; }
 
         /// <summary>
         /// Gets a system generated property. A unique identifier.
@@ -91,18 +78,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
-            if (this.Id == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Id");
-            }
-            if (this.ViewDefinition == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ViewDefinition");
-            }
-
-
+            base.Validate();
 
 
         }

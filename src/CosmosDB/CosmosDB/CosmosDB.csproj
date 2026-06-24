@@ -14,6 +14,10 @@
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
+  <!-- Preview-branch-only: inject preview AssemblyVersion at build time so AssemblyInfo.cs can stay aligned with main. Self-disables if the targets file is absent. -->
+  <Import Project="$(MSBuildThisFileDirectory)..\PreviewOverlay\PreviewAssemblyVersion.targets"
+          Condition="Exists('$(MSBuildThisFileDirectory)..\PreviewOverlay\PreviewAssemblyVersion.targets')" />
+
   <!--
     Preview-branch-only: stamp preview values (ModuleVersion, Prerelease, ReleaseNotes,
     AzPreview.psd1 pin) into the built artifacts. The source .psd1 / ChangeLog.md /

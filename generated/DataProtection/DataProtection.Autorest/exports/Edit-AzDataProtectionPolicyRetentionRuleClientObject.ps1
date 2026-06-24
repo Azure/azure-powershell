@@ -16,18 +16,26 @@
 
 <#
 .Synopsis
-Adds or removes Retention Rule to existing Policy
+Adds or removes Retention Rule to an existing backup policy.
+For AzureBlob hybrid policies, OperationalStore lifecycles must use -Name Default_OperationalStore; -Name Default is reserved for VaultStore.
+Mixing these (or attaching an OperationalStore lifecycle to Weekly/Monthly/Yearly) will throw a validation error.
 .Description
-Adds or removes Retention Rule to existing Policy
+Adds or removes Retention Rule to an existing backup policy.
+For AzureBlob hybrid policies, OperationalStore lifecycles must use -Name Default_OperationalStore; -Name Default is reserved for VaultStore.
+Mixing these (or attaching an OperationalStore lifecycle to Weekly/Monthly/Yearly) will throw a validation error.
 .Example
 $pol = Get-AzDataProtectionPolicyTemplate
 $lifecycle = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore OperationalStore -SourceRetentionDurationType Weeks -SourceRetentionDurationCount 5
 Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $pol -Name Weekly -LifeCycles $lifecycle -IsDefault $false
 .Example
 Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $pol -Name Weekly -RemoveRule
+.Example
+$pol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureBlob
+$opLifecycle = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore OperationalStore -SourceRetentionDurationType Days -SourceRetentionDurationCount 30
+Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $pol -Name Default_OperationalStore -LifeCycles $opLifecycle -IsDefault $true
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupPolicy
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,50 +45,50 @@ LIFECYCLES <ISourceLifeCycle[]>: Life cycles associated with the retention rule.
   DeleteAfterDuration <String>: Duration of deletion after given timespan
   DeleteAfterObjectType <String>: Type of the specific object - used for deserializing
   SourceDataStoreObjectType <String>: Type of Datasource object, used to initialize the right inherited type
-  SourceDataStoreType <DataStoreTypes>: type of datastore; Operational/Vault/Archive
-  [TargetDataStoreCopySetting <ITargetCopySetting[]>]: 
+  SourceDataStoreType <String>: type of datastore; Operational/Vault/Archive
+  [TargetDataStoreCopySetting <List<ITargetCopySetting>>]: 
     CopyAfterObjectType <String>: Type of the specific object - used for deserializing
     DataStoreObjectType <String>: Type of Datasource object, used to initialize the right inherited type
-    DataStoreType <DataStoreTypes>: type of datastore; Operational/Vault/Archive
+    DataStoreType <String>: type of datastore; Operational/Vault/Archive
 
 POLICY <IBackupPolicy>: Backup Policy Object
-  DatasourceType <String[]>: Type of datasource for the backup management
+  DatasourceType <List<String>>: Type of datasource for the backup management
   ObjectType <String>: 
-  PolicyRule <IBasePolicyRule[]>: Policy rule dictionary that contains rules for each backuptype i.e Full/Incremental/Logs etc
+  PolicyRule <List<IBasePolicyRule>>: Policy rule dictionary that contains rules for each backuptype i.e Full/Incremental/Logs etc
     Name <String>: 
     ObjectType <String>: 
     DataStoreObjectType <String>: Type of Datasource object, used to initialize the right inherited type
-    DataStoreType <DataStoreTypes>: type of datastore; Operational/Vault/Archive
+    DataStoreType <String>: type of datastore; Operational/Vault/Archive
     TriggerObjectType <String>: Type of the specific object - used for deserializing
-    Lifecycle <ISourceLifeCycle[]>: 
+    Lifecycle <List<ISourceLifeCycle>>: 
       DeleteAfterDuration <String>: Duration of deletion after given timespan
       DeleteAfterObjectType <String>: Type of the specific object - used for deserializing
       SourceDataStoreObjectType <String>: Type of Datasource object, used to initialize the right inherited type
-      SourceDataStoreType <DataStoreTypes>: type of datastore; Operational/Vault/Archive
-      [TargetDataStoreCopySetting <ITargetCopySetting[]>]: 
+      SourceDataStoreType <String>: type of datastore; Operational/Vault/Archive
+      [TargetDataStoreCopySetting <List<ITargetCopySetting>>]: 
         CopyAfterObjectType <String>: Type of the specific object - used for deserializing
         DataStoreObjectType <String>: Type of Datasource object, used to initialize the right inherited type
-        DataStoreType <DataStoreTypes>: type of datastore; Operational/Vault/Archive
+        DataStoreType <String>: type of datastore; Operational/Vault/Archive
     [BackupParameterObjectType <String>]: Type of the specific object - used for deserializing
     [IsDefault <Boolean?>]: 
 .Link
 https://learn.microsoft.com/powershell/module/az.dataprotection/edit-azdataprotectionpolicyretentionruleclientobject
 #>
 function Edit-AzDataProtectionPolicyRetentionRuleClientObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupPolicy])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupPolicy])]
 [CmdletBinding(DefaultParameterSetName='RemoveRetention', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.IBackupPolicy]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupPolicy]
     # Backup Policy Object
-    # To construct, see NOTES section for POLICY properties and create a hash table.
     ${Policy},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RetentionRuleName]
-    # Retention Rule Name
+    # Retention Rule Name.
+    # Note: Default and Default_OperationalStore are default retention rules and cannot be removed.
     ${Name},
 
     [Parameter(ParameterSetName='RemoveRetention', Mandatory)]
@@ -97,9 +105,8 @@ param(
 
     [Parameter(ParameterSetName='AddRetention', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20260301.ISourceLifeCycle[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.ISourceLifeCycle[]]
     # Life cycles associated with the retention rule.
-    # To construct, see NOTES section for LIFECYCLES properties and create a hash table.
     ${LifeCycles},
 
     [Parameter(ParameterSetName='AddRetention')]
@@ -116,6 +123,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -145,6 +155,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

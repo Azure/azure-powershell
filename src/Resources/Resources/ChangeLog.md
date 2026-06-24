@@ -20,6 +20,14 @@
 
 ## Upcoming Release
 
+## Version 10.0.0
+* Added ChangeSafety Support
+* Updated deployment stack cmdlets to `2025-07-01` API; added `-ResourcesWithoutDeleteSupport`, `-ValidationLevel`
+* Fixed `Set-AzRoleAssignment` unable to delete conditions
+* Updated Policy.Autorest to 2025-03-01: added `-Expand`, `-EnforcementMode`, `-Version`; removed `-BackwardCompatible`
+* Fixed `Get-AzRoleDefinition` null ABAC `Condition` [#29058] [#25940]
+* [Breaking Change] Role definition cmdlets use `Permissions` array with per-permission conditions
+
 ## Version 9.1.0
 * Made `Remove-AzDenyAssignment` honor `-Confirm:$false` and idempotent when no matching deny assignment exists. The redundant `-Force` switch was removed (the cmdlet relies on the standard `SupportsShouldProcess`/`ConfirmImpact` pattern).
 * Improved error messages for role assignment and role definition operations to include the underlying service error code and message instead of just the HTTP status code. [#19605] [#19374]

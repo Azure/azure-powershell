@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 databaseAccountGetResults = CosmosDBManagementClient.DatabaseAccounts.Get(ResourceGroupName, Name);
             }
-            catch (CloudException e)
+            catch (ErrorResponseException e)
             {
                 if (e.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
                 {
@@ -332,13 +332,15 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public new object GetDynamicParameters()
         {
+            var parameters = base.GetDynamicParameters() as RuntimeDefinedParameterDictionary;
+
             if (FromPointInTimeBackup)
             {
                 restoreContext = new RestoreRequestDynamicParameters();
                 return restoreContext;
             }
 
-            return null;
+            return parameters;
         }
 
         private RestoreRequestDynamicParameters restoreContext;

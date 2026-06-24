@@ -20,22 +20,12 @@ A long-running resource action.
 .Description
 A long-running resource action.
 .Example
-$ValidateRequest = @{
-    edgeDeviceIds = @(
-        "/subscriptions/<subId>/resourceGroups/<test-rg>/providers/Microsoft.HybridCompute/machines/<test-node>/edgeDevices/default",
-        "/subscriptions/<subId>/resourceGroups/<test-rg>/providers/Microsoft.HybridCompute/machines/<test-node2>/edgeDevices/default"
-    )
-    additionalInfo = "test"
-}
+Test-AzStackHciEdgeDevice -ResourceUri "subscriptions/<subId>/resourceGroups/<test-rg>/providers/Microsoft.HybridCompute/machines/<test-node>" -Name "default" -EdgeDeviceId @("/subscriptions/<subId>/resourceGroups/<test-rg>/providers/Microsoft.HybridCompute/machines/<test-node>/edgeDevices/default", "/subscriptions/<subId>/resourceGroups/<test-rg>/providers/Microsoft.HybridCompute/machines/<test-node2>/edgeDevices/default") -AdditionalInfo "test"
 
-Test-AzStackHciEdgeDevice -ResourceUri "subscriptions/<subId>/resourceGroups/<test-rg>/providers/Microsoft.HybridCompute/machines/<test-node>" -Name "default" -ValidateRequest $ValidateRequest
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IValidateRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
 .Outputs
-System.String
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IValidateResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -54,47 +44,35 @@ INPUTOBJECT <IStackHciIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UpdateName <String>]: The name of the Update
   [UpdateRunName <String>]: The name of the Update Run
-
-VALIDATEREQUEST <IValidateRequest>: The validate request for Edge Device.
-  EdgeDeviceId <String[]>: Node Ids against which, current node has to be validated.
-  [AdditionalInfo <String>]: Additional info required for validation.
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhci/test-azstackhciedgedevice
 #>
 function Test-AzStackHciEdgeDevice {
-[OutputType([System.String])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IValidateResponse])]
 [CmdletBinding(DefaultParameterSetName='ValidateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Validate', Mandatory)]
     [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaJsonString', Mandatory)]
     [Alias('EdgeDeviceName')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Path')]
     [System.String]
     # Name of Device
     ${Name},
 
-    [Parameter(ParameterSetName='Validate', Mandatory)]
     [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='ValidateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Path')]
     [System.String]
     # The fully qualified Azure Resource manager identifier of the resource.
     ${ResourceUri},
 
-    [Parameter(ParameterSetName='ValidateViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
-
-    [Parameter(ParameterSetName='Validate', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='ValidateViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IValidateRequest]
-    # The validate request for Edge Device.
-    # To construct, see NOTES section for VALIDATEREQUEST properties and create a hash table.
-    ${ValidateRequest},
 
     [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
     [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory)]
@@ -110,6 +88,18 @@ param(
     [System.String]
     # Additional info required for validation.
     ${AdditionalInfo},
+
+    [Parameter(ParameterSetName='ValidateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Validate operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='ValidateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
+    [System.String]
+    # Json string supplied to the Validate operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -179,6 +169,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -198,10 +196,10 @@ begin {
         }
 
         $mapping = @{
-            Validate = 'Az.StackHCI.private\Test-AzStackHciEdgeDevice_Validate';
             ValidateExpanded = 'Az.StackHCI.private\Test-AzStackHciEdgeDevice_ValidateExpanded';
-            ValidateViaIdentity = 'Az.StackHCI.private\Test-AzStackHciEdgeDevice_ValidateViaIdentity';
             ValidateViaIdentityExpanded = 'Az.StackHCI.private\Test-AzStackHciEdgeDevice_ValidateViaIdentityExpanded';
+            ValidateViaJsonFilePath = 'Az.StackHCI.private\Test-AzStackHciEdgeDevice_ValidateViaJsonFilePath';
+            ValidateViaJsonString = 'Az.StackHCI.private\Test-AzStackHciEdgeDevice_ValidateViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -210,6 +208,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
     /// <summary>
     /// The core properties of ARM resources.
     /// </summary>
-    public partial class ARMResourceProperties : Microsoft.Rest.Azure.IResource
+    public partial class ARMResourceProperties
     {
         /// <summary>
         /// Initializes a new instance of the ARMResourceProperties class.

@@ -29,11 +29,15 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
         /// <param name="egressGateways">Istio egress gateways.
         /// </param>
-        public IstioComponents(System.Collections.Generic.IList<IstioIngressGateway> ingressGateways = default(System.Collections.Generic.IList<IstioIngressGateway>), System.Collections.Generic.IList<IstioEgressGateway> egressGateways = default(System.Collections.Generic.IList<IstioEgressGateway>))
+
+        /// <param name="proxyRedirectionMechanism">Mode of traffic redirection.
+        /// Possible values include: &#39;InitContainers&#39;, &#39;CNIChaining&#39;</param>
+        public IstioComponents(System.Collections.Generic.IList<IstioIngressGateway> ingressGateways = default(System.Collections.Generic.IList<IstioIngressGateway>), System.Collections.Generic.IList<IstioEgressGateway> egressGateways = default(System.Collections.Generic.IList<IstioEgressGateway>), string proxyRedirectionMechanism = default(string))
 
         {
             this.IngressGateways = ingressGateways;
             this.EgressGateways = egressGateways;
+            this.ProxyRedirectionMechanism = proxyRedirectionMechanism;
             CustomInit();
         }
 
@@ -54,5 +58,11 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "egressGateways")]
         public System.Collections.Generic.IList<IstioEgressGateway> EgressGateways {get; set; }
+
+        /// <summary>
+        /// Gets or sets mode of traffic redirection. Possible values include: &#39;InitContainers&#39;, &#39;CNIChaining&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "proxyRedirectionMechanism")]
+        public string ProxyRedirectionMechanism {get; set; }
     }
 }

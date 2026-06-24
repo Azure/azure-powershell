@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 {
     using System.Linq;
 
-    public partial class ThroughputSettingsGetPropertiesResource
+    public partial class ThroughputSettingsGetPropertiesResource : ThroughputSettingsResource
     {
         /// <summary>
         /// Initializes a new instance of the ThroughputSettingsGetPropertiesResource class.
@@ -57,14 +57,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </param>
         public ThroughputSettingsGetPropertiesResource(int? throughput = default(int?), AutoscaleSettingsResource autoscaleSettings = default(AutoscaleSettingsResource), string minimumThroughput = default(string), string offerReplacePending = default(string), string instantMaximumThroughput = default(string), string softAllowedMaximumThroughput = default(string), System.Collections.Generic.IList<ThroughputBucketResource> throughputBuckets = default(System.Collections.Generic.IList<ThroughputBucketResource>), string rid = default(string), double? ts = default(double?), string etag = default(string))
 
+        : base(throughput, autoscaleSettings, minimumThroughput, offerReplacePending, instantMaximumThroughput, softAllowedMaximumThroughput, throughputBuckets)
         {
-            this.Throughput = throughput;
-            this.AutoscaleSettings = autoscaleSettings;
-            this.MinimumThroughput = minimumThroughput;
-            this.OfferReplacePending = offerReplacePending;
-            this.InstantMaximumThroughput = instantMaximumThroughput;
-            this.SoftAllowedMaximumThroughput = softAllowedMaximumThroughput;
-            this.ThroughputBuckets = throughputBuckets;
             this.Rid = rid;
             this.Ts = ts;
             this.Etag = etag;
@@ -76,53 +70,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets or sets value of the Cosmos DB resource throughput. Either throughput
-        /// is required or autoscaleSettings is required, but not both.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "throughput")]
-        public int? Throughput {get; set; }
-
-        /// <summary>
-        /// Gets or sets cosmos DB resource for autoscale settings. Either throughput
-        /// is required or autoscaleSettings is required, but not both.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "autoscaleSettings")]
-        public AutoscaleSettingsResource AutoscaleSettings {get; set; }
-
-        /// <summary>
-        /// Gets the minimum throughput of the resource
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "minimumThroughput")]
-        public string MinimumThroughput {get; private set; }
-
-        /// <summary>
-        /// Gets the throughput replace is pending
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "offerReplacePending")]
-        public string OfferReplacePending {get; private set; }
-
-        /// <summary>
-        /// Gets the offer throughput value to instantly scale up without triggering
-        /// splits
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "instantMaximumThroughput")]
-        public string InstantMaximumThroughput {get; private set; }
-
-        /// <summary>
-        /// Gets the maximum throughput value or the maximum maxThroughput value (for
-        /// autoscale) that can be specified
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "softAllowedMaximumThroughput")]
-        public string SoftAllowedMaximumThroughput {get; private set; }
-
-        /// <summary>
-        /// Gets or sets array of throughput bucket limits to be applied to the Cosmos
-        /// DB container
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "throughputBuckets")]
-        public System.Collections.Generic.IList<ThroughputBucketResource> ThroughputBuckets {get; set; }
 
         /// <summary>
         /// Gets a system generated property. A unique identifier.
@@ -149,26 +96,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
-        public virtual void Validate()
+        public override void Validate()
         {
-            if (this.AutoscaleSettings != null)
-            {
-                this.AutoscaleSettings.Validate();
-            }
-
-
-
-
-            if (this.ThroughputBuckets != null)
-            {
-                foreach (var element in this.ThroughputBuckets)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
-            }
+            base.Validate();
 
 
         }

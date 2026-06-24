@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.6.0
+* Added ChangeSafety Support
+
 ## Version 1.5.2
 * Updated Azure.Core from 1.47.3 to 1.50.0
 

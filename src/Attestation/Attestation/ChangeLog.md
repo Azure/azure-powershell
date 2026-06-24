@@ -21,6 +21,9 @@
 
 ## Upcoming Release
 
+## Version 3.1.0
+* Added ChangeSafety Support
+
 ## Version 3.0.0
 * Improved user experience and consistency. This may introduce breaking changes. Please refer to [here](https://go.microsoft.com/fwlink/?linkid=2340249).
 
