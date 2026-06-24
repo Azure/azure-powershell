@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Shipped `System.Diagnostics.DiagnosticSource` and `System.Text.Encodings.Web` (v10) for PowerShell 7+ so they are no longer resolved from the runtime, fixing assembly load failures on PowerShell 7.4.
 * Upgraded `Azure.Core` dependency from 1.50.0 to 1.56.0.
 * Upgraded `Azure.Identity` dependency to 1.21.0.
 * Upgraded `Azure.Identity.Broker` dependency from 1.1.0 to 1.6.0.
