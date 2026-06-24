@@ -224,30 +224,11 @@ directive:
       subject: ^(Database)?$
       variant: ^Update$|ViaIdentity$
     remove: true
-  # Rename Upgrade variants to Update for DatabaseDbRedisVersion to maintain backward compatibility
-  - where:
-      verb: Update
-      subject: DatabaseDbRedisVersion
-      variant: Upgrade
-    set:
-      variant: Update
+  # Remove only the new UpgradeViaIdentity variant for DatabaseDbRedisVersion (didn't exist in v2.0.0)
   - where:
       verb: Update
       subject: DatabaseDbRedisVersion
       variant: UpgradeViaIdentity
-    set:
-      variant: UpdateViaIdentity
-  - where:
-      verb: Update
-      subject: DatabaseDbRedisVersion
-      variant: UpgradeViaIdentityRedisEnterprise
-    set:
-      variant: UpdateViaIdentityRedisEnterprise
-  # Remove ViaIdentity variants for DatabaseDbRedisVersion to preserve single parameter set
-  - where:
-      verb: Update
-      subject: DatabaseDbRedisVersion
-      variant: UpdateViaIdentity|UpdateViaIdentityRedisEnterprise
     remove: true
   - where:
       verb: Get
