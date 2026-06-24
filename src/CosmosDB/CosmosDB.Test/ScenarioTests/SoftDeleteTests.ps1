@@ -30,12 +30,12 @@ function Test-SoftDeletedAccountCmdlets
       {
           $account = $softDeletedAccounts[0]
           Assert-NotNull $account.Name
-          Assert-NotNull $account.Location
+          Assert-NotNull $account.AccountName
 
           # Get a specific soft-deleted account
           $specificAccount = Get-AzCosmosDBSoftDeletedAccount -ResourceGroupName $rgName -Location $location -Name $account.Name
           Assert-AreEqual $account.Name $specificAccount.Name
-          Assert-AreEqual $account.Location $specificAccount.Location
+          Assert-AreEqual $account.AccountName $specificAccount.AccountName
       }
   }
   Finally {
