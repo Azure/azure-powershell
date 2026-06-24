@@ -52,7 +52,7 @@ Forcibly removes the link to the specified database resource.
 Creates a Redis Enterprise cache.
 
 ### [New-AzRedisEnterpriseCacheAccessPolicyAssignment](New-AzRedisEnterpriseCacheAccessPolicyAssignment.md)
-Creates a particular access policy assignment for a database
+Create a particular access policy assignment for a database
 
 ### [New-AzRedisEnterpriseCacheDatabase](New-AzRedisEnterpriseCacheDatabase.md)
 Creates a database for a Redis Enterprise cache.
@@ -79,7 +79,7 @@ Cancel or rollback the migration operation in a Redis Enterprise cluster.
 Validates if a source Azure Cache for Redis resource can be migrated to a target Azure Managed Redis resource.
 
 ### [Update-AzRedisEnterpriseCache](Update-AzRedisEnterpriseCache.md)
-Updates an existing cache cluster (overwrite/recreate with potential downtime).
+Update an existing (overwrite/reupdate  with potential downtime) cache cluster
 
 ### [Update-AzRedisEnterpriseCacheDatabase](Update-AzRedisEnterpriseCacheDatabase.md)
 Updates an existing Redis Enterprise database

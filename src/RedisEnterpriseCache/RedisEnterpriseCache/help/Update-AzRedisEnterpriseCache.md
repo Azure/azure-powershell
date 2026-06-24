@@ -426,7 +426,7 @@ Accept wildcard characters: False
 ```
 
 ### -Zone
-The Availability Zones where this cluster will be deployed.
+The availability zones.
 
 ```yaml
 Type: System.String[]

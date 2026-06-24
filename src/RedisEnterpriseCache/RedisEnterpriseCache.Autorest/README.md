@@ -243,6 +243,12 @@ directive:
       variant: UpgradeViaIdentityRedisEnterprise
     set:
       variant: UpdateViaIdentityRedisEnterprise
+  # Remove ViaIdentity variants for DatabaseDbRedisVersion to preserve single parameter set
+  - where:
+      verb: Update
+      subject: DatabaseDbRedisVersion
+      variant: UpdateViaIdentity|UpdateViaIdentityRedisEnterprise
+    remove: true
   - where:
       verb: Get
       subject: OperationStatus
