@@ -15,27 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzRedisEnterpriseCacheM
 }
 
 Describe 'Start-AzRedisEnterpriseCacheMigration' {
-    It 'StartExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'StartViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'StartViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Start' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'StartViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'StartViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'StartMigrationWithFriendlyParams' {
+        $sourceResourceId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.Cache/redis/$($env.OssCacheName)"
+        $result = Start-AzRedisEnterpriseCacheMigration -ClusterName $env.ClusterName -ResourceGroupName $env.ResourceGroupName -SourceResourceId $sourceResourceId -SwitchDns -SkipDataMigration -ForceMigrate -Confirm:$false
+        $result.ProvisioningState | Should -Be "Succeeded"
+        $result.SourceType | Should -Be "AzureCacheForRedis"
+        $result.TargetResourceId | Should -Not -BeNullOrEmpty
+        $result.Type | Should -Be "Microsoft.Cache/redisEnterprise/migrations"
     }
 }

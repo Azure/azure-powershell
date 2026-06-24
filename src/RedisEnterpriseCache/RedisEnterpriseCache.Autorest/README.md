@@ -285,6 +285,18 @@ directive:
       subject: Migration
       variant: ^ValidateViaJsonString$
     hide: true
+  # Remove generated variants for Start-Migration except ViaJsonString (which the custom wrapper calls internally).
+  # The generated Expanded variant doesn't nest the discriminated union body under "properties" envelope.
+  - where:
+      verb: Start
+      subject: Migration
+      variant: ^Start$|^StartExpanded$|^StartViaIdentity$|^StartViaIdentityExpanded$|^StartViaJsonFilePath$
+    remove: true
+  - where:
+      verb: Start
+      subject: Migration
+      variant: ^StartViaJsonString$
+    hide: true
   # Remove because cannot update
   - where:
       verb: Set|Update

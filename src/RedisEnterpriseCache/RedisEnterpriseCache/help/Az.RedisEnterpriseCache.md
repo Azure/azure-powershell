@@ -70,7 +70,7 @@ Deletes a single access policy assignment.
 Deletes a single database in a Redis Enterprise cache.
 
 ### [Start-AzRedisEnterpriseCacheMigration](Start-AzRedisEnterpriseCacheMigration.md)
-Starts a new migration
+Starts a migration from a source Azure Cache for Redis to a target Azure Managed Redis (Redis Enterprise) cluster.
 
 ### [Stop-AzRedisEnterpriseCacheMigration](Stop-AzRedisEnterpriseCacheMigration.md)
 Cancel or rollback the migration operation in a Redis Enterprise cluster.

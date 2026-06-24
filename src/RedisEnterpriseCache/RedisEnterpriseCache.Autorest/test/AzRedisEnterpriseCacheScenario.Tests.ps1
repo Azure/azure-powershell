@@ -397,18 +397,9 @@ Describe 'Test-AzRedisEnterpriseCacheMigration' {
 }
 
 Describe 'Start-AzRedisEnterpriseCacheMigration' {
-    It 'StartViaJsonString' {
+    It 'StartExpanded' {
         $sourceResourceId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.Cache/redis/$($env.OssCacheName)"
-        $jsonBody = @{
-            properties = @{
-                sourceResourceId = $sourceResourceId
-                sourceType = "AzureCacheForRedis"
-                skipDataMigration = $true
-                switchDns = $true
-                forceMigrate = $true
-            }
-        } | ConvertTo-Json -Depth 3
-        $result = Start-AzRedisEnterpriseCacheMigration -ClusterName $env.ClusterName -ResourceGroupName $env.ResourceGroupName -JsonString $jsonBody
+        $result = Start-AzRedisEnterpriseCacheMigration -ClusterName $env.ClusterName -ResourceGroupName $env.ResourceGroupName -SourceResourceId $sourceResourceId -SwitchDns -SkipDataMigration -ForceMigrate -Confirm:$false
         $result | Should -Not -Be $null
         $result.Name | Should -Not -Be $null
         $result.ProvisioningState | Should -Not -Be $null
