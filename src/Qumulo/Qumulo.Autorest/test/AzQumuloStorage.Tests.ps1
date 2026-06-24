@@ -20,7 +20,7 @@ Describe 'AzQumuloStorage' {
         {
             $password = ConvertTo-SecureString $env.secureString -AsPlainText
             #For Get, Update, remove 1
-            $qumuloObject = New-AzQumuloFileSystem -Name $env.qumulo1Name -ResourceGroupName $env.resourceGroup -AdminPassword $password -DelegatedSubnetId /subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Network/virtualNetworks/$($env.virtualNetworkName)/subnets/$($env.subnetName) -InitialCapacity 50 -Location $env.region -MarketplaceOfferId $env.offerID -MarketplacePlanId $env.planID -MarketplacePublisherId $env.publisherID -StorageSku Standard -UserEmail $env.testerEmail -AvailabilityZone 1 -Tag @{"123"="abc"}
+            $qumuloObject = New-AzQumuloFileSystem -Name $env.qumulo1Name -ResourceGroupName $env.resourceGroup -AdminPassword $password -DelegatedSubnetId /subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Network/virtualNetworks/$($env.virtualNetworkName)/subnets/$($env.subnetName) -Location $env.region -MarketplaceOfferId $env.offerID -MarketplacePlanId $env.planID -MarketplacePublisherId $env.publisherID -StorageSku Standard -UserEmail $env.testerEmail -AvailabilityZone 1 -Tag @{"123"="abc"}
             $qumuloObject.Name | Should -Be $env.qumulo1Name
         } | Should -Not -Throw
     }
@@ -66,7 +66,7 @@ Describe 'AzQumuloStorage' {
     It 'DeleteViaIdentity' {
         {
             $password = ConvertTo-SecureString $env.secureString -AsPlainText
-            $qumuloObject1 = New-AzQumuloFileSystem -Name $env.qumulo2Name -ResourceGroupName $env.resourceGroup -AdminPassword $password -DelegatedSubnetId /subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Network/virtualNetworks/$($env.virtualNetworkName)/subnets/$($env.subnetName) -InitialCapacity 50 -Location $env.region -MarketplaceOfferId $env.offerID -MarketplacePlanId $env.planID -MarketplacePublisherId $env.publisherID -StorageSku Standard -UserEmail $env.testerEmail -AvailabilityZone 1 -Tag @{"678"="fgh"}
+            $qumuloObject1 = New-AzQumuloFileSystem -Name $env.qumulo2Name -ResourceGroupName $env.resourceGroup -AdminPassword $password -DelegatedSubnetId /subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Network/virtualNetworks/$($env.virtualNetworkName)/subnets/$($env.subnetName) -Location $env.region -MarketplaceOfferId $env.offerID -MarketplacePlanId $env.planID -MarketplacePublisherId $env.publisherID -StorageSku Standard -UserEmail $env.testerEmail -AvailabilityZone 1 -Tag @{"678"="fgh"}
             $qumuloObject1.Name | Should -Be $env.qumulo2Name
             
             Remove-AzQumuloFileSystem -InputObject $qumuloObject1
