@@ -69,6 +69,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             // Key additional properties
             Attributes = new PSKeyVaultKeyAttributes(key);
+
+            // External Key Manager (EKM) backed key id, if any.
+            ExternalKeyId = key.Properties.ExternalKey?.Id;
         }
         #endregion
 
@@ -101,6 +104,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 return Attributes.ReleasePolicy;
             }
         }
+
+        // External Key Manager (EKM) key id for an external key on a Managed HSM. (Preview)
+        public string ExternalKeyId { get; set; }
 
         #endregion
     }

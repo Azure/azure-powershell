@@ -73,6 +73,7 @@ function Test-CreateExternalKey {
 		$key = Add-AzKeyVaultKey -HsmName $hsmName -Name $keyName -ExternalKeyId $s.ExternalKeyId
 		Assert-NotNull $key "Add-AzKeyVaultKey -ExternalKeyId returned null"
 		Assert-AreEqual $keyName $key.Name "external key name mismatch"
+		Assert-AreEqual $s.ExternalKeyId $key.ExternalKeyId "external key id mismatch"
 
 		# The key must be retrievable.
 		$got = Get-AzKeyVaultKey -HsmName $hsmName -Name $keyName
