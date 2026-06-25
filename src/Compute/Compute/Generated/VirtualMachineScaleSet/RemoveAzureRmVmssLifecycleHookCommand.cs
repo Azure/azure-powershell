@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.VMScaleSetName, "Remove-AzVmssLifecycleHook"))
+                if (ShouldProcess(this.VMScaleSetName, VerbsCommon.Remove))
                 {
                     var vmss = VirtualMachineScaleSetsClient.Get(this.ResourceGroupName, this.VMScaleSetName);
                     var psObject = new PSVirtualMachineScaleSet();
