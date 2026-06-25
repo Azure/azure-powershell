@@ -68,6 +68,9 @@ Get the managed node type resource details.
 ### [Get-AzServiceFabricService](Get-AzServiceFabricService.md)
 Get Service Fabric service details under the specified application and cluster. Only supports ARM deployed services.
 
+### [Enable-AzServiceFabricManagedClusterMaintenanceWindow](Enable-AzServiceFabricManagedClusterMaintenanceWindow.md)
+Apply the maintenance window on a Service Fabric Managed Cluster.
+
 ### [Invoke-AzServiceFabricDeallocateManagedNodeType](Invoke-AzServiceFabricDeallocateManagedNodeType.md)
 Deallocate specific nodes from the node type.
 

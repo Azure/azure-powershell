@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Creates or updates the action of alert rule.
+Update the action of alert rule.
 .Description
-Creates or updates the action of alert rule.
+Update the action of alert rule.
 .Example
 $LogicAppResourceId = Get-AzLogicApp -ResourceGroupName "myLogicAppResourceGroupName" -Name "myLogicAppPlaybookName"
 $LogicAppTriggerUri = Get-AzLogicAppTriggerCallbackUrl -ResourceGroupName "myLogicAppResourceGroupName" -Name $LogicAppResourceId.Name -TriggerName "When_a_response_to_an_Azure_Sentinel_alert_is_triggered"
@@ -27,11 +27,35 @@ Update-AzSentinelAlertRuleAction -ResourceGroupName "mySentinelResourceGroupName
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IActionResponse
+Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IActionResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+ALERTRULEINPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
+  [ActionId <String>]: Action ID
+  [AlertRuleTemplateId <String>]: Alert rule template ID
+  [AutomationRuleId <String>]: Automation rule ID
+  [BookmarkId <String>]: Bookmark ID
+  [ConsentId <String>]: consent ID
+  [DataConnectorId <String>]: Connector ID
+  [EntityId <String>]: entity ID
+  [EntityQueryId <String>]: entity query ID
+  [EntityQueryTemplateId <String>]: entity query template ID
+  [Id <String>]: Resource identity path
+  [IncidentCommentId <String>]: Incident comment ID
+  [IncidentId <String>]: Incident ID
+  [MetadataName <String>]: The Metadata name.
+  [Name <String>]: Threat intelligence indicator name field.
+  [RelationName <String>]: Relation Name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleId <String>]: Alert rule ID
+  [SentinelOnboardingStateName <String>]: The Sentinel onboarding state name. Supports - default
+  [SettingsName <String>]: The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
+  [SourceControlId <String>]: Source control Id
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [WorkspaceName <String>]: The name of the workspace.
 
 INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [ActionId <String>]: Action ID
@@ -60,10 +84,13 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelalertruleaction
 #>
 function Update-AzSentinelAlertRuleAction {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IActionResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IActionResponse])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityAlertRuleExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('ActionId')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
     [System.String]
@@ -71,6 +98,8 @@ param(
     ${Id},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -78,12 +107,16 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
     [System.String]
     # Alert rule ID
     ${RuleId},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -91,29 +124,52 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
     [System.String]
     # The name of the workspace.
     ${WorkspaceName},
 
+    [Parameter(ParameterSetName='UpdateViaIdentityAlertRuleExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity]
+    # Identity Parameter
+    ${AlertRuleInputObject},
+
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityAlertRuleExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
     # Logic App Resource Id, /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}.
     ${LogicAppResourceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityAlertRuleExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
     # Logic App Callback URL for this specific workflow.
     ${TriggerUri},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -171,6 +227,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -191,11 +255,12 @@ begin {
 
         $mapping = @{
             UpdateExpanded = 'Az.SecurityInsights.private\Update-AzSentinelAlertRuleAction_UpdateExpanded';
+            UpdateViaIdentityAlertRuleExpanded = 'Az.SecurityInsights.private\Update-AzSentinelAlertRuleAction_UpdateViaIdentityAlertRuleExpanded';
             UpdateViaIdentityExpanded = 'Az.SecurityInsights.private\Update-AzSentinelAlertRuleAction_UpdateViaIdentityExpanded';
+            UpdateViaJsonFilePath = 'Az.SecurityInsights.private\Update-AzSentinelAlertRuleAction_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.SecurityInsights.private\Update-AzSentinelAlertRuleAction_UpdateViaJsonString';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -209,6 +274,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

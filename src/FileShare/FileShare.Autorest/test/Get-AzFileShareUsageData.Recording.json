@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "485" ],
-        "x-ms-client-request-id": [ "48a0bc48-c9a7-4c43-b582-291641ba945b" ],
+        "x-ms-unique-id": [ "469" ],
+        "x-ms-client-request-id": [ "67d4e329-134c-4a5e-8ca0-a833949fe616" ],
         "CommandName": [ "Get-AzFileShareUsageData" ],
         "FullCommandName": [ "Get-AzFileShareUsageData_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,23 +23,23 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "cb73d6c2c89210d8138855a2d6b98213" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=c2bdc6ca-a59c-411c-bf1a-a97ceade71ea/southeastasia/bfafa210-3da9-48aa-b389-86ca9c3666b9" ],
+        "x-ms-request-id": [ "1c2aa4e1d984b1885ab2c97c45083ae1" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=c2bdc6ca-a59c-411c-bf1a-a97ceade71ea/southeastasia/12b0c02e-66d5-4ce1-9148-f502d19271b6" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "1e466dee-f579-46f6-82f8-dec81eeaed9f" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20260428T094610Z:1e466dee-f579-46f6-82f8-dec81eeaed9f" ],
+        "x-ms-correlation-request-id": [ "6f8aca43-f123-4a92-b4da-1d3603505703" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20260514T074223Z:6f8aca43-f123-4a92-b4da-1d3603505703" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 7ABD488BF56742DAA5C0358D308F487A Ref B: SG2AA1040517060 Ref C: 2026-04-28T09:46:09Z" ],
-        "Date": [ "Tue, 28 Apr 2026 09:46:10 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: F75A16CA5580468490EE8FEFFD92BEC9 Ref B: SG2AA1070303029 Ref C: 2026-05-14T07:42:22Z" ],
+        "Date": [ "Thu, 14 May 2026 07:42:23 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "50" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"liveShares\":{\"fileShareCount\":5}}}",
+      "Content": "{\"properties\":{\"liveShares\":{\"fileShareCount\":7}}}",
       "isContentBase64": false
     }
   },
@@ -50,8 +50,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "486" ],
-        "x-ms-client-request-id": [ "ca5dc19d-33e6-492e-95e6-03f16c54cc93" ],
+        "x-ms-unique-id": [ "470" ],
+        "x-ms-client-request-id": [ "20ca5028-e5ff-4667-909a-fa3c5dc05c73" ],
         "CommandName": [ "Get-AzFileShareUsageData" ],
         "FullCommandName": [ "Get-AzFileShareUsageData_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -67,23 +67,23 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "c9572eb7bbbcf9dea0c0b0b711c25d5d" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=c2bdc6ca-a59c-411c-bf1a-a97ceade71ea/malaysiasouth/607c574e-1e91-4f8b-9c21-8c485ae8396f" ],
+        "x-ms-request-id": [ "1718aaeb82819b5a9902ab821c0f61e2" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=c2bdc6ca-a59c-411c-bf1a-a97ceade71ea/southeastasia/55f68f78-517a-425c-8470-a9dd8a121f04" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "e2718b16-2d9f-4681-a425-0e9582c5aabb" ],
-        "x-ms-routing-request-id": [ "MALAYSIASOUTH:20260428T094611Z:e2718b16-2d9f-4681-a425-0e9582c5aabb" ],
+        "x-ms-correlation-request-id": [ "45d2b255-0c62-4164-a510-e42bb4b49a51" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20260514T074224Z:45d2b255-0c62-4164-a510-e42bb4b49a51" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D42972088B3C4A21B9F58B8675F5A62E Ref B: SG2AA1040517060 Ref C: 2026-04-28T09:46:10Z" ],
-        "Date": [ "Tue, 28 Apr 2026 09:46:11 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 23525A9DDB494483B787F6DDD2931EC4 Ref B: SG2AA1070303029 Ref C: 2026-05-14T07:42:23Z" ],
+        "Date": [ "Thu, 14 May 2026 07:42:24 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "50" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"liveShares\":{\"fileShareCount\":5}}}",
+      "Content": "{\"properties\":{\"liveShares\":{\"fileShareCount\":7}}}",
       "isContentBase64": false
     }
   }

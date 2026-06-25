@@ -72,6 +72,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
             switch ( json.StringProperty("type") )
             {
+                case "WebApplicationFirewallEmbedded":
+                {
+                    return new SecurityPolicyWebApplicationFirewallParametersWithEmbeddedWafPolicy(json);
+                }
                 case "WebApplicationFirewall":
                 {
                     return new SecurityPolicyWebApplicationFirewallParameters(json);

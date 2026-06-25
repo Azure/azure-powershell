@@ -45,6 +45,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.DoNotFormat]
         public string DefaultIngestionSettingDataCollectionRuleResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)Property).DefaultIngestionSettingDataCollectionRuleResourceId; }
 
+        /// <summary>Backing field for <see cref="Etag" /> property.</summary>
+        private string _etag;
+
+        /// <summary>
+        /// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity
+        /// tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag
+        /// (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Origin(Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.DoNotFormat]
+        public string Etag { get => this._etag; }
+
         /// <summary>
         /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
         /// </summary>
@@ -134,6 +146,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
 
         /// <summary>Internal Acessors for DefaultIngestionSettingIngestionEndpoint</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionEndpoints Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceResourceInternal.DefaultIngestionSettingIngestionEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)Property).DefaultIngestionSettingIngestionEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceInternal)Property).DefaultIngestionSettingIngestionEndpoint = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for Etag</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceResourceInternal.Etag { get => this._etag; set { {_etag = value;} } }
 
         /// <summary>Internal Acessors for Identity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IManagedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IAzureMonitorWorkspaceResourceInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.ManagedServiceIdentity()); set { {_identity = value;} } }
@@ -353,6 +368,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
         PossibleTypes = new [] { typeof(string) })]
         string DefaultIngestionSettingDataCollectionRuleResourceId { get;  }
         /// <summary>
+        /// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity
+        /// tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag
+        /// (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"""If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields."")",
+        SerializedName = @"etag",
+        PossibleTypes = new [] { typeof(string) })]
+        string Etag { get;  }
+        /// <summary>
         /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Runtime.Info(
@@ -514,6 +544,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models
         string DefaultIngestionSettingDataCollectionRuleResourceId { get; set; }
         /// <summary>The ingestion endpoints for this Azure Monitor Workspace.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IIngestionEndpoints DefaultIngestionSettingIngestionEndpoint { get; set; }
+        /// <summary>
+        /// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity
+        /// tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag
+        /// (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
+        /// </summary>
+        string Etag { get; set; }
         /// <summary>The managed service identities assigned to this resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IManagedServiceIdentity Identity { get; set; }
         /// <summary>

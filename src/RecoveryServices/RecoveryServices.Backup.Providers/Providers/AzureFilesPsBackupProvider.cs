@@ -167,7 +167,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public RestAzureNS.AzureOperationResponse<ProtectedItemResource> UndeleteProtection()
         {
-            throw new Exception(Resources.SoftdeleteNotImplementedException);
+            string vaultName = (string)ProviderData[VaultParams.VaultName];
+            string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
+            AzureFileShareItem item = (AzureFileShareItem)ProviderData[ItemParams.Item];
+
+            Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.Id);
+            string containerUri = HelperUtils.GetContainerUri(keyValueDict, item.Id);
+            string protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, item.Id);
+
+            AzureFileshareProtectedItem properties = new AzureFileshareProtectedItem();
+            properties.PolicyId = null;
+            properties.ProtectionState = ProtectionState.ProtectionStopped;
+            properties.SourceResourceId = item.SourceResourceId;
+            properties.IsRehydrate = true;
+
+            ProtectedItemResource serviceClientRequest = new ProtectedItemResource()
+            {
+                Properties = properties,
+            };
+
+            return ServiceClientAdapter.CreateOrUpdateProtectedItem(
+                containerUri,
+                protectedItemUri,
+                serviceClientRequest,
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName);
         }
 
         public List<ContainerBase> ListProtectionContainers()
@@ -927,6 +951,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (ItemProtectionState)ProviderData[ItemParams.ProtectionState];
             CmdletModel.WorkloadType workloadType =
                 (CmdletModel.WorkloadType)ProviderData[ItemParams.WorkloadType];
+            ItemDeleteState deleteState =
+                (ItemDeleteState)ProviderData[ItemParams.DeleteState];
             PolicyBase policy = (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy];
             string friendlyName = (string)ProviderData[ItemParams.FriendlyName];
 
@@ -992,6 +1018,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 itemModels = itemModels.Where(itemModel =>
                 {
                     return itemModel.WorkloadType == workloadType;
+                }).ToList();
+            }
+
+            // 6. Filter by Delete State
+            if (deleteState != 0)
+            {
+                itemModels = itemModels.Where(itemModel =>
+                {
+                    return ((AzureFileShareItem)itemModel).DeleteState == deleteState;
                 }).ToList();
             }
 

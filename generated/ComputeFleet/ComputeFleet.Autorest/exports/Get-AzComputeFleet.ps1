@@ -20,14 +20,11 @@ Get a Fleet
 .Description
 Get a Fleet
 .Example
-Get-AzComputeFleet -ResourceGroupName "test-fleet" -FleetName "testFleet"
+Get-AzComputeFleet -Name "fleet1" -ResourceGroupName "fleet-ps-tst" | Select-Object Name, Location, ProvisioningState, Mode, RegularPriorityProfileCapacity, RegularPriorityProfileAllocationStrategy
 .Example
-Get-AzComputeFleet -SubscriptionId "ca8520e1-3c83-4b64-bb99-60a64673daa3"
+Get-AzComputeFleet -ResourceGroupName "fleet-ps-tst" | Select-Object Name, Location, ProvisioningState, Mode
 .Example
-Get-AzComputeFleet -ResourceGroupName "test-fleet"
-.Example
-$fleet = Get-AzComputeFleet -SubscriptionId "ca8520e1-3c83-4b64-bb99-60a64673daa3" -ResourceGroupName "test-fleet" -FleetName "testFleet"
-Get-AzComputeFleet -InputObject $fleet
+Get-AzComputeFleet | Select-Object Name, Location, ResourceGroupName, ProvisioningState, Mode
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetIdentity
@@ -49,7 +46,7 @@ https://learn.microsoft.com/powershell/module/az.computefleet/get-azcomputefleet
 #>
 function Get-AzComputeFleet {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet])]
-[CmdletBinding(DefaultParameterSetName='ListBySubscriptionId', PositionalBinding=$false)]
+[CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Alias('FleetName')]
@@ -59,7 +56,7 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='ListByResourceGroup', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -67,8 +64,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='ListByResourceGroup')]
-    [Parameter(ParameterSetName='ListBySubscriptionId')]
+    [Parameter(ParameterSetName='List')]
+    [Parameter(ParameterSetName='List1')]
     [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
@@ -138,6 +135,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+
+        $context = Get-AzContext
+        if (-not $context -and -not $testPlayback) {
+            throw "No Azure login detected. Please run 'Connect-AzAccount' to log in."
+        }
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
@@ -159,12 +164,10 @@ begin {
         $mapping = @{
             Get = 'Az.ComputeFleet.private\Get-AzComputeFleet_Get';
             GetViaIdentity = 'Az.ComputeFleet.private\Get-AzComputeFleet_GetViaIdentity';
-            ListByResourceGroup = 'Az.ComputeFleet.private\Get-AzComputeFleet_ListByResourceGroup';
-            ListBySubscriptionId = 'Az.ComputeFleet.private\Get-AzComputeFleet_ListBySubscriptionId';
+            List = 'Az.ComputeFleet.private\Get-AzComputeFleet_List';
+            List1 = 'Az.ComputeFleet.private\Get-AzComputeFleet_List1';
         }
-        if (('Get', 'ListByResourceGroup', 'ListBySubscriptionId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -178,6 +181,9 @@ begin {
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

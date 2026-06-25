@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated Automation account identity handling to explicitly use the Automation SDK `Identity` model in create/update flows.
+
+## Version 1.12.0
+* Added ChangeSafety Support
 
 ## Version 1.11.2
 * Fixed runbook_type: `PowerShell72` [#24779][#23967]
