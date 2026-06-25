@@ -18,24 +18,25 @@ Test soft-deleted account Get, Remove (Purge), and Restore cmdlets
 #>
 function Test-SoftDeletedAccountCmdlets
 {
-  $rgName = "CosmosDBSoftDeleteResourceGroup01"
-  $location = "East US"
+  $location = "West US 2"
 
   Try {
       # List soft-deleted accounts in a location
       $softDeletedAccounts = @(Get-AzCosmosDBSoftDeletedAccount -Location $location)
+      Assert-NotNull $softDeletedAccounts
+      Assert-True { $softDeletedAccounts.Count -gt 0 }
 
-      if ($softDeletedAccounts.Count -gt 0)
-      {
-          $account = $softDeletedAccounts[0]
-          Assert-NotNull $account.Name
-          Assert-NotNull $account.AccountName
+      $account = $softDeletedAccounts[0]
+      Assert-NotNull $account.Name
+      Assert-NotNull $account.Id
 
-          # Get a specific soft-deleted account
-          $specificAccount = Get-AzCosmosDBSoftDeletedAccount -ResourceGroupName $rgName -Location $location -Name $account.Name
-          Assert-AreEqual $account.Name $specificAccount.Name
-          Assert-AreEqual $account.AccountName $specificAccount.AccountName
-      }
+      # Extract resource group from the account's resource ID
+      $rgName = ($account.Id -split '/resourceGroups/')[1] -split '/' | Select-Object -First 1
+
+      # Get a specific soft-deleted account
+      $specificAccount = Get-AzCosmosDBSoftDeletedAccount -ResourceGroupName $rgName -Location $location -Name $account.Name
+      Assert-AreEqual $account.Name $specificAccount.Name
+      Assert-AreEqual $account.Id $specificAccount.Id
   }
   Finally {
       # Cleanup is not required for read-only operations
@@ -48,24 +49,24 @@ Test soft-deleted SQL database Get, Remove (Purge), and Restore cmdlets
 #>
 function Test-SoftDeletedSqlDatabaseCmdlets
 {
-  $rgName = "CosmosDBSoftDeleteResourceGroup01"
-  $accountName = "softdelete-test-account01"
-  $location = "East US"
+  $rgName = "cli_test_cosmosdb_softdelete_db_recover2zlh2ej5aqyi6dta5l56ylitgemk6ch5nxvm"
+  $accountName = "clisddacc2weis3cyiry"
+  $location = "West US 2"
 
   Try {
       # List soft-deleted databases in the account
       $softDeletedDatabases = @(Get-AzCosmosDBSqlSoftDeletedDatabase -ResourceGroupName $rgName -AccountName $accountName -Location $location)
+      Assert-NotNull $softDeletedDatabases
+      Assert-True { $softDeletedDatabases.Count -gt 0 }
 
-      if ($softDeletedDatabases.Count -gt 0)
-      {
-          $database = $softDeletedDatabases[0]
-          Assert-NotNull $database.Name
-          Assert-NotNull $database.Id
+      $database = $softDeletedDatabases[0]
+      Assert-NotNull $database.Name
+      Assert-NotNull $database.Id
 
-          # Get a specific soft-deleted database
-          $specificDb = Get-AzCosmosDBSqlSoftDeletedDatabase -ResourceGroupName $rgName -AccountName $accountName -Location $location -Name $database.Name
-          Assert-AreEqual $database.Name $specificDb.Name
-      }
+      # Get a specific soft-deleted database
+      $specificDb = Get-AzCosmosDBSqlSoftDeletedDatabase -ResourceGroupName $rgName -AccountName $accountName -Location $location -Name $database.Name
+      Assert-AreEqual $database.Name $specificDb.Name
+      Assert-AreEqual $database.Id $specificDb.Id
   }
   Finally {
       # Cleanup is not required for read-only operations
@@ -78,25 +79,25 @@ Test soft-deleted SQL container Get, Remove (Purge), and Restore cmdlets
 #>
 function Test-SoftDeletedSqlContainerCmdlets
 {
-  $rgName = "CosmosDBSoftDeleteResourceGroup01"
-  $accountName = "softdelete-test-account01"
-  $databaseName = "softdelete-test-db01"
-  $location = "East US"
+  $rgName = "cli_test_cosmosdb_softdelete_coll_recover6jc7vsfdlzguxvclarpcpbb3wc5utx2dxw"
+  $accountName = "clisddaccgrh3nhasp7j"
+  $databaseName = "clisdddb2ov2b6w"
+  $location = "West US 2"
 
   Try {
       # List soft-deleted containers in the database
       $softDeletedContainers = @(Get-AzCosmosDBSqlSoftDeletedContainer -ResourceGroupName $rgName -AccountName $accountName -Location $location -DatabaseName $databaseName)
+      Assert-NotNull $softDeletedContainers
+      Assert-True { $softDeletedContainers.Count -gt 0 }
 
-      if ($softDeletedContainers.Count -gt 0)
-      {
-          $container = $softDeletedContainers[0]
-          Assert-NotNull $container.Name
-          Assert-NotNull $container.Id
+      $container = $softDeletedContainers[0]
+      Assert-NotNull $container.Name
+      Assert-NotNull $container.Id
 
-          # Get a specific soft-deleted container
-          $specificContainer = Get-AzCosmosDBSqlSoftDeletedContainer -ResourceGroupName $rgName -AccountName $accountName -Location $location -DatabaseName $databaseName -Name $container.Name
-          Assert-AreEqual $container.Name $specificContainer.Name
-      }
+      # Get a specific soft-deleted container
+      $specificContainer = Get-AzCosmosDBSqlSoftDeletedContainer -ResourceGroupName $rgName -AccountName $accountName -Location $location -DatabaseName $databaseName -Name $container.Name
+      Assert-AreEqual $container.Name $specificContainer.Name
+      Assert-AreEqual $container.Id $specificContainer.Id
   }
   Finally {
       # Cleanup is not required for read-only operations
