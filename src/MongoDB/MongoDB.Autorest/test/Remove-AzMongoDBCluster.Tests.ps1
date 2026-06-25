@@ -15,19 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzMongoDBCluster'))
 }
 
 Describe 'Remove-AzMongoDBCluster' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentityProject' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentityOrganization' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete-WhatIf' {
+        # Partner returns 405 (MethodNotAllowed) for cluster deletion.
+        # Use -WhatIf to validate parameter binding without calling the API.
+        Remove-AzMongoDBCluster -ResourceGroupName $env.ResourceGroupName `
+            -OrganizationName $env.OrganizationName `
+            -ProjectName $env.ClusterTestProjectName `
+            -Name $env.ClusterName `
+            -WhatIf
     }
 }

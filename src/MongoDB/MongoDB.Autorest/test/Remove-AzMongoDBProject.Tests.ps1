@@ -15,15 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzMongoDBProject'))
 }
 
 Describe 'Remove-AzMongoDBProject' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentityOrganization' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete-WhatIf' {
+        # Partner returns 405 (MethodNotAllowed) for project deletion.
+        # Use -WhatIf to validate parameter binding without calling the API.
+        Remove-AzMongoDBProject -ResourceGroupName $env.ResourceGroupName `
+            -OrganizationName $env.OrganizationName `
+            -Name $env.ProjectName `
+            -WhatIf
     }
 }
