@@ -18,7 +18,7 @@ Describe 'Remove-AzMongoDBCluster' {
     It 'Delete-WhatIf' {
         # Partner returns 405 (MethodNotAllowed) for cluster deletion.
         # Use -WhatIf to validate parameter binding without calling the API.
-        Remove-AzMongoDBCluster -ResourceGroupName $env.ResourceGroupName `
+        Remove-AzMongoDBCluster -ResourceGroupName $env.ProjectResourceGroupName `
             -OrganizationName $env.OrganizationName `
             -ProjectName $env.ClusterTestProjectName `
             -Name $env.ClusterName `

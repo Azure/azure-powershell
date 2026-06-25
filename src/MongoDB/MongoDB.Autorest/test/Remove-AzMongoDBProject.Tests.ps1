@@ -18,7 +18,7 @@ Describe 'Remove-AzMongoDBProject' {
     It 'Delete-WhatIf' {
         # Partner returns 405 (MethodNotAllowed) for project deletion.
         # Use -WhatIf to validate parameter binding without calling the API.
-        Remove-AzMongoDBProject -ResourceGroupName $env.ResourceGroupName `
+        Remove-AzMongoDBProject -ResourceGroupName $env.ProjectResourceGroupName `
             -OrganizationName $env.OrganizationName `
             -Name $env.ProjectName `
             -WhatIf
