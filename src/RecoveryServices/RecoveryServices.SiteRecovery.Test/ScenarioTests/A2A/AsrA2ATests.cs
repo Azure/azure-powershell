@@ -199,6 +199,49 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-VMSSReplication");
         }
 
+        // ----- A2A Private Disk Access (API 2026-02-01) ---------------------
+        //
+        // These three entries pin the scenario-level contract for the
+        // RecoveryNetworkAccessPolicy / RecoveryDiskAccessId /
+        // RecoveryPublicNetworkAccess parameters added to
+        // New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig.
+        //
+        // They are marked Skip until a recorded HTTP cassette is captured
+        // against a live A2A-protected vault, matching the convention used
+        // by the other entries in this file. The unit-test coverage for the
+        // C# surface area lives in A2APrivateDiskAccessUnitTests.cs and
+        // runs on every CI build.
+
+        [Fact(Skip = "to be re-recorded in next release: needs A2A vault + DiskAccess resource cassette")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2ANewA2AManagedDiskReplicationConfigWithPrivateAccessAllowPrivate()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-NewA2AManagedDiskReplicationConfigurationWithPrivateAccess_AllowPrivate");
+        }
+
+        [Fact(Skip = "to be re-recorded in next release: needs A2A vault + DiskAccess resource cassette")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2ANewA2AManagedDiskReplicationConfigWithPrivateAccessDenyAll()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-NewA2AManagedDiskReplicationConfigurationWithPrivateAccess_DenyAll");
+        }
+
+        [Fact(Skip = "to be re-recorded in next release: needs A2A vault cassette")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2ANewA2AManagedDiskReplicationConfigWithoutPrivateAccessBackwardCompat()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-NewA2AManagedDiskReplicationConfigurationWithoutPrivateAccess_BackwardCompat");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2AReplicationProtectionClusterTest()
