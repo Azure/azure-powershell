@@ -178,8 +178,14 @@ function New-AzChangeSafetyChangeRecord_Targets {
         if ($PSBoundParameters.ContainsKey('ResourceGroupName')) { $params['ResourceGroupName'] = $ResourceGroupName }
         if ($PSBoundParameters.ContainsKey('SubscriptionId')) { $params['SubscriptionId'] = $SubscriptionId }
         if ($PSBoundParameters.ContainsKey('Description')) { $params['Description'] = $Description }
-        if ($PSBoundParameters.ContainsKey('AnticipatedStartTime')) { $params['AnticipatedStartTime'] = $AnticipatedStartTime }
-        if ($PSBoundParameters.ContainsKey('AnticipatedEndTime')) { $params['AnticipatedEndTime'] = $AnticipatedEndTime }
+        # Default the anticipated change window to [now, now + 8h] when the caller
+        # does not specify it. An unbound [datetime] is DateTime.MinValue, which the
+        # generated cmdlet serializes as "0001-01-01" and the service treats as an
+        # expired change (guarded operations then fail with "The ChangeState is
+        # expired"). This mirrors the CLI behavior of an 8-hour default window.
+        $anticipatedStart = if ($PSBoundParameters.ContainsKey('AnticipatedStartTime')) { $AnticipatedStartTime } else { (Get-Date).ToUniversalTime() }
+        $params['AnticipatedStartTime'] = $anticipatedStart
+        $params['AnticipatedEndTime'] = if ($PSBoundParameters.ContainsKey('AnticipatedEndTime')) { $AnticipatedEndTime } else { $anticipatedStart.AddHours(8) }
         if ($PSBoundParameters.ContainsKey('OrchestrationTool')) { $params['OrchestrationTool'] = $OrchestrationTool }
         if ($PSBoundParameters.ContainsKey('ReleaseLabel')) { $params['ReleaseLabel'] = $ReleaseLabel }
         if ($PSBoundParameters.ContainsKey('Comment')) { $params['Comment'] = $Comment }

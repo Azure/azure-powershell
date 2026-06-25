@@ -30,7 +30,12 @@ For information on how to develop for `Az.ChangeSafety`, see [how-to.md](how-to.
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - file:///Q:/workspace/azure-rest-api-specs-pr/specification/changesafety/resource-manager/Microsoft.ChangeSafety/ChangeControl/preview/2026-01-01-preview/ChangeControl.json
+  # Spec vendored into the module (relative to this folder) so AutoRest can generate
+  # in CI without the spec being published to the public azure-rest-api-specs repo.
+  # The directory depth under spec/specification/ is preserved so the swagger's
+  # relative "../../../../../../common-types/..." $refs resolve against the vendored
+  # spec/specification/common-types copy. See option 2 in the onboarding guidance.
+  - $(this-folder)/spec/specification/changesafety/resource-manager/Microsoft.ChangeSafety/ChangeControl/preview/2026-01-01-preview/ChangeControl.json
 
 module-version: 0.1.0
 title: ChangeSafety

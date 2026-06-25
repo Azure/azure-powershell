@@ -24,6 +24,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ChangeSafety.Models
         }
 
         /// <summary>
+        /// Called after deserializing from a JSON response. Captures the free-form
+        /// content so that reading a resource (e.g. ChangeDefinitionDetail) surfaces
+        /// the data instead of an empty object. Without this, the generated Any only
+        /// hooks the PowerShell-input paths, so values returned by the service are
+        /// silently dropped on the read path.
+        /// </summary>
+        partial void AfterFromJson(Microsoft.Azure.PowerShell.Cmdlets.ChangeSafety.Runtime.Json.JsonObject json)
+        {
+            if (json != null)
+            {
+                _content = json.ToValue() as IDictionary;
+            }
+        }
+
+        /// <summary>
         /// Called after deserializing from a PSObject. Converts to dictionary and stores.
         /// </summary>
         partial void AfterDeserializePSObject(System.Management.Automation.PSObject content)
@@ -71,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ChangeSafety.Models
         {
             if (value == null)
             {
-                return JsonNode.Parse("null");
+                return Microsoft.Azure.PowerShell.Cmdlets.ChangeSafety.Runtime.Json.XNull.Instance;
             }
 
             // Handle PSObject wrapper
