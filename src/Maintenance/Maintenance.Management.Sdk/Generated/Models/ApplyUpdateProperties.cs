@@ -8,37 +8,21 @@ namespace Microsoft.Azure.Management.Maintenance.Models
     using System.Linq;
 
     /// <summary>
-    /// Apply Update request
+    /// Properties for apply update
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class ApplyUpdate : ProxyResource
+    public partial class ApplyUpdateProperties
     {
         /// <summary>
-        /// Initializes a new instance of the ApplyUpdate class.
+        /// Initializes a new instance of the ApplyUpdateProperties class.
         /// </summary>
-        public ApplyUpdate()
+        public ApplyUpdateProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ApplyUpdate class.
+        /// Initializes a new instance of the ApplyUpdateProperties class.
         /// </summary>
-
-        /// <param name="id">Fully qualified resource ID for the resource. E.g.
-        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
-        /// </param>
-
-        /// <param name="name">The name of the resource
-        /// </param>
-
-        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
-        /// &#34;Microsoft.Storage/storageAccounts&#34;
-        /// </param>
-
-        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
-        /// information.
-        /// </param>
 
         /// <param name="status">The status
         /// Possible values include: &#39;Pending&#39;, &#39;InProgress&#39;, &#39;Completed&#39;, &#39;RetryNow&#39;,
@@ -49,9 +33,8 @@ namespace Microsoft.Azure.Management.Maintenance.Models
 
         /// <param name="lastUpdateTime">Last Update time
         /// </param>
-        public ApplyUpdate(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string status = default(string), string resourceId = default(string), System.DateTime? lastUpdateTime = default(System.DateTime?))
+        public ApplyUpdateProperties(string status = default(string), string resourceId = default(string), System.DateTime? lastUpdateTime = default(System.DateTime?))
 
-        : base(id, name, type, systemData)
         {
             this.Status = status;
             this.ResourceId = resourceId;
@@ -68,19 +51,19 @@ namespace Microsoft.Azure.Management.Maintenance.Models
         /// <summary>
         /// Gets or sets the status Possible values include: &#39;Pending&#39;, &#39;InProgress&#39;, &#39;Completed&#39;, &#39;RetryNow&#39;, &#39;RetryLater&#39;, &#39;NoUpdatesPending&#39;, &#39;Cancel&#39;, &#39;Cancelled&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.status")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "status")]
         public string Status {get; set; }
 
         /// <summary>
         /// Gets or sets the resourceId
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.resourceId")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "resourceId")]
         public string ResourceId {get; set; }
 
         /// <summary>
         /// Gets or sets last Update time
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.lastUpdateTime")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "lastUpdateTime")]
         public System.DateTime? LastUpdateTime {get; set; }
     }
 }

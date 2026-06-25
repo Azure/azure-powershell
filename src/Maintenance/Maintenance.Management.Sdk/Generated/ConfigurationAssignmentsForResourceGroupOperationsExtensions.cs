@@ -19,10 +19,10 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         public static ConfigurationAssignment Get(this IConfigurationAssignmentsForResourceGroupOperations operations, string resourceGroupName, string configurationAssignmentName)
         {
@@ -36,10 +36,10 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -58,10 +58,10 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         public static ConfigurationAssignment CreateOrUpdate(this IConfigurationAssignmentsForResourceGroupOperations operations, string resourceGroupName, string configurationAssignmentName, ConfigurationAssignment configurationAssignment)
         {
@@ -75,10 +75,10 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -97,10 +97,10 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         public static ConfigurationAssignment Update(this IConfigurationAssignmentsForResourceGroupOperations operations, string resourceGroupName, string configurationAssignmentName, ConfigurationAssignment configurationAssignment)
         {
@@ -114,10 +114,10 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -136,10 +136,10 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Unique configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         public static ConfigurationAssignment Delete(this IConfigurationAssignmentsForResourceGroupOperations operations, string resourceGroupName, string configurationAssignmentName)
         {
@@ -153,10 +153,10 @@ namespace Microsoft.Azure.Management.Maintenance
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// Resource group name
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='configurationAssignmentName'>
-        /// Unique configuration assignment name
+        /// The name of the ConfigurationAssignment
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

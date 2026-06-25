@@ -42,11 +42,9 @@ namespace Microsoft.Azure.Management.Maintenance
 
 
         /// <summary>
-        /// Subscription credentials that uniquely identify a Microsoft Azure
-        /// subscription. The subscription ID forms part of the URI for every service
-        /// call.
+        /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
-        string SubscriptionId { get; set;}
+        System.Guid SubscriptionId { get; set;}
 
 
         /// <summary>
@@ -71,34 +69,14 @@ namespace Microsoft.Azure.Management.Maintenance
 
 
         /// <summary>
-        /// Gets the IPublicMaintenanceConfigurationsOperations
+        /// Gets the IOperations
         /// </summary>
-        IPublicMaintenanceConfigurationsOperations PublicMaintenanceConfigurations { get; }
+        IOperations Operations { get; }
 
         /// <summary>
         /// Gets the IApplyUpdatesOperations
         /// </summary>
         IApplyUpdatesOperations ApplyUpdates { get; }
-
-        /// <summary>
-        /// Gets the IConfigurationAssignmentsOperations
-        /// </summary>
-        IConfigurationAssignmentsOperations ConfigurationAssignments { get; }
-
-        /// <summary>
-        /// Gets the IMaintenanceConfigurationsOperations
-        /// </summary>
-        IMaintenanceConfigurationsOperations MaintenanceConfigurations { get; }
-
-        /// <summary>
-        /// Gets the IMaintenanceConfigurationsForResourceGroupOperations
-        /// </summary>
-        IMaintenanceConfigurationsForResourceGroupOperations MaintenanceConfigurationsForResourceGroup { get; }
-
-        /// <summary>
-        /// Gets the IApplyUpdateForResourceGroupOperations
-        /// </summary>
-        IApplyUpdateForResourceGroupOperations ApplyUpdateForResourceGroup { get; }
 
         /// <summary>
         /// Gets the IConfigurationAssignmentsWithinSubscriptionOperations
@@ -111,19 +89,44 @@ namespace Microsoft.Azure.Management.Maintenance
         IConfigurationAssignmentsForSubscriptionsOperations ConfigurationAssignmentsForSubscriptions { get; }
 
         /// <summary>
+        /// Gets the IMaintenanceConfigurationsOperations
+        /// </summary>
+        IMaintenanceConfigurationsOperations MaintenanceConfigurations { get; }
+
+        /// <summary>
+        /// Gets the IPublicMaintenanceConfigurationsOperations
+        /// </summary>
+        IPublicMaintenanceConfigurationsOperations PublicMaintenanceConfigurations { get; }
+
+        /// <summary>
+        /// Gets the IConfigurationAssignmentsOperations
+        /// </summary>
+        IConfigurationAssignmentsOperations ConfigurationAssignments { get; }
+
+        /// <summary>
+        /// Gets the IApplyUpdateForResourceGroupOperations
+        /// </summary>
+        IApplyUpdateForResourceGroupOperations ApplyUpdateForResourceGroup { get; }
+
+        /// <summary>
         /// Gets the IConfigurationAssignmentsForResourceGroupOperations
         /// </summary>
         IConfigurationAssignmentsForResourceGroupOperations ConfigurationAssignmentsForResourceGroup { get; }
 
         /// <summary>
-        /// Gets the IOperations
+        /// Gets the IMaintenanceConfigurationsForResourceGroupOperations
         /// </summary>
-        IOperations Operations { get; }
+        IMaintenanceConfigurationsForResourceGroupOperations MaintenanceConfigurationsForResourceGroup { get; }
 
         /// <summary>
         /// Gets the IUpdatesOperations
         /// </summary>
         IUpdatesOperations Updates { get; }
+
+        /// <summary>
+        /// Gets the IScheduledEventsOperations
+        /// </summary>
+        IScheduledEventsOperations ScheduledEvents { get; }
 
     }
 }

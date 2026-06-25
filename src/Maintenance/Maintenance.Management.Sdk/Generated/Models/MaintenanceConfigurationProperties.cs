@@ -8,42 +8,27 @@ namespace Microsoft.Azure.Management.Maintenance.Models
     using System.Linq;
 
     /// <summary>
-    /// Maintenance configuration record type
+    /// Properties for maintenance configuration
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class MaintenanceConfiguration : ProxyResource
+    public partial class MaintenanceConfigurationProperties
     {
         /// <summary>
-        /// Initializes a new instance of the MaintenanceConfiguration class.
+        /// Initializes a new instance of the MaintenanceConfigurationProperties class.
         /// </summary>
-        public MaintenanceConfiguration()
+        public MaintenanceConfigurationProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the MaintenanceConfiguration class.
+        /// Initializes a new instance of the MaintenanceConfigurationProperties class.
         /// </summary>
 
-        /// <param name="id">Fully qualified resource ID for the resource. E.g.
-        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
+        /// <param name="namespaceProperty">Gets or sets namespace of the resource
         /// </param>
 
-        /// <param name="name">The name of the resource
-        /// </param>
-
-        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
-        /// &#34;Microsoft.Storage/storageAccounts&#34;
-        /// </param>
-
-        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
-        /// information.
-        /// </param>
-
-        /// <param name="location">Gets or sets location of the resource
-        /// </param>
-
-        /// <param name="tags">Gets or sets tags of the resource
+        /// <param name="extensionProperties">Gets or sets extensionProperties of the maintenanceConfiguration
         /// </param>
 
         /// <param name="maintenanceScope">Gets or sets maintenanceScope of the configuration
@@ -53,12 +38,6 @@ namespace Microsoft.Azure.Management.Maintenance.Models
         /// <param name="visibility">Gets or sets the visibility of the configuration. The default value is
         /// &#39;Custom&#39;
         /// Possible values include: &#39;Custom&#39;, &#39;Public&#39;</param>
-
-        /// <param name="namespaceProperty">Gets or sets namespace of the resource
-        /// </param>
-
-        /// <param name="extensionProperties">Gets or sets extensionProperties of the maintenanceConfiguration
-        /// </param>
 
         /// <param name="installPatches">The input parameters to be passed to the patch run operation.
         /// </param>
@@ -103,16 +82,13 @@ namespace Microsoft.Azure.Management.Maintenance.Models
         /// set to a future date. If not provided, it will be set to the maximum
         /// datetime 9999-12-31 23:59:59.
         /// </param>
-        public MaintenanceConfiguration(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string maintenanceScope = default(string), string visibility = default(string), string namespaceProperty = default(string), System.Collections.Generic.IDictionary<string, string> extensionProperties = default(System.Collections.Generic.IDictionary<string, string>), InputPatchConfiguration installPatches = default(InputPatchConfiguration), string duration = default(string), string timeZone = default(string), string recurEvery = default(string), string startDateTime = default(string), string expirationDateTime = default(string))
+        public MaintenanceConfigurationProperties(string namespaceProperty = default(string), System.Collections.Generic.IDictionary<string, string> extensionProperties = default(System.Collections.Generic.IDictionary<string, string>), string maintenanceScope = default(string), string visibility = default(string), InputPatchConfiguration installPatches = default(InputPatchConfiguration), string duration = default(string), string timeZone = default(string), string recurEvery = default(string), string startDateTime = default(string), string expirationDateTime = default(string))
 
-        : base(id, name, type, systemData)
         {
-            this.Location = location;
-            this.Tags = tags;
-            this.MaintenanceScope = maintenanceScope;
-            this.Visibility = visibility;
             this.NamespaceProperty = namespaceProperty;
             this.ExtensionProperties = extensionProperties;
+            this.MaintenanceScope = maintenanceScope;
+            this.Visibility = visibility;
             this.InstallPatches = installPatches;
             this.Duration = duration;
             this.TimeZone = timeZone;
@@ -129,47 +105,35 @@ namespace Microsoft.Azure.Management.Maintenance.Models
 
 
         /// <summary>
-        /// Gets or sets gets or sets location of the resource
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "location")]
-        public string Location {get; set; }
-
-        /// <summary>
-        /// Gets or sets gets or sets tags of the resource
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
-        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
-
-        /// <summary>
-        /// Gets or sets gets or sets maintenanceScope of the configuration Possible values include: &#39;Host&#39;, &#39;Resource&#39;, &#39;OSImage&#39;, &#39;Extension&#39;, &#39;InGuestPatch&#39;, &#39;SQLDB&#39;, &#39;SQLManagedInstance&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.maintenanceScope")]
-        public string MaintenanceScope {get; set; }
-
-        /// <summary>
-        /// Gets or sets gets or sets the visibility of the configuration. The default
-        /// value is &#39;Custom&#39; Possible values include: &#39;Custom&#39;, &#39;Public&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.visibility")]
-        public string Visibility {get; set; }
-
-        /// <summary>
         /// Gets or sets gets or sets namespace of the resource
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.namespace")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "namespace")]
         public string NamespaceProperty {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets extensionProperties of the
         /// maintenanceConfiguration
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.extensionProperties")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "extensionProperties")]
         public System.Collections.Generic.IDictionary<string, string> ExtensionProperties {get; set; }
+
+        /// <summary>
+        /// Gets or sets gets or sets maintenanceScope of the configuration Possible values include: &#39;Host&#39;, &#39;Resource&#39;, &#39;OSImage&#39;, &#39;Extension&#39;, &#39;InGuestPatch&#39;, &#39;SQLDB&#39;, &#39;SQLManagedInstance&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "maintenanceScope")]
+        public string MaintenanceScope {get; set; }
+
+        /// <summary>
+        /// Gets or sets gets or sets the visibility of the configuration. The default
+        /// value is &#39;Custom&#39; Possible values include: &#39;Custom&#39;, &#39;Public&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "visibility")]
+        public string Visibility {get; set; }
 
         /// <summary>
         /// Gets or sets the input parameters to be passed to the patch run operation.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.installPatches")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "installPatches")]
         public InputPatchConfiguration InstallPatches {get; set; }
 
         /// <summary>
@@ -177,7 +141,7 @@ namespace Microsoft.Azure.Management.Maintenance.Models
         /// provided, default value will be used based on maintenance scope provided.
         /// Example: 05:00.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.maintenanceWindow.duration")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "maintenanceWindow.duration")]
         public string Duration {get; set; }
 
         /// <summary>
@@ -186,7 +150,7 @@ namespace Microsoft.Azure.Management.Maintenance.Models
         /// Example: Pacific Standard Time, UTC, W. Europe Standard Time, Korea
         /// Standard Time, Cen. Australia Standard Time.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.maintenanceWindow.timeZone")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "maintenanceWindow.timeZone")]
         public string TimeZone {get; set; }
 
         /// <summary>
@@ -207,7 +171,7 @@ namespace Microsoft.Azure.Management.Maintenance.Models
         /// Monday, recurEvery: Month Last Sunday Offset-3, recurEvery: Month Third
         /// Sunday Offset6.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.maintenanceWindow.recurEvery")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "maintenanceWindow.recurEvery")]
         public string RecurEvery {get; set; }
 
         /// <summary>
@@ -216,7 +180,7 @@ namespace Microsoft.Azure.Management.Maintenance.Models
         /// future date. The window will be created in the time zone provided and
         /// adjusted to daylight savings according to that time zone.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.maintenanceWindow.startDateTime")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "maintenanceWindow.startDateTime")]
         public string StartDateTime {get; set; }
 
         /// <summary>
@@ -226,7 +190,7 @@ namespace Microsoft.Azure.Management.Maintenance.Models
         /// Expiration date must be set to a future date. If not provided, it will be
         /// set to the maximum datetime 9999-12-31 23:59:59.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.maintenanceWindow.expirationDateTime")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "maintenanceWindow.expirationDateTime")]
         public string ExpirationDateTime {get; set; }
     }
 }
