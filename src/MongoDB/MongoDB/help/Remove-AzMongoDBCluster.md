@@ -1,41 +1,55 @@
 ---
 external help file: Az.MongoDB-help.xml
 Module Name: Az.MongoDB
-online version: https://learn.microsoft.com/powershell/module/az.mongodb/remove-azmongodborganization
+online version: https://learn.microsoft.com/powershell/module/az.mongodb/remove-azmongodbcluster
 schema: 2.0.0
 ---
 
-# Remove-AzMongoDBOrganization
+# Remove-AzMongoDBCluster
 
 ## SYNOPSIS
-Delete a OrganizationResource
+Delete a Cluster
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzMongoDBOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzMongoDBCluster -Name <String> -OrganizationName <String> -ProjectName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentityProject
+```
+Remove-AzMongoDBCluster -Name <String> -ProjectInputObject <IMongoDbIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentityOrganization
+```
+Remove-AzMongoDBCluster -Name <String> -ProjectName <String> -OrganizationInputObject <IMongoDbIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzMongoDBOrganization -InputObject <IMongoDbIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Remove-AzMongoDBCluster -InputObject <IMongoDbIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a OrganizationResource
+Delete a Cluster
 
 ## EXAMPLES
 
-### Example 1: Remove an Organization
+### Example 1: Remove a Cluster
 ```powershell
-Remove-AzMongoDBOrganization -ResourceGroupName yashika-rg -Name testorg7
+Remove-AzMongoDBCluster -ResourceGroupName sharmaanuTest -OrganizationName KanedaTest -ProjectName test-project-1 -Name test-cluster-free
 ```
 
-This command deletes the MongoDB resource.
+Deletes the MongoDB Atlas cluster.
+The operation is asynchronous; the underlying partner cluster is also torn down.
 
 ## PARAMETERS
 
@@ -86,12 +100,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the Organization resource
+Name of the MongoDB Atlas Cluster resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: OrganizationName
+Parameter Sets: Delete, DeleteViaIdentityProject, DeleteViaIdentityOrganization
+Aliases: ClusterName
 
 Required: True
 Position: Named
@@ -115,6 +129,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OrganizationInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IMongoDbIdentity
+Parameter Sets: DeleteViaIdentityOrganization
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -OrganizationName
+Name of the Organization resource
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PassThru
 Returns true when the command succeeds
 
@@ -124,6 +168,36 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProjectInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IMongoDbIdentity
+Parameter Sets: DeleteViaIdentityProject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProjectName
+Name of the MongoDB Atlas Project resource.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete, DeleteViaIdentityOrganization
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -62,6 +62,18 @@ function setupEnv() {
     $env.UserLastName = "Kumar"
     $env.UserUpn = "ajaykumar@microsoft.com"
     $env.DeleteResourceName = "TestResource04July2025"
+
+    # Project and Cluster test variables
+    $env.ProjectResourceGroupName = 'sharmaanuTest'
+    $env.OrganizationName = 'KanedaTest'
+    $env.ProjectName = 'test-project-1'                          # Pre-existing project (used by Get/Limit/TierRegion tests)
+    $env.NewProjectName = 'test-project-new'                     # Created by New-AzMongoDBProject test
+    $env.ClusterName = 'test-cluster-free'                       # Pre-existing cluster in test-project-1 (used by Get-AzMongoDBCluster)
+    $env.ClusterTestProjectName = 'test-project-for-cluster'     # Created by New-AzMongoDBCluster test (avoids FREE limit on test-project-1)
+    $env.NewClusterName = 'test-cluster-pester'                  # Created by New-AzMongoDBCluster test
+    $env.ClusterTier = 'FREE'
+    $env.RegionName = 'eastus2'
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'

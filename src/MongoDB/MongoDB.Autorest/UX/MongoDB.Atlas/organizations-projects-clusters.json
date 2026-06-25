@@ -1,22 +1,24 @@
 {
-  "resourceType": "organizations",
+  "resourceType": "organizations/projects/clusters",
   "apiVersion": "2026-03-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.mongodb"
   },
   "commands": [
     {
-      "name": "Get-AzMongoDBOrganization",
-      "description": "Get a OrganizationResource",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/MongoDB.Atlas/organizations/{organizationName}",
+      "name": "Get-AzMongoDBCluster",
+      "description": "Get a Cluster",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/MongoDB.Atlas/organizations/{organizationName}/projects/{projectName}/clusters/{clusterName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.mongodb/get-azmongodborganization"
+          "url": "https://learn.microsoft.com/powershell/module/az.mongodb/get-azmongodbcluster"
         },
         "parameterSets": [
           {
             "parameters": [
               "-Name <String>",
+              "-OrganizationName <String>",
+              "-ProjectName <String>",
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String[]>]"
             ]
@@ -25,11 +27,19 @@
       },
       "examples": [
         {
-          "description": "Get a OrganizationResource",
+          "description": "Get a Cluster",
           "parameters": [
             {
               "name": "-Name",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-OrganizationName",
               "value": "[Path.organizationName]"
+            },
+            {
+              "name": "-ProjectName",
+              "value": "[Path.projectName]"
             },
             {
               "name": "-ResourceGroupName",
@@ -44,17 +54,19 @@
       ]
     },
     {
-      "name": "Remove-AzMongoDBOrganization",
-      "description": "Delete a OrganizationResource",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/MongoDB.Atlas/organizations/{organizationName}",
+      "name": "Remove-AzMongoDBCluster",
+      "description": "Delete a Cluster",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/MongoDB.Atlas/organizations/{organizationName}/projects/{projectName}/clusters/{clusterName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.mongodb/remove-azmongodborganization"
+          "url": "https://learn.microsoft.com/powershell/module/az.mongodb/remove-azmongodbcluster"
         },
         "parameterSets": [
           {
             "parameters": [
               "-Name <String>",
+              "-OrganizationName <String>",
+              "-ProjectName <String>",
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String>]"
             ]
@@ -63,11 +75,19 @@
       },
       "examples": [
         {
-          "description": "Delete a OrganizationResource",
+          "description": "Delete a Cluster",
           "parameters": [
             {
               "name": "-Name",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-OrganizationName",
               "value": "[Path.organizationName]"
+            },
+            {
+              "name": "-ProjectName",
+              "value": "[Path.projectName]"
             },
             {
               "name": "-ResourceGroupName",

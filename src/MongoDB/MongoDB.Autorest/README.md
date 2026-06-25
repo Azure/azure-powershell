@@ -29,7 +29,8 @@ For information on how to develop for `Az.MongoDB`, see [how-to.md](how-to.md).
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 589f71f4a7fe1c6ca70b0988cadd93687df8f73c
+# Updated to include Projects and Clusters resources from 2026-03-01-preview (PR #43780)
+commit: 5c97134820f1145742a874df3838b28e515e4ba1
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -40,7 +41,9 @@ require:
 try-require: 
   - $(repo)/specification/liftrmongodb/resource-manager/readme.powershell.md
 
-module-version: 1.0.0
+# Use the 2026-03-01-preview tag which includes Organization, Project, and Cluster resources
+tag: package-2026-03-01-preview
+module-version: 1.1.0
 # Normally, title is the service name
 title: MongoDB
 service-name: MongoDB
