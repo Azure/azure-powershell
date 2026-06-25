@@ -36,6 +36,6 @@ For processing the cmdlets, we've created some additional attributes:
 - `Microsoft.Azure.PowerShell.Cmdlets.MongoDB.DoNotExportAttribute`
   - Used in C# and script cmdlets to suppress creating an exported cmdlet at build-time. These cmdlets will *not be exposed* by `Az.MongoDB`.
 - `Microsoft.Azure.PowerShell.Cmdlets.MongoDB.InternalExportAttribute`
-  - Used in C# cmdlets to route exported cmdlets to the `..\internal`, which are *not exposed* by `Az.MongoDB`. For more information, see [README.md](..\internal/README.md) in the `..\internal` folder.
+  - Used in C# cmdlets to route exported cmdlets to the `../internal`, which are *not exposed* by `Az.MongoDB`. For more information, see [README.md](../internal/README.md) in the `../internal` folder.
 - `Microsoft.Azure.PowerShell.Cmdlets.MongoDB.ProfileAttribute`
   - Used in C# and script cmdlets to define which Azure profiles the cmdlet supports. This is only supported for Azure (`--azure`) modules.
