@@ -30,7 +30,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.EkmConnection
     {
         [Parameter(Mandatory = false,
             HelpMessage = "EKM proxy host (FQDN or FQDN:port). If the port is omitted, 443 is assumed.")]
-        public new string Host { get; set; }
+        [Alias("Host")]
+        public string HostName { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "Path(s) to one or more server CA certificate(s) in PEM or DER format.")]
@@ -48,8 +49,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.EkmConnection
         {
             NormalizeHsmIdentifier();
 
-            string normalizedHost = this.IsParameterBound(c => c.Host)
-                ? EkmConnectionHelper.NormalizeHost(Host)
+            string normalizedHost = this.IsParameterBound(c => c.HostName)
+                ? EkmConnectionHelper.NormalizeHost(HostName)
                 : null;
             if (this.IsParameterBound(c => c.PathPrefix))
             {

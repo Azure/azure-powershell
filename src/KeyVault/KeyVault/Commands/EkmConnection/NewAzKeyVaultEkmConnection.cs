@@ -30,8 +30,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.EkmConnection
     {
         [Parameter(Mandatory = true,
             HelpMessage = "EKM proxy host (FQDN or FQDN:port). If the port is omitted, 443 is assumed.")]
+        [Alias("Host")]
         [ValidateNotNullOrEmpty]
-        public new string Host { get; set; }
+        public string HostName { get; set; }
 
         [Parameter(Mandatory = true,
             HelpMessage = "Path(s) to one or more server CA certificate(s) in PEM or DER format.")]
@@ -50,7 +51,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.EkmConnection
         {
             NormalizeHsmIdentifier();
 
-            string normalizedHost = EkmConnectionHelper.NormalizeHost(Host);
+            string normalizedHost = EkmConnectionHelper.NormalizeHost(HostName);
             EkmConnectionHelper.ValidatePathPrefix(PathPrefix);
             var certificates = EkmConnectionHelper.LoadCertificatesAsDer(ServerCaCertificate);
             if (certificates.Count == 0)
