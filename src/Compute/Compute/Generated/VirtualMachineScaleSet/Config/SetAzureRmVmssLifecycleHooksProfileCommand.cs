@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         protected override void ProcessRecord()
         {
-            if (ShouldProcess(this.VirtualMachineScaleSet?.Name ?? "VirtualMachineScaleSet", "Set-AzVmssLifecycleHooksProfile"))
+            if (ShouldProcess(this.VirtualMachineScaleSet?.Name ?? "VirtualMachineScaleSet", VerbsCommon.Set))
             {
                 this.VirtualMachineScaleSet.LifecycleHooksProfile = new LifecycleHooksProfile
                 {

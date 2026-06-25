@@ -1373,7 +1373,7 @@ Use 'New-AzVmssLifecycleHookConfig' to create hook objects, then build the profi
 
 ```powershell
 $hook    = New-AzVmssLifecycleHookConfig -Type 'UpgradeAutoOSScheduling' -WaitDuration 'PT8H'
-$profile = [Microsoft.Azure.Management.Compute.Models.LifecycleHooksProfile]@{ LifecycleHooks = @($hook) }
+$profile = New-Object -TypeName Microsoft.Azure.Management.Compute.Models.LifecycleHooksProfile -Property @{ LifecycleHooks = @($hook) }
 New-AzVmssConfig -Location eastus -SkuCapacity 2 -LifecycleHooksProfile $profile
 ```
 

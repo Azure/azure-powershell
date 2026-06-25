@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     existingEvent = null;
                 }
 
-                if (ShouldProcess(eventName, "Update-AzVmssLifecycleHookEvent"))
+                if (ShouldProcess(eventName, VerbsData.Update))
                 {
                     // If we need to filter by InstanceId or apply ActionState, get current target resources
                     List<VMScaleSetLifecycleHookEventTargetResource> targetResources = null;
@@ -332,11 +332,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 var bodyContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 operationResponse.Body = SafeJsonConvert.DeserializeObject<VMScaleSetLifecycleHookEvent>(
                     bodyContent, client.DeserializationSettings);
+                httpResponse.Dispose();
+                httpRequest.Dispose();
                 return operationResponse.Body;
             }
 
             // 202 — poll the LRO via Azure-AsyncOperation / Location headers until completion.
             await client.GetPutOrPatchOperationResultAsync(operationResponse, null, cancellationToken).ConfigureAwait(false);
+
+            httpResponse.Dispose();
+            httpRequest.Dispose();
 
             // The LRO terminal response may not include the resource body. Re-fetch via GET to return final state.
             var fetched = await client.VirtualMachineScaleSetLifeCycleHookEvents
