@@ -88,7 +88,8 @@ namespace Microsoft.Azure.Commands.Compute
                         Sku = new Sku(this.IsParameterBound(c => c.Sku) ? this.Sku : this.AvailabilitySet.Sku, null, null),
                         ProximityPlacementGroup = this.IsParameterBound(c => c.ProximityPlacementGroupId) 
                                                 ? new SubResource(this.ProximityPlacementGroupId)
-                                                : this.AvailabilitySet.ProximityPlacementGroup
+                                                : this.AvailabilitySet.ProximityPlacementGroup,
+                        ScheduledEventsPolicy = this.AvailabilitySet.ScheduledEventsPolicy
                     };
 
                     if (avSetParams.ProximityPlacementGroup != null && string.IsNullOrEmpty(avSetParams.ProximityPlacementGroup.Id))

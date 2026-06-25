@@ -269,7 +269,8 @@ namespace Microsoft.Azure.Commands.Compute
                         ApplicationProfile = ComputeAutoMapperProfile.Mapper.Map<ApplicationProfile>(this.VM.ApplicationProfile),
                         UserData = this.IsParameterBound(c => c.UserData)
                             ? this.UserData
-                            : this.VM.UserData
+                            : this.VM.UserData,
+                        ScheduledEventsPolicy = this.VM.ScheduledEventsPolicy
                     };
 
                     if (parameters.Host != null && string.IsNullOrWhiteSpace(parameters.Host.Id))
