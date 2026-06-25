@@ -23,8 +23,7 @@ function Test-SoftDeletedAccountCmdlets
 
   Try {
       # List soft-deleted accounts in a location
-      $softDeletedAccounts = Get-AzCosmosDBSoftDeletedAccount -Location $location
-      Assert-NotNull $softDeletedAccounts
+      $softDeletedAccounts = @(Get-AzCosmosDBSoftDeletedAccount -Location $location)
 
       if ($softDeletedAccounts.Count -gt 0)
       {
@@ -55,8 +54,7 @@ function Test-SoftDeletedSqlDatabaseCmdlets
 
   Try {
       # List soft-deleted databases in the account
-      $softDeletedDatabases = Get-AzCosmosDBSqlSoftDeletedDatabase -ResourceGroupName $rgName -AccountName $accountName -Location $location
-      Assert-NotNull $softDeletedDatabases
+      $softDeletedDatabases = @(Get-AzCosmosDBSqlSoftDeletedDatabase -ResourceGroupName $rgName -AccountName $accountName -Location $location)
 
       if ($softDeletedDatabases.Count -gt 0)
       {
@@ -87,8 +85,7 @@ function Test-SoftDeletedSqlContainerCmdlets
 
   Try {
       # List soft-deleted containers in the database
-      $softDeletedContainers = Get-AzCosmosDBSqlSoftDeletedContainer -ResourceGroupName $rgName -AccountName $accountName -Location $location -DatabaseName $databaseName
-      Assert-NotNull $softDeletedContainers
+      $softDeletedContainers = @(Get-AzCosmosDBSqlSoftDeletedContainer -ResourceGroupName $rgName -AccountName $accountName -Location $location -DatabaseName $databaseName)
 
       if ($softDeletedContainers.Count -gt 0)
       {

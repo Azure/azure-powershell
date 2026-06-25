@@ -1,0 +1,80 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/8dad10ed-97e6-41aa-8594-a1497297897a/providers/Microsoft.DocumentDB/locations/East%20US/softDeletedDatabaseAccounts?api-version=2026-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGRhZDEwZWQtOTdlNi00MWFhLTg1OTQtYTE0OTcyOTc4OTdhL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvRWFzdCUyMFVTL3NvZnREZWxldGVkRGF0YWJhc2VBY2NvdW50cz9hcGktdmVyc2lvbj0yMDI2LTA0LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "71cf9209-693c-4aa9-a6df-02644fe7760c"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2826.26413",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.0.9"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-gatewayversion": [
+          "version=2.14.0"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aad617eb-bf2d-4c04-88d4-04b20f4a94d7/centraluseuap/fd52e321-562e-4bc2-8eb1-ab53b1b25c10"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-request-id": [
+          "7d16b9d0-8fc1-404c-9b27-2f7ba201233b"
+        ],
+        "x-ms-correlation-request-id": [
+          "7d16b9d0-8fc1-404c-9b27-2f7ba201233b"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20260625T130846Z:7d16b9d0-8fc1-404c-9b27-2f7ba201233b"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 094F2851F84942AB924669227906E423 Ref B: BL2AA2010205037 Ref C: 2026-06-25T13:08:46Z"
+        ],
+        "Date": [
+          "Thu, 25 Jun 2026 13:08:46 GMT"
+        ],
+        "Content-Length": [
+          "12"
+        ],
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "8dad10ed-97e6-41aa-8594-a1497297897a"
+  }
+}
