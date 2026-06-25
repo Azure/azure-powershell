@@ -18,9 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Migrated module to AutoRest v4 code generation
+* Fixed 'New-AzQumuloFileSystem' reference documentation and help to match shipped parameter types
     - Upgraded API version from 2022-10-12-preview to 2026-04-16 (stable)
-    - Updated model namespace references in custom cmdlets
+    - Migrated module to AutoRest v4 code generation
 
 ## Version 0.1.3
 * Upgraded nuget package to signed package.
