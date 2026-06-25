@@ -531,6 +531,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return HsmClient.CreateKey(managedHsmName, keyName, keyAttributes, size, curveName);
         }
 
+        public PSKeyVaultKey CreateManagedHsmExternalKey(string managedHsmName, string keyName, string externalKeyId, PSKeyVaultKeyAttributes keyAttributes)
+        {
+            return HsmClient.CreateExternalKey(managedHsmName, keyName, externalKeyId, keyAttributes);
+        }
+
         public PSDeletedKeyVaultKey DeleteManagedHsmKey(string managedHsmName, string keyName)
         {
             return HsmClient.DeleteKey(managedHsmName, keyName);
@@ -643,6 +648,38 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         public PSKeyVaultSetting UpdateManagedHsmSetting(PSKeyVaultSetting psSettingParams)
         {
             return HsmClient.UpdateSetting(psSettingParams);
+        }
+        #endregion
+
+        #region EKM
+        public PSKeyVaultEkmConnection CreateManagedHsmEkmConnection(string hsmName, string host, string pathPrefix, IEnumerable<byte[]> serverCaCertificates, string serverSubjectCommonName)
+        {
+            return HsmClient.CreateEkmConnection(hsmName, host, pathPrefix, serverCaCertificates, serverSubjectCommonName);
+        }
+
+        public PSKeyVaultEkmConnection GetManagedHsmEkmConnection(string hsmName)
+        {
+            return HsmClient.GetEkmConnection(hsmName);
+        }
+
+        public PSKeyVaultEkmConnection UpdateManagedHsmEkmConnection(string hsmName, string host, string pathPrefix, IEnumerable<byte[]> serverCaCertificates, string serverSubjectCommonName)
+        {
+            return HsmClient.UpdateEkmConnection(hsmName, host, pathPrefix, serverCaCertificates, serverSubjectCommonName);
+        }
+
+        public PSKeyVaultEkmConnection RemoveManagedHsmEkmConnection(string hsmName)
+        {
+            return HsmClient.DeleteEkmConnection(hsmName);
+        }
+
+        public PSKeyVaultEkmProxyInfo CheckManagedHsmEkmConnection(string hsmName)
+        {
+            return HsmClient.CheckEkmConnection(hsmName);
+        }
+
+        public PSKeyVaultEkmConnectionCertificate GetManagedHsmEkmCertificate(string hsmName)
+        {
+            return HsmClient.GetEkmCertificate(hsmName);
         }
         #endregion
 

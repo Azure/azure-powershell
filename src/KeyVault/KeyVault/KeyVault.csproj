@@ -12,9 +12,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.Security.KeyVault.Administration" Version="4.4.0-beta.1" />
-    <PackageReference Include="Azure.Security.KeyVault.Keys" Version="4.6.0-beta.1" />
+    <PackageReference Include="Azure.Security.KeyVault.Administration" Version="4.9.0-beta.1" />
+    <PackageReference Include="Azure.Security.KeyVault.Keys" Version="4.11.0-beta.1" />
     <PackageReference Include="Azure.Security.KeyVault.Certificates" Version="4.6.0" />
+    <!-- EKM preview SDKs (Administration 4.9.0-beta.1 / Keys 4.11.0-beta.1) require Azure.Core >= 1.57.0,
+         which is newer than the centrally pinned 1.56.0 in tools/Common.Netcore.Dependencies.targets.
+         Overridden locally for the Az.KeyVault preview package; revisit when common bumps Azure.Core. -->
+    <PackageReference Update="Azure.Core" Version="1.57.0" />
     <PackageReference Include="Portable.BouncyCastle" Version="1.8.8" />
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.1" />

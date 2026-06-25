@@ -117,6 +117,21 @@ namespace Microsoft.Azure.Commands.KeyVault
         [ValidateNotNullOrEmpty]
         public string HsmName { get; set; }
 
+        /// <summary>
+        /// External Key Manager (EKM) key id used to create an external key on a Managed HSM. (Preview)
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ParameterSetName = HsmInteractiveCreateParameterSet,
+            HelpMessage = "Create an external Managed HSM key backed by an External Key Manager (EKM) key id. (Preview)")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = HsmInputObjectCreateParameterSet,
+            HelpMessage = "Create an external Managed HSM key backed by an External Key Manager (EKM) key id. (Preview)")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = HsmResourceIdCreateParameterSet,
+            HelpMessage = "Create an external Managed HSM key backed by an External Key Manager (EKM) key id. (Preview)")]
+        [ValidateNotNullOrEmpty]
+        public string ExternalKeyId { get; set; }
+
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectCreateParameterSet,
             Position = 0,
@@ -472,6 +487,18 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private void ValidateParameters()
         {
+            if (!string.IsNullOrEmpty(ExternalKeyId))
+            {
+                if (ExternalKeyId.Length > 64)
+                {
+                    throw new AzPSArgumentException("ExternalKeyId must be at most 64 characters.", nameof(ExternalKeyId));
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(ExternalKeyId, "^[0-9A-Za-z-]+$"))
+                {
+                    throw new AzPSArgumentException("ExternalKeyId may contain only letters, digits, and hyphens.", nameof(ExternalKeyId));
+                }
+            }
+
             if (KeyOps != null && KeyOps.Contains(Constants.KeyOpsImport))
             {
                 // "import" is exclusive, it cannot be combined with any other value(s).
@@ -529,6 +556,16 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private PSKeyVaultKey CreateHsmKey()
         {
+            if (!string.IsNullOrEmpty(ExternalKeyId))
+            {
+                // External keys are backed by an External Key Manager (EKM). The service
+                // rejects client-specified key type/size/curve/operations for them.
+                return this.Track2DataClient.CreateManagedHsmExternalKey(
+                        HsmName,
+                        Name,
+                        ExternalKeyId,
+                        CreateKeyAttributes());
+            }
             if (string.IsNullOrEmpty(KeyFilePath))
             {
                 return this.Track2DataClient.CreateManagedHsmKey(
