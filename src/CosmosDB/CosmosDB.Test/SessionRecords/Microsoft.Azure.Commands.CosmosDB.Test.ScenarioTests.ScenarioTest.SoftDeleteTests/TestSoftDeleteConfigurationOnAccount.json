@@ -1,0 +1,77 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/8dad10ed-97e6-41aa-8594-a1497297897a/resourceGroups/pookela-rg/providers/Microsoft.DocumentDB/databaseAccounts/jorgevo-bugbash-softdelete?api-version=2026-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGRhZDEwZWQtOTdlNi00MWFhLTg1OTQtYTE0OTcyOTc4OTdhL3Jlc291cmNlR3JvdXBzL3Bvb2tlbGEtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5Eb2N1bWVudERCL2RhdGFiYXNlQWNjb3VudHMvam9yZ2V2by1idWdiYXNoLXNvZnRkZWxldGU/YXBpLXZlcnNpb249MjAyNi0wNC0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "005c95bc-6009-43e1-b4a3-8d0e361df341"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2826.26413",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.0.9"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-gatewayversion": [
+          "version=2.14.0"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-request-id": [
+          "999f01f3-0360-49af-ba75-2c1d3718bdd9"
+        ],
+        "x-ms-correlation-request-id": [
+          "999f01f3-0360-49af-ba75-2c1d3718bdd9"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20260625T134541Z:999f01f3-0360-49af-ba75-2c1d3718bdd9"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 41E7B11BBCA94288A1BEED7C4E596E03 Ref B: MNZ221060618035 Ref C: 2026-06-25T13:45:41Z"
+        ],
+        "Date": [
+          "Thu, 25 Jun 2026 13:45:41 GMT"
+        ],
+        "Content-Length": [
+          "3621"
+        ],
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/8dad10ed-97e6-41aa-8594-a1497297897a/resourceGroups/pookela-rg/providers/Microsoft.DocumentDB/databaseAccounts/jorgevo-bugbash-softdelete\",\r\n  \"name\": \"jorgevo-bugbash-softdelete\",\r\n  \"location\": \"East US 2 EUAP\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"GlobalDocumentDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2026-03-18T09:51:48.1282117-03:00\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"documentEndpoint\": \"https://jorgevo-bugbash-softdelete.documents.azure.com:443/\",\r\n    \"sqlEndpoint\": \"https://jorgevo-bugbash-softdelete.documents.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": true,\r\n    \"enableMultipleWriteLocations\": false,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"Sql\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"WellDefined\"\r\n    },\r\n    \"instanceId\": \"c36c48c5-a247-4b94-aae2-c6fc4ba191b0\",\r\n    \"createMode\": \"Default\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableMaterializedViews\": false,\r\n    \"enableEmbeddingGenerator\": false,\r\n    \"capacityMode\": \"Provisioned\",\r\n    \"enableAllVersionsAndDeletesChangeFeed\": false,\r\n    \"defaultIdentity\": \"FirstPartyIdentity\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": true,\r\n    \"enablePartitionMerge\": false,\r\n    \"enablePerRegionPerPartitionAutoscale\": true,\r\n    \"enableBurstCapacity\": false,\r\n    \"enablePriorityBasedExecution\": false,\r\n    \"defaultPriorityLevel\": \"High\",\r\n    \"minMaxThresholdsForPriorityBasedExecution\": {\r\n      \"minPercentForLowPriorityRequests\": 0,\r\n      \"maxPercentForLowPriorityRequests\": 100,\r\n      \"minPercentForHighPriorityRequests\": 0,\r\n      \"maxPercentForHighPriorityRequests\": 100\r\n    },\r\n    \"minimalTlsVersion\": \"Tls12\",\r\n    \"enablePerPartitionAutomaticFailover\": false,\r\n    \"enforceHierarchicalPartitionKeyIdLastLevel\": false,\r\n    \"softDeleteConfiguration\": {\r\n      \"softDeletionEnabled\": true,\r\n      \"minMinutesBeforePermanentDeletionAllowed\": 2,\r\n      \"softDeleteRetentionPeriodInMinutes\": 43200\r\n    },\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"configurationOverrides\": {\r\n      \"EnablePerRegionPerPartitionAutoscaleOptIn\": \"True\"\r\n    },\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"jorgevo-bugbash-softdelete-eastus2euap\",\r\n        \"locationName\": \"East US 2 EUAP\",\r\n        \"documentEndpoint\": \"https://jorgevo-bugbash-softdelete-eastus2euap.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"jorgevo-bugbash-softdelete-eastus2euap\",\r\n        \"locationName\": \"East US 2 EUAP\",\r\n        \"documentEndpoint\": \"https://jorgevo-bugbash-softdelete-eastus2euap.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"jorgevo-bugbash-softdelete-eastus2euap\",\r\n        \"locationName\": \"East US 2 EUAP\",\r\n        \"documentEndpoint\": \"https://jorgevo-bugbash-softdelete-eastus2euap.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"jorgevo-bugbash-softdelete-eastus2euap\",\r\n        \"locationName\": \"East US 2 EUAP\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Continuous\",\r\n      \"continuousModeProperties\": {\r\n        \"tier\": \"Continuous7Days\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    },\r\n    \"keysMetadata\": {\r\n      \"primaryMasterKey\": {\r\n        \"generationTime\": \"2026-03-18T09:51:48.1282117-03:00\"\r\n      },\r\n      \"secondaryMasterKey\": {\r\n        \"generationTime\": \"2026-03-18T09:51:48.1282117-03:00\"\r\n      },\r\n      \"primaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2026-03-18T09:51:48.1282117-03:00\"\r\n      },\r\n      \"secondaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2026-03-18T09:51:48.1282117-03:00\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "8dad10ed-97e6-41aa-8594-a1497297897a"
+  }
+}

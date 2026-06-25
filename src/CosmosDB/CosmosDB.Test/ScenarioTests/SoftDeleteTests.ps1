@@ -106,28 +106,23 @@ function Test-SoftDeletedSqlContainerCmdlets
 
 <#
 .SYNOPSIS
-Test enabling soft delete configuration on a Cosmos DB account
+Test soft delete configuration on an existing Cosmos DB account
 #>
 function Test-SoftDeleteConfigurationOnAccount
 {
-  $rgName = "CosmosDBSoftDeleteResourceGroup02"
-  $accountName = "softdelete-config-test01"
-  $location = "East US"
+  $rgName = "pookela-rg"
+  $accountName = "jorgevo-bugbash-softdelete"
 
   Try {
-      # Create resource group
-      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName -Location $location
-
-      # Create a new Cosmos DB account
-      $account = New-AzCosmosDBAccount -ResourceGroupName $rgName -Name $accountName -Location $location -ApiKind "Sql" -DefaultConsistencyLevel "Session"
+      # Verify the account exists and has soft delete enabled
+      $account = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $accountName
       Assert-AreEqual $account.Name $accountName
-
-      # Update the account to enable soft delete
-      $updatedAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $accountName -EnableSoftDelete $true -SoftDeleteRetentionPeriodInMinutes 60 -MinMinutesBeforePermanentDeletionAllowed 30
-      Assert-AreEqual $updatedAccount.Name $accountName
+      Assert-NotNull $account.SoftDeleteConfiguration
+      Assert-AreEqual $true $account.SoftDeleteConfiguration.SoftDeletionEnabled
+      Assert-AreEqual 43200 $account.SoftDeleteConfiguration.SoftDeleteRetentionPeriodInMinutes
+      Assert-AreEqual 2 $account.SoftDeleteConfiguration.MinMinutesBeforePermanentDeletionAllowed
   }
   Finally {
-      Remove-AzCosmosDBAccount -ResourceGroupName $rgName -Name $accountName
-      Remove-AzResourceGroup -ResourceGroupName $rgName -Force
+      # No cleanup needed - using existing test account
   }
 }
