@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"Commit the migrated Azure Frontdoor(Standard/Premium) profile.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/migrationCommit", ApiVersion = "2025-06-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/migrationCommit", ApiVersion = "2025-09-01-preview")]
     public partial class InvokeAzCdnCommitProfileMigration_Commit : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IContext
@@ -116,12 +116,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         /// <summary>Backing field for <see cref="ProfileName" /> property.</summary>
         private string _profileName;
 
-        /// <summary>Name of the CDN profile which is unique within the resource group.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the CDN profile which is unique within the resource group.")]
+        /// <summary>
+        /// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Name of the CDN profile which is unique within the resource group.",
+        Description = @"Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.",
         SerializedName = @"profileName",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Path)]

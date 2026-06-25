@@ -26,16 +26,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyWebApplicationFirewallAssociation> Association { get => this._association; set => this._association = value; }
 
-        /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyPropertiesParametersInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyPropertiesParametersInternal)__securityPolicyPropertiesParameters).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyPropertiesParametersInternal)__securityPolicyPropertiesParameters).Type = value ; }
-
         /// <summary>Internal Acessors for WafPolicy</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyWebApplicationFirewallParametersInternal.WafPolicy { get => (this._wafPolicy = this._wafPolicy ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference()); set { {_wafPolicy = value;} } }
 
         /// <summary>The type of the Security policy to create.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Constant]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public string Type { get => "WebApplicationFirewall"; }
+        public string Type { get => "WebApplicationFirewall"; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyPropertiesParametersInternal)__securityPolicyPropertiesParameters).Type = "WebApplicationFirewall"; }
 
         /// <summary>Backing field for <see cref="WafPolicy" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference _wafPolicy;
@@ -53,7 +50,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// </summary>
         public SecurityPolicyWebApplicationFirewallParameters()
         {
-
+            this.__securityPolicyPropertiesParameters.Type = "WebApplicationFirewall";
         }
 
         /// <summary>Validates that this object meets the validation criteria.</summary>

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.ILabel))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Description(@"Gets a list of labels.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.HttpPath(Path = "/labels", ApiVersion = "2024-09-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.HttpPath(Path = "/labels", ApiVersion = "2026-04-01")]
     public partial class GetAzAppConfigurationLabel_Get : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.IContext

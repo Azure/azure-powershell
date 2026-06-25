@@ -1,9 +1,9 @@
 {
-  "Get-AzAppConfigurationOperationDetail+[NoContext]+Get+$PUT+https://sanitized.azconfig.io/snapshots/opdetail-test1?api-version=2024-09-01+1": {
+  "Get-AzAppConfigurationOperationDetail+[NoContext]+Get+$PUT+https://sanitized.azconfig.io/snapshots/opdetail-test1?api-version=2026-04-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://sanitized.azconfig.io/snapshots/opdetail-test1?api-version=2024-09-01",
-      "Content": "{\r\n  \"filters\": [\r\n    {\r\n      \"key\": \"2wcg\"\r\n    }\r\n  ]\r\n}",
+      "RequestUri": "https://sanitized.azconfig.io/snapshots/opdetail-test1?api-version=2026-04-01",
+      "Content": "{\r\n  \"filters\": [\r\n    {\r\n      \"key\": \"dogp\"\r\n    }\r\n  ]\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -15,40 +15,40 @@
     "Response": {
       "StatusCode": 201,
       "Headers": {
-        "Date": [ "Thu, 16 Apr 2026 21:51:41 GMT" ],
+        "Date": [ "Tue, 02 Jun 2026 22:07:17 GMT" ],
         "Transfer-Encoding": [ "chunked" ],
         "Connection": [ "keep-alive" ],
-        "ETag": [ "\"yCNDsrwdn2XY751wymtcT-h_1p4XboyZHmlZVdv6hFk\"" ],
-        "Operation-Location": [ "https://sanitized.azconfig.io/operations?snapshot=opdetail-test1\u0026api-version=2024-09-01" ],
-        "Link": [ "\u003c/kv?snapshot=opdetail-test1\u0026api-version=2024-09-01\u003e; rel=\"items\"" ],
-        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkyMTQ=;sn=79279214" ],
-        "x-ms-request-id": [ "e1f32ffb-bcf7-4896-bc96-d8e66d38b42d" ],
-        "x-ms-correlation-request-id": [ "e1f32ffb-bcf7-4896-bc96-d8e66d38b42d" ],
-        "x-ms-date": [ "Thu, 16 Apr 2026 21:51:41 GMT" ],
+        "ETag": [ "\"010neeKt5Dhhd4pnIPQYLYQUhnJhOImCXeeyNuI2r9I\"" ],
+        "Operation-Location": [ "https://sanitized.azconfig.io/operations?snapshot=opdetail-test1\u0026api-version=2026-04-01" ],
+        "Link": [ "\u003c/kv?snapshot=opdetail-test1\u0026api-version=2026-04-01\u003e; rel=\"items\"" ],
+        "Sync-Token": [ "zAJw6V16=MTQ6MTkjOTAwMzUxMTY=;sn=90035116" ],
+        "x-ms-request-id": [ "0363f22e-92a4-4a56-b178-9c39d32ea91c" ],
+        "x-ms-correlation-request-id": [ "0363f22e-92a4-4a56-b178-9c39d32ea91c" ],
+        "x-ms-date": [ "Tue, 02 Jun 2026 22:07:17 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/vnd.microsoft.appconfig.snapshot+json; charset=utf-8" ],
-        "Last-Modified": [ "Thu, 16 Apr 2026 21:51:41 GMT" ]
+        "Last-Modified": [ "Tue, 02 Jun 2026 22:07:17 GMT" ]
       },
-      "Content": "{\"etag\":\"yCNDsrwdn2XY751wymtcT-h_1p4XboyZHmlZVdv6hFk\",\"name\":\"opdetail-test1\",\"status\":\"provisioning\",\"filters\":[{\"key\":\"2wcg\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-04-16T21:51:41.6887928+00:00\",\"size\":0,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
+      "Content": "{\"etag\":\"010neeKt5Dhhd4pnIPQYLYQUhnJhOImCXeeyNuI2r9I\",\"name\":\"opdetail-test1\",\"description\":null,\"status\":\"provisioning\",\"filters\":[{\"key\":\"dogp\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-06-02T22:07:17.0423623+00:00\",\"size\":0,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
       "isContentBase64": false
     }
   },
-  "Get-AzAppConfigurationOperationDetail+[NoContext]+Get+$GET+https://sanitized.azconfig.io/operations?snapshot=opdetail-test1\u0026api-version=2024-09-01+2": {
+  "Get-AzAppConfigurationOperationDetail+[NoContext]+Get+$GET+https://sanitized.azconfig.io/operations?snapshot=opdetail-test1\u0026api-version=2026-04-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://sanitized.azconfig.io/operations?snapshot=opdetail-test1\u0026api-version=2024-09-01",
+      "RequestUri": "https://sanitized.azconfig.io/operations?snapshot=opdetail-test1\u0026api-version=2026-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-client-request-id": [ "2a220c30-d3b3-4de0-8f9b-f167cca0b00d" ],
+        "x-ms-client-request-id": [ "89ea95f6-6738-40a2-9deb-2da2501b28f7" ],
         "CommandName": [ "New-AzAppConfigurationSnapshot" ],
         "FullCommandName": [ "New-AzAppConfigurationSnapshot_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.5.5", "Az.AppConfigurationdata/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v15.6.1", "PSVersion/v7.5.5", "Az.AppConfigurationdata/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -56,13 +56,13 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Thu, 16 Apr 2026 21:52:12 GMT" ],
+        "Date": [ "Tue, 02 Jun 2026 22:07:47 GMT" ],
         "Transfer-Encoding": [ "chunked" ],
         "Connection": [ "keep-alive" ],
-        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkyMzk=;sn=79279239" ],
-        "x-ms-request-id": [ "a4d7af34-6503-4bb0-8eb1-07da05165fb7" ],
-        "x-ms-correlation-request-id": [ "a4d7af34-6503-4bb0-8eb1-07da05165fb7" ],
-        "x-ms-date": [ "Thu, 16 Apr 2026 21:52:12 GMT" ],
+        "Sync-Token": [ "zAJw6V16=MTQ6MTkjOTAwMzUxMTc=;sn=90035117" ],
+        "x-ms-request-id": [ "61333773-fb63-45bb-878e-8dafa0f0fcd0" ],
+        "x-ms-correlation-request-id": [ "61333773-fb63-45bb-878e-8dafa0f0fcd0" ],
+        "x-ms-date": [ "Tue, 02 Jun 2026 22:07:47 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },
@@ -73,19 +73,19 @@
       "isContentBase64": false
     }
   },
-  "Get-AzAppConfigurationOperationDetail+[NoContext]+Get+$GET+https://sanitized.azconfig.io/snapshots/opdetail-test1?api-version=2024-09-01+3": {
+  "Get-AzAppConfigurationOperationDetail+[NoContext]+Get+$GET+https://sanitized.azconfig.io/snapshots/opdetail-test1?api-version=2026-04-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://sanitized.azconfig.io/snapshots/opdetail-test1?api-version=2024-09-01",
+      "RequestUri": "https://sanitized.azconfig.io/snapshots/opdetail-test1?api-version=2026-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-client-request-id": [ "2a220c30-d3b3-4de0-8f9b-f167cca0b00d" ],
+        "x-ms-client-request-id": [ "89ea95f6-6738-40a2-9deb-2da2501b28f7" ],
         "CommandName": [ "New-AzAppConfigurationSnapshot" ],
         "FullCommandName": [ "New-AzAppConfigurationSnapshot_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.5.5", "Az.AppConfigurationdata/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v15.6.1", "PSVersion/v7.5.5", "Az.AppConfigurationdata/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -93,38 +93,38 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Thu, 16 Apr 2026 21:52:12 GMT" ],
+        "Date": [ "Tue, 02 Jun 2026 22:07:47 GMT" ],
         "Transfer-Encoding": [ "chunked" ],
         "Connection": [ "keep-alive" ],
-        "ETag": [ "\"yCNDsrwdn2XY751wymtcT-h_1p4XboyZHmlZVdv6hFk\"" ],
-        "Link": [ "\u003c/kv?snapshot=opdetail-test1\u0026api-version=2024-09-01\u003e; rel=\"items\"" ],
-        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkyMzk=;sn=79279239" ],
-        "x-ms-request-id": [ "a7eb7ae0-1d97-4dc4-a7ad-c76bb2ce8b3d" ],
-        "x-ms-correlation-request-id": [ "a7eb7ae0-1d97-4dc4-a7ad-c76bb2ce8b3d" ],
-        "x-ms-date": [ "Thu, 16 Apr 2026 21:52:12 GMT" ],
+        "ETag": [ "\"010neeKt5Dhhd4pnIPQYLYQUhnJhOImCXeeyNuI2r9I\"" ],
+        "Link": [ "\u003c/kv?snapshot=opdetail-test1\u0026api-version=2026-04-01\u003e; rel=\"items\"" ],
+        "Sync-Token": [ "zAJw6V16=MTQ6MTkjOTAwMzUxMTc=;sn=90035117" ],
+        "x-ms-request-id": [ "228ef6b3-a84e-40b2-a1c4-abeebe49d51c" ],
+        "x-ms-correlation-request-id": [ "228ef6b3-a84e-40b2-a1c4-abeebe49d51c" ],
+        "x-ms-date": [ "Tue, 02 Jun 2026 22:07:47 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/vnd.microsoft.appconfig.snapshot+json; charset=utf-8" ],
-        "Last-Modified": [ "Thu, 16 Apr 2026 21:51:59 GMT" ]
+        "Last-Modified": [ "Tue, 02 Jun 2026 22:07:30 GMT" ]
       },
-      "Content": "{\"etag\":\"yCNDsrwdn2XY751wymtcT-h_1p4XboyZHmlZVdv6hFk\",\"name\":\"opdetail-test1\",\"status\":\"ready\",\"filters\":[{\"key\":\"2wcg\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-04-16T21:51:41+00:00\",\"size\":1000,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
+      "Content": "{\"etag\":\"010neeKt5Dhhd4pnIPQYLYQUhnJhOImCXeeyNuI2r9I\",\"name\":\"opdetail-test1\",\"description\":null,\"status\":\"ready\",\"filters\":[{\"key\":\"dogp\",\"label\":null,\"tags\":[]}],\"composition_type\":\"key\",\"created\":\"2026-06-02T22:07:17+00:00\",\"size\":1000,\"items_count\":0,\"tags\":{},\"retention_period\":2592000}",
       "isContentBase64": false
     }
   },
-  "Get-AzAppConfigurationOperationDetail+[NoContext]+Get+$GET+https://sanitized.azconfig.io/operations?api-version=2024-09-01\u0026snapshot=opdetail-test1+4": {
+  "Get-AzAppConfigurationOperationDetail+[NoContext]+Get+$GET+https://sanitized.azconfig.io/operations?api-version=2026-04-01\u0026snapshot=opdetail-test1+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://sanitized.azconfig.io/operations?api-version=2024-09-01\u0026snapshot=opdetail-test1",
+      "RequestUri": "https://sanitized.azconfig.io/operations?api-version=2026-04-01\u0026snapshot=opdetail-test1",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-client-request-id": [ "beb3ac55-8ce7-49db-831e-b4d3c8037c72" ],
+        "x-ms-client-request-id": [ "12398150-e60c-4a0e-9a24-857af18af620" ],
         "CommandName": [ "Get-AzAppConfigurationOperationDetail" ],
         "FullCommandName": [ "Get-AzAppConfigurationOperationDetail_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v14.4.0", "PSVersion/v7.5.5", "Az.AppConfigurationdata/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v15.6.1", "PSVersion/v7.5.5", "Az.AppConfigurationdata/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -133,13 +133,13 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Thu, 16 Apr 2026 21:52:12 GMT" ],
+        "Date": [ "Tue, 02 Jun 2026 22:07:47 GMT" ],
         "Transfer-Encoding": [ "chunked" ],
         "Connection": [ "keep-alive" ],
-        "Sync-Token": [ "zAJw6V16=MTI6MTkjNzkyNzkyMzk=;sn=79279239" ],
-        "x-ms-request-id": [ "6cc53def-3428-42cf-a19e-f7f59dc11819" ],
-        "x-ms-correlation-request-id": [ "6cc53def-3428-42cf-a19e-f7f59dc11819" ],
-        "x-ms-date": [ "Thu, 16 Apr 2026 21:52:12 GMT" ],
+        "Sync-Token": [ "zAJw6V16=MTQ6MTkjOTAwMzUxMTc=;sn=90035117" ],
+        "x-ms-request-id": [ "0b466215-dd10-4592-a52c-7e6641b2c183" ],
+        "x-ms-correlation-request-id": [ "0b466215-dd10-4592-a52c-7e6641b2c183" ],
+        "x-ms-date": [ "Tue, 02 Jun 2026 22:07:47 GMT" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Access-Control-Allow-Origin": [ "*" ]
       },

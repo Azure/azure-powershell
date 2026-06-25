@@ -27,7 +27,8 @@ For information on how to develop for `Az.MonitorWorkspace`, see [how-to.md](how
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 936922b8f9c7e5dbadf806a73a888a8e93e9a1f8
+# lock the commit
+commit: b59aeff7f87d58a631c71fb0533f99ed91d54d71
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:

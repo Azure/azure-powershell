@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageTaskAssignment))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.Description(@"update storage task assignment properties")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}", ApiVersion = "2025-06-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}", ApiVersion = "2025-08-01")]
     public partial class UpdateAzStorageTaskAssignment_UpdateViaIdentityStorageAccountExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IContext
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Cmdlets
         Description = @"The trigger type of the storage task assignment execution",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("RunOnce", "OnSchedule")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("RunOnce", "OnSchedule", "MockRun")]
         public string TriggerType { get => _parametersBody.TriggerType ?? null; set => _parametersBody.TriggerType = value; }
 
         /// <summary>

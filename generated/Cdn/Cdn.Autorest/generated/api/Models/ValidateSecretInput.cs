@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference _secretSource;
 
         /// <summary>
-        /// Resource reference to the Azure Key Vault secret. Expected to be in format of /subscriptions/{​​​​​​​​​subscriptionId}​​​​​​​​​/resourceGroups/{​​​​​​​​​resourceGroupName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/providers/Microsoft.KeyVault/vaults/{vaultName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/secrets/{secretName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+        /// Resource reference to the Azure Key Vault secret. Expected to be in format of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/secrets/{secretName}
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference SecretSource { get => (this._secretSource = this._secretSource ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference()); set => this._secretSource = value; }
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Description = @"The secret type.",
         SerializedName = @"secretType",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("UrlSigningKey", "CustomerCertificate", "ManagedCertificate", "AzureFirstPartyManagedCertificate")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("UrlSigningKey", "CustomerCertificate", "ManagedCertificate", "AzureFirstPartyManagedCertificate", "MtlsCertificateChain")]
         string SecretType { get; set; }
         /// <summary>Secret version, if customer is using a specific version.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
@@ -94,13 +94,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
     {
         /// <summary>
-        /// Resource reference to the Azure Key Vault secret. Expected to be in format of /subscriptions/{​​​​​​​​​subscriptionId}​​​​​​​​​/resourceGroups/{​​​​​​​​​resourceGroupName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/providers/Microsoft.KeyVault/vaults/{vaultName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/secrets/{secretName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+        /// Resource reference to the Azure Key Vault secret. Expected to be in format of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}/secrets/{secretName}
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference SecretSource { get; set; }
         /// <summary>Resource ID.</summary>
         string SecretSourceId { get; set; }
         /// <summary>The secret type.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("UrlSigningKey", "CustomerCertificate", "ManagedCertificate", "AzureFirstPartyManagedCertificate")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("UrlSigningKey", "CustomerCertificate", "ManagedCertificate", "AzureFirstPartyManagedCertificate", "MtlsCertificateChain")]
         string SecretType { get; set; }
         /// <summary>Secret version, if customer is using a specific version.</summary>
         string SecretVersion { get; set; }

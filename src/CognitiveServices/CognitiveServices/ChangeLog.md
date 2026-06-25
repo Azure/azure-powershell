@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated Cognitive Services account identity handling to explicitly use the Cognitive Services SDK `Identity` model in create/update flows.
+
+## Version 1.17.0
+* Added ChangeSafety Support
 
 ## Version 1.16.0
 * Updated SDK via autorest.powershell.

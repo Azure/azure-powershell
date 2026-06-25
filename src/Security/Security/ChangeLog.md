@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 1.9.0
+* Added ChangeSafety Support
+
 ## Version 1.8.0
 * Upgraded nuget package to signed package.
 

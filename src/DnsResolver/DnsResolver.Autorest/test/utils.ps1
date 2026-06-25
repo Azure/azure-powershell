@@ -1,4 +1,4 @@
-."$PSScriptRoot\testDataGenerator.ps1"
+﻿."$PSScriptRoot\testDataGenerator.ps1"
 ."$PSScriptRoot\virtualNetworkClient.ps1"
 ."$PSScriptRoot\stringExtensions.ps1"
 
@@ -29,13 +29,13 @@ function Start-TestSleep {
 
 $env = @{}
 function setupEnv() {
-    # Tests are self-contained — no shared setup needed.
+    # Tests are self-contained - no shared setup needed.
     # Each test file manages its own resources in BeforeAll/AfterAll blocks.
     Write-Host "setupEnv: skipped (tests are self-contained)"
 }
 
 function cleanupEnv() {
-    # Tests are self-contained — no shared cleanup needed.
+    # Tests are self-contained - no shared cleanup needed.
     Write-Host "cleanupEnv: skipped (tests are self-contained)"
 }
 

@@ -121,10 +121,11 @@ namespace Microsoft.Azure.Commands.Resources
 
             var oldConditionVersion = string.IsNullOrWhiteSpace(fetchedRole.ConditionVersion)? Version.Parse("0.0") : Version.Parse(fetchedRole.ConditionVersion);
             var newConditionVersion = string.IsNullOrWhiteSpace(InputObject.ConditionVersion) ? Version.Parse("0.0") : Version.Parse(InputObject.ConditionVersion);
+            var emptyCondition      = string.IsNullOrWhiteSpace(InputObject.ConditionVersion) && string.IsNullOrWhiteSpace(InputObject.Condition);
 
             // A condition version can change but currently we don't support downgrading to 1.0
-            // we only verify the change if it's a downgrade
-            if ((oldConditionVersion > newConditionVersion) && (newConditionVersion.Major < 2))
+            // we only verify the change if it's a downgrade. Removal of condition is allowed
+            if ((oldConditionVersion > newConditionVersion) && (newConditionVersion.Major < 2) && !emptyCondition)
             {
                 throw new ArgumentException("Condition version different than '2.0' is not supported for update operations");
             }

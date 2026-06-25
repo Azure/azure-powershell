@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
     public static class KeyVaultNetworkAccessTypes
     {
+        /// <summary>
+        /// Key vault allows public access from all networks.
+        /// </summary>
         public const string Public = "Public";
+        /// <summary>
+        /// Key vault disables public access and enables private link.
+        /// </summary>
         public const string Private = "Private";
     }
 }

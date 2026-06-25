@@ -55,6 +55,8 @@ function New-AzWebPubSubKey {
 [CmdletBinding(DefaultParameterSetName='RegenerateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
     [System.String]
     # The name of the resource group that contains the resource.
@@ -62,12 +64,16 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
     [System.String]
     # The name of the resource.
     ${ResourceName},
 
     [Parameter(ParameterSetName='RegenerateExpanded')]
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath')]
+    [Parameter(ParameterSetName='RegenerateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -79,15 +85,27 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType])]
+    [Parameter(ParameterSetName='RegenerateExpanded')]
+    [Parameter(ParameterSetName='RegenerateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.PSArgumentCompleterAttribute("Primary", "Secondary", "Salt")]
     [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Support.KeyType]
+    [System.String]
     # The type of access key.
     ${KeyType},
+
+    [Parameter(ParameterSetName='RegenerateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Regenerate operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='RegenerateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Category('Body')]
+    [System.String]
+    # Json string supplied to the Regenerate operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -163,14 +181,17 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+        
+        $testPlayback = $false
+        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             RegenerateExpanded = 'Az.SignalR.private\New-AzWebPubSubKey_RegenerateExpanded';
             RegenerateViaIdentityExpanded = 'Az.SignalR.private\New-AzWebPubSubKey_RegenerateViaIdentityExpanded';
+            RegenerateViaJsonFilePath = 'Az.SignalR.private\New-AzWebPubSubKey_RegenerateViaJsonFilePath';
+            RegenerateViaJsonString = 'Az.SignalR.private\New-AzWebPubSubKey_RegenerateViaJsonString';
         }
-        if (('RegenerateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+        if (('RegenerateExpanded', 'RegenerateViaJsonFilePath', 'RegenerateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -179,6 +200,9 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        if ($wrappedCmd -eq $null) {
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
+        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
