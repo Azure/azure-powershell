@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.20.1
 * Updated `System.IO.FileSystem.AccessControl` dependency from `4.5.0` to `5.0.0`.
 
 ## Version 1.20.0

@@ -952,6 +952,7 @@
       "New-AzFrontDoorCdnRule": {},
       "New-AzFrontDoorCdnRuleClientPortConditionObject": {},
       "New-AzFrontDoorCdnRuleCookiesConditionObject": {},
+      "New-AzFrontDoorCdnRuleEdgeActionObject": {},
       "New-AzFrontDoorCdnRuleHostNameConditionObject": {},
       "New-AzFrontDoorCdnRuleHttpVersionConditionObject": {},
       "New-AzFrontDoorCdnRuleIsDeviceConditionObject": {},
@@ -1466,9 +1467,11 @@
     },
     "Az.ComputeFleet": {
       "Get-AzComputeFleet": {},
-      "Get-AzComputeFleetVMSS": {},
+      "Get-AzComputeFleetVirtualMachine": {},
+      "Get-AzComputeFleetVirtualMachineScaleSet": {},
       "New-AzComputeFleet": {},
       "Remove-AzComputeFleet": {},
+      "Set-AzComputeFleet": {},
       "Update-AzComputeFleet": {}
     },
     "Az.ComputeLimit": {
@@ -4754,6 +4757,15 @@
       "Update-AzMySqlFlexibleServerAdvancedThreatProtectionSetting": {},
       "Update-AzMySqlFlexibleServerConfiguration": {},
       "Update-AzMySqlFlexibleServerFirewallRule": {}
+    },
+    "Az.Napster": {
+      "Get-AzNapsterOrganization": {},
+      "Initialize-AzNapsterSaaSOperationGroupResource": {},
+      "Invoke-AzNapsterLatestOrganizationLinkedSaaS": {},
+      "Invoke-AzNapsterLinkOrganizationSaaS": {},
+      "New-AzNapsterOrganization": {},
+      "Remove-AzNapsterOrganization": {},
+      "Update-AzNapsterOrganization": {}
     },
     "Az.NetAppFiles": {
       "Approve-AzNetAppFilesReplication": {},
