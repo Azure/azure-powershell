@@ -509,6 +509,8 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = SimpleParameterSet,
             HelpMessage = "Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD. For available API versions, see https://learn.microsoft.com/rest/api/compute/scheduled-events.")]
+        [ValidateNotNullOrEmpty]
+        [ValidatePattern(@"^\d{4}-\d{2}-\d{2}$")]
         public string ScheduledEventsApiVersion { get; set; }
 
         [Parameter(
