@@ -27,5 +27,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         // Gets or sets the ZonePlacementPolicy.
         public string ZonePlacementPolicy { get; set; }
 
+        // Gets or sets the lifecycle hooks profile.
+        public Microsoft.Azure.Management.Compute.Models.LifecycleHooksProfile LifecycleHooksProfile { get; set; }
+
     }
 }
