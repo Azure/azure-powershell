@@ -721,15 +721,28 @@ function Test-SimpleNewVmScheduledEventsPolicy
         $apiVersion = "2020-07-01";
 
         # Create VM with ScheduledEventsPolicy parameters
-        # Note: The parameters are validated during creation, but the Azure API may not return
-        # the ScheduledEventsPolicy property in the GET response. The test verifies that
-        # the VM is created successfully with these parameters (no error thrown).
         $vm = New-AzVM -Name $vmname -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel `
             -SecurityType $stnd -ScheduledEventsApiVersion $apiVersion -EnableAllInstancesDown $true
 
-        # Verify VM creation succeeded
+        # Verify VM creation succeeded and the ScheduledEventsPolicy was set
         Assert-NotNull $vm;
         Assert-AreEqual $vmname $vm.Name;
+        Assert-NotNull $vm.ScheduledEventsPolicy;
+        Assert-NotNull $vm.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets;
+        Assert-NotNull $vm.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph;
+        Assert-AreEqual $apiVersion `
+            $vm.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph.ScheduledEventsApiVersion;
+        Assert-NotNull $vm.ScheduledEventsPolicy.AllInstancesDown;
+        Assert-AreEqual $true $vm.ScheduledEventsPolicy.AllInstancesDown.AutomaticallyApprove;
+
+        # Update the VM's ScheduledEventsPolicy and verify the change is persisted
+        $vmToUpdate = Get-AzVM -ResourceGroupName $vmname -Name $vmname;
+        Update-AzVM -ResourceGroupName $vmname -VM $vmToUpdate -EnableAllInstancesDown $false;
+
+        $updatedVm = Get-AzVM -ResourceGroupName $vmname -Name $vmname;
+        Assert-NotNull $updatedVm.ScheduledEventsPolicy;
+        Assert-NotNull $updatedVm.ScheduledEventsPolicy.AllInstancesDown;
+        Assert-AreEqual $false $updatedVm.ScheduledEventsPolicy.AllInstancesDown.AutomaticallyApprove;
     }
     finally
     {
