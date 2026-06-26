@@ -133,6 +133,15 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.EnablePerRegionPerPartitionAutoscaleHelpMessage)]
         public bool? EnablePerRegionPerPartitionAutoscale { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Enables soft delete on the Cosmos DB account.")]
+        public bool? EnableSoftDelete { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The retention period in minutes for soft-deleted resources.")]
+        public int? SoftDeleteRetentionPeriodInMinutes { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The minimum number of minutes before permanent deletion is allowed.")]
+        public int? MinMinutesBeforePermanentDeletionAllowed { get; set; }
+
         public ConsistencyPolicy PopoulateConsistencyPolicy(string DefaultConsistencyLevel, int? MaxStalenessIntervalInSeconds, int? MaxStalenessPrefix)
         {
             ConsistencyPolicy consistencyPolicy = new ConsistencyPolicy();

@@ -74,6 +74,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             EnablePartitionMerge = databaseAccountGetResults.EnablePartitionMerge;
             MinimalTlsVersion = databaseAccountGetResults.MinimalTlsVersion;
             EnablePerRegionPerPartitionAutoscale = databaseAccountGetResults.EnablePerRegionPerPartitionAutoscale;
+            SoftDeleteConfiguration = databaseAccountGetResults.SoftDeleteConfiguration != null
+                ? new PSSoftDeleteConfiguration(databaseAccountGetResults.SoftDeleteConfiguration)
+                : null;
         }
 
         //
@@ -269,5 +272,10 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets flag to indicate whether per-region, per-partition autoscale is enabled.
         public bool? EnablePerRegionPerPartitionAutoscale { get; set; }
+        //
+        //
+        // Summary:
+        //     Gets or sets the Soft Delete Configuration of the CosmosDB Account
+        public PSSoftDeleteConfiguration SoftDeleteConfiguration { get; set; }
     }
 }

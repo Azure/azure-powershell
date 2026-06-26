@@ -1,0 +1,152 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/8dad10ed-97e6-41aa-8594-a1497297897a/resourceGroups/cli_test_cosmosdb_softdelete_db_recover2zlh2ej5aqyi6dta5l56ylitgemk6ch5nxvm/providers/Microsoft.DocumentDB/locations/West%20US%202/softDeletedDatabaseAccounts/clisddacc2weis3cyiry/softDeletedSqlDatabases?api-version=2026-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGRhZDEwZWQtOTdlNi00MWFhLTg1OTQtYTE0OTcyOTc4OTdhL3Jlc291cmNlR3JvdXBzL2NsaV90ZXN0X2Nvc21vc2RiX3NvZnRkZWxldGVfZGJfcmVjb3ZlcjJ6bGgyZWo1YXF5aTZkdGE1bDU2eWxpdGdlbWs2Y2g1bnh2bS9wcm92aWRlcnMvTWljcm9zb2Z0LkRvY3VtZW50REIvbG9jYXRpb25zL1dlc3QlMjBVUyUyMDIvc29mdERlbGV0ZWREYXRhYmFzZUFjY291bnRzL2NsaXNkZGFjYzJ3ZWlzM2N5aXJ5L3NvZnREZWxldGVkU3FsRGF0YWJhc2VzP2FwaS12ZXJzaW9uPTIwMjYtMDQtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "1ae0b872-f529-4a39-b00f-816229f480cf"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2826.26413",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.0.9"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-gatewayversion": [
+          "version=2.14.0"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aad617eb-bf2d-4c04-88d4-04b20f4a94d7/centraluseuap/6085cb42-3341-4063-9d29-91a9df26b036"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-request-id": [
+          "164adf2e-e94b-4fac-a765-909077692239"
+        ],
+        "x-ms-correlation-request-id": [
+          "164adf2e-e94b-4fac-a765-909077692239"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20260625T132218Z:164adf2e-e94b-4fac-a765-909077692239"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 73F17A86C151433FAC4F3B8B13DC67C3 Ref B: BL2AA2010204029 Ref C: 2026-06-25T13:22:18Z"
+        ],
+        "Date": [
+          "Thu, 25 Jun 2026 13:22:18 GMT"
+        ],
+        "Content-Length": [
+          "632"
+        ],
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/8dad10ed-97e6-41aa-8594-a1497297897a/resourceGroups/cli_test_cosmosdb_softdelete_db_recover2zlh2ej5aqyi6dta5l56ylitgemk6ch5nxvm/providers/Microsoft.DocumentDB/locations/West%20US%202/softDeletedDatabaseAccounts/clisddacc2weis3cyiry/softDeletedSqlDatabases/clisdddbt7fz45v\",\r\n      \"name\": \"clisdddbt7fz45v\",\r\n      \"type\": \"Microsoft.DocumentDB/locations/softDeletedDatabaseAccounts/softDeletedSqlDatabases\",\r\n      \"properties\": {\r\n        \"softDeletionMetadata\": {\r\n          \"isSoftDeleted\": true,\r\n          \"softDeletionStartTimestamp\": 1782360556,\r\n          \"softDeletionResourceExpirationTimestamp\": 1782360676\r\n        },\r\n        \"resource\": {\r\n          \"id\": \"clisdddbt7fz45v\",\r\n          \"_rid\": \"LXtUAA==\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8dad10ed-97e6-41aa-8594-a1497297897a/resourceGroups/cli_test_cosmosdb_softdelete_db_recover2zlh2ej5aqyi6dta5l56ylitgemk6ch5nxvm/providers/Microsoft.DocumentDB/locations/West%20US%202/softDeletedDatabaseAccounts/clisddacc2weis3cyiry/softDeletedSqlDatabases/clisdddbt7fz45v?api-version=2026-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGRhZDEwZWQtOTdlNi00MWFhLTg1OTQtYTE0OTcyOTc4OTdhL3Jlc291cmNlR3JvdXBzL2NsaV90ZXN0X2Nvc21vc2RiX3NvZnRkZWxldGVfZGJfcmVjb3ZlcjJ6bGgyZWo1YXF5aTZkdGE1bDU2eWxpdGdlbWs2Y2g1bnh2bS9wcm92aWRlcnMvTWljcm9zb2Z0LkRvY3VtZW50REIvbG9jYXRpb25zL1dlc3QlMjBVUyUyMDIvc29mdERlbGV0ZWREYXRhYmFzZUFjY291bnRzL2NsaXNkZGFjYzJ3ZWlzM2N5aXJ5L3NvZnREZWxldGVkU3FsRGF0YWJhc2VzL2NsaXNkZGRidDdmejQ1dj9hcGktdmVyc2lvbj0yMDI2LTA0LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "e066f82f-33de-47bf-8be1-4a634f49492d"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2826.26413",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.0.9"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-gatewayversion": [
+          "version=2.14.0"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=aad617eb-bf2d-4c04-88d4-04b20f4a94d7/centraluseuap/6042002f-2a8a-44bb-b202-f58f41e52652"
+        ],
+        "x-ms-throttling-version": [
+          "v2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "x-ms-request-id": [
+          "a3674186-6fbe-4bb7-9744-b8009c744a64"
+        ],
+        "x-ms-correlation-request-id": [
+          "a3674186-6fbe-4bb7-9744-b8009c744a64"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUSEUAP:20260625T132219Z:a3674186-6fbe-4bb7-9744-b8009c744a64"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: DA01BAFC814F4896B16C3FF9F0AEC1EC Ref B: BL2AA2011002025 Ref C: 2026-06-25T13:22:19Z"
+        ],
+        "Date": [
+          "Thu, 25 Jun 2026 13:22:19 GMT"
+        ],
+        "Content-Length": [
+          "620"
+        ],
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/8dad10ed-97e6-41aa-8594-a1497297897a/resourceGroups/cli_test_cosmosdb_softdelete_db_recover2zlh2ej5aqyi6dta5l56ylitgemk6ch5nxvm/providers/Microsoft.DocumentDB/locations/West%20US%202/softDeletedDatabaseAccounts/clisddacc2weis3cyiry/softDeletedSqlDatabases/clisdddbt7fz45v\",\r\n  \"name\": \"clisdddbt7fz45v\",\r\n  \"type\": \"Microsoft.DocumentDB/locations/softDeletedDatabaseAccounts/softDeletedSqlDatabases\",\r\n  \"properties\": {\r\n    \"softDeletionMetadata\": {\r\n      \"isSoftDeleted\": true,\r\n      \"softDeletionStartTimestamp\": 1782360556,\r\n      \"softDeletionResourceExpirationTimestamp\": 1782360676\r\n    },\r\n    \"resource\": {\r\n      \"id\": \"clisdddbt7fz45v\",\r\n      \"_rid\": \"LXtUAA==\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "8dad10ed-97e6-41aa-8594-a1497297897a"
+  }
+}
