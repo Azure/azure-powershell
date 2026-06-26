@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Automation;
 using Microsoft.Azure.Management.Automation.Models;
+using AutomationModels = Microsoft.Azure.Management.Automation.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -169,7 +170,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (addSystemId == true)
             {
-                accountCreateOrUpdateParameters.Identity = new Identity(null, null, ResourceIdentityType.SystemAssigned);
+                accountCreateOrUpdateParameters.Identity = new AutomationModels.Identity(null, null, ResourceIdentityType.SystemAssigned);
             }
             if ((userIds != null) && userIds.Any())
             {
@@ -185,7 +186,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     IdType = ResourceIdentityType.SystemAssignedUserAssigned;
                 }
 
-                accountCreateOrUpdateParameters.Identity = new Identity(null, null, IdType, userIdDict);
+                accountCreateOrUpdateParameters.Identity = new AutomationModels.Identity(null, null, IdType, userIdDict);
             }
             if (enableAMK == true)
             {
@@ -253,7 +254,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (addSystemId == true)
             {
-                accountUpdateParameters.Identity = new Identity(null, null, ResourceIdentityType.SystemAssigned);
+                accountUpdateParameters.Identity = new AutomationModels.Identity(null, null, ResourceIdentityType.SystemAssigned);
             }
             if ((userIds != null) && userIds.Any())
             {
@@ -269,7 +270,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     IdType = ResourceIdentityType.SystemAssignedUserAssigned;
                 }
 
-                accountUpdateParameters.Identity = new Identity(null, null, IdType, userIdDict);
+                accountUpdateParameters.Identity = new AutomationModels.Identity(null, null, IdType, userIdDict);
             }
             if (enableAMK == true)
             {

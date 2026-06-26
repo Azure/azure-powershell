@@ -10,168 +10,483 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     /// <summary>The JSON object that contains the properties of the Routes to create.</summary>
     public partial class RouteProperties :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteProperties,
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IValidates
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal
     {
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStateProperties" />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStateProperties __afdStateProperties = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdStateProperties();
 
-        /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParameters"
-        /// />
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParameters __routeUpdatePropertiesParameters = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.RouteUpdatePropertiesParameters();
+        /// <summary>Backing field for <see cref="CacheConfiguration" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdRouteCacheConfiguration _cacheConfiguration;
 
         /// <summary>
         /// The caching configuration for this route. To disable caching, do not provide a cacheConfiguration object.
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdRouteCacheConfiguration CacheConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).CacheConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).CacheConfiguration = value ?? null /* model class */; }
-
-        /// <summary>compression settings.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICompressionSettings CacheConfigurationCompressionSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).CacheConfigurationCompressionSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).CacheConfigurationCompressionSetting = value ?? null /* model class */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdRouteCacheConfiguration CacheConfiguration { get => (this._cacheConfiguration = this._cacheConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdRouteCacheConfiguration()); set => this._cacheConfiguration = value; }
 
         /// <summary>query parameters to include or exclude (comma separated).</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public string CacheConfigurationQueryParameter { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).CacheConfigurationQueryParameter; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).CacheConfigurationQueryParameter = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
+        public string CacheConfigurationQueryParameter { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdRouteCacheConfigurationInternal)CacheConfiguration).QueryParameter; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdRouteCacheConfigurationInternal)CacheConfiguration).QueryParameter = value ?? null; }
 
         /// <summary>
         /// Defines how Frontdoor caches requests that include query strings. You can ignore any query strings when caching, ignore
         /// specific query strings, cache every request with a unique URL, or cache specific query strings.
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public string CacheConfigurationQueryStringCachingBehavior { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).CacheConfigurationQueryStringCachingBehavior; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).CacheConfigurationQueryStringCachingBehavior = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
+        public string CacheConfigurationQueryStringCachingBehavior { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdRouteCacheConfigurationInternal)CacheConfiguration).QueryStringCachingBehavior; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdRouteCacheConfigurationInternal)CacheConfiguration).QueryStringCachingBehavior = value ?? null; }
 
         /// <summary>
         /// List of content types on which compression applies. The value should be a valid MIME type.
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public System.Collections.Generic.List<string> CompressionSettingContentTypesToCompress { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).CompressionSettingContentTypesToCompress; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).CompressionSettingContentTypesToCompress = value ?? null /* arrayOf */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> CompressionSettingContentTypesToCompress { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdRouteCacheConfigurationInternal)CacheConfiguration).CompressionSettingContentTypesToCompress; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdRouteCacheConfigurationInternal)CacheConfiguration).CompressionSettingContentTypesToCompress = value ?? null /* arrayOf */; }
 
         /// <summary>
         /// Indicates whether content compression is enabled on AzureFrontDoor. Default value is false. If compression is enabled,
         /// content will be served as compressed if user requests for a compressed version. Content won't be compressed on AzureFrontDoor
         /// when requested content is smaller than 1 byte or larger than 1 MB.
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public bool? CompressionSettingIsCompressionEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).CompressionSettingIsCompressionEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).CompressionSettingIsCompressionEnabled = value ?? default(bool); }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
+        public bool? CompressionSettingIsCompressionEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdRouteCacheConfigurationInternal)CacheConfiguration).CompressionSettingIsCompressionEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdRouteCacheConfigurationInternal)CacheConfiguration).CompressionSettingIsCompressionEnabled = value ?? default(bool); }
+
+        /// <summary>Backing field for <see cref="CustomDomain" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference> _customDomain;
 
         /// <summary>Domains referenced by this endpoint.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference> CustomDomain { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).CustomDomain; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).CustomDomain = value ?? null /* arrayOf */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference> CustomDomain { get => this._customDomain; set => this._customDomain = value; }
 
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public string DeploymentStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).DeploymentStatus; }
+        /// <summary>Backing field for <see cref="DeploymentStatus" /> property.</summary>
+        private string _deploymentStatus;
+
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public string DeploymentStatus { get => this._deploymentStatus; }
+
+        /// <summary>Backing field for <see cref="EnabledState" /> property.</summary>
+        private string _enabledState;
 
         /// <summary>
         /// Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public string EnabledState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).EnabledState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).EnabledState = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public string EnabledState { get => this._enabledState; set => this._enabledState = value; }
+
+        /// <summary>Backing field for <see cref="EndpointName" /> property.</summary>
+        private string _endpointName;
 
         /// <summary>The name of the endpoint which holds the route.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public string EndpointName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).EndpointName; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public string EndpointName { get => this._endpointName; }
+
+        /// <summary>Backing field for <see cref="ForwardingProtocol" /> property.</summary>
+        private string _forwardingProtocol;
 
         /// <summary>Protocol this rule will use when forwarding traffic to backends.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public string ForwardingProtocol { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).ForwardingProtocol; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).ForwardingProtocol = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public string ForwardingProtocol { get => this._forwardingProtocol; set => this._forwardingProtocol = value; }
+
+        /// <summary>Backing field for <see cref="GrpcState" /> property.</summary>
+        private string _grpcState;
+
+        /// <summary>
+        /// Whether or not gRPC is enabled on this route. Permitted values are 'Enabled' or 'Disabled'
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public string GrpcState { get => this._grpcState; set => this._grpcState = value; }
+
+        /// <summary>Backing field for <see cref="HttpsRedirect" /> property.</summary>
+        private string _httpsRedirect;
 
         /// <summary>
         /// Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and
         /// it will be the first rule that gets executed.
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public string HttpsRedirect { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).HttpsRedirect; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).HttpsRedirect = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public string HttpsRedirect { get => this._httpsRedirect; set => this._httpsRedirect = value; }
+
+        /// <summary>Backing field for <see cref="LinkToDefaultDomain" /> property.</summary>
+        private string _linkToDefaultDomain;
 
         /// <summary>whether this route will be linked to the default endpoint domain.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public string LinkToDefaultDomain { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).LinkToDefaultDomain; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).LinkToDefaultDomain = value ?? null; }
-
-        /// <summary>Internal Acessors for DeploymentStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal.DeploymentStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).DeploymentStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).DeploymentStatus = value ?? null; }
-
-        /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).ProvisioningState = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public string LinkToDefaultDomain { get => this._linkToDefaultDomain; set => this._linkToDefaultDomain = value; }
 
         /// <summary>Internal Acessors for CacheConfiguration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdRouteCacheConfiguration Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal.CacheConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).CacheConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).CacheConfiguration = value ?? null /* model class */; }
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdRouteCacheConfiguration Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal.CacheConfiguration { get => (this._cacheConfiguration = this._cacheConfiguration ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdRouteCacheConfiguration()); set { {_cacheConfiguration = value;} } }
 
         /// <summary>Internal Acessors for CacheConfigurationCompressionSetting</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICompressionSettings Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal.CacheConfigurationCompressionSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).CacheConfigurationCompressionSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).CacheConfigurationCompressionSetting = value ?? null /* model class */; }
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICompressionSettings Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal.CacheConfigurationCompressionSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdRouteCacheConfigurationInternal)CacheConfiguration).CompressionSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdRouteCacheConfigurationInternal)CacheConfiguration).CompressionSetting = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for DeploymentStatus</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal.DeploymentStatus { get => this._deploymentStatus; set { {_deploymentStatus = value;} } }
 
         /// <summary>Internal Acessors for EndpointName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal.EndpointName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).EndpointName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).EndpointName = value ?? null; }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal.EndpointName { get => this._endpointName; set { {_endpointName = value;} } }
 
         /// <summary>Internal Acessors for OriginGroup</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal.OriginGroup { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).OriginGroup; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).OriginGroup = value ?? null /* model class */; }
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal.OriginGroup { get => (this._originGroup = this._originGroup ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference()); set { {_originGroup = value;} } }
+
+        /// <summary>Internal Acessors for ProvisioningState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
+
+        /// <summary>Backing field for <see cref="OriginGroup" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference _originGroup;
 
         /// <summary>A reference to the origin group.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference OriginGroup { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).OriginGroup; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).OriginGroup = value ?? null /* model class */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference OriginGroup { get => (this._originGroup = this._originGroup ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference()); set => this._originGroup = value; }
 
         /// <summary>Resource ID.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public string OriginGroupId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).OriginGroupId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).OriginGroupId = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
+        public string OriginGroupId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReferenceInternal)OriginGroup).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReferenceInternal)OriginGroup).Id = value ?? null; }
+
+        /// <summary>Backing field for <see cref="OriginPath" /> property.</summary>
+        private string _originPath;
 
         /// <summary>
         /// A directory path on the origin that AzureFrontDoor can use to retrieve content from, e.g. contoso.cloudapp.net/originpath.
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public string OriginPath { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).OriginPath; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).OriginPath = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public string OriginPath { get => this._originPath; set => this._originPath = value; }
+
+        /// <summary>Backing field for <see cref="PatternsToMatch" /> property.</summary>
+        private System.Collections.Generic.List<string> _patternsToMatch;
 
         /// <summary>The route patterns of the rule.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public System.Collections.Generic.List<string> PatternsToMatch { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).PatternsToMatch; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).PatternsToMatch = value ?? null /* arrayOf */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> PatternsToMatch { get => this._patternsToMatch; set => this._patternsToMatch = value; }
+
+        /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
+        private string _provisioningState;
 
         /// <summary>Provisioning status</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).ProvisioningState; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public string ProvisioningState { get => this._provisioningState; }
+
+        /// <summary>Backing field for <see cref="RuleSet" /> property.</summary>
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference> _ruleSet;
 
         /// <summary>rule sets referenced by this endpoint.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference> RuleSet { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).RuleSet; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).RuleSet = value ?? null /* arrayOf */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference> RuleSet { get => this._ruleSet; set => this._ruleSet = value; }
+
+        /// <summary>Backing field for <see cref="SupportedProtocol" /> property.</summary>
+        private System.Collections.Generic.List<string> _supportedProtocol;
 
         /// <summary>List of supported protocols for this route.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
-        public System.Collections.Generic.List<string> SupportedProtocol { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).SupportedProtocol; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)__routeUpdatePropertiesParameters).SupportedProtocol = value ?? null /* arrayOf */; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> SupportedProtocol { get => this._supportedProtocol; set => this._supportedProtocol = value; }
 
         /// <summary>Creates an new <see cref="RouteProperties" /> instance.</summary>
         public RouteProperties()
         {
 
         }
-
-        /// <summary>Validates that this object meets the validation criteria.</summary>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive validation
-        /// events.</param>
-        /// <returns>
-        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
-        {
-            await eventListener.AssertNotNull(nameof(__routeUpdatePropertiesParameters), __routeUpdatePropertiesParameters);
-            await eventListener.AssertObjectIsValid(nameof(__routeUpdatePropertiesParameters), __routeUpdatePropertiesParameters);
-            await eventListener.AssertNotNull(nameof(__afdStateProperties), __afdStateProperties);
-            await eventListener.AssertObjectIsValid(nameof(__afdStateProperties), __afdStateProperties);
-        }
     }
     /// The JSON object that contains the properties of the Routes to create.
     public partial interface IRouteProperties :
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParameters,
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStateProperties
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable
     {
+        /// <summary>query parameters to include or exclude (comma separated).</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"query parameters to include or exclude (comma separated).",
+        SerializedName = @"queryParameters",
+        PossibleTypes = new [] { typeof(string) })]
+        string CacheConfigurationQueryParameter { get; set; }
+        /// <summary>
+        /// Defines how Frontdoor caches requests that include query strings. You can ignore any query strings when caching, ignore
+        /// specific query strings, cache every request with a unique URL, or cache specific query strings.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Defines how Frontdoor caches requests that include query strings. You can ignore any query strings when caching, ignore specific query strings, cache every request with a unique URL, or cache specific query strings.",
+        SerializedName = @"queryStringCachingBehavior",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("IgnoreQueryString", "UseQueryString", "IgnoreSpecifiedQueryStrings", "IncludeSpecifiedQueryStrings")]
+        string CacheConfigurationQueryStringCachingBehavior { get; set; }
+        /// <summary>
+        /// List of content types on which compression applies. The value should be a valid MIME type.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of content types on which compression applies. The value should be a valid MIME type.",
+        SerializedName = @"contentTypesToCompress",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> CompressionSettingContentTypesToCompress { get; set; }
+        /// <summary>
+        /// Indicates whether content compression is enabled on AzureFrontDoor. Default value is false. If compression is enabled,
+        /// content will be served as compressed if user requests for a compressed version. Content won't be compressed on AzureFrontDoor
+        /// when requested content is smaller than 1 byte or larger than 1 MB.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates whether content compression is enabled on AzureFrontDoor. Default value is false. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on AzureFrontDoor when requested content is smaller than 1 byte or larger than 1 MB.",
+        SerializedName = @"isCompressionEnabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? CompressionSettingIsCompressionEnabled { get; set; }
+        /// <summary>Domains referenced by this endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Domains referenced by this endpoint.",
+        SerializedName = @"customDomains",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference> CustomDomain { get; set; }
+
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"",
+        SerializedName = @"deploymentStatus",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("NotStarted", "InProgress", "Succeeded", "Failed")]
+        string DeploymentStatus { get;  }
+        /// <summary>
+        /// Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'",
+        SerializedName = @"enabledState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string EnabledState { get; set; }
+        /// <summary>The name of the endpoint which holds the route.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The name of the endpoint which holds the route.",
+        SerializedName = @"endpointName",
+        PossibleTypes = new [] { typeof(string) })]
+        string EndpointName { get;  }
+        /// <summary>Protocol this rule will use when forwarding traffic to backends.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Protocol this rule will use when forwarding traffic to backends.",
+        SerializedName = @"forwardingProtocol",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("HttpOnly", "HttpsOnly", "MatchRequest")]
+        string ForwardingProtocol { get; set; }
+        /// <summary>
+        /// Whether or not gRPC is enabled on this route. Permitted values are 'Enabled' or 'Disabled'
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Whether or not gRPC is enabled on this route. Permitted values are 'Enabled' or 'Disabled'",
+        SerializedName = @"grpcState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string GrpcState { get; set; }
+        /// <summary>
+        /// Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and
+        /// it will be the first rule that gets executed.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed.",
+        SerializedName = @"httpsRedirect",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string HttpsRedirect { get; set; }
+        /// <summary>whether this route will be linked to the default endpoint domain.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"whether this route will be linked to the default endpoint domain.",
+        SerializedName = @"linkToDefaultDomain",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string LinkToDefaultDomain { get; set; }
+        /// <summary>Resource ID.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Resource ID.",
+        SerializedName = @"id",
+        PossibleTypes = new [] { typeof(string) })]
+        string OriginGroupId { get; set; }
+        /// <summary>
+        /// A directory path on the origin that AzureFrontDoor can use to retrieve content from, e.g. contoso.cloudapp.net/originpath.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A directory path on the origin that AzureFrontDoor can use to retrieve content from, e.g. contoso.cloudapp.net/originpath.",
+        SerializedName = @"originPath",
+        PossibleTypes = new [] { typeof(string) })]
+        string OriginPath { get; set; }
+        /// <summary>The route patterns of the rule.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The route patterns of the rule.",
+        SerializedName = @"patternsToMatch",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> PatternsToMatch { get; set; }
+        /// <summary>Provisioning status</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"Provisioning status",
+        SerializedName = @"provisioningState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Updating", "Deleting", "Creating")]
+        string ProvisioningState { get;  }
+        /// <summary>rule sets referenced by this endpoint.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"rule sets referenced by this endpoint.",
+        SerializedName = @"ruleSets",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference> RuleSet { get; set; }
+        /// <summary>List of supported protocols for this route.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of supported protocols for this route.",
+        SerializedName = @"supportedProtocols",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Http", "Https")]
+        System.Collections.Generic.List<string> SupportedProtocol { get; set; }
 
     }
     /// The JSON object that contains the properties of the Routes to create.
-    internal partial interface IRoutePropertiesInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal
+    internal partial interface IRoutePropertiesInternal
+
     {
+        /// <summary>
+        /// The caching configuration for this route. To disable caching, do not provide a cacheConfiguration object.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdRouteCacheConfiguration CacheConfiguration { get; set; }
+        /// <summary>compression settings.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICompressionSettings CacheConfigurationCompressionSetting { get; set; }
+        /// <summary>query parameters to include or exclude (comma separated).</summary>
+        string CacheConfigurationQueryParameter { get; set; }
+        /// <summary>
+        /// Defines how Frontdoor caches requests that include query strings. You can ignore any query strings when caching, ignore
+        /// specific query strings, cache every request with a unique URL, or cache specific query strings.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("IgnoreQueryString", "UseQueryString", "IgnoreSpecifiedQueryStrings", "IncludeSpecifiedQueryStrings")]
+        string CacheConfigurationQueryStringCachingBehavior { get; set; }
+        /// <summary>
+        /// List of content types on which compression applies. The value should be a valid MIME type.
+        /// </summary>
+        System.Collections.Generic.List<string> CompressionSettingContentTypesToCompress { get; set; }
+        /// <summary>
+        /// Indicates whether content compression is enabled on AzureFrontDoor. Default value is false. If compression is enabled,
+        /// content will be served as compressed if user requests for a compressed version. Content won't be compressed on AzureFrontDoor
+        /// when requested content is smaller than 1 byte or larger than 1 MB.
+        /// </summary>
+        bool? CompressionSettingIsCompressionEnabled { get; set; }
+        /// <summary>Domains referenced by this endpoint.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference> CustomDomain { get; set; }
+
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("NotStarted", "InProgress", "Succeeded", "Failed")]
+        string DeploymentStatus { get; set; }
+        /// <summary>
+        /// Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string EnabledState { get; set; }
+        /// <summary>The name of the endpoint which holds the route.</summary>
+        string EndpointName { get; set; }
+        /// <summary>Protocol this rule will use when forwarding traffic to backends.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("HttpOnly", "HttpsOnly", "MatchRequest")]
+        string ForwardingProtocol { get; set; }
+        /// <summary>
+        /// Whether or not gRPC is enabled on this route. Permitted values are 'Enabled' or 'Disabled'
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string GrpcState { get; set; }
+        /// <summary>
+        /// Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and
+        /// it will be the first rule that gets executed.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string HttpsRedirect { get; set; }
+        /// <summary>whether this route will be linked to the default endpoint domain.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        string LinkToDefaultDomain { get; set; }
+        /// <summary>A reference to the origin group.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference OriginGroup { get; set; }
+        /// <summary>Resource ID.</summary>
+        string OriginGroupId { get; set; }
+        /// <summary>
+        /// A directory path on the origin that AzureFrontDoor can use to retrieve content from, e.g. contoso.cloudapp.net/originpath.
+        /// </summary>
+        string OriginPath { get; set; }
+        /// <summary>The route patterns of the rule.</summary>
+        System.Collections.Generic.List<string> PatternsToMatch { get; set; }
+        /// <summary>Provisioning status</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Updating", "Deleting", "Creating")]
+        string ProvisioningState { get; set; }
+        /// <summary>rule sets referenced by this endpoint.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference> RuleSet { get; set; }
+        /// <summary>List of supported protocols for this route.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Http", "Https")]
+        System.Collections.Generic.List<string> SupportedProtocol { get; set; }
 
     }
 }

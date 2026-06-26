@@ -24,7 +24,9 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Factories
     {
         public virtual TokenCredential CreateManagedIdentityCredential(string clientId)
         {
-            return new ManagedIdentityCredential(clientId);
+            return string.IsNullOrEmpty(clientId)
+                ? new ManagedIdentityCredential(ManagedIdentityId.SystemAssigned)
+                : new ManagedIdentityCredential(ManagedIdentityId.FromUserAssignedClientId(clientId));
         }
 
         public virtual TokenCredential CreateClientSecretCredential(string tenantId, string clientId, SecureString secret, ClientSecretCredentialOptions options)

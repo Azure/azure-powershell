@@ -1027,5 +1027,9 @@
   {
     "module": "PostgreSqlFlexibleServer",
     "alias": "PostgreSqlFlexibleServer"
+  },
+  {
+    "module": "Napster",
+    "alias": "Napster"
   }
 ]
