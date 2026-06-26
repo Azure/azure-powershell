@@ -131,6 +131,14 @@ namespace Microsoft.Azure.Commands.Maintenance
             }
         }
 
+        public IScheduledEventsOperations ScheduledEventsClient
+        {
+            get
+            {
+                return MaintenanceClient.MaintenanceManagementClient.ScheduledEvents;
+            }
+        }
+
         public static string FormatObject(Object obj)
         {
             var objType = obj.GetType();
