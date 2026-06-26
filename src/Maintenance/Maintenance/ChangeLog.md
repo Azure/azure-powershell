@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 1.7.0
+* Added support to acknowledge ScheduledEvents 
+
 ## Version 1.6.0
 * Added ChangeSafety Support
 

@@ -18,6 +18,6 @@ namespace Microsoft.Azure.Commands.Maintenance.Models
 {
     public partial class PSScheduledEventsApproveResponse
     {
-        public List<string> Value { get; set; }
+        public string Value { get; set; }
     }
 }
