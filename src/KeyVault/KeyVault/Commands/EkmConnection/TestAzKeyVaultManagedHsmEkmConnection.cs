@@ -19,17 +19,17 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.KeyVault.Commands.EkmConnection
 {
     /// <summary>
-    /// Gets the External Key Manager (EKM) connection configured on a Managed HSM. (Preview)
+    /// Checks connectivity and authentication between a Managed HSM and its EKM proxy. (Preview)
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultEkmConnection",
+    [Cmdlet(VerbsDiagnostic.Test, ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultManagedHsmEkmConnection",
         DefaultParameterSetName = ByHsmNameParameterSet)]
-    [OutputType(typeof(PSKeyVaultEkmConnection))]
-    public class GetAzKeyVaultEkmConnection : KeyVaultEkmConnectionCmdletBase
+    [OutputType(typeof(PSKeyVaultEkmProxyInfo))]
+    public class TestAzKeyVaultManagedHsmEkmConnection : KeyVaultEkmConnectionCmdletBase
     {
         public override void ExecuteCmdlet()
         {
             NormalizeHsmIdentifier();
-            WriteObject(Track2DataClient.GetManagedHsmEkmConnection(HsmName));
+            WriteObject(Track2DataClient.CheckManagedHsmEkmConnection(HsmName));
         }
     }
 }

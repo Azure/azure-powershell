@@ -31,33 +31,33 @@ function Test-EkmConnectionLifecycle {
 
 	try {
 		# Create the EKM connection.
-		$created = New-AzKeyVaultEkmConnection -HsmName $hsmName -HostName $s.EkmHost `
+		$created = New-AzKeyVaultManagedHsmEkmConnection -HsmName $hsmName -HostName $s.EkmHost `
 			-ServerCaCertificate $s.ServerCaCertPath -PathPrefix "/api/v1"
-		Assert-NotNull $created "New-AzKeyVaultEkmConnection returned null"
+		Assert-NotNull $created "New-AzKeyVaultManagedHsmEkmConnection returned null"
 		Assert-AreEqual $hsmName $created.HsmName "HSM name mismatch on create"
 		Assert-NotNull $created.Host "created connection host is null"
 
 		# Read it back.
-		$got = Get-AzKeyVaultEkmConnection -HsmName $hsmName
-		Assert-NotNull $got "Get-AzKeyVaultEkmConnection returned null"
+		$got = Get-AzKeyVaultManagedHsmEkmConnection -HsmName $hsmName
+		Assert-NotNull $got "Get-AzKeyVaultManagedHsmEkmConnection returned null"
 		Assert-AreEqual $created.Host $got.Host "round-tripped host mismatch"
 		Assert-AreEqual "/api/v1" $got.PathPrefix "round-tripped path prefix mismatch"
 
 		# Probe connectivity / authentication.
-		$probe = Test-AzKeyVaultEkmConnection -HsmName $hsmName
-		Assert-NotNull $probe "Test-AzKeyVaultEkmConnection returned null"
+		$probe = Test-AzKeyVaultManagedHsmEkmConnection -HsmName $hsmName
+		Assert-NotNull $probe "Test-AzKeyVaultManagedHsmEkmConnection returned null"
 
 		# Read the EKM proxy client certificate.
-		$cert = Get-AzKeyVaultEkmConnectionCertificate -HsmName $hsmName
-		Assert-NotNull $cert "Get-AzKeyVaultEkmConnectionCertificate returned null"
+		$cert = Get-AzKeyVaultManagedHsmEkmConnectionCertificate -HsmName $hsmName
+		Assert-NotNull $cert "Get-AzKeyVaultManagedHsmEkmConnectionCertificate returned null"
 
 		# Update the path prefix.
-		$updated = Update-AzKeyVaultEkmConnection -HsmName $hsmName -PathPrefix "/api/v2"
+		$updated = Update-AzKeyVaultManagedHsmEkmConnection -HsmName $hsmName -PathPrefix "/api/v2"
 		Assert-AreEqual "/api/v2" $updated.PathPrefix "updated path prefix mismatch"
 	}
 	finally {
 		# Remove the connection.
-		Remove-AzKeyVaultEkmConnection -HsmName $hsmName -Force -ErrorAction SilentlyContinue
+		Remove-AzKeyVaultManagedHsmEkmConnection -HsmName $hsmName -Force -ErrorAction SilentlyContinue
 	}
 }
 

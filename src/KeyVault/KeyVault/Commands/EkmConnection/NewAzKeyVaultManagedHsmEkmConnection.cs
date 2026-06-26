@@ -12,29 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.KeyVault.Helpers;
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands.EkmConnection
 {
     /// <summary>
-    /// Updates the External Key Manager (EKM) connection on a Managed HSM. (Preview)
+    /// Creates the External Key Manager (EKM) connection on a Managed HSM. (Preview)
     /// </summary>
-    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultEkmConnection",
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultManagedHsmEkmConnection",
         SupportsShouldProcess = true, DefaultParameterSetName = ByHsmNameParameterSet)]
     [OutputType(typeof(PSKeyVaultEkmConnection))]
-    public class UpdateAzKeyVaultEkmConnection : KeyVaultEkmConnectionCmdletBase
+    public class NewAzKeyVaultManagedHsmEkmConnection : KeyVaultEkmConnectionCmdletBase
     {
-        [Parameter(Mandatory = false,
+        [Parameter(Mandatory = true,
             HelpMessage = "EKM proxy host (FQDN or FQDN:port). If the port is omitted, 443 is assumed.")]
         [Alias("Host")]
+        [ValidateNotNullOrEmpty]
         public string HostName { get; set; }
 
-        [Parameter(Mandatory = false,
+        [Parameter(Mandatory = true,
             HelpMessage = "Path(s) to one or more server CA certificate(s) in PEM or DER format.")]
+        [ValidateNotNullOrEmpty]
         public string[] ServerCaCertificate { get; set; }
 
         [Parameter(Mandatory = false,
@@ -43,32 +45,27 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.EkmConnection
 
         [Parameter(Mandatory = false,
             HelpMessage = "Optional expected Common Name (CN) for the EKM proxy server certificate.")]
+        [Alias("ServerCn")]
         public string ServerSubjectCommonName { get; set; }
 
         public override void ExecuteCmdlet()
         {
             NormalizeHsmIdentifier();
 
-            string normalizedHost = this.IsParameterBound(c => c.HostName)
-                ? EkmConnectionHelper.NormalizeHost(HostName)
-                : null;
-            if (this.IsParameterBound(c => c.PathPrefix))
+            string normalizedHost = EkmConnectionHelper.NormalizeHost(HostName);
+            EkmConnectionHelper.ValidatePathPrefix(PathPrefix);
+            var certificates = EkmConnectionHelper.LoadCertificatesAsDer(ServerCaCertificate);
+            if (certificates.Count == 0)
             {
-                EkmConnectionHelper.ValidatePathPrefix(PathPrefix);
+                throw new AzPSArgumentException(
+                    "Please specify at least one -ServerCaCertificate for EKM connection creation.",
+                    nameof(ServerCaCertificate));
             }
 
-            var certificates = this.IsParameterBound(c => c.ServerCaCertificate)
-                ? EkmConnectionHelper.LoadCertificatesAsDer(ServerCaCertificate)
-                : null;
-
-            if (ShouldProcess(HsmName, "Update External Key Manager (EKM) connection"))
+            if (ShouldProcess(HsmName, "Create External Key Manager (EKM) connection"))
             {
-                var connection = Track2DataClient.UpdateManagedHsmEkmConnection(
-                    HsmName,
-                    normalizedHost,
-                    this.IsParameterBound(c => c.PathPrefix) ? PathPrefix : null,
-                    certificates,
-                    this.IsParameterBound(c => c.ServerSubjectCommonName) ? ServerSubjectCommonName : null);
+                var connection = Track2DataClient.CreateManagedHsmEkmConnection(
+                    HsmName, normalizedHost, PathPrefix, certificates, ServerSubjectCommonName);
                 WriteObject(connection);
             }
         }

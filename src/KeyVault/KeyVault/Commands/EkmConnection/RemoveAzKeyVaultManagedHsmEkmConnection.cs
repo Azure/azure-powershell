@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands.EkmConnection
     /// <summary>
     /// Deletes the External Key Manager (EKM) connection from a Managed HSM. (Preview)
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultEkmConnection",
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultManagedHsmEkmConnection",
         SupportsShouldProcess = true, DefaultParameterSetName = ByHsmNameParameterSet)]
     [OutputType(typeof(PSKeyVaultEkmConnection))]
-    public class RemoveAzKeyVaultEkmConnection : KeyVaultEkmConnectionCmdletBase
+    public class RemoveAzKeyVaultManagedHsmEkmConnection : KeyVaultEkmConnectionCmdletBase
     {
         [Parameter(Mandatory = false,
             HelpMessage = "Cmdlet does not return an object by default. If this switch is specified, the deleted EKM connection is returned.")]

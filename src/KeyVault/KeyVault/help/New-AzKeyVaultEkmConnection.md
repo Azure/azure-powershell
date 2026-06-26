@@ -180,7 +180,7 @@ Optional expected Common Name (CN) for the EKM proxy server certificate.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: ServerCn
 
 Required: False
 Position: Named
