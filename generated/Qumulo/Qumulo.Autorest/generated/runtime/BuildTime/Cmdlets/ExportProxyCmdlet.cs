@@ -70,9 +70,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.PowerShell
                 var variantGroups = profileGroups.SelectMany(pg => pg.Variants
                     .GroupBy(v => new { v.CmdletName, v.IsInternal })
                     .Select(vg => new VariantGroup(ModuleName, vg.Key.CmdletName, vg.Select(v => v).ToArray(),
-                        Path.Combine(vg.Key.IsInternal ? InternalFolder : ExportsFolder, pg.ProfileFolder), pg.ProfileName, isInternal: vg.Key.IsInternal)))
+                    Path.Combine(vg.Key.IsInternal ? InternalFolder : ExportsFolder, pg.ProfileFolder), pg.ProfileName, isInternal: vg.Key.IsInternal)))
                     .ToArray();
-
                 var license = new StringBuilder();
                 license.Append(@"
 # ----------------------------------------------------------------------------------
@@ -90,7 +89,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.PowerShell
 # is regenerated.
 # ----------------------------------------------------------------------------------
 ");
-                HashSet<string> LicenseSet = new HashSet<string>();
+                HashSet<string> ProxyDefinitionSet = new HashSet<string>();
                 foreach (var variantGroup in variantGroups)
                 {
                     var parameterGroups = variantGroup.ParameterGroups.ToList();
@@ -114,6 +113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.PowerShell
 
                     sb.Append("param(");
                     sb.Append($"{(parameterGroups.Any() ? Environment.NewLine : String.Empty)}");
+
                     foreach (var parameterGroup in parameterGroups)
                     {
                         var parameters = parameterGroup.HasAllVariants ? parameterGroup.Parameters.Take(1) : parameterGroup.Parameters;
@@ -148,13 +148,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.PowerShell
                     Directory.CreateDirectory(variantGroup.OutputFolder);
                     File.WriteAllText(variantGroup.FilePath, license.ToString());
                     File.AppendAllText(variantGroup.FilePath, sb.ToString());
-                    if (!LicenseSet.Contains(Path.Combine(variantGroup.OutputFolder, "ProxyCmdletDefinitions.ps1")))
+                    var proxyDefinitionsPath = Path.Combine(variantGroup.OutputFolder, "ProxyCmdletDefinitions.ps1");
+                    if (!ProxyDefinitionSet.Contains(proxyDefinitionsPath))
                     {
-                        // only add license in the header
-                        File.AppendAllText(Path.Combine(variantGroup.OutputFolder, "ProxyCmdletDefinitions.ps1"), license.ToString());
-                        LicenseSet.Add(Path.Combine(variantGroup.OutputFolder, "ProxyCmdletDefinitions.ps1"));
+                        File.WriteAllText(proxyDefinitionsPath, license.ToString());
+                        ProxyDefinitionSet.Add(proxyDefinitionsPath);
                     }
-                    File.AppendAllText(Path.Combine(variantGroup.OutputFolder, "ProxyCmdletDefinitions.ps1"), sb.ToString());
+                    File.AppendAllText(proxyDefinitionsPath, sb.ToString());
                 }
 
                 if (!ExcludeDocs)
