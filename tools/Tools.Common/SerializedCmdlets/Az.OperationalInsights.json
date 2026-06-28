@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.OperationalInsights",
-  "ModuleVersion": "3.4.0",
+  "ModuleVersion": "3.4.1",
   "Cmdlets": [
     {
       "VerbName": "Disable",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -83,7 +83,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -188,7 +188,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
                     "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -499,7 +499,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -566,7 +566,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -671,7 +671,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
                     "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -982,7 +982,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -1049,7 +1049,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -1154,7 +1154,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
                     "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -1465,7 +1465,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -1532,7 +1532,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -1637,7 +1637,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
                     "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -1948,7 +1948,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -2015,7 +2015,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -2120,7 +2120,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
                     "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -2431,7 +2431,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -2498,7 +2498,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -2603,7 +2603,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
                     "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -2914,7 +2914,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -2981,7 +2981,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -3086,7 +3086,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
                     "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -3397,7 +3397,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -3464,7 +3464,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -3569,7 +3569,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
                     "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -3880,7 +3880,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSAvailableServiceTier",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSAvailableServiceTier, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSAvailableServiceTier, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Enabled": "System.Nullable`1[System.Boolean]",
               "MinimumRetention": "System.Nullable`1[System.Int64]",
@@ -4128,7 +4128,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CapacityReservationProperties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCapacityReservationProperties",
               "Sku": "Microsoft.Azure.Commands.OperationalInsights.Models.PSClusterSku",
@@ -4565,7 +4565,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "TableNames": "System.Collections.Generic.List`1[System.String]",
               "Enable": "System.Nullable`1[System.Boolean]",
@@ -4988,7 +4988,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -5055,7 +5055,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -5170,7 +5170,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
                     "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -5271,7 +5271,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
                     "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -5636,7 +5636,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -5831,7 +5831,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSIntelligencePack",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSIntelligencePack, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSIntelligencePack, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Enabled": "System.Boolean",
               "DisplayName": "System.String",
@@ -6035,7 +6035,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSLinkedService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSLinkedService, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSLinkedService, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Id": "System.String",
@@ -6298,7 +6298,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSLinkedStorageAccountsResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSLinkedStorageAccountsResource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSLinkedStorageAccountsResource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "StorageAccountIds": "System.Collections.Generic.IList`1[System.String]",
               "DataSourceType": "System.Nullable`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourceType]",
@@ -6566,7 +6566,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSOperation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSOperation, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSOperation, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Name": "System.String",
               "Provider": "System.String",
@@ -6715,7 +6715,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSOperationStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSOperationStatus, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSOperationStatus, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Error": "Microsoft.Azure.Management.OperationalInsights.Models.ErrorResponse",
               "Id": "System.String",
@@ -6962,7 +6962,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspacePurgeStatusResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspacePurgeStatusResponse, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspacePurgeStatusResponse, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Status": "System.String"
             },
@@ -7228,7 +7228,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchListSavedSearchResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchListSavedSearchResponse, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchListSavedSearchResponse, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Value": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue]"
             },
@@ -7279,7 +7279,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchProperties",
               "Id": "System.String",
@@ -7509,7 +7509,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchGetSchemaResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchGetSchemaResponse, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchGetSchemaResponse, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Metadata": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchMetadata",
               "Value": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSSchemaValue]"
@@ -7712,7 +7712,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tables": "System.Collections.Generic.List`1[System.String]",
               "Containers": "System.Collections.Generic.List`1[System.String]",
@@ -7783,7 +7783,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -7879,7 +7879,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
                     "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -8145,7 +8145,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSTable",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSTable, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSTable, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "RestoredLogs": "Microsoft.Azure.Management.OperationalInsights.Models.RestoredLogs",
               "Schema": "Microsoft.Azure.Management.OperationalInsights.Models.Schema",
@@ -8493,7 +8493,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -8712,7 +8712,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSManagementGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSManagementGroup, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IsGateway": "System.Boolean",
               "ServerCount": "System.Int32",
@@ -8918,7 +8918,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceKeys, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceKeys, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrimarySharedKey": "System.String",
               "SecondarySharedKey": "System.String"
@@ -9118,7 +9118,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSUsageMetric",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSUsageMetric, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSUsageMetric, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CurrentValue": "System.Double",
               "Limit": "System.Double",
@@ -9641,7 +9641,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSQueryResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSQueryResponse, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSQueryResponse, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Error": "Microsoft.Azure.OperationalInsights.Models.QueryResponseError",
               "Statistics": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
@@ -9693,7 +9693,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -10034,7 +10034,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
                     "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -10432,7 +10432,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -10499,7 +10499,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -10649,7 +10649,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
                     "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -10825,7 +10825,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
                     "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -11380,7 +11380,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -11447,7 +11447,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -11588,7 +11588,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
                     "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -12082,7 +12082,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CapacityReservationProperties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCapacityReservationProperties",
               "Sku": "Microsoft.Azure.Commands.OperationalInsights.Models.PSClusterSku",
@@ -12675,7 +12675,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchProperties",
               "Id": "System.String",
@@ -13073,7 +13073,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -13140,7 +13140,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -13272,7 +13272,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
                     "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -13718,7 +13718,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "TableNames": "System.Collections.Generic.List`1[System.String]",
               "Enable": "System.Nullable`1[System.Boolean]",
@@ -14107,7 +14107,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSLinkedStorageAccountsResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSLinkedStorageAccountsResource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSLinkedStorageAccountsResource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "StorageAccountIds": "System.Collections.Generic.IList`1[System.String]",
               "DataSourceType": "System.Nullable`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourceType]",
@@ -14473,7 +14473,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -14540,7 +14540,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -14700,7 +14700,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
                     "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -15284,7 +15284,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -15351,7 +15351,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -15555,7 +15555,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
                     "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -16361,7 +16361,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspacePurgeResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspacePurgeResponse, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspacePurgeResponse, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "OperationId": "System.String"
             },
@@ -16475,7 +16475,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspacePurgeBody",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspacePurgeBody, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspacePurgeBody, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Filters": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.OperationalInsights.Models.WorkspacePurge.PSWorkspacePurgeBodyFilters]",
               "Table": "System.String"
@@ -16782,7 +16782,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspacePurgeBody",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspacePurgeBody, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspacePurgeBody, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Filters": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.OperationalInsights.Models.WorkspacePurge.PSWorkspacePurgeBodyFilters]",
                     "Table": "System.String"
@@ -16996,7 +16996,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSTable",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSTable, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSTable, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "RestoredLogs": "Microsoft.Azure.Management.OperationalInsights.Models.RestoredLogs",
               "Schema": "Microsoft.Azure.Management.OperationalInsights.Models.Schema",
@@ -17578,7 +17578,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchProperties",
               "Id": "System.String",
@@ -18054,7 +18054,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSTable",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSTable, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSTable, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "RestoredLogs": "Microsoft.Azure.Management.OperationalInsights.Models.RestoredLogs",
               "Schema": "Microsoft.Azure.Management.OperationalInsights.Models.Schema",
@@ -18780,7 +18780,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tables": "System.Collections.Generic.List`1[System.String]",
               "Containers": "System.Collections.Generic.List`1[System.String]",
@@ -18851,7 +18851,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -19030,7 +19030,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
                     "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -19707,7 +19707,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSTable",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSTable, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSTable, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "RestoredLogs": "Microsoft.Azure.Management.OperationalInsights.Models.RestoredLogs",
               "Schema": "Microsoft.Azure.Management.OperationalInsights.Models.Schema",
@@ -20397,7 +20397,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -20464,7 +20464,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -20623,7 +20623,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
                     "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -21204,7 +21204,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -21271,7 +21271,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -21439,7 +21439,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
                     "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -22065,7 +22065,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -22651,7 +22651,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CapacityReservationProperties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCapacityReservationProperties",
               "Sku": "Microsoft.Azure.Commands.OperationalInsights.Models.PSClusterSku",
@@ -22878,7 +22878,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CapacityReservationProperties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCapacityReservationProperties",
                     "Sku": "Microsoft.Azure.Commands.OperationalInsights.Models.PSClusterSku",
@@ -23257,7 +23257,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "TableNames": "System.Collections.Generic.List`1[System.String]",
               "Enable": "System.Nullable`1[System.Boolean]",
@@ -23468,7 +23468,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "TableNames": "System.Collections.Generic.List`1[System.String]",
                     "Enable": "System.Nullable`1[System.Boolean]",
@@ -23768,7 +23768,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -23891,7 +23891,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
                     "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -25052,7 +25052,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -25175,7 +25175,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
                     "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -26078,7 +26078,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -26393,7 +26393,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -26460,7 +26460,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
               "Name": "System.String",
@@ -26533,7 +26533,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
                     "Name": "System.String",
@@ -26642,7 +26642,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSIntelligencePack",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSIntelligencePack, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSIntelligencePack, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Enabled": "System.Boolean",
               "DisplayName": "System.String",
@@ -26939,7 +26939,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSLinkedService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSLinkedService, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSLinkedService, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Id": "System.String",
@@ -27354,7 +27354,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSLinkedStorageAccountsResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSLinkedStorageAccountsResource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSLinkedStorageAccountsResource, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "StorageAccountIds": "System.Collections.Generic.IList`1[System.String]",
               "DataSourceType": "System.Nullable`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourceType]",
@@ -27720,7 +27720,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchProperties",
               "Id": "System.String",
@@ -28196,7 +28196,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tables": "System.Collections.Generic.List`1[System.String]",
               "Containers": "System.Collections.Generic.List`1[System.String]",
@@ -28267,7 +28267,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -28437,7 +28437,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
                     "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -29069,7 +29069,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -29146,7 +29146,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -29366,7 +29366,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
                     "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -30202,7 +30202,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CapacityReservationProperties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCapacityReservationProperties",
               "Sku": "Microsoft.Azure.Commands.OperationalInsights.Models.PSClusterSku",
@@ -30308,7 +30308,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CapacityReservationProperties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCapacityReservationProperties",
               "Sku": "Microsoft.Azure.Commands.OperationalInsights.Models.PSClusterSku",
@@ -30534,7 +30534,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CapacityReservationProperties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCapacityReservationProperties",
                     "Sku": "Microsoft.Azure.Commands.OperationalInsights.Models.PSClusterSku",
@@ -31301,7 +31301,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CapacityReservationProperties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCapacityReservationProperties",
                     "Sku": "Microsoft.Azure.Commands.OperationalInsights.Models.PSClusterSku",
@@ -31567,7 +31567,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "TableNames": "System.Collections.Generic.List`1[System.String]",
               "Enable": "System.Nullable`1[System.Boolean]",
@@ -31674,7 +31674,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "TableNames": "System.Collections.Generic.List`1[System.String]",
               "Enable": "System.Nullable`1[System.Boolean]",
@@ -32074,7 +32074,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
                   "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "TableNames": "System.Collections.Generic.List`1[System.String]",
                     "Enable": "System.Nullable`1[System.Boolean]",
@@ -32267,7 +32267,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "WorkspaceFeatures": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
               "WorkspaceCapping": "Microsoft.Azure.Management.OperationalInsights.Models.WorkspaceCapping",
@@ -32916,7 +32916,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
             "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceKeys, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceKeys, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrimarySharedKey": "System.String",
               "SecondarySharedKey": "System.String"
@@ -33194,7 +33194,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourcePropertiesBase, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Kind": "System.String"
       },
@@ -33231,7 +33231,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspaceFeatures, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AdditionalProperties": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
         "DisableLocalAuth": "System.Nullable`1[System.Boolean]",
@@ -33675,7 +33675,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSCapacityReservationProperties": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCapacityReservationProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCapacityReservationProperties, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCapacityReservationProperties, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "MinCapacity": "System.Nullable`1[System.Int64]",
         "MaxCapacity": "System.Nullable`1[System.Int64]",
@@ -33738,7 +33738,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSClusterSku": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSClusterSku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSClusterSku, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSClusterSku, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Capacity": "System.Nullable`1[System.Int64]",
         "Name": "System.String"
@@ -33782,7 +33782,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSIdentity": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSIdentity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSIdentity, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSIdentity, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PrincipalId": "System.String",
         "TenantId": "System.String",
@@ -34069,7 +34069,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSKeyVaultProperties": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSKeyVaultProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSKeyVaultProperties, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSKeyVaultProperties, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "KeyRsaSize": "System.Nullable`1[System.Int32]",
         "KeyVaultUri": "System.String",
@@ -34745,7 +34745,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourceType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourceType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourceType, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourceType, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourceType"
       ]
@@ -34753,7 +34753,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourceType": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourceType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourceType, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSourceType, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Methods": [
         {
           "Name": "HasFlag",
@@ -35106,7 +35106,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue"
       ]
@@ -35114,7 +35114,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchValue, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Properties": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchProperties",
         "Id": "System.String",
@@ -35164,7 +35164,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchProperties": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchProperties, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSavedSearchProperties, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Tags": "System.Collections.Hashtable",
         "Version": "System.Nullable`1[System.Int64]",
@@ -35217,7 +35217,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchMetadata": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchMetadata",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchMetadata, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchMetadata, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Schema": "Microsoft.Azure.Commands.OperationalInsights.Models.PSMetadataSchema",
         "CoreResponses": "System.Collections.Generic.IEnumerable`1[System.Object]",
@@ -35280,7 +35280,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSMetadataSchema": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSMetadataSchema",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSMetadataSchema, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSMetadataSchema, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Version": "System.Int64",
         "Name": "System.String"
@@ -35335,7 +35335,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSCoreSummary]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSCoreSummary]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSCoreSummary, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSCoreSummary, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.OperationalInsights.Models.PSCoreSummary"
       ]
@@ -35343,7 +35343,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSCoreSummary": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCoreSummary",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCoreSummary, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSCoreSummary, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "NumberOfDocuments": "System.Int64",
         "Status": "System.String"
@@ -35390,7 +35390,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchSort]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchSort]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchSort, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchSort, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchSort"
       ]
@@ -35398,7 +35398,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchSort": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchSort",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchSort, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchSort, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Name": "System.String",
         "Order": "System.String"
@@ -35458,7 +35458,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSSchemaValue]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSSchemaValue]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSSchemaValue, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.OperationalInsights.Models.PSSchemaValue, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.OperationalInsights.Models.PSSchemaValue"
       ]
@@ -35466,7 +35466,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.PSSchemaValue": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
       "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSchemaValue",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSchemaValue, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSSchemaValue, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Indexed": "System.Boolean",
         "Stored": "System.Boolean",
@@ -36190,7 +36190,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.OperationalInsights.Models.WorkspacePurge.PSWorkspacePurgeBodyFilters]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.OperationalInsights.Models.WorkspacePurge.PSWorkspacePurgeBodyFilters]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.OperationalInsights.Models.WorkspacePurge.PSWorkspacePurgeBodyFilters, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.OperationalInsights.Models.WorkspacePurge.PSWorkspacePurgeBodyFilters, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.OperationalInsights.Models.WorkspacePurge.PSWorkspacePurgeBodyFilters"
       ]
@@ -36198,7 +36198,7 @@
     "Microsoft.Azure.Commands.OperationalInsights.Models.WorkspacePurge.PSWorkspacePurgeBodyFilters": {
       "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models.WorkspacePurge",
       "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.WorkspacePurge.PSWorkspacePurgeBodyFilters",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.WorkspacePurge.PSWorkspacePurgeBodyFilters, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.WorkspacePurge.PSWorkspacePurgeBodyFilters, Microsoft.Azure.PowerShell.Cmdlets.OperationalInsights, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Value": "System.Object",
         "Column": "System.String",

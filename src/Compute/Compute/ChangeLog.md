@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 11.7.0
 * Added VMSS (Virtual Machine Scale Set) Lifecycle Hooks support (public preview)
     - Added `New-AzVmssLifecycleHookConfig` cmdlet to create an in-memory lifecycle hook configuration object
     - Added `Set-AzVmssLifecycleHooksProfile` cmdlet to attach lifecycle hooks to a VMSS configuration or live VMSS object
