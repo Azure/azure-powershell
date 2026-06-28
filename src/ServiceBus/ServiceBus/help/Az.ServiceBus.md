@@ -63,6 +63,9 @@ Creates a ServiceBus Namespace, Queue, Topic Authorization Rule
 ### [New-AzServiceBusAuthorizationRuleSASToken](New-AzServiceBusAuthorizationRuleSASToken.md)
 Generates a SAS token for Azure servicebus authorization rule of namespace/queue/topic. 
 
+## [New-AzServiceBusLocationsNameObject](New-AzServiceBusLocationsNameObject.md)
+Construct an in-memory NamespaceReplicaLocation object
+
 ### [New-AzServiceBusGeoDRConfiguration](New-AzServiceBusGeoDRConfiguration.md)
 create a new Alias(Disaster Recovery configuration)
 
@@ -151,6 +154,9 @@ Updates a ServiceBus Topic
 
 ### [Start-AzServiceBusMigration](Start-AzServiceBusMigration.md)
 create Migration configuration and starts migration of entities from Standard to Premium namespace
+
+### [Start-AzServiceBusNamespaceFailOver](Start-AzServiceBusNamespaceFailOver.md)
+Failover the Geo-DR Namespace.
 
 ### [Stop-AzServiceBusMigration](Stop-AzServiceBusMigration.md)
 This operation reverts Migration

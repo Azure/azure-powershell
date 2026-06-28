@@ -21,11 +21,11 @@ Describe 'New-AzServiceBusNamespaceV2' {
         $serviceBusNamespace.SkuName | Should -Be Standard
         $serviceBusNamespace.Location.Replace(" ", "").ToLower() | Should -Be $env.location
 
-        $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV3 -SkuName Standard -Location $env.location -Tag @{k1='v1'; k2='v2'} -DisableLocalAuth -MinimumTlsVersion 1.1 
+        $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV3 -SkuName Standard -Location $env.location -Tag @{k1='v1'; k2='v2'} -DisableLocalAuth -MinimumTlsVersion 1.2
         $serviceBusNamespace.Name | Should -Be $env.namespaceV3
         $serviceBusNamespace.SkuName | Should -Be Standard
         $serviceBusNamespace.SkuTier | Should -Be Standard
-        $serviceBusNamespace.MinimumTlsVersion | Should -Be '1.1'
+        $serviceBusNamespace.MinimumTlsVersion | Should -Be '1.2'
         $serviceBusNamespace.Location.Replace(" ", "").ToLower() | Should -Be $env.location
         $serviceBusNamespace.DisableLocalAuth | Should -Be $true
         $serviceBusNamespace.Tag.Count | should -Be 2
@@ -55,7 +55,7 @@ Describe 'New-AzServiceBusNamespaceV2' {
         $serviceBusNamespace.KeyVaultProperty.Count | Should -Be 2
         $serviceBusNamespace.UserAssignedIdentity.Count | Should -Be 2
         $serviceBusNamespace.RequireInfrastructureEncryption | Should -Be $false
-        $serviceBusNamespace.ZoneRedundant | Should be $false
+        $serviceBusNamespace.ZoneRedundant | Should be $true
 
         # Create namespace with UserAssigned Encryption Enabled and RequireInfrastructureEncryption true
         $ec1 = New-AzServiceBusKeyVaultPropertiesObject -KeyName key1 -KeyVaulturi $env.keyVaultUri -UserAssignedIdentity $env.msi1

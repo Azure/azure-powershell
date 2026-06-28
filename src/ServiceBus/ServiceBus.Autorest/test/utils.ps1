@@ -88,7 +88,7 @@ function setupEnv(
     $msi2ResourceId = "$resourceGroupArmId/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$dependentResourcesPrefix-msi2"
     $peName1 = "pe1" + (RandomString -allChars $false -len 6)
     $peName2 = "pe2" + (RandomString -allChars $false -len 6)
-    $alias = "alias" + (RandomString -allChars $false -len 6)
+    $alias = "alias32" + (RandomString -allChars $false -len 6)
     $postMigrationName = "postMigration" + (RandomString -allChars $false -len 6)
 
     $namespacePrimaryKey = GenerateSASKey

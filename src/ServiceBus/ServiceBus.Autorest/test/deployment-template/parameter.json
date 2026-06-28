@@ -6,34 +6,34 @@
       "value": "southcentralus"
     },
     "namespace_name": {
-      "value": "namespaceNameg2d9np"
+      "value": "namespaceNamem5oclg"
     },
     "standard_namespace_name": {
-      "value": "namespaceNamep0j7ix"
+      "value": "namespaceNametz283x"
     },
     "system_assigned_namespace_name": {
-      "value": "namespaceName6auipl"
+      "value": "namespaceNamenez4v3"
     },
     "primarynamespace_name": {
-      "value": "primaryNSibt9vz"
+      "value": "primaryNSi17oel"
     },
     "secondarynamespace_name": {
-      "value": "secondaryNSkhnx2q"
+      "value": "secondaryNSa82gbq"
     },
     "migrationPrimaryNamespace": {
-      "value": "primaryNSqi3or6"
+      "value": "primaryNSl8iwfb"
     },
     "migrationSecondaryNamespace": {
-      "value": "secondaryNSuegwsb"
+      "value": "secondaryNSny24pt"
     },
     "subnet1Id": {
-      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-ServiceBus-2n3eh9/providers/Microsoft.Network/virtualNetworks/sb-ps-v8aenr-vnet/subnets/default"
+      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-ServiceBus-ojtmb8/providers/Microsoft.Network/virtualNetworks/sb-ps-6cingy-vnet/subnets/default"
     },
     "peName1": {
-      "value": "pe1ase46u"
+      "value": "pe19jw2uv"
     },
     "peName2": {
-      "value": "pe2a10kcs"
+      "value": "pe2dto8k5"
     },
     "useZoneRedundancy": {
       "value": true

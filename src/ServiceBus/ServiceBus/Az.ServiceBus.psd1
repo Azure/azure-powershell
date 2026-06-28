@@ -87,6 +87,7 @@ FunctionsToExport = 'Approve-AzServiceBusPrivateEndpointConnection',
                'Get-AzServiceBusTopic', 'New-AzServiceBusAuthorizationRule', 
                'New-AzServiceBusGeoDRConfiguration', 
                'New-AzServiceBusIPRuleConfig', 'New-AzServiceBusKey', 
+               'New-AzServiceBusLocationsNameObject',
                'New-AzServiceBusKeyVaultPropertiesObject', 
                'New-AzServiceBusNamespace', 'New-AzServiceBusQueue', 
                'New-AzServiceBusRule', 'New-AzServiceBusSubscription', 
@@ -104,6 +105,7 @@ FunctionsToExport = 'Approve-AzServiceBusPrivateEndpointConnection',
                'Set-AzServiceBusQueue', 'Set-AzServiceBusRule', 
                'Set-AzServiceBusSubscription', 'Set-AzServiceBusTopic', 
                'Start-AzServiceBusMigration', 'Stop-AzServiceBusMigration', 
+               'Start-AzServiceBusNamespaceFailOver',
                'Test-AzServiceBusName'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.

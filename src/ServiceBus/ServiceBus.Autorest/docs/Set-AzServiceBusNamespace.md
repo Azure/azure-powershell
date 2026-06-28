@@ -15,17 +15,20 @@ Updates a ServiceBus namespace
 ### SetExpanded (Default)
 ```
 Set-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AlternateName <String>] [-DisableLocalAuth] [-IdentityType <String>]
- [-KeyVaultProperty <IKeyVaultProperties[]>] [-MinimumTlsVersion <String>] [-PublicNetworkAccess <String>]
- [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>] [-SkuName <String>] [-Tag <Hashtable>]
- [-UserAssignedIdentityId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-AlternateName <String>] [-DisableLocalAuth] [-GeoDataReplicationLocation <INamespaceReplicaLocation[]>]
+ [-GeoDataReplicationMaxReplicationLagDurationInSecond <Int64>] [-IdentityType <String>]
+ [-IPAddressType <String>] [-KeyVaultProperty <IKeyVaultProperties[]>] [-MinimumTlsVersion <String>]
+ [-PublicNetworkAccess <String>] [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>] [-SkuName <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentityId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
 ```
 Set-AzServiceBusNamespace [-InputObject <IServiceBusIdentity>] [-AlternateName <String>] [-DisableLocalAuth]
- [-IdentityType <String>] [-KeyVaultProperty <IKeyVaultProperties[]>] [-MinimumTlsVersion <String>]
+ [-GeoDataReplicationLocation <INamespaceReplicaLocation[]>]
+ [-GeoDataReplicationMaxReplicationLagDurationInSecond <Int64>] [-IdentityType <String>]
+ [-IPAddressType <String>] [-KeyVaultProperty <IKeyVaultProperties[]>] [-MinimumTlsVersion <String>]
  [-PublicNetworkAccess <String>] [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>] [-SkuName <String>]
  [-Tag <Hashtable>] [-UserAssignedIdentityId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -346,6 +349,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -GeoDataReplicationLocation
+Properties for User Assigned Identities
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GeoDataReplicationMaxReplicationLagDurationInSecond
+The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.
+When the lag exceeds the configured amount, operations on the primary replica will be failed.
+The allowed values are 0 and 5 minutes to 1 day.
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IdentityType
 Type of managed service identity.
 
@@ -368,6 +403,22 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 Parameter Sets: SetViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IPAddressType
+The IP address type for the namespace.
+Determines whether the namespace supports IPv4 only or both IPv4 and IPv6.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
