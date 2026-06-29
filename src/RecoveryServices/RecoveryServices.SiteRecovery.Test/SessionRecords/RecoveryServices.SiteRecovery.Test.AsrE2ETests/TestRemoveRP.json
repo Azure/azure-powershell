@@ -65,7 +65,7 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationRecoveryPlans/E2ERP?api-version=2025-08-01",
+                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationRecoveryPlans/E2ERP?api-version=2026-02-01",
                         "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uUmVjb3ZlcnlQbGFucy9FMkVSUD9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
@@ -135,7 +135,7 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationProtectedItems?$filter=RecoveryPlanName%20eq%20\u0027E2ERP\u0027\u0026api-version=2025-08-01",
+                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationProtectedItems?$filter=RecoveryPlanName%20eq%20\u0027E2ERP\u0027\u0026api-version=2026-02-01",
                         "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uUHJvdGVjdGVkSXRlbXM/JGZpbHRlcj1SZWNvdmVyeVBsYW5OYW1lJTIwZXElMjAnRTJFUlAnJmFwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
@@ -205,7 +205,7 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationRecoveryPlans/E2ERP?api-version=2025-08-01",
+                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationRecoveryPlans/E2ERP?api-version=2026-02-01",
                         "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uUmVjb3ZlcnlQbGFucy9FMkVSUD9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
                         "RequestMethod":  "DELETE",
                         "RequestBody":  "",
@@ -278,7 +278,7 @@
                         "StatusCode":  202
                     },
                     {
-                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationJobs/52e86ca3-c242-4c44-95c9-333f6137e903?api-version=2025-08-01",
+                        "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationJobs/52e86ca3-c242-4c44-95c9-333f6137e903?api-version=2026-02-01",
                         "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uSm9icy81MmU4NmNhMy1jMjQyLTRjNDQtOTVjOS0zMzNmNjEzN2U5MDM/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",

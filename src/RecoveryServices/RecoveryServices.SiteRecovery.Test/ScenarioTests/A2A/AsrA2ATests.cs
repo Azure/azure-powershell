@@ -242,7 +242,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-NewA2AManagedDiskReplicationConfigurationWithoutPrivateAccess_BackwardCompat");
         }
 
-        [Fact(Skip = "to be re-recorded in next release")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2AReplicationProtectionClusterTest()
         {
@@ -252,7 +252,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-A2AReplicationProtectionCluster");
         }
 
-        [Fact(Skip = "to be re-recorded in next release")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2AResyncReplicationProtectionClusterTest()
         {
@@ -272,7 +272,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-A2AReprotectClusterWithoutProtectedItemDetails");
         }
 
-        [Fact(Skip = "to be re-recorded in next release")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2AReprotectClusterWithProtectedItemDetailsTest()
         {
@@ -292,7 +292,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-CRGReplication");
         }
 
-        [Fact(Skip = "to be re-recorded in next release")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2AClutserTestFailoverAndFailoverCleanupJob()
         {
@@ -332,7 +332,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-ClusterCommitFailoverJob");
         }
 
-        [Fact(Skip = "to be re-recorded in next release")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2AReprotectTest()
         {
@@ -342,7 +342,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-A2ASingleVMReprotect");
         }
 
-        [Fact(Skip = "to be re-recorded in next release")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2AEnableProtectionWithPlatformFaultDomain()
         {
@@ -352,7 +352,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-A2AEnableProtectionWithPlatformFaultDomain");
         }
 
-        [Fact(Skip = "to be re-recorded in next release")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2AUpdateProtectionWithZone()
         {
