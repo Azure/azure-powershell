@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added parameter 'IpAddressType' in cmdlets 'New-AzEventHubNamespace' & 'Set-AzEventHubNamespace' to support IPv4-only or dual-stack (IPv4 and IPv6) namespaces.
+* Updated cmdlets to the '2026-01-01' API version.
 
 ## Version 5.5.0
 * Added ChangeSafety Support

@@ -119,6 +119,11 @@ function Set-AzEventHubNamespace{
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.INamespaceReplicaLocation[]]
         ${GeoDataReplicationLocation},
 
+        [Parameter(HelpMessage = "The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        [System.String]
+        ${IPAddressType},
+
         [Parameter(HelpMessage = "Tag of EventHub Namespace.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.Collections.Hashtable]
@@ -199,6 +204,7 @@ function Set-AzEventHubNamespace{
             $hasAsJob = $PSBoundParameters.Remove('AsJob')
             $hasGeoDataReplicationLocation = $PSBoundParameters.Remove('GeoDataReplicationLocation')
             $hasGeoDataReplicationMaxReplicationLagDurationInSecond = $PSBoundParameters.Remove('GeoDataReplicationMaxReplicationLagDurationInSecond')
+            $hasIPAddressType = $PSBoundParameters.Remove('IPAddressType')
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
@@ -241,6 +247,9 @@ function Set-AzEventHubNamespace{
             }
             if ($GeoDataReplicationLocation) {
                 $eventHubNamespace.GeoDataReplicationLocation = $GeoDataReplicationLocation
+            }
+            if ($hasIPAddressType) {
+                $eventHubNamespace.IPAddressType = $IPAddressType
             }
             if ($hasEnableAutoInflate) {
                 $eventHubNamespace.EnableAutoInflate = $EnableAutoInflate
