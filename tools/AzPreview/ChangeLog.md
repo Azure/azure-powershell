@@ -1,3 +1,103 @@
+## 17.0.0 - July 2026
+#### Az.Accounts 5.5.1
+* Upgraded 'Azure.Core' dependency from 1.50.0 to 1.56.0.
+* Upgraded 'Azure.Identity' dependency to 1.21.0.
+* Upgraded 'Azure.Identity.Broker' dependency from 1.1.0 to 1.6.0.
+* Upgraded 'System.ClientModel' dependency from 1.8.0 to 1.12.0.
+* Upgraded 'System.Text.Json' dependency from 8.0.6 to 10.0.3.
+* Upgraded MSAL dependencies ('Microsoft.Identity.Client', 'Microsoft.Identity.Client.Extensions.Msal', 'Microsoft.Identity.Client.Broker') from 4.83.1 to 4.84.0.
+* Upgraded 'Microsoft.Identity.Client.NativeInterop' from 0.20.2 to 0.20.4.
+* Fixed 'MicrosoftGraphUrl' not being populated when ARM (Azure Resource Manager) metadata returns endpoint without trailing slash
+
+#### Az.Aks 7.2.1
+* Added support for 'AzureContainerLinux' OS SKU in 'New-AzAksCluster' ('-NodeOsSKU') and 'New-AzAksNodePool' ('-OsSKU')
+    - Azure Container Linux is a container-optimized, immutable Linux OS for AKS node images. See https://aka.ms/azurecontainerlinux
+* Bumped API version to 2026-03-01
+
+#### Az.AppConfiguration 2.2.0
+* Upgraded API version from 2024-06-01 to 2026-04-01
+    - Added support for Description field for Key Values and Snapshots
+
+#### Az.ArtifactSigning 0.2.1
+* Updated 'System.Formats.Asn1' dependency from '6.0.1' to '8.0.1'.
+
+#### Az.Automation 1.12.1
+* Updated Automation account identity handling to explicitly use the Automation SDK 'Identity' model in create/update flows.
+
+#### Az.Cdn 6.1.0
+* Fixed placeholder text in help examples for 'New-AzFrontDoorCdnRuleEdgeActionObject'.
+
+#### Az.CognitiveServices 1.17.1
+* Updated Cognitive Services account identity handling to explicitly use the Cognitive Services SDK 'Identity' model in create/update flows.
+
+#### Az.Compute 11.7.0
+* Added support for configuring ScheduledEventsPolicy on Virtual Machines, Virtual Machine Scale Sets, and Availability Sets.
+    - Added '-ScheduledEventsApiVersion' and '-EnableAllInstancesDown' parameters to 'Update-AzAvailabilitySet', 'Update-AzVM', 'New-AzVM' (SimpleParameterSet), and 'New-AzVmss' cmdlets.
+    - Added '-ScheduledEventsApiVersion' and '-EnableAllInstancesDown' parameters to 'Update-AzVmss'. These parameters are only supported when updating via the '-VirtualMachineScaleSet' object parameter (e.g. piping the output of 'Get-AzVmss'); using them with the PATCH parameter sets will throw an error.
+* Added VMSS (Virtual Machine Scale Set) Lifecycle Hooks support (public preview)
+    - Added 'New-AzVmssLifecycleHookConfig' cmdlet to create an in-memory lifecycle hook configuration object
+    - Added 'Set-AzVmssLifecycleHooksProfile' cmdlet to attach lifecycle hooks to a VMSS configuration or live VMSS object
+    - Added 'Remove-AzVmssLifecycleHook' cmdlet to remove one hook by '-Type' or all hooks with '-All' from a live VMSS
+    - Added 'Get-AzVmssLifecycleHookEvent' cmdlet to list or retrieve lifecycle hook events for a VMSS
+    - Added 'Update-AzVmssLifecycleHookEvent' cmdlet to respond to a lifecycle hook event (approve, reject, or delay) with optional per-VM instance filtering via '-InstanceId'
+    - Added '-LifecycleHooksProfile' parameter to 'New-AzVmssConfig' to support inline lifecycle hooks profile construction
+
+#### Az.ComputeFleet 0.2.0
+* Added support for 'Launch' mode in ComputeFleet.
+    - New parameter, 'Mode' to specify 'Managed'/'Launch'.
+    - New parameter, 'VMNamePrefix' to specify prefix for the virtual machines in Launch mode.
+    - New cmdlet 'Get-AzCompouteFleetVirtualMachine' to list the virtual machines in Launch mode.
+* Upgraded API version from 2024-11-01 to 2026-04-01-preview.
+
+#### Az.DataFactory 1.20.1
+* Updated 'System.IO.FileSystem.AccessControl' dependency from '4.5.0' to '5.0.0'.
+
+#### Az.DataMigration 1.1.1
+* Removed the authentication key from console output.
+
+#### Az.Dns 2.2.0
+* Added support for linking a DNS record set to an Azure Traffic Manager profile (Traffic Manager link, also known as TMLink)
+    - Added '-TrafficManagerProfileId' to 'New-AzDnsRecordSet'
+    - 'Get-AzDnsRecordSet' and 'Set-AzDnsRecordSet' now expose 'TrafficManagerProfileId' for round-trip updates
+
+#### Az.IotHub 3.0.0
+* Updated 'Microsoft.Extensions.DependencyInjection.Abstractions' dependency from '8.0.2' to '10.0.3'.
+
+#### Az.KeyVault 6.5.1
+* Updated 'System.Security.Cryptography.Cng' dependency from '4.5.0' to '5.0.0'.
+
+#### Az.Napster 0.1.0
+* First preview release for module Az.Napster
+
+#### Az.Network 8.0.1
+* Onboarded 'Microsoft.HorizonDB/clusters' to Private Link Common Cmdlets
+
+#### Az.OperationalInsights 3.4.1
+* Updated 'PSIdentity' conversions to explicitly use the Operational Insights SDK 'Identity' model.
+
+#### Az.RecoveryServices 7.12.1
+* Updated 'System.Security.Cryptography.Cng' dependency from '4.4.0' to '5.0.0'.
+* Added Cross region restore support for Delos cloud regions
+
+#### Az.Resources 11.0.0
+* Updated 'Microsoft.Extensions.DependencyInjection.Abstractions' dependency from '8.0.2' to '10.0.3'.
+
+#### Az.Search 0.12.1
+* Updated Search service identity casts to explicitly use the Search SDK 'Identity' model.
+
+#### Az.Sftp 0.3.0
+* Added Service Principal support for SFTP with Entra ID (AAD) login
+
+#### Az.Ssh 0.3.1
+* Added Service Principal support for SSH with Entra ID (AAD) login
+
+#### Az.Storage 9.7.1
+* Updated storage account identity handling to explicitly use the Storage SDK 'Identity' model in 'New-AzStorageAccount' and 'Set-AzStorageAccount'.
+
+#### Az.VMware 0.9.1
+* Added '-VcfLicense' parameter to 'New-AzVMwarePrivateCloud' to support setting a VMware Cloud Foundation (VCF) license during private cloud provisioning
+    - Added 'New-AzVMwareVcf5LicenseObject' helper cmdlet to construct a VCF 5.0 license object for use with '-VcfLicense'
+
 ## 16.0.0 - June 2026
 #### Az.Accounts 5.5.0
 * Added ChangeSafety Support

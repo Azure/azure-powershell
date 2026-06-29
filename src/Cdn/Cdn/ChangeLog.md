@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.1.0
 * Fixed placeholder text in help examples for `New-AzFrontDoorCdnRuleEdgeActionObject`.
 
 ## Version 6.0.2
