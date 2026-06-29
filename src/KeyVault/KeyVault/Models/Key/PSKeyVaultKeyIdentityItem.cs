@@ -80,6 +80,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Updated = keyBundle.Attributes.Updated;
             RecoveryLevel = keyBundle.Attributes.RecoveryLevel;
             Tags = keyBundle.Attributes.Tags;
+            KeySize = keyBundle.KeySize;
 
             IsHsm = isHsm;
         }
@@ -103,7 +104,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Updated = keyProperties.UpdatedOn?.UtcDateTime;
             RecoveryLevel = keyProperties.RecoveryLevel;
             Tags = keyProperties.Tags.ConvertToHashtable();
-            
+            KeySize = keyProperties.KeySize;
+
             IsHsm = isHsm;
             HsmPlatform = keyProperties.HsmPlatform;
         }
@@ -123,6 +125,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public string RecoveryLevel { get; protected set; }
 
         public Hashtable Tags { get; set; }
+
+        public int? KeySize { get; set; }
 
         public string TagsTable
         {

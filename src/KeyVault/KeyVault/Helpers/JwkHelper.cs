@@ -21,36 +21,91 @@ namespace Microsoft.Azure.Commands.KeyVault.Helpers
 {
     internal static class JwkHelper
     {
-        internal static RSACryptoServiceProvider ConvertToRSAKey(JsonWebKey jwk)
+        // No constant for "oct-HSM" exists in the Track1 JsonWebKeyType enum.
+        internal const string OctetHsm = "oct-HSM";
+
+        internal static bool IsRsa(string keyType)
         {
-            if (!"RSA".Equals(jwk?.Kty))
+            return string.Equals(keyType, JsonWebKeyType.Rsa, StringComparison.OrdinalIgnoreCase)
+                || string.Equals(keyType, JsonWebKeyType.RsaHsm, StringComparison.OrdinalIgnoreCase);
+        }
+
+        internal static bool IsOct(string keyType)
+        {
+            return string.Equals(keyType, JsonWebKeyType.Octet, StringComparison.OrdinalIgnoreCase)
+                || string.Equals(keyType, OctetHsm, StringComparison.OrdinalIgnoreCase);
+        }
+
+        internal static bool IsEC(string keyType)
+        {
+            return string.Equals(keyType, JsonWebKeyType.EllipticCurve, StringComparison.OrdinalIgnoreCase)
+                || string.Equals(keyType, JsonWebKeyType.EllipticCurveHsm, StringComparison.OrdinalIgnoreCase);
+        }
+
+        /// <summary>
+        /// Returns the key size in bits derived from the JWK material, or
+        /// <c>null</c> when the key type is unknown or the required material
+        /// (modulus / symmetric octets / curve name) is missing.
+        /// </summary>
+        internal static int? ComputeKeySize(JsonWebKey jwk)
+        {
+            if (jwk == null)
             {
                 return null;
             }
-            try
+
+            if (IsRsa(jwk.Kty))
             {
-                var csp = new RSACryptoServiceProvider();
-                csp.ImportParameters(new RSAParameters()
-                {
-                    Exponent = jwk.E,
-                    Modulus = jwk.N
-                });
-                return csp;
+                return BitsFromByteArray(jwk.N);
             }
-            catch (CryptographicException)
+
+            if (IsOct(jwk.Kty))
+            {
+                return BitsFromByteArray(jwk.K);
+            }
+
+            if (IsEC(jwk.Kty))
+            {
+                return BitsFromCurveName(jwk.CurveName);
+            }
+
+            return null;
+        }
+
+        private static int? BitsFromByteArray(byte[] material)
+        {
+            return material == null ? (int?)null : material.Length * 8;
+        }
+
+        private static int? BitsFromCurveName(string curveName)
+        {
+            if (string.IsNullOrEmpty(curveName))
             {
                 return null;
             }
+
+            if (string.Equals(curveName, JsonWebKeyCurveName.P256, StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(curveName, JsonWebKeyCurveName.P256K, StringComparison.OrdinalIgnoreCase))
+            {
+                return 256;
+            }
+            if (string.Equals(curveName, JsonWebKeyCurveName.P384, StringComparison.OrdinalIgnoreCase))
+            {
+                return 384;
+            }
+            if (string.Equals(curveName, JsonWebKeyCurveName.P521, StringComparison.OrdinalIgnoreCase))
+            {
+                return 521;
+            }
+
+            return null;
         }
 
         /// <summary>
         /// Export the public key of a JsonWebKey to PEM format.
         /// </summary>
-        /// <param name="jwk"></param>
-        /// <returns></returns>
         internal static string ExportPublicKeyToPem(JsonWebKey jwk)
         {
-
             var csp = new RSACryptoServiceProvider();
             csp.ImportParameters(new RSAParameters()
             {
@@ -173,9 +228,5 @@ namespace Microsoft.Azure.Commands.KeyVault.Helpers
                 }
             }
         }
-
-        internal static bool IsEC(string keyType) =>
-            string.Equals(keyType, JsonWebKeyType.EllipticCurve, StringComparison.OrdinalIgnoreCase) ||
-            string.Equals(keyType, JsonWebKeyType.EllipticCurveHsm, StringComparison.OrdinalIgnoreCase);
     }
 }

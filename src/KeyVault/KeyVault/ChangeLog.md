@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Key size is now returned for additional key types where the service reports it; previously only RSA keys reported a size.
+* Upgraded `Azure.Security.KeyVault.Keys` dependency from `4.6.0-beta.1` to `4.10.0`.
 * Updated `System.Security.Cryptography.Cng` dependency from `4.5.0` to `5.0.0`.
 
 ## Version 6.5.0
