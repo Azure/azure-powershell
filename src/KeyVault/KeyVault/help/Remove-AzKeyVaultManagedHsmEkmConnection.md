@@ -14,37 +14,37 @@ Deletes the External Key Manager (EKM) connection from a Managed HSM. (Preview)
 
 ### ByHsmName (Default)
 ```
-Remove-AzKeyVaultEkmConnection [-HsmName] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzKeyVaultManagedHsmEkmConnection [-HsmName] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByHsmId
 ```
-Remove-AzKeyVaultEkmConnection [-HsmId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzKeyVaultManagedHsmEkmConnection [-HsmId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Remove-AzKeyVaultEkmConnection [-HsmObject] <PSManagedHsm> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzKeyVaultManagedHsmEkmConnection [-HsmObject] <PSManagedHsm> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzKeyVaultEkmConnection** cmdlet deletes the External Key Manager (EKM) connection from a Managed HSM. This feature is in preview.
+The **Remove-AzKeyVaultManagedHsmEkmConnection** cmdlet deletes the External Key Manager (EKM) connection from a Managed HSM. This feature is in preview.
 
 ## EXAMPLES
 
 ### Example 1: Delete the EKM connection on a Managed HSM
 ```powershell
-Remove-AzKeyVaultEkmConnection -HsmName testmhsm
+Remove-AzKeyVaultManagedHsmEkmConnection -HsmName testmhsm
 ```
 
 This cmdlet deletes the EKM connection from the Managed HSM named `testmhsm`.
 
 ### Example 2: Delete the EKM connection and return the deleted object
 ```powershell
-Remove-AzKeyVaultEkmConnection -HsmName testmhsm -PassThru
+Remove-AzKeyVaultManagedHsmEkmConnection -HsmName testmhsm -PassThru
 ```
 
 This cmdlet deletes the EKM connection from the Managed HSM named `testmhsm` and returns the deleted connection.
@@ -171,6 +171,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzKeyVaultEkmConnection](./Get-AzKeyVaultEkmConnection.md)
+[Get-AzKeyVaultManagedHsmEkmConnection](./Get-AzKeyVaultManagedHsmEkmConnection.md)
 
-[New-AzKeyVaultEkmConnection](./New-AzKeyVaultEkmConnection.md)
+[New-AzKeyVaultManagedHsmEkmConnection](./New-AzKeyVaultManagedHsmEkmConnection.md)

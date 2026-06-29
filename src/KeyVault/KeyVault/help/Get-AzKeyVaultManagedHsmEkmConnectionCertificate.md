@@ -14,30 +14,30 @@ Gets the EKM proxy client certificate information from a Managed HSM. (Preview)
 
 ### ByHsmName (Default)
 ```
-Get-AzKeyVaultEkmConnectionCertificate [-HsmName] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzKeyVaultManagedHsmEkmConnectionCertificate [-HsmName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByHsmId
 ```
-Get-AzKeyVaultEkmConnectionCertificate [-HsmId] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzKeyVaultManagedHsmEkmConnectionCertificate [-HsmId] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Get-AzKeyVaultEkmConnectionCertificate [-HsmObject] <PSManagedHsm> [-DefaultProfile <IAzureContextContainer>]
+Get-AzKeyVaultManagedHsmEkmConnectionCertificate [-HsmObject] <PSManagedHsm> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzKeyVaultEkmConnectionCertificate** cmdlet gets the EKM proxy client certificate information (subject common name and CA certificates) from a Managed HSM. This feature is in preview.
+The **Get-AzKeyVaultManagedHsmEkmConnectionCertificate** cmdlet gets the EKM proxy client certificate information (subject common name and CA certificates) from a Managed HSM. This feature is in preview.
 
 ## EXAMPLES
 
 ### Example 1: Get the EKM proxy client certificate from a Managed HSM
 ```powershell
-Get-AzKeyVaultEkmConnectionCertificate -HsmName testmhsm
+Get-AzKeyVaultManagedHsmEkmConnectionCertificate -HsmName testmhsm
 ```
 
 This cmdlet gets the EKM proxy client certificate information from the Managed HSM named `testmhsm`.
@@ -119,4 +119,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzKeyVaultEkmConnection](./Get-AzKeyVaultEkmConnection.md)
+[Get-AzKeyVaultManagedHsmEkmConnection](./Get-AzKeyVaultManagedHsmEkmConnection.md)

@@ -14,40 +14,40 @@ Updates the External Key Manager (EKM) connection on a Managed HSM. (Preview)
 
 ### ByHsmName (Default)
 ```
-Update-AzKeyVaultEkmConnection [-HsmName] <String> [-HostName <String>] [-ServerCaCertificate <String[]>]
+Update-AzKeyVaultManagedHsmEkmConnection [-HsmName] <String> [-HostName <String>] [-ServerCaCertificate <String[]>]
  [-PathPrefix <String>] [-ServerSubjectCommonName <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByHsmId
 ```
-Update-AzKeyVaultEkmConnection [-HsmId] <String> [-HostName <String>] [-ServerCaCertificate <String[]>]
+Update-AzKeyVaultManagedHsmEkmConnection [-HsmId] <String> [-HostName <String>] [-ServerCaCertificate <String[]>]
  [-PathPrefix <String>] [-ServerSubjectCommonName <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Update-AzKeyVaultEkmConnection [-HsmObject] <PSManagedHsm> [-HostName <String>] [-ServerCaCertificate <String[]>]
+Update-AzKeyVaultManagedHsmEkmConnection [-HsmObject] <PSManagedHsm> [-HostName <String>] [-ServerCaCertificate <String[]>]
  [-PathPrefix <String>] [-ServerSubjectCommonName <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Update-AzKeyVaultEkmConnection** cmdlet updates the External Key Manager (EKM) connection on a Managed HSM. Only the parameters you specify are changed; the others are preserved. This feature is in preview.
+The **Update-AzKeyVaultManagedHsmEkmConnection** cmdlet updates the External Key Manager (EKM) connection on a Managed HSM. Only the parameters you specify are changed; the others are preserved. This feature is in preview.
 
 ## EXAMPLES
 
 ### Example 1: Update the EKM proxy host
 ```powershell
-Update-AzKeyVaultEkmConnection -HsmName testmhsm -HostName ekm2.contoso.com:8443
+Update-AzKeyVaultManagedHsmEkmConnection -HsmName testmhsm -HostName ekm2.contoso.com:8443
 ```
 
 This cmdlet updates the EKM connection on the Managed HSM named `testmhsm` to point at `ekm2.contoso.com:8443`, leaving the other settings unchanged.
 
 ### Example 2: Rotate the server CA certificates
 ```powershell
-Update-AzKeyVaultEkmConnection -HsmName testmhsm -ServerCaCertificate ./new-ca.pem
+Update-AzKeyVaultManagedHsmEkmConnection -HsmName testmhsm -ServerCaCertificate ./new-ca.pem
 ```
 
 This cmdlet replaces the server CA certificates configured on the EKM connection.
@@ -219,8 +219,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzKeyVaultEkmConnection](./New-AzKeyVaultEkmConnection.md)
+[New-AzKeyVaultManagedHsmEkmConnection](./New-AzKeyVaultManagedHsmEkmConnection.md)
 
-[Get-AzKeyVaultEkmConnection](./Get-AzKeyVaultEkmConnection.md)
+[Get-AzKeyVaultManagedHsmEkmConnection](./Get-AzKeyVaultManagedHsmEkmConnection.md)
 
-[Remove-AzKeyVaultEkmConnection](./Remove-AzKeyVaultEkmConnection.md)
+[Remove-AzKeyVaultManagedHsmEkmConnection](./Remove-AzKeyVaultManagedHsmEkmConnection.md)

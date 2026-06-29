@@ -14,28 +14,28 @@ Checks connectivity and authentication between a Managed HSM and its EKM proxy. 
 
 ### ByHsmName (Default)
 ```
-Test-AzKeyVaultEkmConnection [-HsmName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzKeyVaultManagedHsmEkmConnection [-HsmName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByHsmId
 ```
-Test-AzKeyVaultEkmConnection [-HsmId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzKeyVaultManagedHsmEkmConnection [-HsmId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Test-AzKeyVaultEkmConnection [-HsmObject] <PSManagedHsm> [-DefaultProfile <IAzureContextContainer>]
+Test-AzKeyVaultManagedHsmEkmConnection [-HsmObject] <PSManagedHsm> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Test-AzKeyVaultEkmConnection** cmdlet validates connectivity and authentication between a Managed HSM and its configured External Key Manager (EKM) proxy, and returns metadata reported by the proxy. This feature is in preview.
+The **Test-AzKeyVaultManagedHsmEkmConnection** cmdlet validates connectivity and authentication between a Managed HSM and its configured External Key Manager (EKM) proxy, and returns metadata reported by the proxy. This feature is in preview.
 
 ## EXAMPLES
 
 ### Example 1: Check the EKM connection on a Managed HSM
 ```powershell
-Test-AzKeyVaultEkmConnection -HsmName testmhsm
+Test-AzKeyVaultManagedHsmEkmConnection -HsmName testmhsm
 ```
 
 This cmdlet probes the EKM connection on the Managed HSM named `testmhsm` and returns the EKM vendor and product information reported by the proxy.
@@ -117,6 +117,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzKeyVaultEkmConnection](./Get-AzKeyVaultEkmConnection.md)
+[Get-AzKeyVaultManagedHsmEkmConnection](./Get-AzKeyVaultManagedHsmEkmConnection.md)
 
-[New-AzKeyVaultEkmConnection](./New-AzKeyVaultEkmConnection.md)
+[New-AzKeyVaultManagedHsmEkmConnection](./New-AzKeyVaultManagedHsmEkmConnection.md)

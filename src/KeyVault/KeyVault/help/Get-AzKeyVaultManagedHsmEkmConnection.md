@@ -14,35 +14,35 @@ Gets the External Key Manager (EKM) connection configured on a Managed HSM. (Pre
 
 ### ByHsmName (Default)
 ```
-Get-AzKeyVaultEkmConnection [-HsmName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzKeyVaultManagedHsmEkmConnection [-HsmName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByHsmId
 ```
-Get-AzKeyVaultEkmConnection [-HsmId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzKeyVaultManagedHsmEkmConnection [-HsmId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Get-AzKeyVaultEkmConnection [-HsmObject] <PSManagedHsm> [-DefaultProfile <IAzureContextContainer>]
+Get-AzKeyVaultManagedHsmEkmConnection [-HsmObject] <PSManagedHsm> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzKeyVaultEkmConnection** cmdlet gets the External Key Manager (EKM) connection currently configured on a Managed HSM. This feature is in preview.
+The **Get-AzKeyVaultManagedHsmEkmConnection** cmdlet gets the External Key Manager (EKM) connection currently configured on a Managed HSM. This feature is in preview.
 
 ## EXAMPLES
 
 ### Example 1: Get the EKM connection on a Managed HSM
 ```powershell
-Get-AzKeyVaultEkmConnection -HsmName testmhsm
+Get-AzKeyVaultManagedHsmEkmConnection -HsmName testmhsm
 ```
 
 This cmdlet gets the EKM connection configured on the Managed HSM named `testmhsm`.
 
 ### Example 2: Get the EKM connection by piping the HSM object
 ```powershell
-Get-AzKeyVaultManagedHsm -Name testmhsm | Get-AzKeyVaultEkmConnection
+Get-AzKeyVaultManagedHsm -Name testmhsm | Get-AzKeyVaultManagedHsmEkmConnection
 ```
 
 This cmdlet gets the EKM connection on the Managed HSM named `testmhsm` by piping the HSM object.
@@ -124,10 +124,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzKeyVaultEkmConnection](./New-AzKeyVaultEkmConnection.md)
+[New-AzKeyVaultManagedHsmEkmConnection](./New-AzKeyVaultManagedHsmEkmConnection.md)
 
-[Update-AzKeyVaultEkmConnection](./Update-AzKeyVaultEkmConnection.md)
+[Update-AzKeyVaultManagedHsmEkmConnection](./Update-AzKeyVaultManagedHsmEkmConnection.md)
 
-[Remove-AzKeyVaultEkmConnection](./Remove-AzKeyVaultEkmConnection.md)
+[Remove-AzKeyVaultManagedHsmEkmConnection](./Remove-AzKeyVaultManagedHsmEkmConnection.md)
 
-[Test-AzKeyVaultEkmConnection](./Test-AzKeyVaultEkmConnection.md)
+[Test-AzKeyVaultManagedHsmEkmConnection](./Test-AzKeyVaultManagedHsmEkmConnection.md)

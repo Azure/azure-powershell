@@ -14,40 +14,40 @@ Creates the External Key Manager (EKM) connection on a Managed HSM. (Preview)
 
 ### ByHsmName (Default)
 ```
-New-AzKeyVaultEkmConnection [-HsmName] <String> -HostName <String> -ServerCaCertificate <String[]>
+New-AzKeyVaultManagedHsmEkmConnection [-HsmName] <String> -HostName <String> -ServerCaCertificate <String[]>
  [-PathPrefix <String>] [-ServerSubjectCommonName <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByHsmId
 ```
-New-AzKeyVaultEkmConnection [-HsmId] <String> -HostName <String> -ServerCaCertificate <String[]>
+New-AzKeyVaultManagedHsmEkmConnection [-HsmId] <String> -HostName <String> -ServerCaCertificate <String[]>
  [-PathPrefix <String>] [-ServerSubjectCommonName <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-New-AzKeyVaultEkmConnection [-HsmObject] <PSManagedHsm> -HostName <String> -ServerCaCertificate <String[]>
+New-AzKeyVaultManagedHsmEkmConnection [-HsmObject] <PSManagedHsm> -HostName <String> -ServerCaCertificate <String[]>
  [-PathPrefix <String>] [-ServerSubjectCommonName <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzKeyVaultEkmConnection** cmdlet creates the External Key Manager (EKM) connection on a Managed HSM, wiring the HSM to an EKM proxy. At least one server CA certificate is required. This feature is in preview.
+The **New-AzKeyVaultManagedHsmEkmConnection** cmdlet creates the External Key Manager (EKM) connection on a Managed HSM, wiring the HSM to an EKM proxy. At least one server CA certificate is required. This feature is in preview.
 
 ## EXAMPLES
 
 ### Example 1: Create an EKM connection on a Managed HSM
 ```powershell
-New-AzKeyVaultEkmConnection -HsmName testmhsm -HostName ekm.contoso.com -ServerCaCertificate ./ekm-proxy-ca.cer
+New-AzKeyVaultManagedHsmEkmConnection -HsmName testmhsm -HostName ekm.contoso.com -ServerCaCertificate ./ekm-proxy-ca.cer
 ```
 
 This cmdlet creates an EKM connection on the Managed HSM named `testmhsm`, pointing at the EKM proxy host `ekm.contoso.com` (port 443).
 
 ### Example 2: Create an EKM connection with a path prefix and multiple CA certificates
 ```powershell
-New-AzKeyVaultEkmConnection -HsmName testmhsm -HostName ekm.contoso.com:8443 -PathPrefix /api/v1 -ServerCaCertificate ./ca1.pem, ./ca2.pem -ServerSubjectCommonName ekm.contoso.com
+New-AzKeyVaultManagedHsmEkmConnection -HsmName testmhsm -HostName ekm.contoso.com:8443 -PathPrefix /api/v1 -ServerCaCertificate ./ca1.pem, ./ca2.pem -ServerSubjectCommonName ekm.contoso.com
 ```
 
 This cmdlet creates an EKM connection that targets `ekm.contoso.com:8443`, appends the path prefix `/api/v1`, trusts two CA certificates, and validates the proxy server certificate Common Name.
@@ -219,10 +219,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzKeyVaultEkmConnection](./Get-AzKeyVaultEkmConnection.md)
+[Get-AzKeyVaultManagedHsmEkmConnection](./Get-AzKeyVaultManagedHsmEkmConnection.md)
 
-[Update-AzKeyVaultEkmConnection](./Update-AzKeyVaultEkmConnection.md)
+[Update-AzKeyVaultManagedHsmEkmConnection](./Update-AzKeyVaultManagedHsmEkmConnection.md)
 
-[Remove-AzKeyVaultEkmConnection](./Remove-AzKeyVaultEkmConnection.md)
+[Remove-AzKeyVaultManagedHsmEkmConnection](./Remove-AzKeyVaultManagedHsmEkmConnection.md)
 
-[Test-AzKeyVaultEkmConnection](./Test-AzKeyVaultEkmConnection.md)
+[Test-AzKeyVaultManagedHsmEkmConnection](./Test-AzKeyVaultManagedHsmEkmConnection.md)
