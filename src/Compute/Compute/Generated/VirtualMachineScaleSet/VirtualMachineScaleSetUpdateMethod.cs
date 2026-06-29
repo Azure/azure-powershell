@@ -484,6 +484,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered. Format: YYYY-MM-DD. For available API versions, see https://learn.microsoft.com/rest/api/compute/scheduled-events.")]
+        public string ScheduledEventsApiVersion { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies if Scheduled Events should be auto-approved when all instances are down.")]
+        public bool? EnableAllInstancesDown { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the align mode between Virtual Machine Scale Set (VMSS) compute and storage Fault Domain count. Valid values are 'Aligned', 'Unaligned', and 'BestEffortAligned'. Applicable to VMSS Flex only.")]
         [PSArgumentCompleter("Aligned", "Unaligned", "BestEffortAligned")]
         public string ZonalPlatformFaultDomainAlignMode { get; set; }
@@ -1579,6 +1591,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Value = this.MaxInstancePercentPerZoneValue;
             }
 
+            // ScheduledEventsPolicy is not supported in VirtualMachineScaleSetUpdate (PATCH) model.
+            // When using the PATCH path (VirtualMachineScaleSet is null), ScheduledEventsApiVersion and
+            // EnableAllInstancesDown parameters are not applied and are therefore rejected at runtime.
+            if (this.IsParameterBound(c => c.ScheduledEventsApiVersion) ||
+                this.IsParameterBound(c => c.EnableAllInstancesDown))
+            {
+                throw new PSArgumentException(
+                    "The -ScheduledEventsApiVersion and -EnableAllInstancesDown parameters are only supported when updating a Virtual Machine Scale Set using the CreateOrUpdate path. " +
+                    "Provide a VirtualMachineScaleSet object via -VirtualMachineScaleSet parameter (e.g., pipe the output of 'Get-AzVmss') when configuring Scheduled Events.");
+            }
+
             if (this.IsParameterBound(c => c.ZonalPlatformFaultDomainAlignMode))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
@@ -2477,6 +2500,36 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy = new MaxInstancePercentPerZonePolicy();
                 }
                 this.VirtualMachineScaleSet.ResiliencyPolicy.ZoneAllocationPolicy.MaxInstancePercentPerZonePolicy.Value = this.MaxInstancePercentPerZoneValue;
+            }
+
+            if (this.IsParameterBound(c => c.ScheduledEventsApiVersion) || this.IsParameterBound(c => c.EnableAllInstancesDown))
+            {
+                if (this.VirtualMachineScaleSet.ScheduledEventsPolicy == null)
+                {
+                    this.VirtualMachineScaleSet.ScheduledEventsPolicy = new ScheduledEventsPolicy();
+                }
+
+                if (this.IsParameterBound(c => c.ScheduledEventsApiVersion))
+                {
+                    if (this.VirtualMachineScaleSet.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets == null)
+                    {
+                        this.VirtualMachineScaleSet.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets = new ScheduledEventsAdditionalPublishingTargets();
+                    }
+                    if (this.VirtualMachineScaleSet.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph == null)
+                    {
+                        this.VirtualMachineScaleSet.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph = new EventGridAndResourceGraph();
+                    }
+                    this.VirtualMachineScaleSet.ScheduledEventsPolicy.ScheduledEventsAdditionalPublishingTargets.EventGridAndResourceGraph.ScheduledEventsApiVersion = this.ScheduledEventsApiVersion;
+                }
+
+                if (this.IsParameterBound(c => c.EnableAllInstancesDown))
+                {
+                    if (this.VirtualMachineScaleSet.ScheduledEventsPolicy.AllInstancesDown == null)
+                    {
+                        this.VirtualMachineScaleSet.ScheduledEventsPolicy.AllInstancesDown = new AllInstancesDown();
+                    }
+                    this.VirtualMachineScaleSet.ScheduledEventsPolicy.AllInstancesDown.AutomaticallyApprove = this.EnableAllInstancesDown;
+                }
             }
 
             if (this.IsParameterBound(c => c.ZonalPlatformFaultDomainAlignMode))

@@ -20,6 +20,9 @@
 
 -->
 ## Upcoming Release
+* Added support for configuring ScheduledEventsPolicy on Virtual Machines, Virtual Machine Scale Sets, and Availability Sets.
+    - Added `-ScheduledEventsApiVersion` and `-EnableAllInstancesDown` parameters to `Update-AzAvailabilitySet`, `Update-AzVM`, `New-AzVM` (SimpleParameterSet), and `New-AzVmss` cmdlets.
+    - Added `-ScheduledEventsApiVersion` and `-EnableAllInstancesDown` parameters to `Update-AzVmss`. These parameters are only supported when updating via the `-VirtualMachineScaleSet` object parameter (e.g. piping the output of `Get-AzVmss`); using them with the PATCH parameter sets will throw an error.
 * Added VMSS (Virtual Machine Scale Set) Lifecycle Hooks support (public preview)
     - Added `New-AzVmssLifecycleHookConfig` cmdlet to create an in-memory lifecycle hook configuration object
     - Added `Set-AzVmssLifecycleHooksProfile` cmdlet to attach lifecycle hooks to a VMSS configuration or live VMSS object
