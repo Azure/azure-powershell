@@ -1,51 +1,44 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://learn.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultekmconnection
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/test-azkeyvaultmanagedhsmekmconnection
 schema: 2.0.0
 ---
 
-# Get-AzKeyVaultEkmConnection
+# Test-AzKeyVaultManagedHsmEkmConnection
 
 ## SYNOPSIS
-Gets the External Key Manager (EKM) connection configured on a Managed HSM. (Preview)
+Checks connectivity and authentication between a Managed HSM and its EKM proxy. (Preview)
 
 ## SYNTAX
 
 ### ByHsmName (Default)
 ```
-Get-AzKeyVaultEkmConnection [-HsmName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzKeyVaultEkmConnection [-HsmName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByHsmId
 ```
-Get-AzKeyVaultEkmConnection [-HsmId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzKeyVaultEkmConnection [-HsmId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Get-AzKeyVaultEkmConnection [-HsmObject] <PSManagedHsm> [-DefaultProfile <IAzureContextContainer>]
+Test-AzKeyVaultEkmConnection [-HsmObject] <PSManagedHsm> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzKeyVaultEkmConnection** cmdlet gets the External Key Manager (EKM) connection currently configured on a Managed HSM. This feature is in preview.
+The **Test-AzKeyVaultEkmConnection** cmdlet validates connectivity and authentication between a Managed HSM and its configured External Key Manager (EKM) proxy, and returns metadata reported by the proxy. This feature is in preview.
 
 ## EXAMPLES
 
-### Example 1: Get the EKM connection on a Managed HSM
+### Example 1: Check the EKM connection on a Managed HSM
 ```powershell
-Get-AzKeyVaultEkmConnection -HsmName testmhsm
+Test-AzKeyVaultEkmConnection -HsmName testmhsm
 ```
 
-This cmdlet gets the EKM connection configured on the Managed HSM named `testmhsm`.
-
-### Example 2: Get the EKM connection by piping the HSM object
-```powershell
-Get-AzKeyVaultManagedHsm -Name testmhsm | Get-AzKeyVaultEkmConnection
-```
-
-This cmdlet gets the EKM connection on the Managed HSM named `testmhsm` by piping the HSM object.
+This cmdlet probes the EKM connection on the Managed HSM named `testmhsm` and returns the EKM vendor and product information reported by the proxy.
 
 ## PARAMETERS
 
@@ -118,16 +111,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultEkmConnection
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultEkmProxyInfo
 
 ## NOTES
 
 ## RELATED LINKS
 
+[Get-AzKeyVaultEkmConnection](./Get-AzKeyVaultEkmConnection.md)
+
 [New-AzKeyVaultEkmConnection](./New-AzKeyVaultEkmConnection.md)
-
-[Update-AzKeyVaultEkmConnection](./Update-AzKeyVaultEkmConnection.md)
-
-[Remove-AzKeyVaultEkmConnection](./Remove-AzKeyVaultEkmConnection.md)
-
-[Test-AzKeyVaultEkmConnection](./Test-AzKeyVaultEkmConnection.md)

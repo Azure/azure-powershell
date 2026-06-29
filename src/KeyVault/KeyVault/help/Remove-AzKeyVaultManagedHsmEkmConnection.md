@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://learn.microsoft.com/powershell/module/az.keyvault/remove-azkeyvaultekmconnection
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/remove-azkeyvaultmanagedhsmekmconnection
 schema: 2.0.0
 ---
 
-# Remove-AzKeyVaultEkmConnection
+# Remove-AzKeyVaultManagedHsmEkmConnection
 
 ## SYNOPSIS
 Deletes the External Key Manager (EKM) connection from a Managed HSM. (Preview)

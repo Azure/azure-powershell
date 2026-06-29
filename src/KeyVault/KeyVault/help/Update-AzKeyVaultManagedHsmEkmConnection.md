@@ -1,56 +1,56 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://learn.microsoft.com/powershell/module/az.keyvault/new-azkeyvaultekmconnection
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/update-azkeyvaultmanagedhsmekmconnection
 schema: 2.0.0
 ---
 
-# New-AzKeyVaultEkmConnection
+# Update-AzKeyVaultManagedHsmEkmConnection
 
 ## SYNOPSIS
-Creates the External Key Manager (EKM) connection on a Managed HSM. (Preview)
+Updates the External Key Manager (EKM) connection on a Managed HSM. (Preview)
 
 ## SYNTAX
 
 ### ByHsmName (Default)
 ```
-New-AzKeyVaultEkmConnection [-HsmName] <String> -HostName <String> -ServerCaCertificate <String[]>
+Update-AzKeyVaultEkmConnection [-HsmName] <String> [-HostName <String>] [-ServerCaCertificate <String[]>]
  [-PathPrefix <String>] [-ServerSubjectCommonName <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByHsmId
 ```
-New-AzKeyVaultEkmConnection [-HsmId] <String> -HostName <String> -ServerCaCertificate <String[]>
+Update-AzKeyVaultEkmConnection [-HsmId] <String> [-HostName <String>] [-ServerCaCertificate <String[]>]
  [-PathPrefix <String>] [-ServerSubjectCommonName <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-New-AzKeyVaultEkmConnection [-HsmObject] <PSManagedHsm> -HostName <String> -ServerCaCertificate <String[]>
+Update-AzKeyVaultEkmConnection [-HsmObject] <PSManagedHsm> [-HostName <String>] [-ServerCaCertificate <String[]>]
  [-PathPrefix <String>] [-ServerSubjectCommonName <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzKeyVaultEkmConnection** cmdlet creates the External Key Manager (EKM) connection on a Managed HSM, wiring the HSM to an EKM proxy. At least one server CA certificate is required. This feature is in preview.
+The **Update-AzKeyVaultEkmConnection** cmdlet updates the External Key Manager (EKM) connection on a Managed HSM. Only the parameters you specify are changed; the others are preserved. This feature is in preview.
 
 ## EXAMPLES
 
-### Example 1: Create an EKM connection on a Managed HSM
+### Example 1: Update the EKM proxy host
 ```powershell
-New-AzKeyVaultEkmConnection -HsmName testmhsm -HostName ekm.contoso.com -ServerCaCertificate ./ekm-proxy-ca.cer
+Update-AzKeyVaultEkmConnection -HsmName testmhsm -HostName ekm2.contoso.com:8443
 ```
 
-This cmdlet creates an EKM connection on the Managed HSM named `testmhsm`, pointing at the EKM proxy host `ekm.contoso.com` (port 443).
+This cmdlet updates the EKM connection on the Managed HSM named `testmhsm` to point at `ekm2.contoso.com:8443`, leaving the other settings unchanged.
 
-### Example 2: Create an EKM connection with a path prefix and multiple CA certificates
+### Example 2: Rotate the server CA certificates
 ```powershell
-New-AzKeyVaultEkmConnection -HsmName testmhsm -HostName ekm.contoso.com:8443 -PathPrefix /api/v1 -ServerCaCertificate ./ca1.pem, ./ca2.pem -ServerSubjectCommonName ekm.contoso.com
+Update-AzKeyVaultEkmConnection -HsmName testmhsm -ServerCaCertificate ./new-ca.pem
 ```
 
-This cmdlet creates an EKM connection that targets `ekm.contoso.com:8443`, appends the path prefix `/api/v1`, trusts two CA certificates, and validates the proxy server certificate Common Name.
+This cmdlet replaces the server CA certificates configured on the EKM connection.
 
 ## PARAMETERS
 
@@ -92,7 +92,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases: Host
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -167,7 +167,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -219,10 +219,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+[New-AzKeyVaultEkmConnection](./New-AzKeyVaultEkmConnection.md)
+
 [Get-AzKeyVaultEkmConnection](./Get-AzKeyVaultEkmConnection.md)
 
-[Update-AzKeyVaultEkmConnection](./Update-AzKeyVaultEkmConnection.md)
-
 [Remove-AzKeyVaultEkmConnection](./Remove-AzKeyVaultEkmConnection.md)
-
-[Test-AzKeyVaultEkmConnection](./Test-AzKeyVaultEkmConnection.md)
