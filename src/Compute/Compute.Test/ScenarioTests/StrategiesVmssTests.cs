@@ -140,9 +140,23 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmssScheduledEventsPolicy()
+        {
+            TestRunner.RunTestScript("Test-SimpleNewVmssScheduledEventsPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVmssLifecycleHookConfig()
         {
             TestRunner.RunTestScript("Test-VmssLifecycleHookConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateVmssScheduledEventsPolicy()
+        {
+            TestRunner.RunTestScript("Test-UpdateVmssScheduledEventsPolicy");
         }
 
         [Fact]
