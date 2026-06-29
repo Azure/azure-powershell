@@ -15,7 +15,7 @@ Update an existing domain within a profile.
 ### UpdateExpanded (Default)
 ```
 Update-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AzureDnsZoneId <String>] [-MtlSettingScenario <String>]
+ [-SubscriptionId <String>] [-AzureDnsZoneId <String>]
  [-PropertiesPreValidatedCustomDomainResourceId <String>] [-TlsSetting <IAfdDomainHttpsParameters>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -23,9 +23,8 @@ Update-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileName <Strin
 ### UpdateViaIdentityExpanded
 ```
 Update-AzFrontDoorCdnCustomDomain -InputObject <ICdnIdentity> [-AzureDnsZoneId <String>]
- [-MtlSettingScenario <String>] [-PropertiesPreValidatedCustomDomainResourceId <String>]
- [-TlsSetting <IAfdDomainHttpsParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-PropertiesPreValidatedCustomDomainResourceId <String>] [-TlsSetting <IAfdDomainHttpsParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityProfile
@@ -38,9 +37,9 @@ Update-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileInputObject
 ### UpdateViaIdentityProfileExpanded
 ```
 Update-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileInputObject <ICdnIdentity>
- [-AzureDnsZoneId <String>] [-MtlSettingScenario <String>]
- [-PropertiesPreValidatedCustomDomainResourceId <String>] [-TlsSetting <IAfdDomainHttpsParameters>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AzureDnsZoneId <String>] [-PropertiesPreValidatedCustomDomainResourceId <String>]
+ [-TlsSetting <IAfdDomainHttpsParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -211,21 +210,6 @@ Parameter Sets: UpdateViaJsonString
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MtlSettingScenario
-Supported scenarios for establishing mTLS connection.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityProfileExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

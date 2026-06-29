@@ -15,10 +15,9 @@ Update an existing domain within a profile.
 ### UpdateExpanded (Default)
 ```
 Update-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AzureDnsZoneId <String>] [-MtlSettingScenario <String>]
- [-PropertiesPreValidatedCustomDomainResourceId <String>] [-TlsSetting <IAfdDomainHttpsParameters>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-AzureDnsZoneId <String>] [-PropertiesPreValidatedCustomDomainResourceId <String>]
+ [-TlsSetting <IAfdDomainHttpsParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
@@ -38,10 +37,9 @@ Update-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileName <Strin
 ### UpdateViaIdentityProfileExpanded
 ```
 Update-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileInputObject <ICdnIdentity>
- [-AzureDnsZoneId <String>] [-MtlSettingScenario <String>]
- [-PropertiesPreValidatedCustomDomainResourceId <String>] [-TlsSetting <IAfdDomainHttpsParameters>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AzureDnsZoneId <String>] [-PropertiesPreValidatedCustomDomainResourceId <String>]
+ [-TlsSetting <IAfdDomainHttpsParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityProfile
@@ -54,9 +52,9 @@ Update-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileInputObject
 ### UpdateViaIdentityExpanded
 ```
 Update-AzFrontDoorCdnCustomDomain -InputObject <ICdnIdentity> [-AzureDnsZoneId <String>]
- [-MtlSettingScenario <String>] [-PropertiesPreValidatedCustomDomainResourceId <String>]
- [-TlsSetting <IAfdDomainHttpsParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PropertiesPreValidatedCustomDomainResourceId <String>] [-TlsSetting <IAfdDomainHttpsParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -213,21 +211,6 @@ Parameter Sets: UpdateViaJsonString
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MtlSettingScenario
-Supported scenarios for establishing mTLS connection.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityProfileExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
