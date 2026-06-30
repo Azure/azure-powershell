@@ -14,8 +14,7 @@ Create an in-memory object for SecurityPolicyWebApplicationFirewallAssociation.
 
 ```
 New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject
- [-Domain <IActivatedResourceReference[]>] [-PatternsToMatch <String[]>] [-Route <IResourceReference[]>]
- [<CommonParameters>]
+ [-Domain <IActivatedResourceReference[]>] [-PatternsToMatch <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,21 +58,6 @@ List of paths.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Route
-List of routes.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference[]
 Parameter Sets: (All)
 Aliases:
 

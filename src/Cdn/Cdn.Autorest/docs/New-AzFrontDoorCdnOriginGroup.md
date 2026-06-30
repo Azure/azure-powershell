@@ -15,11 +15,11 @@ Create a new origin group within the specified profile.
 ### CreateExpanded (Default)
 ```
 New-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AuthenticationScope <String>] [-AuthenticationTokenDestinationHeader <String>]
- [-AuthenticationType <String>] [-HealthProbeSetting <IHealthProbeParameters>]
- [-LoadBalancingSetting <ILoadBalancingSettingsParameters>] [-SessionAffinityState <String>]
- [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-UserAssignedIdentityId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-AuthenticationScope <String>] [-AuthenticationType <String>]
+ [-HealthProbeSetting <IHealthProbeParameters>] [-LoadBalancingSetting <ILoadBalancingSettingsParameters>]
+ [-SessionAffinityState <String>] [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>]
+ [-UserAssignedIdentityId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityProfile
@@ -32,8 +32,7 @@ New-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileInputObject <ICd
 ### CreateViaIdentityProfileExpanded
 ```
 New-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileInputObject <ICdnIdentity>
- [-AuthenticationScope <String>] [-AuthenticationTokenDestinationHeader <String>]
- [-AuthenticationType <String>] [-HealthProbeSetting <IHealthProbeParameters>]
+ [-AuthenticationScope <String>] [-AuthenticationType <String>] [-HealthProbeSetting <IHealthProbeParameters>]
  [-LoadBalancingSetting <ILoadBalancingSettingsParameters>] [-SessionAffinityState <String>]
  [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-UserAssignedIdentityId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -93,22 +92,6 @@ Accept wildcard characters: False
 ### -AuthenticationScope
 The scope used when requesting token from Microsoft Entra.
 For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AuthenticationTokenDestinationHeader
-The HTTP request header where the origin authentication token will be placed when forwarding the request to the origin.
-If not specified, the service will use the `Authorization` header for backward compatibility.
 
 ```yaml
 Type: System.String
@@ -274,7 +257,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProfileName
-Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
 
 ```yaml
 Type: System.String

@@ -14,34 +14,33 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnSecret'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzFrontDoorCdnSecret' {
+Describe 'Get-AzFrontDoorCdnSecret'  {
     BeforeAll {
-        $script:secretName = 'kvsecret-get'
-        $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -Type 'CustomerCertificate' -SecretSourceId "/subscriptions/$($env.SubscriptionId)/resourceGroups/testps-rg-cdn-debug/providers/Microsoft.KeyVault/vaults/jingnanxukvtest/secrets/wildcard-azfdtest-xyz"
-        New-AzFrontDoorCdnSecret -Name $script:secretName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Parameter $parameter | Out-Null
-    }
+        $subId = $env.SubscriptionId
+        Write-Host -ForegroundColor Green "Use SubscriptionId : $($subId)"
 
-    AfterAll {
-        Remove-AzFrontDoorCdnSecret -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $script:secretName -ErrorAction SilentlyContinue
+        $secretName = "kvsecret-test01"
+        Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
+
+        $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
+        -SecretSourceId "/subscriptions/$subId/resourceGroups/huaiyiz/providers/Microsoft.KeyVault/vaults/huaiyizkvtest/secrets/wildcard-huaiyiz-azfdtest-xyz"
+        
+        New-AzFrontDoorCdnSecret -Name $secretName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Parameter $parameter
     }
 
     It 'List' {
-        $ss = Get-AzFrontDoorCdnSecret -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $ss.Count | Should -BeGreaterOrEqual 1
+        $rules = Get-AzFrontDoorCdnSecret -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $rules.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {
-        $s = Get-AzFrontDoorCdnSecret -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $script:secretName
-        $s.Name | Should -Be $script:secretName
+        $secret = Get-AzFrontDoorCdnSecret -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $secretName
+        $secret.Name | Should -Be $secretName
     }
 
     It 'GetViaIdentity' {
-        $s = Get-AzFrontDoorCdnSecret -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $script:secretName
-        $s2 = Get-AzFrontDoorCdnSecret -InputObject $s
-        $s2.Name | Should -Be $script:secretName
-    }
-
-    It 'GetViaIdentityProfile' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $secretObject = Get-AzFrontDoorCdnSecret -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $secretName
+        $secret = Get-AzFrontDoorCdnSecret -InputObject $secretObject
+        $secret.Name | Should -Be $secretName
     }
 }
