@@ -29,7 +29,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
-    [GenericBreakingChangeWithVersion("Azure Blueprints is retiring on 31 January 2027, with phased restrictions starting 31 July 2026. After retirement, the Az.Blueprint cmdlets will stop functioning and will be removed from the Az module in a later release. Migrate blueprint definitions to Azure Template Specs and assignments to Azure Deployment Stacks (recommended). Migration guidance: https://aka.ms/AzureBlueprintsRetirement", "16.0.0", "-")]
+    [GenericBreakingChangeWithVersion("Azure Blueprints is retiring on 31 January 2027, with phased restrictions starting 31 July 2026. After retirement, the Az.Blueprint cmdlets will stop functioning and will be removed from the Az module in a later release. Migrate blueprint definitions to Azure Template Specs and assignments to Azure Deployment Stacks (recommended). Migration guidance: https://aka.ms/AzureBlueprintsRetirement", "16.0.0", "-")]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BlueprintArtifact", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.CreateTemplateArtifact), OutputType(typeof(Artifact))]
     public class NewAzureRMBlueprintArtifact : BlueprintArtifactsCmdletBase
     {
