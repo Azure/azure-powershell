@@ -76,33 +76,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("AzureDnsZone"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).AzureDnsZone = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("AzureDnsZone",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).AzureDnsZone, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("PreValidatedCustomDomainResourceId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).PreValidatedCustomDomainResourceId = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("PreValidatedCustomDomainResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).PreValidatedCustomDomainResourceId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
-            }
             if (content.Contains("ValidationProperty"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).ValidationProperty = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDomainValidationProperties) content.GetValueForProperty("ValidationProperty",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).ValidationProperty, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DomainValidationPropertiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("ProfileName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).ProfileName = (string) content.GetValueForProperty("ProfileName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).ProfileName, global::System.Convert.ToString);
-            }
-            if (content.Contains("TlsSetting"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).TlsSetting = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParameters) content.GetValueForProperty("TlsSetting",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).TlsSetting, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainHttpsParametersTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("ProvisioningState"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
-            }
-            if (content.Contains("DeploymentStatus"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).DeploymentStatus = (string) content.GetValueForProperty("DeploymentStatus",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).DeploymentStatus, global::System.Convert.ToString);
             }
             if (content.Contains("DomainValidationState"))
             {
@@ -118,11 +94,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             }
             if (content.Contains("AzureDnsZoneId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).AzureDnsZoneId = (string) content.GetValueForProperty("AzureDnsZoneId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).AzureDnsZoneId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)this).AzureDnsZoneId = (string) content.GetValueForProperty("AzureDnsZoneId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)this).AzureDnsZoneId, global::System.Convert.ToString);
             }
             if (content.Contains("PreValidatedCustomDomainResourceIdId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).PreValidatedCustomDomainResourceIdId = (string) content.GetValueForProperty("PreValidatedCustomDomainResourceIdId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).PreValidatedCustomDomainResourceIdId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)this).PreValidatedCustomDomainResourceIdId = (string) content.GetValueForProperty("PreValidatedCustomDomainResourceIdId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)this).PreValidatedCustomDomainResourceIdId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AzureDnsZone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)this).AzureDnsZone = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("AzureDnsZone",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)this).AzureDnsZone, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("PreValidatedCustomDomainResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)this).PreValidatedCustomDomainResourceId = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("PreValidatedCustomDomainResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)this).PreValidatedCustomDomainResourceId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ProfileName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)this).ProfileName = (string) content.GetValueForProperty("ProfileName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)this).ProfileName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TlsSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)this).TlsSetting = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParameters) content.GetValueForProperty("TlsSetting",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)this).TlsSetting, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainHttpsParametersTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("DeploymentStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).DeploymentStatus = (string) content.GetValueForProperty("DeploymentStatus",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).DeploymentStatus, global::System.Convert.ToString);
             }
             if (content.Contains("ValidationPropertyValidationToken"))
             {
@@ -149,33 +149,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("AzureDnsZone"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).AzureDnsZone = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("AzureDnsZone",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).AzureDnsZone, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("PreValidatedCustomDomainResourceId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).PreValidatedCustomDomainResourceId = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("PreValidatedCustomDomainResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).PreValidatedCustomDomainResourceId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
-            }
             if (content.Contains("ValidationProperty"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).ValidationProperty = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDomainValidationProperties) content.GetValueForProperty("ValidationProperty",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).ValidationProperty, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DomainValidationPropertiesTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("ProfileName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).ProfileName = (string) content.GetValueForProperty("ProfileName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).ProfileName, global::System.Convert.ToString);
-            }
-            if (content.Contains("TlsSetting"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).TlsSetting = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParameters) content.GetValueForProperty("TlsSetting",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).TlsSetting, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainHttpsParametersTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("ProvisioningState"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
-            }
-            if (content.Contains("DeploymentStatus"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).DeploymentStatus = (string) content.GetValueForProperty("DeploymentStatus",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).DeploymentStatus, global::System.Convert.ToString);
             }
             if (content.Contains("DomainValidationState"))
             {
@@ -191,11 +167,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             }
             if (content.Contains("AzureDnsZoneId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).AzureDnsZoneId = (string) content.GetValueForProperty("AzureDnsZoneId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).AzureDnsZoneId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)this).AzureDnsZoneId = (string) content.GetValueForProperty("AzureDnsZoneId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)this).AzureDnsZoneId, global::System.Convert.ToString);
             }
             if (content.Contains("PreValidatedCustomDomainResourceIdId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).PreValidatedCustomDomainResourceIdId = (string) content.GetValueForProperty("PreValidatedCustomDomainResourceIdId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)this).PreValidatedCustomDomainResourceIdId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)this).PreValidatedCustomDomainResourceIdId = (string) content.GetValueForProperty("PreValidatedCustomDomainResourceIdId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)this).PreValidatedCustomDomainResourceIdId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AzureDnsZone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)this).AzureDnsZone = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("AzureDnsZone",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)this).AzureDnsZone, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("PreValidatedCustomDomainResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)this).PreValidatedCustomDomainResourceId = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("PreValidatedCustomDomainResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)this).PreValidatedCustomDomainResourceId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ProfileName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)this).ProfileName = (string) content.GetValueForProperty("ProfileName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)this).ProfileName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TlsSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)this).TlsSetting = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParameters) content.GetValueForProperty("TlsSetting",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)this).TlsSetting, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainHttpsParametersTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("DeploymentStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).DeploymentStatus = (string) content.GetValueForProperty("DeploymentStatus",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).DeploymentStatus, global::System.Convert.ToString);
             }
             if (content.Contains("ValidationPropertyValidationToken"))
             {

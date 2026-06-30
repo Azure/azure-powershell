@@ -80,7 +80,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             }
             {_domain = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonArray>("domains"), out var __jsonDomains) ? If( __jsonDomains as Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference) (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ActivatedResourceReference.FromJson(__u) )) ))() : null : _domain;}
             {_patternsToMatch = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonArray>("patternsToMatch"), out var __jsonPatternsToMatch) ? If( __jsonPatternsToMatch as Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(string) (__p is Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString __o ? (string)(__o.ToString()) : null)) ))() : null : _patternsToMatch;}
-            {_route = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonArray>("routes"), out var __jsonRoutes) ? If( __jsonRoutes as Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference.FromJson(__k) )) ))() : null : _route;}
             AfterFromJson(json);
         }
 
@@ -122,15 +121,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
                     AddIf(null != (((object)__s)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(__s.ToString()) : null ,__r.Add);
                 }
                 container.Add("patternsToMatch",__r);
-            }
-            if (null != this._route)
-            {
-                var __m = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.XNodeArray();
-                foreach( var __n in this._route )
-                {
-                    AddIf(__n?.ToJson(null, serializationMode) ,__m.Add);
-                }
-                container.Add("routes",__m);
             }
             AfterToJson(ref container);
             return container;

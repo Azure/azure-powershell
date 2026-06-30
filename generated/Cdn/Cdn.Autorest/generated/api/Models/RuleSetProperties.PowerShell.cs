@@ -113,14 +113,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSetPropertiesInternal)this).ProfileName = (string) content.GetValueForProperty("ProfileName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSetPropertiesInternal)this).ProfileName, global::System.Convert.ToString);
             }
-            if (content.Contains("BatchMode"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSetPropertiesInternal)this).BatchMode = (bool?) content.GetValueForProperty("BatchMode",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSetPropertiesInternal)this).BatchMode, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            }
-            if (content.Contains("Rule"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSetPropertiesInternal)this).Rule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IBatchRuleProperties>) content.GetValueForProperty("Rule",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSetPropertiesInternal)this).Rule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IBatchRuleProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.BatchRulePropertiesTypeConverter.ConvertFrom));
-            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
@@ -149,14 +141,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("ProfileName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSetPropertiesInternal)this).ProfileName = (string) content.GetValueForProperty("ProfileName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSetPropertiesInternal)this).ProfileName, global::System.Convert.ToString);
-            }
-            if (content.Contains("BatchMode"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSetPropertiesInternal)this).BatchMode = (bool?) content.GetValueForProperty("BatchMode",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSetPropertiesInternal)this).BatchMode, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            }
-            if (content.Contains("Rule"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSetPropertiesInternal)this).Rule = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IBatchRuleProperties>) content.GetValueForProperty("Rule",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSetPropertiesInternal)this).Rule, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IBatchRuleProperties>(__y, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.BatchRulePropertiesTypeConverter.ConvertFrom));
             }
             if (content.Contains("ProvisioningState"))
             {

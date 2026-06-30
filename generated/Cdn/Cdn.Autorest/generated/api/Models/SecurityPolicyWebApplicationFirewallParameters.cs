@@ -26,13 +26,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyWebApplicationFirewallAssociation> Association { get => this._association; set => this._association = value; }
 
-        /// <summary>Backing field for <see cref="IsProfileLevel" /> property.</summary>
-        private bool? _isProfileLevel;
-
-        /// <summary>Indicates if this is a profile-level WAF policy.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public bool? IsProfileLevel { get => this._isProfileLevel; set => this._isProfileLevel = value; }
-
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyPropertiesParametersInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyPropertiesParametersInternal)__securityPolicyPropertiesParameters).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyPropertiesParametersInternal)__securityPolicyPropertiesParameters).Type = value ; }
 
@@ -91,17 +84,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"associations",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyWebApplicationFirewallAssociation) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyWebApplicationFirewallAssociation> Association { get; set; }
-        /// <summary>Indicates if this is a profile-level WAF policy.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Indicates if this is a profile-level WAF policy.",
-        SerializedName = @"isProfileLevel",
-        PossibleTypes = new [] { typeof(bool) })]
-        bool? IsProfileLevel { get; set; }
         /// <summary>Resource ID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
@@ -121,8 +103,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     {
         /// <summary>Waf associations</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyWebApplicationFirewallAssociation> Association { get; set; }
-        /// <summary>Indicates if this is a profile-level WAF policy.</summary>
-        bool? IsProfileLevel { get; set; }
         /// <summary>Resource ID.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference WafPolicy { get; set; }
         /// <summary>Resource ID.</summary>

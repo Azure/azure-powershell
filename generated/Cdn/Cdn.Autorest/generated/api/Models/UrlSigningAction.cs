@@ -90,7 +90,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Defines which query string parameters in the url to be considered for expires, key id etc.",
+        Description = @"Defines which query string parameters in the url to be considered for expires, key id etc. ",
         SerializedName = @"parameterNameOverride",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUrlSigningParamIdentifier) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUrlSigningParamIdentifier> ParameterNameOverride { get; set; }

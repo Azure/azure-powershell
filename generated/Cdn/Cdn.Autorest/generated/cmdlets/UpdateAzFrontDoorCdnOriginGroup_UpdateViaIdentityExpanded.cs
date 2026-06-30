@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroup))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"update an existing origin group within a profile.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}", ApiVersion = "2026-04-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}", ApiVersion = "2025-06-01")]
     public partial class UpdateAzFrontDoorCdnOriginGroup_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IContext
@@ -60,21 +60,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         SerializedName = @"scope",
         PossibleTypes = new [] { typeof(string) })]
         public string AuthenticationScope { get => _originGroupUpdatePropertiesBody.AuthenticationScope ?? null; set => _originGroupUpdatePropertiesBody.AuthenticationScope = value; }
-
-        /// <summary>
-        /// The HTTP request header where the origin authentication token will be placed when forwarding the request to the origin.
-        /// If not specified, the service will use the `Authorization` header for backward compatibility.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The HTTP request header where the origin authentication token will be placed when forwarding the request to the origin. If not specified, the service will use the `Authorization` header for backward compatibility.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The HTTP request header where the origin authentication token will be placed when forwarding the request to the origin. If not specified, the service will use the `Authorization` header for backward compatibility.",
-        SerializedName = @"tokenDestinationHeader",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Authorization", "X-Azure-Authorization")]
-        public string AuthenticationTokenDestinationHeader { get => _originGroupUpdatePropertiesBody.AuthenticationTokenDestinationHeader ?? null; set => _originGroupUpdatePropertiesBody.AuthenticationTokenDestinationHeader = value; }
 
         /// <summary>The type of the authentication for the origin.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of the authentication for the origin.")]

@@ -20,7 +20,7 @@ A long-running operation to deploy versioncode to EdgeActionVersion resource.
 .Description
 A long-running operation to deploy versioncode to EdgeActionVersion resource.
 .Example
-Deploy-AzCdnEdgeActionVersionCode -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version v1 -Name edge_action.js -Content "Y29uc29sZS5sb2coJ0hlbGxvJyk7"
+Deploy-AzCdnEdgeActionVersionCode -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version "v1" -Content "console.log('Hello World');" -Name "main.js"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -38,16 +38,14 @@ BODY <IVersionCode>: EdgeAction version code deployment object
   Name <String>: The version code name
 
 EDGEACTIONINPUTOBJECT <ICdnIdentity>: Identity Parameter
-  [EdgeActionName <String>]: The name of the Edge Action
-  [Version <String>]: The name of the Edge Action version
-  [ExecutionFilter <String>]: The name of the Edge Action execution filter
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
+  [EdgeActionName <String>]: The name of the Edge Action
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
+  [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the endpoint.
-  [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -55,18 +53,17 @@ EDGEACTIONINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [Version <String>]: The name of the Edge Action version
 
 INPUTOBJECT <ICdnIdentity>: Identity Parameter
-  [EdgeActionName <String>]: The name of the Edge Action
-  [Version <String>]: The name of the Edge Action version
-  [ExecutionFilter <String>]: The name of the Edge Action execution filter
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
+  [EdgeActionName <String>]: The name of the Edge Action
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
+  [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the endpoint.
-  [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -74,6 +71,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [Version <String>]: The name of the Edge Action version
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/deploy-azcdnedgeactionversioncode
 #>
@@ -81,40 +79,29 @@ function Deploy-AzCdnEdgeActionVersionCode {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersionProperties])]
 [CmdletBinding(DefaultParameterSetName='DeployExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='DeployExpanded', Mandatory)]
-    [Parameter(ParameterSetName='DeployViaJsonString', Mandatory)]
-    [Parameter(ParameterSetName='DeployViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='Deploy', Mandatory)]
+    [Parameter(ParameterSetName='DeployExpanded', Mandatory)]
+    [Parameter(ParameterSetName='DeployViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='DeployViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # The name of the Edge Action
     ${EdgeActionName},
 
-    [Parameter(ParameterSetName='DeployExpanded', Mandatory)]
-    [Parameter(ParameterSetName='DeployViaJsonString', Mandatory)]
-    [Parameter(ParameterSetName='DeployViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='Deploy', Mandatory)]
+    [Parameter(ParameterSetName='DeployExpanded', Mandatory)]
+    [Parameter(ParameterSetName='DeployViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='DeployViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='DeployExpanded', Mandatory)]
-    [Parameter(ParameterSetName='DeployViaJsonString', Mandatory)]
-    [Parameter(ParameterSetName='DeployViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='Deploy', Mandatory)]
-    [Parameter(ParameterSetName='DeployViaIdentityEdgeActionExpanded', Mandatory)]
-    [Parameter(ParameterSetName='DeployViaIdentityEdgeAction', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [System.String]
-    # The name of the Edge Action version
-    ${Version},
-
-    [Parameter(ParameterSetName='DeployExpanded')]
-    [Parameter(ParameterSetName='DeployViaJsonString')]
-    [Parameter(ParameterSetName='DeployViaJsonFilePath')]
     [Parameter(ParameterSetName='Deploy')]
+    [Parameter(ParameterSetName='DeployExpanded')]
+    [Parameter(ParameterSetName='DeployViaJsonFilePath')]
+    [Parameter(ParameterSetName='DeployViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -122,19 +109,38 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='DeployViaIdentityEdgeActionExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='Deploy', Mandatory)]
+    [Parameter(ParameterSetName='DeployExpanded', Mandatory)]
+    [Parameter(ParameterSetName='DeployViaIdentityEdgeAction', Mandatory)]
+    [Parameter(ParameterSetName='DeployViaIdentityEdgeActionExpanded', Mandatory)]
+    [Parameter(ParameterSetName='DeployViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='DeployViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+    [System.String]
+    # The name of the Edge Action version
+    ${Version},
+
+    [Parameter(ParameterSetName='DeployViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='DeployViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
+    # Identity Parameter
+    ${InputObject},
+
     [Parameter(ParameterSetName='DeployViaIdentityEdgeAction', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='DeployViaIdentityEdgeActionExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
     # Identity Parameter
     ${EdgeActionInputObject},
 
-    [Parameter(ParameterSetName='DeployViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='Deploy', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='DeployViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
-    # Identity Parameter
-    ${InputObject},
+    [Parameter(ParameterSetName='DeployViaIdentityEdgeAction', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IVersionCode]
+    # EdgeAction version code deployment object
+    ${Body},
 
     [Parameter(ParameterSetName='DeployExpanded', Mandatory)]
     [Parameter(ParameterSetName='DeployViaIdentityEdgeActionExpanded', Mandatory)]
@@ -152,25 +158,17 @@ param(
     # The version code name
     ${Name},
 
-    [Parameter(ParameterSetName='DeployViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String]
-    # Json string supplied to the Deploy operation
-    ${JsonString},
-
     [Parameter(ParameterSetName='DeployViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # Path of Json file supplied to the Deploy operation
     ${JsonFilePath},
 
-    [Parameter(ParameterSetName='Deploy', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='DeployViaIdentityEdgeAction', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='DeployViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='DeployViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IVersionCode]
-    # EdgeAction version code deployment object
-    ${Body},
+    [System.String]
+    # Json string supplied to the Deploy operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -267,16 +265,16 @@ begin {
         }
 
         $mapping = @{
-            DeployExpanded = 'Az.Cdn.custom\Deploy-AzCdnEdgeActionVersionCode';
-            DeployViaJsonString = 'Az.Cdn.custom\Deploy-AzCdnEdgeActionVersionCode';
-            DeployViaJsonFilePath = 'Az.Cdn.custom\Deploy-AzCdnEdgeActionVersionCode';
-            Deploy = 'Az.Cdn.custom\Deploy-AzCdnEdgeActionVersionCode';
-            DeployViaIdentityEdgeActionExpanded = 'Az.Cdn.custom\Deploy-AzCdnEdgeActionVersionCode';
-            DeployViaIdentityEdgeAction = 'Az.Cdn.custom\Deploy-AzCdnEdgeActionVersionCode';
-            DeployViaIdentityExpanded = 'Az.Cdn.custom\Deploy-AzCdnEdgeActionVersionCode';
-            DeployViaIdentity = 'Az.Cdn.custom\Deploy-AzCdnEdgeActionVersionCode';
+            Deploy = 'Az.Cdn.private\Deploy-AzCdnEdgeActionVersionCode_Deploy';
+            DeployExpanded = 'Az.Cdn.private\Deploy-AzCdnEdgeActionVersionCode_DeployExpanded';
+            DeployViaIdentity = 'Az.Cdn.private\Deploy-AzCdnEdgeActionVersionCode_DeployViaIdentity';
+            DeployViaIdentityEdgeAction = 'Az.Cdn.private\Deploy-AzCdnEdgeActionVersionCode_DeployViaIdentityEdgeAction';
+            DeployViaIdentityEdgeActionExpanded = 'Az.Cdn.private\Deploy-AzCdnEdgeActionVersionCode_DeployViaIdentityEdgeActionExpanded';
+            DeployViaIdentityExpanded = 'Az.Cdn.private\Deploy-AzCdnEdgeActionVersionCode_DeployViaIdentityExpanded';
+            DeployViaJsonFilePath = 'Az.Cdn.private\Deploy-AzCdnEdgeActionVersionCode_DeployViaJsonFilePath';
+            DeployViaJsonString = 'Az.Cdn.private\Deploy-AzCdnEdgeActionVersionCode_DeployViaJsonString';
         }
-        if (('DeployExpanded', 'DeployViaJsonString', 'DeployViaJsonFilePath', 'Deploy') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('Deploy', 'DeployExpanded', 'DeployViaJsonFilePath', 'DeployViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {

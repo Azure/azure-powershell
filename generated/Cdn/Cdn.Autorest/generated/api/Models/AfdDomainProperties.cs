@@ -10,25 +10,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     /// <summary>The JSON object that contains the properties of the domain to create.</summary>
     public partial class AfdDomainProperties :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainProperties,
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal,
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IValidates
     {
+        /// <summary>
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParameters"
+        /// />
+        /// </summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParameters __afdDomainUpdatePropertiesParameters = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainUpdatePropertiesParameters();
 
-        /// <summary>Backing field for <see cref="AzureDnsZone" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference _azureDnsZone;
+        /// <summary>
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStateProperties" />
+        /// </summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStateProperties __afdStateProperties = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdStateProperties();
 
         /// <summary>Resource reference to the Azure DNS zone</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference AzureDnsZone { get => (this._azureDnsZone = this._azureDnsZone ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference()); set => this._azureDnsZone = value; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference AzureDnsZone { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)__afdDomainUpdatePropertiesParameters).AzureDnsZone; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)__afdDomainUpdatePropertiesParameters).AzureDnsZone = value ?? null /* model class */; }
 
         /// <summary>Resource ID.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
-        public string AzureDnsZoneId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReferenceInternal)AzureDnsZone).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReferenceInternal)AzureDnsZone).Id = value ?? null; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
+        public string AzureDnsZoneId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)__afdDomainUpdatePropertiesParameters).AzureDnsZoneId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)__afdDomainUpdatePropertiesParameters).AzureDnsZoneId = value ?? null; }
 
-        /// <summary>Backing field for <see cref="DeploymentStatus" /> property.</summary>
-        private string _deploymentStatus;
-
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public string DeploymentStatus { get => this._deploymentStatus; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
+        public string DeploymentStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).DeploymentStatus; }
 
         /// <summary>Backing field for <see cref="DomainValidationState" /> property.</summary>
         private string _domainValidationState;
@@ -53,23 +58,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string HostName { get => this._hostName; set => this._hostName = value; }
 
-        /// <summary>Internal Acessors for AzureDnsZone</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal.AzureDnsZone { get => (this._azureDnsZone = this._azureDnsZone ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference()); set { {_azureDnsZone = value;} } }
-
-        /// <summary>Internal Acessors for DeploymentStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal.DeploymentStatus { get => this._deploymentStatus; set { {_deploymentStatus = value;} } }
-
         /// <summary>Internal Acessors for DomainValidationState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal.DomainValidationState { get => this._domainValidationState; set { {_domainValidationState = value;} } }
-
-        /// <summary>Internal Acessors for PreValidatedCustomDomainResourceId</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal.PreValidatedCustomDomainResourceId { get => (this._preValidatedCustomDomainResourceId = this._preValidatedCustomDomainResourceId ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference()); set { {_preValidatedCustomDomainResourceId = value;} } }
-
-        /// <summary>Internal Acessors for ProfileName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal.ProfileName { get => this._profileName; set { {_profileName = value;} } }
-
-        /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
 
         /// <summary>Internal Acessors for ValidationProperty</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDomainValidationProperties Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal.ValidationProperty { get => (this._validationProperty = this._validationProperty ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DomainValidationProperties()); set { {_validationProperty = value;} } }
@@ -80,42 +70,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Internal Acessors for ValidationPropertyValidationToken</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal.ValidationPropertyValidationToken { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDomainValidationPropertiesInternal)ValidationProperty).ValidationToken; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDomainValidationPropertiesInternal)ValidationProperty).ValidationToken = value ?? null; }
 
-        /// <summary>Backing field for <see cref="PreValidatedCustomDomainResourceId" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference _preValidatedCustomDomainResourceId;
+        /// <summary>Internal Acessors for AzureDnsZone</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal.AzureDnsZone { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)__afdDomainUpdatePropertiesParameters).AzureDnsZone; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)__afdDomainUpdatePropertiesParameters).AzureDnsZone = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for PreValidatedCustomDomainResourceId</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal.PreValidatedCustomDomainResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)__afdDomainUpdatePropertiesParameters).PreValidatedCustomDomainResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)__afdDomainUpdatePropertiesParameters).PreValidatedCustomDomainResourceId = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for ProfileName</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal.ProfileName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)__afdDomainUpdatePropertiesParameters).ProfileName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)__afdDomainUpdatePropertiesParameters).ProfileName = value ?? null; }
+
+        /// <summary>Internal Acessors for DeploymentStatus</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal.DeploymentStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).DeploymentStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).DeploymentStatus = value ?? null; }
+
+        /// <summary>Internal Acessors for ProvisioningState</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).ProvisioningState = value ?? null; }
 
         /// <summary>
         /// Resource reference to the Azure resource where custom domain ownership was prevalidated
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference PreValidatedCustomDomainResourceId { get => (this._preValidatedCustomDomainResourceId = this._preValidatedCustomDomainResourceId ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference()); set => this._preValidatedCustomDomainResourceId = value; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference PreValidatedCustomDomainResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)__afdDomainUpdatePropertiesParameters).PreValidatedCustomDomainResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)__afdDomainUpdatePropertiesParameters).PreValidatedCustomDomainResourceId = value ?? null /* model class */; }
 
         /// <summary>Resource ID.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
-        public string PreValidatedCustomDomainResourceIdId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReferenceInternal)PreValidatedCustomDomainResourceId).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReferenceInternal)PreValidatedCustomDomainResourceId).Id = value ?? null; }
-
-        /// <summary>Backing field for <see cref="ProfileName" /> property.</summary>
-        private string _profileName;
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
+        public string PreValidatedCustomDomainResourceIdId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)__afdDomainUpdatePropertiesParameters).PreValidatedCustomDomainResourceIdId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)__afdDomainUpdatePropertiesParameters).PreValidatedCustomDomainResourceIdId = value ?? null; }
 
         /// <summary>The name of the profile which holds the domain.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public string ProfileName { get => this._profileName; }
-
-        /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
-        private string _provisioningState;
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
+        public string ProfileName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)__afdDomainUpdatePropertiesParameters).ProfileName; }
 
         /// <summary>Provisioning status</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public string ProvisioningState { get => this._provisioningState; }
-
-        /// <summary>Backing field for <see cref="TlsSetting" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParameters _tlsSetting;
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
+        public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).ProvisioningState; }
 
         /// <summary>
         /// The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own
         /// certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParameters TlsSetting { get => (this._tlsSetting = this._tlsSetting ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainHttpsParameters()); set => this._tlsSetting = value; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParameters TlsSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)__afdDomainUpdatePropertiesParameters).TlsSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal)__afdDomainUpdatePropertiesParameters).TlsSetting = value ?? null /* model class */; }
 
         /// <summary>Backing field for <see cref="ValidationProperty" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDomainValidationProperties _validationProperty;
@@ -137,34 +130,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         {
 
         }
+
+        /// <summary>Validates that this object meets the validation criteria.</summary>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive validation
+        /// events.</param>
+        /// <returns>
+        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        {
+            await eventListener.AssertNotNull(nameof(__afdDomainUpdatePropertiesParameters), __afdDomainUpdatePropertiesParameters);
+            await eventListener.AssertObjectIsValid(nameof(__afdDomainUpdatePropertiesParameters), __afdDomainUpdatePropertiesParameters);
+            await eventListener.AssertNotNull(nameof(__afdStateProperties), __afdStateProperties);
+            await eventListener.AssertObjectIsValid(nameof(__afdStateProperties), __afdStateProperties);
+        }
     }
     /// The JSON object that contains the properties of the domain to create.
     public partial interface IAfdDomainProperties :
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable,
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParameters,
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStateProperties
     {
-        /// <summary>Resource ID.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Resource ID.",
-        SerializedName = @"id",
-        PossibleTypes = new [] { typeof(string) })]
-        string AzureDnsZoneId { get; set; }
-
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"",
-        SerializedName = @"deploymentStatus",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("NotStarted", "InProgress", "Succeeded", "Failed")]
-        string DeploymentStatus { get;  }
         /// <summary>
         /// Provisioning substate shows the progress of custom HTTPS enabling/disabling process step by step. DCV stands for DomainControlValidation.
         /// </summary>
@@ -201,54 +187,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"hostName",
         PossibleTypes = new [] { typeof(string) })]
         string HostName { get; set; }
-        /// <summary>Resource ID.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Resource ID.",
-        SerializedName = @"id",
-        PossibleTypes = new [] { typeof(string) })]
-        string PreValidatedCustomDomainResourceIdId { get; set; }
-        /// <summary>The name of the profile which holds the domain.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The name of the profile which holds the domain.",
-        SerializedName = @"profileName",
-        PossibleTypes = new [] { typeof(string) })]
-        string ProfileName { get;  }
-        /// <summary>Provisioning status</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Provisioning status",
-        SerializedName = @"provisioningState",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Updating", "Deleting", "Creating")]
-        string ProvisioningState { get;  }
-        /// <summary>
-        /// The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own
-        /// certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.",
-        SerializedName = @"tlsSettings",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParameters) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParameters TlsSetting { get; set; }
         /// <summary>The date time that the token expires</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
@@ -274,16 +212,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
     }
     /// The JSON object that contains the properties of the domain to create.
-    internal partial interface IAfdDomainPropertiesInternal
-
+    internal partial interface IAfdDomainPropertiesInternal :
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainUpdatePropertiesParametersInternal,
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal
     {
-        /// <summary>Resource reference to the Azure DNS zone</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference AzureDnsZone { get; set; }
-        /// <summary>Resource ID.</summary>
-        string AzureDnsZoneId { get; set; }
-
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("NotStarted", "InProgress", "Succeeded", "Failed")]
-        string DeploymentStatus { get; set; }
         /// <summary>
         /// Provisioning substate shows the progress of custom HTTPS enabling/disabling process step by step. DCV stands for DomainControlValidation.
         /// </summary>
@@ -293,22 +225,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesExtendedProperties ExtendedProperty { get; set; }
         /// <summary>The host name of the domain. Must be a domain name.</summary>
         string HostName { get; set; }
-        /// <summary>
-        /// Resource reference to the Azure resource where custom domain ownership was prevalidated
-        /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference PreValidatedCustomDomainResourceId { get; set; }
-        /// <summary>Resource ID.</summary>
-        string PreValidatedCustomDomainResourceIdId { get; set; }
-        /// <summary>The name of the profile which holds the domain.</summary>
-        string ProfileName { get; set; }
-        /// <summary>Provisioning status</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Updating", "Deleting", "Creating")]
-        string ProvisioningState { get; set; }
-        /// <summary>
-        /// The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own
-        /// certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
-        /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainHttpsParameters TlsSetting { get; set; }
         /// <summary>Values the customer needs to validate domain ownership</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDomainValidationProperties ValidationProperty { get; set; }
         /// <summary>The date time that the token expires</summary>

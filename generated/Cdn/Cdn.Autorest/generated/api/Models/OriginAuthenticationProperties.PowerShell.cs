@@ -123,10 +123,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginAuthenticationPropertiesInternal)this).Scope = (string) content.GetValueForProperty("Scope",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginAuthenticationPropertiesInternal)this).Scope, global::System.Convert.ToString);
             }
-            if (content.Contains("TokenDestinationHeader"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginAuthenticationPropertiesInternal)this).TokenDestinationHeader = (string) content.GetValueForProperty("TokenDestinationHeader",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginAuthenticationPropertiesInternal)this).TokenDestinationHeader, global::System.Convert.ToString);
-            }
             if (content.Contains("UserAssignedIdentityId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginAuthenticationPropertiesInternal)this).UserAssignedIdentityId = (string) content.GetValueForProperty("UserAssignedIdentityId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginAuthenticationPropertiesInternal)this).UserAssignedIdentityId, global::System.Convert.ToString);
@@ -159,10 +155,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("Scope"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginAuthenticationPropertiesInternal)this).Scope = (string) content.GetValueForProperty("Scope",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginAuthenticationPropertiesInternal)this).Scope, global::System.Convert.ToString);
-            }
-            if (content.Contains("TokenDestinationHeader"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginAuthenticationPropertiesInternal)this).TokenDestinationHeader = (string) content.GetValueForProperty("TokenDestinationHeader",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginAuthenticationPropertiesInternal)this).TokenDestinationHeader, global::System.Convert.ToString);
             }
             if (content.Contains("UserAssignedIdentityId"))
             {

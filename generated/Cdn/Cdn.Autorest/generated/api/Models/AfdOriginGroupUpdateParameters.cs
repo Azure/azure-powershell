@@ -19,13 +19,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
         public string AuthenticationScope { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)Property).AuthenticationScope; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)Property).AuthenticationScope = value ?? null; }
 
-        /// <summary>
-        /// The HTTP request header where the origin authentication token will be placed when forwarding the request to the origin.
-        /// If not specified, the service will use the `Authorization` header for backward compatibility.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
-        public string AuthenticationTokenDestinationHeader { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)Property).AuthenticationTokenDestinationHeader; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)Property).AuthenticationTokenDestinationHeader = value ?? null; }
-
         /// <summary>The type of the authentication for the origin.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
         public string AuthenticationType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)Property).AuthenticationType; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupUpdatePropertiesParametersInternal)Property).AuthenticationType = value ?? null; }
@@ -103,21 +96,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"scope",
         PossibleTypes = new [] { typeof(string) })]
         string AuthenticationScope { get; set; }
-        /// <summary>
-        /// The HTTP request header where the origin authentication token will be placed when forwarding the request to the origin.
-        /// If not specified, the service will use the `Authorization` header for backward compatibility.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The HTTP request header where the origin authentication token will be placed when forwarding the request to the origin. If not specified, the service will use the `Authorization` header for backward compatibility.",
-        SerializedName = @"tokenDestinationHeader",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Authorization", "X-Azure-Authorization")]
-        string AuthenticationTokenDestinationHeader { get; set; }
         /// <summary>The type of the authentication for the origin.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
@@ -216,12 +194,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
         /// </summary>
         string AuthenticationScope { get; set; }
-        /// <summary>
-        /// The HTTP request header where the origin authentication token will be placed when forwarding the request to the origin.
-        /// If not specified, the service will use the `Authorization` header for backward compatibility.
-        /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Authorization", "X-Azure-Authorization")]
-        string AuthenticationTokenDestinationHeader { get; set; }
         /// <summary>The type of the authentication for the origin.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("SystemAssignedIdentity", "UserAssignedIdentity")]
         string AuthenticationType { get; set; }

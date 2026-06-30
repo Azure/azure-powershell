@@ -88,13 +88,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
             switch ( json.StringProperty("name") )
             {
-                case "CacheExpiration":
+                case "UrlRedirect":
                 {
-                    return new DeliveryRuleCacheExpirationAction(json);
+                    return new UrlRedirectAction(json);
                 }
-                case "CacheKeyQueryString":
+                case "UrlSigning":
                 {
-                    return new DeliveryRuleCacheKeyQueryStringAction(json);
+                    return new UrlSigningAction(json);
+                }
+                case "OriginGroupOverride":
+                {
+                    return new OriginGroupOverrideAction(json);
+                }
+                case "UrlRewrite":
+                {
+                    return new UrlRewriteAction(json);
                 }
                 case "ModifyRequestHeader":
                 {
@@ -104,25 +112,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
                 {
                     return new DeliveryRuleResponseHeaderAction(json);
                 }
+                case "CacheExpiration":
+                {
+                    return new DeliveryRuleCacheExpirationAction(json);
+                }
+                case "CacheKeyQueryString":
+                {
+                    return new DeliveryRuleCacheKeyQueryStringAction(json);
+                }
                 case "RouteConfigurationOverride":
                 {
                     return new DeliveryRuleRouteConfigurationOverrideAction(json);
-                }
-                case "OriginGroupOverride":
-                {
-                    return new OriginGroupOverrideAction(json);
-                }
-                case "UrlRedirect":
-                {
-                    return new UrlRedirectAction(json);
-                }
-                case "UrlRewrite":
-                {
-                    return new UrlRewriteAction(json);
-                }
-                case "UrlSigning":
-                {
-                    return new UrlSigningAction(json);
                 }
             }
             return new DeliveryRuleAction(json);

@@ -75,20 +75,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 return;
             }
-            {_originGroup = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("originGroup"), out var __jsonOriginGroup) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference.FromJson(__jsonOriginGroup) : _originGroup;}
-            {_cacheConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("cacheConfiguration"), out var __jsonCacheConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdRouteCacheConfiguration.FromJson(__jsonCacheConfiguration) : _cacheConfiguration;}
-            {_endpointName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("endpointName"), out var __jsonEndpointName) ? (string)__jsonEndpointName : (string)_endpointName;}
-            {_customDomain = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonArray>("customDomains"), out var __jsonCustomDomains) ? If( __jsonCustomDomains as Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference) (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ActivatedResourceReference.FromJson(__u) )) ))() : null : _customDomain;}
-            {_originPath = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("originPath"), out var __jsonOriginPath) ? (string)__jsonOriginPath : (string)_originPath;}
-            {_ruleSet = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonArray>("ruleSets"), out var __jsonRuleSets) ? If( __jsonRuleSets as Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference.FromJson(__p) )) ))() : null : _ruleSet;}
-            {_supportedProtocol = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonArray>("supportedProtocols"), out var __jsonSupportedProtocols) ? If( __jsonSupportedProtocols as Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(string) (__k is Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString __j ? (string)(__j.ToString()) : null)) ))() : null : _supportedProtocol;}
-            {_patternsToMatch = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonArray>("patternsToMatch"), out var __jsonPatternsToMatch) ? If( __jsonPatternsToMatch as Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__g, (__f)=>(string) (__f is Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString __e ? (string)(__e.ToString()) : null)) ))() : null : _patternsToMatch;}
-            {_forwardingProtocol = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("forwardingProtocol"), out var __jsonForwardingProtocol) ? (string)__jsonForwardingProtocol : (string)_forwardingProtocol;}
-            {_linkToDefaultDomain = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("linkToDefaultDomain"), out var __jsonLinkToDefaultDomain) ? (string)__jsonLinkToDefaultDomain : (string)_linkToDefaultDomain;}
-            {_httpsRedirect = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("httpsRedirect"), out var __jsonHttpsRedirect) ? (string)__jsonHttpsRedirect : (string)_httpsRedirect;}
-            {_enabledState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("enabledState"), out var __jsonEnabledState) ? (string)__jsonEnabledState : (string)_enabledState;}
-            {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
-            {_deploymentStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("deploymentStatus"), out var __jsonDeploymentStatus) ? (string)__jsonDeploymentStatus : (string)_deploymentStatus;}
+            __routeUpdatePropertiesParameters = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.RouteUpdatePropertiesParameters(json);
+            __afdStateProperties = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdStateProperties(json);
             AfterFromJson(json);
         }
 
@@ -111,61 +99,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 return container;
             }
-            AddIf( null != this._originGroup ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) this._originGroup.ToJson(null,serializationMode) : null, "originGroup" ,container.Add );
-            AddIf( null != this._cacheConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) this._cacheConfiguration.ToJson(null,serializationMode) : null, "cacheConfiguration" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._endpointName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._endpointName.ToString()) : null, "endpointName" ,container.Add );
-            }
-            if (null != this._customDomain)
-            {
-                var __w = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.XNodeArray();
-                foreach( var __x in this._customDomain )
-                {
-                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
-                }
-                container.Add("customDomains",__w);
-            }
-            AddIf( null != (((object)this._originPath)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._originPath.ToString()) : null, "originPath" ,container.Add );
-            if (null != this._ruleSet)
-            {
-                var __r = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.XNodeArray();
-                foreach( var __s in this._ruleSet )
-                {
-                    AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
-                }
-                container.Add("ruleSets",__r);
-            }
-            if (null != this._supportedProtocol)
-            {
-                var __m = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.XNodeArray();
-                foreach( var __n in this._supportedProtocol )
-                {
-                    AddIf(null != (((object)__n)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(__n.ToString()) : null ,__m.Add);
-                }
-                container.Add("supportedProtocols",__m);
-            }
-            if (null != this._patternsToMatch)
-            {
-                var __h = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.XNodeArray();
-                foreach( var __i in this._patternsToMatch )
-                {
-                    AddIf(null != (((object)__i)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(__i.ToString()) : null ,__h.Add);
-                }
-                container.Add("patternsToMatch",__h);
-            }
-            AddIf( null != (((object)this._forwardingProtocol)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._forwardingProtocol.ToString()) : null, "forwardingProtocol" ,container.Add );
-            AddIf( null != (((object)this._linkToDefaultDomain)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._linkToDefaultDomain.ToString()) : null, "linkToDefaultDomain" ,container.Add );
-            AddIf( null != (((object)this._httpsRedirect)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._httpsRedirect.ToString()) : null, "httpsRedirect" ,container.Add );
-            AddIf( null != (((object)this._enabledState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._enabledState.ToString()) : null, "enabledState" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._deploymentStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._deploymentStatus.ToString()) : null, "deploymentStatus" ,container.Add );
-            }
+            __routeUpdatePropertiesParameters?.ToJson(container, serializationMode);
+            __afdStateProperties?.ToJson(container, serializationMode);
             AfterToJson(ref container);
             return container;
         }
