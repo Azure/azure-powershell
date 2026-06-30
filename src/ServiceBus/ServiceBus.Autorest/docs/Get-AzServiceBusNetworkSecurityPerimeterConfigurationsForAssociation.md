@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ServiceBus
-online version: https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusnetworksecurityperimeterconfigurationresourceassociationname
+online version: https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusnetworksecurityperimeterconfigurationsforassociation
 schema: 2.0.0
 ---
 
-# Get-AzServiceBusNetworkSecurityPerimeterConfigurationResourceAssociationName
+# Get-AzServiceBusNetworkSecurityPerimeterConfigurationsForAssociation
 
 ## SYNOPSIS
 Return a NetworkSecurityPerimeterConfigurations resourceAssociationName
@@ -14,20 +14,20 @@ Return a NetworkSecurityPerimeterConfigurations resourceAssociationName
 
 ### Get (Default)
 ```
-Get-AzServiceBusNetworkSecurityPerimeterConfigurationResourceAssociationName -NamespaceName <String>
+Get-AzServiceBusNetworkSecurityPerimeterConfigurationsForAssociation -NamespaceName <String>
  -ResourceAssociationName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzServiceBusNetworkSecurityPerimeterConfigurationResourceAssociationName
- -InputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzServiceBusNetworkSecurityPerimeterConfigurationsForAssociation -InputObject <IServiceBusIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityNamespace
 ```
-Get-AzServiceBusNetworkSecurityPerimeterConfigurationResourceAssociationName
+Get-AzServiceBusNetworkSecurityPerimeterConfigurationsForAssociation
  -NamespaceInputObject <IServiceBusIdentity> -ResourceAssociationName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -37,27 +37,54 @@ Return a NetworkSecurityPerimeterConfigurations resourceAssociationName
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Gets the network security configuration of an ServiceBus namespace for a given ResourceAssociationName.
 ```powershell
-{{ Add code here }}
+Get-AzServiceBusNetworkSecurityPerimeterConfigurationsForAssociation -ResourceGroupName myResourceGroup -NamespaceName myNamespace  -ResourceAssociationName resourceAssociationName
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ApplicableFeature                :
+Id                               : /subscriptions/subscriptionid/resourceGroups/myresourcegroup/providers/Microsoft.ServiceBus/namespaces/
+                                    mynamespaceName/networkSecurityPerimeterConfigurations/subscriptionid.resourceAssociationName
+IsBackingResource                : False
+Location                         : eastus2euap
+Name                             : subscriptionid.resourceAssociationName
+NetworkSecurityPerimeterGuid     : subscriptionid
+NetworkSecurityPerimeterId       : /subscriptions/subscriptionid/resourceGroups/myresourcegroup/providers/Microsoft.Network/networkSecurityPe
+                                   rimeters/pranjit-nsp-ncus
+NetworkSecurityPerimeterLocation : northcentralus
+ParentAssociationName            :
+ProfileAccessRule                : {{
+                                     "properties": {
+                                       "direction": "Inbound",
+                                       "addressPrefixes": [ ],
+                                       "subscriptions": [ ],
+                                       "networkSecurityPerimeters": [ ],
+                                       "fullyQualifiedDomainNames": [ ]
+                                     },
+                                     "name": "ingress2"
+                                   }, {
+                                     "properties": {
+                                       "direction": "Inbound",
+                                       "addressPrefixes": [ "198.166.98.0/24" ],
+                                       "subscriptions": [ ],
+                                       "networkSecurityPerimeters": [ ],
+                                       "fullyQualifiedDomainNames": [ ]
+                                     },
+                                     "name": "ingress"
+                                   }}
+ProfileAccessRulesVersion        : 5
+ProfileName                      : defaultProfile
+ProvisioningIssue                :
+ProvisioningState                : Succeeded
+ResourceAssociationAccessMode    : Learning
+ResourceAssociationName          : resourceAssociationName
+ResourceGroupName                : myresourcegroup
+SourceResourceId                 :
+Type                             : Microsoft.ServiceBus/Namespaces/networkSecurityPerimeterConfigurations
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Gets the network rule set of ServiceBus namespace myNamespace.
 
 ## PARAMETERS
 

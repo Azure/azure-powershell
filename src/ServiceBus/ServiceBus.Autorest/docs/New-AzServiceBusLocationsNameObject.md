@@ -23,7 +23,7 @@ Create an in-memory object for NamespaceReplicaLocation.
 
 ### Example 1: Construct an in-memory NamespaceReplicaLocation object
 ```powershell
-New-AzServiceBusLocationsNameObject -LocationName mylocation -RoleType Secondary -ClusterArmId clusterid
+New-AzServiceBusLocationsNameObject -LocationName mylocation -RoleType Secondary
 ```
 
 Creates an in-memory object of type `INamespaceReplicaLocation`.

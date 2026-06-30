@@ -1,16 +1,15 @@
-### Example 1: Gets list of NSP configurations an ServiceBus namespace.
+### Example 1: Gets the network security configuration of an ServiceBus namespace for a given ResourceAssociationName.
 ```powershell
-Get-AzServiceBusNetworkSecurityPerimeterConfiguration -ResourceGroupName myResourceGroup -NamespaceName myNamespace
+Get-AzServiceBusNetworkSecurityPerimeterConfigurationsForAssociation -ResourceGroupName myResourceGroup -NamespaceName myNamespace  -ResourceAssociationName resourceAssociationName
 ```
 
 ```output
 ApplicableFeature                :
-Id                               : /subscriptions/subscriptionid/resourceGroups/myresourcegroup/providers/Microsoft.ServiceBus/namespaces/mynamespaceName
-                                    /networkSecurityPerimeterConfigurations/subscriptionid.testPranjitEH1-4263ede0-d5e1-4166-9694-2f0
-                                   7739397aa
+Id                               : /subscriptions/subscriptionid/resourceGroups/myresourcegroup/providers/Microsoft.ServiceBus/namespaces/
+                                    mynamespaceName/networkSecurityPerimeterConfigurations/subscriptionid.resourceAssociationName
 IsBackingResource                : False
 Location                         : eastus2euap
-Name                             : subscriptionid.testPranjitEH1-4263ede0-d5e1-4166-9694-2f07739397aa
+Name                             : subscriptionid.resourceAssociationName
 NetworkSecurityPerimeterGuid     : subscriptionid
 NetworkSecurityPerimeterId       : /subscriptions/subscriptionid/resourceGroups/myresourcegroup/providers/Microsoft.Network/networkSecurityPe
                                    rimeters/pranjit-nsp-ncus
@@ -40,10 +39,11 @@ ProfileName                      : defaultProfile
 ProvisioningIssue                :
 ProvisioningState                : Succeeded
 ResourceAssociationAccessMode    : Learning
-ResourceAssociationName          : myResourceAssociationName
+ResourceAssociationName          : resourceAssociationName
 ResourceGroupName                : myresourcegroup
 SourceResourceId                 :
 Type                             : Microsoft.ServiceBus/Namespaces/networkSecurityPerimeterConfigurations
 ```
 
-Gets tets list of NSP configurations an ServiceBus namespace.
+Gets the network rule set of ServiceBus namespace myNamespace.
+

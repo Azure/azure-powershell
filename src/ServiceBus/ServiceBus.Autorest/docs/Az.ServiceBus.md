@@ -42,7 +42,7 @@ Gets NetworkRuleSet for a Namespace.
 ### [Get-AzServiceBusNetworkSecurityPerimeterConfiguration](Get-AzServiceBusNetworkSecurityPerimeterConfiguration.md)
 Gets list of current NetworkSecurityPerimeterConfiguration for Namespace
 
-### [Get-AzServiceBusNetworkSecurityPerimeterConfigurationResourceAssociationName](Get-AzServiceBusNetworkSecurityPerimeterConfigurationResourceAssociationName.md)
+### [Get-AzServiceBusNetworkSecurityPerimeterConfigurationsForAssociation](Get-AzServiceBusNetworkSecurityPerimeterConfigurationsForAssociation.md)
 Return a NetworkSecurityPerimeterConfigurations resourceAssociationName
 
 ### [Get-AzServiceBusPrivateEndpointConnection](Get-AzServiceBusPrivateEndpointConnection.md)
@@ -62,9 +62,6 @@ Returns a subscription description for the specified topic.
 
 ### [Get-AzServiceBusTopic](Get-AzServiceBusTopic.md)
 Returns a description for the specified topic.
-
-### [Invoke-AzServiceBusReconcileNetworkSecurityPerimeterConfiguration](Invoke-AzServiceBusReconcileNetworkSecurityPerimeterConfiguration.md)
-Refreshes any information about the association.
 
 ### [New-AzServiceBusAuthorizationRule](New-AzServiceBusAuthorizationRule.md)
 Creates a ServiceBus Namespace, Queue, Topic Authorization Rule

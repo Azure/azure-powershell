@@ -261,7 +261,8 @@ Accept wildcard characters: False
 ```
 
 ### -GeoDataReplicationLocation
-Properties for User Assigned Identities
+Replica locations for geo data replication.
+Pass an array of INamespaceReplicaLocation objects (for example from New-AzServiceBusLocationsNameObject).
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation[]

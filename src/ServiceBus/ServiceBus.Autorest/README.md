@@ -139,6 +139,21 @@ directive:
 
   - where:
       verb: New
+      subject: NetworkSecurityPerimeterConfiguration
+    hide: true
+
+  - where:
+      verb: Invoke
+      subject: ReconcileNetworkSecurityPerimeterConfiguration
+    remove: true
+  
+  - where:
+      subject: NetworkSecurityPerimeterConfigurationResourceAssociationName
+    set:
+      subject: NetworkSecurityPerimeterConfigurationsForAssociation
+
+  - where:
+      verb: New
       subject: Namespace
       parameter-name: IdentityUserAssignedIdentity
     set:

@@ -6,12 +6,12 @@
   },
   "commands": [
     {
-      "name": "Get-AzServiceBusNetworkSecurityPerimeterConfigurationResourceAssociationName",
+      "name": "Get-AzServiceBusNetworkSecurityPerimeterConfigurationsForAssociation",
       "description": "Return a NetworkSecurityPerimeterConfigurations resourceAssociationName",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/networkSecurityPerimeterConfigurations/{resourceAssociationName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusnetworksecurityperimeterconfigurationresourceassociationname"
+          "url": "https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusnetworksecurityperimeterconfigurationsforassociation"
         },
         "parameterSets": [
           {
@@ -27,49 +27,6 @@
       "examples": [
         {
           "description": "Return a NetworkSecurityPerimeterConfigurations resourceAssociationName",
-          "parameters": [
-            {
-              "name": "-NamespaceName",
-              "value": "[Path.namespaceName]"
-            },
-            {
-              "name": "-ResourceAssociationName",
-              "value": "[Path.resourceAssociationName]"
-            },
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Invoke-AzServiceBusReconcileNetworkSecurityPerimeterConfiguration",
-      "description": "Refreshes any information about the association.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/networkSecurityPerimeterConfigurations/{resourceAssociationName}/reconcile",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.servicebus/invoke-azservicebusreconcilenetworksecurityperimeterconfiguration"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-NamespaceName <String>",
-              "-ResourceAssociationName <String>",
-              "-ResourceGroupName <String>",
-              "[-SubscriptionId <String>]"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Refreshes any information about the association.",
           "parameters": [
             {
               "name": "-NamespaceName",
