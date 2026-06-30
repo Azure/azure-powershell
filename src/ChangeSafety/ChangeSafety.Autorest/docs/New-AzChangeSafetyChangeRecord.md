@@ -93,7 +93,29 @@ storageAccountCleanup rg-changeops      ManualTouch Hotfix      Initialized Succ
 Creates a simple stageless ChangeRecord targeting the current subscription.
 This is used for guarded operations where you want policy protection without staged rollouts.
 
-### Example 2: Create a ChangeRecord with StageMap for staged rollouts
+### Example 2: Create a ChangeRecord targeting a specific resource
+```powershell
+New-AzChangeSafetyChangeRecord -Name "trafficManagerCleanup" `
+    -ResourceGroupName "rg-changeops" `
+    -ChangeType "ManualTouch" `
+    -RolloutType "Hotfix" `
+    -Description "Delete Traffic Manager profile" `
+    -Targets @{
+        resourceId = "/subscriptions/$((Get-AzContext).Subscription.Id)/resourceGroups/rg-test/providers/Microsoft.Network/trafficManagerProfiles/myProfile"
+        httpMethod = "DELETE"
+    }
+```
+
+```output
+Name                  ResourceGroupName ChangeType  RolloutType Status      ProvisioningState
+----                  ----------------- ----------  ----------- ------      -----------------
+trafficManagerCleanup rg-changeops      ManualTouch Hotfix      Initialized Succeeded
+```
+
+Creates a ChangeRecord that targets a single resource for a guarded operation.
+Use `resourceId` together with `httpMethod` (for example `DELETE`) when the change applies to a specific resource rather than an entire subscription.
+
+### Example 3: Create a ChangeRecord with StageMap for staged rollouts
 ```powershell
 New-AzChangeSafetyChangeRecord -Name "appDeploymentV2" `
     -ResourceGroupName "rg-changeops" `
@@ -115,7 +137,7 @@ appDeploymentV2  rg-changeops      AppDeployment Normal      Initialized Succeed
 Creates a ChangeRecord with a StageMap reference for staged rollouts.
 Use this when you need to progress through multiple stages (e.g., canary, production).
 
-### Example 3: Create a ChangeRecord with ApiOperations change definition
+### Example 4: Create a ChangeRecord with ApiOperations change definition
 ```powershell
 $changeDefinitionDetail = @{
     operations = @(
