@@ -75,13 +75,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 return;
             }
-            {_ruleSetName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("ruleSetName"), out var __jsonRuleSetName) ? (string)__jsonRuleSetName : (string)_ruleSetName;}
-            {_order = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNumber>("order"), out var __jsonOrder) ? (int?)__jsonOrder : _order;}
-            {_condition = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonArray>("conditions"), out var __jsonConditions) ? If( __jsonConditions as Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition) (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCondition.FromJson(__u) )) ))() : null : _condition;}
-            {_action = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonArray>("actions"), out var __jsonActions) ? If( __jsonActions as Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction) (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleAction.FromJson(__p) )) ))() : null : _action;}
-            {_matchProcessingBehavior = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("matchProcessingBehavior"), out var __jsonMatchProcessingBehavior) ? (string)__jsonMatchProcessingBehavior : (string)_matchProcessingBehavior;}
-            {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
-            {_deploymentStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("deploymentStatus"), out var __jsonDeploymentStatus) ? (string)__jsonDeploymentStatus : (string)_deploymentStatus;}
+            __ruleUpdatePropertiesParameters = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.RuleUpdatePropertiesParameters(json);
+            __afdStateProperties = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdStateProperties(json);
             AfterFromJson(json);
         }
 
@@ -104,38 +99,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 return container;
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._ruleSetName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._ruleSetName.ToString()) : null, "ruleSetName" ,container.Add );
-            }
-            AddIf( null != this._order ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNumber((int)this._order) : null, "order" ,container.Add );
-            if (null != this._condition)
-            {
-                var __w = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.XNodeArray();
-                foreach( var __x in this._condition )
-                {
-                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
-                }
-                container.Add("conditions",__w);
-            }
-            if (null != this._action)
-            {
-                var __r = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.XNodeArray();
-                foreach( var __s in this._action )
-                {
-                    AddIf(__s?.ToJson(null, serializationMode) ,__r.Add);
-                }
-                container.Add("actions",__r);
-            }
-            AddIf( null != (((object)this._matchProcessingBehavior)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._matchProcessingBehavior.ToString()) : null, "matchProcessingBehavior" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._deploymentStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._deploymentStatus.ToString()) : null, "deploymentStatus" ,container.Add );
-            }
+            __ruleUpdatePropertiesParameters?.ToJson(container, serializationMode);
+            __afdStateProperties?.ToJson(container, serializationMode);
             AfterToJson(ref container);
             return container;
         }

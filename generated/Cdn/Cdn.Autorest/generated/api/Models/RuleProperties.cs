@@ -10,206 +10,98 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     /// <summary>The JSON object that contains the properties of the Rules to create.</summary>
     public partial class RuleProperties :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleProperties,
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal,
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IValidates
     {
+        /// <summary>
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStateProperties" />
+        /// </summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStateProperties __afdStateProperties = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdStateProperties();
 
-        /// <summary>Backing field for <see cref="Action" /> property.</summary>
-        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction> _action;
+        /// <summary>
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParameters"
+        /// />
+        /// </summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParameters __ruleUpdatePropertiesParameters = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.RuleUpdatePropertiesParameters();
 
         /// <summary>
         /// A list of actions that are executed when all the conditions of a rule are satisfied.
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction> Action { get => this._action; set => this._action = value; }
-
-        /// <summary>Backing field for <see cref="Condition" /> property.</summary>
-        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition> _condition;
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction> Action { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)__ruleUpdatePropertiesParameters).Action; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)__ruleUpdatePropertiesParameters).Action = value ?? null /* arrayOf */; }
 
         /// <summary>A list of conditions that must be matched for the actions to be executed</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition> Condition { get => this._condition; set => this._condition = value; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition> Condition { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)__ruleUpdatePropertiesParameters).Condition; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)__ruleUpdatePropertiesParameters).Condition = value ?? null /* arrayOf */; }
 
-        /// <summary>Backing field for <see cref="DeploymentStatus" /> property.</summary>
-        private string _deploymentStatus;
-
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public string DeploymentStatus { get => this._deploymentStatus; }
-
-        /// <summary>Backing field for <see cref="MatchProcessingBehavior" /> property.</summary>
-        private string _matchProcessingBehavior;
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
+        public string DeploymentStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).DeploymentStatus; }
 
         /// <summary>
         /// If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults
         /// to Continue.
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public string MatchProcessingBehavior { get => this._matchProcessingBehavior; set => this._matchProcessingBehavior = value; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
+        public string MatchProcessingBehavior { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)__ruleUpdatePropertiesParameters).MatchProcessingBehavior; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)__ruleUpdatePropertiesParameters).MatchProcessingBehavior = value ?? null; }
 
         /// <summary>Internal Acessors for DeploymentStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal.DeploymentStatus { get => this._deploymentStatus; set { {_deploymentStatus = value;} } }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal.DeploymentStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).DeploymentStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).DeploymentStatus = value ?? null; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal.ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).ProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).ProvisioningState = value ?? null; }
 
         /// <summary>Internal Acessors for RuleSetName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRulePropertiesInternal.RuleSetName { get => this._ruleSetName; set { {_ruleSetName = value;} } }
-
-        /// <summary>Backing field for <see cref="Order" /> property.</summary>
-        private int? _order;
+        string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal.RuleSetName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)__ruleUpdatePropertiesParameters).RuleSetName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)__ruleUpdatePropertiesParameters).RuleSetName = value ?? null; }
 
         /// <summary>
         /// The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will
         /// be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition
         /// and actions listed in it will always be applied.
         /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public int? Order { get => this._order; set => this._order = value; }
-
-        /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
-        private string _provisioningState;
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
+        public int? Order { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)__ruleUpdatePropertiesParameters).Order; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)__ruleUpdatePropertiesParameters).Order = value ?? default(int); }
 
         /// <summary>Provisioning status</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public string ProvisioningState { get => this._provisioningState; }
-
-        /// <summary>Backing field for <see cref="RuleSetName" /> property.</summary>
-        private string _ruleSetName;
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
+        public string ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)__afdStateProperties).ProvisioningState; }
 
         /// <summary>The name of the rule set containing the rule.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public string RuleSetName { get => this._ruleSetName; }
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
+        public string RuleSetName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal)__ruleUpdatePropertiesParameters).RuleSetName; }
 
         /// <summary>Creates an new <see cref="RuleProperties" /> instance.</summary>
         public RuleProperties()
         {
 
         }
+
+        /// <summary>Validates that this object meets the validation criteria.</summary>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive validation
+        /// events.</param>
+        /// <returns>
+        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        {
+            await eventListener.AssertNotNull(nameof(__ruleUpdatePropertiesParameters), __ruleUpdatePropertiesParameters);
+            await eventListener.AssertObjectIsValid(nameof(__ruleUpdatePropertiesParameters), __ruleUpdatePropertiesParameters);
+            await eventListener.AssertNotNull(nameof(__afdStateProperties), __afdStateProperties);
+            await eventListener.AssertObjectIsValid(nameof(__afdStateProperties), __afdStateProperties);
+        }
     }
     /// The JSON object that contains the properties of the Rules to create.
     public partial interface IRuleProperties :
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable,
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParameters,
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStateProperties
     {
-        /// <summary>
-        /// A list of actions that are executed when all the conditions of a rule are satisfied.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"A list of actions that are executed when all the conditions of a rule are satisfied.",
-        SerializedName = @"actions",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction> Action { get; set; }
-        /// <summary>A list of conditions that must be matched for the actions to be executed</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"A list of conditions that must be matched for the actions to be executed",
-        SerializedName = @"conditions",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition> Condition { get; set; }
-
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"",
-        SerializedName = @"deploymentStatus",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("NotStarted", "InProgress", "Succeeded", "Failed")]
-        string DeploymentStatus { get;  }
-        /// <summary>
-        /// If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults
-        /// to Continue.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.",
-        SerializedName = @"matchProcessingBehavior",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Continue", "Stop")]
-        string MatchProcessingBehavior { get; set; }
-        /// <summary>
-        /// The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will
-        /// be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition
-        /// and actions listed in it will always be applied.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied.",
-        SerializedName = @"order",
-        PossibleTypes = new [] { typeof(int) })]
-        int? Order { get; set; }
-        /// <summary>Provisioning status</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Provisioning status",
-        SerializedName = @"provisioningState",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Updating", "Deleting", "Creating")]
-        string ProvisioningState { get;  }
-        /// <summary>The name of the rule set containing the rule.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The name of the rule set containing the rule.",
-        SerializedName = @"ruleSetName",
-        PossibleTypes = new [] { typeof(string) })]
-        string RuleSetName { get;  }
 
     }
     /// The JSON object that contains the properties of the Rules to create.
-    internal partial interface IRulePropertiesInternal
-
+    internal partial interface IRulePropertiesInternal :
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleUpdatePropertiesParametersInternal,
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal
     {
-        /// <summary>
-        /// A list of actions that are executed when all the conditions of a rule are satisfied.
-        /// </summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction> Action { get; set; }
-        /// <summary>A list of conditions that must be matched for the actions to be executed</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition> Condition { get; set; }
-
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("NotStarted", "InProgress", "Succeeded", "Failed")]
-        string DeploymentStatus { get; set; }
-        /// <summary>
-        /// If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults
-        /// to Continue.
-        /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Continue", "Stop")]
-        string MatchProcessingBehavior { get; set; }
-        /// <summary>
-        /// The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will
-        /// be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition
-        /// and actions listed in it will always be applied.
-        /// </summary>
-        int? Order { get; set; }
-        /// <summary>Provisioning status</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Updating", "Deleting", "Creating")]
-        string ProvisioningState { get; set; }
-        /// <summary>The name of the rule set containing the rule.</summary>
-        string RuleSetName { get; set; }
 
     }
 }

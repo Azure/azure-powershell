@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Checks the quota and actual usage of endpoints under the given Azure Front Door profile.
+Checks the quota and actual usage of endpoints under the given Azure Front Door profile..
 .Description
-Checks the quota and actual usage of endpoints under the given Azure Front Door profile.
+Checks the quota and actual usage of endpoints under the given Azure Front Door profile..
 .Example
 Get-AzFrontDoorCdnRuleSetResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
 
@@ -34,7 +34,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+    # Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
     ${ProfileName},
 
     [Parameter(Mandatory)]

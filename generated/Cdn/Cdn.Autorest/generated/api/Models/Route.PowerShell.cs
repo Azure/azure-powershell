@@ -113,6 +113,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.RoutePropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteInternal)this).Location, global::System.Convert.ToString);
+            }
             if (content.Contains("SystemDataCreatedBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
@@ -169,6 +173,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteInternal)this).DeploymentStatus = (string) content.GetValueForProperty("DeploymentStatus",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteInternal)this).DeploymentStatus, global::System.Convert.ToString);
             }
+            if (content.Contains("CacheConfigurationCompressionSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteInternal)this).CacheConfigurationCompressionSetting = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICompressionSettings) content.GetValueForProperty("CacheConfigurationCompressionSetting",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteInternal)this).CacheConfigurationCompressionSetting, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CompressionSettingsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("OriginGroup"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteInternal)this).OriginGroup = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("OriginGroup",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteInternal)this).OriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
@@ -208,10 +216,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteInternal)this).ProvisioningState, global::System.Convert.ToString);
-            }
-            if (content.Contains("CacheConfigurationCompressionSetting"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteInternal)this).CacheConfigurationCompressionSetting = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICompressionSettings) content.GetValueForProperty("CacheConfigurationCompressionSetting",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteInternal)this).CacheConfigurationCompressionSetting, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CompressionSettingsTypeConverter.ConvertFrom);
             }
             if (content.Contains("OriginGroupId"))
             {
@@ -254,6 +258,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.RoutePropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteInternal)this).Location, global::System.Convert.ToString);
+            }
             if (content.Contains("SystemDataCreatedBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
@@ -310,6 +318,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteInternal)this).DeploymentStatus = (string) content.GetValueForProperty("DeploymentStatus",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteInternal)this).DeploymentStatus, global::System.Convert.ToString);
             }
+            if (content.Contains("CacheConfigurationCompressionSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteInternal)this).CacheConfigurationCompressionSetting = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICompressionSettings) content.GetValueForProperty("CacheConfigurationCompressionSetting",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteInternal)this).CacheConfigurationCompressionSetting, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CompressionSettingsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("OriginGroup"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteInternal)this).OriginGroup = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("OriginGroup",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteInternal)this).OriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
@@ -349,10 +361,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteInternal)this).ProvisioningState, global::System.Convert.ToString);
-            }
-            if (content.Contains("CacheConfigurationCompressionSetting"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteInternal)this).CacheConfigurationCompressionSetting = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICompressionSettings) content.GetValueForProperty("CacheConfigurationCompressionSetting",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteInternal)this).CacheConfigurationCompressionSetting, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CompressionSettingsTypeConverter.ConvertFrom);
             }
             if (content.Contains("OriginGroupId"))
             {

@@ -20,7 +20,7 @@ Create EdgeAction resource
 .Description
 Create EdgeAction resource
 .Example
-New-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Location global -SkuName Standard -SkuTier Standard
+New-AzCdnEdgeAction -ResourceGroupName "testps-rg-da16jm" -Name "edgeaction001" -Location "Global" -SkuName "Standard" -SkuTier "Standard"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeAction
@@ -185,9 +185,9 @@ begin {
         }
 
         $mapping = @{
-            CreateExpanded = 'Az.Cdn.custom\New-AzCdnEdgeAction';
-            CreateViaJsonFilePath = 'Az.Cdn.custom\New-AzCdnEdgeAction';
-            CreateViaJsonString = 'Az.Cdn.custom\New-AzCdnEdgeAction';
+            CreateExpanded = 'Az.Cdn.private\New-AzCdnEdgeAction_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.Cdn.private\New-AzCdnEdgeAction_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.Cdn.private\New-AzCdnEdgeAction_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {

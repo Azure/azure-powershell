@@ -19,12 +19,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string CustomDomainName { get => this._customDomainName; set => this._customDomainName = value; }
 
+        /// <summary>Backing field for <see cref="EdgeActionName" /> property.</summary>
+        private string _edgeActionName;
+
+        /// <summary>The name of the Edge Action</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public string EdgeActionName { get => this._edgeActionName; set => this._edgeActionName = value; }
+
         /// <summary>Backing field for <see cref="EndpointName" /> property.</summary>
         private string _endpointName;
 
         /// <summary>Name of the endpoint under the profile which is unique globally.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string EndpointName { get => this._endpointName; set => this._endpointName = value; }
+
+        /// <summary>Backing field for <see cref="ExecutionFilter" /> property.</summary>
+        private string _executionFilter;
+
+        /// <summary>The name of the execution filter</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public string ExecutionFilter { get => this._executionFilter; set => this._executionFilter = value; }
 
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
@@ -43,22 +57,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Backing field for <see cref="OriginName" /> property.</summary>
         private string _originName;
 
-        /// <summary>Name of the origin which is unique within the endpoint.</summary>
+        /// <summary>Name of the origin which is unique within the profile.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string OriginName { get => this._originName; set => this._originName = value; }
-
-        /// <summary>Backing field for <see cref="PolicyName" /> property.</summary>
-        private string _policyName;
-
-        /// <summary>The name of the CdnWebApplicationFirewallPolicy.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public string PolicyName { get => this._policyName; set => this._policyName = value; }
 
         /// <summary>Backing field for <see cref="ProfileName" /> property.</summary>
         private string _profileName;
 
         /// <summary>
-        /// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+        /// Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string ProfileName { get => this._profileName; set => this._profileName = value; }
@@ -112,6 +119,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
+        /// <summary>Backing field for <see cref="Version" /> property.</summary>
+        private string _version;
+
+        /// <summary>The name of the Edge Action version</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public string Version { get => this._version; set => this._version = value; }
+
         /// <summary>Creates an new <see cref="CdnIdentity" /> instance.</summary>
         public CdnIdentity()
         {
@@ -132,6 +146,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"customDomainName",
         PossibleTypes = new [] { typeof(string) })]
         string CustomDomainName { get; set; }
+        /// <summary>The name of the Edge Action</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the Edge Action",
+        SerializedName = @"edgeActionName",
+        PossibleTypes = new [] { typeof(string) })]
+        string EdgeActionName { get; set; }
         /// <summary>Name of the endpoint under the profile which is unique globally.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
@@ -143,6 +168,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"endpointName",
         PossibleTypes = new [] { typeof(string) })]
         string EndpointName { get; set; }
+        /// <summary>The name of the execution filter</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the execution filter",
+        SerializedName = @"executionFilter",
+        PossibleTypes = new [] { typeof(string) })]
+        string ExecutionFilter { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
@@ -165,30 +201,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"originGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string OriginGroupName { get; set; }
-        /// <summary>Name of the origin which is unique within the endpoint.</summary>
+        /// <summary>Name of the origin which is unique within the profile.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Name of the origin which is unique within the endpoint.",
+        Description = @"Name of the origin which is unique within the profile.",
         SerializedName = @"originName",
         PossibleTypes = new [] { typeof(string) })]
         string OriginName { get; set; }
-        /// <summary>The name of the CdnWebApplicationFirewallPolicy.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The name of the CdnWebApplicationFirewallPolicy.",
-        SerializedName = @"policyName",
-        PossibleTypes = new [] { typeof(string) })]
-        string PolicyName { get; set; }
         /// <summary>
-        /// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+        /// Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
@@ -196,7 +221,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.",
+        Description = @"Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.",
         SerializedName = @"profileName",
         PossibleTypes = new [] { typeof(string) })]
         string ProfileName { get; set; }
@@ -277,6 +302,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
+        /// <summary>The name of the Edge Action version</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the Edge Action version",
+        SerializedName = @"version",
+        PossibleTypes = new [] { typeof(string) })]
+        string Version { get; set; }
 
     }
     internal partial interface ICdnIdentityInternal
@@ -284,18 +320,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     {
         /// <summary>Name of the domain under the profile which is unique globally.</summary>
         string CustomDomainName { get; set; }
+        /// <summary>The name of the Edge Action</summary>
+        string EdgeActionName { get; set; }
         /// <summary>Name of the endpoint under the profile which is unique globally.</summary>
         string EndpointName { get; set; }
+        /// <summary>The name of the execution filter</summary>
+        string ExecutionFilter { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>Name of the origin group which is unique within the endpoint.</summary>
         string OriginGroupName { get; set; }
-        /// <summary>Name of the origin which is unique within the endpoint.</summary>
+        /// <summary>Name of the origin which is unique within the profile.</summary>
         string OriginName { get; set; }
-        /// <summary>The name of the CdnWebApplicationFirewallPolicy.</summary>
-        string PolicyName { get; set; }
         /// <summary>
-        /// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+        /// Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
         /// </summary>
         string ProfileName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
@@ -312,6 +350,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         string SecurityPolicyName { get; set; }
         /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         string SubscriptionId { get; set; }
+        /// <summary>The name of the Edge Action version</summary>
+        string Version { get; set; }
 
     }
 }

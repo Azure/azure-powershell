@@ -40,6 +40,7 @@ ORIGIN <IAfdOrigin>: Azure Front Door origin is the source of the content being 
   [HostName <String>]: The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint.
   [HttpPort <Int32?>]: The value of the HTTP port. Must be between 1 and 65535.
   [HttpsPort <Int32?>]: The value of the HTTPS port. Must be between 1 and 65535.
+  [Location <String>]: 
   [OriginHostHeader <String>]: The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure Front Door origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. This overrides the host header defined at Endpoint
   [Priority <Int32?>]: Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5
   [PrivateLinkId <String>]: Resource ID.
@@ -50,16 +51,14 @@ ORIGIN <IAfdOrigin>: Azure Front Door origin is the source of the content being 
   [Weight <Int32?>]: Weight of the origin in given origin group for load balancing. Must be between 1 and 1000
 
 ORIGINGROUPINPUTOBJECT <ICdnIdentity>: Identity Parameter
-  [EdgeActionName <String>]: The name of the Edge Action
-  [Version <String>]: The name of the Edge Action version
-  [ExecutionFilter <String>]: The name of the Edge Action execution filter
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
+  [EdgeActionName <String>]: The name of the Edge Action
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
+  [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the endpoint.
-  [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -67,18 +66,17 @@ ORIGINGROUPINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [Version <String>]: The name of the Edge Action version
 
 PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
-  [EdgeActionName <String>]: The name of the Edge Action
-  [Version <String>]: The name of the Edge Action version
-  [ExecutionFilter <String>]: The name of the Edge Action execution filter
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
+  [EdgeActionName <String>]: The name of the Edge Action
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
+  [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the endpoint.
-  [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -86,6 +84,7 @@ PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [Version <String>]: The name of the Edge Action version
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnorigin
 #>
@@ -96,7 +95,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the origin which is unique within the profile.
+    # Name of the origin that is unique within the profile.
     ${OriginName},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -106,7 +105,7 @@ param(
     [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the origin group which is unique within the endpoint.
+    # Name of the origin group which is unique within the profile.
     ${OriginGroupName},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -114,7 +113,7 @@ param(
     [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+    # Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
     ${ProfileName},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]

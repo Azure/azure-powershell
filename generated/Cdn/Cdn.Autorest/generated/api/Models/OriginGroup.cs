@@ -13,7 +13,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     public partial class OriginGroup :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroup,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroupInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IValidates
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IValidates,
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IHeaderSerializable
     {
         /// <summary>
         /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProxyResource" />
@@ -31,6 +32,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)__proxyResource).Id; }
+
+        /// <summary>Backing field for <see cref="Location" /> property.</summary>
+        private string _location;
+
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public string Location { get => this._location; set => this._location = value; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroupProperties Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroupInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OriginGroupProperties()); set { {_property = value;} } }
@@ -156,6 +163,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
         public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)__proxyResource).Type; }
 
+        /// <param name="headers"></param>
+        void Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IHeaderSerializable.ReadHeaders(global::System.Net.Http.Headers.HttpResponseHeaders headers)
+        {
+            if (headers.TryGetValues("location", out var __locationHeader0))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IOriginGroupInternal)this).Location = System.Linq.Enumerable.FirstOrDefault(__locationHeader0) is string __headerLocationHeader0 ? __headerLocationHeader0 : (string)null;
+            }
+        }
+
         /// <summary>Creates an new <see cref="OriginGroup" /> instance.</summary>
         public OriginGroup()
         {
@@ -192,6 +208,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"healthProbeSettings",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHealthProbeParameters) })]
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHealthProbeParameters HealthProbeSetting { get; set; }
+
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"",
+        SerializedName = @"location",
+        PossibleTypes = new [] { typeof(string) })]
+        string Location { get; set; }
         /// <summary>The source of the content being delivered via CDN within given origin group.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
@@ -265,6 +292,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// Health probe settings to the origin that is used to determine the health of the origin.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHealthProbeParameters HealthProbeSetting { get; set; }
+
+        string Location { get; set; }
         /// <summary>The source of the content being delivered via CDN within given origin group.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference> Origin { get; set; }
         /// <summary>The JSON object that contains the properties of the origin group.</summary>

@@ -16,16 +16,14 @@
 
 <#
 .Synopsis
-Create or create a batch rule set within the specified profile along with the rules associate to it.
+Create a new rule set within the specified profile.
 .Description
-Create or create a batch rule set within the specified profile along with the rules associate to it.
+Create a new rule set within the specified profile.
 .Example
 New-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSet
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSet
 .Notes
@@ -34,16 +32,14 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
-  [EdgeActionName <String>]: The name of the Edge Action
-  [Version <String>]: The name of the Edge Action version
-  [ExecutionFilter <String>]: The name of the Edge Action execution filter
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
+  [EdgeActionName <String>]: The name of the Edge Action
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
+  [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the endpoint.
-  [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  [OriginName <String>]: Name of the origin which is unique within the profile.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -51,53 +47,28 @@ PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-
-RESOURCE <IRuleSet>: Friendly RuleSet name mapping to the any RuleSet or secret related information.
-  [BatchMode <Boolean?>]: Indicates whether rule set is in batch mode. When batch mode is enabled, rules will be processed in a batch along with the rule set.         When batch mode is disabled, rules would need to be processed independently.         This property can only be set during rule set creation and cannot be updated later.         For switching modes, a new rule set needs to be created with the desired mode and rules need to be migrated to the new rule set.
-  [Rule <List<IBatchRuleProperties>>]: A list of rules that are part of this rule set provided the rule set is in batch mode.         This property will be ignored if the rule set is not in batch mode.
-    [Action <List<IDeliveryRuleAction>>]: A list of actions that are executed when all the conditions of a rule are satisfied.
-      Name <String>: The name of the action for the delivery rule.
-    [Condition <List<IDeliveryRuleCondition>>]: A list of conditions that must be matched for the actions to be executed
-      Name <String>: The name of the condition for the delivery rule.
-    [MatchProcessingBehavior <String>]: If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.
-    [Order <Int32?>]: The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied.
-    [RuleName <String>]: Name of the rule.
-
-RULE <IBatchRuleProperties[]>: A list of rules that are part of this rule set provided the rule set is in batch mode.This property will be ignored if the rule set is not in batch mode.
-  [Action <List<IDeliveryRuleAction>>]: A list of actions that are executed when all the conditions of a rule are satisfied.
-    Name <String>: The name of the action for the delivery rule.
-  [Condition <List<IDeliveryRuleCondition>>]: A list of conditions that must be matched for the actions to be executed
-    Name <String>: The name of the condition for the delivery rule.
-  [MatchProcessingBehavior <String>]: If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.
-  [Order <Int32?>]: The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied.
-  [RuleName <String>]: Name of the rule.
+  [Version <String>]: The name of the Edge Action version
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnruleset
 #>
 function New-AzFrontDoorCdnRuleSet {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSet])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Alias('RuleSetName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the rule set under the profile which is unique globally.
+    # Name of the rule set under the profile which is unique globally
     ${Name},
 
     [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
-    # Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+    # Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
     ${ProfileName},
 
     [Parameter(ParameterSetName='Create', Mandatory)]
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -105,9 +76,6 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Create')]
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
-    [Parameter(ParameterSetName='CreateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -116,46 +84,10 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateViaIdentityProfile', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
     # Identity Parameter
     ${ProfileInputObject},
-
-    [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentityProfile', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSet]
-    # Friendly RuleSet name mapping to the any RuleSet or secret related information.
-    ${Resource},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Indicates whether rule set is in batch mode.
-    # When batch mode is enabled, rules will be processed in a batch along with the rule set.When batch mode is disabled, rules would need to be processed independently.This property can only be set during rule set creation and cannot be updated later.For switching modes, a new rule set needs to be created with the desired mode and rules need to be migrated to the new rule set.
-    ${BatchMode},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IBatchRuleProperties[]]
-    # A list of rules that are part of this rule set provided the rule set is in batch mode.This property will be ignored if the rule set is not in batch mode.
-    ${Rule},
-
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String]
-    # Path of Json file supplied to the Create operation
-    ${JsonFilePath},
-
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String]
-    # Json string supplied to the Create operation
-    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -165,12 +97,6 @@ param(
     # The DefaultProfile parameter is not functional.
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
@@ -191,12 +117,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
@@ -253,13 +173,9 @@ begin {
 
         $mapping = @{
             Create = 'Az.Cdn.private\New-AzFrontDoorCdnRuleSet_Create';
-            CreateExpanded = 'Az.Cdn.private\New-AzFrontDoorCdnRuleSet_CreateExpanded';
             CreateViaIdentityProfile = 'Az.Cdn.private\New-AzFrontDoorCdnRuleSet_CreateViaIdentityProfile';
-            CreateViaIdentityProfileExpanded = 'Az.Cdn.private\New-AzFrontDoorCdnRuleSet_CreateViaIdentityProfileExpanded';
-            CreateViaJsonFilePath = 'Az.Cdn.private\New-AzFrontDoorCdnRuleSet_CreateViaJsonFilePath';
-            CreateViaJsonString = 'Az.Cdn.private\New-AzFrontDoorCdnRuleSet_CreateViaJsonString';
         }
-        if (('Create', 'CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('Create') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {

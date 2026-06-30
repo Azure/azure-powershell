@@ -13,7 +13,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     public partial class CustomDomain :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomain,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomainInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IValidates
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IValidates,
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IHeaderSerializable
     {
         /// <summary>
         /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProxyResource" />
@@ -43,6 +44,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)__proxyResource).Id; }
+
+        /// <summary>Backing field for <see cref="Location" /> property.</summary>
+        private string _location;
+
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public string Location { get => this._location; set => this._location = value; }
 
         /// <summary>Internal Acessors for CustomHttpsProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomainInternal.CustomHttpsProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomainPropertiesInternal)Property).CustomHttpsProvisioningState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomainPropertiesInternal)Property).CustomHttpsProvisioningState = value ?? null; }
@@ -169,6 +176,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
         }
 
+        /// <param name="headers"></param>
+        void Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IHeaderSerializable.ReadHeaders(global::System.Net.Http.Headers.HttpResponseHeaders headers)
+        {
+            if (headers.TryGetValues("location", out var __locationHeader0))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomainInternal)this).Location = System.Linq.Enumerable.FirstOrDefault(__locationHeader0) is string __headerLocationHeader0 ? __headerLocationHeader0 : (string)null;
+            }
+        }
+
         /// <summary>Validates that this object meets the validation criteria.</summary>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener" /> instance that will receive validation
         /// events.</param>
@@ -234,6 +250,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"hostName",
         PossibleTypes = new [] { typeof(string) })]
         string HostName { get; set; }
+
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"",
+        SerializedName = @"location",
+        PossibleTypes = new [] { typeof(string) })]
+        string Location { get; set; }
         /// <summary>Provisioning status of Custom Https of the custom domain.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
@@ -290,6 +317,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         string CustomHttpsProvisioningSubstate { get; set; }
         /// <summary>The host name of the custom domain. Must be a domain name.</summary>
         string HostName { get; set; }
+
+        string Location { get; set; }
         /// <summary>The JSON object that contains the properties of the custom domain to create.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICustomDomainProperties Property { get; set; }
         /// <summary>Provisioning status of Custom Https of the custom domain.</summary>

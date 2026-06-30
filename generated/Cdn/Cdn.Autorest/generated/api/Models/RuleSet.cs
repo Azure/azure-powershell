@@ -18,17 +18,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProxyResource __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProxyResource();
 
-        /// <summary>
-        /// Indicates whether rule set is in batch mode. When batch mode is enabled, rules will be processed in a batch along with
-        /// the rule set.
-        /// When batch mode is disabled, rules would need to be processed independently.
-        /// This property can only be set during rule set creation and cannot be updated later.
-        /// For switching modes, a new rule set needs to be created with the desired mode and rules need to be migrated to the new
-        /// rule set.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
-        public bool? BatchMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSetPropertiesInternal)Property).BatchMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSetPropertiesInternal)Property).BatchMode = value ?? default(bool); }
-
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
         public string DeploymentStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)Property).DeploymentStatus; }
 
@@ -105,13 +94,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         public string ResourceGroupName { get => (new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Success ? new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Groups["resourceGroupName"].Value : null); }
 
         /// <summary>
-        /// A list of rules that are part of this rule set provided the rule set is in batch mode.
-        /// This property will be ignored if the rule set is not in batch mode.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IBatchRuleProperties> Rule { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSetPropertiesInternal)Property).Rule; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSetPropertiesInternal)Property).Rule = value ?? null /* arrayOf */; }
-
-        /// <summary>
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
@@ -177,28 +159,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProxyResource
     {
-        /// <summary>
-        /// Indicates whether rule set is in batch mode. When batch mode is enabled, rules will be processed in a batch along with
-        /// the rule set.
-        /// When batch mode is disabled, rules would need to be processed independently.
-        /// This property can only be set during rule set creation and cannot be updated later.
-        /// For switching modes, a new rule set needs to be created with the desired mode and rules need to be migrated to the new
-        /// rule set.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = false,
-        Description = @"Indicates whether rule set is in batch mode. When batch mode is enabled, rules will be processed in a batch along with the rule set.
-        When batch mode is disabled, rules would need to be processed independently.
-        This property can only be set during rule set creation and cannot be updated later.
-        For switching modes, a new rule set needs to be created with the desired mode and rules need to be migrated to the new rule set.",
-        SerializedName = @"batchMode",
-        PossibleTypes = new [] { typeof(bool) })]
-        bool? BatchMode { get; set; }
-
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = true,
@@ -233,37 +193,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Updating", "Deleting", "Creating")]
         string ProvisioningState { get;  }
-        /// <summary>
-        /// A list of rules that are part of this rule set provided the rule set is in batch mode.
-        /// This property will be ignored if the rule set is not in batch mode.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"A list of rules that are part of this rule set provided the rule set is in batch mode.
-        This property will be ignored if the rule set is not in batch mode.",
-        SerializedName = @"rules",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IBatchRuleProperties) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IBatchRuleProperties> Rule { get; set; }
 
     }
     /// Friendly RuleSet name mapping to the any RuleSet or secret related information.
     internal partial interface IRuleSetInternal :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProxyResourceInternal
     {
-        /// <summary>
-        /// Indicates whether rule set is in batch mode. When batch mode is enabled, rules will be processed in a batch along with
-        /// the rule set.
-        /// When batch mode is disabled, rules would need to be processed independently.
-        /// This property can only be set during rule set creation and cannot be updated later.
-        /// For switching modes, a new rule set needs to be created with the desired mode and rules need to be migrated to the new
-        /// rule set.
-        /// </summary>
-        bool? BatchMode { get; set; }
-
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("NotStarted", "InProgress", "Succeeded", "Failed")]
         string DeploymentStatus { get; set; }
         /// <summary>The name of the profile which holds the rule set.</summary>
@@ -273,11 +208,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Provisioning status</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Succeeded", "Failed", "Updating", "Deleting", "Creating")]
         string ProvisioningState { get; set; }
-        /// <summary>
-        /// A list of rules that are part of this rule set provided the rule set is in batch mode.
-        /// This property will be ignored if the rule set is not in batch mode.
-        /// </summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IBatchRuleProperties> Rule { get; set; }
 
     }
 }
