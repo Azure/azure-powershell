@@ -42,6 +42,22 @@ title: ChangeSafety
 subject-prefix: $(service-name)
 
 directive:
+  - where:
+      parameter-name: ChangeType
+    set:
+      parameter-description: Describes the nature of the change. Allowed values are AppDeployment, Config, PolicyDeployment, ManualTouch.
+  - where:
+      parameter-name: ChangeDefinitionKind
+    set:
+      parameter-description: Kind of the change definition. Allowed values are ApiOperations, Targets.
+  - where:
+      parameter-name: RolloutType
+    set:
+      parameter-description: Describes the type of the rollout used for the change. Allowed values are Normal, Hotfix, Emergency.
+  - where:
+      parameter-name: Status
+    set:
+      parameter-description: StageProgression resource status. Allowed values are Initialized, InProgress, Completed, Cancelled, Paused, Failed, Skipped.
   # Following are common directives which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required
