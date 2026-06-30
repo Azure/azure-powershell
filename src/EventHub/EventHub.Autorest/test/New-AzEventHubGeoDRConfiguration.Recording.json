@@ -1,8 +1,8 @@
 {
-  "New-AzEventHubGeoDRConfiguration+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb?api-version=2024-05-01-preview+1": {
+  "New-AzEventHubGeoDRConfiguration+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb?api-version=2026-01-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb?api-version=2026-01-01",
       "Content": "{\n  \"properties\": {\n    \"partnerNamespace\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamem3hun9\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -41,10 +41,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzEventHubGeoDRConfiguration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb?api-version=2024-05-01-preview+2": {
+  "New-AzEventHubGeoDRConfiguration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb?api-version=2026-01-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -88,10 +88,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzEventHubGeoDRConfiguration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb?api-version=2024-05-01-preview+3": {
+  "New-AzEventHubGeoDRConfiguration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb?api-version=2026-01-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -135,10 +135,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzEventHubGeoDRConfiguration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb?api-version=2024-05-01-preview+4": {
+  "New-AzEventHubGeoDRConfiguration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb?api-version=2026-01-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -182,10 +182,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzEventHubGeoDRConfiguration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb?api-version=2024-05-01-preview+5": {
+  "New-AzEventHubGeoDRConfiguration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb?api-version=2026-01-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -229,10 +229,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzEventHubGeoDRConfiguration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb?api-version=2024-05-01-preview+6": {
+  "New-AzEventHubGeoDRConfiguration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb?api-version=2026-01-01+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -276,10 +276,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzEventHubGeoDRConfiguration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamem3hun9/disasterRecoveryConfigs/alias8gwdsb?api-version=2024-05-01-preview+7": {
+  "New-AzEventHubGeoDRConfiguration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamem3hun9/disasterRecoveryConfigs/alias8gwdsb?api-version=2026-01-01+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamem3hun9/disasterRecoveryConfigs/alias8gwdsb?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamem3hun9/disasterRecoveryConfigs/alias8gwdsb?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -323,10 +323,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzEventHubGeoDRConfiguration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/authorizationRules?api-version=2024-05-01-preview+8": {
+  "New-AzEventHubGeoDRConfiguration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/authorizationRules?api-version=2026-01-01+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/authorizationRules?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/authorizationRules?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -370,10 +370,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzEventHubGeoDRConfiguration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb/authorizationRules?api-version=2024-05-01-preview+9": {
+  "New-AzEventHubGeoDRConfiguration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb/authorizationRules?api-version=2026-01-01+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb/authorizationRules?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb/authorizationRules?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -417,10 +417,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzEventHubGeoDRConfiguration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb/authorizationRules/RootManageSharedAccessKey?api-version=2024-05-01-preview+10": {
+  "New-AzEventHubGeoDRConfiguration+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb/authorizationRules/RootManageSharedAccessKey?api-version=2026-01-01+10": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb/authorizationRules/RootManageSharedAccessKey?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb/authorizationRules/RootManageSharedAccessKey?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -464,10 +464,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzEventHubGeoDRConfiguration+[NoContext]+CreateExpanded+$POST+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb/authorizationRules/RootManageSharedAccessKey/listKeys?api-version=2024-05-01-preview+11": {
+  "New-AzEventHubGeoDRConfiguration+[NoContext]+CreateExpanded+$POST+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb/authorizationRules/RootManageSharedAccessKey/listKeys?api-version=2026-01-01+11": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb/authorizationRules/RootManageSharedAccessKey/listKeys?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/disasterRecoveryConfigs/alias8gwdsb/authorizationRules/RootManageSharedAccessKey/listKeys?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -511,10 +511,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzEventHubGeoDRConfiguration+[NoContext]+CreateExpanded+$POST+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/authorizationRules/RootManageSharedAccessKey/listKeys?api-version=2024-05-01-preview+12": {
+  "New-AzEventHubGeoDRConfiguration+[NoContext]+CreateExpanded+$POST+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/authorizationRules/RootManageSharedAccessKey/listKeys?api-version=2026-01-01+12": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/authorizationRules/RootManageSharedAccessKey/listKeys?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceNamenxqfh4/authorizationRules/RootManageSharedAccessKey/listKeys?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

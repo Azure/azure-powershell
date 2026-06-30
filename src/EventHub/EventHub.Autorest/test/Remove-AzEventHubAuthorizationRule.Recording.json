@@ -1,8 +1,8 @@
 {
-  "Remove-AzEventHubAuthorizationRule+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules/namespaceAuthRule1?api-version=2024-05-01-preview+1": {
+  "Remove-AzEventHubAuthorizationRule+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules/namespaceAuthRule1?api-version=2026-01-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules/namespaceAuthRule1?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules/namespaceAuthRule1?api-version=2026-01-01",
       "Content": "{\n  \"properties\": {\n    \"rights\": [ \"Manage\", \"Send\", \"Listen\" ]\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -41,10 +41,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzEventHubAuthorizationRule+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules/namespaceAuthRule2?api-version=2024-05-01-preview+2": {
+  "Remove-AzEventHubAuthorizationRule+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules/namespaceAuthRule2?api-version=2026-01-01+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules/namespaceAuthRule2?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules/namespaceAuthRule2?api-version=2026-01-01",
       "Content": "{\n  \"properties\": {\n    \"rights\": [ \"Manage\", \"Send\", \"Listen\" ]\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -83,10 +83,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzEventHubAuthorizationRule+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules?api-version=2024-05-01-preview+3": {
+  "Remove-AzEventHubAuthorizationRule+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules?api-version=2026-01-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -130,10 +130,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzEventHubAuthorizationRule+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules?api-version=2024-05-01-preview+4": {
+  "Remove-AzEventHubAuthorizationRule+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules?api-version=2026-01-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -177,10 +177,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzEventHubAuthorizationRule+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules/entityAuthRule1?api-version=2024-05-01-preview+5": {
+  "Remove-AzEventHubAuthorizationRule+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules/entityAuthRule1?api-version=2026-01-01+5": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules/entityAuthRule1?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules/entityAuthRule1?api-version=2026-01-01",
       "Content": "{\n  \"properties\": {\n    \"rights\": [ \"Manage\", \"Send\", \"Listen\" ]\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -219,10 +219,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzEventHubAuthorizationRule+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules/entityAuthRule2?api-version=2024-05-01-preview+6": {
+  "Remove-AzEventHubAuthorizationRule+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules/entityAuthRule2?api-version=2026-01-01+6": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules/entityAuthRule2?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules/entityAuthRule2?api-version=2026-01-01",
       "Content": "{\n  \"properties\": {\n    \"rights\": [ \"Manage\", \"Send\", \"Listen\" ]\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -261,10 +261,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzEventHubAuthorizationRule+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules?api-version=2024-05-01-preview+7": {
+  "Remove-AzEventHubAuthorizationRule+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules?api-version=2026-01-01+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -308,10 +308,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzEventHubAuthorizationRule+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules?api-version=2024-05-01-preview+8": {
+  "Remove-AzEventHubAuthorizationRule+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules?api-version=2026-01-01+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -355,10 +355,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzEventHubAuthorizationRule+[NoContext]+RemoveExpandedNamespace+$DELETE+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules/namespaceAuthRule1?api-version=2024-05-01-preview+1": {
+  "Remove-AzEventHubAuthorizationRule+[NoContext]+RemoveExpandedNamespace+$DELETE+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules/namespaceAuthRule1?api-version=2026-01-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules/namespaceAuthRule1?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules/namespaceAuthRule1?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -401,10 +401,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzEventHubAuthorizationRule+[NoContext]+RemoveExpandedNamespace+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules/namespaceAuthRule1?api-version=2024-05-01-preview+2": {
+  "Remove-AzEventHubAuthorizationRule+[NoContext]+RemoveExpandedNamespace+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules/namespaceAuthRule1?api-version=2026-01-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules/namespaceAuthRule1?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules/namespaceAuthRule1?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -448,10 +448,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzEventHubAuthorizationRule+[NoContext]+RemoveExpandedEntity+$DELETE+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules/entityAuthRule1?api-version=2024-05-01-preview+1": {
+  "Remove-AzEventHubAuthorizationRule+[NoContext]+RemoveExpandedEntity+$DELETE+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules/entityAuthRule1?api-version=2026-01-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules/entityAuthRule1?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules/entityAuthRule1?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -494,10 +494,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzEventHubAuthorizationRule+[NoContext]+RemoveExpandedEntity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules/entityAuthRule1?api-version=2024-05-01-preview+2": {
+  "Remove-AzEventHubAuthorizationRule+[NoContext]+RemoveExpandedEntity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules/entityAuthRule1?api-version=2026-01-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules/entityAuthRule1?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules/entityAuthRule1?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -541,10 +541,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzEventHubAuthorizationRule+[NoContext]+RemoveViaIdentityExpanded+$DELETE+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules/namespaceAuthRule2?api-version=2024-05-01-preview+1": {
+  "Remove-AzEventHubAuthorizationRule+[NoContext]+RemoveViaIdentityExpanded+$DELETE+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules/namespaceAuthRule2?api-version=2026-01-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules/namespaceAuthRule2?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules/namespaceAuthRule2?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -587,10 +587,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzEventHubAuthorizationRule+[NoContext]+RemoveViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules/namespaceAuthRule2?api-version=2024-05-01-preview+2": {
+  "Remove-AzEventHubAuthorizationRule+[NoContext]+RemoveViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules/namespaceAuthRule2?api-version=2026-01-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules/namespaceAuthRule2?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules/namespaceAuthRule2?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -634,10 +634,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzEventHubAuthorizationRule+[NoContext]+RemoveViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules?api-version=2024-05-01-preview+3": {
+  "Remove-AzEventHubAuthorizationRule+[NoContext]+RemoveViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules?api-version=2026-01-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -681,10 +681,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzEventHubAuthorizationRule+[NoContext]+RemoveViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules?api-version=2024-05-01-preview+4": {
+  "Remove-AzEventHubAuthorizationRule+[NoContext]+RemoveViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules?api-version=2026-01-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -728,10 +728,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzEventHubAuthorizationRule+[NoContext]+RemoveViaIdentityExpanded+$DELETE+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules/entityAuthRule2?api-version=2024-05-01-preview+5": {
+  "Remove-AzEventHubAuthorizationRule+[NoContext]+RemoveViaIdentityExpanded+$DELETE+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules/entityAuthRule2?api-version=2026-01-01+5": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules/entityAuthRule2?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules/entityAuthRule2?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -774,10 +774,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzEventHubAuthorizationRule+[NoContext]+RemoveViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules/entityAuthRule2?api-version=2024-05-01-preview+6": {
+  "Remove-AzEventHubAuthorizationRule+[NoContext]+RemoveViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules/entityAuthRule2?api-version=2026-01-01+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules/entityAuthRule2?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules/entityAuthRule2?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -821,10 +821,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzEventHubAuthorizationRule+[NoContext]+RemoveViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules?api-version=2024-05-01-preview+7": {
+  "Remove-AzEventHubAuthorizationRule+[NoContext]+RemoveViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules?api-version=2026-01-01+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/authorizationRules?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -868,10 +868,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzEventHubAuthorizationRule+[NoContext]+RemoveViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules?api-version=2024-05-01-preview+8": {
+  "Remove-AzEventHubAuthorizationRule+[NoContext]+RemoveViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules?api-version=2026-01-01+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/eventhubs/eventHubs758f4/authorizationRules?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

@@ -1,8 +1,8 @@
 {
-  "Set-AzEventHubNetworkRuleSet+[NoContext]+SetExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2024-05-01-preview+1": {
+  "Set-AzEventHubNetworkRuleSet+[NoContext]+SetExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2026-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -46,10 +46,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubNetworkRuleSet+[NoContext]+SetExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2024-05-01-preview+2": {
+  "Set-AzEventHubNetworkRuleSet+[NoContext]+SetExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2026-01-01+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2026-01-01",
       "Content": "{\n  \"properties\": {\n    \"trustedServiceAccessEnabled\": false,\n    \"defaultAction\": \"Allow\",\n    \"virtualNetworkRules\": [\n      {\n        \"subnet\": {\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.Network/virtualNetworks/eh-ps-ih36pu-vnet/subnets/default\"\n        }\n      },\n      {\n        \"subnet\": {\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.Network/virtualNetworks/eh-ps-ih36pu-vnet/subnets/default2\"\n        }\n      },\n      {\n        \"subnet\": {\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.Network/virtualNetworks/eh-ps-ih36pu-vnet/subnets/default3\"\n        }\n      }\n    ],\n    \"ipRules\": [\n      {\n        \"ipMask\": \"1.1.1.1\",\n        \"action\": \"Allow\"\n      },\n      {\n        \"ipMask\": \"2.2.2.2\",\n        \"action\": \"Allow\"\n      }\n    ],\n    \"publicNetworkAccess\": \"Enabled\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -88,10 +88,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubNetworkRuleSet+[NoContext]+SetExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2024-05-01-preview+3": {
+  "Set-AzEventHubNetworkRuleSet+[NoContext]+SetExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2026-01-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -135,10 +135,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubNetworkRuleSet+[NoContext]+SetExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2024-05-01-preview+4": {
+  "Set-AzEventHubNetworkRuleSet+[NoContext]+SetExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2026-01-01+4": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2026-01-01",
       "Content": "{\n  \"properties\": {\n    \"trustedServiceAccessEnabled\": false,\n    \"defaultAction\": \"Deny\",\n    \"virtualNetworkRules\": [\n      {\n        \"subnet\": {\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/autorest-ps-eventhub-ec7mvx/providers/Microsoft.Network/virtualNetworks/eh-ps-ih36pu-vnet/subnets/default\"\n        },\n        \"ignoreMissingVnetServiceEndpoint\": false\n      },\n      {\n        \"subnet\": {\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/autorest-ps-eventhub-ec7mvx/providers/Microsoft.Network/virtualNetworks/eh-ps-ih36pu-vnet/subnets/default2\"\n        },\n        \"ignoreMissingVnetServiceEndpoint\": false\n      },\n      {\n        \"subnet\": {\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/autorest-ps-eventhub-ec7mvx/providers/Microsoft.Network/virtualNetworks/eh-ps-ih36pu-vnet/subnets/default3\"\n        },\n        \"ignoreMissingVnetServiceEndpoint\": false\n      }\n    ],\n    \"ipRules\": [\n      {\n        \"ipMask\": \"1.1.1.1\",\n        \"action\": \"Allow\"\n      },\n      {\n        \"ipMask\": \"2.2.2.2\",\n        \"action\": \"Allow\"\n      }\n    ],\n    \"publicNetworkAccess\": \"Enabled\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -177,10 +177,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubNetworkRuleSet+[NoContext]+SetExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2024-05-01-preview+5": {
+  "Set-AzEventHubNetworkRuleSet+[NoContext]+SetExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2026-01-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -224,10 +224,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubNetworkRuleSet+[NoContext]+SetExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2024-05-01-preview+6": {
+  "Set-AzEventHubNetworkRuleSet+[NoContext]+SetExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2026-01-01+6": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2026-01-01",
       "Content": "{\n  \"properties\": {\n    \"trustedServiceAccessEnabled\": false,\n    \"defaultAction\": \"Deny\",\n    \"virtualNetworkRules\": [\n      {\n        \"subnet\": {\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/autorest-ps-eventhub-ec7mvx/providers/Microsoft.Network/virtualNetworks/eh-ps-ih36pu-vnet/subnets/default\"\n        },\n        \"ignoreMissingVnetServiceEndpoint\": false\n      },\n      {\n        \"subnet\": {\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/autorest-ps-eventhub-ec7mvx/providers/Microsoft.Network/virtualNetworks/eh-ps-ih36pu-vnet/subnets/default2\"\n        },\n        \"ignoreMissingVnetServiceEndpoint\": false\n      },\n      {\n        \"subnet\": {\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/autorest-ps-eventhub-ec7mvx/providers/Microsoft.Network/virtualNetworks/eh-ps-ih36pu-vnet/subnets/default3\"\n        },\n        \"ignoreMissingVnetServiceEndpoint\": false\n      }\n    ],\n    \"ipRules\": [\n      {\n        \"ipMask\": \"1.1.1.1\",\n        \"action\": \"Allow\"\n      },\n      {\n        \"ipMask\": \"2.2.2.2\",\n        \"action\": \"Allow\"\n      }\n    ],\n    \"publicNetworkAccess\": \"Disabled\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -266,10 +266,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubNetworkRuleSet+[NoContext]+SetExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2024-05-01-preview+7": {
+  "Set-AzEventHubNetworkRuleSet+[NoContext]+SetExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2026-01-01+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -313,10 +313,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubNetworkRuleSet+[NoContext]+SetExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2024-05-01-preview+8": {
+  "Set-AzEventHubNetworkRuleSet+[NoContext]+SetExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2026-01-01+8": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2026-01-01",
       "Content": "{\n  \"properties\": {\n    \"trustedServiceAccessEnabled\": true,\n    \"defaultAction\": \"Deny\",\n    \"virtualNetworkRules\": [\n      {\n        \"subnet\": {\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/autorest-ps-eventhub-ec7mvx/providers/Microsoft.Network/virtualNetworks/eh-ps-ih36pu-vnet/subnets/default\"\n        },\n        \"ignoreMissingVnetServiceEndpoint\": false\n      },\n      {\n        \"subnet\": {\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/autorest-ps-eventhub-ec7mvx/providers/Microsoft.Network/virtualNetworks/eh-ps-ih36pu-vnet/subnets/default2\"\n        },\n        \"ignoreMissingVnetServiceEndpoint\": false\n      },\n      {\n        \"subnet\": {\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/autorest-ps-eventhub-ec7mvx/providers/Microsoft.Network/virtualNetworks/eh-ps-ih36pu-vnet/subnets/default3\"\n        },\n        \"ignoreMissingVnetServiceEndpoint\": false\n      }\n    ],\n    \"ipRules\": [\n      {\n        \"ipMask\": \"1.1.1.1\",\n        \"action\": \"Allow\"\n      },\n      {\n        \"ipMask\": \"2.2.2.2\",\n        \"action\": \"Allow\"\n      }\n    ],\n    \"publicNetworkAccess\": \"Disabled\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -355,10 +355,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubNetworkRuleSet+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2024-05-01-preview+1": {
+  "Set-AzEventHubNetworkRuleSet+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2026-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -402,10 +402,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubNetworkRuleSet+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2024-05-01-preview+2": {
+  "Set-AzEventHubNetworkRuleSet+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2026-01-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -449,10 +449,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubNetworkRuleSet+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2024-05-01-preview+3": {
+  "Set-AzEventHubNetworkRuleSet+[NoContext]+SetViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2026-01-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2026-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -496,10 +496,10 @@
       "isContentBase64": false
     }
   },
-  "Set-AzEventHubNetworkRuleSet+[NoContext]+SetViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2024-05-01-preview+4": {
+  "Set-AzEventHubNetworkRuleSet+[NoContext]+SetViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2026-01-01+4": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2024-05-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-ec7mvx/providers/Microsoft.EventHub/namespaces/namespaceName6xazrb/networkRuleSets/default?api-version=2026-01-01",
       "Content": "{\n  \"properties\": {\n    \"trustedServiceAccessEnabled\": false,\n    \"defaultAction\": \"Deny\",\n    \"virtualNetworkRules\": [\n      {\n        \"subnet\": {\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/autorest-ps-eventhub-ec7mvx/providers/Microsoft.Network/virtualNetworks/eh-ps-ih36pu-vnet/subnets/default\"\n        },\n        \"ignoreMissingVnetServiceEndpoint\": false\n      },\n      {\n        \"subnet\": {\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/autorest-ps-eventhub-ec7mvx/providers/Microsoft.Network/virtualNetworks/eh-ps-ih36pu-vnet/subnets/default2\"\n        },\n        \"ignoreMissingVnetServiceEndpoint\": false\n      },\n      {\n        \"subnet\": {\n          \"id\": \"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/autorest-ps-eventhub-ec7mvx/providers/Microsoft.Network/virtualNetworks/eh-ps-ih36pu-vnet/subnets/default3\"\n        },\n        \"ignoreMissingVnetServiceEndpoint\": false\n      }\n    ],\n    \"ipRules\": [\n      {\n        \"ipMask\": \"1.1.1.1\",\n        \"action\": \"Allow\"\n      },\n      {\n        \"ipMask\": \"2.2.2.2\",\n        \"action\": \"Allow\"\n      }\n    ],\n    \"publicNetworkAccess\": \"Disabled\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
