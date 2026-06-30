@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Created = keyProperties.CreatedOn?.UtcDateTime;
             Updated = keyProperties.UpdatedOn?.UtcDateTime;
             RecoveryLevel = keyProperties.RecoveryLevel;
-            Tags = keyProperties.Tags.ConvertToHashtable();
+            Tags = keyProperties.Tags?.ConvertToHashtable();
             KeySize = keyProperties.KeySize;
 
             IsHsm = isHsm;

@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Helpers
 
         private static int? BitsFromByteArray(byte[] material)
         {
-            return material == null ? (int?)null : material.Length * 8;
+            return (material == null || material.Length == 0) ? (int?)null : material.Length * 8;
         }
 
         private static int? BitsFromCurveName(string curveName)

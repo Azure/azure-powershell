@@ -73,6 +73,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
             Assert.Null(JwkHelper.ComputeKeySize(jwk));
         }
 
+        [Theory]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [InlineData(JsonWebKeyType.Rsa)]
+        [InlineData(JsonWebKeyType.RsaHsm)]
+        public void ComputeKeySize_RsaFamilyWithEmptyModulus_ReturnsNull(string kty)
+        {
+            // Empty material is "size unknown", not a 0-bit key.
+            var jwk = new JsonWebKey { Kty = kty, N = new byte[0] };
+            Assert.Null(JwkHelper.ComputeKeySize(jwk));
+        }
+
         // ---- ComputeKeySize: oct / oct-HSM ----
 
         [Theory]
@@ -96,6 +107,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         public void ComputeKeySize_OctFamilyWithoutMaterial_ReturnsNull(string kty)
         {
             var jwk = new JsonWebKey { Kty = kty, K = null };
+            Assert.Null(JwkHelper.ComputeKeySize(jwk));
+        }
+
+        [Theory]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [InlineData(JsonWebKeyType.Octet)]
+        [InlineData(OctHsm)]
+        public void ComputeKeySize_OctFamilyWithEmptyMaterial_ReturnsNull(string kty)
+        {
+            // Empty material is "size unknown", not a 0-bit key.
+            var jwk = new JsonWebKey { Kty = kty, K = new byte[0] };
             Assert.Null(JwkHelper.ComputeKeySize(jwk));
         }
 
