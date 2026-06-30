@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Upgraded `Azure.Security.KeyVault.Keys` to `4.10.0` to align with other modules.
 
 ## Version 1.21.0
 * Added ChangeSafety Support
