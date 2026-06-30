@@ -14,46 +14,38 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnOriginGr
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzFrontDoorCdnOriginGroup' {
+Describe 'Update-AzFrontDoorCdnOriginGroup'  {
     BeforeAll {
-        $script:ogName = 'org-pstest-upd'
-        $hp = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath '/' -ProbeProtocol 'Https' -ProbeRequestType 'GET'
-        $lb = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 -SampleSize 5 -SuccessfulSamplesRequired 4
-        New-AzFrontDoorCdnOriginGroup -OriginGroupName $script:ogName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -LoadBalancingSetting $lb -HealthProbeSetting $hp | Out-Null
-    }
-
-    AfterAll {
-        Remove-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $script:ogName -ErrorAction SilentlyContinue
+        $originGroupName = 'org-pstest120'
+        $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" `
+        -ProbeProtocol "Https" -ProbeRequestType "GET"
+        $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
+        -SampleSize 5 -SuccessfulSamplesRequired 4
+        New-AzFrontDoorCdnOriginGroup -OriginGroupName $originGroupName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
+        -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting
     }
 
     It 'UpdateExpanded' {
-        $lb2 = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 -SampleSize 5 -SuccessfulSamplesRequired 3
-        Update-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $script:ogName -LoadBalancingSetting $lb2
-        $u = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $script:ogName
-        $u.LoadBalancingSetting.SuccessfulSamplesRequired | Should -Be 3
+        $originGroup = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName
+        $originGroup.Name | Should -Be $originGroupName
+        $originGroup.LoadBalancingSetting.SuccessfulSamplesRequired | Should -Be 4
+
+        $updateLoadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
+        -SampleSize 5 -SuccessfulSamplesRequired 3
+        Update-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName `
+        -LoadBalancingSetting $updateLoadBalancingSetting
+    
+        $originGroup = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName
+        $originGroup.LoadBalancingSetting.SuccessfulSamplesRequired | Should -Be 3
     }
 
-    It 'UpdateViaIdentityExpanded' {
-        $og = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $script:ogName
-        $lb3 = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 -SampleSize 5 -SuccessfulSamplesRequired 4
-        Update-AzFrontDoorCdnOriginGroup -LoadBalancingSetting $lb3 -InputObject $og
-        $u = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $script:ogName
-        $u.LoadBalancingSetting.SuccessfulSamplesRequired | Should -Be 4
-    }
-
-    It 'UpdateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityProfileExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityProfile' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded'  {
+        $updateLoadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
+        -SampleSize 5 -SuccessfulSamplesRequired 3
+        $ogObject = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName
+        Update-AzFrontDoorCdnOriginGroup  -LoadBalancingSetting $updateLoadBalancingSetting -InputObject $ogObject
+    
+        $originGroup = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName
+        $originGroup.LoadBalancingSetting.SuccessfulSamplesRequired | Should -Be 3
     }
 }

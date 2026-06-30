@@ -14,55 +14,64 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnRule'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzFrontDoorCdnRule' {
+Describe 'Update-AzFrontDoorCdnRule'  {
     BeforeAll {
-        $script:rsName = 'rsNameRuleUpd'
-        $script:ruleName = 'ruleNameUpd'
-        New-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $script:rsName | Out-Null
-        $uri = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name 'RequestUri' -ParameterOperator 'Any'
-        $ovr = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name 'RouteConfigurationOverride' -CacheConfigurationQueryStringCachingBehavior 'IgnoreSpecifiedQueryStrings' -CacheConfigurationQueryParameter 'a=test' -CacheConfigurationIsCompressionEnabled 'Enabled' -CacheConfigurationCacheBehavior 'HonorOrigin'
-        New-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $script:rsName -Name $script:ruleName -Action @($ovr) -Condition @($uri) | Out-Null
-    }
+        $rulesetName = 'rsName120'
+        Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
+        New-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
+        $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
+        $conditions = @(
+            $uriConditon
+        );
+        $overrideAction = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
+        -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
+        -CacheConfigurationQueryParameter "a=test" `
+        -CacheConfigurationIsCompressionEnabled "Enabled" `
+        -CacheConfigurationCacheBehavior "HonorOrigin" 
+        $actions = @($overrideAction);
+        
+        $ruleName = 'ruleName080'
+        Write-Host -ForegroundColor Green "Use ruleName : $($ruleName)"
+        New-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName `
+        -Action $actions -Condition $conditions
 
-    AfterAll {
-        Remove-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $script:rsName -Name $script:ruleName -ErrorAction SilentlyContinue
-        Remove-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $script:rsName -ErrorAction SilentlyContinue
+        $rule = Get-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName
+        $rule.Name | Should -Be $ruleName
+        $rule.Condition.Count | Should -Be $conditions.Count
+        $rule.Action.Count | Should -Be $actions.Count
     }
 
     It 'UpdateExpanded' {
-        $ovr = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name 'RouteConfigurationOverride' -CacheConfigurationQueryStringCachingBehavior 'IgnoreSpecifiedQueryStrings' -CacheConfigurationQueryParameter 'a=test1' -CacheConfigurationIsCompressionEnabled 'Enabled' -CacheConfigurationCacheBehavior 'HonorOrigin'
-        $u = Update-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $script:rsName -Name $script:ruleName -Action @($ovr) -Condition @()
-        $u.Name | Should -Be $script:ruleName
+        $updatedConditions = @();
+        $updatedOverrideAction = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
+        -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
+        -CacheConfigurationQueryParameter "a=test1" `
+        -CacheConfigurationIsCompressionEnabled "Enabled" `
+        -CacheConfigurationCacheBehavior "HonorOrigin" 
+        $updatedActions = @($updatedOverrideAction);
+        Update-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName `
+        -Action $updatedActions -Condition $updatedConditions
+
+        $updatedRule = Get-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName
+        $updatedRule.Name | Should -Be $ruleName
+        $updatedRule.Condition.Count | Should -Be $updatedConditions.Count
+        $updatedRule.Action.Count | Should -Be $actions.Count
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $r = Get-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $script:rsName -Name $script:ruleName
-        $ovr2 = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name 'RouteConfigurationOverride' -CacheConfigurationQueryStringCachingBehavior 'IgnoreSpecifiedQueryStrings' -CacheConfigurationQueryParameter 'a=test2' -CacheConfigurationIsCompressionEnabled 'Enabled' -CacheConfigurationCacheBehavior 'HonorOrigin'
-        $u = Update-AzFrontDoorCdnRule -Action @($ovr2) -Condition @() -InputObject $r
-        $u.Name | Should -Be $script:ruleName
-    }
+        $updatedConditions = @();
+        $updatedOverrideAction = New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name "RouteConfigurationOverride" `
+        -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
+        -CacheConfigurationQueryParameter "a=test2" `
+        -CacheConfigurationIsCompressionEnabled "Enabled" `
+        -CacheConfigurationCacheBehavior "HonorOrigin" 
+        $updatedActions = @($updatedOverrideAction);
+        $ruleObject = Get-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName
+        Update-AzFrontDoorCdnRule -Action $updatedActions -Condition $updatedConditions -InputObject $ruleObject
 
-    It 'UpdateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityRuleSetExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityRuleSet' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityProfileExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityProfile' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $updatedRule = Get-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName
+        $updatedRule.Name | Should -Be $ruleName
+        $updatedRule.Condition.Count | Should -Be $updatedConditions.Count
+        $updatedRule.Action.Count | Should -Be $actions.Count
     }
 }

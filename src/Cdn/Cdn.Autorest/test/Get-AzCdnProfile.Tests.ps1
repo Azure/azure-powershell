@@ -14,34 +14,33 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnProfile'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzCdnProfile' {
-    BeforeAll {
-        $script:profileName = 'cdnpps01-get'
-        New-AzCdnProfile -SkuName 'Standard_Microsoft' -Name $script:profileName -ResourceGroupName $env.ResourceGroupName -Location Global | Out-Null
-    }
-
-    AfterAll {
-        Remove-AzCdnProfile -Name $script:profileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
-    }
-
+Describe 'Get-AzCdnProfile'  {
     It 'List' {
-        $profiles = Get-AzCdnProfile -ResourceGroupName $env.ResourceGroupName
-        $profiles.Count | Should -BeGreaterOrEqual 1
+        $cdnProfiles = Get-AzCdnProfile -ResourceGroupName $env.ResourceGroupName
+
+        $cdnProfiles.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {
-        $p = Get-AzCdnProfile -ResourceGroupName $env.ResourceGroupName -Name $script:profileName
-        $p.Name | Should -Be $script:profileName
-        $p.SkuName | Should -Be 'Standard_Microsoft'
+        $cdnProfile = Get-AzCdnProfile -ResourceGroupName $env.ResourceGroupName -Name $env.ClassicCdnProfileName
+
+        $cdnProfile.Name | Should -Be $env.ClassicCdnProfileName
+        $cdnProfile.SkuName | Should -Be "Standard_Microsoft"
+        $cdnProfile.Location | Should -Be "Global"
+    }
+
+    It 'List1' {
+        $cdnProfiles = Get-AzCdnProfile -ResourceGroupName $env.ResourceGroupName
+
+        $cdnProfiles.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'GetViaIdentity' {
-        $p = Get-AzCdnProfile -ResourceGroupName $env.ResourceGroupName -Name $script:profileName
-        $p2 = Get-AzCdnProfile -InputObject $p
-        $p2.Name | Should -Be $script:profileName
-    }
+        $cdnProfileObject = Get-AzCdnProfile -ResourceGroupName $env.ResourceGroupName -Name $env.ClassicCdnProfileName
+        $cdnProfile = Get-AzCdnProfile -InputObject $cdnProfileObject
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $cdnProfile.Name | Should -Be $env.ClassicCdnProfileName
+        $cdnProfile.SkuName | Should -Be "Standard_Microsoft"
+        $cdnProfile.Location | Should -Be "Global"
     }
 }

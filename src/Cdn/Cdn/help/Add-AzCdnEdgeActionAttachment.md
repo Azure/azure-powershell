@@ -19,10 +19,10 @@ Add-AzCdnEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <Strin
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Add
+### AddViaJsonString
 ```
 Add-AzCdnEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Body <IEdgeActionAttachment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,18 +33,11 @@ Add-AzCdnEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <Strin
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### AddViaJsonString
+### Add
 ```
 Add-AzCdnEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -Body <IEdgeActionAttachment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### AddViaIdentity
-```
-Add-AzCdnEdgeActionAttachment -InputObject <ICdnIdentity> -Body <IEdgeActionAttachment>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
 ```
 
 ### AddViaIdentityExpanded
@@ -54,17 +47,28 @@ Add-AzCdnEdgeActionAttachment -InputObject <ICdnIdentity> -AttachedResourceId <S
  [<CommonParameters>]
 ```
 
+### AddViaIdentity
+```
+Add-AzCdnEdgeActionAttachment -InputObject <ICdnIdentity> -Body <IEdgeActionAttachment>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 A long-running operation for adding an EdgeAction attachment.
 
 ## EXAMPLES
 
-### Example 1: Add an EdgeAction attachment
+### Example 1: Add an Edge Action Attachment
 ```powershell
-Add-AzCdnEdgeActionAttachment -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -AttachedResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testps-rg-da16jm/providers/Microsoft.Cdn/profiles/fdp001/ruleSets/ruleset001/rules/rule001"
+Add-AzCdnEdgeActionAttachment -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -AttachedResourceId "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/testps-rg-da16jm/providers/Microsoft.Cdn/profiles/testprofile/endpoints/endpoint001"
 ```
 
-Adds the specified Front Door rule as an attachment to the EdgeAction resource.
+```output
+EdgeActionId : 12345678-1234-1234-1234-123456789012
+```
+
+Add an Edge Action Attachment to link an edge action with a CDN resource using its full resource ID
 
 ## PARAMETERS
 
@@ -134,7 +138,7 @@ The name of the Edge Action
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded, Add, AddViaJsonFilePath, AddViaJsonString
+Parameter Sets: AddExpanded, AddViaJsonString, AddViaJsonFilePath, Add
 Aliases:
 
 Required: True
@@ -149,7 +153,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: AddViaIdentity, AddViaIdentityExpanded
+Parameter Sets: AddViaIdentityExpanded, AddViaIdentity
 Aliases:
 
 Required: True
@@ -210,7 +214,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded, Add, AddViaJsonFilePath, AddViaJsonString
+Parameter Sets: AddExpanded, AddViaJsonString, AddViaJsonFilePath, Add
 Aliases:
 
 Required: True
@@ -226,7 +230,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded, Add, AddViaJsonFilePath, AddViaJsonString
+Parameter Sets: AddExpanded, AddViaJsonString, AddViaJsonFilePath, Add
 Aliases:
 
 Required: False

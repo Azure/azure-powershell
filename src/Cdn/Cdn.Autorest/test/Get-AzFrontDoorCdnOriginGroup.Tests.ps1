@@ -14,35 +14,32 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnOriginGroup
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzFrontDoorCdnOriginGroup' {
+Describe 'Get-AzFrontDoorCdnOriginGroup'  {
     BeforeAll {
-        $script:ogName = 'org-pstest-get'
-        $hp = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath '/' -ProbeProtocol 'Https' -ProbeRequestType 'GET'
-        $lb = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 -SampleSize 5 -SuccessfulSamplesRequired 4
-        New-AzFrontDoorCdnOriginGroup -OriginGroupName $script:ogName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -LoadBalancingSetting $lb -HealthProbeSetting $hp | Out-Null
-    }
+        $originGroupName = 'org-pstest020'
+        $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" `
+        -ProbeProtocol "Https" -ProbeRequestType "GET"
+        $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
+        -SampleSize 5 -SuccessfulSamplesRequired 4
 
-    AfterAll {
-        Remove-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $script:ogName -ErrorAction SilentlyContinue
+        New-AzFrontDoorCdnOriginGroup -OriginGroupName $originGroupName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
+        -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting
     }
 
     It 'List' {
-        $ogs = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName
-        $ogs.Count | Should -BeGreaterOrEqual 1
+        $originGroups = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName
+        $originGroups.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {
-        $og = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $script:ogName
-        $og.Name | Should -Be $script:ogName
+        $originGroup = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName
+        $originGroup.Name | Should -Be $originGroupName
     }
 
     It 'GetViaIdentity' {
-        $og = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $script:ogName
-        $og2 = Get-AzFrontDoorCdnOriginGroup -InputObject $og
-        $og2.Name | Should -Be $script:ogName
-    }
+        $originGroupObject = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName
+        $originGroup = Get-AzFrontDoorCdnOriginGroup -InputObject $originGroupObject
 
-    It 'GetViaIdentityProfile' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $originGroup.Name | Should -Be $originGroupName
     }
 }

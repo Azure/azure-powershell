@@ -14,18 +14,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnSecret'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzFrontDoorCdnSecret' {
-    BeforeAll {
-        $script:secretName = 'kvsecret-new'
-    }
-
-    AfterAll {
-        Remove-AzFrontDoorCdnSecret -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $script:secretName -ErrorAction SilentlyContinue
-    }
-
+Describe 'New-AzFrontDoorCdnSecret'  {
     It 'CreateExpanded' {
-        $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -Type 'CustomerCertificate' -SecretSourceId "/subscriptions/$($env.SubscriptionId)/resourceGroups/testps-rg-cdn-debug/providers/Microsoft.KeyVault/vaults/jingnanxukvtest/secrets/wildcard-azfdtest-xyz"
-        $s = New-AzFrontDoorCdnSecret -Name $script:secretName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Parameter $parameter
-        $s.Name | Should -Be $script:secretName
+        $subId = $env.SubscriptionId
+        Write-Host -ForegroundColor Green "Use SubscriptionId : $($subId)"
+
+        $secretName = "kvsecret-test02"
+        Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
+
+        $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
+        -SecretSourceId "/subscriptions/$subId/resourceGroups/huaiyiz/providers/Microsoft.KeyVault/vaults/huaiyizkvtest/secrets/wildcard-huaiyiz-azfdtest-xyz"
+        
+        $secretInfo = New-AzFrontDoorCdnSecret -Name $secretName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Parameter $parameter
+        
+        $secretInfo.Name | Should -Be $secretName
     }
 }

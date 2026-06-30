@@ -14,18 +14,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnEndpoint'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzFrontDoorCdnEndpoint' {
-    BeforeAll {
-        $script:endpointName = 'e-clipstest-new'
-    }
-
-    AfterAll {
-        Remove-AzFrontDoorCdnEndpoint -EndpointName $script:endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
-    }
-
+Describe 'New-AzFrontDoorCdnEndpoint'  {
     It 'CreateExpanded' {
-        $e = New-AzFrontDoorCdnEndpoint -EndpointName $script:endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
-        $e.Name | Should -Be $script:endpointName
-        $e.Location | Should -Be 'Global'
+        $endpointName = 'e-clipstest040'
+        Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
+        $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
+
+        $endpoint.Name | Should -Be $endpointName
+        $endpoint.Location | Should -Be "Global"
     }
 }

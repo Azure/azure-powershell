@@ -167,7 +167,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProfileName
-Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
 
 ```yaml
 Type: System.String
@@ -213,7 +213,7 @@ Accept wildcard characters: False
 ```
 
 ### -SetName
-Name of the rule set under the profile which is unique globally.
+Name of the rule set under the profile.
 
 ```yaml
 Type: System.String

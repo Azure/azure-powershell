@@ -14,43 +14,50 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnOriginGroup'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzCdnOriginGroup' {
+Describe 'Get-AzCdnOriginGroup'  {
     BeforeAll {
-        $script:subId = $env.SubscriptionId
-        $script:endpointName = 'e-clipstest-og-get'
-        $origin = @{ Name = 'origin1'; HostName = 'host1.hello.com' }
-        $originId = "/subscriptions/$script:subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$script:endpointName/origins/origin1"
-        $hp = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 240 -ProbePath '/health.aspx' -ProbeProtocol 'Https' -ProbeRequestType 'GET'
-        $og = @{ Name = 'originGroup1'; healthProbeSetting = $hp; Origin = @(@{ Id = $originId }) }
-        $defaultOG = "/subscriptions/$script:subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$script:endpointName/origingroups/originGroup1"
-        New-AzCdnEndpoint -Name $script:endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location 'westus' -Origin $origin -OriginGroup $og -DefaultOriginGroupId $defaultOG | Out-Null
+        $subId = $env.SubscriptionId
+        $origin = @{
+            Name = "origin1"
+            HostName = "host1.hello.com"
+        };
+        $originId = "/subscriptions/$subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$($env.ClassicEndpointName)/origins/$($origin.Name)"
+        $healthProbeParametersObject = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 240 -ProbePath "/health.aspx" -ProbeProtocol "Https" -ProbeRequestType "GET" 
+        $originGroup = @{
+            Name = "originGroup1"
+            healthProbeSetting = $healthProbeParametersObject 
+            Origin = @(@{
+                Id = $originId
+            })
+        }
+        $defaultOriginGroup = "/subscriptions/$subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$($env.ClassicEndpointName)/origingroups/$($originGroup.Name)"
     }
-
-    AfterAll {
-        Remove-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
-    }
-
     It 'List' {
-        $ogs = Get-AzCdnOriginGroup -EndpointName $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $ogs.Count | Should -BeGreaterOrEqual 1
+        $originGroups = Get-AzCdnOriginGroup -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        
+        $originGroups.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {
-        $og = Get-AzCdnOriginGroup -Name 'originGroup1' -EndpointName $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $og.Name | Should -Be 'originGroup1'
+        $endpointOriginGroup = Get-AzCdnOriginGroup -Name $originGroup.Name -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        
+        $endpointOriginGroup.Name | Should -Be $originGroup.Name
+        $endpointOriginGroup.HealthProbeSetting.ProbeIntervalInSecond | Should -Be $originGroup.HealthProbeSetting.ProbeIntervalInSecond
+        $endpointOriginGroup.HealthProbeSetting.ProbePath | Should -Be $originGroup.HealthProbeSetting.ProbePath
+        $endpointOriginGroup.HealthProbeSetting.ProbeProtocol | Should -Be $originGroup.HealthProbeSetting.ProbeProtocol
+        $endpointOriginGroup.HealthProbeSetting.ProbeRequestType | Should -Be  $originGroup.HealthProbeSetting.ProbeRequestType
+        $endpointOriginGroup.Origin[0].Id | Should -Be $originGroup.Origin[0].Id
     }
 
     It 'GetViaIdentity' {
-        $og = Get-AzCdnOriginGroup -Name 'originGroup1' -EndpointName $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $og2 = Get-AzCdnOriginGroup -InputObject $og
-        $og2.Name | Should -Be 'originGroup1'
-    }
+        $endpointOriginGroupObject = Get-AzCdnOriginGroup -Name $originGroup.Name -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $endpointOriginGroup = Get-AzCdnOriginGroup -InputObject $endpointOriginGroupObject
 
-    It 'GetViaIdentityProfile' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentityEndpoint' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $endpointOriginGroup.Name | Should -Be $originGroup.Name
+        $endpointOriginGroup.HealthProbeSetting.ProbeIntervalInSecond | Should -Be $originGroup.HealthProbeSetting.ProbeIntervalInSecond
+        $endpointOriginGroup.HealthProbeSetting.ProbePath | Should -Be $originGroup.HealthProbeSetting.ProbePath
+        $endpointOriginGroup.HealthProbeSetting.ProbeProtocol | Should -Be $originGroup.HealthProbeSetting.ProbeProtocol
+        $endpointOriginGroup.HealthProbeSetting.ProbeRequestType | Should -Be  $originGroup.HealthProbeSetting.ProbeRequestType
+        $endpointOriginGroup.Origin[0].Id | Should -Be $originGroup.Origin[0].Id
     }
 }
