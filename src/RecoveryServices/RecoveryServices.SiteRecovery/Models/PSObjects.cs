@@ -4093,18 +4093,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class ASRRoleAssignment
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRRoleAssignment" /> class.
-        /// </summary>
-        public ASRRoleAssignment(RoleAssignment role)
-        {
-            this.Id = role.Id;
-            this.Name = role.Name;
-            this.Scope = role.Scope;
-            this.PrincipalId = role.PrincipalId;
-            this.RoleDefinitionId = role.RoleDefinitionId;
-        }
-
-        /// <summary>
         /// Gets or sets the ARM Id of the role assignment.
         /// </summary>
         public string Id { get; set; }

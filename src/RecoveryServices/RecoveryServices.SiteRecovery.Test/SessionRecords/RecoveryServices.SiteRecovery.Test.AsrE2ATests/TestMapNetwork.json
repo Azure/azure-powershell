@@ -66,7 +66,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcz9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcz9hcGktdmVyc2lvbj0yMDI2LTAyLTAx",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -136,7 +136,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ca667d2536f540cc57a566ae639081b123ad508d93caef2859237ca22f265866?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcy9jYTY2N2QyNTM2ZjU0MGNjNTdhNTY2YWU2MzkwODFiMTIzYWQ1MDhkOTNjYWVmMjg1OTIzN2NhMjJmMjY1ODY2P2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcy9jYTY2N2QyNTM2ZjU0MGNjNTdhNTY2YWU2MzkwODFiMTIzYWQ1MDhkOTNjYWVmMjg1OTIzN2NhMjJmMjY1ODY2P2FwaS12ZXJzaW9uPTIwMjYtMDItMDE=",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -206,7 +206,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ca667d2536f540cc57a566ae639081b123ad508d93caef2859237ca22f265866/replicationNetworks?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcy9jYTY2N2QyNTM2ZjU0MGNjNTdhNTY2YWU2MzkwODFiMTIzYWQ1MDhkOTNjYWVmMjg1OTIzN2NhMjJmMjY1ODY2L3JlcGxpY2F0aW9uTmV0d29ya3M/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcy9jYTY2N2QyNTM2ZjU0MGNjNTdhNTY2YWU2MzkwODFiMTIzYWQ1MDhkOTNjYWVmMjg1OTIzN2NhMjJmMjY1ODY2L3JlcGxpY2F0aW9uTmV0d29ya3M/YXBpLXZlcnNpb249MjAyNi0wMi0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -276,7 +276,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ca667d2536f540cc57a566ae639081b123ad508d93caef2859237ca22f265866/replicationNetworks/4f704b8f-946c-4705-9844-11167e90102f/replicationNetworkMappings/corp96map?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcy9jYTY2N2QyNTM2ZjU0MGNjNTdhNTY2YWU2MzkwODFiMTIzYWQ1MDhkOTNjYWVmMjg1OTIzN2NhMjJmMjY1ODY2L3JlcGxpY2F0aW9uTmV0d29ya3MvNGY3MDRiOGYtOTQ2Yy00NzA1LTk4NDQtMTExNjdlOTAxMDJmL3JlcGxpY2F0aW9uTmV0d29ya01hcHBpbmdzL2NvcnA5Nm1hcD9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcy9jYTY2N2QyNTM2ZjU0MGNjNTdhNTY2YWU2MzkwODFiMTIzYWQ1MDhkOTNjYWVmMjg1OTIzN2NhMjJmMjY1ODY2L3JlcGxpY2F0aW9uTmV0d29ya3MvNGY3MDRiOGYtOTQ2Yy00NzA1LTk4NDQtMTExNjdlOTAxMDJmL3JlcGxpY2F0aW9uTmV0d29ya01hcHBpbmdzL2NvcnA5Nm1hcD9hcGktdmVyc2lvbj0yMDI2LTAyLTAx",
                         "RequestMethod":  "PUT",
                         "RequestBody":  "{\r\n  \"properties\": {\r\n    \"recoveryFabricName\": \"Microsoft Azure\",\r\n    \"recoveryNetworkId\": \"/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.Network/virtualNetworks/vnh2atest\",\r\n    \"fabricSpecificDetails\": {\r\n      \"instanceType\": \"VmmToAzure\"\r\n    }\r\n  }\r\n}",
                         "RequestHeaders":  {
@@ -354,7 +354,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationJobs/bce93432-b349-417f-a174-5ac07ebec99a?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uSm9icy9iY2U5MzQzMi1iMzQ5LTQxN2YtYTE3NC01YWMwN2ViZWM5OWE/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uSm9icy9iY2U5MzQzMi1iMzQ5LTQxN2YtYTE3NC01YWMwN2ViZWM5OWE/YXBpLXZlcnNpb249MjAyNi0wMi0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -424,7 +424,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationJobs/bce93432-b349-417f-a174-5ac07ebec99a?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uSm9icy9iY2U5MzQzMi1iMzQ5LTQxN2YtYTE3NC01YWMwN2ViZWM5OWE/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uSm9icy9iY2U5MzQzMi1iMzQ5LTQxN2YtYTE3NC01YWMwN2ViZWM5OWE/YXBpLXZlcnNpb249MjAyNi0wMi0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -494,7 +494,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationJobs/bce93432-b349-417f-a174-5ac07ebec99a?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uSm9icy9iY2U5MzQzMi1iMzQ5LTQxN2YtYTE3NC01YWMwN2ViZWM5OWE/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uSm9icy9iY2U5MzQzMi1iMzQ5LTQxN2YtYTE3NC01YWMwN2ViZWM5OWE/YXBpLXZlcnNpb249MjAyNi0wMi0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -564,7 +564,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationJobs/bce93432-b349-417f-a174-5ac07ebec99a?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uSm9icy9iY2U5MzQzMi1iMzQ5LTQxN2YtYTE3NC01YWMwN2ViZWM5OWE/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uSm9icy9iY2U5MzQzMi1iMzQ5LTQxN2YtYTE3NC01YWMwN2ViZWM5OWE/YXBpLXZlcnNpb249MjAyNi0wMi0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -634,7 +634,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationJobs/bce93432-b349-417f-a174-5ac07ebec99a?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uSm9icy9iY2U5MzQzMi1iMzQ5LTQxN2YtYTE3NC01YWMwN2ViZWM5OWE/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uSm9icy9iY2U5MzQzMi1iMzQ5LTQxN2YtYTE3NC01YWMwN2ViZWM5OWE/YXBpLXZlcnNpb249MjAyNi0wMi0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -704,7 +704,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationJobs/bce93432-b349-417f-a174-5ac07ebec99a?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uSm9icy9iY2U5MzQzMi1iMzQ5LTQxN2YtYTE3NC01YWMwN2ViZWM5OWE/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uSm9icy9iY2U5MzQzMi1iMzQ5LTQxN2YtYTE3NC01YWMwN2ViZWM5OWE/YXBpLXZlcnNpb249MjAyNi0wMi0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {
@@ -774,7 +774,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ca667d2536f540cc57a566ae639081b123ad508d93caef2859237ca22f265866/replicationNetworks/4f704b8f-946c-4705-9844-11167e90102f/replicationNetworkMappings/corp96map?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcy9jYTY2N2QyNTM2ZjU0MGNjNTdhNTY2YWU2MzkwODFiMTIzYWQ1MDhkOTNjYWVmMjg1OTIzN2NhMjJmMjY1ODY2L3JlcGxpY2F0aW9uTmV0d29ya3MvNGY3MDRiOGYtOTQ2Yy00NzA1LTk4NDQtMTExNjdlOTAxMDJmL3JlcGxpY2F0aW9uTmV0d29ya01hcHBpbmdzL2NvcnA5Nm1hcD9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcy9jYTY2N2QyNTM2ZjU0MGNjNTdhNTY2YWU2MzkwODFiMTIzYWQ1MDhkOTNjYWVmMjg1OTIzN2NhMjJmMjY1ODY2L3JlcGxpY2F0aW9uTmV0d29ya3MvNGY3MDRiOGYtOTQ2Yy00NzA1LTk4NDQtMTExNjdlOTAxMDJmL3JlcGxpY2F0aW9uTmV0d29ya01hcHBpbmdzL2NvcnA5Nm1hcD9hcGktdmVyc2lvbj0yMDI2LTAyLTAx",
                         "RequestMethod":  "GET",
                         "RequestBody":  "",
                         "RequestHeaders":  {

@@ -66,7 +66,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcz9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcz9hcGktdmVyc2lvbj0yMDI2LTAyLTAx",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -135,7 +135,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ForPowershell?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcy9Gb3JQb3dlcnNoZWxsP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcy9Gb3JQb3dlcnNoZWxsP2FwaS12ZXJzaW9uPTIwMjYtMDItMDE=",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -204,7 +204,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ForPowershell/replicationProtectionContainers?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcy9Gb3JQb3dlcnNoZWxsL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnM/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcy9Gb3JQb3dlcnNoZWxsL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnM/YXBpLXZlcnNpb249MjAyNi0wMi0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -273,7 +273,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ForPowershell/replicationProtectionContainers/cloud_f3ce4b50-831d-5af4-9c48-dcbc41521358/replicationProtectionContainerMappings?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcy9Gb3JQb3dlcnNoZWxsL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvY2xvdWRfZjNjZTRiNTAtODMxZC01YWY0LTljNDgtZGNiYzQxNTIxMzU4L3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lck1hcHBpbmdzP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcy9Gb3JQb3dlcnNoZWxsL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvY2xvdWRfZjNjZTRiNTAtODMxZC01YWY0LTljNDgtZGNiYzQxNTIxMzU4L3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lck1hcHBpbmdzP2FwaS12ZXJzaW9uPTIwMjYtMDItMDE=",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -342,7 +342,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ForPowershell/replicationProtectionContainers/cloud_f3ce4b50-831d-5af4-9c48-dcbc41521358/replicationProtectionContainerMappings?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcy9Gb3JQb3dlcnNoZWxsL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvY2xvdWRfZjNjZTRiNTAtODMxZC01YWY0LTljNDgtZGNiYzQxNTIxMzU4L3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lck1hcHBpbmdzP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcy9Gb3JQb3dlcnNoZWxsL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvY2xvdWRfZjNjZTRiNTAtODMxZC01YWY0LTljNDgtZGNiYzQxNTIxMzU4L3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lck1hcHBpbmdzP2FwaS12ZXJzaW9uPTIwMjYtMDItMDE=",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -411,7 +411,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationPolicies?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uUG9saWNpZXM/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uUG9saWNpZXM/YXBpLXZlcnNpb249MjAyNi0wMi0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -480,7 +480,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ForPowershell/replicationProtectionContainers/cloud_f3ce4b50-831d-5af4-9c48-dcbc41521358/replicationProtectableItems?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcy9Gb3JQb3dlcnNoZWxsL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvY2xvdWRfZjNjZTRiNTAtODMxZC01YWY0LTljNDgtZGNiYzQxNTIxMzU4L3JlcGxpY2F0aW9uUHJvdGVjdGFibGVJdGVtcz9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcy9Gb3JQb3dlcnNoZWxsL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvY2xvdWRfZjNjZTRiNTAtODMxZC01YWY0LTljNDgtZGNiYzQxNTIxMzU4L3JlcGxpY2F0aW9uUHJvdGVjdGFibGVJdGVtcz9hcGktdmVyc2lvbj0yMDI2LTAyLTAx",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -546,7 +546,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ForPowershell/replicationProtectionContainers/cloud_f3ce4b50-831d-5af4-9c48-dcbc41521358/replicationProtectableItems?api-version=2026-02-01\u0026$skipToken=ReplicationGroup%3ABegin",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcy9Gb3JQb3dlcnNoZWxsL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvY2xvdWRfZjNjZTRiNTAtODMxZC01YWY0LTljNDgtZGNiYzQxNTIxMzU4L3JlcGxpY2F0aW9uUHJvdGVjdGFibGVJdGVtcz9hcGktdmVyc2lvbj0yMDI1LTA4LTAxJiRza2lwVG9rZW49UmVwbGljYXRpb25Hcm91cCUzQUJlZ2lu",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcy9Gb3JQb3dlcnNoZWxsL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvY2xvdWRfZjNjZTRiNTAtODMxZC01YWY0LTljNDgtZGNiYzQxNTIxMzU4L3JlcGxpY2F0aW9uUHJvdGVjdGFibGVJdGVtcz9hcGktdmVyc2lvbj0yMDI2LTAyLTAxJiRza2lwVG9rZW49UmVwbGljYXRpb25Hcm91cCUzQUJlZ2lu",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -615,7 +615,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ForPowershell/replicationProtectionContainers/cloud_f3ce4b50-831d-5af4-9c48-dcbc41521358/replicationProtectableItems/349c63cc-bd11-401b-ab35-b60fcec8c4b4?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcy9Gb3JQb3dlcnNoZWxsL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvY2xvdWRfZjNjZTRiNTAtODMxZC01YWY0LTljNDgtZGNiYzQxNTIxMzU4L3JlcGxpY2F0aW9uUHJvdGVjdGFibGVJdGVtcy8zNDljNjNjYy1iZDExLTQwMWItYWIzNS1iNjBmY2VjOGM0YjQ/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcy9Gb3JQb3dlcnNoZWxsL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvY2xvdWRfZjNjZTRiNTAtODMxZC01YWY0LTljNDgtZGNiYzQxNTIxMzU4L3JlcGxpY2F0aW9uUHJvdGVjdGFibGVJdGVtcy8zNDljNjNjYy1iZDExLTQwMWItYWIzNS1iNjBmY2VjOGM0YjQ/YXBpLXZlcnNpb249MjAyNi0wMi0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -684,7 +684,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ForPowershell/replicationProtectionContainers/cloud_f3ce4b50-831d-5af4-9c48-dcbc41521358/replicationProtectableItems/349c63cc-bd11-401b-ab35-b60fcec8c4b4?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcy9Gb3JQb3dlcnNoZWxsL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvY2xvdWRfZjNjZTRiNTAtODMxZC01YWY0LTljNDgtZGNiYzQxNTIxMzU4L3JlcGxpY2F0aW9uUHJvdGVjdGFibGVJdGVtcy8zNDljNjNjYy1iZDExLTQwMWItYWIzNS1iNjBmY2VjOGM0YjQ/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcy9Gb3JQb3dlcnNoZWxsL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvY2xvdWRfZjNjZTRiNTAtODMxZC01YWY0LTljNDgtZGNiYzQxNTIxMzU4L3JlcGxpY2F0aW9uUHJvdGVjdGFibGVJdGVtcy8zNDljNjNjYy1iZDExLTQwMWItYWIzNS1iNjBmY2VjOGM0YjQ/YXBpLXZlcnNpb249MjAyNi0wMi0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -753,7 +753,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationPolicies/B2APolicyTest1?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uUG9saWNpZXMvQjJBUG9saWN5VGVzdDE/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uUG9saWNpZXMvQjJBUG9saWN5VGVzdDE/YXBpLXZlcnNpb249MjAyNi0wMi0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -822,7 +822,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationFabrics/ForPowershell/replicationProtectionContainers/cloud_f3ce4b50-831d-5af4-9c48-dcbc41521358/replicationProtectedItems/349c63cc-bd11-401b-ab35-b60fcec8c4b4?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcy9Gb3JQb3dlcnNoZWxsL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvY2xvdWRfZjNjZTRiNTAtODMxZC01YWY0LTljNDgtZGNiYzQxNTIxMzU4L3JlcGxpY2F0aW9uUHJvdGVjdGVkSXRlbXMvMzQ5YzYzY2MtYmQxMS00MDFiLWFiMzUtYjYwZmNlYzhjNGI0P2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uRmFicmljcy9Gb3JQb3dlcnNoZWxsL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvY2xvdWRfZjNjZTRiNTAtODMxZC01YWY0LTljNDgtZGNiYzQxNTIxMzU4L3JlcGxpY2F0aW9uUHJvdGVjdGVkSXRlbXMvMzQ5YzYzY2MtYmQxMS00MDFiLWFiMzUtYjYwZmNlYzhjNGI0P2FwaS12ZXJzaW9uPTIwMjYtMDItMDE=",
                         "RequestMethod":  "PUT",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -904,7 +904,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.RecoveryServices/vaults/h2atest/replicationJobs/5a3e526d-4c52-45ea-a7c5-2db55d40be4a?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uSm9icy81YTNlNTI2ZC00YzUyLTQ1ZWEtYTdjNS0yZGI1NWQ0MGJlNGE/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjM2NGVkOGQtNDI3OS00YmY4LThmZDEtNTZmOGZhMGFlMDVjL3Jlc291cmNlR3JvdXBzL0FycGl0YS1haXIvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oMmF0ZXN0L3JlcGxpY2F0aW9uSm9icy81YTNlNTI2ZC00YzUyLTQ1ZWEtYTdjNS0yZGI1NWQ0MGJlNGE/YXBpLXZlcnNpb249MjAyNi0wMi0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [

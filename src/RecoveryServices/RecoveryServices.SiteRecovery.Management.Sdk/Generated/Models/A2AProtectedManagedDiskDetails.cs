@@ -348,7 +348,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public string RecoveryDiskAccessId {get; set; }
 
         /// <summary>
-        /// Gets or sets the public network access setting for the recovery managed disk. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// Gets or sets the public network access setting for the recovery managed
+        /// disk. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "recoveryPublicNetworkAccess")]
         public string RecoveryPublicNetworkAccess {get; set; }

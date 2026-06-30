@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class DiskPublicNetworkAccess
     {
+        /// <summary>
+        /// Public network access is enabled.
+        /// </summary>
         public const string Enabled = "Enabled";
+        /// <summary>
+        /// Public network access is disabled.
+        /// </summary>
         public const string Disabled = "Disabled";
     }
 }

@@ -225,7 +225,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-alertrg/providers/Microsoft.RecoveryServices/vaults/vijamitest/replicationFabrics/asr-a2a-default-eastus2?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1hbGVydHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvdmlqYW1pdGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvYXNyLWEyYS1kZWZhdWx0LWVhc3R1czI/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1hbGVydHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvdmlqYW1pdGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvYXNyLWEyYS1kZWZhdWx0LWVhc3R1czI/YXBpLXZlcnNpb249MjAyNi0wMi0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -300,7 +300,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-alertrg/providers/Microsoft.RecoveryServices/vaults/vijamitest/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1hbGVydHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvdmlqYW1pdGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvYXNyLWEyYS1kZWZhdWx0LWVhc3R1czIvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ29udGFpbmVycz9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1hbGVydHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvdmlqYW1pdGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvYXNyLWEyYS1kZWZhdWx0LWVhc3R1czIvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ29udGFpbmVycz9hcGktdmVyc2lvbj0yMDI2LTAyLTAx",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -375,7 +375,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-alertrg/providers/Microsoft.RecoveryServices/vaults/vijamitest/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers/asr-a2a-default-eastus2-container/replicationProtectionContainerMappings?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1hbGVydHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvdmlqYW1pdGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvYXNyLWEyYS1kZWZhdWx0LWVhc3R1czIvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ29udGFpbmVycy9hc3ItYTJhLWRlZmF1bHQtZWFzdHVzMi1jb250YWluZXIvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ29udGFpbmVyTWFwcGluZ3M/YXBpLXZlcnNpb249MjAyNS0wOC0wMQ==",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1hbGVydHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvdmlqYW1pdGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvYXNyLWEyYS1kZWZhdWx0LWVhc3R1czIvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ29udGFpbmVycy9hc3ItYTJhLWRlZmF1bHQtZWFzdHVzMi1jb250YWluZXIvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ29udGFpbmVyTWFwcGluZ3M/YXBpLXZlcnNpb249MjAyNi0wMi0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -450,7 +450,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-alertrg/providers/Microsoft.RecoveryServices/vaults/vijamitest/replicationPolicies?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1hbGVydHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvdmlqYW1pdGVzdC9yZXBsaWNhdGlvblBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1hbGVydHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvdmlqYW1pdGVzdC9yZXBsaWNhdGlvblBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMjYtMDItMDE=",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -525,7 +525,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-alertrg/providers/Microsoft.RecoveryServices/vaults/vijamitest/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers/asr-a2a-default-eastus2-container/replicationProtectionContainerMappings/eastus2-westus-24-hour-retention-policy?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1hbGVydHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvdmlqYW1pdGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvYXNyLWEyYS1kZWZhdWx0LWVhc3R1czIvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ29udGFpbmVycy9hc3ItYTJhLWRlZmF1bHQtZWFzdHVzMi1jb250YWluZXIvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ29udGFpbmVyTWFwcGluZ3MvZWFzdHVzMi13ZXN0dXMtMjQtaG91ci1yZXRlbnRpb24tcG9saWN5P2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1hbGVydHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvdmlqYW1pdGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvYXNyLWEyYS1kZWZhdWx0LWVhc3R1czIvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ29udGFpbmVycy9hc3ItYTJhLWRlZmF1bHQtZWFzdHVzMi1jb250YWluZXIvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ29udGFpbmVyTWFwcGluZ3MvZWFzdHVzMi13ZXN0dXMtMjQtaG91ci1yZXRlbnRpb24tcG9saWN5P2FwaS12ZXJzaW9uPTIwMjYtMDItMDE=",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -600,7 +600,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-alertrg/providers/Microsoft.RecoveryServices/vaults/vijamitest/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers/asr-a2a-default-eastus2-container/replicationProtectionClusters/pscluster?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1hbGVydHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvdmlqYW1pdGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvYXNyLWEyYS1kZWZhdWx0LWVhc3R1czIvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ29udGFpbmVycy9hc3ItYTJhLWRlZmF1bHQtZWFzdHVzMi1jb250YWluZXIvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ2x1c3RlcnMvcHNjbHVzdGVyP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1hbGVydHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvdmlqYW1pdGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvYXNyLWEyYS1kZWZhdWx0LWVhc3R1czIvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ29udGFpbmVycy9hc3ItYTJhLWRlZmF1bHQtZWFzdHVzMi1jb250YWluZXIvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ2x1c3RlcnMvcHNjbHVzdGVyP2FwaS12ZXJzaW9uPTIwMjYtMDItMDE=",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -675,7 +675,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-alertrg/providers/Microsoft.RecoveryServices/vaults/vijamitest/replicationFabrics/asr-a2a-default-eastus2/replicationProtectionContainers/asr-a2a-default-eastus2-container/replicationProtectionClusters/pscluster/repairReplication?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1hbGVydHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvdmlqYW1pdGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvYXNyLWEyYS1kZWZhdWx0LWVhc3R1czIvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ29udGFpbmVycy9hc3ItYTJhLWRlZmF1bHQtZWFzdHVzMi1jb250YWluZXIvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ2x1c3RlcnMvcHNjbHVzdGVyL3JlcGFpclJlcGxpY2F0aW9uP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1hbGVydHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvdmlqYW1pdGVzdC9yZXBsaWNhdGlvbkZhYnJpY3MvYXNyLWEyYS1kZWZhdWx0LWVhc3R1czIvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ29udGFpbmVycy9hc3ItYTJhLWRlZmF1bHQtZWFzdHVzMi1jb250YWluZXIvcmVwbGljYXRpb25Qcm90ZWN0aW9uQ2x1c3RlcnMvcHNjbHVzdGVyL3JlcGFpclJlcGxpY2F0aW9uP2FwaS12ZXJzaW9uPTIwMjYtMDItMDE=",
                         "RequestMethod":  "POST",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -757,7 +757,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-alertrg/providers/Microsoft.RecoveryServices/vaults/vijamitest/replicationJobs/c54e0629-2097-4629-8081-3785aaf83cbd?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1hbGVydHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvdmlqYW1pdGVzdC9yZXBsaWNhdGlvbkpvYnMvYzU0ZTA2MjktMjA5Ny00NjI5LTgwODEtMzc4NWFhZjgzY2JkP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1hbGVydHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvdmlqYW1pdGVzdC9yZXBsaWNhdGlvbkpvYnMvYzU0ZTA2MjktMjA5Ny00NjI5LTgwODEtMzc4NWFhZjgzY2JkP2FwaS12ZXJzaW9uPTIwMjYtMDItMDE=",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -832,7 +832,7 @@
                     },
                     {
                         "RequestUri":  "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/vijami-alertrg/providers/Microsoft.RecoveryServices/vaults/vijamitest/replicationJobs/c54e0629-2097-4629-8081-3785aaf83cbd?api-version=2026-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1hbGVydHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvdmlqYW1pdGVzdC9yZXBsaWNhdGlvbkpvYnMvYzU0ZTA2MjktMjA5Ny00NjI5LTgwODEtMzc4NWFhZjgzY2JkP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvN2M5NDNjMWItNTEyMi00MDk3LTkwYzgtODYxNDExYmRkNTc0L3Jlc291cmNlR3JvdXBzL3ZpamFtaS1hbGVydHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVjb3ZlcnlTZXJ2aWNlcy92YXVsdHMvdmlqYW1pdGVzdC9yZXBsaWNhdGlvbkpvYnMvYzU0ZTA2MjktMjA5Ny00NjI5LTgwODEtMzc4NWFhZjgzY2JkP2FwaS12ZXJzaW9uPTIwMjYtMDItMDE=",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [

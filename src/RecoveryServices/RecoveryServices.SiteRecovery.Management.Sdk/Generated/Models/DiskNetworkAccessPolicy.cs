@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class DiskNetworkAccessPolicy
     {
+        /// <summary>
+        /// Allow all network access.
+        /// </summary>
         public const string AllowAll = "AllowAll";
+        /// <summary>
+        /// Allow private access through disk access resource.
+        /// </summary>
         public const string AllowPrivate = "AllowPrivate";
+        /// <summary>
+        /// Deny all network access.
+        /// </summary>
         public const string DenyAll = "DenyAll";
     }
 }
