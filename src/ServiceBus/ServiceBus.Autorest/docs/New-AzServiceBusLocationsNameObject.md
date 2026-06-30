@@ -26,8 +26,8 @@ Create an in-memory object for NamespaceReplicaLocation.
 New-AzServiceBusLocationsNameObject -LocationName mylocation -RoleType Secondary
 ```
 
-Creates an in-memory object of type `INamespaceReplicaLocation`.
-An array of `INamespaceReplicaLocation` can be fed as 
+Creates an in-memory object of type `NamespaceReplicaLocation`.
+An array of `NamespaceReplicaLocation` can be fed as 
 input to `GeoDataReplicationLocation` parameter of New-AzServiceBusNamespace and Set-AzServiceBusNamespace.
 
 ## PARAMETERS

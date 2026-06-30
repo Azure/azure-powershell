@@ -168,7 +168,7 @@ function Set-AzServiceBusNamespace{
 
 		[Parameter(HelpMessage = "Properties for User Assigned Identities")]
 		[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-		[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation[]]
+		[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.NamespaceReplicaLocation[]]
 		${GeoDataReplicationLocation},
 
         [Parameter(HelpMessage = "The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6.")]
