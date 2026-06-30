@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.1.0
 * Upgraded Microsoft.Cdn API version to 2026-04-01-preview.
   - Added support for updating Azure Front Door rule sets.
   - Added support for profile-level WAF policy and route associations on Azure Front Door security policies.
