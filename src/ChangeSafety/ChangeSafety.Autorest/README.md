@@ -42,22 +42,30 @@ title: ChangeSafety
 subject-prefix: $(service-name)
 
 directive:
-  - where:
-      parameter-name: ChangeType
-    set:
-      parameter-description: Describes the nature of the change. Allowed values are AppDeployment, Config, PolicyDeployment, ManualTouch.
-  - where:
-      parameter-name: ChangeDefinitionKind
-    set:
-      parameter-description: Kind of the change definition. Allowed values are ApiOperations, Targets.
-  - where:
-      parameter-name: RolloutType
-    set:
-      parameter-description: Describes the type of the rollout used for the change. Allowed values are Normal, Hotfix, Emergency.
-  - where:
-      parameter-name: Status
-    set:
-      parameter-description: StageProgression resource status. Allowed values are Initialized, InProgress, Completed, Cancelled, Paused, Failed, Skipped.
+  - from: swagger-document
+    where: $.definitions.ChangeRecordProperties.properties.changeType.description
+    transform: return "Describes the nature of the change. Allowed values are AppDeployment, Config, PolicyDeployment, ManualTouch."
+  - from: swagger-document
+    where: $.definitions.ChangeRecordPropertiesUpdate.properties.changeType.description
+    transform: return "Describes the nature of the change. Allowed values are AppDeployment, Config, PolicyDeployment, ManualTouch."
+  - from: swagger-document
+    where: $.definitions.ChangeRecordProperties.properties.rolloutType.description
+    transform: return "Describes the type of the rollout used for the change. Allowed values are Normal, Hotfix, Emergency."
+  - from: swagger-document
+    where: $.definitions.ChangeRecordPropertiesUpdate.properties.rolloutType.description
+    transform: return "Describes the type of the rollout used for the change. Allowed values are Normal, Hotfix, Emergency."
+  - from: swagger-document
+    where: $.definitions.ChangeDefinition.properties.kind.description
+    transform: return "Kind of the change definition. Allowed values are ApiOperations, Targets."
+  - from: swagger-document
+    where: $.definitions.ChangeDefinitionUpdate.properties.kind.description
+    transform: return "Kind of the change definition. Allowed values are ApiOperations, Targets."
+  - from: swagger-document
+    where: $.definitions.ChangeRecordStageProgressionProperties.properties.status.description
+    transform: return "StageProgression resource status. Allowed values are Initialized, InProgress, Completed, Cancelled, Paused, Failed, Skipped."
+  - from: swagger-document
+    where: $.definitions.ChangeRecordStageProgressionPropertiesUpdate.properties.status.description
+    transform: return "StageProgression resource status. Allowed values are Initialized, InProgress, Completed, Cancelled, Paused, Failed, Skipped."
   # Following are common directives which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required
