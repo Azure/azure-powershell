@@ -1,6 +1,6 @@
 ---
 Module Name: Az.EventHub
-Module Guid: e218577f-a5ef-4d91-8828-dedf50f00ec9
+Module Guid: 9c68a770-c357-4604-8540-e4546e52f1b2
 Download Help Link: https://learn.microsoft.com/powershell/module/az.eventhub
 Help Version: 1.0.0.0
 Locale: en-US
@@ -34,6 +34,9 @@ List all Event Hubs Namespace IDs in an Event Hubs Dedicated Cluster.
 
 ### [Get-AzEventHubClustersAvailableRegion](Get-AzEventHubClustersAvailableRegion.md)
 List the quantity of available pre-provisioned Event Hubs Clusters, indexed by Azure region.
+
+### [Get-AzEventHubConfiguration](Get-AzEventHubConfiguration.md)
+Get all Event Hubs Cluster settings - a collection of key/value pairs which represent the quotas and settings imposed on the cluster.
 
 ### [Get-AzEventHubConsumerGroup](Get-AzEventHubConsumerGroup.md)
 Gets a description for the specified consumer group.

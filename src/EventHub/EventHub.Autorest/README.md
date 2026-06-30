@@ -34,18 +34,10 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/Eventhub/stable/2026-01-01/openapi.json
+  # Keep cluster cmdlets on the 2024 preview swagger to avoid the tags type change.
   - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2024-05-01-preview/AvailableClusterRegions-preview.json
   - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2024-05-01-preview/Clusters-preview.json
-  - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2025-05-01-preview/namespaces.json
-  - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2024-05-01-preview/networkrulessets-preview.json
-  - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2024-05-01-preview/AuthorizationRules.json
-  - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2024-05-01-preview/CheckNameAvailability.json
-  - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2024-05-01-preview/consumergroups.json
-  - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2024-05-01-preview/disasterRecoveryConfigs.json
-  - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2024-05-01-preview/operations.json
-  - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2024-05-01-preview/SchemaRegistry.json
-  - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2024-05-01-preview/eventhubs.json
-  - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2024-05-01-preview/ApplicationGroups.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger
 

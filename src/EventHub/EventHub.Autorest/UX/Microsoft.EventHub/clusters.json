@@ -1,6 +1,6 @@
 {
   "resourceType": "clusters",
-  "apiVersion": "2024-05-01-preview",
+  "apiVersion": "2026-01-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.eventhub"
   },
@@ -20,6 +20,13 @@
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String[]>]"
             ]
+          },
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
           }
         ]
       },
@@ -29,6 +36,61 @@
           "parameters": [
             {
               "name": "-Name",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        },
+        {
+          "description": "Gets the resource description of the specified Event Hubs Cluster.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzEventHubConfiguration",
+      "description": "Get all Event Hubs Cluster settings - a collection of key/value pairs which represent the quotas and settings imposed on the cluster.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/clusters/{clusterName}/quotaConfiguration/default",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventhub/get-azeventhubconfiguration"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ClusterName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get all Event Hubs Cluster settings - a collection of key/value pairs which represent the quotas and settings imposed on the cluster.",
+          "parameters": [
+            {
+              "name": "-ClusterName",
               "value": "[Path.clusterName]"
             },
             {
@@ -58,10 +120,34 @@
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String>]"
             ]
+          },
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
           }
         ]
       },
       "examples": [
+        {
+          "description": "Deletes an existing Event Hubs Cluster. This operation is idempotent.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.clusterName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        },
         {
           "description": "Deletes an existing Event Hubs Cluster. This operation is idempotent.",
           "parameters": [
