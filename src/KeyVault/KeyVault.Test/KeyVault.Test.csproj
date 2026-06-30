@@ -13,6 +13,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.1" />
+    <!-- Matches the Azure.Core override in KeyVault.csproj required by the EKM preview SDKs.
+         Remove together with that override once the central Azure.Core bump lands. -->
+    <PackageReference Update="Azure.Core" Version="1.57.0" />
   </ItemGroup>
 
   <ItemGroup>
