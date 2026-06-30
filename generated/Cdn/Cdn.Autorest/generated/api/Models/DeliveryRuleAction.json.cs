@@ -88,10 +88,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
             switch ( json.StringProperty("name") )
             {
-                case "AfdUrlSigning":
-                {
-                    return new AfdUrlSigningAction(json);
-                }
                 case "CacheExpiration":
                 {
                     return new DeliveryRuleCacheExpirationAction(json);
@@ -127,10 +123,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
                 case "UrlSigning":
                 {
                     return new UrlSigningAction(json);
-                }
-                case "EdgeAction":
-                {
-                    return new DeliveryRuleEdgeAction(json);
                 }
             }
             return new DeliveryRuleAction(json);

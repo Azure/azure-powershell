@@ -56,9 +56,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Internal Acessors for DomainValidationState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainInternal.DomainValidationState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)Property).DomainValidationState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)Property).DomainValidationState = value ?? null; }
 
-        /// <summary>Internal Acessors for MtlsSetting</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainMtlsParameters Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainInternal.MtlsSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)Property).MtlsSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)Property).MtlsSetting = value ?? null /* model class */; }
-
         /// <summary>Internal Acessors for ProfileName</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainInternal.ProfileName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)Property).ProfileName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)Property).ProfileName = value ?? null; }
 
@@ -109,17 +106,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
         /// <summary>Internal Acessors for Type</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)__proxyResource).Type = value ?? null; }
-
-        /// <summary>Supported scenarios for establishing mTLS connection.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
-        public string MtlSettingScenario { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)Property).MtlSettingScenario; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)Property).MtlSettingScenario = value ?? null; }
-
-        /// <summary>
-        /// The configuration specifying how to enable mutual TLS for the domain, including specifying allowed FQDNs and which server
-        /// certificate(s) to use.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainMtlsParameters MtlsSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)Property).MtlsSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesInternal)Property).MtlsSetting = value ?? null /* model class */; }
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
@@ -289,18 +275,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"hostName",
         PossibleTypes = new [] { typeof(string) })]
         string HostName { get; set; }
-        /// <summary>Supported scenarios for establishing mTLS connection.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Supported scenarios for establishing mTLS connection.",
-        SerializedName = @"scenario",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("ClientCertificateRequiredAndValidated", "ClientCertificateRequiredAndOriginValidates", "ClientCertificateValidatedIfPresented", "CompleteMtlsPassthroughToOrigin")]
-        string MtlSettingScenario { get; set; }
         /// <summary>The name of the profile which holds the domain.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
@@ -393,14 +367,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainPropertiesExtendedProperties ExtendedProperty { get; set; }
         /// <summary>The host name of the domain. Must be a domain name.</summary>
         string HostName { get; set; }
-        /// <summary>Supported scenarios for establishing mTLS connection.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("ClientCertificateRequiredAndValidated", "ClientCertificateRequiredAndOriginValidates", "ClientCertificateValidatedIfPresented", "CompleteMtlsPassthroughToOrigin")]
-        string MtlSettingScenario { get; set; }
-        /// <summary>
-        /// The configuration specifying how to enable mutual TLS for the domain, including specifying allowed FQDNs and which server
-        /// certificate(s) to use.
-        /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdDomainMtlsParameters MtlsSetting { get; set; }
         /// <summary>The name of the profile which holds the domain.</summary>
         string ProfileName { get; set; }
         /// <summary>

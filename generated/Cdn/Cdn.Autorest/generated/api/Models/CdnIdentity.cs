@@ -12,13 +12,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentityInternal
     {
 
-        /// <summary>Backing field for <see cref="AgentName" /> property.</summary>
-        private string _agentName;
-
-        /// <summary>Name of the web agent association.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public string AgentName { get => this._agentName; set => this._agentName = value; }
-
         /// <summary>Backing field for <see cref="CustomDomainName" /> property.</summary>
         private string _customDomainName;
 
@@ -39,20 +32,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
-
-        /// <summary>Backing field for <see cref="KeyGroupName" /> property.</summary>
-        private string _keyGroupName;
-
-        /// <summary>Name of the KeyGroup under the profile.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public string KeyGroupName { get => this._keyGroupName; set => this._keyGroupName = value; }
-
-        /// <summary>Backing field for <see cref="KnowledgeSourceName" /> property.</summary>
-        private string _knowledgeSourceName;
-
-        /// <summary>The name of the knowledge source.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public string KnowledgeSourceName { get => this._knowledgeSourceName; set => this._knowledgeSourceName = value; }
 
         /// <summary>Backing field for <see cref="OriginGroupName" /> property.</summary>
         private string _originGroupName;
@@ -133,20 +112,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
-        /// <summary>Backing field for <see cref="VersionName" /> property.</summary>
-        private string _versionName;
-
-        /// <summary>Name of the DeploymentVersion under the profile.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public string VersionName { get => this._versionName; set => this._versionName = value; }
-
-        /// <summary>Backing field for <see cref="WebAgentName" /> property.</summary>
-        private string _webAgentName;
-
-        /// <summary>The name of the web agent.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public string WebAgentName { get => this._webAgentName; set => this._webAgentName = value; }
-
         /// <summary>Creates an new <see cref="CdnIdentity" /> instance.</summary>
         public CdnIdentity()
         {
@@ -156,17 +121,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     public partial interface ICdnIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable
     {
-        /// <summary>Name of the web agent association.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Name of the web agent association.",
-        SerializedName = @"agentName",
-        PossibleTypes = new [] { typeof(string) })]
-        string AgentName { get; set; }
         /// <summary>Name of the domain under the profile which is unique globally.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
@@ -200,28 +154,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
-        /// <summary>Name of the KeyGroup under the profile.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Name of the KeyGroup under the profile.",
-        SerializedName = @"keyGroupName",
-        PossibleTypes = new [] { typeof(string) })]
-        string KeyGroupName { get; set; }
-        /// <summary>The name of the knowledge source.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The name of the knowledge source.",
-        SerializedName = @"knowledgeSourceName",
-        PossibleTypes = new [] { typeof(string) })]
-        string KnowledgeSourceName { get; set; }
         /// <summary>Name of the origin group which is unique within the endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
@@ -345,45 +277,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
-        /// <summary>Name of the DeploymentVersion under the profile.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Name of the DeploymentVersion under the profile.",
-        SerializedName = @"versionName",
-        PossibleTypes = new [] { typeof(string) })]
-        string VersionName { get; set; }
-        /// <summary>The name of the web agent.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The name of the web agent.",
-        SerializedName = @"webAgentName",
-        PossibleTypes = new [] { typeof(string) })]
-        string WebAgentName { get; set; }
 
     }
     internal partial interface ICdnIdentityInternal
 
     {
-        /// <summary>Name of the web agent association.</summary>
-        string AgentName { get; set; }
         /// <summary>Name of the domain under the profile which is unique globally.</summary>
         string CustomDomainName { get; set; }
         /// <summary>Name of the endpoint under the profile which is unique globally.</summary>
         string EndpointName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
-        /// <summary>Name of the KeyGroup under the profile.</summary>
-        string KeyGroupName { get; set; }
-        /// <summary>The name of the knowledge source.</summary>
-        string KnowledgeSourceName { get; set; }
         /// <summary>Name of the origin group which is unique within the endpoint.</summary>
         string OriginGroupName { get; set; }
         /// <summary>Name of the origin which is unique within the endpoint.</summary>
@@ -408,10 +312,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         string SecurityPolicyName { get; set; }
         /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         string SubscriptionId { get; set; }
-        /// <summary>Name of the DeploymentVersion under the profile.</summary>
-        string VersionName { get; set; }
-        /// <summary>The name of the web agent.</summary>
-        string WebAgentName { get; set; }
 
     }
 }

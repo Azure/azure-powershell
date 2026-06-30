@@ -23,12 +23,12 @@ Create an in-memory object for EdgeAction.
 New-AzFrontDoorCdnRuleEdgeActionObject -ParameterInvocationPoint ClientRequest -ParameterTypeName DeliveryRuleEdgeActionParameters -ReferenceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testps-rg-da16jm/providers/Microsoft.Cdn/edgeActions/edgeaction001"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleEdgeAction
+System.Object
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnruleedgeactionobject
 #>
 function New-AzFrontDoorCdnRuleEdgeActionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleEdgeAction])]
+[OutputType([System.Object])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

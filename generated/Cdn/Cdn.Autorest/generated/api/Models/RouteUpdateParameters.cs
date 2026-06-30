@@ -57,12 +57,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         public string ForwardingProtocol { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)Property).ForwardingProtocol; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)Property).ForwardingProtocol = value ?? null; }
 
         /// <summary>
-        /// Whether or not gRPC is enabled on this route. Permitted values are 'Enabled' or 'Disabled'
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inlined)]
-        public string GrpcState { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)Property).GrpcState; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)Property).GrpcState = value ?? null; }
-
-        /// <summary>
         /// Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and
         /// it will be the first rule that gets executed.
         /// </summary>
@@ -230,20 +224,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("HttpOnly", "HttpsOnly", "MatchRequest")]
         string ForwardingProtocol { get; set; }
         /// <summary>
-        /// Whether or not gRPC is enabled on this route. Permitted values are 'Enabled' or 'Disabled'
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Whether or not gRPC is enabled on this route. Permitted values are 'Enabled' or 'Disabled'",
-        SerializedName = @"grpcState",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
-        string GrpcState { get; set; }
-        /// <summary>
         /// Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and
         /// it will be the first rule that gets executed.
         /// </summary>
@@ -370,11 +350,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Protocol this rule will use when forwarding traffic to backends.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("HttpOnly", "HttpsOnly", "MatchRequest")]
         string ForwardingProtocol { get; set; }
-        /// <summary>
-        /// Whether or not gRPC is enabled on this route. Permitted values are 'Enabled' or 'Disabled'
-        /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
-        string GrpcState { get; set; }
         /// <summary>
         /// Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and
         /// it will be the first rule that gets executed.

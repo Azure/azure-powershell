@@ -56,7 +56,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Description = @"Describes the override action to be applied when rule matches.",
         SerializedName = @"action",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Allow", "Block", "Log", "Redirect", "AnomalyScoring", "JSChallenge", "CAPTCHA")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Allow", "Block", "Log", "Redirect")]
         string Action { get; set; }
         /// <summary>
         /// Describes if the managed rule is in enabled or disabled state. Defaults to Disabled if not specified.
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
     {
         /// <summary>Describes the override action to be applied when rule matches.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Allow", "Block", "Log", "Redirect", "AnomalyScoring", "JSChallenge", "CAPTCHA")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Allow", "Block", "Log", "Redirect")]
         string Action { get; set; }
         /// <summary>
         /// Describes if the managed rule is in enabled or disabled state. Defaults to Disabled if not specified.

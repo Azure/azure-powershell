@@ -87,7 +87,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {_linkToDefaultDomain = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("linkToDefaultDomain"), out var __jsonLinkToDefaultDomain) ? (string)__jsonLinkToDefaultDomain : (string)_linkToDefaultDomain;}
             {_httpsRedirect = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("httpsRedirect"), out var __jsonHttpsRedirect) ? (string)__jsonHttpsRedirect : (string)_httpsRedirect;}
             {_enabledState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("enabledState"), out var __jsonEnabledState) ? (string)__jsonEnabledState : (string)_enabledState;}
-            {_grpcState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("grpcState"), out var __jsonGrpcState) ? (string)__jsonGrpcState : (string)_grpcState;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             {_deploymentStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("deploymentStatus"), out var __jsonDeploymentStatus) ? (string)__jsonDeploymentStatus : (string)_deploymentStatus;}
             AfterFromJson(json);
@@ -159,7 +158,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             AddIf( null != (((object)this._linkToDefaultDomain)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._linkToDefaultDomain.ToString()) : null, "linkToDefaultDomain" ,container.Add );
             AddIf( null != (((object)this._httpsRedirect)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._httpsRedirect.ToString()) : null, "httpsRedirect" ,container.Add );
             AddIf( null != (((object)this._enabledState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._enabledState.ToString()) : null, "enabledState" ,container.Add );
-            AddIf( null != (((object)this._grpcState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._grpcState.ToString()) : null, "grpcState" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
