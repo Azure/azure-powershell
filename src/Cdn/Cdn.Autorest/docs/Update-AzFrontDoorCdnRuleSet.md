@@ -1,66 +1,56 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnruleset
+online version: https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnruleset
 schema: 2.0.0
 ---
 
-# New-AzFrontDoorCdnRuleSet
+# Update-AzFrontDoorCdnRuleSet
 
 ## SYNOPSIS
-Create a batch rule set within the specified profile along with the rules associated with it.
+Update a batch rule set within the specified profile along with the rules associated with it.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzFrontDoorCdnRuleSet -Name <String> -ProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-BatchMode] [-Rule <IBatchRuleProperties[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzFrontDoorCdnRuleSet -Name <String> -ProfileName <String> -ResourceGroupName <String>
- -Resource <IRuleSet> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzFrontDoorCdnRuleSet -Name <String> -ProfileName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Rule <IBatchRuleProperties[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityProfile
+### UpdateViaIdentityExpanded
 ```
-New-AzFrontDoorCdnRuleSet -Name <String> -ProfileInputObject <ICdnIdentity> -Resource <IRuleSet>
+Update-AzFrontDoorCdnRuleSet -InputObject <ICdnIdentity> [-Rule <IBatchRuleProperties[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityProfileExpanded
+### UpdateViaIdentityProfile
 ```
-New-AzFrontDoorCdnRuleSet -Name <String> -ProfileInputObject <ICdnIdentity> [-BatchMode]
+Update-AzFrontDoorCdnRuleSet -Name <String> -ProfileInputObject <ICdnIdentity> -Resource <IRuleSet>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityProfileExpanded
+```
+Update-AzFrontDoorCdnRuleSet -Name <String> -ProfileInputObject <ICdnIdentity>
  [-Rule <IBatchRuleProperties[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath
-```
-New-AzFrontDoorCdnRuleSet -Name <String> -ProfileName <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzFrontDoorCdnRuleSet -Name <String> -ProfileName <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Create a batch rule set within the specified profile along with the rules associated with it.
+Update a batch rule set within the specified profile along with the rules associated with it.
 
 ## EXAMPLES
 
-### Example 1: Create an AzureFrontDoor rule set under the AzureFrontDoor profile
+### Example 1: Update an AzureFrontDoor rule set with batch rules
 ```powershell
-New-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
+$rule = @{
+	RuleName = "rule1"
+	Order = 1
+	MatchProcessingBehavior = "Continue"
+}
+Update-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Rule $rule
 ```
 
 ```output
@@ -69,7 +59,25 @@ Name       ResourceGroupName
 ruleset001 testps-rg-da16jm
 ```
 
-Create an AzureFrontDoor rule set under the AzureFrontDoor profile
+Update an AzureFrontDoor rule set with batch rules.
+
+### Example 2: Update an AzureFrontDoor rule set with batch rules via identity
+```powershell
+$rule = @{
+	RuleName = "rule1"
+	Order = 1
+	MatchProcessingBehavior = "Continue"
+}
+Get-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 | Update-AzFrontDoorCdnRuleSet -Rule $rule
+```
+
+```output
+Name       ResourceGroupName
+----       -----------------
+ruleset001 testps-rg-da16jm
+```
+
+Update an AzureFrontDoor rule set with batch rules via identity.
 
 ## PARAMETERS
 
@@ -79,22 +87,6 @@ Run the command as a job
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BatchMode
-Indicates whether rule set is in batch mode.
-When batch mode is enabled, rules will be processed in a batch along with the rule set.When batch mode is disabled, rules would need to be processed independently.This property can only be set during rule set creation and cannot be updated later.For switching modes, a new rule set needs to be created with the desired mode and rules need to be migrated to the new rule set.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -120,33 +112,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Create operation
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -155,7 +132,7 @@ Name of the rule set under the profile which is unique globally.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityProfile, UpdateViaIdentityProfileExpanded
 Aliases: RuleSetName
 
 Required: True
@@ -185,7 +162,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: CreateViaIdentityProfile, CreateViaIdentityProfileExpanded
+Parameter Sets: UpdateViaIdentityProfile, UpdateViaIdentityProfileExpanded
 Aliases:
 
 Required: True
@@ -200,7 +177,7 @@ Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -215,7 +192,7 @@ Friendly RuleSet name mapping to the any RuleSet or secret related information.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRuleSet
-Parameter Sets: Create, CreateViaIdentityProfile
+Parameter Sets: UpdateViaIdentityProfile
 Aliases:
 
 Required: True
@@ -231,7 +208,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -246,7 +223,7 @@ A list of rules that are part of this rule set provided the rule set is in batch
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IBatchRuleProperties[]
-Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityProfileExpanded
 Aliases:
 
 Required: False
@@ -262,7 +239,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False

@@ -16,9 +16,9 @@ Create a new domain within the specified profile.
 ```
 New-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AzureDnsZoneId <String>] [-ExtendedProperty <Hashtable>] [-HostName <String>]
- [-MtlSettingScenario <String>] [-PropertiesPreValidatedCustomDomainResourceId <String>]
- [-TlsSetting <IAfdDomainHttpsParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PropertiesPreValidatedCustomDomainResourceId <String>] [-TlsSetting <IAfdDomainHttpsParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
@@ -38,7 +38,7 @@ New-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileName <String> 
 ### CreateViaIdentityProfileExpanded
 ```
 New-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileInputObject <ICdnIdentity>
- [-AzureDnsZoneId <String>] [-ExtendedProperty <Hashtable>] [-HostName <String>] [-MtlSettingScenario <String>]
+ [-AzureDnsZoneId <String>] [-ExtendedProperty <Hashtable>] [-HostName <String>]
  [-PropertiesPreValidatedCustomDomainResourceId <String>] [-TlsSetting <IAfdDomainHttpsParameters>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -206,21 +206,6 @@ Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MtlSettingScenario
-Supported scenarios for establishing mTLS connection.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
