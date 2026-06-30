@@ -24,8 +24,8 @@ Describe 'New-AzFrontDoorCdnProfile' {
     }
 
     It 'CreateExpanded' {
-        $rule1 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -State Enabled
-        $rule2 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable QueryStringArgNames -State Enabled
+        $rule1 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -SelectorMatchOperator EqualsAny -State Enabled
+        $rule2 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable QueryStringArgNames -SelectorMatchOperator EqualsAny -State Enabled
         $p = New-AzFrontDoorCdnProfile -SkuName 'Standard_AzureFrontDoor' -Name $script:profileName -ResourceGroupName $env.ResourceGroupName -Location Global -LogScrubbingRule @($rule1, $rule2) -LogScrubbingState Enabled
         $p.Name | Should -Be $script:profileName
         $p.SkuName | Should -Be 'Standard_AzureFrontDoor'

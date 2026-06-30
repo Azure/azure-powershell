@@ -1,8 +1,8 @@
 {
-  "Test-AzCdnProbe+[NoContext]+ValidateExpanded+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/validateProbe?api-version=2026-04-01-preview+1": {
+  "Test-AzCdnProbe+[NoContext]+ValidateExpanded+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/validateProbe?api-version=2025-09-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/validateProbe?api-version=2026-04-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/validateProbe?api-version=2025-09-01-preview",
       "Content": "{\r\n  \"probeURL\": \"https://www.notexist.com/notexist/notexist.txt\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -18,17 +18,17 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "8c47f0ff-a0bc-4c57-862f-c4d784ee1bd1" ],
-        "x-ms-client-request-id": [ "e47ca4f1-c05d-4fa6-95ee-cc56439fafba" ],
-        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/australiaeast/c76730d9-233f-421a-bdb3-433296220f7f" ],
+        "x-ms-request-id": [ "95e71105-f273-4f28-b5cb-37736f794231" ],
+        "x-ms-client-request-id": [ "79afd739-349b-46fc-b98d-d65d241606c5" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=2e396a67-4dc1-43ae-afcc-c6747d291866/australiacentral/231c6c3f-2721-48b7-9dd8-43336f5409a9" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "f63bcbe0-caa3-4580-82b1-06ebd76f771f" ],
-        "x-ms-routing-request-id": [ "AUSTRALIAEAST:20260623T140734Z:f63bcbe0-caa3-4580-82b1-06ebd76f771f" ],
+        "x-ms-correlation-request-id": [ "d875f6aa-e9b7-4067-8ed1-2386fe0f72c6" ],
+        "x-ms-routing-request-id": [ "AUSTRALIACENTRAL:20260507T162943Z:d875f6aa-e9b7-4067-8ed1-2386fe0f72c6" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E0A4C5CBE8EE4B269C069D84C3B0927F Ref B: SYD03EDGE1718 Ref C: 2026-06-23T14:07:32Z" ],
-        "Date": [ "Tue, 23 Jun 2026 14:07:33 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 17D7721E6D6F4BFCBA23B115542338E2 Ref B: SYD03EDGE1914 Ref C: 2026-05-07T16:29:41Z" ],
+        "Date": [ "Thu, 07 May 2026 16:29:42 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "194" ],

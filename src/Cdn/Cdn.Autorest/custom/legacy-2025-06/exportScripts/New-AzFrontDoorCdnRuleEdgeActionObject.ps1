@@ -27,7 +27,7 @@ https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnruleedgea
 #>
 function New-AzFrontDoorCdnRuleEdgeActionObject {
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.ModelCmdletAttribute()]
-    [OutputType([System.Object])]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleEdgeAction')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
