@@ -11,12 +11,12 @@ namespace Microsoft.Azure.Management.Compute
     using Models;
 
     /// <summary>
-    /// ImagesOperations operations.
+    /// InterconnectBlocksOperations operations.
     /// </summary>
-    internal partial class ImagesOperations : Microsoft.Rest.IServiceOperations<ComputeManagementClient>, IImagesOperations
+    internal partial class InterconnectBlocksOperations : Microsoft.Rest.IServiceOperations<ComputeManagementClient>, IInterconnectBlocksOperations
     {
         /// <summary>
-        /// Initializes a new instance of the ImagesOperations class.
+        /// Initializes a new instance of the InterconnectBlocksOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal ImagesOperations (ComputeManagementClient client)
+        internal InterconnectBlocksOperations (ComputeManagementClient client)
         {
             if (client == null) 
             {
@@ -39,9 +39,8 @@ namespace Microsoft.Azure.Management.Compute
         public ComputeManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Gets the list of Images in the subscription. Use nextLink property in the
-        /// response to get the next page of Images. Do this till nextLink is null to
-        /// fetch all the Images.
+        /// Lists all of the Interconnect Blocks in the subscription. Use the nextLink
+        /// property in the response to get the next page of Interconnect Blocks.
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -64,7 +63,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Image>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<InterconnectBlock>>> ListBySubscriptionWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -93,12 +92,12 @@ namespace Microsoft.Azure.Management.Compute
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "ListBySubscription", tracingParameters);
             }
             // Construct URL
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Compute/images").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Compute/interconnectBlocks").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
@@ -199,7 +198,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Image>>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<InterconnectBlock>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -213,7 +212,7 @@ namespace Microsoft.Azure.Management.Compute
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<Image>>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<InterconnectBlock>>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -237,9 +236,9 @@ namespace Microsoft.Azure.Management.Compute
 
         }
         /// <summary>
-        /// Gets the list of images under a resource group. Use nextLink property in
-        /// the response to get the next page of Images. Do this till nextLink is null
-        /// to fetch all the Images.
+        /// Lists all of the Interconnect Blocks in the specified resource group. Use
+        /// the nextLink property in the response to get the next page of Interconnect
+        /// Blocks.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -265,7 +264,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Image>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<InterconnectBlock>>> ListByResourceGroupWithHttpMessagesAsync(string resourceGroupName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -315,7 +314,7 @@ namespace Microsoft.Azure.Management.Compute
             // Construct URL
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/interconnectBlocks").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
 
@@ -417,7 +416,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Image>>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<InterconnectBlock>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -431,7 +430,7 @@ namespace Microsoft.Azure.Management.Compute
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<Image>>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<InterconnectBlock>>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -455,16 +454,18 @@ namespace Microsoft.Azure.Management.Compute
 
         }
         /// <summary>
-        /// Gets an image.
+        /// Retrieves information about an Interconnect Block.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='imageName'>
-        /// The name of the image.
+        /// <param name='interconnectBlockName'>
+        /// The name of the Interconnect Block.
         /// </param>
         /// <param name='expand'>
-        /// The expand expression to apply on the operation.
+        /// The expand expression to apply on the operation. &#39;instanceView&#39; retrieves a
+        /// snapshot of the runtime properties of the Interconnect Block that is
+        /// managed by the platform and can change outside of control plane operations.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -487,7 +488,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Image>> GetWithHttpMessagesAsync(string resourceGroupName, string imageName, string expand = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<InterconnectBlock>> GetWithHttpMessagesAsync(string resourceGroupName, string interconnectBlockName, string expand = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -519,9 +520,9 @@ namespace Microsoft.Azure.Management.Compute
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
             }
-            if (imageName == null)
+            if (interconnectBlockName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "imageName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "interconnectBlockName");
             }
 
 
@@ -535,7 +536,7 @@ namespace Microsoft.Azure.Management.Compute
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
                 tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("imageName", imageName);
+                tracingParameters.Add("interconnectBlockName", interconnectBlockName);
                 tracingParameters.Add("expand", expand);
 
 
@@ -545,10 +546,10 @@ namespace Microsoft.Azure.Management.Compute
             // Construct URL
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/interconnectBlocks/{interconnectBlockName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{imageName}", System.Uri.EscapeDataString(imageName));
+            _url = _url.Replace("{interconnectBlockName}", System.Uri.EscapeDataString(interconnectBlockName));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (apiVersion != null)
@@ -652,7 +653,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Image>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<InterconnectBlock>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -666,7 +667,7 @@ namespace Microsoft.Azure.Management.Compute
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Image>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<InterconnectBlock>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -690,16 +691,17 @@ namespace Microsoft.Azure.Management.Compute
 
         }
         /// <summary>
-        /// Create or update an image.
+        /// Creates or updates an Interconnect Block. When updating an Interconnect
+        /// Block, only tags and sku.capacity may be modified.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='imageName'>
-        /// The name of the image.
+        /// <param name='interconnectBlockName'>
+        /// The name of the Interconnect Block.
         /// </param>
-        /// <param name='parameters'>
-        /// Parameters supplied to the Create Image operation.
+        /// <param name='resource'>
+        /// Parameters supplied to the Create Interconnect Block.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -707,24 +709,25 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Image,ImagesCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string imageName, Image parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<InterconnectBlock,InterconnectBlocksCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string interconnectBlockName, InterconnectBlock resource, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<Image,ImagesCreateOrUpdateHeaders> _response = await BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, imageName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<InterconnectBlock,InterconnectBlocksCreateOrUpdateHeaders> _response = await BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, interconnectBlockName, resource, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
-        /// Update an image.
+        /// Updates an Interconnect Block. When updating an Interconnect Block, only
+        /// tags and sku.capacity may be modified.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='imageName'>
-        /// The name of the image.
+        /// <param name='interconnectBlockName'>
+        /// The name of the Interconnect Block.
         /// </param>
-        /// <param name='parameters'>
-        /// Parameters supplied to the Update Image operation.
+        /// <param name='properties'>
+        /// Parameters supplied to the Update Interconnect Block operation.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -732,21 +735,23 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Image,ImagesUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string imageName, ImageUpdate parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<InterconnectBlock,InterconnectBlocksUpdateHeaders>> UpdateWithHttpMessagesAsync(string resourceGroupName, string interconnectBlockName, InterconnectBlockUpdate properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<Image,ImagesUpdateHeaders> _response = await BeginUpdateWithHttpMessagesAsync(resourceGroupName, imageName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<InterconnectBlock,InterconnectBlocksUpdateHeaders> _response = await BeginUpdateWithHttpMessagesAsync(resourceGroupName, interconnectBlockName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
-        /// Deletes an Image.
+        /// Deletes an Interconnect Block. The operation is only allowed when there are
+        /// no virtual machines or VMSS VM instances associated with the Interconnect
+        /// Block.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='imageName'>
-        /// The name of the image.
+        /// <param name='interconnectBlockName'>
+        /// The name of the Interconnect Block.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -754,24 +759,25 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string imageName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<InterconnectBlocksDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string interconnectBlockName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, imageName, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationHeaderResponse<InterconnectBlocksDeleteHeaders> _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, interconnectBlockName, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
-        /// Create or update an image.
+        /// Creates or updates an Interconnect Block. When updating an Interconnect
+        /// Block, only tags and sku.capacity may be modified.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='imageName'>
-        /// The name of the image.
+        /// <param name='interconnectBlockName'>
+        /// The name of the Interconnect Block.
         /// </param>
-        /// <param name='parameters'>
-        /// Parameters supplied to the Create Image operation.
+        /// <param name='resource'>
+        /// Parameters supplied to the Create Interconnect Block.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -794,19 +800,19 @@ namespace Microsoft.Azure.Management.Compute
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Image,ImagesCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string imageName, Image parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<InterconnectBlock,InterconnectBlocksCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string interconnectBlockName, InterconnectBlock resource, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
-            if (parameters == null)
+            if (resource == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "parameters");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resource");
             }
-            if (parameters != null)
+            if (resource != null)
             {
-                parameters.Validate();
+                resource.Validate();
             }
             if (this.Client.SubscriptionId == null)
             {
@@ -834,9 +840,9 @@ namespace Microsoft.Azure.Management.Compute
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
             }
-            if (imageName == null)
+            if (interconnectBlockName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "imageName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "interconnectBlockName");
             }
 
             string apiVersion = "2026-03-01";
@@ -849,9 +855,9 @@ namespace Microsoft.Azure.Management.Compute
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
                 tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("imageName", imageName);
+                tracingParameters.Add("interconnectBlockName", interconnectBlockName);
 
-                tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("resource", resource);
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "BeginCreateOrUpdate", tracingParameters);
@@ -859,10 +865,10 @@ namespace Microsoft.Azure.Management.Compute
             // Construct URL
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/interconnectBlocks/{interconnectBlockName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{imageName}", System.Uri.EscapeDataString(imageName));
+            _url = _url.Replace("{interconnectBlockName}", System.Uri.EscapeDataString(interconnectBlockName));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (apiVersion != null)
@@ -905,9 +911,9 @@ namespace Microsoft.Azure.Management.Compute
             }
             // Serialize Request
             string _requestContent = null;
-            if(parameters != null)
+            if(resource != null)
             {
-                _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(parameters, this.Client.SerializationSettings);
+                _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(resource, this.Client.SerializationSettings);
                 _httpRequest.Content = new System.Net.Http.StringContent(_requestContent, System.Text.Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
@@ -968,7 +974,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Image,ImagesCreateOrUpdateHeaders>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<InterconnectBlock,InterconnectBlocksCreateOrUpdateHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -982,7 +988,7 @@ namespace Microsoft.Azure.Management.Compute
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Image>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<InterconnectBlock>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -1000,7 +1006,7 @@ namespace Microsoft.Azure.Management.Compute
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Image>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<InterconnectBlock>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -1014,7 +1020,7 @@ namespace Microsoft.Azure.Management.Compute
             }
             try
             {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ImagesCreateOrUpdateHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<InterconnectBlocksCreateOrUpdateHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
             }
             catch (Newtonsoft.Json.JsonException ex)
             {
@@ -1037,16 +1043,17 @@ namespace Microsoft.Azure.Management.Compute
 
         }
         /// <summary>
-        /// Update an image.
+        /// Updates an Interconnect Block. When updating an Interconnect Block, only
+        /// tags and sku.capacity may be modified.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='imageName'>
-        /// The name of the image.
+        /// <param name='interconnectBlockName'>
+        /// The name of the Interconnect Block.
         /// </param>
-        /// <param name='parameters'>
-        /// Parameters supplied to the Update Image operation.
+        /// <param name='properties'>
+        /// Parameters supplied to the Update Interconnect Block operation.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1069,15 +1076,15 @@ namespace Microsoft.Azure.Management.Compute
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Image,ImagesUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string imageName, ImageUpdate parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<InterconnectBlock,InterconnectBlocksUpdateHeaders>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string interconnectBlockName, InterconnectBlockUpdate properties, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
-            if (parameters == null)
+            if (properties == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "parameters");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "properties");
             }
             if (this.Client.SubscriptionId == null)
             {
@@ -1105,9 +1112,9 @@ namespace Microsoft.Azure.Management.Compute
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
             }
-            if (imageName == null)
+            if (interconnectBlockName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "imageName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "interconnectBlockName");
             }
 
             string apiVersion = "2026-03-01";
@@ -1120,9 +1127,9 @@ namespace Microsoft.Azure.Management.Compute
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
                 tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("imageName", imageName);
+                tracingParameters.Add("interconnectBlockName", interconnectBlockName);
 
-                tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("properties", properties);
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "BeginUpdate", tracingParameters);
@@ -1130,10 +1137,10 @@ namespace Microsoft.Azure.Management.Compute
             // Construct URL
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/interconnectBlocks/{interconnectBlockName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{imageName}", System.Uri.EscapeDataString(imageName));
+            _url = _url.Replace("{interconnectBlockName}", System.Uri.EscapeDataString(interconnectBlockName));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (apiVersion != null)
@@ -1176,9 +1183,9 @@ namespace Microsoft.Azure.Management.Compute
             }
             // Serialize Request
             string _requestContent = null;
-            if(parameters != null)
+            if(properties != null)
             {
-                _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(parameters, this.Client.SerializationSettings);
+                _requestContent = Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(properties, this.Client.SerializationSettings);
                 _httpRequest.Content = new System.Net.Http.StringContent(_requestContent, System.Text.Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
@@ -1204,7 +1211,7 @@ namespace Microsoft.Azure.Management.Compute
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
 
-            if ((int)_statusCode != 200 && (int)_statusCode != 201)
+            if ((int)_statusCode != 200 && (int)_statusCode != 202)
             {
                 var ex = new Microsoft.Rest.Azure.CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -1239,7 +1246,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Image,ImagesUpdateHeaders>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<InterconnectBlock,InterconnectBlocksUpdateHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -1253,25 +1260,7 @@ namespace Microsoft.Azure.Management.Compute
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Image>(_responseContent, this.Client.DeserializationSettings);
-                }
-                catch (Newtonsoft.Json.JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new Microsoft.Rest.SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 201)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Image>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<InterconnectBlock>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -1285,7 +1274,7 @@ namespace Microsoft.Azure.Management.Compute
             }
             try
             {
-                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<ImagesUpdateHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<InterconnectBlocksUpdateHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
             }
             catch (Newtonsoft.Json.JsonException ex)
             {
@@ -1308,13 +1297,15 @@ namespace Microsoft.Azure.Management.Compute
 
         }
         /// <summary>
-        /// Deletes an Image.
+        /// Deletes an Interconnect Block. The operation is only allowed when there are
+        /// no virtual machines or VMSS VM instances associated with the Interconnect
+        /// Block.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
         /// </param>
-        /// <param name='imageName'>
-        /// The name of the image.
+        /// <param name='interconnectBlockName'>
+        /// The name of the Interconnect Block.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1334,7 +1325,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string imageName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<InterconnectBlocksDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string interconnectBlockName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -1366,9 +1357,9 @@ namespace Microsoft.Azure.Management.Compute
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
                 }
             }
-            if (imageName == null)
+            if (interconnectBlockName == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "imageName");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "interconnectBlockName");
             }
 
             string apiVersion = "2026-03-01";
@@ -1381,7 +1372,7 @@ namespace Microsoft.Azure.Management.Compute
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
                 tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("imageName", imageName);
+                tracingParameters.Add("interconnectBlockName", interconnectBlockName);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -1390,10 +1381,10 @@ namespace Microsoft.Azure.Management.Compute
             // Construct URL
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/interconnectBlocks/{interconnectBlockName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(this.Client.SubscriptionId));
             _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
-            _url = _url.Replace("{imageName}", System.Uri.EscapeDataString(imageName));
+            _url = _url.Replace("{interconnectBlockName}", System.Uri.EscapeDataString(interconnectBlockName));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (apiVersion != null)
@@ -1493,13 +1484,26 @@ namespace Microsoft.Azure.Management.Compute
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse();
+            var _result = new Microsoft.Rest.Azure.AzureOperationHeaderResponse<InterconnectBlocksDeleteHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
+            }
+            try
+            {
+                _result.Headers = _httpResponse.GetHeadersAsJson().ToObject<InterconnectBlocksDeleteHeaders>(Newtonsoft.Json.JsonSerializer.Create(this.Client.DeserializationSettings));
+            }
+            catch (Newtonsoft.Json.JsonException ex)
+            {
+                _httpRequest.Dispose();
+                if (_httpResponse != null)
+                {
+                    _httpResponse.Dispose();
+                }
+                throw new Microsoft.Rest.SerializationException("Unable to deserialize the headers.", _httpResponse.GetHeadersAsJson().ToString(), ex);
             }
             if (_shouldTrace)
             {
@@ -1513,9 +1517,8 @@ namespace Microsoft.Azure.Management.Compute
 
         }
         /// <summary>
-        /// Gets the list of Images in the subscription. Use nextLink property in the
-        /// response to get the next page of Images. Do this till nextLink is null to
-        /// fetch all the Images.
+        /// Lists all of the Interconnect Blocks in the subscription. Use the nextLink
+        /// property in the response to get the next page of Interconnect Blocks.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -1541,7 +1544,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Image>>> ListNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<InterconnectBlock>>> ListBySubscriptionNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             if (nextPageLink == null)
@@ -1559,7 +1562,7 @@ namespace Microsoft.Azure.Management.Compute
                
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "ListNext", tracingParameters);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "ListBySubscriptionNext", tracingParameters);
             }
             // Construct URL
             string _url = "{nextLink}";
@@ -1659,7 +1662,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Image>>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<InterconnectBlock>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -1673,7 +1676,7 @@ namespace Microsoft.Azure.Management.Compute
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<Image>>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<InterconnectBlock>>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
@@ -1697,9 +1700,9 @@ namespace Microsoft.Azure.Management.Compute
 
         }
         /// <summary>
-        /// Gets the list of images under a resource group. Use nextLink property in
-        /// the response to get the next page of Images. Do this till nextLink is null
-        /// to fetch all the Images.
+        /// Lists all of the Interconnect Blocks in the specified resource group. Use
+        /// the nextLink property in the response to get the next page of Interconnect
+        /// Blocks.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
@@ -1725,7 +1728,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Image>>> ListByResourceGroupNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<InterconnectBlock>>> ListByResourceGroupNextWithHttpMessagesAsync(string nextPageLink, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             if (nextPageLink == null)
@@ -1843,7 +1846,7 @@ namespace Microsoft.Azure.Management.Compute
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<Image>>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<InterconnectBlock>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -1857,7 +1860,7 @@ namespace Microsoft.Azure.Management.Compute
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<Image>>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<InterconnectBlock>>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {
