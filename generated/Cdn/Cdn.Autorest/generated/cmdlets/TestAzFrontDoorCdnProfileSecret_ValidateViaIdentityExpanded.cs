@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IValidateSecretOutput))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"Validate a Secret in the profile.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/validateSecret", ApiVersion = "2025-09-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/validateSecret", ApiVersion = "2026-04-01-preview")]
     public partial class TestAzFrontDoorCdnProfileSecret_ValidateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IContext
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         Description = @"The secret type.",
         SerializedName = @"secretType",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("UrlSigningKey", "CustomerCertificate", "ManagedCertificate", "AzureFirstPartyManagedCertificate", "MtlsCertificateChain")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("UrlSigningKey", "CustomerCertificate", "ManagedCertificate", "AzureFirstPartyManagedCertificate")]
         public string SecretType { get => _validateSecretInputBody.SecretType ?? null; set => _validateSecretInputBody.SecretType = value; }
 
         /// <summary>Secret version, if customer is using a specific version.</summary>

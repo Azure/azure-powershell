@@ -74,7 +74,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Description = @"The secret type.",
         SerializedName = @"secretType",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("UrlSigningKey", "CustomerCertificate", "ManagedCertificate", "AzureFirstPartyManagedCertificate", "MtlsCertificateChain")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("UrlSigningKey", "CustomerCertificate", "ManagedCertificate", "AzureFirstPartyManagedCertificate")]
         string SecretType { get; set; }
         /// <summary>Secret version, if customer is using a specific version.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// <summary>Resource ID.</summary>
         string SecretSourceId { get; set; }
         /// <summary>The secret type.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("UrlSigningKey", "CustomerCertificate", "ManagedCertificate", "AzureFirstPartyManagedCertificate", "MtlsCertificateChain")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("UrlSigningKey", "CustomerCertificate", "ManagedCertificate", "AzureFirstPartyManagedCertificate")]
         string SecretType { get; set; }
         /// <summary>Secret version, if customer is using a specific version.</summary>
         string SecretVersion { get; set; }

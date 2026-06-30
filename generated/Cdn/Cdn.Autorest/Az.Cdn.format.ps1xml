@@ -18,19 +18,10 @@
             <Label>ExecutionFilter</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>AgentName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>CustomDomainName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>EndpointName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>KeyGroupName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>KnowledgeSourceName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>OriginGroupName</Label>
@@ -65,12 +56,6 @@
           <TableColumnHeader>
             <Label>SubscriptionId</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>VersionName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>WebAgentName</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -85,19 +70,10 @@
                 <PropertyName>ExecutionFilter</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>AgentName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
                 <PropertyName>CustomDomainName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>EndpointName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>KeyGroupName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>KnowledgeSourceName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>OriginGroupName</PropertyName>
@@ -131,12 +107,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SubscriptionId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>VersionName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>WebAgentName</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -788,28 +758,6 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainMtlsParameters</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainMtlsParameters#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Scenario</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Scenario</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainProperties</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainProperties#Multiple</TypeName>
@@ -972,9 +920,6 @@
             <Label>EnabledState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>EnforceMtl</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>HostName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -995,9 +940,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>EnabledState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>EnforceMtl</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>HostName</PropertyName>
@@ -1024,9 +966,6 @@
             <Label>EnabledState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>EnforceMtl</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>ProfileName</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -1035,9 +974,6 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>EnabledState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>EnforceMtl</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProfileName</PropertyName>
@@ -1430,34 +1366,6 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdSecretMtlsCertificateChain</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdSecretMtlsCertificateChain#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ExpirationDate</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SecretVersion</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ExpirationDate</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SecretVersion</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdStateProperties</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdStateProperties#Multiple</TypeName>
@@ -1479,78 +1387,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdUrlSigningAction</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdUrlSigningAction#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdUrlSigningActionParameters</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdUrlSigningActionParameters#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Algorithm</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>TypeName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Algorithm</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>TypeName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AgentPath</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AgentPath#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Path</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Path</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1591,6 +1427,46 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Thumbprint</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.BatchRuleProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.BatchRuleProperties#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>MatchProcessingBehavior</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Order</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RuleName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RuleSetName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>MatchProcessingBehavior</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Order</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RuleName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RuleSetName</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2172,84 +2048,6 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ClientCertificateRequiredAndOriginValidatesAdvancedSettings</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ClientCertificateRequiredAndOriginValidatesAdvancedSettings#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Scenario</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Scenario</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ClientCertificateRequiredAndValidatedAdvancedSettings</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ClientCertificateRequiredAndValidatedAdvancedSettings#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Scenario</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CertificateRevocationCheck</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Scenario</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CertificateRevocationCheck</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ClientCertificateValidatedIfPresentedAdvancedSettings</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ClientCertificateValidatedIfPresentedAdvancedSettings#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Scenario</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CertificateRevocationCheck</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Scenario</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CertificateRevocationCheck</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ClientPortMatchConditionParameters</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ClientPortMatchConditionParameters#Multiple</TypeName>
@@ -2277,50 +2075,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Operator</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CompareDeploymentVersionsParameter</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CompareDeploymentVersionsParameter#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>CompareTo</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>CompareTo</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CompleteMtlsPassthroughToOriginAdvancedSettings</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CompleteMtlsPassthroughToOriginAdvancedSettings#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Scenario</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Scenario</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2752,64 +2506,6 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CustomRuleAfd</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CustomRuleAfd#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Action</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>EnabledState</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Priority</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RateLimitDurationInMinute</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RateLimitThreshold</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RuleType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Action</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>EnabledState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Priority</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RateLimitDurationInMinute</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RateLimitThreshold</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RuleType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeepCreatedCustomDomain</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeepCreatedCustomDomain#Multiple</TypeName>
@@ -3211,56 +2907,6 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleEdgeAction</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleEdgeAction#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleEdgeActionParameters</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleEdgeActionParameters#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>TypeName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>InvocationPoint</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>TypeName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>InvocationPoint</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -3708,396 +3354,6 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeploymentStages</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeploymentStages#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Preview</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Production</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Preview</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Production</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeploymentVersion</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeploymentVersion#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeploymentVersionAfdOriginChange</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeploymentVersionAfdOriginChange#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ResourceId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ResourceId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeploymentVersionAfdOriginGroupChange</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeploymentVersionAfdOriginGroupChange#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ResourceId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ResourceId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeploymentVersionChange</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeploymentVersionChange#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ResourceId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ResourceId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeploymentVersionListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeploymentVersionListResult#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeploymentVersionProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeploymentVersionProperties#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ApprovalStatus</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ApprovedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CreatedAt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>DeploymentStatus</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Description</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ProvisioningState</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ApprovalStatus</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ApprovedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CreatedAt</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>DeploymentStatus</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Description</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeploymentVersionRouteChange</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeploymentVersionRouteChange#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ResourceId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ResourceId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeploymentVersionRuleChange</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeploymentVersionRuleChange#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ResourceId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ResourceId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeploymentVersionRuleSetChange</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeploymentVersionRuleSetChange#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ResourceId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ResourceId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeploymentVersionSecurityPolicyChange</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeploymentVersionSecurityPolicyChange#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ResourceId</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceType</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ResourceId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceType</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeploymentVersionUpdateProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeploymentVersionUpdateProperties#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Description</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Description</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DimensionProperties</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DimensionProperties#Multiple</TypeName>
@@ -4508,28 +3764,6 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.GroupByVariable</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.GroupByVariable#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>VariableName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>VariableName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.HeaderActionParameters</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.HeaderActionParameters#Multiple</TypeName>
@@ -4762,84 +3996,6 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.KeyGroup</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.KeyGroup#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.KeyGroupListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.KeyGroupListResult#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.KeyGroupProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.KeyGroupProperties#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>DeploymentStatus</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ProvisioningState</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>DeploymentStatus</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.KeyVaultCertificateSourceParameters</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.KeyVaultCertificateSourceParameters#Multiple</TypeName>
@@ -4949,142 +4105,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>VaultName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.KnowledgeSource</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.KnowledgeSource#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.KnowledgeSourceList</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.KnowledgeSourceList#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.KnowledgeSourceProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.KnowledgeSourceProperties#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Description</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>LastRefreshedTime</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ProvisioningState</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SourceType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>UpdateFrequency</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Url</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Description</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>LastRefreshedTime</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SourceType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>UpdateFrequency</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Url</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.KnowledgeSourcePropertiesUpdateParameters</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.KnowledgeSourcePropertiesUpdateParameters#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Description</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>UpdateFrequency</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Url</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Description</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>UpdateFrequency</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Url</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -5222,40 +4242,6 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedRuleExclusion</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedRuleExclusion#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>MatchVariable</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Selector</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SelectorMatchOperator</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>MatchVariable</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Selector</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SelectorMatchOperator</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedRuleGroupDefinition</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedRuleGroupDefinition#Multiple</TypeName>
@@ -5287,28 +4273,6 @@
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedRuleGroupOverride</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedRuleGroupOverride#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>RuleGroupName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>RuleGroupName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedRuleGroupOverrideAfd</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedRuleGroupOverrideAfd#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -5362,40 +4326,6 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedRuleOverrideAfd</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedRuleOverrideAfd#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Action</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>EnabledState</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RuleId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Action</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>EnabledState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RuleId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedRuleSet</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedRuleSet#Multiple</TypeName>
@@ -5417,40 +4347,6 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>AnomalyScore</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RuleSetType</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RuleSetVersion</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedRuleSetAfd</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ManagedRuleSetAfd#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>RuleSetAction</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RuleSetType</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RuleSetVersion</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>RuleSetAction</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>RuleSetType</PropertyName>
@@ -5573,46 +4469,6 @@
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.MatchCondition</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.MatchCondition#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>MatchVariable</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>NegateCondition</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Operator</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Selector</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>MatchVariable</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>NegateCondition</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Operator</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Selector</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.MatchConditionAfd</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.MatchConditionAfd#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -6077,6 +4933,9 @@
           <TableColumnHeader>
             <Label>Scope</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TokenDestinationHeader</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -6084,45 +4943,8 @@
               <TableColumnItem>
                 <PropertyName>Scope</PropertyName>
               </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OriginCapacityResourceProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OriginCapacityResourceProperties#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Enabled</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>OriginIngressRateThreshold</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>OriginRequestRateThreshold</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Region</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Enabled</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>OriginIngressRateThreshold</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>OriginRequestRateThreshold</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Region</PropertyName>
+                <PropertyName>TokenDestinationHeader</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -6552,92 +5374,6 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.PolicySettingsAfd</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.PolicySettingsAfd#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>CaptchaExpirationInMinute</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CustomBlockResponseBody</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>CustomBlockResponseStatusCode</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>EnabledState</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>JavascriptChallengeExpirationInMinute</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Mode</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RedirectUrl</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>RequestBodyCheck</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>CaptchaExpirationInMinute</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CustomBlockResponseBody</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>CustomBlockResponseStatusCode</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>EnabledState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>JavascriptChallengeExpirationInMinute</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Mode</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RedirectUrl</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>RequestBodyCheck</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.PolicySettingsLogScrubbing</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.PolicySettingsLogScrubbing#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>State</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>State</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.PostArgsMatchConditionParameters</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.PostArgsMatchConditionParameters#Multiple</TypeName>
@@ -6711,78 +5447,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfileAgent</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfileAgent#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfileAgentListResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfileAgentListResult#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfileAgentProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfileAgentProperties#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ProvisioningState</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -7769,9 +6433,6 @@
             <Label>ForwardingProtocol</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>GrpcState</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>HttpsRedirect</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -7798,9 +6459,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ForwardingProtocol</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>GrpcState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>HttpsRedirect</PropertyName>
@@ -7836,9 +6494,6 @@
             <Label>ForwardingProtocol</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>GrpcState</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>HttpsRedirect</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -7859,9 +6514,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ForwardingProtocol</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>GrpcState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>HttpsRedirect</PropertyName>
@@ -8037,6 +6689,9 @@
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>BatchMode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ProfileName</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -8048,6 +6703,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>BatchMode</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProfileName</PropertyName>
@@ -8260,33 +6918,21 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SecurityPolicyPropertiesWithEmbeddedWafPolicy</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SecurityPolicyWebApplicationFirewallParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SecurityPolicyPropertiesWithEmbeddedWafPolicy#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.SecurityPolicyWebApplicationFirewallParameters#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>DeploymentStatus</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ProvisioningState</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ProfileName</Label>
+            <Label>IsProfileLevel</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>DeploymentStatus</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ProfileName</PropertyName>
+                <PropertyName>IsProfileLevel</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -9379,242 +8025,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>DateTimeEnd</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.WebAgent</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.WebAgent#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Location</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.WebAgentList</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.WebAgentList#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>NextLink</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>NextLink</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.WebAgentProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.WebAgentProperties#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Description</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ProvisioningState</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemPrompt</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Description</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemPrompt</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.WebAgentPropertiesUpdateParameters</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.WebAgentPropertiesUpdateParameters#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Description</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SystemPrompt</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Description</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SystemPrompt</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.WebAgentUpdateParametersTags</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.WebAgentUpdateParametersTags#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Item</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Item</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.WebApplicationFirewallPolicy</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.WebApplicationFirewallPolicy#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Name</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Etag</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Etag</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.WebApplicationFirewallPolicyProperties</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.WebApplicationFirewallPolicyProperties#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>ProvisioningState</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceState</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceState</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.WebApplicationFirewallScrubbingRules</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.WebApplicationFirewallScrubbingRules#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>MatchVariable</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Selector</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SelectorMatchOperator</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>State</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>MatchVariable</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Selector</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SelectorMatchOperator</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>State</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

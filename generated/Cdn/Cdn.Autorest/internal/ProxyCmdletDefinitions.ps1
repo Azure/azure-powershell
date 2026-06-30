@@ -16,230 +16,6 @@
 
 <#
 .Synopsis
-Gets an existing KeyGroup within a profile.
-.Description
-Gets an existing KeyGroup within a profile.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IKeyGroup
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <ICdnIdentity>: Identity Parameter
-  [EdgeActionName <String>]: The name of the Edge Action
-  [Version <String>]: The name of the Edge Action version
-  [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
-  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
-  [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
-  [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
-  [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the endpoint.
-  [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [RouteName <String>]: Name of the routing rule.
-  [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
-  [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
-  [SecretName <String>]: Name of the Secret under the profile.
-  [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
-
-PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
-  [EdgeActionName <String>]: The name of the Edge Action
-  [Version <String>]: The name of the Edge Action version
-  [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
-  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
-  [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
-  [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
-  [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the endpoint.
-  [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [RouteName <String>]: Name of the routing rule.
-  [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
-  [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
-  [SecretName <String>]: Name of the Secret under the profile.
-  [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
-.Link
-https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnkeygroup
-#>
-function Get-AzCdnKeyGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IKeyGroup])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
-param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='GetViaIdentityProfile', Mandatory)]
-    [Alias('KeyGroupName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [System.String]
-    # Name of the KeyGroup under the profile.
-    ${Name},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [System.String]
-    # Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
-    ${ProfileName},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='List')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
-    # Identity Parameter
-    ${InputObject},
-
-    [Parameter(ParameterSetName='GetViaIdentityProfile', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
-    # Identity Parameter
-    ${ProfileInputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        
-        $testPlayback = $false
-        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-
-        $mapping = @{
-            Get = 'Az.Cdn.private\Get-AzCdnKeyGroup_Get';
-            GetViaIdentity = 'Az.Cdn.private\Get-AzCdnKeyGroup_GetViaIdentity';
-            GetViaIdentityProfile = 'Az.Cdn.private\Get-AzCdnKeyGroup_GetViaIdentityProfile';
-            List = 'Az.Cdn.private\Get-AzCdnKeyGroup_List';
-        }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        if ($wrappedCmd -eq $null) {
-            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
-        }
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
 Get all available location names for AFD log analytics report.
 .Description
 Get all available location names for AFD log analytics report.
@@ -261,12 +37,9 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [EdgeActionName <String>]: The name of the Edge Action
   [Version <String>]: The name of the Edge Action version
   [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
   [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
@@ -278,8 +51,6 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnloganalyticlocation
 #>
@@ -442,12 +213,9 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [EdgeActionName <String>]: The name of the Edge Action
   [Version <String>]: The name of the Edge Action version
   [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
   [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
@@ -459,8 +227,6 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnloganalyticmetric
 #>
@@ -692,12 +458,9 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [EdgeActionName <String>]: The name of the Edge Action
   [Version <String>]: The name of the Edge Action version
   [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
   [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
@@ -709,8 +472,6 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnloganalyticranking
 #>
@@ -917,12 +678,9 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [EdgeActionName <String>]: The name of the Edge Action
   [Version <String>]: The name of the Edge Action version
   [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
   [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
@@ -934,8 +692,6 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnloganalyticresource
 #>
@@ -1098,12 +854,9 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [EdgeActionName <String>]: The name of the Edge Action
   [Version <String>]: The name of the Edge Action version
   [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
   [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
@@ -1115,8 +868,6 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnloganalyticwafloganalyticmetric
 #>
@@ -1334,12 +1085,9 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [EdgeActionName <String>]: The name of the Edge Action
   [Version <String>]: The name of the Edge Action version
   [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
   [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
@@ -1351,8 +1099,6 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnloganalyticwafloganalyticranking
 #>
@@ -1689,12 +1435,9 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [EdgeActionName <String>]: The name of the Edge Action
   [Version <String>]: The name of the Edge Action version
   [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
   [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
@@ -1706,8 +1449,6 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnprofile
 #>
@@ -2062,12 +1803,9 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [EdgeActionName <String>]: The name of the Edge Action
   [Version <String>]: The name of the Edge Action version
   [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
   [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
@@ -2079,8 +1817,6 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/invoke-azcdncommitprofilemigration
 #>
@@ -2318,7 +2054,7 @@ param(
     ${MigrationWebApplicationFirewallMapping},
 
     [Parameter(ParameterSetName='MigrateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Standard_Verizon", "Premium_Verizon", "Custom_Verizon", "Standard_Akamai", "Standard_ChinaCdn", "Standard_Microsoft", "Standard_AzureFrontDoor", "Premium_AzureFrontDoor", "Classic_AzureFrontDoor", "Standard_955BandWidth_ChinaCdn", "Standard_AvgBandWidth_ChinaCdn", "StandardPlus_ChinaCdn", "StandardPlus_955BandWidth_ChinaCdn", "StandardPlus_AvgBandWidth_ChinaCdn")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Standard_Verizon", "Premium_Verizon", "Custom_Verizon", "Standard_Akamai", "Standard_ChinaCdn", "Standard_Microsoft", "Standard_AzureFrontDoor", "Premium_AzureFrontDoor", "Standard_955BandWidth_ChinaCdn", "Standard_AvgBandWidth_ChinaCdn", "StandardPlus_ChinaCdn", "StandardPlus_955BandWidth_ChinaCdn", "StandardPlus_AvgBandWidth_ChinaCdn")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # Name of the pricing tier.
@@ -2482,12 +2218,9 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [EdgeActionName <String>]: The name of the Edge Action
   [Version <String>]: The name of the Edge Action version
   [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
   [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
@@ -2499,8 +2232,6 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
 
 MIGRATIONENDPOINTMAPPING <IMigrationEndpointMapping[]>: A name map between classic CDN endpoints and AFD Premium/Standard endpoints.
   [MigratedFrom <String>]: Name of the classic CDN profile endpoint.
@@ -2572,7 +2303,7 @@ param(
 
     [Parameter(ParameterSetName='MigrateExpanded')]
     [Parameter(ParameterSetName='MigrateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Standard_Verizon", "Premium_Verizon", "Custom_Verizon", "Standard_Akamai", "Standard_ChinaCdn", "Standard_Microsoft", "Standard_AzureFrontDoor", "Premium_AzureFrontDoor", "Classic_AzureFrontDoor", "Standard_955BandWidth_ChinaCdn", "Standard_AvgBandWidth_ChinaCdn", "StandardPlus_ChinaCdn", "StandardPlus_955BandWidth_ChinaCdn", "StandardPlus_AvgBandWidth_ChinaCdn")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Standard_Verizon", "Premium_Verizon", "Custom_Verizon", "Standard_Akamai", "Standard_ChinaCdn", "Standard_Microsoft", "Standard_AzureFrontDoor", "Premium_AzureFrontDoor", "Standard_955BandWidth_ChinaCdn", "Standard_AvgBandWidth_ChinaCdn", "StandardPlus_ChinaCdn", "StandardPlus_955BandWidth_ChinaCdn", "StandardPlus_AvgBandWidth_ChinaCdn")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # Name of the pricing tier.
@@ -2713,250 +2444,6 @@ end {
 
 <#
 .Synopsis
-Create a new KeyGroup within the specified profile.
-.Description
-Create a new KeyGroup within the specified profile.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IKeyGroup
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IKeyGroup
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-KEYGROUP <IKeyGroup>: Contains a list of references of UrlSigningKey type secret objects.
-  [KeyReference <List<IResourceReference>>]: Names of UrlSigningKey type secret objects
-    [Id <String>]: Resource ID.
-
-KEYREFERENCE <IResourceReference[]>: Names of UrlSigningKey type secret objects
-  [Id <String>]: Resource ID.
-
-PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
-  [EdgeActionName <String>]: The name of the Edge Action
-  [Version <String>]: The name of the Edge Action version
-  [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
-  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
-  [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
-  [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
-  [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the endpoint.
-  [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [RouteName <String>]: Name of the routing rule.
-  [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
-  [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
-  [SecretName <String>]: Name of the Secret under the profile.
-  [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
-.Link
-https://learn.microsoft.com/powershell/module/az.cdn/new-azcdnkeygroupupdate
-#>
-function New-AzCdnKeyGroupUpdate {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IKeyGroup])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [System.String]
-    # Name of the KeyGroup under the profile.
-    ${KeyGroupName},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [System.String]
-    # Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
-    ${ProfileName},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaJsonFilePath')]
-    [Parameter(ParameterSetName='CreateViaJsonString')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='CreateViaIdentityProfile', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
-    # Identity Parameter
-    ${ProfileInputObject},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference[]]
-    # Names of UrlSigningKey type secret objects
-    ${KeyReference},
-
-    [Parameter(ParameterSetName='CreateViaIdentityProfile', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IKeyGroup]
-    # Contains a list of references of UrlSigningKey type secret objects.
-    ${KeyGroup},
-
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String]
-    # Path of Json file supplied to the Create operation
-    ${JsonFilePath},
-
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String]
-    # Json string supplied to the Create operation
-    ${JsonString},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        
-        $testPlayback = $false
-        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-
-        $mapping = @{
-            CreateExpanded = 'Az.Cdn.private\New-AzCdnKeyGroupUpdate_CreateExpanded';
-            CreateViaIdentityProfile = 'Az.Cdn.private\New-AzCdnKeyGroupUpdate_CreateViaIdentityProfile';
-            CreateViaIdentityProfileExpanded = 'Az.Cdn.private\New-AzCdnKeyGroupUpdate_CreateViaIdentityProfileExpanded';
-            CreateViaJsonFilePath = 'Az.Cdn.private\New-AzCdnKeyGroupUpdate_CreateViaJsonFilePath';
-            CreateViaJsonString = 'Az.Cdn.private\New-AzCdnKeyGroupUpdate_CreateViaJsonString';
-        }
-        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        if ($wrappedCmd -eq $null) {
-            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
-        }
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
 Generates a dynamic SSO URI used to sign in to the CDN supplemental portal.
 Supplemental portal is used to configure advanced feature capabilities that are not yet available in the Azure portal, such as core reports in a standard profile; rules engine, advanced HTTP reports, and real-time stats and alerts in a premium profile.
 The SSO URI changes approximately every 10 minutes.
@@ -2982,12 +2469,9 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [EdgeActionName <String>]: The name of the Edge Action
   [Version <String>]: The name of the Edge Action version
   [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
   [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
@@ -2999,8 +2483,6 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/new-azcdnprofilessouri
 #>
@@ -3157,7 +2639,6 @@ To create the parameters described below, construct a hash table containing the 
 
 LOGSCRUBBINGRULE <IProfileScrubbingRules[]>: List of log scrubbing rules applied to the Azure Front Door profile logs.
   MatchVariable <String>: The variable to be scrubbed from the logs.
-  SelectorMatchOperator <String>: When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.
   [Selector <String>]: When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
   [State <String>]: Defines the state of a log scrubbing rule. Default value is enabled.
 .Link
@@ -3234,7 +2715,7 @@ param(
     ${OriginResponseTimeoutSecond},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Standard_Verizon", "Premium_Verizon", "Custom_Verizon", "Standard_Akamai", "Standard_ChinaCdn", "Standard_Microsoft", "Standard_AzureFrontDoor", "Premium_AzureFrontDoor", "Classic_AzureFrontDoor", "Standard_955BandWidth_ChinaCdn", "Standard_AvgBandWidth_ChinaCdn", "StandardPlus_ChinaCdn", "StandardPlus_955BandWidth_ChinaCdn", "StandardPlus_AvgBandWidth_ChinaCdn")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Standard_Verizon", "Premium_Verizon", "Custom_Verizon", "Standard_Akamai", "Standard_ChinaCdn", "Standard_Microsoft", "Standard_AzureFrontDoor", "Premium_AzureFrontDoor", "Standard_955BandWidth_ChinaCdn", "Standard_AvgBandWidth_ChinaCdn", "StandardPlus_ChinaCdn", "StandardPlus_955BandWidth_ChinaCdn", "StandardPlus_AvgBandWidth_ChinaCdn")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # Name of the pricing tier.
@@ -3408,12 +2889,9 @@ AFDENDPOINTINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [EdgeActionName <String>]: The name of the Edge Action
   [Version <String>]: The name of the Edge Action version
   [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
   [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
@@ -3425,8 +2903,6 @@ AFDENDPOINTINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
 
 CUSTOMDOMAIN <IActivatedResourceReference[]>: Domains referenced by this endpoint.
   [Id <String>]: Resource ID.
@@ -3435,12 +2911,9 @@ PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [EdgeActionName <String>]: The name of the Edge Action
   [Version <String>]: The name of the Edge Action version
   [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
   [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
@@ -3452,8 +2925,6 @@ PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
 
 ROUTE <IRoute>: Friendly Routes name mapping to the any Routes or secret related information.
   [CacheConfigurationQueryParameter <String>]: query parameters to include or exclude (comma separated).
@@ -3464,7 +2935,6 @@ ROUTE <IRoute>: Friendly Routes name mapping to the any Routes or secret related
     [Id <String>]: Resource ID.
   [EnabledState <String>]: Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
   [ForwardingProtocol <String>]: Protocol this rule will use when forwarding traffic to backends.
-  [GrpcState <String>]: Whether or not gRPC is enabled on this route. Permitted values are 'Enabled' or 'Disabled'
   [HttpsRedirect <String>]: Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed.
   [LinkToDefaultDomain <String>]: whether this route will be linked to the default endpoint domain.
   [OriginGroupId <String>]: Resource ID.
@@ -3607,16 +3077,6 @@ param(
     [System.String]
     # Protocol this rule will use when forwarding traffic to backends.
     ${ForwardingProtocol},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String]
-    # Whether or not gRPC is enabled on this route.
-    # Permitted values are 'Enabled' or 'Disabled'
-    ${GrpcState},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityAfdEndpointExpanded')]
@@ -3825,244 +3285,6 @@ end {
 
 <#
 .Synopsis
-Deletes an existing KeyGroup within profile.
-.Description
-Deletes an existing KeyGroup within profile.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <ICdnIdentity>: Identity Parameter
-  [EdgeActionName <String>]: The name of the Edge Action
-  [Version <String>]: The name of the Edge Action version
-  [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
-  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
-  [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
-  [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
-  [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the endpoint.
-  [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [RouteName <String>]: Name of the routing rule.
-  [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
-  [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
-  [SecretName <String>]: Name of the Secret under the profile.
-  [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
-
-PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
-  [EdgeActionName <String>]: The name of the Edge Action
-  [Version <String>]: The name of the Edge Action version
-  [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
-  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
-  [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
-  [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
-  [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the endpoint.
-  [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [RouteName <String>]: Name of the routing rule.
-  [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
-  [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
-  [SecretName <String>]: Name of the Secret under the profile.
-  [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
-.Link
-https://learn.microsoft.com/powershell/module/az.cdn/remove-azcdnkeygroup
-#>
-function Remove-AzCdnKeyGroup {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Parameter(ParameterSetName='DeleteViaIdentityProfile', Mandatory)]
-    [Alias('KeyGroupName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [System.String]
-    # Name of the KeyGroup under the profile.
-    ${Name},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [System.String]
-    # Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
-    ${ProfileName},
-
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Delete')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
-    # Identity Parameter
-    ${InputObject},
-
-    [Parameter(ParameterSetName='DeleteViaIdentityProfile', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
-    # Identity Parameter
-    ${ProfileInputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        
-        $testPlayback = $false
-        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-
-        $mapping = @{
-            Delete = 'Az.Cdn.private\Remove-AzCdnKeyGroup_Delete';
-            DeleteViaIdentity = 'Az.Cdn.private\Remove-AzCdnKeyGroup_DeleteViaIdentity';
-            DeleteViaIdentityProfile = 'Az.Cdn.private\Remove-AzCdnKeyGroup_DeleteViaIdentityProfile';
-        }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        if ($wrappedCmd -eq $null) {
-            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
-        }
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
 Deletes an existing  Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified parameters.
 Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains.
 .Description
@@ -4086,12 +3308,9 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [EdgeActionName <String>]: The name of the Edge Action
   [Version <String>]: The name of the Edge Action version
   [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
   [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
@@ -4103,8 +3322,6 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/remove-azcdnprofile
 #>
@@ -4286,12 +3503,9 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [EdgeActionName <String>]: The name of the Edge Action
   [Version <String>]: The name of the Edge Action version
   [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
   [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
@@ -4303,8 +3517,6 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/test-azfrontdoorcdnprofileendpointnameavailability
 #>
@@ -4511,12 +3723,9 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [EdgeActionName <String>]: The name of the Edge Action
   [Version <String>]: The name of the Edge Action version
   [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
   [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
@@ -4528,8 +3737,6 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/test-azfrontdoorcdnprofilesecret
 #>
@@ -4572,7 +3779,7 @@ param(
 
     [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
     [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("UrlSigningKey", "CustomerCertificate", "ManagedCertificate", "AzureFirstPartyManagedCertificate", "MtlsCertificateChain")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("UrlSigningKey", "CustomerCertificate", "ManagedCertificate", "AzureFirstPartyManagedCertificate")]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # The secret type.
@@ -4713,287 +3920,6 @@ end {
 
 <#
 .Synopsis
-Update an existing KeyGroup within the specified profile.
-.Description
-Update an existing KeyGroup within the specified profile.
-.Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IKeyGroupUpdatePropertiesParameters
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IKeyGroup
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <ICdnIdentity>: Identity Parameter
-  [EdgeActionName <String>]: The name of the Edge Action
-  [Version <String>]: The name of the Edge Action version
-  [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
-  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
-  [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
-  [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
-  [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the endpoint.
-  [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [RouteName <String>]: Name of the routing rule.
-  [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
-  [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
-  [SecretName <String>]: Name of the Secret under the profile.
-  [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
-
-KEYGROUPUPDATEPROPERTY <IKeyGroupUpdatePropertiesParameters>: The JSON object containing properties of key group to create or update.
-  [KeyReference <List<IResourceReference>>]: Names of UrlSigningKey type secret objects
-    [Id <String>]: Resource ID.
-
-KEYREFERENCE <IResourceReference[]>: Names of UrlSigningKey type secret objects
-  [Id <String>]: Resource ID.
-
-PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
-  [EdgeActionName <String>]: The name of the Edge Action
-  [Version <String>]: The name of the Edge Action version
-  [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
-  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
-  [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
-  [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
-  [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the endpoint.
-  [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [RouteName <String>]: Name of the routing rule.
-  [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
-  [RuleSetName <String>]: Name of the rule set under the profile which is unique globally.
-  [SecretName <String>]: Name of the Secret under the profile.
-  [SecurityPolicyName <String>]: Name of the security policy under the profile.
-  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
-.Link
-https://learn.microsoft.com/powershell/module/az.cdn/update-azcdnkeygroup
-#>
-function Update-AzCdnKeyGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IKeyGroup])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaIdentityProfile', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
-    [Alias('KeyGroupName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [System.String]
-    # Name of the KeyGroup under the profile.
-    ${Name},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [System.String]
-    # Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
-    ${ProfileName},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
-    [Parameter(ParameterSetName='UpdateViaJsonString')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    # The value must be an UUID.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
-    # Identity Parameter
-    ${InputObject},
-
-    [Parameter(ParameterSetName='UpdateViaIdentityProfile', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
-    # Identity Parameter
-    ${ProfileInputObject},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityProfileExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference[]]
-    # Names of UrlSigningKey type secret objects
-    ${KeyReference},
-
-    [Parameter(ParameterSetName='UpdateViaIdentityProfile', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IKeyGroupUpdatePropertiesParameters]
-    # The JSON object containing properties of key group to create or update.
-    ${KeyGroupUpdateProperty},
-
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String]
-    # Path of Json file supplied to the Update operation
-    ${JsonFilePath},
-
-    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String]
-    # Json string supplied to the Update operation
-    ${JsonString},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-        
-        $testPlayback = $false
-        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-
-        $mapping = @{
-            UpdateExpanded = 'Az.Cdn.private\Update-AzCdnKeyGroup_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.Cdn.private\Update-AzCdnKeyGroup_UpdateViaIdentityExpanded';
-            UpdateViaIdentityProfile = 'Az.Cdn.private\Update-AzCdnKeyGroup_UpdateViaIdentityProfile';
-            UpdateViaIdentityProfileExpanded = 'Az.Cdn.private\Update-AzCdnKeyGroup_UpdateViaIdentityProfileExpanded';
-            UpdateViaJsonFilePath = 'Az.Cdn.private\Update-AzCdnKeyGroup_UpdateViaJsonFilePath';
-            UpdateViaJsonString = 'Az.Cdn.private\Update-AzCdnKeyGroup_UpdateViaJsonString';
-        }
-        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        if ($wrappedCmd -eq $null) {
-            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
-        }
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
 Update an existing Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
 .Description
 Update an existing Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
@@ -5023,12 +3949,9 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [EdgeActionName <String>]: The name of the Edge Action
   [Version <String>]: The name of the Edge Action version
   [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
   [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
@@ -5040,12 +3963,9 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
 
 LOGSCRUBBINGRULE <IProfileScrubbingRules[]>: List of log scrubbing rules applied to the Azure Front Door profile logs.
   MatchVariable <String>: The variable to be scrubbed from the logs.
-  SelectorMatchOperator <String>: When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.
   [Selector <String>]: When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
   [State <String>]: Defines the state of a log scrubbing rule. Default value is enabled.
 .Link
@@ -5311,12 +4231,9 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [EdgeActionName <String>]: The name of the Edge Action
   [Version <String>]: The name of the Edge Action version
   [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
   [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
@@ -5328,8 +4245,6 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
 
 PROFILEUPGRADEPARAMETER <IProfileUpgradeParameters>: Parameters required for profile upgrade.
   WafMappingList <List<IProfileChangeSkuWafMapping>>: Web Application Firewall (WAF) and security policy mapping for the profile upgrade

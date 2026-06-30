@@ -40,10 +40,6 @@ ORIGIN <IAfdOrigin>: Azure Front Door origin is the source of the content being 
   [HostName <String>]: The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint.
   [HttpPort <Int32?>]: The value of the HTTP port. Must be between 1 and 65535.
   [HttpsPort <Int32?>]: The value of the HTTPS port. Must be between 1 and 65535.
-  [OriginCapacityResourceEnabled <String>]: Whether to enable origin capacity for a specific origin
-  [OriginCapacityResourceOriginIngressRateThreshold <Int64?>]: The ingress rate limit threshold for an origin per minute in bytes
-  [OriginCapacityResourceOriginRequestRateThreshold <Int64?>]: The request rate limit threshold for an origin per minute
-  [OriginCapacityResourceRegion <String>]: The nearest origin capacity pop region for an origin
   [OriginHostHeader <String>]: The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure Front Door origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. This overrides the host header defined at Endpoint
   [Priority <Int32?>]: Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5
   [PrivateLinkId <String>]: Resource ID.
@@ -57,12 +53,9 @@ ORIGINGROUPINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [EdgeActionName <String>]: The name of the Edge Action
   [Version <String>]: The name of the Edge Action version
   [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
   [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
@@ -74,19 +67,14 @@ ORIGINGROUPINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
 
 PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [EdgeActionName <String>]: The name of the Edge Action
   [Version <String>]: The name of the Edge Action version
   [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
   [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
@@ -98,8 +86,6 @@ PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnorigin
 #>
@@ -216,39 +202,6 @@ param(
     # The value of the HTTPS port.
     # Must be between 1 and 65535.
     ${HttpsPort},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityOriginGroupExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String]
-    # Whether to enable origin capacity for a specific origin
-    ${OriginCapacityResourceEnabled},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityOriginGroupExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.Int64]
-    # The ingress rate limit threshold for an origin per minute in bytes
-    ${OriginCapacityResourceOriginIngressRateThreshold},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityOriginGroupExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.Int64]
-    # The request rate limit threshold for an origin per minute
-    ${OriginCapacityResourceOriginRequestRateThreshold},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityOriginGroupExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String]
-    # The nearest origin capacity pop region for an origin
-    ${OriginCapacityResourceRegion},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityOriginGroupExpanded')]

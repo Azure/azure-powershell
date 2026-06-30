@@ -84,10 +84,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointPropertiesUpdateParametersInternal)this).EnabledState = (string) content.GetValueForProperty("EnabledState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointPropertiesUpdateParametersInternal)this).EnabledState, global::System.Convert.ToString);
             }
-            if (content.Contains("EnforceMtl"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointPropertiesUpdateParametersInternal)this).EnforceMtl = (string) content.GetValueForProperty("EnforceMtl",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointPropertiesUpdateParametersInternal)this).EnforceMtl, global::System.Convert.ToString);
-            }
             AfterDeserializeDictionary(content);
         }
 
@@ -112,10 +108,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("EnabledState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointPropertiesUpdateParametersInternal)this).EnabledState = (string) content.GetValueForProperty("EnabledState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointPropertiesUpdateParametersInternal)this).EnabledState, global::System.Convert.ToString);
-            }
-            if (content.Contains("EnforceMtl"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointPropertiesUpdateParametersInternal)this).EnforceMtl = (string) content.GetValueForProperty("EnforceMtl",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointPropertiesUpdateParametersInternal)this).EnforceMtl, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

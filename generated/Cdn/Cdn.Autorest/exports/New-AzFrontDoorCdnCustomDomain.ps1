@@ -41,7 +41,6 @@ CUSTOMDOMAIN <IAfdDomain>: Friendly domain name mapping to the endpoint hostname
   [ExtendedProperty <IAfdDomainPropertiesExtendedProperties>]: Key-Value pair representing migration properties for domains.
     [(Any) <String>]: This indicates any property can be added to this object.
   [HostName <String>]: The host name of the domain. Must be a domain name.
-  [MtlSettingScenario <String>]: Supported scenarios for establishing mTLS connection.
   [PropertiesPreValidatedCustomDomainResourceIdId <String>]: Resource ID.
   [TlsSetting <IAfdDomainHttpsParameters>]: The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
     CertificateType <String>: Defines the source of the SSL certificate.
@@ -57,12 +56,9 @@ PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [EdgeActionName <String>]: The name of the Edge Action
   [Version <String>]: The name of the Edge Action version
   [ExecutionFilter <String>]: The name of the Edge Action execution filter
-  [AgentName <String>]: Name of the web agent association.
   [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
   [Id <String>]: Resource identity path
-  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
-  [KnowledgeSourceName <String>]: The name of the knowledge source.
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the endpoint.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
@@ -74,8 +70,6 @@ PROFILEINPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [VersionName <String>]: Name of the DeploymentVersion under the profile.
-  [WebAgentName <String>]: The name of the web agent.
 
 TLSSETTING <IAfdDomainHttpsParameters>: The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
   CertificateType <String>: Defines the source of the SSL certificate.
@@ -155,14 +149,6 @@ param(
     # The host name of the domain.
     # Must be a domain name.
     ${HostName},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("ClientCertificateRequiredAndValidated", "ClientCertificateRequiredAndOriginValidates", "ClientCertificateValidatedIfPresented", "CompleteMtlsPassthroughToOrigin")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String]
-    # Supported scenarios for establishing mTLS connection.
-    ${MtlSettingScenario},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityProfileExpanded')]
