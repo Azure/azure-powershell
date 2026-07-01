@@ -496,9 +496,8 @@ Accept wildcard characters: False
 ```
 
 ### -Targets
-Target selection criteria.
-Can be a single hashtable or an array of hashtables.
-Keys include: resourceType, subscriptions, resourceGroups, regions.
+The Target which a change is authorized against.
+Supported keys include: resourceId, subscriptionId (required if resourceId is omitted), resourceGroupName, resourceType, resourceName, httpMethod.
 
 ```yaml
 Type: System.Object[]
