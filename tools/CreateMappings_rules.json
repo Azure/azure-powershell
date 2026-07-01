@@ -1025,6 +1025,10 @@
     "alias": "Relationships"
   },
   {
+    "module": "PrivateTrafficManager",
+    "alias": "PrivateTrafficManager"
+  },
+  { 
     "module": "PostgreSqlFlexibleServer",
     "alias": "PostgreSqlFlexibleServer"
   }

@@ -1,0 +1,2535 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Private Traffic Manager Service",
+    "version": "2026-02-09-preview",
+    "description": "Microsoft.Network Resource Provider management API.",
+    "x-typespec-generated": [
+      {
+        "emitter": "@azure-tools/typespec-autorest"
+      }
+    ]
+  },
+  "schemes": [
+    "https"
+  ],
+  "host": "management.azure.com",
+  "produces": [
+    "application/json"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "flow": "implicit",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Operations"
+    },
+    {
+      "name": "Endpoints"
+    },
+    {
+      "name": "HealthPolicies"
+    },
+    {
+      "name": "Profiles"
+    },
+    {
+      "name": "Sites"
+    },
+    {
+      "name": "TopologyMaps"
+    }
+  ],
+  "paths": {
+    "/providers/Microsoft.Network/operations": {
+      "get": {
+        "operationId": "Operations_List",
+        "tags": [
+          "Operations"
+        ],
+        "description": "List the operations for the provider",
+        "parameters": [
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/OperationListResult"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/PrivateTrafficManagerProfiles": {
+      "get": {
+        "operationId": "Profiles_ListBySubscription",
+        "tags": [
+          "Profiles"
+        ],
+        "description": "Lists all Traffic Manager profiles within a subscription.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/PrivateTrafficManagerProfileListResult"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/topologyMaps": {
+      "get": {
+        "operationId": "TopologyMaps_ListBySubscription",
+        "tags": [
+          "TopologyMaps"
+        ],
+        "description": "Lists all Topology Maps within a subscription.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/TopologyMapListResult"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/PrivateTrafficManagerProfiles": {
+      "get": {
+        "operationId": "Profiles_ListByResourceGroup",
+        "tags": [
+          "Profiles"
+        ],
+        "description": "Lists all Traffic Manager profiles within a resource group.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/PrivateTrafficManagerProfileListResult"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/PrivateTrafficManagerProfiles/{privateTrafficManagerProfileName}": {
+      "get": {
+        "operationId": "Profiles_Get",
+        "tags": [
+          "Profiles"
+        ],
+        "description": "Gets a Traffic Manager profile.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "privateTrafficManagerProfileName",
+            "in": "path",
+            "description": "The name of the Traffic Manager profile.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/PrivateTrafficManagerProfile"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "Profiles_CreateOrUpdate",
+        "tags": [
+          "Profiles"
+        ],
+        "description": "Create or update a Traffic Manager profile.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "privateTrafficManagerProfileName",
+            "in": "path",
+            "description": "The name of the Traffic Manager profile.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          },
+          {
+            "name": "resource",
+            "in": "body",
+            "description": "The Traffic Manager profile parameters supplied to the CreateOrUpdate operation.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PrivateTrafficManagerProfile"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resource 'PrivateTrafficManagerProfile' update operation succeeded",
+            "schema": {
+              "$ref": "#/definitions/PrivateTrafficManagerProfile"
+            }
+          },
+          "201": {
+            "description": "Resource 'PrivateTrafficManagerProfile' create operation succeeded",
+            "schema": {
+              "$ref": "#/definitions/PrivateTrafficManagerProfile"
+            },
+            "headers": {
+              "Azure-AsyncOperation": {
+                "type": "string",
+                "description": "A link to the status monitor"
+              },
+              "Retry-After": {
+                "type": "integer",
+                "format": "int32",
+                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        },
+        "x-ms-long-running-operation": true
+      },
+      "patch": {
+        "operationId": "Profiles_Patch",
+        "tags": [
+          "Profiles"
+        ],
+        "description": "Updates a Traffic Manager profile.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "privateTrafficManagerProfileName",
+            "in": "path",
+            "description": "The name of the Traffic Manager profile.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          },
+          {
+            "name": "properties",
+            "in": "body",
+            "description": "The resource properties to be updated.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PrivateTrafficManagerProfileUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/PrivateTrafficManagerProfile"
+            }
+          },
+          "202": {
+            "description": "Resource update request accepted.",
+            "headers": {
+              "Location": {
+                "type": "string",
+                "description": "The Location header contains the URL where the status of the long running operation can be checked."
+              },
+              "Retry-After": {
+                "type": "integer",
+                "format": "int32",
+                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      },
+      "delete": {
+        "operationId": "Profiles_Delete",
+        "tags": [
+          "Profiles"
+        ],
+        "description": "Deletes a Traffic Manager profile.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "privateTrafficManagerProfileName",
+            "in": "path",
+            "description": "The name of the Traffic Manager profile.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Resource deletion accepted.",
+            "headers": {
+              "Location": {
+                "type": "string",
+                "description": "The Location header contains the URL where the status of the long running operation can be checked."
+              },
+              "Retry-After": {
+                "type": "integer",
+                "format": "int32",
+                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+              }
+            }
+          },
+          "204": {
+            "description": "Resource does not exist."
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/PrivateTrafficManagerProfiles/{privateTrafficManagerProfileName}/endpoints": {
+      "get": {
+        "operationId": "Endpoints_ListbyParent",
+        "tags": [
+          "Endpoints"
+        ],
+        "description": "Get Private Traffic Manager Endpoints by profile",
+        "parameters": [
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "privateTrafficManagerProfileName",
+            "in": "path",
+            "description": "The name of the Traffic Manager profile.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/EndpointListResult"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/PrivateTrafficManagerProfiles/{privateTrafficManagerProfileName}/endpoints/{endpointName}": {
+      "get": {
+        "operationId": "Endpoints_Get",
+        "tags": [
+          "Endpoints"
+        ],
+        "description": "Gets a Traffic Manager endpoint.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "privateTrafficManagerProfileName",
+            "in": "path",
+            "description": "The name of the Traffic Manager profile.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          },
+          {
+            "name": "endpointName",
+            "in": "path",
+            "description": "The name of the Traffic Manager endpoint.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/Endpoint"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "Endpoints_CreateOrUpdate",
+        "tags": [
+          "Endpoints"
+        ],
+        "description": "Create or update a Traffic Manager endpoint.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "privateTrafficManagerProfileName",
+            "in": "path",
+            "description": "The name of the Traffic Manager profile.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          },
+          {
+            "name": "endpointName",
+            "in": "path",
+            "description": "The name of the Traffic Manager endpoint.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          },
+          {
+            "name": "resource",
+            "in": "body",
+            "description": "Resource create parameters.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Endpoint"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resource 'Endpoint' update operation succeeded",
+            "schema": {
+              "$ref": "#/definitions/Endpoint"
+            }
+          },
+          "201": {
+            "description": "Resource 'Endpoint' create operation succeeded",
+            "schema": {
+              "$ref": "#/definitions/Endpoint"
+            },
+            "headers": {
+              "Azure-AsyncOperation": {
+                "type": "string",
+                "description": "A link to the status monitor"
+              },
+              "Retry-After": {
+                "type": "integer",
+                "format": "int32",
+                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        },
+        "x-ms-long-running-operation": true
+      },
+      "patch": {
+        "operationId": "Endpoints_Update",
+        "tags": [
+          "Endpoints"
+        ],
+        "description": "Updates a Private Traffic Manager endpoint.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "privateTrafficManagerProfileName",
+            "in": "path",
+            "description": "The name of the Traffic Manager profile.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          },
+          {
+            "name": "endpointName",
+            "in": "path",
+            "description": "The name of the Traffic Manager endpoint.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          },
+          {
+            "name": "properties",
+            "in": "body",
+            "description": "The resource properties to be updated.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EndpointUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/Endpoint"
+            }
+          },
+          "202": {
+            "description": "Resource update request accepted.",
+            "headers": {
+              "Location": {
+                "type": "string",
+                "description": "The Location header contains the URL where the status of the long running operation can be checked."
+              },
+              "Retry-After": {
+                "type": "integer",
+                "format": "int32",
+                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      },
+      "delete": {
+        "operationId": "Endpoints_Delete",
+        "tags": [
+          "Endpoints"
+        ],
+        "description": "Deletes a Private Traffic Manager endpoint.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "privateTrafficManagerProfileName",
+            "in": "path",
+            "description": "The name of the Traffic Manager profile.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          },
+          {
+            "name": "endpointName",
+            "in": "path",
+            "description": "The name of the Traffic Manager endpoint.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Resource deletion accepted.",
+            "headers": {
+              "Location": {
+                "type": "string",
+                "description": "The Location header contains the URL where the status of the long running operation can be checked."
+              },
+              "Retry-After": {
+                "type": "integer",
+                "format": "int32",
+                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+              }
+            }
+          },
+          "204": {
+            "description": "Resource does not exist."
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/PrivateTrafficManagerProfiles/{privateTrafficManagerProfileName}/healthPolicies": {
+      "get": {
+        "operationId": "HealthPolicies_ListByParent",
+        "tags": [
+          "HealthPolicies"
+        ],
+        "description": "Lists all Health Policies within a Traffic Manager profile.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "privateTrafficManagerProfileName",
+            "in": "path",
+            "description": "The name of the Traffic Manager profile.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/HealthPolicyListResult"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/PrivateTrafficManagerProfiles/{privateTrafficManagerProfileName}/healthPolicies/{healthPolicyName}": {
+      "get": {
+        "operationId": "HealthPolicies_Get",
+        "tags": [
+          "HealthPolicies"
+        ],
+        "description": "Gets a Traffic Manager health policy.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "privateTrafficManagerProfileName",
+            "in": "path",
+            "description": "The name of the Traffic Manager profile.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          },
+          {
+            "name": "healthPolicyName",
+            "in": "path",
+            "description": "The name of the Traffic Manager health policy.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/HealthPolicy"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "HealthPolicies_CreateOrUpdate",
+        "tags": [
+          "HealthPolicies"
+        ],
+        "description": "Create or update a Traffic Manager health policy.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "privateTrafficManagerProfileName",
+            "in": "path",
+            "description": "The name of the Traffic Manager profile.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          },
+          {
+            "name": "healthPolicyName",
+            "in": "path",
+            "description": "The name of the Traffic Manager health policy.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          },
+          {
+            "name": "resource",
+            "in": "body",
+            "description": "The Traffic Manager health policy parameters supplied to the CreateOrUpdate operation.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/HealthPolicy"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resource 'HealthPolicy' update operation succeeded",
+            "schema": {
+              "$ref": "#/definitions/HealthPolicy"
+            }
+          },
+          "201": {
+            "description": "Resource 'HealthPolicy' create operation succeeded",
+            "schema": {
+              "$ref": "#/definitions/HealthPolicy"
+            },
+            "headers": {
+              "Azure-AsyncOperation": {
+                "type": "string",
+                "description": "A link to the status monitor"
+              },
+              "Retry-After": {
+                "type": "integer",
+                "format": "int32",
+                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        },
+        "x-ms-long-running-operation": true
+      },
+      "delete": {
+        "operationId": "HealthPolicies_Delete",
+        "tags": [
+          "HealthPolicies"
+        ],
+        "description": "Deletes a Traffic Manager health policy.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "privateTrafficManagerProfileName",
+            "in": "path",
+            "description": "The name of the Traffic Manager profile.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          },
+          {
+            "name": "healthPolicyName",
+            "in": "path",
+            "description": "The name of the Traffic Manager health policy.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Resource deletion accepted.",
+            "headers": {
+              "Location": {
+                "type": "string",
+                "description": "The Location header contains the URL where the status of the long running operation can be checked."
+              },
+              "Retry-After": {
+                "type": "integer",
+                "format": "int32",
+                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+              }
+            }
+          },
+          "204": {
+            "description": "Resource does not exist."
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/topologyMaps": {
+      "get": {
+        "operationId": "TopologyMaps_ListByResourceGroup",
+        "tags": [
+          "TopologyMaps"
+        ],
+        "description": "Lists all Topology Maps within a resource group.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/TopologyMapListResult"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/topologyMaps/{topologyMapName}": {
+      "get": {
+        "operationId": "TopologyMaps_Get",
+        "tags": [
+          "TopologyMaps"
+        ],
+        "description": "Gets a Topology Map.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "topologyMapName",
+            "in": "path",
+            "description": "The name of the Topology Map.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/TopologyMap"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "TopologyMaps_CreateOrUpdate",
+        "tags": [
+          "TopologyMaps"
+        ],
+        "description": "Create or update a Topology Map.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "topologyMapName",
+            "in": "path",
+            "description": "The name of the Topology Map.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          },
+          {
+            "name": "resource",
+            "in": "body",
+            "description": "The Topology Map parameters supplied to the CreateOrUpdate operation.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TopologyMap"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resource 'TopologyMap' update operation succeeded",
+            "schema": {
+              "$ref": "#/definitions/TopologyMap"
+            }
+          },
+          "201": {
+            "description": "Resource 'TopologyMap' create operation succeeded",
+            "schema": {
+              "$ref": "#/definitions/TopologyMap"
+            },
+            "headers": {
+              "Azure-AsyncOperation": {
+                "type": "string",
+                "description": "A link to the status monitor"
+              },
+              "Retry-After": {
+                "type": "integer",
+                "format": "int32",
+                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        },
+        "x-ms-long-running-operation": true
+      },
+      "patch": {
+        "operationId": "TopologyMaps_Update",
+        "tags": [
+          "TopologyMaps"
+        ],
+        "description": "Updates a Topology Map.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "topologyMapName",
+            "in": "path",
+            "description": "The name of the Topology Map.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          },
+          {
+            "name": "properties",
+            "in": "body",
+            "description": "The resource properties to be updated.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TopologyMapUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/TopologyMap"
+            }
+          },
+          "202": {
+            "description": "Resource update request accepted.",
+            "headers": {
+              "Location": {
+                "type": "string",
+                "description": "The Location header contains the URL where the status of the long running operation can be checked."
+              },
+              "Retry-After": {
+                "type": "integer",
+                "format": "int32",
+                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      },
+      "delete": {
+        "operationId": "TopologyMaps_Delete",
+        "tags": [
+          "TopologyMaps"
+        ],
+        "description": "Deletes a Topology Map.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "topologyMapName",
+            "in": "path",
+            "description": "The name of the Topology Map.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Resource deletion accepted.",
+            "headers": {
+              "Location": {
+                "type": "string",
+                "description": "The Location header contains the URL where the status of the long running operation can be checked."
+              },
+              "Retry-After": {
+                "type": "integer",
+                "format": "int32",
+                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+              }
+            }
+          },
+          "204": {
+            "description": "Resource does not exist."
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/topologyMaps/{topologyMapName}/sites": {
+      "get": {
+        "operationId": "Sites_ListByParent",
+        "tags": [
+          "Sites"
+        ],
+        "description": "Lists all Sites within a topology map.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "topologyMapName",
+            "in": "path",
+            "description": "The name of the Topology Map.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/SiteListResult"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/topologyMaps/{topologyMapName}/sites/{siteName}": {
+      "get": {
+        "operationId": "Sites_Get",
+        "tags": [
+          "Sites"
+        ],
+        "description": "Gets a Site.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "topologyMapName",
+            "in": "path",
+            "description": "The name of the Topology Map.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          },
+          {
+            "name": "siteName",
+            "in": "path",
+            "description": "The name of the Site.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/Site"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "Sites_CreateOrUpdate",
+        "tags": [
+          "Sites"
+        ],
+        "description": "Create or update a Site.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "topologyMapName",
+            "in": "path",
+            "description": "The name of the Topology Map.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          },
+          {
+            "name": "siteName",
+            "in": "path",
+            "description": "The name of the Site.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          },
+          {
+            "name": "resource",
+            "in": "body",
+            "description": "Resource create parameters.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Site"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resource 'Site' update operation succeeded",
+            "schema": {
+              "$ref": "#/definitions/Site"
+            }
+          },
+          "201": {
+            "description": "Resource 'Site' create operation succeeded",
+            "schema": {
+              "$ref": "#/definitions/Site"
+            },
+            "headers": {
+              "Azure-AsyncOperation": {
+                "type": "string",
+                "description": "A link to the status monitor"
+              },
+              "Retry-After": {
+                "type": "integer",
+                "format": "int32",
+                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        },
+        "x-ms-long-running-operation": true
+      },
+      "patch": {
+        "operationId": "Sites_Update",
+        "tags": [
+          "Sites"
+        ],
+        "description": "Updates a Site.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "topologyMapName",
+            "in": "path",
+            "description": "The name of the Topology Map.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          },
+          {
+            "name": "siteName",
+            "in": "path",
+            "description": "The name of the Site.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          },
+          {
+            "name": "properties",
+            "in": "body",
+            "description": "The resource properties to be updated.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SiteUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/Site"
+            }
+          },
+          "202": {
+            "description": "Resource update request accepted.",
+            "headers": {
+              "Location": {
+                "type": "string",
+                "description": "The Location header contains the URL where the status of the long running operation can be checked."
+              },
+              "Retry-After": {
+                "type": "integer",
+                "format": "int32",
+                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      },
+      "delete": {
+        "operationId": "Sites_Delete",
+        "tags": [
+          "Sites"
+        ],
+        "description": "Deletes a Site.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "topologyMapName",
+            "in": "path",
+            "description": "The name of the Topology Map.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          },
+          {
+            "name": "siteName",
+            "in": "path",
+            "description": "The name of the Site.",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9-]{3,24}$"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Resource deletion accepted.",
+            "headers": {
+              "Location": {
+                "type": "string",
+                "description": "The Location header contains the URL where the status of the long running operation can be checked."
+              },
+              "Retry-After": {
+                "type": "integer",
+                "format": "int32",
+                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+              }
+            }
+          },
+          "204": {
+            "description": "Resource does not exist."
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-long-running-operation": true
+      }
+    }
+  },
+  "definitions": {
+    "AdministrativeStatus": {
+      "type": "string",
+      "description": "The status of the endpoint. If the endpoint is Enabled, it is probed for endpoint health and is included in the traffic routing method.",
+      "enum": [
+        "Enabled",
+        "Disabled"
+      ],
+      "x-ms-enum": {
+        "name": "AdministrativeStatus",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "Enabled",
+            "value": "Enabled",
+            "description": "Enabled"
+          },
+          {
+            "name": "Disabled",
+            "value": "Disabled",
+            "description": "Disabled"
+          }
+        ]
+      }
+    },
+    "AlwaysServe": {
+      "type": "string",
+      "description": "If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method.",
+      "enum": [
+        "Enabled",
+        "Disabled"
+      ],
+      "x-ms-enum": {
+        "name": "AlwaysServe",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "Enabled",
+            "value": "Enabled",
+            "description": "Enabled"
+          },
+          {
+            "name": "Disabled",
+            "value": "Disabled",
+            "description": "Disabled"
+          }
+        ]
+      }
+    },
+    "Azure.ResourceManager.CommonTypes.TrackedResourceUpdate": {
+      "type": "object",
+      "title": "Tracked Resource",
+      "description": "The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'",
+      "properties": {
+        "tags": {
+          "type": "object",
+          "description": "Resource tags.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/Resource"
+        }
+      ]
+    },
+    "CustomHeader": {
+      "type": "object",
+      "description": "Custom header name and value.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Header name."
+        },
+        "value": {
+          "type": "string",
+          "description": "Header value."
+        }
+      }
+    },
+    "CustomTopologyMap": {
+      "type": "string",
+      "description": "The experience level of the Private Traffic Manager profile.",
+      "enum": [
+        "Disable",
+        "Enable"
+      ],
+      "x-ms-enum": {
+        "name": "CustomTopologyMap",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "Disable",
+            "value": "Disable",
+            "description": "Basic experience"
+          },
+          {
+            "name": "Enable",
+            "value": "Enable",
+            "description": "Advanced experience"
+          }
+        ]
+      }
+    },
+    "DnsConfig": {
+      "type": "object",
+      "description": "DNS configuration of the Traffic Manager profile.",
+      "properties": {
+        "recordType": {
+          "$ref": "#/definitions/RecordType",
+          "description": "The record type of the Traffic Manager profile."
+        },
+        "ttl": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The TTL of the DNS records in seconds."
+        }
+      }
+    },
+    "Endpoint": {
+      "type": "object",
+      "description": "Class representing a Private Traffic Manager endpoint.",
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/EndpointProperties",
+          "description": "The properties of the Private Traffic Manager endpoint."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ProxyResource"
+        }
+      ]
+    },
+    "EndpointListResult": {
+      "type": "object",
+      "description": "The response of a Endpoint list operation.",
+      "properties": {
+        "value": {
+          "type": "array",
+          "description": "The Endpoint items on this page",
+          "items": {
+            "$ref": "#/definitions/Endpoint"
+          }
+        },
+        "nextLink": {
+          "type": "string",
+          "format": "uri",
+          "description": "The link to the next page of items"
+        }
+      },
+      "required": [
+        "value"
+      ]
+    },
+    "EndpointProperties": {
+      "type": "object",
+      "description": "Class representing a Traffic Manager endpoint properties.",
+      "properties": {
+        "target": {
+          "type": "string",
+          "description": "The fully-qualified DNS name or IP address of the endpoint. Traffic Manager returns this value in DNS responses to direct traffic to this endpoint."
+        },
+        "monitoringTarget": {
+          "type": "string",
+          "description": "Monitoring target is where Private Traffic Manager will gather health information.If MonitoringTarget is not configured EndpointTarget will be used instead. If the EndpointTarget is IPv6 then the Monitoring Target MUST be configured. Monitoring Target cannot be an IPv6 address."
+        },
+        "endpointStatus": {
+          "$ref": "#/definitions/AdministrativeStatus",
+          "description": "The status of the endpoint. If the endpoint is Enabled, it is probed for endpoint health and is included in the traffic routing method."
+        },
+        "kind": {
+          "$ref": "#/definitions/EndpointsKind",
+          "description": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.",
+          "x-ms-mutability": [
+            "read",
+            "create"
+          ]
+        },
+        "weight": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The weight of this endpoint when using the 'Weighted' traffic routing method. Possible values are from 1 to 1000.",
+          "minimum": 1,
+          "maximum": 1000
+        },
+        "priority": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The priority of this endpoint when using the 'Priority' traffic routing method. Possible values are from 1 to 1000, lower values represent higher priority. This is an optional parameter.  If specified, it must be specified on all endpoints, and no two endpoints can share the same priority value.",
+          "minimum": 1,
+          "maximum": 1000
+        },
+        "alwaysServe": {
+          "$ref": "#/definitions/AlwaysServe",
+          "description": "Indicates whether endpoint is Always Serve or not. Always Serve endpoints are always considered to be healthy."
+        },
+        "healthPolicyId": {
+          "$ref": "#/definitions/HealthPolicyId",
+          "description": "The health policy associated with this endpoint."
+        },
+        "provisioningState": {
+          "$ref": "#/definitions/provisioningStateProperties",
+          "description": "Provisioning state of the resource.",
+          "readOnly": true
+        }
+      },
+      "required": [
+        "target"
+      ]
+    },
+    "EndpointPropertiesUpdate": {
+      "type": "object",
+      "description": "Class representing a Traffic Manager endpoint properties.",
+      "properties": {
+        "target": {
+          "type": "string",
+          "description": "The fully-qualified DNS name or IP address of the endpoint. Traffic Manager returns this value in DNS responses to direct traffic to this endpoint."
+        },
+        "monitoringTarget": {
+          "type": "string",
+          "description": "Monitoring target is where Private Traffic Manager will gather health information.If MonitoringTarget is not configured EndpointTarget will be used instead. If the EndpointTarget is IPv6 then the Monitoring Target MUST be configured. Monitoring Target cannot be an IPv6 address."
+        },
+        "endpointStatus": {
+          "$ref": "#/definitions/AdministrativeStatus",
+          "description": "The status of the endpoint. If the endpoint is Enabled, it is probed for endpoint health and is included in the traffic routing method."
+        },
+        "weight": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The weight of this endpoint when using the 'Weighted' traffic routing method. Possible values are from 1 to 1000.",
+          "minimum": 1,
+          "maximum": 1000
+        },
+        "priority": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The priority of this endpoint when using the 'Priority' traffic routing method. Possible values are from 1 to 1000, lower values represent higher priority. This is an optional parameter.  If specified, it must be specified on all endpoints, and no two endpoints can share the same priority value.",
+          "minimum": 1,
+          "maximum": 1000
+        },
+        "alwaysServe": {
+          "$ref": "#/definitions/AlwaysServe",
+          "description": "Indicates whether endpoint is Always Serve or not. Always Serve endpoints are always considered to be healthy."
+        },
+        "healthPolicyId": {
+          "$ref": "#/definitions/HealthPolicyId",
+          "description": "The health policy associated with this endpoint."
+        }
+      }
+    },
+    "EndpointUpdate": {
+      "type": "object",
+      "description": "Class representing a Private Traffic Manager endpoint.",
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/EndpointPropertiesUpdate",
+          "description": "The properties of the Private Traffic Manager endpoint."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ProxyResource"
+        }
+      ]
+    },
+    "EndpointsKind": {
+      "type": "string",
+      "description": "Class representing the kind of the Private Traffic Manager endpoint.",
+      "enum": [
+        "Endpoint"
+      ],
+      "x-ms-enum": {
+        "name": "EndpointsKind",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "Endpoint",
+            "value": "Endpoint",
+            "description": "Private Traffic Manager Endpoint"
+          }
+        ]
+      }
+    },
+    "ExpectedStatusCodeRange": {
+      "type": "object",
+      "description": "Min and max value of a status code range.",
+      "properties": {
+        "min": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Min status code."
+        },
+        "max": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Max status code."
+        }
+      }
+    },
+    "HealthPolicy": {
+      "type": "object",
+      "description": "Class representing a Traffic Manager health policy.",
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/HealthPolicyProperties",
+          "description": "The properties of the Traffic Manager health policy."
+        },
+        "kind": {
+          "$ref": "#/definitions/HealthPolicyKind",
+          "description": "The kind of the Traffic Manager health policy.",
+          "x-ms-mutability": [
+            "read",
+            "create"
+          ]
+        }
+      },
+      "discriminator": "kind",
+      "required": [
+        "kind"
+      ],
+      "allOf": [
+        {
+          "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ProxyResource"
+        }
+      ]
+    },
+    "HealthPolicyId": {
+      "type": "string",
+      "format": "arm-id",
+      "description": "A type definition that refers the id to an Azure Resource Manager resource.",
+      "x-ms-arm-id-details": {
+        "allowedResources": [
+          {
+            "type": "Microsoft.Network/PrivateTrafficManagerProfiles/healthPolicies"
+          }
+        ]
+      }
+    },
+    "HealthPolicyKind": {
+      "type": "string",
+      "description": "Class representing kind of Traffic Manager health policy.",
+      "enum": [
+        "Probe"
+      ],
+      "x-ms-enum": {
+        "name": "HealthPolicyKind",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "Probe",
+            "value": "Probe",
+            "description": "Probe"
+          }
+        ]
+      }
+    },
+    "HealthPolicyListResult": {
+      "type": "object",
+      "description": "The response of a HealthPolicy list operation.",
+      "properties": {
+        "value": {
+          "type": "array",
+          "description": "The HealthPolicy items on this page",
+          "items": {
+            "$ref": "#/definitions/HealthPolicy"
+          }
+        },
+        "nextLink": {
+          "type": "string",
+          "format": "uri",
+          "description": "The link to the next page of items"
+        }
+      },
+      "required": [
+        "value"
+      ]
+    },
+    "HealthPolicyProperties": {
+      "type": "object",
+      "description": "Class representing the health policy for Traffic Manager profile properties.",
+      "properties": {
+        "kind": {
+          "$ref": "#/definitions/HealthPolicyKind",
+          "description": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.",
+          "x-ms-mutability": [
+            "read",
+            "create"
+          ]
+        },
+        "provisioningState": {
+          "$ref": "#/definitions/provisioningStateProperties",
+          "description": "Provisioning state of the resource.",
+          "readOnly": true
+        }
+      },
+      "discriminator": "kind",
+      "required": [
+        "kind"
+      ]
+    },
+    "PrivateTrafficManagerProfile": {
+      "type": "object",
+      "description": "Class representing a Traffic Manager profile.",
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/ProfileProperties",
+          "description": "The properties of the Traffic Manager profile."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/TrackedResource"
+        }
+      ]
+    },
+    "PrivateTrafficManagerProfileListResult": {
+      "type": "object",
+      "description": "The response of a PrivateTrafficManagerProfile list operation.",
+      "properties": {
+        "value": {
+          "type": "array",
+          "description": "The PrivateTrafficManagerProfile items on this page",
+          "items": {
+            "$ref": "#/definitions/PrivateTrafficManagerProfile"
+          }
+        },
+        "nextLink": {
+          "type": "string",
+          "format": "uri",
+          "description": "The link to the next page of items"
+        }
+      },
+      "required": [
+        "value"
+      ]
+    },
+    "PrivateTrafficManagerProfileUpdate": {
+      "type": "object",
+      "description": "Class representing a Traffic Manager profile.",
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/ProfileProperties",
+          "description": "The properties of the Traffic Manager profile."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate"
+        }
+      ]
+    },
+    "ProbeConfig": {
+      "type": "object",
+      "description": "Class containing endpoint monitoring settings in a Traffic Manager profile.",
+      "properties": {
+        "protocol": {
+          "$ref": "#/definitions/Protocol",
+          "description": "The protocol (HTTP, HTTPS or TCP) used to probe for endpoint health."
+        },
+        "port": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The TCP port used to probe for endpoint health."
+        },
+        "path": {
+          "type": "string",
+          "description": "The path relative to the endpoint domain name used to probe for endpoint health."
+        },
+        "intervalInSeconds": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The monitor interval for endpoints in this profile. This is the interval at which Traffic Manager will check the health of each endpoint in this profile. Allowed values: 5, 10, or 30 seconds."
+        },
+        "timeoutInSeconds": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The monitor timeout for endpoints in this profile. This is the time that Traffic Manager allows endpoints in this profile to response to the health check."
+        },
+        "toleratedNumberOfFailures": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The number of consecutive failed health check that Traffic Manager tolerates before declaring an endpoint in this profile Degraded after the next failed health check."
+        },
+        "customHeaders": {
+          "type": "array",
+          "description": "List of custom headers.",
+          "items": {
+            "$ref": "#/definitions/CustomHeader"
+          },
+          "x-ms-identifiers": [
+            "name"
+          ]
+        },
+        "expectedStatusCodeRanges": {
+          "type": "array",
+          "description": "List of expected status code ranges.",
+          "items": {
+            "$ref": "#/definitions/ExpectedStatusCodeRange"
+          },
+          "x-ms-identifiers": []
+        }
+      }
+    },
+    "ProbeHealthPolicy": {
+      "type": "object",
+      "description": "Class representing a Traffic Manager health policy of kind Probe.",
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/ProbeHealthPolicyProperties",
+          "description": "The health policy for Traffic Manager profile properties."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/HealthPolicy"
+        }
+      ],
+      "x-ms-discriminator-value": "Probe"
+    },
+    "ProbeHealthPolicyProperties": {
+      "type": "object",
+      "description": "Class representing a Traffic Manager health policy of kind Probe.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the health policy."
+        },
+        "probeConfig": {
+          "$ref": "#/definitions/ProbeConfig",
+          "description": "Probe monitoring settings of the Traffic Manager profile."
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "allOf": [
+        {
+          "$ref": "#/definitions/HealthPolicyProperties"
+        }
+      ],
+      "x-ms-discriminator-value": "Probe"
+    },
+    "ProbingGatewayId": {
+      "type": "string",
+      "format": "arm-id",
+      "description": "A type definition that refers the id to an Azure Resource Manager resource.",
+      "x-ms-arm-id-details": {
+        "allowedResources": [
+          {
+            "type": "Microsoft.Network/ProbingGateways"
+          }
+        ]
+      }
+    },
+    "ProfileEndpoint": {
+      "type": "object",
+      "description": "Class representing an inline endpoint within a Traffic Manager profile.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the endpoint."
+        },
+        "target": {
+          "type": "string",
+          "description": "The fully-qualified DNS name or IP address of the endpoint. Traffic Manager returns this value in DNS responses to direct traffic to this endpoint."
+        },
+        "monitoringTarget": {
+          "type": "string",
+          "description": "Monitoring target is where Private Traffic Manager will gather health information.If MonitoringTarget is not configured EndpointTarget will be used instead. If the EndpointTarget is IPv6 then the Monitoring Target MUST be configured. Monitoring Target cannot be an IPv6 address."
+        },
+        "endpointStatus": {
+          "$ref": "#/definitions/AdministrativeStatus",
+          "description": "The status of the endpoint. If the endpoint is Enabled, it is probed for endpoint health and is included in the traffic routing method."
+        },
+        "kind": {
+          "$ref": "#/definitions/EndpointsKind",
+          "description": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.",
+          "x-ms-mutability": [
+            "read",
+            "create"
+          ]
+        },
+        "weight": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The weight of this endpoint when using the 'Weighted' traffic routing method. Possible values are from 1 to 1000.",
+          "minimum": 1,
+          "maximum": 1000
+        },
+        "priority": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The priority of this endpoint when using the 'Priority' traffic routing method. Possible values are from 1 to 1000, lower values represent higher priority. This is an optional parameter.  If specified, it must be specified on all endpoints, and no two endpoints can share the same priority value.",
+          "minimum": 1,
+          "maximum": 1000
+        },
+        "alwaysServe": {
+          "$ref": "#/definitions/AlwaysServe",
+          "description": "Indicates whether endpoint is Always Serve or not. Always Serve endpoints are always considered to be healthy."
+        },
+        "healthPolicyId": {
+          "$ref": "#/definitions/HealthPolicyId",
+          "description": "The health policy associated with this endpoint."
+        },
+        "provisioningState": {
+          "$ref": "#/definitions/provisioningStateProperties",
+          "description": "Provisioning state of the resource.",
+          "readOnly": true
+        }
+      },
+      "required": [
+        "name",
+        "target"
+      ]
+    },
+    "ProfileProperties": {
+      "type": "object",
+      "description": "Class representing the Traffic Manager profile properties.",
+      "properties": {
+        "customTopologyMap": {
+          "$ref": "#/definitions/CustomTopologyMap",
+          "description": "The experience level of the Private Traffic Manager profile."
+        },
+        "dnsConfig": {
+          "$ref": "#/definitions/DnsConfig",
+          "description": "The DNS related configuration properties of the Private Traffic Manager"
+        },
+        "topologyMapId": {
+          "$ref": "#/definitions/TopologyMapId",
+          "description": "The ARM resource ID of the topology map which has site(s) associated with this probing gateway."
+        },
+        "profileStatus": {
+          "$ref": "#/definitions/ProfileStatus",
+          "description": "The status of the Private Traffic Manager profile."
+        },
+        "trafficRoutingMethod": {
+          "$ref": "#/definitions/TrafficRoutingMethod",
+          "description": "The traffic routing method of the Private Traffic Manager profile."
+        },
+        "endpoints": {
+          "type": "array",
+          "description": "The list of endpoints in the Private Traffic Manager profile.",
+          "items": {
+            "$ref": "#/definitions/ProfileEndpoint"
+          },
+          "x-ms-identifiers": [
+            "target"
+          ]
+        },
+        "provisioningState": {
+          "$ref": "#/definitions/provisioningStateProperties",
+          "description": "Provisioning state of the resource.",
+          "readOnly": true
+        }
+      }
+    },
+    "ProfileStatus": {
+      "type": "string",
+      "description": "The status of the Traffic Manager profile.",
+      "enum": [
+        "Enabled",
+        "Disabled"
+      ],
+      "x-ms-enum": {
+        "name": "ProfileStatus",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "Enabled",
+            "value": "Enabled",
+            "description": "Enabled"
+          },
+          {
+            "name": "Disabled",
+            "value": "Disabled",
+            "description": "Disabled"
+          }
+        ]
+      }
+    },
+    "Protocol": {
+      "type": "string",
+      "description": "The protocol (HTTP, HTTPS or TCP) used to probe for endpoint health.",
+      "enum": [
+        "HTTP",
+        "HTTPS",
+        "TCP"
+      ],
+      "x-ms-enum": {
+        "name": "Protocol",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "HTTP",
+            "value": "HTTP",
+            "description": "HTTP"
+          },
+          {
+            "name": "HTTPS",
+            "value": "HTTPS",
+            "description": "HTTPS"
+          },
+          {
+            "name": "TCP",
+            "value": "TCP",
+            "description": "TCP"
+          }
+        ]
+      }
+    },
+    "RecordType": {
+      "type": "string",
+      "description": "The record type of the Traffic Manager profile.",
+      "enum": [
+        "A",
+        "AAAA",
+        "CNAME"
+      ],
+      "x-ms-enum": {
+        "name": "RecordType",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "A",
+            "value": "A",
+            "description": "A"
+          },
+          {
+            "name": "AAAA",
+            "value": "AAAA",
+            "description": "AAAA"
+          },
+          {
+            "name": "CNAME",
+            "value": "CNAME",
+            "description": "CNAME"
+          }
+        ]
+      }
+    },
+    "Site": {
+      "type": "object",
+      "description": "Class representing a Site.",
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/SiteProperties",
+          "description": "The properties of the Site."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ProxyResource"
+        }
+      ]
+    },
+    "SiteListResult": {
+      "type": "object",
+      "description": "The response of a Site list operation.",
+      "properties": {
+        "value": {
+          "type": "array",
+          "description": "The Site items on this page",
+          "items": {
+            "$ref": "#/definitions/Site"
+          }
+        },
+        "nextLink": {
+          "type": "string",
+          "format": "uri",
+          "description": "The link to the next page of items"
+        }
+      },
+      "required": [
+        "value"
+      ]
+    },
+    "SiteProperties": {
+      "type": "object",
+      "description": "Class representing the Site properties.",
+      "properties": {
+        "probingGatewayIds": {
+          "type": "array",
+          "description": "The ARM resource ID of the probing gateway that can be used to monitor health as surrogate to the networks in the Site.",
+          "items": {
+            "$ref": "#/definitions/ProbingGatewayId"
+          }
+        },
+        "virtualNetworkIds": {
+          "type": "array",
+          "description": "The list of Network IDs that forms the Site.",
+          "items": {
+            "$ref": "#/definitions/VirtualNetworkId"
+          }
+        },
+        "provisioningState": {
+          "$ref": "#/definitions/provisioningStateProperties",
+          "description": "Provisioning state of the resource.",
+          "readOnly": true
+        }
+      }
+    },
+    "SiteUpdate": {
+      "type": "object",
+      "description": "Class representing a Site.",
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/SiteProperties",
+          "description": "The properties of the Site."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/ProxyResource"
+        }
+      ]
+    },
+    "TopologyMap": {
+      "type": "object",
+      "description": "Class representing a Topology Map.",
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/TopologyMapProperties",
+          "description": "The properties of the Topology Map."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "../../../../../../../../common-types/resource-management/v5/types.json#/definitions/TrackedResource"
+        }
+      ]
+    },
+    "TopologyMapId": {
+      "type": "string",
+      "format": "arm-id",
+      "description": "A type definition that refers the id to an Azure Resource Manager resource.",
+      "x-ms-arm-id-details": {
+        "allowedResources": [
+          {
+            "type": "Microsoft.Network/topologyMaps"
+          }
+        ]
+      }
+    },
+    "TopologyMapListResult": {
+      "type": "object",
+      "description": "The response of a TopologyMap list operation.",
+      "properties": {
+        "value": {
+          "type": "array",
+          "description": "The TopologyMap items on this page",
+          "items": {
+            "$ref": "#/definitions/TopologyMap"
+          }
+        },
+        "nextLink": {
+          "type": "string",
+          "format": "uri",
+          "description": "The link to the next page of items"
+        }
+      },
+      "required": [
+        "value"
+      ]
+    },
+    "TopologyMapProperties": {
+      "type": "object",
+      "description": "Class representing the Topology Map properties.",
+      "properties": {
+        "sites": {
+          "type": "array",
+          "description": "The list of Sites in the Topology Map.",
+          "items": {
+            "$ref": "#/definitions/Site"
+          }
+        },
+        "catchAllSiteName": {
+          "type": "string",
+          "description": "The Name of the CatchAll site. There is only one CatchAll site in a TopologyMap"
+        },
+        "provisioningState": {
+          "$ref": "#/definitions/provisioningStateProperties",
+          "description": "The provisioning state of the TopologyMap resource.",
+          "readOnly": true
+        }
+      }
+    },
+    "TopologyMapUpdate": {
+      "type": "object",
+      "description": "Class representing a Topology Map.",
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/TopologyMapProperties",
+          "description": "The properties of the Topology Map."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate"
+        }
+      ]
+    },
+    "TrafficRoutingMethod": {
+      "type": "string",
+      "description": "The traffic routing method of the Traffic Manager profile.",
+      "enum": [
+        "Priority",
+        "Weighted"
+      ],
+      "x-ms-enum": {
+        "name": "TrafficRoutingMethod",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "Priority",
+            "value": "Priority",
+            "description": "Priority"
+          },
+          {
+            "name": "Weighted",
+            "value": "Weighted",
+            "description": "Weighted"
+          }
+        ]
+      }
+    },
+    "VirtualNetworkId": {
+      "type": "string",
+      "format": "arm-id",
+      "description": "A type definition that refers the id to an Azure Resource Manager resource.",
+      "x-ms-arm-id-details": {
+        "allowedResources": [
+          {
+            "type": "Microsoft.Network/virtualNetworks"
+          }
+        ]
+      }
+    },
+    "provisioningStateProperties": {
+      "type": "string",
+      "description": "The provisioning state of the top-level resource",
+      "enum": [
+        "Succeeded",
+        "Failed",
+        "Canceled"
+      ],
+      "x-ms-enum": {
+        "name": "provisioningStateProperties",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "Succeeded",
+            "value": "Succeeded",
+            "description": "Indicating the resource has been successfully provisioned"
+          },
+          {
+            "name": "Failed",
+            "value": "Failed",
+            "description": "Indicating that the resource provisioning has failed"
+          },
+          {
+            "name": "Canceled",
+            "value": "Canceled",
+            "description": "Indicating that the resource provisioning has been cancelled"
+          }
+        ]
+      },
+      "readOnly": true
+    }
+  },
+  "parameters": {}
+}

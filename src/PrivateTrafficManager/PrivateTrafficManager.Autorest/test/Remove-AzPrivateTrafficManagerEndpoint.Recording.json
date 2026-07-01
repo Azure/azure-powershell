@@ -1,0 +1,45 @@
+{
+  "Remove-AzPrivateTrafficManagerEndpoint+[NoContext]+Delete - should remove an endpoint+$DELETE+https://management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/endpoints/ptm-ep-del-70ad8z?api-version=2026-02-09-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://brazilus.management.azure.com/subscriptions/ba703c80-5928-4cad-9c62-c80651689acd/resourceGroups/ptm-test-rg-70ad8z/providers/Microsoft.Network/privateTrafficManagerProfiles/ptm-profile-70ad8z/endpoints/ptm-ep-del-70ad8z?api-version=2026-02-09-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "72" ],
+        "x-ms-client-request-id": [ "eef056e4-a120-4a6c-b6f0-cab9be7c67c8" ],
+        "CommandName": [ "Remove-AzPrivateTrafficManagerEndpoint" ],
+        "FullCommandName": [ "Remove-AzPrivateTrafficManagerEndpoint_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v15.5.0", "PSVersion/v7.6.2", "Az.PrivateTrafficManager/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-envoy-upstream-service-time": [ "1004" ],
+        "x-ms-operation-identifier": [ "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=3ded4b87-de7e-4015-8a3e-cc1f338081e6/brazilus/764757b5-a937-4746-8f96-0776b3b19814" ],
+        "x-ms-throttling-version": [ "v2" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
+        "x-ms-request-id": [ "19cb236b-3426-4991-9d2e-f3f080fbf02c" ],
+        "x-ms-correlation-request-id": [ "19cb236b-3426-4991-9d2e-f3f080fbf02c" ],
+        "x-ms-routing-request-id": [ "BRAZILUS:20260619T085444Z:19cb236b-3426-4991-9d2e-f3f080fbf02c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5C8C55BC3B174A52B4AA4480EBCAF901 Ref B: MAA211070117031 Ref C: 2026-06-19T08:54:43Z" ],
+        "Date": [ "Fri, 19 Jun 2026 08:54:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

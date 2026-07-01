@@ -1,0 +1,274 @@
+---
+external help file: Az.PrivateTrafficManager-help.xml
+Module Name: Az.PrivateTrafficManager
+online version: https://learn.microsoft.com/powershell/module/az.privatetrafficmanager/new-azprivatetrafficmanagerhealthpolicy
+schema: 2.0.0
+---
+
+# New-AzPrivateTrafficManagerHealthPolicy
+
+## SYNOPSIS
+Create a Traffic Manager health policy.
+
+## SYNTAX
+
+### CreateExpanded (Default)
+```
+New-AzPrivateTrafficManagerHealthPolicy -Name <String> -PrivateTrafficManagerProfileName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzPrivateTrafficManagerHealthPolicy -Name <String> -PrivateTrafficManagerProfileName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzPrivateTrafficManagerHealthPolicy -Name <String> -PrivateTrafficManagerProfileName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityPrivateTrafficManagerProfileExpanded
+```
+New-AzPrivateTrafficManagerHealthPolicy -Name <String>
+ -PrivateTrafficManagerProfileInputObject <IPrivateTrafficManagerIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+## DESCRIPTION
+Create a Traffic Manager health policy.
+
+## EXAMPLES
+
+### Example 1: Create a health policy using a JSON file
+```powershell
+New-AzPrivateTrafficManagerHealthPolicy -Name "hp1" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg" -JsonFilePath "./healthpolicy.json"
+```
+
+```output
+Name  Kind   ProvisioningState
+----  ----   -----------------
+hp1   Probe  Succeeded
+```
+
+This command creates a new health policy from a JSON file that defines the probe configuration including protocol, port, path, and health check intervals.
+
+### Example 2: Create a health policy using a JSON string
+```powershell
+$jsonString = '{"kind":"Probe","properties":{"name":"https-probe","probeConfig":{"protocol":"HTTPS","port":443,"path":"/health","intervalInSeconds":30,"timeoutInSeconds":10,"toleratedNumberOfFailures":3}}}'
+New-AzPrivateTrafficManagerHealthPolicy -Name "https-probe-policy" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg" -JsonString $jsonString
+```
+
+```output
+Name                 Kind   ProvisioningState
+----                 ----   -----------------
+https-probe-policy   Probe  Succeeded
+```
+
+This command creates a health policy with an HTTPS probe that checks the /health endpoint every 30 seconds.
+
+## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the Traffic Manager health policy.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: HealthPolicyName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateTrafficManagerProfileInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
+Parameter Sets: CreateViaIdentityPrivateTrafficManagerProfileExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PrivateTrafficManagerProfileName
+The name of the Private Traffic Manager profile.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IPrivateTrafficManagerIdentity
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.PrivateTrafficManager.Models.IHealthPolicy
+
+## NOTES
+
+## RELATED LINKS
