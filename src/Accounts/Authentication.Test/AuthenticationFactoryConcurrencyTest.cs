@@ -162,9 +162,13 @@ namespace Common.Authentication.Test
 #pragma warning restore CS0618 // Type or member is obsolete
                 mockTokenCredential.Setup(f => f.GetTokenAsync(It.IsAny<TokenRequestContext>(), It.IsAny<CancellationToken>()))
                     .ReturnsAsync(new AccessToken(armToken, DateTimeOffset.Now));
-#pragma warning disable CS0618 // Type or member is obsolete
-                mockAzureCredentialFactory.Setup(f => f.CreateSharedTokenCacheCredentials(It.IsAny<SharedTokenCacheCredentialOptions>())).Returns(mockTokenCredential.Object);
-#pragma warning restore CS0618 // Type or member is obsolete
+                mockAzureCredentialFactory.Setup(f => f.CreateMsalSharedCacheCredential(
+                        It.IsAny<Microsoft.Identity.Client.IPublicClientApplication>(),
+                        It.IsAny<string>(),
+                        It.IsAny<string>(),
+                        It.IsAny<string>(),
+                        It.IsAny<System.Func<Microsoft.Identity.Client.Extensibility.OnBeforeTokenRequestData, System.Threading.Tasks.Task>>()))
+                    .Returns(mockTokenCredential.Object);
 
                 //var mockTokenManagedIdentityCredential = new Mock<ManagedIdentityCredential>();
                 //mockTokenManagedIdentityCredential.Setup(f => f.GetTokenAsync(It.IsAny<TokenRequestContext>(), It.IsAny<CancellationToken>()))

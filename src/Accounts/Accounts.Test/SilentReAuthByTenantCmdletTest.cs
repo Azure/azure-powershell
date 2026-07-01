@@ -22,6 +22,8 @@ using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.PowerShell.Authenticators;
 using Microsoft.Azure.PowerShell.Authenticators.Factories;
 using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Identity.Client;
+using Microsoft.Identity.Client.Extensibility;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
@@ -167,8 +169,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 // Setup
                 InitializeSession();
                 var mockAzureCredentialFactory = new Mock<AzureCredentialFactory>();
-#pragma warning disable CS0618 // Type or member is obsolete
-                mockAzureCredentialFactory.Setup(f => f.CreateSharedTokenCacheCredentials(It.IsAny<SharedTokenCacheCredentialOptions>())).Returns(() => new TokenCredentialMock(
+                mockAzureCredentialFactory.Setup(f => f.CreateMsalSharedCacheCredential(
+                        It.IsAny<IPublicClientApplication>(),
+                        It.IsAny<string>(),
+                        It.IsAny<string>(),
+                        It.IsAny<string>(),
+                        It.IsAny<Func<OnBeforeTokenRequestData, Task>>()))
+                    .Returns(() => new TokenCredentialMock(
                     (times) =>
                     {
                         if (times < 1)
@@ -178,7 +185,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                         throw new CredentialUnavailableException(identityExceptionMessage);
                     }
                     ));
-#pragma warning restore CS0618 // Type or member is obsolete
                 AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => mockAzureCredentialFactory.Object, true);
                 AzureSession.Instance.ClientFactory.AddHandler(new HttpMockHandler(
                     (times) =>
@@ -219,13 +225,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 InitializeSession();
                 cmdlet.TenantId = Guid.NewGuid().ToString();
                 var mockAzureCredentialFactory = new Mock<AzureCredentialFactory>();
-#pragma warning disable CS0618 // Type or member is obsolete
-                mockAzureCredentialFactory.Setup(f => f.CreateSharedTokenCacheCredentials(It.IsAny<SharedTokenCacheCredentialOptions>())).Returns(() => new TokenCredentialMock(
+                mockAzureCredentialFactory.Setup(f => f.CreateMsalSharedCacheCredential(
+                        It.IsAny<IPublicClientApplication>(),
+                        It.IsAny<string>(),
+                        It.IsAny<string>(),
+                        It.IsAny<string>(),
+                        It.IsAny<Func<OnBeforeTokenRequestData, Task>>()))
+                    .Returns(() => new TokenCredentialMock(
                     (firstTime) =>
                     {
                         return new ValueTask<AccessToken>(new AccessToken(fakeToken, DateTimeOffset.Now.AddHours(1)));
                     }));
-#pragma warning restore CS0618 // Type or member is obsolete
 
                 AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => mockAzureCredentialFactory.Object, true);
                 AzureSession.Instance.ClientFactory.AddHandler(new HttpMockHandler(
@@ -280,13 +290,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 InitializeSession();
                 cmdlet.TenantId = Guid.NewGuid().ToString();
                 var mockAzureCredentialFactory = new Mock<AzureCredentialFactory>();
-#pragma warning disable CS0618 // Type or member is obsolete
-                mockAzureCredentialFactory.Setup(f => f.CreateSharedTokenCacheCredentials(It.IsAny<SharedTokenCacheCredentialOptions>())).Returns(() => new TokenCredentialMock(
+                mockAzureCredentialFactory.Setup(f => f.CreateMsalSharedCacheCredential(
+                        It.IsAny<IPublicClientApplication>(),
+                        It.IsAny<string>(),
+                        It.IsAny<string>(),
+                        It.IsAny<string>(),
+                        It.IsAny<Func<OnBeforeTokenRequestData, Task>>()))
+                    .Returns(() => new TokenCredentialMock(
                     (times) =>
                     {
                         return new ValueTask<AccessToken>(new AccessToken(fakeToken, DateTimeOffset.Now.AddHours(1)));
                     }));
-#pragma warning restore CS0618 // Type or member is obsolete
 
                 AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => mockAzureCredentialFactory.Object, true);
                 AzureSession.Instance.ClientFactory.AddHandler(new HttpMockHandler(
