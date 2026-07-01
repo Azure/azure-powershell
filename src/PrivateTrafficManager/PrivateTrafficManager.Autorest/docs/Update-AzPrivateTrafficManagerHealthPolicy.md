@@ -37,10 +37,9 @@ Update a Traffic Manager health policy.
 
 ## EXAMPLES
 
-### Example 1: Update a health policy using a JSON string
+### Example 1: Update a health policy by identity
 ```powershell
-$jsonString = '{"kind":"Probe","properties":{"name":"hp1","probeConfig":{"protocol":"HTTPS","port":443,"path":"/health","intervalInSeconds":60,"timeoutInSeconds":15,"toleratedNumberOfFailures":5}}}'
-Update-AzPrivateTrafficManagerHealthPolicy -Name "hp1" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg" -JsonString $jsonString
+Update-AzPrivateTrafficManagerHealthPolicy -Name "hp1" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg"
 ```
 
 ```output
@@ -49,11 +48,11 @@ Name  Kind   ProvisioningState
 hp1   Probe  Succeeded
 ```
 
-This command updates the health policy to increase the probe interval to 60 seconds and tolerated failures to 5.
+This command updates the health policy. Note that this cmdlet currently has no updatable body parameters; it only accepts identity parameters.
 
-### Example 2: Update a health policy using a JSON file
+### Example 2: Update a health policy using pipeline input
 ```powershell
-Update-AzPrivateTrafficManagerHealthPolicy -Name "hp1" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg" -JsonFilePath "./updated-healthpolicy.json"
+Get-AzPrivateTrafficManagerHealthPolicy -Name "hp1" -PrivateTrafficManagerProfileName "weighted-profile" -ResourceGroupName "demo-rg" | Update-AzPrivateTrafficManagerHealthPolicy
 ```
 
 ```output
@@ -62,7 +61,7 @@ Name  Kind   ProvisioningState
 hp1   Probe  Succeeded
 ```
 
-This command updates the health policy configuration from a JSON file.
+This command retrieves a health policy and pipes it to the update cmdlet.
 
 ## PARAMETERS
 
