@@ -51,6 +51,10 @@ directive:
   - where:
       variant: ^CreateViaIdentity.*$
     remove: true
+  - where:
+      subject: ^ChangeRecord$
+      variant: ^GetViaIdentity$
+    remove: true
   # Remove the Set-* cmdlet
   - where:
       verb: Set
@@ -81,6 +85,14 @@ directive:
       subject: ChangeRecordStageProgression(.*)
     set:
       subject: StageProgression$1
+  - where:
+      subject: ^StageMap$
+      variant: ^(GetViaIdentity|GetViaIdentity1|GetViaIdentityManagementGroup)$
+    remove: true
+  - where:
+      subject: ^StageProgression$
+      variant: ^(GetViaIdentity|GetViaIdentityChangeRecord|GetViaIdentityChangeRecord1)$
+    remove: true
   # Remove AuditTrail and NextStage cmdlets
   - where:
       subject: .*AuditTrail$
