@@ -12,11 +12,26 @@ Regenerate a new set of Authentication Keys for Self Hosted Integration Runtime.
 
 ## SYNTAX
 
+### RegenerateExpanded (Default)
 ```
 New-AzDataMigrationSqlServiceAuthKey -ResourceGroupName <String> -SqlMigrationServiceName <String>
  [-SubscriptionId <String>] [-AuthKey1 <String>] [-AuthKey2 <String>] [-KeyName <String>]
  [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### RegenerateViaJsonFilePath
+```
+New-AzDataMigrationSqlServiceAuthKey -ResourceGroupName <String> -SqlMigrationServiceName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RegenerateViaJsonString
+```
+New-AzDataMigrationSqlServiceAuthKey -ResourceGroupName <String> -SqlMigrationServiceName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +60,7 @@ The first authentication key.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RegenerateExpanded
 Aliases:
 
 Required: False
@@ -60,7 +75,7 @@ The second authentication key.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RegenerateExpanded
 Aliases:
 
 Required: False
@@ -86,12 +101,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Regenerate operation
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Regenerate operation
+
+```yaml
+Type: System.String
+Parameter Sets: RegenerateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -KeyName
 The name of authentication key to generate.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RegenerateExpanded
 Aliases:
 
 Required: False
@@ -200,7 +245,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IRegenAuthKeys
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IRegenAuthKeys
 
 ## NOTES
 

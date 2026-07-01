@@ -12,17 +12,48 @@ Create a new database migration to a given SQL VM.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzDataMigrationToSqlVM -ResourceGroupName <String> -SqlVirtualMachineName <String> -TargetDbName <String>
  [-SubscriptionId <String>] [-AzureBlobAccountKey <String>] [-AzureBlobContainerName <String>]
  [-AzureBlobStorageAccountResourceId <String>] [-FileSharePassword <SecureString>] [-FileSharePath <String>]
- [-FileShareUsername <String>] [-Kind <ResourceType>] [-MigrationService <String>] [-Offline]
+ [-FileShareUsername <String>] [-Kind <String>] [-MigrationService <String>] [-Offline]
  [-OfflineConfigurationLastBackupName <String>] [-Scope <String>] [-SourceDatabaseName <String>]
  [-SourceSqlConnectionAuthentication <String>] [-SourceSqlConnectionDataSource <String>]
  [-SourceSqlConnectionEncryptConnection] [-SourceSqlConnectionPassword <SecureString>]
  [-SourceSqlConnectionTrustServerCertificate] [-SourceSqlConnectionUserName <String>]
  [-StorageAccountKey <String>] [-StorageAccountResourceId <String>] [-TargetDatabaseCollation <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentitySqlVirtualMachineExpanded
+```
+New-AzDataMigrationToSqlVM -SqlVirtualMachineInputObject <IDataMigrationIdentity> -TargetDbName <String>
+ [-AzureBlobAccountKey <String>] [-AzureBlobContainerName <String>]
+ [-AzureBlobStorageAccountResourceId <String>] [-FileSharePassword <SecureString>] [-FileSharePath <String>]
+ [-FileShareUsername <String>] [-Kind <String>] [-MigrationService <String>] [-Offline]
+ [-OfflineConfigurationLastBackupName <String>] [-Scope <String>] [-SourceDatabaseName <String>]
+ [-SourceSqlConnectionAuthentication <String>] [-SourceSqlConnectionDataSource <String>]
+ [-SourceSqlConnectionEncryptConnection] [-SourceSqlConnectionPassword <SecureString>]
+ [-SourceSqlConnectionTrustServerCertificate] [-SourceSqlConnectionUserName <String>]
+ [-StorageAccountKey <String>] [-StorageAccountResourceId <String>] [-TargetDatabaseCollation <String>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzDataMigrationToSqlVM -ResourceGroupName <String> -SqlVirtualMachineName <String> -TargetDbName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzDataMigrationToSqlVM -ResourceGroupName <String> -SqlVirtualMachineName <String> -TargetDbName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,7 +105,7 @@ Storage Account Key.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySqlVirtualMachineExpanded
 Aliases:
 
 Required: False
@@ -89,7 +120,7 @@ Blob container name where backups are stored.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySqlVirtualMachineExpanded
 Aliases:
 
 Required: False
@@ -104,7 +135,7 @@ Resource Id of the storage account where backups are stored.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySqlVirtualMachineExpanded
 Aliases:
 
 Required: False
@@ -135,7 +166,7 @@ Password for username to access file share location.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySqlVirtualMachineExpanded
 Aliases:
 
 Required: False
@@ -150,7 +181,7 @@ Location as SMB share or local drive where backups are placed.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySqlVirtualMachineExpanded
 Aliases:
 
 Required: False
@@ -165,10 +196,40 @@ Username to access the file share location for backups.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySqlVirtualMachineExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -179,8 +240,8 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentitySqlVirtualMachineExpanded
 Aliases:
 
 Required: False
@@ -195,7 +256,7 @@ Resource Id of the Migration Service.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySqlVirtualMachineExpanded
 Aliases:
 
 Required: False
@@ -225,7 +286,7 @@ Offline migration
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySqlVirtualMachineExpanded
 Aliases:
 
 Required: False
@@ -242,7 +303,7 @@ If it is not provided, then the service will determine the last backup file name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySqlVirtualMachineExpanded
 Aliases:
 
 Required: False
@@ -273,7 +334,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -289,7 +350,7 @@ For the Scope parameter, use the Scope of the SQL VM (/subscriptions/111-222/res
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySqlVirtualMachineExpanded
 Aliases:
 
 Required: False
@@ -304,7 +365,7 @@ Name of the source database.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySqlVirtualMachineExpanded
 Aliases:
 
 Required: False
@@ -319,7 +380,7 @@ Authentication type.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySqlVirtualMachineExpanded
 Aliases:
 
 Required: False
@@ -334,7 +395,7 @@ Data source.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySqlVirtualMachineExpanded
 Aliases:
 
 Required: False
@@ -349,7 +410,7 @@ Whether to encrypt connection or not.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySqlVirtualMachineExpanded
 Aliases:
 
 Required: False
@@ -364,7 +425,7 @@ Password to connect to source SQL.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySqlVirtualMachineExpanded
 Aliases:
 
 Required: False
@@ -379,7 +440,7 @@ Whether to trust server certificate or not.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySqlVirtualMachineExpanded
 Aliases:
 
 Required: False
@@ -394,7 +455,7 @@ User name to connect to source SQL.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySqlVirtualMachineExpanded
 Aliases:
 
 Required: False
@@ -404,12 +465,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SqlVirtualMachineInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
+Parameter Sets: CreateViaIdentitySqlVirtualMachineExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SqlVirtualMachineName
 .
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -424,7 +500,7 @@ Storage Account Key.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySqlVirtualMachineExpanded
 Aliases:
 
 Required: False
@@ -439,7 +515,7 @@ Resource Id of the storage account copying backups.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySqlVirtualMachineExpanded
 Aliases:
 
 Required: False
@@ -454,7 +530,7 @@ Subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -469,7 +545,7 @@ Database collation to be used for the target database.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentitySqlVirtualMachineExpanded
 Aliases:
 
 Required: False
@@ -488,6 +564,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded, CreateViaIdentitySqlVirtualMachineExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -530,9 +622,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IDatabaseMigrationSqlVM
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDatabaseMigrationSqlVM
 
 ## NOTES
 

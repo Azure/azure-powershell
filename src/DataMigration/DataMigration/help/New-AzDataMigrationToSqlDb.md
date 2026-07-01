@@ -14,9 +14,10 @@ If the target database have no table existing, please use [New-AzDataMigrationSq
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzDataMigrationToSqlDb -ResourceGroupName <String> -SqlDbInstanceName <String> -TargetDbName <String>
- [-SubscriptionId <String>] [-Kind <ResourceType>] [-MigrationService <String>] [-Scope <String>]
+New-AzDataMigrationToSqlDb -TargetDbName <String> -ResourceGroupName <String> -SqlDbInstanceName <String>
+ [-SubscriptionId <String>] [-Kind <String>] [-MigrationService <String>] [-Scope <String>]
  [-SourceDatabaseName <String>] [-SourceSqlConnectionAuthentication <String>]
  [-SourceSqlConnectionDataSource <String>] [-SourceSqlConnectionEncryptConnection]
  [-SourceSqlConnectionPassword <SecureString>] [-SourceSqlConnectionTrustServerCertificate]
@@ -26,6 +27,34 @@ New-AzDataMigrationToSqlDb -ResourceGroupName <String> -SqlDbInstanceName <Strin
  [-TargetSqlConnectionTrustServerCertificate] [-TargetSqlConnectionUserName <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzDataMigrationToSqlDb -TargetDbName <String> -ResourceGroupName <String> -SqlDbInstanceName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzDataMigrationToSqlDb -TargetDbName <String> -ResourceGroupName <String> -SqlDbInstanceName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityServerExpanded
+```
+New-AzDataMigrationToSqlDb -TargetDbName <String> -ServerInputObject <IDataMigrationIdentity> [-Kind <String>]
+ [-MigrationService <String>] [-Scope <String>] [-SourceDatabaseName <String>]
+ [-SourceSqlConnectionAuthentication <String>] [-SourceSqlConnectionDataSource <String>]
+ [-SourceSqlConnectionEncryptConnection] [-SourceSqlConnectionPassword <SecureString>]
+ [-SourceSqlConnectionTrustServerCertificate] [-SourceSqlConnectionUserName <String>] [-TableList <String[]>]
+ [-TargetDatabaseCollation <String>] [-TargetSqlConnectionAuthentication <String>]
+ [-TargetSqlConnectionDataSource <String>] [-TargetSqlConnectionEncryptConnection]
+ [-TargetSqlConnectionPassword <SecureString>] [-TargetSqlConnectionTrustServerCertificate]
+ [-TargetSqlConnectionUserName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,12 +127,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Kind
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support.ResourceType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityServerExpanded
 Aliases:
 
 Required: False
@@ -118,7 +177,7 @@ Resource Id of the Migration Service.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityServerExpanded
 Aliases:
 
 Required: False
@@ -164,7 +223,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -179,7 +238,7 @@ Resource Id of the target resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityServerExpanded
 Aliases:
 
 Required: False
@@ -189,12 +248,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ServerInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
+Parameter Sets: CreateViaIdentityServerExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SourceDatabaseName
 Name of the source database.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityServerExpanded
 Aliases:
 
 Required: False
@@ -209,7 +283,7 @@ Authentication type.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityServerExpanded
 Aliases:
 
 Required: False
@@ -224,7 +298,7 @@ Data source.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityServerExpanded
 Aliases:
 
 Required: False
@@ -239,7 +313,7 @@ Whether to encrypt connection or not.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityServerExpanded
 Aliases:
 
 Required: False
@@ -254,7 +328,7 @@ Password to connect to source SQL.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityServerExpanded
 Aliases:
 
 Required: False
@@ -269,7 +343,7 @@ Whether to trust server certificate or not.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityServerExpanded
 Aliases:
 
 Required: False
@@ -284,7 +358,7 @@ User name to connect to source SQL.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityServerExpanded
 Aliases:
 
 Required: False
@@ -299,7 +373,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -314,7 +388,7 @@ Subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -329,7 +403,7 @@ List of tables to copy.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityServerExpanded
 Aliases:
 
 Required: False
@@ -344,7 +418,7 @@ Database collation to be used for the target database.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityServerExpanded
 Aliases:
 
 Required: False
@@ -374,7 +448,7 @@ Authentication type.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityServerExpanded
 Aliases:
 
 Required: False
@@ -389,7 +463,7 @@ Data source.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityServerExpanded
 Aliases:
 
 Required: False
@@ -404,7 +478,7 @@ Whether to encrypt connection or not.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityServerExpanded
 Aliases:
 
 Required: False
@@ -419,7 +493,7 @@ Password to connect to source SQL.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityServerExpanded
 Aliases:
 
 Required: False
@@ -434,7 +508,7 @@ Whether to trust server certificate or not.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityServerExpanded
 Aliases:
 
 Required: False
@@ -449,7 +523,7 @@ User name to connect to source SQL.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityServerExpanded
 Aliases:
 
 Required: False
@@ -495,9 +569,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IDatabaseMigrationSqlDb
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDatabaseMigrationSqlDb
 
 ## NOTES
 

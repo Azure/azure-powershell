@@ -25,6 +25,13 @@ Get-AzDataMigrationToSqlManagedInstance -InputObject <IDataMigrationIdentity> [-
  [-MigrationOperationId <String>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
+### GetViaIdentityManagedInstance
+```
+Get-AzDataMigrationToSqlManagedInstance -ManagedInstanceInputObject <IDataMigrationIdentity>
+ -TargetDbName <String> [-Expand <String>] [-MigrationOperationId <String>] [-DefaultProfile <PSObject>]
+ [-PassThru] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Retrieve the specified database migration for a given SQL Managed Instance.
 
@@ -92,11 +99,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
 Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ManagedInstanceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
+Parameter Sets: GetViaIdentityManagedInstance
 Aliases:
 
 Required: True
@@ -189,7 +210,7 @@ The name of the target database.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityManagedInstance
 Aliases:
 
 Required: True
@@ -208,7 +229,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IDatabaseMigrationSqlMi
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDatabaseMigrationSqlMi
 
 ## NOTES
 

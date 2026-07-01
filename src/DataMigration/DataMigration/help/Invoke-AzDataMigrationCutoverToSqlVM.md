@@ -12,10 +12,42 @@ Initiate cutover for in-progress online database migration to SQL VM.
 
 ## SYNTAX
 
+### CutoverExpanded (Default)
 ```
-Invoke-AzDataMigrationCutoverToSqlVM -ResourceGroupName <String> -SqlVirtualMachineName <String>
- -TargetDbName <String> [-SubscriptionId <String>] -MigrationOperationId <String> [-DefaultProfile <PSObject>]
+Invoke-AzDataMigrationCutoverToSqlVM -TargetDbName <String> -ResourceGroupName <String>
+ -SqlVirtualMachineName <String> [-SubscriptionId <String>] -MigrationOperationId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### CutoverViaJsonString
+```
+Invoke-AzDataMigrationCutoverToSqlVM -TargetDbName <String> -ResourceGroupName <String>
+ -SqlVirtualMachineName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CutoverViaJsonFilePath
+```
+Invoke-AzDataMigrationCutoverToSqlVM -TargetDbName <String> -ResourceGroupName <String>
+ -SqlVirtualMachineName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CutoverViaIdentitySqlVirtualMachineExpanded
+```
+Invoke-AzDataMigrationCutoverToSqlVM -TargetDbName <String>
+ -SqlVirtualMachineInputObject <IDataMigrationIdentity> -MigrationOperationId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### CutoverViaIdentitySqlVirtualMachine
+```
+Invoke-AzDataMigrationCutoverToSqlVM -TargetDbName <String>
+ -SqlVirtualMachineInputObject <IDataMigrationIdentity> -Parameter <IMigrationOperationInput>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,12 +103,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Cutover operation
+
+```yaml
+Type: System.String
+Parameter Sets: CutoverViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Cutover operation
+
+```yaml
+Type: System.String
+Parameter Sets: CutoverViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MigrationOperationId
 ID tracking migration operation.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CutoverExpanded, CutoverViaIdentitySqlVirtualMachineExpanded
 Aliases:
 
 Required: True
@@ -101,6 +163,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Parameter
+Migration Operation Input
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IMigrationOperationInput
+Parameter Sets: CutoverViaIdentitySqlVirtualMachine
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -PassThru
 Returns true when the command succeeds
 
@@ -122,7 +199,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CutoverExpanded, CutoverViaJsonString, CutoverViaJsonFilePath
 Aliases:
 
 Required: True
@@ -132,12 +209,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SqlVirtualMachineInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
+Parameter Sets: CutoverViaIdentitySqlVirtualMachineExpanded, CutoverViaIdentitySqlVirtualMachine
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SqlVirtualMachineName
 .
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CutoverExpanded, CutoverViaJsonString, CutoverViaJsonFilePath
 Aliases:
 
 Required: True
@@ -152,7 +244,7 @@ Subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CutoverExpanded, CutoverViaJsonString, CutoverViaJsonFilePath
 Aliases:
 
 Required: False
@@ -212,6 +304,10 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IMigrationOperationInput
 
 ## OUTPUTS
 

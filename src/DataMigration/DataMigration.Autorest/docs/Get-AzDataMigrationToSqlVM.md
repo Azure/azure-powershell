@@ -25,6 +25,13 @@ Get-AzDataMigrationToSqlVM -InputObject <IDataMigrationIdentity> [-Expand <Strin
  [-MigrationOperationId <String>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
+### GetViaIdentitySqlVirtualMachine
+```
+Get-AzDataMigrationToSqlVM -SqlVirtualMachineInputObject <IDataMigrationIdentity> -TargetDbName <String>
+ [-Expand <String>] [-MigrationOperationId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Retrieve the specified database migration for a given SQL VM.
 
@@ -92,7 +99,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
@@ -154,6 +160,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SqlVirtualMachineInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
+Parameter Sets: GetViaIdentitySqlVirtualMachine
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SqlVirtualMachineName
 .
 
@@ -189,7 +210,7 @@ The name of the target database.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentitySqlVirtualMachine
 Aliases:
 
 Required: True
@@ -208,7 +229,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IDatabaseMigrationSqlVM
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDatabaseMigrationSqlVM
 
 ## NOTES
 

@@ -25,6 +25,20 @@ Remove-AzDataMigrationSqlServiceNode -InputObject <IDataMigrationIdentity> [-Int
  [-NodeName <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaJsonFilePath
+```
+Remove-AzDataMigrationSqlServiceNode -ResourceGroupName <String> -SqlMigrationServiceName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaJsonString
+```
+Remove-AzDataMigrationSqlServiceNode -ResourceGroupName <String> -SqlMigrationServiceName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Delete the integration runtime node.
 
@@ -63,7 +77,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
@@ -82,10 +95,40 @@ The name of integration runtime.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DeleteExpanded, DeleteViaIdentityExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Delete operation
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Delete operation
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -97,7 +140,7 @@ The name of node to delete.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DeleteExpanded, DeleteViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -128,7 +171,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteExpanded
+Parameter Sets: DeleteExpanded, DeleteViaJsonFilePath, DeleteViaJsonString
 Aliases:
 
 Required: True
@@ -143,7 +186,7 @@ Name of the SQL Migration Service.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteExpanded
+Parameter Sets: DeleteExpanded, DeleteViaJsonFilePath, DeleteViaJsonString
 Aliases:
 
 Required: True
@@ -158,7 +201,7 @@ Subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteExpanded
+Parameter Sets: DeleteExpanded, DeleteViaJsonFilePath, DeleteViaJsonString
 Aliases:
 
 Required: False
@@ -208,7 +251,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IDeleteNode
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDeleteNode
 
 ## NOTES
 

@@ -25,6 +25,13 @@ Remove-AzDataMigrationToSqlManagedInstance -InputObject <IDataMigrationIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteViaIdentityManagedInstance
+```
+Remove-AzDataMigrationToSqlManagedInstance -ManagedInstanceInputObject <IDataMigrationIdentity>
+ -TargetDbName <String> [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Delete Database Migration resource.
 
@@ -95,11 +102,25 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
 Parameter Sets: DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ManagedInstanceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
+Parameter Sets: DeleteViaIdentityManagedInstance
 Aliases:
 
 Required: True
@@ -190,7 +211,7 @@ The name of the target database.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentityManagedInstance
 Aliases:
 
 Required: True
@@ -240,7 +261,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IDatabaseMigrationSqlMi
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDatabaseMigrationSqlMi
 
 ## NOTES
 

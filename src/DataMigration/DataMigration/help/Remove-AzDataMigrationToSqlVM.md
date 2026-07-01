@@ -19,6 +19,13 @@ Remove-AzDataMigrationToSqlVM -ResourceGroupName <String> -SqlVirtualMachineName
  [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### DeleteViaIdentitySqlVirtualMachine
+```
+Remove-AzDataMigrationToSqlVM -TargetDbName <String> -SqlVirtualMachineInputObject <IDataMigrationIdentity>
+ [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzDataMigrationToSqlVM -InputObject <IDataMigrationIdentity> [-Force] [-DefaultProfile <PSObject>]
@@ -95,7 +102,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
@@ -155,6 +161,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SqlVirtualMachineInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
+Parameter Sets: DeleteViaIdentitySqlVirtualMachine
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SqlVirtualMachineName
 .
 
@@ -190,7 +211,7 @@ The name of the target database.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteViaIdentitySqlVirtualMachine
 Aliases:
 
 Required: True
@@ -240,7 +261,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IDatabaseMigrationSqlVM
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDatabaseMigrationSqlVM
 
 ## NOTES
 

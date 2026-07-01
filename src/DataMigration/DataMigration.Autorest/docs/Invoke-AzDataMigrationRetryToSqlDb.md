@@ -39,6 +39,34 @@ Invoke-AzDataMigrationRetryToSqlDb -InputObject <IDataMigrationIdentity> -Migrat
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### RetryViaIdentityServer
+```
+Invoke-AzDataMigrationRetryToSqlDb -ServerInputObject <IDataMigrationIdentity> -TargetDbName <String>
+ -MigrationOperationInput <IMigrationOperationInput> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RetryViaIdentityServerExpanded
+```
+Invoke-AzDataMigrationRetryToSqlDb -ServerInputObject <IDataMigrationIdentity> -TargetDbName <String>
+ -MigrationOperationId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### RetryViaJsonFilePath
+```
+Invoke-AzDataMigrationRetryToSqlDb -ResourceGroupName <String> -SqlDbInstanceName <String>
+ -TargetDbName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RetryViaJsonString
+```
+Invoke-AzDataMigrationRetryToSqlDb -ResourceGroupName <String> -SqlDbInstanceName <String>
+ -TargetDbName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Retry on going migration for the database.
 
@@ -86,7 +114,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
@@ -100,12 +127,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Retry operation
+
+```yaml
+Type: System.String
+Parameter Sets: RetryViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Retry operation
+
+```yaml
+Type: System.String
+Parameter Sets: RetryViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MigrationOperationId
 ID tracking migration operation.
 
 ```yaml
 Type: System.String
-Parameter Sets: RetryExpanded, RetryViaIdentityExpanded
+Parameter Sets: RetryExpanded, RetryViaIdentityExpanded, RetryViaIdentityServerExpanded
 Aliases:
 
 Required: True
@@ -117,11 +174,10 @@ Accept wildcard characters: False
 
 ### -MigrationOperationInput
 Migration Operation Input
-To construct, see NOTES section for MIGRATIONOPERATIONINPUT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IMigrationOperationInput
-Parameter Sets: Retry, RetryViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IMigrationOperationInput
+Parameter Sets: Retry, RetryViaIdentity, RetryViaIdentityServer
 Aliases:
 
 Required: True
@@ -167,7 +223,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Retry, RetryExpanded
+Parameter Sets: Retry, RetryExpanded, RetryViaJsonFilePath, RetryViaJsonString
 Aliases:
 
 Required: True
@@ -177,12 +233,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ServerInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
+Parameter Sets: RetryViaIdentityServer, RetryViaIdentityServerExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SqlDbInstanceName
 .
 
 ```yaml
 Type: System.String
-Parameter Sets: Retry, RetryExpanded
+Parameter Sets: Retry, RetryExpanded, RetryViaJsonFilePath, RetryViaJsonString
 Aliases:
 
 Required: True
@@ -197,7 +268,7 @@ Subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Retry, RetryExpanded
+Parameter Sets: Retry, RetryExpanded, RetryViaJsonFilePath, RetryViaJsonString
 Aliases:
 
 Required: False
@@ -212,7 +283,7 @@ The name of the target database.
 
 ```yaml
 Type: System.String
-Parameter Sets: Retry, RetryExpanded
+Parameter Sets: Retry, RetryExpanded, RetryViaIdentityServer, RetryViaIdentityServerExpanded, RetryViaJsonFilePath, RetryViaJsonString
 Aliases:
 
 Required: True
@@ -258,9 +329,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IMigrationOperationInput
-
 ### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IMigrationOperationInput
 
 ## OUTPUTS
 

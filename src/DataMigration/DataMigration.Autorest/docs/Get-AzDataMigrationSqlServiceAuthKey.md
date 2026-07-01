@@ -153,7 +153,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20250630.IAuthenticationKeys
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IAuthenticationKeys
 
 ## NOTES
 
