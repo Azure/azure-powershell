@@ -1409,3 +1409,151 @@ function Test-AzureRestoreWithCVMOsDiskEncryptionSetId()
 		Delete-VM $targetRG $targetVMName
 	}
 }
+
+function Test-AzureVMCSBProtection
+{
+	# Cross Subscription Backup (CSB): the vault and the VM to be protected live in
+	# different subscriptions. These values point to the recording environment.
+	$resourceGroupName = "singhprab-csb-vault-rg-ea"
+	$vaultName = "singhprab-csb-vault-ea"
+	# The VM (container) resides in a subscription different from the vault's subscription.
+	$vmName = "singhprab-ps-vm3"
+	$vmResourceGroupName = "singhprab-rg-1c"
+	$containerSubscriptionId = "80abcfe3-b410-42b2-983f-df23cba781dc"
+	# Policy used to initially protect the VM, and the policy to switch to via modify protection.
+	$policyName = "singhprab"
+	$modifyPolicyName = "singhprab2"
+
+	try
+	{
+		# Setup
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name $policyName;
+
+		# Sleep to give the service time to add the policy to the vault
+		Start-TestSleep -Seconds 5
+
+		# Enable protection for a cross-subscription VM using the new -ContainerSubscriptionId parameter.
+		# This path skips discovery/RefreshContainers and constructs the request directly.
+		Enable-AzRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Policy $policy `
+			-Name $vmName `
+			-ResourceGroupName $vmResourceGroupName `
+			-ContainerSubscriptionId $containerSubscriptionId;
+
+		$item = Get-AzRecoveryServicesBackupItem `
+			-BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID `
+			| Where-Object { $_.Name -match $vmName }
+
+		Assert-NotNull $item;
+
+		# The source resource id (and hence the item) must belong to the VM's subscription, not the vault's.
+		Assert-True { $item.SourceResourceId -match $vmName };
+		Assert-True { $item.SourceResourceId -match $vmResourceGroupName };
+		Assert-True { $item.ContainerSubscriptionId -eq $containerSubscriptionId };
+
+		# The item must be protected with the initial policy.
+		Assert-True { $item.ProtectionPolicyName -eq $policyName };
+
+		# Modify protection: switch the already-protected CSB item to a different policy.
+		# This uses the ModifyProtection parameter set (-Item), which derives the container
+		# from the item's ARM id and works for cross-subscription items without extra input.
+		$modifyPolicy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name $modifyPolicyName;
+
+		Enable-AzRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Policy $modifyPolicy `
+			-Item $item;
+
+		$modifiedItem = Get-AzRecoveryServicesBackupItem `
+			-BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID `
+			| Where-Object { $_.Name -match $vmName }
+
+		Assert-NotNull $modifiedItem;
+
+		# The item must now be associated with the new policy, and remain a CSB item.
+		Assert-True { $modifiedItem.ProtectionPolicyName -eq $modifyPolicyName };
+		Assert-True { $modifiedItem.ContainerSubscriptionId -eq $containerSubscriptionId };
+	}
+	finally
+	{
+		# Cleanup
+	}
+}
+
+function Test-AzureVMCSBRestoreOLR
+{
+	# Original Location Recovery (OLR) for a Cross Subscription Backup protected item.
+	# No target subscription/resource group input is required - the VM's subscription is derived
+	# from the recovery point's SourceResourceId, and the staging storage account is resolved in
+	# that subscription. This fetches an existing recovery point (no fresh backup is triggered).
+	# These values point to the recording environment.
+	$resourceGroupName = "singhprab-csb-vault-rg-ea"
+	$vaultName = "singhprab-csb-vault-ea"
+	$vmName = "singhprab-csb-vm-ea"
+	# Staging storage account (resides in the VM's subscription).
+	$saName = "asmaskasaea"
+	$saResourceGroupName = "asmaskarrg"
+
+	try
+	{
+		# Setup
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+
+		$item = Get-AzRecoveryServicesBackupItem `
+			-BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID `
+			| Where-Object { $_.Name -match $vmName }
+
+		Assert-NotNull $item;
+
+		# Fetch an existing recovery point for the CSB item (no new backup is triggered).
+		# Use Get-QueryDateInUtc so the date window is recorded and replayed deterministically.
+		$from = Get-QueryDateInUtc $((Get-Date).AddDays(-2)) "CSBOlrFrom"
+		$to = Get-QueryDateInUtc $(Get-Date) "CSBOlrTo"
+		# Restrict to instant-restore capable tiers (Snapshot or SnapshotAndVaultStandard) so OLR can
+		# leverage the snapshot instead of a vault-tier restore.
+		$rps = @(Get-AzRecoveryServicesBackupRecoveryPoint `
+			-VaultId $vault.ID `
+			-Item $item `
+			-StartDate $from `
+			-EndDate $to `
+			| Where-Object { $_.RecoveryPointTier -eq "Snapshot" })
+
+		Assert-True { $rps.Count -gt 0 };
+		$rp = $rps[0]
+
+		# The chosen recovery point must be a Snapshot tier recovery point.
+		Assert-True { $rp.RecoveryPointTier -eq "Snapshot" };
+
+		# The recovery point should belong to the VM's (cross) subscription.
+		Assert-True { $rp.SourceResourceId -match $item.ContainerSubscriptionId };
+
+		# Trigger OLR (Replace Existing): no -TargetResourceGroupName and no -TargetSubscriptionId.
+		# The storage account must be resolved in the VM's subscription (derived from rp.SourceResourceId).
+		# Capture the restore job first, then wait separately. Piping Restore directly into
+		# Wait-AzRecoveryServicesBackupJob causes the downstream cmdlet's BeginProcessing to reset the
+		# shared Logger.Instance, which breaks WriteDebug calls made during Restore's ProcessRecord.
+		$restoreJob = Restore-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-VaultLocation $vault.Location `
+			-RecoveryPoint $rp `
+			-StorageAccountName $saName `
+			-StorageAccountResourceGroupName $saResourceGroupName
+
+		$restoreJob = $restoreJob | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+
+		Assert-True { $restoreJob.Status -eq "Completed" };
+	}
+	finally
+	{
+		# Cleanup
+	}
+}
+
+

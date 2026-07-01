@@ -268,3 +268,52 @@ function Test-AzureVMCancelJob
 		# Cleanup-ResourceGroup $resourceGroupName
 	}
 }
+
+function Test-AzureVMCSBJobSubscription
+{
+	# Verifies that the detailed job for a Cross Subscription Backup (CSB) protected item
+	# exposes ContainerSubscriptionId, populated from extendedInfo.propertyBag["VM Subscription ID"].
+	# Instead of triggering a fresh backup, this fetches an existing backup job for the CSB VM
+	# and inspects its job detail. These values point to the recording environment.
+	$resourceGroupName = "singhprab-csb-vault-rg-ea"
+	$vaultName = "singhprab-csb-vault-ea"
+	$vmName = "singhprab-csb-vm-ea"
+
+	try
+	{
+		# Setup
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+
+		# The backup item for the CSB VM exposes ContainerSubscriptionId (parsed from SourceResourceId).
+		# Use it as the expected value so the test stays self-consistent without hard-coding the subscription.
+		$item = Get-AzRecoveryServicesBackupItem `
+			-BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID `
+			| Where-Object { $_.Name -match $vmName }
+
+		Assert-NotNull $item;
+		$expectedContainerSubscriptionId = $item.ContainerSubscriptionId
+		Assert-False { [string]::IsNullOrEmpty($expectedContainerSubscriptionId) };
+
+		# Fetch existing backup jobs for the CSB VM (no new backup is triggered).
+		# Use Get-QueryDateInUtc so the From/To values are recorded and replayed deterministically
+		# (a raw Get-Date would differ between Record and Playback and break the recording match).
+		$from = Get-QueryDateInUtc $((Get-Date).AddDays(-7)) "CSBJobFrom"
+		$to = Get-QueryDateInUtc $(Get-Date) "CSBJobTo"
+		$jobs = @(Get-AzRecoveryServicesBackupJob -VaultId $vault.ID -Operation Backup `
+			-From $from -To $to | Where-Object { $_.WorkloadName -eq $vmName })
+
+		Assert-True { $jobs.Count -gt 0 };
+
+		$backupJob = $jobs[0]
+
+		# The detailed job must expose ContainerSubscriptionId equal to the VM's subscription.
+		$jobDetail = Get-AzRecoveryServicesBackupJobDetail -VaultId $vault.ID -Job $backupJob
+
+		Assert-NotNull $jobDetail;
+		Assert-True { $jobDetail.ContainerSubscriptionId -eq $expectedContainerSubscriptionId };
+	}
+	finally
+	{
+		# Cleanup
+	}
+}

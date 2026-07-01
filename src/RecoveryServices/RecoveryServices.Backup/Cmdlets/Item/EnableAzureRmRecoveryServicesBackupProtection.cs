@@ -153,6 +153,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             HelpMessage = ParamHelpMsgs.Item.excludeAllDataDisks)]
         public SwitchParameter ExcludeAllDataDisks { get; set; }
 
+        /// <summary>
+        /// Subscription ID of the Azure VM to be protected, when it resides in a different subscription
+        /// than the Recovery Services vault (Cross Subscription Backup).
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMComputeParameterSet,
+            HelpMessage = ParamHelpMsgs.Item.containerSubscriptionId)]
+        [ValidateNotNullOrEmpty]
+        public string ContainerSubscriptionId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -267,6 +276,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                 { ItemParams.ExclusionDisksList, ExclusionDisksList },
                                 { ItemParams.ResetExclusionSettings, ResetExclusionSettings },
                                 { ItemParams.ExcludeAllDataDisks, ExcludeAllDataDisks.IsPresent },
+                                { ItemParams.ContainerSubscriptionId, ContainerSubscriptionId },
                                 { ResourceGuardParams.Token, plainToken },
                                 { ResourceGuardParams.IsMUAOperation, isMUAOperation },
                             }, ServiceClientAdapter);

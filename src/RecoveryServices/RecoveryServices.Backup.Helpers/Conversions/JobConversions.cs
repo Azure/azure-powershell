@@ -802,6 +802,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     {
                         detailedResponse.Properties.Add(key, vmJob.ExtendedInfo.PropertyBag[key]);
                     }
+
+                    if (vmJob.ExtendedInfo.PropertyBag.ContainsKey("VM Subscription ID"))
+                    {
+                        detailedResponse.ContainerSubscriptionId = vmJob.ExtendedInfo.PropertyBag["VM Subscription ID"];
+                    }
                 }
 
                 if (vmJob.ExtendedInfo.TasksList != null)
@@ -874,6 +879,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     foreach (var key in vmJob.ExtendedInfo.PropertyBag.Keys)
                     {
                         detailedResponse.Properties.Add(key, vmJob.ExtendedInfo.PropertyBag[key]);
+                    }
+
+                    if (vmJob.ExtendedInfo.PropertyBag.ContainsKey("VM Subscription ID"))
+                    {
+                        detailedResponse.ContainerSubscriptionId = vmJob.ExtendedInfo.PropertyBag["VM Subscription ID"];
                     }
                 }
 

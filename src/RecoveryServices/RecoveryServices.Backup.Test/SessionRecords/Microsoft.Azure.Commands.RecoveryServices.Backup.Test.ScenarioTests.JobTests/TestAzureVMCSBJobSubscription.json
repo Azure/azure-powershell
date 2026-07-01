@@ -1,0 +1,298 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea?api-version=2025-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmM2ODMyYmYtOTBlZi00NTdhLWE2NjMtOWFlYWU4OGE3ZjgwL3Jlc291cmNlR3JvdXBzL3NpbmdocHJhYi1jc2ItdmF1bHQtcmctZWEvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9zaW5naHByYWItY3NiLXZhdWx0LWVhP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "40ced05d-8ed6-4a8a-8471-2fa212ddadd3"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2826.26413",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/7.12.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "1099"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "49d66c5f-eef4-4d82-8879-623b9f462ac8"
+        ],
+        "x-ms-client-request-id": [
+          "40ced05d-8ed6-4a8a-8471-2fa212ddadd3"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
+        ],
+        "x-ms-correlation-request-id": [
+          "49d66c5f-eef4-4d82-8879-623b9f462ac8"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTASIA:20260702T110145Z:49d66c5f-eef4-4d82-8879-623b9f462ac8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: AA094EA01AFB4602A8D6891959E8BF9A Ref B: PNQ231110907031 Ref C: 2026-07-02T11:01:45Z"
+        ],
+        "Date": [
+          "Thu, 02 Jul 2026 11:01:45 GMT"
+        ],
+        "Content-Length": [
+          "1352"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"eastasia\",\r\n  \"name\": \"singhprab-csb-vault-ea\",\r\n  \"etag\": \"W/\\\"datetime'2026-07-02T10%3A36%3A05.576999Z'\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"monitoringSettings\": {\r\n      \"azureMonitorAlertSettings\": {\r\n        \"alertsForAllJobFailures\": \"Enabled\",\r\n        \"alertsForAllReplicationIssues\": \"Enabled\",\r\n        \"alertsForAllFailoverIssues\": \"Enabled\"\r\n      },\r\n      \"classicAlertSettings\": {\r\n        \"alertsForCriticalOperations\": \"Enabled\",\r\n        \"emailNotificationsForSiteRecovery\": \"Enabled\"\r\n      }\r\n    },\r\n    \"backupStorageVersion\": \"V2\",\r\n    \"securitySettings\": {\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"AlwaysON\",\r\n        \"enhancedSecurityState\": \"AlwaysON\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\",\r\n      \"sourceScanConfiguration\": {\r\n        \"state\": \"Disabled\"\r\n      }\r\n    },\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"LocallyRedundant\",\r\n      \"crossRegionRestore\": \"Disabled\"\r\n    },\r\n    \"regionOfChoiceSettings\": {\r\n      \"status\": \"Disabled\"\r\n    },\r\n    \"secureScore\": \"Adequate\",\r\n    \"bcdrSecurityLevel\": \"Good\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupProtectedItems?$filter=backupManagementType%20eq%20'AzureIaasVM'%20and%20itemType%20eq%20'VM'&api-version=2025-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmM2ODMyYmYtOTBlZi00NTdhLWE2NjMtOWFlYWU4OGE3ZjgwL3Jlc291cmNlR3JvdXBzL3NpbmdocHJhYi1jc2ItdmF1bHQtcmctZWEvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9zaW5naHByYWItY3NiLXZhdWx0LWVhL2JhY2t1cFByb3RlY3RlZEl0ZW1zPyRmaWx0ZXI9YmFja3VwTWFuYWdlbWVudFR5cGUlMjBlcSUyMCdBenVyZUlhYXNWTSclMjBhbmQlMjBpdGVtVHlwZSUyMGVxJTIwJ1ZNJyZhcGktdmVyc2lvbj0yMDI1LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "fc72d38d-2b1d-44a4-8577-c8647e5c847b"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2826.26413",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.12.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "45441ad8-e42e-4193-8349-5ae41aa2e9f0"
+        ],
+        "x-ms-client-request-id": [
+          "fc72d38d-2b1d-44a4-8577-c8647e5c847b"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=f17e256d-a4e1-4dae-8520-844b6aa54acb/eastasia/cab25af7-8c33-4004-aea2-f53ddcddb9ec"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "249"
+        ],
+        "x-ms-correlation-request-id": [
+          "45441ad8-e42e-4193-8349-5ae41aa2e9f0"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTASIA:20260702T110146Z:45441ad8-e42e-4193-8349-5ae41aa2e9f0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 261936CBAF6D427B954E594804D9EA71 Ref B: PNQ231110906031 Ref C: 2026-07-02T11:01:45Z"
+        ],
+        "Date": [
+          "Thu, 02 Jul 2026 11:01:45 GMT"
+        ],
+        "Content-Length": [
+          "7261"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;singhprab-csb-rg-ea;singhprab-csb-vm-ea/protectedItems/VM;iaasvmcontainerv2;singhprab-csb-rg-ea;singhprab-csb-vm-ea\",\r\n      \"name\": \"VM;iaasvmcontainerv2;singhprab-csb-rg-ea;singhprab-csb-vm-ea\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"singhprab-csb-vm-ea\",\r\n        \"virtualMachineId\": \"/subscriptions/5288acd1-ba79-4377-9205-9f220331a44a/resourceGroups/singhprab-csb-rg-ea/providers/Microsoft.Compute/virtualMachines/singhprab-csb-vm-ea\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2026-07-02T08:10:48.9780276Z\",\r\n        \"protectedItemDataId\": \"2266471698217946936\",\r\n        \"extendedProperties\": {},\r\n        \"policyType\": \"V2\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;singhprab-csb-rg-ea;singhprab-csb-vm-ea\",\r\n        \"sourceResourceId\": \"/subscriptions/5288acd1-ba79-4377-9205-9f220331a44a/resourceGroups/singhprab-csb-rg-ea/providers/Microsoft.Compute/virtualMachines/singhprab-csb-vm-ea\",\r\n        \"policyId\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupPolicies/singhprab\",\r\n        \"policyName\": \"singhprab\",\r\n        \"lastRecoveryPoint\": \"2026-07-02T08:13:55.2540219Z\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;singhprab-rg-1c;singhprab-ps-vm2/protectedItems/VM;iaasvmcontainerv2;singhprab-rg-1c;singhprab-ps-vm2\",\r\n      \"name\": \"VM;iaasvmcontainerv2;singhprab-rg-1c;singhprab-ps-vm2\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"singhprab-ps-vm2\",\r\n        \"virtualMachineId\": \"/subscriptions/80abcfe3-b410-42b2-983f-df23cba781dc/resourceGroups/singhprab-rg-1c/providers/Microsoft.Compute/virtualMachines/singhprab-ps-vm2\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"IRPending\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"lastBackupStatus\": \"\",\r\n        \"lastBackupTime\": \"2001-01-01T00:00:00Z\",\r\n        \"protectedItemDataId\": \"2265363389178139378\",\r\n        \"policyType\": \"V1\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;singhprab-rg-1c;singhprab-ps-vm2\",\r\n        \"sourceResourceId\": \"/subscriptions/80abcfe3-b410-42b2-983f-df23cba781dc/resourceGroups/singhprab-rg-1c/providers/Microsoft.Compute/virtualMachines/singhprab-ps-vm2\",\r\n        \"policyId\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;singhprab-rg-1c;singhprab-ps-vm3/protectedItems/VM;iaasvmcontainerv2;singhprab-rg-1c;singhprab-ps-vm3\",\r\n      \"name\": \"VM;iaasvmcontainerv2;singhprab-rg-1c;singhprab-ps-vm3\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"singhprab-ps-vm3\",\r\n        \"virtualMachineId\": \"/subscriptions/80abcfe3-b410-42b2-983f-df23cba781dc/resourceGroups/singhprab-rg-1c/providers/Microsoft.Compute/virtualMachines/singhprab-ps-vm3\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"IRPending\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"lastBackupStatus\": \"\",\r\n        \"lastBackupTime\": \"2001-01-01T00:00:00Z\",\r\n        \"protectedItemDataId\": \"2265363391048433620\",\r\n        \"policyType\": \"V2\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;singhprab-rg-1c;singhprab-ps-vm3\",\r\n        \"sourceResourceId\": \"/subscriptions/80abcfe3-b410-42b2-983f-df23cba781dc/resourceGroups/singhprab-rg-1c/providers/Microsoft.Compute/virtualMachines/singhprab-ps-vm3\",\r\n        \"policyId\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupPolicies/singhprab2\",\r\n        \"policyName\": \"singhprab2\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;singhprab-rg-1c;singhprab-ps-vm/protectedItems/VM;iaasvmcontainerv2;singhprab-rg-1c;singhprab-ps-vm\",\r\n      \"name\": \"VM;iaasvmcontainerv2;singhprab-rg-1c;singhprab-ps-vm\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"friendlyName\": \"singhprab-ps-vm\",\r\n        \"virtualMachineId\": \"/subscriptions/80abcfe3-b410-42b2-983f-df23cba781dc/resourceGroups/singhprab-rg-1c/providers/Microsoft.Compute/virtualMachines/singhprab-ps-vm\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"ProtectionStopped\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"lastBackupStatus\": \"\",\r\n        \"lastBackupTime\": \"2001-01-01T00:00:00Z\",\r\n        \"protectedItemDataId\": \"2265363389566490252\",\r\n        \"policyType\": \"V1\",\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;singhprab-rg-1c;singhprab-ps-vm\",\r\n        \"sourceResourceId\": \"/subscriptions/80abcfe3-b410-42b2-983f-df23cba781dc/resourceGroups/singhprab-rg-1c/providers/Microsoft.Compute/virtualMachines/singhprab-ps-vm\",\r\n        \"policyId\": \"\",\r\n        \"policyName\": \"\",\r\n        \"vaultId\": \"https://management.azure.com/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea\",\r\n        \"deferredDeleteTimeInUTC\": \"2026-07-02T09:17:07.2784522Z\",\r\n        \"isScheduledForDeferredDelete\": true,\r\n        \"deferredDeleteTimeRemaining\": \"13.22:15:21.1805151\",\r\n        \"isArchiveEnabled\": false,\r\n        \"softDeleteRetentionPeriod\": 14\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupJobs?$filter=operation%20eq%20'Backup'%20and%20startTime%20eq%20'2026-06-25%2011:01:46%20AM'%20and%20endTime%20eq%20'2026-07-02%2011:01:46%20AM'&api-version=2025-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmM2ODMyYmYtOTBlZi00NTdhLWE2NjMtOWFlYWU4OGE3ZjgwL3Jlc291cmNlR3JvdXBzL3NpbmdocHJhYi1jc2ItdmF1bHQtcmctZWEvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9zaW5naHByYWItY3NiLXZhdWx0LWVhL2JhY2t1cEpvYnM/JGZpbHRlcj1vcGVyYXRpb24lMjBlcSUyMCdCYWNrdXAnJTIwYW5kJTIwc3RhcnRUaW1lJTIwZXElMjAnMjAyNi0wNi0yNSUyMDExOjAxOjQ2JTIwQU0nJTIwYW5kJTIwZW5kVGltZSUyMGVxJTIwJzIwMjYtMDctMDIlMjAxMTowMTo0NiUyMEFNJyZhcGktdmVyc2lvbj0yMDI1LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "c9c09633-b192-4cad-bb23-d923bdbb7129"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2826.26413",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.12.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "cad48091-2805-4d4d-95a5-db74f7a1c2dd"
+        ],
+        "x-ms-client-request-id": [
+          "c9c09633-b192-4cad-bb23-d923bdbb7129"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=f17e256d-a4e1-4dae-8520-844b6aa54acb/eastasia/d2772f66-b707-4159-8ccc-c919665440fa"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "249"
+        ],
+        "x-ms-correlation-request-id": [
+          "cad48091-2805-4d4d-95a5-db74f7a1c2dd"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTASIA:20260702T110146Z:cad48091-2805-4d4d-95a5-db74f7a1c2dd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 11C882D14DD049319F896E828DB1622D Ref B: PNQ231110909054 Ref C: 2026-07-02T11:01:46Z"
+        ],
+        "Date": [
+          "Thu, 02 Jul 2026 11:01:46 GMT"
+        ],
+        "Content-Length": [
+          "18091"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupJobs/e56d5f7d-3b82-4735-aec6-53916da3b233\",\r\n      \"name\": \"e56d5f7d-3b82-4735-aec6-53916da3b233\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"actionsInfo\": [\r\n          \"Cancellable\"\r\n        ],\r\n        \"containerName\": \"iaasvmcontainerv2;singhprab-csb-rg-ea;singhprab-csb-vm-ea\",\r\n        \"duration\": \"PT12M27.3803705S\",\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"entityFriendlyName\": \"singhprab-csb-vm-ea\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Completed\",\r\n        \"startTime\": \"2026-07-02T08:10:48.9780276Z\",\r\n        \"endTime\": \"2026-07-02T08:23:16.3583981Z\",\r\n        \"activityId\": \"2a1a5ce8-a684-4982-be60-1e2d1be9fdbf\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupJobs/53a0b3b9-4e09-4c12-a26e-8aef02e625a4\",\r\n      \"name\": \"53a0b3b9-4e09-4c12-a26e-8aef02e625a4\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"actionsInfo\": [\r\n          \"Cancellable\"\r\n        ],\r\n        \"containerName\": \"iaasvmcontainerv2;singhprab-csb-rg-ea;singhprab-csb-vm-ea\",\r\n        \"duration\": \"PT1H58M36.0896425S\",\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"entityFriendlyName\": \"singhprab-csb-vm-ea\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Completed\",\r\n        \"startTime\": \"2026-07-02T00:06:20.7692981Z\",\r\n        \"endTime\": \"2026-07-02T02:04:56.8589406Z\",\r\n        \"activityId\": \"190fb16b-7fa6-4124-a21b-d258b93c0ffb\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupJobs/e019c5b2-a9a6-4bcc-ab82-df51a359f135\",\r\n      \"name\": \"e019c5b2-a9a6-4bcc-ab82-df51a359f135\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"actionsInfo\": [\r\n          \"Cancellable\"\r\n        ],\r\n        \"containerName\": \"iaasvmcontainerv2;singhprab-csb-rg-ea;singhprab-csb-vm-ea\",\r\n        \"duration\": \"PT29M44.9060932S\",\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"entityFriendlyName\": \"singhprab-csb-vm-ea\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Completed\",\r\n        \"startTime\": \"2026-07-01T18:32:53.4578741Z\",\r\n        \"endTime\": \"2026-07-01T19:02:38.3639673Z\",\r\n        \"activityId\": \"e92aeb28-2719-4468-a8b7-0c4bc0c46bbc\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupJobs/ea728cce-fd27-435e-a85a-0feb55aeabae\",\r\n      \"name\": \"ea728cce-fd27-435e-a85a-0feb55aeabae\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"actionsInfo\": [\r\n          \"Cancellable\"\r\n        ],\r\n        \"containerName\": \"iaasvmcontainerv2;singhprab-csb-rg-ea;singhprab-csb-vm-ea\",\r\n        \"duration\": \"PT9M51.4472522S\",\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"entityFriendlyName\": \"singhprab-csb-vm-ea\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Completed\",\r\n        \"startTime\": \"2026-07-01T16:12:06.6258511Z\",\r\n        \"endTime\": \"2026-07-01T16:21:58.0731033Z\",\r\n        \"activityId\": \"99592312-7db6-404f-a69c-e9594fd552a2\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupJobs/2941c245-d189-49e3-8eb2-481a8ac156ef\",\r\n      \"name\": \"2941c245-d189-49e3-8eb2-481a8ac156ef\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"actionsInfo\": [\r\n          \"Cancellable\"\r\n        ],\r\n        \"containerName\": \"iaasvmcontainerv2;singhprab-csb-rg-ea;singhprab-csb-vm-ea\",\r\n        \"duration\": \"PT8M47.2518193S\",\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"entityFriendlyName\": \"singhprab-csb-vm-ea\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Completed\",\r\n        \"startTime\": \"2026-07-01T08:05:05.0268203Z\",\r\n        \"endTime\": \"2026-07-01T08:13:52.2786396Z\",\r\n        \"activityId\": \"85737bea-9c7b-4740-9e21-a86af58c1624\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupJobs/5e01aee1-3e19-42f9-82c9-b67264b11c29\",\r\n      \"name\": \"5e01aee1-3e19-42f9-82c9-b67264b11c29\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"actionsInfo\": [\r\n          \"Cancellable\"\r\n        ],\r\n        \"containerName\": \"iaasvmcontainerv2;singhprab-csb-rg-ea;singhprab-csb-vm-ea\",\r\n        \"duration\": \"PT28M53.0860847S\",\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"entityFriendlyName\": \"singhprab-csb-vm-ea\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Completed\",\r\n        \"startTime\": \"2026-07-01T00:06:52.9037241Z\",\r\n        \"endTime\": \"2026-07-01T00:35:45.9898088Z\",\r\n        \"activityId\": \"af658695-ec9a-400b-8311-954fe81dc3e2\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupJobs/323b95b8-91cf-4994-9c17-653dabfe00e4\",\r\n      \"name\": \"323b95b8-91cf-4994-9c17-653dabfe00e4\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"actionsInfo\": [\r\n          \"Cancellable\"\r\n        ],\r\n        \"containerName\": \"iaasvmcontainerv2;singhprab-csb-rg-ea;singhprab-csb-vm-ea\",\r\n        \"duration\": \"PT9M13.431646S\",\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"entityFriendlyName\": \"singhprab-csb-vm-ea\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Completed\",\r\n        \"startTime\": \"2026-06-30T16:15:07.1924276Z\",\r\n        \"endTime\": \"2026-06-30T16:24:20.6240736Z\",\r\n        \"activityId\": \"623cd3f7-5ff6-4218-bbf2-0552f9d8a82a\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupJobs/1a390599-7981-44cf-a3b5-f09b0031af13\",\r\n      \"name\": \"1a390599-7981-44cf-a3b5-f09b0031af13\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"actionsInfo\": [\r\n          \"Cancellable\"\r\n        ],\r\n        \"containerName\": \"iaasvmcontainerv2;singhprab-csb-rg-ea;singhprab-csb-vm-ea\",\r\n        \"duration\": \"PT8M47.8190673S\",\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"entityFriendlyName\": \"singhprab-csb-vm-ea\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Completed\",\r\n        \"startTime\": \"2026-06-30T08:20:05.0063313Z\",\r\n        \"endTime\": \"2026-06-30T08:28:52.8253986Z\",\r\n        \"activityId\": \"abca5f96-11d0-49b4-b372-dd88ebe879be\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupJobs/4b29f28e-9bbf-4a2d-a699-937e71b9b3d5\",\r\n      \"name\": \"4b29f28e-9bbf-4a2d-a699-937e71b9b3d5\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"actionsInfo\": [\r\n          \"Cancellable\"\r\n        ],\r\n        \"containerName\": \"iaasvmcontainerv2;singhprab-csb-rg-ea;singhprab-csb-vm-ea\",\r\n        \"duration\": \"PT29M18.1039634S\",\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"entityFriendlyName\": \"singhprab-csb-vm-ea\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Completed\",\r\n        \"startTime\": \"2026-06-30T00:13:56.4084178Z\",\r\n        \"endTime\": \"2026-06-30T00:43:14.5123812Z\",\r\n        \"activityId\": \"ca6bf233-d9d9-4218-ad04-9b2a10ba8f6d\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupJobs/edf9bfb6-6951-40d6-8f33-d1900931b1d7\",\r\n      \"name\": \"edf9bfb6-6951-40d6-8f33-d1900931b1d7\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"actionsInfo\": [\r\n          \"Cancellable\"\r\n        ],\r\n        \"containerName\": \"iaasvmcontainerv2;singhprab-csb-rg-ea;singhprab-csb-vm-ea\",\r\n        \"duration\": \"PT9M35.084987S\",\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"entityFriendlyName\": \"singhprab-csb-vm-ea\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Completed\",\r\n        \"startTime\": \"2026-06-29T16:07:16.1327179Z\",\r\n        \"endTime\": \"2026-06-29T16:16:51.2177049Z\",\r\n        \"activityId\": \"50e1cae6-1e7a-495c-a7e3-3a642d06012c\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupJobs/c354e94e-ab52-4249-99b1-7af8b115b13d\",\r\n      \"name\": \"c354e94e-ab52-4249-99b1-7af8b115b13d\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"actionsInfo\": [\r\n          \"Cancellable\"\r\n        ],\r\n        \"containerName\": \"iaasvmcontainerv2;singhprab-csb-rg-ea;singhprab-csb-vm-ea\",\r\n        \"duration\": \"PT8M52.6250913S\",\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"entityFriendlyName\": \"singhprab-csb-vm-ea\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Completed\",\r\n        \"startTime\": \"2026-06-29T08:12:07.621579Z\",\r\n        \"endTime\": \"2026-06-29T08:21:00.2466703Z\",\r\n        \"activityId\": \"55b0eba6-4366-48a7-856c-54fc17bd1dc8\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupJobs/93e9f2eb-d94e-42bb-b7ab-eb4510fb1862\",\r\n      \"name\": \"93e9f2eb-d94e-42bb-b7ab-eb4510fb1862\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"actionsInfo\": [\r\n          \"Cancellable\"\r\n        ],\r\n        \"containerName\": \"iaasvmcontainerv2;singhprab-csb-rg-ea;singhprab-csb-vm-ea\",\r\n        \"duration\": \"PT29M0.2091573S\",\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"entityFriendlyName\": \"singhprab-csb-vm-ea\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Completed\",\r\n        \"startTime\": \"2026-06-29T00:04:07.8198606Z\",\r\n        \"endTime\": \"2026-06-29T00:33:08.0290179Z\",\r\n        \"activityId\": \"78172043-5315-45f1-af63-3ef229344b10\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupJobs/f41f5cb8-7aef-4536-b447-2838b22d3ecc\",\r\n      \"name\": \"f41f5cb8-7aef-4536-b447-2838b22d3ecc\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"actionsInfo\": [\r\n          \"Cancellable\"\r\n        ],\r\n        \"containerName\": \"iaasvmcontainerv2;singhprab-csb-rg-ea;singhprab-csb-vm-ea\",\r\n        \"duration\": \"PT9M7.4193774S\",\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"entityFriendlyName\": \"singhprab-csb-vm-ea\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Completed\",\r\n        \"startTime\": \"2026-06-28T16:05:30.9953073Z\",\r\n        \"endTime\": \"2026-06-28T16:14:38.4146847Z\",\r\n        \"activityId\": \"df1b7953-eace-4c74-918d-0822920b978d\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupJobs/4f8fd826-6c99-42eb-8a45-7f5b12f94da8\",\r\n      \"name\": \"4f8fd826-6c99-42eb-8a45-7f5b12f94da8\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"actionsInfo\": [\r\n          \"Cancellable\"\r\n        ],\r\n        \"containerName\": \"iaasvmcontainerv2;singhprab-csb-rg-ea;singhprab-csb-vm-ea\",\r\n        \"duration\": \"PT8M40.783494S\",\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"entityFriendlyName\": \"singhprab-csb-vm-ea\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Completed\",\r\n        \"startTime\": \"2026-06-28T08:10:28.0949632Z\",\r\n        \"endTime\": \"2026-06-28T08:19:08.8784572Z\",\r\n        \"activityId\": \"6ab62b01-c2e2-43cf-8390-87fd7a07bc84\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupJobs/163ac856-e63b-4dce-8c4d-94b39913c0bd\",\r\n      \"name\": \"163ac856-e63b-4dce-8c4d-94b39913c0bd\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"actionsInfo\": [\r\n          \"Cancellable\"\r\n        ],\r\n        \"containerName\": \"iaasvmcontainerv2;singhprab-csb-rg-ea;singhprab-csb-vm-ea\",\r\n        \"duration\": \"PT28M30.7374662S\",\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"entityFriendlyName\": \"singhprab-csb-vm-ea\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Completed\",\r\n        \"startTime\": \"2026-06-28T00:02:34.4249637Z\",\r\n        \"endTime\": \"2026-06-28T00:31:05.1624299Z\",\r\n        \"activityId\": \"68bd50b5-f829-4d01-878a-8a65eab972c9\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupJobs/b60007a1-80e9-4e36-8ffe-e9e8d2343e57\",\r\n      \"name\": \"b60007a1-80e9-4e36-8ffe-e9e8d2343e57\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"actionsInfo\": [\r\n          \"Cancellable\"\r\n        ],\r\n        \"containerName\": \"iaasvmcontainerv2;singhprab-csb-rg-ea;singhprab-csb-vm-ea\",\r\n        \"duration\": \"PT9M46.2553375S\",\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"entityFriendlyName\": \"singhprab-csb-vm-ea\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Completed\",\r\n        \"startTime\": \"2026-06-27T16:18:04.3303959Z\",\r\n        \"endTime\": \"2026-06-27T16:27:50.5857334Z\",\r\n        \"activityId\": \"393fd358-850a-454a-8779-2c567ef00bad\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupJobs/93b2883a-fe98-49b7-9836-e5d1698cbfd4\",\r\n      \"name\": \"93b2883a-fe98-49b7-9836-e5d1698cbfd4\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"actionsInfo\": [\r\n          \"Cancellable\"\r\n        ],\r\n        \"containerName\": \"iaasvmcontainerv2;singhprab-csb-rg-ea;singhprab-csb-vm-ea\",\r\n        \"duration\": \"PT8M41.8222308S\",\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"entityFriendlyName\": \"singhprab-csb-vm-ea\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Completed\",\r\n        \"startTime\": \"2026-06-27T08:06:03.2056112Z\",\r\n        \"endTime\": \"2026-06-27T08:14:45.027842Z\",\r\n        \"activityId\": \"e83214ac-3fa7-4910-aedc-f0111f262351\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupJobs/d37082e3-e67d-4f89-a6f7-83826749560f\",\r\n      \"name\": \"d37082e3-e67d-4f89-a6f7-83826749560f\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"actionsInfo\": [\r\n          \"Cancellable\"\r\n        ],\r\n        \"containerName\": \"iaasvmcontainerv2;singhprab-csb-rg-ea;singhprab-csb-vm-ea\",\r\n        \"duration\": \"PT28M29.4400249S\",\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"entityFriendlyName\": \"singhprab-csb-vm-ea\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Completed\",\r\n        \"startTime\": \"2026-06-27T00:10:41.5564674Z\",\r\n        \"endTime\": \"2026-06-27T00:39:10.9964923Z\",\r\n        \"activityId\": \"a0af31a0-8280-431c-beb5-9f45e1329e14\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupJobs/696048d3-a8bc-45be-a168-8faffccb3114\",\r\n      \"name\": \"696048d3-a8bc-45be-a168-8faffccb3114\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"actionsInfo\": [\r\n          \"Cancellable\"\r\n        ],\r\n        \"containerName\": \"iaasvmcontainerv2;singhprab-csb-rg-ea;singhprab-csb-vm-ea\",\r\n        \"duration\": \"PT9M28.5345705S\",\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"entityFriendlyName\": \"singhprab-csb-vm-ea\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Completed\",\r\n        \"startTime\": \"2026-06-26T16:07:59.302826Z\",\r\n        \"endTime\": \"2026-06-26T16:17:27.8373965Z\",\r\n        \"activityId\": \"268899ea-b66d-4e5b-8b80-047d47ee8e60\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupJobs/3ce4c252-b608-4879-958a-273f3141fa55\",\r\n      \"name\": \"3ce4c252-b608-4879-958a-273f3141fa55\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"actionsInfo\": [\r\n          \"Cancellable\"\r\n        ],\r\n        \"containerName\": \"iaasvmcontainerv2;singhprab-csb-rg-ea;singhprab-csb-vm-ea\",\r\n        \"duration\": \"PT11M27.1933839S\",\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"entityFriendlyName\": \"singhprab-csb-vm-ea\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Completed\",\r\n        \"startTime\": \"2026-06-26T08:11:10.1538754Z\",\r\n        \"endTime\": \"2026-06-26T08:22:37.3472593Z\",\r\n        \"activityId\": \"ba486a3c-4fa9-4f47-8c16-1c73cd42c0bd\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupJobs/0a77f734-6101-4d33-bc01-b31e66ecbde4\",\r\n      \"name\": \"0a77f734-6101-4d33-bc01-b31e66ecbde4\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"actionsInfo\": [\r\n          \"Cancellable\"\r\n        ],\r\n        \"containerName\": \"iaasvmcontainerv2;singhprab-csb-rg-ea;singhprab-csb-vm-ea\",\r\n        \"duration\": \"PT43M56.030584S\",\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"entityFriendlyName\": \"singhprab-csb-vm-ea\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Completed\",\r\n        \"startTime\": \"2026-06-25T20:13:27.9314759Z\",\r\n        \"endTime\": \"2026-06-25T20:57:23.9620599Z\",\r\n        \"activityId\": \"7d7d4d5e-ca2a-4a6e-a58d-73e7b69818ed\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupJobs/f52a45fa-bc40-4188-8661-242ab9e76694\",\r\n      \"name\": \"f52a45fa-bc40-4188-8661-242ab9e76694\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"actionsInfo\": [\r\n          \"Cancellable\"\r\n        ],\r\n        \"containerName\": \"iaasvmcontainerv2;singhprab-csb-rg-ea;singhprab-csb-vm-ea\",\r\n        \"duration\": \"PT9M11.9058369S\",\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"entityFriendlyName\": \"singhprab-csb-vm-ea\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Completed\",\r\n        \"startTime\": \"2026-06-25T16:02:39.5652829Z\",\r\n        \"endTime\": \"2026-06-25T16:11:51.4711198Z\",\r\n        \"activityId\": \"d59be11f-58a4-461c-ad08-cb2fa1f6ca0f\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupJobs/4393c144-9eb2-429a-b3df-5b812f56b39d\",\r\n      \"name\": \"4393c144-9eb2-429a-b3df-5b812f56b39d\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n      \"properties\": {\r\n        \"jobType\": \"AzureIaaSVMJob\",\r\n        \"actionsInfo\": [\r\n          \"Cancellable\"\r\n        ],\r\n        \"containerName\": \"iaasvmcontainerv2;singhprab-csb-rg-ea;singhprab-csb-vm-ea\",\r\n        \"duration\": \"PT8M46.922132S\",\r\n        \"virtualMachineVersion\": \"Compute\",\r\n        \"entityFriendlyName\": \"singhprab-csb-vm-ea\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"operation\": \"Backup\",\r\n        \"status\": \"Completed\",\r\n        \"startTime\": \"2026-06-25T12:10:20.7277938Z\",\r\n        \"endTime\": \"2026-06-25T12:19:07.6499258Z\",\r\n        \"activityId\": \"7591cdb1-54d5-4f7c-8b24-4ce49d2c8ec8\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupJobs/e56d5f7d-3b82-4735-aec6-53916da3b233?api-version=2025-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmM2ODMyYmYtOTBlZi00NTdhLWE2NjMtOWFlYWU4OGE3ZjgwL3Jlc291cmNlR3JvdXBzL3NpbmdocHJhYi1jc2ItdmF1bHQtcmctZWEvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9zaW5naHByYWItY3NiLXZhdWx0LWVhL2JhY2t1cEpvYnMvZTU2ZDVmN2QtM2I4Mi00NzM1LWFlYzYtNTM5MTZkYTNiMjMzP2FwaS12ZXJzaW9uPTIwMjUtMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-US"
+        ],
+        "x-ms-client-request-id": [
+          "c6c274f2-d39e-405a-9e19-1411f88fbdab"
+        ],
+        "User-Agent": [
+          "FxVersion/8.0.2826.26413",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26200",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/7.12.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "5b057a15-151f-46ea-8d02-aec16d249bc6"
+        ],
+        "x-ms-client-request-id": [
+          "c6c274f2-d39e-405a-9e19-1411f88fbdab"
+        ],
+        "x-ms-operation-identifier": [
+          "tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=f17e256d-a4e1-4dae-8520-844b6aa54acb/eastasia/bccdec69-435b-4a68-81bd-89ca7a302577"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "249"
+        ],
+        "x-ms-correlation-request-id": [
+          "5b057a15-151f-46ea-8d02-aec16d249bc6"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTASIA:20260702T110147Z:5b057a15-151f-46ea-8d02-aec16d249bc6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 5250903FB676494EA29CAC887C5594C3 Ref B: PNQ231110906036 Ref C: 2026-07-02T11:01:47Z"
+        ],
+        "Date": [
+          "Thu, 02 Jul 2026 11:01:47 GMT"
+        ],
+        "Content-Length": [
+          "1176"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/2c6832bf-90ef-457a-a663-9aeae88a7f80/resourceGroups/singhprab-csb-vault-rg-ea/providers/Microsoft.RecoveryServices/vaults/singhprab-csb-vault-ea/backupJobs/e56d5f7d-3b82-4735-aec6-53916da3b233\",\r\n  \"name\": \"e56d5f7d-3b82-4735-aec6-53916da3b233\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureIaaSVMJob\",\r\n    \"actionsInfo\": [\r\n      \"Cancellable\"\r\n    ],\r\n    \"containerName\": \"iaasvmcontainerv2;singhprab-csb-rg-ea;singhprab-csb-vm-ea\",\r\n    \"duration\": \"PT12M27.3803705S\",\r\n    \"virtualMachineVersion\": \"Compute\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Take Snapshot\",\r\n          \"startTime\": \"2026-07-02T08:10:49.9144918Z\",\r\n          \"endTime\": \"2026-07-02T08:22:45.1316977Z\",\r\n          \"duration\": \"PT11M55.2172059S\",\r\n          \"status\": \"Completed\",\r\n          \"taskType\": \"Normal\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"VM Name\": \"singhprab-csb-vm-ea\",\r\n        \"Backup Size\": \"0 MB\",\r\n        \"VM Subscription ID\": \"5288acd1-ba79-4377-9205-9f220331a44a\"\r\n      },\r\n      \"internalPropertyBag\": {\r\n        \"IsInstantRpJob\": \"True\"\r\n      }\r\n    },\r\n    \"entityFriendlyName\": \"singhprab-csb-vm-ea\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"operation\": \"Backup\",\r\n    \"status\": \"Completed\",\r\n    \"startTime\": \"2026-07-02T08:10:48.9780276Z\",\r\n    \"endTime\": \"2026-07-02T08:23:16.3583981Z\",\r\n    \"activityId\": \"2a1a5ce8-a684-4982-be60-1e2d1be9fdbf\"\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "2c6832bf-90ef-457a-a663-9aeae88a7f80",
+    "CSBJobFrom": "2026-06-25 11:01:46Z",
+    "CSBJobTo": "2026-07-02 11:01:46Z"
+  }
+}

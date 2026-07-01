@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+* Added Cross Subscription Backup (CSB) support for Azure VM:
+    - Added optional `-ContainerSubscriptionId` parameter in `Enable-AzRecoveryServicesBackupProtection` to configure backup for a VM residing in a different subscription than the vault.
+    - Added Original Location Recovery (OLR) support for cross-subscription protected items in `Restore-AzRecoveryServicesBackupItem` (the container subscription is derived from the recovery point, no additional input required).
+    - Added `ContainerSubscriptionId` property to the backup item response of `Get-AzRecoveryServicesBackupItem`.
+    - Added `ContainerSubscriptionId` property to the detailed job response of `Get-AzRecoveryServicesBackupJob`.
 * Updated `System.Security.Cryptography.Cng` dependency from `4.4.0` to `5.0.0`.
 * Added Cross region restore support for Delos cloud regions
 * Updated Az.RecoveryServices.SiteRecovery to use API version 2026-02-01.
