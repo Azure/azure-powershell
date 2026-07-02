@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ApiManagement\ApiManagement.csproj" />
     <ProjectReference Include="..\ApiManagement.Management.Sdk\ApiManagement.Management.Sdk.csproj" />
   </ItemGroup>
 
