@@ -33,6 +33,16 @@ New-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <
  [<CommonParameters>]
 ```
 
+### Partner Provider
+```
+New-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Location <String> [-SkuTier <String>]
+ [-SkuFamily <String>] -ServiceProviderName <String> -PeeringLocation <String> -BandwidthInMbps <Int32>
+ [-PartnerAccountId <String>] [-ActivationKey <String>] [-Peering <PSPeering[]>] [-Authorization <PSExpressRouteCircuitAuthorization[]>]
+ [-AllowClassicOperations <Boolean>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **New-AzExpressRouteCircuit** cmdlet creates an Azure express route circuit.
 
@@ -63,6 +73,38 @@ $parameters = @{
     SkuFamily='MeteredData'
     ExpressRoutePort=$PSExpressRoutePort
     BandwidthInGbps=10.0
+}
+New-AzExpressRouteCircuit @parameters
+```
+
+### Example 3: Create a MultiCloud ExpressRoute circuit with PartnerAccountId
+```powershell
+$parameters = @{
+    Name='MultiCloudCircuit'
+    ResourceGroupName='ExpressRouteResourceGroup'
+    Location='East US'
+    SkuTier='MultiCloud'
+    SkuFamily='MeteredData'
+    ServiceProviderName='AWS'
+    PeeringLocation='East US'
+    BandwidthInMbps=200
+    PartnerAccountId='123-456-789'
+}
+New-AzExpressRouteCircuit @parameters
+```
+
+### Example 4: Create a MultiCloud ExpressRoute circuit with ActivationKey
+```powershell
+$parameters = @{
+    Name='MultiCloudCircuit'
+    ResourceGroupName='ExpressRouteResourceGroup'
+    Location='East US'
+    SkuTier='MultiCloud'
+    SkuFamily='MeteredData'
+    ServiceProviderName='AWS'
+    PeeringLocation='East US'
+    BandwidthInMbps=200
+    ActivationKey='ew0KICAic2hhcmVkQ29ubmVjdGl...'
 }
 New-AzExpressRouteCircuit @parameters
 ```
@@ -315,13 +357,43 @@ Accept wildcard characters: False
 ```
 
 ### -SkuTier
-The tier of service for the circuit. Possible values for this parameter are: `Standard`, `Premium` or `Local`.
+The tier of service for the circuit. Possible values for this parameter are: `Standard`, `Premium`, `Basic`, `Local`, or `MultiCloud`.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Standard, Premium, Basic, Local
+Accepted values: Standard, Premium, Basic, Local, MultiCloud
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PartnerAccountId
+Account ID of the customer on the partner cloud provider (for MultiCloud circuits). Mutually exclusive with -ActivationKey.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ActivationKey
+Activation key from partner cloud provider (for MultiCloud circuits). Mutually exclusive with -PartnerAccountId.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
