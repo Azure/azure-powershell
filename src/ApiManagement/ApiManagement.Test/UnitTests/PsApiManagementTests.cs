@@ -11,6 +11,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.UnitTests
 {
     public class PsApiManagementTests
     {
+        private const string StandardV2Sku = "StandardV2";
+
         public PsApiManagementTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
@@ -19,7 +21,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.UnitTests
         [Fact]
         public void MapSku_AllowsStandardV2()
         {
-            Assert.Equal(SkuType.StandardV2, Mappers.MapSku(SkuType.StandardV2));
+            Assert.Equal(StandardV2Sku, Mappers.MapSku(StandardV2Sku));
         }
 
         [Fact]
@@ -34,13 +36,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.UnitTests
                 Sku = new ApiManagementServiceSkuProperties(SkuType.Developer, 1)
             })
             {
-                Sku = SkuType.StandardV2,
+                Sku = StandardV2Sku,
                 Capacity = 1
             };
 
             var mappedResource = Mappers.MapPsApiManagement(apiManagement);
 
-            Assert.Equal(SkuType.StandardV2, mappedResource.Sku.Name);
+            Assert.Equal(StandardV2Sku, mappedResource.Sku.Name);
             Assert.Equal(1, mappedResource.Sku.Capacity);
         }
     }

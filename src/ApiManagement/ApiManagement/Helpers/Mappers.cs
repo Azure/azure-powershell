@@ -23,6 +23,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
 
     public static class Mappers
     {
+        private const string StandardV2Sku = "StandardV2";
+
         public static string MapHostnameType(PsApiManagementHostnameType hostnameType)
         {
             switch(hostnameType)
@@ -69,7 +71,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
             {
                 case SkuType.Developer: return SkuType.Developer;
                 case SkuType.Standard: return SkuType.Standard;
-                case SkuType.StandardV2: return SkuType.StandardV2;
+                case StandardV2Sku: return StandardV2Sku;
                 case SkuType.Premium: return SkuType.Premium;
                 case SkuType.Basic: return SkuType.Basic;
                 case SkuType.Consumption: return SkuType.Consumption;
