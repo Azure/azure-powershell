@@ -7,7 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PowerShell;
 
-    /// <summary>The response of a AFDDomain list operation.</summary>
+    /// <summary>
+    /// Result of the request to list domains. It contains a list of domain objects and a URL link to get the next set of results.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(AfdDomainListResultTypeConverter))]
     public partial class AfdDomainListResult
     {
@@ -162,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             return ToJsonString();
         }
     }
-    /// The response of a AFDDomain list operation.
+    /// Result of the request to list domains. It contains a list of domain objects and a URL link to get the next set of results.
     [System.ComponentModel.TypeConverter(typeof(AfdDomainListResultTypeConverter))]
     public partial interface IAfdDomainListResult
 

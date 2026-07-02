@@ -14,9 +14,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzCdnProfileMigrationCom
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+# Playback only
 Describe 'Test-AzCdnProfileMigrationCompatibility' {
-    It 'Can' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Can' {
+        $subId = $env.SubscriptionId
+        $cdnProfileName = 'cdn-migratipn-test-profile-compatibility'
+        Write-Host -ForegroundColor Green "Use CdnProfileName : $($cdnProfileName)"
+        $profileSku = "Standard_Microsoft";
+        New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
+
+        Test-AzCdnProfileMigrationCompatibility -Subscription $subId -ProfileName $cdnProfileName -ResourceGroupName $env.ResourceGroupName
     }
 
     It 'CanViaIdentity' -skip {

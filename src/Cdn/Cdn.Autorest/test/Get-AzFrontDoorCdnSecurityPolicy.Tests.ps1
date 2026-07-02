@@ -14,38 +14,39 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnSecurityPol
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzFrontDoorCdnSecurityPolicy' {
+Describe 'Get-AzFrontDoorCdnSecurityPolicy'  {
     BeforeAll {
-        $script:endpointName = 'e-clipstest-sp-get'
-        $script:policyName = 'pol-psName-get'
-        $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $script:endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
-        $association = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @('/*') -Domain @(@{'Id'=$endpoint.Id})
-        $parameter = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject -Association $association -WafPolicyId "/subscriptions/$($env.SubscriptionId)/resourcegroups/powershelltest/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/powershelltestwaf"
-        New-AzFrontDoorCdnSecurityPolicy -Name $script:policyName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Parameter $parameter | Out-Null
-    }
+        $subId = $env.SubscriptionId
 
-    AfterAll {
-        Remove-AzFrontDoorCdnSecurityPolicy -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $script:policyName -ErrorAction SilentlyContinue
-        Remove-AzFrontDoorCdnEndpoint -EndpointName $script:endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
+        $endpointName = 'e-clipstest010'
+        Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
+        $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
+
+        $policyName = "pol-psName010"
+        Write-Host -ForegroundColor Green "Use policyName : $($policyName)"
+
+        $association = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint.Id)})
+        $parameter = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject  -Association  $association `
+        -WafPolicyId "/subscriptions/$subId/resourcegroups/powershelltest/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/powershelltestwaf"
+
+        New-AzFrontDoorCdnSecurityPolicy -Name $policyName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Parameter $parameter -SubscriptionId $subId
     }
 
     It 'List' {
-        $ps = Get-AzFrontDoorCdnSecurityPolicy -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $ps.Count | Should -BeGreaterOrEqual 1
+        $policies = Get-AzFrontDoorCdnSecurityPolicy -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -SubscriptionId $subId
+        $policies.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {
-        $p = Get-AzFrontDoorCdnSecurityPolicy -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $script:policyName
-        $p.Name | Should -Be $script:policyName
+        $policy = Get-AzFrontDoorCdnSecurityPolicy -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $policyName
+        $policy.Name | Should -Be $policyName
     }
 
     It 'GetViaIdentity' {
-        $p = Get-AzFrontDoorCdnSecurityPolicy -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $script:policyName
-        $p2 = Get-AzFrontDoorCdnSecurityPolicy -InputObject $p
-        $p2.Name | Should -Be $script:policyName
-    }
+        $policyObject = Get-AzFrontDoorCdnSecurityPolicy -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $policyName
+        $policy = Get-AzFrontDoorCdnSecurityPolicy -InputObject $policyObject
 
-    It 'GetViaIdentityProfile' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $policy.Name | Should -Be $policyName
+        Remove-AzFrontDoorCdnSecurityPolicy -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $policyName
     }
 }

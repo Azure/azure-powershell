@@ -19,10 +19,10 @@ Remove-AzCdnEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <St
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Delete
+### DeleteViaJsonString
 ```
 Remove-AzCdnEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -Body <IEdgeActionAttachment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,18 +33,11 @@ Remove-AzCdnEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <St
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteViaJsonString
+### Delete
 ```
 Remove-AzCdnEdgeActionAttachment -EdgeActionName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-SubscriptionId <String>] -Body <IEdgeActionAttachment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzCdnEdgeActionAttachment -InputObject <ICdnIdentity> -Body <IEdgeActionAttachment>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityExpanded
@@ -54,17 +47,24 @@ Remove-AzCdnEdgeActionAttachment -InputObject <ICdnIdentity> -AttachedResourceId
  [<CommonParameters>]
 ```
 
+### DeleteViaIdentity
+```
+Remove-AzCdnEdgeActionAttachment -InputObject <ICdnIdentity> -Body <IEdgeActionAttachment>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 A long-running operation for deleting an EdgeAction attachment that returns no content.
 
 ## EXAMPLES
 
-### Example 1: Remove an EdgeAction attachment
+### Example 1: Remove an Edge Action Attachment
 ```powershell
-Remove-AzCdnEdgeActionAttachment -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -AttachedResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testps-rg-da16jm/providers/Microsoft.Cdn/profiles/fdp001/ruleSets/ruleset001/rules/rule001"
+Remove-AzCdnEdgeActionAttachment -ResourceGroupName "testps-rg-da16jm" -EdgeActionName "edgeaction001" -AttachedResourceId "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/testps-rg-da16jm/providers/Microsoft.Cdn/profiles/testprofile/endpoints/endpoint001"
 ```
 
-Removes the specified attachment from the EdgeAction resource.
+Remove an Edge Action Attachment to unlink an edge action from a CDN resource
 
 ## PARAMETERS
 
@@ -134,7 +134,7 @@ The name of the Edge Action
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteExpanded, Delete, DeleteViaJsonFilePath, DeleteViaJsonString
+Parameter Sets: DeleteExpanded, DeleteViaJsonString, DeleteViaJsonFilePath, Delete
 Aliases:
 
 Required: True
@@ -149,7 +149,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
-Parameter Sets: DeleteViaIdentity, DeleteViaIdentityExpanded
+Parameter Sets: DeleteViaIdentityExpanded, DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -210,7 +210,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteExpanded, Delete, DeleteViaJsonFilePath, DeleteViaJsonString
+Parameter Sets: DeleteExpanded, DeleteViaJsonString, DeleteViaJsonFilePath, Delete
 Aliases:
 
 Required: True
@@ -226,7 +226,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteExpanded, Delete, DeleteViaJsonFilePath, DeleteViaJsonString
+Parameter Sets: DeleteExpanded, DeleteViaJsonString, DeleteViaJsonFilePath, Delete
 Aliases:
 
 Required: False

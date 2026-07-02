@@ -14,8 +14,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Enable-AzFrontDoorCdnProfileM
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Enable-AzFrontDoorCdnProfileMigration' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+Describe 'Enable-AzFrontDoorCdnProfileMigration' -Tag 'LiveOnly' {
+    It 'Commit' {
+        $profileSku = "Standard_AzureFrontDoor"
+        $migratedProfileName = 'migrated-pstest010'
+
+        Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName $env.ResourceGroupName -ClassicResourceReferenceId $env.ClassicResourceId01 -ProfileName $migratedProfileName -SkuName $profileSku 
+        Enable-AzFrontDoorCdnProfileMigration -ProfileName $migratedProfileName -ResourceGroupName $env.ResourceGroupName
     }
 }

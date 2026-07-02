@@ -7,7 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PowerShell;
 
-    /// <summary>The response of a Route list operation.</summary>
+    /// <summary>
+    /// Result of the request to list routes. It contains a list of route objects and a URL link to get the next set of results.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(RouteListResultTypeConverter))]
     public partial class RouteListResult
     {
@@ -162,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             return ToJsonString();
         }
     }
-    /// The response of a Route list operation.
+    /// Result of the request to list routes. It contains a list of route objects and a URL link to get the next set of results.
     [System.ComponentModel.TypeConverter(typeof(RouteListResultTypeConverter))]
     public partial interface IRouteListResult
 

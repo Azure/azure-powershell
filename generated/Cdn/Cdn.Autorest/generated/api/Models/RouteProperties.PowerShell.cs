@@ -109,89 +109,85 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("OriginGroup"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).OriginGroup = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("OriginGroup",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).OriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("CacheConfiguration"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).CacheConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdRouteCacheConfiguration) content.GetValueForProperty("CacheConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).CacheConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdRouteCacheConfigurationTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("EndpointName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).EndpointName = (string) content.GetValueForProperty("EndpointName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).EndpointName, global::System.Convert.ToString);
-            }
-            if (content.Contains("CustomDomain"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).CustomDomain = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference>) content.GetValueForProperty("CustomDomain",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).CustomDomain, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference>(__y, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ActivatedResourceReferenceTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("OriginPath"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).OriginPath = (string) content.GetValueForProperty("OriginPath",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).OriginPath, global::System.Convert.ToString);
-            }
-            if (content.Contains("RuleSet"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).RuleSet = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference>) content.GetValueForProperty("RuleSet",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).RuleSet, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference>(__y, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("SupportedProtocol"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).SupportedProtocol = (System.Collections.Generic.List<string>) content.GetValueForProperty("SupportedProtocol",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).SupportedProtocol, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
-            }
-            if (content.Contains("PatternsToMatch"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).PatternsToMatch = (System.Collections.Generic.List<string>) content.GetValueForProperty("PatternsToMatch",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).PatternsToMatch, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
-            }
-            if (content.Contains("ForwardingProtocol"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).ForwardingProtocol = (string) content.GetValueForProperty("ForwardingProtocol",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).ForwardingProtocol, global::System.Convert.ToString);
-            }
-            if (content.Contains("LinkToDefaultDomain"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).LinkToDefaultDomain = (string) content.GetValueForProperty("LinkToDefaultDomain",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).LinkToDefaultDomain, global::System.Convert.ToString);
-            }
-            if (content.Contains("HttpsRedirect"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).HttpsRedirect = (string) content.GetValueForProperty("HttpsRedirect",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).HttpsRedirect, global::System.Convert.ToString);
-            }
-            if (content.Contains("EnabledState"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).EnabledState = (string) content.GetValueForProperty("EnabledState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).EnabledState, global::System.Convert.ToString);
-            }
-            if (content.Contains("GrpcState"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).GrpcState = (string) content.GetValueForProperty("GrpcState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).GrpcState, global::System.Convert.ToString);
-            }
-            if (content.Contains("ProvisioningState"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
-            }
-            if (content.Contains("DeploymentStatus"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).DeploymentStatus = (string) content.GetValueForProperty("DeploymentStatus",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).DeploymentStatus, global::System.Convert.ToString);
-            }
             if (content.Contains("CacheConfigurationCompressionSetting"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).CacheConfigurationCompressionSetting = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICompressionSettings) content.GetValueForProperty("CacheConfigurationCompressionSetting",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).CacheConfigurationCompressionSetting, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CompressionSettingsTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).CacheConfigurationCompressionSetting = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICompressionSettings) content.GetValueForProperty("CacheConfigurationCompressionSetting",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).CacheConfigurationCompressionSetting, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CompressionSettingsTypeConverter.ConvertFrom);
             }
             if (content.Contains("OriginGroupId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).OriginGroupId = (string) content.GetValueForProperty("OriginGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).OriginGroupId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).OriginGroupId = (string) content.GetValueForProperty("OriginGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).OriginGroupId, global::System.Convert.ToString);
             }
             if (content.Contains("CacheConfigurationQueryStringCachingBehavior"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).CacheConfigurationQueryStringCachingBehavior = (string) content.GetValueForProperty("CacheConfigurationQueryStringCachingBehavior",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).CacheConfigurationQueryStringCachingBehavior, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).CacheConfigurationQueryStringCachingBehavior = (string) content.GetValueForProperty("CacheConfigurationQueryStringCachingBehavior",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).CacheConfigurationQueryStringCachingBehavior, global::System.Convert.ToString);
             }
             if (content.Contains("CacheConfigurationQueryParameter"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).CacheConfigurationQueryParameter = (string) content.GetValueForProperty("CacheConfigurationQueryParameter",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).CacheConfigurationQueryParameter, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).CacheConfigurationQueryParameter = (string) content.GetValueForProperty("CacheConfigurationQueryParameter",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).CacheConfigurationQueryParameter, global::System.Convert.ToString);
             }
             if (content.Contains("CompressionSettingContentTypesToCompress"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).CompressionSettingContentTypesToCompress = (System.Collections.Generic.List<string>) content.GetValueForProperty("CompressionSettingContentTypesToCompress",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).CompressionSettingContentTypesToCompress, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).CompressionSettingContentTypesToCompress = (System.Collections.Generic.List<string>) content.GetValueForProperty("CompressionSettingContentTypesToCompress",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).CompressionSettingContentTypesToCompress, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("CompressionSettingIsCompressionEnabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).CompressionSettingIsCompressionEnabled = (bool?) content.GetValueForProperty("CompressionSettingIsCompressionEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).CompressionSettingIsCompressionEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).CompressionSettingIsCompressionEnabled = (bool?) content.GetValueForProperty("CompressionSettingIsCompressionEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).CompressionSettingIsCompressionEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("OriginGroup"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).OriginGroup = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("OriginGroup",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).OriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("CacheConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).CacheConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdRouteCacheConfiguration) content.GetValueForProperty("CacheConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).CacheConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdRouteCacheConfigurationTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("EndpointName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).EndpointName = (string) content.GetValueForProperty("EndpointName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).EndpointName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CustomDomain"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).CustomDomain = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference>) content.GetValueForProperty("CustomDomain",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).CustomDomain, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference>(__y, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ActivatedResourceReferenceTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("OriginPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).OriginPath = (string) content.GetValueForProperty("OriginPath",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).OriginPath, global::System.Convert.ToString);
+            }
+            if (content.Contains("RuleSet"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).RuleSet = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference>) content.GetValueForProperty("RuleSet",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).RuleSet, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference>(__y, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("SupportedProtocol"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).SupportedProtocol = (System.Collections.Generic.List<string>) content.GetValueForProperty("SupportedProtocol",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).SupportedProtocol, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("PatternsToMatch"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).PatternsToMatch = (System.Collections.Generic.List<string>) content.GetValueForProperty("PatternsToMatch",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).PatternsToMatch, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("ForwardingProtocol"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).ForwardingProtocol = (string) content.GetValueForProperty("ForwardingProtocol",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).ForwardingProtocol, global::System.Convert.ToString);
+            }
+            if (content.Contains("LinkToDefaultDomain"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).LinkToDefaultDomain = (string) content.GetValueForProperty("LinkToDefaultDomain",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).LinkToDefaultDomain, global::System.Convert.ToString);
+            }
+            if (content.Contains("HttpsRedirect"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).HttpsRedirect = (string) content.GetValueForProperty("HttpsRedirect",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).HttpsRedirect, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnabledState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).EnabledState = (string) content.GetValueForProperty("EnabledState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).EnabledState, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("DeploymentStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).DeploymentStatus = (string) content.GetValueForProperty("DeploymentStatus",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).DeploymentStatus, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -210,89 +206,85 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("OriginGroup"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).OriginGroup = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("OriginGroup",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).OriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("CacheConfiguration"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).CacheConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdRouteCacheConfiguration) content.GetValueForProperty("CacheConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).CacheConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdRouteCacheConfigurationTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("EndpointName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).EndpointName = (string) content.GetValueForProperty("EndpointName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).EndpointName, global::System.Convert.ToString);
-            }
-            if (content.Contains("CustomDomain"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).CustomDomain = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference>) content.GetValueForProperty("CustomDomain",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).CustomDomain, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference>(__y, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ActivatedResourceReferenceTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("OriginPath"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).OriginPath = (string) content.GetValueForProperty("OriginPath",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).OriginPath, global::System.Convert.ToString);
-            }
-            if (content.Contains("RuleSet"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).RuleSet = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference>) content.GetValueForProperty("RuleSet",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).RuleSet, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference>(__y, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("SupportedProtocol"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).SupportedProtocol = (System.Collections.Generic.List<string>) content.GetValueForProperty("SupportedProtocol",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).SupportedProtocol, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
-            }
-            if (content.Contains("PatternsToMatch"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).PatternsToMatch = (System.Collections.Generic.List<string>) content.GetValueForProperty("PatternsToMatch",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).PatternsToMatch, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
-            }
-            if (content.Contains("ForwardingProtocol"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).ForwardingProtocol = (string) content.GetValueForProperty("ForwardingProtocol",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).ForwardingProtocol, global::System.Convert.ToString);
-            }
-            if (content.Contains("LinkToDefaultDomain"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).LinkToDefaultDomain = (string) content.GetValueForProperty("LinkToDefaultDomain",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).LinkToDefaultDomain, global::System.Convert.ToString);
-            }
-            if (content.Contains("HttpsRedirect"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).HttpsRedirect = (string) content.GetValueForProperty("HttpsRedirect",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).HttpsRedirect, global::System.Convert.ToString);
-            }
-            if (content.Contains("EnabledState"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).EnabledState = (string) content.GetValueForProperty("EnabledState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).EnabledState, global::System.Convert.ToString);
-            }
-            if (content.Contains("GrpcState"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).GrpcState = (string) content.GetValueForProperty("GrpcState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).GrpcState, global::System.Convert.ToString);
-            }
-            if (content.Contains("ProvisioningState"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
-            }
-            if (content.Contains("DeploymentStatus"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).DeploymentStatus = (string) content.GetValueForProperty("DeploymentStatus",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).DeploymentStatus, global::System.Convert.ToString);
-            }
             if (content.Contains("CacheConfigurationCompressionSetting"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).CacheConfigurationCompressionSetting = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICompressionSettings) content.GetValueForProperty("CacheConfigurationCompressionSetting",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).CacheConfigurationCompressionSetting, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CompressionSettingsTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).CacheConfigurationCompressionSetting = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICompressionSettings) content.GetValueForProperty("CacheConfigurationCompressionSetting",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).CacheConfigurationCompressionSetting, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CompressionSettingsTypeConverter.ConvertFrom);
             }
             if (content.Contains("OriginGroupId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).OriginGroupId = (string) content.GetValueForProperty("OriginGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).OriginGroupId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).OriginGroupId = (string) content.GetValueForProperty("OriginGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).OriginGroupId, global::System.Convert.ToString);
             }
             if (content.Contains("CacheConfigurationQueryStringCachingBehavior"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).CacheConfigurationQueryStringCachingBehavior = (string) content.GetValueForProperty("CacheConfigurationQueryStringCachingBehavior",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).CacheConfigurationQueryStringCachingBehavior, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).CacheConfigurationQueryStringCachingBehavior = (string) content.GetValueForProperty("CacheConfigurationQueryStringCachingBehavior",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).CacheConfigurationQueryStringCachingBehavior, global::System.Convert.ToString);
             }
             if (content.Contains("CacheConfigurationQueryParameter"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).CacheConfigurationQueryParameter = (string) content.GetValueForProperty("CacheConfigurationQueryParameter",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).CacheConfigurationQueryParameter, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).CacheConfigurationQueryParameter = (string) content.GetValueForProperty("CacheConfigurationQueryParameter",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).CacheConfigurationQueryParameter, global::System.Convert.ToString);
             }
             if (content.Contains("CompressionSettingContentTypesToCompress"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).CompressionSettingContentTypesToCompress = (System.Collections.Generic.List<string>) content.GetValueForProperty("CompressionSettingContentTypesToCompress",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).CompressionSettingContentTypesToCompress, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).CompressionSettingContentTypesToCompress = (System.Collections.Generic.List<string>) content.GetValueForProperty("CompressionSettingContentTypesToCompress",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).CompressionSettingContentTypesToCompress, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("CompressionSettingIsCompressionEnabled"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).CompressionSettingIsCompressionEnabled = (bool?) content.GetValueForProperty("CompressionSettingIsCompressionEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoutePropertiesInternal)this).CompressionSettingIsCompressionEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).CompressionSettingIsCompressionEnabled = (bool?) content.GetValueForProperty("CompressionSettingIsCompressionEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).CompressionSettingIsCompressionEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("OriginGroup"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).OriginGroup = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference) content.GetValueForProperty("OriginGroup",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).OriginGroup, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("CacheConfiguration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).CacheConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdRouteCacheConfiguration) content.GetValueForProperty("CacheConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).CacheConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdRouteCacheConfigurationTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("EndpointName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).EndpointName = (string) content.GetValueForProperty("EndpointName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).EndpointName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CustomDomain"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).CustomDomain = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference>) content.GetValueForProperty("CustomDomain",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).CustomDomain, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IActivatedResourceReference>(__y, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ActivatedResourceReferenceTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("OriginPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).OriginPath = (string) content.GetValueForProperty("OriginPath",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).OriginPath, global::System.Convert.ToString);
+            }
+            if (content.Contains("RuleSet"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).RuleSet = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference>) content.GetValueForProperty("RuleSet",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).RuleSet, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference>(__y, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReferenceTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("SupportedProtocol"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).SupportedProtocol = (System.Collections.Generic.List<string>) content.GetValueForProperty("SupportedProtocol",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).SupportedProtocol, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("PatternsToMatch"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).PatternsToMatch = (System.Collections.Generic.List<string>) content.GetValueForProperty("PatternsToMatch",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).PatternsToMatch, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("ForwardingProtocol"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).ForwardingProtocol = (string) content.GetValueForProperty("ForwardingProtocol",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).ForwardingProtocol, global::System.Convert.ToString);
+            }
+            if (content.Contains("LinkToDefaultDomain"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).LinkToDefaultDomain = (string) content.GetValueForProperty("LinkToDefaultDomain",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).LinkToDefaultDomain, global::System.Convert.ToString);
+            }
+            if (content.Contains("HttpsRedirect"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).HttpsRedirect = (string) content.GetValueForProperty("HttpsRedirect",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).HttpsRedirect, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnabledState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).EnabledState = (string) content.GetValueForProperty("EnabledState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteUpdatePropertiesParametersInternal)this).EnabledState, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).ProvisioningState, global::System.Convert.ToString);
+            }
+            if (content.Contains("DeploymentStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).DeploymentStatus = (string) content.GetValueForProperty("DeploymentStatus",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdStatePropertiesInternal)this).DeploymentStatus, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

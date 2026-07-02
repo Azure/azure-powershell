@@ -7,7 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PowerShell;
 
-    /// <summary>The response of a AFDOrigin list operation.</summary>
+    /// <summary>
+    /// Result of the request to list origins. It contains a list of origin objects and a URL link to get the next set of results.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(AfdOriginListResultTypeConverter))]
     public partial class AfdOriginListResult
     {
@@ -162,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             return ToJsonString();
         }
     }
-    /// The response of a AFDOrigin list operation.
+    /// Result of the request to list origins. It contains a list of origin objects and a URL link to get the next set of results.
     [System.ComponentModel.TypeConverter(typeof(AfdOriginListResultTypeConverter))]
     public partial interface IAfdOriginListResult
 

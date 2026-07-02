@@ -52,7 +52,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         string NextLink { get; set; }
         /// <summary>List of CDN operations supported by the CDN resource provider.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,

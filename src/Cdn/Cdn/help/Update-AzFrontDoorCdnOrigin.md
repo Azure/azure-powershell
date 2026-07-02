@@ -17,8 +17,6 @@ Update an existing origin within an origin group.
 Update-AzFrontDoorCdnOrigin -OriginGroupName <String> -OriginName <String> -ProfileName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-AzureOriginId <String>] [-EnabledState <String>]
  [-EnforceCertificateNameCheck] [-HostName <String>] [-HttpPort <Int32>] [-HttpsPort <Int32>]
- [-OriginCapacityResourceEnabled <String>] [-OriginCapacityResourceOriginIngressRateThreshold <Int64>]
- [-OriginCapacityResourceOriginRequestRateThreshold <Int64>] [-OriginCapacityResourceRegion <String>]
  [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkId <String>]
  [-SharedPrivateLinkResourceGroupId <String>] [-SharedPrivateLinkResourcePrivateLinkLocation <String>]
  [-SharedPrivateLinkResourceRequestMessage <String>] [-SharedPrivateLinkResourceStatus <String>]
@@ -44,13 +42,10 @@ Update-AzFrontDoorCdnOrigin -OriginGroupName <String> -OriginName <String> -Prof
 ```
 Update-AzFrontDoorCdnOrigin -OriginGroupName <String> -OriginName <String> -ProfileInputObject <ICdnIdentity>
  [-AzureOriginId <String>] [-EnabledState <String>] [-EnforceCertificateNameCheck] [-HostName <String>]
- [-HttpPort <Int32>] [-HttpsPort <Int32>] [-OriginCapacityResourceEnabled <String>]
- [-OriginCapacityResourceOriginIngressRateThreshold <Int64>]
- [-OriginCapacityResourceOriginRequestRateThreshold <Int64>] [-OriginCapacityResourceRegion <String>]
- [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkId <String>]
- [-SharedPrivateLinkResourceGroupId <String>] [-SharedPrivateLinkResourcePrivateLinkLocation <String>]
- [-SharedPrivateLinkResourceRequestMessage <String>] [-SharedPrivateLinkResourceStatus <String>]
- [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-HttpPort <Int32>] [-HttpsPort <Int32>] [-OriginHostHeader <String>] [-Priority <Int32>]
+ [-PrivateLinkId <String>] [-SharedPrivateLinkResourceGroupId <String>]
+ [-SharedPrivateLinkResourcePrivateLinkLocation <String>] [-SharedPrivateLinkResourceRequestMessage <String>]
+ [-SharedPrivateLinkResourceStatus <String>] [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -65,13 +60,10 @@ Update-AzFrontDoorCdnOrigin -OriginGroupName <String> -OriginName <String> -Prof
 ```
 Update-AzFrontDoorCdnOrigin -OriginName <String> -OriginGroupInputObject <ICdnIdentity>
  [-AzureOriginId <String>] [-EnabledState <String>] [-EnforceCertificateNameCheck] [-HostName <String>]
- [-HttpPort <Int32>] [-HttpsPort <Int32>] [-OriginCapacityResourceEnabled <String>]
- [-OriginCapacityResourceOriginIngressRateThreshold <Int64>]
- [-OriginCapacityResourceOriginRequestRateThreshold <Int64>] [-OriginCapacityResourceRegion <String>]
- [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkId <String>]
- [-SharedPrivateLinkResourceGroupId <String>] [-SharedPrivateLinkResourcePrivateLinkLocation <String>]
- [-SharedPrivateLinkResourceRequestMessage <String>] [-SharedPrivateLinkResourceStatus <String>]
- [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-HttpPort <Int32>] [-HttpsPort <Int32>] [-OriginHostHeader <String>] [-Priority <Int32>]
+ [-PrivateLinkId <String>] [-SharedPrivateLinkResourceGroupId <String>]
+ [-SharedPrivateLinkResourcePrivateLinkLocation <String>] [-SharedPrivateLinkResourceRequestMessage <String>]
+ [-SharedPrivateLinkResourceStatus <String>] [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -86,8 +78,6 @@ Update-AzFrontDoorCdnOrigin -OriginName <String> -OriginGroupInputObject <ICdnId
 ```
 Update-AzFrontDoorCdnOrigin -InputObject <ICdnIdentity> [-AzureOriginId <String>] [-EnabledState <String>]
  [-EnforceCertificateNameCheck] [-HostName <String>] [-HttpPort <Int32>] [-HttpsPort <Int32>]
- [-OriginCapacityResourceEnabled <String>] [-OriginCapacityResourceOriginIngressRateThreshold <Int64>]
- [-OriginCapacityResourceOriginRequestRateThreshold <Int64>] [-OriginCapacityResourceRegion <String>]
  [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkId <String>]
  [-SharedPrivateLinkResourceGroupId <String>] [-SharedPrivateLinkResourcePrivateLinkLocation <String>]
  [-SharedPrivateLinkResourceRequestMessage <String>] [-SharedPrivateLinkResourceStatus <String>]
@@ -326,66 +316,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OriginCapacityResourceEnabled
-Whether to enable origin capacity for a specific origin
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityProfileExpanded, UpdateViaIdentityOriginGroupExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OriginCapacityResourceOriginIngressRateThreshold
-The ingress rate limit threshold for an origin per minute in bytes
-
-```yaml
-Type: System.Int64
-Parameter Sets: UpdateExpanded, UpdateViaIdentityProfileExpanded, UpdateViaIdentityOriginGroupExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OriginCapacityResourceOriginRequestRateThreshold
-The request rate limit threshold for an origin per minute
-
-```yaml
-Type: System.Int64
-Parameter Sets: UpdateExpanded, UpdateViaIdentityProfileExpanded, UpdateViaIdentityOriginGroupExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OriginCapacityResourceRegion
-The nearest origin capacity pop region for an origin
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityProfileExpanded, UpdateViaIdentityOriginGroupExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -OriginGroupInputObject
 Identity Parameter
 
@@ -402,7 +332,7 @@ Accept wildcard characters: False
 ```
 
 ### -OriginGroupName
-Name of the origin group which is unique within the endpoint.
+Name of the origin group which is unique within the profile.
 
 ```yaml
 Type: System.String
@@ -511,7 +441,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProfileName
-Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
 
 ```yaml
 Type: System.String

@@ -20,9 +20,9 @@ Get EdgeActionExecutionFilter resource
 .Description
 Get EdgeActionExecutionFilter resource
 .Example
-Get-AzCdnEdgeActionExecutionFilter -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001
+Get-AzCdnEdgeActionExecutionFilter -ResourceGroupName "testps-rg-da16jm" -EdgeActionName "edgeaction001"
 .Example
-Get-AzCdnEdgeActionExecutionFilter -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -ExecutionFilter filter001
+Get-AzCdnEdgeActionExecutionFilter -ResourceGroupName "testps-rg-da16jm" -EdgeActionName "edgeaction001" -ExecutionFilter "filter001"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilter
@@ -46,6 +46,12 @@ param(
     # The name is case insensitive.
     ${ResourceGroupName},
 
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
+    [System.String]
+    # The name of the execution filter
+    ${ExecutionFilter},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
@@ -53,12 +59,6 @@ param(
     # The ID of the target subscription.
     # The value must be an UUID.
     ${SubscriptionId},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
-    [System.String]
-    # The name of the execution filter
-    ${ExecutionFilter},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -143,10 +143,10 @@ begin {
         }
 
         $mapping = @{
-            List = 'Az.Cdn.custom\Get-AzCdnEdgeActionExecutionFilter';
-            Get = 'Az.Cdn.custom\Get-AzCdnEdgeActionExecutionFilter';
+            Get = 'Az.Cdn.private\Get-AzCdnEdgeActionExecutionFilter_Get';
+            List = 'Az.Cdn.private\Get-AzCdnEdgeActionExecutionFilter_List';
         }
-        if (('List', 'Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {

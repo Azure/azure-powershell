@@ -20,9 +20,9 @@ Get EdgeActionVersion resource
 .Description
 Get EdgeActionVersion resource
 .Example
-Get-AzCdnEdgeActionVersion -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001
+Get-AzCdnEdgeActionVersion -ResourceGroupName "testps-rg-da16jm" -EdgeActionName "edgeaction001"
 .Example
-Get-AzCdnEdgeActionVersion -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version v1
+Get-AzCdnEdgeActionVersion -ResourceGroupName "testps-rg-da16jm" -EdgeActionName "edgeaction001" -Version "v1"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionVersion
@@ -143,10 +143,10 @@ begin {
         }
 
         $mapping = @{
-            List = 'Az.Cdn.custom\Get-AzCdnEdgeActionVersion';
-            Get = 'Az.Cdn.custom\Get-AzCdnEdgeActionVersion';
+            Get = 'Az.Cdn.private\Get-AzCdnEdgeActionVersion_Get';
+            List = 'Az.Cdn.private\Get-AzCdnEdgeActionVersion_List';
         }
-        if (('List', 'Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {

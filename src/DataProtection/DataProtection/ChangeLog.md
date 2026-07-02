@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Deprecated the `-OverwriteLifeCycle` parameter on `Edit-AzDataProtectionPolicyRetentionRuleClientObject`
+    - The parameter will be removed in an upcoming release; existing retention rule lifecycles are replaced in place by default
+* Updated the retention rule `-Name` help messages in `Edit-AzDataProtectionPolicyRetentionRuleClientObject` for clarity
 
 ## Version 3.0.0
 * Changed retention rule to require `-Name Default_OperationalStore`

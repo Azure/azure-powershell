@@ -19,16 +19,15 @@ Describe 'Move-AzCdnProfileToAFD' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Migrate' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'MigrateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'MigrateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Migrate' {
+        $subId = $env.SubscriptionId
+        $cdnProfileName = 'cdn-migration-test-profile'
+        Write-Host -ForegroundColor Green "Use CdnProfileName : $($cdnProfileName)"
+        $profileSku = "Standard_Microsoft";
+        New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
+        Move-AzCdnProfileToAFD -Subscription $subId -ProfileName $cdnProfileName -ResourceGroupName $env.ResourceGroupName -SkuName 'Premium_AzureFrontDoor'
+        Start-Sleep 60
+        Invoke-AzCdnAbortProfileToAFDMigration -Subscription $subId -ProfileName $cdnProfileName -ResourceGroupName $env.ResourceGroupName
     }
 
     It 'MigrateViaIdentity' -skip {

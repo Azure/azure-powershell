@@ -7,25 +7,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Extensions;
 
-    /// <summary>The response of a Route list operation.</summary>
+    /// <summary>
+    /// Result of the request to list routes. It contains a list of route objects and a URL link to get the next set of results.
+    /// </summary>
     public partial class RouteListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteListResult,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteListResultInternal
     {
 
+        /// <summary>Internal Acessors for Value</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute> Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRouteListResultInternal.Value { get => this._value; set { {_value = value;} } }
+
         /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
         private string _nextLink;
 
-        /// <summary>The link to the next page of items</summary>
+        /// <summary>URL to get the next set of route objects if there are any.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string NextLink { get => this._nextLink; set => this._nextLink = value; }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute> _value;
 
-        /// <summary>The Route items on this page</summary>
+        /// <summary>List of AzureFrontDoor routes within a profile.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute> Value { get => this._value; set => this._value = value; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute> Value { get => this._value; }
 
         /// <summary>Creates an new <see cref="RouteListResult" /> instance.</summary>
         public RouteListResult()
@@ -33,41 +38,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
         }
     }
-    /// The response of a Route list operation.
+    /// Result of the request to list routes. It contains a list of route objects and a URL link to get the next set of results.
     public partial interface IRouteListResult :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IJsonSerializable
     {
-        /// <summary>The link to the next page of items</summary>
+        /// <summary>URL to get the next set of route objects if there are any.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The link to the next page of items",
+        Description = @"URL to get the next set of route objects if there are any.",
         SerializedName = @"nextLink",
         PossibleTypes = new [] { typeof(string) })]
         string NextLink { get; set; }
-        /// <summary>The Route items on this page</summary>
+        /// <summary>List of AzureFrontDoor routes within a profile.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
+        Required = false,
+        ReadOnly = true,
         Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The Route items on this page",
+        Create = false,
+        Update = false,
+        Description = @"List of AzureFrontDoor routes within a profile.",
         SerializedName = @"value",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute> Value { get; set; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute> Value { get;  }
 
     }
-    /// The response of a Route list operation.
+    /// Result of the request to list routes. It contains a list of route objects and a URL link to get the next set of results.
     internal partial interface IRouteListResultInternal
 
     {
-        /// <summary>The link to the next page of items</summary>
+        /// <summary>URL to get the next set of route objects if there are any.</summary>
         string NextLink { get; set; }
-        /// <summary>The Route items on this page</summary>
+        /// <summary>List of AzureFrontDoor routes within a profile.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute> Value { get; set; }
 
     }
