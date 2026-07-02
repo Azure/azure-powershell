@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.UnitTests
         [Fact]
         public void MapSku_AllowsStandardV2()
         {
-            Assert.Equal("StandardV2", Mappers.MapSku("StandardV2"));
+            Assert.Equal(SkuType.StandardV2, Mappers.MapSku(SkuType.StandardV2));
         }
 
         [Fact]
@@ -34,13 +34,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.UnitTests
                 Sku = new ApiManagementServiceSkuProperties(SkuType.Developer, 1)
             })
             {
-                Sku = "StandardV2",
+                Sku = SkuType.StandardV2,
                 Capacity = 1
             };
 
             var mappedResource = Mappers.MapPsApiManagement(apiManagement);
 
-            Assert.Equal("StandardV2", mappedResource.Sku.Name);
+            Assert.Equal(SkuType.StandardV2, mappedResource.Sku.Name);
             Assert.Equal(1, mappedResource.Sku.Capacity);
         }
     }

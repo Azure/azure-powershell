@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
             {
                 case SkuType.Developer: return SkuType.Developer;
                 case SkuType.Standard: return SkuType.Standard;
-                case "StandardV2": return "StandardV2";
+                case SkuType.StandardV2: return SkuType.StandardV2;
                 case SkuType.Premium: return SkuType.Premium;
                 case SkuType.Basic: return SkuType.Basic;
                 case SkuType.Consumption: return SkuType.Consumption;
