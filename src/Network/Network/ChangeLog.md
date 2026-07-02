@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Added support for ExpressRoute MultiCloud circuits (e.g. AWS).
+    - Added `MultiCloud` as an accepted value for `-SkuTier` on `New-AzExpressRouteCircuit`.
+    - Added `-PartnerAccountId` and `-ActivationKey` parameters to `New-AzExpressRouteCircuit` (mutually exclusive, used with the `MultiCloud` tier).
+    - Added `PartnerAccountId`, `ActivationKey`, and read-only `ResiliencyLevel` properties to the `PSExpressRouteCircuit` output model.
 
 ## Version 8.0.0
 * Added ChangeSafety Support
