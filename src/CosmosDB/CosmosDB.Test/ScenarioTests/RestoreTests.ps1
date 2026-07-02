@@ -789,6 +789,110 @@ function Test-ProvisionCosmosDBAccountBackupPolicyWithContinuous7DaysCmdLets {
   Assert-NotNull $sourceRestorableAccount.OldestRestorableTime
 }
 
+function Test-ProvisionCosmosDBAccountBackupPolicyWithContinuous35DaysCmdLets {
+  $rgName = "PSCosmosDBResourceGroup55"
+  $location = "West US"
+  $sourceCosmosDBAccountName = "ps-cosmosdb-1255"
+  $consistencyLevel = "Session"
+  $apiKind = "Sql"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -Location "West Us" -FailoverPriority 0 -IsZoneRedundant 0
+
+  $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName -Location $location
+  New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $sourceCosmosDBAccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous -ContinuousTier Continuous35Days -DisableLocalAuth $true
+
+  $sourceCosmosDBAccount = Get-AzCosmosDBAccount -Name $sourceCosmosDBAccountName -ResourceGroupName $rgName
+  Assert-AreEqual "Continuous" $sourceCosmosDBAccount.BackupPolicy.BackupType
+  Assert-AreEqual "Continuous35Days" $sourceCosmosDBAccount.BackupPolicy.Tier
+
+  $sourceRestorableAccount = Get-AzCosmosDBRestorableDatabaseAccount -Location $sourceCosmosDBAccount.Location -DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId
+  Assert-NotNull $sourceRestorableAccount.Id
+  Assert-NotNull $sourceRestorableAccount.Location
+  Assert-NotNull $sourceRestorableAccount.DatabaseAccountInstanceId
+  Assert-NotNull $sourceRestorableAccount.RestorableLocations
+  Assert-AreEqual $sourceRestorableAccount.RestorableLocations.Count 1
+  Assert-AreEqual $sourceRestorableAccount.DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId
+  Assert-NotNull $sourceRestorableAccount.DatabaseAccountName
+  Assert-NotNull $sourceRestorableAccount.CreationTime
+  Assert-NotNull $sourceRestorableAccount.OldestRestorableTime
+}
+
+function Test-UpdateCosmosDBAccountBackupPolicyToContinuous35DaysCmdLets {
+  $rgName = "PSCosmosDBResourceGroup56"
+  $location = "West US"
+  $cosmosDBAccountName = "ps-cosmosdb-1256"
+  $apiKind = "Sql"
+  $consistencyLevel = "Session"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -Location $location -FailoverPriority 0 -IsZoneRedundant 0
+
+  $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName -Location $location
+
+  # Provision account with Continuous30Days
+  New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $cosmosDBAccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous -ContinuousTier Continuous30Days -DisableLocalAuth $true
+
+  $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
+  Assert-AreEqual "Continuous" $cosmosDBAccount.BackupPolicy.BackupType
+  Assert-AreEqual "Continuous30Days" $cosmosDBAccount.BackupPolicy.Tier
+
+  # Upgrade from Continuous30Days to Continuous35Days
+  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -BackupPolicyType Continuous -ContinuousTier Continuous35Days
+  SleepInRecordMode (60 * 2)
+
+  $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
+  Assert-AreEqual "Continuous" $updatedCosmosDBAccount.BackupPolicy.BackupType
+  Assert-AreEqual "Continuous35Days" $updatedCosmosDBAccount.BackupPolicy.Tier
+
+  # Verify that not providing ContinuousTier does not change the tier
+  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
+  SleepInRecordMode (60 * 2)
+
+  $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
+  Assert-AreEqual "Continuous35Days" $updatedCosmosDBAccount.BackupPolicy.Tier
+}
+
+function Test-MigratePeriodicToContinuous35DaysCmdLets {
+  $rgName = "PSCosmosDBResourceGroup57"
+  $location = "West US"
+  $cosmosDBAccountName = "ps-cosmosdb-1257"
+  $apiKind = "Sql"
+  $consistencyLevel = "Session"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -Location $location -FailoverPriority 0 -IsZoneRedundant 0
+
+  $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName -Location $location
+
+  # Provision account with default (Periodic) backup policy
+  Try {
+    New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $cosmosDBAccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -DisableLocalAuth $true
+  }
+  Catch {
+    Assert-AreEqual $_.Exception.Message ("Resource with Name " + $cosmosDBAccountName + " already exists.")
+  }
+
+  # Migrate from Periodic to Continuous35Days
+  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -BackupPolicyType Continuous -ContinuousTier Continuous35Days
+  SleepInRecordMode 50
+
+  $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
+
+  SleepInRecordMode (60 * 5)
+
+  while (
+    $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState.Status -ne "Completed" -and 
+    $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState.Status -ne "Failed" -and
+    $updatedCosmosDBAccount.BackupPolicy.BackupType -ne "Continuous")
+  {
+    SleepInRecordMode 60
+
+    # keep polling the migration Status
+    $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
+  }
+
+  Assert-AreEqual "Continuous" $updatedCosmosDBAccount.BackupPolicy.BackupType
+  Assert-AreEqual "Continuous35Days" $updatedCosmosDBAccount.BackupPolicy.Tier
+}
+
 
 function Test-CrossRegionRestoreAccountCmdlets {
   #use an existing account with the following information

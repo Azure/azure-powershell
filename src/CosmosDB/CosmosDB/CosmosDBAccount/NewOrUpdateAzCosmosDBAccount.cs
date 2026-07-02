@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public string BackupPolicyType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ContinuousTierHelpMessage)]
-        [PSArgumentCompleter("Continuous7Days", "Continuous30Days")]
+        [PSArgumentCompleter("Continuous7Days", "Continuous30Days", "Continuous35Days")]
         public string ContinuousTier { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.AnalyticalStorageSchemaTypeHelpMessage)]
