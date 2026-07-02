@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
 
     public static class Mappers
     {
+        // Keep StandardV2 in handwritten code because the generated SDK constants do not define it yet.
         private const string StandardV2Sku = "StandardV2";
 
         public static string MapHostnameType(PsApiManagementHostnameType hostnameType)
