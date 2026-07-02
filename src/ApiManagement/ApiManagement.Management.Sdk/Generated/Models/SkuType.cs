@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// Standard SKU of Api Management.
         /// </summary>
         public const string Standard = "Standard";
+        /// <summary>
         /// Premium SKU of Api Management.
         /// </summary>
         public const string Premium = "Premium";
