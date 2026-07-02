@@ -18,7 +18,8 @@ Update-AzWvdApplication -GroupName <String> -Name <String> -ResourceGroupName <S
  [-FriendlyName <String>] [-ShowInPortal] [-SubscriptionId <String>] [-ApplicationType <String>]
  [-CommandLineArgument <String>] [-CommandLineSetting <String>] [-FilePath <String>] [-IconIndex <Int32>]
  [-IconPath <String>] [-MsixPackageApplicationId <String>] [-MsixPackageFamilyName <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ShortcutExtensionPutShortcutOnDesktop] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ResetIcon
@@ -40,7 +41,8 @@ Update-AzWvdApplication -ApplicationGroupInputObject <IDesktopVirtualizationIden
  [-Description <String>] [-FriendlyName <String>] [-ShowInPortal] [-ApplicationType <String>]
  [-CommandLineArgument <String>] [-CommandLineSetting <String>] [-FilePath <String>] [-IconIndex <Int32>]
  [-IconPath <String>] [-MsixPackageApplicationId <String>] [-MsixPackageFamilyName <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ShortcutExtensionPutShortcutOnDesktop] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -48,8 +50,9 @@ Update-AzWvdApplication -ApplicationGroupInputObject <IDesktopVirtualizationIden
 Update-AzWvdApplication -InputObject <IDesktopVirtualizationIdentity> [-Description <String>]
  [-FriendlyName <String>] [-ShowInPortal] [-ApplicationType <String>] [-CommandLineArgument <String>]
  [-CommandLineSetting <String>] [-FilePath <String>] [-IconIndex <Int32>] [-IconPath <String>]
- [-MsixPackageApplicationId <String>] [-MsixPackageFamilyName <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-MsixPackageApplicationId <String>] [-MsixPackageFamilyName <String>]
+ [-ShortcutExtensionPutShortcutOnDesktop] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -386,6 +389,21 @@ Accept wildcard characters: False
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ResetIcon
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ShortcutExtensionPutShortcutOnDesktop
+Indicates whether to create a desktop shortcut for the remote application.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded, UpdateViaIdentityApplicationGroupExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False

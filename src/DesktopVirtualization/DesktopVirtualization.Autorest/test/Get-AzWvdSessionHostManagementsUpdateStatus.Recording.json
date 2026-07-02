@@ -1,13 +1,13 @@
 {
-  "Get-AzWvdSessionHostManagementsUpdateStatus+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated2/sessionHostManagements/default/sessionHostUpdateStatuses/default?api-version=2026-01-01-preview+1": {
+  "Get-AzWvdSessionHostManagementsUpdateStatus+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated2/sessionHostManagements/default/sessionHostUpdateStatuses/default?api-version=2026-04-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated2/sessionHostManagements/default/sessionHostUpdateStatuses/default?api-version=2026-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated2/sessionHostManagements/default/sessionHostUpdateStatuses/default?api-version=2026-04-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "158" ],
-        "x-ms-client-request-id": [ "1cd2a83d-7405-4e6f-9591-1966c72d017f" ],
+        "x-ms-client-request-id": [ "72c28c39-aade-47c2-9e1d-f05e52274304" ],
         "CommandName": [ "Get-AzWvdSessionHostManagementsUpdateStatus" ],
         "FullCommandName": [ "Get-AzWvdSessionHostManagementsUpdateStatus_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,32 +23,32 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "Set-Cookie": [ "ARRAffinity=0fff6e681643fd9addf73ac337341404a9fd18e988188b8248f9ac04d076d8ac;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com", "ARRAffinitySameSite=0fff6e681643fd9addf73ac337341404a9fd18e988188b8248f9ac04d076d8ac;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com" ],
-        "x-ms-operation-identifier": [ "tenantId=715492f1-ef6e-4eea-9176-7c81e765c3c8,objectId=1db230a9-e046-46ab-912b-9cea769323a2/westus2/38a1d297-c335-491c-a8a7-172b487b233f" ],
+        "Set-Cookie": [ "ARRAffinity=95d717bb8ce068b72569fc0420494dd5ba4a475c702d13d50abf18f5eddb8aa0;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com", "ARRAffinitySameSite=95d717bb8ce068b72569fc0420494dd5ba4a475c702d13d50abf18f5eddb8aa0;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com" ],
+        "x-ms-operation-identifier": [ "tenantId=715492f1-ef6e-4eea-9176-7c81e765c3c8,objectId=1db230a9-e046-46ab-912b-9cea769323a2/westus2/d1b86442-b0c2-44c6-a96e-26412bb1b59a" ],
         "X-Rate-Limit-Limit": [ "5m" ],
-        "X-Rate-Limit-Remaining": [ "9743" ],
-        "X-Rate-Limit-Reset": [ "2026-06-11T07:10:16.6400660Z" ],
+        "X-Rate-Limit-Remaining": [ "9825" ],
+        "X-Rate-Limit-Reset": [ "2026-06-23T07:43:18.1482664Z" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvNjczODUwOWQtODRlZC00YWQ2LTk3NGEtN2RjNGUzYzM0MTQ2L3Jlc291cmNlR3JvdXBzL3pob25namllLXJnLXd1cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvemhvbmdqaWUtYXV0b21hdGVkMi9zZXNzaW9uSG9zdE1hbmFnZW1lbnRzL2RlZmF1bHQvc2Vzc2lvbkhvc3RVcGRhdGVTdGF0dXNlcy9kZWZhdWx0" ],
-        "x-ms-lamport-ts": [ "-9223372036854775577" ],
-        "x-ms-correlation-id": [ "bee4a338-3b86-4947-82d4-6bcdf3839538" ],
-        "x-ms-request-id": [ "1cd2a83d-7405-4e6f-9591-1966c72d017f" ],
+        "x-ms-lamport-ts": [ "-9223372036854775741" ],
+        "x-ms-correlation-id": [ "f3114632-554b-4f7e-931a-6b2c35887da6" ],
+        "x-ms-request-id": [ "72c28c39-aade-47c2-9e1d-f05e52274304" ],
         "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "248" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3748" ],
-        "x-ms-correlation-request-id": [ "62fecf26-40a8-44ac-9018-a6f2f65c1402" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20260611T070940Z:62fecf26-40a8-44ac-9018-a6f2f65c1402" ],
+        "x-ms-correlation-request-id": [ "5046476c-9d67-46b5-a25f-d40dc72d64ad" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20260623T074103Z:5046476c-9d67-46b5-a25f-d40dc72d64ad" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 82E4C74B5A1D4FFDB4FDB864513F4EB8 Ref B: TYO201100115023 Ref C: 2026-06-11T07:09:39Z" ],
-        "Date": [ "Thu, 11 Jun 2026 07:09:39 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 2C643039F49F4C798BCCCC0A80DF712D Ref B: TYO201100113021 Ref C: 2026-06-23T07:41:02Z" ],
+        "Date": [ "Tue, 23 Jun 2026 07:41:02 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "2067" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated2/sessionHostUpdateStatuses/default\",\"status\":\"Failed\",\"startTime\":\"2026-06-10T20:08:20Z\",\"endTime\":\"2026-06-10T20:08:25Z\",\"percentComplete\":100.0,\"error\":{\"code\":\"UpdateFailure\",\"message\":\"[{\\\"faultCode\\\":\\\"MigrationMayExceedCapacityLimit_1024\\\",\\\"faultText\\\":\\\"It was detected that resources created during the update process may cause subscription limits to be exceeded for the following resources:  \u0027[{\\\\\\\"name\\\\\\\":{\\\\\\\"value\\\\\\\":\\\\\\\"standardDaldv6Family\\\\\\\",\\\\\\\"localizedValue\\\\\\\":\\\\\\\"standard Daldv6 Family vCPUs\\\\\\\"},\\\\\\\"limit\\\\\\\":10,\\\\\\\"projectedUsedCapacity\\\\\\\":12}]\u0027.  Please delete some resources of this type before creating a new one\\\",\\\"faultContext\\\":\\\"ComputeCapacityRule\\\",\\\"faultType\\\":0}]\"},\"correlationId\":\"62c9d4c3-9e95-42f3-8c4a-4573159cc033\",\"progress\":{\"totalSessionHosts\":1,\"sessionHostsRollbackFailed\":0,\"executionStartTime\":\"2026-06-10T20:08:21.3082862\",\"sessionHostsInProgress\":0,\"sessionHostsCompleted\":0},\"scheduledDateTime\":null,\"sessionHostManagement\":{\"properties\":{\"failedSessionHostCleanupPolicy\":\"KeepAll\",\"scheduledDateTimeZone\":\"Pacific Standard Time\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":0,\"logOffMessage\":\"Updating Session Hosts. Will Log off\"},\"provisioning\":{\"instanceCount\":2,\"canaryPolicy\":\"Auto\",\"setDrainMode\":false}}},\"properties\":{\"correlationId\":\"62c9d4c3-9e95-42f3-8c4a-4573159cc033\",\"progress\":{\"totalSessionHosts\":1,\"sessionHostsRollbackFailed\":0,\"executionStartTime\":\"2026-06-10T20:08:21.3082862\",\"sessionHostsInProgress\":0,\"sessionHostsCompleted\":0},\"scheduledDateTime\":null,\"sessionHostManagement\":{\"properties\":{\"failedSessionHostCleanupPolicy\":\"KeepAll\",\"scheduledDateTimeZone\":\"Pacific Standard Time\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":0,\"logOffMessage\":\"Updating Session Hosts. Will Log off\"},\"provisioning\":{\"instanceCount\":2,\"canaryPolicy\":\"Auto\",\"setDrainMode\":false}}}}}",
+      "Content": "{\"id\":\"/subscriptions/6738509d-84ed-4ad6-974a-7dc4e3c34146/resourceGroups/zhongjie-rg-wus/providers/Microsoft.DesktopVirtualization/hostPools/zhongjie-automated2/sessionHostUpdateStatuses/default\",\"status\":\"Failed\",\"startTime\":\"2026-06-11T23:32:13Z\",\"endTime\":\"2026-06-11T23:32:17Z\",\"percentComplete\":100.0,\"error\":{\"code\":\"UpdateFailure\",\"message\":\"[{\\\"faultCode\\\":\\\"MigrationMayExceedCapacityLimit_1024\\\",\\\"faultText\\\":\\\"It was detected that resources created during the update process may cause subscription limits to be exceeded for the following resources:  \u0027[{\\\\\\\"name\\\\\\\":{\\\\\\\"value\\\\\\\":\\\\\\\"standardDaldv6Family\\\\\\\",\\\\\\\"localizedValue\\\\\\\":\\\\\\\"standard Daldv6 Family vCPUs\\\\\\\"},\\\\\\\"limit\\\\\\\":10,\\\\\\\"projectedUsedCapacity\\\\\\\":12}]\u0027.  Please delete some resources of this type before creating a new one\\\",\\\"faultContext\\\":\\\"ComputeCapacityRule\\\",\\\"faultType\\\":0}]\"},\"correlationId\":\"d3df6020-dfdf-4486-8e9b-9ab458db3f5f\",\"progress\":{\"totalSessionHosts\":1,\"sessionHostsRollbackFailed\":0,\"executionStartTime\":\"2026-06-11T23:32:13.6698277\",\"sessionHostsInProgress\":0,\"sessionHostsCompleted\":0},\"scheduledDateTime\":null,\"sessionHostManagement\":{\"properties\":{\"failedSessionHostCleanupPolicy\":\"KeepAll\",\"scheduledDateTimeZone\":\"Pacific Standard Time\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":0,\"logOffMessage\":\"Updating Session Hosts. Will Log off\"},\"provisioning\":{\"instanceCount\":2,\"canaryPolicy\":\"Auto\",\"setDrainMode\":false}}},\"properties\":{\"correlationId\":\"d3df6020-dfdf-4486-8e9b-9ab458db3f5f\",\"progress\":{\"totalSessionHosts\":1,\"sessionHostsRollbackFailed\":0,\"executionStartTime\":\"2026-06-11T23:32:13.6698277\",\"sessionHostsInProgress\":0,\"sessionHostsCompleted\":0},\"scheduledDateTime\":null,\"sessionHostManagement\":{\"properties\":{\"failedSessionHostCleanupPolicy\":\"KeepAll\",\"scheduledDateTimeZone\":\"Pacific Standard Time\",\"update\":{\"deleteOriginalVm\":true,\"maxVmsRemoved\":1,\"logOffDelayMinutes\":0,\"logOffMessage\":\"Updating Session Hosts. Will Log off\"},\"provisioning\":{\"instanceCount\":2,\"canaryPolicy\":\"Auto\",\"setDrainMode\":false}}}}}",
       "isContentBase64": false
     }
   }

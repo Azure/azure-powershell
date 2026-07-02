@@ -51,7 +51,8 @@ Describe 'Update-AzWvdApplication' {
                                 -IconIndex 0 `
                                 -IconPath 'C:\windows\system32\mspaint.exe' `
                                 -CommandLineSetting 'Allow' `
-                                -ShowInPortal:$true
+                                -ShowInPortal:$true `
+                                -ShortcutExtensionPutShortcutOnDesktop:$false
                 $application.Name | Should -Be 'ApplicationGroupPowershell2/Paint'
                 $application.FilePath | Should -Be 'C:\windows\system32\mspaint.exe'
                 $application.FriendlyName | Should -Be 'fri'
@@ -60,6 +61,7 @@ Describe 'Update-AzWvdApplication' {
                 $application.IconPath | Should -Be 'C:\windows\system32\mspaint.exe'
                 $application.CommandLineSetting | Should -Be 'Allow'
                 $application.ShowInPortal | Should -Be $true
+                $application.ShortcutExtensionPutShortcutOnDesktop | Should -Be $false
 
             $application = Update-AzWvdApplication -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
@@ -71,7 +73,8 @@ Describe 'Update-AzWvdApplication' {
                                 -IconIndex 1 `
                                 -IconPath 'C:\windows\system32\SnippingTool.exe' `
                                 -CommandLineSetting 'DoNotAllow' `
-                                -ShowInPortal:$false
+                                -ShowInPortal:$false `
+                                -ShortcutExtensionPutShortcutOnDesktop:$true
                 $application.Name | Should -Be 'ApplicationGroupPowershell2/Paint'
                 $application.FilePath | Should -Be 'C:\windows\system32\SnippingTool.exe'
                 $application.FriendlyName | Should -Be 'fri2'
@@ -80,6 +83,7 @@ Describe 'Update-AzWvdApplication' {
                 $application.IconPath | Should -Be 'C:\windows\system32\SnippingTool.exe'
                 $application.CommandLineSetting | Should -Be 'DoNotAllow'
                 $application.ShowInPortal | Should -Be $false
+                $application.ShortcutExtensionPutShortcutOnDesktop | Should -Be $true
         }
         finally{
             $application = Remove-AzWvdApplication -SubscriptionId $env.SubscriptionId `
