@@ -36,12 +36,6 @@ namespace Microsoft.Azure.Management.Network
 
 
         /// <summary>
-        /// The API version to use for this operation.
-        /// </summary>
-        string ApiVersion { get;}
-
-
-        /// <summary>
         /// The ID of the target subscription. The value must be an UUID.
         /// </summary>
         string SubscriptionId { get; set;}
