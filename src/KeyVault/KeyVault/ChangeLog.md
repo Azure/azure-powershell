@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* 'Get-AzKeyVaultKey' now populates 'KeySize' for additional key types when available; previously only RSA keys had a size populated.
+* Populated 'KeySize' in 'Get-AzKeyVaultKey' output for additional key types when available; previously only RSA keys had a size populated.
 * Upgraded `Azure.Security.KeyVault.Keys` dependency from `4.6.0-beta.1` to `4.10.0`.
 * Updated `System.Security.Cryptography.Cng` dependency from `4.5.0` to `5.0.0`.
 
