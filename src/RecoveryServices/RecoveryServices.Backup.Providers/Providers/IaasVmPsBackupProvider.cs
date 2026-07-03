@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     azureVMResourceGroupName : azureVMCloudServiceName;
 
                 ValidateAzureVMWorkloadType(policy.WorkloadType);
-
+                
                 ValidateAzureVMEnableProtectionRequest(
                     azureVMName,
                     azureVMCloudServiceName,
