@@ -72,7 +72,7 @@ namespace Common.Authenticators.Test
                     It.IsAny<string>(),
                     It.IsAny<string>(),
                     It.IsAny<string>(),
-                    It.IsAny<Func<OnBeforeTokenRequestData, Task>>()))
+                    It.IsNotNull<Func<OnBeforeTokenRequestData, Task>>()))
                 .Returns(() => new TokenCredentialMock());
             AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => mockAzureCredentialFactory.Object, true);
             InMemoryTokenCacheProvider cacheProvider = new InMemoryTokenCacheProvider();

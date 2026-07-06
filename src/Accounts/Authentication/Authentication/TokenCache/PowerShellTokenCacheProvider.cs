@@ -179,16 +179,23 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// Creates a public client app with tenantId.
         /// This method is not meant for authentication purpose. Use APIs from Azure.Identity instead.
         /// </summary>
-        public virtual IPublicClientApplication CreatePublicClient(string authority, string tenantId)
+        public virtual IPublicClientApplication CreatePublicClient(string authority, string tenantId, bool disableInstanceDiscovery = false)
         {
             var builder = PublicClientApplicationBuilder.Create(Constants.PowerShellClientId);
             if (AzConfigReader.IsWamEnabled(authority))
             {
-                builder = builder.WithBroker(new BrokerOptions(BrokerOptions.OperatingSystems.Windows));
+                builder = builder.WithBroker(new BrokerOptions(BrokerOptions.OperatingSystems.Windows)
+                {
+                    MsaPassthrough = true
+                });
             }
             if (!string.IsNullOrEmpty(authority))
             {
                 builder.WithAuthority(authority, tenantId ?? organizationTenant);
+            }
+            if (disableInstanceDiscovery)
+            {
+                builder.WithInstanceDiscovery(false);
             }
             var client = builder.Build();
             RegisterCache(client);

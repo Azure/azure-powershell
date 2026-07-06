@@ -62,6 +62,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         private async Task<AccessToken> GetTokenImplAsync(TokenRequestContext requestContext, CancellationToken cancellationToken)
         {
             var account = await GetAccountAsync().ConfigureAwait(false);
+            cancellationToken.ThrowIfCancellationRequested();
 
             var builder = _app.AcquireTokenSilent(requestContext.Scopes, account);
 

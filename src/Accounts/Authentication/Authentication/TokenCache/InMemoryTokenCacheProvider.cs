@@ -53,6 +53,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         protected override void RegisterCache(IPublicClientApplication client)
         {
+            client.UserTokenCache.SetBeforeAccess(args =>
+            {
+                var bytes = InMemoryTokenCacheOptions.CachedToken.ToArray();
+                if (bytes.Length > 0)
+                {
+                    args.TokenCache.DeserializeMsalV3(bytes, shouldClearExistingCache: true);
+                }
+            });
+            client.UserTokenCache.SetAfterAccess(args =>
+            {
+                if (args.HasStateChanged)
+                {
+                    InMemoryTokenCacheOptions = new InMemoryTokenCacheOptions(args.TokenCache.SerializeMsalV3());
+                }
+            });
         }
 
         public override TokenCachePersistenceOptions GetTokenCachePersistenceOptions()

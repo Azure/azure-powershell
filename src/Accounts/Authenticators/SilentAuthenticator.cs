@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Azure.Core;
+using Azure.Identity;
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
@@ -39,7 +40,8 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var tokenCacheProvider = silentParameters.TokenCacheProvider;
 
             AzureSession.Instance.TryGetComponent(nameof(AzureCredentialFactory), out AzureCredentialFactory azureCredentialFactory);
-            var publicClient = tokenCacheProvider.CreatePublicClient(authority, tenantId);
+            var disableInstanceDiscovery = silentParameters.DisableInstanceDiscovery ?? false;
+            var publicClient = tokenCacheProvider.CreatePublicClient(authority, tenantId, disableInstanceDiscovery);
             var credential = azureCredentialFactory.CreateMsalSharedCacheCredential(
                 publicClient,
                 silentParameters.UserId,
@@ -49,7 +51,11 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
             var requestContext = new TokenRequestContext(scopes, isCaeEnabled: true);
 
-            CheckTokenCachePersistanceEnabled = () => true;
+            CheckTokenCachePersistanceEnabled = () =>
+            {
+                var cacheOptions = tokenCacheProvider.GetTokenCachePersistenceOptions();
+                return cacheOptions != null && !(cacheOptions is UnsafeTokenCacheOptions);
+            };
             CollectTelemetry(credential);
             if (AgenticSession.IsActive())
             {

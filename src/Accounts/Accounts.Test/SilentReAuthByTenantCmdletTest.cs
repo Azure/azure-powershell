@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                         It.IsAny<string>(),
                         It.IsAny<string>(),
                         It.IsAny<string>(),
-                        It.IsAny<Func<OnBeforeTokenRequestData, Task>>()))
+                        It.IsNotNull<Func<OnBeforeTokenRequestData, Task>>()))
                     .Returns(() => new TokenCredentialMock(
                     (times) =>
                     {
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                         It.IsAny<string>(),
                         It.IsAny<string>(),
                         It.IsAny<string>(),
-                        It.IsAny<Func<OnBeforeTokenRequestData, Task>>()))
+                        It.IsNotNull<Func<OnBeforeTokenRequestData, Task>>()))
                     .Returns(() => new TokenCredentialMock(
                     (firstTime) =>
                     {
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                         It.IsAny<string>(),
                         It.IsAny<string>(),
                         It.IsAny<string>(),
-                        It.IsAny<Func<OnBeforeTokenRequestData, Task>>()))
+                        It.IsNotNull<Func<OnBeforeTokenRequestData, Task>>()))
                     .Returns(() => new TokenCredentialMock(
                     (times) =>
                     {

@@ -167,7 +167,7 @@ namespace Common.Authentication.Test
                         It.IsAny<string>(),
                         It.IsAny<string>(),
                         It.IsAny<string>(),
-                        It.IsAny<System.Func<Microsoft.Identity.Client.Extensibility.OnBeforeTokenRequestData, System.Threading.Tasks.Task>>()))
+                        It.IsNotNull<System.Func<Microsoft.Identity.Client.Extensibility.OnBeforeTokenRequestData, System.Threading.Tasks.Task>>()))
                     .Returns(mockTokenCredential.Object);
 
                 //var mockTokenManagedIdentityCredential = new Mock<ManagedIdentityCredential>();
