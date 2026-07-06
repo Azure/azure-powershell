@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Added Service Principal support for SFTP with Entra ID (AAD) login
+
+## Version 0.2.0
 * Added confirmation prompt when an SSH key pair already exists at the target location
     - Both 'New-AzSftpCertificate' and 'Connect-AzSftp' now detect existing key pairs before generating new ones
     - Users are prompted to choose whether to overwrite existing keys or reuse them

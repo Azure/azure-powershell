@@ -1,17 +1,17 @@
 {
-  "[NoDescription]+[NoContext]+List+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-2ekhd9/providers/Microsoft.Kusto/Clusters/pssdk2ekhd9/Databases/TestDb/listPrincipals?api-version=2024-04-13+1": {
+  "[NoDescription]+[NoContext]+List+$POST+https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-m49a13/providers/Microsoft.Kusto/Clusters/pssdkm49a13/Databases/TestDb/listPrincipals?api-version=2024-04-13+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-2ekhd9/providers/Microsoft.Kusto/Clusters/pssdk2ekhd9/Databases/TestDb/listPrincipals?api-version=2024-04-13",
+      "RequestUri": "https://management.azure.com/subscriptions/0c302431-1ad0-4187-87c9-d4cebcf7edc2/resourceGroups/PWSH-SDK-m49a13/providers/Microsoft.Kusto/Clusters/pssdkm49a13/Databases/TestDb/listPrincipals?api-version=2024-04-13",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "139" ],
-        "x-ms-client-request-id": [ "9a36744a-b9d6-4bba-88e6-2b67613f85c0" ],
+        "x-ms-unique-id": [ "140" ],
+        "x-ms-client-request-id": [ "609e8c96-e191-490b-a183-a7ff386ae00c" ],
         "CommandName": [ "Get-AzKustoDatabasePrincipal" ],
         "FullCommandName": [ "Get-AzKustoDatabasePrincipal_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v12.5.0", "PSVersion/v7.4.6", "Az.Kusto/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v15.6.0", "PSVersion/v7.6.1", "Az.Kusto/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,23 +22,24 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "e99d297a-037d-4f76-9d51-1202bc645725" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "b1aeeef7-f27e-4d3c-98bc-dbc7aa128ae6" ],
-        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20241201T001630Z:b1aeeef7-f27e-4d3c-98bc-dbc7aa128ae6" ],
+        "x-ms-request-id": [ "7dc6beec-c2c1-4245-b34a-ab560e28fc5e" ],
+        "x-ms-operation-identifier": [ "tenantId=544a7a2e-697f-487c-b2b0-a13df7f346b6,objectId=de9050dc-ffd4-444c-b113-b94ad83e7559/eastus/61121ac8-34b2-410d-8398-7c51c9a21e4d" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "3b964a01-81fc-4af7-abb9-5fa87746d12e" ],
+        "x-ms-routing-request-id": [ "EASTUS:20260518T082948Z:3b964a01-81fc-4af7-abb9-5fa87746d12e" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A68624374C594CC6820F443DE4405D15 Ref B: MRS211050315025 Ref C: 2024-12-01T00:16:28Z" ],
-        "Date": [ "Sun, 01 Dec 2024 00:16:29 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 8977B36EEF824AF59DE8A9D6EA8B27FA Ref B: SG2AA1070306052 Ref C: 2026-05-18T08:29:47Z" ],
+        "Date": [ "Mon, 18 May 2026 08:29:48 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "472" ],
+        "Content-Length": [ "601" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"name\":\"Ran Houdine (ranhoudine@microsoft.com)\",\"role\":\"Admin\",\"type\":\"User\",\"fqn\":\"aaduser=0a6b1d4f-b679-4c5d-b7f8-8c4c13adb618;72f988bf-86f1-41af-91ab-2d7cd011db47\",\"email\":\"ranhoudine@microsoft.com\",\"appId\":\"\",\"tenantName\":\"Microsoft\"},{\"name\":\"rpe2euser\",\"role\":\"Admin\",\"type\":\"App\",\"fqn\":\"aadapp=3c5cd8d1-b5a2-41e9-b592-533bc0a146d0;72f988bf-86f1-41af-91ab-2d7cd011db47\",\"email\":\"\",\"appId\":\"3c5cd8d1-b5a2-41e9-b592-533bc0a146d0\",\"tenantName\":\"Microsoft\"}]}",
+      "Content": "{\"value\":[{\"name\":\"Jia Seng Law (Centific Technologies Inc) (v-jiasenglaw_microsoft.com#EXT#@azclitools20260430.onmicrosoft.com)\",\"role\":\"Admin\",\"type\":\"User\",\"fqn\":\"aaduser=de9050dc-ffd4-444c-b113-b94ad83e7559;544a7a2e-697f-487c-b2b0-a13df7f346b6\",\"email\":\"v-jiasenglaw@microsoft.com\",\"appId\":\"\",\"tenantName\":\"Azure Client Tools 2026-04-30\"},{\"name\":\"KustoTestPrincipal-m49a13\",\"role\":\"Admin\",\"type\":\"App\",\"fqn\":\"aadapp=39a5c21e-1115-4b5f-8f9e-7a31ac813fd6;544a7a2e-697f-487c-b2b0-a13df7f346b6\",\"email\":\"\",\"appId\":\"39a5c21e-1115-4b5f-8f9e-7a31ac813fd6\",\"tenantName\":\"Azure Client Tools 2026-04-30\"}]}",
       "isContentBase64": false
     }
   }

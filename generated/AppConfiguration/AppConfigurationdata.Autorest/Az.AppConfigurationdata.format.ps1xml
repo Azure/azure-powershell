@@ -346,6 +346,9 @@
             <Label>ContentType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Etag</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -375,6 +378,9 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>ContentType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Etag</PropertyName>
@@ -581,6 +587,9 @@
             <Label>Created</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ETag</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -622,6 +631,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Created</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ETag</PropertyName>

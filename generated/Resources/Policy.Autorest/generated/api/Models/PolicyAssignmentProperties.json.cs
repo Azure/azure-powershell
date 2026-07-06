@@ -80,6 +80,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
             {_displayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString>("displayName"), out var __jsonDisplayName) ? (string)__jsonDisplayName : (string)_displayName;}
             {_policyDefinitionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString>("policyDefinitionId"), out var __jsonPolicyDefinitionId) ? (string)__jsonPolicyDefinitionId : (string)_policyDefinitionId;}
             {_definitionVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString>("definitionVersion"), out var __jsonDefinitionVersion) ? (string)__jsonDefinitionVersion : (string)_definitionVersion;}
+            {_latestDefinitionVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString>("latestDefinitionVersion"), out var __jsonLatestDefinitionVersion) ? (string)__jsonLatestDefinitionVersion : (string)_latestDefinitionVersion;}
+            {_effectiveDefinitionVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString>("effectiveDefinitionVersion"), out var __jsonEffectiveDefinitionVersion) ? (string)__jsonEffectiveDefinitionVersion : (string)_effectiveDefinitionVersion;}
             {_scope = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString>("scope"), out var __jsonScope) ? (string)__jsonScope : (string)_scope;}
             {_notScope = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonArray>("notScopes"), out var __jsonNotScopes) ? If( __jsonNotScopes as Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<string>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : _notScope;}
             {_parameter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonObject>("parameters"), out var __jsonParameters) ? Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ParameterValues.FromJson(__jsonParameters) : _parameter;}
@@ -89,6 +91,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
             {_nonComplianceMessage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonArray>("nonComplianceMessages"), out var __jsonNonComplianceMessages) ? If( __jsonNonComplianceMessages as Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonArray, out var __q) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.INonComplianceMessage>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__q, (__p)=>(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.INonComplianceMessage) (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.NonComplianceMessage.FromJson(__p) )) ))() : null : _nonComplianceMessage;}
             {_resourceSelector = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonArray>("resourceSelectors"), out var __jsonResourceSelectors) ? If( __jsonResourceSelectors as Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector) (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.ResourceSelector.FromJson(__k) )) ))() : null : _resourceSelector;}
             {_override = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonArray>("overrides"), out var __jsonOverrides) ? If( __jsonOverrides as Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonArray, out var __g) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__g, (__f)=>(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride) (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.Override.FromJson(__f) )) ))() : null : _override;}
+            {_assignmentType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString>("assignmentType"), out var __jsonAssignmentType) ? (string)__jsonAssignmentType : (string)_assignmentType;}
+            {_instanceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString>("instanceId"), out var __jsonInstanceId) ? (string)__jsonInstanceId : (string)_instanceId;}
             AfterFromJson(json);
         }
 
@@ -114,6 +118,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
             AddIf( null != (((object)this._displayName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString(this._displayName.ToString()) : null, "displayName" ,container.Add );
             AddIf( null != (((object)this._policyDefinitionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString(this._policyDefinitionId.ToString()) : null, "policyDefinitionId" ,container.Add );
             AddIf( null != (((object)this._definitionVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString(this._definitionVersion.ToString()) : null, "definitionVersion" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._latestDefinitionVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString(this._latestDefinitionVersion.ToString()) : null, "latestDefinitionVersion" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._effectiveDefinitionVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString(this._effectiveDefinitionVersion.ToString()) : null, "effectiveDefinitionVersion" ,container.Add );
+            }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != (((object)this._scope)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString(this._scope.ToString()) : null, "scope" ,container.Add );
@@ -157,6 +169,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
                     AddIf(__i?.ToJson(null, serializationMode) ,__h.Add);
                 }
                 container.Add("overrides",__h);
+            }
+            AddIf( null != (((object)this._assignmentType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString(this._assignmentType.ToString()) : null, "assignmentType" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != (((object)this._instanceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Json.JsonString(this._instanceId.ToString()) : null, "instanceId" ,container.Add );
             }
             AfterToJson(ref container);
             return container;

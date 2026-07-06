@@ -31,6 +31,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public string BlobInventoryPolicyName { get => this._blobInventoryPolicyName; set => this._blobInventoryPolicyName = value; }
 
+        /// <summary>Backing field for <see cref="ConnectorName" /> property.</summary>
+        private string _connectorName;
+
+        /// <summary>The name of the Storage Connector.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
+        public string ConnectorName { get => this._connectorName; set => this._connectorName = value; }
+
         /// <summary>Backing field for <see cref="ContainerName" /> property.</summary>
         private string _containerName;
 
@@ -41,6 +48,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
         public string ContainerName { get => this._containerName; set => this._containerName = value; }
+
+        /// <summary>Backing field for <see cref="DataShareName" /> property.</summary>
+        private string _dataShareName;
+
+        /// <summary>The name of the Storage DataShare.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Owned)]
+        public string DataShareName { get => this._dataShareName; set => this._dataShareName = value; }
 
         /// <summary>Backing field for <see cref="DeletedAccountName" /> property.</summary>
         private string _deletedAccountName;
@@ -220,6 +234,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("default")]
         string BlobInventoryPolicyName { get; set; }
+        /// <summary>The name of the Storage Connector.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the Storage Connector.",
+        SerializedName = @"connectorName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ConnectorName { get; set; }
         /// <summary>
         /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters
         /// in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded
@@ -235,6 +260,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"containerName",
         PossibleTypes = new [] { typeof(string) })]
         string ContainerName { get; set; }
+        /// <summary>The name of the Storage DataShare.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the Storage DataShare.",
+        SerializedName = @"dataShareName",
+        PossibleTypes = new [] { typeof(string) })]
+        string DataShareName { get; set; }
         /// <summary>Name of the deleted storage account.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -455,12 +491,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("default")]
         string BlobInventoryPolicyName { get; set; }
+        /// <summary>The name of the Storage Connector.</summary>
+        string ConnectorName { get; set; }
         /// <summary>
         /// The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters
         /// in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded
         /// and followed by a letter or number.
         /// </summary>
         string ContainerName { get; set; }
+        /// <summary>The name of the Storage DataShare.</summary>
+        string DataShareName { get; set; }
         /// <summary>Name of the deleted storage account.</summary>
         string DeletedAccountName { get; set; }
         /// <summary>

@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated `System.Security.Cryptography.Cng` dependency from `4.5.0` to `5.0.0`.
+
+## Version 6.5.0
+* Added ChangeSafety Support
+* Added support for creating AES `oct-HSM` keys via `Add-AzKeyVaultKey -KeyType oct -Destination HSM`.
+* Fixed `New-AzKeyVault` `RequestDisallowedByPolicy` error.
+* Removed certificate-backed items from `Get-AzKeyVaultKey`/`Get-AzKeyVaultSecret`; use `Get-AzKeyVaultCertificate` instead [#26217].
 
 ## Version 6.4.3
 * Added upcoming breaking change warning messages to `Get-AzKeyVaultKey` and `Get-AzKeyVaultSecret` for filtering certificate-backed keys and secrets.

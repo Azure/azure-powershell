@@ -31,7 +31,7 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>]
  [-AllowedCopyScope <String>] [-DnsEndpointType <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
  [-EnableBlobGeoPriorityReplication <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [-RoutingChoice <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
 ### AzureActiveDirectoryKerberosForFile
@@ -53,7 +53,7 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>] [-AllowedCopyScope <String>]
  [-DnsEndpointType <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
  [-EnableBlobGeoPriorityReplication <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [-RoutingChoice <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -78,7 +78,7 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-ImmutabilityPeriod <Int32>] [-ImmutabilityPolicyState <String>] [-AllowedCopyScope <String>]
  [-DnsEndpointType <String>] [-Zone <String[]>] [-ZonePlacementPolicy <String>]
  [-EnableBlobGeoPriorityReplication <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [-RoutingChoice <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -442,6 +442,13 @@ True
 
 This command creates a Storage account with Blob Geo Priority Replication enabled, which provides enhanced geo-replication with service level agreement for priority replication to improve recovery time objectives (RTO).
 
+### Example 23: Create a Storage account with AllowedCopyScope set to AAD
+```powershell
+$account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -SkuName Standard_LRS -Location eastus -Kind StorageV2 -AllowedCopyScope AAD
+```
+
+This command creates a Storage account with AllowedCopyScope set to AAD, which allows copy operations within a Microsoft Entra tenant.
+
 ## PARAMETERS
 
 ### -AccessTier
@@ -455,7 +462,7 @@ the *AccessTier* parameter.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Hot, Cool, Cold
+Accepted values: Hot, Cool, Cold, Smart
 
 Required: False
 Position: Named
@@ -615,7 +622,7 @@ Accept wildcard characters: False
 ```
 
 ### -AllowedCopyScope
-Set restrict copy to and from Storage Accounts within a Microsoft Entra tenant or with Private Links to the same VNet. Possible values include: 'PrivateLink', 'AAD'
+Set restrict copy to and from Storage Accounts within a Microsoft Entra tenant or with Private Links to the same VNet. Possible values include: 'PrivateLink', 'AAD', 'All'
 
 ```yaml
 Type: System.String
@@ -1187,21 +1194,6 @@ NetworkRuleSet is used to define a set of configuration rules for firewalls and 
 Type: Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkRuleSet
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

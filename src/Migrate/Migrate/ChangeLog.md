@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.0.0
+* [Upgraded code generator](https://go.microsoft.com/fwlink/?linkid=2340249)
+
+## Version 2.12.1
 * Fixed bugs in `Initialize-AzMigrateLocalReplicationInfrastructure`
   - Added early Azure login validation with a clear error message when user is not logged in
   - Removed unnecessary caller identity resolution

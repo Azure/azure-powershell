@@ -81,7 +81,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="isVMInStandbyPool">[Preview Feature] Specifies whether the VM is currently in or out of the
         /// Standby Pool.
         /// </param>
-        public VirtualMachineInstanceView(int? platformUpdateDomain = default(int?), int? platformFaultDomain = default(int?), string computerName = default(string), string osName = default(string), string osVersion = default(string), string hyperVGeneration = default(string), string rdpThumbPrint = default(string), VirtualMachineAgentInstanceView vmAgent = default(VirtualMachineAgentInstanceView), MaintenanceRedeployStatus maintenanceRedeployStatus = default(MaintenanceRedeployStatus), System.Collections.Generic.IList<DiskInstanceView> disks = default(System.Collections.Generic.IList<DiskInstanceView>), System.Collections.Generic.IList<VirtualMachineExtensionInstanceView> extensions = default(System.Collections.Generic.IList<VirtualMachineExtensionInstanceView>), VirtualMachineHealthStatus vmHealth = default(VirtualMachineHealthStatus), BootDiagnosticsInstanceView bootDiagnostics = default(BootDiagnosticsInstanceView), string assignedHost = default(string), System.Collections.Generic.IList<InstanceViewStatus> statuses = default(System.Collections.Generic.IList<InstanceViewStatus>), VirtualMachinePatchStatus patchStatus = default(VirtualMachinePatchStatus), bool? isVMInStandbyPool = default(bool?))
+
+        /// <param name="interconnectInstanceView">The Interconnect runtime view of the Virtual Machine. Minimum api-version:
+        /// 2026-03-01.
+        /// </param>
+        public VirtualMachineInstanceView(int? platformUpdateDomain = default(int?), int? platformFaultDomain = default(int?), string computerName = default(string), string osName = default(string), string osVersion = default(string), string hyperVGeneration = default(string), string rdpThumbPrint = default(string), VirtualMachineAgentInstanceView vmAgent = default(VirtualMachineAgentInstanceView), MaintenanceRedeployStatus maintenanceRedeployStatus = default(MaintenanceRedeployStatus), System.Collections.Generic.IList<DiskInstanceView> disks = default(System.Collections.Generic.IList<DiskInstanceView>), System.Collections.Generic.IList<VirtualMachineExtensionInstanceView> extensions = default(System.Collections.Generic.IList<VirtualMachineExtensionInstanceView>), VirtualMachineHealthStatus vmHealth = default(VirtualMachineHealthStatus), BootDiagnosticsInstanceView bootDiagnostics = default(BootDiagnosticsInstanceView), string assignedHost = default(string), System.Collections.Generic.IList<InstanceViewStatus> statuses = default(System.Collections.Generic.IList<InstanceViewStatus>), VirtualMachinePatchStatus patchStatus = default(VirtualMachinePatchStatus), bool? isVMInStandbyPool = default(bool?), InterconnectInstanceView interconnectInstanceView = default(InterconnectInstanceView))
 
         {
             this.PlatformUpdateDomain = platformUpdateDomain;
@@ -101,6 +105,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.Statuses = statuses;
             this.PatchStatus = patchStatus;
             this.IsVMInStandbyPool = isVMInStandbyPool;
+            this.InterconnectInstanceView = interconnectInstanceView;
             CustomInit();
         }
 
@@ -220,5 +225,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "isVMInStandbyPool")]
         public bool? IsVMInStandbyPool {get; private set; }
+
+        /// <summary>
+        /// Gets the Interconnect runtime view of the Virtual Machine. Minimum
+        /// api-version: 2026-03-01.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "interconnectInstanceView")]
+        public InterconnectInstanceView InterconnectInstanceView {get; private set; }
     }
 }

@@ -20,13 +20,35 @@
 
 -->
 ## Upcoming Release
-* Added `-Feature` parameter to `Update-AzGalleryImageDefinition` cmdlet to allow updating existing gallery image features (such as DiskControllerTypes, SecurityType, IsAcceleratedNetwork, and IsHibernate). Each feature supports a `StartsAtVersion` property to specify the minimum gallery image version that supports the updated feature.
-* Added `-AllowUpdateImage` parameter to `Update-AzGalleryImageDefinition` cmdlet. Must be set to true when using the `-Feature` parameter to update gallery image features.
+* ComputeRP related cmdlets will now use 2026-03-01 version of the ComputeRP API.
+* Added support for configuring ScheduledEventsPolicy on Virtual Machines, Virtual Machine Scale Sets, and Availability Sets.
+    - Added `-ScheduledEventsApiVersion` and `-EnableAllInstancesDown` parameters to `Update-AzAvailabilitySet`, `Update-AzVM`, `New-AzVM` (SimpleParameterSet), and `New-AzVmss` cmdlets.
+    - Added `-ScheduledEventsApiVersion` and `-EnableAllInstancesDown` parameters to `Update-AzVmss`. These parameters are only supported when updating via the `-VirtualMachineScaleSet` object parameter (e.g. piping the output of `Get-AzVmss`); using them with the PATCH parameter sets will throw an error.
+* Added VMSS (Virtual Machine Scale Set) Lifecycle Hooks support (public preview)
+    - Added `New-AzVmssLifecycleHookConfig` cmdlet to create an in-memory lifecycle hook configuration object
+    - Added `Set-AzVmssLifecycleHooksProfile` cmdlet to attach lifecycle hooks to a VMSS configuration or live VMSS object
+    - Added `Remove-AzVmssLifecycleHook` cmdlet to remove one hook by `-Type` or all hooks with `-All` from a live VMSS
+    - Added `Get-AzVmssLifecycleHookEvent` cmdlet to list or retrieve lifecycle hook events for a VMSS
+    - Added `Update-AzVmssLifecycleHookEvent` cmdlet to respond to a lifecycle hook event (approve, reject, or delay) with optional per-VM instance filtering via `-InstanceId`
+    - Added `-LifecycleHooksProfile` parameter to `New-AzVmssConfig` to support inline lifecycle hooks profile construction
+
+## Version 11.6.0
+* Added ChangeSafety Support
+* Added `-ZonalPlatformFaultDomainAlignMode` to `New-AzVmssConfig`, `New-AzVmss` (SimpleParameterSet), and `Update-AzVmss` cmdlets.
+* Added `-OsDiskStorageFaultDomainAlignment` parameter to `Set-AzVmssStorageProfile` cmdlet.
+* Added `-StorageFaultDomainAlignment` parameter to `Add-AzVmssDataDisk`, `Set-AzVMOSDisk`, and `Add-AzVMDataDisk` cmdlets.
+* Fixed `Set-AzVMRunCommand` and `Set-AzVmssVMRunCommand` to skip blank lines when processing local script files via `-ScriptLocalPath`, preventing invalid `;;` syntax errors in shell scripts.
+* Added `-InstantAccess` parameter to `New-AzRestorePointCollection` and `Update-AzRestorePointCollection` cmdlets.
+* Added `-InstantAccessDurationInMinutes` parameter to `New-AzRestorePoint` cmdlet.
+
+## Version 11.5.0
+* Added `-Feature` parameter to `Update-AzGalleryImageDefinition` to allow updating existing gallery image features (such as DiskControllerTypes, SecurityType, IsAcceleratedNetwork, and IsHibernate). Each feature supports a `StartsAtVersion` property to specify the minimum gallery image version that supports the updated feature.
+* Added `-AllowUpdateImage` parameter to `Update-AzGalleryImageDefinition`. Must be set to true when using the `-Feature` parameter to update gallery image features.
 * Added managed identity support for Azure Compute Galleries
-    - `New-AzGallery`: Added `-EnableSystemAssignedIdentity` and `-UserAssignedIdentity` parameters to assign managed identities at creation time
-    - `Update-AzGallery`: Added `-EnableSystemAssignedIdentity` and `-UserAssignedIdentity` parameters to add managed identities to an existing gallery. `-UserAssignedIdentity` appends to existing identities
-    - `Update-AzGallery`: Added `-DisableSystemAssignedIdentity` parameter to remove system-assigned managed identity
-    - `Update-AzGallery`: Added `-RemoveUserAssignedIdentity` parameter accepting a list of identity resource IDs to remove specific user-assigned identities, or 'All' to remove all user-assigned identities
+    - `New-AzGallery`: Added `-EnableSystemAssignedIdentity` and `-UserAssignedIdentity` to assign managed identities at creation time
+    - `Update-AzGallery`: Added `-EnableSystemAssignedIdentity` and `-UserAssignedIdentity` to add managed identities to an existing gallery. `-UserAssignedIdentity` appends to existing identities
+    - `Update-AzGallery`: Added `-DisableSystemAssignedIdentity` to remove system-assigned managed identity
+    - `Update-AzGallery`: Added `-RemoveUserAssignedIdentity` accepting a list of identity resource IDs to remove specific user-assigned identities, or 'All' to remove all user-assigned identities
     - `Get-AzGallery`: Now returns managed identity details in the `Identity` property
 * Compute ComputeRP related cmdlets will now use 2025-11-01 version of the ComputeRP API.
 

@@ -13,12 +13,12 @@ while(-not $mockingPath) {
 
 Describe 'New-AzMigrateReplicationPolicy' {
     It 'CreateExpanded' {
-        $providerSpecificPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20250801.VMwareCbtPolicyCreationInput]::new()
+        $providerSpecificPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareCbtPolicyCreationInput]::new()
         $providerSpecificPolicy.AppConsistentFrequencyInMinute = 240
         $providerSpecificPolicy.InstanceType = "VMwareCbt"
         $providerSpecificPolicy.RecoveryPointHistoryInMinute = 4320
         $providerSpecificPolicy.CrashConsistentFrequencyInMinute = 60
-        $output = New-AzMigrateReplicationPolicy -PolicyName $env.srsTestPolicy -ResourceGroupName $env.migResourceGroup -ResourceName $env.srsVaultName -SubscriptionId $env.srsSubscriptionId -ProviderSpecificInput $providerSpecificPolicy
+        $output = New-AzMigrateReplicationPolicy -PolicyName $env.srsTestPolicy -ResourceGroupName $env.migResourceGroup -ResourceName $env.migVaultName -SubscriptionId $env.migSubscriptionId -ProviderSpecificInput $providerSpecificPolicy
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 }

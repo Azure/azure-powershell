@@ -196,8 +196,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [System.String]
-    # AdminPassword - admin password
+    [System.Security.SecureString]
+    # AdminPassword - admin password (as SecureString)
     ${AdminPassword},
 
     [Parameter()]

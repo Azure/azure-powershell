@@ -16,16 +16,18 @@ Replace the provided bare metal machine.
 ```
 Invoke-AzNetworkCloudBareMetalMachineReplace -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-BmcCredentialsPassword <SecureString>] [-BmcCredentialsUsername <String>]
- [-BmcMacAddress <String>] [-BootMacAddress <String>] [-MachineName <String>] [-SerialNumber <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-BmcMacAddress <String>] [-BootMacAddress <String>] [-MachineName <String>] [-SafeguardMode <String>]
+ [-SerialNumber <String>] [-StoragePolicy <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ReplaceViaIdentityExpanded
 ```
 Invoke-AzNetworkCloudBareMetalMachineReplace -InputObject <INetworkCloudIdentity>
  [-BmcCredentialsPassword <SecureString>] [-BmcCredentialsUsername <String>] [-BmcMacAddress <String>]
- [-BootMacAddress <String>] [-MachineName <String>] [-SerialNumber <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-BootMacAddress <String>] [-MachineName <String>] [-SafeguardMode <String>] [-SerialNumber <String>]
+ [-StoragePolicy <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ReplaceViaJsonFilePath
@@ -270,8 +272,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SafeguardMode
+The safeguard mode to use for the replace action, where None indicates to bypass safeguards and All indicates to utilize all safeguards.
+
+```yaml
+Type: System.String
+Parameter Sets: ReplaceExpanded, ReplaceViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SerialNumber
 The serial number of the bare metal machine.
+
+```yaml
+Type: System.String
+Parameter Sets: ReplaceExpanded, ReplaceViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StoragePolicy
+The indicator of whether to bypass clearing storage while replacing a bare metal machine.
 
 ```yaml
 Type: System.String

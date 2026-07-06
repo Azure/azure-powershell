@@ -28,8 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         public string AnalyticsWorkspaceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterManagerPropertiesInternal)Property).AnalyticsWorkspaceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterManagerPropertiesInternal)Property).AnalyticsWorkspaceId = value ?? null; }
 
         /// <summary>
-        /// Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a
-        /// future version. The Azure availability zones within the region that will be used to support the cluster manager resource.
+        /// The Azure availability zones within the region that will be used to support the cluster manager resource.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
         public System.Collections.Generic.List<string> AvailabilityZone { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterManagerPropertiesInternal)Property).AvailabilityZone; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterManagerPropertiesInternal)Property).AvailabilityZone = value ?? null /* arrayOf */; }
@@ -100,7 +99,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// The dictionary values can be empty objects ({}) in requests.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityInternal)Identity).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityInternal)Identity).UserAssignedIdentity = value ?? null /* model class */; }
+        public Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityInternal)Identity).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityInternal)Identity).UserAssignedIdentity = value ?? null /* model class */; }
 
         /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inherited)]
@@ -255,8 +254,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IResourceInternal)__trackedResource).Type; }
 
         /// <summary>
-        /// Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a
-        /// future version. The size of the Azure virtual machines to use for hosting the cluster manager resource.
+        /// The size of the Azure virtual machines to use for hosting the cluster manager resource.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Origin(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PropertyOrigin.Inlined)]
         public string VMSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterManagerPropertiesInternal)Property).VMSize; set => ((Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IClusterManagerPropertiesInternal)Property).VMSize = value ?? null; }
@@ -298,8 +296,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         PossibleTypes = new [] { typeof(string) })]
         string AnalyticsWorkspaceId { get; set; }
         /// <summary>
-        /// Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a
-        /// future version. The Azure availability zones within the region that will be used to support the cluster manager resource.
+        /// The Azure availability zones within the region that will be used to support the cluster manager resource.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -307,7 +304,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Read = true,
         Create = true,
         Update = false,
-        Description = @"Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a future version. The Azure availability zones within the region that will be used to support the cluster manager resource.",
+        Description = @"The Azure availability zones within the region that will be used to support the cluster manager resource.",
         SerializedName = @"availabilityZones",
         PossibleTypes = new [] { typeof(string) })]
         System.Collections.Generic.List<string> AvailabilityZone { get; set; }
@@ -426,8 +423,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Update = true,
         Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
         SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IUserAssignedIdentities) })]
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityUserAssignedIdentities) })]
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
         /// <summary>
         /// The location of the managed resource group. If not specified, the location of the parent resource is chosen.
         /// </summary>
@@ -489,8 +486,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Accepted", "Updating")]
         string ProvisioningState { get;  }
         /// <summary>
-        /// Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a
-        /// future version. The size of the Azure virtual machines to use for hosting the cluster manager resource.
+        /// The size of the Azure virtual machines to use for hosting the cluster manager resource.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Runtime.Info(
         Required = false,
@@ -498,7 +494,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         Read = true,
         Create = true,
         Update = false,
-        Description = @"Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a future version. The size of the Azure virtual machines to use for hosting the cluster manager resource.",
+        Description = @"The size of the Azure virtual machines to use for hosting the cluster manager resource.",
         SerializedName = @"vmSize",
         PossibleTypes = new [] { typeof(string) })]
         string VMSize { get; set; }
@@ -513,8 +509,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// </summary>
         string AnalyticsWorkspaceId { get; set; }
         /// <summary>
-        /// Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a
-        /// future version. The Azure availability zones within the region that will be used to support the cluster manager resource.
+        /// The Azure availability zones within the region that will be used to support the cluster manager resource.
         /// </summary>
         System.Collections.Generic.List<string> AvailabilityZone { get; set; }
         /// <summary>
@@ -554,7 +549,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
         /// The dictionary values can be empty objects ({}) in requests.
         /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get; set; }
         /// <summary>The configuration of the managed resource group associated with the resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models.IManagedResourceGroupConfiguration ManagedResourceGroupConfiguration { get; set; }
         /// <summary>
@@ -580,8 +575,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.Models
         [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkCloud.PSArgumentCompleterAttribute("Succeeded", "Failed", "Canceled", "Provisioning", "Accepted", "Updating")]
         string ProvisioningState { get; set; }
         /// <summary>
-        /// Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a
-        /// future version. The size of the Azure virtual machines to use for hosting the cluster manager resource.
+        /// The size of the Azure virtual machines to use for hosting the cluster manager resource.
         /// </summary>
         string VMSize { get; set; }
 

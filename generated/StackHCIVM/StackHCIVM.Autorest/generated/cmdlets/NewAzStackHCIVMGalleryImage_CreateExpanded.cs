@@ -150,8 +150,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
         ReadOnly = false,
         Description = @"location of the image the gallery image should be created from",
         SerializedName = @"imagePath",
-        PossibleTypes = new [] { typeof(string) })]
-        public string ImagePath { get => _galleryImagesBody.ImagePath ?? null; set => _galleryImagesBody.ImagePath = value; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        public System.Security.SecureString ImagePath { get => _galleryImagesBody.ImagePath ?? null; set => _galleryImagesBody.ImagePath = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
