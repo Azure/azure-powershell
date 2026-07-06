@@ -1,3 +1,26 @@
+## 17.0.0 - July 2026
+#### Az.PrivateTrafficManager 0.1.0
+* First preview release for module Az.PrivateTrafficManager
+
+#### Az.RecoveryServices 7.12.1
+* Updated 'System.Security.Cryptography.Cng' dependency from '4.4.0' to '5.0.0'.
+* Added Cross region restore support for Delos cloud regions
+
+#### Az.Resources 11.0.0
+* Updated 'Microsoft.Extensions.DependencyInjection.Abstractions' dependency from '8.0.2' to '10.0.3'.
+
+#### Az.Search 0.12.1
+* Updated Search service identity casts to explicitly use the Search SDK 'Identity' model.
+
+#### Az.Sftp 0.3.0
+* Added Service Principal support for SFTP with Entra ID (AAD) login
+
+#### Az.Ssh 0.3.1
+* Added Service Principal support for SSH with Entra ID (AAD) login
+
+#### Az.Storage 9.7.1
+* Updated storage account identity handling to explicitly use the Storage SDK 'Identity' model in 'New-AzStorageAccount' and 'Set-AzStorageAccount'.
+
 ## 16.0.0 - June 2026
 #### Az.Accounts 5.5.0
 * Added ChangeSafety Support
