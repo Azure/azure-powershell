@@ -20,7 +20,7 @@ Delete EdgeActionVersion resource
 .Description
 Delete EdgeActionVersion resource
 .Example
-Remove-AzCdnEdgeActionVersion -ResourceGroupName "testps-rg-da16jm" -EdgeActionName "edgeaction001" -Version "v1"
+Remove-AzCdnEdgeActionVersion -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version v1
 
 .Outputs
 System.Boolean
@@ -159,7 +159,7 @@ begin {
         }
 
         $mapping = @{
-            Delete = 'Az.Cdn.private\Remove-AzCdnEdgeActionVersion_Delete';
+            Delete = 'Az.Cdn.custom\Remove-AzCdnEdgeActionVersion';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {

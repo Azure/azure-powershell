@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IRoute))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"update an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes/{routeName}", ApiVersion = "2025-06-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes/{routeName}", ApiVersion = "2025-09-01-preview")]
     public partial class UpdateAzFrontDoorCdnRoute_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IContext
@@ -167,6 +167,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("HttpOnly", "HttpsOnly", "MatchRequest")]
         public string ForwardingProtocol { get => _routeUpdatePropertiesBody.ForwardingProtocol ?? null; set => _routeUpdatePropertiesBody.ForwardingProtocol = value; }
+
+        /// <summary>
+        /// Whether or not gRPC is enabled on this route. Permitted values are 'Enabled' or 'Disabled'
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Whether or not gRPC is enabled on this route. Permitted values are 'Enabled' or 'Disabled'")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Whether or not gRPC is enabled on this route. Permitted values are 'Enabled' or 'Disabled'",
+        SerializedName = @"grpcState",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
+        public string GrpcState { get => _routeUpdatePropertiesBody.GrpcState ?? null; set => _routeUpdatePropertiesBody.GrpcState = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
