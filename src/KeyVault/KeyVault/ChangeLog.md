@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.5.1
 * Updated `System.Security.Cryptography.Cng` dependency from `4.5.0` to `5.0.0`.
 
 ## Version 6.5.0

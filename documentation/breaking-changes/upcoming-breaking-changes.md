@@ -561,7 +561,7 @@ Preview modules are not included in this list. Read more about [module version t
   - This change will take effect on '5/1/2026'- The change is expected to take effect from Az version : '16.0.0'
   - The change is expected to take effect in 'Az.ManagedServices' from version : '9.0.0'
 
-- Parameter breaking-change will happen to all parameter sets
+- Parameter breaking-change will happen to parameter set `NewAzManagedServicesDefinition_CreateExpanded`
   - `-Authorization`
     - The parameter : 'Authorization' is changing.
     The type of the parameter is changing from 'Array' to 'List'.
@@ -926,7 +926,7 @@ Preview modules are not included in this list. Read more about [module version t
     - This change will take effect on '11/3/2025'- The change is expected to take effect from Az version : '15.0.0'
     - The change is expected to take effect in 'Az.Resources' from version : '9.0.0'
 
-- Parameter breaking-change will happen to parameter set `UpdateAzRoleManagementPolicy_UpdateExpanded`
+- Parameter breaking-change will happen to parameter set `UpdateAzRoleManagementPolicy_UpdateViaIdentityExpanded`
 
 ## Az.StackHCI
 

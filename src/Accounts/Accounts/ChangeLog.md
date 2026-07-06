@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 5.5.1
 * Upgraded `Azure.Core` dependency from 1.50.0 to 1.56.0.
 * Upgraded `Azure.Identity` dependency to 1.21.0.
 * Upgraded `Azure.Identity.Broker` dependency from 1.1.0 to 1.6.0.
