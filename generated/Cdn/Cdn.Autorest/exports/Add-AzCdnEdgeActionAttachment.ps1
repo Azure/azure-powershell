@@ -20,7 +20,7 @@ A long-running operation for adding an EdgeAction attachment.
 .Description
 A long-running operation for adding an EdgeAction attachment.
 .Example
-Add-AzCdnEdgeActionAttachment -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -AttachedResourceId "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/testps-rg-da16jm/providers/Microsoft.Cdn/profiles/testprofile/endpoints/endpoint001"
+Add-AzCdnEdgeActionAttachment -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -AttachedResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testps-rg-da16jm/providers/Microsoft.Cdn/profiles/fdp001/ruleSets/ruleset001/rules/rule001"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
@@ -37,14 +37,19 @@ BODY <IEdgeActionAttachment>: .
   AttachedResourceId <String>: The attached resource Id
 
 INPUTOBJECT <ICdnIdentity>: Identity Parameter
-  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EdgeActionName <String>]: The name of the Edge Action
+  [Version <String>]: The name of the Edge Action version
+  [ExecutionFilter <String>]: The name of the Edge Action execution filter
+  [AgentName <String>]: Name of the web agent association.
+  [CustomDomainName <String>]: Name of the domain under the profile which is unique globally.
   [EndpointName <String>]: Name of the endpoint under the profile which is unique globally.
-  [ExecutionFilter <String>]: The name of the execution filter
   [Id <String>]: Resource identity path
+  [KeyGroupName <String>]: Name of the KeyGroup under the profile.
+  [KnowledgeSourceName <String>]: The name of the knowledge source.
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
-  [OriginName <String>]: Name of the origin which is unique within the profile.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
+  [OriginName <String>]: Name of the origin which is unique within the endpoint.
+  [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
+  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -52,7 +57,8 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [SecretName <String>]: Name of the Secret under the profile.
   [SecurityPolicyName <String>]: Name of the security policy under the profile.
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
-  [Version <String>]: The name of the Edge Action version
+  [VersionName <String>]: Name of the DeploymentVersion under the profile.
+  [WebAgentName <String>]: The name of the web agent.
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/add-azcdnedgeactionattachment
 #>
@@ -60,29 +66,29 @@ function Add-AzCdnEdgeActionAttachment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionAttachmentResponse])]
 [CmdletBinding(DefaultParameterSetName='AddExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Add', Mandatory)]
     [Parameter(ParameterSetName='AddExpanded', Mandatory)]
-    [Parameter(ParameterSetName='AddViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='AddViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='AddViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='Add', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # The name of the Edge Action
     ${EdgeActionName},
 
-    [Parameter(ParameterSetName='Add', Mandatory)]
     [Parameter(ParameterSetName='AddExpanded', Mandatory)]
-    [Parameter(ParameterSetName='AddViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='AddViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='AddViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='Add', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Add')]
     [Parameter(ParameterSetName='AddExpanded')]
-    [Parameter(ParameterSetName='AddViaJsonFilePath')]
     [Parameter(ParameterSetName='AddViaJsonString')]
+    [Parameter(ParameterSetName='AddViaJsonFilePath')]
+    [Parameter(ParameterSetName='Add')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -90,19 +96,12 @@ param(
     # The value must be an UUID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='AddViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='AddViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='AddViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity]
     # Identity Parameter
     ${InputObject},
-
-    [Parameter(ParameterSetName='Add', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='AddViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionAttachment]
-    # .
-    ${Body},
 
     [Parameter(ParameterSetName='AddExpanded', Mandatory)]
     [Parameter(ParameterSetName='AddViaIdentityExpanded', Mandatory)]
@@ -111,17 +110,24 @@ param(
     # The attached resource Id
     ${AttachedResourceId},
 
+    [Parameter(ParameterSetName='AddViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
+    [System.String]
+    # Json string supplied to the Add operation
+    ${JsonString},
+
     [Parameter(ParameterSetName='AddViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
     [System.String]
     # Path of Json file supplied to the Add operation
     ${JsonFilePath},
 
-    [Parameter(ParameterSetName='AddViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='Add', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='AddViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [System.String]
-    # Json string supplied to the Add operation
-    ${JsonString},
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionAttachment]
+    # .
+    ${Body},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -218,14 +224,14 @@ begin {
         }
 
         $mapping = @{
-            Add = 'Az.Cdn.private\Add-AzCdnEdgeActionAttachment_Add';
-            AddExpanded = 'Az.Cdn.private\Add-AzCdnEdgeActionAttachment_AddExpanded';
-            AddViaIdentity = 'Az.Cdn.private\Add-AzCdnEdgeActionAttachment_AddViaIdentity';
-            AddViaIdentityExpanded = 'Az.Cdn.private\Add-AzCdnEdgeActionAttachment_AddViaIdentityExpanded';
-            AddViaJsonFilePath = 'Az.Cdn.private\Add-AzCdnEdgeActionAttachment_AddViaJsonFilePath';
-            AddViaJsonString = 'Az.Cdn.private\Add-AzCdnEdgeActionAttachment_AddViaJsonString';
+            AddExpanded = 'Az.Cdn.custom\Add-AzCdnEdgeActionAttachment';
+            AddViaJsonString = 'Az.Cdn.custom\Add-AzCdnEdgeActionAttachment';
+            AddViaJsonFilePath = 'Az.Cdn.custom\Add-AzCdnEdgeActionAttachment';
+            Add = 'Az.Cdn.custom\Add-AzCdnEdgeActionAttachment';
+            AddViaIdentityExpanded = 'Az.Cdn.custom\Add-AzCdnEdgeActionAttachment';
+            AddViaIdentity = 'Az.Cdn.custom\Add-AzCdnEdgeActionAttachment';
         }
-        if (('Add', 'AddExpanded', 'AddViaJsonFilePath', 'AddViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('AddExpanded', 'AddViaJsonString', 'AddViaJsonFilePath', 'Add') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
