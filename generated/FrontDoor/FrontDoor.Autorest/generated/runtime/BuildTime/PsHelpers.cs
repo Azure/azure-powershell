@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.PowerShell
 
         public static IEnumerable<CommandInfo> GetModuleCmdlets(PSCmdlet cmdlet, params string[] modulePaths)
         {
-            var getCmdletsCommand = String.Join(" + ", modulePaths.Select(mp => $"(Get-Command -Module (Import-Module '{mp}' -PassThru))"));
+            var getCmdletsCommand = String.Join(" + ", modulePaths.Select(mp => $"(Get-Command -Module (Import-Module '{mp}' -PassThru -Force))"));
             return (cmdlet?.RunScript<CommandInfo>(getCmdletsCommand) ?? RunScript<CommandInfo>(getCmdletsCommand))
                 .Where(ci => ci.CommandType != CommandTypes.Alias);
         }
@@ -53,7 +53,7 @@ Get-ChildItem function: | Where-Object {{ ($currentFunctions -notcontains $_) -a
 
         public static IEnumerable<PSObject> GetScriptHelpInfo(PSCmdlet cmdlet, params string[] modulePaths)
         {
-            var importModules = String.Join(Environment.NewLine, modulePaths.Select(mp => $"Import-Module '{mp}'"));
+            var importModules = String.Join(Environment.NewLine, modulePaths.Select(mp => $"Import-Module '{mp}' -Force"));
             var getHelpCommand = $@"
 $currentFunctions = Get-ChildItem function:
 {importModules}
@@ -68,7 +68,7 @@ Get-ChildItem function: | Where-Object {{ ($currentFunctions -notcontains $_) -a
         public static IEnumerable<CmdletAndHelpInfo> GetModuleCmdletsAndHelpInfo(PSCmdlet cmdlet, params string[] modulePaths)
         {
             var getCmdletAndHelp = String.Join(" + ", modulePaths.Select(mp =>
-                    $@"(Get-Command -Module (Import-Module '{mp}' -PassThru) | Where-Object {{ $_.CommandType -ne 'Alias' }} | ForEach-Object {{ @{{ CommandInfo = $_; HelpInfo = ( invoke-command {{ try {{ Get-Help -Name $_.Name -Full }} catch{{ '' }} }} ) }} }})"
+                        $@"(Get-Command -Module (Import-Module '{mp}' -PassThru -Force) | Where-Object {{ $_.CommandType -ne 'Alias' }} | ForEach-Object {{ @{{ CommandInfo = $_; HelpInfo = ( invoke-command {{ try {{ Get-Help -Name $_.Name -Full }} catch{{ '' }} }} ) }} }})"
             ));
             return (cmdlet?.RunScript<Hashtable>(getCmdletAndHelp) ?? RunScript<Hashtable>(getCmdletAndHelp))
                 .Select(h => new CmdletAndHelpInfo { CommandInfo = (h["CommandInfo"] as PSObject)?.BaseObject as CommandInfo, HelpInfo = h["HelpInfo"] as PSObject });
