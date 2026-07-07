@@ -35,6 +35,7 @@ SQLI          {942100}
 ```
 
 Create a WAF managed rule group scope object for the `SQLI` rule group and rule `942100`.
+
 ## PARAMETERS
 
 ### -RuleGroupName

@@ -38,6 +38,7 @@ RequestHeaderNames User-Agent Equals             {curl}     {DefaultRuleSet}
 ```
 
 Create a WAF managed rule set exception object for requests with a `User-Agent` header value of `curl`.
+
 ## PARAMETERS
 
 ### -MatchValue

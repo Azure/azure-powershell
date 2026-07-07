@@ -33,6 +33,7 @@ RuleId
 ```
 
 Create a WAF managed rule scope object for rule `942100`.
+
 ## PARAMETERS
 
 ### -RuleId

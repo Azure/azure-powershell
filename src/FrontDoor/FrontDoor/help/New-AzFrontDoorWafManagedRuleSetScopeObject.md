@@ -36,6 +36,7 @@ RuleGroupScope RuleSetType    RuleSetVersion
 ```
 
 Create a WAF managed rule set scope object for the `DefaultRuleSet` rule set.
+
 ## PARAMETERS
 
 ### -RuleGroupScope
