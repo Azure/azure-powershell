@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Upgraded `Azure.Core` dependency from 1.56.0 to 1.57.0.
+* Upgraded `System.ClientModel` dependency from 1.12.0 to 1.13.0.
 * Upgraded `Azure.Core` dependency from 1.50.0 to 1.56.0.
 * Upgraded `Azure.Identity` dependency to 1.21.0.
 * Upgraded `Azure.Identity.Broker` dependency from 1.1.0 to 1.6.0.
