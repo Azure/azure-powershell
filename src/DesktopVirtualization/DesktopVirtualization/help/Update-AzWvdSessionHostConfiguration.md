@@ -223,9 +223,9 @@ Accept wildcard characters: False
 
 ### -DiffDiskSettingPlacement
 Gets or sets specifies the ephemeral disk placement for operating system disk.
-The defaulting behavior is: CacheDisk if one is configured for the VM size otherwise ResourceDisk is used.
+The defaulting behavior is: CacheDisk if one is configured for the VM size otherwise TempDisk is used.
 Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk.
-Possible values include: 'CacheDisk', 'ResourceDisk'.
+Possible values include: 'CacheDisk', 'TempDisk'.
 
 ```yaml
 Type: System.String
