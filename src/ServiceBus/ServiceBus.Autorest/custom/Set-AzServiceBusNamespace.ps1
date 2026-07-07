@@ -166,7 +166,7 @@ function Set-AzServiceBusNamespace{
 		[System.Int64]
 		${GeoDataReplicationMaxReplicationLagDurationInSecond},
 
-		[Parameter(HelpMessage = "Properties for User Assigned Identities")]
+		[Parameter(HelpMessage = "Replica locations for geo data replication. Pass an array of NamespaceReplicaLocation objects.")]
 		[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
 		[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.NamespaceReplicaLocation[]]
 		${GeoDataReplicationLocation},

@@ -63,7 +63,7 @@ Creates a ServiceBus Namespace, Queue, Topic Authorization Rule
 ### [New-AzServiceBusAuthorizationRuleSASToken](New-AzServiceBusAuthorizationRuleSASToken.md)
 Generates a SAS token for Azure servicebus authorization rule of namespace/queue/topic. 
 
-## [New-AzServiceBusLocationsNameObject](New-AzServiceBusLocationsNameObject.md)
+### [New-AzServiceBusLocationsNameObject](New-AzServiceBusLocationsNameObject.md)
 Construct an in-memory NamespaceReplicaLocation object
 
 ### [New-AzServiceBusGeoDRConfiguration](New-AzServiceBusGeoDRConfiguration.md)
