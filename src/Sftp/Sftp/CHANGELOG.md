@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 0.4.0
 * Added Service Principal support for SFTP with Entra ID (AAD) login
 
 ## Version 0.2.0

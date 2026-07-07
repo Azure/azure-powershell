@@ -952,6 +952,7 @@
       "New-AzFrontDoorCdnRule": {},
       "New-AzFrontDoorCdnRuleClientPortConditionObject": {},
       "New-AzFrontDoorCdnRuleCookiesConditionObject": {},
+      "New-AzFrontDoorCdnRuleEdgeActionObject": {},
       "New-AzFrontDoorCdnRuleHostNameConditionObject": {},
       "New-AzFrontDoorCdnRuleHttpVersionConditionObject": {},
       "New-AzFrontDoorCdnRuleIsDeviceConditionObject": {},
@@ -1466,9 +1467,11 @@
     },
     "Az.ComputeFleet": {
       "Get-AzComputeFleet": {},
-      "Get-AzComputeFleetVMSS": {},
+      "Get-AzComputeFleetVirtualMachine": {},
+      "Get-AzComputeFleetVirtualMachineScaleSet": {},
       "New-AzComputeFleet": {},
       "Remove-AzComputeFleet": {},
+      "Set-AzComputeFleet": {},
       "Update-AzComputeFleet": {}
     },
     "Az.ComputeLimit": {
@@ -6421,6 +6424,28 @@
       "Set-AzPrivateDnsRecordSet": {},
       "Set-AzPrivateDnsVirtualNetworkLink": {},
       "Set-AzPrivateDnsZone": {}
+    },
+    "Az.PrivateTrafficManager": {
+      "Get-AzPrivateTrafficManagerEndpoint": {},
+      "Get-AzPrivateTrafficManagerHealthPolicy": {},
+      "Get-AzPrivateTrafficManagerProfile": {},
+      "Get-AzPrivateTrafficManagerSite": {},
+      "Get-AzPrivateTrafficManagerTopologyMap": {},
+      "New-AzPrivateTrafficManagerEndpoint": {},
+      "New-AzPrivateTrafficManagerHealthPolicy": {},
+      "New-AzPrivateTrafficManagerProfile": {},
+      "New-AzPrivateTrafficManagerSite": {},
+      "New-AzPrivateTrafficManagerTopologyMap": {},
+      "Remove-AzPrivateTrafficManagerEndpoint": {},
+      "Remove-AzPrivateTrafficManagerHealthPolicy": {},
+      "Remove-AzPrivateTrafficManagerProfile": {},
+      "Remove-AzPrivateTrafficManagerSite": {},
+      "Remove-AzPrivateTrafficManagerTopologyMap": {},
+      "Update-AzPrivateTrafficManagerEndpoint": {},
+      "Update-AzPrivateTrafficManagerHealthPolicy": {},
+      "Update-AzPrivateTrafficManagerProfile": {},
+      "Update-AzPrivateTrafficManagerSite": {},
+      "Update-AzPrivateTrafficManagerTopologyMap": {}
     },
     "Az.ProviderHub": {
       "Get-AzProviderHubCustomRollout": {},

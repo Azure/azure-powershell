@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.Ssh",
-  "ModuleVersion": "0.3.0",
+  "ModuleVersion": "0.4.0",
   "Cmdlets": [
     {
       "VerbName": "Enter",
@@ -1101,7 +1101,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Ssh.Models",
             "Name": "Microsoft.Azure.Commands.Ssh.Models.PSSshConfigEntry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Ssh.Models.PSSshConfigEntry, Microsoft.Azure.PowerShell.Cmdlets.Ssh, Version=0.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Ssh.Models.PSSshConfigEntry, Microsoft.Azure.PowerShell.Cmdlets.Ssh, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Host": "System.String",
               "HostName": "System.String",
