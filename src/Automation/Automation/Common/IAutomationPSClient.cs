@@ -479,5 +479,19 @@ namespace Microsoft.Azure.Commands.Automation.Common
         void DeletePython3Package(string resourceGroupName, string automationAccountName, string name);
 
         #endregion
+
+        #region RuntimeEnvironment
+
+        RuntimeEnvironment CreateRuntimeEnvironment(string resourceGroupName, string automationAccountName, string name, string location, string language, string version, IDictionary<string, string> defaultPackages, string description);
+
+        RuntimeEnvironment GetRuntimeEnvironment(string resourceGroupName, string automationAccountName, string name);
+
+        RuntimeEnvironment UpdateRuntimeEnvironment(string resourceGroupName, string automationAccountName, string name, IDictionary<string, string> defaultPackages, string description);
+
+        IEnumerable<RuntimeEnvironment> ListRuntimeEnvironments(string resourceGroupName, string automationAccountName, ref string nextLink);
+
+        void DeleteRuntimeEnvironment(string resourceGroupName, string automationAccountName, string name);
+
+        #endregion
     }
 }

@@ -153,6 +153,14 @@
     <value>The module was not found. Module name: {0}.</value>
     <comment>Automation</comment>
   </data>
+  <data name="RuntimeEnvironmentNotFound" xml:space="preserve">
+    <value>The runtime environment was not found. Runtime environment name: {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RuntimeEnvironmentAlreadyExists" xml:space="preserve">
+    <value>A runtime environment with name '{0}' already exists. Use Set-AzAutomationRuntimeEnvironment to update an existing runtime environment.</value>
+    <comment>Automation</comment>
+  </data>
   <data name="ParameterEmpty" xml:space="preserve">
     <value>{0} is empty.</value>
     <comment>Automation</comment>

@@ -1964,6 +1964,135 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #endregion
 
+        #region RuntimeEnvironment
+
+        public IEnumerable<Model.RuntimeEnvironment> ListRuntimeEnvironments(string resourceGroupName, string automationAccountName,
+            ref string nextLink)
+        {
+            Rest.Azure.IPage<AutomationManagement.Models.RuntimeEnvironment> response;
+
+            if (string.IsNullOrEmpty(nextLink))
+            {
+                response = this.automationManagementClient.RuntimeEnvironment.ListByAutomationAccount(resourceGroupName, automationAccountName);
+            }
+            else
+            {
+                response = this.automationManagementClient.RuntimeEnvironment.ListByAutomationAccountNext(nextLink);
+            }
+
+            nextLink = response.NextPageLink;
+            return response.Select(c => new Model.RuntimeEnvironment(resourceGroupName, automationAccountName, c));
+        }
+
+        public void DeleteRuntimeEnvironment(string resourceGroupName, string automationAccountName, string name)
+        {
+            // First verify the runtime environment exists
+            try
+            {
+                this.automationManagementClient.RuntimeEnvironment.Get(resourceGroupName, automationAccountName, name);
+            }
+            catch (ErrorResponseException cloudException)
+            {
+                if (cloudException.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(typeof(Model.RuntimeEnvironment),
+                        string.Format(CultureInfo.CurrentCulture, Resources.RuntimeEnvironmentNotFound, name));
+                }
+                throw;
+            }
+
+            // Resource exists, proceed with deletion
+            this.automationManagementClient.RuntimeEnvironment.Delete(resourceGroupName, automationAccountName, name);
+        }
+
+        public Model.RuntimeEnvironment GetRuntimeEnvironment(string resourceGroupName, string automationAccountName, string name)
+        {
+            try
+            {
+                var runtimeEnvironment =
+                    this.automationManagementClient.RuntimeEnvironment.Get(resourceGroupName, automationAccountName, name);
+                return new Model.RuntimeEnvironment(resourceGroupName, automationAccountName, runtimeEnvironment);
+            }
+            catch (ErrorResponseException cloudException)
+            {
+                if (cloudException.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(typeof(Model.RuntimeEnvironment),
+                        string.Format(CultureInfo.CurrentCulture, Resources.RuntimeEnvironmentNotFound, name));
+                }
+
+                throw;
+            }
+        }
+
+        public Model.RuntimeEnvironment CreateRuntimeEnvironment(string resourceGroupName, string automationAccountName, string name,
+            string location, string language, string version, IDictionary<string, string> defaultPackages, string description)
+        {
+            // Check if runtime environment already exists
+            try
+            {
+                this.automationManagementClient.RuntimeEnvironment.Get(resourceGroupName, automationAccountName, name);
+                // If we get here, the runtime environment exists - throw error
+                throw new ResourceCommonException(typeof(Model.RuntimeEnvironment),
+                    string.Format(CultureInfo.CurrentCulture, Resources.RuntimeEnvironmentAlreadyExists, name));
+            }
+            catch (ErrorResponseException cloudException)
+            {
+                // NotFound is expected - proceed with creation
+                if (cloudException.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
+                {
+                    throw;
+                }
+            }
+
+            var parameters = new AutomationManagement.Models.RuntimeEnvironmentCreateOrUpdateParameters(
+                location: location,
+                runtime: new AutomationManagement.Models.RuntimeEnvironmentRuntime(language: language, version: version),
+                defaultPackages: defaultPackages,
+                description: description
+            );
+
+            var createdRuntimeEnvironment = this.automationManagementClient.RuntimeEnvironment.CreateOrUpdate(
+                resourceGroupName,
+                automationAccountName,
+                name,
+                parameters);
+
+            return new Model.RuntimeEnvironment(resourceGroupName, automationAccountName, createdRuntimeEnvironment);
+        }
+
+        public Model.RuntimeEnvironment UpdateRuntimeEnvironment(string resourceGroupName, string automationAccountName, string name,
+            IDictionary<string, string> defaultPackages, string description)
+        {
+            try
+            {
+                var parameters = new AutomationManagement.Models.RuntimeEnvironmentUpdateParameters(
+                    defaultPackages: defaultPackages,
+                    description: description
+                );
+
+                var updatedRuntimeEnvironment = this.automationManagementClient.RuntimeEnvironment.Update(
+                    resourceGroupName,
+                    automationAccountName,
+                    name,
+                    parameters);
+
+                return new Model.RuntimeEnvironment(resourceGroupName, automationAccountName, updatedRuntimeEnvironment);
+            }
+            catch (ErrorResponseException cloudException)
+            {
+                if (cloudException.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(typeof(Model.RuntimeEnvironment),
+                        string.Format(CultureInfo.CurrentCulture, Resources.RuntimeEnvironmentNotFound, name));
+                }
+
+                throw;
+            }
+        }
+
+        #endregion
+
 
 
         #region Private Methods

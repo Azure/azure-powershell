@@ -457,6 +457,24 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The runtime environment was not found. Runtime environment name: {0}..
+        /// </summary>
+        internal static string RuntimeEnvironmentNotFound {
+            get {
+                return ResourceManager.GetString("RuntimeEnvironmentNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A runtime environment with name '{0}' already exists. Use Set-AzAutomationRuntimeEnvironment to update an existing runtime environment..
+        /// </summary>
+        internal static string RuntimeEnvironmentAlreadyExists {
+            get {
+                return ResourceManager.GetString("RuntimeEnvironmentAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to For monthly occurrence, both day of week and occurrence need to be specified..
         /// </summary>
         internal static string MonthlyScheduleNeedsDayOfWeekAndOccurrence {
