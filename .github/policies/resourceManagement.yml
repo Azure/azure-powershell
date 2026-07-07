@@ -5048,8 +5048,8 @@ configuration:
             isRegex: True
       then:
       - addLabel:
-          label: Application Insights
-      description: '[Application Insights] auto assign module label based on issue description.'
+          label: Monitor - ApplicationInsights
+      description: '[Monitor - ApplicationInsights] auto assign module label based on issue description.'
     - if:
       - payloadType: Issues
       - isAction:
@@ -5060,8 +5060,8 @@ configuration:
             isRegex: True
       then:
       - addLabel:
-          label: Web Apps
-      description: '[Web Apps] auto assign module label based on issue description.'
+          label: App Services
+      description: '[App Services] auto assign module label based on issue description.'
     - if:
       - payloadType: Issues
       - isAction:
@@ -5072,8 +5072,8 @@ configuration:
             isRegex: True
       then:
       - addLabel:
-          label: ConnectedMachine
-      description: '[ConnectedMachine] auto assign module label based on issue description.'
+          label: Arc enabled servers
+      description: '[Arc enabled servers] auto assign module label based on issue description.'
     - if:
       - payloadType: Issues
       - isAction:
@@ -5144,20 +5144,8 @@ configuration:
             isRegex: True
       then:
       - addLabel:
-          label: ARM - Management Group
-      description: '[ARM - Management Group] auto assign module label based on issue description.'
-    - if:
-      - payloadType: Issues
-      - isAction:
-          action: Opened
-      - or:
-        - titleContains:
-            pattern: '[Aa]z\.?Astro'
-            isRegex: True
-      then:
-      - addLabel:
-          label: ASTRO
-      description: '[ASTRO] auto assign module label based on issue description.'
+          label: Management Groups
+      description: '[Management Groups] auto assign module label based on issue description.'
     - if:
       - payloadType: Issues
       - isAction:
@@ -5206,18 +5194,6 @@ configuration:
       - addLabel:
           label: Azure Data Explorer
       description: '[Azure Data Explorer] auto assign module label based on issue description.'
-    - if:
-      - payloadType: Issues
-      - isAction:
-          action: Opened
-      - or:
-        - titleContains:
-            pattern: '[Aa]z\.?DataTransfer'
-            isRegex: True
-      then:
-      - addLabel:
-          label: AzureDataTransfer
-      description: '[AzureDataTransfer] auto assign module label based on issue description.'
     - if:
       - payloadType: Issues
       - isAction:
@@ -5276,8 +5252,8 @@ configuration:
             isRegex: True
       then:
       - addLabel:
-          label: CloudService
-      description: '[CloudService] auto assign module label based on issue description.'
+          label: Cloud Service (Ext)
+      description: '[Cloud Service (Ext)] auto assign module label based on issue description.'
     - if:
       - payloadType: Issues
       - isAction:
@@ -5356,18 +5332,6 @@ configuration:
           action: Opened
       - or:
         - titleContains:
-            pattern: '[Aa]z\.?ConfidentialLedger'
-            isRegex: True
-      then:
-      - addLabel:
-          label: Confidential Ledger
-      description: '[Confidential Ledger] auto assign module label based on issue description.'
-    - if:
-      - payloadType: Issues
-      - isAction:
-          action: Opened
-      - or:
-        - titleContains:
             pattern: '[Aa]z\.?ConnectedKubernetes'
             isRegex: True
       then:
@@ -5384,20 +5348,8 @@ configuration:
             isRegex: True
       then:
       - addLabel:
-          label: connectedvmware
-      description: '[connectedvmware] auto assign module label based on issue description.'
-    - if:
-      - payloadType: Issues
-      - isAction:
-          action: Opened
-      - or:
-        - titleContains:
-            pattern: '[Aa]z\.?Consumption'
-            isRegex: True
-      then:
-      - addLabel:
-          label: Consumption
-      description: '[Consumption] auto assign module label based on issue description.'
+          label: VMWare
+      description: '[VMWare] auto assign module label based on issue description.'
     - if:
       - payloadType: Issues
       - isAction:
@@ -5446,18 +5398,6 @@ configuration:
       - addLabel:
           label: CosmosDB
       description: '[CosmosDB] auto assign module label based on issue description.'
-    - if:
-      - payloadType: Issues
-      - isAction:
-          action: Opened
-      - or:
-        - titleContains:
-            pattern: '[Aa]z\.?CostManagement'
-            isRegex: True
-      then:
-      - addLabel:
-          label: Cost Management
-      description: '[Cost Management] auto assign module label based on issue description.'
     - if:
       - payloadType: Issues
       - isAction:
@@ -5608,18 +5548,6 @@ configuration:
           action: Opened
       - or:
         - titleContains:
-            pattern: '[Aa]z\.?DeviceRegistry'
-            isRegex: True
-      then:
-      - addLabel:
-          label: Device Registry
-      description: '[Device Registry] auto assign module label based on issue description.'
-    - if:
-      - payloadType: Issues
-      - isAction:
-          action: Opened
-      - or:
-        - titleContains:
             pattern: '[Aa]z(DtlLab|DevTestLab)'
             isRegex: True
       then:
@@ -5668,18 +5596,6 @@ configuration:
           action: Opened
       - or:
         - titleContains:
-            pattern: '[Aa]z\.?ElasticSan'
-            isRegex: True
-      then:
-      - addLabel:
-          label: ElasticSan
-      description: '[ElasticSan] auto assign module label based on issue description.'
-    - if:
-      - payloadType: Issues
-      - isAction:
-          action: Opened
-      - or:
-        - titleContains:
             pattern: '[Aa]z\.?EventGrid'
             isRegex: True
       then:
@@ -5698,30 +5614,6 @@ configuration:
       - addLabel:
           label: Event Hubs
       description: '[Event Hubs] auto assign module label based on issue description.'
-    - if:
-      - payloadType: Issues
-      - isAction:
-          action: Opened
-      - or:
-        - titleContains:
-            pattern: '[Aa]z\.?Fabric'
-            isRegex: True
-      then:
-      - addLabel:
-          label: Fabric
-      description: '[Fabric] auto assign module label based on issue description.'
-    - if:
-      - payloadType: Issues
-      - isAction:
-          action: Opened
-      - or:
-        - titleContains:
-            pattern: '[Aa]z\.?Fleet'
-            isRegex: True
-      then:
-      - addLabel:
-          label: fleet
-      description: '[fleet] auto assign module label based on issue description.'
     - if:
       - payloadType: Issues
       - isAction:
@@ -5852,8 +5744,8 @@ configuration:
             isRegex: True
       then:
       - addLabel:
-          label: load
-      description: '[load] auto assign module label based on issue description.'
+          label: Load Testing
+      description: '[Load Testing] auto assign module label based on issue description.'
     - if:
       - payloadType: Issues
       - isAction:
@@ -5996,8 +5888,8 @@ configuration:
             isRegex: True
       then:
       - addLabel:
-          label: Operational Insights
-      description: '[Operational Insights] auto assign module label based on issue description.'
+          label: Monitor - Operational Insights
+      description: '[Monitor - Operational Insights] auto assign module label based on issue description.'
     - if:
       - payloadType: Issues
       - isAction:
@@ -6080,8 +5972,8 @@ configuration:
             isRegex: True
       then:
       - addLabel:
-          label: Network - ExpressRoutes
-      description: '[Network - ExpressRoutes] auto assign module label based on issue description.'
+          label: Network - ExpressRoute
+      description: '[Network - ExpressRoute] auto assign module label based on issue description.'
     - if:
       - payloadType: Issues
       - isAction:
@@ -6196,36 +6088,12 @@ configuration:
           action: Opened
       - or:
         - titleContains:
-            pattern: '[Aa]z\.?Nginx'
-            isRegex: True
-      then:
-      - addLabel:
-          label: Nginx
-      description: '[Nginx] auto assign module label based on issue description.'
-    - if:
-      - payloadType: Issues
-      - isAction:
-          action: Opened
-      - or:
-        - titleContains:
             pattern: '[Aa]z\.?NotificationHub'
             isRegex: True
       then:
       - addLabel:
           label: Notification Hub
       description: '[Notification Hub] auto assign module label based on issue description.'
-    - if:
-      - payloadType: Issues
-      - isAction:
-          action: Opened
-      - or:
-        - titleContains:
-            pattern: '[Aa]z\.?Oracle'
-            isRegex: True
-      then:
-      - addLabel:
-          label: Oracle
-      description: '[Oracle] auto assign module label based on issue description.'
     - if:
       - payloadType: Issues
       - isAction:
@@ -6376,18 +6244,6 @@ configuration:
           action: Opened
       - or:
         - titleContains:
-            pattern: '[Aa]z\.?ScVmm'
-            isRegex: True
-      then:
-      - addLabel:
-          label: scvmm
-      description: '[scvmm] auto assign module label based on issue description.'
-    - if:
-      - payloadType: Issues
-      - isAction:
-          action: Opened
-      - or:
-        - titleContains:
             pattern: '[Aa]zSearchService|[Aa]zSearchAdminKey|[Aa]zSearchQueryKey'
             isRegex: True
       then:
@@ -6418,18 +6274,6 @@ configuration:
       - addLabel:
           label: Security
       description: '[Security] auto assign module label based on issue description.'
-    - if:
-      - payloadType: Issues
-      - isAction:
-          action: Opened
-      - or:
-        - titleContains:
-            pattern: '[Aa]z\.?SelfHelp'
-            isRegex: True
-      then:
-      - addLabel:
-          label: SelfHelp
-      description: '[SelfHelp] auto assign module label based on issue description.'
     - if:
       - payloadType: Issues
       - isAction:
@@ -6476,8 +6320,8 @@ configuration:
             isRegex: True
       then:
       - addLabel:
-          label: Spring Cloud
-      description: '[Spring Cloud] auto assign module label based on issue description.'
+          label: SpringCloud
+      description: '[SpringCloud] auto assign module label based on issue description.'
     - if:
       - payloadType: Issues
       - isAction:
@@ -6508,48 +6352,12 @@ configuration:
           action: Opened
       - or:
         - titleContains:
-            pattern: '[Aa]z\.?Ssh|[Aa]zSshKey'
-            isRegex: True
-      then:
-      - addLabel:
-          label: SSH
-      description: '[SSH] auto assign module label based on issue description.'
-    - if:
-      - payloadType: Issues
-      - isAction:
-          action: Opened
-      - or:
-        - titleContains:
             pattern: '[Aa]z\.?StackHCIVM'
             isRegex: True
       then:
       - addLabel:
-          label: StackHCIVM
-      description: '[StackHCIVM] auto assign module label based on issue description.'
-    - if:
-      - payloadType: Issues
-      - isAction:
-          action: Opened
-      - or:
-        - titleContains:
-            pattern: '[Aa]z\.?StorageAction'
-            isRegex: True
-      then:
-      - addLabel:
-          label: Storage Action
-      description: '[Storage Action] auto assign module label based on issue description.'
-    - if:
-      - payloadType: Issues
-      - isAction:
-          action: Opened
-      - or:
-        - titleContains:
-            pattern: '[Aa]z\.?StorageDiscovery'
-            isRegex: True
-      then:
-      - addLabel:
-          label: StorageDiscovery
-      description: '[StorageDiscovery] auto assign module label based on issue description.'
+          label: StackHCI
+      description: '[StackHCI] auto assign module label based on issue description.'
     - if:
       - payloadType: Issues
       - isAction:
@@ -6634,18 +6442,6 @@ configuration:
       - addLabel:
           label: TimeseriesInsights
       description: '[TimeseriesInsights] auto assign module label based on issue description.'
-    - if:
-      - payloadType: Issues
-      - isAction:
-          action: Opened
-      - or:
-        - titleContains:
-            pattern: '[Aa]z\.?WebPubSub'
-            isRegex: True
-      then:
-      - addLabel:
-          label: WebPubSub
-      description: '[WebPubSub] auto assign module label based on issue description.'
     - if:
       - payloadType: Issues
       - isAction:
