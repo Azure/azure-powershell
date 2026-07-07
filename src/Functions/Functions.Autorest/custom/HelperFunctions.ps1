@@ -2179,6 +2179,14 @@ function GetRuntimeName
 
     $name = $settingHashTable['FUNCTIONS_WORKER_RUNTIME']
 
+    if ([string]::IsNullOrWhiteSpace($name))
+    {
+        # Some runtime stacks (for example, Go on Flex Consumption) do not define a
+        # FUNCTIONS_WORKER_RUNTIME app setting. Return $null so callers can skip them
+        # instead of throwing on a null key lookup below.
+        return $null
+    }
+
     if ($RuntimeToFormattedName.ContainsKey($name))
     {
         return $RuntimeToFormattedName[$name]
@@ -2281,6 +2289,11 @@ function SetLinuxandWindowsSupportedRuntimes
 
     Write-Debug "$DEBUG_PREFIX Build function stack definitions."
 
+    # Track runtime stacks skipped because they do not expose a mappable runtime name
+    # (for example, Go on Flex Consumption, which is currently in preview and not yet
+    # supported by this module). Used to emit a single message per stack.
+    $skippedRuntimeStacks = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::OrdinalIgnoreCase)
+
     # Get Function App Runtime Definitions
     $json = GetFunctionAppStackDefinition
     $functionAppStackDefinition = $json | ConvertFrom-Json
@@ -2324,9 +2337,14 @@ function SetLinuxandWindowsSupportedRuntimes
                                                  -PreferredOs $preferredOs `
                                                  -StackIsLinux $true
 
-                    if ($runtime)
+                    if ($runtime -and -not [string]::IsNullOrWhiteSpace($runtime.Name))
                     {
                         AddRuntimeToDictionary -Runtime $runtime -RuntimeToVersionDictionary ([Ref]$RuntimeToVersionLinux)
+                    }
+                    elseif ($runtime -and $skippedRuntimeStacks.Add($stackName))
+                    {
+                        Write-Verbose "Skipping runtime stack '$stackName' while building runtime tab-completion data; it is currently in preview and not yet supported by this module."
+                        Write-Debug   "$DEBUG_PREFIX Skipping runtime stack '$stackName'; no mappable runtime name (preview/unsupported)."
                     }
                 }
             }
