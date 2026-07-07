@@ -34,7 +34,7 @@ Describe 'SetLinuxandWindowsSupportedRuntimes' {
         }
     }
 
-    It 'ParseMinorVersion does not throw and yields a null runtime name for a Go-like stack' {
+    It 'ParseMinorVersion does not throw and yields a null runtime name for a stack with no mappable name' {
         InModuleScope Az.Functions {
             $goSettings = [PSCustomObject]@{
                 runtimeVersion                      = 'Go|1.0'
@@ -46,12 +46,43 @@ Describe 'SetLinuxandWindowsSupportedRuntimes' {
                 supportedFunctionsExtensionVersions = @('~4')
             }
 
-            # A direct call is used so the returned object is captured in this scope.
-            # If the fix regressed, ParseMinorVersion (or GetRuntimeName) would throw and fail the test.
+            # This stack exposes neither a FUNCTIONS_WORKER_RUNTIME app setting nor a Flex
+            # functionAppConfigProperties runtime name, so it cannot be mapped. The parser
+            # must not throw and must yield a null runtime name so callers can skip it.
             $runtime = ParseMinorVersion -RuntimeSettings $goSettings -RuntimeFullName 'Go 1.0' -PreferredOs 'linux' -StackIsLinux $true
 
             $runtime | Should -Not -BeNullOrEmpty
             [string]::IsNullOrWhiteSpace($runtime.Name) | Should -Be $true
+        }
+    }
+
+    It 'ParseMinorVersion resolves the Go runtime from functionAppConfigProperties when FUNCTIONS_WORKER_RUNTIME is absent' {
+        InModuleScope Az.Functions {
+            # A real Go on Flex Consumption stack ships an empty appSettingsDictionary but
+            # carries the runtime identity under Sku[].functionAppConfigProperties.runtime.
+            $goSettings = [PSCustomObject]@{
+                runtimeVersion                      = 'Go|1.0'
+                isPreview                           = $true
+                isHidden                            = $false
+                appSettingsDictionary               = [PSCustomObject]@{}
+                siteConfigPropertiesDictionary      = [PSCustomObject]@{ use32BitWorkerProcess = $false; linuxFxVersion = 'Go|1.0' }
+                appInsightsSettings                 = [PSCustomObject]@{ isSupported = $true }
+                supportedFunctionsExtensionVersions = @('~4')
+                Sku                                 = @(
+                    [PSCustomObject]@{
+                        skuCode                     = 'FC1'
+                        functionAppConfigProperties = [PSCustomObject]@{
+                            runtime = [PSCustomObject]@{ name = 'go'; version = '1.0' }
+                        }
+                    }
+                )
+            }
+
+            $runtime = ParseMinorVersion -RuntimeSettings $goSettings -RuntimeFullName 'Go 1.0' -PreferredOs 'linux' -StackIsLinux $true
+
+            $runtime | Should -Not -BeNullOrEmpty
+            $runtime.Name | Should -Be 'Go'
+            $runtime.Version | Should -Be '1.0'
         }
     }
 }
