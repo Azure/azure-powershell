@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Key = keyBundle.Key;
 
             // Quick access for key properties
-            KeySize = JwkHelper.ComputeKeySize(Key);
+            KeySize = JwkHelper.ConvertToRSAKey(Key)?.KeySize;
 
             // Key additional properties
             Attributes = new PSKeyVaultKeyAttributes(keyBundle);
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             // Key properties
             Key = key.Key.ToTrack1JsonWebKey();
 
-            KeySize = key.Properties.KeySize ?? JwkHelper.ComputeKeySize(Key);
+            KeySize = key.Properties.KeySize;
 
             // Key additional properties
             Attributes = new PSKeyVaultKeyAttributes(key);

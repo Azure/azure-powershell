@@ -21,84 +21,32 @@ namespace Microsoft.Azure.Commands.KeyVault.Helpers
 {
     internal static class JwkHelper
     {
-        // No constant for "oct-HSM" exists in the Track1 JsonWebKeyType enum.
-        internal const string OctetHsm = "oct-HSM";
-
-        internal static bool IsRsa(string keyType)
+        internal static RSACryptoServiceProvider ConvertToRSAKey(JsonWebKey jwk)
         {
-            return string.Equals(keyType, JsonWebKeyType.Rsa, StringComparison.OrdinalIgnoreCase)
-                || string.Equals(keyType, JsonWebKeyType.RsaHsm, StringComparison.OrdinalIgnoreCase);
-        }
-
-        internal static bool IsOct(string keyType)
-        {
-            return string.Equals(keyType, JsonWebKeyType.Octet, StringComparison.OrdinalIgnoreCase)
-                || string.Equals(keyType, OctetHsm, StringComparison.OrdinalIgnoreCase);
+            if (!"RSA".Equals(jwk?.Kty))
+            {
+                return null;
+            }
+            try
+            {
+                var csp = new RSACryptoServiceProvider();
+                csp.ImportParameters(new RSAParameters()
+                {
+                    Exponent = jwk.E,
+                    Modulus = jwk.N
+                });
+                return csp;
+            }
+            catch (CryptographicException)
+            {
+                return null;
+            }
         }
 
         internal static bool IsEC(string keyType)
         {
             return string.Equals(keyType, JsonWebKeyType.EllipticCurve, StringComparison.OrdinalIgnoreCase)
                 || string.Equals(keyType, JsonWebKeyType.EllipticCurveHsm, StringComparison.OrdinalIgnoreCase);
-        }
-
-        /// <summary>
-        /// Returns the key size in bits derived from the JWK material, or
-        /// <c>null</c> when the key type is unknown or the required material
-        /// (modulus / symmetric octets / curve name) is missing.
-        /// </summary>
-        internal static int? ComputeKeySize(JsonWebKey jwk)
-        {
-            if (jwk == null)
-            {
-                return null;
-            }
-
-            if (IsRsa(jwk.Kty))
-            {
-                return BitsFromByteArray(jwk.N);
-            }
-
-            if (IsOct(jwk.Kty))
-            {
-                return BitsFromByteArray(jwk.K);
-            }
-
-            if (IsEC(jwk.Kty))
-            {
-                return BitsFromCurveName(jwk.CurveName);
-            }
-
-            return null;
-        }
-
-        private static int? BitsFromByteArray(byte[] material)
-        {
-            return (material == null || material.Length == 0) ? (int?)null : material.Length * 8;
-        }
-
-        private static int? BitsFromCurveName(string curveName)
-        {
-            if (string.IsNullOrEmpty(curveName))
-            {
-                return null;
-            }
-
-            if (string.Equals(curveName, JsonWebKeyCurveName.P256, StringComparison.OrdinalIgnoreCase) ||
-                string.Equals(curveName, JsonWebKeyCurveName.P256K, StringComparison.OrdinalIgnoreCase))
-            {
-                return 256;
-            }
-            if (string.Equals(curveName, JsonWebKeyCurveName.P384, StringComparison.OrdinalIgnoreCase))
-            {
-                return 384;
-            }
-            if (string.Equals(curveName, JsonWebKeyCurveName.P521, StringComparison.OrdinalIgnoreCase))
-            {
-                return 521;
-            }
-
-            return null;
         }
 
         /// <summary>
