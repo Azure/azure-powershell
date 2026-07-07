@@ -56,11 +56,17 @@ Gets an existing CDN endpoint with the specified endpoint name under the specifi
 ### [Get-AzCdnEndpointResourceUsage](Get-AzCdnEndpointResourceUsage.md)
 Checks the quota and usage of geo filters and custom domains under the given endpoint.
 
+### [Get-AzCdnManagedRuleSet](Get-AzCdnManagedRuleSet.md)
+Lists all available managed rule sets.
+
 ### [Get-AzCdnOrigin](Get-AzCdnOrigin.md)
 Gets an existing origin within an endpoint.
 
 ### [Get-AzCdnOriginGroup](Get-AzCdnOriginGroup.md)
 Gets an existing origin group within an endpoint.
+
+### [Get-AzCdnPolicy](Get-AzCdnPolicy.md)
+Retrieve protection policy with specified name within a resource group.
 
 ### [Get-AzCdnProfile](Get-AzCdnProfile.md)
 Gets an CDN profile with the specified profile name under the specified subscription and resource group.
@@ -91,7 +97,7 @@ Gets an existing origin within an origin group.
 Gets an existing origin group within a profile.
 
 ### [Get-AzFrontDoorCdnOriginGroupResourceUsage](Get-AzFrontDoorCdnOriginGroupResourceUsage.md)
-Checks the quota and actual usage of endpoints under the given Azure Front Door profile..
+Checks the quota and actual usage of endpoints under the given Azure Front Door profile.
 
 ### [Get-AzFrontDoorCdnProfile](Get-AzFrontDoorCdnProfile.md)
 Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
@@ -109,7 +115,7 @@ Gets an existing delivery rule within a rule set.
 Gets an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile.
 
 ### [Get-AzFrontDoorCdnRuleSetResourceUsage](Get-AzFrontDoorCdnRuleSetResourceUsage.md)
-Checks the quota and actual usage of endpoints under the given Azure Front Door profile..
+Checks the quota and actual usage of endpoints under the given Azure Front Door profile.
 
 ### [Get-AzFrontDoorCdnSecret](Get-AzFrontDoorCdnSecret.md)
 Gets an existing Secret within a profile.
@@ -223,6 +229,9 @@ Create a new origin group within the specified endpoint.
 
 ### [New-AzCdnOriginGroupOverrideActionObject](New-AzCdnOriginGroupOverrideActionObject.md)
 Create an in-memory object for OriginGroupOverrideAction.
+
+### [New-AzCdnPolicy](New-AzCdnPolicy.md)
+Create policy with specified rule set name within a resource group.
 
 ### [New-AzCdnProfile](New-AzCdnProfile.md)
 Creates an CDN profile with the specified profile name under the specified subscription and resource group.
@@ -354,7 +363,7 @@ Create an in-memory object for DeliveryRuleRouteConfigurationOverrideAction.
 Create an in-memory object for DeliveryRuleServerPortCondition.
 
 ### [New-AzFrontDoorCdnRuleSet](New-AzFrontDoorCdnRuleSet.md)
-Create a new rule set within the specified profile.
+Create or create a batch rule set within the specified profile along with the rules associate to it.
 
 ### [New-AzFrontDoorCdnRuleSocketAddrConditionObject](New-AzFrontDoorCdnRuleSocketAddrConditionObject.md)
 Create an in-memory object for DeliveryRuleSocketAddrCondition.
@@ -427,6 +436,9 @@ Deletes an existing origin within an endpoint.
 
 ### [Remove-AzCdnOriginGroup](Remove-AzCdnOriginGroup.md)
 Deletes an existing origin group within an endpoint.
+
+### [Remove-AzCdnPolicy](Remove-AzCdnPolicy.md)
+Deletes Policy
 
 ### [Remove-AzCdnProfile](Remove-AzCdnProfile.md)
 Deletes an existing CDN profile with the specified profile name under the specified subscription.
@@ -530,6 +542,9 @@ Update an existing origin within an endpoint.
 ### [Update-AzCdnOriginGroup](Update-AzCdnOriginGroup.md)
 Update an existing origin group within an endpoint.
 
+### [Update-AzCdnPolicy](Update-AzCdnPolicy.md)
+Update an existing CdnWebApplicationFirewallPolicy with the specified policy name under the specified subscription and resource group
+
 ### [Update-AzCdnProfile](Update-AzCdnProfile.md)
 Updates an existing CDN profile with the specified profile name under the specified subscription and resource group.
 
@@ -563,6 +578,9 @@ Update an existing route with the specified route name under the specified subsc
 
 ### [Update-AzFrontDoorCdnRule](Update-AzFrontDoorCdnRule.md)
 Update an existing delivery rule within a rule set.
+
+### [Update-AzFrontDoorCdnRuleSet](Update-AzFrontDoorCdnRuleSet.md)
+Update or update a batch rule set within the specified profile along with the rules associate to it.
 
 ### [Update-AzFrontDoorCdnSecret](Update-AzFrontDoorCdnSecret.md)
 Update a new Secret within the specified profile.

@@ -20,8 +20,9 @@ using System.Runtime.InteropServices;
 [assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright © Microsoft")]
 [assembly: System.Reflection.AssemblyProductAttribute("Microsoft Azure PowerShell")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Microsoft Azure PowerShell - Cdn")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("6.0.1")]
-[assembly: System.Reflection.AssemblyVersionAttribute("6.0.1")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("6.0.2")]
+[assembly: System.Reflection.AssemblyVersionAttribute("6.0.2")]
 [assembly: System.Runtime.InteropServices.ComVisibleAttribute(false)]
 [assembly: System.CLSCompliantAttribute(false)]
+
 
