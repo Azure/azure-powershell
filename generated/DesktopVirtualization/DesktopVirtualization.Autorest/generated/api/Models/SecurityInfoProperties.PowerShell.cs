@@ -7,15 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PowerShell;
 
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SecurityInfoProperties.PowerShell.cs
     /// <summary>Security Information.</summary>
     [System.ComponentModel.TypeConverter(typeof(SecurityInfoPropertiesTypeConverter))]
     public partial class SecurityInfoProperties
-========
-    /// <summary>Managed service identity (either system assigned, or none)</summary>
-    [System.ComponentModel.TypeConverter(typeof(SystemAssignedServiceIdentityTypeConverter))]
-    public partial class SystemAssignedServiceIdentity
->>>>>>>> origin:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SystemAssignedServiceIdentity.PowerShell.cs
     {
 
         /// <summary>
@@ -69,16 +63,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SecurityInfoProperties.PowerShell.cs
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SecurityInfoProperties"
-========
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SystemAssignedServiceIdentity"
->>>>>>>> origin:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SystemAssignedServiceIdentity.PowerShell.cs
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SecurityInfoProperties.PowerShell.cs
         /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISecurityInfoProperties" />.
         /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISecurityInfoProperties DeserializeFromDictionary(global::System.Collections.IDictionary content)
@@ -88,23 +77,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
 
         /// <summary>
         /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SecurityInfoProperties"
-========
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentity"
-        /// />.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentity DeserializeFromDictionary(global::System.Collections.IDictionary content)
-        {
-            return new SystemAssignedServiceIdentity(content);
-        }
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SystemAssignedServiceIdentity"
->>>>>>>> origin:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SystemAssignedServiceIdentity.PowerShell.cs
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SecurityInfoProperties.PowerShell.cs
         /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISecurityInfoProperties" />.
         /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISecurityInfoProperties DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
@@ -125,29 +101,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         internal SecurityInfoProperties(global::System.Collections.IDictionary content)
-========
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentity"
-        /// />.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentity DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
-        {
-            return new SystemAssignedServiceIdentity(content);
-        }
-
-        /// <summary>
-        /// Creates a new instance of <see cref="SystemAssignedServiceIdentity" />, deserializing the content from a json string.
-        /// </summary>
-        /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="SystemAssignedServiceIdentity" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentity FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode.Parse(jsonText));
-
-        /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SystemAssignedServiceIdentity"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal SystemAssignedServiceIdentity(global::System.Collections.IDictionary content)
->>>>>>>> origin:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SystemAssignedServiceIdentity.PowerShell.cs
         {
             bool returnNow = false;
             BeforeDeserializeDictionary(content, ref returnNow);
@@ -156,7 +109,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
                 return;
             }
             // actually deserialize
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SecurityInfoProperties.PowerShell.cs
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISecurityInfoPropertiesInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISecurityInfoPropertiesInternal)this).Type, global::System.Convert.ToString);
@@ -168,37 +120,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             if (content.Contains("VTpmEnabled"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISecurityInfoPropertiesInternal)this).VTpmEnabled = (bool?) content.GetValueForProperty("VTpmEnabled",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISecurityInfoPropertiesInternal)this).VTpmEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-========
-            if (content.Contains("PrincipalId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)this).PrincipalId, global::System.Convert.ToString);
-            }
-            if (content.Contains("TenantId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)this).TenantId, global::System.Convert.ToString);
-            }
-            if (content.Contains("Type"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)this).Type, global::System.Convert.ToString);
->>>>>>>> origin:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SystemAssignedServiceIdentity.PowerShell.cs
             }
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SecurityInfoProperties.PowerShell.cs
         /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SecurityInfoProperties"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         internal SecurityInfoProperties(global::System.Management.Automation.PSObject content)
-========
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.SystemAssignedServiceIdentity"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal SystemAssignedServiceIdentity(global::System.Management.Automation.PSObject content)
->>>>>>>> origin:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SystemAssignedServiceIdentity.PowerShell.cs
         {
             bool returnNow = false;
             BeforeDeserializePSObject(content, ref returnNow);
@@ -207,7 +138,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
                 return;
             }
             // actually deserialize
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SecurityInfoProperties.PowerShell.cs
             if (content.Contains("Type"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISecurityInfoPropertiesInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISecurityInfoPropertiesInternal)this).Type, global::System.Convert.ToString);
@@ -219,19 +149,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             if (content.Contains("VTpmEnabled"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISecurityInfoPropertiesInternal)this).VTpmEnabled = (bool?) content.GetValueForProperty("VTpmEnabled",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISecurityInfoPropertiesInternal)this).VTpmEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-========
-            if (content.Contains("PrincipalId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)this).PrincipalId, global::System.Convert.ToString);
-            }
-            if (content.Contains("TenantId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)this).TenantId, global::System.Convert.ToString);
-            }
-            if (content.Contains("Type"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentityInternal)this).Type, global::System.Convert.ToString);
->>>>>>>> origin:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SystemAssignedServiceIdentity.PowerShell.cs
             }
             AfterDeserializePSObject(content);
         }
@@ -253,15 +170,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             return ToJsonString();
         }
     }
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SecurityInfoProperties.PowerShell.cs
     /// Security Information.
     [System.ComponentModel.TypeConverter(typeof(SecurityInfoPropertiesTypeConverter))]
     public partial interface ISecurityInfoProperties
-========
-    /// Managed service identity (either system assigned, or none)
-    [System.ComponentModel.TypeConverter(typeof(SystemAssignedServiceIdentityTypeConverter))]
-    public partial interface ISystemAssignedServiceIdentity
->>>>>>>> origin:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SystemAssignedServiceIdentity.PowerShell.cs
 
     {
 

@@ -109,6 +109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {_deploymentScope = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("deploymentScope"), out var __jsonDeploymentScope) ? (string)__jsonDeploymentScope : (string)_deploymentScope;}
             {_oboTenantId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("oboTenantId"), out var __jsonOboTenantId) ? (string)__jsonOboTenantId : (string)_oboTenantId;}
             {_allowRdpShortPathWithPrivateLink = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("allowRDPShortPathWithPrivateLink"), out var __jsonAllowRdpShortPathWithPrivateLink) ? (string)__jsonAllowRdpShortPathWithPrivateLink : (string)_allowRdpShortPathWithPrivateLink;}
+            {_conditionalRdpProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("conditionalRdpProperty"), out var __jsonConditionalRdpProperty) ? (string)__jsonConditionalRdpProperty : (string)_conditionalRdpProperty;}
             AfterFromJson(json);
         }
 
@@ -202,6 +203,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             AddIf( null != (((object)this._deploymentScope)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._deploymentScope.ToString()) : null, "deploymentScope" ,container.Add );
             AddIf( null != (((object)this._oboTenantId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._oboTenantId.ToString()) : null, "oboTenantId" ,container.Add );
             AddIf( null != (((object)this._allowRdpShortPathWithPrivateLink)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._allowRdpShortPathWithPrivateLink.ToString()) : null, "allowRDPShortPathWithPrivateLink" ,container.Add );
+            AddIf( null != (((object)this._conditionalRdpProperty)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._conditionalRdpProperty.ToString()) : null, "conditionalRdpProperty" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
