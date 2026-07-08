@@ -6,7 +6,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'SetLinuxandWindowsSupportedRu
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
-      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+      $loadEnvPath = Join-Path (Join-Path $PSScriptRoot '..') 'loadEnv.ps1'
   }
   . ($loadEnvPath)
 }
