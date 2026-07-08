@@ -65,9 +65,6 @@ Gets an existing origin within an endpoint.
 ### [Get-AzCdnOriginGroup](Get-AzCdnOriginGroup.md)
 Gets an existing origin group within an endpoint.
 
-### [Get-AzCdnPolicy](Get-AzCdnPolicy.md)
-Retrieve protection policy with specified name within a resource group.
-
 ### [Get-AzCdnProfile](Get-AzCdnProfile.md)
 Gets an CDN profile with the specified profile name under the specified subscription and resource group.
 
@@ -229,9 +226,6 @@ Create a new origin group within the specified endpoint.
 
 ### [New-AzCdnOriginGroupOverrideActionObject](New-AzCdnOriginGroupOverrideActionObject.md)
 Create an in-memory object for OriginGroupOverrideAction.
-
-### [New-AzCdnPolicy](New-AzCdnPolicy.md)
-Create policy with specified rule set name within a resource group.
 
 ### [New-AzCdnProfile](New-AzCdnProfile.md)
 Creates an CDN profile with the specified profile name under the specified subscription and resource group.
@@ -437,9 +431,6 @@ Deletes an existing origin within an endpoint.
 ### [Remove-AzCdnOriginGroup](Remove-AzCdnOriginGroup.md)
 Deletes an existing origin group within an endpoint.
 
-### [Remove-AzCdnPolicy](Remove-AzCdnPolicy.md)
-Deletes Policy
-
 ### [Remove-AzCdnProfile](Remove-AzCdnProfile.md)
 Deletes an existing CDN profile with the specified profile name under the specified subscription.
 Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains.
@@ -541,9 +532,6 @@ Update an existing origin within an endpoint.
 
 ### [Update-AzCdnOriginGroup](Update-AzCdnOriginGroup.md)
 Update an existing origin group within an endpoint.
-
-### [Update-AzCdnPolicy](Update-AzCdnPolicy.md)
-Update an existing CdnWebApplicationFirewallPolicy with the specified policy name under the specified subscription and resource group
 
 ### [Update-AzCdnProfile](Update-AzCdnProfile.md)
 Updates an existing CDN profile with the specified profile name under the specified subscription and resource group.

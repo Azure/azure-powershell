@@ -346,6 +346,12 @@ directive:
   - where:
       subject: KeyGroupUpdate
     hide: true
+
+  # Hide retired classic CDN WAF policy API
+  - where:
+      subject: Policy
+      verb: Get|New|Update|Remove
+    hide: true
     
   # Hide New-AzFrontDoorCdnRoute to customize
   - where:
