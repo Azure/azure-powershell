@@ -80,6 +80,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationProperties Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ApplicationProperties()); set { {_property = value;} } }
 
+        /// <summary>Internal Acessors for ShortcutsExtension</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IShortcutsExtension Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationInternal.ShortcutsExtension { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPropertiesInternal)Property).ShortcutsExtension; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPropertiesInternal)Property).ShortcutsExtension = value ?? null /* model class */; }
+
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
 
@@ -136,6 +139,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Gets the resource group name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => (new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Success ? new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Groups["resourceGroupName"].Value : null); }
+
+        /// <summary>Indicates whether to create a desktop shortcut for the remote application.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public bool? ShortcutExtensionPutShortcutOnDesktop { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPropertiesInternal)Property).ShortcutExtensionPutShortcutOnDesktop; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPropertiesInternal)Property).ShortcutExtensionPutShortcutOnDesktop = value ?? default(bool); }
 
         /// <summary>Specifies whether to show the RemoteApp program in the RD Web Access server.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
@@ -348,6 +355,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"objectId",
         PossibleTypes = new [] { typeof(string) })]
         string ObjectId { get;  }
+        /// <summary>Indicates whether to create a desktop shortcut for the remote application.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates whether to create a desktop shortcut for the remote application.",
+        SerializedName = @"putShortcutOnDesktop",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? ShortcutExtensionPutShortcutOnDesktop { get; set; }
         /// <summary>Specifies whether to show the RemoteApp program in the RD Web Access server.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -398,6 +416,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string ObjectId { get; set; }
         /// <summary>Detailed properties for Application</summary>
         Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationProperties Property { get; set; }
+        /// <summary>Indicates whether to create a desktop shortcut for the remote application.</summary>
+        bool? ShortcutExtensionPutShortcutOnDesktop { get; set; }
+        /// <summary>Additional shortcut settings for the remote application.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IShortcutsExtension ShortcutsExtension { get; set; }
         /// <summary>Specifies whether to show the RemoteApp program in the RD Web Access server.</summary>
         bool? ShowInPortal { get; set; }
 

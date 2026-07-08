@@ -72,6 +72,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public string IconPath { get => this._iconPath; set => this._iconPath = value; }
 
+        /// <summary>Internal Acessors for ShortcutsExtension</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IShortcutsExtension Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplicationPatchPropertiesInternal.ShortcutsExtension { get => (this._shortcutsExtension = this._shortcutsExtension ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ShortcutsExtension()); set { {_shortcutsExtension = value;} } }
+
         /// <summary>Backing field for <see cref="MsixPackageApplicationId" /> property.</summary>
         private string _msixPackageApplicationId;
 
@@ -85,6 +88,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <summary>Specifies the package family name for MSIX applications</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public string MsixPackageFamilyName { get => this._msixPackageFamilyName; set => this._msixPackageFamilyName = value; }
+
+        /// <summary>Indicates whether to create a desktop shortcut for the remote application.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Inlined)]
+        public bool? ShortcutExtensionPutShortcutOnDesktop { get => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IShortcutsExtensionInternal)ShortcutsExtension).PutShortcutOnDesktop; set => ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IShortcutsExtensionInternal)ShortcutsExtension).PutShortcutOnDesktop = value ?? default(bool); }
+
+        /// <summary>Backing field for <see cref="ShortcutsExtension" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IShortcutsExtension _shortcutsExtension;
+
+        /// <summary>Additional shortcut settings for the remote application.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IShortcutsExtension ShortcutsExtension { get => (this._shortcutsExtension = this._shortcutsExtension ?? new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ShortcutsExtension()); set => this._shortcutsExtension = value; }
 
         /// <summary>Backing field for <see cref="ShowInPortal" /> property.</summary>
         private bool? _showInPortal;
@@ -218,6 +232,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"msixPackageFamilyName",
         PossibleTypes = new [] { typeof(string) })]
         string MsixPackageFamilyName { get; set; }
+        /// <summary>Indicates whether to create a desktop shortcut for the remote application.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates whether to create a desktop shortcut for the remote application.",
+        SerializedName = @"putShortcutOnDesktop",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? ShortcutExtensionPutShortcutOnDesktop { get; set; }
         /// <summary>Specifies whether to show the RemoteApp program in the RD Web Access server.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -260,6 +285,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string MsixPackageApplicationId { get; set; }
         /// <summary>Specifies the package family name for MSIX applications</summary>
         string MsixPackageFamilyName { get; set; }
+        /// <summary>Indicates whether to create a desktop shortcut for the remote application.</summary>
+        bool? ShortcutExtensionPutShortcutOnDesktop { get; set; }
+        /// <summary>Additional shortcut settings for the remote application.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IShortcutsExtension ShortcutsExtension { get; set; }
         /// <summary>Specifies whether to show the RemoteApp program in the RD Web Access server.</summary>
         bool? ShowInPortal { get; set; }
 

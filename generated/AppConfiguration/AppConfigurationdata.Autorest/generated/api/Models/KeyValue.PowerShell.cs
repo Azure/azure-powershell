@@ -133,6 +133,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.KeyValueTagsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).Description, global::System.Convert.ToString);
+            }
             if (content.Contains("Locked"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).Locked = (bool?) content.GetValueForProperty("Locked",((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).Locked, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
@@ -189,6 +193,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models
             if (content.Contains("Tag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.KeyValueTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IKeyValueInternal)this).Description, global::System.Convert.ToString);
             }
             if (content.Contains("Locked"))
             {

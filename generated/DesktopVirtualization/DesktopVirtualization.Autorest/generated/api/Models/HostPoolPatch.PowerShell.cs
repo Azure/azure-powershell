@@ -253,6 +253,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).AllowRdpShortPathWithPrivateLink = (string) content.GetValueForProperty("AllowRdpShortPathWithPrivateLink",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).AllowRdpShortPathWithPrivateLink, global::System.Convert.ToString);
             }
+            if (content.Contains("ConditionalRdpProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).ConditionalRdpProperty = (string) content.GetValueForProperty("ConditionalRdpProperty",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).ConditionalRdpProperty, global::System.Convert.ToString);
+            }
             if (content.Contains("IdentityPrincipalId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
@@ -453,6 +457,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             if (content.Contains("AllowRdpShortPathWithPrivateLink"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).AllowRdpShortPathWithPrivateLink = (string) content.GetValueForProperty("AllowRdpShortPathWithPrivateLink",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).AllowRdpShortPathWithPrivateLink, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConditionalRdpProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).ConditionalRdpProperty = (string) content.GetValueForProperty("ConditionalRdpProperty",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPoolPatchInternal)this).ConditionalRdpProperty, global::System.Convert.ToString);
             }
             if (content.Contains("IdentityPrincipalId"))
             {

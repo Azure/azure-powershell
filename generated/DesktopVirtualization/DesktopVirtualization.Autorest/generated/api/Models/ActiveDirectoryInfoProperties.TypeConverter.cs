@@ -8,15 +8,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
     using Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PowerShell;
 
     /// <summary>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/ActiveDirectoryInfoProperties.TypeConverter.cs
     /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="ActiveDirectoryInfoProperties" />
     /// </summary>
     public partial class ActiveDirectoryInfoPropertiesTypeConverter : global::System.Management.Automation.PSTypeConverter
-========
-    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="SystemAssignedServiceIdentity" />
-    /// </summary>
-    public partial class SystemAssignedServiceIdentityTypeConverter : global::System.Management.Automation.PSTypeConverter
->>>>>>>> origin:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SystemAssignedServiceIdentity.TypeConverter.cs
     {
 
         /// <summary>
@@ -32,7 +26,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         public override bool CanConvertFrom(object sourceValue, global::System.Type destinationType) => CanConvertFrom(sourceValue);
 
         /// <summary>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/ActiveDirectoryInfoProperties.TypeConverter.cs
         /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="ActiveDirectoryInfoProperties"/>
         /// type.
         /// </summary>
@@ -40,15 +33,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// /> type.</param>
         /// <returns>
         /// <c>true</c> if the instance could be converted to a <see cref="ActiveDirectoryInfoProperties" /> type, otherwise <c>false</c>
-========
-        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="SystemAssignedServiceIdentity"/>
-        /// type.
-        /// </summary>
-        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="SystemAssignedServiceIdentity"
-        /// /> type.</param>
-        /// <returns>
-        /// <c>true</c> if the instance could be converted to a <see cref="SystemAssignedServiceIdentity" /> type, otherwise <c>false</c>
->>>>>>>> origin:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SystemAssignedServiceIdentity.TypeConverter.cs
         /// </returns>
         public static bool CanConvertFrom(dynamic sourceValue)
         {
@@ -111,16 +95,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// <param name="formatProvider">not used by this TypeConverter.</param>
         /// <param name="ignoreCase">when set to <c>true</c>, will ignore the case when converting.</param>
         /// <returns>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/ActiveDirectoryInfoProperties.TypeConverter.cs
         /// an instance of <see cref="ActiveDirectoryInfoProperties" />, or <c>null</c> if there is no suitable conversion.
-========
-        /// an instance of <see cref="SystemAssignedServiceIdentity" />, or <c>null</c> if there is no suitable conversion.
->>>>>>>> origin:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SystemAssignedServiceIdentity.TypeConverter.cs
         /// </returns>
         public override object ConvertFrom(object sourceValue, global::System.Type destinationType, global::System.IFormatProvider formatProvider, bool ignoreCase) => ConvertFrom(sourceValue);
 
         /// <summary>
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/ActiveDirectoryInfoProperties.TypeConverter.cs
         /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="ActiveDirectoryInfoProperties" />
         /// </summary>
         /// <param name="sourceValue">the value to convert into an instance of <see cref="ActiveDirectoryInfoProperties" />.</param>
@@ -128,36 +107,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         /// an instance of <see cref="ActiveDirectoryInfoProperties" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IActiveDirectoryInfoProperties ConvertFrom(dynamic sourceValue)
-========
-        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="SystemAssignedServiceIdentity" />
-        /// </summary>
-        /// <param name="sourceValue">the value to convert into an instance of <see cref="SystemAssignedServiceIdentity" />.</param>
-        /// <returns>
-        /// an instance of <see cref="SystemAssignedServiceIdentity" />, or <c>null</c> if there is no suitable conversion.
-        /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentity ConvertFrom(dynamic sourceValue)
->>>>>>>> origin:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SystemAssignedServiceIdentity.TypeConverter.cs
         {
             if (null == sourceValue)
             {
                 return null;
             }
             global::System.Type type = sourceValue.GetType();
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/ActiveDirectoryInfoProperties.TypeConverter.cs
             if (typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IActiveDirectoryInfoProperties).IsAssignableFrom(type))
-========
-            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISystemAssignedServiceIdentity).IsAssignableFrom(type))
->>>>>>>> origin:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SystemAssignedServiceIdentity.TypeConverter.cs
             {
                 return sourceValue;
             }
             try
             {
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/ActiveDirectoryInfoProperties.TypeConverter.cs
                 return ActiveDirectoryInfoProperties.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
-========
-                return SystemAssignedServiceIdentity.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
->>>>>>>> origin:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SystemAssignedServiceIdentity.TypeConverter.cs
             }
             catch
             {
@@ -165,19 +127,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             }
             if (typeof(global::System.Management.Automation.PSObject).IsAssignableFrom(type))
             {
-<<<<<<<< HEAD:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/ActiveDirectoryInfoProperties.TypeConverter.cs
                 return ActiveDirectoryInfoProperties.DeserializeFromPSObject(sourceValue);
             }
             if (typeof(global::System.Collections.IDictionary).IsAssignableFrom(type))
             {
                 return ActiveDirectoryInfoProperties.DeserializeFromDictionary(sourceValue);
-========
-                return SystemAssignedServiceIdentity.DeserializeFromPSObject(sourceValue);
-            }
-            if (typeof(global::System.Collections.IDictionary).IsAssignableFrom(type))
-            {
-                return SystemAssignedServiceIdentity.DeserializeFromDictionary(sourceValue);
->>>>>>>> origin:generated/DesktopVirtualization/DesktopVirtualization.Autorest/generated/api/Models/SystemAssignedServiceIdentity.TypeConverter.cs
             }
             return null;
         }

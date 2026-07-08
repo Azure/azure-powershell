@@ -2048,6 +2048,9 @@
             <Label>AllowRdpShortPathWithPrivateLink</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>ConditionalRdpProperty</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>CustomRdpProperty</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -2113,6 +2116,9 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>AllowRdpShortPathWithPrivateLink</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ConditionalRdpProperty</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>CustomRdpProperty</PropertyName>
@@ -2215,6 +2221,9 @@
             <Label>CloudPcResource</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>ConditionalRdpProperty</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>CustomRdpProperty</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -2298,6 +2307,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>CloudPcResource</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ConditionalRdpProperty</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>CustomRdpProperty</PropertyName>
@@ -6145,6 +6157,28 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SetDrainMode</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ShortcutsExtension</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ShortcutsExtension#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>PutShortcutOnDesktop</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PutShortcutOnDesktop</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
