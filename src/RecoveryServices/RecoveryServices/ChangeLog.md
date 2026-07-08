@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed Private Disk Access parameters being silently dropped in Azure-to-Azure managed-disk cmdlets: `Add-AzRecoveryServicesAsrReplicationProtectedItemDisk`, `Update-AzRecoveryServicesAsrProtectionDirection` (reprotect) and `Update-AzRecoveryServicesAsrClusterProtectionDirection` (cluster reprotect) now forward `RecoveryNetworkAccessPolicy`, `RecoveryDiskAccessId` and `RecoveryPublicNetworkAccess` from the disk replication configuration to the AddDisks / Reprotect REST calls.
 
 ## Version 7.13.0
 * Updated `System.Security.Cryptography.Cng` dependency from `4.4.0` to `5.0.0`.

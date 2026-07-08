@@ -336,7 +336,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                     disk.DiskEncryptionSecretUrl,
                                     disk.DiskEncryptionVaultId,
                                     disk.KeyEncryptionKeyUrl,
-                                    disk.KeyEncryptionVaultId)
+                                    disk.KeyEncryptionVaultId),
+                                    RecoveryNetworkAccessPolicy = disk.RecoveryNetworkAccessPolicy,
+                                    RecoveryDiskAccessId = disk.RecoveryDiskAccessId,
+                                    RecoveryPublicNetworkAccess = disk.RecoveryPublicNetworkAccess
                                 });
                             }
                         }
