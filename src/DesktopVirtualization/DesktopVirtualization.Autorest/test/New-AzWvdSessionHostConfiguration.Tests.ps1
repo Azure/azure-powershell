@@ -77,6 +77,36 @@ Describe 'New-AzWvdSessionHostConfiguration' {
                 -ResourceGroupName $env.ResourceGroup `
                 -HostPoolName $env.HostPool
         $configuration.VMNamePrefix | Should -Be "createTest"
+        $configuration.ManagedDiskType | Should -Be "Standard_LRS"
+    }
+
+    It 'CreateExpanded_EphemeralOSDisk' {
+        # An ephemeral OS disk (DiffDiskSettingOption 'Local') can only be backed by a Premium_LRS or
+        # StandardSSD_LRS managed disk. Combining it with Standard_LRS raises MultipleDiskTypesSpecified,
+        # so the DiffDiskSettingPlacement scenario is validated separately from the Standard_LRS case above.
+        $configuration = New-AzWvdSessionHostConfiguration -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroup `
+                -HostPoolName $env.HostPool -ManagedDiskType "Premium_LRS" `
+                -DomainInfoJoinType "AzureActiveDirectory" -ImageInfoImageType "Marketplace" `
+                -NetworkInfoSubnetId $env.VnetSubnetId `
+                -VMAdminCredentialsPasswordKeyvaultSecretUri $env.VMAdminCredentialsPasswordKeyvaultSecretUri `
+                -VMAdminCredentialsUserNameKeyvaultSecretUri $env.VMAdminCredentialsUserNameKeyvaultSecretUri `
+                -VMNamePrefix "createTest" -VMSizeId "Standard_D2s_v3" -MarketplaceInfoExactVersion $env.MarketplaceImageVersion `
+                -MarketplaceInfoOffer $env.MarketplaceInfoOffer -MarketplaceInfoPublisher $env.MarketplaceInfoPublisher `
+                -MarketplaceInfoSku $env.MarketplaceInfoSku `
+                -DiffDiskSettingOption "Local" `
+                -DiffDiskSettingPlacement "TempDisk" `
+                -SecurityInfoSecureBootEnabled `
+                -SecurityInfoType "TrustedLaunch" `
+                -SecurityInfoVTpmEnabled `
+                -VmLocation $env.Location `
+                -VmResourceGroup $env.ResourceGroup `
+                -VmTag $vmTag
+
+        $configuration = Get-AzWvdSessionHostConfiguration -SubscriptionId $env.SubscriptionId `
+                -ResourceGroupName $env.ResourceGroup `
+                -HostPoolName $env.HostPool
+        $configuration.DiffDiskSettingOption | Should -Be "Local"
+        $configuration.DiffDiskSettingPlacement | Should -Be "TempDisk"
     }
 
     AfterAll{
