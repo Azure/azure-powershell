@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 9.7.1
 * Updated storage account identity handling to explicitly use the Storage SDK `Identity` model in `New-AzStorageAccount` and `Set-AzStorageAccount`.
 
 ## Version 9.7.0
