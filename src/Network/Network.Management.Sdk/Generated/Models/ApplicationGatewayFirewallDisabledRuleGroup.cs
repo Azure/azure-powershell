@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="rules">The list of rules that will be disabled. If null, all rules of the rule
         /// group will be disabled.
         /// </param>
-        public ApplicationGatewayFirewallDisabledRuleGroup(string ruleGroupName, System.Collections.Generic.IList<int?> rules = default(System.Collections.Generic.IList<int?>))
+        public ApplicationGatewayFirewallDisabledRuleGroup(string ruleGroupName, System.Collections.Generic.IList<int> rules = default(System.Collections.Generic.IList<int>))
 
         {
             this.RuleGroupName = ruleGroupName;
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// the rule group will be disabled.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "rules")]
-        public System.Collections.Generic.IList<int?> Rules {get; set; }
+        public System.Collections.Generic.IList<int> Rules {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

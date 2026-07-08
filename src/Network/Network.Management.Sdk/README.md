@@ -140,6 +140,13 @@ directive:
   - from: swagger-document
     where: $.definitions["SecurityPerimeterResource"]
     transform: $["x-ms-azure-resource"] = true
+# Keep ApplicationGatewayFirewallDisabledRuleGroup.rules element non-nullable (IList<int>).
+# The swagger element is a plain { "type": "integer" } with no x-nullable, but @autorest/powershell 4.x
+# defaults primitive array elements to nullable, flipping the generated property to IList<int?>.
+# That is an unintended breaking change (analyzer 3030) vs the legacy IList<int>, so force x-nullable=false.
+  - from: swagger-document
+    where: $.definitions.ApplicationGatewayFirewallDisabledRuleGroup.properties.rules.items
+    transform: $["x-nullable"] = false
 # end of directives added by xiaogang
   - where:
       model-name: ManagedServiceIdentityUserAssignedIdentities
