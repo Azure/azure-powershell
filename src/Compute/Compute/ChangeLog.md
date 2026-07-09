@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Deprecated the old AEM extensin installation.
 
 ## Version 11.7.0
 * ComputeRP related cmdlets will now use 2026-03-01 version of the ComputeRP API.
