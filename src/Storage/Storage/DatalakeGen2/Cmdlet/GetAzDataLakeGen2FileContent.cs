@@ -202,8 +202,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             if (string.IsNullOrEmpty(fileName) || Directory.Exists(filePath))
             {
+                string destinationDirectory = filePath;
                 fileName = fileNameResolver.ResolveFileName(blobName, null);
-                filePath = System.IO.Path.Combine(filePath, fileName);
+                filePath = System.IO.Path.Combine(destinationDirectory, fileName);
+
+                // Block path traversal: the resolved path must stay within the destination directory.
+                if (!NameUtil.IsFilePathWithinDirectory(filePath, destinationDirectory))
+                {
+                    throw new ArgumentException(String.Format(Resources.DownloadDestinationPathTraversal, blobName, destinationDirectory));
+                }
             }
 
             fileName = System.IO.Path.GetFileName(filePath);
