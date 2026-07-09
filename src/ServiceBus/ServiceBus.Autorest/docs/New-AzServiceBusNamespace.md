@@ -15,7 +15,7 @@ Creates a new ServiceBus namespace.
 ```
 New-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-AlternateName <String>] [-DisableLocalAuth]
- [-GeoDataReplicationLocation <NamespaceReplicaLocation[]>]
+ [-GeoDataReplicationLocation <INamespaceReplicaLocation[]>]
  [-GeoDataReplicationMaxReplicationLagDurationInSecond <Int64>] [-IdentityType <String>]
  [-IPAddressType <String>] [-KeyVaultProperty <IKeyVaultProperties[]>] [-MinimumTlsVersion <String>]
  [-PremiumMessagingPartition <Int32>] [-PublicNetworkAccess <String>] [-RequireInfrastructureEncryption]
@@ -265,7 +265,7 @@ Replica locations for geo data replication.
 Pass an array of NamespaceReplicaLocation objects (for example from New-AzServiceBusLocationsNameObject).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.NamespaceReplicaLocation[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation[]
 Parameter Sets: (All)
 Aliases:
 

@@ -175,7 +175,7 @@ function New-AzServiceBusNamespace{
 		${GeoDataReplicationMaxReplicationLagDurationInSecond},
 
 		[Parameter(HelpMessage = "Replica locations for geo data replication. Pass an array of NamespaceReplicaLocation objects (for example from New-AzServiceBusLocationsNameObject).")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.NamespaceReplicaLocation[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation[]]
 		${GeoDataReplicationLocation},
 
         [Parameter(HelpMessage = "The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6.")]

@@ -69,5 +69,11 @@ Describe 'New-AzServiceBusNamespaceV2' {
         $serviceBusNamespace.UserAssignedIdentity.Count | Should -Be 2
         $serviceBusNamespace.RequireInfrastructureEncryption | Should -Be $true
 
+        # Create namespace with 2 replica 
+        $key1 = New-AzServiceBusLocationsNameObject -LocationName southcentralus -RoleType primary
+        $key2 = New-AzServiceBusLocationsNameObject -LocationName westus -RoleType Secondary
+        $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV10 -GeoDataReplicationLocation $key1,$key2 -SkuName Premium -Location southcentralus
+        $serviceBusNamespace.GeoDataReplicationLocation.Count | Should -Be 2
+
     }
 }

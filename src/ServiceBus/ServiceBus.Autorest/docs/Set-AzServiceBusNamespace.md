@@ -15,7 +15,7 @@ Updates a ServiceBus namespace
 ### SetExpanded (Default)
 ```
 Set-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AlternateName <String>] [-DisableLocalAuth] [-GeoDataReplicationLocation <NamespaceReplicaLocation[]>]
+ [-AlternateName <String>] [-DisableLocalAuth] [-GeoDataReplicationLocation <INamespaceReplicaLocation[]>]
  [-GeoDataReplicationMaxReplicationLagDurationInSecond <Int64>] [-IdentityType <String>]
  [-IPAddressType <String>] [-KeyVaultProperty <IKeyVaultProperties[]>] [-MinimumTlsVersion <String>]
  [-PublicNetworkAccess <String>] [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>] [-SkuName <String>]
@@ -26,7 +26,7 @@ Set-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> [-Subscript
 ### SetViaIdentityExpanded
 ```
 Set-AzServiceBusNamespace [-InputObject <IServiceBusIdentity>] [-AlternateName <String>] [-DisableLocalAuth]
- [-GeoDataReplicationLocation <NamespaceReplicaLocation[]>]
+ [-GeoDataReplicationLocation <INamespaceReplicaLocation[]>]
  [-GeoDataReplicationMaxReplicationLagDurationInSecond <Int64>] [-IdentityType <String>]
  [-IPAddressType <String>] [-KeyVaultProperty <IKeyVaultProperties[]>] [-MinimumTlsVersion <String>]
  [-PublicNetworkAccess <String>] [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>] [-SkuName <String>]
@@ -354,7 +354,7 @@ Replica locations for geo data replication.
 Pass an array of NamespaceReplicaLocation objects.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.NamespaceReplicaLocation[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation[]
 Parameter Sets: (All)
 Aliases:
 
