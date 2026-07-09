@@ -1043,6 +1043,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                             return ((CmdletModel.AzureWorkloadRecoveryPoint)recoveryPoint).RecoveryPointTier != RecoveryPointTier.VaultArchive;
                         }
 
+                        if (recoveryPoint.GetType() == typeof(CmdletModel.AzureFileShareRecoveryPoint))
+                        {
+                            //no archive tier currently for AFS, so return true for all RPs
+                            return true;
+                        }
+
                         return false;
                     }).ToList();
             }
