@@ -45,5 +45,5 @@ SourceResourceId                 :
 Type                             : Microsoft.ServiceBus/Namespaces/networkSecurityPerimeterConfigurations
 ```
 
-Gets the network rule set of ServiceBus namespace myNamespace.
+Gets the network security perimeter configuration for ServiceBus namespace myNamespace and the specified ResourceAssociationName.
 
