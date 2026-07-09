@@ -903,23 +903,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 foreach (ASRAzuretoAzureDiskReplicationConfig disk in this.AzureToAzureDiskReplicationConfiguration)
                 {
-                    a2aSwitchInput.VMManagedDisks.Add(new A2AVmManagedDiskInputDetails
-                    {
-                        DiskId = disk.DiskId,
-                        RecoveryResourceGroupId = disk.RecoveryResourceGroupId,
-                        RecoveryReplicaDiskAccountType = disk.RecoveryReplicaDiskAccountType,
-                        RecoveryTargetDiskAccountType = disk.RecoveryTargetDiskAccountType,
-                        PrimaryStagingAzureStorageAccountId = disk.LogStorageAccountId,
-                        RecoveryDiskEncryptionSetId = disk.RecoveryDiskEncryptionSetId,
-                        DiskEncryptionInfo = Utilities.A2AEncryptionDetails(
-                            disk.DiskEncryptionSecretUrl,
-                            disk.DiskEncryptionVaultId,
-                            disk.KeyEncryptionKeyUrl,
-                            disk.KeyEncryptionVaultId),
-                        RecoveryNetworkAccessPolicy = disk.RecoveryNetworkAccessPolicy,
-                        RecoveryDiskAccessId = disk.RecoveryDiskAccessId,
-                        RecoveryPublicNetworkAccess = disk.RecoveryPublicNetworkAccess
-                    });
+                    a2aSwitchInput.VMManagedDisks.Add(
+                        Utilities.CreateA2AVmManagedDiskInputDetails(disk, includeDiskEncryption: true));
                 }
             }
         }

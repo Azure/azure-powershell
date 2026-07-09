@@ -627,6 +627,52 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
+        /// Builds an <see cref="A2AVmManagedDiskInputDetails"/> from the PS
+        /// disk-replication configuration used by AddDisks / Reprotect /
+        /// ClusterReprotect. The mapping was previously duplicated inline in
+        /// three cmdlets; centralising it prevents fields (notably Private
+        /// Disk Access properties: <c>RecoveryNetworkAccessPolicy</c>,
+        /// <c>RecoveryDiskAccessId</c>, <c>RecoveryPublicNetworkAccess</c>)
+        /// from being silently dropped in one call site while being forwarded
+        /// in another.
+        /// </summary>
+        /// <param name="disk">The PS disk-replication configuration.</param>
+        /// <param name="includeDiskEncryption">
+        /// When <c>true</c>, populates <see cref="A2AVmManagedDiskInputDetails.DiskEncryptionInfo"/>
+        /// from the disk-encryption fields on <paramref name="disk"/> (used by the
+        /// reprotect / cluster-reprotect paths). AddDisks does not surface encryption
+        /// inputs and passes <c>false</c>.
+        /// </param>
+        public static A2AVmManagedDiskInputDetails CreateA2AVmManagedDiskInputDetails(
+            ASRAzuretoAzureDiskReplicationConfig disk,
+            bool includeDiskEncryption)
+        {
+            var details = new A2AVmManagedDiskInputDetails
+            {
+                DiskId = disk.DiskId,
+                RecoveryResourceGroupId = disk.RecoveryResourceGroupId,
+                PrimaryStagingAzureStorageAccountId = disk.LogStorageAccountId,
+                RecoveryReplicaDiskAccountType = disk.RecoveryReplicaDiskAccountType,
+                RecoveryTargetDiskAccountType = disk.RecoveryTargetDiskAccountType,
+                RecoveryDiskEncryptionSetId = disk.RecoveryDiskEncryptionSetId,
+                RecoveryNetworkAccessPolicy = disk.RecoveryNetworkAccessPolicy,
+                RecoveryDiskAccessId = disk.RecoveryDiskAccessId,
+                RecoveryPublicNetworkAccess = disk.RecoveryPublicNetworkAccess,
+            };
+
+            if (includeDiskEncryption)
+            {
+                details.DiskEncryptionInfo = A2AEncryptionDetails(
+                    disk.DiskEncryptionSecretUrl,
+                    disk.DiskEncryptionVaultId,
+                    disk.KeyEncryptionKeyUrl,
+                    disk.KeyEncryptionVaultId);
+            }
+
+            return details;
+        }
+
+        /// <summary>
         ///    Get the cluster recovery point.
         /// </summary>
         /// <param name="recoveryServicesClient">Recovery Service Client.</param>
