@@ -430,7 +430,7 @@ namespace RecoveryServices.SiteRecovery.Test
             Assembly siteRecoveryAssembly = typeof(Utilities).Assembly;
 
             int callSiteCount = 0;
-            var offendingCallers = new List<string>();
+            var callersDetected = new List<string>();
 
             foreach (Type type in siteRecoveryAssembly.GetTypes())
             {
@@ -452,7 +452,7 @@ namespace RecoveryServices.SiteRecovery.Test
                     if (MethodCallsHelperViaIL(m, helper))
                     {
                         callSiteCount++;
-                        offendingCallers.Add($"{type.FullName}.{m.Name}");
+                        callersDetected.Add($"{type.FullName}.{m.Name}");
                     }
                 }
             }
@@ -460,7 +460,7 @@ namespace RecoveryServices.SiteRecovery.Test
             Assert.True(callSiteCount >= 3,
                 $"Utilities.CreateA2AVmManagedDiskInputDetails is expected to be called from at " +
                 $"least three sites (AddDisks, Reprotect, ClusterReprotect) — found {callSiteCount}. " +
-                $"Callers detected: {string.Join(", ", offendingCallers)}. A missing call likely " +
+                $"Callers detected: {string.Join(", ", callersDetected)}. A missing call likely " +
                 $"means a cmdlet regressed to an inline A2AVmManagedDiskInputDetails initializer " +
                 $"and may be silently dropping a Private Disk Access field; restore the shared " +
                 $"helper call in the affected cmdlet.");
