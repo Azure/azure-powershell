@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
                 Mandatory = false,
                 ValueFromPipelineByPropertyName = false,
-                HelpMessage = "The parameter is depricated and will be removed in the future version. If this parameter is provided, the cmdlet will enable Windows Azure Diagnostics for this virtual machine.")]
+                HelpMessage = "The parameter is deprecated and will be removed in the future version. If this parameter is provided, the cmdlet will enable Windows Azure Diagnostics for this virtual machine.")]
         public SwitchParameter EnableWAD { get; set; }
 
         [Parameter(
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Compute
                 Mandatory = false,
                 Position = 4,
                 ValueFromPipelineByPropertyName = false,
-                HelpMessage = "The parameter is depricated and will be removed in the future version. Disables the settings for table content")]
+                HelpMessage = "The parameter is deprecated and will be removed in the future version. Disables the settings for table content")]
         public SwitchParameter SkipStorage { get; set; }
 
         [Parameter(Mandatory = false,
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Compute
                 Position = 6,
                 ParameterSetName = "NewExtension",
                 ValueFromPipelineByPropertyName = false,
-                HelpMessage = "The parameter is depricated and will be removed in the future version. Install the new extension.")]
+                HelpMessage = "The parameter is deprecated and will be removed in the future version. Install the new extension.")]
         public SwitchParameter InstallNewExtension { get; set; }
 
         [Parameter(
