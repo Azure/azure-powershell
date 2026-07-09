@@ -132,3 +132,98 @@ function SleepInRecordMode ([int]$SleepIntervalInSec)
         Wait-Seconds $SleepIntervalInSec 
     }
 }
+
+<#
+.SYNOPSIS
+Generates a unique, per-test account/resource name that is recorded during Record mode
+and replayed identically during Playback (via HttpMockServer), instead of hardcoding a
+static name. This avoids "DNS record ... already taken" collisions against globally-unique
+CosmosDB account names left over from prior runs.
+#>
+function Get-CosmosDBUniqueName([string]$prefix)
+{
+    return getAssetName $prefix
+}
+
+<#
+.SYNOPSIS
+Polls until a Cosmos DB account reaches ProvisioningState=Succeeded, instead of a blind
+Start-Sleep/Start-TestSleep. Throws if the timeout elapses first.
+#>
+function Wait-CosmosAccountProvisioned
+{
+    param(
+        [Parameter(Mandatory = $true)][string]$ResourceGroupName,
+        [Parameter(Mandatory = $true)][string]$AccountName,
+        [int]$TimeoutSeconds = 600,
+        [int]$PollIntervalSeconds = 10
+    )
+    $start = Get-Date
+    while ($true) {
+        try {
+            $acct = Get-AzCosmosDBAccount -ResourceGroupName $ResourceGroupName -Name $AccountName -ErrorAction Stop
+            if ($acct -and $acct.ProvisioningState -eq 'Succeeded') { return $acct }
+        } catch {
+            # swallow transient errors while the resource propagates
+        }
+        if ((Get-Date) -gt $start.AddSeconds($TimeoutSeconds)) {
+            throw "Cosmos DB account '$AccountName' in resource group '$ResourceGroupName' did not reach ProvisioningState=Succeeded within $TimeoutSeconds seconds."
+        }
+        Start-TestSleep -s $PollIntervalSeconds
+    }
+}
+
+<#
+.SYNOPSIS
+Generic poller: repeatedly evaluates a scriptblock until it returns a truthy value,
+instead of a blind Start-Sleep. Use for "wait until resource is visible/gone" scenarios
+(e.g. Gremlin database/graph create, delete, or restore visibility).
+#>
+function Wait-CosmosDBCondition
+{
+    param(
+        [Parameter(Mandatory = $true)][scriptblock]$Condition,
+        [string]$Message = "condition to be met",
+        [int]$TimeoutSeconds = 300,
+        [int]$PollIntervalSeconds = 10
+    )
+    $start = Get-Date
+    while ($true) {
+        $result = $false
+        try { $result = & $Condition } catch { $result = $false }
+        if ($result) { return }
+        if ((Get-Date) -gt $start.AddSeconds($TimeoutSeconds)) {
+            throw "Timed out after $TimeoutSeconds seconds waiting for $Message."
+        }
+        Start-TestSleep -s $PollIntervalSeconds
+    }
+}
+
+<#
+.SYNOPSIS
+Polls a Cosmos DB account's backup-policy migration until it reaches a terminal state
+(Completed/Failed), instead of a fixed blind sleep followed by a single unconditional check.
+#>
+function Wait-CosmosDBBackupPolicyMigration
+{
+    param(
+        [Parameter(Mandatory = $true)][string]$ResourceGroupName,
+        [Parameter(Mandatory = $true)][string]$AccountName,
+        [int]$TimeoutSeconds = 900,
+        [int]$PollIntervalSeconds = 30
+    )
+    $start = Get-Date
+    $account = Get-AzCosmosDBAccount -ResourceGroupName $ResourceGroupName -Name $AccountName
+    while (
+        $account.BackupPolicy.BackupPolicyMigrationState.Status -ne "Completed" -and
+        $account.BackupPolicy.BackupPolicyMigrationState.Status -ne "Failed" -and
+        $account.BackupPolicy.BackupType -ne "Continuous"
+    ) {
+        if ((Get-Date) -gt $start.AddSeconds($TimeoutSeconds)) {
+            throw "Backup policy migration for account '$AccountName' did not complete within $TimeoutSeconds seconds."
+        }
+        Start-TestSleep -s $PollIntervalSeconds
+        $account = Get-AzCosmosDBAccount -ResourceGroupName $ResourceGroupName -Name $AccountName
+    }
+    return $account
+}

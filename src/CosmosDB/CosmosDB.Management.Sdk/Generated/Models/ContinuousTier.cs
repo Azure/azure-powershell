@@ -15,5 +15,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
     {
         public const string Continuous7Days = "Continuous7Days";
         public const string Continuous30Days = "Continuous30Days";
+        /// <summary>
+        /// Continuous 35 Days backup tier.
+        /// </summary>
+        public const string Continuous35Days = "Continuous35Days";
     }
 }

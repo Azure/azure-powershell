@@ -7,6 +7,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 {
     using System.Linq;
 
+    /// <summary>
+    /// JSON path to exclude from masking.
+    /// </summary>
     public partial class DataMaskingPolicyExcludedPathsItem
     {
         /// <summary>

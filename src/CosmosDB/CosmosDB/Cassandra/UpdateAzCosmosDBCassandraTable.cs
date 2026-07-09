@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 readCassandraTableGetResults = CosmosDBManagementClient.CassandraResources.GetCassandraTable(ResourceGroupName, AccountName, KeyspaceName, Name);
             }
-            catch (CloudException e)
+            catch (ErrorResponseException e)
             {
                 if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {

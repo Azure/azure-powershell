@@ -807,22 +807,22 @@ function Test-GremlinInAccountRestoreOperationsCmdlets
 #>
 function Test-GremlinInAccountCoreFunctionalityNoTimestampBasedRestoreCmdletsV2
 {
-    $AccountName = "iar-gremlingraph-ntbrv2"
-    $rgName = "CosmosDBResourceGroup50"
+    $AccountName = Get-CosmosDBUniqueName "iar-gremlingraph"
+    $rgName = Get-CosmosDBUniqueName "CosmosDBResourceGroup"
     $DatabaseName = "dbName"
     $ContainerName = "collection1"
-    $location = "West US"
+    $location = "West Central US"
     $PartitionKeyPathValue = "/foo"
     $PartitionKeyKindValue = "Hash"
     $apiKind = "Gremlin"
     $consistencyLevel = "Session"
     $locations = @()
-    $locations += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 0 -IsZoneRedundant 0
+    $locations += New-AzCosmosDBLocationObject -LocationName "West Central US" -FailoverPriority 0 -IsZoneRedundant 0
 
     Try {
 
         $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
-        New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
+        New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous -DisableLocalAuth $true
 
         # 1. Create a new database
         $NewDatabase = New-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
@@ -844,31 +844,32 @@ function Test-GremlinInAccountCoreFunctionalityNoTimestampBasedRestoreCmdletsV2
         Assert-AreEqual $NewContainer.Name $Container.Name
         Assert-NotNull($Container)
 
-        Start-TestSleep -s 50
-
-        # 5. Remove container
+        # 5. Remove container - poll until it is actually gone instead of a blind sleep
         Remove-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
-
-        Start-TestSleep -s 50
+        Wait-CosmosDBCondition -Message "container '$ContainerName' to be removed" -Condition {
+            $null -eq (Get-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -ErrorAction SilentlyContinue)
+        }
 
         # 6. Restore non-existent container - expect failure
         $InvalidContainerName = "Invalid-Container459"
         $RestoreInvalidContainerResult = Restore-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $InvalidContainerName
         Assert-Null $RestoreInvalidContainerResult
 
-        # 7. Restore deleted container in #5
+        # 7. Restore deleted container in #5 - poll until it reappears
         Restore-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
-
-        Start-TestSleep -s 50
+        Wait-CosmosDBCondition -Message "container '$ContainerName' to be restored" -Condition {
+            $null -ne (Get-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -ErrorAction SilentlyContinue)
+        }
 
         # list containers
         $ListContainers = Get-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
         Assert-NotNull($ListContainers)
 
-        # 8. Delete database
+        # 8. Delete database - poll until it is actually gone instead of a blind sleep
         Remove-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
-
-        Start-TestSleep -s 100
+        Wait-CosmosDBCondition -Message "database '$DatabaseName' to be removed" -Condition {
+            $null -eq (Get-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -ErrorAction SilentlyContinue)
+        }
 
         # list databases
         $ListDatabases = Get-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName
@@ -878,21 +879,21 @@ function Test-GremlinInAccountCoreFunctionalityNoTimestampBasedRestoreCmdletsV2
         $RestoreContainerWhenDatabaseOfflineResult = Restore-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
         Assert-Null $RestoreContainerWhenDatabaseOfflineResult
 
-        # 10. Restore deleted database
+        # 10. Restore deleted database - poll until it reappears
         Restore-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
-
-        Start-TestSleep -s 50
+        Wait-CosmosDBCondition -Message "database '$DatabaseName' to be restored" -Condition {
+            $null -ne (Get-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -ErrorAction SilentlyContinue)
+        }
 
         # list databases
         $ListDatabases = Get-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName
         Assert-NotNull($ListDatabases)
 
-        Start-TestSleep -s 50
-
-        # 11. Restore collection
+        # 11. Restore collection - poll until it reappears
         $RestoredCollection = Restore-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
-
-        Start-TestSleep -s 50
+        Wait-CosmosDBCondition -Message "container '$ContainerName' to be restored" -Condition {
+            $null -ne (Get-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -ErrorAction SilentlyContinue)
+        }
 
         # list containers
         $ListContainers = Get-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
@@ -902,10 +903,11 @@ function Test-GremlinInAccountCoreFunctionalityNoTimestampBasedRestoreCmdletsV2
         $SecondInAccountContainerRestore = Restore-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
         Assert-Null $SecondInAccountContainerRestore
 
-        # 13. Delete database
+        # 13. Delete database - poll until it is actually gone instead of a blind sleep
         Remove-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
-
-        Start-TestSleep -s 100
+        Wait-CosmosDBCondition -Message "database '$DatabaseName' to be removed" -Condition {
+            $null -eq (Get-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -ErrorAction SilentlyContinue)
+        }
 
         # list databases
         $ListDatabases = Get-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName
@@ -917,10 +919,11 @@ function Test-GremlinInAccountCoreFunctionalityNoTimestampBasedRestoreCmdletsV2
         Assert-Null $RestoreInvalidDatabase
 
 
-        # 15. Restore database
+        # 15. Restore database - poll until it reappears
         Restore-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
-
-        Start-TestSleep -s 50
+        Wait-CosmosDBCondition -Message "database '$DatabaseName' to be restored" -Condition {
+            $null -ne (Get-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -ErrorAction SilentlyContinue)
+        }
 
         # list databases
         $ListDatabases = Get-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName
@@ -930,9 +933,11 @@ function Test-GremlinInAccountCoreFunctionalityNoTimestampBasedRestoreCmdletsV2
         $SecondInAccountDatabaseRestore = Restore-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
         Assert-Null $SecondInAccountDatabaseRestore
 
-        # 17. Restore collection
+        # 17. Restore collection - poll until it reappears
         $RestoredCollection = Restore-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
-        Start-TestSleep -s 50
+        Wait-CosmosDBCondition -Message "container '$ContainerName' to be restored" -Condition {
+            $null -ne (Get-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -ErrorAction SilentlyContinue)
+        }
         Assert-NotNull $RestoredCollection
 
         # list containers
@@ -944,8 +949,11 @@ function Test-GremlinInAccountCoreFunctionalityNoTimestampBasedRestoreCmdletsV2
         throw $_
   }
   Finally {
-        Remove-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
-        Remove-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+        # A benign 404 from an already-deleted/restored graph or database (this test
+        # repeatedly deletes/restores both) must never mask a real test failure, so
+        # guard each cleanup call, then always remove the whole resource group.
+        Try { Remove-AzResourceGroup -ResourceGroupName $rgName -Force -ErrorAction Stop }
+        Catch { Write-Warning "Cleanup of resource group '$rgName' failed: $_" }
   }
 }
 
@@ -1063,8 +1071,11 @@ function Test-GremlinInAccountRestoreOperationsNoTimestampCmdlets
   }
   Finally
   {
-    Remove-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $GraphName  
-    Remove-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+    # NOTE: the previous code referenced the undefined variable $GraphName (capital G;
+    # the real variable is $graphName), so this cleanup silently no-opped/threw. Guard
+    # it and always remove the whole resource group to guarantee teardown.
+    Try { Remove-AzResourceGroup -ResourceGroupName $rgName -Force -ErrorAction Stop }
+    Catch { Write-Warning "Cleanup of resource group '$rgName' failed: $_" }
   }
 }
 
@@ -1179,8 +1190,10 @@ function Test-GremlinInAccountRestoreOperationsSharedRUResourcesCmdlets
   }
   Finally
   {
-    Remove-AzCosmosDBGremlinGraph -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $GraphName  
-    Remove-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+    # Same undefined-$GraphName issue as the sibling tests above; guard and remove
+    # the whole resource group instead of relying on granular sub-resource cleanup.
+    Try { Remove-AzResourceGroup -ResourceGroupName $rgName -Force -ErrorAction Stop }
+    Catch { Write-Warning "Cleanup of resource group '$rgName' failed: $_" }
   }
 }
 

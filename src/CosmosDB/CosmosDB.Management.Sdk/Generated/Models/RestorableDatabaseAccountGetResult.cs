@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
     /// A Azure Cosmos DB restorable database account.
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class RestorableDatabaseAccountGetResult
+    public partial class RestorableDatabaseAccountGetResult : ProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the RestorableDatabaseAccountGetResult class.
@@ -25,13 +25,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// Initializes a new instance of the RestorableDatabaseAccountGetResult class.
         /// </summary>
 
-        /// <param name="id">The unique resource identifier of the ARM resource.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">The name of the ARM resource.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">The type of Azure resource.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
+        /// </param>
+
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="location">The location of the resource group to which the resource belongs.
@@ -57,12 +63,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <param name="restorableLocations">List of regions where the of the database account can be restored from.
         /// </param>
-        public RestorableDatabaseAccountGetResult(string id = default(string), string name = default(string), string type = default(string), string location = default(string), string apiType = default(string), string accountName = default(string), System.DateTime? creationTime = default(System.DateTime?), System.DateTime? oldestRestorableTime = default(System.DateTime?), System.DateTime? deletionTime = default(System.DateTime?), System.Collections.Generic.IList<RestorableLocationResource> restorableLocations = default(System.Collections.Generic.IList<RestorableLocationResource>))
+        public RestorableDatabaseAccountGetResult(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string location = default(string), string apiType = default(string), string accountName = default(string), System.DateTime? creationTime = default(System.DateTime?), System.DateTime? oldestRestorableTime = default(System.DateTime?), System.DateTime? deletionTime = default(System.DateTime?), System.Collections.Generic.IList<RestorableLocationResource> restorableLocations = default(System.Collections.Generic.IList<RestorableLocationResource>))
 
+        : base(id, name, type, systemData)
         {
-            this.Id = id;
-            this.Name = name;
-            this.Type = type;
             this.Location = location;
             this.ApiType = apiType;
             this.AccountName = accountName;
@@ -78,24 +82,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         partial void CustomInit();
 
-
-        /// <summary>
-        /// Gets the unique resource identifier of the ARM resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; private set; }
-
-        /// <summary>
-        /// Gets the name of the ARM resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
-        public string Name {get; private set; }
-
-        /// <summary>
-        /// Gets the type of Azure resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "type")]
-        public string Type {get; private set; }
 
         /// <summary>
         /// Gets or sets the location of the resource group to which the resource

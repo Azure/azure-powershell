@@ -264,7 +264,16 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Get-AzCosmosDBFleetspace', 'Update-AzCosmosDBFleetspace', 
                'Remove-AzCosmosDBFleetspace', 'Add-AzCosmosDBFleetspaceAccount', 
                'Get-AzCosmosDBFleetspaceAccount', 
-               'Remove-AzCosmosDBFleetspaceAccount'
+               'Remove-AzCosmosDBFleetspaceAccount',
+               'Get-AzCosmosDBSoftDeletedAccount',
+               'Remove-AzCosmosDBSoftDeletedAccount',
+               'Restore-AzCosmosDBSoftDeletedAccount',
+               'Get-AzCosmosDBSqlSoftDeletedDatabase',
+               'Remove-AzCosmosDBSqlSoftDeletedDatabase',
+               'Restore-AzCosmosDBSqlSoftDeletedDatabase',
+               'Get-AzCosmosDBSqlSoftDeletedContainer',
+               'Remove-AzCosmosDBSqlSoftDeletedContainer',
+               'Restore-AzCosmosDBSqlSoftDeletedContainer'
 
 # Variables to export from this module
 # VariablesToExport = @()

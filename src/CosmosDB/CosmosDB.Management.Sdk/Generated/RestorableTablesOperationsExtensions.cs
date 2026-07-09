@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='endTime'>
         /// Restorable Tables event feed end time.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<RestorableTableGetResult> List(this IRestorableTablesOperations operations, string location, string instanceId, string startTime = default(string), string endTime = default(string))
+        public static Microsoft.Rest.Azure.IPage<RestorableTableGetResult> List(this IRestorableTablesOperations operations, string location, string instanceId, string startTime = default(string), string endTime = default(string))
         {
                 return ((IRestorableTablesOperations)operations).ListAsync(location, instanceId, startTime, endTime).GetAwaiter().GetResult();
         }
@@ -64,9 +64,50 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<RestorableTableGetResult>> ListAsync(this IRestorableTablesOperations operations, string location, string instanceId, string startTime = default(string), string endTime = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RestorableTableGetResult>> ListAsync(this IRestorableTablesOperations operations, string location, string instanceId, string startTime = default(string), string endTime = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListWithHttpMessagesAsync(location, instanceId, startTime, endTime, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Show the event feed of all mutations done on all the Azure Cosmos DB
+        /// Tables. This helps in scenario where table was accidentally deleted. This
+        /// API requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read&#39;
+        /// permission
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<RestorableTableGetResult> ListNext(this IRestorableTablesOperations operations, string nextPageLink)
+        {
+                return ((IRestorableTablesOperations)operations).ListNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Show the event feed of all mutations done on all the Azure Cosmos DB
+        /// Tables. This helps in scenario where table was accidentally deleted. This
+        /// API requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read&#39;
+        /// permission
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<RestorableTableGetResult>> ListNextAsync(this IRestorableTablesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

@@ -124,28 +124,5 @@ function Test-FleetspaceAccountCmdlets
   }
 }
 
-<#
-.SYNOPSIS
-Helper function to wait for Cosmos DB account provisioning
-#>
-function Wait-CosmosAccountProvisioned {
-    param(
-        [Parameter(Mandatory = $true)][string]$ResourceGroupName,
-        [Parameter(Mandatory = $true)][string]$AccountName,
-        [int]$TimeoutSeconds = 600,
-        [int]$PollIntervalSeconds = 10
-    )
-    $start = Get-Date
-    while($true) {
-        try {
-            $acct = Get-AzCosmosDBAccount -ResourceGroupName $ResourceGroupName -Name $AccountName -ErrorAction Stop
-            if ($acct -and $acct.ProvisioningState -eq 'Succeeded') { return }
-        } catch {
-            # swallow transient errors while resource propagates
-        }
-        if ((Get-Date) -gt $start.AddSeconds($TimeoutSeconds)) {
-            throw "Cosmos DB account '$AccountName' in resource group '$ResourceGroupName' did not reach ProvisioningState=Succeeded within $TimeoutSeconds seconds."
-        }
-        Start-TestSleep -s $PollIntervalSeconds
-    }
-}
+# NOTE: Wait-CosmosAccountProvisioned lives in Common.ps1 (shared across all ScenarioTests
+# files loaded for this test project) so every test can reuse it instead of duplicating it.

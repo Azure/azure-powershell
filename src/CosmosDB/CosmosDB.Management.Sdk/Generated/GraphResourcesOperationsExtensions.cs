@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='accountName'>
         /// Cosmos DB database account name.
         /// </param>
-        public static System.Collections.Generic.IEnumerable<GraphResourceGetResults> ListGraphs(this IGraphResourcesOperations operations, string resourceGroupName, string accountName)
+        public static Microsoft.Rest.Azure.IPage<GraphResourceGetResults> ListGraphs(this IGraphResourcesOperations operations, string resourceGroupName, string accountName)
         {
                 return ((IGraphResourcesOperations)operations).ListGraphsAsync(resourceGroupName, accountName).GetAwaiter().GetResult();
         }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<GraphResourceGetResults>> ListGraphsAsync(this IGraphResourcesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<GraphResourceGetResults>> ListGraphsAsync(this IGraphResourcesOperations operations, string resourceGroupName, string accountName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListGraphsWithHttpMessagesAsync(resourceGroupName, accountName, null, cancellationToken).ConfigureAwait(false))
             {
@@ -276,6 +276,39 @@ namespace Microsoft.Azure.Management.CosmosDB
             using (var _result = await operations.BeginDeleteGraphResourceWithHttpMessagesAsync(resourceGroupName, accountName, graphName, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Lists the graphs under an existing Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<GraphResourceGetResults> ListGraphsNext(this IGraphResourcesOperations operations, string nextPageLink)
+        {
+                return ((IGraphResourcesOperations)operations).ListGraphsNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists the graphs under an existing Azure Cosmos DB database account.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<GraphResourceGetResults>> ListGraphsNextAsync(this IGraphResourcesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListGraphsNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
             }
         }
     }
