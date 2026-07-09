@@ -303,6 +303,19 @@ namespace RecoveryServices.SiteRecovery.Test
             Assert.Null(sdk.RecoveryPublicNetworkAccess);
         }
 
+        [Fact]
+        public void Helper_WithNullDisk_ThrowsArgumentNullException()
+        {
+            // The shared helper is called from three cmdlets that iterate over
+            // a user-supplied collection. A null element in that collection
+            // must surface as a clear ArgumentNullException naming the "disk"
+            // parameter, not a NullReferenceException from the first property
+            // dereference inside the initializer.
+            var ex = Assert.Throws<ArgumentNullException>(
+                () => Utilities.CreateA2AVmManagedDiskInputDetails(null, includeDiskEncryption: false));
+            Assert.Equal("disk", ex.ParamName);
+        }
+
         // --- Per-cmdlet regression tests --------------------------------------
         //
         // The reviewer's concern is that a future edit to any one of the three
@@ -315,11 +328,8 @@ namespace RecoveryServices.SiteRecovery.Test
         public void AddDisks_AzureToAzureReplication_ForwardsPdaFieldsOntoAddDisksInput()
         {
             var disk = BuildAsrConfigWithPda(includeEncryption: false);
-            // AddDisks branches on IsManagedDisk. The property is readonly on
-            // the type (derived from DiskId being an ARM id) but the test
-            // must exercise the managed branch. Use the parameterised
-            // constructor when it exists; otherwise fall back to setting the
-            // backing state via the DiskId shape.
+            // AddDisks branches on IsManagedDisk to select the managed-disk
+            // mapping path that this test targets; force it on explicitly.
             disk.IsManagedDisk = true;
 
             var cmdlet = new AddAzureRmRecoveryServicesAsrReplicationProtectedItemDisk
@@ -416,7 +426,6 @@ namespace RecoveryServices.SiteRecovery.Test
                 nameof(Utilities.CreateA2AVmManagedDiskInputDetails),
                 BindingFlags.Public | BindingFlags.Static);
             Assert.NotNull(helper);
-            int helperToken = helper.MetadataToken;
 
             Assembly siteRecoveryAssembly = typeof(Utilities).Assembly;
 
@@ -452,8 +461,9 @@ namespace RecoveryServices.SiteRecovery.Test
                 $"Utilities.CreateA2AVmManagedDiskInputDetails is expected to be called from at " +
                 $"least three sites (AddDisks, Reprotect, ClusterReprotect) — found {callSiteCount}. " +
                 $"Callers detected: {string.Join(", ", offendingCallers)}. A missing call likely " +
-                $"means a cmdlet regressed to an inline mapping and may be silently dropping a " +
-                $"Private Disk Access field. See PR #29824 review comments.");
+                $"means a cmdlet regressed to an inline A2AVmManagedDiskInputDetails initializer " +
+                $"and may be silently dropping a Private Disk Access field; restore the shared " +
+                $"helper call in the affected cmdlet.");
         }
 
         private static bool MethodCallsHelperViaIL(MethodInfo method, MethodInfo helper)

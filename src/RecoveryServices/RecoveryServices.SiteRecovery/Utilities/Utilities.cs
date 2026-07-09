@@ -647,6 +647,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             ASRAzuretoAzureDiskReplicationConfig disk,
             bool includeDiskEncryption)
         {
+            if (disk == null)
+            {
+                throw new ArgumentNullException(nameof(disk));
+            }
+
             var details = new A2AVmManagedDiskInputDetails
             {
                 DiskId = disk.DiskId,
