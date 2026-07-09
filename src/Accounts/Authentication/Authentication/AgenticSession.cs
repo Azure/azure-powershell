@@ -12,40 +12,83 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Newtonsoft.Json.Linq;
+
 using System;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
-    /// <summary>
-    /// Support for Entra Agentic Sessions.
-    ///
-    /// When Azure PowerShell runs inside an agent context (e.g. Copilot, Azure MCP), the orchestrator
-    /// sets the <see cref="AgentSessionIdEnvVarName"/> environment variable. Silent token acquisitions
-    /// then inject <see cref="ClientSessionParamName"/> into the MSAL token request body so ESTS can
-    /// tag the issued token as agent-driven, enabling downstream RBAC / Defender / Purview policies
-    /// to differentiate agent-driven from human-driven operations.
-    /// </summary>
+    /// <summary>Entra Agentic Sessions support. When COPILOT_AGENT_SESSION_ID is set, silent
+    /// token acquisitions pass the session id to ESTS so it can tag the issued token.</summary>
     public static class AgenticSession
     {
         public const string AgentSessionIdEnvVarName = "COPILOT_AGENT_SESSION_ID";
 
         public const string ClientSessionParamName = "client_session";
 
+        public const string AgenticClaimName = "xms_cli_sid";
+
         public const string TelemetryPropertyName = "AgenticSession";
 
-        /// <summary>
-        /// Reads the agent session ID from the environment.
-        /// </summary>
-        /// <returns>The session ID, or <c>null</c> when the environment variable is unset or empty.</returns>
+        private const string InitialMarker = "\0__initial__";
+
+        private static readonly object _syncRoot = new object();
+        private static string _lastSessionMarker = InitialMarker;
+
         public static string TryGetSessionId()
         {
             var sessionId = Environment.GetEnvironmentVariable(AgentSessionIdEnvVarName);
             return string.IsNullOrEmpty(sessionId) ? null : sessionId;
         }
 
-        /// <summary>
-        /// Indicates whether the current process is running inside an agentic session.
-        /// </summary>
         public static bool IsActive() => TryGetSessionId() != null;
+
+        /// <summary>True when the session marker (empty=manual, session id=agent) differs from
+        /// the last successful acquisition — callers force-refresh MSAL's AT cache in that case.</summary>
+        public static bool HasSessionModeChanged()
+        {
+            var current = TryGetSessionId() ?? string.Empty;
+            lock (_syncRoot)
+            {
+                return !string.Equals(_lastSessionMarker, current, StringComparison.Ordinal);
+            }
+        }
+
+        public static void MarkAcquired()
+        {
+            var current = TryGetSessionId();
+            lock (_syncRoot)
+            {
+                _lastSessionMarker = current ?? string.Empty;
+            }
+        }
+
+        public static string BuildClaimsChallenge(string sessionId)
+        {
+            if (string.IsNullOrEmpty(sessionId))
+            {
+                throw new ArgumentException("Session id must be non-empty.", nameof(sessionId));
+            }
+
+            var challenge = new JObject
+            {
+                ["access_token"] = new JObject
+                {
+                    [AgenticClaimName] = new JObject
+                    {
+                        ["values"] = new JArray(sessionId)
+                    }
+                }
+            };
+            return challenge.ToString(Newtonsoft.Json.Formatting.None);
+        }
+
+        internal static void ResetForTests()
+        {
+            lock (_syncRoot)
+            {
+                _lastSessionMarker = InitialMarker;
+            }
+        }
     }
 }

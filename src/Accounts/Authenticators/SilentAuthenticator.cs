@@ -49,7 +49,15 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 tenantId,
                 ApplyAgenticSessionAsync);
 
-            var requestContext = new TokenRequestContext(scopes, isCaeEnabled: true);
+            // Attach xms_cli_sid claim on session-marker change: makes ESTS embed it in
+            // the token and causes MSAL to bypass its AT cache. Unchanged mode falls
+            // through to a normal cache lookup so same-session repeats can reuse the token.
+            var agenticSessionId = AgenticSession.TryGetSessionId();
+            var sessionModeChanged = AgenticSession.HasSessionModeChanged();
+            var agenticClaims = (sessionModeChanged && agenticSessionId != null)
+                ? AgenticSession.BuildClaimsChallenge(agenticSessionId)
+                : null;
+            var requestContext = new TokenRequestContext(scopes, claims: agenticClaims, isCaeEnabled: true);
 
             CheckTokenCachePersistanceEnabled = () =>
             {

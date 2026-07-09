@@ -15,6 +15,7 @@
 using Azure.Core;
 using Azure.Identity;
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Identity.Client;
 using Microsoft.Identity.Client.Extensibility;
 
@@ -26,11 +27,8 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
-    /// <summary>
-    /// A silent-only <see cref="TokenCredential"/> built on MSAL.NET that exposes an
-    /// <see cref="OnBeforeTokenRequestData"/> hook, allowing callers to inject custom body
-    /// parameters into the token request.
-    /// </summary>
+    /// <summary>Silent-only MSAL.NET TokenCredential that exposes the OnBeforeTokenRequest
+    /// hook so callers can inject custom body parameters into the token request.</summary>
     public class MsalSharedCacheCredential : TokenCredential
     {
         private readonly IPublicClientApplication _app;
@@ -70,7 +68,15 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             if (!string.IsNullOrEmpty(_tenantId))             builder.WithTenantId(_tenantId);
             if (_onBeforeTokenRequest != null)                builder.OnBeforeTokenRequest(_onBeforeTokenRequest);
 
+            // Bypass MSAL's AT cache on agent<->manual transitions so a cached
+            // agent-tagged token can't leak into a subsequent manual call.
+            if (AgenticSession.HasSessionModeChanged())
+            {
+                builder.WithForceRefresh(true);
+            }
+
             var result = await builder.ExecuteAsync(cancellationToken).ConfigureAwait(false);
+            AgenticSession.MarkAcquired();
             return new AccessToken(result.AccessToken, result.ExpiresOn);
         }
 
