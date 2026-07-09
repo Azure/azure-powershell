@@ -501,6 +501,243 @@ directive:
     transform: >-
       $["x-ms-long-running-operation-options"] = {"final-state-via": "azure-async-operation"}
 
+  # --------------------------------------------------------------------------
+  # LRO contract workaround: rewrite final-state-via location -> original-uri
+  # --------------------------------------------------------------------------
+  # Many CDN swagger operations declare final-state-via: location but the
+  # live service returns 200/201 synchronously with the terminal resource body
+  # and does NOT emit a Location header. The autorest.powershell v4 LRO
+  # client then calls `new Uri("")` and throws
+  #   UriFormatException: Invalid URI: The URI is empty.
+  # Rewriting to original-uri makes the client re-GET the original request
+  # URL, which already has the completed resource.
+  #
+  # We apply this to non-delete operations that currently declare
+  # final-state-via: location in the CDN openapi spec.
+
+  # --- Microsoft.Cdn/profiles ---
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}"].put
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}"].patch
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+  # --- Microsoft.Cdn/profiles/endpoints ---
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}"].put
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}"].patch
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+  # --- endpoints/customDomains ---
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}"].put
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+  # --- endpoints/customDomains actions ---
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}/disableCustomHttps"].post
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}/enableCustomHttps"].post
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+
+  # --- endpoints/originGroups ---
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}"].put
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}"].patch
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+  # --- endpoints/origins ---
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}"].put
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}"].patch
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+  # --- cdnWebApplicationFirewallPolicies ---
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}"].put
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}"].patch
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+
+  # --- canMigrate / migrate ---
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/canMigrate"].post
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/migrate"].post
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+
+  # --- profiles/agents ---
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/agents/{agentName}"].put
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/agents/{agentName}"].patch
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+  # --- profiles/cdnCanMigrateToAfd, cdnMigrateToAfd, migrationAbort, upgrade ---
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/cdnCanMigrateToAfd"].post
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/cdnMigrateToAfd"].post
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/migrationAbort"].post
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/upgrade"].post
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+
+  # --- profiles/deploymentVersions/{versionName}/approve ---
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/deploymentVersions/{versionName}/approve"].post
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+
+  # --- profiles/keyGroups ---
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/keyGroups/{keyGroupName}"].put
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/keyGroups/{keyGroupName}"].patch
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+  # --- webAgents ---
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/webAgents/{webAgentName}"].put
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/webAgents/{webAgentName}"].patch
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+  # --- webAgents/knowledgeSources ---
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/webAgents/{webAgentName}/knowledgeSources/{knowledgeSourceName}"].put
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/webAgents/{webAgentName}/knowledgeSources/{knowledgeSourceName}"].patch
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/webAgents/{webAgentName}/knowledgeSources/{knowledgeSourceName}/purge"].post
+    transform: >-
+      if ($["x-ms-long-running-operation-options"] && $["x-ms-long-running-operation-options"]["final-state-via"] === "location") {
+        $["x-ms-long-running-operation-options"]["final-state-via"] = "original-uri";
+      }
+      return $;
+
   - where:
       subjectPrefix: Cdn
       subject: Profile
