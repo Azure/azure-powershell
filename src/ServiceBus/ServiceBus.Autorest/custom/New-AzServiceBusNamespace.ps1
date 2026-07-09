@@ -175,6 +175,7 @@ function New-AzServiceBusNamespace{
 		${GeoDataReplicationMaxReplicationLagDurationInSecond},
 
 		[Parameter(HelpMessage = "Replica locations for geo data replication. Pass an array of NamespaceReplicaLocation objects (for example from New-AzServiceBusLocationsNameObject).")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation[]]
 		${GeoDataReplicationLocation},
 
