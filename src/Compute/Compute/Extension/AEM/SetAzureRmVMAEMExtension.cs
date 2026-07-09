@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Compute
                 Position = 6,
                 ParameterSetName = "NewExtension",
                 ValueFromPipelineByPropertyName = false,
-                HelpMessage = "The parameter is deprecated and will be removed in a future version. Install the new extension.")]
+                HelpMessage = "Deprecated. The cmdlet installs the new VM Extension for SAP by default; this switch is no longer required and will be removed in a future version.")]
         public SwitchParameter InstallNewExtension { get; set; }
 
         [Parameter(

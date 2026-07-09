@@ -20,7 +20,7 @@
 
 -->
 ## Upcoming Release
-* Deprecated installation of the old VM Extension for SAP (AEM).
+* Deprecated installing the legacy Azure Enhanced Monitoring (AEM) extension for SAP on Virtual Machines (VMs); `Set-AzVMAEMExtension` now installs the new extension by default.
 
 ## Version 11.7.0
 * ComputeRP related cmdlets will now use 2026-03-01 version of the ComputeRP API.
