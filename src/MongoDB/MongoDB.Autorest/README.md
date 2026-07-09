@@ -43,7 +43,7 @@ try-require:
 
 # Use the 2026-03-01-preview tag which includes Organization, Project, and Cluster resources
 tag: package-2026-03-01-preview
-module-version: 1.1.0
+module-version: 1.0.0
 # Normally, title is the service name
 title: MongoDB
 service-name: MongoDB
