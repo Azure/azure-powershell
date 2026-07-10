@@ -39,6 +39,12 @@ Gets a description for the specified namespace.
 ### [Get-AzServiceBusNetworkRuleSet](Get-AzServiceBusNetworkRuleSet.md)
 Gets NetworkRuleSet for a Namespace.
 
+### [Get-AzServiceBusNetworkSecurityPerimeterConfiguration](Get-AzServiceBusNetworkSecurityPerimeterConfiguration.md)
+Gets list of current NetworkSecurityPerimeterConfiguration for Namespace
+
+### [Get-AzServiceBusNetworkSecurityPerimeterConfigurationsForAssociation](Get-AzServiceBusNetworkSecurityPerimeterConfigurationsForAssociation.md)
+Return a NetworkSecurityPerimeterConfigurations resourceAssociationName
+
 ### [Get-AzServiceBusPrivateEndpointConnection](Get-AzServiceBusPrivateEndpointConnection.md)
 Gets a description for the specified Private Endpoint Connection.
 
@@ -63,11 +69,8 @@ Creates a ServiceBus Namespace, Queue, Topic Authorization Rule
 ### [New-AzServiceBusAuthorizationRuleSASToken](New-AzServiceBusAuthorizationRuleSASToken.md)
 Generates a SAS token for Azure servicebus authorization rule of namespace/queue/topic. 
 
-### [New-AzServiceBusLocationsNameObject](New-AzServiceBusLocationsNameObject.md)
-Construct an in-memory NamespaceReplicaLocation object
-
 ### [New-AzServiceBusGeoDRConfiguration](New-AzServiceBusGeoDRConfiguration.md)
-create a new Alias(Disaster Recovery configuration)
+Create a new Alias(Disaster Recovery configuration)
 
 ### [New-AzServiceBusIPRuleConfig](New-AzServiceBusIPRuleConfig.md)
 Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzServiceBusNetworkRuleSet
@@ -78,21 +81,24 @@ Regenerates the SASKey of a ServiceBus namespace, queue or topic.
 ### [New-AzServiceBusKeyVaultPropertiesObject](New-AzServiceBusKeyVaultPropertiesObject.md)
 Create an in-memory object for KeyVaultProperties.
 
+### [New-AzServiceBusLocationsNameObject](New-AzServiceBusLocationsNameObject.md)
+Create an in-memory object for NamespaceReplicaLocation.
+
 ### [New-AzServiceBusNamespace](New-AzServiceBusNamespace.md)
 Creates a new ServiceBus namespace.
 
 ### [New-AzServiceBusQueue](New-AzServiceBusQueue.md)
-create a Service Bus queue.
+Create a Service Bus queue.
 This operation is idempotent.
 
 ### [New-AzServiceBusRule](New-AzServiceBusRule.md)
-create a new rule and create an existing rule
+Create a new rule and create an existing rule
 
 ### [New-AzServiceBusSubscription](New-AzServiceBusSubscription.md)
-create a topic subscription.
+Create a topic subscription.
 
 ### [New-AzServiceBusTopic](New-AzServiceBusTopic.md)
-create a topic in the specified namespace.
+Create a topic in the specified namespace.
 
 ### [New-AzServiceBusVirtualNetworkRuleConfig](New-AzServiceBusVirtualNetworkRuleConfig.md)
 Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzServiceBusNetworkRuleSet
@@ -153,10 +159,10 @@ Updates a ServiceBus Subscription
 Updates a ServiceBus Topic
 
 ### [Start-AzServiceBusMigration](Start-AzServiceBusMigration.md)
-create Migration configuration and starts migration of entities from Standard to Premium namespace
+Create Migration configuration and starts migration of entities from Standard to Premium namespace
 
 ### [Start-AzServiceBusNamespaceFailOver](Start-AzServiceBusNamespaceFailOver.md)
-Failover the Geo-DR Namespace.
+Triggers ServiceBus Namespace Failover
 
 ### [Stop-AzServiceBusMigration](Stop-AzServiceBusMigration.md)
 This operation reverts Migration

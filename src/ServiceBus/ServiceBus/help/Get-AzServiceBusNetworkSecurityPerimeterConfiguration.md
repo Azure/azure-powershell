@@ -1,54 +1,41 @@
 ---
-external help file:
+external help file: Az.ServiceBus-help.xml
 Module Name: Az.ServiceBus
-online version: https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusnetworksecurityperimeterconfigurationsforassociation
+online version: https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusnetworksecurityperimeterconfiguration
 schema: 2.0.0
 ---
 
-# Get-AzServiceBusNetworkSecurityPerimeterConfigurationsForAssociation
+# Get-AzServiceBusNetworkSecurityPerimeterConfiguration
 
 ## SYNOPSIS
-Return a NetworkSecurityPerimeterConfigurations resourceAssociationName
+Gets list of current NetworkSecurityPerimeterConfiguration for Namespace
 
 ## SYNTAX
 
-### Get (Default)
 ```
-Get-AzServiceBusNetworkSecurityPerimeterConfigurationsForAssociation -NamespaceName <String>
- -ResourceAssociationName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzServiceBusNetworkSecurityPerimeterConfigurationsForAssociation -InputObject <IServiceBusIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityNamespace
-```
-Get-AzServiceBusNetworkSecurityPerimeterConfigurationsForAssociation
- -NamespaceInputObject <IServiceBusIdentity> -ResourceAssociationName <String> [-DefaultProfile <PSObject>]
+Get-AzServiceBusNetworkSecurityPerimeterConfiguration -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Return a NetworkSecurityPerimeterConfigurations resourceAssociationName
+Gets list of current NetworkSecurityPerimeterConfiguration for Namespace
 
 ## EXAMPLES
 
-### Example 1: Gets the network security configuration of an ServiceBus namespace for a given ResourceAssociationName.
+### Example 1: Gets list of NSP configurations an ServiceBus namespace.
 ```powershell
-Get-AzServiceBusNetworkSecurityPerimeterConfigurationsForAssociation -ResourceGroupName myResourceGroup -NamespaceName myNamespace  -ResourceAssociationName resourceAssociationName
+Get-AzServiceBusNetworkSecurityPerimeterConfiguration -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 ```
 
 ```output
 ApplicableFeature                :
-Id                               : /subscriptions/subscriptionid/resourceGroups/myresourcegroup/providers/Microsoft.ServiceBus/namespaces/
-                                    mynamespaceName/networkSecurityPerimeterConfigurations/subscriptionid.resourceAssociationName
+Id                               : /subscriptions/subscriptionid/resourceGroups/myresourcegroup/providers/Microsoft.ServiceBus/namespaces/mynamespaceName
+                                    /networkSecurityPerimeterConfigurations/subscriptionid.testPranjitEH1-4263ede0-d5e1-4166-9694-2f0
+                                   7739397aa
 IsBackingResource                : False
 Location                         : eastus2euap
-Name                             : subscriptionid.resourceAssociationName
+Name                             : subscriptionid.testPranjitEH1-4263ede0-d5e1-4166-9694-2f07739397aa
 NetworkSecurityPerimeterGuid     : subscriptionid
 NetworkSecurityPerimeterId       : /subscriptions/subscriptionid/resourceGroups/myresourcegroup/providers/Microsoft.Network/networkSecurityPe
                                    rimeters/pranjit-nsp-ncus
@@ -78,13 +65,13 @@ ProfileName                      : defaultProfile
 ProvisioningIssue                :
 ProvisioningState                : Succeeded
 ResourceAssociationAccessMode    : Learning
-ResourceAssociationName          : resourceAssociationName
+ResourceAssociationName          : myResourceAssociationName
 ResourceGroupName                : myresourcegroup
 SourceResourceId                 :
 Type                             : Microsoft.ServiceBus/Namespaces/networkSecurityPerimeterConfigurations
 ```
 
-Gets the network security perimeter configuration for ServiceBus namespace myNamespace and the specified ResourceAssociationName.
+Gets tets list of NSP configurations an ServiceBus namespace.
 
 ## PARAMETERS
 
@@ -104,57 +91,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
-Parameter Sets: GetViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -NamespaceInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
-Parameter Sets: GetViaIdentityNamespace
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -NamespaceName
 The namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceAssociationName
-The ResourceAssociation Name
-
-```yaml
-Type: System.String
-Parameter Sets: Get, GetViaIdentityNamespace
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -170,7 +112,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -186,7 +128,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -201,8 +143,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkSecurityPerimeterConfiguration
@@ -210,4 +150,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

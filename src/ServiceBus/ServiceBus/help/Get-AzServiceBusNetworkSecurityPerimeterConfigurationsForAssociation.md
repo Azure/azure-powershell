@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ServiceBus-help.xml
 Module Name: Az.ServiceBus
 online version: https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusnetworksecurityperimeterconfigurationsforassociation
 schema: 2.0.0
@@ -19,17 +19,17 @@ Get-AzServiceBusNetworkSecurityPerimeterConfigurationsForAssociation -NamespaceN
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityNamespace
+```
+Get-AzServiceBusNetworkSecurityPerimeterConfigurationsForAssociation -ResourceAssociationName <String>
+ -NamespaceInputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzServiceBusNetworkSecurityPerimeterConfigurationsForAssociation -InputObject <IServiceBusIdentity>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityNamespace
-```
-Get-AzServiceBusNetworkSecurityPerimeterConfigurationsForAssociation
- -NamespaceInputObject <IServiceBusIdentity> -ResourceAssociationName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -210,4 +210,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
