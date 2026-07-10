@@ -1,41 +1,52 @@
 ---
-external help file: Az.MongoDB-help.xml
+external help file:
 Module Name: Az.MongoDB
-online version: https://learn.microsoft.com/powershell/module/az.mongodb/remove-azmongodborganization
+online version: https://learn.microsoft.com/powershell/module/az.mongodb/remove-azmongodbproject
 schema: 2.0.0
 ---
 
-# Remove-AzMongoDBOrganization
+# Remove-AzMongoDBProject
 
 ## SYNOPSIS
-Delete a OrganizationResource
+Delete a Project
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzMongoDBOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzMongoDBProject -Name <String> -OrganizationName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzMongoDBOrganization -InputObject <IMongoDbIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzMongoDBProject -InputObject <IMongoDbIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentityOrganization
+```
+Remove-AzMongoDBProject -Name <String> -OrganizationInputObject <IMongoDbIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a OrganizationResource
+Delete a Project
 
 ## EXAMPLES
 
-### Example 1: Remove an Organization
+### Example 1: Delete a MongoDB Atlas project (preview with -WhatIf)
 ```powershell
-Remove-AzMongoDBOrganization -ResourceGroupName yashika-rg -Name testorg7
+Remove-AzMongoDBProject -ResourceGroupName "myResourceGroup" -OrganizationName "myOrganization" -Name "myProject" -WhatIf
 ```
 
-This command deletes the MongoDB resource.
+```output
+What if: Performing the operation "Remove-AzMongoDBProject_Delete" on target "myProject".
+```
+
+Previews the delete operation for a MongoDB Atlas project without executing it.
+Note: project deletion is not yet supported by the partner backend; use -WhatIf to validate parameters.
 
 ## PARAMETERS
 
@@ -86,12 +97,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the Organization resource
+Name of the MongoDB Atlas Project resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: OrganizationName
+Parameter Sets: Delete, DeleteViaIdentityOrganization
+Aliases: ProjectName
 
 Required: True
 Position: Named
@@ -109,6 +120,36 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OrganizationInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IMongoDbIdentity
+Parameter Sets: DeleteViaIdentityOrganization
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -OrganizationName
+Name of the Organization resource
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -207,3 +248,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

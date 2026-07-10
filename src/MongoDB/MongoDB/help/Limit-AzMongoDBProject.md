@@ -1,58 +1,57 @@
 ---
 external help file: Az.MongoDB-help.xml
 Module Name: Az.MongoDB
-online version: https://learn.microsoft.com/powershell/module/az.mongodb/remove-azmongodborganization
+online version: https://learn.microsoft.com/powershell/module/az.mongodb/limit-azmongodbproject
 schema: 2.0.0
 ---
 
-# Remove-AzMongoDBOrganization
+# Limit-AzMongoDBProject
 
 ## SYNOPSIS
-Delete a OrganizationResource
+Check if tier limit is reached for the project.
 
 ## SYNTAX
 
-### Delete (Default)
+### Limit (Default)
 ```
-Remove-AzMongoDBOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+Limit-AzMongoDBProject -Name <String> -OrganizationName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### LimitViaIdentityOrganization
 ```
-Remove-AzMongoDBOrganization -InputObject <IMongoDbIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Limit-AzMongoDBProject -Name <String> -OrganizationInputObject <IMongoDbIdentity> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### LimitViaIdentity
+```
+Limit-AzMongoDBProject -InputObject <IMongoDbIdentity> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a OrganizationResource
+Check if tier limit is reached for the project.
 
 ## EXAMPLES
 
-### Example 1: Remove an Organization
+### Example 1: Check whether the cluster-tier limit has been reached
 ```powershell
-Remove-AzMongoDBOrganization -ResourceGroupName yashika-rg -Name testorg7
+Limit-AzMongoDBProject -ResourceGroupName sharmaanuTest -OrganizationName KanedaTest -ProjectName test-project-1 | Format-List
 ```
 
-This command deletes the MongoDB resource.
+```output
+Current   : 1
+IsReached : True
+Maximum   : 1
+Type      : FREE
+```
+
+Queries the partner to find out, per cluster tier, how many clusters the project currently has, the per-tier maximum, and whether the limit has been reached.
+Useful as a pre-flight check before `New-AzMongoDBCluster`.
 
 ## PARAMETERS
-
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -75,7 +74,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IMongoDbIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: LimitViaIdentity
 Aliases:
 
 Required: True
@@ -86,12 +85,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the Organization resource
+Name of the MongoDB Atlas Project resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: OrganizationName
+Parameter Sets: Limit, LimitViaIdentityOrganization
+Aliases: ProjectName
 
 Required: True
 Position: Named
@@ -100,30 +99,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
+### -OrganizationInputObject
+Identity Parameter
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.IMongoDbIdentity
+Parameter Sets: LimitViaIdentityOrganization
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -OrganizationName
+Name of the Organization resource
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: Limit
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -136,7 +135,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Limit
 Aliases:
 
 Required: True
@@ -152,7 +151,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Limit
 Aliases:
 
 Required: False
@@ -202,7 +201,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.MongoDB.Models.ITierLimitReachedResponse
 
 ## NOTES
 
