@@ -102,14 +102,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 return container;
             }
-            if (null != this._value)
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead))
             {
-                var __w = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.XNodeArray();
-                foreach( var __x in this._value )
+                if (null != this._value)
                 {
-                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.XNodeArray();
+                    foreach( var __x in this._value )
+                    {
+                        AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                    }
+                    container.Add("value",__w);
                 }
-                container.Add("value",__w);
             }
             AddIf( null != (((object)this._nextLink)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._nextLink.ToString()) : null, "nextLink" ,container.Add );
             AfterToJson(ref container);

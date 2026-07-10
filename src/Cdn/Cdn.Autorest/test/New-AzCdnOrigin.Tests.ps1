@@ -14,25 +14,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnOrigin'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzCdnOrigin' {
-    BeforeAll {
-        $script:subId = $env.SubscriptionId
-        $script:endpointName = 'e-clipstest-origin-new'
-        $origin = @{ Name = 'origin1'; HostName = 'host1.hello.com' }
-        $originId = "/subscriptions/$script:subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$script:endpointName/origins/$($origin.Name)"
-        $hp = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 240 -ProbePath '/health.aspx' -ProbeProtocol 'Https' -ProbeRequestType 'GET'
-        $og = @{ Name = 'originGroup1'; healthProbeSetting = $hp; Origin = @(@{ Id = $originId }) }
-        $defaultOG = "/subscriptions/$script:subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$script:endpointName/origingroups/$($og.Name)"
-        New-AzCdnEndpoint -Name $script:endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location 'westus' -Origin $origin -OriginGroup $og -DefaultOriginGroupId $defaultOG | Out-Null
-    }
-
-    AfterAll {
-        Remove-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
-    }
-
+Describe 'New-AzCdnOrigin'  {
     It 'CreateExpanded' {
-        $newOrigin = New-AzCdnOrigin -Name 'origin2' -HostName 'host2.hello.com' -EndpointName $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $newOrigin.Name | Should -Be 'origin2'
-        $newOrigin.HostName | Should -Be 'host2.hello.com'
+        $origin = New-AzCdnOrigin -Name "origin2" -HostName "host2.hello.com" -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+
+        $origin.Name | Should -Be "origin2"
+        $origin.HostName | Should -Be "host2.hello.com"
     }
 }

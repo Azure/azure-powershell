@@ -214,10 +214,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// allocate virtual machine. Minimum api-version: 2021-04-01.
         /// </param>
 
+        /// <param name="interconnectBlockProfile">Specifies information about the Interconnect Block that is used to allocate
+        /// the Virtual Machine. Minimum api-version: 2026-03-01.
+        /// </param>
+
         /// <param name="timeCreated">Specifies the time at which the Virtual Machine resource was created.
         /// Minimum api-version: 2021-11-01.
         /// </param>
-        public VirtualMachine(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Plan plan = default(Plan), System.Collections.Generic.IList<VirtualMachineExtension> resources = default(System.Collections.Generic.IList<VirtualMachineExtension>), VirtualMachineIdentity identity = default(VirtualMachineIdentity), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string managedBy = default(string), string etag = default(string), Placement placement = default(Placement), HardwareProfile hardwareProfile = default(HardwareProfile), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), NetworkProfile networkProfile = default(NetworkProfile), SecurityProfile securityProfile = default(SecurityProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), BillingProfile billingProfile = default(BillingProfile), ApplicationProfile applicationProfile = default(ApplicationProfile), ResiliencyProfile resiliencyProfile = default(ResiliencyProfile), ScheduledEventsPolicy scheduledEventsPolicy = default(ScheduledEventsPolicy), SubResource availabilitySet = default(SubResource), SubResource virtualMachineScaleSet = default(SubResource), SubResource proximityPlacementGroup = default(SubResource), string priority = default(string), string evictionPolicy = default(string), SubResource host = default(SubResource), SubResource hostGroup = default(SubResource), string provisioningState = default(string), VirtualMachineInstanceView instanceView = default(VirtualMachineInstanceView), string licenseType = default(string), string vmId = default(string), string extensionsTimeBudget = default(string), int? platformFaultDomain = default(int?), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile), string userData = default(string), CapacityReservationProfile capacityReservation = default(CapacityReservationProfile), System.DateTime? timeCreated = default(System.DateTime?))
+        public VirtualMachine(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), Plan plan = default(Plan), System.Collections.Generic.IList<VirtualMachineExtension> resources = default(System.Collections.Generic.IList<VirtualMachineExtension>), VirtualMachineIdentity identity = default(VirtualMachineIdentity), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string managedBy = default(string), string etag = default(string), Placement placement = default(Placement), HardwareProfile hardwareProfile = default(HardwareProfile), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), NetworkProfile networkProfile = default(NetworkProfile), SecurityProfile securityProfile = default(SecurityProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), BillingProfile billingProfile = default(BillingProfile), ApplicationProfile applicationProfile = default(ApplicationProfile), ResiliencyProfile resiliencyProfile = default(ResiliencyProfile), ScheduledEventsPolicy scheduledEventsPolicy = default(ScheduledEventsPolicy), SubResource availabilitySet = default(SubResource), SubResource virtualMachineScaleSet = default(SubResource), SubResource proximityPlacementGroup = default(SubResource), string priority = default(string), string evictionPolicy = default(string), SubResource host = default(SubResource), SubResource hostGroup = default(SubResource), string provisioningState = default(string), VirtualMachineInstanceView instanceView = default(VirtualMachineInstanceView), string licenseType = default(string), string vmId = default(string), string extensionsTimeBudget = default(string), int? platformFaultDomain = default(int?), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile), string userData = default(string), CapacityReservationProfile capacityReservation = default(CapacityReservationProfile), InterconnectBlockProfile interconnectBlockProfile = default(InterconnectBlockProfile), System.DateTime? timeCreated = default(System.DateTime?))
 
         : base(location, id, name, type, tags)
         {
@@ -256,6 +260,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.ScheduledEventsProfile = scheduledEventsProfile;
             this.UserData = userData;
             this.CapacityReservation = capacityReservation;
+            this.InterconnectBlockProfile = interconnectBlockProfile;
             this.TimeCreated = timeCreated;
             CustomInit();
         }
@@ -549,6 +554,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         public CapacityReservationProfile CapacityReservation {get; set; }
 
         /// <summary>
+        /// Gets or sets specifies information about the Interconnect Block that is
+        /// used to allocate the Virtual Machine. Minimum api-version: 2026-03-01.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.interconnectBlockProfile")]
+        public InterconnectBlockProfile InterconnectBlockProfile {get; set; }
+
+        /// <summary>
         /// Gets specifies the time at which the Virtual Machine resource was created.
         /// Minimum api-version: 2021-11-01.
         /// </summary>
@@ -585,6 +597,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             {
                 this.StorageProfile.Validate();
             }
+
 
 
 

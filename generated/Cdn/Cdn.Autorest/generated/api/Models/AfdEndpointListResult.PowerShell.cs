@@ -7,7 +7,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PowerShell;
 
-    /// <summary>The response of a AFDEndpoint list operation.</summary>
+    /// <summary>
+    /// Result of the request to list endpoints. It contains a list of endpoint objects and a URL link to get the next set of
+    /// results.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(AfdEndpointListResultTypeConverter))]
     public partial class AfdEndpointListResult
     {
@@ -162,7 +165,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             return ToJsonString();
         }
     }
-    /// The response of a AFDEndpoint list operation.
+    /// Result of the request to list endpoints. It contains a list of endpoint objects and a URL link to get the next set of
+    /// results.
     [System.ComponentModel.TypeConverter(typeof(AfdEndpointListResultTypeConverter))]
     public partial interface IAfdEndpointListResult
 

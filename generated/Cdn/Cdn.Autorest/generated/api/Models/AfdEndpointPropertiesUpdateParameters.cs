@@ -22,15 +22,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         public string EnabledState { get => this._enabledState; set => this._enabledState = value; }
 
-        /// <summary>Backing field for <see cref="EnforceMtl" /> property.</summary>
-        private string _enforceMtl;
-
-        /// <summary>
-        /// Set to Disabled by default. If set to Enabled, only custom domains with mTLS enabled can be added to child Route resources.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
-        public string EnforceMtl { get => this._enforceMtl; set => this._enforceMtl = value; }
-
         /// <summary>Internal Acessors for ProfileName</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointPropertiesUpdateParametersInternal.ProfileName { get => this._profileName; set { {_profileName = value;} } }
 
@@ -65,20 +56,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         string EnabledState { get; set; }
-        /// <summary>
-        /// Set to Disabled by default. If set to Enabled, only custom domains with mTLS enabled can be added to child Route resources.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Set to Disabled by default. If set to Enabled, only custom domains with mTLS enabled can be added to child Route resources.",
-        SerializedName = @"enforceMtls",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
-        string EnforceMtl { get; set; }
         /// <summary>The name of the profile which holds the endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
@@ -101,11 +78,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         string EnabledState { get; set; }
-        /// <summary>
-        /// Set to Disabled by default. If set to Enabled, only custom domains with mTLS enabled can be added to child Route resources.
-        /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
-        string EnforceMtl { get; set; }
         /// <summary>The name of the profile which holds the endpoint.</summary>
         string ProfileName { get; set; }
 

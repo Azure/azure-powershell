@@ -14,39 +14,32 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnOrigin'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzCdnOrigin' {
+Describe 'Get-AzCdnOrigin'  {
     BeforeAll {
-        $script:endpointName = 'e-clipstest-origin-get'
-        $origin = @{ Name = 'origin1'; HostName = 'host1.hello.com' }
-        New-AzCdnEndpoint -Name $script:endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location 'westus' -Origin $origin | Out-Null
+        $originName = "origin1"
+        $originHostName = "host1.hello.com"
     }
-
-    AfterAll {
-        Remove-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
-    }
-
+    
     It 'List' {
-        $origins = Get-AzCdnOrigin -EndpointName $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $origins.Count | Should -BeGreaterOrEqual 1
+        $origins = Get-AzCdnOrigin -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        
+        $origins.Count | Should -Be 1
     }
 
     It 'Get' {
-        $o = Get-AzCdnOrigin -Name 'origin1' -EndpointName $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $o.Name | Should -Be 'origin1'
-        $o.HostName | Should -Be 'host1.hello.com'
+        $origin = Get-AzCdnOrigin -Name $originName -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        
+        $origin.Name | Should -Be $originName
+        $origin.HostName | Should -Be $originHostName
+        $origin.HttpsPort | Should -Be $null
     }
 
     It 'GetViaIdentity' {
-        $o = Get-AzCdnOrigin -Name 'origin1' -EndpointName $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $o2 = Get-AzCdnOrigin -InputObject $o
-        $o2.Name | Should -Be 'origin1'
-    }
-
-    It 'GetViaIdentityProfile' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentityEndpoint' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $originObject = Get-AzCdnOrigin -Name $originName -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        
+        $origin = Get-AzCdnOrigin -InputObject $originObject
+        $origin.Name | Should -Be $originName
+        $origin.HostName | Should -Be $originHostName
+        $origin.HttpsPort | Should -Be $null
     }
 }

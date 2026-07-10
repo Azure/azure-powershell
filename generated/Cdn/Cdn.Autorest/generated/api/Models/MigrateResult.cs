@@ -10,7 +10,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     /// <summary>Result for migrate operation.</summary>
     public partial class MigrateResult :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResult,
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultInternal
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultInternal,
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IHeaderSerializable
     {
 
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
@@ -20,6 +21,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.DoNotFormat]
         public string Id { get => this._id; }
+
+        /// <summary>Backing field for <see cref="Location" /> property.</summary>
+        private string _location;
+
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.DoNotFormat]
+        public string Location { get => this._location; set => this._location = value; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultInternal.Id { get => this._id; set { {_id = value;} } }
@@ -61,6 +69,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.DoNotFormat]
         public string Type { get => this._type; }
 
+        /// <param name="headers"></param>
+        void Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IHeaderSerializable.ReadHeaders(global::System.Net.Http.Headers.HttpResponseHeaders headers)
+        {
+            if (headers.TryGetValues("location", out var __locationHeader0))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IMigrateResultInternal)this).Location = System.Linq.Enumerable.FirstOrDefault(__locationHeader0) is string __headerLocationHeader0 ? __headerLocationHeader0 : (string)null;
+            }
+        }
+
         /// <summary>Creates an new <see cref="MigrateResult" /> instance.</summary>
         public MigrateResult()
         {
@@ -82,6 +99,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get;  }
+
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"",
+        SerializedName = @"location",
+        PossibleTypes = new [] { typeof(string) })]
+        string Location { get; set; }
         /// <summary>Resource ID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
@@ -112,6 +140,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     {
         /// <summary>Resource ID.</summary>
         string Id { get; set; }
+
+        string Location { get; set; }
         /// <summary>Arm resource id of the migrated profile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference PropertiesMigratedProfileResourceId { get; set; }
         /// <summary>Resource ID.</summary>

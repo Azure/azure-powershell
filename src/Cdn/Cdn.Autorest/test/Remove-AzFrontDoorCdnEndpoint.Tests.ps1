@@ -14,22 +14,26 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoorCdnEndpoint
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzFrontDoorCdnEndpoint' {
-    BeforeAll {
-        $script:endpointName = 'e-clipstest-rm'
-        New-AzFrontDoorCdnEndpoint -EndpointName $script:endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global | Out-Null
-    }
-
+Describe 'Remove-AzFrontDoorCdnEndpoint'  {
     It 'Delete' {
-        Remove-AzFrontDoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $script:endpointName
-        { Get-AzFrontDoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $script:endpointName -ErrorAction Stop } | Should -Throw
+        $endpointName = 'e-clipstest100'
+        Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
+        $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
+
+        $endpoint.Name | Should -Be $endpointName
+        $endpoint.Location | Should -Be "Global"
+        
+        Remove-AzFrontdoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $endpointName
     }
 
-    It 'DeleteViaIdentityProfile' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'DeleteViaIdentity' {
+        $endpointName = 'e-clipstest101'
+        Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
+        $endpoint = New-AzFrontDoorCdnEndpoint -SubscriptionId $env.SubscriptionId -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $endpoint.Name | Should -Be $endpointName
+        $endpoint.Location | Should -Be "Global"
+        $endpointObject = Get-AzFrontdoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $endpointName
+        Remove-AzFrontdoorCdnEndpoint -InputObject $endpointObject
     }
 }

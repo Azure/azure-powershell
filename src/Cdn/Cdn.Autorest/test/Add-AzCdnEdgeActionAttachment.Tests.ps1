@@ -17,18 +17,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Add-AzCdnEdgeActionAttachment
 Describe 'Add-AzCdnEdgeActionAttachment' {
     It 'AddExpanded' {
         $resourceGroupName = $env.ResourceGroupName
-        $edgeActionResourceGroupName = 'testps-rg-edgeaction-permanent'
-        $edgeActionName = 'eaattachperm'
-        $ruleSetName = 'rseaattach'
-        $ruleName = 'ruleeaattach'
+        $edgeActionName = "eanew" 
+        $version = "v1"
 
-        New-AzFrontDoorCdnRuleSet -ResourceGroupName $resourceGroupName -ProfileName $env.FrontDoorCdnProfileName -RuleSetName $ruleSetName | Out-Null
-        $condition = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name 'RequestUri' -ParameterOperator 'Any'
-        $action = New-AzFrontDoorCdnRuleUrlRedirectActionObject -Name 'UrlRedirect' -ParameterRedirectType 'Moved' -ParameterDestinationProtocol 'MatchRequest'
-        $rule = New-AzFrontDoorCdnRule -ResourceGroupName $resourceGroupName -ProfileName $env.FrontDoorCdnProfileName -RuleSetName $ruleSetName -Name $ruleName -Action @($action) -Condition @($condition)
+        New-AzCdnEdgeAction -ResourceGroupName $resourceGroupName -EdgeActionName $edgeActionName -SkuName "Standard" -SkuTier "Standard" -Location "global"
 
-        Add-AzCdnEdgeActionAttachment -ResourceGroupName $edgeActionResourceGroupName -EdgeActionName $edgeActionName -AttachedResourceId $rule.Id
-        Remove-AzCdnEdgeActionAttachment -ResourceGroupName $edgeActionResourceGroupName -EdgeActionName $edgeActionName -AttachedResourceId $rule.Id
+        New-AzCdnEdgeActionVersion -ResourceGroupName $resourceGroupName -EdgeActionName $edgeActionName -Version $version -DeploymentType "zip" -IsDefaultVersion $false -Location "global"
+
+        Add-AzCdnEdgeActionAttachment -ResourceGroupName $resourceGroupName -EdgeActionName $edgeActionName -AttachedResourceId "97b45a70-afbe-49a6-ac4b-176a45e2b24f/resourceGroups/Synthetics-AFD-NorwayEast/providers/Microsoft.Cdn/profiles/easyntheticsppenorwayeast/ruleSets/eaRuleSet/rules/EdgeAction" 
+        # Remove-AzCdnEdgeActionAttachment -ResourceGroupName $resourceGroupName -EdgeActionName $edgeActionName -AttachedResourceId "97b45a70-afbe-49a6-ac4b-176a45e2b24f/resourceGroups/Synthetics-AFD-NorwayEast/providers/Microsoft.Cdn/profiles/easyntheticsppenorwayeast/ruleSets/eaRuleSet/rules/EdgeAction"
     }
 
     It 'AddViaJsonString' -skip {

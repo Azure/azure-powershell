@@ -88,69 +88,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
             switch ( json.StringProperty("typeName") )
             {
-                case "DeliveryRuleClientPortConditionParameters":
-                {
-                    return new ClientPortMatchConditionParameters(json);
-                }
-                case "DeliveryRuleCookiesConditionParameters":
-                {
-                    return new CookiesMatchConditionParameters(json);
-                }
-                case "DeliveryRuleHostNameConditionParameters":
-                {
-                    return new HostNameMatchConditionParameters(json);
-                }
-                case "DeliveryRuleHttpVersionConditionParameters":
-                {
-                    return new HttpVersionMatchConditionParameters(json);
-                }
-                case "DeliveryRuleIsDeviceConditionParameters":
-                {
-                    return new IsDeviceMatchConditionParameters(json);
-                }
-                case "DeliveryRulePostArgsConditionParameters":
-                {
-                    return new PostArgsMatchConditionParameters(json);
-                }
-                case "DeliveryRuleQueryStringConditionParameters":
-                {
-                    return new QueryStringMatchConditionParameters(json);
-                }
                 case "DeliveryRuleRemoteAddressConditionParameters":
                 {
                     return new RemoteAddressMatchConditionParameters(json);
-                }
-                case "DeliveryRuleRequestBodyConditionParameters":
-                {
-                    return new RequestBodyMatchConditionParameters(json);
-                }
-                case "DeliveryRuleRequestHeaderConditionParameters":
-                {
-                    return new RequestHeaderMatchConditionParameters(json);
                 }
                 case "DeliveryRuleRequestMethodConditionParameters":
                 {
                     return new RequestMethodMatchConditionParameters(json);
                 }
-                case "DeliveryRuleRequestSchemeConditionParameters":
+                case "DeliveryRuleQueryStringConditionParameters":
                 {
-                    return new RequestSchemeMatchConditionParameters(json);
+                    return new QueryStringMatchConditionParameters(json);
+                }
+                case "DeliveryRulePostArgsConditionParameters":
+                {
+                    return new PostArgsMatchConditionParameters(json);
                 }
                 case "DeliveryRuleRequestUriConditionParameters":
                 {
                     return new RequestUriMatchConditionParameters(json);
                 }
-                case "DeliveryRuleServerPortConditionParameters":
+                case "DeliveryRuleRequestHeaderConditionParameters":
                 {
-                    return new ServerPortMatchConditionParameters(json);
+                    return new RequestHeaderMatchConditionParameters(json);
                 }
-                case "DeliveryRuleSocketAddrConditionParameters":
+                case "DeliveryRuleRequestBodyConditionParameters":
                 {
-                    return new SocketAddrMatchConditionParameters(json);
+                    return new RequestBodyMatchConditionParameters(json);
                 }
-                case "DeliveryRuleSslProtocolConditionParameters":
+                case "DeliveryRuleRequestSchemeConditionParameters":
                 {
-                    return new SslProtocolMatchConditionParameters(json);
+                    return new RequestSchemeMatchConditionParameters(json);
+                }
+                case "DeliveryRuleUrlPathMatchConditionParameters":
+                {
+                    return new UrlPathMatchConditionParameters(json);
                 }
                 case "DeliveryRuleUrlFileExtensionMatchConditionParameters":
                 {
@@ -160,9 +132,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
                 {
                     return new UrlFileNameMatchConditionParameters(json);
                 }
-                case "DeliveryRuleUrlPathMatchConditionParameters":
+                case "DeliveryRuleHttpVersionConditionParameters":
                 {
-                    return new UrlPathMatchConditionParameters(json);
+                    return new HttpVersionMatchConditionParameters(json);
+                }
+                case "DeliveryRuleCookiesConditionParameters":
+                {
+                    return new CookiesMatchConditionParameters(json);
+                }
+                case "DeliveryRuleIsDeviceConditionParameters":
+                {
+                    return new IsDeviceMatchConditionParameters(json);
+                }
+                case "DeliveryRuleSocketAddrConditionParameters":
+                {
+                    return new SocketAddrMatchConditionParameters(json);
+                }
+                case "DeliveryRuleClientPortConditionParameters":
+                {
+                    return new ClientPortMatchConditionParameters(json);
+                }
+                case "DeliveryRuleServerPortConditionParameters":
+                {
+                    return new ServerPortMatchConditionParameters(json);
+                }
+                case "DeliveryRuleHostNameConditionParameters":
+                {
+                    return new HostNameMatchConditionParameters(json);
+                }
+                case "DeliveryRuleSslProtocolConditionParameters":
+                {
+                    return new SslProtocolMatchConditionParameters(json);
                 }
             }
             return new DeliveryRuleConditionParameters(json);

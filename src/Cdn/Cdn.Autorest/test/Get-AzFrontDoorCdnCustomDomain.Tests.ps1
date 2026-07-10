@@ -14,34 +14,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnCustomDomai
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzFrontDoorCdnCustomDomain' {
-    BeforeAll {
-        $script:domainName = 'domain-psName-get'
-        $tls = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType 'ManagedCertificate' -MinimumTlsVersion 'TLS12'
-        New-AzFrontDoorCdnCustomDomain -CustomDomainName $script:domainName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -HostName 'pstestget.dev.cdn.azure.cn' -TlsSetting $tls | Out-Null
-    }
-
-    AfterAll {
-        Remove-AzFrontDoorCdnCustomDomain -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -CustomDomainName $script:domainName -ErrorAction SilentlyContinue
-    }
-
+Describe 'Get-AzFrontDoorCdnCustomDomain'  {
     It 'List' {
-        $cds = Get-AzFrontDoorCdnCustomDomain -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName
-        $cds.Count | Should -BeGreaterOrEqual 1
+        $customDomains = Get-AzFrontDoorCdnCustomDomain -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName
+        $customDomains.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {
-        $cd = Get-AzFrontDoorCdnCustomDomain -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -CustomDomainName $script:domainName
-        $cd.Name | Should -Be $script:domainName
+        $customDomain = Get-AzFrontDoorCdnCustomDomain -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -CustomDomainName $env.FrontDoorCustomDomainName
+        $customDomain.Name | Should -Be $env.FrontDoorCustomDomainName
     }
 
     It 'GetViaIdentity' {
-        $cd = Get-AzFrontDoorCdnCustomDomain -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -CustomDomainName $script:domainName
-        $cd2 = Get-AzFrontDoorCdnCustomDomain -InputObject $cd
-        $cd2.Name | Should -Be $script:domainName
-    }
+        $customDomainObject = Get-AzFrontDoorCdnCustomDomain -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -CustomDomainName $env.FrontDoorCustomDomainName 
+        $customDomain = Get-AzFrontDoorCdnCustomDomain -InputObject $customDomainObject
 
-    It 'GetViaIdentityProfile' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $customDomain.Name | Should -Be $env.FrontDoorCustomDomainName
     }
 }

@@ -19,11 +19,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -43,11 +42,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -72,11 +70,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -99,11 +96,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -131,11 +127,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -158,11 +153,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -190,11 +184,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -205,9 +198,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='storageClassificationMappingName'>
         /// Storage classification mapping name.
         /// </param>
-        public static void Delete(this IReplicationStorageClassificationMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string storageClassificationName, string storageClassificationMappingName)
+        public static ReplicationStorageClassificationMappingsDeleteHeaders Delete(this IReplicationStorageClassificationMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string storageClassificationName, string storageClassificationMappingName)
         {
-                ((IReplicationStorageClassificationMappingsOperations)operations).DeleteAsync(resourceGroupName, resourceName, fabricName, storageClassificationName, storageClassificationMappingName).GetAwaiter().GetResult();
+                return ((IReplicationStorageClassificationMappingsOperations)operations).DeleteAsync(resourceGroupName, resourceName, fabricName, storageClassificationName, storageClassificationMappingName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -217,11 +210,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -235,9 +227,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IReplicationStorageClassificationMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string storageClassificationName, string storageClassificationMappingName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ReplicationStorageClassificationMappingsDeleteHeaders> DeleteAsync(this IReplicationStorageClassificationMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string storageClassificationName, string storageClassificationMappingName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, storageClassificationName, storageClassificationMappingName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, storageClassificationName, storageClassificationMappingName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Lists the storage classification mappings in the vault.
@@ -246,8 +241,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the recovery services vault.
@@ -264,8 +258,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the recovery services vault.
@@ -287,11 +280,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -314,11 +306,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -346,11 +337,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -361,9 +351,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='storageClassificationMappingName'>
         /// Storage classification mapping name.
         /// </param>
-        public static void BeginDelete(this IReplicationStorageClassificationMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string storageClassificationName, string storageClassificationMappingName)
+        public static ReplicationStorageClassificationMappingsDeleteHeaders BeginDelete(this IReplicationStorageClassificationMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string storageClassificationName, string storageClassificationMappingName)
         {
-                ((IReplicationStorageClassificationMappingsOperations)operations).BeginDeleteAsync(resourceGroupName, resourceName, fabricName, storageClassificationName, storageClassificationMappingName).GetAwaiter().GetResult();
+                return ((IReplicationStorageClassificationMappingsOperations)operations).BeginDeleteAsync(resourceGroupName, resourceName, fabricName, storageClassificationName, storageClassificationMappingName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -373,11 +363,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
-        /// The name of the recovery services vault.
+        /// The name of the Vault
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name.
@@ -391,9 +380,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IReplicationStorageClassificationMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string storageClassificationName, string storageClassificationMappingName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ReplicationStorageClassificationMappingsDeleteHeaders> BeginDeleteAsync(this IReplicationStorageClassificationMappingsOperations operations, string resourceGroupName, string resourceName, string fabricName, string storageClassificationName, string storageClassificationMappingName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, storageClassificationName, storageClassificationMappingName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, fabricName, storageClassificationName, storageClassificationMappingName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Lists the storage classification mappings for the fabric.

@@ -62,7 +62,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="hardwareProfile">Specifies the hardware profile related details of a scale set. Minimum
         /// api-version: 2021-11-01.
         /// </param>
-        public VirtualMachineScaleSetUpdateVMProfile(VirtualMachineScaleSetUpdateOSProfile osProfile = default(VirtualMachineScaleSetUpdateOSProfile), VirtualMachineScaleSetUpdateStorageProfile storageProfile = default(VirtualMachineScaleSetUpdateStorageProfile), VirtualMachineScaleSetUpdateNetworkProfile networkProfile = default(VirtualMachineScaleSetUpdateNetworkProfile), SecurityPostureReferenceUpdate securityPostureReference = default(SecurityPostureReferenceUpdate), SecurityProfile securityProfile = default(SecurityProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), VirtualMachineScaleSetExtensionProfile extensionProfile = default(VirtualMachineScaleSetExtensionProfile), string licenseType = default(string), BillingProfile billingProfile = default(BillingProfile), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile), string userData = default(string), VirtualMachineScaleSetHardwareProfile hardwareProfile = default(VirtualMachineScaleSetHardwareProfile))
+
+        /// <param name="interconnectBlockProfile">Specifies the Interconnect Block related details of a scale set. Minimum
+        /// api-version: 2026-03-01.
+        /// </param>
+        public VirtualMachineScaleSetUpdateVMProfile(VirtualMachineScaleSetUpdateOSProfile osProfile = default(VirtualMachineScaleSetUpdateOSProfile), VirtualMachineScaleSetUpdateStorageProfile storageProfile = default(VirtualMachineScaleSetUpdateStorageProfile), VirtualMachineScaleSetUpdateNetworkProfile networkProfile = default(VirtualMachineScaleSetUpdateNetworkProfile), SecurityPostureReferenceUpdate securityPostureReference = default(SecurityPostureReferenceUpdate), SecurityProfile securityProfile = default(SecurityProfile), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), VirtualMachineScaleSetExtensionProfile extensionProfile = default(VirtualMachineScaleSetExtensionProfile), string licenseType = default(string), BillingProfile billingProfile = default(BillingProfile), ScheduledEventsProfile scheduledEventsProfile = default(ScheduledEventsProfile), string userData = default(string), VirtualMachineScaleSetHardwareProfile hardwareProfile = default(VirtualMachineScaleSetHardwareProfile), InterconnectBlockProfile interconnectBlockProfile = default(InterconnectBlockProfile))
 
         {
             this.OsProfile = osProfile;
@@ -77,6 +81,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             this.ScheduledEventsProfile = scheduledEventsProfile;
             this.UserData = userData;
             this.HardwareProfile = hardwareProfile;
+            this.InterconnectBlockProfile = interconnectBlockProfile;
             CustomInit();
         }
 
@@ -162,5 +167,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "hardwareProfile")]
         public VirtualMachineScaleSetHardwareProfile HardwareProfile {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the Interconnect Block related details of a scale
+        /// set. Minimum api-version: 2026-03-01.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "interconnectBlockProfile")]
+        public InterconnectBlockProfile InterconnectBlockProfile {get; set; }
     }
 }

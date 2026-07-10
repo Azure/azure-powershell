@@ -14,28 +14,31 @@ if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzCdnEndpoint'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Stop-AzCdnEndpoint' {
+Describe 'Stop-AzCdnEndpoint'  {
     BeforeAll {
-        $script:endpointName = 'e-clipstest310-stop'
-        $script:origin = @{ Name = 'origin1'; HostName = 'host1.hello.com' }
-        New-AzCdnEndpoint -Name $script:endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location 'westus' -Origin $script:origin | Out-Null
-    }
+        $endpointName = 'e-clipstest333'
+        $origin = @{
+            Name = "origin1"
+            HostName = "host1.hello.com"
+        };
+        $location = "westus"
+        Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
 
-    AfterAll {
-        Remove-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
+        New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location -Origin $origin
     }
-
     It 'Stop' {
-        Stop-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $endpoint = Get-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $endpoint.ResourceState | Should -Be 'Stopped'
+        Stop-AzCdnEndpoint -Name $endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $res = Get-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName 
+        
+        $res.ResourceState | Should -Be "Stopped"
     }
 
-    It 'StopViaIdentityProfile' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'StopViaIdentity' {
+        $endpoint1 =  Start-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName 
+        Write-Host -ForegroundColor Green "Endpoint status: $($endpoint1.ResourceState)" 
+        $resObject = Get-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName
+        $res = Stop-AzCdnEndpoint -InputObject $resObject
 
-    It 'StopViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $res.ResourceState | Should -Be "Stopped"
     }
 }

@@ -65,7 +65,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 return;
             }
-            {_mtlsSetting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("mtlsSettings"), out var __jsonMtlsSettings) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdDomainMtlsParameters.FromJson(__jsonMtlsSettings) : _mtlsSetting;}
             {_azureDnsZone = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("azureDnsZone"), out var __jsonAzureDnsZone) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference.FromJson(__jsonAzureDnsZone) : _azureDnsZone;}
             {_preValidatedCustomDomainResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("preValidatedCustomDomainResourceId"), out var __jsonPreValidatedCustomDomainResourceId) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference.FromJson(__jsonPreValidatedCustomDomainResourceId) : _preValidatedCustomDomainResourceId;}
             {_profileName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("profileName"), out var __jsonProfileName) ? (string)__jsonProfileName : (string)_profileName;}
@@ -105,7 +104,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 return container;
             }
-            AddIf( null != this._mtlsSetting ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) this._mtlsSetting.ToJson(null,serializationMode) : null, "mtlsSettings" ,container.Add );
             AddIf( null != this._azureDnsZone ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) this._azureDnsZone.ToJson(null,serializationMode) : null, "azureDnsZone" ,container.Add );
             AddIf( null != this._preValidatedCustomDomainResourceId ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) this._preValidatedCustomDomainResourceId.ToJson(null,serializationMode) : null, "preValidatedCustomDomainResourceId" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead))

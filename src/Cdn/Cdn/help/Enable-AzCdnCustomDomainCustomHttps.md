@@ -290,7 +290,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProfileName
-Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+Name of the CDN profile which is unique within the resource group.
 
 ```yaml
 Type: System.String

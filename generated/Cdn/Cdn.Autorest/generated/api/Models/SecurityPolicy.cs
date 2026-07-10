@@ -11,7 +11,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     public partial class SecurityPolicy :
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicy,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IValidates
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IValidates,
+        Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IHeaderSerializable
     {
         /// <summary>
         /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProxyResource" />
@@ -26,6 +27,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)__proxyResource).Id; }
+
+        /// <summary>Backing field for <see cref="Location" /> property.</summary>
+        private string _location;
+
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Owned)]
+        public string Location { get => this._location; set => this._location = value; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)__proxyResource).Id = value ?? null; }
@@ -140,6 +147,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Origin(Microsoft.Azure.PowerShell.Cmdlets.Cdn.PropertyOrigin.Inherited)]
         public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)__proxyResource).Type; }
 
+        /// <param name="headers"></param>
+        void Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IHeaderSerializable.ReadHeaders(global::System.Net.Http.Headers.HttpResponseHeaders headers)
+        {
+            if (headers.TryGetValues("location", out var __locationHeader0))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyInternal)this).Location = System.Linq.Enumerable.FirstOrDefault(__locationHeader0) is string __headerLocationHeader0 ? __headerLocationHeader0 : (string)null;
+            }
+        }
+
         /// <summary>Creates an new <see cref="SecurityPolicy" /> instance.</summary>
         public SecurityPolicy()
         {
@@ -174,6 +190,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("NotStarted", "InProgress", "Succeeded", "Failed")]
         string DeploymentStatus { get;  }
+
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"",
+        SerializedName = @"location",
+        PossibleTypes = new [] { typeof(string) })]
+        string Location { get; set; }
         /// <summary>object which contains security policy parameters</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = false,
@@ -216,6 +243,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
     {
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("NotStarted", "InProgress", "Succeeded", "Failed")]
         string DeploymentStatus { get; set; }
+
+        string Location { get; set; }
         /// <summary>object which contains security policy parameters</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISecurityPolicyPropertiesParameters Parameter { get; set; }
         /// <summary>The name of the profile which holds the security policy.</summary>

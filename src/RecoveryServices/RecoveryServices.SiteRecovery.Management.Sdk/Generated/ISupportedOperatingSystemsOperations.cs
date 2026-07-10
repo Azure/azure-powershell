@@ -20,8 +20,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery
         /// Gets the data of supported operating systems by SRS.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is
-        /// present.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='resourceName'>
         /// The name of the recovery services vault.

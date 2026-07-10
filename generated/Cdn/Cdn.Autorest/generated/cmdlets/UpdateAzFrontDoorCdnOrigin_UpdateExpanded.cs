@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOrigin))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Description(@"update an existing origin within an origin group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}", ApiVersion = "2025-09-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}", ApiVersion = "2025-06-01")]
     public partial class UpdateAzFrontDoorCdnOrigin_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IContext
@@ -176,60 +176,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
 
-        /// <summary>Whether to enable origin capacity for a specific origin</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Whether to enable origin capacity for a specific origin")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Whether to enable origin capacity for a specific origin",
-        SerializedName = @"enabled",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Enabled", "Disabled")]
-        public string OriginCapacityResourceEnabled { get => _originUpdatePropertiesBody.OriginCapacityResourceEnabled ?? null; set => _originUpdatePropertiesBody.OriginCapacityResourceEnabled = value; }
-
-        /// <summary>The ingress rate limit threshold for an origin per minute in bytes</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The ingress rate limit threshold for an origin per minute in bytes")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The ingress rate limit threshold for an origin per minute in bytes",
-        SerializedName = @"originIngressRateThreshold",
-        PossibleTypes = new [] { typeof(long) })]
-        public long OriginCapacityResourceOriginIngressRateThreshold { get => _originUpdatePropertiesBody.OriginCapacityResourceOriginIngressRateThreshold ?? default(long); set => _originUpdatePropertiesBody.OriginCapacityResourceOriginIngressRateThreshold = value; }
-
-        /// <summary>The request rate limit threshold for an origin per minute</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The request rate limit threshold for an origin per minute")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The request rate limit threshold for an origin per minute",
-        SerializedName = @"originRequestRateThreshold",
-        PossibleTypes = new [] { typeof(long) })]
-        public long OriginCapacityResourceOriginRequestRateThreshold { get => _originUpdatePropertiesBody.OriginCapacityResourceOriginRequestRateThreshold ?? default(long); set => _originUpdatePropertiesBody.OriginCapacityResourceOriginRequestRateThreshold = value; }
-
-        /// <summary>The nearest origin capacity pop region for an origin</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The nearest origin capacity pop region for an origin")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The nearest origin capacity pop region for an origin",
-        SerializedName = @"region",
-        PossibleTypes = new [] { typeof(string) })]
-        public string OriginCapacityResourceRegion { get => _originUpdatePropertiesBody.OriginCapacityResourceRegion ?? null; set => _originUpdatePropertiesBody.OriginCapacityResourceRegion = value; }
-
         /// <summary>Backing field for <see cref="OriginGroupName" /> property.</summary>
         private string _originGroupName;
 
-        /// <summary>Name of the origin group which is unique within the endpoint.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the origin group which is unique within the endpoint.")]
+        /// <summary>Name of the origin group which is unique within the profile.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the origin group which is unique within the profile.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Name of the origin group which is unique within the endpoint.",
+        Description = @"Name of the origin group which is unique within the profile.",
         SerializedName = @"originGroupName",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Path)]
@@ -298,13 +253,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cmdlets
         private string _profileName;
 
         /// <summary>
-        /// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+        /// Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.")]
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.",
+        Description = @"Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.",
         SerializedName = @"profileName",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.ParameterCategory.Path)]

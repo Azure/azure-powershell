@@ -143,10 +143,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointInternal)this).ProfileName = (string) content.GetValueForProperty("ProfileName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointInternal)this).ProfileName, global::System.Convert.ToString);
             }
-            if (content.Contains("EnforceMtl"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointInternal)this).EnforceMtl = (string) content.GetValueForProperty("EnforceMtl",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointInternal)this).EnforceMtl, global::System.Convert.ToString);
-            }
             if (content.Contains("ProvisioningState"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointInternal)this).ProvisioningState = (string) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointInternal)this).ProvisioningState, global::System.Convert.ToString);
@@ -239,10 +235,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("ProfileName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointInternal)this).ProfileName = (string) content.GetValueForProperty("ProfileName",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointInternal)this).ProfileName, global::System.Convert.ToString);
-            }
-            if (content.Contains("EnforceMtl"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointInternal)this).EnforceMtl = (string) content.GetValueForProperty("EnforceMtl",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdEndpointInternal)this).EnforceMtl, global::System.Convert.ToString);
             }
             if (content.Contains("ProvisioningState"))
             {

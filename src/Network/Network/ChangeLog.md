@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 8.0.1
+* Onboarded `Microsoft.HorizonDB/clusters` to Private Link Common Cmdlets
+
 ## Version 8.0.0
 * Added ChangeSafety Support
 * Changed `UserAssignedIdentityId` type to string[]

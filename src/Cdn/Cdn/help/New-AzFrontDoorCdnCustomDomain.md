@@ -16,9 +16,9 @@ Create a new domain within the specified profile.
 ```
 New-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AzureDnsZoneId <String>] [-ExtendedProperty <Hashtable>] [-HostName <String>]
- [-MtlSettingScenario <String>] [-PropertiesPreValidatedCustomDomainResourceId <String>]
- [-TlsSetting <IAfdDomainHttpsParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PropertiesPreValidatedCustomDomainResourceId <String>] [-TlsSetting <IAfdDomainHttpsParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
@@ -38,7 +38,7 @@ New-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileName <String> 
 ### CreateViaIdentityProfileExpanded
 ```
 New-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileInputObject <ICdnIdentity>
- [-AzureDnsZoneId <String>] [-ExtendedProperty <Hashtable>] [-HostName <String>] [-MtlSettingScenario <String>]
+ [-AzureDnsZoneId <String>] [-ExtendedProperty <Hashtable>] [-HostName <String>]
  [-PropertiesPreValidatedCustomDomainResourceId <String>] [-TlsSetting <IAfdDomainHttpsParameters>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -CustomDomainName
-Name of the domain under the profile which is unique globally.
+Name of the domain under the profile which is unique globally
 
 ```yaml
 Type: System.String
@@ -212,21 +212,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MtlSettingScenario
-Supported scenarios for establishing mTLS connection.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityProfileExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -258,7 +243,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProfileName
-Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
 
 ```yaml
 Type: System.String

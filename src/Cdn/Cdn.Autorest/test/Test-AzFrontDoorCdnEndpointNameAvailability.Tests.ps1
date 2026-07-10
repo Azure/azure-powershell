@@ -17,22 +17,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzFrontDoorCdnEndpointNa
 Describe 'Test-AzFrontDoorCdnEndpointNameAvailability'  {
     It 'CheckExpanded' {
         $resourceType = "Microsoft.Cdn/Profiles/AfdEndpoints"
+        
+        $endpointName = 'e-clipstest140'
+        Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
 
-        # Create an endpoint to test name availability against
-        $existingEndpointName = 'end-nameavail01'
-        Write-Host -ForegroundColor Green "Create FrontDoor endpoint for name availability test: $existingEndpointName"
-        New-AzFrontDoorCdnEndpoint -EndpointName $existingEndpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global | Out-Null
-
-        # Non-existing name should be available
-        $fakeEndpointName = 'e-clipstest140'
-        $nameAvailability = Test-AzFrontDoorCdnEndpointNameAvailability -ResourceGroupName $env.ResourceGroupName -Name $fakeEndpointName -Type $resourceType
+        $nameAvailability = Test-AzFrontDoorCdnEndpointNameAvailability -ResourceGroupName $env.ResourceGroupName -Name $endpointName -Type $resourceType
         $nameAvailability.NameAvailable | Should -BeTrue
-
-        # Existing name should not be available
-        $nameAvailability = Test-AzFrontDoorCdnEndpointNameAvailability -ResourceGroupName $env.ResourceGroupName -Name $existingEndpointName -Type $resourceType
+        
+        $nameAvailability = Test-AzFrontDoorCdnEndpointNameAvailability -ResourceGroupName $env.ResourceGroupName -Name $env.FrontDoorEndpointName -Type $resourceType
         $nameAvailability.NameAvailable | Should -BeFalse
-
-        # Cleanup
-        Remove-AzFrontDoorCdnEndpoint -EndpointName $existingEndpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName
     }
 }

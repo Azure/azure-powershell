@@ -88,6 +88,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
             switch ( json.StringProperty("typeName") )
             {
+                case "DeliveryRuleUrlRedirectActionParameters":
+                {
+                    return new UrlRedirectActionParameters(json);
+                }
+                case "DeliveryRuleUrlSigningActionParameters":
+                {
+                    return new UrlSigningActionParameters(json);
+                }
+                case "DeliveryRuleOriginGroupOverrideActionParameters":
+                {
+                    return new OriginGroupOverrideActionParameters(json);
+                }
+                case "DeliveryRuleUrlRewriteActionParameters":
+                {
+                    return new UrlRewriteActionParameters(json);
+                }
+                case "DeliveryRuleHeaderActionParameters":
+                {
+                    return new HeaderActionParameters(json);
+                }
                 case "DeliveryRuleCacheExpirationActionParameters":
                 {
                     return new CacheExpirationActionParameters(json);
@@ -96,33 +116,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
                 {
                     return new CacheKeyQueryStringActionParameters(json);
                 }
-                case "DeliveryRuleEdgeActionParameters":
-                {
-                    return new DeliveryRuleEdgeActionParameters(json);
-                }
-                case "DeliveryRuleHeaderActionParameters":
-                {
-                    return new HeaderActionParameters(json);
-                }
                 case "DeliveryRuleRouteConfigurationOverrideActionParameters":
                 {
                     return new RouteConfigurationOverrideActionParameters(json);
-                }
-                case "DeliveryRuleOriginGroupOverrideActionParameters":
-                {
-                    return new OriginGroupOverrideActionParameters(json);
-                }
-                case "DeliveryRuleUrlRedirectActionParameters":
-                {
-                    return new UrlRedirectActionParameters(json);
-                }
-                case "DeliveryRuleUrlRewriteActionParameters":
-                {
-                    return new UrlRewriteActionParameters(json);
-                }
-                case "DeliveryRuleUrlSigningActionParameters":
-                {
-                    return new UrlSigningActionParameters(json);
                 }
             }
             return new DeliveryRuleActionParameters(json);

@@ -91,7 +91,7 @@ Gets an existing origin within an origin group.
 Gets an existing origin group within a profile.
 
 ### [Get-AzFrontDoorCdnOriginGroupResourceUsage](Get-AzFrontDoorCdnOriginGroupResourceUsage.md)
-Checks the quota and actual usage of endpoints under the given Azure Front Door profile.
+Checks the quota and actual usage of endpoints under the given Azure Front Door profile..
 
 ### [Get-AzFrontDoorCdnProfile](Get-AzFrontDoorCdnProfile.md)
 Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
@@ -109,7 +109,7 @@ Gets an existing delivery rule within a rule set.
 Gets an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile.
 
 ### [Get-AzFrontDoorCdnRuleSetResourceUsage](Get-AzFrontDoorCdnRuleSetResourceUsage.md)
-Checks the quota and actual usage of endpoints under the given Azure Front Door profile.
+Checks the quota and actual usage of endpoints under the given Azure Front Door profile..
 
 ### [Get-AzFrontDoorCdnSecret](Get-AzFrontDoorCdnSecret.md)
 Gets an existing Secret within a profile.
@@ -307,9 +307,6 @@ Create an in-memory object for DeliveryRuleClientPortCondition.
 
 ### [New-AzFrontDoorCdnRuleCookiesConditionObject](New-AzFrontDoorCdnRuleCookiesConditionObject.md)
 Create an in-memory object for DeliveryRuleCookiesCondition.
-
-### [New-AzFrontDoorCdnRuleEdgeActionObject](New-AzFrontDoorCdnRuleEdgeActionObject.md)
-Create an in-memory object for EdgeAction.
 
 ### [New-AzFrontDoorCdnRuleHostNameConditionObject](New-AzFrontDoorCdnRuleHostNameConditionObject.md)
 Create an in-memory object for DeliveryRuleHostNameCondition.
