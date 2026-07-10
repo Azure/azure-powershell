@@ -20,10 +20,10 @@ using Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet;
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
 {
     /// <summary>
-    /// Unit test for get azure data lake gen2 file content cmdlet
+    /// Unit test for get azure data lake gen2 item content cmdlet
     /// </summary>
     [TestClass]
-    public class GetAzDataLakeGen2FileContentTest : StorageBlobTestBase
+    public class GetAzDataLakeGen2ItemContentTest : StorageBlobTestBase
     {
         private GetAzDataLakeGen2ItemContentCommand command = null;
 
