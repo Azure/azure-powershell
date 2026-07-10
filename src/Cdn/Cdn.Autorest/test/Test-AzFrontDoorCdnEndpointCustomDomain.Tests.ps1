@@ -16,19 +16,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzFrontDoorCdnEndpointCu
 
 Describe 'Test-AzFrontDoorCdnEndpointCustomDomain'  {
     It 'ValidateExpanded' {
-        # Create endpoint for custom domain validation testing
-        $endpointName = 'end-cdvalid01'
-        Write-Host -ForegroundColor Green "Create FrontDoor endpoint for custom domain validation test: $endpointName"
-        New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global | Out-Null
-
         $hostName = "test.dev.cdn.azure.cn"
-        Test-AzFrontDoorCdnEndpointCustomDomain -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -HostName $hostName
+        Test-AzFrontDoorCdnEndpointCustomDomain -EndpointName $env.FrontDoorEndpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -HostName $hostName
+    }
 
-        # ViaIdentity
-        $endpointObject = Get-AzFrontdoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $endpointName
+    It 'ValidateViaIdentityExpanded' {
+        $hostName = "test.dev.cdn.azure.cn"
+        $endpointObject = Get-AzFrontdoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $env.FrontDoorEndpointName 
         Test-AzFrontDoorCdnEndpointCustomDomain -HostName $hostName -InputObject $endpointObject
-
-        # Cleanup
-        Remove-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName
     }
 }

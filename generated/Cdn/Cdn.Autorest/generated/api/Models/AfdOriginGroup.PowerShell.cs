@@ -83,6 +83,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdOriginGroupPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupInternal)this).Location, global::System.Convert.ToString);
+            }
             if (content.Contains("SystemDataCreatedBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
@@ -191,6 +195,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             if (content.Contains("Property"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdOriginGroupPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IAfdOriginGroupInternal)this).Location, global::System.Convert.ToString);
             }
             if (content.Contains("SystemDataCreatedBy"))
             {

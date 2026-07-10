@@ -202,7 +202,7 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults/PwsTest-rcm-vault/replicationFabrics/PwsTest-rcm-vault-vmwarefabric?api-version=2025-08-01",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults/PwsTest-rcm-vault/replicationFabrics/PwsTest-rcm-vault-vmwarefabric?api-version=2026-02-01",
                         "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9Qd3NUZXN0LXJjbS12YXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvUHdzVGVzdC1yY20tdmF1bHQtdm13YXJlZmFicmljP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
@@ -271,7 +271,7 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults/PwsTest-rcm-vault/replicationFabrics/PwsTest-rcm-vault-vmwarefabric/replicationProtectionContainers/PwsTest-rc0015replicationcontainer?api-version=2025-08-01",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults/PwsTest-rcm-vault/replicationFabrics/PwsTest-rcm-vault-vmwarefabric/replicationProtectionContainers/PwsTest-rc0015replicationcontainer?api-version=2026-02-01",
                         "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9Qd3NUZXN0LXJjbS12YXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvUHdzVGVzdC1yY20tdmF1bHQtdm13YXJlZmFicmljL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvUHdzVGVzdC1yYzAwMTVyZXBsaWNhdGlvbmNvbnRhaW5lcj9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
@@ -340,7 +340,7 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults/PwsTest-rcm-vault/replicationFabrics/PwsTest-rcm-vault-vmwarefabric/replicationProtectionContainers/PwsTest-rc0015replicationcontainer/replicationProtectionContainerMappings?api-version=2025-08-01",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults/PwsTest-rcm-vault/replicationFabrics/PwsTest-rcm-vault-vmwarefabric/replicationProtectionContainers/PwsTest-rc0015replicationcontainer/replicationProtectionContainerMappings?api-version=2026-02-01",
                         "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9Qd3NUZXN0LXJjbS12YXVsdC9yZXBsaWNhdGlvbkZhYnJpY3MvUHdzVGVzdC1yY20tdmF1bHQtdm13YXJlZmFicmljL3JlcGxpY2F0aW9uUHJvdGVjdGlvbkNvbnRhaW5lcnMvUHdzVGVzdC1yYzAwMTVyZXBsaWNhdGlvbmNvbnRhaW5lci9yZXBsaWNhdGlvblByb3RlY3Rpb25Db250YWluZXJNYXBwaW5ncz9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
@@ -409,7 +409,7 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults/PwsTest-rcm-vault/replicationPolicies/appconsistency-policy-failback?api-version=2025-08-01",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults/PwsTest-rcm-vault/replicationPolicies/appconsistency-policy-failback?api-version=2026-02-01",
                         "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9Qd3NUZXN0LXJjbS12YXVsdC9yZXBsaWNhdGlvblBvbGljaWVzL2FwcGNvbnNpc3RlbmN5LXBvbGljeS1mYWlsYmFjaz9hcGktdmVyc2lvbj0yMDI1LTA4LTAx",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
@@ -478,7 +478,7 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults/PwsTest-rcm-vault/replicationPolicies/crashconsistency-policy-failback?api-version=2025-08-01",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults/PwsTest-rcm-vault/replicationPolicies/crashconsistency-policy-failback?api-version=2026-02-01",
                         "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9Qd3NUZXN0LXJjbS12YXVsdC9yZXBsaWNhdGlvblBvbGljaWVzL2NyYXNoY29uc2lzdGVuY3ktcG9saWN5LWZhaWxiYWNrP2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
@@ -547,7 +547,7 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults/PwsTest-rcm-vault/replicationPolicies/24-hour-replication-policy?api-version=2025-08-01",
+                        "RequestUri":  "/subscriptions/b8aef8e1-37df-4f17-a537-f10e183c8eca/resourceGroups/PwsTest/providers/Microsoft.RecoveryServices/vaults/PwsTest-rcm-vault/replicationPolicies/24-hour-replication-policy?api-version=2026-02-01",
                         "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvYjhhZWY4ZTEtMzdkZi00ZjE3LWE1MzctZjEwZTE4M2M4ZWNhL3Jlc291cmNlR3JvdXBzL1B3c1Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9Qd3NUZXN0LXJjbS12YXVsdC9yZXBsaWNhdGlvblBvbGljaWVzLzI0LWhvdXItcmVwbGljYXRpb24tcG9saWN5P2FwaS12ZXJzaW9uPTIwMjUtMDgtMDE=",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {

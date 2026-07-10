@@ -65,14 +65,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 return;
             }
-            {_authentication = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("authentication"), out var __jsonAuthentication) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OriginAuthenticationProperties.FromJson(__jsonAuthentication) : _authentication;}
-            {_profileName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("profileName"), out var __jsonProfileName) ? (string)__jsonProfileName : (string)_profileName;}
-            {_loadBalancingSetting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("loadBalancingSettings"), out var __jsonLoadBalancingSettings) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.LoadBalancingSettingsParameters.FromJson(__jsonLoadBalancingSettings) : _loadBalancingSetting;}
-            {_healthProbeSetting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonObject>("healthProbeSettings"), out var __jsonHealthProbeSettings) ? Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.HealthProbeParameters.FromJson(__jsonHealthProbeSettings) : _healthProbeSetting;}
-            {_trafficRestorationTimeToHealedOrNewEndpointsInMinute = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNumber>("trafficRestorationTimeToHealedOrNewEndpointsInMinutes"), out var __jsonTrafficRestorationTimeToHealedOrNewEndpointsInMinutes) ? (int?)__jsonTrafficRestorationTimeToHealedOrNewEndpointsInMinutes : _trafficRestorationTimeToHealedOrNewEndpointsInMinute;}
-            {_sessionAffinityState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("sessionAffinityState"), out var __jsonSessionAffinityState) ? (string)__jsonSessionAffinityState : (string)_sessionAffinityState;}
-            {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
-            {_deploymentStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString>("deploymentStatus"), out var __jsonDeploymentStatus) ? (string)__jsonDeploymentStatus : (string)_deploymentStatus;}
+            __afdOriginGroupUpdatePropertiesParameters = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdOriginGroupUpdatePropertiesParameters(json);
+            __afdStateProperties = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.AfdStateProperties(json);
             AfterFromJson(json);
         }
 
@@ -107,23 +101,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
             {
                 return container;
             }
-            AddIf( null != this._authentication ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) this._authentication.ToJson(null,serializationMode) : null, "authentication" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._profileName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._profileName.ToString()) : null, "profileName" ,container.Add );
-            }
-            AddIf( null != this._loadBalancingSetting ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) this._loadBalancingSetting.ToJson(null,serializationMode) : null, "loadBalancingSettings" ,container.Add );
-            AddIf( null != this._healthProbeSetting ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) this._healthProbeSetting.ToJson(null,serializationMode) : null, "healthProbeSettings" ,container.Add );
-            AddIf( null != this._trafficRestorationTimeToHealedOrNewEndpointsInMinute ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNumber((int)this._trafficRestorationTimeToHealedOrNewEndpointsInMinute) : null, "trafficRestorationTimeToHealedOrNewEndpointsInMinutes" ,container.Add );
-            AddIf( null != (((object)this._sessionAffinityState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._sessionAffinityState.ToString()) : null, "sessionAffinityState" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._provisioningState)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._provisioningState.ToString()) : null, "provisioningState" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._deploymentStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonString(this._deploymentStatus.ToString()) : null, "deploymentStatus" ,container.Add );
-            }
+            __afdOriginGroupUpdatePropertiesParameters?.ToJson(container, serializationMode);
+            __afdStateProperties?.ToJson(container, serializationMode);
             AfterToJson(ref container);
             return container;
         }

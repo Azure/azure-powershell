@@ -14,22 +14,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnEndpoint'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzCdnEndpoint' {
-    BeforeAll {
-        $script:endpointName = 'e-clipstest310-new'
-        $script:location = "westus"
-        $script:origin = @{ Name = "origin1"; HostName = "host1.hello.com" }
-    }
-
-    AfterAll {
-        Remove-AzCdnEndpoint -Name $script:endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
-    }
-
+Describe 'New-AzCdnEndpoint'  {
     It 'CreateExpanded' {
-        $endpoint = New-AzCdnEndpoint -Name $script:endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $script:location -Origin $script:origin
-        $endpoint.Name | Should -Be $script:endpointName
-        $endpoint.Location | Should -Be $script:location
-        $endpoint.Origin.Name | Should -Be $script:origin.Name
-        $endpoint.Origin.HostName | Should -Be $script:origin.HostName
+            $endpointName = 'e-clipstest310-24-09-01'
+            $origin = @{
+                Name = "origin1"
+                HostName = "host1.hello.com"
+            };
+            $location = "westus"
+            Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
+
+            $endpoint = New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location -Origin $origin
+            
+            $endpoint.Name | Should -Be $endpointName
+            $endpoint.Location | Should -Be $location
+            $endpoint.Origin.Name | Should -Be $origin.Name
+            $endpoint.Origin.HostName | Should -Be $origin.HostName
     }
 }

@@ -14,20 +14,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnProfile'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzCdnProfile' {
-    BeforeAll {
-        $script:cdnProfileName = 'cdnpps01-new'
-        $script:profileSku = 'Standard_Microsoft'
-    }
-
-    AfterAll {
-        Remove-AzCdnProfile -Name $script:cdnProfileName -ResourceGroupName $env.ResourceGroupName -ErrorAction SilentlyContinue
-    }
-
+Describe 'New-AzCdnProfile'  {
     It 'CreateExpanded' {
-        $cdnProfile = New-AzCdnProfile -SkuName $script:profileSku -Name $script:cdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
-        $cdnProfile.Name | Should -Be $script:cdnProfileName
-        $cdnProfile.SkuName | Should -Be $script:profileSku
-        $cdnProfile.Location | Should -Be 'Global'
+        $cdnProfileName = 'cdnpps01'
+        Write-Host -ForegroundColor Green "Use CdnProfileName : $($cdnProfileName)"
+
+        $profileSku = "Standard_Microsoft";
+        $frontDoorCdnProfile = New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
+
+        $frontDoorCdnProfile.Name | Should -Be $cdnProfileName
+        $frontDoorCdnProfile.SkuName | Should -Be $profileSku
+        $frontDoorCdnProfile.Location | Should -Be "Global"
     }
 }

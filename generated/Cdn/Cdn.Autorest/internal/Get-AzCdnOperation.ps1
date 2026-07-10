@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-List the operations for the provider
+Lists all of the available CDN REST API operations.
 .Description
-List the operations for the provider
+Lists all of the available CDN REST API operations.
 .Example
 {{ Add code here }}
 .Example

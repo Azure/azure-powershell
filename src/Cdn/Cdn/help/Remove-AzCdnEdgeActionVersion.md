@@ -23,12 +23,16 @@ Delete EdgeActionVersion resource
 
 ## EXAMPLES
 
-### Example 1: Remove an EdgeAction version
+### Example 1: Remove an Edge Action Version
 ```powershell
-Remove-AzCdnEdgeActionVersion -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -Version v1
+Remove-AzCdnEdgeActionVersion -ResourceGroupName "testps-rg-da16jm" -EdgeActionName "edgeaction001" -Version "v1"
 ```
 
-Removes the specified EdgeAction version.
+```output
+True
+```
+
+Remove a specific Edge Action Version
 
 ## PARAMETERS
 

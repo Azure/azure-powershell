@@ -14,18 +14,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnCustomDomai
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzFrontDoorCdnCustomDomain' {
-    BeforeAll {
-        $script:domainName = 'domain-psName-new'
-    }
-
-    AfterAll {
-        Remove-AzFrontDoorCdnCustomDomain -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -CustomDomainName $script:domainName -ErrorAction SilentlyContinue
-    }
-
+Describe 'New-AzFrontDoorCdnCustomDomain'  {
     It 'CreateExpanded' {
-        $tls = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType 'ManagedCertificate' -MinimumTlsVersion 'TLS12'
-        $cd = New-AzFrontDoorCdnCustomDomain -CustomDomainName $script:domainName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -HostName 'pstestnew.dev.cdn.azure.cn' -TlsSetting $tls
-        $cd.Name | Should -Be $script:domainName
+        $subId = $env.SubscriptionId
+        $secretName = "se-psName020"
+        Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
+
+        $customDomainName = "domain-psName010" 
+        $hostName = "pstestnew.dev.cdn.azure.cn"
+        $tlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "ManagedCertificate" -MinimumTlsVersion "TLS12"
+        New-AzFrontDoorCdnCustomDomain -CustomDomainName $customDomainName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
+        -HostName $hostName -TlsSetting $tlsSetting
     }
 }

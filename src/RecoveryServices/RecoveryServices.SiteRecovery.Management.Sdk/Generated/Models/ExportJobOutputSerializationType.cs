@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 
     public static class ExportJobOutputSerializationType
     {
+        /// <summary>
+        /// Json
+        /// </summary>
         public const string Json = "Json";
+        /// <summary>
+        /// Xml
+        /// </summary>
         public const string Xml = "Xml";
+        /// <summary>
+        /// Excel
+        /// </summary>
         public const string Excel = "Excel";
     }
 }

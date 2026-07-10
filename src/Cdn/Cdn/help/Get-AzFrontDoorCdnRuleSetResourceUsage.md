@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzFrontDoorCdnRuleSetResourceUsage
 
 ## SYNOPSIS
-Checks the quota and actual usage of endpoints under the given Azure Front Door profile.
+Checks the quota and actual usage of endpoints under the given Azure Front Door profile..
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Get-AzFrontDoorCdnRuleSetResourceUsage -ProfileName <String> -ResourceGroupName 
 ```
 
 ## DESCRIPTION
-Checks the quota and actual usage of endpoints under the given Azure Front Door profile.
+Checks the quota and actual usage of endpoints under the given Azure Front Door profile..
 
 ## EXAMPLES
 
@@ -55,7 +55,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProfileName
-Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
 
 ```yaml
 Type: System.String

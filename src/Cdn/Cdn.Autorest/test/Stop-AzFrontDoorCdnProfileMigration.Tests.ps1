@@ -14,8 +14,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzFrontDoorCdnProfileMig
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Stop-AzFrontDoorCdnProfileMigration' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+Describe 'Stop-AzFrontDoorCdnProfileMigration' -Tag 'LiveOnly' {
+    It 'Delete' {
+        $subId = $env.SubscriptionId
+
+        $frontDoorCdnProfileName = 'fdp-pstest030'
+        Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
+
+        $profileSku = "Standard_AzureFrontDoor";
+        New-AzFrontDoorCdnProfile -SubscriptionId $subId -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
+
+        Stop-AzFrontDoorCdnProfileMigration -SubscriptionId $subId -ResourceGroupName $env.ResourceGroupName -ProfileName $frontDoorCdnProfileName
     }
 }

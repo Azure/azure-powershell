@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="id">The recovery point Id.
         /// </param>
 
-        /// <param name="name">The name of the recovery point.
+        /// <param name="name">The recovery point name.
         /// </param>
 
         /// <param name="type">The resource type.
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public string Id {get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the recovery point.
+        /// Gets or sets the recovery point name.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "name")]
         public string Name {get; set; }

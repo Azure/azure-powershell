@@ -20,7 +20,7 @@ Delete EdgeAction resource
 .Description
 Delete EdgeAction resource
 .Example
-Remove-AzCdnEdgeAction -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001
+Remove-AzCdnEdgeAction -ResourceGroupName "testps-rg-da16jm" -Name "edgeaction001"
 
 .Outputs
 System.Boolean
@@ -154,7 +154,7 @@ begin {
         }
 
         $mapping = @{
-            Delete = 'Az.Cdn.custom\Remove-AzCdnEdgeAction';
+            Delete = 'Az.Cdn.private\Remove-AzCdnEdgeAction_Delete';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             if ($testPlayback) {
