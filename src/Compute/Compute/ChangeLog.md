@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 11.7.0
 * ComputeRP related cmdlets will now use 2026-03-01 version of the ComputeRP API.
 * Added support for configuring ScheduledEventsPolicy on Virtual Machines, Virtual Machine Scale Sets, and Availability Sets.
     - Added `-ScheduledEventsApiVersion` and `-EnableAllInstancesDown` parameters to `Update-AzAvailabilitySet`, `Update-AzVM`, `New-AzVM` (SimpleParameterSet), and `New-AzVmss` cmdlets.
