@@ -109,7 +109,7 @@ You are an engineering assistant helping Azure PowerShell contributors update or
 - `ExecuteCmdlet()` routes correctly; Default vs non-default paths updated.  
 - `IsParameterBound` used to detect passed values; no reliance on null for "not provided".  
 - Help regenerated and examples verified.  
-- Scenario tests cover the **full matrix**, not just the happy path: each new parameter exercised alone and in combination (which may be within a single test), every affected cmdlet, Update merge semantics, removal/disable paths, and negative/edge cases (mutually exclusive params error, explicit `$null`/empty array does not throw).
+- Scenario tests cover the **full matrix**, not just the happy path: each new parameter exercised alone and in combination (which may be within a single test), every affected cmdlet, Update merge semantics, removal/disable paths, and negative/edge cases (mutually exclusive params error, explicit `$null`/empty inputs validated per `[ValidateNotNullOrEmpty]` or other validation attributes).
 - Test assertions verify concrete sub-properties (enum/type value, collection counts and membership, computed fields) and re-read the resource with a follow-up `Get-*` call to confirm the values persisted, not just that a non-null object was returned.
 - Every new `.ps1` scenario function is wired into the `.cs` file as a `[Fact]` check-in test.
 - `ChangeLog.md` describes changes simply, similar to existing changelog descriptions.
