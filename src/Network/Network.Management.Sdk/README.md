@@ -141,9 +141,11 @@ directive:
     where: $.definitions["SecurityPerimeterResource"]
     transform: $["x-ms-azure-resource"] = true
 # Keep ApplicationGatewayFirewallDisabledRuleGroup.rules element non-nullable (IList<int>).
-# The swagger element is a plain { "type": "integer" } with no x-nullable, but @autorest/powershell 4.x
-# defaults primitive array elements to nullable, flipping the generated property to IList<int?>.
-# That is an unintended breaking change (analyzer 3030) vs the legacy IList<int>, so force x-nullable=false.
+# rules.items carried "x-nullable": false in every hand-written swagger api-version from 2017-03-01
+# through 2025-03-01. The TypeSpec migration (azure-rest-api-specs #40226, api-version 2025-05-01)
+# dropped it, so the emitted swagger now allows null elements and autorest generates IList<int?>.
+# WAF rule IDs are never null; this is an unintended breaking change (analyzer 3030) vs the released
+# IList<int>. Restore x-nullable=false here until the TypeSpec source is fixed to re-emit it.
   - from: swagger-document
     where: $.definitions.ApplicationGatewayFirewallDisabledRuleGroup.properties.rules.items
     transform: $["x-nullable"] = false

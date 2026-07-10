@@ -19,7 +19,7 @@
     },
     "adminPassword": {
       "type": "securestring",
-      "defaultValue": "Pa$$word2017"
+      "defaultValue": "[concat('P', uniqueString(resourceGroup().id), 'x!2A')]"
     },
     "storageLocation": {
       "type": "string",
