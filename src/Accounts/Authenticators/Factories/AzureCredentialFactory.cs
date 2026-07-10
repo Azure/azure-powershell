@@ -53,9 +53,10 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Factories
             string username,
             string homeAccountId,
             string tenantId,
-            Func<OnBeforeTokenRequestData, Task> onBeforeTokenRequest)
+            Func<OnBeforeTokenRequestData, Task> onBeforeTokenRequest,
+            string agenticSessionId)
         {
-            return new MsalSharedCacheCredential(app, username, homeAccountId, tenantId, onBeforeTokenRequest);
+            return new MsalSharedCacheCredential(app, username, homeAccountId, tenantId, onBeforeTokenRequest, agenticSessionId);
         }
     }
 }

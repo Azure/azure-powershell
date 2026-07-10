@@ -36,19 +36,22 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         private readonly string _username;
         private readonly string _homeAccountId;
         private readonly string _tenantId;
+        private readonly string _agenticSessionId;
 
         public MsalSharedCacheCredential(
             IPublicClientApplication app,
             string username = null,
             string homeAccountId = null,
             string tenantId = null,
-            Func<OnBeforeTokenRequestData, Task> onBeforeTokenRequest = null)
+            Func<OnBeforeTokenRequestData, Task> onBeforeTokenRequest = null,
+            string agenticSessionId = null)
         {
             _app = app ?? throw new ArgumentNullException(nameof(app));
             _username = username;
             _homeAccountId = homeAccountId;
             _tenantId = tenantId;
             _onBeforeTokenRequest = onBeforeTokenRequest;
+            _agenticSessionId = agenticSessionId;
         }
 
         public override AccessToken GetToken(TokenRequestContext requestContext, CancellationToken cancellationToken = default)
@@ -70,13 +73,13 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
             // Bypass MSAL's AT cache on agent<->manual transitions so a cached
             // agent-tagged token can't leak into a subsequent manual call.
-            if (AgenticSession.HasSessionModeChanged())
+            if (AgenticSession.HasSessionModeChanged(_agenticSessionId))
             {
                 builder.WithForceRefresh(true);
             }
 
             var result = await builder.ExecuteAsync(cancellationToken).ConfigureAwait(false);
-            AgenticSession.MarkAcquired();
+            AgenticSession.MarkAcquired(_agenticSessionId);
             return new AccessToken(result.AccessToken, result.ExpiresOn);
         }
 

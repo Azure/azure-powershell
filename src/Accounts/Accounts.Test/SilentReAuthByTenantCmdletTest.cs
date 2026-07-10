@@ -174,7 +174,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                         It.IsAny<string>(),
                         It.IsAny<string>(),
                         It.IsAny<string>(),
-                        It.IsNotNull<Func<OnBeforeTokenRequestData, Task>>()))
+                        It.IsNotNull<Func<OnBeforeTokenRequestData, Task>>(),
+                        It.IsAny<string>()))
                     .Returns(() => new TokenCredentialMock(
                     (times) =>
                     {
@@ -230,7 +231,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                         It.IsAny<string>(),
                         It.IsAny<string>(),
                         It.IsAny<string>(),
-                        It.IsNotNull<Func<OnBeforeTokenRequestData, Task>>()))
+                        It.IsNotNull<Func<OnBeforeTokenRequestData, Task>>(),
+                        It.IsAny<string>()))
                     .Returns(() => new TokenCredentialMock(
                     (firstTime) =>
                     {
@@ -295,7 +297,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                         It.IsAny<string>(),
                         It.IsAny<string>(),
                         It.IsAny<string>(),
-                        It.IsNotNull<Func<OnBeforeTokenRequestData, Task>>()))
+                        It.IsNotNull<Func<OnBeforeTokenRequestData, Task>>(),
+                        It.IsAny<string>()))
                     .Returns(() => new TokenCredentialMock(
                     (times) =>
                     {

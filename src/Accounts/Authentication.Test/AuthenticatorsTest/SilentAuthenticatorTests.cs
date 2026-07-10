@@ -80,7 +80,8 @@ namespace Common.Authenticators.Test
                     It.IsAny<string>(),
                     It.IsAny<string>(),
                     It.IsAny<string>(),
-                    It.IsNotNull<Func<OnBeforeTokenRequestData, Task>>()))
+                    It.IsNotNull<Func<OnBeforeTokenRequestData, Task>>(),
+                    It.IsAny<string>()))
                 .Returns(() => new TokenCredentialMock());
             AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => mockAzureCredentialFactory.Object, true);
             InMemoryTokenCacheProvider cacheProvider = new InMemoryTokenCacheProvider();
@@ -149,17 +150,18 @@ namespace Common.Authenticators.Test
         public async Task AgenticScenario_ManualThenAgent_OnlyAgentAddsClientSession()
         {
             const string sessionId = "checkin-scenario-manual-then-agent";
-            var callback = await RunSilentAndCaptureCallback();
 
             OnBeforeTokenRequestData manualRequest;
             using (new AgentSessionScope(null))
             {
-                manualRequest = await InvokeCallback(callback);
+                var manualCallback = await RunSilentAndCaptureCallback();
+                manualRequest = await InvokeCallback(manualCallback);
             }
             OnBeforeTokenRequestData agentRequest;
             using (new AgentSessionScope(sessionId))
             {
-                agentRequest = await InvokeCallback(callback);
+                var agentCallback = await RunSilentAndCaptureCallback();
+                agentRequest = await InvokeCallback(agentCallback);
             }
 
             AssertNoClientSession(manualRequest);
@@ -171,17 +173,18 @@ namespace Common.Authenticators.Test
         public async Task AgenticScenario_AgentThenManual_OnlyAgentAddsClientSession()
         {
             const string sessionId = "checkin-scenario-agent-then-manual";
-            var callback = await RunSilentAndCaptureCallback();
 
             OnBeforeTokenRequestData agentRequest;
             using (new AgentSessionScope(sessionId))
             {
-                agentRequest = await InvokeCallback(callback);
+                var agentCallback = await RunSilentAndCaptureCallback();
+                agentRequest = await InvokeCallback(agentCallback);
             }
             OnBeforeTokenRequestData manualRequest;
             using (new AgentSessionScope(null))
             {
-                manualRequest = await InvokeCallback(callback);
+                var manualCallback = await RunSilentAndCaptureCallback();
+                manualRequest = await InvokeCallback(manualCallback);
             }
 
             AssertClientSession(agentRequest, sessionId);
@@ -194,17 +197,18 @@ namespace Common.Authenticators.Test
         {
             const string sessionA = "checkin-scenario-agent-A";
             const string sessionB = "checkin-scenario-agent-B";
-            var callback = await RunSilentAndCaptureCallback();
 
             OnBeforeTokenRequestData requestA;
             using (new AgentSessionScope(sessionA))
             {
-                requestA = await InvokeCallback(callback);
+                var callbackA = await RunSilentAndCaptureCallback();
+                requestA = await InvokeCallback(callbackA);
             }
             OnBeforeTokenRequestData requestB;
             using (new AgentSessionScope(sessionB))
             {
-                requestB = await InvokeCallback(callback);
+                var callbackB = await RunSilentAndCaptureCallback();
+                requestB = await InvokeCallback(callbackB);
             }
 
             AssertClientSession(requestA, sessionA);
@@ -212,6 +216,27 @@ namespace Common.Authenticators.Test
             Assert.NotEqual(
                 requestA.BodyParameters[AgenticSession.ClientSessionParamName],
                 requestB.BodyParameters[AgenticSession.ClientSessionParamName]);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public async Task AgenticScenario_SessionIdChangedAfterAuthenticate_CallbackUsesSnapshot()
+        {
+            const string capturedSession = "checkin-snapshot-captured";
+            const string laterSession = "checkin-snapshot-changed-later";
+
+            Func<OnBeforeTokenRequestData, Task> callback;
+            using (new AgentSessionScope(capturedSession))
+            {
+                callback = await RunSilentAndCaptureCallback();
+            }
+            OnBeforeTokenRequestData request;
+            using (new AgentSessionScope(laterSession))
+            {
+                request = await InvokeCallback(callback);
+            }
+
+            AssertClientSession(request, capturedSession);
         }
 
         [Fact]
@@ -258,9 +283,10 @@ namespace Common.Authenticators.Test
                     It.IsAny<string>(),
                     It.IsAny<string>(),
                     It.IsAny<string>(),
-                    It.IsNotNull<Func<OnBeforeTokenRequestData, Task>>()))
-                .Callback<IPublicClientApplication, string, string, string, Func<OnBeforeTokenRequestData, Task>>(
-                    (_, _, _, _, cb) => captured = cb)
+                    It.IsNotNull<Func<OnBeforeTokenRequestData, Task>>(),
+                    It.IsAny<string>()))
+                .Callback<IPublicClientApplication, string, string, string, Func<OnBeforeTokenRequestData, Task>, string>(
+                    (_, _, _, _, cb, _) => captured = cb)
                 .Returns(() => mockCredential);
             AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => mockAzureCredentialFactory.Object, true);
 

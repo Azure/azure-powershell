@@ -42,18 +42,25 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             AzureSession.Instance.TryGetComponent(nameof(AzureCredentialFactory), out AzureCredentialFactory azureCredentialFactory);
             var disableInstanceDiscovery = silentParameters.DisableInstanceDiscovery ?? false;
             var publicClient = tokenCacheProvider.CreatePublicClient(authority, tenantId, disableInstanceDiscovery);
+
+            // Snapshot the agentic session id once per Authenticate() call so the claims
+            // challenge, OnBeforeTokenRequest body parameter, and cache-mode decisions all
+            // agree — even if COPILOT_AGENT_SESSION_ID changes on another thread while
+            // MSAL is in flight.
+            var agenticSessionId = AgenticSession.TryGetSessionId();
+            var sessionModeChanged = AgenticSession.HasSessionModeChanged(agenticSessionId);
+
             var credential = azureCredentialFactory.CreateMsalSharedCacheCredential(
                 publicClient,
                 silentParameters.UserId,
                 silentParameters.HomeAccountId,
                 tenantId,
-                ApplyAgenticSessionAsync);
+                data => ApplyAgenticSessionAsync(data, agenticSessionId),
+                agenticSessionId);
 
             // Attach xms_cli_sid claim on session-marker change: makes ESTS embed it in
             // the token and causes MSAL to bypass its AT cache. Unchanged mode falls
             // through to a normal cache lookup so same-session repeats can reuse the token.
-            var agenticSessionId = AgenticSession.TryGetSessionId();
-            var sessionModeChanged = AgenticSession.HasSessionModeChanged();
             var agenticClaims = (sessionModeChanged && agenticSessionId != null)
                 ? AgenticSession.BuildClaimsChallenge(agenticSessionId)
                 : null;
@@ -65,7 +72,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 return cacheOptions != null && !(cacheOptions is UnsafeTokenCacheOptions);
             };
             CollectTelemetry(credential);
-            if (AgenticSession.IsActive())
+            if (agenticSessionId != null)
             {
                 telemetry.SetProperty(AgenticSession.TelemetryPropertyName, bool.TrueString);
             }
@@ -82,9 +89,8 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 silentParameters.HomeAccountId);
         }
 
-        private static Task ApplyAgenticSessionAsync(Microsoft.Identity.Client.Extensibility.OnBeforeTokenRequestData data)
+        private static Task ApplyAgenticSessionAsync(Microsoft.Identity.Client.Extensibility.OnBeforeTokenRequestData data, string sessionId)
         {
-            var sessionId = AgenticSession.TryGetSessionId();
             if (sessionId != null)
             {
                 data.BodyParameters[AgenticSession.ClientSessionParamName] = sessionId;

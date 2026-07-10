@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 {
     public class InMemoryTokenCacheProvider : PowerShellTokenCacheProvider
     {
+        private readonly object _syncRoot = new object();
+
         private InMemoryTokenCacheOptions InMemoryTokenCacheOptions { get; set; }
 
         public InMemoryTokenCacheProvider(byte[] tokenCache)
@@ -55,9 +57,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             client.UserTokenCache.SetBeforeAccess(args =>
             {
-                var bytes = InMemoryTokenCacheOptions.CachedToken.ToArray();
-                if (bytes.Length > 0)
+                lock (_syncRoot)
                 {
+                    var bytes = InMemoryTokenCacheOptions.CachedToken.ToArray();
                     args.TokenCache.DeserializeMsalV3(bytes, shouldClearExistingCache: true);
                 }
             });
@@ -65,7 +67,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             {
                 if (args.HasStateChanged)
                 {
-                    InMemoryTokenCacheOptions = new InMemoryTokenCacheOptions(args.TokenCache.SerializeMsalV3());
+                    lock (_syncRoot)
+                    {
+                        InMemoryTokenCacheOptions = new InMemoryTokenCacheOptions(args.TokenCache.SerializeMsalV3());
+                    }
                 }
             });
         }

@@ -43,23 +43,22 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public static bool IsActive() => TryGetSessionId() != null;
 
-        /// <summary>True when the session marker (empty=manual, session id=agent) differs from
-        /// the last successful acquisition — callers force-refresh MSAL's AT cache in that case.</summary>
-        public static bool HasSessionModeChanged()
+        /// <summary>True when the given session marker (empty=manual, session id=agent) differs
+        /// from the last successful acquisition — callers force-refresh MSAL's AT cache in that case.</summary>
+        public static bool HasSessionModeChanged(string sessionId)
         {
-            var current = TryGetSessionId() ?? string.Empty;
+            var current = sessionId ?? string.Empty;
             lock (_syncRoot)
             {
                 return !string.Equals(_lastSessionMarker, current, StringComparison.Ordinal);
             }
         }
 
-        public static void MarkAcquired()
+        public static void MarkAcquired(string sessionId)
         {
-            var current = TryGetSessionId();
             lock (_syncRoot)
             {
-                _lastSessionMarker = current ?? string.Empty;
+                _lastSessionMarker = sessionId ?? string.Empty;
             }
         }
 
