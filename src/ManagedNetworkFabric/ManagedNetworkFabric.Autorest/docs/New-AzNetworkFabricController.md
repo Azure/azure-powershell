@@ -15,11 +15,11 @@ Create a Network Fabric Controller.
 ### CreateExpanded (Default)
 ```
 New-AzNetworkFabricController -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-Annotation <String>]
+ [-SubscriptionId <String>] [-Annotation <String>] [-EnableSystemAssignedIdentity]
  [-InfrastructureExpressRouteConnection <IExpressRouteConnectionInformation[]>] [-Ipv4AddressSpace <String>]
  [-Ipv6AddressSpace <String>] [-IsWorkloadManagementNetworkEnabled <String>]
  [-ManagedResourceGroupConfigurationLocation <String>] [-ManagedResourceGroupConfigurationName <String>]
- [-NfcSku <String>] [-Tag <Hashtable>]
+ [-NfcSku <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
  [-WorkloadExpressRouteConnection <IExpressRouteConnectionInformation[]>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -105,6 +105,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -333,6 +348,22 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
 Parameter Sets: CreateExpanded
 Aliases:
 

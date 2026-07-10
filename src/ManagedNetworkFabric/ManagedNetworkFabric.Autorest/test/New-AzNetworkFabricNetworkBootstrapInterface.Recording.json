@@ -1,0 +1,221 @@
+{
+  "New-AzNetworkFabricNetworkBootstrapInterface+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/example-device/networkBootstrapInterfaces/example-interface?api-version=2025-07-15+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/example-device/networkBootstrapInterfaces/example-interface?api-version=2025-07-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "1"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "CommandName": [
+          "New-AzNetworkFabricNetworkBootstrapInterface"
+        ],
+        "FullCommandName": [
+          "New-AzNetworkFabricNetworkBootstrapInterface_CreateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.3",
+          "Az.ManagedNetworkFabric/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 09 Jul 2026 20:00:00 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "1019"
+        ]
+      },
+      "Content": "{\"properties\": {\"annotation\": \"annotation\", \"administrativeState\": \"Enabled\", \"interfaceType\": \"Management\", \"additionalDescription\": \"additionalDescription\", \"serialNumber\": \"Vendor;DCS-7280XXX-24;12.05;JPE2111XXXX\", \"provisioningState\": \"Succeeded\", \"physicalIdentifier\": \"physicalIdentifier\", \"connectedTo\": \"connectedTo\", \"description\": \"description\", \"ipv4Address\": \"10.10.10.10\", \"ipv6Address\": \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\"}, \"id\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/example-device/networkBootstrapInterfaces/example-interface\", \"name\": \"example-interface\", \"type\": \"microsoft.managednetworkfabric/networkbootstrapdevices/networkbootstrapinterfaces\", \"systemData\": {\"createdBy\": \"REDACTED\", \"createdByType\": \"User\", \"createdAt\": \"2023-06-09T04:51:41.251Z\", \"lastModifiedBy\": \"UserId\", \"lastModifiedByType\": \"User\", \"lastModifiedAt\": \"2023-06-09T04:51:41.251Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkFabricNetworkBootstrapInterface+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/example-device/networkBootstrapInterfaces/example-interface?api-version=2025-07-15+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/example-device/networkBootstrapInterfaces/example-interface?api-version=2025-07-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "2"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "CommandName": [
+          "New-AzNetworkFabricNetworkBootstrapInterface"
+        ],
+        "FullCommandName": [
+          "New-AzNetworkFabricNetworkBootstrapInterface_CreateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.3",
+          "Az.ManagedNetworkFabric/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 09 Jul 2026 20:00:00 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "1019"
+        ]
+      },
+      "Content": "{\"properties\": {\"annotation\": \"annotation\", \"administrativeState\": \"Enabled\", \"interfaceType\": \"Management\", \"additionalDescription\": \"additionalDescription\", \"serialNumber\": \"Vendor;DCS-7280XXX-24;12.05;JPE2111XXXX\", \"provisioningState\": \"Succeeded\", \"physicalIdentifier\": \"physicalIdentifier\", \"connectedTo\": \"connectedTo\", \"description\": \"description\", \"ipv4Address\": \"10.10.10.10\", \"ipv6Address\": \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\"}, \"id\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/example-device/networkBootstrapInterfaces/example-interface\", \"name\": \"example-interface\", \"type\": \"microsoft.managednetworkfabric/networkbootstrapdevices/networkbootstrapinterfaces\", \"systemData\": {\"createdBy\": \"REDACTED\", \"createdByType\": \"User\", \"createdAt\": \"2023-06-09T04:51:41.251Z\", \"lastModifiedBy\": \"UserId\", \"lastModifiedByType\": \"User\", \"lastModifiedAt\": \"2023-06-09T04:51:41.251Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkFabricNetworkBootstrapInterface+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/example-device/networkBootstrapInterfaces/example-interface?api-version=2025-07-15+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/example-device/networkBootstrapInterfaces/example-interface?api-version=2025-07-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "3"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "CommandName": [
+          "New-AzNetworkFabricNetworkBootstrapInterface"
+        ],
+        "FullCommandName": [
+          "New-AzNetworkFabricNetworkBootstrapInterface_CreateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.3",
+          "Az.ManagedNetworkFabric/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "x-ms-correlation-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 09 Jul 2026 20:00:00 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "1018"
+        ]
+      },
+      "Content": "{\"properties\": {\"annotation\": \"annotation\", \"administrativeState\": \"Enabled\", \"interfaceType\": \"Management\", \"additionalDescription\": \"additionalDescription\", \"serialNumber\": \"Vendor;DCS-7280XXX-24;12.05;JPE2111XXXX\", \"provisioningState\": \"Accepted\", \"physicalIdentifier\": \"physicalIdentifier\", \"connectedTo\": \"connectedTo\", \"description\": \"description\", \"ipv4Address\": \"10.10.10.10\", \"ipv6Address\": \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\"}, \"id\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/example-device/networkBootstrapInterfaces/example-interface\", \"name\": \"example-interface\", \"type\": \"microsoft.managednetworkfabric/networkbootstrapdevices/networkbootstrapinterfaces\", \"systemData\": {\"createdBy\": \"REDACTED\", \"createdByType\": \"User\", \"createdAt\": \"2023-06-09T04:51:41.251Z\", \"lastModifiedBy\": \"UserId\", \"lastModifiedByType\": \"User\", \"lastModifiedAt\": \"2023-06-09T04:51:41.251Z\"}}",
+      "isContentBase64": false
+    }
+  }
+}

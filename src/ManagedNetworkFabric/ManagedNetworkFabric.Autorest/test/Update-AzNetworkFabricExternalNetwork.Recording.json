@@ -1,0 +1,72 @@
+{
+  "Update-AzNetworkFabricExternalNetwork+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3DomainName/externalNetworks/externalNetworkName?api-version=2025-07-15+1": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3DomainName/externalNetworks/externalNetworkName?api-version=2025-07-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "1"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "CommandName": [
+          "Update-AzNetworkFabricExternalNetwork"
+        ],
+        "FullCommandName": [
+          "Update-AzNetworkFabricExternalNetwork_UpdateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.3",
+          "Az.ManagedNetworkFabric/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 09 Jul 2026 20:00:00 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "3189"
+        ]
+      },
+      "Content": "{\"properties\": {\"annotation\": \"annotation\", \"networkToNetworkInterconnectId\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabrics/fabricNameTest/networkToNetworkInterconnects/example-nni\", \"importRoutePolicy\": {\"importIpv4RoutePolicyId\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName\", \"importIpv6RoutePolicyId\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName\"}, \"exportRoutePolicy\": {\"exportIpv4RoutePolicyId\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName\", \"exportIpv6RoutePolicyId\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/routePolicyName\"}, \"peeringOption\": \"OptionA\", \"optionBProperties\": {\"importRouteTargets\": [\"65046:10039\"], \"exportRouteTargets\": [\"65046:10039\"], \"routeTargets\": {\"importIpv4RouteTargets\": [\"65046:10050\"], \"importIpv6RouteTargets\": [\"65046:10050\"], \"exportIpv4RouteTargets\": [\"65046:10050\"], \"exportIpv6RouteTargets\": [\"65046:10050\"]}}, \"optionAProperties\": {\"primaryIpv4Prefix\": \"10.1.1.0/30\", \"primaryIpv6Prefix\": \"3FFE:FFFF:0:CD30::a0/126\", \"secondaryIpv4Prefix\": \"10.1.1.4/30\", \"secondaryIpv6Prefix\": \"3FFE:FFFF:0:CD30::a4/126\", \"mtu\": 1500, \"vlanId\": 1001, \"fabricASN\": 1234, \"peerASN\": 65047, \"bfdConfiguration\": {\"administrativeState\": \"Enabled\", \"intervalInMilliSeconds\": 300, \"multiplier\": 10}, \"ingressAclId\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/accessControlLists/example-acl\", \"egressAclId\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/accessControlLists/example-acl\", \"bmpConfiguration\": {\"configurationState\": \"Enabled\"}}, \"staticRouteConfiguration\": {\"bfdConfiguration\": {\"administrativeState\": \"Enabled\", \"intervalInMilliSeconds\": 300, \"multiplier\": 10}, \"ipv4Routes\": [{\"prefix\": \"10.0.0.1/24\", \"nextHop\": [\"10.0.0.1\"]}], \"ipv6Routes\": [{\"prefix\": \"2fff::/64\", \"nextHop\": [\"3ffe::1\"]}]}, \"configurationState\": \"Succeeded\", \"provisioningState\": \"Accepted\", \"administrativeState\": \"Enabled\"}, \"id\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/example-l3domain/externalNetworks/example-externalnetwork\", \"name\": \"example-externalnetwork\", \"type\": \"microsoft.managednetworkfabric/l3IsolationDomains/externalnetworks\", \"systemData\": {\"createdBy\": \"REDACTED\", \"createdByType\": \"User\", \"createdAt\": \"2023-06-09T04:51:41.251Z\", \"lastModifiedBy\": \"UserId\", \"lastModifiedByType\": \"User\", \"lastModifiedAt\": \"2023-06-09T04:51:41.251Z\"}}",
+      "isContentBase64": false
+    }
+  }
+}

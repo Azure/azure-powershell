@@ -1,0 +1,282 @@
+{
+  "Update-AzNetworkFabricController+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/Fab2LabNFC-5-0/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/controllerName?api-version=2025-07-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/Fab2LabNFC-5-0/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/controllerName?api-version=2025-07-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "1"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "CommandName": [
+          "Update-AzNetworkFabricController"
+        ],
+        "FullCommandName": [
+          "Update-AzNetworkFabricController_UpdateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.3",
+          "Az.ManagedNetworkFabric/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 09 Jul 2026 20:00:00 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "2202"
+        ]
+      },
+      "Content": "{\"properties\": {\"annotation\": \"annotation\", \"infrastructureExpressRouteConnections\": [{\"expressRouteCircuitId\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.Network/expressRouteCircuits/expressRouteCircuitName\"}], \"workloadExpressRouteConnections\": [{\"expressRouteCircuitId\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.Network/expressRouteCircuits/expressRouteCircuitName\"}], \"infrastructureServices\": {\"ipv4AddressSpaces\": [\"172.253.0.0/19\"], \"ipv6AddressSpaces\": []}, \"workloadServices\": {\"ipv4AddressSpaces\": [\"172.253.28.0/22\"], \"ipv6AddressSpaces\": []}, \"managedResourceGroupConfiguration\": {\"name\": \"managedResourceGroupName\", \"location\": \"eastus\"}, \"networkFabricIds\": [\"/subscriptions/xxxxxx/resourceGroups/resourcegroupname/providers/Microsoft.ManagedNetworkFabric/networkFabrics/eaxmple-fabric\"], \"isWorkloadManagementNetworkEnabled\": \"True\", \"tenantInternetGatewayIds\": [\"/subscriptions/xxxxxx/resourceGroups/resourcegroupname/providers/Microsoft.ManagedNetworkFabric/internetGateways/example-internetGateway\"], \"ipv4AddressSpace\": \"172.253.0.0/19\", \"ipv6AddressSpace\": \"::/60\", \"nfcSku\": \"Standard\", \"lastOperation\": {\"details\": \"Succeeded\"}, \"provisioningState\": \"Accepted\"}, \"identity\": {\"principalId\": \"0000ABCD-0A0B-0000-0000-000000ABCDEF\", \"tenantId\": \"0000ABCD-0A0B-0000-0000-000000ABCDEF\", \"type\": \"None\", \"userAssignedIdentities\": {\"key4876\": {\"principalId\": \"0000ABCD-0A0B-0000-0000-000000ABCDEF\", \"clientId\": \"0000ABCD-0A0B-0000-0000-000000ABCDEF\"}}}, \"tags\": {\"keyId\": \"KeyValue\"}, \"location\": \"eastus\", \"id\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/example-networkController\", \"name\": \"example-networkController\", \"type\": \"microsoft.managednetworkfabric/networkfabriccontrollers\", \"systemData\": {\"createdBy\": \"REDACTED\", \"createdByType\": \"User\", \"createdAt\": \"2023-06-09T04:51:41.251Z\", \"lastModifiedBy\": \"UserId\", \"lastModifiedByType\": \"User\", \"lastModifiedAt\": \"2023-06-09T04:51:41.251Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzNetworkFabricController+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/Fab2LabNFC-5-0/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/controllerName?api-version=2025-07-15+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/Fab2LabNFC-5-0/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/controllerName?api-version=2025-07-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "2"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "CommandName": [
+          "Update-AzNetworkFabricController"
+        ],
+        "FullCommandName": [
+          "Update-AzNetworkFabricController_UpdateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.3",
+          "Az.ManagedNetworkFabric/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 09 Jul 2026 20:00:00 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "2160"
+        ]
+      },
+      "Content": "{\"properties\": {\"annotation\": \"annotation\", \"infrastructureExpressRouteConnections\": [{\"expressRouteCircuitId\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.Network/expressRouteCircuits/expressRouteCircuitName\"}], \"workloadExpressRouteConnections\": [{\"expressRouteCircuitId\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.Network/expressRouteCircuits/expressRouteCircuitName\"}], \"infrastructureServices\": {\"ipv4AddressSpaces\": [\"172.253.0.0/19\"], \"ipv6AddressSpaces\": []}, \"workloadServices\": {\"ipv4AddressSpaces\": [\"172.253.28.0/22\"], \"ipv6AddressSpaces\": []}, \"managedResourceGroupConfiguration\": {\"name\": \"managedResourceGroupName\", \"location\": \"eastus\"}, \"networkFabricIds\": [\"/subscriptions/xxxxxx/resourceGroups/resourcegroupname/providers/Microsoft.ManagedNetworkFabric/networkFabrics/eaxmple-fabric\"], \"isWorkloadManagementNetworkEnabled\": \"True\", \"tenantInternetGatewayIds\": [\"/subscriptions/xxxxxx/resourceGroups/resourcegroupname/providers/Microsoft.ManagedNetworkFabric/internetGateways/example-internetGateway\"], \"ipv4AddressSpace\": \"172.253.0.0/19\", \"ipv6AddressSpace\": \"::/60\", \"nfcSku\": \"Standard\", \"provisioningState\": \"Succeeded\"}, \"identity\": {\"principalId\": \"0000ABCD-0A0B-0000-0000-000000ABCDEF\", \"tenantId\": \"0000ABCD-0A0B-0000-0000-000000ABCDEF\", \"type\": \"None\", \"userAssignedIdentities\": {\"key4876\": {\"principalId\": \"0000ABCD-0A0B-0000-0000-000000ABCDEF\", \"clientId\": \"0000ABCD-0A0B-0000-0000-000000ABCDEF\"}}}, \"tags\": {\"keyId\": \"KeyValue\"}, \"location\": \"eastus\", \"id\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/example-networkController\", \"name\": \"example-networkController\", \"type\": \"microsoft.managednetworkfabric/networkfabriccontrollers\", \"systemData\": {\"createdBy\": \"REDACTED\", \"createdByType\": \"User\", \"createdAt\": \"2023-06-09T04:51:41.251Z\", \"lastModifiedBy\": \"UserId\", \"lastModifiedByType\": \"User\", \"lastModifiedAt\": \"2023-06-09T04:51:41.251Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzNetworkFabricController+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/Fab2LabNFC-5-0/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/controllerName?api-version=2025-07-15+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/Fab2LabNFC-5-0/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/controllerName?api-version=2025-07-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "3"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "CommandName": [
+          "Update-AzNetworkFabricController"
+        ],
+        "FullCommandName": [
+          "Update-AzNetworkFabricController_UpdateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.3",
+          "Az.ManagedNetworkFabric/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 09 Jul 2026 20:00:00 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "2203"
+        ]
+      },
+      "Content": "{\"properties\": {\"annotation\": \"annotation\", \"infrastructureExpressRouteConnections\": [{\"expressRouteCircuitId\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.Network/expressRouteCircuits/expressRouteCircuitName\"}], \"workloadExpressRouteConnections\": [{\"expressRouteCircuitId\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.Network/expressRouteCircuits/expressRouteCircuitName\"}], \"infrastructureServices\": {\"ipv4AddressSpaces\": [\"172.253.0.0/19\"], \"ipv6AddressSpaces\": []}, \"workloadServices\": {\"ipv4AddressSpaces\": [\"172.253.28.0/22\"], \"ipv6AddressSpaces\": []}, \"managedResourceGroupConfiguration\": {\"name\": \"managedResourceGroupName\", \"location\": \"eastus\"}, \"networkFabricIds\": [\"/subscriptions/xxxxxx/resourceGroups/resourcegroupname/providers/Microsoft.ManagedNetworkFabric/networkFabrics/eaxmple-fabric\"], \"isWorkloadManagementNetworkEnabled\": \"True\", \"tenantInternetGatewayIds\": [\"/subscriptions/xxxxxx/resourceGroups/resourcegroupname/providers/Microsoft.ManagedNetworkFabric/internetGateways/example-internetGateway\"], \"ipv4AddressSpace\": \"172.253.0.0/19\", \"ipv6AddressSpace\": \"::/60\", \"nfcSku\": \"Standard\", \"lastOperation\": {\"details\": \"Succeeded\"}, \"provisioningState\": \"Succeeded\"}, \"identity\": {\"principalId\": \"0000ABCD-0A0B-0000-0000-000000ABCDEF\", \"tenantId\": \"0000ABCD-0A0B-0000-0000-000000ABCDEF\", \"type\": \"None\", \"userAssignedIdentities\": {\"key4876\": {\"principalId\": \"0000ABCD-0A0B-0000-0000-000000ABCDEF\", \"clientId\": \"0000ABCD-0A0B-0000-0000-000000ABCDEF\"}}}, \"tags\": {\"keyId\": \"KeyValue\"}, \"location\": \"eastus\", \"id\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/example-networkController\", \"name\": \"example-networkController\", \"type\": \"microsoft.managednetworkfabric/networkfabriccontrollers\", \"systemData\": {\"createdBy\": \"REDACTED\", \"createdByType\": \"User\", \"createdAt\": \"2023-06-09T04:51:41.251Z\", \"lastModifiedBy\": \"UserId\", \"lastModifiedByType\": \"User\", \"lastModifiedAt\": \"2023-06-09T04:51:41.251Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzNetworkFabricController+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/Fab2LabNFC-5-0/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/controllerName?api-version=2025-07-15+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/Fab2LabNFC-5-0/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/controllerName?api-version=2025-07-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [
+          "4"
+        ],
+        "x-ms-client-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "CommandName": [
+          "Update-AzNetworkFabricController"
+        ],
+        "FullCommandName": [
+          "Update-AzNetworkFabricController_UpdateExpanded"
+        ],
+        "ParameterSetName": [
+          "__AllParameterSets"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v0.0.0",
+          "PSVersion/v7.6.3",
+          "Az.ManagedNetworkFabric/0.1.0"
+        ],
+        "Authorization": [
+          "[Filtered]"
+        ]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "00000000-0000-0000-0000-000000000001"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 09 Jul 2026 20:00:00 GMT"
+        ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "2202"
+        ]
+      },
+      "Content": "{\"properties\": {\"annotation\": \"annotation\", \"infrastructureExpressRouteConnections\": [{\"expressRouteCircuitId\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.Network/expressRouteCircuits/expressRouteCircuitName\"}], \"workloadExpressRouteConnections\": [{\"expressRouteCircuitId\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.Network/expressRouteCircuits/expressRouteCircuitName\"}], \"infrastructureServices\": {\"ipv4AddressSpaces\": [\"172.253.0.0/19\"], \"ipv6AddressSpaces\": []}, \"workloadServices\": {\"ipv4AddressSpaces\": [\"172.253.28.0/22\"], \"ipv6AddressSpaces\": []}, \"managedResourceGroupConfiguration\": {\"name\": \"managedResourceGroupName\", \"location\": \"eastus\"}, \"networkFabricIds\": [\"/subscriptions/xxxxxx/resourceGroups/resourcegroupname/providers/Microsoft.ManagedNetworkFabric/networkFabrics/eaxmple-fabric\"], \"isWorkloadManagementNetworkEnabled\": \"True\", \"tenantInternetGatewayIds\": [\"/subscriptions/xxxxxx/resourceGroups/resourcegroupname/providers/Microsoft.ManagedNetworkFabric/internetGateways/example-internetGateway\"], \"ipv4AddressSpace\": \"172.253.0.0/19\", \"ipv6AddressSpace\": \"::/60\", \"nfcSku\": \"Standard\", \"lastOperation\": {\"details\": \"Succeeded\"}, \"provisioningState\": \"Accepted\"}, \"identity\": {\"principalId\": \"0000ABCD-0A0B-0000-0000-000000ABCDEF\", \"tenantId\": \"0000ABCD-0A0B-0000-0000-000000ABCDEF\", \"type\": \"None\", \"userAssignedIdentities\": {\"key4876\": {\"principalId\": \"0000ABCD-0A0B-0000-0000-000000ABCDEF\", \"clientId\": \"0000ABCD-0A0B-0000-0000-000000ABCDEF\"}}}, \"tags\": {\"keyId\": \"KeyValue\"}, \"location\": \"eastus\", \"id\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/example-networkController\", \"name\": \"example-networkController\", \"type\": \"microsoft.managednetworkfabric/networkfabriccontrollers\", \"systemData\": {\"createdBy\": \"REDACTED\", \"createdByType\": \"User\", \"createdAt\": \"2023-06-09T04:51:41.251Z\", \"lastModifiedBy\": \"UserId\", \"lastModifiedByType\": \"User\", \"lastModifiedAt\": \"2023-06-09T04:51:41.251Z\"}}",
+      "isContentBase64": false
+    }
+  }
+}
