@@ -78,7 +78,7 @@ Generally speaking, hero scenarios are implemented through customization through
 
 ### SDK-based Module
 
-Docs are generated through playPS, please see [platyPS](https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/help-generation.md#Installing-platyPS) for details. And developers should populate generated docs with examples.
+Docs are generated through Microsoft.PowerShell.PlatyPS, please see [Microsoft.PowerShell.PlatyPS](https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/help-generation.md#Installing-MicrosoftPowerShellPlatyPS) for details. And developers should populate generated docs with examples.
 
 ### Auto-gen Module
 

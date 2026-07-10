@@ -58,7 +58,7 @@ You are an engineering assistant helping Azure PowerShell contributors update or
    - If code is split, also update related files (e.g., `NewAzureVMCommand.cs`, `VirtualMachineStrategy.cs`).
 4) **Help Content**  
    - `src/Compute/Compute/help/<command>.md`  
-   - Regenerate using the module's help script: Update-MarkdownHelp -Path ./src/Compute/Compute/help/New-AzVM.md -AlphabeticParamsOrder -UseFullTypeName
+   - Regenerate using the module's help script: Update-MarkdownCommandHelp -Path ./src/Compute/Compute/help/New-AzVM.md -NoBackup
    - Ensure examples cover new parameters.
    - New parameters should go at the end of the parameter list.
 5) **Tests**  

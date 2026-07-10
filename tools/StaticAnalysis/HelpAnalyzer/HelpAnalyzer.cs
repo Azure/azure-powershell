@@ -11,9 +11,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
-using Markdown.MAML.Parser;
-using Markdown.MAML.Transformer;
+using Microsoft.PowerShell.PlatyPS;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -213,15 +211,12 @@ namespace StaticAnalysis.HelpAnalyzer
 
             Directory.SetCurrentDirectory(directory);
             var manifestFiles = Directory.EnumerateFiles(directory, "*.psd1").ToList();
-            if (manifestFiles.Count > 1)
-            {
-                manifestFiles = manifestFiles.Where(f => Path.GetFileName(f).IndexOf(service) >= 0).ToList();
-            }
+            
+            manifestFiles = manifestFiles.Count > 1 ?
+                manifestFiles.Where(f => Path.GetFileName(f).IndexOf(service) >= 0).ToList() :
+                manifestFiles.Count == 0 ? null : manifestFiles;
 
-            if (manifestFiles.Count == 0)
-            {
-                return;
-            }
+            if (manifestFiles == null) return;
 
             var psd1 = manifestFiles.FirstOrDefault();
             var parentDirectory = Directory.GetParent(psd1).FullName;
@@ -297,26 +292,22 @@ namespace StaticAnalysis.HelpAnalyzer
             foreach (var helpMarkdown in helpRecords)
             {
                 var file = Path.Combine(helpFolder, helpMarkdown + ".md");
-                var content = File.ReadAllText(file);
-                try
+                List<string> issues;
+                if (!MarkdownConverter.ValidateMarkdownFile(file, out issues))
                 {
-                    var parser = new MarkdownParser();
-                    var transformer = new ModelTransformerVersion2();
-                    var markdownModel = parser.ParseString(new[] { content });
-                    var model = transformer.NodeModelToMamlModel(markdownModel).FirstOrDefault();
-                }
-                catch (Exception ex)
-                {
-                    HelpIssue issue = new HelpIssue
+                    // ValidateMarkdownFile reports every check it ran, passing ones included.
+                    var failures = issues.Where(i => !i.StartsWith("PASS", StringComparison.OrdinalIgnoreCase));
+                    foreach (var issue in failures)
                     {
-                        Target = helpMarkdown,
-                        Severity = 1,
-                        ProblemId = PlatyPSSchemaViolation,
-                        Description = "Help content doesn't conform to PlatyPS Schema definition",
-                        Remediation = string.Format("No.")
-                    };
-                    helpLogger.LogRecord(issue);
-                    Console.Error.WriteLine($"Failed to parse {file} by PlatyPS, {ex.Message}");
+                        helpLogger.LogRecord(new HelpIssue
+                        {
+                            Target = helpMarkdown,
+                            Severity = 1,
+                            ProblemId = PlatyPSSchemaViolation,
+                            Description = "Help content doesn't conform to PlatyPS Schema definition",
+                            Remediation = string.Format("Fix the following issue in {0}: {1}", helpMarkdown, issue)
+                        });
+                    }
                 }
             }
         }
