@@ -129,7 +129,7 @@ You are an engineering assistant helping Azure PowerShell contributors update or
 - [ ] Examples updated to cover the new parameter(s).
 - [ ] If adding a new command, add it to the help/Az.Compute.md file
 - [ ] If adding a new command, register it in `Az.Compute.psd1` (`CmdletsToExport`, alphabetical order).
-- [ ] New scenario tests cover the full matrix: each new parameter exercised alone and in combination (may share a single test), every affected cmdlet, Update merge semantics, removal/disable paths, and negative/edge cases (mutually exclusive params, explicit `$null`/empty array).
+- [ ] New scenario tests cover the full matrix: each new parameter exercised alone and in combination (may share a single test), every affected cmdlet, Update merge semantics, removal/disable paths, and negative/edge cases (mutually exclusive params; `$null`/empty inputs validated per `[ValidateNotNullOrEmpty]` or other validation attributes).
 - [ ] Test assertions check concrete sub-properties (type/enum, collection counts and membership, computed fields) and re-read the resource with a follow-up `Get-*` call to confirm the values persisted.
 - [ ] Every new `.ps1` scenario function is wired into the `.cs` file as a `[Fact]` check-in test.
 - [ ] `ChangeLog.md` updated with a concise, user-focused entry under `## Upcoming Release`.
