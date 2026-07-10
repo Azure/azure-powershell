@@ -124,6 +124,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public ImmutabilityState? ImmutabilityState { get; set; }
 
         /// <summary>
+        /// Gets or sets the cost management granularity for the vault.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Cost Management Granularity for the vault. Allowed values are \"VaultLevel\", \"ProtectedItemLevel\", \"ProtectedItemWithParentTag\".")]
+        [ValidateSet("VaultLevel", "ProtectedItemLevel", "ProtectedItemWithParentTag")]
+        public CostManagementGranularity? CostManagementGranularity { get; set; }
+
+        /// <summary>
         /// Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Parameter deprecated. Please use SecureToken instead")]        
@@ -369,6 +376,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                         if (patchVault.Properties == null) { patchVault.Properties = new VaultProperties(); }
                         patchVault.Properties.RestoreSettings = csrSetting;
+                    }
+
+                    // update cost management granularity of the vault
+                    if(CostManagementGranularity != null)
+                    {
+                        if (patchVault.Properties == null) { patchVault.Properties = new VaultProperties(); }
+                        if (patchVault.Properties.CostManagementSettings == null) { patchVault.Properties.CostManagementSettings = new CostManagementSettings(); }
+                        patchVault.Properties.CostManagementSettings.GranularityLevel = CostManagementGranularity.ToString();
                     }
 
                     #endregion
