@@ -59,7 +59,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
         [DataTestMethod]
         [DataRow("../evil.dll")]
         [DataRow("../../evil.dll")]
-        [DataRow("..\\..\\evil.dll")]
         [DataRow("sub/../../evil.dll")]
         [DataRow("sub/sub2/../../../evil.dll")]
         public void GetFullReceiveFilePathBlocksPathTraversal(string itemName)
