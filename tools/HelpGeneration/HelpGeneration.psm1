@@ -123,16 +123,11 @@ function Test-AzMarkdownHelp
                             $fileErrors += "No description found for parameter $parameter"
                         }
                     }
-                    "\{\{\s*Fill \w+ Description\s*\}\}"
+                    "\{\{\s*Fill (\w+) Description\s*\}\}"
                     {
-                        if ($content[$idx-1] -match "^### -(.+)")
-                        {
-                            $parameter = $Matches[1]
-                        }
-                        else
-                        {
-                            $parameter = "(unknown)"
-                        }
+                        # The placeholder itself carries the parameter name (e.g. "{{ Fill Name Description }}");
+                        # the preceding "### -Name" header is separated by a blank line, so read the name here.
+                        $parameter = $Matches[1]
                         # TEMP: skip ProgressAction. Drop this once upstream regenerates help without the placeholder.
                         if ($parameter -ne "ProgressAction")
                         {
