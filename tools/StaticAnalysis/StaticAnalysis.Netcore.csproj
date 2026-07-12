@@ -46,9 +46,20 @@
     <Content Include="UXMetadataAnalyzer\PortalInputSchema.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
+  <!--
+    Microsoft.PowerShell.PlatyPS ships only to the PowerShell Gallery as a module (assemblies at
+    the module root and under Dependencies/, with no lib/<tfm>/ folder), so it cannot be consumed
+    via PackageReference. The assemblies below are copied from the 1.0.2 module payload.
+  -->
   <ItemGroup>
-    <Reference Include="Markdown.MAML">
-      <HintPath>lib\Markdown.MAML.dll</HintPath>
+    <Reference Include="Microsoft.PowerShell.PlatyPS">
+      <HintPath>lib\Microsoft.PowerShell.PlatyPS.dll</HintPath>
+    </Reference>
+    <Reference Include="Markdig.Signed">
+      <HintPath>lib\Markdig.Signed.dll</HintPath>
+    </Reference>
+    <Reference Include="YamlDotNet">
+      <HintPath>lib\YamlDotNet.dll</HintPath>
     </Reference>
   </ItemGroup>
 

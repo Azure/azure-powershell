@@ -214,7 +214,7 @@ try{
         }
 
         Import-Module $artifactPsd1Path
-        Import-Module platyPS
+        Import-Module Microsoft.PowerShell.PlatyPS -MinimumVersion 1.0.2
         $helpPath = Join-Path $parentModulePath 'help'
         $subModuleHelpPath = Join-Path $RepoRoot 'src' $ModuleRootName $SubModuleName 'docs'
 
@@ -224,17 +224,32 @@ try{
 
         if (-Not (Test-Path $helpPath)) {
             New-Item -Type Directory $helpPath -Force
-            New-MarkDownHelp -Module "Az.$ModuleRootName" -OutputFolder $helpPath -AlphabeticParamsOrder -UseFullTypeName -WithModulePage -ExcludeDontShow
+            # New-MarkdownCommandHelp writes into an 'Az.<Module>' subfolder under -OutputFolder,
+            # so generate into a temp folder and flatten the files into the module's help folder.
+            $tempDocFolder = Join-Path ([System.IO.Path]::GetTempPath()) ("help-" + [guid]::NewGuid())
+            New-Item -Type Directory $tempDocFolder -Force | Out-Null
+            New-MarkdownCommandHelp -ModuleInfo (Get-Module "Az.$ModuleRootName") -OutputFolder $tempDocFolder -WithModulePage -ExcludeDontShow | Out-Null
+            Get-ChildItem -Path $tempDocFolder -Recurse -File -Filter '*.md' | Copy-Item -Destination $helpPath -Force
+            Remove-Item -Path $tempDocFolder -Recurse -Force
+            # v1's -WithModulePage fills the module Description with '{{ Fill in the Description }}'
+            # and already sets 'Help Version: 1.0.0.0' in frontmatter, so only the description needs
+            # replacing here. (The legacy '{{ Update Download Link }}' / version body placeholders do
+            # not exist in v1 output; the download link is the frontmatter 'HelpInfoUri', left blank.)
             $indexPath = Join-Path $helpPath "Az.$ModuleRootName.md"
             $content = Get-Content -Path $indexPath
-            $content = $content -replace '{{ Update Download Link }}', "https://learn.microsoft.com/powershell/module/az.$($ModuleRootName.ToLower())"
-            $content = $content -replace '{{ Please enter version of help manually \(X.X.X.X\) format }}', '1.0.0.0'
-            $content = $content -replace '{{ Fill in the Description }}', "Microsoft Azure PowerShell: $ModuleRootName cmdlets"
+            $content = $content -replace '\{\{ Fill in the Description \}\}', "Microsoft Azure PowerShell: $ModuleRootName cmdlets"
             $content | Set-Content -Path $indexPath
         }
-        Get-ChildItem $subModuleHelpPath -Filter *-*.md | Copy-Item -Destination (Join-Path $helpPath $_.Name) -Force
+        Get-ChildItem $subModuleHelpPath -Filter *-*.md | Copy-Item -Destination $helpPath -Force
         Write-Host "Refreshing help markdown files under: $helpPath ..."
-        Update-MarkdownHelpModule -Path $helpPath -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow
+        $cmdletHelpFiles = Join-Path $helpPath '*-*.md'
+        Update-MarkdownCommandHelp -Path $cmdletHelpFiles -NoBackup
+        # Refresh the module page (Az.<Module>.md) from the updated command help.
+        $updatedHelp = Import-MarkdownCommandHelp -Path $cmdletHelpFiles
+        $moduleFile = Get-ChildItem -Path $helpPath -Filter "Az.$ModuleRootName.md" | Select-Object -First 1
+        if ($moduleFile) {
+            Update-MarkdownModuleFile -Path $moduleFile.FullName -CommandHelp $updatedHelp -NoBackup -Force
+        }
         foreach ($helpFile in (Get-ChildItem $helpPath -Filter "*-*.md" -Recurse)) {
             $cmdeltName = $helpFile.Name.Replace(".md", "")
             if ($exportedCommands -notcontains $cmdeltName)
