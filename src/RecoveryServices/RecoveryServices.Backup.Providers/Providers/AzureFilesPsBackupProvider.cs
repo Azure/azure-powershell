@@ -20,12 +20,14 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Rest.Azure.OData;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using BackupManagementType = Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 using RestAzureNS = Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
@@ -253,12 +255,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (string[])ProviderData[RestoreFSBackupItemParams.MultipleSourceFilePath] : null;
             string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
             bool isMUAOperation = ProviderData.ContainsKey(ResourceGuardParams.IsMUAOperation) ? (bool)ProviderData[ResourceGuardParams.IsMUAOperation] : false;
+            bool useSecondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];
+            string secondaryRegion = useSecondaryRegion ? (string)ProviderData[CRRParams.SecondaryRegion] : null;
 
             //validate file recovery request
             ValidateFileRestoreRequest(sourceFilePath, sourceFileType, multipleSourceFilePaths);
 
             //validate alternate location restore request
             ValidateLocationRestoreRequest(targetFileShareName, targetStorageAccountName, targetFolder);
+
+            // CRR supports only Alternate Location Restore for AFS
+            if (useSecondaryRegion && targetStorageAccountName == null)
+            {
+                throw new ArgumentException("Cross Region Restore for Azure Files supports only Alternate Location Restore. Please provide -TargetStorageAccountName and -TargetFileShareName.");
+            }
 
             if (targetFileShareName != null && targetStorageAccountName != null && targetFolder == null)
             {
@@ -367,6 +377,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             // check for MUA
             bool isMUAProtected = isMUAOperation;
+
+            // CRR path: serialize restoreRequest to CRR model and trigger cross-region restore
+            if (useSecondaryRegion)
+            {
+                var restoreRequestSerialized = JsonConvert.SerializeObject(restoreRequest);
+                CrrModel.AzureFileShareRestoreRequest restoreRequestCrr =
+                    JsonConvert.DeserializeObject<CrrModel.AzureFileShareRestoreRequest>(restoreRequestSerialized);
+
+                CrrModel.CrrAccessToken accessToken = ServiceClientAdapter.GetCRRAccessToken(
+                    recoveryPoint, secondaryRegion,
+                    vaultName: vaultName, resourceGroupName: resourceGroupName,
+                    backupManagementType: ServiceClientModel.BackupManagementType.AzureStorage);
+
+                CrrModel.CrossRegionRestoreRequest crrRestoreRequest = new CrrModel.CrossRegionRestoreRequest();
+                crrRestoreRequest.CrossRegionRestoreAccessDetails = accessToken;
+                crrRestoreRequest.RestoreRequest = restoreRequestCrr;
+
+                return ServiceClientAdapter.RestoreDiskSecondryRegion(
+                    recoveryPoint,
+                    crrRestoreRequest,
+                    targetStorageAccountLocation,
+                    secondaryRegion: secondaryRegion);
+            }
 
             var response = ServiceClientAdapter.RestoreDisk(
                 recoveryPoint,

@@ -515,6 +515,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 rpBase.RuleName = recoveryPoint.RecoveryPointProperties.RuleName;
             }
 
+            if (recoveryPoint.RecoveryPointTierDetails != null)
+            {
+                bool isHardenedRP = false;
+                bool isInstantRecoverable = false;
+
+                foreach (ServiceClientModel.RecoveryPointTierInformation tierInfo in recoveryPoint.RecoveryPointTierDetails)
+                {
+                    if (tierInfo.Status == ServiceClientModel.RecoveryPointTierStatus.Valid)
+                    {
+                        if (tierInfo.Type == ServiceClientModel.RecoveryPointTierType.InstantRP)
+                            isInstantRecoverable = true;
+                        if (tierInfo.Type == ServiceClientModel.RecoveryPointTierType.HardenedRP)
+                            isHardenedRP = true;
+                    }
+                }
+
+                if (isInstantRecoverable && isHardenedRP)
+                    rpBase.RecoveryPointTier = RecoveryPointTier.SnapshotAndVaultStandard;
+                else if (isHardenedRP)
+                    rpBase.RecoveryPointTier = RecoveryPointTier.VaultStandard;
+                else if (isInstantRecoverable)
+                    rpBase.RecoveryPointTier = RecoveryPointTier.Snapshot;
+            }
+
             return rpBase;
         }
 
