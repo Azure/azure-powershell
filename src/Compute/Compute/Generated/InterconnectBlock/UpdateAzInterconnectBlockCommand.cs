@@ -63,13 +63,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The SKU name. Immutable after create; providing this parameter on update will be ignored by the service.")]
+            HelpMessage = "The SKU name. This property is immutable after create and will be ignored by the service on update. Included for pipeline compatibility.")]
         public string SkuName { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The SKU tier.")]
+            HelpMessage = "The SKU tier. This property is immutable after create and will be ignored by the service on update.")]
         public string SkuTier { get; set; }
 
         [Parameter(
