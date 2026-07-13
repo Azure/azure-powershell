@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Upgrade a Network Fabric
 ```powershell
-{{ Add code here }}
+Invoke-AzNetworkFabricUpgrade -Name $name -ResourceGroupName $resourceGroupName -Version $version -Action "Start"
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+This command upgrades the given Network Fabric to the specified version.

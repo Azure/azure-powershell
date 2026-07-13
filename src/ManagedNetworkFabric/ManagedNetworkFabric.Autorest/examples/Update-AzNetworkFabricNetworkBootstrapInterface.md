@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update the Network Bootstrap Interface
 ```powershell
-{{ Add code here }}
+Update-AzNetworkFabricNetworkBootstrapInterface -Name $name -NetworkBootstrapDeviceName $networkBootstrapDeviceName -ResourceGroupName $resourceGroupName
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id Name
+-- ----
+/subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/example-device/networkBootstrapInterfaces/example-interface example-interface
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+This command updates the properties of the given Network Bootstrap Interface.

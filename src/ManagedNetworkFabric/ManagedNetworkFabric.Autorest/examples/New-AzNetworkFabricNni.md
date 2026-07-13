@@ -1,11 +1,5 @@
 ### Example 1: Create the Network To Network Interconnect Resource
 ```powershell
-$optionBLayer3Configuration = @{
-    PrimaryIpv4Prefix = "172.31.0.0/31"
-    SecondaryIpv4Prefix = "172.31.0.20/31"
-    PeerAsn = 28
-    VlanId = 501
-}
 $layer2Configuration = @{
     Interface = @("/subscriptions//resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric/networkToNetworkInterconnects/example-interface")
     Mtu = 1500
@@ -19,7 +13,7 @@ $exportRoutePolicy = @{
     ExportIpv6RoutePolicyId = $global:config.nni.exportIpv6RoutePolicyId
 }
 
-New-AzNetworkFabricNni -Name $name -NetworkFabricName $nfName -ResourceGroupName $resourceGroupName -UseOptionB "True" -IsManagementType "True" -Layer2Configuration $layer2Configuration -NniType "CE" -OptionBLayer3Configuration $optionBLayer3Configuration -ExportRoutePolicy $ExportRoutePolicy -ImportRoutePolicy $importRoutePolicy
+New-AzNetworkFabricNni -Name $name -NetworkFabricName $nfName -ResourceGroupName $resourceGroupName -UseOptionB "True" -IsManagementType "True" -Layer2Configuration $layer2Configuration -NniType "CE" -OptionBLayer3ConfigurationPeerAsn 28 -OptionBLayer3ConfigurationPrimaryIpv4Prefix "172.31.0.0/31" -OptionBLayer3ConfigurationSecondaryIpv4Prefix "172.31.0.20/31" -OptionBLayer3ConfigurationVlanId 501 -ExportRoutePolicy $ExportRoutePolicy -ImportRoutePolicy $importRoutePolicy
 ```
 
 ```output

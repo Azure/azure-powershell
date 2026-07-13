@@ -64,27 +64,13 @@ Update the NPB Static Route BFD Administrative State.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update NPB static route BFD administrative state for NNI
 ```powershell
-{{ Add code here }}
+$state = "Enable"
+Update-AzNetworkFabricNetworkToNetworkInterconnectNpbStaticRouteBfdAdministrativeState -NetworkFabricName $networkFabricName -NetworkToNetworkInterconnectName $nniName -ResourceGroupName $resourceGroupName -State $state
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command enables or disables the NPB static route BFD administrative state for the given Network to Network Interconnect.
 
 ## PARAMETERS
 

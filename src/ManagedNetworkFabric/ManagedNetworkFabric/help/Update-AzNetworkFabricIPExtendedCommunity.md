@@ -46,27 +46,23 @@ API to update certain properties of the IP Extended Community resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update the IP Extended Community
 ```powershell
-{{ Add code here }}
+$ipExtendedCommunityRule = @(@{
+    Action = "Permit"
+    SequenceNumber = 1
+    RouteTarget = @("1234:5678")
+})
+Update-AzNetworkFabricIPExtendedCommunity -Name $name -ResourceGroupName $resourceGroupName -IPExtendedCommunityRule $ipExtendedCommunityRule
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Annotation ConfigurationState Id
+---------- ------------------ --
+           Succeeded          /subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/example-ipextcommunity
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command updates the properties of the given IP Extended Community.
 
 ## PARAMETERS
 

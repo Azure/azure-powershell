@@ -113,27 +113,18 @@ Update a InternalNetworks.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update an Internal Network
 ```powershell
-{{ Add code here }}
+Update-AzNetworkFabricInternalNetwork -Name $name -L3IsolationDomainName $l3IsolationDomainName -ResourceGroupName $resourceGroupName
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Annotation ConfigurationState Id
+---------- ------------------ --
+           Succeeded          /subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/example-l3domain/internalNetworks/example-network
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command updates the properties of the given Internal Network.
 
 ## PARAMETERS
 

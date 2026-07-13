@@ -44,27 +44,18 @@ API to update certain properties of the Internet Gateway Rule resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update the Internet Gateway Rule
 ```powershell
-{{ Add code here }}
+Update-AzNetworkFabricInternetGatewayRule -Name $name -ResourceGroupName $resourceGroupName
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Annotation ConfigurationState Id
+---------- ------------------ --
+           Succeeded          /subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules/example-rule
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command updates the properties of the given Internet Gateway Rule.
 
 ## PARAMETERS
 

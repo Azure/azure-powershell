@@ -55,27 +55,18 @@ API to update certain properties of the Access Control List resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update the Access Control List
 ```powershell
-{{ Add code here }}
+Update-AzNetworkFabricAccessControlList -Name $name -ResourceGroupName $resourceGroupName
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Annotation ConfigurationState ConfigurationType Id
+---------- ------------------ ----------------- --
+           Succeeded          File              /subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/accessControlLists/example-acl
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command updates the properties of the given Access Control List.
 
 ## PARAMETERS
 

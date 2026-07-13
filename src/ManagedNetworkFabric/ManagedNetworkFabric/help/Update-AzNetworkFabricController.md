@@ -41,27 +41,18 @@ Update a Network Fabric Controller.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update the Network Fabric Controller
 ```powershell
-{{ Add code here }}
+Update-AzNetworkFabricController -Name $name -ResourceGroupName $resourceGroupName
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Annotation Id
+---------- --
+           /subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/example-controller
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command updates the properties of the given Network Fabric Controller.
 
 ## PARAMETERS
 

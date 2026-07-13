@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Commit Network Fabric Configuration
 ```powershell
-{{ Add code here }}
+Invoke-AzNetworkFabricCommitConfiguration -NetworkFabricName $name -ResourceGroupName $resourceGroupName
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+This command commits the pending configuration changes to the given Network Fabric.

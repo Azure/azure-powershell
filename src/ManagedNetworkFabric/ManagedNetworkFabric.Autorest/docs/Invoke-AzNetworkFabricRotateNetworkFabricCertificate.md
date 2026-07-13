@@ -32,27 +32,12 @@ Note that disabled devices cannot be updated and must be resynchronized with the
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Rotate certificate for a Network Fabric
 ```powershell
-{{ Add code here }}
+Invoke-AzNetworkFabricRotateNetworkFabricCertificate -NetworkFabricName $name -ResourceGroupName $resourceGroupName
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command rotates the certificate for the given Network Fabric.
 
 ## PARAMETERS
 

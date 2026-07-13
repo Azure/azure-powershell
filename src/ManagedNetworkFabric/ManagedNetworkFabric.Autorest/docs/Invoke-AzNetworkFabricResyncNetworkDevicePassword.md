@@ -34,27 +34,12 @@ Allows network devices missed during a previous password rotation to be brought 
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Resync password for a Network Device
 ```powershell
-{{ Add code here }}
+Invoke-AzNetworkFabricResyncNetworkDevicePassword -NetworkDeviceName $name -ResourceGroupName $resourceGroupName
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command resyncs the password for the given Network Device.
 
 ## PARAMETERS
 

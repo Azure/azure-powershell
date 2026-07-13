@@ -31,27 +31,12 @@ Reboot the Network Bootstrap Device.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Reboot a Network Bootstrap Device
 ```powershell
-{{ Add code here }}
+Restart-AzNetworkFabricNetworkBootstrapDevice -Name $name -ResourceGroupName $resourceGroupName
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command reboots the given Network Bootstrap Device.
 
 ## PARAMETERS
 

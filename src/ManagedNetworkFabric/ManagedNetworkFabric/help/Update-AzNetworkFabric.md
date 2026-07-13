@@ -16,7 +16,7 @@ Update Network Fabric resource.
 ```
 Update-AzNetworkFabric -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Annotation <String>] [-AuthorizedTransceiverKey <String>] [-AuthorizedTransceiverVendor <String>]
- [-ControlPlaneAcls <String[]>] [-EnableSystemAssignedIdentity <Boolean>] [-FabricAsn <Int64>]
+ [-ControlPlaneAcl <String[]>] [-EnableSystemAssignedIdentity <Boolean>] [-FabricAsn <Int64>]
  [-FabricVersion <String>] [-FeatureFlag <IFeatureFlagProperties[]>] [-HardwareAlertThreshold <Int32>]
  [-Ipv4Prefix <String>] [-Ipv6Prefix <String>]
  [-ManagementNetworkConfiguration <IManagementNetworkConfigurationProperties>]
@@ -30,52 +30,10 @@ Update-AzNetworkFabric -Name <String> -ResourceGroupName <String> [-Subscription
  [<CommonParameters>]
 ```
 
-### UpgradeViaJsonString
-```
-Update-AzNetworkFabric -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpgradeViaJsonFilePath
-```
-Update-AzNetworkFabric -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpgradeExpanded
-```
-Update-AzNetworkFabric -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Action <String>]
- [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Upgrade
-```
-Update-AzNetworkFabric -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Body <IUpgradeNetworkFabricProperties> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpgradeViaIdentityExpanded
-```
-Update-AzNetworkFabric -InputObject <IManagedNetworkFabricIdentity> [-Action <String>] [-Version <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### UpgradeViaIdentity
-```
-Update-AzNetworkFabric -InputObject <IManagedNetworkFabricIdentity> -Body <IUpgradeNetworkFabricProperties>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkFabric -InputObject <IManagedNetworkFabricIdentity> [-Annotation <String>]
- [-AuthorizedTransceiverKey <String>] [-AuthorizedTransceiverVendor <String>] [-ControlPlaneAcls <String[]>]
+ [-AuthorizedTransceiverKey <String>] [-AuthorizedTransceiverVendor <String>] [-ControlPlaneAcl <String[]>]
  [-EnableSystemAssignedIdentity <Boolean>] [-FabricAsn <Int64>] [-FabricVersion <String>]
  [-FeatureFlag <IFeatureFlagProperties[]>] [-HardwareAlertThreshold <Int32>] [-Ipv4Prefix <String>]
  [-Ipv6Prefix <String>] [-ManagementNetworkConfiguration <IManagementNetworkConfigurationProperties>]
@@ -94,51 +52,27 @@ Update Network Fabric resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update the Network Fabric
 ```powershell
-{{ Add code here }}
+Update-AzNetworkFabric -Name $name -ResourceGroupName $resourceGroupName
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Annotation ConfigurationState FabricAsn FabricVersion Id
+---------- ------------------ --------- ------------- --
+           Succeeded          65048     1.0           /subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabrics/example-fabric
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command updates the properties of the given Network Fabric.
 
 ## PARAMETERS
-
-### -Action
-Action to be performed while upgrading the fabric.
-
-```yaml
-Type: System.String
-Parameter Sets: UpgradeExpanded, UpgradeViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Annotation
 Switch configuration description.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -168,7 +102,7 @@ Key that must be configured on the fabric.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -183,7 +117,7 @@ Vendor of the transceiver.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -193,27 +127,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Body
-Model used for Upgrade Network Fabric Properties
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IUpgradeNetworkFabricProperties
-Parameter Sets: Upgrade, UpgradeViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ControlPlaneAcls
+### -ControlPlaneAcl
 Control Plane Access Control List ARM resource IDs.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -244,7 +163,7 @@ Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -259,7 +178,7 @@ ASN of CE devices for CE/PE connectivity.
 
 ```yaml
 Type: System.Int64
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -274,7 +193,7 @@ The version of Network Fabric.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -289,7 +208,7 @@ NetworkFabric feature flag configuration information
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IFeatureFlagProperties[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -305,7 +224,7 @@ Possible values are from 20 to 100.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -320,7 +239,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
-Parameter Sets: UpgradeViaIdentityExpanded, UpgradeViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -336,7 +255,7 @@ Example: 10.1.0.0/19.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -352,40 +271,10 @@ Example: 3FFE:FFFF:0:CD40::/59
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonFilePath
-Path of Json file supplied to the Upgrade operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpgradeViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Upgrade operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpgradeViaJsonString
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -397,7 +286,7 @@ Configuration to be used to setup the management network.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationProperties
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -412,7 +301,7 @@ Name of the Network Fabric.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpgradeViaJsonString, UpgradeViaJsonFilePath, UpgradeExpanded, Upgrade
+Parameter Sets: UpdateExpanded
 Aliases: NetworkFabricName
 
 Required: True
@@ -443,7 +332,7 @@ Default is Disabled.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -458,7 +347,7 @@ Number of compute racks associated to Network Fabric.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -474,7 +363,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpgradeViaJsonString, UpgradeViaJsonFilePath, UpgradeExpanded, Upgrade
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -489,7 +378,7 @@ Number of servers.Possible values are from 1-16.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -504,7 +393,7 @@ Network Fabric storage account resource identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -519,7 +408,7 @@ The type of managed identity that is being selected.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -535,7 +424,7 @@ Mutually exclusive with a system assigned identity type.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -550,7 +439,7 @@ Number of Storage arrays associated with the Network Fabric.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -566,7 +455,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpgradeViaJsonString, UpgradeViaJsonFilePath, UpgradeExpanded, Upgrade
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -581,7 +470,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -596,7 +485,7 @@ Network and credentials configuration currently applied to terminal server.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfiguration
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -611,7 +500,7 @@ Trusted IP Prefixes ARM resource IDs.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -627,7 +516,7 @@ Default is Disabled.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -643,7 +532,7 @@ Default is Enabled.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -659,22 +548,7 @@ The elements in array will be ARM resource ids in the form: '/subscriptions/{sub
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Version
-Specify the version.
-
-```yaml
-Type: System.String
-Parameter Sets: UpgradeExpanded, UpgradeViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False

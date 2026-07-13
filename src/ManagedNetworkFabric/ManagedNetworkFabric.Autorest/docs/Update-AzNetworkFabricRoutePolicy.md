@@ -45,27 +45,22 @@ API to update certain properties of the Route Policy resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update the Route Policy
 ```powershell
-{{ Add code here }}
+$statement = @(@{
+    Action = @{ LocalPreference = 20; ActionType = "Permit" }
+    SequenceNumber = 1
+})
+Update-AzNetworkFabricRoutePolicy -Name $name -ResourceGroupName $resourceGroupName -Statement $statement
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Annotation ConfigurationState Id
+---------- ------------------ --
+           Succeeded          /subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/example-policy
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command updates the properties of the given Route Policy.
 
 ## PARAMETERS
 

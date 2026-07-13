@@ -58,27 +58,12 @@ Post action: Returns a status of commit batch operation.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get Commit Batch Status
 ```powershell
-{{ Add code here }}
+Invoke-AzNetworkFabricCommitBatchStatus -NetworkFabricName $name -ResourceGroupName $resourceGroupName -CommitBatchId $commitBatchId
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command retrieves the status of the commit batch operation for the given Network Fabric.
 
 ## PARAMETERS
 

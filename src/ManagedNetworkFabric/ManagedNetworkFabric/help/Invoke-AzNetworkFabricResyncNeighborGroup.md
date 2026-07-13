@@ -31,27 +31,12 @@ Resync the Neighbor Group after a configuration change.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Resync a Neighbor Group
 ```powershell
-{{ Add code here }}
+Invoke-AzNetworkFabricResyncNeighborGroup -NeighborGroupName $name -ResourceGroupName $resourceGroupName
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command resyncs the given Neighbor Group.
 
 ## PARAMETERS
 

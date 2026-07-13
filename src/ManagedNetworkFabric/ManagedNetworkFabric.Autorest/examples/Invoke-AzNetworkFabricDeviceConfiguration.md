@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Push device configuration for Network Fabric
 ```powershell
-{{ Add code here }}
+Invoke-AzNetworkFabricDeviceConfiguration -NetworkFabricName $name -ResourceGroupName $resourceGroupName
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+This command pushes device configuration for all devices in the given Network Fabric.

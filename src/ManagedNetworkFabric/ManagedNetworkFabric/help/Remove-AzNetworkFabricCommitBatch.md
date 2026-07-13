@@ -59,27 +59,12 @@ Post action: Discards a Batch operation in progress.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete the Commit Batch resource
 ```powershell
-{{ Add code here }}
+Remove-AzNetworkFabricCommitBatch -NetworkFabricName $networkFabricName -ResourceGroupName $resourceGroupName
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command deletes the Commit Batch resource from the given Network Fabric.
 
 ## PARAMETERS
 

@@ -21,48 +21,6 @@ Update-AzNetworkFabricNetworkBootstrapDevice -Name <String> -ResourceGroupName <
  [<CommonParameters>]
 ```
 
-### UpgradeViaJsonString
-```
-Update-AzNetworkFabricNetworkBootstrapDevice -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpgradeViaJsonFilePath
-```
-Update-AzNetworkFabricNetworkBootstrapDevice -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpgradeExpanded
-```
-Update-AzNetworkFabricNetworkBootstrapDevice -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Upgrade
-```
-Update-AzNetworkFabricNetworkBootstrapDevice -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -Body <IUpdateVersion> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpgradeViaIdentityExpanded
-```
-Update-AzNetworkFabricNetworkBootstrapDevice -InputObject <IManagedNetworkFabricIdentity> [-Version <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### UpgradeViaIdentity
-```
-Update-AzNetworkFabricNetworkBootstrapDevice -InputObject <IManagedNetworkFabricIdentity>
- -Body <IUpdateVersion> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkFabricNetworkBootstrapDevice -InputObject <IManagedNetworkFabricIdentity>
@@ -76,27 +34,18 @@ Update a Network Bootstrap Device resource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update the Network Bootstrap Device
 ```powershell
-{{ Add code here }}
+Update-AzNetworkFabricNetworkBootstrapDevice -Name $name -ResourceGroupName $resourceGroupName -SerialNumber $serialNumber
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id Location Name
+-- -------- ----
+/subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/example-device EastUs example-device
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command updates the properties of the given Network Bootstrap Device.
 
 ## PARAMETERS
 
@@ -105,7 +54,7 @@ Switch configuration description.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -130,21 +79,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Body
-Update version properties.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IUpdateVersion
-Parameter Sets: Upgrade, UpgradeViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -166,7 +100,7 @@ Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -181,7 +115,7 @@ The host name of the device.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -196,7 +130,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
-Parameter Sets: UpgradeViaIdentityExpanded, UpgradeViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -206,42 +140,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Upgrade operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpgradeViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Upgrade operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpgradeViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 Name of the Network Bootstrap Device.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpgradeViaJsonString, UpgradeViaJsonFilePath, UpgradeExpanded, Upgrade
+Parameter Sets: UpdateExpanded
 Aliases: NetworkBootstrapDeviceName
 
 Required: True
@@ -272,7 +176,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpgradeViaJsonString, UpgradeViaJsonFilePath, UpgradeExpanded, Upgrade
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -288,7 +192,7 @@ Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -304,7 +208,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpgradeViaJsonString, UpgradeViaJsonFilePath, UpgradeExpanded, Upgrade
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -319,7 +223,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -335,22 +239,7 @@ The elements in array will be ARM resource ids in the form: '/subscriptions/{sub
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Version
-Specify the version.
-
-```yaml
-Type: System.String
-Parameter Sets: UpgradeExpanded, UpgradeViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False

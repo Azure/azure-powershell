@@ -59,27 +59,12 @@ Run the RW Command on the Network Device.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Run a read-write command on a Network Device
 ```powershell
-{{ Add code here }}
+Start-AzNetworkFabricNetworkDeviceRwCommand -NetworkDeviceName $networkDeviceName -ResourceGroupName $resourceGroupName -Command $command
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command runs a read-write CLI command on the given Network Device.
 
 ## PARAMETERS
 

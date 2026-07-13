@@ -45,27 +45,23 @@ API to update certain properties of the IP Prefix resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update the IP Prefix
 ```powershell
-{{ Add code here }}
+$ipPrefixRule = @(@{
+    Action = "Permit"
+    SequenceNumber = 1
+    NetworkPrefix = "10.10.0.0/15"
+})
+Update-AzNetworkFabricIPPrefix -Name $name -ResourceGroupName $resourceGroupName -IPPrefixRule $ipPrefixRule
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Annotation ConfigurationState Id
+---------- ------------------ --
+           Succeeded          /subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/ipPrefixes/example-ipprefix
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command updates the properties of the given IP Prefix.
 
 ## PARAMETERS
 

@@ -1,22 +1,7 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update BFD Administrative State of External Network
 ```powershell
-{{ Add code here }}
+$administrativeState = "Enable"
+Invoke-AzNetworkFabricExternalNetworkBfdAdministrativeState -ExternalNetworkName $externalNetworkName -L3IsolationDomainName $l3IsolationDomainName -ResourceGroupName $resourceGroupName -AdministrativeState $administrativeState
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+This command enables or disables the BFD administrative state of the given External Network.

@@ -45,27 +45,23 @@ API to update certain properties of the IP Community resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update the IP Community
 ```powershell
-{{ Add code here }}
+$ipCommunityRule = @(@{
+    Action = "Permit"
+    SequenceNumber = 1
+    CommunityMember = @("1234:5678")
+})
+Update-AzNetworkFabricIPCommunity -Name $name -ResourceGroupName $resourceGroupName -IPCommunityRule $ipCommunityRule
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Annotation ConfigurationState Id
+---------- ------------------ --
+           Succeeded          /subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/ipCommunities/example-ipcommunity
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command updates the properties of the given IP Community.
 
 ## PARAMETERS
 

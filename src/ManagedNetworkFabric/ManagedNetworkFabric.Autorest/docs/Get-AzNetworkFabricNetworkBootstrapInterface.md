@@ -42,27 +42,31 @@ Get the Network Bootstrap Interface resource details.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List Network Bootstrap Interfaces
 ```powershell
-{{ Add code here }}
+Get-AzNetworkFabricNetworkBootstrapInterface -NetworkBootstrapDeviceName $networkBootstrapDeviceName -ResourceGroupName $resourceGroupName
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id Name
+-- ----
+/subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/example-device/networkBootstrapInterfaces/example-interface example-interface
 ```
 
-{{ Add description here }}
+This command lists all the Network Bootstrap Interfaces for the given Network Bootstrap Device.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get Network Bootstrap Interface
 ```powershell
-{{ Add code here }}
+Get-AzNetworkFabricNetworkBootstrapInterface -Name $name -NetworkBootstrapDeviceName $networkBootstrapDeviceName -ResourceGroupName $resourceGroupName
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id Name
+-- ----
+/subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/example-device/networkBootstrapInterfaces/example-interface example-interface
 ```
 
-{{ Add description here }}
+This command gets details of the given Network Bootstrap Interface.
 
 ## PARAMETERS
 

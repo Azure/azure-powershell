@@ -59,27 +59,12 @@ Upgrades the version of the Network Bootstrap Device.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Upgrade a Network Bootstrap Device
 ```powershell
-{{ Add code here }}
+Invoke-AzNetworkFabricNetworkBootstrapDeviceUpgrade -Name $name -ResourceGroupName $resourceGroupName
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command upgrades the given Network Bootstrap Device.
 
 ## PARAMETERS
 

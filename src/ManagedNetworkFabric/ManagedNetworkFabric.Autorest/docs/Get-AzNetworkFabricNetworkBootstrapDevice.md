@@ -41,27 +41,31 @@ Gets a Network Bootstrap Device resource details.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List Network Bootstrap Devices
 ```powershell
-{{ Add code here }}
+Get-AzNetworkFabricNetworkBootstrapDevice -ResourceGroupName $resourceGroupName
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id Location Name
+-- -------- ----
+/subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/example-device EastUs example-device
 ```
 
-{{ Add description here }}
+This command lists all the Network Bootstrap Devices in the given resource group.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get Network Bootstrap Device
 ```powershell
-{{ Add code here }}
+Get-AzNetworkFabricNetworkBootstrapDevice -Name $name -ResourceGroupName $resourceGroupName
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id Location Name
+-- -------- ----
+/subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/example-device EastUs example-device
 ```
 
-{{ Add description here }}
+This command gets details of the given Network Bootstrap Device.
 
 ## PARAMETERS
 

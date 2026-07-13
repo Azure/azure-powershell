@@ -59,27 +59,12 @@ Post action: Triggers network fabric lock operation.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Lock a Network Fabric
 ```powershell
-{{ Add code here }}
+Lock-AzNetworkFabric -Name $name -ResourceGroupName $resourceGroupName -Action $action -LockType $lockType
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command locks or unlocks the given Network Fabric.
 
 ## PARAMETERS
 
