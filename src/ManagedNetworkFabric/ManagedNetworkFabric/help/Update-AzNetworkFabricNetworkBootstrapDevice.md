@@ -398,13 +398,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
 
-### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IUpdateVersion
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkBootstrapDevice
-
-### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkBootstrapDeviceUpgradeResponse
 
 ## NOTES
 

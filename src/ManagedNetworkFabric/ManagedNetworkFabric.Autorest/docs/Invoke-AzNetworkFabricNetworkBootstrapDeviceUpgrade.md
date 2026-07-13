@@ -1,35 +1,60 @@
 ---
 external help file:
 Module Name: Az.ManagedNetworkFabric
-online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/update-aznetworkfabricnetworkbootstrapdevice
+online version: https://learn.microsoft.com/powershell/module/az.managednetworkfabric/invoke-aznetworkfabricnetworkbootstrapdeviceupgrade
 schema: 2.0.0
 ---
 
-# Update-AzNetworkFabricNetworkBootstrapDevice
+# Invoke-AzNetworkFabricNetworkBootstrapDeviceUpgrade
 
 ## SYNOPSIS
-Update a Network Bootstrap Device resource
+Upgrades the version of the Network Bootstrap Device.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### UpgradeExpanded (Default)
 ```
-Update-AzNetworkFabricNetworkBootstrapDevice -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Annotation <String>] [-EnableSystemAssignedIdentity <Boolean?>]
- [-HostName <String>] [-SerialNumber <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzNetworkFabricNetworkBootstrapDeviceUpgrade -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### Upgrade
 ```
-Update-AzNetworkFabricNetworkBootstrapDevice -InputObject <IManagedNetworkFabricIdentity>
- [-Annotation <String>] [-EnableSystemAssignedIdentity <Boolean?>] [-HostName <String>]
- [-SerialNumber <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzNetworkFabricNetworkBootstrapDeviceUpgrade -Name <String> -ResourceGroupName <String>
+ -Body <IUpdateVersion> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpgradeViaIdentity
+```
+Invoke-AzNetworkFabricNetworkBootstrapDeviceUpgrade -InputObject <IManagedNetworkFabricIdentity>
+ -Body <IUpdateVersion> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpgradeViaIdentityExpanded
+```
+Invoke-AzNetworkFabricNetworkBootstrapDeviceUpgrade -InputObject <IManagedNetworkFabricIdentity>
+ [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpgradeViaJsonFilePath
+```
+Invoke-AzNetworkFabricNetworkBootstrapDeviceUpgrade -Name <String> -ResourceGroupName <String>
+ -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpgradeViaJsonString
+```
+Invoke-AzNetworkFabricNetworkBootstrapDeviceUpgrade -Name <String> -ResourceGroupName <String>
+ -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a Network Bootstrap Device resource
+Upgrades the version of the Network Bootstrap Device.
 
 ## EXAMPLES
 
@@ -57,21 +82,6 @@ Update a Network Bootstrap Device resource
 
 ## PARAMETERS
 
-### -Annotation
-Switch configuration description.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AsJob
 Run the command as a job
 
@@ -84,6 +94,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Body
+Update version properties.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IUpdateVersion
+Parameter Sets: Upgrade, UpgradeViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -103,42 +128,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableSystemAssignedIdentity
-Determines whether to enable a system-assigned identity for the resource.
-
-```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HostName
-The host name of the device.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: UpgradeViaIdentity, UpgradeViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -148,12 +143,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Upgrade operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpgradeViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Upgrade operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpgradeViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the Network Bootstrap Device.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaJsonFilePath, UpgradeViaJsonString
 Aliases: NetworkBootstrapDeviceName
 
 Required: True
@@ -184,26 +209,10 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaJsonFilePath, UpgradeViaJsonString
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SerialNumber
-Serial number of the device.
-Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -216,7 +225,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaJsonFilePath, UpgradeViaJsonString
 Aliases:
 
 Required: False
@@ -226,28 +235,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Resource tags.
+### -Version
+Specify the version.
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UserAssignedIdentity
-The array of user assigned identities associated with the resource.
-The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpgradeExpanded, UpgradeViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -295,9 +288,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
 
+### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IUpdateVersion
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkBootstrapDevice
+### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkBootstrapDeviceUpgradeResponse
 
 ## NOTES
 

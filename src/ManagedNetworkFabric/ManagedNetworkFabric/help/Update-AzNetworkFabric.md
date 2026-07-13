@@ -722,13 +722,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
 
-### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IUpgradeNetworkFabricProperties
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabric
-
-### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IOperationStatusResult
 
 ## NOTES
 

@@ -114,6 +114,9 @@ Enables isolation domain across the fabric or on specified racks.
 ### [Invoke-AzNetworkFabricL3DomainUpdateAdminState](Invoke-AzNetworkFabricL3DomainUpdateAdminState.md)
 Update the administrative state of the L3 Isolation Domain resource.
 
+### [Invoke-AzNetworkFabricNetworkBootstrapDeviceUpgrade](Invoke-AzNetworkFabricNetworkBootstrapDeviceUpgrade.md)
+Upgrades the version of the Network Bootstrap Device.
+
 ### [Invoke-AzNetworkFabricNniBfdAdministrativeState](Invoke-AzNetworkFabricNniBfdAdministrativeState.md)
 Update the Admin State.
 
@@ -156,6 +159,9 @@ Rotate new passwords, then rotate the Terminal Server and Network Devices to use
 
 ### [Invoke-AzNetworkFabricTapUpdateAdminState](Invoke-AzNetworkFabricTapUpdateAdminState.md)
 Implements the operation to the underlying resources.
+
+### [Invoke-AzNetworkFabricUpgrade](Invoke-AzNetworkFabricUpgrade.md)
+Upgrades the version of the underlying resources in the given Network Fabric instance.
 
 ### [Lock-AzNetworkFabric](Lock-AzNetworkFabric.md)
 Post action: Triggers network fabric lock operation.

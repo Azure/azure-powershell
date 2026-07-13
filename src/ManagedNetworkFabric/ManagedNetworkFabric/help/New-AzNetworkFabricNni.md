@@ -22,7 +22,7 @@ New-AzNetworkFabricNni -Name <String> -NetworkFabricName <String> -ResourceGroup
  [-ExportRoutePolicy <IExportRoutePolicyInformation>] [-ImportRoutePolicy <IImportRoutePolicyInformation>]
  [-IngressAclId <String>] [-IsManagementType <String>] [-Layer2Configuration <ILayer2Configuration>]
  [-MicroBfdState <String>] [-NniType <String>] [-NpbStaticRouteConfiguration <INpbStaticRouteConfiguration>]
- [-OptionBLayer3ConfigurationPeLoopbackIpaddress <String[]>] [-OptionBLayer3ConfigurationPeerAsn <Int64>]
+ [-OptionBLayer3ConfigurationPeLoopbackIpAddress <String[]>] [-OptionBLayer3ConfigurationPeerAsn <Int64>]
  [-OptionBLayer3ConfigurationPrefixLimit <IOptionBLayer3PrefixLimitProperties[]>]
  [-OptionBLayer3ConfigurationPrimaryIpv4Prefix <String>]
  [-OptionBLayer3ConfigurationPrimaryIpv6Prefix <String>]
@@ -56,7 +56,7 @@ New-AzNetworkFabricNni -Name <String> -NetworkFabricInputObject <IManagedNetwork
  [-ExportRoutePolicy <IExportRoutePolicyInformation>] [-ImportRoutePolicy <IImportRoutePolicyInformation>]
  [-IngressAclId <String>] [-IsManagementType <String>] [-Layer2Configuration <ILayer2Configuration>]
  [-MicroBfdState <String>] [-NniType <String>] [-NpbStaticRouteConfiguration <INpbStaticRouteConfiguration>]
- [-OptionBLayer3ConfigurationPeLoopbackIpaddress <String[]>] [-OptionBLayer3ConfigurationPeerAsn <Int64>]
+ [-OptionBLayer3ConfigurationPeLoopbackIpAddress <String[]>] [-OptionBLayer3ConfigurationPeerAsn <Int64>]
  [-OptionBLayer3ConfigurationPrefixLimit <IOptionBLayer3PrefixLimitProperties[]>]
  [-OptionBLayer3ConfigurationPrimaryIpv4Prefix <String>]
  [-OptionBLayer3ConfigurationPrimaryIpv6Prefix <String>]
@@ -480,7 +480,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OptionBLayer3ConfigurationPeLoopbackIpaddress
+### -OptionBLayer3ConfigurationPeLoopbackIpAddress
 Provider Edge (PE) Loopback IP Address.
 
 ```yaml

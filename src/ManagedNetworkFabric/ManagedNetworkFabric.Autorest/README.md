@@ -112,6 +112,20 @@ directive:
       subject: DeviceUpgrade
       verb: Invoke
   - where:
+      subject: NetworkFabric$
+      verb: Update
+      variant: ^UpgradeViaJsonString$|^UpgradeViaJsonFilePath$|^UpgradeExpanded$|^Upgrade$|^UpgradeViaIdentityExpanded$|^UpgradeViaIdentity$
+    set:
+      subject: NetworkFabricUpgrade
+      verb: Invoke
+  - where:
+      subject: NetworkBootstrapDevice
+      verb: Update
+      variant: ^UpgradeViaJsonString$|^UpgradeViaJsonFilePath$|^UpgradeExpanded$|^Upgrade$|^UpgradeViaIdentityExpanded$|^UpgradeViaIdentity$
+    set:
+      subject: NetworkBootstrapDeviceUpgrade
+      verb: Invoke
+  - where:
       verb: Update
       subject: ExternalNetworkAdministrativeState
     set:
@@ -354,7 +368,16 @@ directive:
       verb: New
       parameter-name: BfdConfigurationIntervalInMilliSecond
     set:
-      parameter-name: BfdConfigurationInterval   
+      parameter-name: BfdConfigurationInterval
+  # Fix plural noun parameter names (8410 signature rule)
+  - where:
+      parameter-name: ControlPlaneAcls
+    set:
+      parameter-name: ControlPlaneAcl
+  - where:
+      parameter-name: OptionBLayer3ConfigurationPeLoopbackIpaddress
+    set:
+      parameter-name: OptionBLayer3ConfigurationPeLoopbackIpAddress
 # Handle 200 status code not exist in swagger spec for DELETE API's
   - from: swagger-document
     where: $.paths..delete.responses

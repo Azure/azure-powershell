@@ -18,7 +18,7 @@ New-AzNetworkFabric -Name <String> -ResourceGroupName <String> -FabricAsn <Int64
  -Location <String> -ManagementNetworkConfiguration <IManagementNetworkConfigurationProperties>
  -NetworkFabricControllerId <String> -NetworkFabricSku <String> -ServerCountPerRack <Int32>
  -TerminalServerConfiguration <ITerminalServerConfiguration> [-SubscriptionId <String>] [-Annotation <String>]
- [-AuthorizedTransceiverKey <String>] [-AuthorizedTransceiverVendor <String>] [-ControlPlaneAcls <String[]>]
+ [-AuthorizedTransceiverKey <String>] [-AuthorizedTransceiverVendor <String>] [-ControlPlaneAcl <String[]>]
  [-EnableSystemAssignedIdentity] [-FabricVersion <String>] [-FeatureFlag <IFeatureFlagProperties[]>]
  [-HardwareAlertThreshold <Int32>] [-Ipv6Prefix <String>] [-QoConfigurationQosConfigurationState <String>]
  [-RackCount <Int32>] [-StorageAccountConfigurationStorageAccountId <String>]
@@ -183,7 +183,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ControlPlaneAcls
+### -ControlPlaneAcl
 Control Plane Access Control List ARM resource IDs.
 
 ```yaml
