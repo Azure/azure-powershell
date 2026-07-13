@@ -19,7 +19,7 @@ New-AzApplicationGatewayUrlPathMapConfig -Name <String> -PathRules <PSApplicatio
  -DefaultBackendAddressPool <PSApplicationGatewayBackendAddressPool>
  -DefaultBackendHttpSettings <PSApplicationGatewayBackendHttpSettings>
  [-DefaultRewriteRuleSet <PSApplicationGatewayRewriteRuleSet>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### BackendSetByResourceId
@@ -27,7 +27,7 @@ New-AzApplicationGatewayUrlPathMapConfig -Name <String> -PathRules <PSApplicatio
 New-AzApplicationGatewayUrlPathMapConfig -Name <String> -PathRules <PSApplicationGatewayPathRule[]>
  -DefaultBackendAddressPoolId <String> -DefaultBackendHttpSettingsId <String>
  [-DefaultRewriteRuleSetId <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### RedirectSetByResource
@@ -35,14 +35,16 @@ New-AzApplicationGatewayUrlPathMapConfig -Name <String> -PathRules <PSApplicatio
 New-AzApplicationGatewayUrlPathMapConfig -Name <String> -PathRules <PSApplicationGatewayPathRule[]>
  [-DefaultRewriteRuleSet <PSApplicationGatewayRewriteRuleSet>]
  -DefaultRedirectConfiguration <PSApplicationGatewayRedirectConfiguration>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### RedirectSetByResourceId
 ```
 New-AzApplicationGatewayUrlPathMapConfig -Name <String> -PathRules <PSApplicationGatewayPathRule[]>
  [-DefaultRewriteRuleSetId <String>] -DefaultRedirectConfigurationId <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,6 +60,36 @@ New-AzApplicationGatewayUrlPathMapConfig -Name $UrlPathMapName -PathRules $Video
 This command creates an array of URL path mappings to a backend server pool.
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultBackendAddressPool
 Specifies the default backend address pool to route in case none of the rules specified in the *pathRules* parameter match.

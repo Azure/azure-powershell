@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network
         /// Gets all default security rules in a network security group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkSecurityGroupName'>
         /// The name of the network security group.
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Network
         /// Get the specified default network security rule.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='networkSecurityGroupName'>
         /// The name of the network security group.

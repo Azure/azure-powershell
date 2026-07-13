@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class VirtualNetworkApplianceIpVersionType
     {
+        /// <summary>
+        /// IPv4 version
+        /// </summary>
         public const string IPv4 = "IPv4";
+        /// <summary>
+        /// Dual Stack version
+        /// </summary>
         public const string DualStack = "DualStack";
     }
 }

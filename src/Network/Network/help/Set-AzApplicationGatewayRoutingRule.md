@@ -17,7 +17,8 @@ Modifies a routing rule for an application gateway.
 Set-AzApplicationGatewayRoutingRule -ApplicationGateway <PSApplicationGateway> -Name <String>
  -RuleType <String> -Priority <Int32> [-BackendSettings <PSApplicationGatewayBackendSettings>]
  [-Listener <PSApplicationGatewayListener>] [-BackendAddressPool <PSApplicationGatewayBackendAddressPool>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-AcquirePolicyToken]
+ [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -25,7 +26,7 @@ Set-AzApplicationGatewayRoutingRule -ApplicationGateway <PSApplicationGateway> -
 Set-AzApplicationGatewayRoutingRule -ApplicationGateway <PSApplicationGateway> -Name <String>
  -RuleType <String> -Priority <Int32> [-BackendSettingsId <String>] [-ListenerId <String>]
  [-BackendAddressPoolId <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,6 +44,21 @@ The first command gets the application gateway named ApplicationGateway01 and st
 The second command modifies the routing rule for the application gateway to use back-end settings specified in the $Setting variable, a listener specified in the $Listener variable, and a back-end address pool specified in the $Pool variable.
 
 ## PARAMETERS
+
+### -AcquirePolicyToken
+Acquire an Azure Policy token automatically for this resource operation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ApplicationGateway
 The applicationGateway
@@ -110,6 +126,21 @@ ID of the application gateway BackendSettings
 ```yaml
 Type: System.String
 Parameter Sets: SetByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ChangeReference
+The change reference resource ID for this resource operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False

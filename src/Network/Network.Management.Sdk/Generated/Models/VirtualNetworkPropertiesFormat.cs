@@ -81,7 +81,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// network resource.
         /// </param>
 
-        /// <param name="summarizedGatewayPrefixes">A summarized list of advertised prefixes for the virtual network.
+        /// <param name="summarizedGatewayPrefixes">A configurable list of summarized gateway prefixes advertised for the
+        /// virtual network.
         /// </param>
         public VirtualNetworkPropertiesFormat(AddressSpace addressSpace = default(AddressSpace), DhcpOptions dhcpOptions = default(DhcpOptions), int? flowTimeoutInMinutes = default(int?), System.Collections.Generic.IList<Subnet> subnets = default(System.Collections.Generic.IList<Subnet>), System.Collections.Generic.IList<VirtualNetworkPeering> virtualNetworkPeerings = default(System.Collections.Generic.IList<VirtualNetworkPeering>), string resourceGuid = default(string), string provisioningState = default(string), bool? enableDdosProtection = default(bool?), bool? enableVMProtection = default(bool?), SubResource ddosProtectionPlan = default(SubResource), VirtualNetworkBgpCommunities bgpCommunities = default(VirtualNetworkBgpCommunities), VirtualNetworkEncryption encryption = default(VirtualNetworkEncryption), System.Collections.Generic.IList<SubResource> ipAllocations = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<FlowLog> flowLogs = default(System.Collections.Generic.IList<FlowLog>), string privateEndpointVNetPolicies = default(string), SubResource defaultPublicNatGateway = default(SubResource), AddressSpace summarizedGatewayPrefixes = default(AddressSpace))
 
@@ -217,8 +218,8 @@ namespace Microsoft.Azure.Management.Network.Models
         public SubResource DefaultPublicNatGateway {get; private set; }
 
         /// <summary>
-        /// Gets or sets a summarized list of advertised prefixes for the virtual
-        /// network.
+        /// Gets or sets a configurable list of summarized gateway prefixes advertised
+        /// for the virtual network.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "summarizedGatewayPrefixes")]
         public AddressSpace SummarizedGatewayPrefixes {get; set; }

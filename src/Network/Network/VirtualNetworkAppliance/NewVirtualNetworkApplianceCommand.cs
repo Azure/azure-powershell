@@ -110,10 +110,9 @@ namespace Microsoft.Azure.Commands.Network
 
         private PSVirtualNetworkAppliance CreateVirtualNetworkAppliance()
         {
-            if (!double.TryParse(this.Bandwidth, NumberStyles.Float | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out var bandwidthInGbps)
-                && !double.TryParse(this.Bandwidth, NumberStyles.Float | NumberStyles.AllowThousands, CultureInfo.CurrentCulture, out bandwidthInGbps))
+            if (!double.TryParse(this.Bandwidth, NumberStyles.Float, CultureInfo.InvariantCulture, out double bandwidthInGbps))
             {
-                throw new PSArgumentException("Bandwidth must be a numeric value expressed in Gbps.");
+                throw new PSArgumentException($"Invalid bandwidth value '{this.Bandwidth}'. Provide a numeric value such as 50, 100, or 200.", nameof(Bandwidth));
             }
 
             var vnaModel = new VirtualNetworkAppliance

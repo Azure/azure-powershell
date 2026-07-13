@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class AuthenticationMethod
     {
+        /// <summary>
+        /// EAPTLS
+        /// </summary>
         public const string Eaptls = "EAPTLS";
+        /// <summary>
+        /// EAPMSCHAPv2
+        /// </summary>
         public const string EapmschaPv2 = "EAPMSCHAPv2";
     }
 }

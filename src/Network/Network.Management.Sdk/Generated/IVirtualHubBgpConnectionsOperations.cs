@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network
         /// Retrieves the details of all VirtualHubBgpConnections.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VirtualHub.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
@@ -40,19 +40,50 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<BgpConnection>>> ListWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Retrieves a list of routes the virtual hub bgp connection is advertising to
+        /// the specified peer.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of routes the virtual hub bgp connection is advertising to
+        /// the specified peer.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='hubName'>
+        /// The name of the virtual hub.
+        /// </param>
+        /// <param name='connectionName'>
+        /// The name of the bgp connection.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<PeerRoute>>>> ListAdvertisedRoutesWithHttpMessagesAsync(string resourceGroupName, string hubName, string connectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Retrieves a list of routes the virtual hub bgp connection has learned.
         /// </summary>
         /// <remarks>
         /// Retrieves a list of routes the virtual hub bgp connection has learned.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='hubName'>
         /// The name of the virtual hub.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the virtual hub bgp connection.
+        /// The name of the bgp connection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -77,73 +108,13 @@ namespace Microsoft.Azure.Management.Network
         /// the specified peer.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='hubName'>
         /// The name of the virtual hub.
         /// </param>
         /// <param name='connectionName'>
-        /// The name of the virtual hub bgp connection.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<PeerRoute>>>> ListAdvertisedRoutesWithHttpMessagesAsync(string resourceGroupName, string hubName, string connectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Retrieves a list of routes the virtual hub bgp connection has learned.
-        /// </summary>
-        /// <remarks>
-        /// Retrieves a list of routes the virtual hub bgp connection has learned.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='hubName'>
-        /// The name of the virtual hub.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the virtual hub bgp connection.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<PeerRoute>>>> BeginListLearnedRoutesWithHttpMessagesAsync(string resourceGroupName, string hubName, string connectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Retrieves a list of routes the virtual hub bgp connection is advertising to
-        /// the specified peer.
-        /// </summary>
-        /// <remarks>
-        /// Retrieves a list of routes the virtual hub bgp connection is advertising to
-        /// the specified peer.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='hubName'>
-        /// The name of the virtual hub.
-        /// </param>
-        /// <param name='connectionName'>
-        /// The name of the virtual hub bgp connection.
+        /// The name of the bgp connection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -158,6 +129,35 @@ namespace Microsoft.Azure.Management.Network
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<PeerRoute>>>> BeginListAdvertisedRoutesWithHttpMessagesAsync(string resourceGroupName, string hubName, string connectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Retrieves a list of routes the virtual hub bgp connection has learned.
+        /// </summary>
+        /// <remarks>
+        /// Retrieves a list of routes the virtual hub bgp connection has learned.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='hubName'>
+        /// The name of the virtual hub.
+        /// </param>
+        /// <param name='connectionName'>
+        /// The name of the bgp connection.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<PeerRoute>>>> BeginListLearnedRoutesWithHttpMessagesAsync(string resourceGroupName, string hubName, string connectionName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Retrieves the details of all VirtualHubBgpConnections.

@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class SecurityProviderName
     {
+        /// <summary>
+        /// ZScaler
+        /// </summary>
         public const string ZScaler = "ZScaler";
+        /// <summary>
+        /// IBoss
+        /// </summary>
         public const string IBoss = "IBoss";
+        /// <summary>
+        /// Checkpoint
+        /// </summary>
         public const string Checkpoint = "Checkpoint";
     }
 }

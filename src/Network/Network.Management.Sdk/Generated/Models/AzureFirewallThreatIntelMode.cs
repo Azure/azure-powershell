@@ -13,8 +13,17 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class AzureFirewallThreatIntelMode
     {
+        /// <summary>
+        /// Alert
+        /// </summary>
         public const string Alert = "Alert";
+        /// <summary>
+        /// Deny
+        /// </summary>
         public const string Deny = "Deny";
+        /// <summary>
+        /// Off
+        /// </summary>
         public const string Off = "Off";
     }
 }
