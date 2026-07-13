@@ -61,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
             keyValuePair = content.Cast<System.Collections.DictionaryEntry>().FirstOrDefault((kvp) => "Parameters".Equals(kvp.Key.ToString(), StringComparison.OrdinalIgnoreCase));
             if (keyValuePair.Key != null)
             {
-                ((IPolicyDefinitionReferenceInternal)this).Parameter = content.GetValueForProperty(keyValuePair.Key.ToString(), ((IPolicyDefinitionReferenceInternal)this).Parameter, ParameterValuesTypeConverter.ConvertFrom);
+                ((IPolicyDefinitionReferenceInternal)this).Parameter = content.GetValueForProperty(keyValuePair.Key.ToString(), ((IPolicyDefinitionReferenceInternal)this).Parameter, PolicyDefinitionReferenceParametersTypeConverter.ConvertFrom);
             }
 
             // Github issue: https://github.com/Azure/azure-powershell/issues/25112

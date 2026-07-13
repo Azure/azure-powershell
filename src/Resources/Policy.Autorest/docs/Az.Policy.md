@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Policy
-Module Guid: e58f4cf5-0c2e-4d40-aa52-f153aadcaa3f
+Module Guid: 8ec7baaa-06cc-468c-bdfe-7f215bc3a905
 Download Help Link: https://learn.microsoft.com/powershell/module/az.policy
 Help Version: 1.0.0.0
 Locale: en-US
@@ -8,7 +8,7 @@ Locale: en-US
 
 # Az.Policy Module
 ## Description
-Microsoft Azure PowerShell: Policy cmdlets
+${$project.metadata.description}
 
 ## Az.Policy Cmdlets
 ### [Get-AzPolicyAssignment](Get-AzPolicyAssignment.md)

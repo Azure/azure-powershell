@@ -15,19 +15,19 @@ Gets Management Group scoped Deployment Stacks.
 ### ListByManagmentGroupId (Default)
 ```
 Get-AzManagementGroupDeploymentStack -ManagementGroupId <String> [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByManagementGroupIdAndName
 ```
 Get-AzManagementGroupDeploymentStack [-Name] <String> -ManagementGroupId <String> [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByResourceId
 ```
 Get-AzManagementGroupDeploymentStack -ResourceId <String> [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,7 +48,7 @@ Get a deployment stack named 'MyMGStack' under an MG named 'MyManagementGroup'.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 The id of the ManagementGroup where the DeploymentStack is deployed
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListByManagmentGroupId, GetByManagementGroupIdAndName
 Aliases:
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 The name of the DeploymentStack to get
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByManagementGroupIdAndName
 Aliases: StackName
 
@@ -93,24 +93,9 @@ Accept wildcard characters: False
 When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -123,7 +108,7 @@ Accept wildcard characters: False
 ResourceId of the DeploymentStack to get
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceId
 Aliases: Id
 
