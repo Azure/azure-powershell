@@ -23,19 +23,4 @@ To execute tests, run the `test-module.ps1`. To write tests, [this example](http
 
 ## Declarative Cmdlet Execution Plan
 
-The test runner supports an optional declarative plan at `test/cmdlet-execution-plan.json`.
-
-Each plan entry can define:
-
-- `Cmdlet`: cmdlet identifier.
-- `TestName`: Pester test name executed for that cmdlet.
-- `CanParallelize`: whether this cmdlet test can run in parallel with other runnable cmdlet tests.
-- `DependsOn`: predecessor cmdlets that must complete first.
-- `SkipIfDependencyNotSelected`: skip this cmdlet test when a dependency is not part of the selected test set.
-- `SkipIfDependencyFails`: skip this cmdlet test when a dependency fails.
-
-Plan behavior in `test-module.ps1`:
-
-- When `-TestName` is provided, planned cmdlet tests use dependency-aware scheduling.
-- Unplanned `-TestName` values still run directly via Pester.
-- When no `-TestName` is provided, default behavior remains unchanged unless `-UseCmdletExecutionPlan` is specified.
+Remove this section unless/ until the test runner is updated to consume `test/cmdlet-execution-plan.json` and expose a `-UseCmdletExecutionPlan` switch.

@@ -349,7 +349,7 @@ function cleanupEnv() {
     foreach ($resourceGroupName in $resourceGroups) {
         Write-Host "cleanupEnv: Deleting resource group '$resourceGroupName'."
         try {
-            Remove-AzResourceGroup -Name $resourceGroupName -Confirm:$false -ErrorAction SilentlyContinue | Out-Null
+            Remove-AzResourceGroup -Name $resourceGroupName -Confirm:$false -ErrorAction Stop | Out-Null
         }
         catch {
             $cleanupFailures += "Failed to start delete for resource group '$resourceGroupName': $($_.Exception.Message)"
