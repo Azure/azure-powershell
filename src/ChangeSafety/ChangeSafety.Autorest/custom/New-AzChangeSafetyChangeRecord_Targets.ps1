@@ -13,10 +13,9 @@ The -Targets parameter automatically sets:
 
 .PARAMETER Targets
 An array of hashtables, each containing target selection criteria. Common keys include:
-- resourceType: The Azure resource type (e.g., "Microsoft.Compute/virtualMachines")
-- subscriptions: Array of subscription IDs
-- resourceGroups: Array of resource group names
-- regions: Array of Azure regions
+- resourceId: ARM resource ID for a targeted resource
+- subscriptionId: Subscription ID for a subscription-level target
+- httpMethod: Optional ARM method for the target operation (GET, HEAD, PUT, PATCH, POST, DELETE)
 
 .PARAMETER TargetName
 Optional name for the target definition. Defaults to "TargetSelection".
@@ -56,7 +55,7 @@ function New-AzChangeSafetyChangeRecord_Targets {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ChangeSafety.Models.IChangeRecord])]
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
-        [Parameter(Mandatory, HelpMessage = "The name of the ChangeRecord resource.")]
+        [Parameter(Mandatory = $true, HelpMessage = "The name of the ChangeRecord resource.")]
         [Alias('ChangeRecordName')]
         [string]
         $Name,
@@ -69,7 +68,7 @@ function New-AzChangeSafetyChangeRecord_Targets {
         [string]
         $SubscriptionId,
 
-        [Parameter(Mandatory, HelpMessage = "Target selection criteria. Can be a single hashtable or an array of hashtables. Keys include: resourceType, subscriptions, resourceGroups, regions.")]
+        [Parameter(Mandatory = $true, HelpMessage = "Target selection criteria. Can be a single hashtable or an array of hashtables. Keys include: resourceId, subscriptionId, httpMethod.")]
         [object[]]
         $Targets,
 
@@ -77,7 +76,7 @@ function New-AzChangeSafetyChangeRecord_Targets {
         [string]
         $TargetName = "TargetSelection",
 
-        [Parameter(HelpMessage = "Describes the nature of the change.")]
+        [Parameter(Mandatory = $true, HelpMessage = "Describes the nature of the change.")]
         [string]
         $ChangeType,
 
@@ -93,7 +92,7 @@ function New-AzChangeSafetyChangeRecord_Targets {
         [datetime]
         $AnticipatedEndTime,
 
-        [Parameter(HelpMessage = "Describes the type of the rollout used for the change.")]
+        [Parameter(Mandatory = $true, HelpMessage = "Describes the type of the rollout used for the change.")]
         [string]
         $RolloutType,
 
@@ -170,6 +169,18 @@ function New-AzChangeSafetyChangeRecord_Targets {
     )
 
     process {
+        Assert-AzChangeSafetyChangeRecordName -Name $Name
+
+        if (-not $PSBoundParameters.ContainsKey('ChangeType')) {
+            throw "Parameter 'ChangeType' is required for New-AzChangeSafetyChangeRecord when using -Targets."
+        }
+        Assert-AzChangeSafetyChangeRecordEnumValue -ParameterName 'ChangeType' -Value $ChangeType -AllowedValues @('AppDeployment', 'Config', 'PolicyDeployment', 'ManualTouch')
+
+        if (-not $PSBoundParameters.ContainsKey('RolloutType')) {
+            throw "Parameter 'RolloutType' is required for New-AzChangeSafetyChangeRecord when using -Targets."
+        }
+        Assert-AzChangeSafetyChangeRecordEnumValue -ParameterName 'RolloutType' -Value $RolloutType -AllowedValues @('Normal', 'Hotfix', 'Emergency')
+
         # Build parameters for the underlying cmdlet
         $params = @{}
         
@@ -186,6 +197,7 @@ function New-AzChangeSafetyChangeRecord_Targets {
         $anticipatedStart = if ($PSBoundParameters.ContainsKey('AnticipatedStartTime')) { $AnticipatedStartTime } else { (Get-Date).ToUniversalTime() }
         $params['AnticipatedStartTime'] = $anticipatedStart
         $params['AnticipatedEndTime'] = if ($PSBoundParameters.ContainsKey('AnticipatedEndTime')) { $AnticipatedEndTime } else { $anticipatedStart.AddHours(8) }
+        Assert-AzChangeSafetyChangeRecordWindow -BoundParameters $PSBoundParameters -AnticipatedStartTime $params['AnticipatedStartTime'] -AnticipatedEndTime $params['AnticipatedEndTime']
         if ($PSBoundParameters.ContainsKey('OrchestrationTool')) { $params['OrchestrationTool'] = $OrchestrationTool }
         if ($PSBoundParameters.ContainsKey('ReleaseLabel')) { $params['ReleaseLabel'] = $ReleaseLabel }
         if ($PSBoundParameters.ContainsKey('Comment')) { $params['Comment'] = $Comment }
@@ -196,10 +208,8 @@ function New-AzChangeSafetyChangeRecord_Targets {
         if ($PSBoundParameters.ContainsKey('AdditionalData')) { $params['AdditionalData'] = $AdditionalData }
         
         # Set required properties with defaults
-        # ChangeType is required at the properties level - default to AppDeployment
-        $params['ChangeType'] = if ($PSBoundParameters.ContainsKey('ChangeType')) { $ChangeType } else { 'AppDeployment' }
-        # RolloutType is required at the properties level - default to Normal
-        $params['RolloutType'] = if ($PSBoundParameters.ContainsKey('RolloutType')) { $RolloutType } else { 'Normal' }
+        $params['ChangeType'] = $ChangeType
+        $params['RolloutType'] = $RolloutType
         
         # Set ChangeDefinition parameters based on -Targets
         $params['ChangeDefinitionKind'] = 'Targets'
@@ -210,8 +220,7 @@ function New-AzChangeSafetyChangeRecord_Targets {
         # array. A bare object[] with one element gets unwrapped to a scalar
         # during the IAny (free-form) conversion, which makes the service reject
         # the payload ("ChangeDefinition ... should have 'targets'").
-        $targetList = [System.Collections.Generic.List[object]]::new()
-        foreach ($target in $Targets) { $targetList.Add($target) }
+        $targetList = ConvertTo-AzChangeSafetyTargetList -Targets $Targets
         $params['ChangeDefinitionDetail'] = @{ targets = $targetList }
 
         # Copy runtime parameters

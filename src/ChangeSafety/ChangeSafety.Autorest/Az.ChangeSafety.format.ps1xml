@@ -122,6 +122,7 @@
     <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.ChangeSafety.Models.ChangeRecord</Name>
       <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ChangeSafety.Models.ChangeRecord</TypeName>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ChangeSafety.Models.ChangeRecord#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
@@ -130,22 +131,22 @@
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>SystemDataCreatedAt</Label>
+            <Label>AnticipatedStartTime</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>SystemDataCreatedBy</Label>
+            <Label>AnticipatedEndTime</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>SystemDataCreatedByType</Label>
+            <Label>ChangeType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>SystemDataLastModifiedAt</Label>
+            <Label>RolloutType</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>SystemDataLastModifiedBy</Label>
+            <Label>Targets</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>SystemDataLastModifiedByType</Label>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
@@ -158,22 +159,22 @@
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SystemDataCreatedAt</PropertyName>
+                <PropertyName>AnticipatedStartTime</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SystemDataCreatedBy</PropertyName>
+                <PropertyName>AnticipatedEndTime</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SystemDataCreatedByType</PropertyName>
+                <PropertyName>ChangeType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedAt</PropertyName>
+                <PropertyName>RolloutType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedBy</PropertyName>
+                <PropertyName>ChangeDefinitionDetail</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>SystemDataLastModifiedByType</PropertyName>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -247,10 +248,10 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>AnticipatedEndTime</Label>
+            <Label>AnticipatedStartTime</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>AnticipatedStartTime</Label>
+            <Label>AnticipatedEndTime</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ChangeType</Label>
@@ -281,10 +282,10 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>AnticipatedEndTime</PropertyName>
+                <PropertyName>AnticipatedStartTime</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>AnticipatedStartTime</PropertyName>
+                <PropertyName>AnticipatedEndTime</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ChangeType</PropertyName>
@@ -323,10 +324,10 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>AnticipatedEndTime</Label>
+            <Label>AnticipatedStartTime</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>AnticipatedStartTime</Label>
+            <Label>AnticipatedEndTime</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ChangeType</Label>
@@ -351,10 +352,10 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>AnticipatedEndTime</PropertyName>
+                <PropertyName>AnticipatedStartTime</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>AnticipatedStartTime</PropertyName>
+                <PropertyName>AnticipatedEndTime</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ChangeType</PropertyName>
@@ -981,10 +982,10 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>AnticipatedEndTime</Label>
+            <Label>AnticipatedStartTime</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>AnticipatedStartTime</Label>
+            <Label>AnticipatedEndTime</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ChangeType</Label>
@@ -1015,10 +1016,10 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>AnticipatedEndTime</PropertyName>
+                <PropertyName>AnticipatedStartTime</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>AnticipatedStartTime</PropertyName>
+                <PropertyName>AnticipatedEndTime</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ChangeType</PropertyName>
@@ -1057,10 +1058,10 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>AnticipatedEndTime</Label>
+            <Label>AnticipatedStartTime</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>AnticipatedStartTime</Label>
+            <Label>AnticipatedEndTime</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ChangeType</Label>
@@ -1085,10 +1086,10 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>AnticipatedEndTime</PropertyName>
+                <PropertyName>AnticipatedStartTime</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>AnticipatedStartTime</PropertyName>
+                <PropertyName>AnticipatedEndTime</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ChangeType</PropertyName>

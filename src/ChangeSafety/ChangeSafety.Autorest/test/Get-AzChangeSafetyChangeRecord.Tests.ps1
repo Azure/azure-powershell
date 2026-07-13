@@ -30,11 +30,13 @@ Describe 'Get-AzChangeSafetyChangeRecord' {
                     resourceId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.Compute/virtualMachines/test-vm-get-002"
                 }
             )
-            New-AzChangeSafetyChangeRecord -Name $changeRecordName `
+            $created = New-AzChangeSafetyChangeRecord -Name $changeRecordName `
                 -ResourceGroupName $env.ResourceGroupName `
-                -Targets $targets -ErrorAction SilentlyContinue
+                -Targets $targets `
+                -ChangeType "AppDeployment" `
+                -RolloutType "Normal" -ErrorAction SilentlyContinue
             
-            $result = Get-AzChangeSafetyChangeRecord -Name $changeRecordName `
+            $result = $created | Get-AzChangeSafetyChangeRecord `
                 -ResourceGroupName $env.ResourceGroupName
             $result | Should -Not -Be $null
             $result.Name | Should -Be $changeRecordName

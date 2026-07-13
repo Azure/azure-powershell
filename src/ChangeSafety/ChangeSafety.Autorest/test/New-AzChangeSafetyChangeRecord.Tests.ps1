@@ -28,7 +28,9 @@ Describe 'New-AzChangeSafetyChangeRecord' {
             )
             $result = New-AzChangeSafetyChangeRecord -Name $env.ChangeRecordName `
                 -ResourceGroupName $env.ResourceGroupName `
-                -Targets $targets
+                -Targets $targets `
+                -ChangeType "AppDeployment" `
+                -RolloutType "Normal"
             
             $result | Should -Not -Be $null
             $result.Name | Should -Be $env.ChangeRecordName
@@ -95,13 +97,15 @@ Describe 'New-AzChangeSafetyChangeRecord' {
             )
             
             # Must have time window for StageProgression to work
-            $startTime = (Get-Date).AddMinutes(-5)
+            $startTime = (Get-Date).AddMinutes(5)
             $endTime = (Get-Date).AddHours(2)
             
             $result = New-AzChangeSafetyChangeRecord -Name $stagedRecordName `
                 -ResourceGroupName $env.ResourceGroupName `
                 -Targets $targets `
                 -StageMapResourceId $stagemap.Id `
+                -ChangeType "AppDeployment" `
+                -RolloutType "Normal" `
                 -AnticipatedStartTime $startTime `
                 -AnticipatedEndTime $endTime
             
@@ -109,5 +113,46 @@ Describe 'New-AzChangeSafetyChangeRecord' {
             $result.Name | Should -Be $stagedRecordName
             $result.StageMapResourceId | Should -Not -BeNullOrEmpty
         } | Should -Not -Throw
+    }
+
+    It 'Create - Targets marks ChangeType and RolloutType as mandatory' {
+        $command = Get-Command New-AzChangeSafetyChangeRecord
+        $changeTypeAttribute = $command.Parameters['ChangeType'].Attributes |
+            Where-Object { $_ -is [System.Management.Automation.ParameterAttribute] -and $_.ParameterSetName -eq 'Targets' }
+        $rolloutTypeAttribute = $command.Parameters['RolloutType'].Attributes |
+            Where-Object { $_ -is [System.Management.Automation.ParameterAttribute] -and $_.ParameterSetName -eq 'Targets' }
+
+        $changeTypeAttribute.Mandatory | Should -BeTrue
+        $rolloutTypeAttribute.Mandatory | Should -BeTrue
+    }
+
+    It 'Create - Rejects invalid target httpMethod' {
+        $message = try {
+            New-AzChangeSafetyChangeRecord -Name "validation-test-record" `
+                -ResourceGroupName $env.ResourceGroupName `
+                -Targets @{ subscriptionId = $env.SubscriptionId; httpMethod = "BOGUS" } `
+                -ChangeType "ManualTouch" `
+                -RolloutType "Normal"
+        } catch {
+            $_.Exception.Message
+        }
+
+        $message | Should -Match "Targets\.httpMethod"
+    }
+
+    It 'Create - Rejects past anticipated windows' {
+        $message = try {
+            New-AzChangeSafetyChangeRecord -Name "validation-test-record" `
+                -ResourceGroupName $env.ResourceGroupName `
+                -Targets @{ subscriptionId = $env.SubscriptionId } `
+                -ChangeType "ManualTouch" `
+                -RolloutType "Normal" `
+                -AnticipatedStartTime (Get-Date).AddHours(-2) `
+                -AnticipatedEndTime (Get-Date).AddHours(-1)
+        } catch {
+            $_.Exception.Message
+        }
+
+        $message | Should -Match "AnticipatedStartTime"
     }
 }

@@ -49,13 +49,15 @@ Describe 'New-AzChangeSafetyStageProgression' {
                 resourceId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroupName)/providers/Microsoft.Compute/virtualMachines/new-prog-file-vm-002"
             }
         )
-        $startTime = (Get-Date).AddMinutes(-5)
+        $startTime = (Get-Date).AddMinutes(5)
         $endTime = (Get-Date).AddHours(2)
         
         $script:changeRecord = New-AzChangeSafetyChangeRecord -Name $script:changeRecordName `
             -ResourceGroupName $env.ResourceGroupName `
             -Targets $targets `
             -StageMapResourceId $script:stagemap.Id `
+            -ChangeType "AppDeployment" `
+            -RolloutType "Normal" `
             -AnticipatedStartTime $startTime `
             -AnticipatedEndTime $endTime
     }

@@ -9,10 +9,9 @@ Accepts one or more target definitions.
 
 .PARAMETER Targets
 An array of hashtables, each containing target selection criteria. Common keys include:
-- resourceType: The Azure resource type (e.g., "Microsoft.Compute/virtualMachines")
-- subscriptions: Array of subscription IDs
-- resourceGroups: Array of resource group names
-- regions: Array of Azure regions
+- resourceId: ARM resource ID for a targeted resource
+- subscriptionId: Subscription ID for a subscription-level target
+- httpMethod: Optional ARM method for the target operation (GET, HEAD, PUT, PATCH, POST, DELETE)
 
 .PARAMETER TargetName
 Optional name for the target definition.
@@ -43,7 +42,7 @@ function Update-AzChangeSafetyChangeRecord_Targets {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ChangeSafety.Models.IChangeRecord])]
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
-        [Parameter(Mandatory, HelpMessage = "The name of the ChangeRecord resource.")]
+        [Parameter(Mandatory = $true, HelpMessage = "The name of the ChangeRecord resource.")]
         [Alias('ChangeRecordName')]
         [string]
         $Name,
@@ -56,7 +55,7 @@ function Update-AzChangeSafetyChangeRecord_Targets {
         [string]
         $SubscriptionId,
 
-        [Parameter(Mandatory, HelpMessage = "One or more target selection criteria as hashtables.")]
+        [Parameter(Mandatory = $true, HelpMessage = "One or more target selection criteria as hashtables.")]
         [object[]]
         $Targets,
 
@@ -157,6 +156,19 @@ function Update-AzChangeSafetyChangeRecord_Targets {
     )
 
     process {
+        Assert-AzChangeSafetyChangeRecordName -Name $Name
+        if ($PSBoundParameters.ContainsKey('AnticipatedStartTime') -or $PSBoundParameters.ContainsKey('AnticipatedEndTime')) {
+            Assert-AzChangeSafetyChangeRecordWindow -BoundParameters $PSBoundParameters -AnticipatedStartTime $AnticipatedStartTime -AnticipatedEndTime $AnticipatedEndTime
+        }
+
+        if ($PSBoundParameters.ContainsKey('RolloutType')) {
+            throw "Parameter 'RolloutType' cannot be updated after a ChangeRecord is created. Create a new ChangeRecord with the desired RolloutType."
+        }
+
+        if ($PSBoundParameters.ContainsKey('ChangeType')) {
+            Assert-AzChangeSafetyChangeRecordEnumValue -ParameterName 'ChangeType' -Value $ChangeType -AllowedValues @('AppDeployment', 'Config', 'PolicyDeployment', 'ManualTouch')
+        }
+
         $params = @{}
         
         # Copy common parameters
@@ -167,7 +179,6 @@ function Update-AzChangeSafetyChangeRecord_Targets {
         if ($PSBoundParameters.ContainsKey('Description')) { $params['Description'] = $Description }
         if ($PSBoundParameters.ContainsKey('AnticipatedStartTime')) { $params['AnticipatedStartTime'] = $AnticipatedStartTime }
         if ($PSBoundParameters.ContainsKey('AnticipatedEndTime')) { $params['AnticipatedEndTime'] = $AnticipatedEndTime }
-        if ($PSBoundParameters.ContainsKey('RolloutType')) { $params['RolloutType'] = $RolloutType }
         if ($PSBoundParameters.ContainsKey('OrchestrationTool')) { $params['OrchestrationTool'] = $OrchestrationTool }
         if ($PSBoundParameters.ContainsKey('ReleaseLabel')) { $params['ReleaseLabel'] = $ReleaseLabel }
         if ($PSBoundParameters.ContainsKey('Comment')) { $params['Comment'] = $Comment }
@@ -187,10 +198,8 @@ function Update-AzChangeSafetyChangeRecord_Targets {
             $params['ChangeDefinitionName'] = 'TargetDefinition'
         }
         
-        # Wrap targets in the expected structure: { targets: [...] }
-        # If a single hashtable is passed, wrap it in an array
-        $targetArray = if ($Targets -is [hashtable]) { @($Targets) } else { $Targets }
-        $params['ChangeDefinitionDetail'] = @{ targets = $targetArray }
+        $targetList = ConvertTo-AzChangeSafetyTargetList -Targets $Targets
+        $params['ChangeDefinitionDetail'] = @{ targets = $targetList }
 
         # Copy runtime parameters
         if ($PSBoundParameters.ContainsKey('DefaultProfile')) { $params['DefaultProfile'] = $DefaultProfile }
