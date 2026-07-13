@@ -179,7 +179,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api20221012Preview.IFileSystemResource
+### Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IFileSystemResource
 
 ## NOTES
 

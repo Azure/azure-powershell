@@ -52,13 +52,10 @@ subject-prefix: $(service-name)
 resourcegroup-append: true
 nested-object-to-string: true
 
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
+  # Remove non-expanded Create/Update variants (keep Expanded, JsonFilePath, JsonString)
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   # don't support updation of resource
   - where:
