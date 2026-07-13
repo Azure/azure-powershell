@@ -42,6 +42,30 @@ title: ChangeSafety
 subject-prefix: $(service-name)
 
 directive:
+  - from: swagger-document
+    where: $.definitions.ChangeRecordProperties.properties.changeType.description
+    transform: return "Describes the nature of the change. Allowed values are AppDeployment, Config, PolicyDeployment, ManualTouch."
+  - from: swagger-document
+    where: $.definitions.ChangeRecordPropertiesUpdate.properties.changeType.description
+    transform: return "Describes the nature of the change. Allowed values are AppDeployment, Config, PolicyDeployment, ManualTouch."
+  - from: swagger-document
+    where: $.definitions.ChangeRecordProperties.properties.rolloutType.description
+    transform: return "Describes the type of the rollout used for the change. Allowed values are Normal, Hotfix, Emergency."
+  - from: swagger-document
+    where: $.definitions.ChangeRecordPropertiesUpdate.properties.rolloutType.description
+    transform: return "Describes the type of the rollout used for the change. Allowed values are Normal, Hotfix, Emergency."
+  - from: swagger-document
+    where: $.definitions.ChangeDefinition.properties.kind.description
+    transform: return "Kind of the change definition. Allowed values are ApiOperations, Targets."
+  - from: swagger-document
+    where: $.definitions.ChangeDefinitionUpdate.properties.kind.description
+    transform: return "Kind of the change definition. Allowed values are ApiOperations, Targets."
+  - from: swagger-document
+    where: $.definitions.ChangeRecordStageProgressionProperties.properties.status.description
+    transform: return "StageProgression resource status. Allowed values are Initialized, InProgress, Completed, Cancelled, Paused, Failed, Skipped."
+  - from: swagger-document
+    where: $.definitions.ChangeRecordStageProgressionPropertiesUpdate.properties.status.description
+    transform: return "StageProgression resource status. Allowed values are Initialized, InProgress, Completed, Cancelled, Paused, Failed, Skipped."
   # Following are common directives which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required
@@ -50,6 +74,10 @@ directive:
     remove: true
   - where:
       variant: ^CreateViaIdentity.*$
+    remove: true
+  - where:
+      subject: ^ChangeRecord$
+      variant: ^GetViaIdentity$
     remove: true
   # Remove the Set-* cmdlet
   - where:
@@ -81,6 +109,14 @@ directive:
       subject: ChangeRecordStageProgression(.*)
     set:
       subject: StageProgression$1
+  - where:
+      subject: ^StageMap$
+      variant: ^(GetViaIdentity|GetViaIdentity1|GetViaIdentityManagementGroup)$
+    remove: true
+  - where:
+      subject: ^StageProgression$
+      variant: ^(GetViaIdentity|GetViaIdentityChangeRecord|GetViaIdentityChangeRecord1)$
+    remove: true
   # Remove AuditTrail and NextStage cmdlets
   - where:
       subject: .*AuditTrail$

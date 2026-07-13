@@ -12,41 +12,49 @@ The -Targets parameter automatically sets:
 - ChangeDefinitionDetail = { targets: [...] }
 
 .PARAMETER Targets
-An array of hashtables, each containing target selection criteria. Common keys include:
-- resourceId: ARM resource ID for a targeted resource
-- subscriptionId: Subscription ID for a subscription-level target
-- httpMethod: Optional ARM method for the target operation (GET, HEAD, PUT, PATCH, POST, DELETE)
+The Target which a change is authorized against. Supported keys include:
+- resourceId: The ARM resource Id
+- subscriptionId: The Subscription Id. Required when resourceId is not provided
+- resourceGroupName: The name of the resource group
+- resourceType: The type of the resource
+- resourceName: The name of the ARM resource
+- httpMethod: The HTTP method. Allowed values are GET, HEAD, PUT, PATCH, POST, DELETE
 
 .PARAMETER TargetName
 Optional name for the target definition. Defaults to "TargetSelection".
 
 .EXAMPLE
-New-AzChangeSafetyChangeRecord -Name "mychange" -Targets @{
-    resourceType = "Microsoft.Compute/virtualMachines"
-    subscriptions = @("/subscriptions/12345678-1234-1234-1234-123456789012")
-    regions = @("eastus", "westus")
-}
+New-AzChangeSafetyChangeRecord -Name "storageAccountCleanup" `
+    -ResourceGroupName "rg-changeops" `
+    -ChangeType "ManualTouch" `
+    -RolloutType "Hotfix" `
+    -Description "Delete unused storage account for cleanup" `
+    -Targets @{
+        subscriptionId = (Get-AzContext).Subscription.Id
+    }
 
-Creates a change record with a single target for VMs.
+Creates a stageless change record authorized against the current subscription.
 
 .EXAMPLE
-New-AzChangeSafetyChangeRecord -Name "mychange" -Targets @(
+New-AzChangeSafetyChangeRecord -Name "mychange" -ResourceGroupName "rg-changeops" -Targets @(
     @{
         resourceType = "Microsoft.Compute/virtualMachines"
-        regions = @("eastus")
+        subscriptionId = (Get-AzContext).Subscription.Id
     },
     @{
         resourceType = "Microsoft.Storage/storageAccounts"
-        regions = @("westus")
+        subscriptionId = (Get-AzContext).Subscription.Id
+        resourceGroupName = "rg-prod-storage"
     }
 )
 
 Creates a change record with multiple targets (VMs and Storage Accounts).
 
 .EXAMPLE
-New-AzChangeSafetyChangeRecord -Name "mychange" -Targets @{
+New-AzChangeSafetyChangeRecord -Name "mychange" -ResourceGroupName "rg-prod-webapp" -Targets @{
     resourceType = "Microsoft.Web/sites"
-    resourceGroups = @("rg-prod-webapp")
+    subscriptionId = (Get-AzContext).Subscription.Id
+    resourceGroupName = "rg-prod-webapp"
 } -TargetName "ProductionWebApps"
 
 Creates a change record targeting web apps with a custom target name.
@@ -68,7 +76,7 @@ function New-AzChangeSafetyChangeRecord_Targets {
         [string]
         $SubscriptionId,
 
-        [Parameter(Mandatory = $true, HelpMessage = "Target selection criteria. Can be a single hashtable or an array of hashtables. Keys include: resourceId, subscriptionId, httpMethod.")]
+        [Parameter(Mandatory, HelpMessage = "The Target which a change is authorized against. Supported keys include: resourceId, subscriptionId (required if resourceId is omitted), resourceGroupName, resourceType, resourceName, httpMethod.")]
         [object[]]
         $Targets,
 
