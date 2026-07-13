@@ -160,6 +160,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Mandatory = false, ParameterSetName = AzureVMComputeParameterSet,
             HelpMessage = ParamHelpMsgs.Item.containerSubscriptionId)]
         [ValidateNotNullOrEmpty]
+        [ValidatePattern(@"^[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}$")]
         public string ContainerSubscriptionId { get; set; }
 
         public override void ExecuteCmdlet()

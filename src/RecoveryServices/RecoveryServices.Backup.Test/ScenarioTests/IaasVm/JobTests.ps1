@@ -273,40 +273,69 @@ function Test-AzureVMCSBJobSubscription
 {
 	# Verifies that the detailed job for a Cross Subscription Backup (CSB) protected item
 	# exposes ContainerSubscriptionId, populated from extendedInfo.propertyBag["VM Subscription ID"].
-	# Instead of triggering a fresh backup, this fetches an existing backup job for the CSB VM
-	# and inspects its job detail. These values point to the recording environment.
+	# This test is self-contained: it protects a cross-subscription VM, triggers an on-demand backup,
+	# inspects the resulting backup job's detail, and cleans up in the finally block so it is
+	# re-runnable. These values point to the recording environment.
 	$resourceGroupName = "singhprab-csb-vault-rg-ea"
 	$vaultName = "singhprab-csb-vault-ea"
-	$vmName = "singhprab-csb-vm-ea"
+	# The VM (container) resides in a subscription different from the vault's subscription.
+	$vmName = "singhprab-ps-vm9"
+	$vmResourceGroupName = "singhprab-rg-1c"
+	$containerSubscriptionId = "80abcfe3-b410-42b2-983f-df23cba781dc"
+	$policyName = "singhprab"
+
+	# Keep a handle to the vault for cleanup in the finally block so the test is re-runnable.
+	$vault = $null
 
 	try
 	{
 		# Setup
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
 
-		# The backup item for the CSB VM exposes ContainerSubscriptionId (parsed from SourceResourceId).
-		# Use it as the expected value so the test stays self-consistent without hard-coding the subscription.
+		# The CSB vault has AlwaysOn soft delete. A previous run's cleanup soft-deletes the item, which blocks
+		# re-protection; undelete any lingering soft-deleted item for this VM so the test is re-runnable.
+		$existing = Get-AzRecoveryServicesBackupItem `
+			-BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID `
+			| Where-Object { $_.Name -match $vmName }
+		if ($existing -ne $null -and $existing.DeleteState -eq "ToBeDeleted")
+		{
+			Undo-AzRecoveryServicesBackupItemDeletion -Item $existing -VaultId $vault.ID -Force
+		}
+
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name $policyName;
+
+		# Sleep to give the service time to add the policy to the vault
+		Start-TestSleep -Seconds 5
+
+		# Enable protection for the cross-subscription VM using the new -ContainerSubscriptionId parameter.
+		Enable-AzRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Policy $policy `
+			-Name $vmName `
+			-ResourceGroupName $vmResourceGroupName `
+			-ContainerSubscriptionId $containerSubscriptionId;
+
 		$item = Get-AzRecoveryServicesBackupItem `
 			-BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID `
 			| Where-Object { $_.Name -match $vmName }
 
 		Assert-NotNull $item;
+
+		# The backup item for the CSB VM exposes ContainerSubscriptionId (parsed from SourceResourceId).
 		$expectedContainerSubscriptionId = $item.ContainerSubscriptionId
-		Assert-False { [string]::IsNullOrEmpty($expectedContainerSubscriptionId) };
+		Assert-True { $expectedContainerSubscriptionId -eq $containerSubscriptionId };
 
-		# Fetch existing backup jobs for the CSB VM (no new backup is triggered).
-		# Use Get-QueryDateInUtc so the From/To values are recorded and replayed deterministically
-		# (a raw Get-Date would differ between Record and Playback and break the recording match).
-		$from = Get-QueryDateInUtc $((Get-Date).AddDays(-7)) "CSBJobFrom"
-		$to = Get-QueryDateInUtc $(Get-Date) "CSBJobTo"
-		$jobs = @(Get-AzRecoveryServicesBackupJob -VaultId $vault.ID -Operation Backup `
-			-From $from -To $to | Where-Object { $_.WorkloadName -eq $vmName })
+		# Trigger an on-demand backup so there is a Backup job to inspect.
+		$backupJob = Backup-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Item $item | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
-		Assert-True { $jobs.Count -gt 0 };
+		Assert-True { $backupJob.Status -eq "Completed" };
 
-		$backupJob = $jobs[0]
-
-		# The detailed job must expose ContainerSubscriptionId equal to the VM's subscription.
+		# The detailed job must expose ContainerSubscriptionId equal to the VM's subscription,
+		# populated from extendedInfo.propertyBag["VM Subscription ID"].
 		$jobDetail = Get-AzRecoveryServicesBackupJobDetail -VaultId $vault.ID -Job $backupJob
 
 		Assert-NotNull $jobDetail;
@@ -314,6 +343,20 @@ function Test-AzureVMCSBJobSubscription
 	}
 	finally
 	{
-		# Cleanup
+		# Cleanup: disable protection and delete backup data so the cross-subscription VM is freed
+		# and the test can be re-run (recorded) from a clean state.
+		if ($vault -ne $null)
+		{
+			$cleanupItem = Get-AzRecoveryServicesBackupItem `
+				-BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID `
+				| Where-Object { $_.Name -match $vmName }
+			if ($cleanupItem -ne $null)
+			{
+				Disable-AzRecoveryServicesBackupProtection `
+					-VaultId $vault.ID `
+					-Item $cleanupItem `
+					-RemoveRecoveryPoints -Force
+			}
+		}
 	}
 }

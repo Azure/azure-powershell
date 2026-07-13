@@ -27,6 +27,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
     /// </summary>
     public class JobConversions
     {
+        // PropertyBag key (from the service's job extendedInfo) that carries the VM's subscription id for
+        // Cross Subscription Backup jobs. Used when surfacing ContainerSubscriptionId on the PS job model.
+        private const string VmSubscriptionIdPropertyBagKey = "VM Subscription ID";
+
         #region ServiceClient to PS convertors
 
         /// <summary>
@@ -803,9 +807,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                         detailedResponse.Properties.Add(key, vmJob.ExtendedInfo.PropertyBag[key]);
                     }
 
-                    if (vmJob.ExtendedInfo.PropertyBag.ContainsKey("VM Subscription ID"))
+                    if (vmJob.ExtendedInfo.PropertyBag.ContainsKey(VmSubscriptionIdPropertyBagKey))
                     {
-                        detailedResponse.ContainerSubscriptionId = vmJob.ExtendedInfo.PropertyBag["VM Subscription ID"];
+                        detailedResponse.ContainerSubscriptionId = vmJob.ExtendedInfo.PropertyBag[VmSubscriptionIdPropertyBagKey];
                     }
                 }
 
@@ -881,9 +885,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                         detailedResponse.Properties.Add(key, vmJob.ExtendedInfo.PropertyBag[key]);
                     }
 
-                    if (vmJob.ExtendedInfo.PropertyBag.ContainsKey("VM Subscription ID"))
+                    if (vmJob.ExtendedInfo.PropertyBag.ContainsKey(VmSubscriptionIdPropertyBagKey))
                     {
-                        detailedResponse.ContainerSubscriptionId = vmJob.ExtendedInfo.PropertyBag["VM Subscription ID"];
+                        detailedResponse.ContainerSubscriptionId = vmJob.ExtendedInfo.PropertyBag[VmSubscriptionIdPropertyBagKey];
                     }
                 }
 

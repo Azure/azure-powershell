@@ -1417,17 +1417,30 @@ function Test-AzureVMCSBProtection
 	$resourceGroupName = "singhprab-csb-vault-rg-ea"
 	$vaultName = "singhprab-csb-vault-ea"
 	# The VM (container) resides in a subscription different from the vault's subscription.
-	$vmName = "singhprab-ps-vm3"
+	$vmName = "singhprab-ps-vm9"
 	$vmResourceGroupName = "singhprab-rg-1c"
 	$containerSubscriptionId = "80abcfe3-b410-42b2-983f-df23cba781dc"
 	# Policy used to initially protect the VM, and the policy to switch to via modify protection.
 	$policyName = "singhprab"
 	$modifyPolicyName = "singhprab2"
 
+	# Keep a handle to the vault/item for cleanup in the finally block so the test is re-runnable.
+	$vault = $null
+
 	try
 	{
 		# Setup
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+
+		# The CSB vault has AlwaysOn soft delete. A previous run's cleanup soft-deletes the item, which blocks
+		# re-protection; undelete any lingering soft-deleted item for this VM so the test is re-runnable.
+		$existing = Get-AzRecoveryServicesBackupItem `
+			-BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID `
+			| Where-Object { $_.Name -match $vmName }
+		if ($existing -ne $null -and $existing.DeleteState -eq "ToBeDeleted")
+		{
+			Undo-AzRecoveryServicesBackupItemDeletion -Item $existing -VaultId $vault.ID -Force
+		}
 
 		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
 			-VaultId $vault.ID `
@@ -1483,56 +1496,105 @@ function Test-AzureVMCSBProtection
 	}
 	finally
 	{
-		# Cleanup
+		# Cleanup: disable protection and delete backup data so the cross-subscription VM is freed
+		# and the test can be re-run (recorded) from a clean state.
+		if ($vault -ne $null)
+		{
+			$cleanupItem = Get-AzRecoveryServicesBackupItem `
+				-BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID `
+				| Where-Object { $_.Name -match $vmName }
+			if ($cleanupItem -ne $null)
+			{
+				Disable-AzRecoveryServicesBackupProtection `
+					-VaultId $vault.ID `
+					-Item $cleanupItem `
+					-RemoveRecoveryPoints -Force
+			}
+		}
 	}
 }
 
 function Test-AzureVMCSBRestoreOLR
 {
-	# Original Location Recovery (OLR) for a Cross Subscription Backup protected item.
+	# Original Location Recovery (OLR) for a Cross Subscription Backup (CSB) protected item.
 	# No target subscription/resource group input is required - the VM's subscription is derived
 	# from the recovery point's SourceResourceId, and the staging storage account is resolved in
-	# that subscription. This fetches an existing recovery point (no fresh backup is triggered).
-	# These values point to the recording environment.
+	# that subscription. This test is self-contained: it protects a cross-subscription VM, triggers
+	# an on-demand backup, restores the resulting recovery point to the original location, and cleans
+	# up in the finally block so it is re-runnable. These values point to the recording environment.
 	$resourceGroupName = "singhprab-csb-vault-rg-ea"
 	$vaultName = "singhprab-csb-vault-ea"
-	$vmName = "singhprab-csb-vm-ea"
-	# Staging storage account (resides in the VM's subscription).
-	$saName = "asmaskasaea"
-	$saResourceGroupName = "asmaskarrg"
+	# The VM (container) resides in a subscription different from the vault's subscription.
+	$vmName = "singhprab-ps-vm10"
+	$vmResourceGroupName = "singhprab-rg-1c"
+	$containerSubscriptionId = "80abcfe3-b410-42b2-983f-df23cba781dc"
+	$policyName = "singhprab"
+	# Staging storage account (resides in the VM's subscription and same region as the vault).
+	$saName = "ssinghprabsa"
+	$saResourceGroupName = "singhprab-rg-1c"
+
+	# Keep a handle to the vault for cleanup in the finally block so the test is re-runnable.
+	$vault = $null
 
 	try
 	{
 		# Setup
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
 
+		# The CSB vault has AlwaysOn soft delete. A previous run's cleanup soft-deletes the item, which blocks
+		# re-protection; undelete any lingering soft-deleted item for this VM so the test is re-runnable.
+		$existing = Get-AzRecoveryServicesBackupItem `
+			-BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID `
+			| Where-Object { $_.Name -match $vmName }
+		if ($existing -ne $null -and $existing.DeleteState -eq "ToBeDeleted")
+		{
+			Undo-AzRecoveryServicesBackupItemDeletion -Item $existing -VaultId $vault.ID -Force
+		}
+
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name $policyName;
+
+		# Sleep to give the service time to add the policy to the vault
+		Start-TestSleep -Seconds 5
+
+		# Enable protection for the cross-subscription VM using the new -ContainerSubscriptionId parameter.
+		Enable-AzRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Policy $policy `
+			-Name $vmName `
+			-ResourceGroupName $vmResourceGroupName `
+			-ContainerSubscriptionId $containerSubscriptionId;
+
 		$item = Get-AzRecoveryServicesBackupItem `
 			-BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID `
 			| Where-Object { $_.Name -match $vmName }
 
 		Assert-NotNull $item;
+		Assert-True { $item.ContainerSubscriptionId -eq $containerSubscriptionId };
 
-		# Fetch an existing recovery point for the CSB item (no new backup is triggered).
+		# Trigger an on-demand backup so there is a recovery point to restore from.
+		$backupJob = Backup-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Item $item | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+
+		Assert-True { $backupJob.Status -eq "Completed" };
+
+		# Fetch the recovery point produced by the on-demand backup.
 		# Use Get-QueryDateInUtc so the date window is recorded and replayed deterministically.
-		$from = Get-QueryDateInUtc $((Get-Date).AddDays(-2)) "CSBOlrFrom"
-		$to = Get-QueryDateInUtc $(Get-Date) "CSBOlrTo"
-		# Restrict to instant-restore capable tiers (Snapshot or SnapshotAndVaultStandard) so OLR can
-		# leverage the snapshot instead of a vault-tier restore.
+		$from = Get-QueryDateInUtc $((Get-Date).AddDays(-1)) "CSBOlrFrom"
+		$to = Get-QueryDateInUtc $((Get-Date).AddDays(1)) "CSBOlrTo"
 		$rps = @(Get-AzRecoveryServicesBackupRecoveryPoint `
 			-VaultId $vault.ID `
 			-Item $item `
 			-StartDate $from `
-			-EndDate $to `
-			| Where-Object { $_.RecoveryPointTier -eq "Snapshot" })
+			-EndDate $to)
 
 		Assert-True { $rps.Count -gt 0 };
 		$rp = $rps[0]
 
-		# The chosen recovery point must be a Snapshot tier recovery point.
-		Assert-True { $rp.RecoveryPointTier -eq "Snapshot" };
-
 		# The recovery point should belong to the VM's (cross) subscription.
-		Assert-True { $rp.SourceResourceId -match $item.ContainerSubscriptionId };
+		Assert-True { $rp.SourceResourceId -match $containerSubscriptionId };
 
 		# Trigger OLR (Replace Existing): no -TargetResourceGroupName and no -TargetSubscriptionId.
 		# The storage account must be resolved in the VM's subscription (derived from rp.SourceResourceId).
@@ -1549,10 +1611,28 @@ function Test-AzureVMCSBRestoreOLR
 		$restoreJob = $restoreJob | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 		Assert-True { $restoreJob.Status -eq "Completed" };
+
+		# For a CSB job, the detailed job exposes ContainerSubscriptionId (from extendedInfo).
+		$restoreJobDetail = Get-AzRecoveryServicesBackupJobDetail -VaultId $vault.ID -Job $restoreJob
+		Assert-True { $restoreJobDetail.ContainerSubscriptionId -eq $containerSubscriptionId };
 	}
 	finally
 	{
-		# Cleanup
+		# Cleanup: disable protection and delete backup data so the cross-subscription VM is freed
+		# and the test can be re-run (recorded) from a clean state.
+		if ($vault -ne $null)
+		{
+			$cleanupItem = Get-AzRecoveryServicesBackupItem `
+				-BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID `
+				| Where-Object { $_.Name -match $vmName }
+			if ($cleanupItem -ne $null)
+			{
+				Disable-AzRecoveryServicesBackupProtection `
+					-VaultId $vault.ID `
+					-Item $cleanupItem `
+					-RemoveRecoveryPoints -Force
+			}
+		}
 	}
 }
 

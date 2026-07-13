@@ -149,8 +149,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     // and will not find the cross-subscription VM. Hence, we skip discovery and construct the
                     // container URI, protected item URI and source resource ID directly. The backend derives the
                     // VM's subscription from the source resource ID and configures backup accordingly.
-                    string vmVersion = isComputeAzureVM ? computeAzureVMVersion : classicComputeAzureVMVersion;
-                    string containerType = isComputeAzureVM ? "iaasvmcontainerv2" : "iaasvmcontainer";
+                    // -ContainerSubscriptionId is only exposed in the compute (ARM) VM parameter set, so the VM is
+                    // always an ARM compute VM here; the classic-compute container type/version do not apply.
+                    string containerType = "iaasvmcontainerv2";
 
                     containerUri = string.Format("IaasVMContainer;{0};{1};{2}",
                         containerType, azureVMRGName, azureVMName);
@@ -158,7 +159,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         containerType, azureVMRGName, azureVMName);
                     sourceResourceId = string.Format(
                         "/subscriptions/{0}/resourceGroups/{1}/providers/{2}/virtualMachines/{3}",
-                        containerSubscriptionId, azureVMRGName, vmVersion, azureVMName);
+                        containerSubscriptionId, azureVMRGName, computeAzureVMVersion, azureVMName);
                 }
                 else
                 {
