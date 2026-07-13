@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class NetworkInterfaceNicType
     {
+        /// <summary>
+        /// Standard
+        /// </summary>
         public const string Standard = "Standard";
+        /// <summary>
+        /// Elastic
+        /// </summary>
         public const string Elastic = "Elastic";
     }
 }

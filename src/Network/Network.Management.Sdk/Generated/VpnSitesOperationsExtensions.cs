@@ -13,194 +13,6 @@ namespace Microsoft.Azure.Management.Network
     public static partial class VpnSitesOperationsExtensions
     {
         /// <summary>
-        /// Retrieves the details of a VPN site.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnSite.
-        /// </param>
-        /// <param name='vpnSiteName'>
-        /// The name of the VpnSite being retrieved.
-        /// </param>
-        public static VpnSite Get(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName)
-        {
-                return ((IVpnSitesOperations)operations).GetAsync(resourceGroupName, vpnSiteName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Retrieves the details of a VPN site.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnSite.
-        /// </param>
-        /// <param name='vpnSiteName'>
-        /// The name of the VpnSite being retrieved.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<VpnSite> GetAsync(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vpnSiteName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Creates a VpnSite resource if it doesn&#39;t exist else updates the existing
-        /// VpnSite.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnSite.
-        /// </param>
-        /// <param name='vpnSiteName'>
-        /// The name of the VpnSite being created or updated.
-        /// </param>
-        public static VpnSite CreateOrUpdate(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName, VpnSite vpnSiteParameters)
-        {
-                return ((IVpnSitesOperations)operations).CreateOrUpdateAsync(resourceGroupName, vpnSiteName, vpnSiteParameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates a VpnSite resource if it doesn&#39;t exist else updates the existing
-        /// VpnSite.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnSite.
-        /// </param>
-        /// <param name='vpnSiteName'>
-        /// The name of the VpnSite being created or updated.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<VpnSite> CreateOrUpdateAsync(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName, VpnSite vpnSiteParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vpnSiteName, vpnSiteParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Updates VpnSite tags.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnSite.
-        /// </param>
-        /// <param name='vpnSiteName'>
-        /// The name of the VpnSite being updated.
-        /// </param>
-        public static VpnSite UpdateTags(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName, TagsObject vpnSiteParameters)
-        {
-                return ((IVpnSitesOperations)operations).UpdateTagsAsync(resourceGroupName, vpnSiteName, vpnSiteParameters).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Updates VpnSite tags.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnSite.
-        /// </param>
-        /// <param name='vpnSiteName'>
-        /// The name of the VpnSite being updated.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<VpnSite> UpdateTagsAsync(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName, TagsObject vpnSiteParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, vpnSiteName, vpnSiteParameters, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
-        /// Deletes a VpnSite.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnSite.
-        /// </param>
-        /// <param name='vpnSiteName'>
-        /// The name of the VpnSite being deleted.
-        /// </param>
-        public static void Delete(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName)
-        {
-                ((IVpnSitesOperations)operations).DeleteAsync(resourceGroupName, vpnSiteName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Deletes a VpnSite.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnSite.
-        /// </param>
-        /// <param name='vpnSiteName'>
-        /// The name of the VpnSite being deleted.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, vpnSiteName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Lists all the vpnSites in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnSite.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<VpnSite> ListByResourceGroup(this IVpnSitesOperations operations, string resourceGroupName)
-        {
-                return ((IVpnSitesOperations)operations).ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Lists all the vpnSites in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnSite.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VpnSite>> ListByResourceGroupAsync(this IVpnSitesOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Lists all the VpnSites in a subscription.
         /// </summary>
         /// <param name='operations'>
@@ -228,6 +40,78 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
+        /// Lists all the vpnSites in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<VpnSite> ListByResourceGroup(this IVpnSitesOperations operations, string resourceGroupName)
+        {
+                return ((IVpnSitesOperations)operations).ListByResourceGroupAsync(resourceGroupName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all the vpnSites in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VpnSite>> ListByResourceGroupAsync(this IVpnSitesOperations operations, string resourceGroupName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Retrieves the details of a VPN site.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vpnSiteName'>
+        /// The name of the VpnSite being retrieved.
+        /// </param>
+        public static VpnSite Get(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName)
+        {
+                return ((IVpnSitesOperations)operations).GetAsync(resourceGroupName, vpnSiteName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Retrieves the details of a VPN site.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vpnSiteName'>
+        /// The name of the VpnSite being retrieved.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VpnSite> GetAsync(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, vpnSiteName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Creates a VpnSite resource if it doesn&#39;t exist else updates the existing
         /// VpnSite.
         /// </summary>
@@ -235,10 +119,126 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnSite.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vpnSiteName'>
-        /// The name of the VpnSite being created or updated.
+        /// The name of the VpnSite being retrieved.
+        /// </param>
+        public static VpnSite CreateOrUpdate(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName, VpnSite vpnSiteParameters)
+        {
+                return ((IVpnSitesOperations)operations).CreateOrUpdateAsync(resourceGroupName, vpnSiteName, vpnSiteParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates a VpnSite resource if it doesn&#39;t exist else updates the existing
+        /// VpnSite.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vpnSiteName'>
+        /// The name of the VpnSite being retrieved.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VpnSite> CreateOrUpdateAsync(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName, VpnSite vpnSiteParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vpnSiteName, vpnSiteParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Updates VpnSite tags.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vpnSiteName'>
+        /// The name of the VpnSite being retrieved.
+        /// </param>
+        public static VpnSite UpdateTags(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName, TagsObject vpnSiteParameters)
+        {
+                return ((IVpnSitesOperations)operations).UpdateTagsAsync(resourceGroupName, vpnSiteName, vpnSiteParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates VpnSite tags.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vpnSiteName'>
+        /// The name of the VpnSite being retrieved.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VpnSite> UpdateTagsAsync(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName, TagsObject vpnSiteParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, vpnSiteName, vpnSiteParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes a VpnSite.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vpnSiteName'>
+        /// The name of the VpnSite being retrieved.
+        /// </param>
+        public static void Delete(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName)
+        {
+                ((IVpnSitesOperations)operations).DeleteAsync(resourceGroupName, vpnSiteName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes a VpnSite.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vpnSiteName'>
+        /// The name of the VpnSite being retrieved.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task DeleteAsync(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, vpnSiteName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Creates a VpnSite resource if it doesn&#39;t exist else updates the existing
+        /// VpnSite.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vpnSiteName'>
+        /// The name of the VpnSite being retrieved.
         /// </param>
         public static VpnSite BeginCreateOrUpdate(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName, VpnSite vpnSiteParameters)
         {
@@ -253,10 +253,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnSite.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vpnSiteName'>
-        /// The name of the VpnSite being created or updated.
+        /// The name of the VpnSite being retrieved.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -275,10 +275,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnSite.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vpnSiteName'>
-        /// The name of the VpnSite being deleted.
+        /// The name of the VpnSite being retrieved.
         /// </param>
         public static void BeginDelete(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName)
         {
@@ -292,10 +292,10 @@ namespace Microsoft.Azure.Management.Network
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The resource group name of the VpnSite.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='vpnSiteName'>
-        /// The name of the VpnSite being deleted.
+        /// The name of the VpnSite being retrieved.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -303,39 +303,6 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, vpnSiteName, null, cancellationToken).ConfigureAwait(false)).Dispose();
-        }
-        /// <summary>
-        /// Lists all the vpnSites in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        public static Microsoft.Rest.Azure.IPage<VpnSite> ListByResourceGroupNext(this IVpnSitesOperations operations, string nextPageLink)
-        {
-                return ((IVpnSitesOperations)operations).ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Lists all the vpnSites in a resource group.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='nextPageLink'>
-        /// The NextLink from the previous successful call to List operation.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VpnSite>> ListByResourceGroupNextAsync(this IVpnSitesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
         }
         /// <summary>
         /// Lists all the VpnSites in a subscription.
@@ -366,6 +333,39 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VpnSite>> ListNextAsync(this IVpnSitesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists all the vpnSites in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<VpnSite> ListByResourceGroupNext(this IVpnSitesOperations operations, string nextPageLink)
+        {
+                return ((IVpnSitesOperations)operations).ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all the vpnSites in a resource group.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<VpnSite>> ListByResourceGroupNextAsync(this IVpnSitesOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

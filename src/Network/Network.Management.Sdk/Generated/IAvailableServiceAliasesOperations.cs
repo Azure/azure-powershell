@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.Network
         /// Gets all available service aliases for this subscription in this region.
         /// </remarks>
         /// <param name='location'>
-        /// The location.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -43,10 +43,10 @@ namespace Microsoft.Azure.Management.Network
         /// Gets all available service aliases for this resource group in this region.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='location'>
-        /// The location.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

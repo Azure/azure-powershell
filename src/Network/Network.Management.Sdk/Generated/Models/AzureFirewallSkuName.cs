@@ -13,7 +13,13 @@ namespace Microsoft.Azure.Management.Network.Models
 
     public static class AzureFirewallSkuName
     {
+        /// <summary>
+        /// AZFW_VNet
+        /// </summary>
         public const string AzfwVnet = "AZFW_VNet";
+        /// <summary>
+        /// AZFW_Hub
+        /// </summary>
         public const string AzfwHub = "AZFW_Hub";
     }
 }
