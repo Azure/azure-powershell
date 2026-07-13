@@ -147,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-The SKU name. Immutable after create.
+The SKU name. This property is immutable after create and will be ignored by the service on update. It is included for pipeline compatibility.
 
 ```yaml
 Type: System.String
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuTier
-The SKU tier.
+The SKU tier. This property is immutable after create and will be ignored by the service on update.
 
 ```yaml
 Type: System.String
