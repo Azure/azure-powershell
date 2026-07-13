@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             }
                         }
                         
-                        else if (DisableAzureMonitorAlertsForJobFailure == null && DisableClassicAlerts == null && PublicNetworkAccess == null && ImmutabilityState == null && CrossSubscriptionRestoreState == null && DisableEmailNotificationsForSiteRecovery == null && DisableAzureMonitorAlertsForAllReplicationIssue == null && DisableAzureMonitorAlertsForAllFailoverIssue == null)
+                        else if (DisableAzureMonitorAlertsForJobFailure == null && DisableClassicAlerts == null && PublicNetworkAccess == null && ImmutabilityState == null && CrossSubscriptionRestoreState == null && DisableEmailNotificationsForSiteRecovery == null && DisableAzureMonitorAlertsForAllReplicationIssue == null && DisableAzureMonitorAlertsForAllFailoverIssue == null && CostManagementGranularity == null)
                         {
                             throw new ArgumentException(Resources.InvalidParameterSet);
                         }
