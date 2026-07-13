@@ -55,10 +55,55 @@ Describe 'Start-AzPostgreSqlFlexibleServer' {
 
             throw "Timed out waiting for server '$ServerName' in resource group '$ResourceGroupName' to reach Ready state."
         }
+
+        function Wait-ServerStopped {
+            param(
+                [Parameter(Mandatory = $true)]
+                [string]$ResourceGroupName,
+
+                [Parameter(Mandatory = $true)]
+                [string]$ServerName,
+
+                [int]$TimeoutSeconds = 1800,
+                [int]$PollSeconds = 15
+            )
+
+            $timeoutAt = (Get-Date).AddSeconds($TimeoutSeconds)
+            while ((Get-Date) -lt $timeoutAt) {
+                $server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $ResourceGroupName -Name $ServerName
+                if ($server.State -eq 'Stopped') {
+                    return $server
+                }
+
+                Start-TestSleep -Seconds $PollSeconds
+            }
+
+            throw "Timed out waiting for server '$ServerName' in resource group '$ResourceGroupName' to reach Stopped state."
+        }
+
+        function Ensure-ServerStopped {
+            param(
+                [Parameter(Mandatory = $true)]
+                [string]$ResourceGroupName,
+
+                [Parameter(Mandatory = $true)]
+                [string]$ServerName
+            )
+
+            $server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $ResourceGroupName -Name $ServerName
+            if ($server.State -eq 'Stopped') {
+                return $server
+            }
+
+            Stop-AzPostgreSqlFlexibleServer -ResourceGroupName $ResourceGroupName -Name $ServerName | Out-Null
+            return Wait-ServerStopped -ResourceGroupName $ResourceGroupName -ServerName $ServerName
+        }
     }
 
     It 'StartAllServersAndVerifyStateThenSecondStartFails' -Skip:(-not $hasAllServers) {
         foreach ($target in $serverTargets) {
+            Ensure-ServerStopped -ResourceGroupName $target.ResourceGroupName -ServerName $target.ServerName | Out-Null
+
             Start-AzPostgreSqlFlexibleServer -ResourceGroupName $target.ResourceGroupName -Name $target.ServerName | Out-Null
 
             $readyServer = Wait-ServerReady -ResourceGroupName $target.ResourceGroupName -ServerName $target.ServerName

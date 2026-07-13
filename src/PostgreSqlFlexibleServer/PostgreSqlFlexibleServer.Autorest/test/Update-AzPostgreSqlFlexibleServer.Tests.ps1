@@ -33,10 +33,55 @@ Describe 'Update-AzPostgreSqlFlexibleServer' {
         $hasAllServers = $serverTargets.Count -eq 6
         $haTargets = @($serverTargets | Where-Object { $_.HighAvailabilityMode -eq 'SameZone' -or $_.HighAvailabilityMode -eq 'ZoneRedundant' })
         $hasHaServers = $haTargets.Count -gt 0
+
+        function Wait-ServerReady {
+            param(
+                [Parameter(Mandatory = $true)]
+                [string]$ResourceGroupName,
+
+                [Parameter(Mandatory = $true)]
+                [string]$ServerName,
+
+                [int]$TimeoutSeconds = 1800,
+                [int]$PollSeconds = 15
+            )
+
+            $timeoutAt = (Get-Date).AddSeconds($TimeoutSeconds)
+            while ((Get-Date) -lt $timeoutAt) {
+                $server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $ResourceGroupName -Name $ServerName
+                if ($server.State -eq 'Ready') {
+                    return $server
+                }
+
+                Start-TestSleep -Seconds $PollSeconds
+            }
+
+            throw "Timed out waiting for server '$ServerName' in resource group '$ResourceGroupName' to reach Ready state."
+        }
+
+        function Ensure-ServerReady {
+            param(
+                [Parameter(Mandatory = $true)]
+                [string]$ResourceGroupName,
+
+                [Parameter(Mandatory = $true)]
+                [string]$ServerName
+            )
+
+            $server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $ResourceGroupName -Name $ServerName
+            if ($server.State -eq 'Ready') {
+                return $server
+            }
+
+            Start-AzPostgreSqlFlexibleServer -ResourceGroupName $ResourceGroupName -Name $ServerName | Out-Null
+            return Wait-ServerReady -ResourceGroupName $ResourceGroupName -ServerName $ServerName
+        }
     }
 
     It 'UpdateExpandedEnableStorageAutoGrowAllServers' -Skip:(-not $hasAllServers) {
         foreach ($target in $serverTargets) {
+            Ensure-ServerReady -ResourceGroupName $target.ResourceGroupName -ServerName $target.ServerName | Out-Null
+
             $updatedServer = Update-AzPostgreSqlFlexibleServer `
                 -ResourceGroupName $target.ResourceGroupName `
                 -Name $target.ServerName `
@@ -51,6 +96,8 @@ Describe 'Update-AzPostgreSqlFlexibleServer' {
 
     It 'UpdateExpandedDisableStorageAutoGrowAllServers' -Skip:(-not $hasAllServers) {
         foreach ($target in $serverTargets) {
+            Ensure-ServerReady -ResourceGroupName $target.ResourceGroupName -ServerName $target.ServerName | Out-Null
+
             $updatedServer = Update-AzPostgreSqlFlexibleServer `
                 -ResourceGroupName $target.ResourceGroupName `
                 -Name $target.ServerName `
@@ -65,6 +112,8 @@ Describe 'Update-AzPostgreSqlFlexibleServer' {
 
     It 'UpdateExpandedResetAdministratorLoginPasswordAllServers' -Skip:(-not $hasAllServers) {
         foreach ($target in $serverTargets) {
+            Ensure-ServerReady -ResourceGroupName $target.ResourceGroupName -ServerName $target.ServerName | Out-Null
+
             $newPassword = ConvertTo-SecureString ("AzpsReset!Pass$($target.Index)23A") -AsPlainText -Force
 
             $updatedServer = Update-AzPostgreSqlFlexibleServer `
