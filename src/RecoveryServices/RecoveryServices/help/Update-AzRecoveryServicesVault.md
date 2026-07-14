@@ -163,7 +163,7 @@ Accept wildcard characters: False
 Specifies the granularity level for cost management settings of the vault. This parameter controls the level at which cost data is tracked and reported.
 
 ```yaml
-Type: System.String
+Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.CostManagementGranularity]
 Parameter Sets: (All)
 Aliases:
 Accepted values: VaultLevel, ProtectedItemLevel, ProtectedItemWithParentTag
