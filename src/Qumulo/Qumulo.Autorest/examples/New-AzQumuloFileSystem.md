@@ -1,6 +1,6 @@
 ### Example 1: Create a minimum set file system resource
 ```powershell
-$password = ConvertTo-SecureString -String "P@ssw0rd!" -AsPlainText -Force
+$password = ConvertTo-SecureString -String [redacted] -AsPlainText -Force
 $userEmail = ConvertTo-SecureString -String "user@organization.com" -AsPlainText -Force
 
 New-AzQumuloFileSystem -Name qumulo01 -ResourceGroupName ps-joyer-test -DelegatedSubnetId /subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-joyer-test/providers/Microsoft.Network/virtualNetworks/eastus-ps-virtualnetwork/subnets/qumulo-vn -Location eastus -MarketplaceOfferId "qumulo-saas-mpp" -MarketplacePlanId "qumulo-on-azure-v1%%gmz7xq9ge3py%%P1M" -MarketplacePublisherId qumulo1584033880660 -StorageSku Standard -UserEmail $userEmail -AdminPassword $password
@@ -16,7 +16,7 @@ Create a file system resource. The password must contain at least 8 characters a
 
 ### Example 2: Create a file system resource with other settings
 ```powershell
-$password = ConvertTo-SecureString -String "P@ssw0rd!" -AsPlainText -Force
+$password = ConvertTo-SecureString -String [redacted] -AsPlainText -Force
 $userEmail = ConvertTo-SecureString -String "user@organization.com" -AsPlainText -Force
 
 New-AzQumuloFileSystem -Name qumulo02 -ResourceGroupName ps-joyer-test -AdminPassword $password -DelegatedSubnetId /subscriptions/fc35d936-3b89-41f8-8110-a24b56826c37/resourceGroups/ps-joyer-test/providers/Microsoft.Network/virtualNetworks/eastus-ps-virtualnetwork/subnets/qumulo-vn -Location eastus -MarketplaceOfferId "qumulo-saas-mpp" -MarketplacePlanId "qumulo-on-azure-v1%%gmz7xq9ge3py%%P1M" -MarketplacePublisherId qumulo1584033880660 -StorageSku Standard -UserEmail $userEmail -AvailabilityZone 1 -Tag @{"123"="abc"}
