@@ -518,8 +518,11 @@ Accept wildcard characters: False
 ```
 
 ### -Targets
-The Target which a change is authorized against.
-Supported keys include: resourceId, subscriptionId (required if resourceId is omitted), resourceGroupName, resourceType, resourceName, httpMethod.
+The target or targets that the change is authorized against.
+`-Targets` is required only for the `Targets` parameter set; StageMap and ApiOperations examples use different parameter sets and do not require it.
+Each target must specify either `resourceId` for a resource-scoped change or `subscriptionId` for a subscription-scoped change.
+Optional keys include `resourceGroupName`, `resourceType`, `resourceName`, and `httpMethod`.
+Valid `httpMethod` values are `DELETE`, `GET`, `HEAD`, `PATCH`, `POST`, and `PUT`.
 
 ```yaml
 Type: System.Object[]
@@ -576,4 +579,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

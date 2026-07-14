@@ -8,36 +8,36 @@ using a -Targets array instead of the individual ChangeDefinition* parameters.
 Accepts one or more target definitions.
 
 .PARAMETER Targets
-An array of hashtables, each containing target selection criteria. Common keys include:
-- resourceType: The Azure resource type (e.g., "Microsoft.Compute/virtualMachines")
-- subscriptions: Array of subscription IDs
-- resourceGroups: Array of resource group names
-- regions: Array of Azure regions
+One or more targets that the change is authorized against. Each target must specify either:
+- resourceId: the ARM resource ID for a resource-scoped change. Use with httpMethod for a specific operation.
+- subscriptionId: the subscription ID for a subscription-scoped change.
+
+Optional keys include resourceGroupName, resourceType, resourceName, and httpMethod. Valid httpMethod values are DELETE, GET, HEAD, PATCH, POST, and PUT.
 
 .PARAMETER TargetName
 Optional name for the target definition.
 
 .EXAMPLE
 Update-AzChangeSafetyChangeRecord -Name "mychange" -Targets @{
-    resourceType = "Microsoft.Compute/virtualMachines"
-    regions = @("eastus", "westus", "centralus")
+    resourceId = "/subscriptions/$((Get-AzContext).Subscription.Id)/resourceGroups/rg-prod/providers/Microsoft.Compute/virtualMachines/vm01"
+    httpMethod = "PATCH"
 }
 
-Updates an existing change record with new target regions (single target).
+Updates an existing ChangeRecord with one resource-scoped target.
 
 .EXAMPLE
 Update-AzChangeSafetyChangeRecord -Name "mychange" -Targets @(
     @{
-        resourceType = "Microsoft.Compute/virtualMachines"
-        regions = @("eastus", "westus")
+        subscriptionId = (Get-AzContext).Subscription.Id
+        resourceGroupName = "rg-prod-eastus"
     },
     @{
-        resourceType = "Microsoft.Storage/storageAccounts"
-        regions = @("eastus")
+        subscriptionId = (Get-AzContext).Subscription.Id
+        resourceGroupName = "rg-prod-westus"
     }
 )
 
-Updates an existing change record with multiple targets.
+Updates an existing ChangeRecord with multiple subscription/resource-group scoped targets.
 #>
 function Update-AzChangeSafetyChangeRecord_Targets {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ChangeSafety.Models.IChangeRecord])]
@@ -56,7 +56,7 @@ function Update-AzChangeSafetyChangeRecord_Targets {
         [string]
         $SubscriptionId,
 
-        [Parameter(Mandatory, HelpMessage = "One or more target selection criteria as hashtables.")]
+        [Parameter(Mandatory, HelpMessage = "One or more targets that the change is authorized against. Each target must specify either resourceId for a resource-scoped change or subscriptionId for a subscription-scoped change. Optional keys include resourceGroupName, resourceType, resourceName, and httpMethod. Valid httpMethod values are DELETE, GET, HEAD, PATCH, POST, and PUT.")]
         [object[]]
         $Targets,
 

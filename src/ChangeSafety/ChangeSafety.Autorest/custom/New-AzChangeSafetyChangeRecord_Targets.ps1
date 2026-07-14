@@ -12,13 +12,11 @@ The -Targets parameter automatically sets:
 - ChangeDefinitionDetail = { targets: [...] }
 
 .PARAMETER Targets
-The Target which a change is authorized against. Supported keys include:
-- resourceId: The ARM resource Id
-- subscriptionId: The Subscription Id. Required when resourceId is not provided
-- resourceGroupName: The name of the resource group
-- resourceType: The type of the resource
-- resourceName: The name of the ARM resource
-- httpMethod: The HTTP method
+The target or targets that the change is authorized against. Each target must specify either:
+- resourceId: the ARM resource ID for a resource-scoped change. Use with httpMethod for a specific operation.
+- subscriptionId: the subscription ID for a subscription-scoped change.
+
+Optional keys include resourceGroupName, resourceType, resourceName, and httpMethod. Valid httpMethod values are DELETE, GET, HEAD, PATCH, POST, and PUT.
 
 .PARAMETER TargetName
 Optional name for the target definition. Defaults to "TargetSelection".
@@ -36,28 +34,36 @@ New-AzChangeSafetyChangeRecord -Name "storageAccountCleanup" `
 Creates a stageless change record authorized against the current subscription.
 
 .EXAMPLE
-New-AzChangeSafetyChangeRecord -Name "mychange" -ResourceGroupName "rg-changeops" -Targets @(
-    @{
-        resourceType = "Microsoft.Compute/virtualMachines"
-        subscriptionId = (Get-AzContext).Subscription.Id
-    },
-    @{
-        resourceType = "Microsoft.Storage/storageAccounts"
-        subscriptionId = (Get-AzContext).Subscription.Id
-        resourceGroupName = "rg-prod-storage"
+New-AzChangeSafetyChangeRecord -Name "trafficManagerCleanup" `
+    -ResourceGroupName "rg-changeops" `
+    -ChangeType "ManualTouch" `
+    -RolloutType "Hotfix" `
+    -Description "Delete Traffic Manager profile" `
+    -Targets @{
+        resourceId = "/subscriptions/$((Get-AzContext).Subscription.Id)/resourceGroups/rg-test/providers/Microsoft.Network/trafficManagerProfiles/myProfile"
+        httpMethod = "DELETE"
     }
-)
 
-Creates a change record with multiple targets (VMs and Storage Accounts).
+Creates a ChangeRecord for one resource-scoped DELETE operation.
 
 .EXAMPLE
-New-AzChangeSafetyChangeRecord -Name "mychange" -ResourceGroupName "rg-prod-webapp" -Targets @{
-    resourceType = "Microsoft.Web/sites"
-    subscriptionId = (Get-AzContext).Subscription.Id
-    resourceGroupName = "rg-prod-webapp"
-} -TargetName "ProductionWebApps"
+New-AzChangeSafetyChangeRecord -Name "regionalCleanup" `
+    -ResourceGroupName "rg-changeops" `
+    -ChangeType "ManualTouch" `
+    -RolloutType "Normal" `
+    -Targets @(
+        @{
+            subscriptionId = (Get-AzContext).Subscription.Id
+            resourceGroupName = "rg-prod-eastus"
+        },
+        @{
+            subscriptionId = (Get-AzContext).Subscription.Id
+            resourceGroupName = "rg-prod-westus"
+        }
+    ) `
+    -TargetName "RegionalCleanupTargets"
 
-Creates a change record targeting web apps with a custom target name.
+Creates a ChangeRecord with multiple subscription/resource-group scoped targets and a custom target definition name.
 #>
 function New-AzChangeSafetyChangeRecord_Targets {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ChangeSafety.Models.IChangeRecord])]
@@ -76,7 +82,7 @@ function New-AzChangeSafetyChangeRecord_Targets {
         [string]
         $SubscriptionId,
 
-        [Parameter(Mandatory, HelpMessage = "The Target which a change is authorized against. Supported keys include: resourceId, subscriptionId (required if resourceId is omitted), resourceGroupName, resourceType, resourceName, httpMethod.")]
+        [Parameter(Mandatory, HelpMessage = "The target or targets that the change is authorized against. Each target must specify either resourceId for a resource-scoped change or subscriptionId for a subscription-scoped change. Optional keys include resourceGroupName, resourceType, resourceName, and httpMethod. Valid httpMethod values are DELETE, GET, HEAD, PATCH, POST, and PUT.")]
         [object[]]
         $Targets,
 

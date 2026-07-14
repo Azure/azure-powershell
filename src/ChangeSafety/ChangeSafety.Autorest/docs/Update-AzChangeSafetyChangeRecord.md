@@ -492,7 +492,10 @@ Accept wildcard characters: False
 ```
 
 ### -Targets
-One or more target selection criteria as hashtables.
+One or more targets that the change is authorized against.
+Each target must specify either `resourceId` for a resource-scoped change or `subscriptionId` for a subscription-scoped change.
+Optional keys include `resourceGroupName`, `resourceType`, `resourceName`, and `httpMethod`.
+Valid `httpMethod` values are `DELETE`, `GET`, `HEAD`, `PATCH`, `POST`, and `PUT`.
 
 ```yaml
 Type: System.Object[]
@@ -551,4 +554,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
