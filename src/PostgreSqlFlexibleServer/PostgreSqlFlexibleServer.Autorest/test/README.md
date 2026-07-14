@@ -21,21 +21,3 @@ Custom cmdlets generally encompass additional functionality not described in the
 
 To execute tests, run the `test-module.ps1`. To write tests, [this example](https://github.com/pester/Pester/blob/8b9cf4248315e44f1ac6673be149f7e0d7f10466/Examples/Planets/Get-Planet.Tests.ps1#L1) from the Pester repository is very useful for getting started.
 
-## Declarative Cmdlet Execution Plan
-
-The test runner supports an optional declarative plan at `test/cmdlet-execution-plan.json`.
-
-Each plan entry can define:
-
-- `Cmdlet`: cmdlet identifier.
-- `TestName`: Pester test name executed for that cmdlet.
-- `CanParallelize`: whether this cmdlet test can run in parallel with other runnable cmdlet tests.
-- `DependsOn`: predecessor cmdlets that must complete first.
-- `SkipIfDependencyNotSelected`: skip this cmdlet test when a dependency is not part of the selected test set.
-- `SkipIfDependencyFails`: skip this cmdlet test when a dependency fails.
-
-Plan behavior in `test-module.ps1`:
-
-- When `-TestName` is provided, planned cmdlet tests use dependency-aware scheduling.
-- Unplanned `-TestName` values still run directly via Pester.
-- When no `-TestName` is provided, default behavior remains unchanged unless `-UseCmdletExecutionPlan` is specified.

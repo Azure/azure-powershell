@@ -170,20 +170,66 @@ function setupEnv() {
     $haModes = @('SameZone', 'ZoneRedundant')
     $serverPlans = @()
     for ($i = 0; $i -lt $resourceGroups.Count; $i++) {
+        $index = $i + 1
         $resourceGroupName = $resourceGroups[$i]
         $resourceGroup = Get-AzResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue
         if (-not $resourceGroup) {
             New-AzResourceGroup -Name $resourceGroupName -Location $env.MainLocation | Out-Null
-        } else {
+        } elseif (-not $UsePreviousConfigForRecord) {
             throw "Resource group '$resourceGroupName' already exists."
         }
 
-        $existingServer = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue | Select-Object -First 1
-        if ($null -ne $existingServer) {
+        $serverNameKey = "ServerName$index"
+        $configuredServerName = $null
+        if ($env.ContainsKey($serverNameKey) -and -not [string]::IsNullOrWhiteSpace([string]$env[$serverNameKey])) {
+            $configuredServerName = [string]$env[$serverNameKey]
+        }
+
+        $existingServer = $null
+        if (-not [string]::IsNullOrWhiteSpace($configuredServerName)) {
+            $existingServer = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $resourceGroupName -Name $configuredServerName -ErrorAction SilentlyContinue
+        }
+
+        if ($null -eq $existingServer) {
+            $existingServer = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $resourceGroupName -ErrorAction SilentlyContinue | Select-Object -First 1
+        }
+
+        if (($null -ne $existingServer) -and (-not $UsePreviousConfigForRecord)) {
             throw "Server '$($existingServer.Name)' already exists in resource group '$resourceGroupName'."
         }
 
-        $serverName = $env.ServerNamePrefix + (RandomString -allChars $false -len 8)
+        if (($null -ne $existingServer) -and $UsePreviousConfigForRecord) {
+            $existingHaMode = [string]$existingServer.HighAvailabilityMode
+            $enableExistingHighAvailability = -not [string]::IsNullOrWhiteSpace($existingHaMode) -and ($existingHaMode -ne 'Disabled')
+            $existingStandbyZone = [string]$existingServer.HighAvailabilityStandbyAvailabilityZone
+
+            if ([string]::IsNullOrWhiteSpace($existingStandbyZone)) {
+                $existingStandbyZone = $null
+            }
+
+            $serverPlans += [ordered]@{
+                Index = $index
+                ResourceGroupName = $resourceGroupName
+                ServerName = [string]$existingServer.Name
+                ServerVersion = [string]$existingServer.Version
+                ServerZone = [string]$existingServer.AvailabilityZone
+                ServerGeoBackup = [string]$existingServer.BackupGeoRedundantBackup
+                ServerStorageType = [string]$existingServer.StorageType
+                ServerSkuTier = [string]$existingServer.SkuTier
+                ServerSkuName = [string]$existingServer.SkuName
+                EnableHighAvailability = $enableExistingHighAvailability
+                HighAvailabilityMode = if ($enableExistingHighAvailability) { $existingHaMode } else { $null }
+                HighAvailabilityStandbyZone = if ($enableExistingHighAvailability) { $existingStandbyZone } else { $null }
+            }
+
+            continue
+        }
+
+        $serverName = if ($UsePreviousConfigForRecord -and -not [string]::IsNullOrWhiteSpace($configuredServerName)) {
+            $configuredServerName
+        } else {
+            $env.ServerNamePrefix + (RandomString -allChars $false -len 8)
+        }
         $availabilityZone = $availabilityZones[$i % $availabilityZones.Count]
         $serverVersion = $serverVersions[$i]
         $geoBackupOption = $geoBackupOptions[$i % $geoBackupOptions.Count]
@@ -232,7 +278,6 @@ function setupEnv() {
         $newServerParams['NoWait'] = $true
         New-AzPostgreSqlFlexibleServer @newServerParams | Out-Null
 
-        $index = $i + 1
         $serverPlans += [ordered]@{
             Index = $index
             ResourceGroupName = $resourceGroupName
@@ -253,9 +298,17 @@ function setupEnv() {
     $timeoutSeconds = 1800 # 30 minutes
     $timeoutAt = (Get-Date).AddSeconds($timeoutSeconds)
     foreach ($plan in $serverPlans) {
+        $startRequested = $false
         while ($true) {
             $server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $plan.ResourceGroupName -Name $plan.ServerName -ErrorAction SilentlyContinue
             if ($null -ne $server) {
+                if ($UsePreviousConfigForRecord -and ($server.State -eq 'Stopped') -and (-not $startRequested)) {
+                    Start-AzPostgreSqlFlexibleServer -ResourceGroupName $plan.ResourceGroupName -Name $plan.ServerName | Out-Null
+                    $startRequested = $true
+                    Start-TestSleep -Seconds $pollIntervalSeconds
+                    continue
+                }
+
                 if ($server.State -eq 'Ready') {
                     $readyForValidation = $true
                     if ($plan.EnableHighAvailability) {
@@ -327,6 +380,11 @@ function setupEnv() {
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $persistEnv)
 }
 function cleanupEnv() {
+    if ($UsePreviousConfigForRecord) {
+        Write-Host 'cleanupEnv: Preserving previously configured record environment.'
+        return
+    }
+
     # Clean resources you create for testing
     $resourceGroups = @(
         $env.ResourceGroupName1,
