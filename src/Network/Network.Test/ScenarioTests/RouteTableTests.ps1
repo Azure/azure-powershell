@@ -455,7 +455,8 @@ function Test-RouteTableWithDisablePeeringRoute
     $routeTableName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/routeTables"
-    $location = Get-ProviderLocation $resourceTypeParent
+    # Currently only the Central US EUAP canary region has the DisablePeeringRoute feature enabled, so hardcoding it to this region. This can be removed once it is enabled on production regions.
+    $location = Get-ProviderLocation $resourceTypeParent "centraluseuap"
     
     try 
     {
@@ -480,7 +481,7 @@ function Test-RouteTableWithDisablePeeringRoute
         Assert-AreEqual 1 @($list).Count
         Assert-AreEqual $list[0].ResourceGroupName $getRT.ResourceGroupName
         Assert-AreEqual $list[0].Name $getRT.Name
-        Assert-AreEqual $list[0].DisablePeeringRoute $getRT.DisablePeeringRoute
+        # Note: the route tables list endpoint (GET .../routeTables) does not project the DisablePeeringRoute property; it is only returned by the single-resource GET (.../routeTables/{name}). So DisablePeeringRoute is intentionally not asserted on the list result.
         Assert-AreEqual $list[0].Etag $getRT.Etag
         Assert-AreEqual @($list[0].Routes).Count @($getRT.Routes).Count
 
