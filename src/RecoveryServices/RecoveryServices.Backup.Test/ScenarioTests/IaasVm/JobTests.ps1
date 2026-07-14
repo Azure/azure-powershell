@@ -273,41 +273,29 @@ function Test-AzureVMCSBJobSubscription
 {
 	# Verifies that the detailed job for a Cross Subscription Backup (CSB) protected item
 	# exposes ContainerSubscriptionId, populated from extendedInfo.propertyBag["VM Subscription ID"].
-	# This test is self-contained: it protects a cross-subscription VM, triggers an on-demand backup,
-	# inspects the resulting backup job's detail, and cleans up in the finally block so it is
-	# re-runnable. These values point to the recording environment.
+	# This test is self-contained: it creates a fresh vault (in an existing resource group), protects a
+	# cross-subscription VM, triggers an on-demand backup, inspects the resulting backup job's detail, and
+	# deletes the vault in the finally block so it is re-runnable. The cross-subscription VM is pre-existing.
 	$resourceGroupName = "singhprab-csb-vault-rg-ea"
-	$vaultName = "singhprab-csb-vault-ea"
+	$vaultName = "singhprab-csb-job-vault"
+	$location = "eastasia"
 	# The VM (container) resides in a subscription different from the vault's subscription.
 	$vmName = "singhprab-ps-vm9"
 	$vmResourceGroupName = "singhprab-rg-1c"
 	$containerSubscriptionId = "80abcfe3-b410-42b2-983f-df23cba781dc"
-	$policyName = "singhprab"
+	$tag = @{"MABUsed"="Yes";"Owner"="singhprab";"Purpose"="Testing";"DeleteBy"="12-2099"}
 
 	# Keep a handle to the vault for cleanup in the finally block so the test is re-runnable.
 	$vault = $null
 
 	try
 	{
-		# Setup
-		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		# Create a fresh vault so the test runs against a clean vault (no soft-deleted leftovers).
+		New-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName -Location $location -Tag $tag | Out-Null
+		$vault = Get-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName
 
-		# The CSB vault has AlwaysOn soft delete. A previous run's cleanup soft-deletes the item, which blocks
-		# re-protection; undelete any lingering soft-deleted item for this VM so the test is re-runnable.
-		$existing = Get-AzRecoveryServicesBackupItem `
-			-BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID `
-			| Where-Object { $_.Name -match $vmName }
-		if ($existing -ne $null -and $existing.DeleteState -eq "ToBeDeleted")
-		{
-			Undo-AzRecoveryServicesBackupItemDeletion -Item $existing -VaultId $vault.ID -Force
-		}
-
-		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
-			-VaultId $vault.ID `
-			-Name $policyName;
-
-		# Sleep to give the service time to add the policy to the vault
-		Start-TestSleep -Seconds 5
+		# Use the built-in Enhanced (V2) policy. Standard VMs can be protected with enhanced policies.
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name "EnhancedPolicy"
 
 		# Enable protection for the cross-subscription VM using the new -ContainerSubscriptionId parameter.
 		Enable-AzRecoveryServicesBackupProtection `
@@ -343,8 +331,9 @@ function Test-AzureVMCSBJobSubscription
 	}
 	finally
 	{
-		# Cleanup: disable protection and delete backup data so the cross-subscription VM is freed
-		# and the test can be re-run (recorded) from a clean state.
+		# Cleanup: disable protection with delete-backup-data, then delete the fresh vault so the test can be
+		# re-run from a clean state. Remove-AzRecoveryServicesVault purges the soft-deleted item as part of
+		# deleting the vault (the vault has AlwaysOn soft delete, which cannot be disabled).
 		if ($vault -ne $null)
 		{
 			$cleanupItem = Get-AzRecoveryServicesBackupItem `
@@ -357,6 +346,7 @@ function Test-AzureVMCSBJobSubscription
 					-Item $cleanupItem `
 					-RemoveRecoveryPoints -Force
 			}
+			Remove-AzRecoveryServicesVault -Vault $vault
 		}
 	}
 }
