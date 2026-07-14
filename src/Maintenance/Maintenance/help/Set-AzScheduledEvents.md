@@ -140,7 +140,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Maintenance.Models.ScheduledEventsApproveResponse
+### Microsoft.Azure.Management.Maintenance.Models.PSScheduledEventsApproveResponse
 
 ## NOTES
 
