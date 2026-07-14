@@ -27,14 +27,15 @@ For information on how to develop for `Az.ServiceBus`, see [how-to.md](how-to.md
 > see https://aka.ms/autorest
 
 ``` yaml
+# Please specify the commit id that includes your features to make sure generated codes stable.
+commit: 2605aac932e54e2f6c1b335bc034a1edc44d5783
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/servicebus/resource-manager/Microsoft.ServiceBus/ServiceBus/stable/2026-01-01/servicebus.json
+  - $(repo)/specification/servicebus/resource-manager/Microsoft.ServiceBus/ServiceBus/stable/2026-01-01/servicebus.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
-# - (this-folder)/relative-path-to-your-swagger
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
