@@ -1031,5 +1031,9 @@
   {
     "module": "Napster",
     "alias": "Napster"
+  },
+  {
+    "alias": "Mission",
+    "module": "Mission"
   }
 ]
