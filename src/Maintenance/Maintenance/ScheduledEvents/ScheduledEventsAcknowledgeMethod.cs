@@ -26,14 +26,14 @@ namespace Microsoft.Azure.Commands.Maintenance
 {
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledEvents", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(ScheduledEventsApproveResponse))]
-    public partial class NewAzureRmScheduledEvents : MaintenanceAutomationBaseCmdlet
+    public partial class SetAzureRmScheduledEvents : MaintenanceAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess("default", VerbsCommon.New))
+                if (ShouldProcess("default", VerbsCommon.Set))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string resourceType = this.ResourceType;
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 2,
+            Position = 1,
             Mandatory = true,
             HelpMessage = "The resource type.",
             ValueFromPipelineByPropertyName = true)]
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 3,
+            Position = 2,
             Mandatory = true,
             HelpMessage = "The resource name.",
             ValueFromPipelineByPropertyName = true)]
@@ -75,6 +75,7 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
+            Position = 3,
             Mandatory = true,
             HelpMessage = "The ScheduledEvents Id",
             ValueFromPipelineByPropertyName = true)]
