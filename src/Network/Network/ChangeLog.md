@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Added property 'Nat64' to NatGateway and support for it in the following cmdlets:
+    - `New-AzNatGateway`
+    - `Set-AzNatGateway`
 * Fixed `Get-AzPrivateDnsZoneGroup` list mode passing the resource group and private endpoint names to the SDK in the wrong order, which caused a `ResourceGroupNotFound` error when listing private DNS zone groups without the `-Name` parameter.
 * Added properties `ServiceTag`, `ReadinessState`, `Description`, and `OutboundSupported` to `Get-AzNetworkSecurityPerimeterAssociableResourceType` response.
 * Removed validations to allow newly added AuxiliarySkus in New-AzNetworkInterface command without needing to add them in ValidateSet.
@@ -34,9 +37,6 @@
 * Added ChangeSafety Support
     - Fixed Private Endpoint Connection and Private Link Resource cmdlets to properly inherit dynamic parameters from base cmdlet class
 * Changed `UserAssignedIdentityId` type to string[]
-* Added property 'Nat64' to NatGateway and support for it in the following cmdlets:
-    - `New-AzNatGateway`
-    - `Set-AzNatGateway`
 
 ## Version 7.27.0
 * Added support to associate a DDoS custom policy with a Load Balancer frontend IP configuration.
