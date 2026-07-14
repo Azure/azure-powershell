@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Qumulo
-Module Guid: 1b29733a-ae7a-43d1-a1bf-f8030036d7e3
+Module Guid: 17ab92d4-ace3-4389-9322-ab14e1300a63
 Download Help Link: https://learn.microsoft.com/powershell/module/az.qumulo
 Help Version: 1.0.0.0
 Locale: en-US
