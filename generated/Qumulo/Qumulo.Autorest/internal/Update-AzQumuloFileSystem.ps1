@@ -25,7 +25,7 @@ Update-AzQumuloFileSystem -ResourceGroupName ps-joyer-test -Name qumulo-resource
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IQumuloIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IFileSystemResource
+Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api20221012Preview.IFileSystemResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,7 +40,7 @@ INPUTOBJECT <IQumuloIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.qumulo/update-azqumulofilesystem
 #>
 function Update-AzQumuloFileSystem {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IFileSystemResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api20221012Preview.IFileSystemResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -68,19 +68,8 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.IQumuloIdentity]
     # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category('Body')]
-    [System.Security.SecureString]
-    # Initial administrator password of the resource
-    ${AdminPassword},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category('Body')]
-    [System.String]
-    # Availability zone
-    ${AvailabilityZone},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category('Body')]
@@ -95,16 +84,11 @@ param(
     ${DelegatedSubnetId},
 
     [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Support.ManagedServiceIdentityType])]
     [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category('Body')]
-    [System.Nullable[System.Boolean]]
-    # Determines whether to enable a system-assigned identity for the resource.
-    ${EnableSystemAssignedIdentity},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category('Body')]
-    [System.String]
-    # Term Unit
-    ${MarketplaceDetailTermUnit},
+    [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Support.ManagedServiceIdentityType]
+    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+    ${IdentityType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category('Body')]
@@ -131,12 +115,6 @@ param(
     ${MarketplaceSubscriptionId},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category('Body')]
-    [System.String]
-    # Pre-Provisioned Performance of the Resource
-    ${PerformanceTier},
-
-    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category('Body')]
     [System.String[]]
@@ -145,28 +123,23 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category('Body')]
-    [System.String]
-    # Storage Sku
-    ${StorageSku},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api20221012Preview.IFileSystemResourceUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
     [Parameter()]
-    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category('Body')]
-    [System.String[]]
-    # The array of user assigned identities associated with the resource.
-    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+    [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models.Api40.IUserAssignedIdentities]))]
+    [System.Collections.Hashtable]
+    # The set of user assigned identities associated with the resource.
+    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+    # The dictionary values can be empty objects ({}) in requests.
     ${UserAssignedIdentity},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category('Body')]
-    [System.Security.SecureString]
+    [System.String]
     # User Email
     ${UserEmail},
 
@@ -178,12 +151,6 @@ param(
     # The DefaultProfile parameter is not functional.
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category('Runtime')]
@@ -204,12 +171,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Category('Runtime')]
@@ -238,15 +199,14 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
-        
-        $testPlayback = $false
-        $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
 
         $mapping = @{
             UpdateExpanded = 'Az.Qumulo.private\Update-AzQumuloFileSystem_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.Qumulo.private\Update-AzQumuloFileSystem_UpdateViaIdentityExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -255,9 +215,6 @@ begin {
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        if ($wrappedCmd -eq $null) {
-            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Function)
-        }
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)

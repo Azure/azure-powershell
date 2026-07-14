@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.Extensions;
 
-    /// <summary>Anything</summary>
+    /// <summary>Any object</summary>
     public partial class Any
     {
 

@@ -11,7 +11,8 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Qumulo.private.dll'
   FormatsToProcess = './Az.Qumulo.format.ps1xml'
-  FunctionsToExport = 'Get-AzQumuloFileSystem', 'New-AzQumuloFileSystem', 'Remove-AzQumuloFileSystem', 'Update-AzQumuloFileSystem'
+  FunctionsToExport = 'Get-AzQumuloFileSystem', 'New-AzQumuloFileSystem', 'Remove-AzQumuloFileSystem', 'Update-AzQumuloFileSystem', '*'
+  AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Qumulo'

@@ -20,13 +20,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.PowerShell
     public string FilePath { get; set; }
 
     private const string ModelNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Models";
-    private const string SupportNamespace = @"${$project.supportNamespace.fullName}";
+    private const string SupportNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Support";
     private const string PropertiesExcludedForTableview = @"Id,Type";
 
     private static readonly bool IsAzure = Convert.ToBoolean(@"true");
 
-    private static string SelectedBySuffix = @"#Multiple";
-    
     protected override void ProcessRecord()
     {
       try
@@ -78,7 +76,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Qumulo.Runtime.PowerShell
         Name = viewParameters.Type.FullName,
         ViewSelectedBy = new ViewSelectedBy
         {
-          TypeName = string.Concat(viewParameters.Type.FullName, SelectedBySuffix)
+          TypeName = viewParameters.Type.FullName
         },
         TableControl = new TableControl
         {
