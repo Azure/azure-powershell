@@ -39,7 +39,7 @@ function Test-AzMarkdownHelp
             $fileErrors = @()
             $content = Get-Content $file.FullName
 
-            $isNewSchema = ($content | Where-Object { $_ -match "PlatyPS schema version:" }) -ne $null
+            $isNewSchema = [bool]($content | Where-Object { $_ -match "PlatyPS schema version:" })
 
             for ($idx = 0; $idx -lt $content.Length; $idx++)
             {

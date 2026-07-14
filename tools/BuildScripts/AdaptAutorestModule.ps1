@@ -228,9 +228,13 @@ try{
             # so generate into a temp folder and flatten the files into the module's help folder.
             $tempDocFolder = Join-Path ([System.IO.Path]::GetTempPath()) ("help-" + [guid]::NewGuid())
             New-Item -Type Directory $tempDocFolder -Force | Out-Null
-            New-MarkdownCommandHelp -ModuleInfo (Get-Module "Az.$ModuleRootName") -OutputFolder $tempDocFolder -WithModulePage -ExcludeDontShow | Out-Null
-            Get-ChildItem -Path $tempDocFolder -Recurse -File -Filter '*.md' | Copy-Item -Destination $helpPath -Force
-            Remove-Item -Path $tempDocFolder -Recurse -Force
+            try {
+                New-MarkdownCommandHelp -ModuleInfo (Get-Module "Az.$ModuleRootName") -OutputFolder $tempDocFolder -WithModulePage -ExcludeDontShow | Out-Null
+                Get-ChildItem -Path $tempDocFolder -Recurse -File -Filter '*.md' | Copy-Item -Destination $helpPath -Force
+            }
+            finally {
+                Remove-Item -Path $tempDocFolder -Recurse -Force -ErrorAction SilentlyContinue
+            }
             # v1's -WithModulePage fills the module Description with '{{ Fill in the Description }}'
             # and already sets 'Help Version: 1.0.0.0' in frontmatter, so only the description needs
             # replacing here. (The legacy '{{ Update Download Link }}' / version body placeholders do

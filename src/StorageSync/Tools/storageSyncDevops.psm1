@@ -101,7 +101,7 @@ function Update-StorageSyncHelp
         {
             Remove-Module Microsoft.PowerShell.PlatyPS
         }
-        Import-Module Microsoft.PowerShell.PlatyPS -MinimumVersion 1.0.2
+        Import-Module Microsoft.PowerShell.PlatyPS -MinimumVersion 1.0.2 -ErrorAction Stop
 
         $PathToHelpFolder = Join-Path (Get-RepositoryRootDirectory) 'src' 'StorageSync' 'StorageSync' 'help'
         Write-Verbose "Updating help: $PathToHelpFolder"
@@ -111,7 +111,7 @@ function Update-StorageSyncHelp
         $moduleFile = Get-ChildItem -Path $PathToHelpFolder -Filter 'Az.StorageSync.md' | Select-Object -First 1
         if ($moduleFile)
         {
-            $status = Update-MarkdownModuleFile -Path $moduleFile.FullName -CommandHelp $updatedHelp -NoBackup
+            $status = Update-MarkdownModuleFile -Path $moduleFile.FullName -CommandHelp $updatedHelp -NoBackup -Force
         }
     }
     finally

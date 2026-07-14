@@ -116,7 +116,10 @@ function Import-NewPlatyPS {
     }
 
     # Remove mark-of-the-web so the (unsigned) format file and assemblies load under RemoteSigned.
-    Get-ChildItem -Path $moduleDir -Recurse -File | Unblock-File -ErrorAction SilentlyContinue
+    # Unblock-File is Windows-only; it throws PlatformNotSupportedException elsewhere.
+    if ($IsWindows) {
+        Get-ChildItem -Path $moduleDir -Recurse -File | Unblock-File -ErrorAction SilentlyContinue
+    }
 
     # The manifest's NestedModules expect the dependency assemblies under a 'Dependencies'
     # subfolder. Some distributions extract them flat in the module root; stage them so the
