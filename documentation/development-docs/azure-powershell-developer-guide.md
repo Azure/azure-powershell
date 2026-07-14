@@ -89,7 +89,7 @@ git pull upstream main
 
 ### Building the Environment
 
-_Note_: to build the environment locally, you need `Microsoft.PowerShell.PlatyPS` install on your machine. Please see the [Prerequisites](#prerequisites) section for details on how to install this module.
+_Note_: to build the environment locally, you need `Microsoft.PowerShell.PlatyPS` installed on your machine. Please see the [Prerequisites](#prerequisites) section for details on how to install this module.
 
 After cloning the repository to your local machine, you want to ensure that you can build the environment. To do so, launch `VS Developer Command Prompt` (which is installed with Visual Studio) and run the following command (from the root of the repository) to do a full build:
 
