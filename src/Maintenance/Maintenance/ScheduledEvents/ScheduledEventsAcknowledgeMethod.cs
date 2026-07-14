@@ -25,7 +25,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Maintenance
 {
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledEvents", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    [OutputType(typeof(ScheduledEventsApproveResponse))]
+    [OutputType(typeof(PSScheduledEventsApproveResponse))]
     public partial class SetAzureRmScheduledEvents : MaintenanceAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Maintenance
                     string resourceGroupName = this.ResourceGroupName;
                     string resourceType = this.ResourceType;
                     string resourceName = this.ResourceName;
-                    string ScheduledEventsId = this.ScheduledEventsId;
+                    string scheduledEventsId = this.ScheduledEventsId;
                     ScheduledEventsApproveResponse response;
                     response = ScheduledEventsClient.Acknowledge(resourceGroupName, resourceType, resourceName, ScheduledEventsId);
                     var psObject = new PSScheduledEventsApproveResponse();
@@ -75,7 +75,6 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 3,
             Mandatory = true,
             HelpMessage = "The ScheduledEvents Id",
             ValueFromPipelineByPropertyName = true)]

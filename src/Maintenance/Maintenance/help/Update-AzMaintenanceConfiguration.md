@@ -61,7 +61,7 @@ Accept wildcard characters: False
 The maintenance configuration to be updated.
 
 ```yaml
-Type:  Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration
+Type: Microsoft.Azure.Commands.Maintenance.Models.PSMaintenanceConfiguration
 Parameter Sets: (All)
 Aliases:
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core. IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 

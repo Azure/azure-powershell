@@ -25,7 +25,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Maintenance
 {
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledEventsList", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    [OutputType(typeof(ScheduledEventsApproveResponse))]
+    [OutputType(typeof(PSScheduledEventsApproveResponse))]
     public partial class SetAzureRmScheduledEventsList : MaintenanceAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Commands.Maintenance
                     string resourceGroupName = this.ResourceGroupName;
                     string resourceType = this.ResourceType;
                     string resourceName = this.ResourceName;
-                    string[] ScheduledEventsId = this.ScheduledEventsId;
+                    string[] scheduledEventsId = this.ScheduledEventsId;
                     ScheduledEventsApproveResponse response;
-                    response = ScheduledEventsClient.AcknowledgeList(resourceGroupName, resourceType, resourceName, ScheduledEventsId);
+                    response = ScheduledEventsClient.AcknowledgeList(resourceGroupName, resourceType, resourceName, scheduledEventsId);
                     var psObject = new PSScheduledEventsApproveResponse();
                     MaintenanceAutomationAutoMapperProfile.Mapper.Map<ScheduledEventsApproveResponse, PSScheduledEventsApproveResponse>(response, psObject);
                     WriteObject(psObject);
@@ -75,7 +75,6 @@ namespace Microsoft.Azure.Commands.Maintenance
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 3,
             Mandatory = true,
             HelpMessage = "The list of ScheduledEvents Ids.",
             ValueFromPipelineByPropertyName = true)]

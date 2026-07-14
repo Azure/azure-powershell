@@ -82,9 +82,9 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceName
+### -ResourceType
 
-The resource name.
+The resource type.
 
 ```yaml
 Type: String
@@ -92,15 +92,15 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 3
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceType
+### -ResourceName
 
-The resource type.
+The resource name.
 
 ```yaml
 Type: String
