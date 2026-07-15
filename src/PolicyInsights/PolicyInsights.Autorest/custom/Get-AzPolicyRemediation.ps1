@@ -249,6 +249,14 @@ process {
         $null = $PSBoundParameters.Remove("Scope")
     }
 
+    # Route management group requests through the resource-scoped generated cmdlets.
+    # This avoids resolving Microsoft.Management/managementGroups with the PolicyInsights api-version.
+    if($PSBoundParameters.ContainsKey("ManagementGroupId"))
+    {
+        $null = $PSBoundParameters.Add("ResourceId", "/providers/Microsoft.Management/managementGroups/$($PSBoundParameters["ManagementGroupId"])")
+        $null = $PSBoundParameters.Remove("ManagementGroupId")
+    }
+
     if($PSBoundParameters.ContainsKey("IncludeDetail"))
     {
         # in this case, Get-AzPolicyRemediation and Get-AzPolicyRemediationDeployment must both be called 
