@@ -16,7 +16,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'Invoke-AzNetworkFabricUpgrad
 Describe 'Invoke-AzNetworkFabricUpgrade' {
     It 'UpgradeExpanded' {
         {
-            Invoke-AzNetworkFabricUpgrade -Name $global:config.fabric.name -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId
+            Invoke-AzNetworkFabricUpgrade -Name $global:config.fabric.name -ResourceGroupName $global:config.common.resourceGroupName -SubscriptionId $global:config.common.subscriptionId -Version $global:config.fabric.upgradeVersion -Action $global:config.fabric.upgradeAction
         } | Should -Not -Throw
     }
 

@@ -1,8 +1,8 @@
 {
-  "Invoke-AzNetworkFabricArmConfigurationDiff+[NoContext]+Arm+$POST+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabrics/fabricNameTest/armConfigurationDiff?api-version=2025-07-15+1": {
+  "Invoke-AzNetworkFabricArmConfigurationDiff+[NoContext]+Arm+$POST+https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/jnarvaez-nf/armConfigurationDiff?api-version=2025-07-15+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabrics/fabricNameTest/armConfigurationDiff?api-version=2025-07-15",
+      "RequestUri": "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/jnarvaez-nf/armConfigurationDiff?api-version=2025-07-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -10,13 +10,13 @@
           "1"
         ],
         "x-ms-client-request-id": [
-          "00000000-0000-0000-0000-000000000001"
+          "0141cb52-07b5-498d-b3f2-118a9bddc2d6"
         ],
         "CommandName": [
           "Invoke-AzNetworkFabricArmConfigurationDiff"
         ],
         "FullCommandName": [
-          "Invoke-AzNetworkFabricArmConfigurationDiff_UpdateExpanded"
+          "Invoke-AzNetworkFabricArmConfigurationDiff_Arm"
         ],
         "ParameterSetName": [
           "__AllParameterSets"
@@ -24,7 +24,7 @@
         "User-Agent": [
           "AzurePowershell/v0.0.0",
           "PSVersion/v7.6.3",
-          "Az.ManagedNetworkFabric/0.1.0"
+          "Az.ManagedNetworkFabric/0.1.3"
         ],
         "Authorization": [
           "[Filtered]"
@@ -42,30 +42,21 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "00000000-0000-0000-0000-000000000001"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 09 Jul 2026 20:00:00 GMT"
+          "mock"
         ]
       },
       "ContentHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
+        "Content-Length": [
+          "22"
+        ],
         "Expires": [
           "-1"
-        ],
-        "Content-Length": [
-          "15"
         ]
       },
-      "Content": "{\"changes\": []}",
+      "Content": "{\"status\":\"Succeeded\"}",
       "isContentBase64": false
     }
   }

@@ -1,8 +1,8 @@
 {
-  "Invoke-AzNetworkFabricExternalNetworkBfdAdministrativeState+[NoContext]+UpdateExpanded+$POST+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3DomainName/externalNetworks/externalNetworkName/updateBfdAdministrativeState?api-version=2025-07-15+1": {
+  "Invoke-AzNetworkFabricExternalNetworkBfdAdministrativeState+[NoContext]+UpdateExpanded+$POST+https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3-iso/externalNetworks/externalNetworkName/updateBfdAdministrativeState?api-version=2025-07-15+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3DomainName/externalNetworks/externalNetworkName/updateBfdAdministrativeState?api-version=2025-07-15",
+      "RequestUri": "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3-iso/externalNetworks/externalNetworkName/updateBfdAdministrativeState?api-version=2025-07-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

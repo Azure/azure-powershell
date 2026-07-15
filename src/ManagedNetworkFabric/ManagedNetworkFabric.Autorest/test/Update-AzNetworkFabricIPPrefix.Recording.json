@@ -1,8 +1,8 @@
 {
-  "Update-AzNetworkFabricIPPrefix+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/ipPrefixes/IpPrefixName?api-version=2025-07-15+1": {
+  "Update-AzNetworkFabricIPPrefix+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/ipPrefixes/IpPrefixName?api-version=2025-07-15+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/ipPrefixes/IpPrefixName?api-version=2025-07-15",
+      "RequestUri": "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/ipPrefixes/IpPrefixName?api-version=2025-07-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -65,7 +65,7 @@
           "1038"
         ]
       },
-      "Content": "{\"properties\": {\"annotation\": \"annotation\", \"networkFabricId\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabrics/fabricNameTest\", \"ipPrefixRules\": [{\"action\": \"Permit\", \"sequenceNumber\": 4155123341, \"networkPrefix\": \"10.10.10.10/30\", \"condition\": \"GreaterThanOrEqualTo\", \"subnetMaskLength\": \"10\"}], \"configurationState\": \"Succeeded\", \"provisioningState\": \"Accepted\", \"administrativeState\": \"Enabled\"}, \"tags\": {\"KeyId\": \"KeyValue\"}, \"location\": \"eastus\", \"id\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourcegroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/ipPrefixes/example-ipPrefix\", \"name\": \"example-ipPrefix\", \"type\": \"microsoft.managednetworkfabric/ipPrefixes\", \"systemData\": {\"createdBy\": \"REDACTED\", \"createdByType\": \"User\", \"createdAt\": \"2023-06-09T04:51:41.251Z\", \"lastModifiedBy\": \"UserId\", \"lastModifiedByType\": \"User\", \"lastModifiedAt\": \"2023-06-09T04:51:41.251Z\"}}",
+      "Content": "{\"properties\": {\"annotation\": \"annotation\", \"networkFabricId\": \"/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/fabricNameTest\", \"ipPrefixRules\": [{\"action\": \"Permit\", \"sequenceNumber\": 4155123341, \"networkPrefix\": \"10.10.10.10/30\", \"condition\": \"GreaterThanOrEqualTo\", \"subnetMaskLength\": \"10\"}], \"configurationState\": \"Succeeded\", \"provisioningState\": \"Accepted\", \"administrativeState\": \"Enabled\"}, \"tags\": {\"KeyId\": \"KeyValue\"}, \"location\": \"eastus\", \"id\": \"/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourcegroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/ipPrefixes/example-ipPrefix\", \"name\": \"example-ipPrefix\", \"type\": \"microsoft.managednetworkfabric/ipPrefixes\", \"systemData\": {\"createdBy\": \"REDACTED\", \"createdByType\": \"User\", \"createdAt\": \"2023-06-09T04:51:41.251Z\", \"lastModifiedBy\": \"UserId\", \"lastModifiedByType\": \"User\", \"lastModifiedAt\": \"2023-06-09T04:51:41.251Z\"}}",
       "isContentBase64": false
     }
   }

@@ -1,8 +1,8 @@
 {
-  "Update-AzNetworkFabricNeighborGroup+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName?api-version=2025-07-15+1": {
+  "Update-AzNetworkFabricNeighborGroup+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName?api-version=2025-07-15+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName?api-version=2025-07-15",
+      "RequestUri": "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName?api-version=2025-07-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -68,14 +68,14 @@
           "627"
         ]
       },
-      "Content": "{\"id\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName\", \"name\": \"NeighborGroupName\", \"type\": \"microsoft.managednetworkfabric/neighborgroups\", \"location\": \"eastus\", \"systemData\": {\"createdBy\": \"REDACTED\", \"createdByType\": \"User\", \"createdAt\": \"2023-09-21T14:31:12Z\", \"lastModifiedBy\": \"REDACTED\", \"lastModifiedByType\": \"User\", \"lastModifiedAt\": \"2023-09-21T14:31:12Z\"}, \"properties\": {\"destination\": {\"ipv4Addresses\": [\"10.10.10.10\"], \"ipv6Addresses\": [\"2F::/100\"]}, \"provisioningState\": \"Succeeded\"}}",
+      "Content": "{\"id\": \"/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName\", \"name\": \"NeighborGroupName\", \"type\": \"microsoft.managednetworkfabric/neighborgroups\", \"location\": \"eastus\", \"systemData\": {\"createdBy\": \"REDACTED\", \"createdByType\": \"User\", \"createdAt\": \"2023-09-21T14:31:12Z\", \"lastModifiedBy\": \"REDACTED\", \"lastModifiedByType\": \"User\", \"lastModifiedAt\": \"2023-09-21T14:31:12Z\"}, \"properties\": {\"destination\": {\"ipv4Addresses\": [\"10.10.10.10\"], \"ipv6Addresses\": [\"2F::/100\"]}, \"provisioningState\": \"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Update-AzNetworkFabricNeighborGroup+[NoContext]+Update+$PUT+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName?api-version=2025-07-15+2": {
+  "Update-AzNetworkFabricNeighborGroup+[NoContext]+Update+$PUT+https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName?api-version=2025-07-15+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName?api-version=2025-07-15",
+      "RequestUri": "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName?api-version=2025-07-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -141,14 +141,14 @@
           "627"
         ]
       },
-      "Content": "{\"id\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName\", \"name\": \"NeighborGroupName\", \"type\": \"microsoft.managednetworkfabric/neighborgroups\", \"location\": \"eastus\", \"systemData\": {\"createdBy\": \"REDACTED\", \"createdByType\": \"User\", \"createdAt\": \"2023-09-21T14:31:12Z\", \"lastModifiedBy\": \"REDACTED\", \"lastModifiedByType\": \"User\", \"lastModifiedAt\": \"2023-09-21T14:31:12Z\"}, \"properties\": {\"destination\": {\"ipv4Addresses\": [\"10.10.10.10\"], \"ipv6Addresses\": [\"2F::/100\"]}, \"provisioningState\": \"Succeeded\"}}",
+      "Content": "{\"id\": \"/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName\", \"name\": \"NeighborGroupName\", \"type\": \"microsoft.managednetworkfabric/neighborgroups\", \"location\": \"eastus\", \"systemData\": {\"createdBy\": \"REDACTED\", \"createdByType\": \"User\", \"createdAt\": \"2023-09-21T14:31:12Z\", \"lastModifiedBy\": \"REDACTED\", \"lastModifiedByType\": \"User\", \"lastModifiedAt\": \"2023-09-21T14:31:12Z\"}, \"properties\": {\"destination\": {\"ipv4Addresses\": [\"10.10.10.10\"], \"ipv6Addresses\": [\"2F::/100\"]}, \"provisioningState\": \"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Update-AzNetworkFabricNeighborGroup+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName?api-version=2025-07-15+3": {
+  "Update-AzNetworkFabricNeighborGroup+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName?api-version=2025-07-15+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName?api-version=2025-07-15",
+      "RequestUri": "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName?api-version=2025-07-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -214,14 +214,14 @@
           "628"
         ]
       },
-      "Content": "{\"id\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName\", \"name\": \"NeighborGroupName\", \"type\": \"microsoft.managednetworkfabric/neighborgroups\", \"location\": \"eastus\", \"systemData\": {\"createdBy\": \"REDACTED\", \"createdByType\": \"User\", \"createdAt\": \"2023-09-21T14:31:12Z\", \"lastModifiedBy\": \"REDACTED\", \"lastModifiedByType\": \"User\", \"lastModifiedAt\": \"2023-09-21T14:31:12Z\"}, \"properties\": {\"destination\": {\"ipv4Addresses\": [\"10.11.10.11\"], \"ipv6Addresses\": [\"2FF::/101\"]}, \"provisioningState\": \"Succeeded\"}}",
+      "Content": "{\"id\": \"/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName\", \"name\": \"NeighborGroupName\", \"type\": \"microsoft.managednetworkfabric/neighborgroups\", \"location\": \"eastus\", \"systemData\": {\"createdBy\": \"REDACTED\", \"createdByType\": \"User\", \"createdAt\": \"2023-09-21T14:31:12Z\", \"lastModifiedBy\": \"REDACTED\", \"lastModifiedByType\": \"User\", \"lastModifiedAt\": \"2023-09-21T14:31:12Z\"}, \"properties\": {\"destination\": {\"ipv4Addresses\": [\"10.11.10.11\"], \"ipv6Addresses\": [\"2FF::/101\"]}, \"provisioningState\": \"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Update-AzNetworkFabricNeighborGroup+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName?api-version=2025-07-15+4": {
+  "Update-AzNetworkFabricNeighborGroup+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName?api-version=2025-07-15+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName?api-version=2025-07-15",
+      "RequestUri": "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName?api-version=2025-07-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -287,7 +287,7 @@
           "628"
         ]
       },
-      "Content": "{\"id\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName\", \"name\": \"NeighborGroupName\", \"type\": \"microsoft.managednetworkfabric/neighborgroups\", \"location\": \"eastus\", \"systemData\": {\"createdBy\": \"REDACTED\", \"createdByType\": \"User\", \"createdAt\": \"2023-09-21T14:31:12Z\", \"lastModifiedBy\": \"REDACTED\", \"lastModifiedByType\": \"User\", \"lastModifiedAt\": \"2023-09-21T14:31:12Z\"}, \"properties\": {\"destination\": {\"ipv4Addresses\": [\"10.11.10.11\"], \"ipv6Addresses\": [\"2FF::/101\"]}, \"provisioningState\": \"Succeeded\"}}",
+      "Content": "{\"id\": \"/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/neighborGroups/NeighborGroupName\", \"name\": \"NeighborGroupName\", \"type\": \"microsoft.managednetworkfabric/neighborgroups\", \"location\": \"eastus\", \"systemData\": {\"createdBy\": \"REDACTED\", \"createdByType\": \"User\", \"createdAt\": \"2023-09-21T14:31:12Z\", \"lastModifiedBy\": \"REDACTED\", \"lastModifiedByType\": \"User\", \"lastModifiedAt\": \"2023-09-21T14:31:12Z\"}, \"properties\": {\"destination\": {\"ipv4Addresses\": [\"10.11.10.11\"], \"ipv6Addresses\": [\"2FF::/101\"]}, \"provisioningState\": \"Succeeded\"}}",
       "isContentBase64": false
     }
   }

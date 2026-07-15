@@ -1,8 +1,8 @@
 {
-  "Invoke-AzNetworkFabricDeprovision+[NoContext]+Deprovision+$POST+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabrics/fabricNameTest/deprovision?api-version=2025-07-15+1": {
+  "Invoke-AzNetworkFabricDeprovision+[NoContext]+Deprovision+$POST+https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/jnarvaez-nf/deprovision?api-version=2025-07-15+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabrics/fabricNameTest/deprovision?api-version=2025-07-15",
+      "RequestUri": "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/jnarvaez-nf/deprovision?api-version=2025-07-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -42,7 +42,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/f3b14392-9f26-4c55-96bf-7dcaad95dc44*BAE0D65A2E7FAAA79085F803A633B1D268AE3E818EFE647F714C9B98D2BC2CD8?api-version=2025-07-15"
+          "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/f3b14392-9f26-4c55-96bf-7dcaad95dc44*BAE0D65A2E7FAAA79085F803A633B1D268AE3E818EFE647F714C9B98D2BC2CD8?api-version=2025-07-15"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1198"
@@ -60,7 +60,7 @@
           "ed261d9e-0dc3-4c0c-8ea5-a511c21bc728"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/f3b14392-9f26-4c55-96bf-7dcaad95dc44*BAE0D65A2E7FAAA79085F803A633B1D268AE3E818EFE647F714C9B98D2BC2CD8?api-version=2025-07-15"
+          "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/f3b14392-9f26-4c55-96bf-7dcaad95dc44*BAE0D65A2E7FAAA79085F803A633B1D268AE3E818EFE647F714C9B98D2BC2CD8?api-version=2025-07-15"
         ],
         "x-ms-routing-request-id": [
           "SOUTHINDIA:20230922T113125Z:ed261d9e-0dc3-4c0c-8ea5-a511c21bc728"
@@ -90,10 +90,10 @@
       "isContentBase64": false
     }
   },
-  "Invoke-AzNetworkFabricDeprovision+[NoContext]+Deprovision+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/f3b14392-9f26-4c55-96bf-7dcaad95dc44*BAE0D65A2E7FAAA79085F803A633B1D268AE3E818EFE647F714C9B98D2BC2CD8?api-version=2025-07-15+2": {
+  "Invoke-AzNetworkFabricDeprovision+[NoContext]+Deprovision+$GET+https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/f3b14392-9f26-4c55-96bf-7dcaad95dc44*BAE0D65A2E7FAAA79085F803A633B1D268AE3E818EFE647F714C9B98D2BC2CD8?api-version=2025-07-15+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/f3b14392-9f26-4c55-96bf-7dcaad95dc44*BAE0D65A2E7FAAA79085F803A633B1D268AE3E818EFE647F714C9B98D2BC2CD8?api-version=2025-07-15",
+      "RequestUri": "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/f3b14392-9f26-4c55-96bf-7dcaad95dc44*BAE0D65A2E7FAAA79085F803A633B1D268AE3E818EFE647F714C9B98D2BC2CD8?api-version=2025-07-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -168,14 +168,14 @@
           "-1"
         ]
       },
-      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/f3b14392-9f26-4c55-96bf-7dcaad95dc44*BAE0D65A2E7FAAA79085F803A633B1D268AE3E818EFE647F714C9B98D2BC2CD8\",\"name\":\"f3b14392-9f26-4c55-96bf-7dcaad95dc44*BAE0D65A2E7FAAA79085F803A633B1D268AE3E818EFE647F714C9B98D2BC2CD8\",\"resourceId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabrics/fabricNameTest\",\"status\":\"Succeeded\",\"startTime\":\"2023-09-22T11:31:25.1640012Z\",\"endTime\":\"2023-09-22T11:31:28.5269247Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/f3b14392-9f26-4c55-96bf-7dcaad95dc44*BAE0D65A2E7FAAA79085F803A633B1D268AE3E818EFE647F714C9B98D2BC2CD8\",\"name\":\"f3b14392-9f26-4c55-96bf-7dcaad95dc44*BAE0D65A2E7FAAA79085F803A633B1D268AE3E818EFE647F714C9B98D2BC2CD8\",\"resourceId\":\"/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/jnarvaez-nf\",\"status\":\"Succeeded\",\"startTime\":\"2023-09-22T11:31:25.1640012Z\",\"endTime\":\"2023-09-22T11:31:28.5269247Z\",\"properties\":null}",
       "isContentBase64": false
     }
   },
-  "Invoke-AzNetworkFabricDeprovision+[NoContext]+Deprovision+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/f3b14392-9f26-4c55-96bf-7dcaad95dc44*BAE0D65A2E7FAAA79085F803A633B1D268AE3E818EFE647F714C9B98D2BC2CD8?api-version=2025-07-15+3": {
+  "Invoke-AzNetworkFabricDeprovision+[NoContext]+Deprovision+$GET+https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/f3b14392-9f26-4c55-96bf-7dcaad95dc44*BAE0D65A2E7FAAA79085F803A633B1D268AE3E818EFE647F714C9B98D2BC2CD8?api-version=2025-07-15+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/f3b14392-9f26-4c55-96bf-7dcaad95dc44*BAE0D65A2E7FAAA79085F803A633B1D268AE3E818EFE647F714C9B98D2BC2CD8?api-version=2025-07-15",
+      "RequestUri": "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/f3b14392-9f26-4c55-96bf-7dcaad95dc44*BAE0D65A2E7FAAA79085F803A633B1D268AE3E818EFE647F714C9B98D2BC2CD8?api-version=2025-07-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -250,7 +250,7 @@
           "-1"
         ]
       },
-      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/f3b14392-9f26-4c55-96bf-7dcaad95dc44*BAE0D65A2E7FAAA79085F803A633B1D268AE3E818EFE647F714C9B98D2BC2CD8\",\"name\":\"f3b14392-9f26-4c55-96bf-7dcaad95dc44*BAE0D65A2E7FAAA79085F803A633B1D268AE3E818EFE647F714C9B98D2BC2CD8\",\"resourceId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkFabrics/fabricNameTest\",\"status\":\"Succeeded\",\"startTime\":\"2023-09-22T11:31:25.1640012Z\",\"endTime\":\"2023-09-22T11:31:28.5269247Z\",\"properties\":null}",
+      "Content": "{\"id\":\"/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/f3b14392-9f26-4c55-96bf-7dcaad95dc44*BAE0D65A2E7FAAA79085F803A633B1D268AE3E818EFE647F714C9B98D2BC2CD8\",\"name\":\"f3b14392-9f26-4c55-96bf-7dcaad95dc44*BAE0D65A2E7FAAA79085F803A633B1D268AE3E818EFE647F714C9B98D2BC2CD8\",\"resourceId\":\"/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/networkFabrics/jnarvaez-nf\",\"status\":\"Succeeded\",\"startTime\":\"2023-09-22T11:31:25.1640012Z\",\"endTime\":\"2023-09-22T11:31:28.5269247Z\",\"properties\":null}",
       "isContentBase64": false
     }
   }

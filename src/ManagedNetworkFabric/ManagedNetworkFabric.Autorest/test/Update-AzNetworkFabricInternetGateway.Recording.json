@@ -1,9 +1,9 @@
 {
-  "Update-AzNetworkFabricInternetGateway+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/internetGateways/controller092123-infra?api-version=2025-07-15+1": {
+  "Update-AzNetworkFabricInternetGateway+[NoContext]+Update+$PATCH+https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/internetGateways/jnarvaez-infra?api-version=2025-07-15+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/internetGateways/controller092123-infra?api-version=2025-07-15",
-      "Content": "{\n  \"properties\": {\n    \"internetGatewayRuleId\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/InternetGatewayRules/controller092123-infra-system\"\n  }\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/internetGateways/jnarvaez-infra?api-version=2025-07-15",
+      "Content": "{\n  \"properties\": {\n    \"internetGatewayRuleId\": \"/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/InternetGatewayRules/controller092123-infra-system\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {},
       "ContentHeaders": {
@@ -28,7 +28,7 @@
           "\"920042af-0000-0100-0000-650d7dbc0000\""
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/4f2f35cb-d6b9-43f1-bbde-a762be64845e*0BCB0908C74198AA8EC12766AF534F519CD171FACB9B08A693F84A4E15ECB54C?api-version=2025-07-15"
+          "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/4f2f35cb-d6b9-43f1-bbde-a762be64845e*0BCB0908C74198AA8EC12766AF534F519CD171FACB9B08A693F84A4E15ECB54C?api-version=2025-07-15"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
@@ -46,7 +46,7 @@
           "00258dfd-774b-40c1-8dd3-3bc4bf70811a"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/4f2f35cb-d6b9-43f1-bbde-a762be64845e*0BCB0908C74198AA8EC12766AF534F519CD171FACB9B08A693F84A4E15ECB54C?api-version=2025-07-15"
+          "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/4f2f35cb-d6b9-43f1-bbde-a762be64845e*0BCB0908C74198AA8EC12766AF534F519CD171FACB9B08A693F84A4E15ECB54C?api-version=2025-07-15"
         ],
         "x-ms-routing-request-id": [
           "SOUTHINDIA:20230922T114252Z:00258dfd-774b-40c1-8dd3-3bc4bf70811a"
@@ -76,10 +76,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzNetworkFabricInternetGateway+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/4f2f35cb-d6b9-43f1-bbde-a762be64845e*0BCB0908C74198AA8EC12766AF534F519CD171FACB9B08A693F84A4E15ECB54C?api-version=2025-07-15+2": {
+  "Update-AzNetworkFabricInternetGateway+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/4f2f35cb-d6b9-43f1-bbde-a762be64845e*0BCB0908C74198AA8EC12766AF534F519CD171FACB9B08A693F84A4E15ECB54C?api-version=2025-07-15+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/4f2f35cb-d6b9-43f1-bbde-a762be64845e*0BCB0908C74198AA8EC12766AF534F519CD171FACB9B08A693F84A4E15ECB54C?api-version=2025-07-15",
+      "RequestUri": "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/4f2f35cb-d6b9-43f1-bbde-a762be64845e*0BCB0908C74198AA8EC12766AF534F519CD171FACB9B08A693F84A4E15ECB54C?api-version=2025-07-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -154,14 +154,14 @@
           "-1"
         ]
       },
-      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/4f2f35cb-d6b9-43f1-bbde-a762be64845e*0BCB0908C74198AA8EC12766AF534F519CD171FACB9B08A693F84A4E15ECB54C\",\"name\":\"4f2f35cb-d6b9-43f1-bbde-a762be64845e*0BCB0908C74198AA8EC12766AF534F519CD171FACB9B08A693F84A4E15ECB54C\",\"resourceId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/internetGateways/controller092123-infra\",\"status\":\"Succeeded\",\"startTime\":\"2023-09-22T11:42:51.8347313Z\",\"endTime\":\"2023-09-22T11:43:05.9645357Z\",\"percentComplete\":100.0,\"properties\":null}",
+      "Content": "{\"id\":\"/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/4f2f35cb-d6b9-43f1-bbde-a762be64845e*0BCB0908C74198AA8EC12766AF534F519CD171FACB9B08A693F84A4E15ECB54C\",\"name\":\"4f2f35cb-d6b9-43f1-bbde-a762be64845e*0BCB0908C74198AA8EC12766AF534F519CD171FACB9B08A693F84A4E15ECB54C\",\"resourceId\":\"/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/internetGateways/jnarvaez-infra\",\"status\":\"Succeeded\",\"startTime\":\"2023-09-22T11:42:51.8347313Z\",\"endTime\":\"2023-09-22T11:43:05.9645357Z\",\"percentComplete\":100.0,\"properties\":null}",
       "isContentBase64": false
     }
   },
-  "Update-AzNetworkFabricInternetGateway+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/4f2f35cb-d6b9-43f1-bbde-a762be64845e*0BCB0908C74198AA8EC12766AF534F519CD171FACB9B08A693F84A4E15ECB54C?api-version=2025-07-15+3": {
+  "Update-AzNetworkFabricInternetGateway+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/4f2f35cb-d6b9-43f1-bbde-a762be64845e*0BCB0908C74198AA8EC12766AF534F519CD171FACB9B08A693F84A4E15ECB54C?api-version=2025-07-15+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/4f2f35cb-d6b9-43f1-bbde-a762be64845e*0BCB0908C74198AA8EC12766AF534F519CD171FACB9B08A693F84A4E15ECB54C?api-version=2025-07-15",
+      "RequestUri": "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/4f2f35cb-d6b9-43f1-bbde-a762be64845e*0BCB0908C74198AA8EC12766AF534F519CD171FACB9B08A693F84A4E15ECB54C?api-version=2025-07-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -236,7 +236,7 @@
           "-1"
         ]
       },
-      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/4f2f35cb-d6b9-43f1-bbde-a762be64845e*0BCB0908C74198AA8EC12766AF534F519CD171FACB9B08A693F84A4E15ECB54C\",\"name\":\"4f2f35cb-d6b9-43f1-bbde-a762be64845e*0BCB0908C74198AA8EC12766AF534F519CD171FACB9B08A693F84A4E15ECB54C\",\"resourceId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/internetGateways/controller092123-infra\",\"status\":\"Succeeded\",\"startTime\":\"2023-09-22T11:42:51.8347313Z\",\"endTime\":\"2023-09-22T11:43:05.9645357Z\",\"percentComplete\":100.0,\"properties\":null}",
+      "Content": "{\"id\":\"/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/4f2f35cb-d6b9-43f1-bbde-a762be64845e*0BCB0908C74198AA8EC12766AF534F519CD171FACB9B08A693F84A4E15ECB54C\",\"name\":\"4f2f35cb-d6b9-43f1-bbde-a762be64845e*0BCB0908C74198AA8EC12766AF534F519CD171FACB9B08A693F84A4E15ECB54C\",\"resourceId\":\"/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/internetGateways/jnarvaez-infra\",\"status\":\"Succeeded\",\"startTime\":\"2023-09-22T11:42:51.8347313Z\",\"endTime\":\"2023-09-22T11:43:05.9645357Z\",\"percentComplete\":100.0,\"properties\":null}",
       "isContentBase64": false
     }
   }

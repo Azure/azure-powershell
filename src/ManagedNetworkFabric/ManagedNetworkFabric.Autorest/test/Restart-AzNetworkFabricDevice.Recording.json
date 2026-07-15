@@ -1,36 +1,19 @@
 {
-  "Restart-AzNetworkFabricDevice+[NoContext]+RebootExpanded+$POST+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkDevices/fabricNameTest-AggrRack-MgmtSwitch1/reboot?api-version=2025-07-15+1": {
+  "Restart-AzNetworkFabricDevice+[NoContext]+RebootExpanded+$POST+https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/networkDevices/jnarvaez-nf-AggrRack-CE1/reboot?api-version=2025-07-15+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkDevices/fabricNameTest-AggrRack-MgmtSwitch1/reboot?api-version=2025-07-15",
-      "Content": null,
+      "RequestUri": "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/networkDevices/jnarvaez-nf-AggrRack-CE1/reboot?api-version=2025-07-15",
+      "Content": "{\n}",
       "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [
-          "1"
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": [
+          "application/json"
         ],
-        "x-ms-client-request-id": [
-          "00000000-0000-0000-0000-000000000001"
-        ],
-        "CommandName": [
-          "Restart-AzNetworkFabricDevice"
-        ],
-        "FullCommandName": [
-          "Restart-AzNetworkFabricDevice_UpdateExpanded"
-        ],
-        "ParameterSetName": [
-          "__AllParameterSets"
-        ],
-        "User-Agent": [
-          "AzurePowershell/v0.0.0",
-          "PSVersion/v7.6.3",
-          "Az.ManagedNetworkFabric/0.1.0"
-        ],
-        "Authorization": [
-          "[Filtered]"
+        "Content-Length": [
+          "3"
         ]
-      },
-      "ContentHeaders": {}
+      }
     },
     "Response": {
       "StatusCode": 200,
@@ -42,30 +25,24 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "00000000-0000-0000-0000-000000000001"
+          "mock"
         ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Thu, 09 Jul 2026 20:00:00 GMT"
+        "x-ms-correlation-request-id": [
+          "mock"
         ]
       },
       "ContentHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
+        "Content-Length": [
+          "22"
+        ],
         "Expires": [
           "-1"
-        ],
-        "Content-Length": [
-          "119"
         ]
       },
-      "Content": "{\"status\": \"Succeeded\", \"percentComplete\": 100, \"startTime\": \"2026-07-09T20:00:00Z\", \"endTime\": \"2026-07-09T20:00:01Z\"}",
+      "Content": "{\"status\":\"Succeeded\"}",
       "isContentBase64": false
     }
   }

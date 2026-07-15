@@ -1,8 +1,8 @@
 {
-  "Update-AzNetworkFabricNetworkBootstrapInterface+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/example-device/networkBootstrapInterfaces/example-interface?api-version=2025-07-15+1": {
+  "Update-AzNetworkFabricNetworkBootstrapInterface+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/example-device/networkBootstrapInterfaces/example-interface?api-version=2025-07-15+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/example-device/networkBootstrapInterfaces/example-interface?api-version=2025-07-15",
+      "RequestUri": "https://management.azure.com/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/example-device/networkBootstrapInterfaces/example-interface?api-version=2025-07-15",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -65,7 +65,7 @@
           "1031"
         ]
       },
-      "Content": "{\"value\": [{\"properties\": {\"annotation\": \"annotation\", \"administrativeState\": \"Enabled\", \"interfaceType\": \"Management\", \"additionalDescription\": \"additionalDescription\", \"serialNumber\": \"Vendor;DCS-7280XXX-24;12.05;JPE2111XXXX\", \"provisioningState\": \"Accepted\", \"physicalIdentifier\": \"physicalIdentifier\", \"connectedTo\": \"connectedTo\", \"description\": \"description\", \"ipv4Address\": \"10.10.10.10\", \"ipv6Address\": \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\"}, \"id\": \"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/example-device/networkBootstrapInterfaces/example-interface\", \"name\": \"example-interface\", \"type\": \"microsoft.managednetworkfabric/networkbootstrapdevices/networkbootstrapinterfaces\", \"systemData\": {\"createdBy\": \"REDACTED\", \"createdByType\": \"User\", \"createdAt\": \"2023-06-09T04:51:41.251Z\", \"lastModifiedBy\": \"UserId\", \"lastModifiedByType\": \"User\", \"lastModifiedAt\": \"2023-06-09T04:51:41.251Z\"}}]}",
+      "Content": "{\"value\": [{\"properties\": {\"annotation\": \"annotation\", \"administrativeState\": \"Enabled\", \"interfaceType\": \"Management\", \"additionalDescription\": \"additionalDescription\", \"serialNumber\": \"Vendor;DCS-7280XXX-24;12.05;JPE2111XXXX\", \"provisioningState\": \"Accepted\", \"physicalIdentifier\": \"physicalIdentifier\", \"connectedTo\": \"connectedTo\", \"description\": \"description\", \"ipv4Address\": \"10.10.10.10\", \"ipv6Address\": \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\"}, \"id\": \"/subscriptions/89a70903-42a2-4ff6-b437-688a27893711/resourceGroups/jnarvaez-nf-rg/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/example-device/networkBootstrapInterfaces/example-interface\", \"name\": \"example-interface\", \"type\": \"microsoft.managednetworkfabric/networkbootstrapdevices/networkbootstrapinterfaces\", \"systemData\": {\"createdBy\": \"REDACTED\", \"createdByType\": \"User\", \"createdAt\": \"2023-06-09T04:51:41.251Z\", \"lastModifiedBy\": \"UserId\", \"lastModifiedByType\": \"User\", \"lastModifiedAt\": \"2023-06-09T04:51:41.251Z\"}}]}",
       "isContentBase64": false
     }
   }
