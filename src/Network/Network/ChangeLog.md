@@ -19,7 +19,7 @@
 --->
 
 ## Upcoming Release
-* Onboarded `Microsoft.HardwareSecurityModules/paymentHsmClusters` to private link cmdlets
+* Onboarded `Microsoft.HardwareSecurityModules/paymentHsmClusters` to Private Link Common Cmdlets
 
 ## Version 8.0.1
 * Onboarded `Microsoft.HorizonDB/clusters` to Private Link Common Cmdlets
