@@ -1,21 +1,40 @@
 Describe 'Get-AzPolicyRemediation custom wrapper' {
     BeforeAll {
         $script:scriptFile = (Resolve-Path (Join-Path $PSScriptRoot '../custom/Get-AzPolicyRemediation.ps1')).Path
-        $script:scriptContent = Get-Content -Path $script:scriptFile -Raw
+        $parseErrors = $null
+        $script:scriptAst = [System.Management.Automation.Language.Parser]::ParseFile($script:scriptFile, [ref]$null, [ref]$parseErrors)
+        $parseErrors | Should -BeNullOrEmpty
     }
 
     It 'rewrites management group requests to the management group resource ID' {
-        $script:scriptContent | Should -Match 'if\(\$PSBoundParameters\.ContainsKey\("ManagementGroupId"\)\)'
-        $script:scriptContent | Should -Match '\$PSBoundParameters\.Add\("ResourceId", "/providers/Microsoft\.Management/managementGroups/\$\(\$PSBoundParameters\["ManagementGroupId"\]\)"\)'
-        $script:scriptContent | Should -Match '\$PSBoundParameters\.Remove\("ManagementGroupId"\)'
+        $managementGroupRewrite = $script:scriptAst.Find({
+            param($ast)
+
+            $ast -is [System.Management.Automation.Language.IfStatementAst] -and
+            $ast.Clauses[0].Item1.Extent.Text -eq '$PSBoundParameters.ContainsKey("ManagementGroupId")'
+        }, $true)
+
+        $managementGroupRewrite | Should -Not -BeNullOrEmpty
+        $managementGroupRewrite.Extent.Text | Should -Match '\$PSBoundParameters\.Add\("ResourceId", "/providers/Microsoft\.Management/managementGroups/\$\(\$PSBoundParameters\["ManagementGroupId"\]\)"\)'
+        $managementGroupRewrite.Extent.Text | Should -Match '\$PSBoundParameters\.Remove\("ManagementGroupId"\)'
     }
 
     It 'rewrites management group requests before IncludeDetail dispatch' {
-        $managementGroupRewriteIndex = $script:scriptContent.IndexOf('if($PSBoundParameters.ContainsKey("ManagementGroupId"))')
-        $includeDetailIndex = $script:scriptContent.IndexOf('if($PSBoundParameters.ContainsKey("IncludeDetail"))')
+        $managementGroupRewrite = $script:scriptAst.Find({
+            param($ast)
 
-        $managementGroupRewriteIndex | Should -BeGreaterThan -1
-        $includeDetailIndex | Should -BeGreaterThan -1
-        $managementGroupRewriteIndex | Should -BeLessThan $includeDetailIndex
+            $ast -is [System.Management.Automation.Language.IfStatementAst] -and
+            $ast.Clauses[0].Item1.Extent.Text -eq '$PSBoundParameters.ContainsKey("ManagementGroupId")'
+        }, $true)
+        $includeDetailDispatch = $script:scriptAst.Find({
+            param($ast)
+
+            $ast -is [System.Management.Automation.Language.IfStatementAst] -and
+            $ast.Clauses[0].Item1.Extent.Text -eq '$PSBoundParameters.ContainsKey("IncludeDetail")'
+        }, $true)
+
+        $managementGroupRewrite | Should -Not -BeNullOrEmpty
+        $includeDetailDispatch | Should -Not -BeNullOrEmpty
+        $managementGroupRewrite.Extent.StartOffset | Should -BeLessThan $includeDetailDispatch.Extent.StartOffset
     }
 }

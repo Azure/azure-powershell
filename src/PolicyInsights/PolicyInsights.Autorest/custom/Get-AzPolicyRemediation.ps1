@@ -250,7 +250,8 @@ process {
     }
 
     # Route management group requests through the resource-scoped generated cmdlets.
-    # This avoids resolving Microsoft.Management/managementGroups with the PolicyInsights api-version.
+    # This avoids resolving Microsoft.Management/managementGroups with the PolicyInsights api-version (2024-10-01),
+    # which is not supported by the Microsoft.Management resource provider.
     if($PSBoundParameters.ContainsKey("ManagementGroupId"))
     {
         $null = $PSBoundParameters.Add("ResourceId", "/providers/Microsoft.Management/managementGroups/$($PSBoundParameters["ManagementGroupId"])")
