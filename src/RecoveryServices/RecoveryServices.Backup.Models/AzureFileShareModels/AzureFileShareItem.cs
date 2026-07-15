@@ -15,6 +15,7 @@
 using System;
 using System.Runtime.Versioning;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
@@ -73,6 +74,39 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                 {
                     DateOfPurge = protectedItem.DeferredDeleteTimeInUtc.Value.AddDays(softDeleteRetentionDays);
                 }
+                DeleteState = EnumUtils.GetEnum<ItemDeleteState>("ToBeDeleted");
+            }
+
+            if (protectedItem.ExtendedInfo != null && protectedItem.ExtendedInfo.ResourceState != null)
+            {
+                ResourceState = protectedItem.ExtendedInfo.ResourceState;
+            }
+        }
+
+        /// <summary>
+        /// Constructor for secondary region (CRR) items.
+        /// </summary>
+        public AzureFileShareItem(CrrModel.ProtectedItemResource protectedItemResource,
+            string containerName, ContainerType containerType, string policyName)
+            : base(protectedItemResource, containerName, containerType, policyName)
+        {
+            CrrModel.AzureFileshareProtectedItem protectedItem =
+                (CrrModel.AzureFileshareProtectedItem)protectedItemResource.Properties;
+            LastBackupStatus = protectedItem.LastBackupStatus;
+            LastBackupTime = protectedItem.LastBackupTime;
+            ProtectionState =
+                EnumUtils.GetEnum<ItemProtectionState>(protectedItem.ProtectionState.ToString());
+            ProtectionStatus = EnumUtils.GetEnum<ItemProtectionStatus>(protectedItem.ProtectionStatus);
+            FriendlyName = protectedItem.FriendlyName;
+            ResourceState = "";
+
+            IsScheduledForDeferredDelete = protectedItem.IsScheduledForDeferredDelete;
+            DeferredDeleteTimeInUtc = protectedItem.DeferredDeleteTimeInUtc;
+
+            //DateOfPurge = null;
+            DeleteState = EnumUtils.GetEnum<ItemDeleteState>("NotDeleted");
+            if (protectedItem.IsScheduledForDeferredDelete.HasValue && protectedItem.IsScheduledForDeferredDelete.Value)
+            {
                 DeleteState = EnumUtils.GetEnum<ItemDeleteState>("ToBeDeleted");
             }
 

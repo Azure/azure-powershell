@@ -988,44 +988,79 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (ItemDeleteState)ProviderData[ItemParams.DeleteState];
             PolicyBase policy = (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy];
             string friendlyName = (string)ProviderData[ItemParams.FriendlyName];
+            bool useSecondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];
 
             if( itemName != null && isFriendlyName(itemName) )
             {
                 Logger.Instance.WriteWarning(Resources.FriendlyNamePassedWarning);
             }
 
-            // 1. Filter by container
-            List<ProtectedItemResource> protectedItems = AzureWorkloadProviderHelper.ListProtectedItemsByContainer(
-                vaultName,
-                resourceGroupName,
-                container,
-                policy,
-                ServiceClientModel.BackupManagementType.AzureStorage,
-                DataSourceType.AzureFileShare);
+            List<ItemBase> itemModels = null;
 
-            List<ProtectedItemResource> protectedItemGetResponses =
-                new List<ProtectedItemResource>();
+            if (useSecondaryRegion)
+            {
+                // 1. Filter by container from secondary region
+                List<CrrModel.ProtectedItemResource> protectedItemsCrr = AzureWorkloadProviderHelper.ListProtectedItemsByContainerCrr(
+                    vaultName,
+                    resourceGroupName,
+                    container,
+                    policy,
+                    ServiceClientModel.BackupManagementType.AzureStorage,
+                    DataSourceType.AzureFileShare);
 
-            // 2. Filter by item name
-            List<ItemBase> itemModels = AzureWorkloadProviderHelper.ListProtectedItemsByItemName(
-                protectedItems,
-                itemName,
-                vaultName,
-                resourceGroupName,
-                (itemModel, protectedItemGetResponse) =>
-                {
-                    AzureFileShareItemExtendedInfo extendedInfo = new AzureFileShareItemExtendedInfo();
-                    var serviceClientExtendedInfo = ((AzureFileshareProtectedItem)protectedItemGetResponse.Properties).ExtendedInfo;
-                    if (serviceClientExtendedInfo.OldestRecoveryPoint.HasValue)
+                // 2. Filter by item name from secondary region
+                itemModels = AzureWorkloadProviderHelper.ListProtectedItemsByItemNameCrr(
+                    protectedItemsCrr,
+                    itemName,
+                    vaultName,
+                    resourceGroupName,
+                    (itemModel, protectedItemGetResponse) =>
                     {
-                        extendedInfo.OldestRecoveryPoint = serviceClientExtendedInfo.OldestRecoveryPoint;
-                    }
-                    extendedInfo.PolicyState = serviceClientExtendedInfo.PolicyState.ToString();
-                    extendedInfo.RecoveryPointCount =
-                        (int)(serviceClientExtendedInfo.RecoveryPointCount.HasValue ?
-                            serviceClientExtendedInfo.RecoveryPointCount : 0);
-                    ((AzureFileShareItem)itemModel).ExtendedInfo = extendedInfo;
-                }, friendlyName);
+                        AzureFileShareItemExtendedInfo extendedInfo = new AzureFileShareItemExtendedInfo();
+                        var serviceClientExtendedInfo = ((AzureFileshareProtectedItem)protectedItemGetResponse.Properties).ExtendedInfo;
+                        if (serviceClientExtendedInfo.OldestRecoveryPoint.HasValue)
+                        {
+                            extendedInfo.OldestRecoveryPoint = serviceClientExtendedInfo.OldestRecoveryPoint;
+                        }
+                        extendedInfo.PolicyState = serviceClientExtendedInfo.PolicyState.ToString();
+                        extendedInfo.RecoveryPointCount =
+                            (int)(serviceClientExtendedInfo.RecoveryPointCount.HasValue ?
+                                serviceClientExtendedInfo.RecoveryPointCount : 0);
+                        ((AzureFileShareItem)itemModel).ExtendedInfo = extendedInfo;
+                    }, friendlyName);
+            }
+            else
+            {
+                // 1. Filter by container
+                List<ProtectedItemResource> protectedItems = AzureWorkloadProviderHelper.ListProtectedItemsByContainer(
+                    vaultName,
+                    resourceGroupName,
+                    container,
+                    policy,
+                    ServiceClientModel.BackupManagementType.AzureStorage,
+                    DataSourceType.AzureFileShare);
+
+                // 2. Filter by item name
+                itemModels = AzureWorkloadProviderHelper.ListProtectedItemsByItemName(
+                    protectedItems,
+                    itemName,
+                    vaultName,
+                    resourceGroupName,
+                    (itemModel, protectedItemGetResponse) =>
+                    {
+                        AzureFileShareItemExtendedInfo extendedInfo = new AzureFileShareItemExtendedInfo();
+                        var serviceClientExtendedInfo = ((AzureFileshareProtectedItem)protectedItemGetResponse.Properties).ExtendedInfo;
+                        if (serviceClientExtendedInfo.OldestRecoveryPoint.HasValue)
+                        {
+                            extendedInfo.OldestRecoveryPoint = serviceClientExtendedInfo.OldestRecoveryPoint;
+                        }
+                        extendedInfo.PolicyState = serviceClientExtendedInfo.PolicyState.ToString();
+                        extendedInfo.RecoveryPointCount =
+                            (int)(serviceClientExtendedInfo.RecoveryPointCount.HasValue ?
+                                serviceClientExtendedInfo.RecoveryPointCount : 0);
+                        ((AzureFileShareItem)itemModel).ExtendedInfo = extendedInfo;
+                    }, friendlyName);
+            }
 
             // 3. Filter by item's Protection Status
             if (protectionStatus != 0)
