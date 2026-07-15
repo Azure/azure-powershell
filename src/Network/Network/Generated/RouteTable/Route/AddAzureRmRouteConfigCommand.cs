@@ -35,7 +35,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RouteConfig", SupportsShouldProcess = true), OutputType(typeof(PSRouteTable))]
+    [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RouteConfig", DefaultParameterSetName = "StandardRoute", SupportsShouldProcess = true), OutputType(typeof(PSRouteTable))]
     public partial class AddAzureRmRouteConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -65,15 +65,27 @@ namespace Microsoft.Azure.Commands.Network
             "VnetLocal",
             "Internet",
             "VirtualAppliance",
+            "VirtualApplianceEcmp",
             "None"
         )]
         public string NextHopType { get; set; }
 
         [Parameter(
             Mandatory = false,
+            ParameterSetName = "StandardRoute",
             HelpMessage = "The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.",
             ValueFromPipelineByPropertyName = true)]
         public string NextHopIpAddress { get; set; }
+
+        // -NextHopIpAddresses is used for ECMP routes (NextHopType 'VirtualApplianceEcmp'). It is
+        // placed in its own parameter set so that it is mutually exclusive with the single-value
+        // -NextHopIpAddress parameter.
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "EcmpRoute",
+            HelpMessage = "A list of next hop IP addresses for equal-cost multi-path (ECMP) routing. Only allowed when -NextHopType is 'VirtualApplianceEcmp'. A minimum of 2 addresses is required.",
+            ValueFromPipelineByPropertyName = true)]
+        public string[] NextHopIpAddresses { get; set; }
 
 
         public override void Execute()
@@ -98,6 +110,17 @@ namespace Microsoft.Azure.Commands.Network
             vRoutes.NextHopType = this.NextHopType;
             vRoutes.NextHopIpAddress = this.NextHopIpAddress;
             vRoutes.Name = this.Name;
+
+            // Populate the ECMP next hop only when a list of next hop IP addresses is supplied
+            // (i.e. -NextHopType 'VirtualApplianceEcmp').
+            if (this.NextHopIpAddresses != null)
+            {
+                vRoutes.NextHop = new PSRouteNextHopEcmp
+                {
+                    NextHopIpAddresses = new List<string>(this.NextHopIpAddresses)
+                };
+            }
+
             this.RouteTable.Routes.Add(vRoutes);
             WriteObject(this.RouteTable, true);
         }

@@ -13,9 +13,17 @@ Updates a route configuration for a route table.
 
 ## SYNTAX
 
+### StandardRoute (Default)
 ```
 Set-AzRouteConfig -RouteTable <PSRouteTable> [-Name <String>] [-AddressPrefix <String>] [-NextHopType <String>]
  [-NextHopIpAddress <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
+```
+
+### EcmpRoute
+```
+Set-AzRouteConfig -RouteTable <PSRouteTable> [-Name <String>] [-AddressPrefix <String>] [-NextHopType <String>]
+ [-NextHopIpAddresses <String[]>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [-AcquirePolicyToken] [-ChangeReference <String>] [<CommonParameters>]
 ```
 
@@ -158,7 +166,24 @@ Specify this parameter only if you specify a value of VirtualAppliance for the *
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: StandardRoute
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -NextHopIpAddresses
+Specifies the list of next hop IP addresses for equal-cost multi-path (ECMP) routing.
+Specify this parameter only if you specify a value of VirtualApplianceEcmp for the *NextHopType* parameter.
+A minimum of 2 addresses is required.
+
+```yaml
+Type: System.String[]
+Parameter Sets: EcmpRoute
 Aliases:
 
 Required: False
@@ -177,6 +202,8 @@ The default Internet gateway provided by Azure.
 If you specify this value, the route does not forward packets. 
 - VirtualAppliance.
 A virtual appliance that you add to your Azure virtual network. 
+- VirtualApplianceEcmp.
+Multiple virtual appliances that traffic is load-balanced across using equal-cost multi-path (ECMP) routing. Provide the appliance IP addresses through the *NextHopIpAddresses* parameter. 
 - VirtualNetworkGateway.
 An Azureserver-to-server virtual private network gateway. 
 - VnetLocal.

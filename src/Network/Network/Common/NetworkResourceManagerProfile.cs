@@ -1079,6 +1079,24 @@ namespace Microsoft.Azure.Commands.Network
                         opt => opt.MapFrom(src => src.NextHopIPAddress)
                     );
 
+                // RouteNextHopEcmp (ECMP next hop for VirtualApplianceEcmp routes)
+                // NOTE: The SDK models an upper bound of 64 next hop IP addresses, but the
+                // effective maximum enforced by the service is 16 (the SDK does not reflect this).
+                // AutoMapper only copies the list; the count limit is validated server-side.
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSRouteNextHopEcmp, MNM.RouteNextHopEcmp>()
+                    .ForMember(
+                        dest => dest.NextHopIPAddresses,
+                        opt => opt.MapFrom(src => src.NextHopIpAddresses)
+                    );
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.RouteNextHopEcmp, CNM.PSRouteNextHopEcmp>()
+                    .ForMember(
+                        dest => dest.NextHopIpAddresses,
+                        opt => opt.MapFrom(src => src.NextHopIPAddresses)
+                    );
+
                 // EffectiveRouteTable
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSEffectiveRoute, MNM.EffectiveRoute>()
