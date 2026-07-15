@@ -264,5 +264,10 @@ namespace Microsoft.Azure.Management.Automation
         /// </summary>
         IRuntimeEnvironmentOperations RuntimeEnvironment { get; }
 
+        /// <summary>
+        /// Gets the IPackageOperations
+        /// </summary>
+        IPackageOperations Package { get; }
+
     }
 }

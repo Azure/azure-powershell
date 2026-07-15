@@ -2093,6 +2093,148 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #endregion
 
+        #region RuntimeEnvironmentPackage
+
+        public Model.RuntimeEnvironmentPackage CreateRuntimeEnvironmentPackage(string resourceGroupName, string automationAccountName,
+            string runtimeEnvironmentName, string packageName, string contentUri, string contentVersion)
+        {
+            // Check if package with same name already exists
+            try
+            {
+                this.automationManagementClient.Package.Get(resourceGroupName, automationAccountName, runtimeEnvironmentName, packageName);
+
+                throw new ResourceCommonException(typeof(Model.RuntimeEnvironmentPackage),
+                    string.Format(CultureInfo.CurrentCulture, Resources.RuntimeEnvironmentPackageAlreadyExists, packageName));
+            }
+            catch (ErrorResponseException)
+            {
+                // Package does not exist, proceed with creation
+            }
+
+            var parameters = new AutomationManagement.Models.PackageCreateOrUpdateParameters(
+                contentLink: new AutomationManagement.Models.ContentLink
+                {
+                    Uri = contentUri,
+                    Version = contentVersion
+                }
+            );
+
+            var createdPackage = this.automationManagementClient.Package.CreateOrUpdate(
+                resourceGroupName,
+                automationAccountName,
+                runtimeEnvironmentName,
+                packageName,
+                parameters);
+
+            return new Model.RuntimeEnvironmentPackage(resourceGroupName, automationAccountName, runtimeEnvironmentName, createdPackage);
+        }
+
+        public Model.RuntimeEnvironmentPackage GetRuntimeEnvironmentPackage(string resourceGroupName, string automationAccountName,
+            string runtimeEnvironmentName, string packageName)
+        {
+            try
+            {
+                var package = this.automationManagementClient.Package.Get(
+                    resourceGroupName,
+                    automationAccountName,
+                    runtimeEnvironmentName,
+                    packageName);
+
+                return new Model.RuntimeEnvironmentPackage(resourceGroupName, automationAccountName, runtimeEnvironmentName, package);
+            }
+            catch (ErrorResponseException cloudException)
+            {
+                if (cloudException.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(typeof(Model.RuntimeEnvironmentPackage),
+                        string.Format(CultureInfo.CurrentCulture, Resources.RuntimeEnvironmentPackageNotFound, packageName));
+                }
+
+                throw;
+            }
+        }
+
+        public Model.RuntimeEnvironmentPackage UpdateRuntimeEnvironmentPackage(string resourceGroupName, string automationAccountName,
+            string runtimeEnvironmentName, string packageName, string contentUri, string contentVersion)
+        {
+            try
+            {
+                // Use CreateOrUpdate (PUT) instead of Update (PATCH) to replace the package content
+                var parameters = new AutomationManagement.Models.PackageCreateOrUpdateParameters(
+                    contentLink: new AutomationManagement.Models.ContentLink
+                    {
+                        Uri = contentUri,
+                        Version = contentVersion
+                    }
+                );
+
+                var updatedPackage = this.automationManagementClient.Package.CreateOrUpdate(
+                    resourceGroupName,
+                    automationAccountName,
+                    runtimeEnvironmentName,
+                    packageName,
+                    parameters);
+
+                return new Model.RuntimeEnvironmentPackage(resourceGroupName, automationAccountName, runtimeEnvironmentName, updatedPackage);
+            }
+            catch (ErrorResponseException cloudException)
+            {
+                if (cloudException.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(typeof(Model.RuntimeEnvironmentPackage),
+                        string.Format(CultureInfo.CurrentCulture, Resources.RuntimeEnvironmentPackageNotFound, packageName));
+                }
+
+                throw;
+            }
+        }
+
+        public IEnumerable<Model.RuntimeEnvironmentPackage> ListRuntimeEnvironmentPackages(string resourceGroupName, string automationAccountName,
+            string runtimeEnvironmentName, ref string nextLink)
+        {
+            IPage<AutomationManagement.Models.Package> response;
+
+            if (string.IsNullOrEmpty(nextLink))
+            {
+                response = this.automationManagementClient.Package.ListByRuntimeEnvironment(
+                    resourceGroupName,
+                    automationAccountName,
+                    runtimeEnvironmentName);
+            }
+            else
+            {
+                response = this.automationManagementClient.Package.ListByRuntimeEnvironmentNext(nextLink);
+            }
+
+            nextLink = response.NextPageLink;
+
+            return response.Select(p => new Model.RuntimeEnvironmentPackage(resourceGroupName, automationAccountName, runtimeEnvironmentName, p));
+        }
+
+        public void DeleteRuntimeEnvironmentPackage(string resourceGroupName, string automationAccountName,
+            string runtimeEnvironmentName, string packageName)
+        {
+            try
+            {
+                // Verify the package exists first
+                this.automationManagementClient.Package.Get(resourceGroupName, automationAccountName, runtimeEnvironmentName, packageName);
+            }
+            catch (ErrorResponseException cloudException)
+            {
+                if (cloudException.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(typeof(Model.RuntimeEnvironmentPackage),
+                        string.Format(CultureInfo.CurrentCulture, Resources.RuntimeEnvironmentPackageNotFound, packageName));
+                }
+
+                throw;
+            }
+
+            this.automationManagementClient.Package.Delete(resourceGroupName, automationAccountName, runtimeEnvironmentName, packageName);
+        }
+
+        #endregion
+
 
 
         #region Private Methods

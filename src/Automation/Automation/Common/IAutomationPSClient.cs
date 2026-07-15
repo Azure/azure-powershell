@@ -493,5 +493,19 @@ namespace Microsoft.Azure.Commands.Automation.Common
         void DeleteRuntimeEnvironment(string resourceGroupName, string automationAccountName, string name);
 
         #endregion
+
+        #region RuntimeEnvironmentPackage
+
+        RuntimeEnvironmentPackage CreateRuntimeEnvironmentPackage(string resourceGroupName, string automationAccountName, string runtimeEnvironmentName, string packageName, string contentUri, string contentVersion);
+
+        RuntimeEnvironmentPackage GetRuntimeEnvironmentPackage(string resourceGroupName, string automationAccountName, string runtimeEnvironmentName, string packageName);
+
+        RuntimeEnvironmentPackage UpdateRuntimeEnvironmentPackage(string resourceGroupName, string automationAccountName, string runtimeEnvironmentName, string packageName, string contentUri, string contentVersion);
+
+        IEnumerable<RuntimeEnvironmentPackage> ListRuntimeEnvironmentPackages(string resourceGroupName, string automationAccountName, string runtimeEnvironmentName, ref string nextLink);
+
+        void DeleteRuntimeEnvironmentPackage(string resourceGroupName, string automationAccountName, string runtimeEnvironmentName, string packageName);
+
+        #endregion
     }
 }

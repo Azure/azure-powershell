@@ -24,6 +24,11 @@
   * `New-AzAutomationRuntimeEnvironment`
   * `Set-AzAutomationRuntimeEnvironment`
   * `Remove-AzAutomationRuntimeEnvironment`
+* Added cmdlets for Runtime Environment Package management
+  * `Get-AzAutomationRuntimeEnvironmentPackage`
+  * `New-AzAutomationRuntimeEnvironmentPackage`
+  * `Set-AzAutomationRuntimeEnvironmentPackage`
+  * `Remove-AzAutomationRuntimeEnvironmentPackage`
 
 ## Version 1.12.0
 * Added ChangeSafety Support
