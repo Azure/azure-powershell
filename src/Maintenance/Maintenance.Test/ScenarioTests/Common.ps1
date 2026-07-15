@@ -108,7 +108,7 @@ function New-VirtualMachine(
 {
     $vmLocalAdminUser = "LocalAdminUser"
     $vmLocalAdminSecurePassword = ConvertTo-SecureString -String ([guid]::NewGuid()) -AsPlainText -Force
-    $credential = New-Object System.Management.Automation.PSCredential($vmLocalAdminUser, $vmLocalAdminSecurePassword);
+    $credential = New-Object System.Management.Automation.PSCredential($vmLocalAdminUser, $vmLocalAdminSecurePassword)
     $patchMode = "AutomaticByPlatform"
     $patchSettings = New-Object `
         -TypeName Microsoft.Azure.Management.Compute.Models.WindowsVMGuestPatchAutomaticByPlatformSettings `
@@ -117,22 +117,34 @@ function New-VirtualMachine(
     $computerName = $virtualMachineName
     $networkName = "Net$virtualMachineName"
     $nicName = "Nic$virtualMachineName"
+    $nsgName = "Nsg$virtualMachineName"
     $subnetName = "Subnet$virtualMachineName"
     $subnetAddressPrefix = "10.0.0.0/24"
     $vnetAddressPrefix = "10.0.0.0/16"
-    $securityType = "Standard"
-    $imagePublisher = "MicrosoftVisualStudio"
-    $imageOffer = "Windows"
-    $imageSku = "Windows-10-N-x64"
+    $securityType = "TrustedLaunch"
+    $imagePublisher = "MicrosoftWindowsServer"
+    $imageOffer = "WindowsServer"
+    $imageSku = "2022-datacenter-azure-edition"
     $imageVersion = "latest"
 
-    $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix $subnetAddressPrefix
+    $nsg = New-AzNetworkSecurityGroup `
+        -Name $nsgName `
+        -ResourceGroupName $resourceGroupName `
+        -Location $location
+
+    $subnetConfig = New-AzVirtualNetworkSubnetConfig `
+        -Name $subnetName `
+        -AddressPrefix $subnetAddressPrefix `
+        -NetworkSecurityGroupId $nsg.Id
+    $subnetConfig.DefaultOutboundAccess = $false
+
     $vnet = New-AzVirtualNetwork `
         -Name $networkName `
         -ResourceGroupName $resourceGroupName `
         -Location $location `
         -AddressPrefix $vnetAddressPrefix `
-        -Subnet $subnet
+        -Subnet $subnetConfig
+
     $nic = New-AzNetworkInterface `
         -Name $nicName `
         -ResourceGroupName $resourceGroupName `
@@ -159,6 +171,8 @@ function New-VirtualMachine(
         -Skus $imageSku `
         -Version $imageVersion `
         | Out-Null
+
+    Set-AzVMBootDiagnostic -VM $vmConfig -Disable | Out-Null
     Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id | Out-Null
 
     New-AzVM -ResourceGroupName $resourceGroupName -Location $location -VM $vmConfig | Out-Null
