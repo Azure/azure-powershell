@@ -143,5 +143,41 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 "Test-AzureFSVaultSoftDelete"
             );
         }
+
+        [Fact(Skip = "Live-recorded CRR scenario test; re-record before enabling in CI.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSGetItemSecondaryRegion()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureFilescommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureFilestestModule.AsAbsoluteLocation()}",
+                "Test-AzureFSGetItemSecondaryRegion"
+            );
+        }
+
+        [Fact(Skip = "Live-recorded CRR scenario test; re-record before enabling in CI.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSGetRPsSecondaryRegion()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureFilescommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureFilestestModule.AsAbsoluteLocation()}",
+                "Test-AzureFSGetRPsSecondaryRegion"
+            );
+        }
+
+        [Fact(Skip = "Live-recorded CRR scenario test; re-record before enabling in CI.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureFS)]
+        public void TestAzureFSRestoreToSecondaryRegion()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureFilescommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureFilestestModule.AsAbsoluteLocation()}",
+                "Test-AzureFSRestoreToSecondaryRegion"
+            );
+        }
     }
 }

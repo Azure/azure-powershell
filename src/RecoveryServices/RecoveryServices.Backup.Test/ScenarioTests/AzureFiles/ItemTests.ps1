@@ -744,3 +744,116 @@ function Test-AzureFSVaultSoftDelete
 		# so this test is intentionally left in the AlwaysON state.
 	}
 }
+
+function Test-AzureFSGetItemSecondaryRegion
+{
+	# Live-recorded CRR scenario test. Requires a GeoRedundant vault with Cross Region Restore enabled
+	# and at least one protected Azure File share. Mirrors Test-AzureVMCRRWithDES setup style.
+	$resourceGroupName = "bhar11-crr-ccy-rg"
+	$vaultName = "bhar11-crr-ccy-vault"
+	$storageAccountName = "bhar11ccykey"
+	$fileShareFriendlyName = "keyfs2"
+
+	$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+	Assert-NotNull $vault
+
+	# VARIATION-1: list all AFS items from the secondary region
+	$secItems = Get-AzRecoveryServicesBackupItem `
+		-VaultId $vault.ID `
+		-BackupManagementType AzureStorage `
+		-WorkloadType AzureFiles `
+		-UseSecondaryRegion
+	Assert-NotNull $secItems
+	Assert-True { $secItems.Count -gt 0 }
+
+	# VARIATION-2: named item from the secondary region populates ExtendedInfo (mirrors VM/SQL processor)
+	$secItem = Get-AzRecoveryServicesBackupItem `
+		-VaultId $vault.ID `
+		-BackupManagementType AzureStorage `
+		-WorkloadType AzureFiles `
+		-Name $fileShareFriendlyName `
+		-UseSecondaryRegion
+	Assert-NotNull $secItem
+	Assert-NotNull $secItem.ExtendedInfo
+	Assert-True { $secItem.ExtendedInfo.RecoveryPointCount -ge 0 }
+
+	# VARIATION-3: soft-delete state surfaces on secondary-region items
+	Assert-NotNull $secItem.DeleteState
+}
+
+function Test-AzureFSGetRPsSecondaryRegion
+{
+	# Live-recorded CRR scenario test. Verifies recovery points are returned from the secondary region
+	# (regression guard for the AzureFileShareRecoveryPoint filter fix in AzureWorkloadProviderHelper).
+	$resourceGroupName = "bhar11-crr-ccy-rg"
+	$vaultName = "bhar11-crr-ccy-vault"
+	$fileShareFriendlyName = "keyfs2"
+
+	$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+	Assert-NotNull $vault
+
+	$item = Get-AzRecoveryServicesBackupItem `
+		-VaultId $vault.ID `
+		-BackupManagementType AzureStorage `
+		-WorkloadType AzureFiles `
+		-Name $fileShareFriendlyName `
+		-UseSecondaryRegion
+	Assert-NotNull $item
+
+	$rp = Get-AzRecoveryServicesBackupRecoveryPoint `
+		-VaultId $vault.ID `
+		-Item $item `
+		-UseSecondaryRegion
+	Assert-NotNull $rp
+	Assert-True { $rp.Count -gt 0 }
+}
+
+function Test-AzureFSRestoreToSecondaryRegion
+{
+	# Live-recorded CRR scenario test. Requires target storage account with a pre-created target file share.
+	# AFS CRR supports Alternate Location Restore only.
+	$resourceGroupName = "bhar11-crr-ccy-rg"
+	$vaultName = "bhar11-crr-ccy-vault"
+	$fileShareFriendlyName = "keyfs2"
+	$targetStorageAccountName = "bhar11ccytgt"
+	$targetFileShareName = "keyfs2-crr-test"
+
+	$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+	Assert-NotNull $vault
+
+	$item = Get-AzRecoveryServicesBackupItem `
+		-VaultId $vault.ID `
+		-BackupManagementType AzureStorage `
+		-WorkloadType AzureFiles `
+		-Name $fileShareFriendlyName `
+		-UseSecondaryRegion
+	Assert-NotNull $item
+
+	$rp = Get-AzRecoveryServicesBackupRecoveryPoint `
+		-VaultId $vault.ID `
+		-Item $item `
+		-UseSecondaryRegion
+	Assert-True { $rp.Count -gt 0 }
+
+	# VARIATION-1: CRR requires ALR — omitting the target storage account must throw
+	Assert-ThrowsContains `
+		{ Restore-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID -VaultLocation $vault.Location `
+			-RecoveryPoint $rp[0] -ResolveConflict Overwrite -RestoreToSecondaryRegion -ErrorAction Stop } `
+		"Alternate Location Restore"
+
+	# VARIATION-2: full CRR restore to secondary region completes
+	$crrJob = Restore-AzRecoveryServicesBackupItem `
+		-VaultId $vault.ID -VaultLocation $vault.Location `
+		-RecoveryPoint $rp[0] `
+		-TargetStorageAccountName $targetStorageAccountName `
+		-TargetFileShareName $targetFileShareName `
+		-ResolveConflict Overwrite `
+		-RestoreToSecondaryRegion
+	Assert-NotNull $crrJob
+
+	$crrJob = Get-AzRecoveryServicesBackupJob `
+		-VaultId $vault.ID -VaultLocation $vault.Location -UseSecondaryRegion `
+		| Where-Object { $_.Operation -eq "CrossRegionRestore" }
+	Assert-NotNull $crrJob
+}
