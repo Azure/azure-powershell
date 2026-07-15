@@ -19,7 +19,7 @@
 --->
 
 ## Upcoming Release
-* Updated the API version of `Microsoft.HardwareSecurityModules/cloudHsmClusters` to `2025-12-01-preview` for Private Link Common Cmdlets
+* Updated the API version of `Microsoft.HardwareSecurityModules/cloudHsmClusters` to `2025-03-31` for Private Link Common Cmdlets
 
 ## Version 8.0.1
 * Onboarded `Microsoft.HorizonDB/clusters` to Private Link Common Cmdlets
