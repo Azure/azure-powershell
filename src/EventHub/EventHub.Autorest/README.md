@@ -28,16 +28,16 @@ For information on how to develop for `Az.EventHub`, see [how-to.md](how-to.md).
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-commit: 7977092320778f47c240371124748e6967793459
+commit: 2605aac932e54e2f6c1b335bc034a1edc44d5783
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/Eventhub/stable/2026-01-01/openapi.json
+  - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/Eventhub/stable/2026-01-01/openapi.json
   # Keep cluster cmdlets on the 2024 preview swagger to avoid the tags type change.
-  - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2024-05-01-preview/AvailableClusterRegions-preview.json
-  - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2024-05-01-preview/Clusters-preview.json
+  - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/Eventhub/preview/2024-05-01-preview/AvailableClusterRegions-preview.json
+  - $(repo)/specification/eventhub/resource-manager/Microsoft.EventHub/Eventhub/preview/2024-05-01-preview/Clusters-preview.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger
 
