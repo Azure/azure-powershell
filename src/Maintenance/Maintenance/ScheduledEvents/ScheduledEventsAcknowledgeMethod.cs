@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Maintenance
                     string resourceName = this.ResourceName;
                     string scheduledEventsId = this.ScheduledEventsId;
                     ScheduledEventsApproveResponse response;
-                    response = ScheduledEventsClient.Acknowledge(resourceGroupName, resourceType, resourceName, ScheduledEventsId);
+                    response = ScheduledEventsClient.Acknowledge(resourceGroupName, resourceType, resourceName, scheduledEventsId);
                     var psObject = new PSScheduledEventsApproveResponse();
                     MaintenanceAutomationAutoMapperProfile.Mapper.Map<ScheduledEventsApproveResponse, PSScheduledEventsApproveResponse>(response, psObject);
                     WriteObject(psObject);
