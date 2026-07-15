@@ -44,7 +44,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: fdb904690da515aa8449471145922a90b666bbe8
+commit: 68175b2c1a4eb91e3ca626a44e1608586fffbf4d
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 sanitize-names: true
