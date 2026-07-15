@@ -8,11 +8,14 @@ using a -Targets array instead of the individual ChangeDefinition* parameters.
 Accepts one or more target definitions.
 
 .PARAMETER Targets
-One or more targets that the change is authorized against. Each target must specify either:
-- resourceId: the ARM resource ID for a resource-scoped change. Use with httpMethod for a specific operation.
-- subscriptionId: the subscription ID for a subscription-scoped change.
-
-Optional keys include resourceGroupName, resourceType, resourceName, and httpMethod. Valid httpMethod values are DELETE, GET, HEAD, PATCH, POST, and PUT.
+One or more targets that the change is authorized against. Supported keys include:
+- resourceId: the ARM resource ID.
+- subscriptionId: the subscription ID.
+- resourceGroupName: the name of the resource group.
+- resourceType: the type of the resource.
+- resourceName: the name of the ARM resource.
+- httpMethod: the HTTP method.
+All supported target keys are optional; include only the fields that apply to the authorized target. Valid httpMethod values are DELETE, GET, HEAD, PATCH, POST, and PUT.
 
 .PARAMETER TargetName
 Optional name for the target definition.
@@ -56,7 +59,7 @@ function Update-AzChangeSafetyChangeRecord_Targets {
         [string]
         $SubscriptionId,
 
-        [Parameter(Mandatory, HelpMessage = "One or more targets that the change is authorized against. Each target must specify either resourceId for a resource-scoped change or subscriptionId for a subscription-scoped change. Optional keys include resourceGroupName, resourceType, resourceName, and httpMethod. Valid httpMethod values are DELETE, GET, HEAD, PATCH, POST, and PUT.")]
+        [Parameter(Mandatory, HelpMessage = "One or more targets that the change is authorized against. Supported keys include resourceId, subscriptionId, resourceGroupName, resourceType, resourceName, and httpMethod. All supported target keys are optional; include only the fields that apply to the authorized target. Valid httpMethod values are DELETE, GET, HEAD, PATCH, POST, and PUT.")]
         [object[]]
         $Targets,
 
@@ -187,8 +190,7 @@ function Update-AzChangeSafetyChangeRecord_Targets {
             $params['ChangeDefinitionName'] = 'TargetDefinition'
         }
         
-        # Wrap targets in the expected structure: { targets: [...] }
-        # If a single hashtable is passed, wrap it in an array
+        # Preserve a single hashtable target as an array during the IAny conversion.
         $targetArray = if ($Targets -is [hashtable]) { @($Targets) } else { $Targets }
         $params['ChangeDefinitionDetail'] = @{ targets = $targetArray }
 

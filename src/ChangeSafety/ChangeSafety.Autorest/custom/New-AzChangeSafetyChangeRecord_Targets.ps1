@@ -9,14 +9,16 @@ using a -Targets array instead of the individual ChangeDefinition* parameters.
 The -Targets parameter automatically sets:
 - ChangeDefinitionKind = "Targets"
 - ChangeDefinitionName = "TargetSelection" (or custom name via -TargetName)
-- ChangeDefinitionDetail = { targets: [...] }
 
 .PARAMETER Targets
-The target or targets that the change is authorized against. Each target must specify either:
-- resourceId: the ARM resource ID for a resource-scoped change. Use with httpMethod for a specific operation.
-- subscriptionId: the subscription ID for a subscription-scoped change.
-
-Optional keys include resourceGroupName, resourceType, resourceName, and httpMethod. Valid httpMethod values are DELETE, GET, HEAD, PATCH, POST, and PUT.
+The target or targets that the change is authorized against. Supported keys include:
+- resourceId: the ARM resource ID.
+- subscriptionId: the subscription ID.
+- resourceGroupName: the name of the resource group.
+- resourceType: the type of the resource.
+- resourceName: the name of the ARM resource.
+- httpMethod: the HTTP method.
+All supported target keys are optional; include only the fields that apply to the authorized target. Valid httpMethod values are DELETE, GET, HEAD, PATCH, POST, and PUT.
 
 .PARAMETER TargetName
 Optional name for the target definition. Defaults to "TargetSelection".
@@ -82,7 +84,7 @@ function New-AzChangeSafetyChangeRecord_Targets {
         [string]
         $SubscriptionId,
 
-        [Parameter(Mandatory, HelpMessage = "The target or targets that the change is authorized against. Each target must specify either resourceId for a resource-scoped change or subscriptionId for a subscription-scoped change. Optional keys include resourceGroupName, resourceType, resourceName, and httpMethod. Valid httpMethod values are DELETE, GET, HEAD, PATCH, POST, and PUT.")]
+        [Parameter(Mandatory, HelpMessage = "The target or targets that the change is authorized against. Supported keys include resourceId, subscriptionId, resourceGroupName, resourceType, resourceName, and httpMethod. All supported target keys are optional; include only the fields that apply to the authorized target. Valid httpMethod values are DELETE, GET, HEAD, PATCH, POST, and PUT.")]
         [object[]]
         $Targets,
 
@@ -218,11 +220,8 @@ function New-AzChangeSafetyChangeRecord_Targets {
         $params['ChangeDefinitionKind'] = 'Targets'
         $params['ChangeDefinitionName'] = $TargetName
 
-        # Wrap targets in the expected structure: { targets: [...] }
-        # Use a typed list so that even a single target is serialized as a JSON
-        # array. A bare object[] with one element gets unwrapped to a scalar
-        # during the IAny (free-form) conversion, which makes the service reject
-        # the payload ("ChangeDefinition ... should have 'targets'").
+        # Use a typed list so that even a single target is preserved as an array
+        # during the IAny (free-form) conversion.
         $targetList = [System.Collections.Generic.List[object]]::new()
         foreach ($target in $Targets) { $targetList.Add($target) }
         $params['ChangeDefinitionDetail'] = @{ targets = $targetList }

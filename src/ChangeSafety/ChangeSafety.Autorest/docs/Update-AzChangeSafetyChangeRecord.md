@@ -493,8 +493,8 @@ Accept wildcard characters: False
 
 ### -Targets
 One or more targets that the change is authorized against.
-Each target must specify either `resourceId` for a resource-scoped change or `subscriptionId` for a subscription-scoped change.
-Optional keys include `resourceGroupName`, `resourceType`, `resourceName`, and `httpMethod`.
+Supported keys include `resourceId`, `subscriptionId`, `resourceGroupName`, `resourceType`, `resourceName`, and `httpMethod`.
+All supported target keys are optional; include only the fields that apply to the authorized target.
 Valid `httpMethod` values are `DELETE`, `GET`, `HEAD`, `PATCH`, `POST`, and `PUT`.
 
 ```yaml
