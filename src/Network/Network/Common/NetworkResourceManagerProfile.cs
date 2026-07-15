@@ -1449,15 +1449,15 @@ namespace Microsoft.Azure.Commands.Network
                         dest.CipherSuites = src.CipherSuites == null ? null : dest.CipherSuites;
                         dest.DisabledSslProtocols = src.DisabledSslProtocols == null ? null : dest.DisabledSslProtocols;
                     });
-               cfg.CreateMap<CNM.PSApplicationGatewayClientAuthConfiguration,MNM.ApplicationGatewayClientAuthConfiguration>()
-               .ForMember(
-                  dest => dest.VerifyClientCertIssuerDn,
-                  opt => opt.MapFrom(src => src.VerifyClientCertIssuerDN)
-                  )
-               .ForMember(
-                  dest => dest.VerifyClientAuthMode,
-                  opt => opt.MapFrom(src => src.VerifyClientAuthMode)
-                  );
+                cfg.CreateMap<CNM.PSApplicationGatewayClientAuthConfiguration, MNM.ApplicationGatewayClientAuthConfiguration>()
+                    .ForMember(
+                        dest => dest.VerifyClientCertIssuerDn,
+                        opt => opt.MapFrom(src => src.VerifyClientCertIssuerDN)
+                    )
+                    .ForMember(
+                        dest => dest.VerifyClientAuthMode,
+                        opt => opt.MapFrom(src => src.VerifyClientAuthMode)
+                    );
                 cfg.CreateMap<CNM.PSApplicationGatewayPathRule, MNM.ApplicationGatewayPathRule>();
                 cfg.CreateMap<CNM.PSApplicationGatewayUrlPathMap, MNM.ApplicationGatewayUrlPathMap>();
                 cfg.CreateMap<CNM.PSApplicationGatewayProbeHealthResponseMatch, MNM.ApplicationGatewayProbeHealthResponseMatch>()
