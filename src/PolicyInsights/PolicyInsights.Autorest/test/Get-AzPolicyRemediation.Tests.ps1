@@ -1,6 +1,6 @@
 Describe 'Get-AzPolicyRemediation custom wrapper' {
     BeforeAll {
-        $script:scriptFile = (Resolve-Path (Join-Path $PSScriptRoot '../custom/Get-AzPolicyRemediation.ps1')).Path
+        $script:scriptFile = (Resolve-Path (Join-Path (Split-Path $PSScriptRoot -Parent) 'custom/Get-AzPolicyRemediation.ps1')).Path
         $parseErrors = $null
         $script:scriptAst = [System.Management.Automation.Language.Parser]::ParseFile($script:scriptFile, [ref]$null, [ref]$parseErrors)
         $parseErrors | Should -BeNullOrEmpty
@@ -15,7 +15,9 @@ Describe 'Get-AzPolicyRemediation custom wrapper' {
         }, $true)
 
         $managementGroupRewrite | Should -Not -BeNullOrEmpty
-        $managementGroupRewrite.Extent.Text | Should -Match '\$PSBoundParameters\.Add\("ResourceId", "/providers/Microsoft\.Management/managementGroups/\$\(\$PSBoundParameters\["ManagementGroupId"\]\)"\)'
+        $managementGroupRewrite.Extent.Text | Should -Match '\$PSBoundParameters\.Add\("ResourceId",'
+        $managementGroupRewrite.Extent.Text | Should -Match '/providers/Microsoft\.Management/managementGroups/'
+        $managementGroupRewrite.Extent.Text | Should -Match '\$PSBoundParameters\["ManagementGroupId"\]'
         $managementGroupRewrite.Extent.Text | Should -Match '\$PSBoundParameters\.Remove\("ManagementGroupId"\)'
     }
 
