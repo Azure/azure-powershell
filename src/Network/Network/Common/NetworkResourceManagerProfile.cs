@@ -262,6 +262,10 @@ namespace Microsoft.Azure.Commands.Network
                     .ForMember(
                         dest => dest.PublicIPPrefixes,
                         opt => opt.MapFrom(src => src.PublicIpPrefixes)
+                    )
+                    .ForMember(
+                        dest => dest.Nat64,
+                        opt => opt.MapFrom(src => src.Nat64)
                     );
                 cfg.CreateMap<MNM.NatGateway, CNM.PSNatGateway>()
                     .ForMember(
@@ -271,6 +275,10 @@ namespace Microsoft.Azure.Commands.Network
                     .ForMember(
                         dest => dest.PublicIpPrefixes,
                         opt => opt.MapFrom(src => src.PublicIPPrefixes)
+                    )
+                    .ForMember(
+                        dest => dest.Nat64,
+                        opt => opt.MapFrom(src => src.Nat64)
                     );
                 cfg.CreateMap<CNM.PSNatGatewaySku, MNM.NatGatewaySku>();
                 cfg.CreateMap<MNM.NatGatewaySku, CNM.PSNatGatewaySku>();
