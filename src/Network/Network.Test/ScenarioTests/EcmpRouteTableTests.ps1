@@ -903,7 +903,7 @@ function Test-EcmpRouteTableSubnetAssociation
 
 <#
 .SYNOPSIS
-P0-09/P1-17: ECMP route PUT with older API version (< 2025-03-01) should be rejected because
+P0-09/P1-17: ECMP route PUT with older API version (< 2025-07-01) should be rejected because
 VirtualApplianceEcmp is not a recognized nextHopType in older API versions.
 #>
 function Test-EcmpRouteTableRejectOlderApiVersion
