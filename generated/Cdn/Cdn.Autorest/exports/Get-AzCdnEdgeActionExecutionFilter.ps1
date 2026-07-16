@@ -20,9 +20,9 @@ Get EdgeActionExecutionFilter resource
 .Description
 Get EdgeActionExecutionFilter resource
 .Example
-Get-AzCdnEdgeActionExecutionFilter -ResourceGroupName "testps-rg-da16jm" -EdgeActionName "edgeaction001"
+Get-AzCdnEdgeActionExecutionFilter -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001
 .Example
-Get-AzCdnEdgeActionExecutionFilter -ResourceGroupName "testps-rg-da16jm" -EdgeActionName "edgeaction001" -ExecutionFilter "filter001"
+Get-AzCdnEdgeActionExecutionFilter -ResourceGroupName testps-rg-da16jm -EdgeActionName edgeaction001 -ExecutionFilter filter001
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IEdgeActionExecutionFilter

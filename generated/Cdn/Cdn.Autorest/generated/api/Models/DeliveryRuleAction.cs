@@ -40,7 +40,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
         Description = @"The name of the action for the delivery rule.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("CacheExpiration", "CacheKeyQueryString", "ModifyRequestHeader", "ModifyResponseHeader", "UrlRedirect", "UrlRewrite", "UrlSigning", "OriginGroupOverride", "RouteConfigurationOverride")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("CacheExpiration", "CacheKeyQueryString", "ModifyRequestHeader", "ModifyResponseHeader", "UrlRedirect", "UrlRewrite", "UrlSigning", "OriginGroupOverride", "RouteConfigurationOverride", "EdgeAction", "AfdUrlSigning")]
         string Name { get; set; }
 
     }
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models
 
     {
         /// <summary>The name of the action for the delivery rule.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("CacheExpiration", "CacheKeyQueryString", "ModifyRequestHeader", "ModifyResponseHeader", "UrlRedirect", "UrlRewrite", "UrlSigning", "OriginGroupOverride", "RouteConfigurationOverride")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("CacheExpiration", "CacheKeyQueryString", "ModifyRequestHeader", "ModifyResponseHeader", "UrlRedirect", "UrlRewrite", "UrlSigning", "OriginGroupOverride", "RouteConfigurationOverride", "EdgeAction", "AfdUrlSigning")]
         string Name { get; set; }
 
     }
