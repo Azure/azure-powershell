@@ -3,7 +3,7 @@ Invoke-LiveTestScenario -Name "Create, get, update and remove a new SQL Server" 
     param ($rg)
 
     $rgName = $rg.ResourceGroupName
-    $location = "eastus"
+    $location = "westus3"
     $adminSqlLogin = New-LiveTestResourceName
     $password = "password@123"
     $serverName = New-LiveTestResourceName
@@ -30,7 +30,7 @@ Invoke-LiveTestScenario -Name "Create, get, update and remove a new SQL Server" 
 }
 # After testing the cmdlets of Sql Server, create a Sql Server for sql database testing.
 
-$ServerResourceGroup = New-LiveTestResourceGroup -Location eastus
+$ServerResourceGroup = New-LiveTestResourceGroup -Location westus3
 $ServerResourceGroup
 $ServerResourceGroup.ResourceGroupName
 $RgName = $ServerResourceGroup.ResourceGroupName

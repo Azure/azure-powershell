@@ -3,7 +3,7 @@ Invoke-LiveTestScenario -Name "Operate a virtual machine." -Description "Test cr
     param ($rg)
 
     $rgName = $rg.ResourceGroupName
-    $location = "eastus2"
+    $location = "westus3"
     $vmName = New-LiveTestResourceName
     $vnetName = New-LiveTestResourceName
     $snetName = New-LiveTestResourceName
@@ -62,7 +62,7 @@ Invoke-LiveTestScenario -Name "Create a managed disk" -Description "Test creatin
 
     $rgName = $rg.ResourceGroupName
     $diskName = New-LiveTestResourceName
-    $diskLocation = "westus"
+    $diskLocation = "westus3"
     $diskSize = 10
     $diskSkuName = "Standard_LRS"
 
@@ -84,7 +84,7 @@ Invoke-LiveTestScenario -Name "Update a managed disk" -Description "Test updatin
 
     $rgName = $rg.ResourceGroupName
     $diskName = New-LiveTestResourceName
-    $diskLocation = "westus"
+    $diskLocation = "westus3"
     $diskSize = 10
     $diskSizeUpdated = 20
     $diskSkuName = "Standard_LRS"
@@ -112,7 +112,7 @@ Invoke-LiveTestScenario -Name "Remove a managed disk" -Description "Test removin
 
     $rgName = $rg.ResourceGroupName
     $diskName = New-LiveTestResourceName
-    $diskLocation = "westus"
+    $diskLocation = "westus3"
     $diskSize = 10
     $diskSkuName = "Standard_LRS"
 
