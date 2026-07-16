@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzCdnAbortProfileMigration'))
+if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnManagedRuleSet'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Invoke-AzCdnAbortProfileMigration.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzCdnManagedRuleSet.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,12 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzCdnAbortProfileMigra
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Invoke-AzCdnAbortProfileMigration' {
-    It 'Abort' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'AbortViaIdentity' -skip {
+Describe 'Get-AzCdnManagedRuleSet' {
+    It 'List' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
