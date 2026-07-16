@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added support for Entra Agentic Sessions.
 
 ## Version 5.5.1
 * Upgraded `Azure.Core` dependency from 1.50.0 to 1.56.0.

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,6 @@
 
 using Azure.Core;
 using Azure.Identity;
-using Azure.Identity.Broker;
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
@@ -41,23 +40,48 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var tokenCacheProvider = silentParameters.TokenCacheProvider;
 
             AzureSession.Instance.TryGetComponent(nameof(AzureCredentialFactory), out AzureCredentialFactory azureCredentialFactory);
-#pragma warning disable CS0618 // SharedTokenCacheCredentialOptions is obsolete; suppressed pending migration to replacement API
-            SharedTokenCacheCredentialOptions options = GetTokenCredentialOptions(silentParameters, tenantId, authority, tokenCacheProvider);
-#pragma warning restore CS0618
-            var cacheCredential = azureCredentialFactory.CreateSharedTokenCacheCredentials(options);
-            var requestContext = new TokenRequestContext(scopes, isCaeEnabled: true);
+            var disableInstanceDiscovery = silentParameters.DisableInstanceDiscovery ?? false;
+            var publicClient = tokenCacheProvider.CreatePublicClient(authority, tenantId, disableInstanceDiscovery);
+
+            // Snapshot the agentic session id once per Authenticate() call so the claims
+            // challenge, OnBeforeTokenRequest body parameter, and cache-mode decisions all
+            // agree — even if COPILOT_AGENT_SESSION_ID changes on another thread while
+            // MSAL is in flight.
+            var agenticSessionId = AgenticSession.TryGetSessionId();
+            var sessionModeChanged = AgenticSession.HasSessionModeChanged(agenticSessionId);
+
+            var credential = azureCredentialFactory.CreateMsalSharedCacheCredential(
+                publicClient,
+                silentParameters.UserId,
+                silentParameters.HomeAccountId,
+                tenantId,
+                data => ApplyAgenticSessionAsync(data, agenticSessionId),
+                agenticSessionId);
+
+            // Attach xms_cli_sid claim on session-marker change: makes ESTS embed it in
+            // the token and causes MSAL to bypass its AT cache. Unchanged mode falls
+            // through to a normal cache lookup so same-session repeats can reuse the token.
+            var agenticClaims = (sessionModeChanged && agenticSessionId != null)
+                ? AgenticSession.BuildClaimsChallenge(agenticSessionId)
+                : null;
+            var requestContext = new TokenRequestContext(scopes, claims: agenticClaims, isCaeEnabled: true);
 
             CheckTokenCachePersistanceEnabled = () =>
             {
-                return options.TokenCachePersistenceOptions != null && !(options.TokenCachePersistenceOptions is UnsafeTokenCacheOptions);
+                var cacheOptions = tokenCacheProvider.GetTokenCachePersistenceOptions();
+                return cacheOptions != null && !(cacheOptions is UnsafeTokenCacheOptions);
             };
-            CollectTelemetry(cacheCredential, options);
+            CollectTelemetry(credential);
+            if (agenticSessionId != null)
+            {
+                telemetry.SetProperty(AgenticSession.TelemetryPropertyName, bool.TrueString);
+            }
 
-            var parametersLog = $"- TenantId:'{options.TenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}', UserId:'{silentParameters.UserId}'";
+            var parametersLog = $"- TenantId:'{tenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{authority}', UserId:'{silentParameters.UserId}'";
             return MsalAccessToken.GetAccessTokenAsync(
                 nameof(SilentAuthenticator),
                 parametersLog,
-                cacheCredential,
+                credential,
                 requestContext,
                 cancellationToken,
                 silentParameters.TenantId,
@@ -65,26 +89,14 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 silentParameters.HomeAccountId);
         }
 
-#pragma warning disable CS0618 // SharedTokenCacheCredentialBrokerOptions is obsolete; suppressed pending migration
-        private static SharedTokenCacheCredentialOptions GetTokenCredentialOptions(SilentParameters silentParameters, string tenantId, string authority, PowerShellTokenCacheProvider tokenCacheProvider)
+        private static Task ApplyAgenticSessionAsync(Microsoft.Identity.Client.Extensibility.OnBeforeTokenRequestData data, string sessionId)
         {
-            SharedTokenCacheCredentialOptions options = AzConfigReader.IsWamEnabled(authority)
-                ? new SharedTokenCacheCredentialBrokerOptions(tokenCacheProvider.GetTokenCachePersistenceOptions())
-                : new SharedTokenCacheCredentialOptions(tokenCacheProvider.GetTokenCachePersistenceOptions());
-            options.EnableGuestTenantAuthentication = true;
-            options.ClientId = Constants.PowerShellClientId;
-            options.Username = silentParameters.UserId;
-            options.AuthorityHost = new Uri(authority);
-            options.TenantId = tenantId;
-            options.DisableInstanceDiscovery = silentParameters.DisableInstanceDiscovery ?? options.DisableInstanceDiscovery;
-            if (options is SharedTokenCacheCredentialBrokerOptions optionsBroker)
+            if (sessionId != null)
             {
-                optionsBroker.IsLegacyMsaPassthroughEnabled = true;
-                return optionsBroker;
+                data.BodyParameters[AgenticSession.ClientSessionParamName] = sessionId;
             }
-            return options;
+            return Task.CompletedTask;
         }
-#pragma warning restore CS0618
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)
         {

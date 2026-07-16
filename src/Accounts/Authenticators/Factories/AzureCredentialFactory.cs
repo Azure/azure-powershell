@@ -14,9 +14,13 @@
 
 using Azure.Core;
 using Azure.Identity;
+using Microsoft.Identity.Client;
+using Microsoft.Identity.Client.Extensibility;
 using Microsoft.WindowsAzure.Commands.Common;
+using System;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.PowerShell.Authenticators.Factories
 {
@@ -44,11 +48,15 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Factories
             return new ClientCertificateCredential(tenantId, clientId, certificatePath, options);
 	}
 
-#pragma warning disable CS0618 // SharedTokenCacheCredential is obsolete; suppressed pending migration to replacement API
-        public virtual TokenCredential CreateSharedTokenCacheCredentials(SharedTokenCacheCredentialOptions options)
+        public virtual TokenCredential CreateMsalSharedCacheCredential(
+            IPublicClientApplication app,
+            string username,
+            string homeAccountId,
+            string tenantId,
+            Func<OnBeforeTokenRequestData, Task> onBeforeTokenRequest,
+            string agenticSessionId)
         {
-            return new SharedTokenCacheCredential(options);
+            return new MsalSharedCacheCredential(app, username, homeAccountId, tenantId, onBeforeTokenRequest, agenticSessionId);
         }
-#pragma warning restore CS0618
     }
 }
