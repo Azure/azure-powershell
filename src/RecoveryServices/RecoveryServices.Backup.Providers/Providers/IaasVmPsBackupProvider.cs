@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
                     containerUri = string.Format("IaasVMContainer;{0};{1};{2}",
                         containerType, azureVMRGName, azureVMName);
-                    protectedItemUri = string.Format("VM;{0};{1};{2}",
+                    protectedItemUri = string.Format("vm;{0};{1};{2}",
                         containerType, azureVMRGName, azureVMName);
                     sourceResourceId = string.Format(
                         "/subscriptions/{0}/resourceGroups/{1}/providers/{2}/virtualMachines/{3}",

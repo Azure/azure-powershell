@@ -1426,8 +1426,8 @@ function Test-AzureVMCSBProtection
 	# Enable CSB protection, then switch the item to a different policy (modify protection).
 	$resourceGroupName = "singhprab-csb-vault-rg-ea"
 	$vaultName = "singhprab-csb-prot-vault"
-	$location = "eastasia"
-	$vmName = "singhprab-ps-vm9"
+	$location = "eastus2euap"
+	$vmName = "testCsbPS"
 	$vmResourceGroupName = "singhprab-rg-1c"
 	$containerSubscriptionId = "80abcfe3-b410-42b2-983f-df23cba781dc"
 	$modifyPolicyName = "csb-modify-policy"
@@ -1511,13 +1511,13 @@ function Test-AzureVMCSBRestoreOLR
 	# protect a cross-sub VM, back it up, restore to original location.
 	$resourceGroupName = "singhprab-csb-vault-rg-ea"
 	$vaultName = "singhprab-csb-rest-vault"
-	$location = "eastasia"
-	$vmName = "singhprab-ps-vm10"
+	$location = "eastus2euap"
+	$vmName = "testCSBPS2"
 	$vmResourceGroupName = "singhprab-rg-1c"
 	$containerSubscriptionId = "80abcfe3-b410-42b2-983f-df23cba781dc"
 	# Staging storage account, in the VM's subscription and same region.
-	$saName = "ssinghprabsa"
-	$saResourceGroupName = "singhprab-rg-1c"
+	$saName = "singhprabzrssa"
+	$saResourceGroupName = "crosssubscriptionbackup-test"
 	$tag = @{"MABUsed"="Yes";"Owner"="singhprab";"Purpose"="Testing";"DeleteBy"="12-2099"}
 
 	$vault = $null

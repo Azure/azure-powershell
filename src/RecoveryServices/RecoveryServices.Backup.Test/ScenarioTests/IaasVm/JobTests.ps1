@@ -281,8 +281,8 @@ function Test-AzureVMCSBJobSubscription
 	# inspect the job detail.
 	$resourceGroupName = "singhprab-csb-vault-rg-ea"
 	$vaultName = "singhprab-csb-job-vault"
-	$location = "eastasia"
-	$vmName = "singhprab-ps-vm9"
+	$location = "eastus2euap"
+	$vmName = "testCsbPS"
 	$vmResourceGroupName = "singhprab-rg-1c"
 	$containerSubscriptionId = "80abcfe3-b410-42b2-983f-df23cba781dc"
 	$tag = @{"MABUsed"="Yes";"Owner"="singhprab";"Purpose"="Testing";"DeleteBy"="12-2099"}
