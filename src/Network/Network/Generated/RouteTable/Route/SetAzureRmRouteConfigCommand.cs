@@ -105,6 +105,18 @@ namespace Microsoft.Azure.Commands.Network
             vRoutes.NextHopIpAddress = this.NextHopIpAddress;
             vRoutes.Name = this.Name;
 
+            // Validate ECMP next hop consistency: -NextHopIpAddresses is only valid for the
+            // 'VirtualApplianceEcmp' next hop type, and that type requires 2 to 64 addresses.
+            bool isEcmpNextHopType = string.Equals(this.NextHopType, "VirtualApplianceEcmp", System.StringComparison.OrdinalIgnoreCase);
+            if (this.NextHopIpAddresses != null && !isEcmpNextHopType)
+            {
+                throw new PSArgumentException("The -NextHopIpAddresses parameter can only be used when -NextHopType is 'VirtualApplianceEcmp'.");
+            }
+            if (isEcmpNextHopType && (this.NextHopIpAddresses == null || this.NextHopIpAddresses.Length < 2 || this.NextHopIpAddresses.Length > 64))
+            {
+                throw new PSArgumentException("The -NextHopType 'VirtualApplianceEcmp' requires the -NextHopIpAddresses parameter with a minimum of 2 and a maximum of 64 next hop IP addresses.");
+            }
+
             // Populate the ECMP next hop only when a list of next hop IP addresses is supplied
             // (i.e. -NextHopType 'VirtualApplianceEcmp').
             if (this.NextHopIpAddresses != null)

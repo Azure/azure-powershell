@@ -637,13 +637,12 @@ function Test-EcmpRouteTableRejectBelow2Ips
     {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
-        # NEG-02/P0-10: ECMP with only 1 IP (below minimum of 2) should fail
-        $r1 = New-AzRouteConfig -name "ecmpBad1" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.4"
-        Assert-ThrowsContains { New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $r1 } "NextHopIpAddresses"
+        # NEG-02/P0-10: ECMP with only 1 IP (below minimum of 2) should fail.
+        # Validation happens client-side in New-AzRouteConfig, before any service call.
+        Assert-ThrowsContains { New-AzRouteConfig -name "ecmpBad1" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses "10.0.0.4" } "NextHopIpAddresses"
 
         # NEG-01/P0-11: ECMP with empty IP list should fail
-        $r0 = New-AzRouteConfig -name "ecmpBad0" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses @()
-        Assert-ThrowsContains { New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $r0 } "NextHopIpAddresses"
+        Assert-ThrowsContains { New-AzRouteConfig -name "ecmpBad0" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses @() } "NextHopIpAddresses"
     }
     finally
     {
@@ -672,9 +671,9 @@ function Test-EcmpRouteTableRejectAbove64Ips
     {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
-        # 65 IPs should fail (exceeds the maximum of 64)
-        $route = New-AzRouteConfig -name "ecmpBad65" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses $ecmpIps65
-        Assert-ThrowsContains { New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $route } "NextHopIpAddresses"
+        # 65 IPs should fail (exceeds the maximum of 64). Validation happens client-side
+        # in New-AzRouteConfig, before any service call.
+        Assert-ThrowsContains { New-AzRouteConfig -name "ecmpBad65" -AddressPrefix "10.1.0.0/16" -NextHopType "VirtualApplianceEcmp" -NextHopIpAddresses $ecmpIps65 } "NextHopIpAddresses"
     }
     finally
     {
@@ -798,24 +797,17 @@ function Test-EcmpRouteTableRejectNextHopOnNonVaTypes
     {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
+        # -NextHopIpAddresses is only valid for the 'VirtualApplianceEcmp' next hop type.
+        # New-AzRouteConfig rejects it client-side for any other type, before any service call.
+
         # P1-07/NEG-35: Internet type + NextHopIpAddresses should fail
-        # Server returns AddressPrefixMustBeInPublicAddressSpace for private prefix with Internet type
-        Assert-Throws {
-            $route = New-AzRouteConfig -name "internetWithEcmp" -AddressPrefix "10.1.0.0/16" -NextHopType "Internet" -NextHopIpAddresses "10.0.0.4","10.0.0.5"
-            New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $route
-        }
+        Assert-ThrowsContains { New-AzRouteConfig -name "internetWithEcmp" -AddressPrefix "10.1.0.0/16" -NextHopType "Internet" -NextHopIpAddresses "10.0.0.4","10.0.0.5" } "NextHopIpAddresses"
 
         # P1-08/NEG-36: VnetLocal type + NextHopIpAddresses should fail
-        Assert-ThrowsContains {
-            $route = New-AzRouteConfig -name "vnetLocalWithEcmp" -AddressPrefix "10.2.0.0/16" -NextHopType "VnetLocal" -NextHopIpAddresses "10.0.0.4","10.0.0.5"
-            New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $route
-        } "NextHopIpAddressesNotAllowed"
+        Assert-ThrowsContains { New-AzRouteConfig -name "vnetLocalWithEcmp" -AddressPrefix "10.2.0.0/16" -NextHopType "VnetLocal" -NextHopIpAddresses "10.0.0.4","10.0.0.5" } "NextHopIpAddresses"
 
         # P1-09/NEG-37: None type + NextHopIpAddresses should fail
-        Assert-ThrowsContains {
-            $route = New-AzRouteConfig -name "noneWithEcmp" -AddressPrefix "10.3.0.0/16" -NextHopType "None" -NextHopIpAddresses "10.0.0.4","10.0.0.5"
-            New-AzRouteTable -name $routeTableName -ResourceGroupName $rgname -Location $location -Route $route
-        } "NextHopIpAddressesNotAllowed"
+        Assert-ThrowsContains { New-AzRouteConfig -name "noneWithEcmp" -AddressPrefix "10.3.0.0/16" -NextHopType "None" -NextHopIpAddresses "10.0.0.4","10.0.0.5" } "NextHopIpAddresses"
     }
     finally
     {
@@ -965,9 +957,9 @@ function Test-EcmpRouteTableRejectOlderApiVersion
 
 <#
 .SYNOPSIS
-P0-19/NEG-41: ECMP route creation with a subscription that does not have AllowEcmpInRoute AFEC
-should be rejected with UnauthorizedClientApplication.
-Uses Invoke-AzRestMethod with a dummy/non-ECMP subscription ID to simulate unauthorized access.
+P0-19/NEG-41: ECMP route creation against an invalid/nonexistent subscription is rejected.
+Uses Invoke-AzRestMethod with an all-zero (nonexistent) subscription ID and asserts the request
+fails with a client-error status code (>= 400) rather than succeeding.
 #>
 function Test-EcmpRouteTableRejectUnauthorizedSubscription
 {
@@ -981,7 +973,7 @@ function Test-EcmpRouteTableRejectUnauthorizedSubscription
     {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
-        # Use a dummy subscription ID that does not have AllowEcmpInRoute AFEC registered
+        # Use an all-zero, nonexistent subscription ID so the request cannot succeed.
         $dummySubscriptionId = "00000000-0000-0000-0000-000000000000"
         $path = "/subscriptions/$dummySubscriptionId/resourceGroups/$rgname/providers/Microsoft.Network/routeTables/$($routeTableName)?api-version=2025-07-01"
 
