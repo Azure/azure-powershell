@@ -269,6 +269,11 @@ function Test-AzureVMCancelJob
 	}
 }
 
+# =====================================================================================================
+# Cross Subscription Backup (CSB) job scenario test. See the CSB header comment in
+# ScenarioTests/IaasVm/ItemTests.ps1 for the full list of values to update when re-recording against your
+# own resources (the VM must live in a subscription different from the vault's, in the same region).
+# =====================================================================================================
 function Test-AzureVMCSBJobSubscription
 {
 	# Verifies that the detailed job for a Cross Subscription Backup (CSB) protected item

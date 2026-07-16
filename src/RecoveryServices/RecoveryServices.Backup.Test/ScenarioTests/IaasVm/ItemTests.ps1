@@ -1410,6 +1410,26 @@ function Test-AzureRestoreWithCVMOsDiskEncryptionSetId()
 	}
 }
 
+# =====================================================================================================
+# Cross Subscription Backup (CSB) scenario tests.
+#
+# CSB requires the protected VM to live in a subscription DIFFERENT from the vault's. These tests are
+# recorded: they run live only in Record mode and otherwise replay from SessionRecords/*.json (so CI and
+# contributors need no Azure access). To RE-RECORD them against your own resources (e.g. if the VM below
+# is deleted or you lack access to this subscription), set AZURE_TEST_MODE=Record and update the values at
+# the top of each test function:
+#   - $resourceGroupName : an EXISTING resource group (in the vault's subscription = the one the test
+#                          framework authenticates to) that satisfies the RG-tagging policy. A fresh vault
+#                          is created inside it per test and deleted in the finally block.
+#   - $location          : region for the vault; MUST match the VM's region.
+#   - $containerSubscriptionId : the VM's subscription GUID; MUST differ from the vault's subscription.
+#   - $vmName / $vmResourceGroupName : a pre-existing VM (and its RG) in $containerSubscriptionId, located
+#                          in $location. There is no in-test provisioning because the framework
+#                          authenticates to a single subscription and cannot create the cross-sub VM.
+#   - $saName / $saResourceGroupName (RestoreOLR only) : a pre-existing staging storage account in the VM's
+#                          subscription and same region, used for the OLR restore.
+# The vault name(s) and $modifyPolicyName are created/deleted by the tests and can be left as-is.
+# =====================================================================================================
 function Test-AzureVMCSBProtection
 {
 	# Cross Subscription Backup (CSB): the vault and the VM to be protected live in different subscriptions.
