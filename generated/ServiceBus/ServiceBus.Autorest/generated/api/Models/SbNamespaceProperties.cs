@@ -21,6 +21,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Owned)]
         public string AlternateName { get => this._alternateName; set => this._alternateName = value; }
 
+        /// <summary>Setting to Enable or Disable Confidential Compute</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
+        public string ConfidentialComputeMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPlatformCapabilitiesInternal)PlatformCapability).ConfidentialComputeMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPlatformCapabilitiesInternal)PlatformCapability).ConfidentialComputeMode = value ?? null; }
+
         /// <summary>Backing field for <see cref="CreatedAt" /> property.</summary>
         private global::System.DateTime? _createdAt;
 
@@ -54,6 +58,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
         public bool? EncryptionRequireInfrastructureEncryption { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IEncryptionInternal)Encryption).RequireInfrastructureEncryption; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IEncryptionInternal)Encryption).RequireInfrastructureEncryption = value ?? default(bool); }
 
+        /// <summary>Backing field for <see cref="GeoDataReplication" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IGeoDataReplicationProperties _geoDataReplication;
+
+        /// <summary>Geo Data Replication settings for the namespace</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IGeoDataReplicationProperties GeoDataReplication { get => (this._geoDataReplication = this._geoDataReplication ?? new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.GeoDataReplicationProperties()); set => this._geoDataReplication = value; }
+
+        /// <summary>A list of regions where replicas of the namespace are maintained.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation> GeoDataReplicationLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IGeoDataReplicationPropertiesInternal)GeoDataReplication).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IGeoDataReplicationPropertiesInternal)GeoDataReplication).Location = value ?? null /* arrayOf */; }
+
+        /// <summary>
+        /// The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.
+        /// When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0
+        /// and 5 minutes to 1 day.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Inlined)]
+        public int? GeoDataReplicationMaxReplicationLagDurationInSecond { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IGeoDataReplicationPropertiesInternal)GeoDataReplication).MaxReplicationLagDurationInSecond; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IGeoDataReplicationPropertiesInternal)GeoDataReplication).MaxReplicationLagDurationInSecond = value ?? default(int); }
+
+        /// <summary>Backing field for <see cref="IPAddressType" /> property.</summary>
+        private string _iPAddressType;
+
+        /// <summary>
+        /// The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual
+        /// stack).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Owned)]
+        public string IPAddressType { get => this._iPAddressType; set => this._iPAddressType = value; }
+
         /// <summary>Backing field for <see cref="MetricId" /> property.</summary>
         private string _metricId;
 
@@ -67,8 +100,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         /// <summary>Internal Acessors for Encryption</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IEncryption Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal.Encryption { get => (this._encryption = this._encryption ?? new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Encryption()); set { {_encryption = value;} } }
 
+        /// <summary>Internal Acessors for GeoDataReplication</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IGeoDataReplicationProperties Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal.GeoDataReplication { get => (this._geoDataReplication = this._geoDataReplication ?? new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.GeoDataReplicationProperties()); set { {_geoDataReplication = value;} } }
+
         /// <summary>Internal Acessors for MetricId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal.MetricId { get => this._metricId; set { {_metricId = value;} } }
+
+        /// <summary>Internal Acessors for PlatformCapability</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPlatformCapabilities Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal.PlatformCapability { get => (this._platformCapability = this._platformCapability ?? new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.PlatformCapabilities()); set { {_platformCapability = value;} } }
+
+        /// <summary>Internal Acessors for PlatformCapabilityConfidentialCompute</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IConfidentialCompute Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal.PlatformCapabilityConfidentialCompute { get => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPlatformCapabilitiesInternal)PlatformCapability).ConfidentialCompute; set => ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPlatformCapabilitiesInternal)PlatformCapability).ConfidentialCompute = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for ProvisioningState</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbNamespacePropertiesInternal.ProvisioningState { get => this._provisioningState; set { {_provisioningState = value;} } }
@@ -88,6 +130,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         /// <summary>The minimum TLS version for the cluster to support, e.g. '1.2'</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Owned)]
         public string MinimumTlsVersion { get => this._minimumTlsVersion; set => this._minimumTlsVersion = value; }
+
+        /// <summary>Backing field for <see cref="PlatformCapability" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPlatformCapabilities _platformCapability;
+
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPlatformCapabilities PlatformCapability { get => (this._platformCapability = this._platformCapability ?? new Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.PlatformCapabilities()); set => this._platformCapability = value; }
 
         /// <summary>Backing field for <see cref="PremiumMessagingPartition" /> property.</summary>
         private int? _premiumMessagingPartition;
@@ -173,6 +221,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         SerializedName = @"alternateName",
         PossibleTypes = new [] { typeof(string) })]
         string AlternateName { get; set; }
+        /// <summary>Setting to Enable or Disable Confidential Compute</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Setting to Enable or Disable Confidential Compute",
+        SerializedName = @"mode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        string ConfidentialComputeMode { get; set; }
         /// <summary>The time the namespace was created</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
@@ -229,6 +289,47 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         SerializedName = @"requireInfrastructureEncryption",
         PossibleTypes = new [] { typeof(bool) })]
         bool? EncryptionRequireInfrastructureEncryption { get; set; }
+        /// <summary>A list of regions where replicas of the namespace are maintained.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"A list of regions where replicas of the namespace are maintained.",
+        SerializedName = @"locations",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation> GeoDataReplicationLocation { get; set; }
+        /// <summary>
+        /// The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.
+        /// When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0
+        /// and 5 minutes to 1 day.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.  When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0 and 5 minutes to 1 day.",
+        SerializedName = @"maxReplicationLagDurationInSeconds",
+        PossibleTypes = new [] { typeof(int) })]
+        int? GeoDataReplicationMaxReplicationLagDurationInSecond { get; set; }
+        /// <summary>
+        /// The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual
+        /// stack).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual stack).",
+        SerializedName = @"ipAddressType",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("IPv4", "DualStack")]
+        string IPAddressType { get; set; }
         /// <summary>Identifier for Azure Insights metrics</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = false,
@@ -250,7 +351,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         Description = @"The minimum TLS version for the cluster to support, e.g. '1.2'",
         SerializedName = @"minimumTlsVersion",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("1.0", "1.1", "1.2")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("1.0", "1.1", "1.2", "1.3")]
         string MinimumTlsVersion { get; set; }
         /// <summary>
         /// The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default
@@ -356,6 +457,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
     {
         /// <summary>Alternate name for namespace</summary>
         string AlternateName { get; set; }
+        /// <summary>Setting to Enable or Disable Confidential Compute</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("Disabled", "Enabled")]
+        string ConfidentialComputeMode { get; set; }
         /// <summary>The time the namespace was created</summary>
         global::System.DateTime? CreatedAt { get; set; }
         /// <summary>This property disables SAS authentication for the Service Bus namespace.</summary>
@@ -369,11 +473,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IKeyVaultProperties> EncryptionKeyVaultProperty { get; set; }
         /// <summary>Enable Infrastructure Encryption (Double Encryption)</summary>
         bool? EncryptionRequireInfrastructureEncryption { get; set; }
+        /// <summary>Geo Data Replication settings for the namespace</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IGeoDataReplicationProperties GeoDataReplication { get; set; }
+        /// <summary>A list of regions where replicas of the namespace are maintained.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceReplicaLocation> GeoDataReplicationLocation { get; set; }
+        /// <summary>
+        /// The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.
+        /// When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0
+        /// and 5 minutes to 1 day.
+        /// </summary>
+        int? GeoDataReplicationMaxReplicationLagDurationInSecond { get; set; }
+        /// <summary>
+        /// The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual
+        /// stack).
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("IPv4", "DualStack")]
+        string IPAddressType { get; set; }
         /// <summary>Identifier for Azure Insights metrics</summary>
         string MetricId { get; set; }
         /// <summary>The minimum TLS version for the cluster to support, e.g. '1.2'</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("1.0", "1.1", "1.2")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("1.0", "1.1", "1.2", "1.3")]
         string MinimumTlsVersion { get; set; }
+
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPlatformCapabilities PlatformCapability { get; set; }
+
+        Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IConfidentialCompute PlatformCapabilityConfidentialCompute { get; set; }
         /// <summary>
         /// The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default
         /// value is 1 and possible values are 1, 2 and 4
