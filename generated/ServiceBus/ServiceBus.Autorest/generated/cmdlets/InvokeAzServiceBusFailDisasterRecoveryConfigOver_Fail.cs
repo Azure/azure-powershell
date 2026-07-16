@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description(@"Invokes GEO DR failover and reconfigure the alias to point to the secondary namespace")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}/failover", ApiVersion = "2022-10-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}/failover", ApiVersion = "2026-01-01")]
     public partial class InvokeAzServiceBusFailDisasterRecoveryConfigOver_Fail : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IContext
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
         public string NamespaceName { get => this._namespaceName; set => this._namespaceName = value; }
 
         /// <summary>Backing field for <see cref="Parameter" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverProperties _parameter;
+        private Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceFailoverProperties _parameter;
 
         /// <summary>
         /// Safe failover is to indicate the service should wait for pending replication to finish before switching to the secondary.
@@ -139,9 +139,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
         ReadOnly = false,
         Description = @"Safe failover is to indicate the service should wait for pending replication to finish before switching to the secondary.",
         SerializedName = @"parameters",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverProperties) })]
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceFailoverProperties) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.ParameterCategory.Body)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IFailoverProperties Parameter { get => this._parameter; set => this._parameter = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INamespaceFailoverProperties Parameter { get => this._parameter; set => this._parameter = value; }
 
         /// <summary>
         /// When specified, forces the cmdlet return a 'bool' given that there isn't a return type by default.
@@ -174,12 +174,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
-        /// <summary>Name of the Resource group within the Azure subscription.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Name of the Resource group within the Azure subscription.")]
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the resource group. The name is case insensitive.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Name of the Resource group within the Azure subscription.",
+        Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.ParameterCategory.Path)]
@@ -188,15 +188,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>
-        /// Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the
-        /// URI for every service call.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.")]
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription. The value must be an UUID.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(
@@ -520,7 +517,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 /
-                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
+                if (true == InvocationInformation?.BoundParameters?.ContainsKey("PassThru"))
                 {
                     WriteObject(true);
                 }

@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PowerShell;
 
-    /// <summary>The result of the List migrationConfigurations operation.</summary>
+    /// <summary>The response of a MigrationConfigProperties list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(MigrationConfigListResultTypeConverter))]
     public partial class MigrationConfigListResult
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models
             return ToJsonString();
         }
     }
-    /// The result of the List migrationConfigurations operation.
+    /// The response of a MigrationConfigProperties list operation.
     [System.ComponentModel.TypeConverter(typeof(MigrationConfigListResultTypeConverter))]
     public partial interface IMigrationConfigListResult
 
