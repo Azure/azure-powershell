@@ -1457,7 +1457,7 @@ function Test-AzureVMCSBProtection
 
 		$item = Get-AzRecoveryServicesBackupItem `
 			-BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID `
-			| Where-Object { $_.Name -match $vmName }
+			| Where-Object { $_.Name -like "*;$vmResourceGroupName;$vmName" } | Select-Object -First 1
 
 		Assert-NotNull $item;
 
@@ -1475,7 +1475,7 @@ function Test-AzureVMCSBProtection
 
 		$modifiedItem = Get-AzRecoveryServicesBackupItem `
 			-BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID `
-			| Where-Object { $_.Name -match $vmName }
+			| Where-Object { $_.Name -like "*;$vmResourceGroupName;$vmName" } | Select-Object -First 1
 
 		Assert-NotNull $modifiedItem;
 
@@ -1490,7 +1490,7 @@ function Test-AzureVMCSBProtection
 		{
 			$cleanupItem = Get-AzRecoveryServicesBackupItem `
 				-BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID `
-				| Where-Object { $_.Name -match $vmName }
+				| Where-Object { $_.Name -like "*;$vmResourceGroupName;$vmName" } | Select-Object -First 1
 			if ($cleanupItem -ne $null)
 			{
 				Disable-AzRecoveryServicesBackupProtection `
@@ -1540,7 +1540,7 @@ function Test-AzureVMCSBRestoreOLR
 
 		$item = Get-AzRecoveryServicesBackupItem `
 			-BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID `
-			| Where-Object { $_.Name -match $vmName }
+			| Where-Object { $_.Name -like "*;$vmResourceGroupName;$vmName" } | Select-Object -First 1
 
 		Assert-NotNull $item;
 		Assert-True { $item.ContainerSubscriptionId -eq $containerSubscriptionId };
@@ -1590,7 +1590,7 @@ function Test-AzureVMCSBRestoreOLR
 		{
 			$cleanupItem = Get-AzRecoveryServicesBackupItem `
 				-BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID `
-				| Where-Object { $_.Name -match $vmName }
+				| Where-Object { $_.Name -like "*;$vmResourceGroupName;$vmName" } | Select-Object -First 1
 			if ($cleanupItem -ne $null)
 			{
 				Disable-AzRecoveryServicesBackupProtection `

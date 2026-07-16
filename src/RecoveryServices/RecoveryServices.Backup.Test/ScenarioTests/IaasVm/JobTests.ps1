@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -307,7 +307,7 @@ function Test-AzureVMCSBJobSubscription
 
 		$item = Get-AzRecoveryServicesBackupItem `
 			-BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID `
-			| Where-Object { $_.Name -match $vmName }
+			| Where-Object { $_.Name -like "*;$vmResourceGroupName;$vmName" } | Select-Object -First 1
 
 		Assert-NotNull $item;
 
@@ -334,7 +334,7 @@ function Test-AzureVMCSBJobSubscription
 		{
 			$cleanupItem = Get-AzRecoveryServicesBackupItem `
 				-BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $vault.ID `
-				| Where-Object { $_.Name -match $vmName }
+				| Where-Object { $_.Name -like "*;$vmResourceGroupName;$vmName" } | Select-Object -First 1
 			if ($cleanupItem -ne $null)
 			{
 				Disable-AzRecoveryServicesBackupProtection `
