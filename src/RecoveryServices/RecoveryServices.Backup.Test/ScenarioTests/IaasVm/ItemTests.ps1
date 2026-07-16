@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -1411,61 +1411,42 @@ function Test-AzureRestoreWithCVMOsDiskEncryptionSetId()
 }
 
 # =====================================================================================================
-# Cross Subscription Backup (CSB) scenario tests.
-#
-# CSB requires the protected VM to live in a subscription DIFFERENT from the vault's. These tests are
-# recorded: they run live only in Record mode and otherwise replay from SessionRecords/*.json (so CI and
-# contributors need no Azure access). To RE-RECORD them against your own resources (e.g. if the VM below
-# is deleted or you lack access to this subscription), set AZURE_TEST_MODE=Record and update the values at
-# the top of each test function:
-#   - $resourceGroupName : an EXISTING resource group (in the vault's subscription = the one the test
-#                          framework authenticates to) that satisfies the RG-tagging policy. A fresh vault
-#                          is created inside it per test and deleted in the finally block.
-#   - $location          : region for the vault; MUST match the VM's region.
-#   - $containerSubscriptionId : the VM's subscription GUID; MUST differ from the vault's subscription.
-#   - $vmName / $vmResourceGroupName : a pre-existing VM (and its RG) in $containerSubscriptionId, located
-#                          in $location. There is no in-test provisioning because the framework
-#                          authenticates to a single subscription and cannot create the cross-sub VM.
-#   - $saName / $saResourceGroupName (RestoreOLR only) : a pre-existing staging storage account in the VM's
-#                          subscription and same region, used for the OLR restore.
-# The vault name(s) and $modifyPolicyName are created/deleted by the tests and can be left as-is.
+# Cross Subscription Backup (CSB) scenario tests: the protected VM lives in a subscription DIFFERENT from
+# the vault's. Recorded tests (Record mode runs live; otherwise replay from SessionRecords, so CI needs no
+# Azure access). To re-record against your own resources, set AZURE_TEST_MODE=Record and update the values
+# at the top of each test: $resourceGroupName (existing RG in the vault's subscription; a fresh vault is
+# created in it per test), $location (must match the VM's region), $containerSubscriptionId (VM's sub, must
+# differ from the vault's), $vmName/$vmResourceGroupName (a pre-existing VM in that sub - the framework
+# can't provision a cross-sub VM), and $saName/$saResourceGroupName (RestoreOLR only: staging storage in the
+# VM's sub). Vault names and $modifyPolicyName are created/deleted by the tests.
 # =====================================================================================================
 function Test-AzureVMCSBProtection
 {
-	# Cross Subscription Backup (CSB): the vault and the VM to be protected live in different subscriptions.
-	# A fresh vault is created for the test (in an existing resource group) so it runs against a clean vault
-	# with no soft-deleted leftovers, and the vault is deleted in the finally block so the test is re-runnable.
-	# The cross-subscription VM is pre-existing (its subscription differs from the vault's).
+	# Enable CSB protection, then switch the item to a different policy (modify protection).
 	$resourceGroupName = "singhprab-csb-vault-rg-ea"
 	$vaultName = "singhprab-csb-prot-vault"
 	$location = "eastasia"
-	# The VM (container) resides in a subscription different from the vault's subscription.
 	$vmName = "singhprab-ps-vm9"
 	$vmResourceGroupName = "singhprab-rg-1c"
 	$containerSubscriptionId = "80abcfe3-b410-42b2-983f-df23cba781dc"
-	# A second V2 policy to switch to via modify protection.
 	$modifyPolicyName = "csb-modify-policy"
 	$tag = @{"MABUsed"="Yes";"Owner"="singhprab";"Purpose"="Testing";"DeleteBy"="12-2099"}
 
-	# Keep a handle to the vault for cleanup in the finally block so the test is re-runnable.
 	$vault = $null
 
 	try
 	{
-		# Create a fresh vault so the test runs against a clean vault (no soft-deleted leftovers).
+		# Fresh vault so the test runs from a clean state.
 		New-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName -Location $location -Tag $tag | Out-Null
 		$vault = Get-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName
 
-		# Initial policy: the built-in Enhanced (V2) policy. Standard VMs can be protected with enhanced policies.
+		# Built-in Enhanced (V2) policy, plus a second one to switch to during modify protection.
 		$policy = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name "EnhancedPolicy"
-
-		# Create a second Enhanced (V2) policy to switch to during modify protection.
 		$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM -BackupManagementType AzureVM -PolicySubType Enhanced -ScheduleRunFrequency Weekly
 		$retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureVM -BackupManagementType AzureVM -ScheduleRunFrequency Weekly
 		$modifyPolicy = New-AzRecoveryServicesBackupProtectionPolicy -Name $modifyPolicyName -WorkloadType AzureVM -BackupManagementType AzureVM -RetentionPolicy $retentionPolicy -SchedulePolicy $schedulePolicy -VaultId $vault.ID
 
-		# Enable protection for a cross-subscription VM using the new -ContainerSubscriptionId parameter.
-		# This path skips discovery/RefreshContainers and constructs the request directly.
+		# Enable protection for the cross-sub VM via -ContainerSubscriptionId (skips discovery).
 		Enable-AzRecoveryServicesBackupProtection `
 			-VaultId $vault.ID `
 			-Policy $policy `
@@ -1479,17 +1460,13 @@ function Test-AzureVMCSBProtection
 
 		Assert-NotNull $item;
 
-		# The source resource id (and hence the item) must belong to the VM's subscription, not the vault's.
+		# Item must belong to the VM's subscription (not the vault's) and be on the initial policy.
 		Assert-True { $item.SourceResourceId -match $vmName };
 		Assert-True { $item.SourceResourceId -match $vmResourceGroupName };
 		Assert-True { $item.ContainerSubscriptionId -eq $containerSubscriptionId };
-
-		# The item must be protected with the initial (Enhanced) policy.
 		Assert-True { $item.ProtectionPolicyName -eq "EnhancedPolicy" };
 
-		# Modify protection: switch the already-protected CSB item to a different policy.
-		# This uses the ModifyProtection parameter set (-Item), which derives the container
-		# from the item's ARM id and works for cross-subscription items without extra input.
+		# Modify protection via the -Item parameter set (container derived from the item's ARM id).
 		Enable-AzRecoveryServicesBackupProtection `
 			-VaultId $vault.ID `
 			-Policy $modifyPolicy `
@@ -1501,15 +1478,13 @@ function Test-AzureVMCSBProtection
 
 		Assert-NotNull $modifiedItem;
 
-		# The item must now be associated with the new policy, and remain a CSB item.
+		# Item now on the new policy and still a CSB item.
 		Assert-True { $modifiedItem.ProtectionPolicyName -eq $modifyPolicyName };
 		Assert-True { $modifiedItem.ContainerSubscriptionId -eq $containerSubscriptionId };
 	}
 	finally
 	{
-		# Cleanup: disable protection with delete-backup-data, then delete the fresh vault so the test can be
-		# re-run from a clean state. Remove-AzRecoveryServicesVault purges the soft-deleted item as part of
-		# deleting the vault (the vault has AlwaysOn soft delete, which cannot be disabled).
+		# Cleanup: disable protection with delete-backup-data, then delete the fresh vault (Remove-AzRecoveryServicesVault purges the soft-deleted item; the vault has AlwaysOn soft delete).
 		if ($vault -ne $null)
 		{
 			$cleanupItem = Get-AzRecoveryServicesBackupItem `
@@ -1529,38 +1504,31 @@ function Test-AzureVMCSBProtection
 
 function Test-AzureVMCSBRestoreOLR
 {
-	# Original Location Recovery (OLR) for a Cross Subscription Backup (CSB) protected item.
-	# No target subscription/resource group input is required - the VM's subscription is derived
-	# from the recovery point's SourceResourceId, and the staging storage account is resolved in
-	# that subscription. This test is self-contained: it creates a fresh vault (in an existing resource
-	# group), protects a cross-subscription VM, triggers an on-demand backup, restores the resulting
-	# recovery point to the original location, and deletes the vault in the finally block so it is
-	# re-runnable. The cross-subscription VM and staging storage account are pre-existing.
+	# Original Location Recovery (OLR) of a CSB item: no target sub/RG needed - the VM's subscription is
+	# derived from the recovery point, and the staging storage account is resolved there. Self-contained:
+	# protect a cross-sub VM, back it up, restore to original location.
 	$resourceGroupName = "singhprab-csb-vault-rg-ea"
 	$vaultName = "singhprab-csb-rest-vault"
 	$location = "eastasia"
-	# The VM (container) resides in a subscription different from the vault's subscription.
 	$vmName = "singhprab-ps-vm10"
 	$vmResourceGroupName = "singhprab-rg-1c"
 	$containerSubscriptionId = "80abcfe3-b410-42b2-983f-df23cba781dc"
-	# Staging storage account (resides in the VM's subscription and same region as the vault).
+	# Staging storage account, in the VM's subscription and same region.
 	$saName = "ssinghprabsa"
 	$saResourceGroupName = "singhprab-rg-1c"
 	$tag = @{"MABUsed"="Yes";"Owner"="singhprab";"Purpose"="Testing";"DeleteBy"="12-2099"}
 
-	# Keep a handle to the vault for cleanup in the finally block so the test is re-runnable.
 	$vault = $null
 
 	try
 	{
-		# Create a fresh vault so the test runs against a clean vault (no soft-deleted leftovers).
+		# Fresh vault so the test runs from a clean state.
 		New-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName -Location $location -Tag $tag | Out-Null
 		$vault = Get-AzRecoveryServicesVault -Name $vaultName -ResourceGroupName $resourceGroupName
 
-		# Use the built-in Enhanced (V2) policy. Standard VMs can be protected with enhanced policies.
 		$policy = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name "EnhancedPolicy"
 
-		# Enable protection for the cross-subscription VM using the new -ContainerSubscriptionId parameter.
+		# Enable protection for the cross-sub VM via -ContainerSubscriptionId.
 		Enable-AzRecoveryServicesBackupProtection `
 			-VaultId $vault.ID `
 			-Policy $policy `
@@ -1575,15 +1543,14 @@ function Test-AzureVMCSBRestoreOLR
 		Assert-NotNull $item;
 		Assert-True { $item.ContainerSubscriptionId -eq $containerSubscriptionId };
 
-		# Trigger an on-demand backup so there is a recovery point to restore from.
+		# On-demand backup to produce a recovery point.
 		$backupJob = Backup-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
 			-Item $item | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 		Assert-True { $backupJob.Status -eq "Completed" };
 
-		# Fetch the recovery point produced by the on-demand backup.
-		# Use Get-QueryDateInUtc so the date window is recorded and replayed deterministically.
+		# Get-QueryDateInUtc keeps the date window deterministic for record/playback.
 		$from = Get-QueryDateInUtc $((Get-Date).AddDays(-1)) "CSBOlrFrom"
 		$to = Get-QueryDateInUtc $((Get-Date).AddDays(1)) "CSBOlrTo"
 		$rps = @(Get-AzRecoveryServicesBackupRecoveryPoint `
@@ -1595,14 +1562,10 @@ function Test-AzureVMCSBRestoreOLR
 		Assert-True { $rps.Count -gt 0 };
 		$rp = $rps[0]
 
-		# The recovery point should belong to the VM's (cross) subscription.
 		Assert-True { $rp.SourceResourceId -match $containerSubscriptionId };
 
-		# Trigger OLR (Replace Existing): no -TargetResourceGroupName and no -TargetSubscriptionId.
-		# The storage account must be resolved in the VM's subscription (derived from rp.SourceResourceId).
-		# Capture the restore job first, then wait separately. Piping Restore directly into
-		# Wait-AzRecoveryServicesBackupJob causes the downstream cmdlet's BeginProcessing to reset the
-		# shared Logger.Instance, which breaks WriteDebug calls made during Restore's ProcessRecord.
+		# OLR (Replace Existing): no -TargetResourceGroupName/-TargetSubscriptionId; storage resolved in the
+		# VM's sub from rp.SourceResourceId. Wait separately (piping into Wait resets the shared Logger).
 		$restoreJob = Restore-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
 			-VaultLocation $vault.Location `
@@ -1614,15 +1577,13 @@ function Test-AzureVMCSBRestoreOLR
 
 		Assert-True { $restoreJob.Status -eq "Completed" };
 
-		# For a CSB job, the detailed job exposes ContainerSubscriptionId (from extendedInfo).
+		# CSB job detail exposes ContainerSubscriptionId (from extendedInfo).
 		$restoreJobDetail = Get-AzRecoveryServicesBackupJobDetail -VaultId $vault.ID -Job $restoreJob
 		Assert-True { $restoreJobDetail.ContainerSubscriptionId -eq $containerSubscriptionId };
 	}
 	finally
 	{
-		# Cleanup: disable protection with delete-backup-data, then delete the fresh vault so the test can be
-		# re-run from a clean state. Remove-AzRecoveryServicesVault purges the soft-deleted item as part of
-		# deleting the vault (the vault has AlwaysOn soft delete, which cannot be disabled).
+		# Cleanup: disable protection with delete-backup-data, then delete the fresh vault (Remove-AzRecoveryServicesVault purges the soft-deleted item; the vault has AlwaysOn soft delete).
 		if ($vault -ne $null)
 		{
 			$cleanupItem = Get-AzRecoveryServicesBackupItem `

@@ -144,13 +144,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
                 if (!string.IsNullOrEmpty(containerSubscriptionId))
                 {
-                    // Cross Subscription Backup (CSB): the VM resides in a different subscription than the vault.
-                    // Discovery (RefreshContainers/ListProtectableItems) only operates on the vault's subscription
-                    // and will not find the cross-subscription VM. Hence, we skip discovery and construct the
-                    // container URI, protected item URI and source resource ID directly. The backend derives the
-                    // VM's subscription from the source resource ID and configures backup accordingly.
-                    // -ContainerSubscriptionId is only exposed in the compute (ARM) VM parameter set, so the VM is
-                    // always an ARM compute VM here; the classic-compute container type/version do not apply.
+                    // CSB: the VM is in a different subscription than the vault, so discovery (which only
+                    // sees the vault's subscription) is skipped and the URIs/sourceResourceId are built
+                    // directly; the backend derives the VM's subscription from sourceResourceId.
+                    // -ContainerSubscriptionId is compute-only, so the VM is always an ARM compute VM here.
                     string containerType = "iaasvmcontainerv2";
 
                     containerUri = string.Format("IaasVMContainer;{0};{1};{2}",
@@ -546,11 +543,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             if (targetSubscriptionId == null || targetSubscriptionId == "")
             {
-                // For Original Location Recovery (OLR) of a cross-subscription (CSB) protected item, the disks
-                // are restored to the VM's original subscription, which may differ from the vault's subscription.
-                // Extract the container (VM) subscription from the recovery point's SourceResourceId so that the
-                // target storage account is resolved in the correct subscription. No new input is required from
-                // the customer. For all other cases, fall back to the vault's (context) subscription.
+                // For OLR of a CSB item, resolve the target storage account in the VM's subscription by
+                // deriving it from the recovery point's SourceResourceId (no extra customer input); otherwise
+                // fall back to the vault's (context) subscription.
                 if (string.Compare(restoreType, "OriginalLocation") == 0 && !string.IsNullOrEmpty(rp.SourceResourceId))
                 {
                     Dictionary<UriEnums, string> sourceResourceUriDict = HelperUtils.ParseUri(rp.SourceResourceId);

@@ -154,8 +154,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public SwitchParameter ExcludeAllDataDisks { get; set; }
 
         /// <summary>
-        /// Subscription ID of the Azure VM to be protected, when it resides in a different subscription
-        /// than the Recovery Services vault (Cross Subscription Backup).
+        /// VM's subscription id, when the VM is in a different subscription than the vault (CSB).
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AzureVMComputeParameterSet,
             HelpMessage = ParamHelpMsgs.Item.containerSubscriptionId)]

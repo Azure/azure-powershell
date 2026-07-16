@@ -27,8 +27,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
     /// </summary>
     public class JobConversions
     {
-        // PropertyBag key (from the service's job extendedInfo) that carries the VM's subscription id for
-        // Cross Subscription Backup jobs. Used when surfacing ContainerSubscriptionId on the PS job model.
+        // PropertyBag key (job extendedInfo) carrying the VM's subscription id for CSB jobs.
         private const string VmSubscriptionIdPropertyBagKey = "VM Subscription ID";
 
         #region ServiceClient to PS convertors
