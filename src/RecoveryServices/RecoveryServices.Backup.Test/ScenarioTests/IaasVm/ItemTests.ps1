@@ -1422,6 +1422,7 @@ function Test-AzureRestoreWithCVMOsDiskEncryptionSetId()
 # =====================================================================================================
 function Test-AzureVMCSBProtection
 {
+	# Test Owner - singhprab
 	# Enable CSB protection, then switch the item to a different policy (modify protection).
 	$resourceGroupName = "singhprab-csb-vault-rg-ea"
 	$vaultName = "singhprab-csb-prot-vault"
@@ -1504,6 +1505,7 @@ function Test-AzureVMCSBProtection
 
 function Test-AzureVMCSBRestoreOLR
 {
+	# Test Owner - singhprab
 	# Original Location Recovery (OLR) of a CSB item: no target sub/RG needed - the VM's subscription is
 	# derived from the recovery point, and the staging storage account is resolved there. Self-contained:
 	# protect a cross-sub VM, back it up, restore to original location.
